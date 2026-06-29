@@ -1,0 +1,39 @@
+---
+description: NestJS engineering operating system — layered architecture, strict TypeScript, and the non-negotiable code rules enforced by ESLint and tsconfig
+globs: ["**/*.ts"]
+alwaysApply: true
+---
+
+# NestJS Engineering Operating System
+
+`claude.md` defines the SDLC governance (phases and gates). This rule defines how NestJS backend code must be written. It is mechanically enforced by `eslint.config.mjs` (with the custom architecture plugin under `eslint/`), `tsconfig.json`, and the Husky hooks in `.husky/`. Full detail lives in `rules/`, `skills/`, `context/`, `memory/`, `agents/`, and `testing/`.
+
+## Canonical architecture (one-way dependencies)
+
+Controller (`api/*.controller.ts`, thin — exactly one delegation per method)
+→ Application (`application/*.use-case.ts` for orchestration + transactions; `*.service.ts` focused, ≤20 lines/method)
+→ Domain (`domain/` — policies, entities, state machines, pure)
+→ Persistence (`infrastructure/*.repository.ts` — parameterized, bounded)
+→ Integration (`adapters/*.adapter.ts` — every external library wrapped).
+Cross-cutting: `src/core` (logger, errors+exception filter, guards, interceptors, pipes, events), `src/config`, `src/shared`.
+
+Read `context/architecture-map.md` and `rules/00-non-negotiable-rules.md` before writing code.
+
+## Non-negotiable code rules
+
+- Strict TypeScript: no `any`, no `!` non-null assertion, no `eslint-disable`/`@ts-ignore`; resolve types at the root cause.
+- No magic strings; compare domain values against enums; enums live in `@shared/enums` (with a `*_VALUES` array each).
+- Zero inline declarations: no inline types/interfaces/enums/constants/DTOs/config-maps in controllers, services, repositories, use cases, guards, interceptors, or adapters — extract to `model/`, `@shared/*`, `api/dto/`, or `lib/`.
+- Thin controllers (one delegation/method); services orchestrate (≤20 lines/method); repositories only persist; use cases own transactions and post-commit events.
+- Validate at the boundary with DTOs (class-validator primary; Zod via a pipe is the documented alternative).
+- Every user-facing error is a typed `AppError` with a `messageKey` (`errors.<feature>.<key>`); a global exception filter sanitizes output — never leak stacks/SQL/secrets.
+- Typed config via `@nestjs/config`; never read `process.env` outside `config/`/`bootstrap/`. Logger adapter only; never `console.*`.
+- Parameterized queries only; list endpoints paginate with a hard max limit. Wrap every external library behind an adapter.
+- Every protected route: auth guard + permissions (RBAC) guard + ownership/tenant check; identity from the verified token.
+- No behavior change without tests (written first) and docs in the same change.
+
+## Gates (all green before done)
+
+`npm run lint` · `npm run typecheck` · `npm run test:coverage` · `npm run build`. Never bypass Husky hooks with `--no-verify`. Fix lint at the root cause; never disable a rule.
+
+If anything here conflicts with `claude.md`, `claude.md` wins. When two rules overlap, the stricter one applies.

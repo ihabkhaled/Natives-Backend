@@ -19,3 +19,11 @@ If you are reading only this legacy file, do the following before any work:
 4. Never implement before phases `00` through `13` are documented.
 5. Never merge or release without tests, docs, QA, security, observability, and rollback readiness.
 6. Update `claude.md` whenever a permanent rule changes.
+
+For NestJS backend code, also follow the engineering operating system enforced by `eslint.config.mjs`, `tsconfig.json`, and `.husky/`:
+
+1. Read `context/architecture-map.md` and `rules/00-non-negotiable-rules.md` before coding.
+2. Respect the layered architecture: thin controllers (one delegation/method) → application use-cases/services (≤20 lines/method) → domain → repositories → adapters.
+3. No `any`, no `eslint-disable`/`@ts-ignore`/`!`; no inline types/enums/consts/DTOs in controllers/services/repositories; no `process.env` outside config/bootstrap; logger adapter not `console.*`; wrap external libraries behind adapters.
+4. Keep `npm run lint` / `typecheck` / `test:coverage` / `build` green; write tests first; never bypass hooks with `--no-verify`.
+5. Active engineering rules live in `.cursor/rules/*.mdc`; full detail in `rules/`, `skills/`, and `context/`.

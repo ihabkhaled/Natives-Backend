@@ -156,6 +156,21 @@ When handling a request, respond and work in this order:
 - `.cursor/rules/*.mdc` is the active Cursor ruleset.
 - `.cursorrules` exists only for legacy Cursor compatibility.
 
+## NestJS Engineering Operating System
+
+`claude.md` is the stack-agnostic governance brain (which phases/gates apply). For any **NestJS backend** work, a concrete engineering operating system defines exactly how the code must be written, and it is mechanically enforced by `eslint.config.mjs` (with a custom architecture plugin under `eslint/`), `tsconfig.json`, and the Husky hooks in `.husky/`:
+
+- `rules/` — layer-by-layer engineering rules; start with `rules/00-non-negotiable-rules.md`.
+- `skills/` — step-by-step task playbooks that apply the rules.
+- `context/` — `context/architecture-map.md` (canonical architecture), `context/stack-and-toolchain.md`, `context/codebase-navigation.md` (task router), `context/reference-patterns.md` (copy-ready code).
+- `memory/` — durable decisions + `memory/known-pitfalls.md`.
+- `agents/` — specialist review roles.
+- `testing/` — engineering test standards.
+
+Canonical architecture (one-way layered deps): Controller (`api/*.controller.ts`, thin, one delegation/method) → Application (`application/*.use-case.ts` for orchestration+transactions; `*.service.ts` focused, ≤20 lines/method) → Domain (`domain/`) → Persistence (`infrastructure/*.repository.ts`) → Integration (`adapters/*.adapter.ts`). Cross-cutting in `src/core`, `src/config`, `src/shared`.
+
+Before NestJS implementation read: `claude.md` → `context/architecture-map.md` → `rules/00-non-negotiable-rules.md` → the layer rule(s) and the matching skill. Then write tests first and keep every gate green: `npm run lint`, `npm run typecheck`, `npm run test:coverage`, `npm run build`. If engineering guidance ever conflicts with `claude.md`, `claude.md` wins; when two rules overlap, the stricter one applies.
+
 ## Final Instruction
 
 Treat this repository as a strict enterprise workflow, not a suggestion. Read `claude.md`, follow it in full, and do not compress away the work that makes software production-ready.

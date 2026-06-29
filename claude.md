@@ -66,6 +66,37 @@ This repository may expose the same policy through multiple tool-facing files, b
 5. `codex.md` and `cursor.md` are mirror/reference copies for humans or custom tooling. If they ever diverge from `claude.md`, `claude.md` wins.
 6. When any permanent policy changes, update the canonical file first, then update compatibility and mirror files in the same delivery stream.
 
+## NestJS Engineering Operating System (The Concrete "How")
+
+This file is the **stack-agnostic governance brain**: it defines *which phases, artifacts, and gates* every change must pass through. Layered on top of it is a **concrete NestJS engineering operating system** that defines *exactly how the code must be written* for any NestJS backend. The two are complementary and both binding: governance decides whether you may ship; the engineering OS decides whether the code is correct, clean, layered, and safe.
+
+For any NestJS backend work, these layers are authoritative for implementation and are mechanically enforced by [`eslint.config.mjs`](eslint.config.mjs) (including a custom architecture plugin under [`eslint/`](eslint/)), [`tsconfig.json`](tsconfig.json), and the Husky hooks under [`.husky/`](.husky/):
+
+| Layer | Location | Authority |
+| --- | --- | --- |
+| Engineering rules | [`rules/`](rules/README.md) | How code in each layer must be written; starts with [`rules/00-non-negotiable-rules.md`](rules/00-non-negotiable-rules.md) |
+| Task playbooks | [`skills/`](skills/README.md) | Step-by-step procedures that apply the rules |
+| AI / human context | [`context/`](context/README.md) | The [architecture map](context/architecture-map.md), [stack & toolchain](context/stack-and-toolchain.md), [task router](context/codebase-navigation.md), [reference patterns](context/reference-patterns.md) |
+| Durable decisions | [`memory/`](memory/README.md) | Standing decisions + the [learned-pitfalls log](memory/known-pitfalls.md) |
+| Review roles | [`agents/`](agents/README.md) | Specialist reviewers (architecture, security, performance, tests, database, reliability, release) |
+| Testing standards | [`testing/`](testing/README.md) | Engineering test strategy, layers, coverage, fixtures, gates |
+| Lint/architecture enforcement | [`eslint/`](eslint/) | The modular ESLint configs + custom layer-boundary plugin |
+
+The canonical architecture (one-way layered dependencies, mechanically enforced):
+
+```
+Controller (api/*.controller.ts — thin, one delegation per method)
+  → Application (application/*.use-case.ts — orchestration + transactions; *.service.ts — focused, ≤20 lines/method)
+    → Domain (domain/ — policies, entities, state machines, pure)
+      → Persistence (infrastructure/*.repository.ts — parameterized, bounded)
+        → Integration (adapters/*.adapter.ts — every external library wrapped)
+Cross-cutting: src/core (logger, errors+exception filter, guards, interceptors, pipes, events) · src/config · src/shared
+```
+
+Precedence within the engineering OS: [`context/architecture-map.md`](context/architecture-map.md) and [`rules/00-non-negotiable-rules.md`](rules/00-non-negotiable-rules.md) are the engineering canon; if any other engineering doc contradicts them, those two win. If any engineering guidance contradicts this `claude.md` governance policy, `claude.md` wins. When two rules overlap, the stricter one applies. New permanent engineering rules update `rules/` (and the mirrors per the canonical-file rules above); new lifecycle/governance rules update this file.
+
+Before NestJS implementation: read this `claude.md`, then [`context/architecture-map.md`](context/architecture-map.md), [`rules/00-non-negotiable-rules.md`](rules/00-non-negotiable-rules.md), the layer rule(s) you are touching, and the matching skill — then write tests first and keep every gate green (`npm run lint` · `npm run typecheck` · `npm run test:coverage` · `npm run build`).
+
 ## Standing Instruction To Claude Or Any AI Coding Agent
 
 You are operating inside a strict enterprise SDLC. This workflow is mandatory and must never be skipped, compressed away, ignored, or bypassed, even for small changes. Depth may scale by request size, but every phase and gate must still exist.
