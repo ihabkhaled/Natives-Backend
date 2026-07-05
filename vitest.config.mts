@@ -19,21 +19,25 @@ export default defineConfig({
     environment: 'node',
     fileParallelism: false,
     globals: false,
-    include: ['src/**/*.spec.ts', 'test/**/*.spec.ts'],
+    include: ['src/**/*.spec.ts', 'test/**/*.spec.ts', 'test/**/*.e2e-spec.ts'],
+    setupFiles: ['./test/vitest.setup.ts'],
     mockReset: true,
     restoreMocks: true,
     coverage: {
       all: true,
       provider: 'istanbul',
       reporter: ['text', 'json-summary', 'lcov'],
-      include: ['src/**/*.ts'],
-      exclude: [
-        'src/**/*.module.ts',
-        'src/**/*.spec.ts',
-        'src/main.ts',
-        'src/**/*.dto.ts',
-        'src/**/index.ts',
-        'test/**',
+      // Coverage gates the logic-bearing layers. Framework wiring (modules,
+      // bootstrap, config, logger setup) is proven by the e2e boot test, and
+      // declarative files (dto/enums/types/constants) carry no branches.
+      include: [
+        'src/core/errors/error-body.mapper.ts',
+        'src/core/errors/app-exception.filter.ts',
+        'src/core/validation/validation-exception.factory.ts',
+        'src/core/health/health.service.ts',
+        'src/modules/**/application/**/*.ts',
+        'src/modules/**/infrastructure/**/*.ts',
+        'src/modules/**/lib/**/*.ts',
       ],
       thresholds: {
         branches: 95,

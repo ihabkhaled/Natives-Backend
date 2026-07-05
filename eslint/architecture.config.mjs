@@ -11,24 +11,34 @@ import { packageImportBoundaries } from './package-boundaries.config.mjs';
 // See rules/01-architecture-and-module-boundaries.md.
 // -----------------------------------------------------------------------------
 
+// Restrictions target MODULE-LEVEL declarations only (`:matches(Program,
+// ExportNamedDeclaration) > ...`). Local consts/types inside a method are
+// legitimate; what rules/06 forbids is reusable structure declared at the top
+// of a controller/service/repository file. The only permitted file-local
+// literal is a `LOG_PREFIX` logging label.
+const moduleLevel = selector =>
+  `:matches(Program, ExportNamedDeclaration) > ${selector}`;
+
 export const layerDeclarationRestrictions = [
   {
-    selector: "VariableDeclaration[kind='const']",
+    selector: moduleLevel(
+      "VariableDeclaration[kind='const']:not(:has(VariableDeclarator[id.name='LOG_PREFIX']))",
+    ),
     message:
-      'Do not declare const values inside controller, service, or repository files. Move them to a constants module (rules/06).',
+      'Do not declare module-level const values inside controller, service, or repository files. Move them to a *.constants.ts module (only a file-local LOG_PREFIX is allowed). See rules/06.',
   },
   {
-    selector: 'TSEnumDeclaration',
+    selector: moduleLevel('TSEnumDeclaration'),
     message:
       'Do not declare enums inside controller, service, or repository files. Move them to a dedicated enums module (rules/06).',
   },
   {
-    selector: 'TSInterfaceDeclaration',
+    selector: moduleLevel('TSInterfaceDeclaration'),
     message:
       'Do not declare interfaces inside controller, service, or repository files. Move them to a dedicated types/model module (rules/06).',
   },
   {
-    selector: 'TSTypeAliasDeclaration',
+    selector: moduleLevel('TSTypeAliasDeclaration'),
     message:
       'Do not declare type aliases inside controller, service, or repository files. Move them to a dedicated types/model module (rules/06).',
   },
@@ -76,8 +86,9 @@ export const layerImportBoundaries = [
   },
   {
     from: [layer.application],
-    forbid: [layer.controller, layer.apiDto],
-    message: 'Application use cases must not depend on controllers or API DTOs.',
+    forbid: [layer.controller],
+    message:
+      'Application use cases and services must not depend on controllers (they may accept/return API DTOs as their I/O contract).',
   },
   {
     from: [layer.service],

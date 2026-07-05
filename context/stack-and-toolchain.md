@@ -16,10 +16,13 @@
 - **@nestjs/swagger** — OpenAPI.
 - **@nestjs/throttler** — rate limiting.
 - **@nestjs/jwt + @nestjs/passport + passport-jwt** — auth building blocks.
+- **@nestjs/throttler** — rate limiting (wired as a global guard from config).
 - **class-validator + class-transformer** — DTO validation (primary). Zod is supported via a custom pipe (see [`/rules/05-dto-and-validation.md`](../rules/05-dto-and-validation.md)).
+- **nestjs-pino + pino + pino-http** — structured logging for every request (redaction, 4xx→`warn` / 5xx→`error`); `pino-pretty` for dev.
+- **@fastify/helmet + @fastify/cors + @fastify/cookie** — security headers, CORS, cookie parsing on the Fastify platform.
 - **reflect-metadata, rxjs, tslib** — framework runtime.
 
-> **Not shipped on purpose (you choose):** ORM/database driver, cache/queue client, mailer, object storage, APM. Add them behind an **adapter** (rules/12) so the rest of the codebase never imports the vendor directly.
+> **Not shipped on purpose (you choose):** ORM/database driver, cache/queue client, mailer, object storage, APM. Add them behind an **adapter** (rules/12) so the rest of the codebase never imports the vendor directly. The reference module under [`../src/modules/articles`](../src/modules/articles) uses an in-memory repository so the starter runs with zero external services.
 
 ## Lint & format toolchain
 

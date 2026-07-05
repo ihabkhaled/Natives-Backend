@@ -22,7 +22,6 @@
     "noEmitOnError": true,
     "outDir": "./dist",
     "rootDir": "./",
-    "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
       "@app/*": ["./src/*"],

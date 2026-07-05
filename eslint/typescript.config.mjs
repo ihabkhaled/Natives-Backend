@@ -56,8 +56,9 @@ export default [
       '@typescript-eslint/no-base-to-string': 'error',
       // Allow empty constructors but reject other empty functions.
       '@typescript-eslint/no-empty-function': ['error', { allow: ['constructors'] }],
-      // Avoid class wrappers that do not need class semantics.
-      '@typescript-eslint/no-extraneous-class': 'error',
+      // Avoid class wrappers that do not need class semantics, but allow the
+      // empty decorated classes that NestJS modules require (@Module, etc.).
+      '@typescript-eslint/no-extraneous-class': ['error', { allowWithDecorator: true }],
       // Catch promises used where sync booleans or callbacks are expected.
       '@typescript-eslint/no-misused-promises': [
         'error',

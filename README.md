@@ -53,16 +53,46 @@ Dependencies point one way only, and the boundaries are **enforced by ESLint**, 
 
 ## Quick start
 
-**Start a new NestJS backend from this workspace**
+**Run the reference app**
 
-1. Read [`/context/architecture-map.md`](./context/architecture-map.md) and [`/rules/00-non-negotiable-rules.md`](./rules/00-non-negotiable-rules.md).
-2. `npm install` to pull the pinned toolchain, then `npm run prepare` to install the Husky hooks.
-3. Create your first feature with the [`create-module`](./skills/create-module.md) skill; build endpoints with the [`create-controller`](./skills/create-controller.md) → [`create-use-case`](./skills/create-use-case.md) / [`create-service`](./skills/create-service.md) → [`create-repository`](./skills/create-repository.md) skills.
-4. Keep all gates green: `npm run lint && npm run typecheck && npm run test:coverage && npm run build`.
+The repo ships a real, runnable NestJS application under [`src/`](./src) that already wires the strict setup end to end.
+
+```bash
+npm install         # pull the pinned toolchain + runtime deps
+npm run prepare     # install the Husky hooks
+npm run lint:fix    # normalize imports/formatting once after install
+npm run start:dev   # boots on http://localhost:3000
+```
+
+Then hit it:
+
+- `GET /api/v1/health` → liveness JSON
+- `GET /docs` → Swagger UI
+- `POST /api/v1/articles` with `{ "title": "Hello world", "body": "..." }` → 201 (try an invalid body to see the logged 400)
+
+Keep every gate green: `npm run lint && npm run typecheck && npm run test:coverage && npm run build`.
+
+**Build your own feature**
+
+Read [`/context/architecture-map.md`](./context/architecture-map.md) and [`/rules/00-non-negotiable-rules.md`](./rules/00-non-negotiable-rules.md), then mirror the `articles` reference module: scaffold with [`create-module`](./skills/create-module.md) and build endpoints with [`create-controller`](./skills/create-controller.md) → [`create-service`](./skills/create-service.md) / [`create-use-case`](./skills/create-use-case.md) → [`create-repository`](./skills/create-repository.md).
 
 **Add the strict kit to an existing NestJS project**
 
 Copy the root configs + [`/eslint`](./eslint) into your repo, merge the `package.json` dependencies, run `npm install`, then drive `npm run lint` to zero by fixing root causes (never disabling rules).
+
+## What the reference app already does
+
+| Concern | Where | Notes |
+| --- | --- | --- |
+| **Fastify (latest)** platform | [`src/bootstrap/fastify-adapter.ts`](./src/bootstrap/fastify-adapter.ts) | bounded body size, `trustProxy`, per-request id for log correlation |
+| **Helmet + CORS + cookies** | [`src/bootstrap/configure-security.ts`](./src/bootstrap/configure-security.ts) | `@fastify/helmet`, CORS from typed config, `@fastify/cookie` |
+| **Pino logs for every request** | [`src/core/logger/`](./src/core/logger) | `nestjs-pino`, redaction, 4xx→`warn` / 5xx→`error`, pretty in dev only |
+| **Error logging (400→500)** | [`src/core/errors/app-exception.filter.ts`](./src/core/errors/app-exception.filter.ts) | global filter logs & sanitizes every `AppError`/exception |
+| **DTO validation logging** | [`src/core/validation/`](./src/core/validation) | ValidationPipe factory logs each rejected field/constraint |
+| **Split bootstrap** | [`src/bootstrap/`](./src/bootstrap) | one file per concern; orchestrated by `bootstrap.ts` |
+| **Typed, validated config** | [`src/config/`](./src/config) | `@nestjs/config` namespaces + fail-fast env validation |
+| **Rate limiting** | [`src/core/core.module.ts`](./src/core/core.module.ts) | global `@nestjs/throttler` guard from config |
+| **Clean example feature** | [`src/modules/articles/`](./src/modules/articles) | controller → service → repository → dto → model → lib |
 
 ## How the two systems fit together
 
