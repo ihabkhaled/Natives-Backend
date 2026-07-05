@@ -1,4 +1,6 @@
-# Claude Ranger — Strict NestJS Backend Operating System
+# IronNest — Strict NestJS Backend Operating System
+
+> Iron discipline for NestJS backends — clean architecture enforced by custom ESLint rules, strict TypeScript, SDLC governance, an AI-agent knowledge base (rules · skills · memory · context), and a runnable Fastify + Pino reference app.
 
 This repository is two complementary operating systems in one:
 

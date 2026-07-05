@@ -1,7 +1,7 @@
 {
-  "name": "nestjs-strict-workspace",
+  "name": "iron-nest",
   "version": "1.0.0",
-  "description": "Production-grade strict NestJS backend workspace: layered architecture enforced by a custom ESLint plugin, full type-safety, and an AI operating system (rules, skills, agents, memory, context).",
+  "description": "Iron discipline for NestJS backends — clean architecture enforced by custom ESLint rules, strict TypeScript, SDLC governance, an AI-agent knowledge base (rules, skills, memory, context), and a runnable Fastify + Pino reference app.",
   "author": "",
   "private": true,
   "license": "UNLICENSED",

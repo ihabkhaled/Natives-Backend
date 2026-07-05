@@ -2,7 +2,7 @@ export const DEFAULT_PORT = 3000;
 export const MIN_PORT = 1;
 export const MAX_PORT = 65535;
 
-export const DEFAULT_APP_NAME = 'nestjs-strict-workspace';
+export const DEFAULT_APP_NAME = 'iron-nest';
 export const DEFAULT_GLOBAL_PREFIX = 'api';
 export const DEFAULT_LOG_LEVEL = 'info';
 
