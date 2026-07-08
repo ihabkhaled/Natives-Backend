@@ -1,6 +1,6 @@
 # 12 — Library Wrapping & Adapters
 
-> Every external library that touches product behavior is wrapped behind an app-owned **adapter**. Business code depends on *your* interface — never on the vendor SDK. This implements the Integration layer of [`/context/architecture-map.md`](../context/architecture-map.md) and rules **32** and **41** of [00-non-negotiable-rules.md](./00-non-negotiable-rules.md).
+> Every external library that touches product behavior is wrapped behind an app-owned **adapter**. Business code depends on _your_ interface — never on the vendor SDK. This implements the Integration layer of [`/context/architecture-map.md`](../context/architecture-map.md) and rules **32** and **41** of [00-non-negotiable-rules.md](./00-non-negotiable-rules.md).
 
 The vendor package is a swappable implementation detail. The port (the interface) is yours, it is stable, and it is the only thing the rest of the codebase ever sees.
 
@@ -8,13 +8,13 @@ The vendor package is a swappable implementation detail. The port (the interface
 
 ## Why wrap (the five reasons)
 
-| Reason | What the adapter centralizes |
-| --- | --- |
-| **Central config** | Secrets, base URLs, timeouts, pool sizes — read once from typed config ([17-configuration-and-environment.md](./17-configuration-and-environment.md)), never re-read by callers. |
-| **Hardening** | TLS, timing-safe compares, allow-lists, redaction, retry/timeout/circuit-breaker ([10-reliability-and-durability.md](./10-reliability-and-durability.md)) live in **one** place. |
+| Reason                | What the adapter centralizes                                                                                                                                                                               |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Central config**    | Secrets, base URLs, timeouts, pool sizes — read once from typed config ([17-configuration-and-environment.md](./17-configuration-and-environment.md)), never re-read by callers.                           |
+| **Hardening**         | TLS, timing-safe compares, allow-lists, redaction, retry/timeout/circuit-breaker ([10-reliability-and-durability.md](./10-reliability-and-durability.md)) live in **one** place.                           |
 | **Consistent errors** | The adapter catches vendor exceptions and rethrows typed `AppError`s with a `messageKey` ([18-error-handling-and-exceptions.md](./18-error-handling-and-exceptions.md)); vendor error shapes never escape. |
-| **Test doubles** | One mock surface per dependency. Callers mock the port token; the adapter's own tests mock the SDK. No network in tests ([11-testing-and-coverage.md](./11-testing-and-coverage.md)). |
-| **Swap surface** | Replace the email provider, cache client, or HTTP library by editing one adapter — not 40 call sites. |
+| **Test doubles**      | One mock surface per dependency. Callers mock the port token; the adapter's own tests mock the SDK. No network in tests ([11-testing-and-coverage.md](./11-testing-and-coverage.md)).                      |
+| **Swap surface**      | Replace the email provider, cache client, or HTTP library by editing one adapter — not 40 call sites.                                                                                                      |
 
 ```ts
 // DON'T — a service imports the SDK directly; config, auth, retry, and the
@@ -84,15 +84,22 @@ export class EmailProviderAdapter implements MailerPort {
     @Inject(mailerConfig.KEY) config: ConfigType<typeof mailerConfig>,
     private readonly logger: AppLogger,
   ) {
-    this.client = new SomeMailSdk({ apiKey: config.apiKey, timeoutMs: config.timeoutMs });
+    this.client = new SomeMailSdk({
+      apiKey: config.apiKey,
+      timeoutMs: config.timeoutMs,
+    });
   }
 
   public async send(input: SendEmailInput): Promise<void> {
     try {
       await this.client.deliver(this.toVendorPayload(input)); // map owned → vendor inside
     } catch (cause) {
-      this.logger.error('email.send.failed', { templateKey: input.templateKey }); // no secrets
-      throw new IntegrationUnavailableError('errors.mailer.send_failed', { cause });
+      this.logger.error('email.send.failed', {
+        templateKey: input.templateKey,
+      }); // no secrets
+      throw new IntegrationUnavailableError('errors.mailer.send_failed', {
+        cause,
+      });
     }
   }
 
@@ -143,13 +150,13 @@ No new integration, queue client, job runner, or external dependency ships witho
 
 ## Worked examples (neutral placeholders)
 
-| Concern | Port (you own) | Wrapped vendor (example) | Adapter owns |
-| --- | --- | --- | --- |
-| **Outbound HTTP** | `HttpClientPort.request<T>(req): Promise<HttpResponse<T>>` | any HTTP client (`fetch`, axios, undici) | base URL, timeout, retry+backoff, auth header injection, response typing, error mapping |
-| **Logging** | `AppLogger` (`info`/`warn`/`error`/`debug`) | any logger (pino, winston, Nest `Logger`) | level config, structured fields, **PII/secret redaction** ([14-observability-and-logging.md](./14-observability-and-logging.md)) |
-| **Mailer** | `MailerPort.send(input): Promise<void>` | any email provider | template selection, HTML escaping, owned `SendEmailInput`, provider swap |
-| **Object storage** | `ObjectStoragePort.put/get/delete/signedUrl(...)` | any blob/object store | bucket config, content-type/size allow-list, signed-URL TTL, key namespacing |
-| **Cache** | `CachePort.get<T>/set<T>/del(key, ttl?)` | any cache client | connection/pool config, key prefixing, default TTL, serialize/deserialize, fail-open reads |
+| Concern            | Port (you own)                                             | Wrapped vendor (example)                  | Adapter owns                                                                                                                     |
+| ------------------ | ---------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **Outbound HTTP**  | `HttpClientPort.request<T>(req): Promise<HttpResponse<T>>` | any HTTP client (`fetch`, axios, undici)  | base URL, timeout, retry+backoff, auth header injection, response typing, error mapping                                          |
+| **Logging**        | `AppLogger` (`info`/`warn`/`error`/`debug`)                | any logger (pino, winston, Nest `Logger`) | level config, structured fields, **PII/secret redaction** ([14-observability-and-logging.md](./14-observability-and-logging.md)) |
+| **Mailer**         | `MailerPort.send(input): Promise<void>`                    | any email provider                        | template selection, HTML escaping, owned `SendEmailInput`, provider swap                                                         |
+| **Object storage** | `ObjectStoragePort.put/get/delete/signedUrl(...)`          | any blob/object store                     | bucket config, content-type/size allow-list, signed-URL TTL, key namespacing                                                     |
+| **Cache**          | `CachePort.get<T>/set<T>/del(key, ttl?)`                   | any cache client                          | connection/pool config, key prefixing, default TTL, serialize/deserialize, fail-open reads                                       |
 
 ### Outbound HTTP — the canonical wrap
 
@@ -158,12 +165,15 @@ Never instantiate a global HTTP singleton in business code. Each integration get
 ```ts
 // model/http-client.types.ts
 export interface HttpRequest {
-  method: HttpMethod;            // enum from @shared/enums
+  method: HttpMethod; // enum from @shared/enums
   path: string;
   query?: Readonly<Record<string, string>>;
   body?: unknown;
 }
-export interface HttpResponse<T> { status: number; data: T; }
+export interface HttpResponse<T> {
+  status: number;
+  data: T;
+}
 export interface HttpClientPort {
   request<T>(req: HttpRequest): Promise<HttpResponse<T>>;
 }
@@ -173,7 +183,9 @@ export interface HttpClientPort {
 // adapters/payment-provider.adapter.ts — composes the port; SDK/HTTP lib stays hidden
 @Injectable()
 export class PaymentProviderAdapter implements PaymentPort {
-  constructor(@Inject(HTTP_CLIENT_PORT) private readonly http: HttpClientPort) {}
+  constructor(
+    @Inject(HTTP_CLIENT_PORT) private readonly http: HttpClientPort,
+  ) {}
 
   public async charge(input: ChargeInput): Promise<ChargeResult> {
     const res = await this.http.request<ChargeResponseBody>({

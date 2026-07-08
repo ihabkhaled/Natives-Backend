@@ -11,7 +11,7 @@ E2E tests prove a **complete request flow through the assembled system**: the re
 - **Boot the real app**, not a hand-wired sub-module — `Test.createTestingModule({ imports: [AppModule] })` so global pipes/filters/guards run.
 - **Identity from a real token**, never a forged header or client-supplied id — drive the actual auth flow ([rules 33–35](../rules/00-non-negotiable-rules.md), [/skills/add-guard-and-permission.md](./add-guard-and-permission.md)).
 - **Assert persistence and side effects**, not only the HTTP body — read the row back through the repository; assert emitted events/notifications via a captured spy ([rule 38](../rules/00-non-negotiable-rules.md), [/skills/add-event-handler.md](./add-event-handler.md)).
-- **Assert typed errors at the boundary** — status code *and* the sanitized `messageKey`; never a leaked stack/SQL/secret ([rules 26, 36](../rules/00-non-negotiable-rules.md), [/skills/create-error.md](./create-error.md)).
+- **Assert typed errors at the boundary** — status code _and_ the sanitized `messageKey`; never a leaked stack/SQL/secret ([rules 26, 36](../rules/00-non-negotiable-rules.md), [/skills/create-error.md](./create-error.md)).
 - **No `any`, no `!`, `===`/`!==` only** — strict TS holds in tests too ([rules 1–7](../rules/00-non-negotiable-rules.md)).
 - **Vitest only** — `vi.fn()` / `vi.spyOn()`. There is no Jest in this workspace.
 
@@ -29,15 +29,15 @@ Write the failing journey before the feature is wired. Map each acceptance crite
 
 E2E specs live apart from the source so they are easy to run as their own pass: `test/e2e/<feature>.e2e-spec.ts`. Choose **journeys, not endpoints** — a sequence a real caller performs. Per feature, cover at minimum:
 
-| Journey bucket | What it proves |
-| --- | --- |
-| Happy path | authenticated + authorized + owns the resource → 2xx, row persisted, event emitted |
-| Validation | malformed DTO → 400 with the field error, nothing persisted |
-| AuthN | no/invalid token → 401, never reaches the handler |
-| AuthZ | valid token, missing permission → 403 |
-| Ownership / tenant | valid token, another tenant's id → 404/403 (no cross-tenant leak) |
-| Conflict | duplicate create → 409 with the conflict `messageKey` |
-| Pagination bounds | over-limit `take` clamped to the hard max (100), no unbounded scan |
+| Journey bucket     | What it proves                                                                     |
+| ------------------ | ---------------------------------------------------------------------------------- |
+| Happy path         | authenticated + authorized + owns the resource → 2xx, row persisted, event emitted |
+| Validation         | malformed DTO → 400 with the field error, nothing persisted                        |
+| AuthN              | no/invalid token → 401, never reaches the handler                                  |
+| AuthZ              | valid token, missing permission → 403                                              |
+| Ownership / tenant | valid token, another tenant's id → 404/403 (no cross-tenant leak)                  |
+| Conflict           | duplicate create → 409 with the conflict `messageKey`                              |
+| Pagination bounds  | over-limit `take` clamped to the hard max (100), no unbounded scan                 |
 
 ### 2. Boot the full application (do this once per suite)
 
@@ -63,7 +63,9 @@ describe('Order API (e2e)', () => {
     }).compile();
 
     app = moduleRef.createNestApplication();
-    app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+    app.useGlobalPipes(
+      new ValidationPipe({ whitelist: true, transform: true }),
+    );
     app.useGlobalFilters(app.get(AllExceptionsFilter));
     await app.init();
     // Fastify only: ensure the adapter is ready before the first request.
@@ -81,10 +83,12 @@ describe('Order API (e2e)', () => {
 
 ```ts
 // DON'T — hand-wire only the controller; globals never run, so the test lies
-const app = (await Test.createTestingModule({
-  controllers: [OrderController],
-  providers: [{ provide: OrderService, useValue: fakeService }],
-}).compile()).createNestApplication();
+const app = (
+  await Test.createTestingModule({
+    controllers: [OrderController],
+    providers: [{ provide: OrderService, useValue: fakeService }],
+  }).compile()
+).createNestApplication();
 // no ValidationPipe, no exception filter, fake service → proves nothing about the real flow
 ```
 
@@ -98,12 +102,15 @@ Identity must come from a verified token the app issued, never a forged `Authori
 let token: string;
 
 beforeAll(async () => {
-  const res = await http.post('/auth/login').send({ email: seededEmail, password: seededSecret });
+  const res = await http
+    .post('/auth/login')
+    .send({ email: seededEmail, password: seededSecret });
   expect(res.status).toBe(200);
   token = (res.body as { accessToken: string }).accessToken;
 });
 
-const authed = (): request.Test => http.get('/orders').set('Authorization', `Bearer ${token}`);
+const authed = (): request.Test =>
+  http.get('/orders').set('Authorization', `Bearer ${token}`);
 ```
 
 If your auth provider is itself an external adapter, seed a deterministic verified principal in the test datastore rather than hand-minting JWTs — keep token issuance going through the app.
@@ -124,7 +131,7 @@ it('creates an order, returns 201, and persists it for the owner', async () => {
 
   const persisted = await orders.findById(body.id); // verify the datastore, not the response
   expect(persisted).not.toBeNull();
-  expect(persisted?.ownerId).toBe(seededUserId);   // identity came from the token
+  expect(persisted?.ownerId).toBe(seededUserId); // identity came from the token
   expect(persisted?.status).toBe(OrderStatus.DRAFT); // enum member, never the string 'DRAFT'
 });
 ```
@@ -145,7 +152,10 @@ it('emits OrderCreated after commit', async () => {
 
   expect(res.status).toBe(201);
   expect(emit).toHaveBeenCalledWith(
-    expect.objectContaining({ name: OrderEvent.CREATED, payload: expect.objectContaining({ id: res.body.id }) }),
+    expect.objectContaining({
+      name: OrderEvent.CREATED,
+      payload: expect.objectContaining({ id: res.body.id }),
+    }),
   );
 });
 ```
@@ -161,21 +171,31 @@ it('rejects an unauthenticated request', async () => {
 });
 
 it('returns 403 when the caller lacks the permission', async () => {
-  const res = await http.post('/orders').set('Authorization', `Bearer ${viewerToken}`).send({ sku: 'SKU-4', quantity: 1 });
+  const res = await http
+    .post('/orders')
+    .set('Authorization', `Bearer ${viewerToken}`)
+    .send({ sku: 'SKU-4', quantity: 1 });
   expect(res.status).toBe(403);
 });
 
 it('returns 404 for another tenant’s order without leaking it', async () => {
-  const res = await http.get(`/orders/${otherTenantOrderId}`).set('Authorization', `Bearer ${token}`);
+  const res = await http
+    .get(`/orders/${otherTenantOrderId}`)
+    .set('Authorization', `Bearer ${token}`);
   expect(res.status).toBe(404);
   expect(res.body).toMatchObject({ messageKey: 'errors.order.notFound' });
   expect(JSON.stringify(res.body)).not.toMatch(/at \w+\.|select .* from/i); // no stack, no SQL
 });
 
 it('returns 400 with the field error on a malformed body', async () => {
-  const res = await http.post('/orders').set('Authorization', `Bearer ${token}`).send({ quantity: -1 });
+  const res = await http
+    .post('/orders')
+    .set('Authorization', `Bearer ${token}`)
+    .send({ quantity: -1 });
   expect(res.status).toBe(400);
-  await expect(orders.findBySku('SKU-1')).resolves.not.toContainEqual(expect.objectContaining({ quantity: -1 }));
+  await expect(orders.findBySku('SKU-1')).resolves.not.toContainEqual(
+    expect.objectContaining({ quantity: -1 }),
+  );
 });
 ```
 
@@ -185,9 +205,13 @@ List endpoints must clamp to the hard max (default cap 100) — prove an over-li
 
 ```ts
 it('clamps take to the hard max', async () => {
-  const res = await http.get('/orders?take=10000').set('Authorization', `Bearer ${token}`);
+  const res = await http
+    .get('/orders?take=10000')
+    .set('Authorization', `Bearer ${token}`);
   expect(res.status).toBe(200);
-  expect((res.body as { items: unknown[] }).items.length).toBeLessThanOrEqual(MAX_LIST_LIMIT);
+  expect((res.body as { items: unknown[] }).items.length).toBeLessThanOrEqual(
+    MAX_LIST_LIMIT,
+  );
 });
 ```
 
@@ -199,9 +223,9 @@ The datastore is shared across cases in a suite. Derive unique inputs per run, r
 const runId = Date.now();
 const seededEmail = `e2e-${runId}@example.test`; // unique → no unique-constraint collisions
 
-afterEach(() => vi.restoreAllMocks());           // drop spies installed per case
+afterEach(() => vi.restoreAllMocks()); // drop spies installed per case
 afterAll(async () => {
-  await orders.deleteByOwner(seededUserId);       // clean up YOUR rows, via the repo (parameterized)
+  await orders.deleteByOwner(seededUserId); // clean up YOUR rows, via the repo (parameterized)
 });
 ```
 

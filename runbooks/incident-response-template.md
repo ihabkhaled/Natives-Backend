@@ -35,4 +35,3 @@
 - [ ] Service stabilized
 - [ ] Communications sent
 - [ ] Postmortem opened if required
-

@@ -21,14 +21,14 @@ git diff origin/main...HEAD -- \
 
 Grep patterns (use the Grep tool):
 
-| Pattern | What you are hunting |
-| --- | --- |
-| `\.find\(` / `\.findMany\(` | reads missing `where` / `take` / pagination |
-| `findAndCount\|skip\|take\|cursor` | confirm list endpoints actually bound results |
-| `for \(.*of` near `await` | await-in-loop → likely N+1 |
-| `relations:\|leftJoinAndSelect\|include:` | eager joins (needed vs over-fetch) |
-| `Promise\.(all\|allSettled\|any\|race)` | concurrency in the wrong layer |
-| `ORDER BY\|order:\|sort` | sort columns that must be whitelisted + indexed |
+| Pattern                                   | What you are hunting                            |
+| ----------------------------------------- | ----------------------------------------------- |
+| `\.find\(` / `\.findMany\(`               | reads missing `where` / `take` / pagination     |
+| `findAndCount\|skip\|take\|cursor`        | confirm list endpoints actually bound results   |
+| `for \(.*of` near `await`                 | await-in-loop → likely N+1                      |
+| `relations:\|leftJoinAndSelect\|include:` | eager joins (needed vs over-fetch)              |
+| `Promise\.(all\|allSettled\|any\|race)`   | concurrency in the wrong layer                  |
+| `ORDER BY\|order:\|sort`                  | sort columns that must be whitelisted + indexed |
 
 ---
 
@@ -40,7 +40,9 @@ Before changing anything, lock the regression with failing tests (see [write-int
 // integration — a list endpoint must NOT return more than the hard cap
 it('caps results at MAX_PAGE_SIZE and returns a total', async () => {
   await seedRows(150); // example: more than the cap
-  const res = await request(app.getHttpServer()).get('/orders?limit=500').expect(200);
+  const res = await request(app.getHttpServer())
+    .get('/orders?limit=500')
+    .expect(200);
   expect(res.body.items).toHaveLength(MAX_PAGE_SIZE); // 100
   expect(res.body.total).toBe(150);
 });
@@ -176,7 +178,12 @@ Bound the fan-out (chunk large inputs so a `Promise.all` can't exhaust the conne
 
 ```ts
 // DO — narrow the query to the response shape on wide tables
-await this.repo.find({ where, select: { id: true, status: true, createdAt: true }, skip, take });
+await this.repo.find({
+  where,
+  select: { id: true, status: true, createdAt: true },
+  skip,
+  take,
+});
 ```
 
 - Sort against an explicit `ALLOWED_SORT_FIELDS` constant — **every allowed sort field must be indexed**; reject unknown keys with a typed error (`errors.<feature>.invalid_sort`), never a raw user column (also an injection vector — see [sql-injection-review.md](./sql-injection-review.md)).

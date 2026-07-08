@@ -25,10 +25,10 @@ export class OrderService {
 import { EventEmitter2 } from '@nestjs/event-emitter'; // only allowed inside core/events adapter
 ```
 
-| Need | Choice |
-| --- | --- |
-| Decouple modules in one process | In-process bus (`core/events`) |
-| At-least-once / cross-service / replay | Broker adapter behind the same interface |
+| Need                                       | Choice                                   |
+| ------------------------------------------ | ---------------------------------------- |
+| Decouple modules in one process            | In-process bus (`core/events`)           |
+| At-least-once / cross-service / replay     | Broker adapter behind the same interface |
 | Ordered post-commit side effects in one tx | Use case emits after commit (Decision 3) |
 
 **Project records:** the concrete bus implementation, and the broker (if any) it escalates to.
@@ -120,7 +120,7 @@ async onOrderPublished(p: OrderPublishedPayload): Promise<void> {
 
 **Decision.** A dedicated `notifications` feature module owns creating in-app notifications and fanning out to external channels. Each external channel (an email provider, an SMS gateway, a push provider, a chat/messaging provider) is reached **only** through an integration adapter (`adapters/<vendor>.adapter.ts`). Business code calls the channel-neutral notification service; it never imports a provider SDK.
 
-**Rationale.** Providers get swapped, rate-limited, and regionally restricted. Wrapping them behind adapters centralizes config, auth, retry, and error mapping, and keeps the swap surface to one file (rule 32). The notification module selects channels by recipient preference; callers express *intent* ("notify the owner the order was published"), not *transport*.
+**Rationale.** Providers get swapped, rate-limited, and regionally restricted. Wrapping them behind adapters centralizes config, auth, retry, and error mapping, and keeps the swap surface to one file (rule 32). The notification module selects channels by recipient preference; callers express _intent_ ("notify the owner the order was published"), not _transport_.
 
 ```
 src/modules/notifications/
@@ -180,16 +180,16 @@ See [10-reliability-and-durability.md](../rules/10-reliability-and-durability.md
 
 ## At a glance
 
-| Concern | Standing decision |
-| --- | --- |
-| Bus | In-process `core/events` adapter; broker behind same interface only when durability/fan-out demands it |
-| Event names | Past-tense enums in `model/` / `@shared/enums`; payloads are named types |
-| Emission | After commit, owned by the use case |
-| Handlers | Fail-safe try/catch + logger; idempotent; never crash the publisher |
-| Triggers | Domain events, not inline calls (sync OTP-style exceptions documented) |
-| Delivery | `notifications` module → channel **adapters** only; intent not transport |
-| Fan-out | Scope/tenant + invite semantics + opt-in, resolved server-side |
-| Async/jobs | Terminal states, idempotency, structured logs |
+| Concern     | Standing decision                                                                                      |
+| ----------- | ------------------------------------------------------------------------------------------------------ |
+| Bus         | In-process `core/events` adapter; broker behind same interface only when durability/fan-out demands it |
+| Event names | Past-tense enums in `model/` / `@shared/enums`; payloads are named types                               |
+| Emission    | After commit, owned by the use case                                                                    |
+| Handlers    | Fail-safe try/catch + logger; idempotent; never crash the publisher                                    |
+| Triggers    | Domain events, not inline calls (sync OTP-style exceptions documented)                                 |
+| Delivery    | `notifications` module → channel **adapters** only; intent not transport                               |
+| Fan-out     | Scope/tenant + invite semantics + opt-in, resolved server-side                                         |
+| Async/jobs  | Terminal states, idempotency, structured logs                                                          |
 
 ---
 

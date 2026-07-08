@@ -1,7 +1,7 @@
-import path from 'node:path';
+import path from "node:path";
 
 function normalizeFilename(filename) {
-  return filename.replaceAll('\\', '/');
+  return filename.replaceAll("\\", "/");
 }
 
 export function getFilename(context) {
@@ -9,36 +9,36 @@ export function getFilename(context) {
 }
 
 export function getImportSource(node) {
-  return typeof node.source.value === 'string' ? node.source.value : '';
+  return typeof node.source.value === "string" ? node.source.value : "";
 }
 
 function getSrcRoot(filename) {
-  const srcIndex = filename.lastIndexOf('/src/');
+  const srcIndex = filename.lastIndexOf("/src/");
 
-  return srcIndex === -1 ? '' : filename.slice(0, srcIndex + 5);
+  return srcIndex === -1 ? "" : filename.slice(0, srcIndex + 5);
 }
 
 function resolveProjectImportPath(source, filename) {
-  if (source.startsWith('.')) {
+  if (source.startsWith(".")) {
     return normalizeFilename(path.resolve(path.dirname(filename), source));
   }
 
-  if (source.startsWith('src/')) {
+  if (source.startsWith("src/")) {
     const srcRoot = getSrcRoot(filename);
 
-    return srcRoot === ''
-      ? ''
+    return srcRoot === ""
+      ? ""
       : normalizeFilename(path.join(srcRoot, source.slice(4)));
   }
 
-  return '';
+  return "";
 }
 
 export function getImportCandidates(source, filename) {
   const normalizedSource = normalizeFilename(source);
   const resolvedSource = resolveProjectImportPath(source, filename);
 
-  return resolvedSource === ''
+  return resolvedSource === ""
     ? [normalizedSource]
     : [normalizedSource, resolvedSource];
 }

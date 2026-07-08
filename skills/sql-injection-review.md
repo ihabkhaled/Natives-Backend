@@ -26,13 +26,13 @@ git diff origin/main...HEAD -- 'src/**/infrastructure/*.repository.ts' 'src/**/a
 
 Grep patterns to run across the diff (highest risk first):
 
-| Pattern | What it catches |
-| --- | --- |
-| `\.query\(` / `\$queryRawUnsafe\(` / `\$executeRawUnsafe\(` | Raw SQL execution — top risk |
-| `\$\{` near a query call | A value interpolated into query text |
-| `createQueryBuilder[\s\S]{0,400}\$\{` | Interpolated `where`/`andWhere` clauses |
-| `Raw\(` / `\.$expr` / `\$where` | ORM raw escape hatches (the usual culprit) |
-| `orderBy` / `ORDER BY` / `LIMIT` near `query`/`params` | Identifiers built from client input |
+| Pattern                                                     | What it catches                            |
+| ----------------------------------------------------------- | ------------------------------------------ |
+| `\.query\(` / `\$queryRawUnsafe\(` / `\$executeRawUnsafe\(` | Raw SQL execution — top risk               |
+| `\$\{` near a query call                                    | A value interpolated into query text       |
+| `createQueryBuilder[\s\S]{0,400}\$\{`                       | Interpolated `where`/`andWhere` clauses    |
+| `Raw\(` / `\.$expr` / `\$where`                             | ORM raw escape hatches (the usual culprit) |
+| `orderBy` / `ORDER BY` / `LIMIT` near `query`/`params`      | Identifiers built from client input        |
 
 ## Step 2 — Classify values: bind, never concatenate
 
@@ -122,10 +122,14 @@ async list(
 import { Raw } from 'typeorm';
 
 // Do — placeholder + params map
-where: { tags: Raw(alias => `${alias} @> :needle`, { needle: JSON.stringify([tag]) }) };
+where: {
+  tags: Raw(alias => `${alias} @> :needle`, { needle: JSON.stringify([tag]) });
+}
 
 // Don't — user value concatenated into the raw fragment (BLOCKER)
-where: { name: Raw(() => `name = '${userInput}'`) }; // ❌
+where: {
+  name: Raw(() => `name = '${userInput}'`);
+} // ❌
 ```
 
 For document/NoSQL stores the same rule holds: never pass a raw client object as a query operator (operator injection). Whitelist the fields and operators you accept; bind the value.

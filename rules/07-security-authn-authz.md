@@ -49,7 +49,7 @@ async create(
 
 ## 2. Authorization (RBAC) — permissions from a central catalog
 
-A **permissions guard** (`core/guards/permissions.guard.ts`) reads the metadata set by **`@RequirePermissions(...)`** and checks the actor's effective permissions. Authentication proves *who*; authorization proves *allowed to*.
+A **permissions guard** (`core/guards/permissions.guard.ts`) reads the metadata set by **`@RequirePermissions(...)`** and checks the actor's effective permissions. Authentication proves _who_; authorization proves _allowed to_.
 
 - **Resolve effective permissions server-side, not from the JWT.** The token may carry a role slug; the guard derives the permission set fresh per request (cache-backed, invalidated on role/permission change) so a grant change applies on the next request without re-issuing the token. If resolution can't run, the guard **rejects** — it never falls back to a stale map.
 - **The permission catalog is the single source of truth** — a frozen enum/`as const` map in `shared/` (e.g. `@shared/constants/permissions`). Categories follow `<resource>:<action>` (`order:create`, `order:read`, `order:read:own`, `invoice:approve`, `admin:access`). Never type the raw string at a call site.
@@ -79,7 +79,7 @@ async getById(
 
 ## 3. Ownership & tenant isolation — IDOR / cross-tenant prevention (rule 35)
 
-A passing auth guard + permissions guard means the actor *may* touch *some* resource of this type — **not this specific one**. Every endpoint that takes a resource id by parameter **must** verify ownership/tenant scope. This is defense-in-depth: the guard authorizes the **action**, the application layer authorizes the **instance**.
+A passing auth guard + permissions guard means the actor _may_ touch _some_ resource of this type — **not this specific one**. Every endpoint that takes a resource id by parameter **must** verify ownership/tenant scope. This is defense-in-depth: the guard authorizes the **action**, the application layer authorizes the **instance**.
 
 - **Never authorize from a client-supplied id.** Load the resource, then compare its **server-derived** owner/tenant field against the actor's id/tenant from the verified token.
 - **Scope multi-tenant reads in the query, never in memory.** Pass the tenant id into the `WHERE` clause; never fetch unbounded and filter afterward (an unbounded fetch leaks counts/timing and burns resources — see [09-performance-and-scalability.md](./09-performance-and-scalability.md)).
@@ -148,12 +148,12 @@ if (stored.length !== given.length || !timingSafeEqual(stored, given)) {
 
 Rate limiting is configured via **`@nestjs/throttler`** — a global default plus tighter named throttlers on sensitive routes. Limits come from typed config, not magic numbers.
 
-| Scope | Window / max (illustrative) | Key | Apply to |
-| --- | --- | --- | --- |
-| Global default | per-config | client IP | every route (skip `/health`) |
-| Credential / OTP / reset | tight, e.g. 15 min / 10 | `ip + identifier` | login, OTP, register, password reset |
-| Token refresh | lenient, IP-keyed | client IP | refresh endpoints (no email/phone in payload) |
-| Public reads / search / expensive | moderate | client IP | unauthenticated reads, heavy queries |
+| Scope                             | Window / max (illustrative) | Key               | Apply to                                      |
+| --------------------------------- | --------------------------- | ----------------- | --------------------------------------------- |
+| Global default                    | per-config                  | client IP         | every route (skip `/health`)                  |
+| Credential / OTP / reset          | tight, e.g. 15 min / 10     | `ip + identifier` | login, OTP, register, password reset          |
+| Token refresh                     | lenient, IP-keyed           | client IP         | refresh endpoints (no email/phone in payload) |
+| Public reads / search / expensive | moderate                    | client IP         | unauthenticated reads, heavy queries          |
 
 - **Throttle every credential/OTP/reset route.** Pair rate limiting with **account lockout** (max attempts + lockout duration, both from config) for brute-force defense.
 - **Do not key refresh on `ip + identifier`** — refresh carries no email/phone, so the key collapses and 429s shared-IP/multi-tab users. Use a separate IP-keyed throttler.

@@ -17,15 +17,15 @@ Verify that the planned solution fits the current architecture or intentionally 
 
 ## Architecture Impact
 
-| Area | Impact | Notes |
-| --- | --- | --- |
-| Domain boundaries | | |
-| Service ownership | | |
-| API contracts | | |
-| Data flow | | |
-| Event flow | | |
-| Deployment topology | | |
-| Shared libraries or modules | | |
+| Area                        | Impact | Notes |
+| --------------------------- | ------ | ----- |
+| Domain boundaries           |        |       |
+| Service ownership           |        |       |
+| API contracts               |        |       |
+| Data flow                   |        |       |
+| Event flow                  |        |       |
+| Deployment topology         |        |       |
+| Shared libraries or modules |        |       |
 
 ## Design Pattern Fit
 
@@ -33,9 +33,9 @@ Verify that the planned solution fits the current architecture or intentionally 
 
 ## Required ADRs
 
-| ADR needed | Title | Owner | Status |
-| --- | --- | --- | --- |
-| yes / no | | | pending |
+| ADR needed | Title | Owner | Status  |
+| ---------- | ----- | ----- | ------- |
+| yes / no   |       |       | pending |
 
 ## Architecture Risks
 
@@ -51,9 +51,9 @@ Verify that the planned solution fits the current architecture or intentionally 
 
 ## Sign-Off
 
-| Role | Name | Decision | Date |
-| --- | --- | --- | --- |
-| Architect / technical owner | | approve / revise | |
+| Role                        | Name | Decision         | Date |
+| --------------------------- | ---- | ---------------- | ---- |
+| Architect / technical owner |      | approve / revise |      |
 
 ## Evidence And References To Attach
 

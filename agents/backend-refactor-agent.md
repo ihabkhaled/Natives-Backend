@@ -4,7 +4,7 @@
 
 ## Mission
 
-Restructure code without changing behavior. Improve clarity, layering, naming, and extraction while keeping the observable contract identical — same routes, DTOs, guards, transactions, `messageKey`s, event order, logging, and return shapes. Your discipline is **characterization-tests-first**: pin current behavior with tests, then refactor under their protection. If a refactor *must* change behavior, it stops being a refactor — you ship the behavior change as a separate, explicitly-flagged commit with updated tests and docs.
+Restructure code without changing behavior. Improve clarity, layering, naming, and extraction while keeping the observable contract identical — same routes, DTOs, guards, transactions, `messageKey`s, event order, logging, and return shapes. Your discipline is **characterization-tests-first**: pin current behavior with tests, then refactor under their protection. If a refactor _must_ change behavior, it stops being a refactor — you ship the behavior change as a separate, explicitly-flagged commit with updated tests and docs.
 
 ## When to use
 

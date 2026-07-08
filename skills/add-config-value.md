@@ -15,11 +15,11 @@ A config value is an **input contract**. It must be declared once, validated at 
 
 ## Before you start — decide three things
 
-| Decision | Options |
-| --- | --- |
-| **Concern / namespace** | Reuse an existing namespace (`app`, `auth`, `database`, `cache`, `mailer`, `featureFlags`, …) or create a new one. |
+| Decision                  | Options                                                                                                              |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Concern / namespace**   | Reuse an existing namespace (`app`, `auth`, `database`, `cache`, `mailer`, `featureFlags`, …) or create a new one.   |
 | **Required vs defaulted** | Required for secrets/correctness (no fallback). Defaulted only for operational tuning (timeouts, page sizes, flags). |
-| **Type & constraints** | `string` / `number` / `boolean` / `enum` / URL, plus bounds (`@Min/@Max`, `@MinLength`, allowed set). |
+| **Type & constraints**    | `string` / `number` / `boolean` / `enum` / URL, plus bounds (`@Min/@Max`, `@MinLength`, allowed set).                |
 
 > **Tests FIRST.** Before touching config, add/adjust tests that assert the behavior: the schema **rejects** a missing/malformed value (boot fails), **accepts** a valid one, the namespace exposes the coerced type, and any consumer branches correctly on it. Run them red, then make them green. See [/skills/write-unit-tests.md](./write-unit-tests.md).
 
@@ -143,10 +143,10 @@ export class StorageAdapter {
 
 The **code path is identical** across environments; only the value and (for secrets) the source change. Set the value wherever the app runs — local `.env`, CI fixtures, staging/prod secret manager — in the same change (rule 41).
 
-| Concern | Local | CI / Test | Staging / Prod |
-| --- | --- | --- | --- |
-| Non-secret value | `.env` | fixture | deploy config |
-| Secret value | `.env` placeholder | injected fixture | secret manager only |
+| Concern          | Local              | CI / Test        | Staging / Prod      |
+| ---------------- | ------------------ | ---------------- | ------------------- |
+| Non-secret value | `.env`             | fixture          | deploy config       |
+| Secret value     | `.env` placeholder | injected fixture | secret manager only |
 
 Record the secret inventory, generation command, and rotation note in [/memory/security-decisions.md](../memory/security-decisions.md); record any intentional cross-environment drift in [/memory/project-architecture.md](../memory/project-architecture.md).
 
@@ -166,8 +166,9 @@ Update the variable reference (env-vars table / module docs) and note required v
 
 ```ts
 it('fails to boot when a required timeout is out of range', () => {
-  expect(() => validateEnv({ ...validEnv, STORAGE_REQUEST_TIMEOUT_MS: '50' }))
-    .toThrow(ConfigValidationError);
+  expect(() =>
+    validateEnv({ ...validEnv, STORAGE_REQUEST_TIMEOUT_MS: '50' }),
+  ).toThrow(ConfigValidationError);
 });
 
 it('coerces the env string to a number with the default applied', () => {

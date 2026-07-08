@@ -2,12 +2,12 @@
 
 ## Metadata
 
-| Field | Value |
-| --- | --- |
-| Test case ID | |
-| Related request ID | |
-| Control area | |
-| Owner | |
+| Field              | Value |
+| ------------------ | ----- |
+| Test case ID       |       |
+| Related request ID |       |
+| Control area       |       |
+| Owner              |       |
 
 ## Objective
 
@@ -31,4 +31,3 @@
 - Response behavior:
 - Logs or audit trail:
 - Screenshots or traces:
-

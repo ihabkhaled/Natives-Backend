@@ -41,9 +41,7 @@ export async function createApp(): Promise<NestFastifyApplication> {
     { bufferLogs: true },
   );
   app.useLogger(app.get(AppLogger));
-  app.useGlobalPipes(
-    new ValidationPipe({ whitelist: true, transform: true }),
-  );
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
   app.useGlobalFilters(app.get(AppExceptionFilter));
   setupSwagger(app);
   return app;
@@ -68,7 +66,10 @@ export function setupSwagger(app: INestApplication): void {
     .setTitle('Service API')
     .setDescription('OpenAPI surface for this service')
     .setVersion('1.0.0')
-    .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }, SWAGGER_AUTH_NAME)
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      SWAGGER_AUTH_NAME,
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup(SWAGGER_PATH, app, document, {
@@ -92,13 +93,10 @@ import { registerAs } from '@nestjs/config';
 import { DEFAULT_PORT } from './config.constants';
 import type { AppNamespaceConfig } from './config.types';
 
-export const appConfig = registerAs(
-  'app',
-  (): AppNamespaceConfig => ({
-    port: Number(process.env['PORT'] ?? DEFAULT_PORT),
-    nodeEnv: process.env['NODE_ENV'] ?? 'development',
-  }),
-);
+export const appConfig = registerAs('app', (): AppNamespaceConfig => ({
+  port: Number(process.env['PORT'] ?? DEFAULT_PORT),
+  nodeEnv: process.env['NODE_ENV'] ?? 'development',
+}));
 
 export interface AppConfig {
   app: AppNamespaceConfig;
@@ -117,7 +115,9 @@ class EnvironmentVariables {
   @IsInt() @Min(1) @Max(65535) readonly PORT!: number;
 }
 
-export function validateEnv(raw: Record<string, unknown>): EnvironmentVariables {
+export function validateEnv(
+  raw: Record<string, unknown>,
+): EnvironmentVariables {
   const parsed = plainToInstance(EnvironmentVariables, raw, {
     enableImplicitConversion: true,
   });
@@ -203,7 +203,9 @@ export class AppExceptionFilter implements ExceptionFilter {
   catch(exception: unknown, host: ArgumentsHost): void {
     const reply = host.switchToHttp().getResponse<FastifyReply>();
     if (exception instanceof AppError) {
-      this.logger.warn('handled.app_error', { messageKey: exception.messageKey });
+      this.logger.warn('handled.app_error', {
+        messageKey: exception.messageKey,
+      });
       void reply.status(exception.status).send(toErrorBody(exception));
       return;
     }
@@ -261,7 +263,9 @@ export class AppLogger implements AppLoggerPort, LoggerService {
 
   private write(level: string, message: string, context?: LogContext): void {
     // Delegate to the wrapped logging library here; redact before emit.
-    process.stdout.write(`${JSON.stringify({ level, message, ...redact(context) })}\n`);
+    process.stdout.write(
+      `${JSON.stringify({ level, message, ...redact(context) })}\n`,
+    );
   }
 }
 ```
@@ -326,7 +330,10 @@ Validation lives in the DTO, not the service. `whitelist: true` strips unknown p
 import { IsEnum, IsString, MaxLength, MinLength } from 'class-validator';
 
 import { ArticleCategory } from '../../model/article.enums';
-import { ARTICLE_TITLE_MAX, ARTICLE_TITLE_MIN } from '../../model/article.constants';
+import {
+  ARTICLE_TITLE_MAX,
+  ARTICLE_TITLE_MIN,
+} from '../../model/article.constants';
 
 export class CreateArticleDto {
   @IsString()
@@ -376,7 +383,10 @@ import type { AuthenticatedUser } from '@shared/types';
 export class ArticleService {
   constructor(private readonly articleRepo: ArticleRepository) {}
 
-  async getById(id: string, user: AuthenticatedUser): Promise<ArticleResponseDto> {
+  async getById(
+    id: string,
+    user: AuthenticatedUser,
+  ): Promise<ArticleResponseDto> {
     const article = await this.articleRepo.findById(id);
     if (article === null) {
       throw new NotFoundError('Article', ARTICLE_NOT_FOUND_KEY);
@@ -385,7 +395,10 @@ export class ArticleService {
     return toArticleResponse(article);
   }
 
-  async create(dto: CreateArticleDto, user: AuthenticatedUser): Promise<ArticleResponseDto> {
+  async create(
+    dto: CreateArticleDto,
+    user: AuthenticatedUser,
+  ): Promise<ArticleResponseDto> {
     const created = await this.articleRepo.create({ ...dto, ownerId: user.id });
     return toArticleResponse(created);
   }
@@ -421,7 +434,10 @@ export class PublishArticleUseCase {
     private readonly events: DomainEventBus,
   ) {}
 
-  async execute(id: string, user: AuthenticatedUser): Promise<ArticleResponseDto> {
+  async execute(
+    id: string,
+    user: AuthenticatedUser,
+  ): Promise<ArticleResponseDto> {
     const published = await this.uow.run(async tx => {
       const article = await this.articles.markPublished(id, user, tx);
       await this.reviews.closeOpenReviews(id, tx);
@@ -448,7 +464,10 @@ import { Injectable } from '@nestjs/common';
 import { DataStore } from '@core/persistence/data-store';
 import { clampLimit } from '@shared/utils/pagination.util';
 import type { Article } from '../domain/article.entity';
-import type { CreateArticleData, ListArticlesQuery } from '../model/article.types';
+import type {
+  CreateArticleData,
+  ListArticlesQuery,
+} from '../model/article.types';
 
 @Injectable()
 export class ArticleRepository {
@@ -528,7 +547,11 @@ export function RequirePermissions(
 
 ```ts
 // src/core/guards/permissions.guard.ts
-import { Injectable, type CanActivate, type ExecutionContext } from '@nestjs/common';
+import {
+  Injectable,
+  type CanActivate,
+  type ExecutionContext,
+} from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import type { FastifyRequest } from 'fastify';
 
@@ -602,7 +625,9 @@ export class ProviderEmailAdapter implements EmailPort {
       const payload = toProviderPayload(command);
       await Promise.resolve(payload); // replace with the wrapped SDK call
     } catch (cause) {
-      throw new IntegrationError('Email send failed', EMAIL_SEND_FAILED_KEY, { cause });
+      throw new IntegrationError('Email send failed', EMAIL_SEND_FAILED_KEY, {
+        cause,
+      });
     }
   }
 }
@@ -633,7 +658,10 @@ describe('ArticleService', () => {
   beforeEach(async () => {
     vi.clearAllMocks();
     const moduleRef = await Test.createTestingModule({
-      providers: [ArticleService, { provide: ArticleRepository, useValue: repo }],
+      providers: [
+        ArticleService,
+        { provide: ArticleRepository, useValue: repo },
+      ],
     }).compile();
     service = moduleRef.get(ArticleService);
   });
@@ -642,7 +670,10 @@ describe('ArticleService', () => {
     const article = buildArticle({ id: 'a1' });
     repo.findById.mockResolvedValue(article);
 
-    const result = await service.getById('a1', buildUser({ id: article.ownerId }));
+    const result = await service.getById(
+      'a1',
+      buildUser({ id: article.ownerId }),
+    );
 
     expect(result.id).toBe('a1');
     expect(repo.findById).toHaveBeenCalledWith('a1');
@@ -651,9 +682,9 @@ describe('ArticleService', () => {
   it('throws NotFoundError when the article is missing', async () => {
     repo.findById.mockResolvedValue(null);
 
-    await expect(service.getById('missing', buildUser())).rejects.toBeInstanceOf(
-      NotFoundError,
-    );
+    await expect(
+      service.getById('missing', buildUser()),
+    ).rejects.toBeInstanceOf(NotFoundError);
   });
 });
 ```
@@ -664,21 +695,21 @@ describe('ArticleService', () => {
 
 ## Cross-reference table
 
-| Concern | Snippet | Rule | Skill |
-| --- | --- | --- | --- |
-| Bootstrap | §1 | [02](../rules/02-controllers-and-http-transport.md) | — |
-| Config | §2 | [17](../rules/17-configuration-and-environment.md) | [add-config-value](../skills/add-config-value.md) |
-| Errors + filter | §3–4 | [18](../rules/18-error-handling-and-exceptions.md) | [create-error](../skills/create-error.md) |
-| Logger | §5 | [14](../rules/14-observability-and-logging.md) | — |
-| Controller | §6 | [02](../rules/02-controllers-and-http-transport.md) | [create-controller](../skills/create-controller.md) |
-| DTO | §7 | [05](../rules/05-dto-and-validation.md) | [create-dto-validation](../skills/create-dto-validation.md) |
-| Service | §8 | [03](../rules/03-application-services-and-use-cases.md) | [create-service](../skills/create-service.md) |
-| Use case | §9 | [03](../rules/03-application-services-and-use-cases.md) | [create-use-case](../skills/create-use-case.md) |
-| Repository | §10 | [04](../rules/04-repositories-and-persistence.md) | [create-repository](../skills/create-repository.md) |
-| Module | §11 | [01](../rules/01-architecture-and-module-boundaries.md) | [create-module](../skills/create-module.md) |
-| Guards | §12 | [07](../rules/07-security-authn-authz.md) | [add-guard-and-permission](../skills/add-guard-and-permission.md) |
-| Adapter | §13 | [12](../rules/12-library-wrapping-and-adapters.md) | [add-library-adapter](../skills/add-library-adapter.md) |
-| Unit spec | §14 | [11](../rules/11-testing-and-coverage.md) | [write-unit-tests](../skills/write-unit-tests.md) |
+| Concern         | Snippet | Rule                                                    | Skill                                                             |
+| --------------- | ------- | ------------------------------------------------------- | ----------------------------------------------------------------- |
+| Bootstrap       | §1      | [02](../rules/02-controllers-and-http-transport.md)     | —                                                                 |
+| Config          | §2      | [17](../rules/17-configuration-and-environment.md)      | [add-config-value](../skills/add-config-value.md)                 |
+| Errors + filter | §3–4    | [18](../rules/18-error-handling-and-exceptions.md)      | [create-error](../skills/create-error.md)                         |
+| Logger          | §5      | [14](../rules/14-observability-and-logging.md)          | —                                                                 |
+| Controller      | §6      | [02](../rules/02-controllers-and-http-transport.md)     | [create-controller](../skills/create-controller.md)               |
+| DTO             | §7      | [05](../rules/05-dto-and-validation.md)                 | [create-dto-validation](../skills/create-dto-validation.md)       |
+| Service         | §8      | [03](../rules/03-application-services-and-use-cases.md) | [create-service](../skills/create-service.md)                     |
+| Use case        | §9      | [03](../rules/03-application-services-and-use-cases.md) | [create-use-case](../skills/create-use-case.md)                   |
+| Repository      | §10     | [04](../rules/04-repositories-and-persistence.md)       | [create-repository](../skills/create-repository.md)               |
+| Module          | §11     | [01](../rules/01-architecture-and-module-boundaries.md) | [create-module](../skills/create-module.md)                       |
+| Guards          | §12     | [07](../rules/07-security-authn-authz.md)               | [add-guard-and-permission](../skills/add-guard-and-permission.md) |
+| Adapter         | §13     | [12](../rules/12-library-wrapping-and-adapters.md)      | [add-library-adapter](../skills/add-library-adapter.md)           |
+| Unit spec       | §14     | [11](../rules/11-testing-and-coverage.md)               | [write-unit-tests](../skills/write-unit-tests.md)                 |
 
 Before calling any of these done, run the quality gates:
 

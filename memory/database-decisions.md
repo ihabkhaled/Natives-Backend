@@ -16,7 +16,10 @@ This file states **decisions and rationale**, not a product schema. Every place 
 // DO — repository owns the ORM; returns domain shapes
 @Injectable()
 export class OrderRepository {
-  constructor(@InjectRepository(OrderEntity) private readonly repo: Repository<OrderEntity>) {}
+  constructor(
+    @InjectRepository(OrderEntity)
+    private readonly repo: Repository<OrderEntity>,
+  ) {}
 
   findById(id: string, tenantId: string): Promise<OrderEntity | null> {
     return this.repo.findOne({ where: { id, tenantId } });
@@ -68,13 +71,13 @@ TypeOrmModule.forRoot({ type: 'postgres', synchronize: true });
 
 Indexes ship **with** the migration that introduces the access pattern. Standing rules enforced on new schema:
 
-| Rule | Why |
-| --- | --- |
-| Every foreign-key column gets an index | Many ORMs do **not** auto-create FK indexes; unindexed FKs cause scans on join and on cascade |
-| Index every column used in `WHERE` and `ORDER BY` | Bound query cost; avoid full scans |
-| Composite indexes for common multi-column filters (`[tenantId, status]`, `[ownerId, createdAt]`) | Match real query shape, leftmost-prefix aware |
-| Include the soft-delete column in composites where queries filter by it | A live-rows query must stay index-covered |
-| Partial index `WHERE <soft_delete_col> IS NULL` for hot live-row lookups | Smaller, faster index on the common case |
+| Rule                                                                                             | Why                                                                                           |
+| ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| Every foreign-key column gets an index                                                           | Many ORMs do **not** auto-create FK indexes; unindexed FKs cause scans on join and on cascade |
+| Index every column used in `WHERE` and `ORDER BY`                                                | Bound query cost; avoid full scans                                                            |
+| Composite indexes for common multi-column filters (`[tenantId, status]`, `[ownerId, createdAt]`) | Match real query shape, leftmost-prefix aware                                                 |
+| Include the soft-delete column in composites where queries filter by it                          | A live-rows query must stay index-covered                                                     |
+| Partial index `WHERE <soft_delete_col> IS NULL` for hot live-row lookups                         | Smaller, faster index on the common case                                                      |
 
 No feature ships a list/lookup path that produces a full table scan. Use the ORM's index declaration on the entity **or** a dedicated index migration; either is fine, both are reviewed. See [performance-review.md](../skills/performance-review.md).
 
@@ -168,7 +171,10 @@ Every value reaching the database is **bound as a parameter**. No string interpo
 
 ```ts
 // DO — bound parameter
-this.repo.createQueryBuilder('o').where('o.status = :status', { status }).getMany();
+this.repo
+  .createQueryBuilder('o')
+  .where('o.status = :status', { status })
+  .getMany();
 ```
 
 ```ts

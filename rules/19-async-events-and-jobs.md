@@ -8,12 +8,12 @@ Synchronous code returns its outcome to the caller. Asynchronous code does not �
 
 ## 1. When to use an event (vs. a direct call)
 
-| Use a **direct call** (use case → service) | Use a **domain event** |
-| --- | --- |
-| The result is needed to complete the request | The work is a *reaction* the request doesn't wait for |
-| One owner, one transaction | One trigger, **many** independent reactions (fan-out) |
-| Failure must fail the request | Failure must **not** fail the request |
-| Caller and callee are the same module | The reaction lives in another module ([01-architecture-and-module-boundaries.md](./01-architecture-and-module-boundaries.md)) |
+| Use a **direct call** (use case → service)   | Use a **domain event**                                                                                                        |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| The result is needed to complete the request | The work is a _reaction_ the request doesn't wait for                                                                         |
+| One owner, one transaction                   | One trigger, **many** independent reactions (fan-out)                                                                         |
+| Failure must fail the request                | Failure must **not** fail the request                                                                                         |
+| Caller and callee are the same module        | The reaction lives in another module ([01-architecture-and-module-boundaries.md](./01-architecture-and-module-boundaries.md)) |
 
 Events are the **only** sanctioned way for one module to react to another without importing its internals (rule 24). The publisher knows nothing about its subscribers.
 
@@ -34,7 +34,7 @@ async execute(input: PublishOrderInput): Promise<OrderResult> {
 
 ```ts
 // DON'T — emit inside the transaction; a later rollback leaves handlers acting on a ghost
-await this.uow.run(async (tx) => {
+await this.uow.run(async tx => {
   const order = await this.orders.publish(input, tx);
   this.events.emit(OrderEvent.PUBLISHED, order); // handler may read uncommitted state
 });
@@ -110,7 +110,11 @@ export class NotifyOnOrderPublishedHandler {
     try {
       await this.notifier.notifySubscribers(event.orderId);
     } catch (error: unknown) {
-      this.logger.error('notify subscribers failed', { orderId: event.orderId, correlationId: event.correlationId, error });
+      this.logger.error('notify subscribers failed', {
+        orderId: event.orderId,
+        correlationId: event.correlationId,
+        error,
+      });
     }
   }
 }
@@ -138,19 +142,25 @@ Anything deferred, scheduled, or retried out-of-band is a **job**: a queue worke
 // @core/jobs/job-queue.ts — the queue library is imported ONLY here
 @Injectable()
 export class JobQueue {
-  enqueue<T>(name: JobName, payload: T, options: JobOptions): Promise<JobHandle> { /* ... */ }
+  enqueue<T>(
+    name: JobName,
+    payload: T,
+    options: JobOptions,
+  ): Promise<JobHandle> {
+    /* ... */
+  }
 }
 ```
 
 Every job MUST define, in named constants (no inline magic numbers, rule 13):
 
-| Control | Rule |
-| --- | --- |
-| **Idempotency** | A job runs **at-least-once**; design the handler to be safe on replay — dedupe on a stable key (the entity id, the trigger event id) so a re-run touches nothing new ([10-reliability-and-durability.md](./10-reliability-and-durability.md) §2). |
-| **Bounded retry** | Cap attempts; retry **transient** failures only, with exponential backoff + jitter. Never retry a permanent/`4xx`-class failure — route it straight to the DLQ. |
-| **Dead-letter** | After retries are exhausted, the job goes to a **DLQ** with its payload, failure reason, and correlation id — never silently dropped, never infinitely redelivered (a poison message must not block the queue). |
-| **Timeout** | Each job has a max runtime; a hung job must not occupy a worker forever. |
-| **Terminal state** | Every job ends in **completed**, **failed**, or **timed-out** — persisted and observable (§7). |
+| Control            | Rule                                                                                                                                                                                                                                              |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Idempotency**    | A job runs **at-least-once**; design the handler to be safe on replay — dedupe on a stable key (the entity id, the trigger event id) so a re-run touches nothing new ([10-reliability-and-durability.md](./10-reliability-and-durability.md) §2). |
+| **Bounded retry**  | Cap attempts; retry **transient** failures only, with exponential backoff + jitter. Never retry a permanent/`4xx`-class failure — route it straight to the DLQ.                                                                                   |
+| **Dead-letter**    | After retries are exhausted, the job goes to a **DLQ** with its payload, failure reason, and correlation id — never silently dropped, never infinitely redelivered (a poison message must not block the queue).                                   |
+| **Timeout**        | Each job has a max runtime; a hung job must not occupy a worker forever.                                                                                                                                                                          |
+| **Terminal state** | Every job ends in **completed**, **failed**, or **timed-out** — persisted and observable (§7).                                                                                                                                                    |
 
 DLQ depth and job latency are **monitored signals**, not afterthoughts — surface them per [14-observability-and-logging.md](./14-observability-and-logging.md). A DLQ that nobody watches is a silent outage.
 
@@ -206,13 +216,19 @@ for await (const chunk of upstream) subject.next(chunk);
 
 // DO — terminal frame on every exit path; idle + total caps bound the stream
 try {
-  for await (const chunk of this.withIdleTimeout(upstream, STREAM_IDLE_TIMEOUT_MS)) {
+  for await (const chunk of this.withIdleTimeout(
+    upstream,
+    STREAM_IDLE_TIMEOUT_MS,
+  )) {
     subject.next({ type: StreamEvent.CHUNK, data: chunk });
   }
   subject.next({ type: StreamEvent.DONE });
 } catch (error: unknown) {
   this.logger.error('stream failed', { correlationId, error });
-  subject.next({ type: StreamEvent.ERROR, messageKey: this.toMessageKey(error) });
+  subject.next({
+    type: StreamEvent.ERROR,
+    messageKey: this.toMessageKey(error),
+  });
 } finally {
   subject.complete(); // socket is always closed
 }
@@ -226,7 +242,7 @@ You must be able to follow one business action across every async hop it spawns.
 
 - A **correlation id** is created at the request boundary (an interceptor, [14-observability-and-logging.md](./14-observability-and-logging.md)) and travels in every event payload, job payload, and DLQ entry as a typed field.
 - Every handler and job logs `{ correlationId, event/job name, key ids }` on entry and on failure (structured, via the logger adapter — never `console.*`, rule 28).
-- The chain is recoverable end-to-end: *request → emitted event → handler → enqueued job → terminal state*. Causal sequencing (event B is published only after event A's handler commits) keeps ordering meaningful without a global ordering guarantee.
+- The chain is recoverable end-to-end: _request → emitted event → handler → enqueued job → terminal state_. Causal sequencing (event B is published only after event A's handler commits) keeps ordering meaningful without a global ordering guarantee.
 - Document each feature's events and their consumers in [/memory/event-notification-decisions.md](../memory/event-notification-decisions.md) (the catalog) — a new event without a documented trigger/consumer is incomplete (rule 41).
 
 ---

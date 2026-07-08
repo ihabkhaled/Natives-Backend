@@ -10,11 +10,11 @@ E2E is **backend API** testing, not browser testing. We do not drive a UI; we dr
 
 E2E proves a **complete request flow through the assembled system** behaves correctly: authenticate → authorize → validate → act → persist → emit → respond. It is the slowest, highest-confidence layer, so keep it **few and journey-focused**.
 
-| Layer | Scope | Datastore | Globals run | Use for |
-| --- | --- | --- | --- | --- |
-| Unit ([standard](./unit-testing-standard.md)) | one class, deps mocked | none | no | branch logic, policies, mappers |
-| Integration ([standard](./integration-testing-standard.md)) | one slice (controller + real repo) | real, scoped | partial | a controller against its real persistence |
-| **E2E (this file)** | the real `AppModule` over HTTP | real, scoped | **yes** | the journeys that matter end to end |
+| Layer                                                       | Scope                              | Datastore    | Globals run | Use for                                   |
+| ----------------------------------------------------------- | ---------------------------------- | ------------ | ----------- | ----------------------------------------- |
+| Unit ([standard](./unit-testing-standard.md))               | one class, deps mocked             | none         | no          | branch logic, policies, mappers           |
+| Integration ([standard](./integration-testing-standard.md)) | one slice (controller + real repo) | real, scoped | partial     | a controller against its real persistence |
+| **E2E (this file)**                                         | the real `AppModule` over HTTP     | real, scoped | **yes**     | the journeys that matter end to end       |
 
 > An E2E test that mocks the repository and the service is a slow unit test. Keep the **inside real**; mock only true externals (§5).
 
@@ -59,10 +59,12 @@ afterAll(async () => {
 
 ```ts
 // DON'T — hand-wire only the controller; globals never run, so the test lies
-const app = (await Test.createTestingModule({
-  controllers: [OrderController],
-  providers: [{ provide: OrderService, useValue: fakeService }],
-}).compile()).createNestApplication();
+const app = (
+  await Test.createTestingModule({
+    controllers: [OrderController],
+    providers: [{ provide: OrderService, useValue: fakeService }],
+  }).compile()
+).createNestApplication();
 // no ValidationPipe, no exception filter, fake service → proves nothing about the real flow
 ```
 
@@ -84,12 +86,15 @@ let ownerToken: string; // seeded principal who owns the resource
 let viewerToken: string; // valid token, lacks the write permission
 
 beforeAll(async () => {
-  const res = await http.post('/auth/login').send({ email: seededEmail, password: seededSecret });
+  const res = await http
+    .post('/auth/login')
+    .send({ email: seededEmail, password: seededSecret });
   expect(res.status).toBe(200);
   ownerToken = (res.body as { accessToken: string }).accessToken;
 });
 
-const asOwner = (): request.Test => http.get('/orders').set('Authorization', `Bearer ${ownerToken}`);
+const asOwner = (): request.Test =>
+  http.get('/orders').set('Authorization', `Bearer ${ownerToken}`);
 ```
 
 If the identity provider is itself an external adapter, seed a deterministic verified principal in the test datastore and still route issuance through the app — do not hand-mint tokens.
@@ -100,21 +105,21 @@ If the identity provider is itself an external adapter, seed a deterministic ver
 
 Cover **journeys, not endpoints** — a sequence a real caller performs. Every feature ships at minimum these buckets; each maps to one or more named `it(...)`.
 
-| Journey | Proves | Expected |
-| --- | --- | --- |
-| Happy path | authenticated + authorized + owns the resource | 2xx, row persisted, event emitted |
-| Read-after-write | the write is durable and readable | GET returns the persisted shape |
-| Validation — missing required | DTO rejects | 400, field error, nothing persisted |
-| Validation — wrong type / bad enum | DTO + enum guard reject | 400, lists valid values |
-| Validation — boundary | min/max length & numeric bounds | at-limit passes, over-limit 400 |
-| Validation — unknown property | `whitelist: true` strips/rejects extras | extra field never persisted |
-| AuthN — no / invalid / expired token | request never reaches the handler | 401 |
-| AuthZ — valid token, missing permission | RBAC guard blocks | 403 |
-| Ownership / tenant isolation | another principal's id is invisible | 404 or 403, no cross-tenant leak |
-| Not found | unknown id | 404 with the not-found `messageKey` |
-| Conflict | duplicate of a unique resource | 409 with the conflict `messageKey` |
-| Pagination bounds | list clamps to the hard max (100) | bounded result, no unbounded scan |
-| Idempotency | safe retry of the same operation | no duplicate effect (§6) |
+| Journey                                 | Proves                                         | Expected                            |
+| --------------------------------------- | ---------------------------------------------- | ----------------------------------- |
+| Happy path                              | authenticated + authorized + owns the resource | 2xx, row persisted, event emitted   |
+| Read-after-write                        | the write is durable and readable              | GET returns the persisted shape     |
+| Validation — missing required           | DTO rejects                                    | 400, field error, nothing persisted |
+| Validation — wrong type / bad enum      | DTO + enum guard reject                        | 400, lists valid values             |
+| Validation — boundary                   | min/max length & numeric bounds                | at-limit passes, over-limit 400     |
+| Validation — unknown property           | `whitelist: true` strips/rejects extras        | extra field never persisted         |
+| AuthN — no / invalid / expired token    | request never reaches the handler              | 401                                 |
+| AuthZ — valid token, missing permission | RBAC guard blocks                              | 403                                 |
+| Ownership / tenant isolation            | another principal's id is invisible            | 404 or 403, no cross-tenant leak    |
+| Not found                               | unknown id                                     | 404 with the not-found `messageKey` |
+| Conflict                                | duplicate of a unique resource                 | 409 with the conflict `messageKey`  |
+| Pagination bounds                       | list clamps to the hard max (100)              | bounded result, no unbounded scan   |
+| Idempotency                             | safe retry of the same operation               | no duplicate effect (§6)            |
 
 Negative cases get equal weight with the happy path. A green happy path alone is not adequate validation ([rule 42](../rules/00-non-negotiable-rules.md)).
 
@@ -149,13 +154,13 @@ A `2xx` is not success. For every state-changing journey assert all four:
 
 Status code per the table below, and the response body shape (fields + types). Read-after-write proves durability: GET the resource back and compare key fields.
 
-| Operation | Success | Not found | Validation | AuthN | AuthZ |
-| --- | --- | --- | --- | --- | --- |
-| GET one | 200 | 404 | — | 401 | 403 |
-| GET list | 200 | — | 400 (bad query) | 401 | 403 |
-| POST | 201 | — | 400 | 401 | 403 |
-| PUT / PATCH | 200 | 404 | 400 | 401 | 403 |
-| DELETE | 200 or 204 | 404 | — | 401 | 403 |
+| Operation   | Success    | Not found | Validation      | AuthN | AuthZ |
+| ----------- | ---------- | --------- | --------------- | ----- | ----- |
+| GET one     | 200        | 404       | —               | 401   | 403   |
+| GET list    | 200        | —         | 400 (bad query) | 401   | 403   |
+| POST        | 201        | —         | 400             | 401   | 403   |
+| PUT / PATCH | 200        | 404       | 400             | 401   | 403   |
+| DELETE      | 200 or 204 | 404       | —               | 401   | 403   |
 
 ### 6.2 Persisted state
 
@@ -171,7 +176,7 @@ it('creates an order, returns 201, and persists it for the owner', async () => {
   expect(res.status).toBe(201);
   const { id } = res.body as { id: string };
 
-  const persisted = await orders.findById(id);   // truth on disk, not the HTTP body
+  const persisted = await orders.findById(id); // truth on disk, not the HTTP body
   expect(persisted?.ownerId).toBe(seededUserId); // identity came from the token, not the body
   expect(persisted?.status).toBe(OrderStatus.DRAFT); // enum member, never the string 'DRAFT'
 });
@@ -185,14 +190,23 @@ If the flow should publish a domain event or enqueue a notification, prove it �
 it('emits OrderCreated after commit and survives a delivery failure', async () => {
   const emit = vi.spyOn(app.get(EventPublisher), 'publish');
 
-  const ok = await http.post('/orders').set('Authorization', `Bearer ${ownerToken}`).send({ sku: 'SKU-2', quantity: 1 });
+  const ok = await http
+    .post('/orders')
+    .set('Authorization', `Bearer ${ownerToken}`)
+    .send({ sku: 'SKU-2', quantity: 1 });
   expect(ok.status).toBe(201);
   expect(emit).toHaveBeenCalledWith(
-    expect.objectContaining({ name: OrderEvent.CREATED, payload: expect.objectContaining({ id: (ok.body as { id: string }).id }) }),
+    expect.objectContaining({
+      name: OrderEvent.CREATED,
+      payload: expect.objectContaining({ id: (ok.body as { id: string }).id }),
+    }),
   );
 
   emit.mockRejectedValueOnce(new Error('broker down'));
-  const stillOk = await http.post('/orders').set('Authorization', `Bearer ${ownerToken}`).send({ sku: 'SKU-3', quantity: 1 });
+  const stillOk = await http
+    .post('/orders')
+    .set('Authorization', `Bearer ${ownerToken}`)
+    .send({ sku: 'SKU-3', quantity: 1 });
   expect(stillOk.status).toBe(201); // side-effect failure never blocks the workflow
 });
 ```
@@ -203,14 +217,19 @@ Every guard and typed `AppError` has an observable HTTP contract. Pin the status
 
 ```ts
 it('returns 404 for another tenant’s order without leaking it', async () => {
-  const res = await http.get(`/orders/${otherTenantOrderId}`).set('Authorization', `Bearer ${ownerToken}`);
+  const res = await http
+    .get(`/orders/${otherTenantOrderId}`)
+    .set('Authorization', `Bearer ${ownerToken}`);
   expect(res.status).toBe(404);
   expect(res.body).toMatchObject({ messageKey: 'errors.order.notFound' });
   expect(JSON.stringify(res.body)).not.toMatch(/at \w+\.|select .* from/i); // no stack, no SQL
 });
 
 it('returns 400 and persists nothing on a malformed body', async () => {
-  const res = await http.post('/orders').set('Authorization', `Bearer ${ownerToken}`).send({ quantity: -1 });
+  const res = await http
+    .post('/orders')
+    .set('Authorization', `Bearer ${ownerToken}`)
+    .send({ quantity: -1 });
   expect(res.status).toBe(400);
   await expect(orders.findBySku('SKU-bad')).resolves.toHaveLength(0);
 });
@@ -232,8 +251,14 @@ it('treats a repeated update as idempotent — same state, no extra event', asyn
   const emit = vi.spyOn(app.get(EventPublisher), 'publish');
   const body = { status: OrderStatus.CONFIRMED };
 
-  const first = await http.patch(`/orders/${orderId}`).set('Authorization', `Bearer ${ownerToken}`).send(body);
-  const second = await http.patch(`/orders/${orderId}`).set('Authorization', `Bearer ${ownerToken}`).send(body);
+  const first = await http
+    .patch(`/orders/${orderId}`)
+    .set('Authorization', `Bearer ${ownerToken}`)
+    .send(body);
+  const second = await http
+    .patch(`/orders/${orderId}`)
+    .set('Authorization', `Bearer ${ownerToken}`)
+    .send(body);
 
   expect(first.status).toBe(200);
   expect(second.status).toBe(200);
@@ -243,10 +268,18 @@ it('treats a repeated update as idempotent — same state, no extra event', asyn
 });
 
 it('rejects a duplicate of a unique resource with 409', async () => {
-  await http.post('/accounts').set('Authorization', `Bearer ${ownerToken}`).send({ email: uniqueEmail });
-  const dup = await http.post('/accounts').set('Authorization', `Bearer ${ownerToken}`).send({ email: uniqueEmail });
+  await http
+    .post('/accounts')
+    .set('Authorization', `Bearer ${ownerToken}`)
+    .send({ email: uniqueEmail });
+  const dup = await http
+    .post('/accounts')
+    .set('Authorization', `Bearer ${ownerToken}`)
+    .send({ email: uniqueEmail });
   expect(dup.status).toBe(409);
-  expect(dup.body).toMatchObject({ messageKey: 'errors.account.alreadyExists' });
+  expect(dup.body).toMatchObject({
+    messageKey: 'errors.account.alreadyExists',
+  });
 });
 ```
 
@@ -260,9 +293,13 @@ Every list endpoint clamps to the hard max (default cap 100). Prove an over-limi
 
 ```ts
 it('clamps take to the hard max', async () => {
-  const res = await http.get('/orders?take=10000').set('Authorization', `Bearer ${ownerToken}`);
+  const res = await http
+    .get('/orders?take=10000')
+    .set('Authorization', `Bearer ${ownerToken}`);
   expect(res.status).toBe(200);
-  expect((res.body as { items: unknown[] }).items.length).toBeLessThanOrEqual(MAX_LIST_LIMIT);
+  expect((res.body as { items: unknown[] }).items.length).toBeLessThanOrEqual(
+    MAX_LIST_LIMIT,
+  );
 });
 ```
 

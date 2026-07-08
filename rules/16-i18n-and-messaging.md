@@ -8,10 +8,10 @@ The backend is **locale-agnostic**: it never hardcodes which locales exist or wh
 
 ## Two distinct surfaces, two mechanisms
 
-| Surface | Who localizes | Mechanism | Lives in |
-| --- | --- | --- | --- |
-| **API errors / API field copy** | The **client** | Backend returns a stable `messageKey`; client maps it to its bundle | `core/errors`, DTOs |
-| **Server-rendered copy** (email, SMS, push, PDF, exports) | The **backend** | Render the actual localized text per recipient locale at send time | `adapters/`, notification templates |
+| Surface                                                   | Who localizes   | Mechanism                                                           | Lives in                            |
+| --------------------------------------------------------- | --------------- | ------------------------------------------------------------------- | ----------------------------------- |
+| **API errors / API field copy**                           | The **client**  | Backend returns a stable `messageKey`; client maps it to its bundle | `core/errors`, DTOs                 |
+| **Server-rendered copy** (email, SMS, push, PDF, exports) | The **backend** | Render the actual localized text per recipient locale at send time  | `adapters/`, notification templates |
 
 Keep these apart. An API contract carries keys; a backend-rendered message carries finished text. Never mix them — never return a localized sentence as the API contract, never key a template you render yourself.
 
@@ -47,24 +47,24 @@ throw new ForbiddenError(ORDER_MESSAGE_KEYS.FORBIDDEN_NOT_OWNER);
 
 ```ts
 // DON'T
-throw new NotFoundError('Order not found');                 // ✗ no key, a sentence as contract
-throw new AppError('errors.order.error');                   // ✗ generic catch-all key
-throw new BadRequestException('Le champ est requis');       // ✗ localized string from the backend
+throw new NotFoundError('Order not found'); // ✗ no key, a sentence as contract
+throw new AppError('errors.order.error'); // ✗ generic catch-all key
+throw new BadRequestException('Le champ est requis'); // ✗ localized string from the backend
 ```
 
 ### Key → error class mapping
 
 The `AppError` subclasses carry the key; the exception filter does the rest. (Full hierarchy: [18-error-handling-and-exceptions.md](./18-error-handling-and-exceptions.md).)
 
-| Class | HTTP | `code` | When |
-| --- | --- | --- | --- |
-| `ValidationError` | 400 | `VALIDATION_ERROR` | bad/invalid input |
-| `NotFoundError` | 404 | `RESOURCE_NOT_FOUND` | entity not found / not visible to caller |
-| `UnauthorizedError` | 401 | `UNAUTHORIZED` | missing/invalid authentication |
-| `ForbiddenError` | 403 | `FORBIDDEN` | authenticated but lacks permission/ownership |
-| `ConflictError` | 409 | `CONFLICT` | duplicate / state collision |
-| `StateTransitionError` | 400 | `STATE_TRANSITION_INVALID` | illegal state-machine transition |
-| `IntegrationError` | 502 | `INTEGRATION_FAILED` | a wrapped external provider failed |
+| Class                  | HTTP | `code`                     | When                                         |
+| ---------------------- | ---- | -------------------------- | -------------------------------------------- |
+| `ValidationError`      | 400  | `VALIDATION_ERROR`         | bad/invalid input                            |
+| `NotFoundError`        | 404  | `RESOURCE_NOT_FOUND`       | entity not found / not visible to caller     |
+| `UnauthorizedError`    | 401  | `UNAUTHORIZED`             | missing/invalid authentication               |
+| `ForbiddenError`       | 403  | `FORBIDDEN`                | authenticated but lacks permission/ownership |
+| `ConflictError`        | 409  | `CONFLICT`                 | duplicate / state collision                  |
+| `StateTransitionError` | 400  | `STATE_TRANSITION_INVALID` | illegal state-machine transition             |
+| `IntegrationError`     | 502  | `INTEGRATION_FAILED`       | a wrapped external provider failed           |
 
 ### Validation errors are keyed too
 
@@ -87,9 +87,12 @@ The `AppError` subclasses carry the key; the exception filter does the rest. (Fu
 
 ```ts
 // DO — locale-resolved template; all copy in one locale-keyed object
-function renderOrderShippedEmail(input: OrderShippedInput, locale?: string): RenderedEmail {
+function renderOrderShippedEmail(
+  input: OrderShippedInput,
+  locale?: string,
+): RenderedEmail {
   const resolved = this.localizer.resolveLocale(locale); // → a supported locale, default-fallback
-  const t = this.copy.orderShipped(resolved);            // copy object per locale, from lib/
+  const t = this.copy.orderShipped(resolved); // copy object per locale, from lib/
   const html = this.layout.base(t.subject, this.body(t), resolved); // sets direction + formatting
   return { subject: t.subject, html, text: t.plain };
 }
@@ -98,7 +101,7 @@ function renderOrderShippedEmail(input: OrderShippedInput, locale?: string): Ren
 ```ts
 // DON'T — single-locale, no resolution, copy inline
 function renderOrderShippedEmail(input: OrderShippedInput): RenderedEmail {
-  const subject = `Your order ${input.id} has shipped`;   // ✗ one locale, inline sentence
+  const subject = `Your order ${input.id} has shipped`; // ✗ one locale, inline sentence
   return { subject, html: this.layout.base(subject, body), text }; // ✗ layout defaults to one locale
 }
 ```

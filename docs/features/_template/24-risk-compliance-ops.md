@@ -6,16 +6,16 @@ Confirm enterprise readiness before release.
 
 ## Review Areas
 
-| Area | Reviewer | Status | Notes |
-| --- | --- | --- | --- |
-| Business risk | | approve / revise | |
-| Technical risk | | approve / revise | |
-| Security risk | | approve / revise | |
-| Privacy / data handling | | approve / revise | |
-| Legal / compliance | | approve / revise | |
-| Operational readiness | | approve / revise | |
-| Monitoring / alerting | | approve / revise | |
-| Support readiness | | approve / revise | |
+| Area                    | Reviewer | Status           | Notes |
+| ----------------------- | -------- | ---------------- | ----- |
+| Business risk           |          | approve / revise |       |
+| Technical risk          |          | approve / revise |       |
+| Security risk           |          | approve / revise |       |
+| Privacy / data handling |          | approve / revise |       |
+| Legal / compliance      |          | approve / revise |       |
+| Operational readiness   |          | approve / revise |       |
+| Monitoring / alerting   |          | approve / revise |       |
+| Support readiness       |          | approve / revise |       |
 
 ## Required Artifacts Checked
 

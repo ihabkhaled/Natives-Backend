@@ -39,12 +39,12 @@ export enum FeatureSortField {
 }
 ```
 
-| Artifact | File → Class | Example |
-| --- | --- | --- |
-| Create | `create-<feature>.dto.ts` → `Create<Feature>Dto` | `CreateArticleDto` |
-| Update | `update-<feature>.dto.ts` → `Update<Feature>Dto` | `UpdateArticleDto` |
-| Query | `list-<feature>-query.dto.ts` → `List<Feature>QueryDto` | `ListArticleQueryDto` |
-| Response | `<feature>-response.dto.ts` → `<Feature>ResponseDto` | `ArticleResponseDto` |
+| Artifact | File → Class                                            | Example               |
+| -------- | ------------------------------------------------------- | --------------------- |
+| Create   | `create-<feature>.dto.ts` → `Create<Feature>Dto`        | `CreateArticleDto`    |
+| Update   | `update-<feature>.dto.ts` → `Update<Feature>Dto`        | `UpdateArticleDto`    |
+| Query    | `list-<feature>-query.dto.ts` → `List<Feature>QueryDto` | `ListArticleQueryDto` |
+| Response | `<feature>-response.dto.ts` → `<Feature>ResponseDto`    | `ArticleResponseDto`  |
 
 ## Step 2 — Write the Create DTO (PRIMARY: class-validator)
 
@@ -53,9 +53,19 @@ Bound every string and array. Enums via `@IsEnum`. Coerce numbers with explicit 
 ```ts
 // api/dto/create-<feature>.dto.ts
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { ArrayMaxSize, IsArray, IsEnum, IsOptional, IsString, MaxLength } from 'class-validator';
+import {
+  ArrayMaxSize,
+  IsArray,
+  IsEnum,
+  IsOptional,
+  IsString,
+  MaxLength,
+} from 'class-validator';
 import { FeatureVisibility } from '@modules/feature/model/feature.enums';
-import { FEATURE_TAGS_MAX, FEATURE_TITLE_MAX } from '@modules/feature/model/feature.constants';
+import {
+  FEATURE_TAGS_MAX,
+  FEATURE_TITLE_MAX,
+} from '@modules/feature/model/feature.constants';
 
 export class CreateFeatureDto {
   @ApiProperty({ maxLength: FEATURE_TITLE_MAX })
@@ -102,34 +112,61 @@ Query values arrive as strings. Coerce with `@Type`, cap `limit` at the shared m
 // api/dto/list-<feature>-query.dto.ts
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsEnum, IsInt, IsOptional, IsString, Max, MaxLength, Min } from 'class-validator';
-import { FeatureSortField, FeatureVisibility } from '@modules/feature/model/feature.enums';
+import {
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  Max,
+  MaxLength,
+  Min,
+} from 'class-validator';
+import {
+  FeatureSortField,
+  FeatureVisibility,
+} from '@modules/feature/model/feature.enums';
 import { SortDirection } from '@shared/enums';
-import { LIST_LIMIT_DEFAULT, LIST_LIMIT_MAX, LIST_PAGE_DEFAULT } from '@shared/constants';
+import {
+  LIST_LIMIT_DEFAULT,
+  LIST_LIMIT_MAX,
+  LIST_PAGE_DEFAULT,
+} from '@shared/constants';
 
 export class ListFeatureQueryDto {
   @ApiPropertyOptional({ minimum: 1, default: LIST_PAGE_DEFAULT })
-  @IsOptional() @Type(() => Number) @IsInt() @Min(1)
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
   readonly page: number = LIST_PAGE_DEFAULT;
 
   @ApiPropertyOptional({ minimum: 1, maximum: LIST_LIMIT_MAX })
-  @IsOptional() @Type(() => Number) @IsInt() @Min(1) @Max(LIST_LIMIT_MAX)
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  @Max(LIST_LIMIT_MAX)
   readonly limit: number = LIST_LIMIT_DEFAULT;
 
   @ApiPropertyOptional({ enum: FeatureSortField })
-  @IsOptional() @IsEnum(FeatureSortField, { message: 'errors.feature.sortBy.invalid' })
+  @IsOptional()
+  @IsEnum(FeatureSortField, { message: 'errors.feature.sortBy.invalid' })
   readonly sortBy: FeatureSortField = FeatureSortField.CreatedAt;
 
   @ApiPropertyOptional({ enum: SortDirection })
-  @IsOptional() @IsEnum(SortDirection)
+  @IsOptional()
+  @IsEnum(SortDirection)
   readonly sortDirection: SortDirection = SortDirection.Desc;
 
   @ApiPropertyOptional({ enum: FeatureVisibility })
-  @IsOptional() @IsEnum(FeatureVisibility)
+  @IsOptional()
+  @IsEnum(FeatureVisibility)
   readonly visibility?: FeatureVisibility;
 
   @ApiPropertyOptional({ maxLength: 200 })
-  @IsOptional() @IsString() @MaxLength(200)
+  @IsOptional()
+  @IsString()
+  @MaxLength(200)
   readonly search?: string;
 }
 ```
@@ -148,7 +185,9 @@ import { FeatureVisibility } from '@modules/feature/model/feature.enums';
 export class FeatureResponseDto {
   @Expose() @ApiProperty() readonly id!: string;
   @Expose() @ApiProperty() readonly title!: string;
-  @Expose() @ApiProperty({ enum: FeatureVisibility }) readonly visibility!: FeatureVisibility;
+  @Expose()
+  @ApiProperty({ enum: FeatureVisibility })
+  readonly visibility!: FeatureVisibility;
   @Expose() @ApiProperty() readonly createdAt!: string;
 }
 ```
@@ -161,11 +200,11 @@ Validation is configured one time, not per controller. These flags are non-negot
 // bootstrap/bootstrap.ts
 app.useGlobalPipes(
   new ValidationPipe({
-    whitelist: true,            // strip undecorated properties
+    whitelist: true, // strip undecorated properties
     forbidNonWhitelisted: true, // reject unknown properties (closes mass-assignment)
-    transform: true,            // produce real DTO instances
+    transform: true, // produce real DTO instances
     transformOptions: { enableImplicitConversion: false }, // coerce only via explicit @Type
-    stopAtFirstError: false,    // collect every field error
+    stopAtFirstError: false, // collect every field error
   }),
 );
 ```
@@ -193,8 +232,12 @@ import { FeatureVisibility } from '@modules/feature/model/feature.enums';
 import { FEATURE_TITLE_MAX } from '@modules/feature/model/feature.constants';
 
 export const createFeatureSchema = z.object({
-  title: z.string({ message: 'errors.feature.title.required' }).max(FEATURE_TITLE_MAX, 'errors.feature.title.maxLength'),
-  visibility: z.nativeEnum(FeatureVisibility, { message: 'errors.feature.visibility.invalid' }),
+  title: z
+    .string({ message: 'errors.feature.title.required' })
+    .max(FEATURE_TITLE_MAX, 'errors.feature.title.maxLength'),
+  visibility: z.nativeEnum(FeatureVisibility, {
+    message: 'errors.feature.visibility.invalid',
+  }),
 });
 export type CreateFeatureDto = z.infer<typeof createFeatureSchema>;
 ```

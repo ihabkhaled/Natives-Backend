@@ -73,10 +73,10 @@ export type OrderEvent = (typeof OrderEvent)[keyof typeof OrderEvent];
 @Injectable()
 export class AcceptQuoteUseCase {
   constructor(
-    private readonly uow: UnitOfWork,          // adapter over the ORM transaction primitive
-    private readonly events: EventBus,         // @core/events
+    private readonly uow: UnitOfWork, // adapter over the ORM transaction primitive
+    private readonly events: EventBus, // @core/events
     private readonly orderPolicy: OrderPolicy, // domain decisions
-    private readonly logger: AppLogger,        // @core/logger
+    private readonly logger: AppLogger, // @core/logger
   ) {}
 }
 ```

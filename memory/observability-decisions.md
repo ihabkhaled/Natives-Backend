@@ -1,6 +1,6 @@
 # Observability Decisions
 
-> Durable, abstract record of how a NestJS backend in this workspace stays diagnosable: the logger adapter, structured logs, correlation ids, redaction, and metrics. This is the *why* and *what-we-chose*; the enforced *how* lives in [/rules/14-observability-and-logging.md](../rules/14-observability-and-logging.md) and the cross-cutting contract in [/context/architecture-map.md](../context/architecture-map.md) §5.
+> Durable, abstract record of how a NestJS backend in this workspace stays diagnosable: the logger adapter, structured logs, correlation ids, redaction, and metrics. This is the _why_ and _what-we-chose_; the enforced _how_ lives in [/rules/14-observability-and-logging.md](../rules/14-observability-and-logging.md) and the cross-cutting contract in [/context/architecture-map.md](../context/architecture-map.md) §5.
 
 These are standing conventions, not suggestions. Each decision includes its rationale. Where a concrete backend must pin a vendor, level, header, or field, a **Project records:** line marks the spot — fill it in for your project; never hardcode it into the rules.
 
@@ -40,13 +40,13 @@ this.logger.info(`invoice ${JSON.stringify(invoice)} finalized`);
 
 **Rationale.** Stable event names group cleanly and make logs queryable across deploys; structured fields are filterable and aggregatable. Interpolation produces unsearchable strings and trips `restrict-template-expressions` / `no-base-to-string`. Log **identifiers** (`invoiceId`, `userId`), not payloads or whole entities.
 
-| Layer | Logs | Level |
-| --- | --- | --- |
-| Controller | nothing manual — the logging interceptor records method/path/status/duration | `info` |
-| Use case / Service | each side effect, branch outcome, and `catch` | `info` / `warn` / `error` |
-| Domain | pure, generally silent | — |
-| Repository | entry / not-found | `debug` |
-| Adapter | outbound start (`debug`), success + `durationMs` (`info`), failure + `durationMs` (`error`) | `debug` / `info` / `error` |
+| Layer              | Logs                                                                                        | Level                      |
+| ------------------ | ------------------------------------------------------------------------------------------- | -------------------------- |
+| Controller         | nothing manual — the logging interceptor records method/path/status/duration                | `info`                     |
+| Use case / Service | each side effect, branch outcome, and `catch`                                               | `info` / `warn` / `error`  |
+| Domain             | pure, generally silent                                                                      | —                          |
+| Repository         | entry / not-found                                                                           | `debug`                    |
+| Adapter            | outbound start (`debug`), success + `durationMs` (`info`), failure + `durationMs` (`error`) | `debug` / `info` / `error` |
 
 **Level is the alert signal:** `error` in every `catch` before rethrow/fallback; `warn` for degraded paths, fallbacks, and **security events** (failed auth, permission denied); `info` for side-effecting success; `debug` for entry/inspection (off in production). No empty `catch {}` — if you truly ignore, log `debug` with the reason.
 
@@ -98,9 +98,18 @@ export class CorrelationInterceptor implements NestInterceptor {
 ```ts
 // Centralize once — do not invent a second, weaker list
 export const REDACTED_KEYS = [
-  'password', 'newPassword', 'currentPassword', 'confirmPassword',
-  'otp', 'token', 'accessToken', 'refreshToken', 'apiKey', 'secret',
-  'authorization', 'cookie',
+  'password',
+  'newPassword',
+  'currentPassword',
+  'confirmPassword',
+  'otp',
+  'token',
+  'accessToken',
+  'refreshToken',
+  'apiKey',
+  'secret',
+  'authorization',
+  'cookie',
 ] as const;
 ```
 

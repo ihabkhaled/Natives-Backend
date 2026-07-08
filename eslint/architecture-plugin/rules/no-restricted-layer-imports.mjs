@@ -3,38 +3,102 @@ import {
   compileRestrictedAccess,
   importPolicyMatches,
   matchesAny,
-} from '../shared/policy-utils.mjs';
+} from "../shared/policy-utils.mjs";
 import {
   getFilename,
   getImportCandidates,
   getImportSource,
-} from '../shared/source-utils.mjs';
+} from "../shared/source-utils.mjs";
 
-const patternList = { type: 'array', items: { type: 'string' } };
+const patternList = { type: "array", items: { type: "string" } };
 
 const importPolicySchema = {
-  type: 'object',
+  type: "object",
   properties: {
     from: patternList,
     forbid: patternList,
     allowIn: patternList,
-    message: { type: 'string' },
+    message: { type: "string" },
   },
-  required: ['forbid', 'message'],
+  required: ["forbid", "message"],
   additionalProperties: false,
 };
 
 const restrictedAccessSchema = {
-  type: 'object',
+  type: "object",
   properties: {
-    object: { type: 'string' },
-    property: { type: 'string' },
+    object: { type: "string" },
+    property: { type: "string" },
     allowIn: patternList,
-    message: { type: 'string' },
+    message: { type: "string" },
   },
-  required: ['object', 'property', 'message'],
+  required: ["object", "property", "message"],
   additionalProperties: false,
 };
+
+function isLiteralProperty(node, propertyName) {
+  return (
+    node.property.type === "Literal" &&
+    typeof node.property.value === "string" &&
+    node.property.value === propertyName
+  );
+}
+
+function isIdentifierProperty(node, propertyName) {
+  return (
+    node.property.type === "Identifier" && node.property.name === propertyName
+  );
+}
+
+function isTargetMemberExpression(node, rule) {
+  if (node.object.type !== "Identifier" || node.object.name !== rule.object) {
+    return false;
+  }
+
+  return (
+    isIdentifierProperty(node, rule.property) ||
+    isLiteralProperty(node, rule.property)
+  );
+}
+
+function extractAliasNames(declarator, objectName, propertyName) {
+  const names = [];
+  const init = declarator.init;
+
+  // const { env } = process;
+  if (
+    init &&
+    init.type === "Identifier" &&
+    init.name === objectName &&
+    declarator.id.type === "ObjectPattern"
+  ) {
+    for (const prop of declarator.id.properties) {
+      if (
+        prop.type === "Property" &&
+        prop.key.type === "Identifier" &&
+        prop.key.name === propertyName &&
+        prop.value.type === "Identifier"
+      ) {
+        names.push(prop.value.name);
+      }
+    }
+  }
+
+  // const env = process.env;
+  if (
+    init &&
+    init.type === "MemberExpression" &&
+    init.object.type === "Identifier" &&
+    init.object.name === objectName &&
+    (isIdentifierProperty(init, propertyName) ||
+      isLiteralProperty(init, propertyName)) &&
+    declarator.id.type === "Identifier"
+  ) {
+    names.push(declarator.id.name);
+  }
+
+  return names;
+}
 
 /**
  * Project architecture rule: enforce path-based layer and gateway boundaries.
@@ -46,18 +110,18 @@ const restrictedAccessSchema = {
  */
 export default {
   meta: {
-    type: 'problem',
+    type: "problem",
     docs: {
       description:
-        'Enforce configurable import boundaries and restricted runtime access between layers.',
+        "Enforce configurable import boundaries and restricted runtime access between layers.",
     },
     schema: [
       {
-        type: 'object',
+        type: "object",
         properties: {
-          policies: { type: 'array', items: importPolicySchema },
+          policies: { type: "array", items: importPolicySchema },
           restrictedAccess: {
-            type: 'array',
+            type: "array",
             items: restrictedAccessSchema,
           },
         },
@@ -66,7 +130,7 @@ export default {
     ],
     messages: {
       forbiddenImport: '{{message}} Forbidden import: "{{importSource}}".',
-      restrictedAccess: '{{message}}',
+      restrictedAccess: "{{message}}",
     },
   },
   create(context) {
@@ -77,7 +141,7 @@ export default {
     const visitors = {};
 
     if (policies.length > 0) {
-      visitors.ImportDeclaration = node => {
+      visitors.ImportDeclaration = (node) => {
         const source = getImportSource(node);
         const candidates = getImportCandidates(source, filename);
 
@@ -85,7 +149,7 @@ export default {
           if (importPolicyMatches(policy, filename, candidates)) {
             context.report({
               node,
-              messageId: 'forbiddenImport',
+              messageId: "forbiddenImport",
               data: { importSource: source, message: policy.message },
             });
           }
@@ -94,23 +158,40 @@ export default {
     }
 
     if (restrictedAccess.length > 0) {
-      visitors.MemberExpression = node => {
-        if (
-          node.object.type !== 'Identifier' ||
-          node.property.type !== 'Identifier'
-        ) {
-          return;
-        }
+      // Track names bound to process.env so that later env.PORT usage is also caught.
+      const envAliases = new Set();
 
+      visitors.VariableDeclarator = (node) => {
         for (const rule of restrictedAccess) {
-          if (
-            node.object.name === rule.object &&
-            node.property.name === rule.property &&
-            !matchesAny(filename, rule.allowIn)
-          ) {
+          if (matchesAny(filename, rule.allowIn)) {
+            continue;
+          }
+
+          for (const alias of extractAliasNames(
+            node,
+            rule.object,
+            rule.property,
+          )) {
+            envAliases.add(alias);
+          }
+        }
+      };
+
+      visitors.MemberExpression = (node) => {
+        for (const rule of restrictedAccess) {
+          if (matchesAny(filename, rule.allowIn)) {
+            continue;
+          }
+
+          const isDirectAccess = isTargetMemberExpression(node, rule);
+          const isAliasAccess =
+            node.object.type === "Identifier" &&
+            envAliases.has(node.object.name);
+
+          if (isDirectAccess || isAliasAccess) {
             context.report({
               node,
-              messageId: 'restrictedAccess',
+              messageId: "restrictedAccess",
               data: { message: rule.message },
             });
           }

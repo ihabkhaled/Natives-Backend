@@ -18,29 +18,29 @@ Convert the request into a practical delivery plan with milestones, sequencing, 
 
 ## Work Breakdown
 
-| Workstream | Scope | Owner | Notes |
-| --- | --- | --- | --- |
-| Backend | | | |
-| Frontend | | | |
-| Mobile | | | |
-| Data / migration | | | |
-| QA | | | |
-| Security | | | |
-| Docs | | | |
-| Release / ops | | | |
-| Support enablement | | | |
+| Workstream         | Scope | Owner | Notes |
+| ------------------ | ----- | ----- | ----- |
+| Backend            |       |       |       |
+| Frontend           |       |       |       |
+| Mobile             |       |       |       |
+| Data / migration   |       |       |       |
+| QA                 |       |       |       |
+| Security           |       |       |       |
+| Docs               |       |       |       |
+| Release / ops      |       |       |       |
+| Support enablement |       |       |       |
 
 ## Milestones
 
 | Milestone | Goal | Entry criteria | Exit criteria | Target date |
-| --- | --- | --- | --- | --- |
-| M1 | | | | |
+| --------- | ---- | -------------- | ------------- | ----------- |
+| M1        |      |                |               |             |
 
 ## Dependencies and Blockers
 
 | Dependency or blocker | Type | Owner | Mitigation |
-| --- | --- | --- | --- |
-| | | | |
+| --------------------- | ---- | ----- | ---------- |
+|                       |      |       |            |
 
 ## Rollout Strategy
 

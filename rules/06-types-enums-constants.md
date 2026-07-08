@@ -8,15 +8,19 @@ Related: [05-dto-and-validation.md](./05-dto-and-validation.md) · [04-repositor
 
 ## 1. The zero-inline policy (rules 10–16)
 
-A `*.controller.ts`, `*.service.ts`, `*.use-case.ts`, `*.repository.ts`, guard, interceptor, pipe, or adapter contains **only its primary class/function**. Every reusable type, enum, constant, DTO, request/response shape, and config map is extracted to a dedicated file and imported. ESLint `no-restricted-syntax` mechanically rejects `type`/`interface`/`enum`/`const` declarations inside controllers, services, and repositories.
+A `*.controller.ts`, `*.service.ts`, `*.use-case.ts`, `*.repository.ts`, guard, interceptor, pipe, or adapter contains **only its primary class/function**. Every reusable type, enum, constant, DTO, request/response shape, and config map is extracted to a dedicated file and imported. The custom `architecture/no-inline-layer-declarations` rule mechanically rejects module-level `type`/`interface`/`enum`/`const`/`function` declarations inside controllers, services, use cases, repositories, adapters, guards, interceptors, and pipes (only a file-local `LOG_PREFIX` const is allowed).
 
-| Artifact | Goes in | Example path |
-| --- | --- | --- |
-| Types & interfaces | `model/<feature>.types.ts` or `@shared/types` | `src/modules/order/model/order.types.ts` |
-| Enums | `@shared/enums/<name>.enum.ts` (+ barrel) or `model/<feature>.enums.ts` | `src/shared/enums/order-status.enum.ts` |
-| Constants / config maps | `model/<feature>.constants.ts` or `@shared/constants/<topic>.constants.ts` | `src/modules/order/model/order-sort.constants.ts` |
-| DTOs & validation schemas | `api/dto/<name>.dto.ts` | see [05-dto-and-validation.md](./05-dto-and-validation.md) |
-| Helpers / mappers / formatters | `lib/<feature>.helpers.ts`, `lib/<feature>.mappers.ts` | — |
+| Artifact                       | Goes in                                                                    | Example path                                               |
+| ------------------------------ | -------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Types & interfaces             | `model/<feature>.types.ts` or `@shared/types`                              | `src/modules/order/model/order.types.ts`                   |
+| Enums                          | `@shared/enums/<name>.enum.ts` (+ barrel) or `model/<feature>.enums.ts`    | `src/shared/enums/order-status.enum.ts`                    |
+| Constants / config maps        | `model/<feature>.constants.ts` or `@shared/constants/<topic>.constants.ts` | `src/modules/order/model/order-sort.constants.ts`          |
+| DTOs & validation schemas      | `api/dto/<name>.dto.ts`                                                    | see [05-dto-and-validation.md](./05-dto-and-validation.md) |
+| Helpers / mappers / formatters | `lib/<feature>.helpers.ts`, `lib/<feature>.mappers.ts`                     | —                                                          |
+
+### DTOs vs. model types
+
+API DTOs live in `api/dto/` and are owned by the HTTP boundary. The application layer should prefer **model types** (`model/<feature>.types.ts`) for its input contracts so that services and use cases are not coupled to request/response shapes. A service may return a response DTO when the mapper in `lib/` produces it, but it should not import API DTOs unnecessarily for input. Use cases and domain files must never import API DTOs; this is enforced by `architecture/no-dto-import-in-domain-or-use-case`.
 
 ```ts
 // Don't — interface declared inside the repository file (rules 10–16)
@@ -44,10 +48,10 @@ The most-missed half of the rule: a **single named value** is still a constant. 
 
 ```ts
 // Don't — single-value constants squatting in a service / adapter (rules 8, 13, 16)
-const SMS_RETRY_JITTER_MS = 500;                           // ✗ magic number / backoff param
-const ORDER_NOT_FOUND_KEY = 'errors.order.notFound';       // ✗ messageKey literal
-const SESSION_TTL_SECONDS = 30 * 60;                       // ✗ TTL
-const RATE_LIMIT_HEADER = 'x-ratelimit-remaining';         // ✗ header name
+const SMS_RETRY_JITTER_MS = 500; // ✗ magic number / backoff param
+const ORDER_NOT_FOUND_KEY = 'errors.order.notFound'; // ✗ messageKey literal
+const SESSION_TTL_SECONDS = 30 * 60; // ✗ TTL
+const RATE_LIMIT_HEADER = 'x-ratelimit-remaining'; // ✗ header name
 ```
 
 ```ts
@@ -112,10 +116,9 @@ export enum NotificationChannel {
 }
 
 // Runtime string tuple — for ORM enum validation and generic runtime checks
-export const NOTIFICATION_CHANNEL_VALUES = Object.values(NotificationChannel) as [
-  string,
-  ...string[],
-];
+export const NOTIFICATION_CHANNEL_VALUES = Object.values(
+  NotificationChannel,
+) as [string, ...string[]];
 
 // Typed const tuple — preserves enum-literal narrowing for schema validators
 export const NOTIFICATION_CHANNELS = [
@@ -133,7 +136,10 @@ export enum SortOrder {
   ASC = 'ASC',
   DESC = 'DESC',
 }
-export const SORT_ORDER_VALUES = Object.values(SortOrder) as [string, ...string[]];
+export const SORT_ORDER_VALUES = Object.values(SortOrder) as [
+  string,
+  ...string[],
+];
 ```
 
 ```ts
@@ -244,15 +250,15 @@ export type SortFieldMap = Record<string, string>;
 
 ## 8. Naming conventions (rule 6 of the toolchain)
 
-| Kind | Case | Example |
-| --- | --- | --- |
-| Files | `kebab-case` (`unicorn/filename-case`) | `order-status.enum.ts`, `order.repository.ts` |
-| Enums / types / interfaces / classes | `PascalCase` (singular) | `OrderStatus`, `OrderSummary`, `OrderRepository` |
-| Enum members | `UPPER_SNAKE_CASE` | `OrderStatus.PUBLISHED` |
-| Constants (incl. `_VALUES` / tuples) | `UPPER_SNAKE_CASE` | `SORT_ORDER_VALUES`, `ORDER_SORT_MAP` |
-| Variables / functions | `camelCase` | `findActiveByAccountId` |
-| DTO classes | `PascalCase` + `Dto` | `CreateOrderDto` |
-| Booleans | `is` / `has` / `can` / `should` prefix | `isAnonymous`, `canFulfill` |
+| Kind                                 | Case                                   | Example                                          |
+| ------------------------------------ | -------------------------------------- | ------------------------------------------------ |
+| Files                                | `kebab-case` (`unicorn/filename-case`) | `order-status.enum.ts`, `order.repository.ts`    |
+| Enums / types / interfaces / classes | `PascalCase` (singular)                | `OrderStatus`, `OrderSummary`, `OrderRepository` |
+| Enum members                         | `UPPER_SNAKE_CASE`                     | `OrderStatus.PUBLISHED`                          |
+| Constants (incl. `_VALUES` / tuples) | `UPPER_SNAKE_CASE`                     | `SORT_ORDER_VALUES`, `ORDER_SORT_MAP`            |
+| Variables / functions                | `camelCase`                            | `findActiveByAccountId`                          |
+| DTO classes                          | `PascalCase` + `Dto`                   | `CreateOrderDto`                                 |
+| Booleans                             | `is` / `has` / `can` / `should` prefix | `isAnonymous`, `canFulfill`                      |
 
 Avoid catch-all filenames (`types.ts`, `utils.ts`, `constants.ts`) at a module root — use descriptive, scoped names (`order.types.ts`, `order-sort.constants.ts`).
 
@@ -300,7 +306,11 @@ export class OrderService {
     if (!order) {
       throw new NotFoundError(ORDER_NOT_FOUND_KEY);
     }
-    return { id: order.id, status: order.status ?? OrderStatus.DRAFT, total: order.total };
+    return {
+      id: order.id,
+      status: order.status ?? OrderStatus.DRAFT,
+      total: order.total,
+    };
   }
 }
 ```
@@ -309,7 +319,7 @@ export class OrderService {
 
 ## 10. Checklist (types/enums/constants PRs)
 
-- [ ] No type/interface/enum/constant declared inline in a controller/service/use-case/repository/guard/interceptor/pipe/adapter (rules 10–16).
+- [ ] No type/interface/enum/constant/helper function declared inline in a controller/service/use-case/repository/guard/interceptor/pipe/adapter (rules 10–16); only a file-local `LOG_PREFIX` is allowed.
 - [ ] Every single-value constant (TTL, timeout, retry/backoff, `messageKey`, URL, header, limit, magic number) lives in a `*.constants.ts` (rule 13).
 - [ ] Every domain value is an enum member; no string-literal comparisons, switch cases, unions, object keys, or event names (rules 8, 9).
 - [ ] New shared enum is in `@shared/enums/*.enum.ts`, re-exported from `index.ts`, and exports `_VALUES` (+ a typed `as const` tuple if a schema needs it).

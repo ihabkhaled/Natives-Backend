@@ -29,10 +29,10 @@
 
 For any breaking change, split it across releases so the running app is never broken:
 
-| Phase | What ships | Reversible? |
-| --- | --- | --- |
-| **Expand** | Add nullable column / new table + indexes; app dual-writes | Yes — drop the new shape |
-| **Migrate** | Chunked backfill; switch reads to the new shape | Yes — flip reads back |
+| Phase        | What ships                                                                     | Reversible?                              |
+| ------------ | ------------------------------------------------------------------------------ | ---------------------------------------- |
+| **Expand**   | Add nullable column / new table + indexes; app dual-writes                     | Yes — drop the new shape                 |
+| **Migrate**  | Chunked backfill; switch reads to the new shape                                | Yes — flip reads back                    |
 | **Contract** | Drop the old column **in a separate migration**, after the new shape is proven | A `DROP` is not data-reversible — say so |
 
 ### 2. Write the migration (real `up()` and `down()`)
@@ -59,7 +59,9 @@ export class AddOrderArchivedAt0042 {
   public async down(runner: MigrationRunner): Promise<void> {
     // reverse up() in reverse order
     await runner.query(`DROP INDEX IF EXISTS "idx_orders_archived_at";`);
-    await runner.query(`ALTER TABLE "orders" DROP COLUMN IF EXISTS "archived_at";`);
+    await runner.query(
+      `ALTER TABLE "orders" DROP COLUMN IF EXISTS "archived_at";`,
+    );
   }
 }
 ```
@@ -121,7 +123,10 @@ export class BackfillOrderArchivedAtUseCase {
     let cursor = EMPTY_CURSOR;
     let processed = 0;
     for (;;) {
-      const batch = await this.orders.fetchUnarchivedBatch(cursor, ORDER_BACKFILL_BATCH_SIZE);
+      const batch = await this.orders.fetchUnarchivedBatch(
+        cursor,
+        ORDER_BACKFILL_BATCH_SIZE,
+      );
       if (batch.length === 0) break; // terminal: success
       const ids = batch.map(row => row.id);
       processed += await this.orders.markArchived(ids, this.clock.now());

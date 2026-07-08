@@ -22,15 +22,15 @@ HTTP →  Controller   api/<feature>.controller.ts          thin transport, one 
         pipes, events) and src/shared (enums, constants, types, utils); src/config reads env.
 ```
 
-| Layer | Owns | Must NOT |
-| --- | --- | --- |
-| **Controller** (`api/<feature>.controller.ts`) | Parse/shape HTTP, apply guards/pipes/decorators, delegate to **one** application method | Business logic, branching, transformation; import repositories/infrastructure |
-| **Use case** (`application/<action>.use-case.ts`) | Orchestrate **one** business operation across services/policies/repositories/adapters; own the transaction boundary; emit events after commit | Import controllers or API DTOs; parse HTTP; write raw SQL |
-| **Service** (`<feature>.service.ts`) | A focused, reusable capability; may inject repositories and adapters | Import controllers; exceed ~20 lines/method; do inline concurrency (`Promise.all`); hold inline declarations |
-| **Domain** (`domain/`) | Business rules, invariants, calculations, state-machine transitions — pure and testable | Touch HTTP, persistence, or external SDKs |
-| **Repository** (`infrastructure/<feature>.repository.ts`) | Data access: find/save/update/delete/query-build, always parameterized, always bounded | Business policy, transformation; import controllers/services/use-cases/DTOs |
-| **Adapter** (`adapters/<vendor>.adapter.ts`) | Wrap one external library/SDK behind a typed, app-owned interface | Leak vendor types into business code |
-| **Config** (`config/`) | The only place (with `bootstrap/`) that reads `process.env`; validated, typed config | Be bypassed by ad-hoc `process.env` reads |
+| Layer                                                     | Owns                                                                                                                                          | Must NOT                                                                                                     |
+| --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Controller** (`api/<feature>.controller.ts`)            | Parse/shape HTTP, apply guards/pipes/decorators, delegate to **one** application method                                                       | Business logic, branching, transformation; import repositories/infrastructure                                |
+| **Use case** (`application/<action>.use-case.ts`)         | Orchestrate **one** business operation across services/policies/repositories/adapters; own the transaction boundary; emit events after commit | Import controllers or API DTOs; parse HTTP; write raw SQL                                                    |
+| **Service** (`<feature>.service.ts`)                      | A focused, reusable capability; may inject repositories and adapters                                                                          | Import controllers; exceed ~20 lines/method; do inline concurrency (`Promise.all`); hold inline declarations |
+| **Domain** (`domain/`)                                    | Business rules, invariants, calculations, state-machine transitions — pure and testable                                                       | Touch HTTP, persistence, or external SDKs                                                                    |
+| **Repository** (`infrastructure/<feature>.repository.ts`) | Data access: find/save/update/delete/query-build, always parameterized, always bounded                                                        | Business policy, transformation; import controllers/services/use-cases/DTOs                                  |
+| **Adapter** (`adapters/<vendor>.adapter.ts`)              | Wrap one external library/SDK behind a typed, app-owned interface                                                                             | Leak vendor types into business code                                                                         |
+| **Config** (`config/`)                                    | The only place (with `bootstrap/`) that reads `process.env`; validated, typed config                                                          | Be bypassed by ad-hoc `process.env` reads                                                                    |
 
 These responsibilities are **mechanically enforced** by the ESLint architecture plugin (see [Import boundaries](#import-boundaries-eslint-enforced)).
 
@@ -94,16 +94,16 @@ Do **not** reach for a use case for CRUD, thin delegations, read projections, or
 
 ## NestJS building blocks → where they live
 
-| NestJS concept | Home |
-| --- | --- |
-| `@Controller` | `api/<feature>.controller.ts` (thin; `@UseGuards`, custom param decorators only) |
-| `@Injectable` provider | `application/<feature>.service.ts` or `<action>.use-case.ts` |
-| Guard (`CanActivate`) | `core/guards/` (auth, permissions/RBAC, ownership/tenant) |
-| Interceptor / Pipe | `core/interceptors/` · global `ValidationPipe` in `bootstrap/`, custom pipes in `core/pipes/` |
-| Exception filter | `core/errors/` (sanitizes errors → safe `{ messageKey }`) |
-| Custom decorator | `core/decorators/` or module `lib/` (e.g. `@CurrentUser()`, `@RequirePermissions()`) |
-| Module | `<feature>.module.ts`, `app.module.ts` |
-| Repository / ORM client | `infrastructure/<feature>.repository.ts` (vendor imported only here, or in an adapter) |
+| NestJS concept          | Home                                                                                          |
+| ----------------------- | --------------------------------------------------------------------------------------------- |
+| `@Controller`           | `api/<feature>.controller.ts` (thin; `@UseGuards`, custom param decorators only)              |
+| `@Injectable` provider  | `application/<feature>.service.ts` or `<action>.use-case.ts`                                  |
+| Guard (`CanActivate`)   | `core/guards/` (auth, permissions/RBAC, ownership/tenant)                                     |
+| Interceptor / Pipe      | `core/interceptors/` · global `ValidationPipe` in `bootstrap/`, custom pipes in `core/pipes/` |
+| Exception filter        | `core/errors/` (sanitizes errors → safe `{ messageKey }`)                                     |
+| Custom decorator        | `core/decorators/` or module `lib/` (e.g. `@CurrentUser()`, `@RequirePermissions()`)          |
+| Module                  | `<feature>.module.ts`, `app.module.ts`                                                        |
+| Repository / ORM client | `infrastructure/<feature>.repository.ts` (vendor imported only here, or in an adapter)        |
 
 ---
 
@@ -111,13 +111,13 @@ Do **not** reach for a use case for CRUD, thin delegations, read projections, or
 
 Other modules are consumed **only through their `index.ts` public surface**, or via events. `shared/` imports only `shared/`. The custom plugin (`architecture/no-restricted-layer-imports`) makes these mechanical, not aspirational.
 
-| Source | MAY import | MUST NOT import |
-| --- | --- | --- |
-| `config/` | leaf — nothing app-level | modules, core, shared |
-| `core/` | `shared/`, `config/` | feature-module internals |
-| `shared/` | only `shared/` (+ `config` for typed config) | `modules/`, `core/` services, adapters |
-| adapters | `shared/`, `core/`, `config/` | feature-module internals |
-| `modules/<A>/` | `shared/`, `core/`, adapters, **own** internals, `modules/<B>` **via its `index.ts`** | another module's internal files |
+| Source         | MAY import                                                                            | MUST NOT import                        |
+| -------------- | ------------------------------------------------------------------------------------- | -------------------------------------- |
+| `config/`      | leaf — nothing app-level                                                              | modules, core, shared                  |
+| `core/`        | `shared/`, `config/`                                                                  | feature-module internals               |
+| `shared/`      | only `shared/` (+ `config` for typed config)                                          | `modules/`, `core/` services, adapters |
+| adapters       | `shared/`, `core/`, `config/`                                                         | feature-module internals               |
+| `modules/<A>/` | `shared/`, `core/`, adapters, **own** internals, `modules/<B>` **via its `index.ts`** | another module's internal files        |
 
 The plugin also enforces, by path:
 

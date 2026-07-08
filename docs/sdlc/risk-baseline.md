@@ -40,18 +40,18 @@ Risk should be reviewed at least during:
 
 ## Required Risk Fields
 
-| Field | Description |
-| --- | --- |
-| Risk ID | Unique identifier |
-| Description | Short statement of the risk |
-| Trigger | What would cause the risk to occur |
-| Impact | Business or technical consequence |
-| Likelihood | Low, medium, high |
-| Severity | Low, medium, high, critical |
-| Mitigation | Preventive action |
-| Contingency | What to do if it happens |
-| Owner | Named person |
-| Status | Open, mitigated, accepted, closed |
+| Field       | Description                        |
+| ----------- | ---------------------------------- |
+| Risk ID     | Unique identifier                  |
+| Description | Short statement of the risk        |
+| Trigger     | What would cause the risk to occur |
+| Impact      | Business or technical consequence  |
+| Likelihood  | Low, medium, high                  |
+| Severity    | Low, medium, high, critical        |
+| Mitigation  | Preventive action                  |
+| Contingency | What to do if it happens           |
+| Owner       | Named person                       |
+| Status      | Open, mitigated, accepted, closed  |
 
 ## Risk Acceptance
 

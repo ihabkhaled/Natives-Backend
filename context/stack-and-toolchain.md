@@ -51,16 +51,16 @@
 
 ## npm scripts
 
-| Script | Command | Purpose |
-| --- | --- | --- |
-| `start:dev` | `nest start --watch` | Dev server with reload |
-| `build` | `nest build -p tsconfig.build.json` | Production build to `dist/` |
-| `start:prod` | `node dist/src/main` | Run the compiled build |
-| `typecheck` | `tsgo --pretty --noEmit --incremental false` | Project-wide type check |
-| `lint` / `lint:fix` | `eslint` / `eslint --fix` | Lint (0 errors/0 warnings) |
-| `format` / `format:check` | `prettier --write .` / `--check .` | Format / verify |
-| `test` / `test:watch` | `vitest run` / `vitest` | Tests |
-| `test:coverage` | `vitest run --coverage` | Tests + coverage gate |
+| Script                    | Command                                      | Purpose                     |
+| ------------------------- | -------------------------------------------- | --------------------------- |
+| `start:dev`               | `nest start --watch`                         | Dev server with reload      |
+| `build`                   | `nest build -p tsconfig.build.json`          | Production build to `dist/` |
+| `start:prod`              | `node dist/src/main`                         | Run the compiled build      |
+| `typecheck`               | `tsgo --pretty --noEmit --incremental false` | Project-wide type check     |
+| `lint` / `lint:fix`       | `eslint` / `eslint --fix`                    | Lint (0 errors/0 warnings)  |
+| `format` / `format:check` | `prettier --write .` / `--check .`           | Format / verify             |
+| `test` / `test:watch`     | `vitest run` / `vitest`                      | Tests                       |
+| `test:coverage`           | `vitest run --coverage`                      | Tests + coverage gate       |
 
 ## Security scanning (Trivy)
 

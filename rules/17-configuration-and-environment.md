@@ -10,11 +10,11 @@ Configuration is an input contract, not a grab bag. A misconfigured process must
 
 `process.env` is raw, untyped, globally mutable, and stringly-typed. It is the I/O edge of configuration and must stay at the edge.
 
-| Layer | May touch `process.env`? | What it does instead |
-| --- | --- | --- |
-| `config/` | **Yes** — the only place | Reads, parses, validates, and exposes typed config namespaces |
-| `bootstrap/` | **Yes** — startup only | Reads `NODE_ENV`/`PORT` to wire the app before DI is available |
-| Controllers, services, use cases, repositories, domain, adapters, guards, pipes, interceptors | **No** | Inject the typed config namespace |
+| Layer                                                                                         | May touch `process.env`? | What it does instead                                           |
+| --------------------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------------------------- |
+| `config/`                                                                                     | **Yes** — the only place | Reads, parses, validates, and exposes typed config namespaces  |
+| `bootstrap/`                                                                                  | **Yes** — startup only   | Reads `NODE_ENV`/`PORT` to wire the app before DI is available |
+| Controllers, services, use cases, repositories, domain, adapters, guards, pipes, interceptors | **No**                   | Inject the typed config namespace                              |
 
 `architecture/no-restricted-layer-imports` makes this mechanical: any `process.env` access outside `config/` or `bootstrap/` is a lint **error**, and `npm run lint` must be 0 errors / 0 warnings (rule 2).
 
@@ -47,16 +47,23 @@ The process must **not** boot with invalid or missing configuration. Validation 
 ```ts
 // config/env.validation.ts — the gate every boot passes through.
 class EnvironmentVariables {
-  @IsEnum(NodeEnv)            readonly NODE_ENV!: NodeEnv;        // enum from @shared/enums
+  @IsEnum(NodeEnv) readonly NODE_ENV!: NodeEnv; // enum from @shared/enums
   @IsInt() @Min(1) @Max(65535) @Type(() => Number) readonly PORT!: number;
-  @IsString() @MinLength(JWT_SECRET_MIN_LENGTH)    readonly JWT_SECRET!: string;
-  @IsEnum(LogLevel)          readonly LOG_LEVEL!: LogLevel;
+  @IsString() @MinLength(JWT_SECRET_MIN_LENGTH) readonly JWT_SECRET!: string;
+  @IsEnum(LogLevel) readonly LOG_LEVEL!: LogLevel;
   @IsBoolean() @Transform(toBool) readonly ENABLE_OPENAPI_DOCS!: boolean;
 }
 
-export function validateEnv(raw: Record<string, unknown>): EnvironmentVariables {
-  const parsed = plainToInstance(EnvironmentVariables, raw, { enableImplicitConversion: false });
-  const errors = validateSync(parsed, { whitelist: true, forbidUnknownValues: true });
+export function validateEnv(
+  raw: Record<string, unknown>,
+): EnvironmentVariables {
+  const parsed = plainToInstance(EnvironmentVariables, raw, {
+    enableImplicitConversion: false,
+  });
+  const errors = validateSync(parsed, {
+    whitelist: true,
+    forbidUnknownValues: true,
+  });
   if (errors.length > 0) throw new ConfigValidationError(errors); // fail fast, exit non-zero
   return parsed;
 }
@@ -66,15 +73,15 @@ export function validateEnv(raw: Record<string, unknown>): EnvironmentVariables 
 // app.module.ts
 ConfigModule.forRoot({
   isGlobal: true,
-  cache: true,                 // env is read once; no per-request env access
-  validate: validateEnv,       // ← the hard gate
+  cache: true, // env is read once; no per-request env access
+  validate: validateEnv, // ← the hard gate
   load: [appConfig, authConfig, dbConfig, mailerConfig, featureFlagsConfig],
 });
 ```
 
 Validation rules to honor:
 
-- **Required is required.** No silent fallback for a value the app genuinely needs (secrets, DB URL). Defaults are for *operational tuning* (timeouts, page sizes), not for security or correctness.
+- **Required is required.** No silent fallback for a value the app genuinely needs (secrets, DB URL). Defaults are for _operational tuning_ (timeouts, page sizes), not for security or correctness.
 - **Coerce explicitly.** Env is always strings; convert to `number`/`boolean`/`enum` in the schema, never with `Number(...)`/`=== 'true'` scattered in business code.
 - **Constrain.** `@Min/@Max`, `@MinLength`, `@IsUrl`, `@IsEnum`, allowed-value sets — a port of `0` or a 4-char secret must not boot.
 - **No magic literals.** Bounds and minimums (`JWT_SECRET_MIN_LENGTH`, `MAX_PORT`) are named constants per rules 8/13, not inline numbers.
@@ -89,8 +96,14 @@ Group related settings into `registerAs` **namespaces**, one per concern. Inject
 // config/auth.config.ts
 export const authConfig = registerAs('auth', () => ({
   jwtSecret: requireString('JWT_SECRET'),
-  accessTtlSeconds: parseIntEnv('JWT_ACCESS_TTL_SECONDS', DEFAULT_ACCESS_TTL_SECONDS),
-  refreshTtlSeconds: parseIntEnv('JWT_REFRESH_TTL_SECONDS', DEFAULT_REFRESH_TTL_SECONDS),
+  accessTtlSeconds: parseIntEnv(
+    'JWT_ACCESS_TTL_SECONDS',
+    DEFAULT_ACCESS_TTL_SECONDS,
+  ),
+  refreshTtlSeconds: parseIntEnv(
+    'JWT_REFRESH_TTL_SECONDS',
+    DEFAULT_REFRESH_TTL_SECONDS,
+  ),
 }));
 export type AuthConfig = ConfigType<typeof authConfig>;
 ```
@@ -107,31 +120,31 @@ this.auth.jwtSecret;
 Rules:
 
 - One namespace per concern (`app`, `auth`, `database`, `mailer`, `cache`, `featureFlags`, …). Adapters take their settings from a namespace (see [12-library-wrapping-and-adapters.md](./12-library-wrapping-and-adapters.md)); they never read env.
-- The parse/coerce helpers (`requireString`, `parseIntEnv`, `toBool`) live in `config/` and are the *only* code converting env strings.
+- The parse/coerce helpers (`requireString`, `parseIntEnv`, `toBool`) live in `config/` and are the _only_ code converting env strings.
 - Config value **types and constants** (TTL defaults, min lengths, enums like `NodeEnv`/`LogLevel`) live in dedicated files per [06-types-enums-constants.md](./06-types-enums-constants.md) — no inline declarations in `*.config.ts` beyond the `registerAs` factory.
 
 ---
 
 ## Secrets — managed, never committed, never logged
 
-| Rule | Why |
-| --- | --- |
-| **Never commit secrets.** `.env` is git-ignored; only `.env.example` (placeholders) is tracked. | A leaked repo must not leak credentials. |
-| **Source secrets from a secret manager** in non-local environments (a cloud secret store, a vault, or orchestrator-injected secrets). | Rotation, audit, and least-privilege live there, not in a text file. |
-| **Inject at runtime**, into the process environment or a mounted file the config layer reads — the app code is identical to env-based config. | Same typed-config code path; the *source* changes per environment. |
-| **Never log a secret.** The logger adapter redacts secret/token/password/key fields ([14-observability-and-logging.md](./14-observability-and-logging.md)). | Logs, traces, and error bodies are low-trust sinks. |
-| **Never echo a secret in an error** the client can see. The exception filter returns sanitized bodies (rule 36). | Stack/SQL/secret leakage is a security incident. |
-| **Enforce minimum strength** in the env schema (e.g. signing secret ≥ a named min length). | A weak secret that boots is a vulnerability. |
-| **Plan rotation.** Document how each secret is generated, rotated, and what invalidates on change (e.g. rotating the signing secret invalidates live tokens). | Rotation without a runbook causes outages. |
+| Rule                                                                                                                                                          | Why                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| **Never commit secrets.** `.env` is git-ignored; only `.env.example` (placeholders) is tracked.                                                               | A leaked repo must not leak credentials.                             |
+| **Source secrets from a secret manager** in non-local environments (a cloud secret store, a vault, or orchestrator-injected secrets).                         | Rotation, audit, and least-privilege live there, not in a text file. |
+| **Inject at runtime**, into the process environment or a mounted file the config layer reads — the app code is identical to env-based config.                 | Same typed-config code path; the _source_ changes per environment.   |
+| **Never log a secret.** The logger adapter redacts secret/token/password/key fields ([14-observability-and-logging.md](./14-observability-and-logging.md)).   | Logs, traces, and error bodies are low-trust sinks.                  |
+| **Never echo a secret in an error** the client can see. The exception filter returns sanitized bodies (rule 36).                                              | Stack/SQL/secret leakage is a security incident.                     |
+| **Enforce minimum strength** in the env schema (e.g. signing secret ≥ a named min length).                                                                    | A weak secret that boots is a vulnerability.                         |
+| **Plan rotation.** Document how each secret is generated, rotated, and what invalidates on change (e.g. rotating the signing secret invalidates live tokens). | Rotation without a runbook causes outages.                           |
 
 ```ts
 // DON'T — secret in a log line or in a client-visible error message.
-this.logger.info('connecting', { databaseUrl: this.db.url });  // URL embeds the password
+this.logger.info('connecting', { databaseUrl: this.db.url }); // URL embeds the password
 throw new BadRequestException(`bad token ${this.auth.jwtSecret}`); // leaks the secret
 
 // DO — log non-secret context only; throw a typed AppError with a messageKey.
-this.logger.info('db.connecting', { host: this.db.host });      // no credentials
-throw new UnauthorizedError('errors.auth.invalid_token');       // sanitized by the filter
+this.logger.info('db.connecting', { host: this.db.host }); // no credentials
+throw new UnauthorizedError('errors.auth.invalid_token'); // sanitized by the filter
 ```
 
 Record the secret inventory, generation commands, and rotation procedure in [/memory/security-decisions.md](../memory/security-decisions.md) and the relevant runbook — not in this file and not in code comments.
@@ -145,7 +158,10 @@ A flag is config with a lifecycle. Every flag has an **owner**, a **default stat
 ```ts
 // config/feature-flags.config.ts — typed, defaulted-off, named keys (no magic strings).
 export const featureFlagsConfig = registerAs('featureFlags', () => ({
-  enableNewInvoiceFlow: toBool(process.env.FF_NEW_INVOICE_FLOW, DEFAULT_FLAG_OFF),
+  enableNewInvoiceFlow: toBool(
+    process.env.FF_NEW_INVOICE_FLOW,
+    DEFAULT_FLAG_OFF,
+  ),
   enableBetaSearch: toBool(process.env.FF_BETA_SEARCH, DEFAULT_FLAG_OFF),
 }));
 ```
@@ -190,15 +206,15 @@ See the repo root [`.env.example`](../.env.example) for the live template.
 
 ## Per-environment differences, made explicit
 
-Environments differ intentionally — never by accident. The **code path is identical** across environments; only values (and the secret *source*) change.
+Environments differ intentionally — never by accident. The **code path is identical** across environments; only values (and the secret _source_) change.
 
-| Concern | Local | Test / CI | Staging | Production |
-| --- | --- | --- | --- | --- |
-| Secret source | `.env` file | injected fixtures | secret manager | secret manager |
-| OpenAPI docs flag | on | off | on (gated) | off / gated |
-| Log level | `debug` | `warn` | `info` | `info` |
-| External adapters | sandbox / fakes | mocks | sandbox | live |
-| List limits / timeouts | relaxed | minimal | prod-like | prod-tuned |
+| Concern                | Local           | Test / CI         | Staging        | Production     |
+| ---------------------- | --------------- | ----------------- | -------------- | -------------- |
+| Secret source          | `.env` file     | injected fixtures | secret manager | secret manager |
+| OpenAPI docs flag      | on              | off               | on (gated)     | off / gated    |
+| Log level              | `debug`         | `warn`            | `info`         | `info`         |
+| External adapters      | sandbox / fakes | mocks             | sandbox        | live           |
+| List limits / timeouts | relaxed         | minimal           | prod-like      | prod-tuned     |
 
 - **No environment-conditional business logic.** Behavior must not silently change because `NODE_ENV === 'production'`; gate behavior through explicit, named flags/config, not ambient environment checks.
 - **One schema, all environments.** The same `validateEnv` runs everywhere; missing prod secrets must fail the prod boot, not be defaulted to a dev value.

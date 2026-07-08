@@ -71,16 +71,16 @@ A change that cannot be observed in production is not ready. Wire telemetry **be
 
 Map these responsibilities to local roles. No release proceeds with a required approval missing (SDLC phases 21–22, [/claude.md](../claude.md)).
 
-| Sign-off | Owner (role) | Required when |
-| --- | --- | --- |
-| Code review | [backend-code-reviewer](../agents/backend-code-reviewer.md) | Always |
-| Security review | [backend-security-reviewer](../agents/backend-security-reviewer.md) | Auth, permissions, tenant isolation, secrets, PII, money flow, new integration |
-| QA sign-off | [backend-test-engineer](../agents/backend-test-engineer.md) | Always (a QA-approved build exists) |
-| Data/migration review | [database-reviewer](../agents/database-reviewer.md) | Schema, migration, backfill, or query changes |
-| Reliability/observability | [reliability-engineer](../agents/reliability-engineer.md), [observability-reviewer](../agents/observability-reviewer.md) | Async/job/event work, new failure modes, telemetry gaps |
-| UAT / business | Business owner | User-visible workflow or business-rule change |
-| Client approval | External stakeholder | Contractually required |
-| Final GO / NO-GO | [backend-release-gatekeeper](../agents/backend-release-gatekeeper.md) | Always |
+| Sign-off                  | Owner (role)                                                                                                             | Required when                                                                  |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| Code review               | [backend-code-reviewer](../agents/backend-code-reviewer.md)                                                              | Always                                                                         |
+| Security review           | [backend-security-reviewer](../agents/backend-security-reviewer.md)                                                      | Auth, permissions, tenant isolation, secrets, PII, money flow, new integration |
+| QA sign-off               | [backend-test-engineer](../agents/backend-test-engineer.md)                                                              | Always (a QA-approved build exists)                                            |
+| Data/migration review     | [database-reviewer](../agents/database-reviewer.md)                                                                      | Schema, migration, backfill, or query changes                                  |
+| Reliability/observability | [reliability-engineer](../agents/reliability-engineer.md), [observability-reviewer](../agents/observability-reviewer.md) | Async/job/event work, new failure modes, telemetry gaps                        |
+| UAT / business            | Business owner                                                                                                           | User-visible workflow or business-rule change                                  |
+| Client approval           | External stakeholder                                                                                                     | Contractually required                                                         |
+| Final GO / NO-GO          | [backend-release-gatekeeper](../agents/backend-release-gatekeeper.md)                                                    | Always                                                                         |
 
 - Approvals are recorded in the change artifacts ([/docs/features/_template/22-go-no-go.md](../docs/features/_template/22-go-no-go.md)), not implied by a thumbs-up.
 - An approval is never a substitute for missing evidence; materially changing the code after approval requires re-review.

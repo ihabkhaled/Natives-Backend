@@ -27,8 +27,8 @@ Capture what the organization learned from the delivery whether it succeeded per
 ## Follow-Up Actions
 
 | Action | Owner | Due date | Status |
-| --- | --- | --- | --- |
-| | | | open |
+| ------ | ----- | -------- | ------ |
+|        |       |          | open   |
 
 ## Claude Policy Updates Needed
 

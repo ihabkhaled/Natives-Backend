@@ -49,12 +49,12 @@ Rules:
 
 Clients retry. Webhooks redeliver. Schedulers re-run. Any endpoint or consumer that **causes a side effect more than once when called twice** needs an idempotency guard.
 
-| Source | Dedupe on | Behaviour on replay |
-| --- | --- | --- |
-| Retryable write / payment | client-supplied idempotency key (DTO field, validated) | return the stored result, no second effect |
-| Inbound webhook | the provider's **event id** (never a payload hash) | no-op `200` |
-| State transition | current state | re-applying a done transition returns current state — no throw, no double-emit |
-| Scheduled job | a bounded predicate ("only rows still pending") | a double-run touches nothing new |
+| Source                    | Dedupe on                                              | Behaviour on replay                                                            |
+| ------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| Retryable write / payment | client-supplied idempotency key (DTO field, validated) | return the stored result, no second effect                                     |
+| Inbound webhook           | the provider's **event id** (never a payload hash)     | no-op `200`                                                                    |
+| State transition          | current state                                          | re-applying a done transition returns current state — no throw, no double-emit |
+| Scheduled job             | a bounded predicate ("only rows still pending")        | a double-run touches nothing new                                               |
 
 - **Scope the idempotency key to the actor** (the verified identity from the token, never the body) so one tenant cannot collide with another ([07-security-authn-authz.md](./07-security-authn-authz.md)).
 - Persist `(key → result)` and short-circuit on the second call. Make the persistence layer enforce uniqueness so the dedupe survives concurrent retries.
@@ -78,12 +78,12 @@ See [19-async-events-and-jobs.md](./19-async-events-and-jobs.md) for the event-b
 
 Every outbound call to an external service goes through its **adapter** ([12-library-wrapping-and-adapters.md](./12-library-wrapping-and-adapters.md)). The adapter — never the caller — owns resilience. Centralizing it there is why resilience is testable and swappable.
 
-| Control | Rule |
-| --- | --- |
-| **Timeout** | Every HTTP/socket call has an explicit per-request timeout. A hung dependency must not hang a request. |
-| **Retry** | Cap attempts; retry **transient** errors only (network, timeout, `429`, `5xx`). **Never retry a `4xx`** — the input is wrong; retrying wastes quota. |
-| **Backoff + jitter** | Exponential backoff with full jitter so retries don't synchronize into a thundering herd. |
-| **Circuit breaker** | After N consecutive failures, open and fail fast (degrade per §5). Half-open after a cooldown to probe recovery. |
+| Control              | Rule                                                                                                                                                 |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Timeout**          | Every HTTP/socket call has an explicit per-request timeout. A hung dependency must not hang a request.                                               |
+| **Retry**            | Cap attempts; retry **transient** errors only (network, timeout, `429`, `5xx`). **Never retry a `4xx`** — the input is wrong; retrying wastes quota. |
+| **Backoff + jitter** | Exponential backoff with full jitter so retries don't synchronize into a thundering herd.                                                            |
+| **Circuit breaker**  | After N consecutive failures, open and fail fast (degrade per §5). Half-open after a cooldown to probe recovery.                                     |
 
 ```ts
 // DON'T — caller does raw I/O: no timeout, no retry, no breaker
@@ -154,7 +154,7 @@ For any queue/consumer:
 
 This is the single most repeated reliability mistake. A throw from an event handler propagates back through the publisher and **aborts the success path of the operation that emitted it**. Notification dispatch must never crash a business workflow.
 
-The event bus already isolates handlers (each `handle()` runs under its own `try/catch`). **But** any handler that fans out to a notification or broadcast adapter MUST *additionally* wrap that call so one recipient's failure never surfaces as a transition failure:
+The event bus already isolates handlers (each `handle()` runs under its own `try/catch`). **But** any handler that fans out to a notification or broadcast adapter MUST _additionally_ wrap that call so one recipient's failure never surfaces as a transition failure:
 
 ```ts
 // DO — the handler swallows its own side-effect failure
@@ -221,9 +221,17 @@ A single failed delivery (one recipient's email bounces, one push send `500`s) m
 
 ```ts
 // DO — fan out, settle, report partials (in a use case)
-const outcomes = await Promise.allSettled(recipients.map((r) => this.notifier.send(r)));
-const failed = outcomes.filter((o): o is PromiseRejectedResult => o.status === 'rejected');
-if (failed.length > 0) this.logger.warn('partial delivery', { failed: failed.length, total: recipients.length });
+const outcomes = await Promise.allSettled(
+  recipients.map(r => this.notifier.send(r)),
+);
+const failed = outcomes.filter(
+  (o): o is PromiseRejectedResult => o.status === 'rejected',
+);
+if (failed.length > 0)
+  this.logger.warn('partial delivery', {
+    failed: failed.length,
+    total: recipients.length,
+  });
 ```
 
 ---
@@ -255,7 +263,10 @@ export class JobScheduler implements OnModuleDestroy {
     await this.safeStop('scheduler', () => this.scheduler.stop());
   }
 
-  private async safeStop(name: string, stop: () => Promise<void>): Promise<void> {
+  private async safeStop(
+    name: string,
+    stop: () => Promise<void>,
+  ): Promise<void> {
     try {
       await stop();
       this.logger.info(`${name} stopped`);
@@ -289,7 +300,7 @@ Shutdown sequence:
 See [migration-plan.md](../skills/migration-plan.md) and [add-migration-backfill.md](../skills/add-migration-backfill.md) for the full procedure; the durability rules:
 
 - **Forward and backward** — every migration implements `up()` and a real `down()`. An empty/throwing `down()` is unrollback-able and is rejected in review.
-- **Expand → migrate → contract** for breaking changes: add the new shape (expand), backfill + dual-write, switch reads, then drop the old shape in a *later* migration. Never rename/drop a live column in one deploy — it breaks in-flight requests.
+- **Expand → migrate → contract** for breaking changes: add the new shape (expand), backfill + dual-write, switch reads, then drop the old shape in a _later_ migration. Never rename/drop a live column in one deploy — it breaks in-flight requests.
 - **Additive first** — prefer nullable-add + backfill over `NOT NULL`-with-default on a large table (avoids long locks). Add indexes concurrently where the DB supports it.
 - **Backup before destructive migrations** and confirm restore works. Treat restore as the real rollback when a `down()` cannot recover dropped data.
 - **Backfills** are chunked, resumable, observable, rate-aware, and safe to pause/retry; they report rows touched and whether rerun is safe.

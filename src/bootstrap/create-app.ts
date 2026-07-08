@@ -1,6 +1,9 @@
 import { AppModule } from '@app/app.module';
 import { bindAppLogger } from '@core/logger';
-import { NestFactory } from '@nestjs/core';
+import { JwtAuthGuard } from '@modules/auth/jwt-auth.guard';
+import { RolesGuard } from '@modules/auth/roles.guard';
+import { NestFactory, Reflector } from '@nestjs/core';
+import { JwtService } from '@nestjs/jwt';
 import type { NestFastifyApplication } from '@nestjs/platform-fastify';
 
 import { createFastifyAdapter } from './fastify-adapter';
@@ -15,5 +18,11 @@ export async function createApp(): Promise<NestFastifyApplication> {
     { bufferLogs: true },
   );
   bindAppLogger(app);
+
+  app.useGlobalGuards(
+    new JwtAuthGuard(app.get(JwtService), app.get(Reflector)),
+    new RolesGuard(app.get(Reflector)),
+  );
+
   return app;
 }

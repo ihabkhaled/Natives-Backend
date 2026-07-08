@@ -15,6 +15,7 @@ A service is the **default** application building block: a focused, reusable cap
   - payload building → `lib/<feature>.helpers.ts`
 - **≤ 20 lines per method** (`max-lines-per-function` on `*.service.ts`). Longer ⇒ extract.
 - **Zero inline declarations.** No inline types/interfaces/enums/constants — import from `model/` or `@shared`.
+- **Prefer model types for input.** The service should accept `model/*.types.ts` shapes, not API DTOs, so the application layer is not coupled to the HTTP boundary. Response DTOs are acceptable only when the mapper in `lib/` produces them.
 - **Typed return** on every method; never inferred `any`.
 - **No vendor SDKs.** Persistence via the repository; external libraries via an adapter ([12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md)).
 - **No concurrency primitives in services** — `Promise.all|allSettled|any|race` are banned here; batch in the repository instead.
@@ -30,7 +31,7 @@ Before touching the service, write/extend the spec. Mock the repository and any 
 ```ts
 it('throws a typed conflict when the slug already exists', async () => {
   repository.findBySlug.mockResolvedValue(existingArticle);
-  await expect(service.publish(authorId, dto)).rejects.toMatchObject({
+  await expect(service.publish(authorId, input)).rejects.toMatchObject({
     messageKey: 'errors.article.duplicateSlug',
   });
 });
@@ -81,9 +82,9 @@ async publish(authorId: string, dto: PublishArticleDto): Promise<ArticleSummary>
 
 ```ts
 // Do — thin orchestration, typed, messageKey'd, mapped, fail-safe
-async publish(authorId: string, dto: PublishArticleDto): Promise<ArticleSummary> {
-  this.logger.debug('publish', { authorId, articleId: dto.id });
-  const article = await this.repository.findById(dto.id);
+async publish(authorId: string, input: PublishArticleData): Promise<ArticleSummary> {
+  this.logger.debug('publish', { authorId, articleId: input.id });
+  const article = await this.repository.findById(input.id);
   assertArticleOwnedBy(article, authorId); // domain/ policy: throws typed AppError
   const published = await this.repository.save(applyPublish(article)); // lib/ helper
   this.notifyAuthor(published); // fire-and-forget, swallows its own errors
@@ -108,9 +109,14 @@ export const toArticleSummary = (article: Article): ArticleSummary => ({
 });
 
 // domain/article.policy.ts
-export function assertArticleOwnedBy(article: Article | null, authorId: string): asserts article is Article {
-  if (article === null) throw new ArticleNotFoundError('errors.article.notFound');
-  if (article.authorId !== authorId) throw new ArticleForbiddenError('errors.article.forbidden');
+export function assertArticleOwnedBy(
+  article: Article | null,
+  authorId: string,
+): asserts article is Article {
+  if (article === null)
+    throw new ArticleNotFoundError('errors.article.notFound');
+  if (article.authorId !== authorId)
+    throw new ArticleForbiddenError('errors.article.forbidden');
 }
 ```
 
@@ -137,7 +143,10 @@ Every throw is a typed `AppError` subclass carrying `errors.<feature>.<key>`; th
 Add the service to its module's `providers`; export it through `index.ts` only if another module consumes it via the public surface.
 
 ```ts
-@Module({ providers: [ArticleService, ArticleRepository], exports: [ArticleService] })
+@Module({
+  providers: [ArticleService, ArticleRepository],
+  exports: [ArticleService],
+})
 export class ArticleModule {}
 ```
 
@@ -162,6 +171,7 @@ Never bypass Husky with `--no-verify`.
 - Passing `undefined` to an optional field violates `exactOptionalPropertyTypes` — use a conditional spread.
 - A method creeping past 20 lines, or doing string/format/branch work, means an extraction was skipped.
 - Multi-entity write + ordered post-commit events is **not** a service — escalate to a use case.
+- Importing API DTOs into the service for input couples the application layer to the HTTP boundary; prefer `model/*.types.ts` shapes.
 - Untyped `throw`/`NotFoundException()` without a `messageKey` will leak unsafely and fails review.
 
 ## Related

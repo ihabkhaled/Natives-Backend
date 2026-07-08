@@ -2,32 +2,36 @@
 
 > The roster of review roles for this NestJS backend operating system, the shared workflow every role runs, the universal guardrails none may relax, and the exact quality-gate commands. Each role is a focused operating manual that implements the canon — it does not replace it.
 
-These roles are **lenses on the specification**, not a substitute for it. The canonical sources, in precedence order:
+These roles are **lenses on the specification**, not a substitute for it. The canonical sources, in precedence order, are the same as `claude.md` and `AGENTS.md`:
 
-1. [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) — the hard rules. **Overrides everything else.**
-2. [/context/architecture-map.md](../context/architecture-map.md) — the layered architecture, the single source of truth for where code lives.
-3. [/context/stack-and-toolchain.md](../context/stack-and-toolchain.md) — the locked runtime, lint, test, and build toolchain.
-4. [/rules/README.md](../rules/README.md) — the full numbered rules pack.
-5. [/claude.md](../claude.md) — the enterprise SDLC operating policy that wraps all of the above.
+1. [/claude.md](../claude.md) — the canonical long-form operating policy; **overrides everything else** when there is a conflict.
+2. [/AGENTS.md](../AGENTS.md) — the Codex/AI bootstrap file that points to `claude.md`.
+3. [/.cursor/rules/*.mdc](../.cursor/rules/) — the active Cursor-compatible rules.
+4. [/.cursorrules](../.cursorrules) — legacy Cursor compatibility only.
+5. [/codex.md](../codex.md) and [/cursor.md](../cursor.md) — human-readable mirrors/reference copies.
+6. [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) — the hard engineering rules for the NestJS backend.
+7. [/context/architecture-map.md](../context/architecture-map.md) — the layered architecture, the single source of truth for where code lives.
+8. [/context/stack-and-toolchain.md](../context/stack-and-toolchain.md) — the locked runtime, lint, test, and build toolchain.
+9. [/rules/README.md](../rules/README.md) — the full numbered rules pack.
 
-> If a role file ever contradicts the rules pack or the architecture map, the canon wins. Fix the role file.
+> If a role file ever contradicts `claude.md`, the architecture map, or the rules pack, the canon wins. Fix the role file.
 
 ---
 
 ## Role index
 
-| Role | One-line mission | Reach for it when |
-| --- | --- | --- |
-| [backend-architect](./backend-architect.md) | Design modules/boundaries; enforce one-way layering + import rules | Adding a module, splitting a god-file, deciding where code lives |
-| [backend-code-reviewer](./backend-code-reviewer.md) | Run the full review checklist + every quality gate | Final gate before a change is declared done |
-| [backend-security-reviewer](./backend-security-reviewer.md) | Authn/authz/IDOR/secrets/input review; block tenant gaps | Any change touching auth, ownership, secrets, input, or routes |
-| [backend-performance-reviewer](./backend-performance-reviewer.md) | Pagination/index/N+1/cache/unbounded-query audit | List endpoints, hot paths, loops with awaits, joins |
-| [backend-test-engineer](./backend-test-engineer.md) | Write/extend Vitest unit + integration tests to the coverage bar | Any behavior change, new module, or coverage gap |
-| [backend-refactor-agent](./backend-refactor-agent.md) | Characterization-tests-first safe refactors; behavior unchanged | Restructuring code that must keep identical behavior |
-| [backend-release-gatekeeper](./backend-release-gatekeeper.md) | Final diff + quality-gate + git-safety blocker | Before staging, committing, or pushing |
-| [database-reviewer](./database-reviewer.md) | Review queries/migrations/indexes/pagination/injection safety | Any new query, repository method, migration, or entity index |
-| [observability-reviewer](./observability-reviewer.md) | Logging/redaction/metrics/diagnosis review | Changes touching logs, integrations, background jobs, errors |
-| [reliability-engineer](./reliability-engineer.md) | Transactions/idempotency/retry/timeout/shutdown/migration safety | State mutations, external calls, migrations, startup/shutdown |
+| Role                                                              | One-line mission                                                   | Reach for it when                                                |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| [backend-architect](./backend-architect.md)                       | Design modules/boundaries; enforce one-way layering + import rules | Adding a module, splitting a god-file, deciding where code lives |
+| [backend-code-reviewer](./backend-code-reviewer.md)               | Run the full review checklist + every quality gate                 | Final gate before a change is declared done                      |
+| [backend-security-reviewer](./backend-security-reviewer.md)       | Authn/authz/IDOR/secrets/input review; block tenant gaps           | Any change touching auth, ownership, secrets, input, or routes   |
+| [backend-performance-reviewer](./backend-performance-reviewer.md) | Pagination/index/N+1/cache/unbounded-query audit                   | List endpoints, hot paths, loops with awaits, joins              |
+| [backend-test-engineer](./backend-test-engineer.md)               | Write/extend Vitest unit + integration tests to the coverage bar   | Any behavior change, new module, or coverage gap                 |
+| [backend-refactor-agent](./backend-refactor-agent.md)             | Characterization-tests-first safe refactors; behavior unchanged    | Restructuring code that must keep identical behavior             |
+| [backend-release-gatekeeper](./backend-release-gatekeeper.md)     | Final diff + quality-gate + git-safety blocker                     | Before staging, committing, or pushing                           |
+| [database-reviewer](./database-reviewer.md)                       | Review queries/migrations/indexes/pagination/injection safety      | Any new query, repository method, migration, or entity index     |
+| [observability-reviewer](./observability-reviewer.md)             | Logging/redaction/metrics/diagnosis review                         | Changes touching logs, integrations, background jobs, errors     |
+| [reliability-engineer](./reliability-engineer.md)                 | Transactions/idempotency/retry/timeout/shutdown/migration safety   | State mutations, external calls, migrations, startup/shutdown    |
 
 Every role keeps the same shape: **role · mission · inputs · steps · checklist · verdict**.
 
@@ -54,24 +58,24 @@ Run from the repo root. The exact `package.json` scripts:
 npm run lint            # eslint . — 0 errors AND 0 warnings (incl. the architecture plugin)
 npm run typecheck       # tsgo --noEmit, project-wide (TS native compiler)
 npm run test            # vitest run
-npm run test:coverage   # vitest run --coverage — floor 95%, critical paths near 100%
+npm run test:coverage   # vitest run --coverage — 95% lines/functions/statements, 90% branches, critical paths near 100%
 npm run build           # nest build, compiles clean
 ```
 
 Husky enforces a subset automatically:
 
-| Hook | Runs | Purpose |
-| --- | --- | --- |
-| `pre-commit` | `lint-staged` + `typecheck` | Block unlintable / untyped staged code |
-| `commit-msg` | `commitlint` | Conventional Commits message format |
-| `pre-push` | `test:coverage` + `build` | Block pushes that fail tests or won't build |
+| Hook         | Runs                        | Purpose                                     |
+| ------------ | --------------------------- | ------------------------------------------- |
+| `pre-commit` | `lint-staged` + `typecheck` | Block unlintable / untyped staged code      |
+| `commit-msg` | `commitlint`                | Conventional Commits message format         |
+| `pre-push`   | `test:coverage` + `build`   | Block pushes that fail tests or won't build |
 
 Never bypass hooks (`--no-verify`) and never weaken a gate to make it pass. A green build is **not** proof of correctness — prove behavior with tests.
 
 ### Locked toolchain facts (these win over any stale note)
 
 - Type-checker/compiler is **`tsgo`** (the native TypeScript compiler); builds go through `nest build`. Never invoke a legacy `tsc --noEmit` as the gate.
-- Test runner is **Vitest 4** with `@nestjs/testing` + supertest; coverage provider is **istanbul**.
+- Test runner is **Vitest 4** with `@nestjs/testing` + supertest; coverage provider is **v8** (see `vitest.config.mts` and [/testing/coverage-policy.md](../testing/coverage-policy.md)).
 - Validation is **class-validator + class-transformer** (primary); a custom Zod pipe is the documented alternative — [/rules/05-dto-and-validation.md](../rules/05-dto-and-validation.md).
 - ORM/database, cache, queue, mailer, and storage are **project choices behind an adapter** — never imported directly outside `adapters/` ([/rules/12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md)).
 

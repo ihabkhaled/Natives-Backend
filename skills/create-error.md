@@ -13,12 +13,12 @@
 
 ## Decide first: new key, new class, or both?
 
-| Situation | Action |
-| --- | --- |
-| Scenario fits an existing `AppError` subclass (not-found, forbidden, conflict, …) | Add **only a new `messageKey`** + throw it |
-| A genuinely new failure shape with extra structured data (e.g. illegal transition) | Add a **new subclass** in `@core/errors/` **and** a key |
-| Vendor/SDK call failed inside an adapter | Wrap as `IntegrationError` in the **adapter**, never the filter |
-| The DTO can already express the precondition | Not an error here — let the `ValidationPipe` reject it ([05](../rules/05-dto-and-validation.md)) |
+| Situation                                                                          | Action                                                                                           |
+| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Scenario fits an existing `AppError` subclass (not-found, forbidden, conflict, …)  | Add **only a new `messageKey`** + throw it                                                       |
+| A genuinely new failure shape with extra structured data (e.g. illegal transition) | Add a **new subclass** in `@core/errors/` **and** a key                                          |
+| Vendor/SDK call failed inside an adapter                                           | Wrap as `IntegrationError` in the **adapter**, never the filter                                  |
+| The DTO can already express the precondition                                       | Not an error here — let the `ValidationPipe` reject it ([05](../rules/05-dto-and-validation.md)) |
 
 Existing classes: `ValidationError` 400 · `UnauthorizedError` 401 · `ForbiddenError` 403 · `NotFoundError` 404 · `ConflictError` 409 · `StateTransitionError` 422 · `IntegrationError` 502. Reuse before inventing.
 
@@ -68,7 +68,12 @@ Subclass `AppError` once in `@core/errors/`. Give it a fixed `status` and carry 
 // @core/errors/quota-exceeded.error.ts — new class only when extra structure is needed
 export class QuotaExceededError extends AppError {
   readonly status = 429;
-  constructor(messageKey: string, readonly limit: number, readonly used: number, cause?: unknown) {
+  constructor(
+    messageKey: string,
+    readonly limit: number,
+    readonly used: number,
+    cause?: unknown,
+  ) {
     super('Quota exceeded', messageKey, { limit, used }, cause);
   }
 }
@@ -94,9 +99,9 @@ async getOwnedById(id: string, actor: AuthIdentity): Promise<FeatureEntity> {
 
 ```ts
 // Don't — untyped, unmappable, leaks intent, no messageKey
-throw new Error('not found');                       // ❌ becomes a raw 500
-throw new HttpException('forbidden', 403);          // ❌ bypasses the catalog
-return { error: 'duplicate' };                      // ❌ errors are thrown, never returned
+throw new Error('not found'); // ❌ becomes a raw 500
+throw new HttpException('forbidden', 403); // ❌ bypasses the catalog
+return { error: 'duplicate' }; // ❌ errors are thrown, never returned
 ```
 
 For wrapped vendor failures, keep the cause and stay typed:
@@ -106,7 +111,12 @@ For wrapped vendor failures, keep the cause and stay typed:
 try {
   await this.client.send(payload);
 } catch (cause) {
-  throw new IntegrationError('Provider rejected the send', FEATURE_MESSAGE_KEYS.DELIVERY_FAILED, { vendor: '<provider>' }, cause);
+  throw new IntegrationError(
+    'Provider rejected the send',
+    FEATURE_MESSAGE_KEYS.DELIVERY_FAILED,
+    { vendor: '<provider>' },
+    cause,
+  );
 }
 ```
 
@@ -118,10 +128,18 @@ try {
 // @core/errors/error.mapper.ts — pure, unit-tested; AppError is handled generically
 export function mapToResponse(exception: unknown): MappedError {
   if (exception instanceof AppError) {
-    return { status: exception.status, body: toBody(exception), logLevel: levelFor(exception.status) };
+    return {
+      status: exception.status,
+      body: toBody(exception),
+      logLevel: levelFor(exception.status),
+    };
   }
   if (exception instanceof HttpException) {
-    return { status: exception.getStatus(), body: fromHttpException(exception), logLevel: 'warn' };
+    return {
+      status: exception.getStatus(),
+      body: fromHttpException(exception),
+      logLevel: 'warn',
+    };
   }
   return { status: 500, body: INTERNAL_ERROR_BODY, logLevel: 'error' }; // unknown → opaque 500
 }
@@ -130,7 +148,13 @@ export function mapToResponse(exception: unknown): MappedError {
 Map vendor exceptions inside adapters, not the filter — keep the filter generic. The client always receives the same sanitized shape:
 
 ```jsonc
-{ "statusCode": 404, "messageKey": "errors.<feature>.notFound", "details": null, "correlationId": "…", "timestamp": "…" }
+{
+  "statusCode": 404,
+  "messageKey": "errors.<feature>.notFound",
+  "details": null,
+  "correlationId": "…",
+  "timestamp": "…",
+}
 ```
 
 ### 5. Localize the key in every supported locale

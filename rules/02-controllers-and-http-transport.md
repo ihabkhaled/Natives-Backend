@@ -32,14 +32,14 @@ A controller does four things and nothing more: declare the route + OpenAPI shap
 
 NestJS runs the chain below; a controller method is the last step. Guards run **before** validation, so an unauthorized caller never reaches your DTO. Identity, then authorization, then ownership, then validation, then the handler.
 
-| Stage | Mechanism | Why this order |
-| --- | --- | --- |
-| 1 Authentication | auth guard (`@UseGuards(AuthGuard)`) | Establishes the verified principal. Nothing trusts the client until this passes. |
-| 2 Authorization | permissions/RBAC guard (`@RequirePermissions(...)`) | Checks the principal against a central permission catalog. Authn ≠ authz. |
-| 3 Ownership / tenant | ownership guard or an application-layer check | Blocks IDOR / cross-tenant access on resources fetched by id. |
-| 4 Validation | global `ValidationPipe` (`whitelist`, `transform`) | DTO validation runs only after the caller is known to be allowed. |
-| 5 Handler | controller method | One delegation → one application call → return. |
-| 6 Response / errors | response interceptor; global exception filter | Shapes the success envelope; maps thrown `AppError` → safe `{ messageKey }`. |
+| Stage                | Mechanism                                           | Why this order                                                                   |
+| -------------------- | --------------------------------------------------- | -------------------------------------------------------------------------------- |
+| 1 Authentication     | auth guard (`@UseGuards(AuthGuard)`)                | Establishes the verified principal. Nothing trusts the client until this passes. |
+| 2 Authorization      | permissions/RBAC guard (`@RequirePermissions(...)`) | Checks the principal against a central permission catalog. Authn ≠ authz.        |
+| 3 Ownership / tenant | ownership guard or an application-layer check       | Blocks IDOR / cross-tenant access on resources fetched by id.                    |
+| 4 Validation         | global `ValidationPipe` (`whitelist`, `transform`)  | DTO validation runs only after the caller is known to be allowed.                |
+| 5 Handler            | controller method                                   | One delegation → one application call → return.                                  |
+| 6 Response / errors  | response interceptor; global exception filter       | Shapes the success envelope; maps thrown `AppError` → safe `{ messageKey }`.     |
 
 Mount the always-on guards globally (auth + RBAC in [07-security-authn-authz.md](./07-security-authn-authz.md)); annotate truly open routes with a `@Public()` decorator rather than removing the guard. Internal service-to-service endpoints use a separate route prefix and their own credential — never just "no guard".
 
@@ -49,9 +49,23 @@ Mount the always-on guards globally (auth + RBAC in [07-security-authn-authz.md]
 
 ```ts
 import {
-  Controller, Get, Post, Patch, Delete, Param, Query, Body, HttpCode, HttpStatus,
+  Controller,
+  Get,
+  Post,
+  Patch,
+  Delete,
+  Param,
+  Query,
+  Body,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiOkResponse, ApiCreatedResponse } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiOkResponse,
+  ApiCreatedResponse,
+} from '@nestjs/swagger';
 import { CurrentUser } from '@core/decorators/current-user.decorator';
 import { RequirePermissions } from '@core/decorators/require-permissions.decorator';
 import { AuthUser } from '@shared/types/auth-user.type';

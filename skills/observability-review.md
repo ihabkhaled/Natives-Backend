@@ -6,15 +6,15 @@ Run this when a change touches logging, error handling, background jobs, events,
 
 ## Rules this skill enforces
 
-| # | Rule |
-| --- | --- |
-| 28 | Logger adapter from `@core/logger` only — never `console.*`; redact before logging. |
-| 36 | Never leak stacks, secrets, tokens, SQL, or internal errors to clients; the exception filter sanitizes outbound. |
-| 38 | Side effects (events, audit, notifications) are fail-safe and observable — a logging/audit failure never blocks the flow. |
-| 40 | Observability is part of the change — structured logs + metrics on critical paths; no secret/PII leakage. |
-| 8, 13 | Message names, levels, header names, redaction keys are constants — no magic strings, no inline literals. |
-| 27 | Log level comes from typed config, not `process.env`. |
-| 42 | Tests + docs ship with the change; assert the trail first. |
+| #     | Rule                                                                                                                      |
+| ----- | ------------------------------------------------------------------------------------------------------------------------- |
+| 28    | Logger adapter from `@core/logger` only — never `console.*`; redact before logging.                                       |
+| 36    | Never leak stacks, secrets, tokens, SQL, or internal errors to clients; the exception filter sanitizes outbound.          |
+| 38    | Side effects (events, audit, notifications) are fail-safe and observable — a logging/audit failure never blocks the flow. |
+| 40    | Observability is part of the change — structured logs + metrics on critical paths; no secret/PII leakage.                 |
+| 8, 13 | Message names, levels, header names, redaction keys are constants — no magic strings, no inline literals.                 |
+| 27    | Log level comes from typed config, not `process.env`.                                                                     |
+| 42    | Tests + docs ship with the change; assert the trail first.                                                                |
 
 Detail: [/rules/14-observability-and-logging.md](../rules/14-observability-and-logging.md) · [/rules/18-error-handling-and-exceptions.md](../rules/18-error-handling-and-exceptions.md).
 
@@ -47,9 +47,12 @@ it('logs the side effect at info with safe fields only', async () => {
 it('logs at error on a caught failure and never leaks the secret', async () => {
   repo.save.mockRejectedValueOnce(new Error('db down'));
   await expect(service.publish(orderId)).rejects.toThrow();
-  expect(logger.error).toHaveBeenCalledWith('order.publish.failed', expect.any(Object));
+  expect(logger.error).toHaveBeenCalledWith(
+    'order.publish.failed',
+    expect.any(Object),
+  );
   const logged = JSON.stringify(logger.error.mock.calls);
-  expect(logged).not.toContain(rawToken);   // no token, password, or body in any log line
+  expect(logged).not.toContain(rawToken); // no token, password, or body in any log line
 });
 ```
 
@@ -64,7 +67,7 @@ this.logger.info('order.published', { orderId, correlationId });
 
 ```ts
 // Don't
-console.log('published', order);                         // banned sink + leaks the whole entity
+console.log('published', order); // banned sink + leaks the whole entity
 this.logger.info(`order ${JSON.stringify(order)} done`); // interpolated object; unqueryable; leaks
 ```
 
@@ -72,12 +75,12 @@ this.logger.info(`order ${JSON.stringify(order)} done`); // interpolated object;
 
 Walk every new log line and verify the severity. A misclassified level either pages on-call for nothing or hides a real failure.
 
-| Level | Use for |
-| --- | --- |
-| `error` | Every `catch` before rethrow/fallback; unrecoverable failure (dependency down, write failed) |
-| `warn` | Recoverable/degraded path (retry, fallback, cache miss, rate-limit) and security events (failed auth, forbidden) |
-| `info` | Side-effecting success (write committed, outbound call, event published, job completed) |
-| `debug` | Method/repository entry, non-PII inputs (off in production) |
+| Level   | Use for                                                                                                          |
+| ------- | ---------------------------------------------------------------------------------------------------------------- |
+| `error` | Every `catch` before rethrow/fallback; unrecoverable failure (dependency down, write failed)                     |
+| `warn`  | Recoverable/degraded path (retry, fallback, cache miss, rate-limit) and security events (failed auth, forbidden) |
+| `info`  | Side-effecting success (write committed, outbound call, event published, job completed)                          |
+| `debug` | Method/repository entry, non-PII inputs (off in production)                                                      |
 
 Every `catch` logs at `error` before it rethrows or falls back. There are **no empty `catch {}`** blocks; if you truly mean "ignore", log `debug` with the reason. Narrow `unknown` first — `catch (error: unknown)` then `toLogError(error)`.
 
@@ -97,23 +100,30 @@ Confirm: the same id appears on every log line of one request; outbound adapters
 
 Each layer logs its own minimal responsibility once — do not record the same event at three layers.
 
-| Layer | Logs | Does NOT log |
-| --- | --- | --- |
-| Controller | Nothing manual — the interceptor records method/path/status/duration | Bodies, business detail |
-| Service / Use case | Each side effect and branch outcome; each `catch` | Raw entities, secrets |
-| Domain | Pure — generally silent | I/O of any kind |
-| Repository | Entry + "not found" at `debug` | Business policy, full result sets |
-| Adapter | Call start (`debug`), success with `durationMs` (`info`), failure with `durationMs` (`error`) | Vendor secrets, full payloads |
+| Layer              | Logs                                                                                          | Does NOT log                      |
+| ------------------ | --------------------------------------------------------------------------------------------- | --------------------------------- |
+| Controller         | Nothing manual — the interceptor records method/path/status/duration                          | Bodies, business detail           |
+| Service / Use case | Each side effect and branch outcome; each `catch`                                             | Raw entities, secrets             |
+| Domain             | Pure — generally silent                                                                       | I/O of any kind                   |
+| Repository         | Entry + "not found" at `debug`                                                                | Business policy, full result sets |
+| Adapter            | Call start (`debug`), success with `durationMs` (`info`), failure with `durationMs` (`error`) | Vendor secrets, full payloads     |
 
 ```ts
 // Adapter — log timing + outcome, never the payload or credentials
 const startedAt = Date.now();
 try {
   const result = await this.client.deliver(message);
-  this.logger.info('email.send.ok', { provider: this.name, durationMs: Date.now() - startedAt });
+  this.logger.info('email.send.ok', {
+    provider: this.name,
+    durationMs: Date.now() - startedAt,
+  });
   return result;
 } catch (error: unknown) {
-  this.logger.error('email.send.failed', { provider: this.name, durationMs: Date.now() - startedAt, ...toLogError(error) });
+  this.logger.error('email.send.failed', {
+    provider: this.name,
+    durationMs: Date.now() - startedAt,
+    ...toLogError(error),
+  });
   throw error;
 }
 ```
@@ -125,8 +135,16 @@ Grep the diff and the captured test output for sensitive values. **Never log:** 
 ```ts
 // Redact before the value reaches the logger — one shared set, extended in both places
 export const REDACTED_KEYS = [
-  'password', 'newPassword', 'otp', 'token', 'accessToken', 'refreshToken',
-  'apiKey', 'secret', 'authorization', 'cookie',
+  'password',
+  'newPassword',
+  'otp',
+  'token',
+  'accessToken',
+  'refreshToken',
+  'apiKey',
+  'secret',
+  'authorization',
+  'cookie',
 ] as const;
 ```
 

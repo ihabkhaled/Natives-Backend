@@ -32,23 +32,23 @@ export class OrderRepository {
 export class OrderRepository {
   async findOwned(id: string, userId: string): Promise<OrderResponseDto> {
     const order = await this.orders.findOneBy({ id });
-    if (!order) throw new OrderNotFoundError();          // ❌ rule 26 belongs to the service
+    if (!order) throw new OrderNotFoundError(); // ❌ rule 26 belongs to the service
     if (order.ownerId !== userId) throw new ForbiddenError(); // ❌ rule 35 belongs to the service
-    return toOrderResponse(order);                       // ❌ mapping belongs to lib/
+    return toOrderResponse(order); // ❌ mapping belongs to lib/
   }
 }
 ```
 
 ### Allowed vs. banned
 
-| Allowed in a repository | Banned — push up to service / domain / lib |
-| --- | --- |
+| Allowed in a repository                                                                                | Banned — push up to service / domain / lib                                                                                      |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 | `find` / `findOne` / `findAndCount` / `save` / `insert` / `update` / `softDelete` / `count` / `exists` | Ownership or tenant **decisions** (`if (row.ownerId !== userId) throw …`) → service/domain ([07](./07-security-authn-authz.md)) |
-| Query-builder joins/aggregations the find API can't express | Throwing typed `AppError` / `messageKey` → service ([18](./18-error-handling-and-exceptions.md)) |
-| Conditional query building (add a filter only when an arg is present) | Status-transition rules, pricing, scoring → `domain/` |
-| Pagination math (`skip`/`take`) + ordering | DTO mapping / response shaping → `lib/<feature>.mappers.ts` |
-| Filtering soft-deleted rows; tenant scoping it owns (§7) | Reading config, calling adapters, emitting events → service/use-case |
-| `logger.debug` tracing via the [@core/logger](./14-observability-and-logging.md) adapter | `console.*`; cross-module repository imports |
+| Query-builder joins/aggregations the find API can't express                                            | Throwing typed `AppError` / `messageKey` → service ([18](./18-error-handling-and-exceptions.md))                                |
+| Conditional query building (add a filter only when an arg is present)                                  | Status-transition rules, pricing, scoring → `domain/`                                                                           |
+| Pagination math (`skip`/`take`) + ordering                                                             | DTO mapping / response shaping → `lib/<feature>.mappers.ts`                                                                     |
+| Filtering soft-deleted rows; tenant scoping it owns (§7)                                               | Reading config, calling adapters, emitting events → service/use-case                                                            |
+| `logger.debug` tracing via the [@core/logger](./14-observability-and-logging.md) adapter               | `console.*`; cross-module repository imports                                                                                    |
 
 > Repositories return data or `null`. They never decide; they never throw a domain error. A not-found is `null`, an empty list is `[]` — the service translates that into a `messageKey`.
 
@@ -77,7 +77,10 @@ export class OrderRepository {
   constructor(@InjectModel(Order.name) private readonly model: Model<Order>) {}
 
   async findById(id: string): Promise<Order | null> {
-    return this.model.findOne({ _id: id, deletedAt: null }).lean<Order>().exec();
+    return this.model
+      .findOne({ _id: id, deletedAt: null })
+      .lean<Order>()
+      .exec();
   }
 }
 ```
@@ -200,7 +203,7 @@ async save(order: Order, manager?: EntityManager): Promise<Order> {
 
 ```ts
 // Use case owns the boundary (illustrative): one transaction, always released
-await this.uow.runInTransaction(async (manager) => {
+await this.uow.runInTransaction(async manager => {
   await this.orderRepository.save(order, manager);
   await this.invoiceRepository.save(invoice, manager);
 }); // commit on success, rollback + release on throw — inside the use case, not the repo

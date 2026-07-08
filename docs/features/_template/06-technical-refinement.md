@@ -18,22 +18,22 @@ Select the technical direction after comparing realistic implementation options 
 ## Alternatives Considered
 
 | Option | Description | Pros | Cons |
-| --- | --- | --- | --- |
-| A | | | |
-| B | | | |
+| ------ | ----------- | ---- | ---- |
+| A      |             |      |      |
+| B      |             |      |      |
 
 ## Trade-Off Analysis
 
-| Dimension | Option A | Option B | Selected reasoning |
-| --- | --- | --- | --- |
-| Simplicity | | | |
-| Maintainability | | | |
-| Scalability | | | |
-| Performance | | | |
-| Security | | | |
-| Cost | | | |
-| Reliability | | | |
-| Backward compatibility | | | |
+| Dimension              | Option A | Option B | Selected reasoning |
+| ---------------------- | -------- | -------- | ------------------ |
+| Simplicity             |          |          |                    |
+| Maintainability        |          |          |                    |
+| Scalability            |          |          |                    |
+| Performance            |          |          |                    |
+| Security               |          |          |                    |
+| Cost                   |          |          |                    |
+| Reliability            |          |          |                    |
+| Backward compatibility |          |          |                    |
 
 ## Chosen Approach
 
@@ -46,8 +46,8 @@ Select the technical direction after comparing realistic implementation options 
 ## Open Technical Questions
 
 | Question | Owner | Due date | Resolution |
-| --- | --- | --- | --- |
-| | | | pending |
+| -------- | ----- | -------- | ---------- |
+|          |       |          | pending    |
 
 ## Technical Debt Impact
 
@@ -65,10 +65,10 @@ Select the technical direction after comparing realistic implementation options 
 
 ## Sign-Off
 
-| Role | Name | Decision | Date |
-| --- | --- | --- | --- |
-| Technical owner | | approve / revise | |
-| Architect if applicable | | approve / revise | |
+| Role                    | Name | Decision         | Date |
+| ----------------------- | ---- | ---------------- | ---- |
+| Technical owner         |      | approve / revise |      |
+| Architect if applicable |      | approve / revise |      |
 
 ## Evidence And References To Attach
 

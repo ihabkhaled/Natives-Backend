@@ -4,7 +4,7 @@ This file is the Codex-compatible bootstrap for this repository.
 
 `claude.md` is the canonical long-form operating policy. Before doing analysis, planning, implementation, review, release work, or documentation work, read `claude.md` fully and follow it as binding company policy.
 
-If this file, `codex.md`, `cursor.md`, `.cursor/rules/`, or `.cursorrules` ever differ from `claude.md`, `claude.md` wins unless another file is temporarily stricter for safety.
+If this file, `codex.md`, `cursor.md`, `KIMI.md`, `GEMINI.md`, `GLM.md`, `QWEN.md`, `DEEPSEEK.md`, `.cursor/rules/`, or `.cursorrules` ever differ from `claude.md`, `claude.md` wins unless another file is temporarily stricter for safety.
 
 ## Repository Purpose
 
@@ -155,6 +155,18 @@ When handling a request, respond and work in this order:
 - `codex.md` and `cursor.md` are mirrors/reference copies.
 - `.cursor/rules/*.mdc` is the active Cursor ruleset.
 - `.cursorrules` exists only for legacy Cursor compatibility.
+
+## AI Agent Entrypoints
+
+In addition to `claude.md` (canonical) and `AGENTS.md` (Codex bootstrap), the repository provides dedicated entrypoints for major AI agent families:
+
+- `KIMI.md` — Kimi-family agents (e.g., Moonshot Kimi).
+- `GEMINI.md` — Gemini-family agents (e.g., Google Gemini).
+- `GLM.md` — GLM-family agents (e.g., Zhipu ChatGLM).
+- `QWEN.md` — Qwen-family agents (e.g., Alibaba Qwen).
+- `DEEPSEEK.md` — DeepSeek-family agents (e.g., DeepSeek-V3 / DeepSeek-Coder).
+
+Each entrypoint restates the canonical file precedence, the NestJS backend architecture, the zero-inline-declaration rule, layer responsibilities, security/performance/readability expectations, testing gates, and what the agent must never do. If an entrypoint contradicts `claude.md`, `claude.md` wins.
 
 ## NestJS Engineering Operating System
 

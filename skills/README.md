@@ -16,54 +16,54 @@ Skills are procedures, not policy. When a skill and a rule appear to disagree, t
 
 ### Authoring — build the thing
 
-| Skill | Use when you need to… |
-| --- | --- |
-| [create-module.md](./create-module.md) | Scaffold a brand-new `src/modules/<feature>/`, wire its `*.module.ts`, and expose only its `index.ts` public surface. |
-| [create-controller.md](./create-controller.md) | Add a thin controller method: DTO/param decorators in, exactly one application call, typed return — no logic. |
-| [create-use-case.md](./create-use-case.md) | Add an `application/<action>.use-case.ts` for multi-entity/multi-step work under one transaction + ordered post-commit events. |
-| [create-service.md](./create-service.md) | Add a `<feature>.service.ts` method that orchestrates a focused capability via repositories/adapters/domain (≤20 lines). |
-| [create-repository.md](./create-repository.md) | Add an `infrastructure/<feature>.repository.ts` method: parameterized, bounded (cap 100), persistence-only. |
-| [create-dto-validation.md](./create-dto-validation.md) | Add a DTO in `api/dto/` with class-validator decorators (or the documented Zod pipe alternative). |
-| [create-error.md](./create-error.md) | Add a typed `AppError` subclass carrying an `errors.<feature>.<key>` messageKey + filter mapping + tests. |
-| [add-config-value.md](./add-config-value.md) | Add a typed config value via `@nestjs/config` with startup validation — never read `process.env` elsewhere. |
-| [add-library-adapter.md](./add-library-adapter.md) | Introduce a new dependency behind an `adapters/<vendor>.adapter.ts` so business code never imports the SDK. |
-| [add-guard-and-permission.md](./add-guard-and-permission.md) | Add an RBAC permission to the catalog and chain auth + permissions + ownership guards on a route. |
-| [add-event-handler.md](./add-event-handler.md) | Subscribe a fail-safe, fire-and-forget handler to a domain event. |
-| [add-notification.md](./add-notification.md) | Send a new notification (email/SMS/push) through a provider adapter, usually triggered by a domain event. |
-| [add-i18n-message-key.md](./add-i18n-message-key.md) | Add/change an `errors.<feature>.<key>` and its translation in each supported locale. |
-| [add-migration-backfill.md](./add-migration-backfill.md) | Write a reversible schema migration and/or chunked, resumable data backfill. |
+| Skill                                                        | Use when you need to…                                                                                                          |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| [create-module.md](./create-module.md)                       | Scaffold a brand-new `src/modules/<feature>/`, wire its `*.module.ts`, and expose only its `index.ts` public surface.          |
+| [create-controller.md](./create-controller.md)               | Add a thin controller method: DTO/param decorators in, exactly one application call, typed return — no logic.                  |
+| [create-use-case.md](./create-use-case.md)                   | Add an `application/<action>.use-case.ts` for multi-entity/multi-step work under one transaction + ordered post-commit events. |
+| [create-service.md](./create-service.md)                     | Add a `<feature>.service.ts` method that orchestrates a focused capability via repositories/adapters/domain (≤20 lines).       |
+| [create-repository.md](./create-repository.md)               | Add an `infrastructure/<feature>.repository.ts` method: parameterized, bounded (cap 100), persistence-only.                    |
+| [create-dto-validation.md](./create-dto-validation.md)       | Add a DTO in `api/dto/` with class-validator decorators (or the documented Zod pipe alternative).                              |
+| [create-error.md](./create-error.md)                         | Add a typed `AppError` subclass carrying an `errors.<feature>.<key>` messageKey + filter mapping + tests.                      |
+| [add-config-value.md](./add-config-value.md)                 | Add a typed config value via `@nestjs/config` with startup validation — never read `process.env` elsewhere.                    |
+| [add-library-adapter.md](./add-library-adapter.md)           | Introduce a new dependency behind an `adapters/<vendor>.adapter.ts` so business code never imports the SDK.                    |
+| [add-guard-and-permission.md](./add-guard-and-permission.md) | Add an RBAC permission to the catalog and chain auth + permissions + ownership guards on a route.                              |
+| [add-event-handler.md](./add-event-handler.md)               | Subscribe a fail-safe, fire-and-forget handler to a domain event.                                                              |
+| [add-notification.md](./add-notification.md)                 | Send a new notification (email/SMS/push) through a provider adapter, usually triggered by a domain event.                      |
+| [add-i18n-message-key.md](./add-i18n-message-key.md)         | Add/change an `errors.<feature>.<key>` and its translation in each supported locale.                                           |
+| [add-migration-backfill.md](./add-migration-backfill.md)     | Write a reversible schema migration and/or chunked, resumable data backfill.                                                   |
 
 ### Architecture — keep it clean as it grows
 
-| Skill | Use when you need to… |
-| --- | --- |
+| Skill                                                | Use when you need to…                                                                                                              |
+| ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | [decompose-large-file.md](./decompose-large-file.md) | Split an oversized controller/service/use-case into focused collaborators behind a public surface that stays byte-for-byte stable. |
-| [migration-plan.md](./migration-plan.md) | Plan a safe, reversible schema change (forward + rollback + sequencing) before any code is written. |
+| [migration-plan.md](./migration-plan.md)             | Plan a safe, reversible schema change (forward + rollback + sequencing) before any code is written.                                |
 
 ### Test & verify — prove the thing works
 
-| Skill | Use when you need to… |
-| --- | --- |
-| [write-unit-tests.md](./write-unit-tests.md) | Write Vitest 4 + @nestjs/testing unit tests for services, use cases, domain, and guards. |
-| [write-integration-tests.md](./write-integration-tests.md) | Test a real module wiring (repository + DB or adapter) against representative state. |
-| [write-e2e-tests.md](./write-e2e-tests.md) | Drive a route end-to-end through the HTTP boundary with `supertest` and a booted test app. |
-| [fix-eslint-typecheck.md](./fix-eslint-typecheck.md) | Drive `npm run lint` and `npm run typecheck` to zero — by root cause, never by suppression. |
-| [final-validation.md](./final-validation.md) | Run the final diff review, git-safety, and full quality-gate sweep before commit/push. |
+| Skill                                                      | Use when you need to…                                                                       |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [write-unit-tests.md](./write-unit-tests.md)               | Write Vitest 4 + @nestjs/testing unit tests for services, use cases, domain, and guards.    |
+| [write-integration-tests.md](./write-integration-tests.md) | Test a real module wiring (repository + DB or adapter) against representative state.        |
+| [write-e2e-tests.md](./write-e2e-tests.md)                 | Drive a route end-to-end through the HTTP boundary with `supertest` and a booted test app.  |
+| [fix-eslint-typecheck.md](./fix-eslint-typecheck.md)       | Drive `npm run lint` and `npm run typecheck` to zero — by root cause, never by suppression. |
+| [final-validation.md](./final-validation.md)               | Run the final diff review, git-safety, and full quality-gate sweep before commit/push.      |
 
 ### Review — harden the thing
 
-| Skill | Use when you need to… |
-| --- | --- |
-| [security-review.md](./security-review.md) | Audit authn/authz/IDOR/secrets/error-leakage on the changed surface before merge. |
-| [sql-injection-review.md](./sql-injection-review.md) | Verify every query is parameterized and bounded — no string-interpolated SQL. |
-| [performance-review.md](./performance-review.md) | Catch N+1s, missing indexes, unbounded queries, and pagination gaps. |
-| [reliability-review.md](./reliability-review.md) | Verify fail-safe side effects, terminal states, timeouts/retries, and graceful degradation. |
-| [observability-review.md](./observability-review.md) | Verify structured logs/metrics on critical paths with zero secret/PII leakage. |
+| Skill                                                | Use when you need to…                                                                       |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [security-review.md](./security-review.md)           | Audit authn/authz/IDOR/secrets/error-leakage on the changed surface before merge.           |
+| [sql-injection-review.md](./sql-injection-review.md) | Verify every query is parameterized and bounded — no string-interpolated SQL.               |
+| [performance-review.md](./performance-review.md)     | Catch N+1s, missing indexes, unbounded queries, and pagination gaps.                        |
+| [reliability-review.md](./reliability-review.md)     | Verify fail-safe side effects, terminal states, timeouts/retries, and graceful degradation. |
+| [observability-review.md](./observability-review.md) | Verify structured logs/metrics on critical paths with zero secret/PII leakage.              |
 
 ### Plan & investigate — change safely under pressure
 
-| Skill | Use when you need to… |
-| --- | --- |
+| Skill                                                            | Use when you need to…                                                         |
+| ---------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | [investigate-production-bug.md](./investigate-production-bug.md) | Reproduce → locate → fix a reported defect with a failing test written first. |
 
 > Each skill's **Related** section cross-links the others so you always land on canonical guidance for enums, permissions, errors/i18n, adapters, and the quality gates.
@@ -111,14 +111,14 @@ Never bypass hooks with `--no-verify`, and never silence a gate with `eslint-dis
 
 ## Toolchain
 
-| Concern | Tool | Command | Never use |
-| --- | --- | --- | --- |
-| Type-check | **tsgo** (`@typescript/native-preview`) | `npm run typecheck` → `tsgo --noEmit` | `tsc`, `tsc --noEmit` |
-| Build | **nest build** (`tsconfig.build.json`) | `npm run build` | bare `tsc` |
-| Tests | **Vitest 4** + `@nestjs/testing` + `supertest` | `npm run test` → `vitest run` | Jest, ts-jest, `npx jest` |
-| Coverage | Vitest + istanbul | `npm run test:coverage` | nyc, c8 |
-| Lint | **ESLint 10** flat config + architecture plugin | `npm run lint` → `eslint` | — |
-| Format | **Prettier 3** (via ESLint) | `npm run format` | manual reflow |
+| Concern    | Tool                                            | Command                               | Never use                 |
+| ---------- | ----------------------------------------------- | ------------------------------------- | ------------------------- |
+| Type-check | **tsgo** (`@typescript/native-preview`)         | `npm run typecheck` → `tsgo --noEmit` | `tsc`, `tsc --noEmit`     |
+| Build      | **nest build** (`tsconfig.build.json`)          | `npm run build`                       | bare `tsc`                |
+| Tests      | **Vitest 4** + `@nestjs/testing` + `supertest`  | `npm run test` → `vitest run`         | Jest, ts-jest, `npx jest` |
+| Coverage   | Vitest + istanbul                               | `npm run test:coverage`               | nyc, c8                   |
+| Lint       | **ESLint 10** flat config + architecture plugin | `npm run lint` → `eslint`             | —                         |
+| Format     | **Prettier 3** (via ESLint)                     | `npm run format`                      | manual reflow             |
 
 `tsgo` type-checks only — it does not execute `.ts`. NestJS runs on **Fastify** by default; `@nestjs/platform-express` is installed so a project can switch platforms.
 

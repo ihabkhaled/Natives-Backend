@@ -1,6 +1,6 @@
 # Testing Strategy — Decisions
 
-> Durable record of *why* this workspace tests the way it does: the runner, the layers, the coverage floor, and TDD as the default. The enforceable rules live in [/rules/11-testing-and-coverage.md](../rules/11-testing-and-coverage.md); the executable standards live under [/testing/](../testing/README.md). This note captures the reasoning so future engineers extend the convention instead of relitigating it.
+> Durable record of _why_ this workspace tests the way it does: the runner, the layers, the coverage floor, and TDD as the default. The enforceable rules live in [/rules/11-testing-and-coverage.md](../rules/11-testing-and-coverage.md); the executable standards live under [/testing/](../testing/README.md). This note captures the reasoning so future engineers extend the convention instead of relitigating it.
 
 This is a memory note: decisions + rationale, written abstractly so any NestJS project can adopt them. Where a concrete project must record its own facts (test DB name, fixture seeds, flaky-test waivers), a **Project records:** line marks the slot.
 
@@ -11,6 +11,7 @@ This is a memory note: decisions + rationale, written abstractly so any NestJS p
 **Decision.** The test runner is **Vitest 4**, paired with **@nestjs/testing** for module wiring and **supertest** for HTTP. Jest, ts-jest, `tsc`-based test runs, and Mocha are out.
 
 **Rationale.**
+
 - Native ESM + TypeScript path-alias resolution (`@/*`, `@core/*`, `@modules/*`, …) without a separate transform config, matching the build toolchain in [backend-stack.md](./backend-stack.md).
 - `vi` doubles, fake timers, and module mocking cover everything Jest did, with faster cold starts and a shared Vite pipeline.
 - `@nestjs/testing` builds a real DI container so a unit test exercises the same providers, guards, and pipes the app uses — no hand-rolled wiring that drifts from production.
@@ -26,22 +27,25 @@ This is a memory note: decisions + rationale, written abstractly so any NestJS p
 
 **Decision.** Every change maps to one or more of three layers, mocking only at the dependency boundary.
 
-| Layer | Subject | Wiring | What is doubled |
-| --- | --- | --- | --- |
-| **Unit** | One class (service, use-case, domain policy, mapper, guard, pipe) | `Test.createTestingModule` with `useValue` doubles | All collaborators |
-| **Integration** | A controller through the real Nest pipeline (DTO → `ValidationPipe` → guards → handler → application) via **supertest** | Real Nest app + real guards/pipes/filter | Persistence + vendors (or a real test DB behind the repository) |
-| **E2E** | A workflow across modules/routes | Real wiring end-to-end | Only true third-party edges |
+| Layer           | Subject                                                                                                                 | Wiring                                             | What is doubled                                                 |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------- |
+| **Unit**        | One class (service, use-case, domain policy, mapper, guard, pipe)                                                       | `Test.createTestingModule` with `useValue` doubles | All collaborators                                               |
+| **Integration** | A controller through the real Nest pipeline (DTO → `ValidationPipe` → guards → handler → application) via **supertest** | Real Nest app + real guards/pipes/filter           | Persistence + vendors (or a real test DB behind the repository) |
+| **E2E**         | A workflow across modules/routes                                                                                        | Real wiring end-to-end                             | Only true third-party edges                                     |
 
 **Rationale.** The layered architecture ([/context/architecture-map.md](../context/architecture-map.md)) makes the boundary obvious: a service test mocks the repository; a domain test mocks nothing; an integration test boots the app and doubles only persistence/vendors. Mocking the subject proves nothing, so the rule is **mock dependencies, never the system under test**.
 
-**Consequence.** Vendors and SDKs are *always* doubled because they live behind adapters ([library-boundaries.md](./library-boundaries.md)) — double the adapter or the SDK inside it, never call a real provider (an email provider, object storage, an SMS gateway, a payment provider, a cache) from any test.
+**Consequence.** Vendors and SDKs are _always_ doubled because they live behind adapters ([library-boundaries.md](./library-boundaries.md)) — double the adapter or the SDK inside it, never call a real provider (an email provider, object storage, an SMS gateway, a payment provider, a cache) from any test.
 
 ```typescript
 // DO — unit: real service, doubled repository + logger, asserted at the boundary
 const moduleRef = await Test.createTestingModule({
   providers: [
     OrderService,
-    { provide: OrderRepository, useValue: { findById: vi.fn(), save: vi.fn() } },
+    {
+      provide: OrderRepository,
+      useValue: { findById: vi.fn(), save: vi.fn() },
+    },
     { provide: AppLogger, useValue: { info: vi.fn(), error: vi.fn() } },
   ],
 }).compile();
@@ -62,13 +66,14 @@ Recipes: [/skills/write-unit-tests.md](../skills/write-unit-tests.md), [/skills/
 **Decision.** The workspace coverage floor is **95%** across statements, branches, functions, and lines, enforced by `npm run test:coverage` on Husky `pre-push`. Critical paths run **near 100%**.
 
 **Rationale.**
+
 - A repo-wide average hides weak coverage on the file you just changed. The contract is: **touched modules sit above the floor.** A high global number never excuses an untested branch you introduced.
-- Coverage is a *floor, not a goal*. 100% lines through a single happy-path call is paperwork; branch + scenario coverage (Decision 5) is the real target.
+- Coverage is a _floor, not a goal_. 100% lines through a single happy-path call is paperwork; branch + scenario coverage (Decision 5) is the real target.
 - Critical surfaces — authentication, RBAC, ownership/tenant scoping, state-machine transitions, money or balance changes, transactional use-cases — carry the highest blast radius and run near 100%.
 
-**Excluded from the denominator** (declarative, no logic): `*.types.ts`, `*.enums.ts`, `*.constants.ts`, barrel `index.ts`, `model/**`, `@shared/{enums,constants,types}/**`, and migrations. This is *why* the zero-inline-declaration rules ([/rules/06-types-enums-constants.md](../rules/06-types-enums-constants.md)) double as coverage strategy: keeping types/enums/constants in their own files removes non-logic from the denominator, so the real logic in `*.service.ts`, `*.use-case.ts`, `domain/`, and `lib/` clears the bar honestly.
+**Excluded from the denominator** (declarative, no logic): `*.types.ts`, `*.enums.ts`, `*.constants.ts`, barrel `index.ts`, `model/**`, `@shared/{enums,constants,types}/**`, and migrations. This is _why_ the zero-inline-declaration rules ([/rules/06-types-enums-constants.md](../rules/06-types-enums-constants.md)) double as coverage strategy: keeping types/enums/constants in their own files removes non-logic from the denominator, so the real logic in `*.service.ts`, `*.use-case.ts`, `domain/`, and `lib/` clears the bar honestly.
 
-A genuinely unreachable defensive branch (a fall-through an earlier guard already prevents) may use a justified `/* istanbul ignore next */` with a comment explaining *why*. Rare exception, never a number-hitting tool.
+A genuinely unreachable defensive branch (a fall-through an earlier guard already prevents) may use a justified `/* istanbul ignore next */` with a comment explaining _why_. Rare exception, never a number-hitting tool.
 
 > **Project records:** any per-file threshold overrides, additional exclusion globs, and the location of the coverage report. Full policy: [/testing/coverage-policy.md](../testing/coverage-policy.md).
 
@@ -78,11 +83,11 @@ A genuinely unreachable defensive branch (a fall-through an earlier guard alread
 
 **Decision.** Write or update the test **first**. Behavior never changes without tests and docs in the same change.
 
-| Situation | What you write first |
-| --- | --- |
-| New behavior | A failing test naming the behavior, then the minimum code to green it. |
-| Bug fix | A test that **reproduces** the bug (red), then the fix (green) — that test is the permanent regression guard. |
-| Behavior change | Update the affected tests in the same change. |
+| Situation                 | What you write first                                                                                                                                |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| New behavior              | A failing test naming the behavior, then the minimum code to green it.                                                                              |
+| Bug fix                   | A test that **reproduces** the bug (red), then the fix (green) — that test is the permanent regression guard.                                       |
+| Behavior change           | Update the affected tests in the same change.                                                                                                       |
 | Refactor of untested code | **Characterization tests first** to pin today's behavior, then refactor; if a pinned quirk was a bug, change the test deliberately and call it out. |
 
 **Rationale.** Tests-first forces a testable design at the right boundary, makes the acceptance criterion explicit before code exists, and turns every fixed bug into a guard that prevents the regression class forever. A green build is not proof of correctness; a passing happy path is not proof of correctness. This decision is the hard contract in [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) #42 and [/rules/11-testing-and-coverage.md](../rules/11-testing-and-coverage.md) §1.
@@ -93,18 +98,20 @@ A genuinely unreachable defensive branch (a fall-through an earlier guard alread
 
 **Decision.** Every suite exercises the failure surface, not just the happy path. Unless explicitly justified in review, cover: happy path, validation failure (`400`, never `500`), not-found, ownership/tenant (IDOR), permission/RBAC (`403`), invalid state transition, boundaries (at/above/below limits and the hard list cap of 100), empty/null, idempotency/duplicate delivery, dependency failure + fallback, and fail-safe side effects.
 
-**Rationale.** The expensive bugs hide in the unhappy paths. Per-feature error keys, ownership checks, and bounded queries are only *proven* when a test drives the rejecting path. Fire-and-forget handlers ([/rules/19-async-events-and-jobs.md](../rules/19-async-events-and-jobs.md), [reliability-patterns.md](./reliability-patterns.md)) must be asserted to **swallow their own error** so a side-effect failure never rejects the caller.
+**Rationale.** The expensive bugs hide in the unhappy paths. Per-feature error keys, ownership checks, and bounded queries are only _proven_ when a test drives the rejecting path. Fire-and-forget handlers ([/rules/19-async-events-and-jobs.md](../rules/19-async-events-and-jobs.md), [reliability-patterns.md](./reliability-patterns.md)) must be asserted to **swallow their own error** so a side-effect failure never rejects the caller.
 
 ```typescript
 // DO — prove a fire-and-forget handler never breaks the workflow on side-effect failure
 it('swallows a notification failure and resolves without rejecting', async () => {
   notifier.send.mockRejectedValue(new Error('provider down'));
-  await expect(handler.onOrderPlaced(orderPlacedEvent)).resolves.toBeUndefined();
+  await expect(
+    handler.onOrderPlaced(orderPlacedEvent),
+  ).resolves.toBeUndefined();
   expect(logger.error).toHaveBeenCalled();
 });
 ```
 
-Security tests are mandatory on protected routes, preferably as integration so the real guard chain runs: AuthN (`401`), AuthZ/RBAC (`403`), ownership/tenant (identity from the verified token, never the client body — [security-decisions.md](./security-decisions.md)), validation (`400`), injection-safety (a `'; DROP …` value stays *data*; the repository stays parameterized and bounded — [database-decisions.md](./database-decisions.md)), and rate limit (`429`).
+Security tests are mandatory on protected routes, preferably as integration so the real guard chain runs: AuthN (`401`), AuthZ/RBAC (`403`), ownership/tenant (identity from the verified token, never the client body — [security-decisions.md](./security-decisions.md)), validation (`400`), injection-safety (a `'; DROP …` value stays _data_; the repository stays parameterized and bounded — [database-decisions.md](./database-decisions.md)), and rate limit (`429`).
 
 > **Project records:** which routes are security-critical, and any approved scenario waivers with their justification.
 

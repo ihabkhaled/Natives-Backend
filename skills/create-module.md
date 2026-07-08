@@ -8,13 +8,13 @@ A genuinely new bounded capability that does not fit any existing module. If it 
 
 ## Rules this skill enforces
 
-| # | Rule | Source |
-| --- | --- | --- |
-| 1 | One module = the layers mirrored; deps point inward/downward only | [01-architecture-and-module-boundaries.md](../rules/01-architecture-and-module-boundaries.md) |
-| 2 | No cross-module internal imports — consume another module via its `index.ts` or events | [00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) #24 |
-| 3 | Zero inline types/enums/consts/DTOs/maps in layer files → `model/` | [06-types-enums-constants.md](../rules/06-types-enums-constants.md) |
-| 4 | Default to a Service; escalate to a Use case only for multi-entity/transactional work | [03-application-services-and-use-cases.md](../rules/03-application-services-and-use-cases.md) |
-| 5 | Tests first; touched-module coverage floor 95% | [11-testing-and-coverage.md](../rules/11-testing-and-coverage.md) |
+| #   | Rule                                                                                   | Source                                                                                        |
+| --- | -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| 1   | One module = the layers mirrored; deps point inward/downward only                      | [01-architecture-and-module-boundaries.md](../rules/01-architecture-and-module-boundaries.md) |
+| 2   | No cross-module internal imports — consume another module via its `index.ts` or events | [00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) #24                         |
+| 3   | Zero inline types/enums/consts/DTOs/maps in layer files → `model/`                     | [06-types-enums-constants.md](../rules/06-types-enums-constants.md)                           |
+| 4   | Default to a Service; escalate to a Use case only for multi-entity/transactional work  | [03-application-services-and-use-cases.md](../rules/03-application-services-and-use-cases.md) |
+| 5   | Tests first; touched-module coverage floor 95%                                         | [11-testing-and-coverage.md](../rules/11-testing-and-coverage.md)                             |
 
 ---
 

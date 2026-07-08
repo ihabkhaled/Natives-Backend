@@ -10,14 +10,14 @@ This is a **memory** note: a convention you inherit, not a proposal to re-litiga
 
 **Adopt a layered modular-monolith NestJS architecture with one-way dependencies, a fixed module anatomy, and machine-enforced import boundaries.** Build for microservice extraction later without committing to it now.
 
-| Aspect | Decision |
-| --- | --- |
-| Topology | Modular monolith: one deployable Nest app, internally split into feature modules with strict boundaries |
-| Layering | Controller → Application (use case / service) → Domain → Persistence → Integration; deps point **inward/downward only** |
-| Unit of work | The **feature module** (`src/modules/<feature>/`) — scaffold, review, and test at this granularity |
-| Cross-cutting | `src/core` (logger, errors, guards, interceptors, pipes, events) and `src/shared` (enums, constants, types, utils) |
-| Default building block | A **service**; escalate to a **use case** only for multi-entity transactional orchestration |
-| Enforcement | Strict TS + ESLint custom `architecture/*` plugin + Husky gates — not convention-by-hope |
+| Aspect                 | Decision                                                                                                                |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Topology               | Modular monolith: one deployable Nest app, internally split into feature modules with strict boundaries                 |
+| Layering               | Controller → Application (use case / service) → Domain → Persistence → Integration; deps point **inward/downward only** |
+| Unit of work           | The **feature module** (`src/modules/<feature>/`) — scaffold, review, and test at this granularity                      |
+| Cross-cutting          | `src/core` (logger, errors, guards, interceptors, pipes, events) and `src/shared` (enums, constants, types, utils)      |
+| Default building block | A **service**; escalate to a **use case** only for multi-entity transactional orchestration                             |
+| Enforcement            | Strict TS + ESLint custom `architecture/*` plugin + Husky gates — not convention-by-hope                                |
 
 > **Project records:** `<this project's domain, deployable name, and list of feature modules>`. Record the concrete module list here as the codebase grows so newcomers and agents can map the abstract layers onto real folders.
 
@@ -115,16 +115,16 @@ See [`03-application-services-and-use-cases.md`](../rules/03-application-service
 
 ## Cross-cutting layout (`src/core`, `src/shared`, `config`, `bootstrap`)
 
-| Location | Owns | Records to keep |
-| --- | --- | --- |
-| `config/` | Typed config via `@nestjs/config` + startup validation. **One of two places** `process.env` may be read. | [`17-configuration-and-environment.md`](../rules/17-configuration-and-environment.md) |
-| `bootstrap/` | App assembly: pipes, filters, OpenAPI, listen. The other place `process.env` is allowed. | — |
-| `core/logger/` | Logger adapter. Never `console.*`. | [`14-observability-and-logging.md`](../rules/14-observability-and-logging.md) |
-| `core/errors/` | Typed `AppError` hierarchy + global exception filter; `messageKey` of form `errors.<feature>.<key>`. | [`18-error-handling-and-exceptions.md`](../rules/18-error-handling-and-exceptions.md) |
-| `core/guards/` | Auth guard + permissions (RBAC) guard + ownership/tenant check. | [`07-security-authn-authz.md`](../rules/07-security-authn-authz.md) |
-| `core/events/` | Event bus / emitter wrapper for post-commit, fail-safe handlers. | [`19-async-events-and-jobs.md`](../rules/19-async-events-and-jobs.md) |
-| `shared/enums/` | All domain enums, barrel-exported, each with a `*_VALUES` array. | [`06-types-enums-constants.md`](../rules/06-types-enums-constants.md) |
-| `shared/{constants,types,utils}/` | Dependency-light building blocks. `shared/` imports only `shared/`. | — |
+| Location                          | Owns                                                                                                     | Records to keep                                                                       |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `config/`                         | Typed config via `@nestjs/config` + startup validation. **One of two places** `process.env` may be read. | [`17-configuration-and-environment.md`](../rules/17-configuration-and-environment.md) |
+| `bootstrap/`                      | App assembly: pipes, filters, OpenAPI, listen. The other place `process.env` is allowed.                 | —                                                                                     |
+| `core/logger/`                    | Logger adapter. Never `console.*`.                                                                       | [`14-observability-and-logging.md`](../rules/14-observability-and-logging.md)         |
+| `core/errors/`                    | Typed `AppError` hierarchy + global exception filter; `messageKey` of form `errors.<feature>.<key>`.     | [`18-error-handling-and-exceptions.md`](../rules/18-error-handling-and-exceptions.md) |
+| `core/guards/`                    | Auth guard + permissions (RBAC) guard + ownership/tenant check.                                          | [`07-security-authn-authz.md`](../rules/07-security-authn-authz.md)                   |
+| `core/events/`                    | Event bus / emitter wrapper for post-commit, fail-safe handlers.                                         | [`19-async-events-and-jobs.md`](../rules/19-async-events-and-jobs.md)                 |
+| `shared/enums/`                   | All domain enums, barrel-exported, each with a `*_VALUES` array.                                         | [`06-types-enums-constants.md`](../rules/06-types-enums-constants.md)                 |
+| `shared/{constants,types,utils}/` | Dependency-light building blocks. `shared/` imports only `shared/`.                                      | —                                                                                     |
 
 Path aliases (kept in sync across `tsconfig` and the Vitest config): `@/*`, `@app/*`, `@config/*`, `@core/*`, `@modules/*`, `@shared/*`.
 
@@ -154,15 +154,15 @@ To adapt naming for a project, change the layer/suffix mapping in the architectu
 
 ## What is fixed vs. what each project decides
 
-| Fixed (the standing decision) | Each project decides (record it) |
-| --- | --- |
-| Layer order + one-way deps | Business domain and module list |
-| Module anatomy + naming | ORM/database (behind the repository) |
-| Service-default / use-case-escalation | External vendors (behind adapters) |
-| `messageKey` error convention | Supported locales (one key per supported locale) |
-| Auth + RBAC + ownership chain on protected routes | Concrete permission/role catalog |
-| Repository pagination cap (max 100) | Page sizes within the cap |
-| Test stack (Vitest + `@nestjs/testing` + supertest), 95% floor | Per-module critical-path targets |
+| Fixed (the standing decision)                                  | Each project decides (record it)                 |
+| -------------------------------------------------------------- | ------------------------------------------------ |
+| Layer order + one-way deps                                     | Business domain and module list                  |
+| Module anatomy + naming                                        | ORM/database (behind the repository)             |
+| Service-default / use-case-escalation                          | External vendors (behind adapters)               |
+| `messageKey` error convention                                  | Supported locales (one key per supported locale) |
+| Auth + RBAC + ownership chain on protected routes              | Concrete permission/role catalog                 |
+| Repository pagination cap (max 100)                            | Page sizes within the cap                        |
+| Test stack (Vitest + `@nestjs/testing` + supertest), 95% floor | Per-module critical-path targets                 |
 
 Companion records: [`backend-stack.md`](./backend-stack.md), [`database-decisions.md`](./database-decisions.md), [`security-decisions.md`](./security-decisions.md), [`library-boundaries.md`](./library-boundaries.md), [`testing-strategy.md`](./testing-strategy.md), [`known-pitfalls.md`](./known-pitfalls.md).
 

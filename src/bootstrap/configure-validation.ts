@@ -18,6 +18,8 @@ export async function configureValidation(
       whitelist: true,
       forbidNonWhitelisted: true,
       transform: true,
+      transformOptions: { enableImplicitConversion: false },
+      stopAtFirstError: false,
       exceptionFactory: createValidationExceptionFactory(logger),
     }),
   );

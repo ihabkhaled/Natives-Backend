@@ -52,15 +52,15 @@ Use only for production-impacting incidents, urgent legal obligations, major sec
 
 ## Roles and Responsibility Mapping
 
-| Responsibility | Typical role |
-| --- | --- |
-| Request intake owner | Delivery lead, PM, EM, or triage lead |
-| Business owner | Product owner, business analyst, stakeholder sponsor |
-| Technical owner | Engineering lead, architect, senior engineer |
-| Quality owner | QA lead or quality engineering lead |
-| Security owner | AppSec lead, security engineer, security reviewer |
-| Operations owner | SRE lead, DevOps lead, platform lead |
-| Release approver | Release manager, EM, product lead, delegated approver |
+| Responsibility       | Typical role                                          |
+| -------------------- | ----------------------------------------------------- |
+| Request intake owner | Delivery lead, PM, EM, or triage lead                 |
+| Business owner       | Product owner, business analyst, stakeholder sponsor  |
+| Technical owner      | Engineering lead, architect, senior engineer          |
+| Quality owner        | QA lead or quality engineering lead                   |
+| Security owner       | AppSec lead, security engineer, security reviewer     |
+| Operations owner     | SRE lead, DevOps lead, platform lead                  |
+| Release approver     | Release manager, EM, product lead, delegated approver |
 
 If local titles differ, document the mapping explicitly and keep it updated.
 

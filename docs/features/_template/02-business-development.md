@@ -19,8 +19,8 @@ Confirm the request makes sense commercially, strategically, and contractually.
 ## Target Segment or Accounts
 
 | Segment / account | Why it matters | Expected impact |
-| --- | --- | --- |
-| | | |
+| ----------------- | -------------- | --------------- |
+|                   |                |                 |
 
 ## Contract and SLA Impact
 
@@ -57,9 +57,9 @@ Confirm the request makes sense commercially, strategically, and contractually.
 
 ## Sign-Off
 
-| Role | Name | Decision | Date |
-| --- | --- | --- | --- |
-| Business owner | | approve / revise | |
+| Role           | Name | Decision         | Date |
+| -------------- | ---- | ---------------- | ---- |
+| Business owner |      | approve / revise |      |
 
 ## Evidence And References To Attach
 

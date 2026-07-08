@@ -6,14 +6,14 @@ Record the actual production deployment and its immediate outcome.
 
 ## Release Summary
 
-| Field | Value |
-| --- | --- |
-| Release date | |
-| Release owner | |
-| Environment | |
-| Version / build | |
-| Rollout method | |
-| Feature flags | |
+| Field           | Value |
+| --------------- | ----- |
+| Release date    |       |
+| Release owner   |       |
+| Environment     |       |
+| Version / build |       |
+| Rollout method  |       |
+| Feature flags   |       |
 
 ## Deployment Steps Executed
 
@@ -23,9 +23,9 @@ Record the actual production deployment and its immediate outcome.
 
 ## Smoke Test Results
 
-| Smoke test | Result | Notes |
-| --- | --- | --- |
-| | pass / fail | |
+| Smoke test | Result      | Notes |
+| ---------- | ----------- | ----- |
+|            | pass / fail |       |
 
 ## Production Checks
 

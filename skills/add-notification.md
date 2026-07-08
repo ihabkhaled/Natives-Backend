@@ -6,16 +6,16 @@ A notification is a **side effect**, not part of the request's success path. Nev
 
 ## Rules this skill enforces
 
-| Concern | Rule |
-| --- | --- |
-| Side effects are fire-and-forget + self-catching | rule 38 — [10-reliability-and-durability.md](../rules/10-reliability-and-durability.md) |
-| External provider wrapped behind an adapter | rule 32, 41 — [12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md) |
-| Notification triggered by an event, not inline | [19-async-events-and-jobs.md](../rules/19-async-events-and-jobs.md) |
-| Copy localized per locale via `messageKey` | rule 30 — [16-i18n-and-messaging.md](../rules/16-i18n-and-messaging.md) |
-| Typed config (provider keys), never `process.env` | rule 27 — [17-configuration-and-environment.md](../rules/17-configuration-and-environment.md) |
-| Logger adapter, redact PII; no `console.*` | rule 28, 40 — [14-observability-and-logging.md](../rules/14-observability-and-logging.md) |
-| No inline types/enums/constants in layer files | rules 10–16 — [06-types-enums-constants.md](../rules/06-types-enums-constants.md) |
-| Typed `AppError` for provider failures | rule 26 — [18-error-handling-and-exceptions.md](../rules/18-error-handling-and-exceptions.md) |
+| Concern                                           | Rule                                                                                              |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Side effects are fire-and-forget + self-catching  | rule 38 — [10-reliability-and-durability.md](../rules/10-reliability-and-durability.md)           |
+| External provider wrapped behind an adapter       | rule 32, 41 — [12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md) |
+| Notification triggered by an event, not inline    | [19-async-events-and-jobs.md](../rules/19-async-events-and-jobs.md)                               |
+| Copy localized per locale via `messageKey`        | rule 30 — [16-i18n-and-messaging.md](../rules/16-i18n-and-messaging.md)                           |
+| Typed config (provider keys), never `process.env` | rule 27 — [17-configuration-and-environment.md](../rules/17-configuration-and-environment.md)     |
+| Logger adapter, redact PII; no `console.*`        | rule 28, 40 — [14-observability-and-logging.md](../rules/14-observability-and-logging.md)         |
+| No inline types/enums/constants in layer files    | rules 10–16 — [06-types-enums-constants.md](../rules/06-types-enums-constants.md)                 |
+| Typed `AppError` for provider failures            | rule 26 — [18-error-handling-and-exceptions.md](../rules/18-error-handling-and-exceptions.md)     |
 
 ---
 
@@ -85,9 +85,20 @@ export function buildVerificationMessage(
   event: AccountVerifiedEvent,
   i18n: I18nService,
 ): OutboundMessage {
-  const subject = i18n.translate('notifications.account.verified.subject', event.locale);
-  const body = i18n.translate('notifications.account.verified.body', event.locale);
-  return { channel: NotificationChannel.Email, locale: event.locale, subject, body };
+  const subject = i18n.translate(
+    'notifications.account.verified.subject',
+    event.locale,
+  );
+  const body = i18n.translate(
+    'notifications.account.verified.body',
+    event.locale,
+  );
+  return {
+    channel: NotificationChannel.Email,
+    locale: event.locale,
+    subject,
+    body,
+  };
 }
 ```
 

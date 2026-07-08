@@ -6,15 +6,15 @@ Use when a fact in one feature must trigger an independent reaction (notificatio
 
 ## Rules this skill enforces
 
-| # | Rule |
-| --- | --- |
-| 24 | Cross-module reactions go through events, never internal imports. The handler lives in the consuming module. |
-| 38 | Side effects are fail-safe — the handler catches its own errors; a delivery failure never aborts the publisher. |
-| 8, 13 | Event name is a constant in `model/`; no magic strings, no inline literals. |
-| 10–16 | Payload type lives in `model/<feature>.types.ts` — no inline shapes in the handler. |
-| 12 | The emitter is reached only through `@core/events`; never import the vendor library in a handler. |
-| 28 | Log via the logger adapter (`@core/logger`); never `console.*`. Carry the correlation id. |
-| 42 | Tests + docs ship in the same change; write the test first. |
+| #     | Rule                                                                                                            |
+| ----- | --------------------------------------------------------------------------------------------------------------- |
+| 24    | Cross-module reactions go through events, never internal imports. The handler lives in the consuming module.    |
+| 38    | Side effects are fail-safe — the handler catches its own errors; a delivery failure never aborts the publisher. |
+| 8, 13 | Event name is a constant in `model/`; no magic strings, no inline literals.                                     |
+| 10–16 | Payload type lives in `model/<feature>.types.ts` — no inline shapes in the handler.                             |
+| 12    | The emitter is reached only through `@core/events`; never import the vendor library in a handler.               |
+| 28    | Log via the logger adapter (`@core/logger`); never `console.*`. Carry the correlation id.                       |
+| 42    | Tests + docs ship in the same change; write the test first.                                                     |
 
 Detail: [/rules/19-async-events-and-jobs.md](../rules/19-async-events-and-jobs.md) · [/rules/10-reliability-and-durability.md](../rules/10-reliability-and-durability.md).
 
@@ -130,7 +130,9 @@ Add the handler to the consuming module's `providers`. Update the registered-han
 
 ```ts
 // modules/notification/notification.module.ts
-@Module({ providers: [WelcomeNotificationService, NotifyOnAccountVerifiedHandler] })
+@Module({
+  providers: [WelcomeNotificationService, NotifyOnAccountVerifiedHandler],
+})
 export class NotificationModule {}
 ```
 
@@ -165,7 +167,7 @@ Never bypass Husky with `--no-verify`.
 - **Throwing out of the handler** — the most repeated reliability bug. The `catch` is mandatory; a delivery failure is logged, never rethrown into the publisher (rule 38).
 - **Forgetting the listener-count bump** — a silently-unregistered handler passes the success test but never fires in production. The count assertion is what catches it.
 - **Awaiting the handler in the request path** — re-couples the caller to the side effect's latency and failure. Emit and move on; the bus dispatches.
-- **Handler in the wrong module** — it belongs in the *consuming* feature. Putting it in the publisher reintroduces the coupling events exist to remove.
+- **Handler in the wrong module** — it belongs in the _consuming_ feature. Putting it in the publisher reintroduces the coupling events exist to remove.
 - **Importing the emitter library directly** — it is wrapped in `@core/events`; a handler depends on `@OnEvent`, never the vendor SDK (rule 12).
 - **Magic-string event name or inline payload type** — both are ESLint failures; the name lives in `model/<feature>.enums.ts`, the payload in `model/<feature>.types.ts`.
 - **Non-idempotent reaction** — re-delivery double-sends. Dedupe on a stable key in the service.

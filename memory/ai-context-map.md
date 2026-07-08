@@ -14,15 +14,15 @@
 
 ## The orientation sequence (read in this order)
 
-| Step | Read | Why |
-| --- | --- | --- |
-| 1 | [/claude.md](../claude.md) (and the tool entry file the project uses) | The operating brain + SDLC gates. Establishes phases and authority. |
-| 2 | [00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) | The 42 hard rules. If a request conflicts, the rule wins. |
-| 3 | [/context/architecture-map.md](../context/architecture-map.md) | The single source of truth for layers, boundaries, and the module tree. |
-| 4 | [/context/stack-and-toolchain.md](../context/stack-and-toolchain.md) | Toolchain, aliases, exact commands. |
-| 5 | [known-pitfalls.md](./known-pitfalls.md) | Recurring mistakes to avoid before editing. |
-| 6 | The **task-specific rule + skill** (tables below) | The narrow standard for the layer you are about to touch. |
-| 7 | [/context/codebase-navigation.md](../context/codebase-navigation.md) + [/context/reference-patterns.md](../context/reference-patterns.md) | Where the real files live + copy-ready patterns. |
+| Step | Read                                                                                                                                      | Why                                                                     |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| 1    | [/claude.md](../claude.md) (and the tool entry file the project uses)                                                                     | The operating brain + SDLC gates. Establishes phases and authority.     |
+| 2    | [00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md)                                                                         | The 42 hard rules. If a request conflicts, the rule wins.               |
+| 3    | [/context/architecture-map.md](../context/architecture-map.md)                                                                            | The single source of truth for layers, boundaries, and the module tree. |
+| 4    | [/context/stack-and-toolchain.md](../context/stack-and-toolchain.md)                                                                      | Toolchain, aliases, exact commands.                                     |
+| 5    | [known-pitfalls.md](./known-pitfalls.md)                                                                                                  | Recurring mistakes to avoid before editing.                             |
+| 6    | The **task-specific rule + skill** (tables below)                                                                                         | The narrow standard for the layer you are about to touch.               |
+| 7    | [/context/codebase-navigation.md](../context/codebase-navigation.md) + [/context/reference-patterns.md](../context/reference-patterns.md) | Where the real files live + copy-ready patterns.                        |
 
 Steps 1–5 are the **constant warm-up** for any task. Steps 6–7 are **change-specific**.
 
@@ -32,22 +32,22 @@ Steps 1–5 are the **constant warm-up** for any task. Steps 6–7 are **change-
 
 Pick the row that matches the change, then read its rule and run its skill.
 
-| You are about to… | Rule | Skill |
-| --- | --- | --- |
-| Scaffold a feature module | [01-architecture-and-module-boundaries.md](../rules/01-architecture-and-module-boundaries.md) | [create-module.md](../skills/create-module.md) |
-| Add/edit a controller | [02-controllers-and-http-transport.md](../rules/02-controllers-and-http-transport.md) | [create-controller.md](../skills/create-controller.md) |
-| Add multi-step/transactional orchestration | [03-application-services-and-use-cases.md](../rules/03-application-services-and-use-cases.md) | [create-use-case.md](../skills/create-use-case.md) |
-| Add a focused capability | [03-application-services-and-use-cases.md](../rules/03-application-services-and-use-cases.md) | [create-service.md](../skills/create-service.md) |
-| Touch persistence | [04-repositories-and-persistence.md](../rules/04-repositories-and-persistence.md) | [create-repository.md](../skills/create-repository.md) |
-| Add/validate a DTO | [05-dto-and-validation.md](../rules/05-dto-and-validation.md) | [create-dto-validation.md](../skills/create-dto-validation.md) |
-| Add a type/enum/constant | [06-types-enums-constants.md](../rules/06-types-enums-constants.md) | [decompose-large-file.md](../skills/decompose-large-file.md) |
-| Add a guard / permission | [07-security-authn-authz.md](../rules/07-security-authn-authz.md) | [add-guard-and-permission.md](../skills/add-guard-and-permission.md) |
-| Wrap an external library | [12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md) | [add-library-adapter.md](../skills/add-library-adapter.md) |
-| Emit/handle an event or job | [19-async-events-and-jobs.md](../rules/19-async-events-and-jobs.md) | [add-event-handler.md](../skills/add-event-handler.md) |
-| Add a config value | [17-configuration-and-environment.md](../rules/17-configuration-and-environment.md) | [add-config-value.md](../skills/add-config-value.md) |
-| Define/raise an error | [18-error-handling-and-exceptions.md](../rules/18-error-handling-and-exceptions.md) | [create-error.md](../skills/create-error.md) |
-| Add a message key / locale string | [16-i18n-and-messaging.md](../rules/16-i18n-and-messaging.md) | [add-i18n-message-key.md](../skills/add-i18n-message-key.md) |
-| Schema change / backfill | [08-database-and-injection-safety.md](../rules/08-database-and-injection-safety.md) | [migration-plan.md](../skills/migration-plan.md) |
+| You are about to…                          | Rule                                                                                          | Skill                                                                |
+| ------------------------------------------ | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Scaffold a feature module                  | [01-architecture-and-module-boundaries.md](../rules/01-architecture-and-module-boundaries.md) | [create-module.md](../skills/create-module.md)                       |
+| Add/edit a controller                      | [02-controllers-and-http-transport.md](../rules/02-controllers-and-http-transport.md)         | [create-controller.md](../skills/create-controller.md)               |
+| Add multi-step/transactional orchestration | [03-application-services-and-use-cases.md](../rules/03-application-services-and-use-cases.md) | [create-use-case.md](../skills/create-use-case.md)                   |
+| Add a focused capability                   | [03-application-services-and-use-cases.md](../rules/03-application-services-and-use-cases.md) | [create-service.md](../skills/create-service.md)                     |
+| Touch persistence                          | [04-repositories-and-persistence.md](../rules/04-repositories-and-persistence.md)             | [create-repository.md](../skills/create-repository.md)               |
+| Add/validate a DTO                         | [05-dto-and-validation.md](../rules/05-dto-and-validation.md)                                 | [create-dto-validation.md](../skills/create-dto-validation.md)       |
+| Add a type/enum/constant                   | [06-types-enums-constants.md](../rules/06-types-enums-constants.md)                           | [decompose-large-file.md](../skills/decompose-large-file.md)         |
+| Add a guard / permission                   | [07-security-authn-authz.md](../rules/07-security-authn-authz.md)                             | [add-guard-and-permission.md](../skills/add-guard-and-permission.md) |
+| Wrap an external library                   | [12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md)           | [add-library-adapter.md](../skills/add-library-adapter.md)           |
+| Emit/handle an event or job                | [19-async-events-and-jobs.md](../rules/19-async-events-and-jobs.md)                           | [add-event-handler.md](../skills/add-event-handler.md)               |
+| Add a config value                         | [17-configuration-and-environment.md](../rules/17-configuration-and-environment.md)           | [add-config-value.md](../skills/add-config-value.md)                 |
+| Define/raise an error                      | [18-error-handling-and-exceptions.md](../rules/18-error-handling-and-exceptions.md)           | [create-error.md](../skills/create-error.md)                         |
+| Add a message key / locale string          | [16-i18n-and-messaging.md](../rules/16-i18n-and-messaging.md)                                 | [add-i18n-message-key.md](../skills/add-i18n-message-key.md)         |
+| Schema change / backfill                   | [08-database-and-injection-safety.md](../rules/08-database-and-injection-safety.md)           | [migration-plan.md](../skills/migration-plan.md)                     |
 
 ---
 
@@ -55,17 +55,17 @@ Pick the row that matches the change, then read its rule and run its skill.
 
 When the task is "review / harden / validate" rather than "build", read the rule and invoke the matching agent.
 
-| Goal | Rule | Agent |
-| --- | --- | --- |
-| Architecture / boundary fit | [01-architecture-and-module-boundaries.md](../rules/01-architecture-and-module-boundaries.md) | [backend-architect.md](../agents/backend-architect.md) |
-| General correctness review | [15-review-checklist.md](../rules/15-review-checklist.md) | [backend-code-reviewer.md](../agents/backend-code-reviewer.md) |
-| Security & authz | [07-security-authn-authz.md](../rules/07-security-authn-authz.md) | [backend-security-reviewer.md](../agents/backend-security-reviewer.md) |
-| Injection / data safety | [08-database-and-injection-safety.md](../rules/08-database-and-injection-safety.md) | [database-reviewer.md](../agents/database-reviewer.md) |
-| Performance / scalability | [09-performance-and-scalability.md](../rules/09-performance-and-scalability.md) | [backend-performance-reviewer.md](../agents/backend-performance-reviewer.md) |
-| Reliability / durability | [10-reliability-and-durability.md](../rules/10-reliability-and-durability.md) | [reliability-engineer.md](../agents/reliability-engineer.md) |
-| Observability | [14-observability-and-logging.md](../rules/14-observability-and-logging.md) | [observability-reviewer.md](../agents/observability-reviewer.md) |
-| Tests / coverage | [11-testing-and-coverage.md](../rules/11-testing-and-coverage.md) | [backend-test-engineer.md](../agents/backend-test-engineer.md) |
-| Release gate | [15-review-checklist.md](../rules/15-review-checklist.md) | [backend-release-gatekeeper.md](../agents/backend-release-gatekeeper.md) |
+| Goal                        | Rule                                                                                          | Agent                                                                        |
+| --------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Architecture / boundary fit | [01-architecture-and-module-boundaries.md](../rules/01-architecture-and-module-boundaries.md) | [backend-architect.md](../agents/backend-architect.md)                       |
+| General correctness review  | [15-review-checklist.md](../rules/15-review-checklist.md)                                     | [backend-code-reviewer.md](../agents/backend-code-reviewer.md)               |
+| Security & authz            | [07-security-authn-authz.md](../rules/07-security-authn-authz.md)                             | [backend-security-reviewer.md](../agents/backend-security-reviewer.md)       |
+| Injection / data safety     | [08-database-and-injection-safety.md](../rules/08-database-and-injection-safety.md)           | [database-reviewer.md](../agents/database-reviewer.md)                       |
+| Performance / scalability   | [09-performance-and-scalability.md](../rules/09-performance-and-scalability.md)               | [backend-performance-reviewer.md](../agents/backend-performance-reviewer.md) |
+| Reliability / durability    | [10-reliability-and-durability.md](../rules/10-reliability-and-durability.md)                 | [reliability-engineer.md](../agents/reliability-engineer.md)                 |
+| Observability               | [14-observability-and-logging.md](../rules/14-observability-and-logging.md)                   | [observability-reviewer.md](../agents/observability-reviewer.md)             |
+| Tests / coverage            | [11-testing-and-coverage.md](../rules/11-testing-and-coverage.md)                             | [backend-test-engineer.md](../agents/backend-test-engineer.md)               |
+| Release gate                | [15-review-checklist.md](../rules/15-review-checklist.md)                                     | [backend-release-gatekeeper.md](../agents/backend-release-gatekeeper.md)     |
 
 ---
 
@@ -73,19 +73,19 @@ When the task is "review / harden / validate" rather than "build", read the rule
 
 Read these when a decision needs prior rationale — not on every task.
 
-| Question | Memory note |
-| --- | --- |
-| What stack/toolchain did we standardize on? | [backend-stack.md](./backend-stack.md) |
-| Why is the architecture shaped this way? | [project-architecture.md](./project-architecture.md) |
-| What ORM / data conventions apply? | [database-decisions.md](./database-decisions.md) |
-| How is auth/authz modeled? | [security-decisions.md](./security-decisions.md) |
-| What performance trade-offs exist? | [performance-decisions.md](./performance-decisions.md) |
-| What reliability patterns are canonical? | [reliability-patterns.md](./reliability-patterns.md) |
-| How do we log/trace/alert? | [observability-decisions.md](./observability-decisions.md) |
-| How do events/notifications flow? | [event-notification-decisions.md](./event-notification-decisions.md) |
-| Which libraries are wrapped, and why? | [library-boundaries.md](./library-boundaries.md) |
-| How do we test? | [testing-strategy.md](./testing-strategy.md) |
-| What blocks a release? | [release-checklist.md](./release-checklist.md) |
+| Question                                    | Memory note                                                          |
+| ------------------------------------------- | -------------------------------------------------------------------- |
+| What stack/toolchain did we standardize on? | [backend-stack.md](./backend-stack.md)                               |
+| Why is the architecture shaped this way?    | [project-architecture.md](./project-architecture.md)                 |
+| What ORM / data conventions apply?          | [database-decisions.md](./database-decisions.md)                     |
+| How is auth/authz modeled?                  | [security-decisions.md](./security-decisions.md)                     |
+| What performance trade-offs exist?          | [performance-decisions.md](./performance-decisions.md)               |
+| What reliability patterns are canonical?    | [reliability-patterns.md](./reliability-patterns.md)                 |
+| How do we log/trace/alert?                  | [observability-decisions.md](./observability-decisions.md)           |
+| How do events/notifications flow?           | [event-notification-decisions.md](./event-notification-decisions.md) |
+| Which libraries are wrapped, and why?       | [library-boundaries.md](./library-boundaries.md)                     |
+| How do we test?                             | [testing-strategy.md](./testing-strategy.md)                         |
+| What blocks a release?                      | [release-checklist.md](./release-checklist.md)                       |
 
 > Project records: list any project-specific memory notes (third-party SLAs, tenancy model, region/compliance constraints) added beyond this set here.
 

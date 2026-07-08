@@ -8,16 +8,16 @@ Toolchain is fixed: **Vitest 4** (`@vitest/coverage-istanbul`) + **@nestjs/testi
 
 ## The documents in this folder
 
-| Doc | Owns |
-| --- | --- |
-| [testing-strategy.md](./testing-strategy.md) | The pyramid, what each layer proves, when to write which test |
-| [unit-testing-standard.md](./unit-testing-standard.md) | Isolated domain/service/policy tests with mocked collaborators |
-| [integration-testing-standard.md](./integration-testing-standard.md) | Module wiring + real persistence behind the repository |
-| [e2e-testing-standard.md](./e2e-testing-standard.md) | Full HTTP boot via `@nestjs/testing` + `supertest` |
-| [coverage-policy.md](./coverage-policy.md) | The 95% floor, touched-module measurement, waivers |
-| [test-data-and-fixtures.md](./test-data-and-fixtures.md) | Builders/factories, deterministic data, isolation & cleanup |
-| [quality-gates.md](./quality-gates.md) | The exact commands that must be green before "done" |
-| [bug-triage-and-retest.md](./bug-triage-and-retest.md) | Severity, root-cause, regression test, retest evidence |
+| Doc                                                                  | Owns                                                           |
+| -------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [testing-strategy.md](./testing-strategy.md)                         | The pyramid, what each layer proves, when to write which test  |
+| [unit-testing-standard.md](./unit-testing-standard.md)               | Isolated domain/service/policy tests with mocked collaborators |
+| [integration-testing-standard.md](./integration-testing-standard.md) | Module wiring + real persistence behind the repository         |
+| [e2e-testing-standard.md](./e2e-testing-standard.md)                 | Full HTTP boot via `@nestjs/testing` + `supertest`             |
+| [coverage-policy.md](./coverage-policy.md)                           | The 95% floor, touched-module measurement, waivers             |
+| [test-data-and-fixtures.md](./test-data-and-fixtures.md)             | Builders/factories, deterministic data, isolation & cleanup    |
+| [quality-gates.md](./quality-gates.md)                               | The exact commands that must be green before "done"            |
+| [bug-triage-and-retest.md](./bug-triage-and-retest.md)               | Severity, root-cause, regression test, retest evidence         |
 
 ---
 
@@ -48,12 +48,12 @@ Toolchain is fixed: **Vitest 4** (`@vitest/coverage-istanbul`) + **@nestjs/testi
 
 ## What each layer proves
 
-| Layer | Subject under test | Collaborators | Asserts |
-| --- | --- | --- | --- |
-| **Unit** | `domain/` policies & entities, `<feature>.service.ts`, `lib/` mappers/helpers, guards, pipes | Mocked (repository, adapters, clock) | Business rules, error paths, `messageKey`, branch coverage |
-| **Integration** | `<feature>.module`, use-case + service + repository together | Real DB behind the repository; adapters mocked | Wiring, transactions, post-commit events, persisted state |
-| **DTO / contract** | `api/dto/*.dto.ts` via the global `ValidationPipe` | None | `whitelist`/`transform`, boundaries, rejected payloads |
-| **E2E** | Booted Nest app over HTTP | Real guards/pipes/filter; integrations behind mock adapters | Status codes, auth+RBAC+ownership chain, sanitized error body |
+| Layer              | Subject under test                                                                           | Collaborators                                               | Asserts                                                       |
+| ------------------ | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------- |
+| **Unit**           | `domain/` policies & entities, `<feature>.service.ts`, `lib/` mappers/helpers, guards, pipes | Mocked (repository, adapters, clock)                        | Business rules, error paths, `messageKey`, branch coverage    |
+| **Integration**    | `<feature>.module`, use-case + service + repository together                                 | Real DB behind the repository; adapters mocked              | Wiring, transactions, post-commit events, persisted state     |
+| **DTO / contract** | `api/dto/*.dto.ts` via the global `ValidationPipe`                                           | None                                                        | `whitelist`/`transform`, boundaries, rejected payloads        |
+| **E2E**            | Booted Nest app over HTTP                                                                    | Real guards/pipes/filter; integrations behind mock adapters | Status codes, auth+RBAC+ownership chain, sanitized error body |
 
 Layer-by-layer rules: [unit](./unit-testing-standard.md), [integration](./integration-testing-standard.md), [e2e](./e2e-testing-standard.md).
 
@@ -87,11 +87,11 @@ src/modules/<feature>/
   api/<feature>.controller.ts            test/<feature>.e2e-spec.ts
 ```
 
-| Suffix | Layer | Runner config |
-| --- | --- | --- |
-| `*.spec.ts` | unit + DTO | default Vitest project |
-| `*.int-spec.ts` | integration (real persistence) | integration project |
-| `*.e2e-spec.ts` | e2e (booted app + supertest) | e2e project |
+| Suffix          | Layer                          | Runner config          |
+| --------------- | ------------------------------ | ---------------------- |
+| `*.spec.ts`     | unit + DTO                     | default Vitest project |
+| `*.int-spec.ts` | integration (real persistence) | integration project    |
+| `*.e2e-spec.ts` | e2e (booted app + supertest)   | e2e project            |
 
 Test names describe scenario **and** expected outcome so a failure explains itself: `rejects create when name exceeds max length`.
 
@@ -136,13 +136,13 @@ Do **not** assert on private internals, snapshot whole error stacks, or `console
 
 The engineering suite is the executable half of the SDLC test artifacts. Keep them in lockstep — same delivery stream, same change.
 
-| SDLC artifact ([/docs/features/_template](../docs/features/_template/)) | This folder | Evidence lives in |
-| --- | --- | --- |
-| [11-test-strategy.md](../docs/features/_template/11-test-strategy.md) | [testing-strategy.md](./testing-strategy.md) | requirement → test-layer map |
-| [12-coverage-plan.md](../docs/features/_template/12-coverage-plan.md) | [coverage-policy.md](./coverage-policy.md) | touched-module thresholds + waivers |
-| [15-dev-validation-report.md](../docs/features/_template/15-dev-validation-report.md) | [quality-gates.md](./quality-gates.md) | gate command output |
-| [16-dev-bug-log.md](../docs/features/_template/16-dev-bug-log.md) · [18-defect-cycle-log.md](../docs/features/_template/18-defect-cycle-log.md) | [bug-triage-and-retest.md](./bug-triage-and-retest.md) | defect + retest evidence |
-| [17-qa-report.md](../docs/features/_template/17-qa-report.md) | [e2e-testing-standard.md](./e2e-testing-standard.md) | QA scenario matrix |
+| SDLC artifact ([/docs/features/_template](../docs/features/_template/))                                                                         | This folder                                            | Evidence lives in                   |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ----------------------------------- |
+| [11-test-strategy.md](../docs/features/_template/11-test-strategy.md)                                                                           | [testing-strategy.md](./testing-strategy.md)           | requirement → test-layer map        |
+| [12-coverage-plan.md](../docs/features/_template/12-coverage-plan.md)                                                                           | [coverage-policy.md](./coverage-policy.md)             | touched-module thresholds + waivers |
+| [15-dev-validation-report.md](../docs/features/_template/15-dev-validation-report.md)                                                           | [quality-gates.md](./quality-gates.md)                 | gate command output                 |
+| [16-dev-bug-log.md](../docs/features/_template/16-dev-bug-log.md) · [18-defect-cycle-log.md](../docs/features/_template/18-defect-cycle-log.md) | [bug-triage-and-retest.md](./bug-triage-and-retest.md) | defect + retest evidence            |
+| [17-qa-report.md](../docs/features/_template/17-qa-report.md)                                                                                   | [e2e-testing-standard.md](./e2e-testing-standard.md)   | QA scenario matrix                  |
 
 Reusable scenario cases (not just code) live under [/test-cases](../test-cases/): `unit/`, `integration/`, `e2e/`, `security/`, `business/`. An escaped defect must leave a preserved case there plus a regression test in the suite. The [qa-baseline](../docs/sdlc/qa-baseline.md) defines the company-wide QA expectations these standards satisfy.
 

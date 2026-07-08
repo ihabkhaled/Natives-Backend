@@ -6,13 +6,13 @@ Use this document when the request caused or intersected with an incident, serio
 
 ## Incident Summary
 
-| Field | Value |
-| --- | --- |
-| Incident ID | |
-| Date | |
-| Severity | |
-| Summary | |
-| Incident commander | |
+| Field              | Value |
+| ------------------ | ----- |
+| Incident ID        |       |
+| Date               |       |
+| Severity           |       |
+| Summary            |       |
+| Incident commander |       |
 
 ## Impact
 
@@ -21,8 +21,8 @@ Use this document when the request caused or intersected with an incident, serio
 ## Timeline
 
 | Time | Event |
-| --- | --- |
-| | |
+| ---- | ----- |
+|      |       |
 
 ## Root Cause
 
@@ -39,8 +39,8 @@ Use this document when the request caused or intersected with an incident, serio
 ## Corrective Actions
 
 | Action | Owner | Due date | Status |
-| --- | --- | --- | --- |
-| | | | open |
+| ------ | ----- | -------- | ------ |
+|        |       |          | open   |
 
 ## Policy and Process Changes
 

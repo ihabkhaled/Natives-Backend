@@ -25,4 +25,3 @@ Proposed / Accepted / Superseded / Rejected
 ## Alternatives Considered
 
 - [Alternative 1]
-

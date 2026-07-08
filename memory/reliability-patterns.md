@@ -12,10 +12,10 @@ Rationale: a single flaky cache, log sink, or notification provider should degra
 
 ## Dependency classification
 
-| Class | Examples (illustrative) | Behavior on failure |
-| --- | --- | --- |
-| Critical | primary database | Startup logs and surfaces health as unhealthy; the readiness probe fails so traffic is withheld. Requests needing it return a typed `AppError` → `503`. |
-| Optional | cache, object storage, search index, log sink, SMS/email/push providers | Log once, continue. Features that require it return a typed `503` `AppError`; everything else keeps serving. |
+| Class    | Examples (illustrative)                                                 | Behavior on failure                                                                                                                                     |
+| -------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Critical | primary database                                                        | Startup logs and surfaces health as unhealthy; the readiness probe fails so traffic is withheld. Requests needing it return a typed `AppError` → `503`. |
+| Optional | cache, object storage, search index, log sink, SMS/email/push providers | Log once, continue. Features that require it return a typed `503` `AppError`; everything else keeps serving.                                            |
 
 Readiness reflects dependency truth — never report ready while a critical dependency is down. See [/rules/14-observability-and-logging.md](../rules/14-observability-and-logging.md).
 
@@ -62,9 +62,9 @@ Retry only **idempotent**, **transient** failures (timeouts, `503`, connection r
 ```ts
 // Conceptual policy — concrete values are named constants
 const RETRY_POLICY = {
-  maxAttempts: ADAPTER_MAX_RETRY_ATTEMPTS,   // e.g. 3
-  baseDelayMs: ADAPTER_RETRY_BASE_DELAY_MS,  // e.g. 200
-  factor: ADAPTER_RETRY_BACKOFF_FACTOR,      // e.g. 2
+  maxAttempts: ADAPTER_MAX_RETRY_ATTEMPTS, // e.g. 3
+  baseDelayMs: ADAPTER_RETRY_BASE_DELAY_MS, // e.g. 200
+  factor: ADAPTER_RETRY_BACKOFF_FACTOR, // e.g. 2
   jitter: true,
 } as const;
 ```

@@ -35,7 +35,7 @@ it('throws ConflictError with the feature key when the resource is already final
 
 ```ts
 // message-keys.parity.spec.ts — Do: every locale defines every key
-it.each(SUPPORTED_LOCALES)('locale %s defines every error key', (locale) => {
+it.each(SUPPORTED_LOCALES)('locale %s defines every error key', locale => {
   const bundle = loadBundle(locale);
   for (const key of Object.values(FEATURE_MESSAGE_KEYS)) {
     expect(bundle).toHaveProperty(key);
@@ -51,13 +51,13 @@ it.each(SUPPORTED_LOCALES)('locale %s defines every error key', (locale) => {
 
 Pick `errors.<feature>.<scenario>` — one key per scenario, never a catch-all. The `<feature>` segment must match a real module under `src/modules/`.
 
-| Scenario | Example key | Class |
-| --- | --- | --- |
-| Not found / not visible | `errors.invoice.notFound` | `NotFoundError` 404 |
-| Authenticated but not owner | `errors.invoice.forbiddenNotOwner` | `ForbiddenError` 403 |
-| Duplicate / state collision | `errors.invoice.alreadyFinalized` | `ConflictError` 409 |
-| Illegal transition | `errors.invoice.invalidTransition` | `StateTransitionError` 400 |
-| Field-level validation | `errors.invoice.field.amount.positive` | `ValidationError` 400 |
+| Scenario                    | Example key                            | Class                      |
+| --------------------------- | -------------------------------------- | -------------------------- |
+| Not found / not visible     | `errors.invoice.notFound`              | `NotFoundError` 404        |
+| Authenticated but not owner | `errors.invoice.forbiddenNotOwner`     | `ForbiddenError` 403       |
+| Duplicate / state collision | `errors.invoice.alreadyFinalized`      | `ConflictError` 409        |
+| Illegal transition          | `errors.invoice.invalidTransition`     | `StateTransitionError` 400 |
+| Field-level validation      | `errors.invoice.field.amount.positive` | `ValidationError` 400      |
 
 ### 2. Add the key constant (feature-owned, never inline)
 
@@ -91,9 +91,9 @@ async finalize(id: string, actor: AuthIdentity): Promise<FeatureEntity> {
 
 ```ts
 // Don't — a sentence as contract, a catch-all key, or backend-localized prose
-throw new NotFoundError('Invoice not found');             // ❌ no key, leaks a sentence
-throw new AppError('errors.invoice.error');               // ❌ generic catch-all
-throw new BadRequestException('El campo es obligatorio');  // ❌ backend returns localized text
+throw new NotFoundError('Invoice not found'); // ❌ no key, leaks a sentence
+throw new AppError('errors.invoice.error'); // ❌ generic catch-all
+throw new BadRequestException('El campo es obligatorio'); // ❌ backend returns localized text
 ```
 
 If a new `AppError` subclass or filter change is required, hand off to [create-error.md](./create-error.md). A new key on an existing class needs **no** filter change — `mapToResponse` handles every `AppError` generically.

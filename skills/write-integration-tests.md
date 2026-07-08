@@ -19,7 +19,7 @@ Integration tests prove **multiple layers wired together**: controller → guard
 
 ## Tests FIRST
 
-Write the failing test before the route or query exists. Map each acceptance criterion — happy path, validation rejection, `401`, `403`, not-found, conflict, and the persisted side effect — to a named `it(...)`, watch it go red, then make it green. For a bug fix, reproduce the defect as a failing integration test *first* so the regression is locked in permanently ([/skills/investigate-production-bug.md](./investigate-production-bug.md)).
+Write the failing test before the route or query exists. Map each acceptance criterion — happy path, validation rejection, `401`, `403`, not-found, conflict, and the persisted side effect — to a named `it(...)`, watch it go red, then make it green. For a bug fix, reproduce the defect as a failing integration test _first_ so the regression is locked in permanently ([/skills/investigate-production-bug.md](./investigate-production-bug.md)).
 
 ---
 
@@ -70,8 +70,9 @@ describe('Order API (integration)', () => {
 ```ts
 // DON'T — re-create the app inside each test, or skip the global pipeline
 beforeEach(async () => {
-  app = (await Test.createTestingModule({ imports: [AppModule] }).compile())
-    .createNestApplication();
+  app = (
+    await Test.createTestingModule({ imports: [AppModule] }).compile()
+  ).createNestApplication();
   await app.init(); // slow; and without applyGlobalPipeline validation never runs
 });
 ```
@@ -97,8 +98,14 @@ Drive the actual sign-in/token-issuance endpoints to get a bearer token, then at
 
 ```ts
 async function authenticate(http: Agent, email: string): Promise<string> {
-  await http.post('/auth/register').send({ email, password: 'Str0ng-Pass!' }).expect(201);
-  const res = await http.post('/auth/login').send({ email, password: 'Str0ng-Pass!' }).expect(200);
+  await http
+    .post('/auth/register')
+    .send({ email, password: 'Str0ng-Pass!' })
+    .expect(201);
+  const res = await http
+    .post('/auth/login')
+    .send({ email, password: 'Str0ng-Pass!' })
+    .expect(200);
   return (res.body as { accessToken: string }).accessToken;
 }
 // usage: http.get('/orders/me').set('Authorization', `Bearer ${token}`)
@@ -162,7 +169,10 @@ it('returns 401 without a token', async () => {
 });
 
 it('returns 403 when the permission is missing', async () => {
-  await http.get('/orders/admin').set('Authorization', `Bearer ${token}`).expect(403);
+  await http
+    .get('/orders/admin')
+    .set('Authorization', `Bearer ${token}`)
+    .expect(403);
 });
 
 it('blocks cross-owner access with a typed error body', async () => {
@@ -170,11 +180,14 @@ it('blocks cross-owner access with a typed error body', async () => {
     .get(`/orders/${otherOwnersOrderId}`)
     .set('Authorization', `Bearer ${token}`)
     .expect(403);
-  expect((res.body as { messageKey: string }).messageKey).toBe('errors.order.forbidden');
+  expect((res.body as { messageKey: string }).messageKey).toBe(
+    'errors.order.forbidden',
+  );
 });
 
 it('returns 404 for a missing resource', async () => {
-  await http.get('/orders/00000000-0000-0000-0000-000000000000')
+  await http
+    .get('/orders/00000000-0000-0000-0000-000000000000')
     .set('Authorization', `Bearer ${token}`)
     .expect(404);
 });
@@ -186,14 +199,22 @@ List endpoints must cap the page size (default max 100); a use case under one tr
 
 ```ts
 it('caps the page size at the hard limit', async () => {
-  const res = await http.get('/orders?limit=1000').set('Authorization', `Bearer ${token}`).expect(200);
-  expect((res.body as { items: unknown[] }).items.length).toBeLessThanOrEqual(LIST_MAX_LIMIT);
+  const res = await http
+    .get('/orders?limit=1000')
+    .set('Authorization', `Bearer ${token}`)
+    .expect(200);
+  expect((res.body as { items: unknown[] }).items.length).toBeLessThanOrEqual(
+    LIST_MAX_LIMIT,
+  );
 });
 
 it('rolls back the whole use case when a step fails', async () => {
   emailSpy.send.mockRejectedValueOnce(new Error('provider down'));
-  await http.post('/orders/checkout').set('Authorization', `Bearer ${token}`)
-    .send({ sku: `SKU-${uniqueId}` }).expect(502);
+  await http
+    .post('/orders/checkout')
+    .set('Authorization', `Bearer ${token}`)
+    .send({ sku: `SKU-${uniqueId}` })
+    .expect(502);
   const rows = await orders.listByOwner(userId);
   expect(rows).toHaveLength(0); // transaction rolled back — no orphan row
 });

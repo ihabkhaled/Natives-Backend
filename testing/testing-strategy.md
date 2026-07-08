@@ -20,11 +20,11 @@ Many fast unit tests at the base; a moderate band of integration tests through t
       /‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾\
 ```
 
-| Layer | Subject | Tooling | Speed / count | Required when |
-| --- | --- | --- | --- | --- |
-| **Unit** | One class in isolation — service, use-case, domain policy, mapper, guard, pipe, adapter wrapper, DTO | `Test.createTestingModule` + `vi` doubles | Fast / many | Every change |
-| **Integration** | A controller through the **real** request pipeline (DTO → `ValidationPipe` → guards → handler → app layer) | `@nestjs/testing` app + **supertest** | Medium / moderate | Routes, validation, guards, or repository contracts change |
-| **E2E** | A full workflow across modules/routes, end to end | supertest against a wired app, persistence in a test instance | Slow / few | Critical flows: auth, ownership/tenant, multi-step transactional use-cases |
+| Layer           | Subject                                                                                                    | Tooling                                                       | Speed / count     | Required when                                                              |
+| --------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ----------------- | -------------------------------------------------------------------------- |
+| **Unit**        | One class in isolation — service, use-case, domain policy, mapper, guard, pipe, adapter wrapper, DTO       | `Test.createTestingModule` + `vi` doubles                     | Fast / many       | Every change                                                               |
+| **Integration** | A controller through the **real** request pipeline (DTO → `ValidationPipe` → guards → handler → app layer) | `@nestjs/testing` app + **supertest**                         | Medium / moderate | Routes, validation, guards, or repository contracts change                 |
+| **E2E**         | A full workflow across modules/routes, end to end                                                          | supertest against a wired app, persistence in a test instance | Slow / few        | Critical flows: auth, ownership/tenant, multi-step transactional use-cases |
 
 > **Anti-pattern: the ice-cream cone.** A few slow, flaky E2E tests bolted onto thin unit coverage. Invert it. If a rule is a pure domain decision, prove it with a domain unit test — not a six-hop E2E.
 
@@ -36,32 +36,38 @@ Many fast unit tests at the base; a moderate band of integration tests through t
 
 The base of the pyramid. The subject is real; every collaborator is a double. Mock at the **boundary**, never the subject.
 
-| Subject | Proves |
-| --- | --- |
+| Subject        | Proves                                                                                                                                                                                                                                              |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Controller** | Forwards parsed input + verified identity to exactly one application method and returns the result **untransformed** (it has no logic to prove — see [/rules/02-controllers-and-http-transport.md](../rules/02-controllers-and-http-transport.md)). |
-| **Use case** | Orchestration order, the transaction boundary, ordered **post-commit** events, rollback on failure. |
-| **Service** | Happy path, not-found, forbidden/ownership, invalid state transition, correct delegation + args, error mapping to a typed `AppError`. |
-| **Domain** | Pure: every policy arm, invariant, and state-machine transition. **No mocks needed** — if a domain test needs a mock, logic leaked out of the domain. |
-| **Repository** | Returns data on hit, returns `null`/`[]` on miss (never throws), passes bounded + parameterized args, enforces the hard list cap (100). |
-| **DTO** | Valid input passes; each missing/invalid/oversized field is rejected; boundaries at `min`/`max`; defaults applied; enum rejection. |
-| **Adapter** | The wrapper's request/response mapping and error translation, with the vendor SDK doubled ([/rules/12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md)). |
+| **Use case**   | Orchestration order, the transaction boundary, ordered **post-commit** events, rollback on failure.                                                                                                                                                 |
+| **Service**    | Happy path, not-found, forbidden/ownership, invalid state transition, correct delegation + args, error mapping to a typed `AppError`.                                                                                                               |
+| **Domain**     | Pure: every policy arm, invariant, and state-machine transition. **No mocks needed** — if a domain test needs a mock, logic leaked out of the domain.                                                                                               |
+| **Repository** | Returns data on hit, returns `null`/`[]` on miss (never throws), passes bounded + parameterized args, enforces the hard list cap (100).                                                                                                             |
+| **DTO**        | Valid input passes; each missing/invalid/oversized field is rejected; boundaries at `min`/`max`; defaults applied; enum rejection.                                                                                                                  |
+| **Adapter**    | The wrapper's request/response mapping and error translation, with the vendor SDK doubled ([/rules/12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md)).                                                             |
 
 ```typescript
 // DO — service unit test: real service, doubled repository, covers happy + not-found + ownership
 describe('OrderService.getOrder', () => {
   it('returns the order when it exists and belongs to the caller', async () => {
     repo.findById.mockResolvedValue(orderOwnedBy('user-1'));
-    await expect(service.getOrder('order-1', 'user-1')).resolves.toMatchObject({ id: 'order-1' });
+    await expect(service.getOrder('order-1', 'user-1')).resolves.toMatchObject({
+      id: 'order-1',
+    });
   });
 
   it('throws OrderNotFoundError when the order is missing', async () => {
     repo.findById.mockResolvedValue(null);
-    await expect(service.getOrder('order-1', 'user-1')).rejects.toBeInstanceOf(OrderNotFoundError);
+    await expect(service.getOrder('order-1', 'user-1')).rejects.toBeInstanceOf(
+      OrderNotFoundError,
+    );
   });
 
   it('throws OrderForbiddenError when the order belongs to another user', async () => {
     repo.findById.mockResolvedValue(orderOwnedBy('user-2'));
-    await expect(service.getOrder('order-1', 'user-1')).rejects.toBeInstanceOf(OrderForbiddenError);
+    await expect(service.getOrder('order-1', 'user-1')).rejects.toBeInstanceOf(
+      OrderForbiddenError,
+    );
   });
 });
 ```
@@ -86,20 +92,27 @@ const app = moduleRef.createNestApplication();
 app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
 await app.init();
 
-await request(app.getHttpServer()).get('/orders/order-1').expect(401);                       // no token → unauthorized
-await request(app.getHttpServer()).get('/orders/other').set(asUser('user-1')).expect(403);   // not owner → forbidden
-await request(app.getHttpServer()).post('/orders').set(asUser('user-1')).send({}).expect(400); // bad DTO → 400, not 500
+await request(app.getHttpServer()).get('/orders/order-1').expect(401); // no token → unauthorized
+await request(app.getHttpServer())
+  .get('/orders/other')
+  .set(asUser('user-1'))
+  .expect(403); // not owner → forbidden
+await request(app.getHttpServer())
+  .post('/orders')
+  .set(asUser('user-1'))
+  .send({})
+  .expect(400); // bad DTO → 400, not 500
 ```
 
 ### E2E — the workflow
 
 The thin cap. A full journey across modules with real wiring end to end and persistence in a controlled test instance; doubles only at true third-party edges (an email provider, an SMS gateway, a payment provider, object storage). Reserve these for flows where a regression is expensive: login → protected action, create → read-back, a multi-step transactional use-case that must persist state **and** emit ordered events.
 
-| Example flow | Asserts |
-| --- | --- |
-| Authenticate → call a protected route → read back | Token issued, guard chain admits, response shape correct |
-| Create entity → fetch it → confirm persisted state | Write committed, ownership scoping holds on read |
-| Multi-step use-case (e.g. place an Order) | All entities mutated under one transaction; post-commit events emitted in order |
+| Example flow                                       | Asserts                                                                         |
+| -------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Authenticate → call a protected route → read back  | Token issued, guard chain admits, response shape correct                        |
+| Create entity → fetch it → confirm persisted state | Write committed, ownership scoping holds on read                                |
+| Multi-step use-case (e.g. place an Order)          | All entities mutated under one transaction; post-commit events emitted in order |
 
 ---
 
@@ -107,25 +120,25 @@ The thin cap. A full journey across modules with real wiring end to end and pers
 
 For every change, decide which layers apply and record why a layer is or isn't needed (silence is not a decision).
 
-| Change | Unit | Integration | E2E |
-| --- | --- | --- | --- |
-| New/changed domain rule or policy | Required | If reachable via a route | If on a critical flow |
-| New/changed service or use-case | Required | Required (the route) | If critical/transactional |
-| New/changed controller or DTO | DTO + controller delegation | Required (pipeline) | Optional |
-| New/changed guard or permission | Guard unit | Required (`401`/`403`) | Auth flows |
-| New/changed repository query | Required | Against a real test DB | — |
-| New adapter / vendor wrapping | Required (SDK doubled) | — | — |
-| Bug fix | Reproducing regression test (red → green) | If the bug surfaced at the boundary | — |
+| Change                            | Unit                                      | Integration                         | E2E                       |
+| --------------------------------- | ----------------------------------------- | ----------------------------------- | ------------------------- |
+| New/changed domain rule or policy | Required                                  | If reachable via a route            | If on a critical flow     |
+| New/changed service or use-case   | Required                                  | Required (the route)                | If critical/transactional |
+| New/changed controller or DTO     | DTO + controller delegation               | Required (pipeline)                 | Optional                  |
+| New/changed guard or permission   | Guard unit                                | Required (`401`/`403`)              | Auth flows                |
+| New/changed repository query      | Required                                  | Against a real test DB              | —                         |
+| New adapter / vendor wrapping     | Required (SDK doubled)                    | —                                   | —                         |
+| Bug fix                           | Reproducing regression test (red → green) | If the bug surfaced at the boundary | —                         |
 
 ---
 
 ## 4. Environments
 
-| Environment | Used by | Persistence | External vendors |
-| --- | --- | --- | --- |
-| **Unit** | Unit tests | None — all doubled | Doubled (the adapter or the SDK inside it) |
-| **Integration** | Controller pipeline tests | Doubled repository, **or** a real test DB behind the repository | Doubled |
-| **E2E** | Critical-flow tests | A real DB in a disposable test instance (container or dedicated test schema) | Doubled at the true third-party edge |
+| Environment     | Used by                   | Persistence                                                                  | External vendors                           |
+| --------------- | ------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------ |
+| **Unit**        | Unit tests                | None — all doubled                                                           | Doubled (the adapter or the SDK inside it) |
+| **Integration** | Controller pipeline tests | Doubled repository, **or** a real test DB behind the repository              | Doubled                                    |
+| **E2E**         | Critical-flow tests       | A real DB in a disposable test instance (container or dedicated test schema) | Doubled at the true third-party edge       |
 
 Rules that hold across environments:
 
@@ -162,25 +175,27 @@ Flaky tests are defects — fix the cause, never rerun-until-green or paper over
 
 100% lines through one happy-path call is paperwork. Branch + scenario coverage is the real target. Every meaningful suite exercises these unless explicitly justified in review:
 
-| Scenario | Why |
-| --- | --- |
-| Happy path | The feature works. |
-| Validation failure | Bad/missing/oversized input → typed `400`, never `500`. |
-| Not found | Missing entity → typed not-found `AppError`. |
-| Ownership / tenant (IDOR) | Actor A cannot read/mutate actor B's resource by id. |
-| Permission / RBAC | Authenticated-but-unauthorized → `403`. |
-| Invalid state transition | The domain state machine rejects illegal moves. |
-| Boundary | At / above / below limits; off-by-one and the list cap (100) are correct. |
-| Empty / null | `[]` returns `[]` (not null, not a crash); null handled. |
+| Scenario                         | Why                                                                                                                                       |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Happy path                       | The feature works.                                                                                                                        |
+| Validation failure               | Bad/missing/oversized input → typed `400`, never `500`.                                                                                   |
+| Not found                        | Missing entity → typed not-found `AppError`.                                                                                              |
+| Ownership / tenant (IDOR)        | Actor A cannot read/mutate actor B's resource by id.                                                                                      |
+| Permission / RBAC                | Authenticated-but-unauthorized → `403`.                                                                                                   |
+| Invalid state transition         | The domain state machine rejects illegal moves.                                                                                           |
+| Boundary                         | At / above / below limits; off-by-one and the list cap (100) are correct.                                                                 |
+| Empty / null                     | `[]` returns `[]` (not null, not a crash); null handled.                                                                                  |
 | Idempotency / duplicate delivery | Repeating an operation or event produces the correct result ([/rules/19-async-events-and-jobs.md](../rules/19-async-events-and-jobs.md)). |
-| Dependency failure & fallback | Adapter/repo throws → handled, mapped, or swallowed as designed. |
-| Fail-safe side effect | A fire-and-forget handler **swallows** its own error and never rejects the caller. |
+| Dependency failure & fallback    | Adapter/repo throws → handled, mapped, or swallowed as designed.                                                                          |
+| Fail-safe side effect            | A fire-and-forget handler **swallows** its own error and never rejects the caller.                                                        |
 
 ```typescript
 // DO — prove a fire-and-forget handler never breaks the workflow when its side effect fails
 it('swallows a notification failure and resolves without rejecting', async () => {
   notifier.send.mockRejectedValue(new Error('provider down'));
-  await expect(handler.onOrderPlaced(orderPlacedEvent)).resolves.toBeUndefined();
+  await expect(
+    handler.onOrderPlaced(orderPlacedEvent),
+  ).resolves.toBeUndefined();
   expect(logger.error).toHaveBeenCalled();
 });
 ```
@@ -215,14 +230,14 @@ Detail: [/skills/security-review.md](../skills/security-review.md), [/skills/sql
 
 Tests are the proof; the record of running them is the receipt. For a meaningful change, the validation report ([/docs/sdlc/](../docs/sdlc/) and `15-dev-validation-report.md`) should capture:
 
-| Evidence | Source |
-| --- | --- |
-| Suite result (pass/fail counts) | `npm run test` |
-| Coverage on touched modules vs the floor | `npm run test:coverage` |
-| HTTP contract checks (`401`/`403`/`400`/`429`) for protected routes | integration run output |
-| Persisted-state verification after writes | a read-back assertion or a direct query against the test DB |
-| Emitted events / jobs after a use-case | spies on the event bus / queue adapter |
-| Lint / typecheck / build green | the quality-gate block below |
+| Evidence                                                            | Source                                                      |
+| ------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Suite result (pass/fail counts)                                     | `npm run test`                                              |
+| Coverage on touched modules vs the floor                            | `npm run test:coverage`                                     |
+| HTTP contract checks (`401`/`403`/`400`/`429`) for protected routes | integration run output                                      |
+| Persisted-state verification after writes                           | a read-back assertion or a direct query against the test DB |
+| Emitted events / jobs after a use-case                              | spies on the event bus / queue adapter                      |
+| Lint / typecheck / build green                                      | the quality-gate block below                                |
 
 Record what was **not** run (and why, with the residual risk) instead of leaving a silent gap. Keep the original failing evidence **and** the retest evidence for any defect — never overwrite history. See [/testing/bug-triage-and-retest.md](../testing/bug-triage-and-retest.md).
 
@@ -230,16 +245,16 @@ Record what was **not** run (and why, with the residual risk) instead of leaving
 
 ## 11. Adding tests for new code
 
-| New code | Required tests |
-| --- | --- |
-| DTO / validation schema | Valid input, each invalid field, boundary values, enum rejection |
-| Service / use-case method | Happy path, not-found, forbidden/ownership, error paths, edges |
-| Domain policy / state machine | Every arm and invariant; illegal transitions rejected |
-| Repository query | Hit, miss (`null`/`[]`), bounded args, list cap |
-| Controller / route | Pipeline integration: status, validation, guard chain |
-| Adapter | Mapping + error translation with the SDK doubled |
-| Critical flow | E2E read-back + event assertions |
-| Bug fix | A regression test that reproduces the bug (red), then proves the fix (green) |
+| New code                      | Required tests                                                               |
+| ----------------------------- | ---------------------------------------------------------------------------- |
+| DTO / validation schema       | Valid input, each invalid field, boundary values, enum rejection             |
+| Service / use-case method     | Happy path, not-found, forbidden/ownership, error paths, edges               |
+| Domain policy / state machine | Every arm and invariant; illegal transitions rejected                        |
+| Repository query              | Hit, miss (`null`/`[]`), bounded args, list cap                              |
+| Controller / route            | Pipeline integration: status, validation, guard chain                        |
+| Adapter                       | Mapping + error translation with the SDK doubled                             |
+| Critical flow                 | E2E read-back + event assertions                                             |
+| Bug fix                       | A regression test that reproduces the bug (red), then proves the fix (green) |
 
 ---
 

@@ -7,8 +7,8 @@ Track implementation-team defects and their resolution before the change is hand
 ## Bug Log
 
 | Bug ID | Summary | Severity | Found by | Status | Fix PR / commit | Re-test result |
-| --- | --- | --- | --- | --- | --- | --- |
-| | | | | open | | |
+| ------ | ------- | -------- | -------- | ------ | --------------- | -------------- |
+|        |         |          |          | open   |                 |                |
 
 ## Re-Test Notes
 

@@ -169,18 +169,18 @@ async onPublished(event: OrderPublishedEvent): Promise<void> {
 
 ## Decision summary
 
-| ID | Decision | Default | Anchored in |
-| --- | --- | --- | --- |
-| D1 | Bounded pagination | hard cap 100, clamp twice, paged envelope | [/rules/09](../rules/09-performance-and-scalability.md) |
-| D2 | Index FK / `WHERE` / `ORDER BY` | composite eq-first; partial for soft-delete; migration-backed | [/rules/08](../rules/08-database-and-injection-safety.md) |
-| D3 | No N+1 | join / eager / batched `IN`; paginate parent | [/rules/04](../rules/04-repositories-and-persistence.md) |
-| D4 | Narrow projection | select needed columns; aggregate in DB | [/rules/06](../rules/06-types-enums-constants.md) |
-| D5 | Cache via adapter | read-heavy/slow-changing only; degrade gracefully; invalidate | [/rules/12](../rules/12-library-wrapping-and-adapters.md) |
-| D6 | Concurrency boundary | batch first; `Promise.all` in use cases/helpers, never services | [/rules/03](../rules/03-application-services-and-use-cases.md) |
-| D7 | Offload heavy work | post-commit events; handlers catch their own errors | [/rules/19](../rules/19-async-events-and-jobs.md) |
-| D8 | Stream, don't buffer | body limits; stream uploads/exports | [/rules/09](../rules/09-performance-and-scalability.md) |
-| D9 | Idempotent + stateless | unique-key guard; short tx; shared-state store | [/rules/10](../rules/10-reliability-and-durability.md) |
-| D10 | Rate-limit + document | per-route limiter; PR perf note | [/rules/07](../rules/07-security-authn-authz.md) |
+| ID  | Decision                        | Default                                                         | Anchored in                                                    |
+| --- | ------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------- |
+| D1  | Bounded pagination              | hard cap 100, clamp twice, paged envelope                       | [/rules/09](../rules/09-performance-and-scalability.md)        |
+| D2  | Index FK / `WHERE` / `ORDER BY` | composite eq-first; partial for soft-delete; migration-backed   | [/rules/08](../rules/08-database-and-injection-safety.md)      |
+| D3  | No N+1                          | join / eager / batched `IN`; paginate parent                    | [/rules/04](../rules/04-repositories-and-persistence.md)       |
+| D4  | Narrow projection               | select needed columns; aggregate in DB                          | [/rules/06](../rules/06-types-enums-constants.md)              |
+| D5  | Cache via adapter               | read-heavy/slow-changing only; degrade gracefully; invalidate   | [/rules/12](../rules/12-library-wrapping-and-adapters.md)      |
+| D6  | Concurrency boundary            | batch first; `Promise.all` in use cases/helpers, never services | [/rules/03](../rules/03-application-services-and-use-cases.md) |
+| D7  | Offload heavy work              | post-commit events; handlers catch their own errors             | [/rules/19](../rules/19-async-events-and-jobs.md)              |
+| D8  | Stream, don't buffer            | body limits; stream uploads/exports                             | [/rules/09](../rules/09-performance-and-scalability.md)        |
+| D9  | Idempotent + stateless          | unique-key guard; short tx; shared-state store                  | [/rules/10](../rules/10-reliability-and-durability.md)         |
+| D10 | Rate-limit + document           | per-route limiter; PR perf note                                 | [/rules/07](../rules/07-security-authn-authz.md)               |
 
 ---
 

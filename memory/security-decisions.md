@@ -1,6 +1,6 @@
 # Security Decisions
 
-> Durable security conventions for a NestJS backend in this workspace: authentication, RBAC, ownership/tenant isolation, secrets, rate limiting, and headers. Decisions + rationale, not just rules. Hard rules live in [00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) and [07-security-authn-authz.md](../rules/07-security-authn-authz.md); this file records *why we chose what we chose* and where a real project pins its specifics.
+> Durable security conventions for a NestJS backend in this workspace: authentication, RBAC, ownership/tenant isolation, secrets, rate limiting, and headers. Decisions + rationale, not just rules. Hard rules live in [00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) and [07-security-authn-authz.md](../rules/07-security-authn-authz.md); this file records _why we chose what we chose_ and where a real project pins its specifics.
 
 Every line marked **Project records:** is a placeholder a concrete project fills in once. Until then, treat the stated default as the house standard.
 
@@ -35,17 +35,17 @@ Decision: identity is established once, by the guard, from a verified token. **R
 
 ## JWT and sessions
 
-| Concern | Decision | Default | Tunable via config |
-| --- | --- | --- | --- |
-| Access token | short-lived, stateless | `15m`–`1h` | `JWT_EXPIRES_IN` |
-| Refresh token | longer-lived, rotating, server-tracked | `7d` | `JWT_REFRESH_EXPIRES_IN` |
-| Signing | separate secret per token type | — | `JWT_SECRET`, `JWT_REFRESH_SECRET` |
-| Refresh delivery | HttpOnly + Secure + SameSite cookie | — | cookie options in `config/` |
-| Login lockout | attempt cap + cooldown | 5 attempts / 15 min | `MAX_LOGIN_ATTEMPTS`, `LOCKOUT_DURATION_MS` |
+| Concern          | Decision                               | Default             | Tunable via config                          |
+| ---------------- | -------------------------------------- | ------------------- | ------------------------------------------- |
+| Access token     | short-lived, stateless                 | `15m`–`1h`          | `JWT_EXPIRES_IN`                            |
+| Refresh token    | longer-lived, rotating, server-tracked | `7d`                | `JWT_REFRESH_EXPIRES_IN`                    |
+| Signing          | separate secret per token type         | —                   | `JWT_SECRET`, `JWT_REFRESH_SECRET`          |
+| Refresh delivery | HttpOnly + Secure + SameSite cookie    | —                   | cookie options in `config/`                 |
+| Login lockout    | attempt cap + cooldown                 | 5 attempts / 15 min | `MAX_LOGIN_ATTEMPTS`, `LOCKOUT_DURATION_MS` |
 
 **Refresh-token rotation is mandatory.** On every refresh: revoke the old session record and issue a brand-new access + refresh pair. A refresh token is single-use. **Rationale:** a leaked refresh token is detectable (reuse of a revoked token signals compromise) and short-lived in effect.
 
-**Rotation must be concurrency-safe via a grace window.** Two near-simultaneous refreshes with the *same* old token (e.g. multiple tabs restoring a memory-only access token) race: the first revokes the session, the second finds nothing and would 401, killing a valid user. Decision: if no *active* session matches but a *just-rotated* session matches within a grace window (default `30s`, `REFRESH_ROTATION_GRACE_MS`), re-issue against the new session instead of failing — and do **not** revoke again. Apply the same logic to every refresh entry point (standard users and any privileged/admin auth path).
+**Rotation must be concurrency-safe via a grace window.** Two near-simultaneous refreshes with the _same_ old token (e.g. multiple tabs restoring a memory-only access token) race: the first revokes the session, the second finds nothing and would 401, killing a valid user. Decision: if no _active_ session matches but a _just-rotated_ session matches within a grace window (default `30s`, `REFRESH_ROTATION_GRACE_MS`), re-issue against the new session instead of failing — and do **not** revoke again. Apply the same logic to every refresh entry point (standard users and any privileged/admin auth path).
 
 > Verified-token validation, lockout, and rotation logic live in the auth module's application layer (`<feature>.service.ts` / `<action>.use-case.ts`), never in the controller. Token signing/verification is wrapped behind an adapter — see [library-boundaries.md](./library-boundaries.md).
 
@@ -72,7 +72,11 @@ export const PERMISSION_VALUES = Object.values(Permission);
 // @shared/constants/role-permissions.constant.ts — the role→permission map
 export const ROLE_PERMISSIONS: Readonly<Record<Role, readonly Permission[]>> = {
   [Role.VIEWER]: [Permission.ARTICLE_READ],
-  [Role.EDITOR]: [Permission.ARTICLE_READ, Permission.ARTICLE_CREATE, Permission.ARTICLE_UPDATE],
+  [Role.EDITOR]: [
+    Permission.ARTICLE_READ,
+    Permission.ARTICLE_CREATE,
+    Permission.ARTICLE_UPDATE,
+  ],
   [Role.ADMIN]: PERMISSION_VALUES, // full surface
 } as const;
 ```
@@ -86,6 +90,7 @@ update(/* ... */): Promise<ArticleDto> { /* ... */ }
 ```
 
 Conventions:
+
 - Enums/maps live in dedicated files (rules 8, 12, 16); no inline permission strings in controllers, services, or guards.
 - The full permission grant for the top admin role derives from the catalog (`PERMISSION_VALUES`) so new permissions are covered automatically — but high-blast-radius permissions (delete, export, impersonate, financial) are granted **explicitly**, never via a wildcard.
 - A `@RequirePermission` metadata decorator + a `PermissionsGuard` is the only sanctioned pattern. See [add-guard-and-permission.md](../skills/add-guard-and-permission.md).
@@ -96,7 +101,7 @@ Conventions:
 
 ## Ownership and tenant isolation (defense-in-depth)
 
-A permission says "EDITORs may update articles." It does **not** say "this editor may update *this* article." That second check is **ownership/tenant scoping**, and it is the last line against IDOR and cross-tenant leakage.
+A permission says "EDITORs may update articles." It does **not** say "this editor may update _this_ article." That second check is **ownership/tenant scoping**, and it is the last line against IDOR and cross-tenant leakage.
 
 Decision: every resource fetched by id is scoped to the actor in the application layer — even after the RBAC guard passes. Prefer scoping at the query (repository receives the actor's `tenantId`/`ownerId` and filters), and add an explicit ownership assertion for clarity and auditability.
 
@@ -111,9 +116,10 @@ async update(actor: AuthenticatedUser, id: string, dto: UpdateArticleDto): Promi
 ```
 
 Conventions:
+
 - Return **not-found** (not forbidden) for resources outside the actor's scope, so existence isn't leaked across tenants.
 - Ownership decisions are a pure **domain policy** (`domain/`), unit-tested in isolation.
-- Cross-tenant access is a *testable behavior*, not a belief — see [testing-strategy.md](./testing-strategy.md).
+- Cross-tenant access is a _testable behavior_, not a belief — see [testing-strategy.md](./testing-strategy.md).
 - An `OwnershipGuard` may handle the common case declaratively; bespoke rules stay in domain policies.
 
 **Project records:** the tenancy model (single-tenant, row-scoped multi-tenant, schema-per-tenant), which entities are tenant-scoped, and the privileged-actor override (e.g. audited admin impersonation) rules.
@@ -125,6 +131,7 @@ Conventions:
 All secrets are typed config, validated at startup (rule 27, 29). **Never** read `process.env` outside `config/` or `bootstrap/`.
 
 Decision: secret validation is stricter in production. The config schema:
+
 - requires every secret to be present and ≥ `32` chars;
 - in production only, **rejects placeholder/low-entropy values** (patterns like `change-me`, `secret`, `example`, `default`, repeated/sequential characters) and requires a minimum count of unique characters;
 - **fails fast** — the app refuses to boot on an invalid secret rather than running insecurely.
@@ -142,7 +149,7 @@ sign(payload: TokenPayload): string {
 
 Rationale: a weak or placeholder secret is a silent catastrophe; making it a **loud boot failure** turns a security hole into a deploy-time error.
 
-> Any "test convenience" toggle (e.g. a static verification code for QA) must be **triple-gated**: defaults off; the runtime path ignores it unless `NODE_ENV !== 'production'`; and the config schema *refuses to boot* if the flag is on while in production. A convenience must never become a production bypass, and every use of it logs a `WARN`.
+> Any "test convenience" toggle (e.g. a static verification code for QA) must be **triple-gated**: defaults off; the runtime path ignores it unless `NODE_ENV !== 'production'`; and the config schema _refuses to boot_ if the flag is on while in production. A convenience must never become a production bypass, and every use of it logs a `WARN`.
 
 **Project records:** the secret inventory, rotation/expiry policy, the secret-management backend (vault/KMS/parameter store), and generation command (e.g. a CSPRNG-based generator — never `Math.random()`).
 
@@ -165,13 +172,13 @@ These helpers belong in `@shared/utils` (e.g. a `crypto.util.ts`), reused everyw
 
 Decision: layered limiters, each keyed for its threat model. A single global limiter is not enough.
 
-| Scope | Key | Posture | Notes |
-| --- | --- | --- | --- |
-| Global / per-route | IP (+ route) | moderate | baseline DoS guard, applied app-wide |
-| Auth (login, OTP, reset) | `ip:identifier` | strict | identifier from the credential being tried |
-| Token refresh | **IP only** | lenient, skip-successful | see below |
+| Scope                    | Key             | Posture                  | Notes                                      |
+| ------------------------ | --------------- | ------------------------ | ------------------------------------------ |
+| Global / per-route       | IP (+ route)    | moderate                 | baseline DoS guard, applied app-wide       |
+| Auth (login, OTP, reset) | `ip:identifier` | strict                   | identifier from the credential being tried |
+| Token refresh            | **IP only**     | lenient, skip-successful | see below                                  |
 
-The refresh endpoint has **no identifier in the body**, so an `ip:identifier` limiter buckets every refresh under `ip:unknown` and a shared IP/NAT or a multi-tab user gets 429'd unfairly. Decision: refresh uses a **dedicated IP-keyed limiter** that is lenient and only counts *failed* attempts (`skipSuccessfulRequests`). **Rationale:** match the key to what the endpoint actually knows about the caller.
+The refresh endpoint has **no identifier in the body**, so an `ip:identifier` limiter buckets every refresh under `ip:unknown` and a shared IP/NAT or a multi-tab user gets 429'd unfairly. Decision: refresh uses a **dedicated IP-keyed limiter** that is lenient and only counts _failed_ attempts (`skipSuccessfulRequests`). **Rationale:** match the key to what the endpoint actually knows about the caller.
 
 Wrap the limiter behind an adapter/guard so the store (in-memory vs. distributed cache) is swappable — see [library-boundaries.md](./library-boundaries.md) and [09-performance-and-scalability.md](../rules/09-performance-and-scalability.md).
 
@@ -183,13 +190,13 @@ Wrap the limiter behind an adapter/guard so the store (in-memory vs. distributed
 
 Decision: set security headers **explicitly**, never rely on a library's evolving defaults. A baseline:
 
-| Header | Stance |
-| --- | --- |
-| Content-Security-Policy | `default-src 'self'`; tighten per app; `object-src 'none'`, `frame-src 'none'`, `base-uri 'self'`, `form-action 'self'` |
-| Strict-Transport-Security | long max-age, `includeSubDomains`, `preload` (production) |
-| X-Frame-Options / frameguard | `deny` |
-| Referrer-Policy | `strict-origin-when-cross-origin` |
-| X-Content-Type-Options | `nosniff` |
+| Header                       | Stance                                                                                                                  |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Content-Security-Policy      | `default-src 'self'`; tighten per app; `object-src 'none'`, `frame-src 'none'`, `base-uri 'self'`, `form-action 'self'` |
+| Strict-Transport-Security    | long max-age, `includeSubDomains`, `preload` (production)                                                               |
+| X-Frame-Options / frameguard | `deny`                                                                                                                  |
+| Referrer-Policy              | `strict-origin-when-cross-origin`                                                                                       |
+| X-Content-Type-Options       | `nosniff`                                                                                                               |
 
 CORS: never `origin: *` in production. Use an explicit origin **allowlist** with `credentials: true` only for trusted origins. If an edge proxy/gateway owns CORS, the app may skip per-request CORS — but that decision is configured and documented, not implicit.
 

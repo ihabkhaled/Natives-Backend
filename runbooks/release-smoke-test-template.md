@@ -6,9 +6,9 @@
 
 ## Smoke Tests
 
-| Test | Expected result | Result |
-| --- | --- | --- |
-| | | pass / fail |
+| Test | Expected result | Result      |
+| ---- | --------------- | ----------- |
+|      |                 | pass / fail |
 
 ## Operational Checks
 
@@ -16,4 +16,3 @@
 - Metrics:
 - Traces:
 - Integrations:
-

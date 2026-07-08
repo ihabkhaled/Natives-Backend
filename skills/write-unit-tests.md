@@ -9,7 +9,7 @@ Unit tests prove **one unit in isolation** — a service, use case, domain polic
 - **Tests come first.** No behavior change ships without tests in the same change ([rule 42](../rules/00-non-negotiable-rules.md)).
 - **Coverage floor 95%** on statements/branches/functions/lines; critical paths near 100% ([/testing/coverage-policy.md](../testing/coverage-policy.md)).
 - **Mock at the boundary, not inside the unit** — double the repository/adapter/collaborator, exercise the real logic under test.
-- **Every typed `AppError` path is asserted** — error class *and* `messageKey` ([rule 26](../rules/00-non-negotiable-rules.md), [/skills/create-error.md](./create-error.md)).
+- **Every typed `AppError` path is asserted** — error class _and_ `messageKey` ([rule 26](../rules/00-non-negotiable-rules.md), [/skills/create-error.md](./create-error.md)).
 - **No magic strings / domain string comparisons** — assert against enum members, never raw literals ([rules 8–9](../rules/00-non-negotiable-rules.md)).
 - **No `any`, no `!`, `===`/`!==` only** — strict TS holds in tests too ([rule 1–7](../rules/00-non-negotiable-rules.md)).
 - **Vitest only** — `vi.fn()` / `vi.mock()` / `vi.spyOn()`. There is no Jest in this workspace.
@@ -18,7 +18,7 @@ Unit tests prove **one unit in isolation** — a service, use case, domain polic
 
 ## Tests FIRST
 
-Write the failing test before the implementation. Map each acceptance criterion and each branch to a named `it(...)`, watch it go red, then make it green. For a bug fix, reproduce the defect as a failing test *first* so the regression is permanently locked in ([/skills/investigate-production-bug.md](./investigate-production-bug.md)).
+Write the failing test before the implementation. Map each acceptance criterion and each branch to a named `it(...)`, watch it go red, then make it green. For a bug fix, reproduce the defect as a failing test _first_ so the regression is permanently locked in ([/skills/investigate-production-bug.md](./investigate-production-bug.md)).
 
 ---
 
@@ -28,12 +28,12 @@ Write the failing test before the implementation. Map each acceptance criterion 
 
 Tests live beside the source: `*.spec.ts` next to the file under test (the SUT). Identify every collaborator the unit calls across a layer line — those are your mocks. A service mocks its repository and adapters; a use case mocks the services it orchestrates; a domain policy usually needs **no** mocks (pure input → output).
 
-| Unit under test | Mock these | Never mock |
-| --- | --- | --- |
-| `<feature>.service.ts` | repository, adapters, other modules' public surface | the domain policies it uses |
-| `<action>.use-case.ts` | the services it calls, the transaction runner, event publisher | — |
-| `domain/*.policy.ts` | nothing (pure) | — |
-| guard / pipe / interceptor | reflector, the service it queries | — |
+| Unit under test            | Mock these                                                     | Never mock                  |
+| -------------------------- | -------------------------------------------------------------- | --------------------------- |
+| `<feature>.service.ts`     | repository, adapters, other modules' public surface            | the domain policies it uses |
+| `<action>.use-case.ts`     | the services it calls, the transaction runner, event publisher | —                           |
+| `domain/*.policy.ts`       | nothing (pure)                                                 | —                           |
+| guard / pipe / interceptor | reflector, the service it queries                              | —                           |
 
 ### 2. Build the unit with the NestJS testing module
 
@@ -53,7 +53,11 @@ describe('OrderService', () => {
   let repo: Mocked<OrderRepository>;
 
   beforeEach(async () => {
-    repo = { findById: vi.fn(), save: vi.fn(), list: vi.fn() } as Mocked<OrderRepository>;
+    repo = {
+      findById: vi.fn(),
+      save: vi.fn(),
+      list: vi.fn(),
+    } as Mocked<OrderRepository>;
     const moduleRef = await Test.createTestingModule({
       providers: [OrderService, { provide: OrderRepository, useValue: repo }],
     }).compile();
@@ -93,15 +97,23 @@ Every `AppError` branch (not-found, forbidden, conflict, validation, business-ru
 it('throws NotFoundError when the order is missing', async () => {
   repo.findById.mockResolvedValue(null);
 
-  await expect(service.getOwned('missing', 'user-1')).rejects.toBeInstanceOf(NotFoundError);
+  await expect(service.getOwned('missing', 'user-1')).rejects.toBeInstanceOf(
+    NotFoundError,
+  );
   await expect(service.getOwned('missing', 'user-1')).rejects.toMatchObject({
     messageKey: 'errors.order.notFound',
   });
 });
 
 it('throws ForbiddenError on cross-owner access', async () => {
-  repo.findById.mockResolvedValue({ id: 'order-1', ownerId: 'user-2', status: OrderStatus.DRAFT });
-  await expect(service.getOwned('order-1', 'user-1')).rejects.toBeInstanceOf(ForbiddenError);
+  repo.findById.mockResolvedValue({
+    id: 'order-1',
+    ownerId: 'user-2',
+    status: OrderStatus.DRAFT,
+  });
+  await expect(service.getOwned('order-1', 'user-1')).rejects.toBeInstanceOf(
+    ForbiddenError,
+  );
 });
 ```
 
@@ -109,18 +121,18 @@ it('throws ForbiddenError on cross-owner access', async () => {
 
 Coverage is earned by exercising both sides of every `if`, `??`, `?.`, guard clause, ternary, and `switch` arm. Aim for **≥ 10 cases per service/use case**.
 
-| Bucket | What to assert |
-| --- | --- |
-| Happy path | returns expected value; collaborator called with expected args |
-| Not-found | rejects `NotFoundError` when the repo returns `null` |
-| Conflict / duplicate | rejects `ConflictError` when a uniqueness check finds a row |
-| Forbidden / ownership | rejects `ForbiddenError` on cross-owner / cross-tenant access |
-| Validation / business-rule | rejects the typed error for invalid state transitions |
-| Branch: flag true/false | e.g. `includeArchived` on vs off — assert the arg passed to the repo |
-| Optional field present/absent | `undefined` stripped vs included |
-| Empty result | `[]` / `total: 0` handled without throwing |
-| Idempotent / no-op | the path that skips a query (same value, already-applied) |
-| Collaborator failure | repo/adapter rejects → error propagates or is wrapped to an `AppError` |
+| Bucket                        | What to assert                                                         |
+| ----------------------------- | ---------------------------------------------------------------------- |
+| Happy path                    | returns expected value; collaborator called with expected args         |
+| Not-found                     | rejects `NotFoundError` when the repo returns `null`                   |
+| Conflict / duplicate          | rejects `ConflictError` when a uniqueness check finds a row            |
+| Forbidden / ownership         | rejects `ForbiddenError` on cross-owner / cross-tenant access          |
+| Validation / business-rule    | rejects the typed error for invalid state transitions                  |
+| Branch: flag true/false       | e.g. `includeArchived` on vs off — assert the arg passed to the repo   |
+| Optional field present/absent | `undefined` stripped vs included                                       |
+| Empty result                  | `[]` / `total: 0` handled without throwing                             |
+| Idempotent / no-op            | the path that skips a query (same value, already-applied)              |
+| Collaborator failure          | repo/adapter rejects → error propagates or is wrapped to an `AppError` |
 
 ### 6. Drive sequential and conditional collaborator calls
 
@@ -159,7 +171,9 @@ it('rejects an illegal state transition', () => {
 Flaky tests are defects. Fake timers and clocks; inject randomness so it can be stubbed.
 
 ```ts
-beforeEach(() => vi.useFakeTimers().setSystemTime(new Date('2025-01-01T00:00:00Z')));
+beforeEach(() =>
+  vi.useFakeTimers().setSystemTime(new Date('2025-01-01T00:00:00Z')),
+);
 afterEach(() => vi.useRealTimers());
 ```
 

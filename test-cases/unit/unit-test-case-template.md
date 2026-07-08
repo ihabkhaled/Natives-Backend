@@ -2,12 +2,12 @@
 
 ## Metadata
 
-| Field | Value |
-| --- | --- |
-| Test case ID | |
-| Related request ID | |
-| Module / function | |
-| Owner | |
+| Field              | Value |
+| ------------------ | ----- |
+| Test case ID       |       |
+| Related request ID |       |
+| Module / function  |       |
+| Owner              |       |
 
 ## Objective
 
@@ -34,4 +34,3 @@
 ## Edge / Negative Variant
 
 [Describe the failure or boundary variant linked to this unit.]
-

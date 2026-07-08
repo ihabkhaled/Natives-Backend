@@ -96,7 +96,9 @@ describe('OrderService.create', () => {
   afterEach(() => vi.clearAllMocks());
 
   it('throws ForbiddenError with a messageKey when the caller lacks permission', async () => {
-    await expect(service.create(readerUser, dto)).rejects.toBeInstanceOf(ForbiddenError);
+    await expect(service.create(readerUser, dto)).rejects.toBeInstanceOf(
+      ForbiddenError,
+    );
     await expect(service.create(readerUser, dto)).rejects.toMatchObject({
       messageKey: 'errors.order.forbidden', // exact key, not a substring
     });

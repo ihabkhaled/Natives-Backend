@@ -15,10 +15,10 @@ Define the engineering execution phases and sequence them into safe, reviewable 
 ## Engineering Milestones
 
 | Milestone | Description | Dependencies | Merge criteria |
-| --- | --- | --- | --- |
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
+| --------- | ----------- | ------------ | -------------- |
+| 1         |             |              |                |
+| 2         |             |              |                |
+| 3         |             |              |                |
 
 ## Branch / Merge Strategy
 

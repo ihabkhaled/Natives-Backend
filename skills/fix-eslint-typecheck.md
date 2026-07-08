@@ -15,7 +15,7 @@
 
 ## Tests FIRST
 
-A type/lint fix is still a behavior change if it alters narrowing, defaults, or control flow. Before touching code, run the affected module's tests and keep them green throughout. If your fix changes a value path (e.g. swapping `||` → `??`, narrowing a nullable), add or adjust a test that pins the new behavior *first*. See [write-unit-tests.md](./write-unit-tests.md).
+A type/lint fix is still a behavior change if it alters narrowing, defaults, or control flow. Before touching code, run the affected module's tests and keep them green throughout. If your fix changes a value path (e.g. swapping `||` → `??`, narrowing a nullable), add or adjust a test that pins the new behavior _first_. See [write-unit-tests.md](./write-unit-tests.md).
 
 ---
 
@@ -35,7 +35,7 @@ Iterate on one file at a time, but always re-run the full gate before "done":
 npx eslint src/modules/<feature>/application/<feature>.service.ts
 ```
 
-> `typecheck` is **whole-project**. A pre-existing error in a file you never touched still blocks your commit — fix it or include the fix. Never suppress it. Read the *first* error; later ones are usually cascades of it.
+> `typecheck` is **whole-project**. A pre-existing error in a file you never touched still blocks your commit — fix it or include the fix. Never suppress it. Read the _first_ error; later ones are usually cascades of it.
 
 ### 2. Map the error to a known fix (Section "Common errors"), apply at the root
 
@@ -53,7 +53,9 @@ Add a durable, abstract note to [known-pitfalls.md](../memory/known-pitfalls.md)
 
 ```ts
 // DON'T
-function parse(raw: any): Account { return raw; }
+function parse(raw: any): Account {
+  return raw;
+}
 
 // DO — accept unknown, narrow with a type guard
 function parse(raw: unknown): Account {
@@ -65,8 +67,8 @@ function parse(raw: unknown): Account {
 ### `noUncheckedIndexedAccess` — indexed access is `T | undefined`
 
 ```ts
-const first = items[0];           // type: Item | undefined
-if (first === undefined) return;  // narrow before use — never `first!`
+const first = items[0]; // type: Item | undefined
+if (first === undefined) return; // narrow before use — never `first!`
 useItem(first);
 ```
 
@@ -96,10 +98,14 @@ try {
 
 ```ts
 // DON'T
-if (order.status === 'draft') { /* ... */ }
+if (order.status === 'draft') {
+  /* ... */
+}
 
 // DO — import the enum, compare to its member (rules 8–9)
-if (order.status === OrderStatus.DRAFT) { /* ... */ }
+if (order.status === OrderStatus.DRAFT) {
+  /* ... */
+}
 ```
 
 ### `switch-exhaustiveness-check` — handle every enum case
@@ -107,9 +113,14 @@ if (order.status === OrderStatus.DRAFT) { /* ... */ }
 ```ts
 function label(status: OrderStatus): string {
   switch (status) {
-    case OrderStatus.DRAFT: return MESSAGE_KEYS.orderDraft;
-    case OrderStatus.SHIPPED: return MESSAGE_KEYS.orderShipped;
-    default: { const _exhaustive: never = status; return _exhaustive; }
+    case OrderStatus.DRAFT:
+      return MESSAGE_KEYS.orderDraft;
+    case OrderStatus.SHIPPED:
+      return MESSAGE_KEYS.orderShipped;
+    default: {
+      const _exhaustive: never = status;
+      return _exhaustive;
+    }
   }
 }
 ```
@@ -118,10 +129,14 @@ function label(status: OrderStatus): string {
 
 ```ts
 // DON'T — TS already proved `account` is non-null
-if (account && account.id) { /* ... */ }
+if (account && account.id) {
+  /* ... */
+}
 
 // DO — trust the type system
-if (account.id.length > 0) { /* ... */ }
+if (account.id.length > 0) {
+  /* ... */
+}
 ```
 
 ### `explicit-function-return-type` — declare return types
@@ -161,7 +176,9 @@ Same shape for: use-case ⇏ controller/api-dto, service ⇏ controller, reposit
 
 ```ts
 // DON'T — inline interface in a service (banned)
-interface Row { id: string; }
+interface Row {
+  id: string;
+}
 
 // DO — move it to model/<feature>.types.ts and import it
 import type { Row } from '../model/<feature>.types';

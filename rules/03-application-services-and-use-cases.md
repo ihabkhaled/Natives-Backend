@@ -10,20 +10,20 @@ The application layer has **two shapes**: the **Service** (default) and the **Us
 
 The **Service is the default.** Escalate to a **Use case** only when the exceptional shape genuinely appears.
 
-| Signal | Service | Use case |
-| --- | --- | --- |
-| Single aggregate / one logical write | ✅ | — |
-| CRUD, reads, projections | ✅ | — |
-| Thin state-machine delegation (`publish`, `approve`) | ✅ | — |
-| Single write + fire-and-forget side effect | ✅ | — |
-| Owns its transaction internally (one entity) | ✅ | possible |
-| **Multiple entities** mutated under **one** transaction/invariant | — | ✅ |
-| **Ordered post-commit events**, typically across modules | — | ✅ |
-| Coordinates several services/policies under one boundary | — | ✅ |
+| Signal                                                            | Service | Use case |
+| ----------------------------------------------------------------- | ------- | -------- |
+| Single aggregate / one logical write                              | ✅      | —        |
+| CRUD, reads, projections                                          | ✅      | —        |
+| Thin state-machine delegation (`publish`, `approve`)              | ✅      | —        |
+| Single write + fire-and-forget side effect                        | ✅      | —        |
+| Owns its transaction internally (one entity)                      | ✅      | possible |
+| **Multiple entities** mutated under **one** transaction/invariant | —       | ✅       |
+| **Ordered post-commit events**, typically across modules          | —       | ✅       |
+| Coordinates several services/policies under one boundary          | —       | ✅       |
 
-**Rule of thumb:** if it is one write, or a delegation, or a read, it is a **Service**. Reach for a **Use case** only when *both* "multiple entities in one transaction" *and* "ordered post-commit events" are true. See [01-architecture-and-module-boundaries.md](./01-architecture-and-module-boundaries.md) and the [backend-architect](../agents/backend-architect.md) agent when the call is close.
+**Rule of thumb:** if it is one write, or a delegation, or a read, it is a **Service**. Reach for a **Use case** only when _both_ "multiple entities in one transaction" _and_ "ordered post-commit events" are true. See [01-architecture-and-module-boundaries.md](./01-architecture-and-module-boundaries.md) and the [backend-architect](../agents/backend-architect.md) agent when the call is close.
 
-> **Dependency direction is one-way: use cases call services; services never call use cases.** Violating this creates cycles and hides the transaction owner. The ESLint plugin blocks use cases from importing controllers/API DTOs and services from importing controllers ([13-eslint-and-typescript.md](./13-eslint-and-typescript.md)).
+> **Dependency direction is one-way: use cases call services; services never call use cases.** Violating this creates cycles and hides the transaction owner. The ESLint plugin blocks use cases from importing controllers/API DTOs, services from importing controllers, and services from importing use cases ([13-eslint-and-typescript.md](./13-eslint-and-typescript.md)).
 
 ---
 
@@ -32,6 +32,10 @@ The **Service is the default.** Escalate to a **Use case** only when the excepti
 **MAY:** inject repositories/adapters/domain policies in the constructor; check preconditions the schema can't express (existence, ownership defense-in-depth, current-state legality); delegate business rules to `domain/`; call adapters and `@core` services; return typed entities/DTOs; throw typed `AppError`s with a `messageKey`.
 
 **MUST NOT:** touch HTTP request/response objects (that's the controller — [02-controllers-and-http-transport.md](./02-controllers-and-http-transport.md)); define inline types/interfaces/enums/constants/DTOs/config-maps ([06-types-enums-constants.md](./06-types-enums-constants.md), rules 10–16); do inline mapping/formatting/string-building (extract to `lib/`); re-implement validation that belongs in the DTO ([05-dto-and-validation.md](./05-dto-and-validation.md)); read `process.env` (use `@config`); compare domain strings (use enum members); instantiate vendor SDKs (go through an adapter — [12-library-wrapping-and-adapters.md](./12-library-wrapping-and-adapters.md)); let a side-effect failure crash the workflow.
+
+### DTOs and model types — the boundary
+
+Services and use cases should use **model types** (`model/*.types.ts`) for their input contracts whenever possible. The controller is responsible for HTTP shaping; the application layer should not be tightly coupled to the API request shape. Response DTOs are acceptable as a return contract when the service delegates to a mapper in `lib/`, but the service should not import API DTOs purely to receive input. Use cases must never import API DTOs — this is mechanically enforced by the `architecture/no-dto-import-in-domain-or-use-case` rule.
 
 ---
 
@@ -74,16 +78,20 @@ export class OrderService {
   ) {}
 
   async publishOrder(orderId: string, actorId: string): Promise<Order> {
-    const order = await this.orderRepo.findByIdOrThrow(orderId);   // precondition: exists
-    assertOwnership(order.ownerId, actorId);                        // precondition: ownership (lib/)
-    const published = await transitionOrder(order, OrderAction.PUBLISH, actorId); // domain decides
+    const order = await this.orderRepo.findByIdOrThrow(orderId); // precondition: exists
+    assertOwnership(order.ownerId, actorId); // precondition: ownership (lib/)
+    const published = await transitionOrder(
+      order,
+      OrderAction.PUBLISH,
+      actorId,
+    ); // domain decides
     this.logger.info(`${LOG_PREFIX} publishOrder ok`, { orderId, actorId });
     return published;
   }
 }
 ```
 
-`assertOwnership` throws a typed `ForbiddenError` and lives in `lib/`. `transitionOrder` is the domain state machine — it transitions, audits, and emits. The service only *coordinates*.
+`assertOwnership` throws a typed `ForbiddenError` and lives in `lib/`. `transitionOrder` is the domain state machine — it transitions, audits, and emits. The service only _coordinates_.
 
 ---
 
@@ -91,22 +99,25 @@ export class OrderService {
 
 `max-lines-per-function: 20` runs on every `*.service.ts`. When a method grows past it, the extra lines are **not orchestration** — extract them and the method shrinks naturally.
 
-| Bloat in the method | Extract to |
-| --- | --- |
-| Data shaping / mapping | `lib/<feature>.mappers.ts` |
-| String building / formatting | `lib/<feature>.formatters.ts` |
+| Bloat in the method                    | Extract to                                   |
+| -------------------------------------- | -------------------------------------------- |
+| Data shaping / mapping                 | `lib/<feature>.mappers.ts`                   |
+| String building / formatting           | `lib/<feature>.formatters.ts`                |
 | Multi-step business rules / invariants | `domain/<feature>.policy.ts` / state machine |
-| Reusable computation | `lib/<feature>.helpers.ts` |
-| Inline anonymous fn > 2–3 lines | a named function in `lib/` |
+| Reusable computation                   | `lib/<feature>.helpers.ts`                   |
+| Inline anonymous fn > 2–3 lines        | a named function in `lib/`                   |
 
 ```ts
 // Don't — formatting + mapping bloat the method
 const label = `${order.number} — ${order.title.slice(0, 20).toUpperCase()}`;
-const rows = orders.map(o => ({ id: o.id, when: new Date(o.createdAt).toISOString() }));
+const rows = orders.map(o => ({
+  id: o.id,
+  when: new Date(o.createdAt).toISOString(),
+}));
 
 // Do — delegate, method stays a recipe
-const label = formatOrderLabel(order);   // lib/order.formatters.ts
-const rows = toOrderListRows(orders);    // lib/order.mappers.ts
+const label = formatOrderLabel(order); // lib/order.formatters.ts
+const rows = toOrderListRows(orders); // lib/order.mappers.ts
 ```
 
 See [decompose-large-file.md](../skills/decompose-large-file.md) for the mechanical workflow.
@@ -115,7 +126,7 @@ See [decompose-large-file.md](../skills/decompose-large-file.md) for the mechani
 
 ## Transactions are owned by Use cases
 
-A multi-entity, must-commit-together operation belongs in a **Use case**, which opens and owns the transaction. Hoist reads and decisions *before* the boundary; keep the transaction small; fire side effects *after* commit.
+A multi-entity, must-commit-together operation belongs in a **Use case**, which opens and owns the transaction. Hoist reads and decisions _before_ the boundary; keep the transaction small; fire side effects _after_ commit.
 
 **Leak-safe shape — copy exactly.** Put `connect()` **and** the transaction start **inside** the `try`, release in `finally`, and guard rollback so it never throws over the original error.
 
@@ -123,15 +134,15 @@ A multi-entity, must-commit-together operation belongs in a **Use case**, which 
 @Injectable()
 export class AcceptQuoteUseCase {
   constructor(
-    private readonly uow: UnitOfWork,          // adapter over the ORM's transaction primitive
+    private readonly uow: UnitOfWork, // adapter over the ORM's transaction primitive
     private readonly events: DomainEventBus,
     private readonly logger: AppLogger,
   ) {}
 
   async execute(input: AcceptQuoteInput): Promise<Order> {
     const order = await this.loadAwardableOrder(input.orderId, input.actorId); // reads BEFORE tx
-    const result = await this.commitAward(order, input);                        // multi-entity tx
-    await this.publishAwardEvents(result);                                      // AFTER commit
+    const result = await this.commitAward(order, input); // multi-entity tx
+    await this.publishAwardEvents(result); // AFTER commit
     return result.order;
   }
 }
@@ -150,9 +161,9 @@ private async commitAward(order: Order, input: AcceptQuoteInput): Promise<AwardR
 }
 ```
 
-The `UnitOfWork` adapter encapsulates the connect/start/commit/rollback/release lifecycle so business code never hand-rolls it. Its rules: connect and start *inside* `try`, release in `finally`, rollback guarded by an `isActive` check. See [10-reliability-and-durability.md](./10-reliability-and-durability.md), [04-repositories-and-persistence.md](./04-repositories-and-persistence.md), and the [create-use-case](../skills/create-use-case.md) skill. The transaction-leak and masked-error traps are catalogued in [known-pitfalls.md](../memory/known-pitfalls.md).
+The `UnitOfWork` adapter encapsulates the connect/start/commit/rollback/release lifecycle so business code never hand-rolls it. Its rules: connect and start _inside_ `try`, release in `finally`, rollback guarded by an `isActive` check. See [10-reliability-and-durability.md](./10-reliability-and-durability.md), [04-repositories-and-persistence.md](./04-repositories-and-persistence.md), and the [create-use-case](../skills/create-use-case.md) skill. The transaction-leak and masked-error traps are catalogued in [known-pitfalls.md](../memory/known-pitfalls.md).
 
-> **Never wrap read-only work in a transaction.** Reads and decisions go *before* the `try`; events and notifications go *after* commit, never inside it.
+> **Never wrap read-only work in a transaction.** Reads and decisions go _before_ the `try`; events and notifications go _after_ commit, never inside it.
 
 ---
 
@@ -197,7 +208,7 @@ When a service file grows past a few hundred lines, split it into **focused sub-
 
 - The original class becomes a **facade**: it injects the sub-services as `private readonly` deps and each public method delegates in **one line**, preserving the exact name/signature/return type. The provider token stays the same, so consumers (controllers, use cases, other modules via `index.ts`) are untouched.
 - Sub-services live as `application/<feature>-<concern>.service.ts`, grouped by cohesion (e.g. `account-lifecycle.service.ts`, `account-credentials.service.ts`). Each is `@Injectable()` and registered in the module; each keeps the same import boundary as the original.
-- **Don't duplicate shared private helpers.** A *pure* helper becomes an exported function in `lib/<feature>.helpers.ts`. A *stateful* helper (uses repos/adapters) moves into ONE collaborator service that the others **inject** — never leave a dangling `this.x` that no longer resolves.
+- **Don't duplicate shared private helpers.** A _pure_ helper becomes an exported function in `lib/<feature>.helpers.ts`. A _stateful_ helper (uses repos/adapters) moves into ONE collaborator service that the others **inject** — never leave a dangling `this.x` that no longer resolves.
 - Method bodies move **verbatim** (pure structural refactor); existing tests cover the sub-services through the facade, so coverage holds.
 
 ```ts
@@ -217,7 +228,7 @@ export class AccountService {
 }
 ```
 
-**Shrinking an oversized *method*:** extract whole `return`/`throw`-terminated branches or sequential phases into `private` helpers on the same class, leaving the public method a thin orchestrator. Preserve control flow exactly — a `return` inside an extracted helper must still exit the public method (`return await this.handlePhase(...)`). Thread every read variable as a parameter; keep `await` ordering identical. Full workflow: [decompose-large-file.md](../skills/decompose-large-file.md) and the [backend-refactor-agent](../agents/backend-refactor-agent.md).
+**Shrinking an oversized _method_:** extract whole `return`/`throw`-terminated branches or sequential phases into `private` helpers on the same class, leaving the public method a thin orchestrator. Preserve control flow exactly — a `return` inside an extracted helper must still exit the public method (`return await this.handlePhase(...)`). Thread every read variable as a parameter; keep `await` ordering identical. Full workflow: [decompose-large-file.md](../skills/decompose-large-file.md) and the [backend-refactor-agent](../agents/backend-refactor-agent.md).
 
 ---
 
@@ -225,20 +236,27 @@ export class AccountService {
 
 Return **entities or response DTOs**, never `any` or loosely-typed objects (rule 3). Every public method declares an explicit return type. Every failure throws a typed `AppError` subclass carrying a `messageKey` of the form `errors.<feature>.<key>` — the global exception filter maps it to status + sanitized body ([18-error-handling-and-exceptions.md](./18-error-handling-and-exceptions.md)).
 
-| Error | Status | Use when |
-| --- | --- | --- |
-| `ValidationError` | 400 | Input/state precondition fails beyond DTO validation |
-| `UnauthorizedError` | 401 | No / invalid identity |
-| `ForbiddenError` | 403 | Identity present, not allowed (ownership/permission) |
-| `NotFoundError` | 404 | Resource doesn't exist |
-| `ConflictError` | 409 | Duplicate / conflicting state |
-| `StateTransitionError` | 400 | Illegal state-machine transition |
-| `IntegrationError` | 502 | External provider failed |
+| Error                  | Status | Use when                                             |
+| ---------------------- | ------ | ---------------------------------------------------- |
+| `ValidationError`      | 400    | Input/state precondition fails beyond DTO validation |
+| `UnauthorizedError`    | 401    | No / invalid identity                                |
+| `ForbiddenError`       | 403    | Identity present, not allowed (ownership/permission) |
+| `NotFoundError`        | 404    | Resource doesn't exist                               |
+| `ConflictError`        | 409    | Duplicate / conflicting state                        |
+| `StateTransitionError` | 400    | Illegal state-machine transition                     |
+| `IntegrationError`     | 502    | External provider failed                             |
 
 ```ts
 throw new NotFoundError('Order', 'errors.order.notFound');
-throw new ConflictError('Duplicate identifier', 'errors.account.duplicateIdentifier');
-throw new StateTransitionError(order.status, OrderAction.PUBLISH, 'errors.order.invalidTransition');
+throw new ConflictError(
+  'Duplicate identifier',
+  'errors.account.duplicateIdentifier',
+);
+throw new StateTransitionError(
+  order.status,
+  OrderAction.PUBLISH,
+  'errors.order.invalidTransition',
+);
 ```
 
 Each new `messageKey` needs a matching entry in **each supported locale** ([16-i18n-and-messaging.md](./16-i18n-and-messaging.md), [add-i18n-message-key.md](../skills/add-i18n-message-key.md)).

@@ -49,14 +49,14 @@ If it reports anything, fix it before continuing — leftover conflict markers a
 
 Nothing generated, secret, or machine-local belongs in the commit. Verify the diff and the untracked list are clean of these categories:
 
-| Must NOT be committed | Where it belongs instead |
-| --- | --- |
-| `.env`, `.env.*`, credential files | the secret manager; document the key in [/rules/17-configuration-and-environment.md](../rules/17-configuration-and-environment.md) |
-| `dist/`, `build/`, compiled output | `.gitignore`; produced by `npm run build` |
-| `coverage/`, test reports, `*.lcov` | `.gitignore`; produced by `npm run test:coverage` |
-| `node_modules/`, lockfile churn you didn't intend | `.gitignore`; commit lockfile **only** when deps actually changed |
-| debug logs, scratch files, editor/OS cruft | delete; add a global ignore |
-| inline tokens / API keys / connection strings | typed config + secret manager ([rule 27](../rules/00-non-negotiable-rules.md)) |
+| Must NOT be committed                             | Where it belongs instead                                                                                                           |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `.env`, `.env.*`, credential files                | the secret manager; document the key in [/rules/17-configuration-and-environment.md](../rules/17-configuration-and-environment.md) |
+| `dist/`, `build/`, compiled output                | `.gitignore`; produced by `npm run build`                                                                                          |
+| `coverage/`, test reports, `*.lcov`               | `.gitignore`; produced by `npm run test:coverage`                                                                                  |
+| `node_modules/`, lockfile churn you didn't intend | `.gitignore`; commit lockfile **only** when deps actually changed                                                                  |
+| debug logs, scratch files, editor/OS cruft        | delete; add a global ignore                                                                                                        |
+| inline tokens / API keys / connection strings     | typed config + secret manager ([rule 27](../rules/00-non-negotiable-rules.md))                                                     |
 
 ```bash
 # DO — scan staged + working changes for obvious secret patterns before staging

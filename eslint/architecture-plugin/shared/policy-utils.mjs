@@ -1,13 +1,13 @@
 function toRegExps(patterns) {
-  return (patterns ?? []).map(pattern => new RegExp(pattern, 'u'));
+  return (patterns ?? []).map((pattern) => new RegExp(pattern, "u"));
 }
 
 export function matchesAny(value, regexps) {
-  return regexps.some(regexp => regexp.test(value));
+  return regexps.some((regexp) => regexp.test(value));
 }
 
 export function compileImportPolicies(policies) {
-  return (policies ?? []).map(policy => ({
+  return (policies ?? []).map((policy) => ({
     from: toRegExps(policy.from),
     forbid: toRegExps(policy.forbid),
     allowIn: toRegExps(policy.allowIn),
@@ -16,7 +16,7 @@ export function compileImportPolicies(policies) {
 }
 
 export function compileRestrictedAccess(rules) {
-  return (rules ?? []).map(rule => ({
+  return (rules ?? []).map((rule) => ({
     object: rule.object,
     property: rule.property,
     allowIn: toRegExps(rule.allowIn),
@@ -33,5 +33,5 @@ export function importPolicyMatches(policy, filename, candidates) {
     return false;
   }
 
-  return candidates.some(candidate => matchesAny(candidate, policy.forbid));
+  return candidates.some((candidate) => matchesAny(candidate, policy.forbid));
 }

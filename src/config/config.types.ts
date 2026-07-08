@@ -13,6 +13,8 @@ export interface SecurityConfig {
   readonly corsOrigins: readonly string[];
   readonly rateLimitTtlMs: number;
   readonly rateLimitMax: number;
+  readonly jwtSecret: string;
+  readonly jwtExpiresInSeconds: number;
 }
 
 export interface RootConfig {

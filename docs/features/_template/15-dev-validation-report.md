@@ -6,15 +6,15 @@ Record the implementation team's proof that the change works before independent 
 
 ## Validation Summary
 
-| Area | Result | Evidence |
-| --- | --- | --- |
-| Lint | pass / fail | |
-| Type checks | pass / fail | |
-| Static analysis | pass / fail | |
-| Unit tests | pass / fail | |
-| Integration tests | pass / fail | |
-| E2E tests | pass / fail / n-a | |
-| Manual validation | pass / fail | |
+| Area              | Result            | Evidence |
+| ----------------- | ----------------- | -------- |
+| Lint              | pass / fail       |          |
+| Type checks       | pass / fail       |          |
+| Static analysis   | pass / fail       |          |
+| Unit tests        | pass / fail       |          |
+| Integration tests | pass / fail       |          |
+| E2E tests         | pass / fail / n-a |          |
+| Manual validation | pass / fail       |          |
 
 ## Step-by-Step Validation Log
 
@@ -25,8 +25,8 @@ Record the implementation team's proof that the change works before independent 
 ## Functional Coverage
 
 | Function / route / component / job / state transition | What was tested | Result |
-| --- | --- | --- |
-| | | |
+| ----------------------------------------------------- | --------------- | ------ |
+|                                                       |                 |        |
 
 ## Operational Validation
 
@@ -39,8 +39,8 @@ Record the implementation team's proof that the change works before independent 
 ## Acceptance Criteria Validation
 
 | Acceptance criterion | Validation method | Result |
-| --- | --- | --- |
-| | | |
+| -------------------- | ----------------- | ------ |
+|                      |                   |        |
 
 ## Defects Found During Developer Validation
 

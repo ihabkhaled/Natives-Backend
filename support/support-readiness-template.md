@@ -18,4 +18,3 @@
 ## Known Issues
 
 - [Issue 1]
-

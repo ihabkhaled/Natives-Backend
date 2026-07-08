@@ -16,5 +16,8 @@ export class ArticleResponseDto {
   readonly status!: ArticleStatus;
 
   @ApiProperty()
+  readonly ownerId!: string;
+
+  @ApiProperty()
   readonly createdAt!: string;
 }

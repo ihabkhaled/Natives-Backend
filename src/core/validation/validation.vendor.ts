@@ -6,6 +6,7 @@
  */
 export { plainToInstance, Type } from 'class-transformer';
 export {
+  IsEmail,
   IsEnum,
   IsInt,
   IsOptional,

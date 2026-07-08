@@ -15,9 +15,9 @@ Capture independent QA validation results.
 
 ## QA Scenario Matrix
 
-| Scenario ID | Scenario | Type | Result | Evidence | Defect ID if failed |
-| --- | --- | --- | --- | --- | --- |
-| | | happy / unhappy / edge / regression | pass / fail | | |
+| Scenario ID | Scenario | Type                                | Result      | Evidence | Defect ID if failed |
+| ----------- | -------- | ----------------------------------- | ----------- | -------- | ------------------- |
+|             |          | happy / unhappy / edge / regression | pass / fail |          |                     |
 
 ## API Validation
 

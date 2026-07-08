@@ -58,10 +58,17 @@ import { Type } from 'class-transformer';
 import { IsInt, Max, Min, IsOptional } from 'class-validator';
 
 export class ListArticleQueryDto {
-  @Type(() => Number) @IsInt() @Min(1) @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  @IsOptional()
   readonly page: number = 1;
 
-  @Type(() => Number) @IsInt() @Min(1) @Max(100) @IsOptional() // hard cap — rule 37
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  @Max(100)
+  @IsOptional() // hard cap — rule 37
   readonly limit: number = 20;
 }
 ```
@@ -75,7 +82,12 @@ Mount the always-on auth + RBAC guards globally; annotate the method with the re
 ```ts
 // api/<feature>.controller.ts
 import { Controller, Post, Body, HttpCode, HttpStatus } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiCreatedResponse, ApiBearerAuth } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiCreatedResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { CurrentUser } from '@core/decorators/current-user.decorator';
 import { RequirePermissions } from '@core/decorators/require-permissions.decorator';
 import { AuthUser } from '@shared/types/auth-user.type';
@@ -96,8 +108,8 @@ export class ArticleController {
   @ApiOperation({ summary: 'Create an article' })
   @ApiCreatedResponse({ type: ArticleResponseDto })
   create(
-    @CurrentUser() user: AuthUser,        // identity from the verified token — never the body
-    @Body() dto: CreateArticleDto,        // already validated + transformed by the global pipe
+    @CurrentUser() user: AuthUser, // identity from the verified token — never the body
+    @Body() dto: CreateArticleDto, // already validated + transformed by the global pipe
   ): Promise<ArticleResponseDto> {
     return this.articleService.create(user.id, dto); // ONE delegation, ownership enforced below
   }

@@ -3,6 +3,10 @@ import { configureLifecycle } from '@app/bootstrap/configure-lifecycle';
 import { configureSecurity } from '@app/bootstrap/configure-security';
 import { configureValidation } from '@app/bootstrap/configure-validation';
 import { createFastifyAdapter } from '@app/bootstrap/fastify-adapter';
+import { JwtAuthGuard } from '@modules/auth/jwt-auth.guard';
+import { RolesGuard } from '@modules/auth/roles.guard';
+import { Reflector } from '@nestjs/core';
+import { JwtService } from '@nestjs/jwt';
 import type { NestFastifyApplication } from '@nestjs/platform-fastify';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
@@ -10,6 +14,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 describe('App (e2e)', () => {
   let app: NestFastifyApplication;
+  let authToken: string;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
@@ -23,8 +28,19 @@ describe('App (e2e)', () => {
     await configureValidation(app);
     configureLifecycle(app);
 
+    app.useGlobalGuards(
+      new JwtAuthGuard(app.get(JwtService), app.get(Reflector)),
+      new RolesGuard(app.get(Reflector)),
+    );
+
     await app.init();
     await app.getHttpAdapter().getInstance().ready();
+
+    const loginResponse = await request(app.getHttpServer())
+      .post('/api/v1/auth/login')
+      .send({ email: 'user@example.com', password: 'password' });
+
+    authToken = loginResponse.body.accessToken as string;
   });
 
   afterAll(async () => {
@@ -39,9 +55,18 @@ describe('App (e2e)', () => {
     expect(response.headers['x-content-type-options']).toBe('nosniff');
   });
 
+  it('POST /api/v1/articles without authentication returns 401', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/articles')
+      .send({ title: 'Hello world', body: 'Body content' });
+
+    expect(response.status).toBe(401);
+  });
+
   it('POST /api/v1/articles rejects an invalid DTO with 400 + messageKey', async () => {
     const response = await request(app.getHttpServer())
       .post('/api/v1/articles')
+      .set('Authorization', `Bearer ${authToken}`)
       .send({ title: 'ab' });
 
     expect(response.status).toBe(400);
@@ -51,19 +76,41 @@ describe('App (e2e)', () => {
   it('POST /api/v1/articles creates a draft article', async () => {
     const response = await request(app.getHttpServer())
       .post('/api/v1/articles')
+      .set('Authorization', `Bearer ${authToken}`)
       .send({ title: 'Hello world', body: 'Body content' });
 
     expect(response.status).toBe(201);
     expect(response.body.title).toBe('Hello world');
     expect(response.body.status).toBe('draft');
+    expect(response.body.ownerId).toBe('user-1');
   });
 
   it('GET /api/v1/articles/:id returns 404 + messageKey for a missing article', async () => {
-    const response = await request(app.getHttpServer()).get(
-      '/api/v1/articles/does-not-exist',
-    );
+    const response = await request(app.getHttpServer())
+      .get('/api/v1/articles/00000000-0000-4000-a000-000000000000')
+      .set('Authorization', `Bearer ${authToken}`);
 
     expect(response.status).toBe(404);
     expect(response.body.messageKey).toBe('errors.article.notFound');
+  });
+
+  it('GET /api/v1/articles/:id returns 400 for a non-UUID id', async () => {
+    const response = await request(app.getHttpServer())
+      .get('/api/v1/articles/does-not-exist')
+      .set('Authorization', `Bearer ${authToken}`);
+
+    expect(response.status).toBe(400);
+  });
+
+  it('GET /api/v1/articles returns a paginated envelope', async () => {
+    const response = await request(app.getHttpServer())
+      .get('/api/v1/articles')
+      .set('Authorization', `Bearer ${authToken}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.items).toBeDefined();
+    expect(response.body.total).toBeDefined();
+    expect(response.body.limit).toBeDefined();
+    expect(response.body.offset).toBeDefined();
   });
 });

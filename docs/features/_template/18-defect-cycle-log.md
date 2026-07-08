@@ -7,8 +7,8 @@ Track each QA defect through fix, re-test, regression, and final closure.
 ## Defect Cycle Table
 
 | Defect ID | Summary | Severity | Owner | Fix status | Re-test status | Regression status | Closure date |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| | | | | open | pending | pending | |
+| --------- | ------- | -------- | ----- | ---------- | -------------- | ----------------- | ------------ |
+|           |         |          |       | open       | pending        | pending           |              |
 
 ## Behavior Changes During Fixes
 

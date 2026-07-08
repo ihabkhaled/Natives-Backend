@@ -92,16 +92,21 @@ export class VendorAdapter implements NotificationPort {
   constructor(
     private readonly http: HttpService,
     private readonly logger: AppLogger,
-    @Inject(vendorConfig.KEY) private readonly config: ConfigType<typeof vendorConfig>,
+    @Inject(vendorConfig.KEY)
+    private readonly config: ConfigType<typeof vendorConfig>,
   ) {}
 
   async send(to: string, body: string): Promise<SendResult> {
     try {
       const response = await firstValueFrom(
-        this.http.post<{ id: string }>(`${this.config.baseUrl}/messages`, { to, body }, {
-          headers: { authorization: `Bearer ${this.config.apiKey}` },
-          timeout: VENDOR_TIMEOUT_MS,
-        }),
+        this.http.post<{ id: string }>(
+          `${this.config.baseUrl}/messages`,
+          { to, body },
+          {
+            headers: { authorization: `Bearer ${this.config.apiKey}` },
+            timeout: VENDOR_TIMEOUT_MS,
+          },
+        ),
       );
       return { id: response.data.id, accepted: true };
     } catch (error) {
@@ -139,7 +144,9 @@ export class NotificationModule {}
 // src/modules/<feature>/application/<feature>.service.ts
 @Injectable()
 export class AccountService {
-  constructor(@Inject(NOTIFICATION_PORT) private readonly notifier: NotificationPort) {}
+  constructor(
+    @Inject(NOTIFICATION_PORT) private readonly notifier: NotificationPort,
+  ) {}
 
   async notify(account: Account): Promise<void> {
     await this.notifier.send(account.phone, account.greeting);
@@ -175,7 +182,9 @@ Write the test before the adapter. Mock the vendor client — **never call the r
 - a consumer test injecting a **fake port** (proves business code never touches the vendor).
 
 ```ts
-const port: NotificationPort = { send: vi.fn().mockResolvedValue({ id: 'x', accepted: true }) };
+const port: NotificationPort = {
+  send: vi.fn().mockResolvedValue({ id: 'x', accepted: true }),
+};
 ```
 
 The catch branch is the highest-risk path — keep touched-module coverage ≥ 95% (critical paths near 100%).

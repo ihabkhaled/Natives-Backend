@@ -1,34 +1,54 @@
-import { randomUUID } from 'node:crypto';
-
+import { CLOCK_PORT, type ClockPort } from '@core/clock/clock.port';
+import { ForbiddenError } from '@core/errors/forbidden.error';
 import { NotFoundError } from '@core/errors/not-found.error';
-import { Injectable } from '@nestjs/common';
+import {
+  ID_GENERATOR_PORT,
+  type IdGeneratorPort,
+} from '@core/id-generator/id-generator.port';
+import { Inject, Injectable } from '@nestjs/common';
 
 import type { ArticleResponseDto } from '../api/dto/article-response.dto';
-import type { CreateArticleDto } from '../api/dto/create-article.dto';
-import type { ListArticlesQueryDto } from '../api/dto/list-articles.query.dto';
+import type { ListArticlesResponseDto } from '../api/dto/list-articles.response.dto';
+import { createArticle } from '../domain/article.entity';
 import { ArticleRepository } from '../infrastructure/article.repository';
-import { toArticleResponse } from '../lib/article.mapper';
 import {
-  ARTICLE_LIST_DEFAULT_LIMIT,
+  toArticleResponse,
+  toListArticlesResponse,
+} from '../lib/article.mapper';
+import {
+  ARTICLE_FORBIDDEN_MESSAGE,
+  ARTICLE_FORBIDDEN_MESSAGE_KEY,
   ARTICLE_NOT_FOUND_MESSAGE,
   ARTICLE_NOT_FOUND_MESSAGE_KEY,
 } from '../model/article.constants';
-import { ArticleStatus } from '../model/article.enums';
+import type {
+  CreateArticleData,
+  ListArticlesQuery,
+} from '../model/article.types';
 
 @Injectable()
 export class ArticlesService {
-  constructor(private readonly articleRepository: ArticleRepository) {}
+  constructor(
+    private readonly articleRepository: ArticleRepository,
+    @Inject(CLOCK_PORT) private readonly clock: ClockPort,
+    @Inject(ID_GENERATOR_PORT) private readonly idGenerator: IdGeneratorPort,
+  ) {}
 
-  async create(dto: CreateArticleDto): Promise<ArticleResponseDto> {
-    const created = await this.articleRepository.create(
-      randomUUID(),
-      { title: dto.title, body: dto.body, status: ArticleStatus.Draft },
-      new Date().toISOString(),
-    );
-    return toArticleResponse(created);
+  async create(
+    data: CreateArticleData,
+    ownerId: string,
+  ): Promise<ArticleResponseDto> {
+    const article = createArticle({
+      data,
+      id: this.idGenerator.generate(),
+      ownerId,
+      createdAt: this.clock.now(),
+    });
+    const saved = await this.articleRepository.save(article);
+    return toArticleResponse(saved);
   }
 
-  async getById(id: string): Promise<ArticleResponseDto> {
+  async getById(id: string, requesterId: string): Promise<ArticleResponseDto> {
     const article = await this.articleRepository.findById(id);
     if (article === null) {
       throw new NotFoundError(
@@ -36,16 +56,23 @@ export class ArticlesService {
         ARTICLE_NOT_FOUND_MESSAGE_KEY,
       );
     }
+    if (article.ownerId !== requesterId) {
+      throw new ForbiddenError(
+        ARTICLE_FORBIDDEN_MESSAGE,
+        ARTICLE_FORBIDDEN_MESSAGE_KEY,
+      );
+    }
     return toArticleResponse(article);
   }
 
   async list(
-    query: ListArticlesQueryDto,
-  ): Promise<readonly ArticleResponseDto[]> {
-    const articles = await this.articleRepository.list({
-      limit: query.limit ?? ARTICLE_LIST_DEFAULT_LIMIT,
-      offset: query.offset ?? 0,
-    });
-    return articles.map(article => toArticleResponse(article));
+    query: ListArticlesQuery,
+    requesterId: string,
+  ): Promise<ListArticlesResponseDto> {
+    const result = await this.articleRepository.list(query);
+    const owned = result.items.filter(
+      article => article.ownerId === requesterId,
+    );
+    return toListArticlesResponse({ ...result, items: owned });
   }
 }

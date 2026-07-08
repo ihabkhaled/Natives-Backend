@@ -14,14 +14,14 @@ Open → In Progress → Fixed → (retest) → Verified → Closed
                               Reopened → In Progress
 ```
 
-| Status | Meaning | Who sets it |
-| --- | --- | --- |
-| Open | Reported, awaiting triage/assignment | Reporter |
-| In Progress | A reproducing test is being written and the fix is underway | Engineer |
-| Fixed | Fix committed; reproducing test now green; gates pass | Engineer |
-| Verified | Retest of the exact steps passed | Reporter / QA |
-| Closed | Adjacency + regression passed; merged | Reporter / QA |
-| Reopened | Symptoms recurred or fix was incomplete | Reporter / QA |
+| Status      | Meaning                                                     | Who sets it   |
+| ----------- | ----------------------------------------------------------- | ------------- |
+| Open        | Reported, awaiting triage/assignment                        | Reporter      |
+| In Progress | A reproducing test is being written and the fix is underway | Engineer      |
+| Fixed       | Fix committed; reproducing test now green; gates pass       | Engineer      |
+| Verified    | Retest of the exact steps passed                            | Reporter / QA |
+| Closed      | Adjacency + regression passed; merged                       | Reporter / QA |
+| Reopened    | Symptoms recurred or fix was incomplete                     | Reporter / QA |
 
 The order is non-negotiable: **reproduce → write failing test → root-cause → fix → retest**. Skipping any step is how a "fix" ships that only masks a symptom.
 
@@ -31,27 +31,27 @@ The order is non-negotiable: **reproduce → write failing test → root-cause �
 
 An incomplete report is returned to the reporter before triage. Capture, at minimum:
 
-| Field | Notes |
-| --- | --- |
-| Id | Sequential `BUG-<n>`; link the request artifact and PR |
-| Title | Specific and searchable — see below |
-| Severity | `S1`–`S4` (impact; §3) |
-| Priority | `P0`–`P3` (urgency; §4) |
-| Module / feature | The `src/modules/<feature>` and layer involved |
-| Found in | Commit / branch / release |
-| Environment | Local, CI, staging, production |
-| Actor / role | The role and tenant under which it reproduces |
-| Steps to reproduce | Exact, numbered, no "sometimes" |
-| Expected vs actual | What should happen vs what happens |
-| Evidence | Sanitized logs, request/response sample, screenshots — never raw secrets/PII |
-| Root cause | Filled by the engineer after investigation (§6) |
+| Field              | Notes                                                                        |
+| ------------------ | ---------------------------------------------------------------------------- |
+| Id                 | Sequential `BUG-<n>`; link the request artifact and PR                       |
+| Title              | Specific and searchable — see below                                          |
+| Severity           | `S1`–`S4` (impact; §3)                                                       |
+| Priority           | `P0`–`P3` (urgency; §4)                                                      |
+| Module / feature   | The `src/modules/<feature>` and layer involved                               |
+| Found in           | Commit / branch / release                                                    |
+| Environment        | Local, CI, staging, production                                               |
+| Actor / role       | The role and tenant under which it reproduces                                |
+| Steps to reproduce | Exact, numbered, no "sometimes"                                              |
+| Expected vs actual | What should happen vs what happens                                           |
+| Evidence           | Sanitized logs, request/response sample, screenshots — never raw secrets/PII |
+| Root cause         | Filled by the engineer after investigation (§6)                              |
 
 **Titles** name the module, the action, and the symptom — they are searchable:
 
-| Bad | Good |
-| --- | --- |
-| Orders broken | `Order: 500 on POST /orders when items array is empty` |
-| Login bug | `Auth: login accepts empty password and returns 500 instead of 400` |
+| Bad           | Good                                                                     |
+| ------------- | ------------------------------------------------------------------------ |
+| Orders broken | `Order: 500 on POST /orders when items array is empty`                   |
+| Login bug     | `Auth: login accepts empty password and returns 500 instead of 400`      |
 | List is wrong | `Invoice: GET /invoices ignores the pagination cap and returns all rows` |
 
 ---
@@ -60,12 +60,12 @@ An incomplete report is returned to the reporter before triage. Capture, at mini
 
 Severity is assigned by the reporter and confirmed at triage. It describes harm, independent of how fast we choose to fix it.
 
-| Sev | Definition | Illustrative examples |
-| --- | --- | --- |
-| **S1 — Critical** | System unusable, data lost/corrupted, or security compromised; no workaround | Auth bypass or token/secret in a response or log; ownership/tenant check missing so actor A reads actor B's records (IDOR); a migration destroys data; events permanently lost to a dead-letter queue |
-| **S2 — Major** | A primary workflow is blocked; any workaround is unreliable or needs many steps | A core route always 500s; a use-case commits the entity but the post-commit event never fires; pagination cap ignored so a list query is unbounded |
-| **S3 — Minor** | Secondary workflow degraded; a simple workaround exists | Wrong total count but correct page; a non-blocking error surfaces an untranslated `messageKey`; a duplicate event handled but logged twice |
-| **S4 — Cosmetic** | No functional impact | Off-by-one in a non-load-bearing label; an inconsistent log prefix; a typo in a non-user-facing string |
+| Sev               | Definition                                                                      | Illustrative examples                                                                                                                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **S1 — Critical** | System unusable, data lost/corrupted, or security compromised; no workaround    | Auth bypass or token/secret in a response or log; ownership/tenant check missing so actor A reads actor B's records (IDOR); a migration destroys data; events permanently lost to a dead-letter queue |
+| **S2 — Major**    | A primary workflow is blocked; any workaround is unreliable or needs many steps | A core route always 500s; a use-case commits the entity but the post-commit event never fires; pagination cap ignored so a list query is unbounded                                                    |
+| **S3 — Minor**    | Secondary workflow degraded; a simple workaround exists                         | Wrong total count but correct page; a non-blocking error surfaces an untranslated `messageKey`; a duplicate event handled but logged twice                                                            |
+| **S4 — Cosmetic** | No functional impact                                                            | Off-by-one in a non-load-bearing label; an inconsistent log prefix; a typo in a non-user-facing string                                                                                                |
 
 A latent **security or data-integrity** defect is **S1 even with no live impact** — the absence of an exploit is not the absence of the hole.
 
@@ -75,21 +75,21 @@ A latent **security or data-integrity** defect is **S1 even with no live impact*
 
 Priority is set at triage from severity, blast radius, and release timeline.
 
-| Pri | Meaning | Default response |
-| --- | --- | --- |
-| **P0 — Blocker** | Any S1; anything blocking other testing or causing production data loss/security exposure | Fix starts immediately; treat as a hotfix |
-| **P1 — Critical** | Most S2; S3 on critical-path features (auth, payments, ownership) | Fix this sprint; cannot ship without it |
-| **P2 — Major** | Remaining S2 with reliable workarounds; S3 on secondary features | This sprint if capacity allows, else next with justification |
-| **P3 — Minor** | All S4; S3 with trivial workarounds on rarely-used paths | Backlog |
+| Pri               | Meaning                                                                                   | Default response                                             |
+| ----------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| **P0 — Blocker**  | Any S1; anything blocking other testing or causing production data loss/security exposure | Fix starts immediately; treat as a hotfix                    |
+| **P1 — Critical** | Most S2; S3 on critical-path features (auth, payments, ownership)                         | Fix this sprint; cannot ship without it                      |
+| **P2 — Major**    | Remaining S2 with reliable workarounds; S3 on secondary features                          | This sprint if capacity allows, else next with justification |
+| **P3 — Minor**    | All S4; S3 with trivial workarounds on rarely-used paths                                  | Backlog                                                      |
 
 ### Severity → priority matrix
 
-| | P0 | P1 | P2 | P3 |
-| --- | --- | --- | --- | --- |
-| **S1** | Always | — | — | — |
-| **S2** | If it blocks release | Default | If a workaround exists | — |
-| **S3** | If it blocks other testing | If critical-path | Default | If trivial workaround |
-| **S4** | — | — | If demo-visible | Default |
+|        | P0                         | P1               | P2                     | P3                    |
+| ------ | -------------------------- | ---------------- | ---------------------- | --------------------- |
+| **S1** | Always                     | —                | —                      | —                     |
+| **S2** | If it blocks release       | Default          | If a workaround exists | —                     |
+| **S3** | If it blocks other testing | If critical-path | Default                | If trivial workaround |
+| **S4** | —                          | —                | If demo-visible        | Default               |
 
 **Disputes:** escalate to the technical owner; default to the **higher** severity until resolved; record the rationale for the final call.
 
@@ -119,21 +119,21 @@ Reproducible ⇔  steps are exact · environment + role + tenant fixed · starti
 
 Classify every fix so recurring classes surface. Most categories map to a rule that should have prevented them — the fix usually closes a rule gap, not just one line.
 
-| Category | Symptom | Rule it points back to |
-| --- | --- | --- |
-| Logic error | Wrong result from a service/domain policy | [/rules/03](../rules/03-application-services-and-use-cases.md) |
-| Missing validation | A bad payload reaches the service instead of `400` | [/rules/05](../rules/05-dto-and-validation.md) |
-| Missing null/undefined handling | Crash on an absent optional field (strict mode would catch most) | [/rules/13](../rules/13-eslint-and-typescript.md) |
-| Wrong enum / magic string | Domain value compared against a raw literal | [/rules/06](../rules/06-types-enums-constants.md) |
-| Race / ordering | Concurrent or duplicate operations corrupt state | [/rules/19](../rules/19-async-events-and-jobs.md) |
-| Missing transaction / event | Use-case commits but post-commit event is lost | [/rules/03](../rules/03-application-services-and-use-cases.md), [/rules/19](../rules/19-async-events-and-jobs.md) |
-| Authorization gap | Auth without permissions, or no ownership/tenant check (IDOR) | [/rules/07](../rules/07-security-authn-authz.md) |
-| Injection / unbounded query | Unparameterized SQL or a missing list cap | [/rules/08](../rules/08-database-and-injection-safety.md) |
-| Error leakage | Stack/SQL/secret reaches the client; missing `messageKey` | [/rules/18](../rules/18-error-handling-and-exceptions.md) |
-| Config / env error | Misread or unvalidated config; `process.env` outside `config/` | [/rules/17](../rules/17-configuration-and-environment.md) |
-| Adapter / dependency | Vendor SDK called outside an adapter, or its contract drifted | [/rules/12](../rules/12-library-wrapping-and-adapters.md) |
-| Missing i18n | User-facing text bypasses a `messageKey` | [/rules/16](../rules/16-i18n-and-messaging.md) |
-| Schema / contract mismatch | DTO, model, and migration disagree | [/rules/04](../rules/04-repositories-and-persistence.md), [/rules/05](../rules/05-dto-and-validation.md) |
+| Category                        | Symptom                                                          | Rule it points back to                                                                                            |
+| ------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Logic error                     | Wrong result from a service/domain policy                        | [/rules/03](../rules/03-application-services-and-use-cases.md)                                                    |
+| Missing validation              | A bad payload reaches the service instead of `400`               | [/rules/05](../rules/05-dto-and-validation.md)                                                                    |
+| Missing null/undefined handling | Crash on an absent optional field (strict mode would catch most) | [/rules/13](../rules/13-eslint-and-typescript.md)                                                                 |
+| Wrong enum / magic string       | Domain value compared against a raw literal                      | [/rules/06](../rules/06-types-enums-constants.md)                                                                 |
+| Race / ordering                 | Concurrent or duplicate operations corrupt state                 | [/rules/19](../rules/19-async-events-and-jobs.md)                                                                 |
+| Missing transaction / event     | Use-case commits but post-commit event is lost                   | [/rules/03](../rules/03-application-services-and-use-cases.md), [/rules/19](../rules/19-async-events-and-jobs.md) |
+| Authorization gap               | Auth without permissions, or no ownership/tenant check (IDOR)    | [/rules/07](../rules/07-security-authn-authz.md)                                                                  |
+| Injection / unbounded query     | Unparameterized SQL or a missing list cap                        | [/rules/08](../rules/08-database-and-injection-safety.md)                                                         |
+| Error leakage                   | Stack/SQL/secret reaches the client; missing `messageKey`        | [/rules/18](../rules/18-error-handling-and-exceptions.md)                                                         |
+| Config / env error              | Misread or unvalidated config; `process.env` outside `config/`   | [/rules/17](../rules/17-configuration-and-environment.md)                                                         |
+| Adapter / dependency            | Vendor SDK called outside an adapter, or its contract drifted    | [/rules/12](../rules/12-library-wrapping-and-adapters.md)                                                         |
+| Missing i18n                    | User-facing text bypasses a `messageKey`                         | [/rules/16](../rules/16-i18n-and-messaging.md)                                                                    |
+| Schema / contract mismatch      | DTO, model, and migration disagree                               | [/rules/04](../rules/04-repositories-and-persistence.md), [/rules/05](../rules/05-dto-and-validation.md)          |
 
 Deep-dive procedure: [/skills/investigate-production-bug.md](../skills/investigate-production-bug.md).
 
@@ -145,19 +145,21 @@ The defining rule of this standard: **before touching the production code, write
 
 Pick the layer where the defect actually lives — fix it at the lowest layer that owns the logic, not at the boundary that surfaced it:
 
-| Bug lives in | Reproduce with | Standard |
-| --- | --- | --- |
-| Service / use-case / domain logic | Unit test (`@nestjs/testing` + `vi` doubles) | [/testing/unit-testing-standard.md](./unit-testing-standard.md) |
+| Bug lives in                            | Reproduce with                                         | Standard                                                                      |
+| --------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| Service / use-case / domain logic       | Unit test (`@nestjs/testing` + `vi` doubles)           | [/testing/unit-testing-standard.md](./unit-testing-standard.md)               |
 | Controller, DTO validation, guard chain | Integration test (supertest through the real pipeline) | [/testing/integration-testing-standard.md](./integration-testing-standard.md) |
-| Repository query / boundedness | Repository test against a real test DB | [/testing/integration-testing-standard.md](./integration-testing-standard.md) |
-| Cross-module workflow | E2E test | [/testing/e2e-testing-standard.md](./e2e-testing-standard.md) |
+| Repository query / boundedness          | Repository test against a real test DB                 | [/testing/integration-testing-standard.md](./integration-testing-standard.md) |
+| Cross-module workflow                   | E2E test                                               | [/testing/e2e-testing-standard.md](./e2e-testing-standard.md)                 |
 
 ```typescript
 // DO — red first: this fails on the buggy code, passes once the ownership check is added.
 // Bug: GET /orders/:id returned another tenant's order (IDOR).
 it('should throw OrderForbiddenError when the order belongs to another user', async () => {
   repo.findById.mockResolvedValue(orderOwnedBy('user-2'));
-  await expect(service.getOrder('order-1', 'user-1')).rejects.toBeInstanceOf(OrderForbiddenError);
+  await expect(service.getOrder('order-1', 'user-1')).rejects.toBeInstanceOf(
+    OrderForbiddenError,
+  );
 });
 ```
 
@@ -192,7 +194,7 @@ A fix is the engineer's claim; the retest is the proof.
 - **R1 — Same reporter retests.** The person who found it verifies it; they know the exact conditions and can tell a real fix from a similar-looking symptom.
 - **R2 — Exact steps.** Follow the reported steps verbatim — no shortcuts, no alternative path. The original steps must now produce the expected behavior.
 - **R3 — Adjacency check.** Verify the features that share the changed code path. A fix in a use-case means re-checking every route that triggers it; a shared service or adapter change means checking more than one consumer. Map dependencies with [/context/codebase-navigation.md](../context/codebase-navigation.md).
-- **R4 — Regression for S1/S2.** Run the full automated suite plus the affected feature pack and its adjacency, per [/testing/testing-strategy.md](./testing-strategy.md). Re-run the *pack*, not just the one failing test — a real regression rarely arrives alone.
+- **R4 — Regression for S1/S2.** Run the full automated suite plus the affected feature pack and its adjacency, per [/testing/testing-strategy.md](./testing-strategy.md). Re-run the _pack_, not just the one failing test — a real regression rarely arrives alone.
 - **R5 — Layer-matched verification.** Verify through the layer where the bug lived: re-issue the API request and assert the contract; query persisted state after a write; for a fire-and-forget side effect, assert the terminal outcome (delivered, or failed-and-logged — never silently dropped).
 
 ```text

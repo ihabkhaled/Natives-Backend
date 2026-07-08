@@ -86,7 +86,9 @@ async findForUser(user: AuthUser, id: string): Promise<InvoiceResponseDto> {
 
 ```ts
 // DON'T — non-constant-time secret compare + stack leak to the client
-if (submittedCode === storedCode) { /* ... */ }     // ✗ timing attack on the secret
+if (submittedCode === storedCode) {
+  /* ... */
+} // ✗ timing attack on the secret
 return response.status(500).json({ error: err.stack }); // ✗ stack/internal leak
 ```
 
@@ -95,7 +97,8 @@ return response.status(500).json({ error: err.stack }); // ✗ stack/internal le
 import { timingSafeEqual } from 'node:crypto';
 const provided = Buffer.from(submittedCode);
 const expected = Buffer.from(storedCode);
-const matches = provided.length === expected.length && timingSafeEqual(provided, expected);
+const matches =
+  provided.length === expected.length && timingSafeEqual(provided, expected);
 // throw a typed AppError('errors.<feature>.<key>') — the filter sanitizes the body, logs detail server-side
 ```
 

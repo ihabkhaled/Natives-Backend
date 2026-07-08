@@ -5,7 +5,7 @@
 This repository is two complementary operating systems in one:
 
 1. **An enterprise SDLC governance brain** ([`claude.md`](./claude.md)) — the stack-agnostic policy that forces every request through a complete, documented lifecycle (intake → analysis → architecture → tests → implementation → QA → security → release → hypercare → retrospective) with hard, non-skippable gates.
-2. **A concrete NestJS engineering operating system** — everything the best NestJS teams need to start a backend *from scratch* without re-deriving any of it: strict TypeScript, a custom architecture-enforcing ESLint setup, layered architecture, rules, skills, agents, memory, context, and testing standards.
+2. **A concrete NestJS engineering operating system** — everything the best NestJS teams need to start a backend _from scratch_ without re-deriving any of it: strict TypeScript, a custom architecture-enforcing ESLint setup, layered architecture, rules, skills, agents, memory, context, and testing standards.
 
 The governance brain tells you **which phases and gates** a change must pass. The engineering OS tells you **exactly how the code must be written** so it is clean, layered, type-safe, secure, observable, testable, and free of spaghetti — no inline consts/enums/types/interfaces, thin controllers, orchestrating services, persistence-only repositories, and external libraries wrapped behind adapters.
 
@@ -17,15 +17,15 @@ Everything here is **100% broad and abstract for any NestJS backend** — modula
 
 ### Engineering operating system (the "how")
 
-| Layer | Path | What it is |
-| --- | --- | --- |
-| **Rules** | [`/rules`](./rules/README.md) | 20 layer-by-layer engineering rules, starting with the [non-negotiables](./rules/00-non-negotiable-rules.md) |
-| **Skills** | [`/skills`](./skills/README.md) | Step-by-step task playbooks (create a module/controller/service/repository, add a guard, write tests, review, migrate…) |
+| Layer       | Path                              | What it is                                                                                                                                                                                                                    |
+| ----------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Rules**   | [`/rules`](./rules/README.md)     | 20 layer-by-layer engineering rules, starting with the [non-negotiables](./rules/00-non-negotiable-rules.md)                                                                                                                  |
+| **Skills**  | [`/skills`](./skills/README.md)   | Step-by-step task playbooks (create a module/controller/service/repository, add a guard, write tests, review, migrate…)                                                                                                       |
 | **Context** | [`/context`](./context/README.md) | The [architecture map](./context/architecture-map.md), [stack & toolchain](./context/stack-and-toolchain.md), [task router](./context/codebase-navigation.md), and [canonical code patterns](./context/reference-patterns.md) |
-| **Memory** | [`/memory`](./memory/README.md) | Durable, abstract decisions & the [learned-pitfalls log](./memory/known-pitfalls.md) |
-| **Agents** | [`/agents`](./agents/README.md) | Specialist review roles (architect, security, performance, tests, database, reliability, release gatekeeper…) |
-| **Testing** | [`/testing`](./testing/README.md) | Engineering testing standards (strategy, unit/integration/e2e, coverage, fixtures, gates) |
-| **ESLint** | [`/eslint`](./eslint) | Modular flat configs + a **custom architecture plugin** that mechanically enforces the layering |
+| **Memory**  | [`/memory`](./memory/README.md)   | Durable, abstract decisions & the [learned-pitfalls log](./memory/known-pitfalls.md)                                                                                                                                          |
+| **Agents**  | [`/agents`](./agents/README.md)   | Specialist review roles (architect, security, performance, tests, database, reliability, release gatekeeper…)                                                                                                                 |
+| **Testing** | [`/testing`](./testing/README.md) | Engineering testing standards (strategy, unit/integration/e2e, coverage, fixtures, gates)                                                                                                                                     |
+| **ESLint**  | [`/eslint`](./eslint)             | Modular flat configs + a **custom architecture plugin** that mechanically enforces the layering                                                                                                                               |
 
 ### Tooling kit (drop-in configs, exact pins)
 
@@ -84,31 +84,31 @@ Copy the root configs + [`/eslint`](./eslint) into your repo, merge the `package
 
 ## What the reference app already does
 
-| Concern | Where | Notes |
-| --- | --- | --- |
-| **Fastify (latest)** platform | [`src/bootstrap/fastify-adapter.ts`](./src/bootstrap/fastify-adapter.ts) | bounded body size, `trustProxy`, per-request id for log correlation |
-| **Helmet + CORS + cookies** | [`src/bootstrap/configure-security.ts`](./src/bootstrap/configure-security.ts) | `@fastify/helmet`, CORS from typed config, `@fastify/cookie` |
-| **Pino logs for every request** | [`src/core/logger/`](./src/core/logger) | `nestjs-pino`, redaction, 4xx→`warn` / 5xx→`error`, pretty in dev only |
-| **Error logging (400→500)** | [`src/core/errors/app-exception.filter.ts`](./src/core/errors/app-exception.filter.ts) | global filter logs & sanitizes every `AppError`/exception |
-| **DTO validation logging** | [`src/core/validation/`](./src/core/validation) | ValidationPipe factory logs each rejected field/constraint |
-| **Split bootstrap** | [`src/bootstrap/`](./src/bootstrap) | one file per concern; orchestrated by `bootstrap.ts` |
-| **Typed, validated config** | [`src/config/`](./src/config) | `@nestjs/config` namespaces + fail-fast env validation, consumed via `AppConfigService` |
-| **Rate limiting** | [`src/core/rate-limit/`](./src/core/rate-limit) | global `@nestjs/throttler` guard from config |
-| **Clean example feature** | [`src/modules/articles/`](./src/modules/articles) | controller → service → repository → dto → model → lib |
-| **Vulnerability scanning** | `npm run security:scan` | [Trivy](https://trivy.dev) over the lockfile + secrets + misconfig (HIGH/CRITICAL fail the gate) |
+| Concern                         | Where                                                                                  | Notes                                                                                            |
+| ------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Fastify (latest)** platform   | [`src/bootstrap/fastify-adapter.ts`](./src/bootstrap/fastify-adapter.ts)               | bounded body size, `trustProxy`, per-request id for log correlation                              |
+| **Helmet + CORS + cookies**     | [`src/bootstrap/configure-security.ts`](./src/bootstrap/configure-security.ts)         | `@fastify/helmet`, CORS from typed config, `@fastify/cookie`                                     |
+| **Pino logs for every request** | [`src/core/logger/`](./src/core/logger)                                                | `nestjs-pino`, redaction, 4xx→`warn` / 5xx→`error`, pretty in dev only                           |
+| **Error logging (400→500)**     | [`src/core/errors/app-exception.filter.ts`](./src/core/errors/app-exception.filter.ts) | global filter logs & sanitizes every `AppError`/exception                                        |
+| **DTO validation logging**      | [`src/core/validation/`](./src/core/validation)                                        | ValidationPipe factory logs each rejected field/constraint                                       |
+| **Split bootstrap**             | [`src/bootstrap/`](./src/bootstrap)                                                    | one file per concern; orchestrated by `bootstrap.ts`                                             |
+| **Typed, validated config**     | [`src/config/`](./src/config)                                                          | `@nestjs/config` namespaces + fail-fast env validation, consumed via `AppConfigService`          |
+| **Rate limiting**               | [`src/core/rate-limit/`](./src/core/rate-limit)                                        | global `@nestjs/throttler` guard from config                                                     |
+| **Clean example feature**       | [`src/modules/articles/`](./src/modules/articles)                                      | controller → service → domain → repository → dto → model → lib                                   |
+| **Vulnerability scanning**      | `npm run security:scan`                                                                | [Trivy](https://trivy.dev) over the lockfile + secrets + misconfig (HIGH/CRITICAL fail the gate) |
 
 ## Every library has ONE owning module (swap surfaces)
 
 Every third-party package is importable **only inside the module that owns it** — enforced by [`eslint/package-boundaries.config.mjs`](./eslint/package-boundaries.config.mjs). Want to replace pino, class-validator, the rate limiter, or even the HTTP platform? You touch exactly one folder:
 
-| Vendor | Owning module | The rest of the app uses |
-| --- | --- | --- |
-| `nestjs-pino` / `pino` / `pino-http` / `pino-pretty` | [`src/core/logger/`](./src/core/logger) | `AppLogger` (implements the app-owned `AppLoggerPort`) |
-| `class-validator` / `class-transformer` | [`src/core/validation/`](./src/core/validation) | the `@core/validation` re-exports in DTOs |
-| `@nestjs/swagger` decorators | [`src/core/openapi/`](./src/core/openapi) | the `@core/openapi` re-exports (`ApiProperty`, `ApiTags`, …) |
-| `@nestjs/throttler` | [`src/core/rate-limit/`](./src/core/rate-limit) | imports `RateLimitModule` |
-| `@nestjs/config` | [`src/config/`](./src/config) | injects the typed `AppConfigService` |
-| `fastify` + `@fastify/*` + `@nestjs/platform-*` | [`src/bootstrap/`](./src/bootstrap) | the structural types in [`@core/http`](./src/core/http) |
+| Vendor                                               | Owning module                                   | The rest of the app uses                                     |
+| ---------------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| `nestjs-pino` / `pino` / `pino-http` / `pino-pretty` | [`src/core/logger/`](./src/core/logger)         | `AppLogger` (implements the app-owned `AppLoggerPort`)       |
+| `class-validator` / `class-transformer`              | [`src/core/validation/`](./src/core/validation) | the `@core/validation` re-exports in DTOs                    |
+| `@nestjs/swagger` decorators                         | [`src/core/openapi/`](./src/core/openapi)       | the `@core/openapi` re-exports (`ApiProperty`, `ApiTags`, …) |
+| `@nestjs/throttler`                                  | [`src/core/rate-limit/`](./src/core/rate-limit) | imports `RateLimitModule`                                    |
+| `@nestjs/config`                                     | [`src/config/`](./src/config)                   | injects the typed `AppConfigService`                         |
+| `fastify` + `@fastify/*` + `@nestjs/platform-*`      | [`src/bootstrap/`](./src/bootstrap)             | the structural types in [`@core/http`](./src/core/http)      |
 
 Dependencies are kept at **latest with `^` ranges** (`npm run deps:check` / `deps:upgrade`), and `npm run security:scan` (Trivy) gates HIGH/CRITICAL vulnerabilities, secrets, and misconfigurations.
 
@@ -124,6 +124,7 @@ The same standards are exposed to every AI coding tool — kept in sync:
 
 - [`claude.md`](./claude.md) — canonical source of truth.
 - [`AGENTS.md`](./AGENTS.md) — Codex bootstrap (reads `claude.md` + the engineering OS).
+- [`KIMI.md`](./KIMI.md), [`GEMINI.md`](./GEMINI.md), [`GLM.md`](./GLM.md), [`QWEN.md`](./QWEN.md), [`DEEPSEEK.md`](./DEEPSEEK.md) — dedicated entrypoints for their respective AI agent families.
 - [`.cursor/rules/*.mdc`](./.cursor/rules) — active Cursor rules.
 - [`.cursorrules`](./.cursorrules) — legacy Cursor shim.
 - [`codex.md`](./codex.md) / [`cursor.md`](./cursor.md) — mirror/reference copies.

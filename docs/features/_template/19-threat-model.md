@@ -16,14 +16,14 @@ Identify credible threats, abuse paths, and trust-boundary risks introduced or c
 ## Trust Boundaries
 
 | Boundary | Why it matters |
-| --- | --- |
-| | |
+| -------- | -------------- |
+|          |                |
 
 ## Threat Scenarios
 
 | Threat ID | Scenario | Impact | Likelihood | Mitigation |
-| --- | --- | --- | --- | --- |
-| | | | | |
+| --------- | -------- | ------ | ---------- | ---------- |
+|           |          |        |            |            |
 
 ## Abuse Cases
 

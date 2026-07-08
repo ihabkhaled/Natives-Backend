@@ -55,7 +55,8 @@ export const Permission = {
 } as const;
 
 export type Permission = (typeof Permission)[keyof typeof Permission];
-export const PERMISSION_VALUES: readonly Permission[] = Object.values(Permission);
+export const PERMISSION_VALUES: readonly Permission[] =
+  Object.values(Permission);
 ```
 
 ### 2. Wire it into the role → permission matrix
@@ -97,7 +98,7 @@ For AND-semantics, pass multiple grants: `@RequirePermissions(Permission.AdminAc
 
 ### 4. Add the ownership / tenant check for id-by-parameter routes
 
-Guards prove the actor may touch *some* article — not *this* one. Scope the read to the actor's tenant in the `WHERE` clause and return not-found on a miss, so the API never confirms an id exists in another tenant (rule 35). Keep the service ≤20 lines/method.
+Guards prove the actor may touch _some_ article — not _this_ one. Scope the read to the actor's tenant in the `WHERE` clause and return not-found on a miss, so the API never confirms an id exists in another tenant (rule 35). Keep the service ≤20 lines/method.
 
 ```ts
 // src/modules/article/application/article.service.ts

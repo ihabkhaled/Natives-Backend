@@ -31,12 +31,14 @@ Not for authoring code, deep architecture review, or first-pass correctness revi
 ## Gate checklist
 
 ### Diff hygiene
+
 - [ ] **NO-GO** — no secrets, tokens, certificates, `.env*`, credential files, data dumps, raw production data, `dist/`, `coverage/`, or machine-specific artifacts staged.
 - [ ] **NO-GO** — staged with explicit paths (never `git add .`); `git diff --check` is clean (no whitespace/conflict markers).
 - [ ] **NO-GO** — diff is scoped to one request/workstream; no unrelated refactors, dependency churn, or formatting noise smuggled in.
 - [ ] **NO-GO** — no rule weakened, no useful docs deleted, no test deleted or skipped to make a gate pass.
 
 ### Hard gates (must be green, no exceptions)
+
 - [ ] **NO-GO** — `npm run lint` is **0 errors AND 0 warnings**.
 - [ ] **NO-GO** — `npm run typecheck` (`tsgo --noEmit`, project-wide) clean.
 - [ ] **NO-GO** — `npm run test` passes; no `.only`, no silently skipped specs.
@@ -45,12 +47,14 @@ Not for authoring code, deep architecture review, or first-pass correctness revi
 - [ ] **NO-GO** — integration/e2e suites run when routes, persistence, migrations, or integrations changed.
 
 ### Behavior, security, docs
+
 - [ ] **NO-GO** — behavior change ships with its tests in the same change; every bug fix has a regression test that failed before and passes after.
 - [ ] **NO-GO** — protected routes chain auth guard + permissions (RBAC) guard + ownership/tenant check; identity from the verified token, never the client body.
 - [ ] **NO-GO** — no secret/stack/SQL leak; every user-facing error is a typed `AppError` with a `messageKey`, and each new/changed key is translated in **every supported locale**.
 - [ ] **NO-GO** — docs moved with behavior (module docs, the relevant `rules/` file, OpenAPI); no stale docs.
 
 ### Operational readiness
+
 - [ ] **NO-GO** — migrations are additive and reversible; a rollback / roll-forward path is documented and feasible.
 - [ ] **NO-GO** — observability is in place for the change: structured logs on critical paths, metrics/alerts for material failure modes, smoke checks defined.
 - [ ] **NO-GO** — config/feature-flag changes have validated startup, documented default state, and explicit rollback order.

@@ -2,7 +2,7 @@
 
 > The shared mental model. These files explain **how this NestJS backend is shaped and operated** so a new engineer or AI agent can act correctly on day one. They implement the canon defined in [architecture-map.md](./architecture-map.md) and [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md).
 
-`/context` answers the questions that come **before** writing code: *Where do things live? What is the constant vs. the variable? Which command do I run? What does this word mean here?* Rules tell you what you **must** do; skills are the **recipes**; agents **review**; memory records **why**. Context is the map you read first so the rest makes sense.
+`/context` answers the questions that come **before** writing code: _Where do things live? What is the constant vs. the variable? Which command do I run? What does this word mean here?_ Rules tell you what you **must** do; skills are the **recipes**; agents **review**; memory records **why**. Context is the map you read first so the rest makes sense.
 
 This workspace is **stack- and domain-agnostic**: the layering, boundaries, and naming are fixed; the business domain, ORM, database, cache, and broker are project choices. Examples below use neutral placeholders (`Article`, `Account`, `Order`, `Invoice`, "an email provider", "object storage") — never a real product.
 
@@ -10,13 +10,13 @@ This workspace is **stack- and domain-agnostic**: the layering, boundaries, and 
 
 ## The files in this folder
 
-| File | What it is | Read it when |
-| --- | --- | --- |
-| [architecture-map.md](./architecture-map.md) | **The single source of truth.** Layers and the one-way dependency rule, the canonical source tree, module anatomy, NestJS building-block placement, cross-cutting contracts, ESLint enforcement, and the request lifecycle. | Always. Before any structural decision. |
-| [stack-and-toolchain.md](./stack-and-toolchain.md) | The exact runtime, framework, lint/format, test, and git-hook toolchain, plus every npm script and the quality-gate command block. The business stack (ORM/DB/cache/broker) is left to the project. | Setting up, choosing a command, or wiring a tool. |
-| [codebase-navigation.md](./codebase-navigation.md) | A "where do I put / find X" guide: directory walk-through, common-task → file-list cheatsheets (add an endpoint, add an event, add a config value, add a migration), and how to trace a request end to end. | Locating code or scaffolding a change. |
-| [reference-patterns.md](./reference-patterns.md) | Copy-ready, genericized snippets for each layer — controller, use case, service, repository, DTO, typed `AppError`, guard chain, adapter, event handler — matching the architecture map exactly. | You want the canonical shape to copy from. |
-| [glossary.md](./glossary.md) | Precise definitions of the vocabulary used everywhere: layer names, *service vs. use case*, `messageKey`, adapter, guard chain, ownership/tenant check, bounded query, quality gate. | A term is ambiguous or you want shared language. |
+| File                                               | What it is                                                                                                                                                                                                                  | Read it when                                      |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| [architecture-map.md](./architecture-map.md)       | **The single source of truth.** Layers and the one-way dependency rule, the canonical source tree, module anatomy, NestJS building-block placement, cross-cutting contracts, ESLint enforcement, and the request lifecycle. | Always. Before any structural decision.           |
+| [stack-and-toolchain.md](./stack-and-toolchain.md) | The exact runtime, framework, lint/format, test, and git-hook toolchain, plus every npm script and the quality-gate command block. The business stack (ORM/DB/cache/broker) is left to the project.                         | Setting up, choosing a command, or wiring a tool. |
+| [codebase-navigation.md](./codebase-navigation.md) | A "where do I put / find X" guide: directory walk-through, common-task → file-list cheatsheets (add an endpoint, add an event, add a config value, add a migration), and how to trace a request end to end.                 | Locating code or scaffolding a change.            |
+| [reference-patterns.md](./reference-patterns.md)   | Copy-ready, genericized snippets for each layer — controller, use case, service, repository, DTO, typed `AppError`, guard chain, adapter, event handler — matching the architecture map exactly.                            | You want the canonical shape to copy from.        |
+| [glossary.md](./glossary.md)                       | Precise definitions of the vocabulary used everywhere: layer names, _service vs. use case_, `messageKey`, adapter, guard chain, ownership/tenant check, bounded query, quality gate.                                        | A term is ambiguous or you want shared language.  |
 
 ---
 
@@ -41,14 +41,14 @@ For a human engineer **or** an AI agent picking up this workspace, read top to b
 
 Keep the boundaries straight — each folder has one job.
 
-| Folder | Role | Entry point |
-| --- | --- | --- |
-| `/context` | **Orientation** — the map and the toolchain (this folder). | this README |
-| `/rules` | **Law** — what you must and must not do, per layer. | [/rules/README.md](../rules/README.md) |
-| `/skills` | **Recipes** — step-by-step procedures with quality gates. | [/skills/README.md](../skills/README.md) |
-| `/agents` | **Reviewers** — specialist personas that audit a change. | [/agents/README.md](../agents/README.md) |
-| `/memory` | **Decisions** — durable conventions and the rationale behind them. | [/memory/README.md](../memory/README.md) |
-| `/testing` | **Quality** — the testing standards, coverage policy, and gates. | [/testing/README.md](../testing/README.md) |
+| Folder     | Role                                                               | Entry point                                |
+| ---------- | ------------------------------------------------------------------ | ------------------------------------------ |
+| `/context` | **Orientation** — the map and the toolchain (this folder).         | this README                                |
+| `/rules`   | **Law** — what you must and must not do, per layer.                | [/rules/README.md](../rules/README.md)     |
+| `/skills`  | **Recipes** — step-by-step procedures with quality gates.          | [/skills/README.md](../skills/README.md)   |
+| `/agents`  | **Reviewers** — specialist personas that audit a change.           | [/agents/README.md](../agents/README.md)   |
+| `/memory`  | **Decisions** — durable conventions and the rationale behind them. | [/memory/README.md](../memory/README.md)   |
+| `/testing` | **Quality** — the testing standards, coverage policy, and gates.   | [/testing/README.md](../testing/README.md) |
 
 The relationship is one-way: **context describes the constants**, rules **enforce** them, skills **apply** them, agents **verify** them, memory **records why** they were chosen. When any of these conflict, [architecture-map.md](./architecture-map.md) and [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) win.
 

@@ -6,14 +6,14 @@ A gate is **binary**: it passes or it blocks. There is no "mostly passes," no "p
 
 ## The six gates
 
-| # | Gate | Command | Proves | Blocks |
-| --- | --- | --- | --- | --- |
-| 1 | Lint + architecture | `npm run lint` | 0 errors AND 0 warnings; layer/boundary/inline rules upheld | commit, push, merge |
-| 2 | Type check | `npm run typecheck` | `tsgo --noEmit` clean under full strict TS | commit, push, merge |
-| 3 | Tests | `npm run test` | every Vitest suite green, 0 failures, 0 stray skips | push, merge |
-| 4 | Coverage | `npm run test:coverage` | statements/branches/functions/lines ≥ floor (95%) | push, merge |
-| 5 | Build | `npm run build` | compiles to `dist/` clean — production artifact is valid | push, merge, deploy |
-| 6 | Security review | manual + scanners | authz, secrets, injection, leakage cleared for the risk | merge, deploy |
+| #   | Gate                | Command                 | Proves                                                      | Blocks              |
+| --- | ------------------- | ----------------------- | ----------------------------------------------------------- | ------------------- |
+| 1   | Lint + architecture | `npm run lint`          | 0 errors AND 0 warnings; layer/boundary/inline rules upheld | commit, push, merge |
+| 2   | Type check          | `npm run typecheck`     | `tsgo --noEmit` clean under full strict TS                  | commit, push, merge |
+| 3   | Tests               | `npm run test`          | every Vitest suite green, 0 failures, 0 stray skips         | push, merge         |
+| 4   | Coverage            | `npm run test:coverage` | statements/functions/lines ≥ 95%, branches ≥ 90%            | push, merge         |
+| 5   | Build               | `npm run build`         | compiles to `dist/` clean — production artifact is valid    | push, merge, deploy |
+| 6   | Security review     | manual + scanners       | authz, secrets, injection, leakage cleared for the risk     | merge, deploy       |
 
 Gates 1–5 are automated and run identically locally (Husky) and in CI. Gate 6 is a structured human/agent review gated by [/skills/security-review.md](../skills/security-review.md); it is mandatory whenever a change touches auth, permissions, secrets, data access, file handling, or an external boundary.
 
@@ -56,10 +56,10 @@ Every unit, integration, and e2e suite (`@nestjs/testing` + `supertest`) must pa
 ### Gate 4 — Coverage (`npm run test:coverage`)
 
 ```bash
-npm run test:coverage   # vitest run --coverage (istanbul)
+npm run test:coverage   # vitest run --coverage (v8 provider)
 ```
 
-Coverage thresholds (statements, branches, functions, lines) at the **95%** workspace floor; touched modules aim higher, critical paths near 100%. A high global average never excuses a thin patch on changed code — measure the modules you touched. Full policy and waiver process: [/testing/coverage-policy.md](./coverage-policy.md).
+Coverage thresholds: statements/functions/lines at the **95%** workspace floor, branches at **90%** because decorator downlevel emit injects uncoverable synthetic branches. Touched modules aim higher, critical paths near 100%. A high global average never excuses a thin patch on changed code — measure the modules you touched. Full policy and waiver process: [/testing/coverage-policy.md](./coverage-policy.md).
 
 **Pass criteria:** all four metrics meet or exceed the threshold; the command exits 0 (Vitest fails the run when a threshold is missed).
 
@@ -81,11 +81,11 @@ Not a single npm script — a structured pass against [/rules/07-security-authn-
 
 Hooks live in [`.husky/`](../.husky) and run the **same scripts** as CI, so a clean local pass predicts a clean pipeline.
 
-| Hook | Runs | Why here |
-| --- | --- | --- |
-| `pre-commit` | `lint-staged` (eslint `--fix` on staged) + `typecheck` | catch violations before they enter history; fast feedback on staged files |
-| `commit-msg` | `commitlint` (Conventional Commits) | enforce machine-readable, traceable history |
-| `pre-push` | `test:coverage` + `build` | nothing reaches the remote without green tests, coverage, and a valid artifact |
+| Hook         | Runs                                                   | Why here                                                                       |
+| ------------ | ------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `pre-commit` | `lint-staged` (eslint `--fix` on staged) + `typecheck` | catch violations before they enter history; fast feedback on staged files      |
+| `commit-msg` | `commitlint` (Conventional Commits)                    | enforce machine-readable, traceable history                                    |
+| `pre-push`   | `test:coverage` + `build`                              | nothing reaches the remote without green tests, coverage, and a valid artifact |
 
 The split is deliberate: cheap checks (lint-staged, typecheck) gate every commit; the slower full test + coverage + build gate the push. `lint-staged` ([`.lintstagedrc.cjs`](../.lintstagedrc.cjs)) lints and re-stages only changed files for speed; the project-wide `typecheck` still runs because a staged change can break an unstaged file.
 
@@ -106,10 +106,10 @@ CI reproduces the authoritative scripts in a clean environment — never a diver
 # Conceptual pipeline — mirrors the local gates, in order
 steps:
   - run: npm ci
-  - run: npm run lint            # Gate 1
-  - run: npm run typecheck       # Gate 2
-  - run: npm run test:coverage   # Gates 3 + 4 (tests + thresholds)
-  - run: npm run build           # Gate 5
+  - run: npm run lint # Gate 1
+  - run: npm run typecheck # Gate 2
+  - run: npm run test:coverage # Gates 3 + 4 (tests + thresholds)
+  - run: npm run build # Gate 5
   # Gate 6: security review job / required reviewer approval
 ```
 
@@ -136,12 +136,12 @@ git push   --no-verify          # ships unverified code
 
 ## Blocker severity
 
-| Severity | Definition | Action |
-| --- | --- | --- |
-| CRITICAL | auth bypass, data loss, secret/PII leak, injection, tenant-isolation break | no merge, no deploy; fix now |
-| HIGH | any red automated gate (lint/typecheck/test/coverage/build); core path broken | no merge until green |
-| MEDIUM | degraded behavior with a workaround, no data/security impact | fix before release |
-| LOW | cosmetic or wording issue, no functional impact | track as follow-up; non-blocking |
+| Severity | Definition                                                                    | Action                           |
+| -------- | ----------------------------------------------------------------------------- | -------------------------------- |
+| CRITICAL | auth bypass, data loss, secret/PII leak, injection, tenant-isolation break    | no merge, no deploy; fix now     |
+| HIGH     | any red automated gate (lint/typecheck/test/coverage/build); core path broken | no merge until green             |
+| MEDIUM   | degraded behavior with a workaround, no data/security impact                  | fix before release               |
+| LOW      | cosmetic or wording issue, no functional impact                               | track as follow-up; non-blocking |
 
 Any red automated gate is at least HIGH by definition. CRITICAL findings block regardless of deadline or business pressure.
 

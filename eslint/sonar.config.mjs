@@ -1,34 +1,34 @@
-import sonarjsPlugin from 'eslint-plugin-sonarjs';
+import sonarjsPlugin from "eslint-plugin-sonarjs";
 
 export default {
-  files: ['**/*.ts'],
+  files: ["**/*.ts"],
   plugins: {
     sonarjs: sonarjsPlugin,
   },
   rules: {
     // Keep function complexity within a readable limit.
-    'sonarjs/cognitive-complexity': ['error', 20],
+    "sonarjs/cognitive-complexity": ["error", 20],
     // Prefer simpler condition nesting.
-    'sonarjs/no-collapsible-if': 'error',
+    "sonarjs/no-collapsible-if": "error",
     // Catch duplicated branch implementations.
-    'sonarjs/no-duplicated-branches': 'error',
+    "sonarjs/no-duplicated-branches": "error",
     // Catch duplicated function bodies.
-    'sonarjs/no-identical-functions': 'error',
+    "sonarjs/no-identical-functions": "error",
     // Catch functions that always return the same value.
-    'sonarjs/no-invariant-returns': 'error',
+    "sonarjs/no-invariant-returns": "error",
     // Avoid nested switch statements.
-    'sonarjs/no-nested-switch': 'error',
+    "sonarjs/no-nested-switch": "error",
     // Remove redundant boolean expressions.
-    'sonarjs/no-redundant-boolean': 'error',
+    "sonarjs/no-redundant-boolean": "error",
     // Remove redundant jumps after control flow exits.
-    'sonarjs/no-redundant-jump': 'error',
+    "sonarjs/no-redundant-jump": "error",
     // Avoid switch statements that are clearer as if statements.
-    'sonarjs/no-small-switch': 'error',
+    "sonarjs/no-small-switch": "error",
     // Let TypeScript and unused-imports own unused-variable checks.
-    'sonarjs/no-unused-vars': 'off',
+    "sonarjs/no-unused-vars": "off",
     // Avoid catch blocks that only rethrow.
-    'sonarjs/no-useless-catch': 'error',
+    "sonarjs/no-useless-catch": "error",
     // Prefer returning expressions directly when clearer.
-    'sonarjs/prefer-immediate-return': 'error',
+    "sonarjs/prefer-immediate-return": "error",
   },
 };

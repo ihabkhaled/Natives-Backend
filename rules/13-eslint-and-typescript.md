@@ -18,20 +18,20 @@ npm run typecheck   # tsgo --noEmit       → native type check, project-wide
 
 `eslint.config.mjs` composes small, single-purpose flat-config modules from `/eslint`. Each owns one concern so a rule's home is obvious and changes stay surgical.
 
-| Module | Owns | Highlights |
-| --- | --- | --- |
-| `base.config.mjs` | Core JS correctness | `no-console`, `no-debugger`, `eqeqeq` (smart), `curly` (all), `no-implicit-coercion`, `object-shorthand`, `prefer-template` |
-| `typescript.config.mjs` | Type-aware strictness | `recommendedTypeChecked` + `strictTypeChecked` + `stylisticTypeChecked` plus explicit overrides (below) |
-| `imports.config.mjs` | Import hygiene | `simple-import-sort` (imports/exports), `import-x/no-cycle`, `import-x/no-duplicates`, `unused-imports/*` |
-| `promise.config.mjs` | Async safety | `always-return`, `catch-or-return`, `no-multiple-resolved`, `no-nesting`, `prefer-await-to-then` |
-| `security.config.mjs` | Vulnerability patterns | plugin `recommended` + `detect-object-injection` |
-| `sonar.config.mjs` | Bug / clean-code | `cognitive-complexity: 20`, `no-identical-functions`, `no-duplicated-branches`, `prefer-immediate-return` |
-| `unicorn.config.mjs` | Modern JS | `prefer-node-protocol`, `prefer-array-some`, `prefer-includes`, `no-nested-ternary`, `no-unnecessary-await` |
-| `regexp.config.mjs` | Regex safety | `no-super-linear-backtracking` (ReDoS), `no-useless-*`, `prefer-d`, `optimal-quantifier-concatenation` |
-| `architecture.config.mjs` | **Layer boundaries** | the custom `architecture/*` plugin + `no-restricted-syntax` + per-layer `max-lines-per-function` |
-| `prettier.config.mjs` | Formatting as lint | `prettier/prettier` error + `eslint-config-prettier` to disable conflicting stylistic rules |
-| `test.config.mjs` | Test relaxations | loosens unsafe-* for mocks; **keeps** `no-explicit-any` / `no-non-null-assertion`; bans `.only` |
-| `ignores.config.mjs` | Lint scope | ignores `dist/`, `coverage/`, `node_modules/`, `**/*.{js,mjs,cjs}`, root `*.spec.ts` |
+| Module                    | Owns                   | Highlights                                                                                                                  |
+| ------------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `base.config.mjs`         | Core JS correctness    | `no-console`, `no-debugger`, `eqeqeq` (smart), `curly` (all), `no-implicit-coercion`, `object-shorthand`, `prefer-template` |
+| `typescript.config.mjs`   | Type-aware strictness  | `recommendedTypeChecked` + `strictTypeChecked` + `stylisticTypeChecked` plus explicit overrides (below)                     |
+| `imports.config.mjs`      | Import hygiene         | `simple-import-sort` (imports/exports), `import-x/no-cycle`, `import-x/no-duplicates`, `unused-imports/*`                   |
+| `promise.config.mjs`      | Async safety           | `always-return`, `catch-or-return`, `no-multiple-resolved`, `no-nesting`, `prefer-await-to-then`                            |
+| `security.config.mjs`     | Vulnerability patterns | plugin `recommended` + `detect-object-injection`                                                                            |
+| `sonar.config.mjs`        | Bug / clean-code       | `cognitive-complexity: 20`, `no-identical-functions`, `no-duplicated-branches`, `prefer-immediate-return`                   |
+| `unicorn.config.mjs`      | Modern JS              | `prefer-node-protocol`, `prefer-array-some`, `prefer-includes`, `no-nested-ternary`, `no-unnecessary-await`                 |
+| `regexp.config.mjs`       | Regex safety           | `no-super-linear-backtracking` (ReDoS), `no-useless-*`, `prefer-d`, `optimal-quantifier-concatenation`                      |
+| `architecture.config.mjs` | **Layer boundaries**   | the custom `architecture/*` plugin + `no-restricted-syntax` + per-layer `max-lines-per-function`                            |
+| `prettier.config.mjs`     | Formatting as lint     | `prettier/prettier` error + `eslint-config-prettier` to disable conflicting stylistic rules                                 |
+| `test.config.mjs`         | Test relaxations       | loosens unsafe-* for mocks; **keeps** `no-explicit-any` / `no-non-null-assertion`; bans `.only`                             |
+| `ignores.config.mjs`      | Lint scope             | ignores `dist/`, `coverage/`, `node_modules/`, `**/*.{js,mjs,cjs}`, root `*.spec.ts`                                        |
 
 > All `typescript.config.mjs` rules are **type-aware** (`parserOptions.project` → `tsconfig.eslint.json`). They need a clean project graph — a tsconfig error can cascade into spurious lint errors, so fix `typecheck` first.
 
@@ -41,29 +41,29 @@ npm run typecheck   # tsgo --noEmit       → native type check, project-wide
 
 On top of the three `*TypeChecked` presets (`no-unsafe-*`, `no-floating-promises`, `no-misused-promises`, `unbound-method`, `restrict-template-expressions`, …), these are pinned to **error**:
 
-| Rule | What it forces |
-| --- | --- |
-| `no-explicit-any` | Never `any` — use `unknown` + narrowing or generics |
-| `no-non-null-assertion` | No `!` — narrow with `if` / `??` / `?.` |
-| `no-unused-vars` | No dead locals/params — prefix `_` to keep intentionally |
-| `no-floating-promises` | Every promise awaited or explicitly handled |
-| `no-misused-promises` | No promise where a sync boolean/callback is expected (`checksVoidReturn.attributes: false`) |
-| `consistent-type-imports` | `import type { Foo }` (`fixStyle: separate-type-imports`) |
-| `consistent-type-definitions` | `interface` for object shapes, not `type` |
-| `no-import-type-side-effects` | Type-only imports emit no runtime side effect |
-| `no-confusing-void-expression` | No returning a void expression (arrow shorthand allowed) |
-| `no-unnecessary-condition` | No always-true/false checks — trust the types |
-| `no-unnecessary-type-assertion` | No redundant `as` |
-| `no-base-to-string` | No `[object Object]` stringification |
-| `no-redundant-type-constituents` / `no-duplicate-enum-values` / `no-empty-object-type` | Tidy, unambiguous types |
-| `no-extraneous-class` / `no-useless-constructor` / `no-empty-function` (allow constructors) | No empty class wrappers |
-| `only-throw-error` / `prefer-promise-reject-errors` | Throw/reject `Error`-like values — pairs with typed `AppError` (rules/18) |
-| `prefer-nullish-coalescing` / `prefer-optional-chain` | `??` and `?.` over `\|\|` and manual `&&` chains |
-| `prefer-readonly` | Never-reassigned private fields are `readonly` |
-| `require-await` | `async` only when `await` is used |
-| `return-await` (`in-try-catch`) | `return await` inside `try` so errors are caught |
-| `restrict-template-expressions` | Templates allow only `number` + `boolean` (config: `allowBoolean`, `allowNumber`) |
-| `switch-exhaustiveness-check` | Handle every enum/union case |
+| Rule                                                                                        | What it forces                                                                              |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `no-explicit-any`                                                                           | Never `any` — use `unknown` + narrowing or generics                                         |
+| `no-non-null-assertion`                                                                     | No `!` — narrow with `if` / `??` / `?.`                                                     |
+| `no-unused-vars`                                                                            | No dead locals/params — prefix `_` to keep intentionally                                    |
+| `no-floating-promises`                                                                      | Every promise awaited or explicitly handled                                                 |
+| `no-misused-promises`                                                                       | No promise where a sync boolean/callback is expected (`checksVoidReturn.attributes: false`) |
+| `consistent-type-imports`                                                                   | `import type { Foo }` (`fixStyle: separate-type-imports`)                                   |
+| `consistent-type-definitions`                                                               | `interface` for object shapes, not `type`                                                   |
+| `no-import-type-side-effects`                                                               | Type-only imports emit no runtime side effect                                               |
+| `no-confusing-void-expression`                                                              | No returning a void expression (arrow shorthand allowed)                                    |
+| `no-unnecessary-condition`                                                                  | No always-true/false checks — trust the types                                               |
+| `no-unnecessary-type-assertion`                                                             | No redundant `as`                                                                           |
+| `no-base-to-string`                                                                         | No `[object Object]` stringification                                                        |
+| `no-redundant-type-constituents` / `no-duplicate-enum-values` / `no-empty-object-type`      | Tidy, unambiguous types                                                                     |
+| `no-extraneous-class` / `no-useless-constructor` / `no-empty-function` (allow constructors) | No empty class wrappers                                                                     |
+| `only-throw-error` / `prefer-promise-reject-errors`                                         | Throw/reject `Error`-like values — pairs with typed `AppError` (rules/18)                   |
+| `prefer-nullish-coalescing` / `prefer-optional-chain`                                       | `??` and `?.` over `\|\|` and manual `&&` chains                                            |
+| `prefer-readonly`                                                                           | Never-reassigned private fields are `readonly`                                              |
+| `require-await`                                                                             | `async` only when `await` is used                                                           |
+| `return-await` (`in-try-catch`)                                                             | `return await` inside `try` so errors are caught                                            |
+| `restrict-template-expressions`                                                             | Templates allow only `number` + `boolean` (config: `allowBoolean`, `allowNumber`)           |
+| `switch-exhaustiveness-check`                                                               | Handle every enum/union case                                                                |
 
 ---
 
@@ -95,15 +95,15 @@ create(@Body() dto: CreateOrderDto): Promise<OrderResponse> {
 
 Enforces one-way dependencies by file suffix and folder, plus vendor-library and `process.env` boundaries. Layers are matched by `*.controller.ts`, `*.service.ts`, `*.repository.ts`, `*.use-case.ts`, and the `/application/`, `/api/dto/`, `/infrastructure/` folders.
 
-| From | May NOT import | Why |
-| --- | --- | --- |
-| Controller | repository, infrastructure | Controllers stay HTTP-only; depend on use cases/services, DTOs, guards |
-| Use case (`/application/`) | controller, API DTO | Application orchestration is transport-agnostic |
-| Service | controller | Services are focused capabilities, not callers of transport |
-| Repository | controller, service, use case, API DTO | Persistence owns data access only |
-| API DTO (`/api/dto/`) | service, repository, infrastructure | DTOs are boundary declarations only |
-| **Vendor libs** (`axios`, `winston`/`pino`, ORM clients, brokers/cache) | anywhere outside their adapter | Wrap behind `adapters/*.adapter.ts` or the owning folder (rules/12) |
-| `process.env` | anywhere outside `config/`, `bootstrap/`, `*.config.ts`, `*.providers.ts` | Typed config only (rules/17) |
+| From                                                                    | May NOT import                                                            | Why                                                                    |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Controller                                                              | repository, infrastructure                                                | Controllers stay HTTP-only; depend on use cases/services, DTOs, guards |
+| Use case (`/application/`)                                              | controller, API DTO                                                       | Application orchestration is transport-agnostic                        |
+| Service                                                                 | controller                                                                | Services are focused capabilities, not callers of transport            |
+| Repository                                                              | controller, service, use case, API DTO                                    | Persistence owns data access only                                      |
+| API DTO (`/api/dto/`)                                                   | service, repository, infrastructure                                       | DTOs are boundary declarations only                                    |
+| **Vendor libs** (`axios`, `winston`/`pino`, ORM clients, brokers/cache) | anywhere outside their adapter                                            | Wrap behind `adapters/*.adapter.ts` or the owning folder (rules/12)    |
+| `process.env`                                                           | anywhere outside `config/`, `bootstrap/`, `*.config.ts`, `*.providers.ts` | Typed config only (rules/17)                                           |
 
 ```ts
 // Don't — controller reaches into persistence (no-restricted-layer-imports)
@@ -125,8 +125,10 @@ In `*.controller.ts`, `*.service.ts`, and `*.repository.ts`, inline `const`, `en
 // Don't — inline declarations inside a service (no-restricted-syntax)
 @Injectable()
 export class OrderService {
-  private readonly MAX_ITEMS = 100;           // inline const
-  async place(input: { id: string }): Promise<void> { /* inline type */ }
+  private readonly MAX_ITEMS = 100; // inline const
+  async place(input: { id: string }): Promise<void> {
+    /* inline type */
+  }
 }
 
 // Do — declarations live in dedicated modules
@@ -157,21 +159,21 @@ const [a, b] = await Promise.all([this.repo.findA(id), this.repo.findB(id)]);
 
 `strict: true` plus every additional safety flag. These make "no `any`", "no `!`", and "handle every nullable" mechanically true.
 
-| Flag | Effect |
-| --- | --- |
-| `strict` (+ `noImplicitAny`/`This`, `strictNullChecks`, `strictFunctionTypes`, `strictBindCallApply`, `strictPropertyInitialization`) | All baseline strict guarantees |
-| `noUncheckedIndexedAccess` | `arr[i]` / `obj[key]` is `T \| undefined` — always narrow |
-| `exactOptionalPropertyTypes` | `foo?: string` does **not** accept explicit `undefined` — conditionally spread |
-| `noPropertyAccessFromIndexSignature` | Index-signature members use `obj['key']`, declared members use `obj.key` |
-| `useUnknownInCatchVariables` | `catch (e)` ⇒ `e: unknown` — narrow with `instanceof Error` |
-| `noImplicitOverride` | Subclass overrides need the `override` keyword |
-| `noImplicitReturns` | Every code path returns |
-| `noFallthroughCasesInSwitch` | No implicit switch fallthrough |
-| `noUnusedLocals` / `noUnusedParameters` | Dead locals/params are compile errors (`_`-prefix to keep) |
-| `allowUnreachableCode: false` / `allowUnusedLabels: false` | Dead code is a compile error |
-| `isolatedModules` / `moduleDetection: force` | Each file transpiles independently — drives `consistent-type-imports` |
-| `noUncheckedSideEffectImports` | Side-effect imports must resolve |
-| `experimentalDecorators` + `emitDecoratorMetadata` | NestJS DI / decorators |
+| Flag                                                                                                                                  | Effect                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `strict` (+ `noImplicitAny`/`This`, `strictNullChecks`, `strictFunctionTypes`, `strictBindCallApply`, `strictPropertyInitialization`) | All baseline strict guarantees                                                 |
+| `noUncheckedIndexedAccess`                                                                                                            | `arr[i]` / `obj[key]` is `T \| undefined` — always narrow                      |
+| `exactOptionalPropertyTypes`                                                                                                          | `foo?: string` does **not** accept explicit `undefined` — conditionally spread |
+| `noPropertyAccessFromIndexSignature`                                                                                                  | Index-signature members use `obj['key']`, declared members use `obj.key`       |
+| `useUnknownInCatchVariables`                                                                                                          | `catch (e)` ⇒ `e: unknown` — narrow with `instanceof Error`                    |
+| `noImplicitOverride`                                                                                                                  | Subclass overrides need the `override` keyword                                 |
+| `noImplicitReturns`                                                                                                                   | Every code path returns                                                        |
+| `noFallthroughCasesInSwitch`                                                                                                          | No implicit switch fallthrough                                                 |
+| `noUnusedLocals` / `noUnusedParameters`                                                                                               | Dead locals/params are compile errors (`_`-prefix to keep)                     |
+| `allowUnreachableCode: false` / `allowUnusedLabels: false`                                                                            | Dead code is a compile error                                                   |
+| `isolatedModules` / `moduleDetection: force`                                                                                          | Each file transpiles independently — drives `consistent-type-imports`          |
+| `noUncheckedSideEffectImports`                                                                                                        | Side-effect imports must resolve                                               |
+| `experimentalDecorators` + `emitDecoratorMetadata`                                                                                    | NestJS DI / decorators                                                         |
 
 `skipLibCheck: true` (don't type-check `node_modules`). Path aliases `@/* @app/* @config/* @core/* @modules/* @shared/*` are declared here — never deep relative climbs (`../../../core/...`).
 
@@ -212,28 +214,28 @@ For `*.spec.ts` and `test/**/*.ts` (`test.config.mjs`): `no-unsafe-*`, `unbound-
 
 Fix the cause, never the symptom. Disabling a rule is a non-negotiable violation (rule 4).
 
-| Finding | Root-cause fix |
-| --- | --- |
-| `no-explicit-any` | Type it: `unknown` + narrowing, a real interface, or a generic |
-| `no-non-null-assertion` (`x!`) | Guard (`if (x === undefined) …`), default (`x ?? fallback`), or `x?.member` |
-| `no-floating-promises` | `await` it, `return` it, or `void` it with a comment for true fire-and-forget (rules/19) |
-| `no-misused-promises` | Don't pass an `async` fn where a sync return is expected; wrap or restructure |
-| `no-unnecessary-condition` | The value can't be nullish per its type — remove the check or fix the type |
-| `prefer-nullish-coalescing` | Replace `\|\|` with `??` when guarding null/undefined (keeps `0`/`''` valid) |
-| `restrict-template-expressions` | `String(x)` or narrow before interpolating non-primitives |
-| `switch-exhaustiveness-check` | Add the missing case, or a `default` with a `never` assertion |
-| `consistent-type-imports` | `import type { Foo }` for type-only imports (autofix) |
-| `no-console` | Use the logger adapter from `@core/logger` (rules/14) |
-| `architecture/controller-no-logic` | Move branching/transformation into a use case/service; leave one delegation |
-| `architecture/no-restricted-layer-imports` | Depend through the correct layer / module `index.ts`; wrap vendor in an adapter |
-| `no-restricted-syntax` (inline decl) | Extract to `model/*.types.ts` / `*.enums.ts` / `*.constants.ts` |
-| `no-restricted-syntax` (`Promise.all` in service) | Move concurrency to a use case or `lib/` helper |
-| `max-lines-per-function` (service > 20) | Extract helpers to `lib/`, or escalate to a use case |
-| `import-x/no-cycle` | Break the cycle via an interface, a shared type module, or events |
-| `simple-import-sort/imports` | `npm run lint:fix` |
-| `regexp/no-super-linear-backtracking` | Rewrite to remove nested quantifiers; validate via a DTO instead |
-| `noUncheckedIndexedAccess` (`T \| undefined`) | Narrow after index/array access before use |
-| `exactOptionalPropertyTypes` | Conditionally spread; never assign explicit `undefined` to an optional |
+| Finding                                           | Root-cause fix                                                                           |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `no-explicit-any`                                 | Type it: `unknown` + narrowing, a real interface, or a generic                           |
+| `no-non-null-assertion` (`x!`)                    | Guard (`if (x === undefined) …`), default (`x ?? fallback`), or `x?.member`              |
+| `no-floating-promises`                            | `await` it, `return` it, or `void` it with a comment for true fire-and-forget (rules/19) |
+| `no-misused-promises`                             | Don't pass an `async` fn where a sync return is expected; wrap or restructure            |
+| `no-unnecessary-condition`                        | The value can't be nullish per its type — remove the check or fix the type               |
+| `prefer-nullish-coalescing`                       | Replace `\|\|` with `??` when guarding null/undefined (keeps `0`/`''` valid)             |
+| `restrict-template-expressions`                   | `String(x)` or narrow before interpolating non-primitives                                |
+| `switch-exhaustiveness-check`                     | Add the missing case, or a `default` with a `never` assertion                            |
+| `consistent-type-imports`                         | `import type { Foo }` for type-only imports (autofix)                                    |
+| `no-console`                                      | Use the logger adapter from `@core/logger` (rules/14)                                    |
+| `architecture/controller-no-logic`                | Move branching/transformation into a use case/service; leave one delegation              |
+| `architecture/no-restricted-layer-imports`        | Depend through the correct layer / module `index.ts`; wrap vendor in an adapter          |
+| `no-restricted-syntax` (inline decl)              | Extract to `model/*.types.ts` / `*.enums.ts` / `*.constants.ts`                          |
+| `no-restricted-syntax` (`Promise.all` in service) | Move concurrency to a use case or `lib/` helper                                          |
+| `max-lines-per-function` (service > 20)           | Extract helpers to `lib/`, or escalate to a use case                                     |
+| `import-x/no-cycle`                               | Break the cycle via an interface, a shared type module, or events                        |
+| `simple-import-sort/imports`                      | `npm run lint:fix`                                                                       |
+| `regexp/no-super-linear-backtracking`             | Rewrite to remove nested quantifiers; validate via a DTO instead                         |
+| `noUncheckedIndexedAccess` (`T \| undefined`)     | Narrow after index/array access before use                                               |
+| `exactOptionalPropertyTypes`                      | Conditionally spread; never assign explicit `undefined` to an optional                   |
 
 ---
 

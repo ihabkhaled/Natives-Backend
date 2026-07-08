@@ -7,14 +7,14 @@ Capture business or operational validation of the delivered solution in realisti
 ## UAT Participants
 
 | Role | Name | Area represented |
-| --- | --- | --- |
-| | | |
+| ---- | ---- | ---------------- |
+|      |      |                  |
 
 ## UAT Scenarios
 
-| Scenario ID | Workflow | Expected result | Actual result | Outcome |
-| --- | --- | --- | --- | --- |
-| | | | | pass / fail |
+| Scenario ID | Workflow | Expected result | Actual result | Outcome     |
+| ----------- | -------- | --------------- | ------------- | ----------- |
+|             |          |                 |               | pass / fail |
 
 ## Business Fit Assessment
 

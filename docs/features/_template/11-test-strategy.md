@@ -14,8 +14,8 @@ Design quality before implementation starts.
 ## Requirement-to-Test Matrix
 
 | Requirement or risk | Unit | Integration | E2E | Security | Business / UAT |
-| --- | --- | --- | --- | --- | --- |
-| | | | | | |
+| ------------------- | ---- | ----------- | --- | -------- | -------------- |
+|                     |      |             |     |          |                |
 
 ## Test Layers
 
@@ -72,10 +72,10 @@ Design quality before implementation starts.
 
 ## Sign-Off
 
-| Role | Name | Decision | Date |
-| --- | --- | --- | --- |
-| QA lead | | approve / revise | |
-| Technical owner | | approve / revise | |
+| Role            | Name | Decision         | Date |
+| --------------- | ---- | ---------------- | ---- |
+| QA lead         |      | approve / revise |      |
+| Technical owner |      | approve / revise |      |
 
 ## Evidence And References To Attach
 

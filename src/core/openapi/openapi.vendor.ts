@@ -3,4 +3,14 @@
  * Controllers and DTOs import these re-exports — the vendor package itself is
  * importable only here and in bootstrap/ (document setup), ESLint-enforced.
  */
-export { ApiProperty, ApiPropertyOptional, ApiTags } from '@nestjs/swagger';
+export {
+  ApiCreatedResponse,
+  ApiForbiddenResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiProperty,
+  ApiPropertyOptional,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';

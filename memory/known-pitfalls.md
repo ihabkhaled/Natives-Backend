@@ -1,6 +1,6 @@
 # Memory — Known Pitfalls
 
-> Durable record of the recurring, transferable traps that bite NestJS backends in this workspace. Implements the canon in [/context/architecture-map.md](../context/architecture-map.md) and [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md). **Decision:** check this list *before* writing code, and when a new recurring mistake appears, append it here in **Symptom / Cause / Fix** form. Keep entries abstract — no product specifics.
+> Durable record of the recurring, transferable traps that bite NestJS backends in this workspace. Implements the canon in [/context/architecture-map.md](../context/architecture-map.md) and [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md). **Decision:** check this list _before_ writing code, and when a new recurring mistake appears, append it here in **Symptom / Cause / Fix** form. Keep entries abstract — no product specifics.
 
 **Why this exists:** these mistakes survive code review because they compile, pass the happy path, and only fail under strict flags, concurrency, or production load. Writing them down once stops the team (and any AI agent) from re-discovering them per project.
 
@@ -19,7 +19,7 @@
 ### A2. `exactOptionalPropertyTypes` rejects explicit `undefined`
 
 - **Symptom:** building `{ actorId: maybeUndefined }` for a target typed `{ actorId?: string }` fails to compile.
-- **Cause:** with the flag on, `{ k?: V }` means *absent or V*, **not** `V | undefined`. Assigning an explicit `undefined` is an error.
+- **Cause:** with the flag on, `{ k?: V }` means _absent or V_, **not** `V | undefined`. Assigning an explicit `undefined` is an error.
 - **Fix:** conditionally spread the key — omit it instead of assigning `undefined`. Do **not** widen the field to `V | undefined`.
 
 ```ts
@@ -34,7 +34,7 @@ const event = { type, ...(actorId === undefined ? {} : { actorId }) };
 
 - **Symptom:** a generic `stripUndefined(obj): Partial<T>` still fails to type-check when fed into an entity `.update()` or a filter DTO.
 - **Cause:** `Partial<T>` only makes keys optional; the value types stay `V | undefined`, which `exactOptionalPropertyTypes` rejects.
-- **Fix:** type the helper to strip `undefined` from the **value types**, e.g. `{ [K in keyof T]?: Exclude<T[K], undefined> }`. Only collapse **bare passthrough** values this way — `stripUndefined({ when: new Date(v) })` would still evaluate `new Date(undefined)` (an Invalid Date that is *not* stripped). Keep transformed values (`new Date(x)`, `x.trim()`, `x as Role`) as conditional spreads. See [06-types-enums-constants.md](../rules/06-types-enums-constants.md).
+- **Fix:** type the helper to strip `undefined` from the **value types**, e.g. `{ [K in keyof T]?: Exclude<T[K], undefined> }`. Only collapse **bare passthrough** values this way — `stripUndefined({ when: new Date(v) })` would still evaluate `new Date(undefined)` (an Invalid Date that is _not_ stripped). Keep transformed values (`new Date(x)`, `x.trim()`, `x as Role`) as conditional spreads. See [06-types-enums-constants.md](../rules/06-types-enums-constants.md).
 
 ---
 
@@ -72,13 +72,13 @@ const event = { type, ...(actorId === undefined ? {} : { actorId }) };
 
 - **Symptom:** a downstream notification failure rolls back or fails the primary action (e.g. the order saved but the request 500s).
 - **Cause:** an `@OnEvent`/`IEventHandler.handle` that throws propagates back into the publish call on the domain success path.
-- **Fix:** side effects are **fail-safe** (rule 38). Wrap dispatch in try/catch, `logger.error` the failure, never re-throw into the publisher. Post-commit events fire from the use case *after* the transaction commits. See [10-reliability-and-durability.md](../rules/10-reliability-and-durability.md) and [reliability-patterns.md](./reliability-patterns.md).
+- **Fix:** side effects are **fail-safe** (rule 38). Wrap dispatch in try/catch, `logger.error` the failure, never re-throw into the publisher. Post-commit events fire from the use case _after_ the transaction commits. See [10-reliability-and-durability.md](../rules/10-reliability-and-durability.md) and [reliability-patterns.md](./reliability-patterns.md).
 
 ### C3. `await` inside a loop serializes independent work
 
 - **Symptom:** a batch endpoint is N× slower than expected.
 - **Cause:** awaiting each iteration of independent work in sequence.
-- **Fix:** batch the independent calls. **But note:** `Promise.all|allSettled|any|race` are banned *inside service methods* by ESLint (`no-restricted-syntax`) — concurrency primitives belong in a use case or a dedicated `lib/` helper, never buried in a focused service. See [03-application-services-and-use-cases.md](../rules/03-application-services-and-use-cases.md).
+- **Fix:** batch the independent calls. **But note:** `Promise.all|allSettled|any|race` are banned _inside service methods_ by ESLint (`no-restricted-syntax`) — concurrency primitives belong in a use case or a dedicated `lib/` helper, never buried in a focused service. See [03-application-services-and-use-cases.md](../rules/03-application-services-and-use-cases.md).
 
 ### C4. Async override of a void-return signature swallows rejections
 

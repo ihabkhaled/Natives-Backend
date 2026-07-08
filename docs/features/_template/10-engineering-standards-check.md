@@ -13,18 +13,18 @@ Freeze the implementation rules before coding begins.
 
 ## Standards Review Matrix
 
-| Standard area | Requirement | How this request will comply |
-| --- | --- | --- |
-| Architecture boundaries | | |
-| Naming and module structure | | |
-| Error handling | | |
-| Logging and observability | | |
-| Accessibility | | |
-| Localization / content | | |
-| Secure coding | | |
-| Data handling | | |
-| Documentation | | |
-| Release readiness | | |
+| Standard area               | Requirement | How this request will comply |
+| --------------------------- | ----------- | ---------------------------- |
+| Architecture boundaries     |             |                              |
+| Naming and module structure |             |                              |
+| Error handling              |             |                              |
+| Logging and observability   |             |                              |
+| Accessibility               |             |                              |
+| Localization / content      |             |                              |
+| Secure coding               |             |                              |
+| Data handling               |             |                              |
+| Documentation               |             |                              |
+| Release readiness           |             |                              |
 
 ## Request-Specific Rules
 
@@ -45,9 +45,9 @@ Freeze the implementation rules before coding begins.
 
 ## Sign-Off
 
-| Role | Name | Decision | Date |
-| --- | --- | --- | --- |
-| Technical owner | | approve / revise | |
+| Role            | Name | Decision         | Date |
+| --------------- | ---- | ---------------- | ---- |
+| Technical owner |      | approve / revise |      |
 
 ## Evidence And References To Attach
 

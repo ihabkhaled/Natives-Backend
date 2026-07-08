@@ -15,4 +15,3 @@
 ## Escalation Rule
 
 [When support should escalate and what evidence to gather.]
-

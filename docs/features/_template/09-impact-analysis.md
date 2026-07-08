@@ -12,20 +12,20 @@ Reveal the full blast radius so no team or system is surprised later.
 
 ## Affected Systems
 
-| System / area | Impact summary | Owner | Action required |
-| --- | --- | --- | --- |
-| Frontend | | | |
-| Backend | | | |
-| Mobile | | | |
-| Database | | | |
-| Analytics / BI | | | |
-| DevOps / platform | | | |
-| QA automation | | | |
-| Security | | | |
-| Search / indexing | | | |
-| Support / CS | | | |
-| Documentation | | | |
-| Monitoring / on-call | | | |
+| System / area        | Impact summary | Owner | Action required |
+| -------------------- | -------------- | ----- | --------------- |
+| Frontend             |                |       |                 |
+| Backend              |                |       |                 |
+| Mobile               |                |       |                 |
+| Database             |                |       |                 |
+| Analytics / BI       |                |       |                 |
+| DevOps / platform    |                |       |                 |
+| QA automation        |                |       |                 |
+| Security             |                |       |                 |
+| Search / indexing    |                |       |                 |
+| Support / CS         |                |       |                 |
+| Documentation        |                |       |                 |
+| Monitoring / on-call |                |       |                 |
 
 ## Backward Compatibility
 

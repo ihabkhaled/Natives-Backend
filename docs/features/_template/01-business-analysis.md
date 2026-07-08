@@ -19,14 +19,14 @@ Describe the business problem and the value of solving it before implementation 
 ## Stakeholders
 
 | Stakeholder | Interest | Influence | Notes |
-| --- | --- | --- | --- |
-| | | | |
+| ----------- | -------- | --------- | ----- |
+|             |          |           |       |
 
 ## User Personas
 
 | Persona | Goal | Pain point today | Desired outcome |
-| --- | --- | --- | --- |
-| | | | |
+| ------- | ---- | ---------------- | --------------- |
+|         |      |                  |                 |
 
 ## Current State vs Desired State
 
@@ -47,8 +47,8 @@ Describe the business problem and the value of solving it before implementation 
 ## KPI / Success Metrics
 
 | Metric | Baseline | Target | Measurement method |
-| --- | --- | --- | --- |
-| | | | |
+| ------ | -------- | ------ | ------------------ |
+|        |          |        |                    |
 
 ## Risks of Not Doing It
 
@@ -75,9 +75,9 @@ Describe the business problem and the value of solving it before implementation 
 
 ## Sign-Off
 
-| Role | Name | Decision | Date |
-| --- | --- | --- | --- |
-| Business owner | | approve / revise | |
+| Role           | Name | Decision         | Date |
+| -------------- | ---- | ---------------- | ---- |
+| Business owner |      | approve / revise |      |
 
 ## Evidence And References To Attach
 

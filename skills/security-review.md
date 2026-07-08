@@ -28,12 +28,12 @@ git diff origin/main...HEAD -- 'src/modules/**/api/**' 'src/core/guards/**' 'src
 
 Then use the **Grep tool** (not raw `rg` — results link in the UI) to find risk patterns:
 
-| Risk | Grep pattern | Glob |
-| --- | --- | --- |
-| Routes missing guards | `@(Get\|Post\|Put\|Patch\|Delete)\(` | `**/*.controller.ts` |
-| Raw/interpolated SQL | `query\(\s*\`` and `\.query\(.+\$\{` | `**/infrastructure/**` |
-| Secret/PII logging | `logger\.(log\|info\|debug\|warn\|error)\(.*(password\|token\|otp\|secret)` | `src/**` |
-| `process.env` escapes | `process\.env` | `src/**` (must hit only `config/`/`bootstrap/`) |
+| Risk                  | Grep pattern                                                                | Glob                                            |
+| --------------------- | --------------------------------------------------------------------------- | ----------------------------------------------- |
+| Routes missing guards | `@(Get\|Post\|Put\|Patch\|Delete)\(`                                        | `**/*.controller.ts`                            |
+| Raw/interpolated SQL  | `query\(\s*\`` and `\.query\(.+\$\{`                                        | `**/infrastructure/**`                          |
+| Secret/PII logging    | `logger\.(log\|info\|debug\|warn\|error)\(.*(password\|token\|otp\|secret)` | `src/**`                                        |
+| `process.env` escapes | `process\.env`                                                              | `src/**` (must hit only `config/`/`bootstrap/`) |
 
 ### 2. Authn + Authz on every protected route
 
@@ -109,9 +109,11 @@ const matches = timingSafeEqual(Buffer.from(provided), Buffer.from(expected));
 
 ```ts
 // DON'T
-const secret = process.env.TOKEN_SECRET;     // BLOCKER outside config/ + bootstrap/
-const code = Math.random().toString();       // not a CSPRNG
-if (provided === expected) { /* ... */ }      // timing leak on secret compare
+const secret = process.env.TOKEN_SECRET; // BLOCKER outside config/ + bootstrap/
+const code = Math.random().toString(); // not a CSPRNG
+if (provided === expected) {
+  /* ... */
+} // timing leak on secret compare
 ```
 
 - [ ] No `process.env` outside `config/`/`bootstrap/`; secrets read via typed config only ([17-configuration-and-environment.md](../rules/17-configuration-and-environment.md)).
@@ -157,7 +159,7 @@ Never bypass Husky hooks with `--no-verify`.
 ## Pitfalls
 
 - **Authenticated but not authorized.** An auth guard alone is not enough — a permissions guard must run too. Verify both are present.
-- **Ownership in the repository only.** Tenant scoping belongs in the query *and* a domain policy assertion; relying on the ORM filter alone breaks the moment a new query path bypasses it.
+- **Ownership in the repository only.** Tenant scoping belongs in the query _and_ a domain policy assertion; relying on the ORM filter alone breaks the moment a new query path bypasses it.
 - **Trusting body identity.** `dto.ownerId`/`dto.tenantId` from the client is forgeable — always derive identity from `@CurrentUser()`.
 - **Leaky "not found vs forbidden".** Distinct responses let attackers enumerate ids; return the same shape.
 - **Secrets in error objects.** A thrown DB error can carry SQL/connection strings; ensure the filter strips `cause`/internal fields, never spreads raw errors into the response.

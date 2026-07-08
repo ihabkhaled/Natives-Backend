@@ -29,12 +29,12 @@
 
 Decide the shape before anything else. A change is **breaking** if a currently-running app version would fail against the post-migration schema.
 
-| Change | Breaking? | Plan |
-| --- | --- | --- |
-| Add nullable / defaulted column, new table, new index | No | Single additive migration |
-| Add `NOT NULL` to a populated column | Yes | Expand → backfill → contract |
-| Rename / drop / narrow type / split column | Yes | Expand → dual-write → migrate reads → contract |
-| New unique / FK constraint on existing data | Yes | Backfill + dedupe → validate → add constraint |
+| Change                                                | Breaking? | Plan                                           |
+| ----------------------------------------------------- | --------- | ---------------------------------------------- |
+| Add nullable / defaulted column, new table, new index | No        | Single additive migration                      |
+| Add `NOT NULL` to a populated column                  | Yes       | Expand → backfill → contract                   |
+| Rename / drop / narrow type / split column            | Yes       | Expand → dual-write → migrate reads → contract |
+| New unique / FK constraint on existing data           | Yes       | Backfill + dedupe → validate → add constraint  |
 
 If the row is "Yes", you **must** split it across releases (Step 3). Never ship a breaking step in one migration.
 
@@ -42,12 +42,12 @@ If the row is "Yes", you **must** split it across releases (Step 3). Never ship 
 
 A deploy is never atomic — old and new pods overlap. Write down what each runtime expects so neither breaks mid-rollout.
 
-| Phase | Schema state | Old app version | New app version |
-| --- | --- | --- | --- |
-| Before | old columns only | reads/writes old | n/a |
-| Expand | old **+** new (nullable) | ignores new | dual-writes both |
-| Migrate | both populated | reads old (still works) | reads new |
-| Contract | new only | retired | reads/writes new |
+| Phase    | Schema state             | Old app version         | New app version  |
+| -------- | ------------------------ | ----------------------- | ---------------- |
+| Before   | old columns only         | reads/writes old        | n/a              |
+| Expand   | old **+** new (nullable) | ignores new             | dual-writes both |
+| Migrate  | both populated           | reads old (still works) | reads new        |
+| Contract | new only                 | retired                 | reads/writes new |
 
 The rule: **never remove or tighten a column the previous release still depends on.** Forward compatibility = old code tolerates the new column; backward compatibility = new code tolerates the old shape until contract.
 
@@ -86,7 +86,9 @@ export class AddInvoiceIssuedAt0042 {
 
   public async down(runner: MigrationRunner): Promise<void> {
     await runner.query(`DROP INDEX IF EXISTS "idx_invoices_issued_at";`); // reverse order
-    await runner.query(`ALTER TABLE "invoices" DROP COLUMN IF EXISTS "issued_at";`);
+    await runner.query(
+      `ALTER TABLE "invoices" DROP COLUMN IF EXISTS "issued_at";`,
+    );
   }
 }
 ```

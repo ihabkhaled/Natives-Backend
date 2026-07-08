@@ -15,8 +15,8 @@ Capture client or external stakeholder review when external approval is part of 
 ## Client Feedback
 
 | Item | Feedback | Owner | Status |
-| --- | --- | --- | --- |
-| | | | open |
+| ---- | -------- | ----- | ------ |
+|      |          |       | open   |
 
 ## Approval Status
 

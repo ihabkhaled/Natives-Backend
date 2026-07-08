@@ -49,7 +49,10 @@ export class ArticleController {
   }
 
   @Post(':id/publish')
-  publish(@Param('id') id: string, @CurrentUser() user: AuthUser): Promise<ArticleResponseDto> {
+  publish(
+    @Param('id') id: string,
+    @CurrentUser() user: AuthUser,
+  ): Promise<ArticleResponseDto> {
     return this.lifecycle.publish(id, user);
   }
 }
@@ -84,7 +87,7 @@ export class ArticleService {
 }
 ```
 
-**Step 3 — extract shared helpers ONCE.** A *pure* helper -> a named export in `lib/<feature>.helpers.ts`. A *stateful* helper (uses a repository/adapter) -> one collaborator service, constructor-injected into each consumer. Never leave a dangling `this.x` that no longer resolves; never duplicate.
+**Step 3 — extract shared helpers ONCE.** A _pure_ helper -> a named export in `lib/<feature>.helpers.ts`. A _stateful_ helper (uses a repository/adapter) -> one collaborator service, constructor-injected into each consumer. Never leave a dangling `this.x` that no longer resolves; never duplicate.
 
 ```typescript
 // Don't — same helper copied into two services

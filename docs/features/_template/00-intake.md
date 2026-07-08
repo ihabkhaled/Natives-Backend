@@ -16,19 +16,19 @@ Classify the request before solutioning begins.
 
 ## Request Record
 
-| Field | Value |
-| --- | --- |
-| Request ID | `<request-id>` |
-| Feature slug | `<feature-slug>` |
-| Request title | |
-| Request type | feature / bug / enhancement / refactor / migration / security fix / performance / compliance / UX / infrastructure |
-| Request source | ticket / email / client / support / incident / roadmap / audit |
-| Requested by | |
-| Intake owner | |
-| Business owner | |
-| Technical owner | |
-| Requested date | |
-| Target timeline | |
+| Field           | Value                                                                                                              |
+| --------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Request ID      | `<request-id>`                                                                                                     |
+| Feature slug    | `<feature-slug>`                                                                                                   |
+| Request title   |                                                                                                                    |
+| Request type    | feature / bug / enhancement / refactor / migration / security fix / performance / compliance / UX / infrastructure |
+| Request source  | ticket / email / client / support / incident / roadmap / audit                                                     |
+| Requested by    |                                                                                                                    |
+| Intake owner    |                                                                                                                    |
+| Business owner  |                                                                                                                    |
+| Technical owner |                                                                                                                    |
+| Requested date  |                                                                                                                    |
+| Target timeline |                                                                                                                    |
 
 ## Affected Domains
 
@@ -47,17 +47,17 @@ Classify the request before solutioning begins.
 
 ## Criticality and Delivery Track
 
-| Item | Answer |
-| --- | --- |
-| Severity | |
-| Urgency | |
-| Standard or hotfix track | |
-| Customer-facing | yes / no |
-| Revenue or money flow impact | yes / no |
-| Auth or permission impact | yes / no |
+| Item                             | Answer   |
+| -------------------------------- | -------- |
+| Severity                         |          |
+| Urgency                          |          |
+| Standard or hotfix track         |          |
+| Customer-facing                  | yes / no |
+| Revenue or money flow impact     | yes / no |
+| Auth or permission impact        | yes / no |
 | Privacy or regulated data impact | yes / no |
-| External integration impact | yes / no |
-| Production incident related | yes / no |
+| External integration impact      | yes / no |
+| Production incident related      | yes / no |
 
 ## Initial Scope Summary
 
@@ -89,9 +89,9 @@ Classify the request before solutioning begins.
 
 ## Sign-Off
 
-| Role | Name | Decision | Date |
-| --- | --- | --- | --- |
-| Intake owner | | approve / revise | |
+| Role         | Name | Decision         | Date |
+| ------------ | ---- | ---------------- | ---- |
+| Intake owner |      | approve / revise |      |
 
 ## Evidence And References To Attach
 

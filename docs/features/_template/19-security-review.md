@@ -38,14 +38,14 @@ Record security validation, controls, findings, and approval status.
 ## Findings
 
 | Finding ID | Severity | Description | Owner | Status |
-| --- | --- | --- | --- | --- |
-| | | | | open |
+| ---------- | -------- | ----------- | ----- | ------ |
+|            |          |             |       | open   |
 
 ## Waivers
 
 | Waiver ID | Risk | Approver | Expiration | Controls |
-| --- | --- | --- | --- | --- |
-| | | | | |
+| --------- | ---- | -------- | ---------- | -------- |
+|           |      |          |            |          |
 
 ## Security Decision
 

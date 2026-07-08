@@ -24,7 +24,7 @@ export class OrderService {
 
 ```ts
 // Don't
-console.log('order published', order);          // banned: no-console + leaks the whole entity
+console.log('order published', order); // banned: no-console + leaks the whole entity
 this.logger.info(`order ${JSON.stringify(order)} published`); // never stringify into the message
 ```
 
@@ -42,20 +42,20 @@ this.logger.info(`order ${JSON.stringify(order)} published`); // never stringify
 
 The level **is** the alert signal. Wrong levels either page on-call for nothing or hide real failures.
 
-| Level | Use for | Example |
-| --- | --- | --- |
-| `error` | Every `catch` before rethrow/fallback; unrecoverable failure (dependency down, write failed) | `order.publish.failed` |
-| `warn` | Recoverable/degraded path: retry, fallback, cache miss, rate-limit hit, partial success; **security events** (failed auth, permission denied) | `cache.unavailable.fallback` |
-| `info` | Side-effecting success: DB write, outbound call, event published, job completed | `order.published` |
-| `debug` | Method entry, non-PII inputs, internal-state inspection (off in production) | `order.findById.entry` |
+| Level   | Use for                                                                                                                                       | Example                      |
+| ------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `error` | Every `catch` before rethrow/fallback; unrecoverable failure (dependency down, write failed)                                                  | `order.publish.failed`       |
+| `warn`  | Recoverable/degraded path: retry, fallback, cache miss, rate-limit hit, partial success; **security events** (failed auth, permission denied) | `cache.unavailable.fallback` |
+| `info`  | Side-effecting success: DB write, outbound call, event published, job completed                                                               | `order.published`            |
+| `debug` | Method entry, non-PII inputs, internal-state inspection (off in production)                                                                   | `order.findById.entry`       |
 
-| Scenario | Correct | Wrong |
-| --- | --- | --- |
-| Successful mutation | `info` | `error` / `warn` |
-| Fallback used / cache miss | `warn` | `error` |
-| Dependency down / write failed | `error` | `warn` / `info` |
-| Failed login / forbidden | `warn` | `info` |
-| Debug input dump | `debug` | `info` |
+| Scenario                       | Correct | Wrong            |
+| ------------------------------ | ------- | ---------------- |
+| Successful mutation            | `info`  | `error` / `warn` |
+| Fallback used / cache miss     | `warn`  | `error`          |
+| Dependency down / write failed | `error` | `warn` / `info`  |
+| Failed login / forbidden       | `warn`  | `info`           |
+| Debug input dump               | `debug` | `info`           |
 
 > **Every `catch` logs at `error` before it rethrows or falls back. There are no empty `catch {}` blocks** — if you truly mean "ignore", log `debug` with the reason. Side-effecting operations log `info`; pure entry inspection logs `debug`.
 
@@ -93,13 +93,13 @@ export class CorrelationInterceptor implements NestInterceptor {
 
 Each layer has a distinct, minimal logging responsibility. Do not duplicate the same event at three layers.
 
-| Layer | Logs | Level | Does NOT log |
-| --- | --- | --- | --- |
-| Controller | Nothing manual — the logging interceptor records method, path, status, duration | `info` (interceptor) | Bodies, business detail |
-| Use case / Service | Each side effect (write, outbound call, event emitted), each branch outcome, each `catch` | `info` / `warn` / `error` | Raw entities, secrets |
-| Domain | Pure — generally silent; a rejected invariant may `warn` via the caller | — | I/O of any kind |
-| Repository | Entry at `debug`; "not found" at `debug`; never throws silently | `debug` | Business policy, full result sets |
-| Adapter | Outbound call start (`debug`), success with status + `durationMs` (`info`), failure with `durationMs` (`error`) | `debug` / `info` / `error` | Vendor secrets, full payloads |
+| Layer              | Logs                                                                                                            | Level                      | Does NOT log                      |
+| ------------------ | --------------------------------------------------------------------------------------------------------------- | -------------------------- | --------------------------------- |
+| Controller         | Nothing manual — the logging interceptor records method, path, status, duration                                 | `info` (interceptor)       | Bodies, business detail           |
+| Use case / Service | Each side effect (write, outbound call, event emitted), each branch outcome, each `catch`                       | `info` / `warn` / `error`  | Raw entities, secrets             |
+| Domain             | Pure — generally silent; a rejected invariant may `warn` via the caller                                         | —                          | I/O of any kind                   |
+| Repository         | Entry at `debug`; "not found" at `debug`; never throws silently                                                 | `debug`                    | Business policy, full result sets |
+| Adapter            | Outbound call start (`debug`), success with status + `durationMs` (`info`), failure with `durationMs` (`error`) | `debug` / `info` / `error` | Vendor secrets, full payloads     |
 
 ```ts
 // Adapter: log timing + outcome, never the payload or credentials
@@ -130,12 +130,23 @@ Frontend and request input are hostile; entities carry secrets. Redact **before*
 ```ts
 // Centralize the redaction set once — do not invent a second, weaker list
 export const REDACTED_KEYS = [
-  'password', 'newPassword', 'currentPassword', 'confirmPassword',
-  'otp', 'token', 'accessToken', 'refreshToken', 'apiKey', 'secret',
-  'authorization', 'cookie',
+  'password',
+  'newPassword',
+  'currentPassword',
+  'confirmPassword',
+  'otp',
+  'token',
+  'accessToken',
+  'refreshToken',
+  'apiKey',
+  'secret',
+  'authorization',
+  'cookie',
 ] as const;
 
-export function redact(input: Readonly<Record<string, unknown>>): Record<string, unknown> {
+export function redact(
+  input: Readonly<Record<string, unknown>>,
+): Record<string, unknown> {
   return Object.fromEntries(
     Object.entries(input).map(([k, v]) =>
       REDACTED_KEYS.includes(k as RedactedKey) ? [k, '[REDACTED]'] : [k, v],
@@ -177,6 +188,7 @@ Logs explain a single request; metrics tell you whether the system is healthy. B
 A passing assertion is not proof the system is observable. Confirm the trail.
 
 **After tests** (especially integration/e2e — [/testing/integration-testing-standard.md](../testing/integration-testing-standard.md)):
+
 - The expected `info` lines for each side effect appear, at the **correct level**.
 - Every exercised `catch` produced an `error` log (no silent swallow).
 - The correlation id is present and identical across the request's log lines.
@@ -184,6 +196,7 @@ A passing assertion is not proof the system is observable. Confirm the trail.
 - Redaction is active — sensitive fields show `[REDACTED]`, not raw values.
 
 **After deploy** (smoke window / hypercare — [/testing/quality-gates.md](../testing/quality-gates.md)):
+
 - Tail the service logs and trigger the new path; confirm the expected lines, levels, and correlation id.
 - No unhandled exceptions, no dependency/connection errors, no "headers already sent" on streaming routes.
 - For mutations: confirm the audit entry and the persisted record exist; for events: confirm published **and** consumed, and the DLQ is empty.

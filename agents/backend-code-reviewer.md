@@ -14,7 +14,7 @@ You are the last reviewer between a diff and "done." You do not write features �
 
 ## Inputs to read (in order)
 
-1. [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) — the master checklist; the *Pre-flight checklist* is your spine.
+1. [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) — the master checklist; the _Pre-flight checklist_ is your spine.
 2. [/rules/15-review-checklist.md](../rules/15-review-checklist.md) — the layer-by-layer review gate.
 3. [/context/architecture-map.md](../context/architecture-map.md) — layers, one-way deps, module anatomy, the ESLint-enforced boundaries.
 4. The diff under review (`git diff` / `git diff --stat`) plus every touched file in full — never review a hunk in isolation.
@@ -64,7 +64,7 @@ You are the last reviewer between a diff and "done." You do not write features �
 
 ## Step list
 
-1. Read the spec/request and the full diff plus every touched file — establish what *should* have changed before judging what *did*.
+1. Read the spec/request and the full diff plus every touched file — establish what _should_ have changed before judging what _did_.
 2. Walk the **review checklist** top-to-bottom against the diff. Record every violation as `file:line — rule — fix`. Do not stop at the first; collect them all.
 3. Run the `code-review` skill (and `security-review` when the diff touches auth/data) for an automated second pass; reconcile its findings with yours and de-duplicate.
 4. Run **all** quality gates and confirm each is green (see below). A red gate is an automatic REQUEST CHANGES — no exceptions, no `--no-verify`.
@@ -97,7 +97,7 @@ src/modules/order/infrastructure/order.repository.ts:88
 
 - **Rules:** [00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) (master), [15-review-checklist.md](../rules/15-review-checklist.md), and every layer rule a touched file falls under.
 - **Skills:** `code-review` (primary), `security-review` (when auth/data is touched), `review` (PR flow), and [/skills/final-validation.md](../skills/final-validation.md) (the mechanical gate).
-- **Specialists:** delegates deep dives to the roles listed in *Inputs* but owns the final consolidated verdict.
+- **Specialists:** delegates deep dives to the roles listed in _Inputs_ but owns the final consolidated verdict.
 
 ## Quality gates to run (all must be green to APPROVE)
 

@@ -4,7 +4,7 @@
 
 ## The model in one line
 
-**Throw typed → catch once → log full → return sanitized.** Layers throw `AppError` subclasses; the global filter is the *only* place that produces an HTTP error response.
+**Throw typed → catch once → log full → return sanitized.** Layers throw `AppError` subclasses; the global filter is the _only_ place that produces an HTTP error response.
 
 ---
 
@@ -12,25 +12,25 @@
 
 Defined once in `@core/errors/` (`app-error.ts`). Every subclass is a real domain concept with a fixed HTTP status and a `messageKey` of the form `errors.<feature>.<key>` (see [16-i18n-and-messaging.md](./16-i18n-and-messaging.md)). Never `throw new Error('...')` for a user-facing failure.
 
-| Class | HTTP | Throw when |
-| --- | --- | --- |
-| `ValidationError` | 400 | A precondition the DTO can't express fails (cross-field, stateful, computed) |
-| `UnauthorizedError` | 401 | No identity, or the token is missing/invalid/expired |
-| `ForbiddenError` | 403 | Identity present but not allowed — failed RBAC, ownership, or tenant check |
-| `NotFoundError` | 404 | A referenced resource does not exist (or is invisible to this caller) |
-| `ConflictError` | 409 | Duplicate / unique-constraint / concurrent-edit conflict |
-| `StateTransitionError` | 422 | An illegal state-machine move (carries `from`, `attempted`, `allowed[]`) |
-| `IntegrationError` | 502 | A wrapped external provider failed (carries the vendor + safe cause) |
+| Class                  | HTTP | Throw when                                                                   |
+| ---------------------- | ---- | ---------------------------------------------------------------------------- |
+| `ValidationError`      | 400  | A precondition the DTO can't express fails (cross-field, stateful, computed) |
+| `UnauthorizedError`    | 401  | No identity, or the token is missing/invalid/expired                         |
+| `ForbiddenError`       | 403  | Identity present but not allowed — failed RBAC, ownership, or tenant check   |
+| `NotFoundError`        | 404  | A referenced resource does not exist (or is invisible to this caller)        |
+| `ConflictError`        | 409  | Duplicate / unique-constraint / concurrent-edit conflict                     |
+| `StateTransitionError` | 422  | An illegal state-machine move (carries `from`, `attempted`, `allowed[]`)     |
+| `IntegrationError`     | 502  | A wrapped external provider failed (carries the vendor + safe cause)         |
 
 ```ts
 // @core/errors/app-error.ts — the base. NEVER inline a subclass elsewhere (rule 12).
 export abstract class AppError extends Error {
   abstract readonly status: number;
   protected constructor(
-    message: string,                       // developer-facing, logged, never returned raw
-    readonly messageKey: string,           // errors.<feature>.<key> — what the client localizes
+    message: string, // developer-facing, logged, never returned raw
+    readonly messageKey: string, // errors.<feature>.<key> — what the client localizes
     readonly details?: Readonly<ErrorDetails>, // safe, structured, e.g. field violations
-    readonly cause?: unknown,              // original error — logged, never serialized to client
+    readonly cause?: unknown, // original error — logged, never serialized to client
   ) {
     super(message);
     this.name = new.target.name;
@@ -66,38 +66,46 @@ Pick by **meaning**, not by convenience. The status follows from the class; you 
 ```ts
 // Do — semantic, typed, carries a messageKey
 throw new NotFoundError('Order not found', 'errors.order.notFound');
-throw new ForbiddenError('Caller does not own this order', 'errors.order.notOwner');
-throw new ConflictError('Phone already registered', 'errors.account.duplicatePhone');
+throw new ForbiddenError(
+  'Caller does not own this order',
+  'errors.order.notOwner',
+);
+throw new ConflictError(
+  'Phone already registered',
+  'errors.account.duplicatePhone',
+);
 throw new StateTransitionError(
   'Cannot publish a closed order',
   'errors.order.invalidTransition',
-  current.status, OrderAction.Publish, allowedActions,
+  current.status,
+  OrderAction.Publish,
+  allowedActions,
 );
 ```
 
 ```ts
 // Don't — untyped, leaks intent, unmappable, no messageKey
-throw new Error('order not found');                 // ❌ becomes a raw 500
-throw new HttpException('forbidden', 403);          // ❌ bypasses the catalog (see mapping rules)
-return { error: 'duplicate' };                      // ❌ errors are thrown, never returned
+throw new Error('order not found'); // ❌ becomes a raw 500
+throw new HttpException('forbidden', 403); // ❌ bypasses the catalog (see mapping rules)
+return { error: 'duplicate' }; // ❌ errors are thrown, never returned
 ```
 
 Decision shortcuts:
 
 - Can the DTO express it? → it's not an error here; let the `ValidationPipe` reject it ([05-dto-and-validation.md](./05-dto-and-validation.md)).
-- Does it exist but the caller can't have it? → `ForbiddenError` (never `NotFoundError` to hide existence *unless* leaking existence is itself a risk — then `NotFoundError` is the deliberate choice; document it).
-- Is it a legal value but an illegal *moment*? → `StateTransitionError`, from the domain state machine, not the service.
+- Does it exist but the caller can't have it? → `ForbiddenError` (never `NotFoundError` to hide existence _unless_ leaking existence is itself a risk — then `NotFoundError` is the deliberate choice; document it).
+- Is it a legal value but an illegal _moment_? → `StateTransitionError`, from the domain state machine, not the service.
 - Did an outbound call fail inside an adapter? → `IntegrationError`, raised by the adapter ([12-library-wrapping-and-adapters.md](./12-library-wrapping-and-adapters.md)), never the raw SDK error.
 
 ### Where each layer throws
 
-| Layer | Throws | Never |
-| --- | --- | --- |
-| Controller | nothing — lets it bubble | `try/catch`, building error bodies |
-| Use case / Service | `ValidationError`, `ForbiddenError`, `NotFoundError`, `ConflictError` (preconditions, ownership) | swallowing errors; setting HTTP status |
-| Domain | `StateTransitionError`, `ValidationError` (invariants) | touching HTTP or persistence |
-| Repository | nothing for "not found" — **return `null`/`[]`**; let the service decide | translating DB errors itself (it bubbles to the filter) |
-| Adapter | `IntegrationError` wrapping the safe cause | leaking vendor error objects upward |
+| Layer              | Throws                                                                                           | Never                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| Controller         | nothing — lets it bubble                                                                         | `try/catch`, building error bodies                      |
+| Use case / Service | `ValidationError`, `ForbiddenError`, `NotFoundError`, `ConflictError` (preconditions, ownership) | swallowing errors; setting HTTP status                  |
+| Domain             | `StateTransitionError`, `ValidationError` (invariants)                                           | touching HTTP or persistence                            |
+| Repository         | nothing for "not found" — **return `null`/`[]`**; let the service decide                         | translating DB errors itself (it bubbles to the filter) |
+| Adapter            | `IntegrationError` wrapping the safe cause                                                       | leaking vendor error objects upward                     |
 
 ---
 
@@ -116,8 +124,8 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     const { status, body, logLevel } = mapToResponse(exception); // pure, in error.mapper.ts
 
     this.logFull(exception, status, logLevel); // full detail SERVER-SIDE only
-    if (res.sent) return;                      // streaming/SSE: headers already sent → emit data event upstream
-    res.status(status).send(body);             // sanitized body to the client
+    if (res.sent) return; // streaming/SSE: headers already sent → emit data event upstream
+    res.status(status).send(body); // sanitized body to the client
   }
 
   private logFull(exception: unknown, status: number, level: LogLevel): void {
@@ -125,8 +133,10 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     this.logger[level]('request_failed', {
       status,
       name: exception instanceof Error ? exception.name : 'Unknown',
-      messageKey: exception instanceof AppError ? exception.messageKey : undefined,
-      message: exception instanceof Error ? exception.message : String(exception),
+      messageKey:
+        exception instanceof AppError ? exception.messageKey : undefined,
+      message:
+        exception instanceof Error ? exception.message : String(exception),
       stack: exception instanceof Error ? exception.stack : undefined, // logged, never returned
       cause,
     });
@@ -141,11 +151,11 @@ A stable, machine-readable shape — defined in `@core/errors/error.types.ts`, r
 ```jsonc
 {
   "statusCode": 404,
-  "messageKey": "errors.order.notFound",   // client localizes this per supported locale
-  "message": "Order not found",            // safe default text; clients should prefer messageKey
-  "details": null,                          // structured, safe extras only (e.g. field violations)
-  "correlationId": "c1a2…",                // ties the client report to the server log line
-  "timestamp": "2026-06-28T10:00:00.000Z"
+  "messageKey": "errors.order.notFound", // client localizes this per supported locale
+  "message": "Order not found", // safe default text; clients should prefer messageKey
+  "details": null, // structured, safe extras only (e.g. field violations)
+  "correlationId": "c1a2…", // ties the client report to the server log line
+  "timestamp": "2026-06-28T10:00:00.000Z",
 }
 ```
 
@@ -157,10 +167,10 @@ For DTO validation failures the filter normalizes the pipe's output into the sam
   "messageKey": "errors.validation.failed",
   "details": [
     { "field": "email", "messageKey": "errors.validation.email" },
-    { "field": "limit", "messageKey": "errors.validation.maxValue" }
+    { "field": "limit", "messageKey": "errors.validation.maxValue" },
   ],
   "correlationId": "c1a2…",
-  "timestamp": "2026-06-28T10:00:00.000Z"
+  "timestamp": "2026-06-28T10:00:00.000Z",
 }
 ```
 
@@ -174,10 +184,19 @@ For DTO validation failures the filter normalizes the pipe's output into the sam
 // @core/errors/error.mapper.ts
 export function mapToResponse(exception: unknown): MappedError {
   if (exception instanceof AppError) {
-    return { status: exception.status, body: toBody(exception), logLevel: levelFor(exception.status) };
+    return {
+      status: exception.status,
+      body: toBody(exception),
+      logLevel: levelFor(exception.status),
+    };
   }
-  if (exception instanceof HttpException) {            // framework / guard / pipe origin
-    return { status: exception.getStatus(), body: fromHttpException(exception), logLevel: 'warn' };
+  if (exception instanceof HttpException) {
+    // framework / guard / pipe origin
+    return {
+      status: exception.getStatus(),
+      body: fromHttpException(exception),
+      logLevel: 'warn',
+    };
   }
   return { status: 500, body: INTERNAL_ERROR_BODY, logLevel: 'error' }; // unknown → opaque 500
 }
@@ -205,15 +224,15 @@ Errors are a versioned contract, not ad-hoc strings. Maintain a single catalog s
 
 Illustrative catalog slice (placeholders — a real project records its own):
 
-| messageKey | Class | HTTP | Meaning |
-| --- | --- | --- | --- |
-| `errors.account.notFound` | `NotFoundError` | 404 | Account id does not resolve |
-| `errors.account.duplicateEmail` | `ConflictError` | 409 | Email already registered |
-| `errors.order.notOwner` | `ForbiddenError` | 403 | Caller is not the resource owner |
-| `errors.order.invalidTransition` | `StateTransitionError` | 422 | Action illegal in current state |
-| `errors.email.deliveryFailed` | `IntegrationError` | 502 | Email provider rejected the send |
-| `errors.validation.failed` | (pipe) | 400 | DTO validation rejected the request |
-| `errors.internal.unexpected` | (unknown) | 500 | Unhandled server error |
+| messageKey                       | Class                  | HTTP | Meaning                             |
+| -------------------------------- | ---------------------- | ---- | ----------------------------------- |
+| `errors.account.notFound`        | `NotFoundError`        | 404  | Account id does not resolve         |
+| `errors.account.duplicateEmail`  | `ConflictError`        | 409  | Email already registered            |
+| `errors.order.notOwner`          | `ForbiddenError`       | 403  | Caller is not the resource owner    |
+| `errors.order.invalidTransition` | `StateTransitionError` | 422  | Action illegal in current state     |
+| `errors.email.deliveryFailed`    | `IntegrationError`     | 502  | Email provider rejected the send    |
+| `errors.validation.failed`       | (pipe)                 | 400  | DTO validation rejected the request |
+| `errors.internal.unexpected`     | (unknown)              | 500  | Unhandled server error              |
 
 ---
 
@@ -230,7 +249,12 @@ Illustrative catalog slice (placeholders — a real project records its own):
 try {
   await this.paymentAdapter.charge(input);
 } catch (cause) {
-  throw new IntegrationError('Payment charge failed', 'errors.payment.chargeFailed', { vendor: 'payment-provider' }, cause);
+  throw new IntegrationError(
+    'Payment charge failed',
+    'errors.payment.chargeFailed',
+    { vendor: 'payment-provider' },
+    cause,
+  );
 }
 ```
 

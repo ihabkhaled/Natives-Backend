@@ -9,4 +9,7 @@ export const DEFAULT_LOG_LEVEL = 'info';
 export const DEFAULT_RATE_LIMIT_TTL_MS = 60_000;
 export const DEFAULT_RATE_LIMIT_MAX = 100;
 
+export const DEFAULT_JWT_SECRET = 'unsafe-dev-secret-change-me';
+export const DEFAULT_JWT_EXPIRES_IN_SECONDS = 3_600;
+
 export const FLAG_TRUE = 'true';

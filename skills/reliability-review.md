@@ -41,7 +41,9 @@ export class EmailProviderAdapter {
 
   async send(message: EmailMessage): Promise<SendResult> {
     try {
-      return await this.client.deliver(message, { timeoutMs: EMAIL_TIMEOUT_MS });
+      return await this.client.deliver(message, {
+        timeoutMs: EMAIL_TIMEOUT_MS,
+      });
     } catch (error: unknown) {
       this.logger.error('email send failed', { to: message.to, error });
       throw new EmailDeliveryError(); // typed AppError, messageKey: errors.email.delivery_failed
@@ -60,7 +62,10 @@ const res = await sgClient.send(payload); // no timeout, vendor in the service, 
 Retry only **idempotent**, **transient** failures, with a bounded attempt count and backoff, both as constants. Never blind-retry a write that could double-apply.
 
 ```ts
-async function withRetry<T>(op: () => Promise<T>, logger: AppLogger): Promise<T> {
+async function withRetry<T>(
+  op: () => Promise<T>,
+  logger: AppLogger,
+): Promise<T> {
   let lastError: unknown;
   for (let attempt = 1; attempt <= MAX_RETRY_ATTEMPTS; attempt += 1) {
     try {
@@ -124,18 +129,27 @@ A throw inside an event handler propagates back into the publisher and blocks th
 
 ```ts
 // DO — handler self-contains its failure
-this.events.subscribe(OrderEvent.PUBLISHED, async (event: OrderPublishedEvent) => {
-  try {
-    await this.broadcastService.notifyOfPublishedOrder(event.order);
-  } catch (error: unknown) {
-    this.logger.error('order broadcast failed', { orderId: event.order.id, error });
-  }
-});
+this.events.subscribe(
+  OrderEvent.PUBLISHED,
+  async (event: OrderPublishedEvent) => {
+    try {
+      await this.broadcastService.notifyOfPublishedOrder(event.order);
+    } catch (error: unknown) {
+      this.logger.error('order broadcast failed', {
+        orderId: event.order.id,
+        error,
+      });
+    }
+  },
+);
 
 // DON'T — unhandled throw blocks the publish path
-this.events.subscribe(OrderEvent.PUBLISHED, async (event: OrderPublishedEvent) => {
-  await this.broadcastService.notifyOfPublishedOrder(event.order); // throws → blocks workflow
-});
+this.events.subscribe(
+  OrderEvent.PUBLISHED,
+  async (event: OrderPublishedEvent) => {
+    await this.broadcastService.notifyOfPublishedOrder(event.order); // throws → blocks workflow
+  },
+);
 ```
 
 - No floating promises: `await` it or explicitly `void` it (`no-floating-promises` is `error`).
@@ -166,7 +180,10 @@ Async/long-running workflows must reach a terminal state — success, failure, *
 - No `process.exit(1)` anywhere except a fatal bootstrap failure.
 
 ```ts
-async function safeDisconnect(name: string, close: () => Promise<void>): Promise<void> {
+async function safeDisconnect(
+  name: string,
+  close: () => Promise<void>,
+): Promise<void> {
   try {
     await close();
   } catch (error: unknown) {

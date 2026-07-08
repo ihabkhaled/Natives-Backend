@@ -26,7 +26,10 @@ Pagination is validated in the DTO and clamped in a shared helper, so neither th
 // shared/utils/pagination.util.ts — page ≥ 1, limit ∈ [1, MAX_PAGE_SIZE], offset computed
 export function parsePagination(query: PaginationQuery): Pagination {
   const page = Math.max(1, query.page ?? DEFAULT_PAGE);
-  const limit = Math.min(MAX_PAGE_SIZE, Math.max(1, query.limit ?? DEFAULT_LIMIT));
+  const limit = Math.min(
+    MAX_PAGE_SIZE,
+    Math.max(1, query.limit ?? DEFAULT_LIMIT),
+  );
   return { page, limit, offset: (page - 1) * limit };
 }
 ```

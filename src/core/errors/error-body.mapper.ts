@@ -26,7 +26,7 @@ export function toErrorBody(exception: unknown): ErrorBody {
     return {
       statusCode: exception.getStatus(),
       messageKey: GENERIC_ERROR_MESSAGE_KEY,
-      message: exception.message,
+      message: GENERIC_ERROR_MESSAGE,
     };
   }
 

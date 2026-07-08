@@ -50,7 +50,7 @@ Skip it only for pure, non-side-effecting domain math with no I/O and no new fai
 
 ## Steps
 
-1. **Scope.** Map the diff to the failure modes it introduces: which side effects, which `catch` paths, which async boundaries, which new routes/dependencies. List what *must* be observable.
+1. **Scope.** Map the diff to the failure modes it introduces: which side effects, which `catch` paths, which async boundaries, which new routes/dependencies. List what _must_ be observable.
 2. **Sink + shape.** Grep the diff for `console.`; confirm `@core/logger` injection, constant dotted messages, and structured metadata. Flag any interpolated object/entity/SQL.
 3. **Levels.** Walk every new log line and assign the correct severity; flag misclassifications (an `error` on a recoverable fallback, an `info`/`warn` on a real outage).
 4. **Catch coverage.** Confirm every `catch` logs at `error` before rethrow/fallback, narrows `unknown`, and has no silent swallow.

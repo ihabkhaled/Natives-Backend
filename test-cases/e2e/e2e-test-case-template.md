@@ -2,12 +2,12 @@
 
 ## Metadata
 
-| Field | Value |
-| --- | --- |
-| Test case ID | |
-| Related request ID | |
-| User role | |
-| Owner | |
+| Field              | Value |
+| ------------------ | ----- |
+| Test case ID       |       |
+| Related request ID |       |
+| User role          |       |
+| Owner              |       |
 
 ## Objective
 
@@ -29,4 +29,3 @@
 ## Negative / Recovery Checks
 
 [Describe error, retry, cancellation, or rollback behavior checked.]
-

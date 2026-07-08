@@ -55,16 +55,19 @@ Keep the API fast at millions-of-users scale. Every query is **bounded and index
 
 ```ts
 // DON'T — N+1 + await-in-loop + unbounded parent fetch (Order shown illustratively)
-const orders = await this.orderRepo.find();              // ✗ whole table, no take
+const orders = await this.orderRepo.find(); // ✗ whole table, no take
 for (const order of orders) {
   order.lines = await this.lineRepo.find({ where: { orderId: order.id } }); // ✗ N+1, ✗ await-in-loop
 }
 
 // DO — paginated parent + single batched child load, grouped in memory
-const { items: orders, total } = await this.orderRepo.listByAccount(accountId, pagination);
-const orderIds: ReadonlyArray<string> = orders.map((order) => order.id);
+const { items: orders, total } = await this.orderRepo.listByAccount(
+  accountId,
+  pagination,
+);
+const orderIds: ReadonlyArray<string> = orders.map(order => order.id);
 const lines = await this.lineRepo.find({ where: { orderId: In(orderIds) } }); // one query
-const linesByOrder = Map.groupBy(lines, (line) => line.orderId);
+const linesByOrder = Map.groupBy(lines, line => line.orderId);
 ```
 
 ```ts

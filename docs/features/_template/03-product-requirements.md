@@ -15,20 +15,20 @@ Translate business intent into testable product requirements.
 ## Epics
 
 | Epic ID | Epic title | Outcome |
-| --- | --- | --- |
-| | | |
+| ------- | ---------- | ------- |
+|         |            |         |
 
 ## User Stories
 
 | Story ID | As a | I want | So that |
-| --- | --- | --- | --- |
-| | | | |
+| -------- | ---- | ------ | ------- |
+|          |      |        |         |
 
 ## Acceptance Criteria
 
 | Story ID | Acceptance criterion | Priority |
-| --- | --- | --- |
-| | | |
+| -------- | -------------------- | -------- |
+|          |                      |          |
 
 ## Scope Boundaries
 
@@ -75,9 +75,9 @@ Translate business intent into testable product requirements.
 
 ## Sign-Off
 
-| Role | Name | Decision | Date |
-| --- | --- | --- | --- |
-| Product owner | | approve / revise | |
+| Role          | Name | Decision         | Date |
+| ------------- | ---- | ---------------- | ---- |
+| Product owner |      | approve / revise |      |
 
 ## Evidence And References To Attach
 

@@ -2,12 +2,12 @@
 
 ## Metadata
 
-| Field | Value |
-| --- | --- |
-| Test case ID | |
-| Related request ID | |
-| Systems involved | |
-| Owner | |
+| Field              | Value |
+| ------------------ | ----- |
+| Test case ID       |       |
+| Related request ID |       |
+| Systems involved   |       |
+| Owner              |       |
 
 ## Objective
 
@@ -32,4 +32,3 @@
 - Metrics:
 - Database state:
 - Event or message trace:
-

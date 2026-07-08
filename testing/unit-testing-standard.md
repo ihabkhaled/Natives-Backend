@@ -12,14 +12,14 @@ A function without a test is unfinished work, not a future task. 100% line cover
 
 The unit is the **system under test (SUT)**. Everything it calls across a layer boundary is a double. Mock the dependencies, **never the SUT**, and never the pure logic you are trying to prove.
 
-| Unit under test | Mock these (boundaries) | Never mock |
-| --- | --- | --- |
-| `<feature>.service.ts` | repository, adapters, other modules' public surface, logger | the domain policies it calls |
-| `<action>.use-case.ts` | the services it orchestrates, transaction runner, event publisher | — |
-| `domain/*.policy.ts` (entities, state machines) | nothing — pure input → output | everything |
-| `lib/` mapper / formatter / helper | nothing if pure | — |
-| guard / pipe / interceptor | reflector, the service it queries | the framework itself |
-| `adapters/<vendor>.adapter.ts` | the vendor SDK (doubled inside the adapter) | the adapter's own mapping/error translation |
+| Unit under test                                 | Mock these (boundaries)                                           | Never mock                                  |
+| ----------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------- |
+| `<feature>.service.ts`                          | repository, adapters, other modules' public surface, logger       | the domain policies it calls                |
+| `<action>.use-case.ts`                          | the services it orchestrates, transaction runner, event publisher | —                                           |
+| `domain/*.policy.ts` (entities, state machines) | nothing — pure input → output                                     | everything                                  |
+| `lib/` mapper / formatter / helper              | nothing if pure                                                   | —                                           |
+| guard / pipe / interceptor                      | reflector, the service it queries                                 | the framework itself                        |
+| `adapters/<vendor>.adapter.ts`                  | the vendor SDK (doubled inside the adapter)                       | the adapter's own mapping/error translation |
 
 **Mock at the right depth.** A service test doubles the repository and exercises the real service + real domain policy. If you mock the domain policy too, the test asserts nothing about the decision it claims to verify.
 
@@ -44,7 +44,11 @@ describe('OrderService', () => {
   let repo: Mocked<OrderRepository>;
 
   beforeEach(async () => {
-    repo = { findById: vi.fn(), save: vi.fn(), list: vi.fn() } as Mocked<OrderRepository>;
+    repo = {
+      findById: vi.fn(),
+      save: vi.fn(),
+      list: vi.fn(),
+    } as Mocked<OrderRepository>;
     const moduleRef = await Test.createTestingModule({
       providers: [
         OrderService,
@@ -110,16 +114,24 @@ Every `AppError` branch (not-found, forbidden, conflict, validation, business-ru
 it('throws OrderNotFoundError when the order is missing', async () => {
   repo.findById.mockResolvedValue(null);
 
-  await expect(service.getOwned('missing', 'user-1')).rejects.toBeInstanceOf(OrderNotFoundError);
+  await expect(service.getOwned('missing', 'user-1')).rejects.toBeInstanceOf(
+    OrderNotFoundError,
+  );
   await expect(service.getOwned('missing', 'user-1')).rejects.toMatchObject({
     messageKey: 'errors.order.notFound',
   });
 });
 
 it('throws OrderForbiddenError on cross-owner access', async () => {
-  repo.findById.mockResolvedValue({ id: 'order-1', ownerId: 'user-2', status: OrderStatus.DRAFT });
+  repo.findById.mockResolvedValue({
+    id: 'order-1',
+    ownerId: 'user-2',
+    status: OrderStatus.DRAFT,
+  });
 
-  await expect(service.getOwned('order-1', 'user-1')).rejects.toBeInstanceOf(OrderForbiddenError);
+  await expect(service.getOwned('order-1', 'user-1')).rejects.toBeInstanceOf(
+    OrderForbiddenError,
+  );
 });
 ```
 
@@ -133,19 +145,19 @@ Line coverage is a side effect; **branch + scenario coverage** is the goal. Exer
 
 Aim for **≥ 10 cases per service / use case**. Each suite must include these unless explicitly justified in review:
 
-| Scenario | What to assert |
-| --- | --- |
-| Happy path | expected return; correct collaborator args |
-| Validation / business rule | invalid state/transition rejects the typed error |
-| Not found | repo returns `null` → typed not-found `AppError` |
-| Ownership / tenant (IDOR) | actor A cannot read/mutate actor B's resource by id |
-| Permission / RBAC | authenticated-but-unauthorized path rejects |
-| Boundary: at / below / above limits | off-by-one correct; the hard list cap (100) enforced |
-| Empty / null | `[]` returns `[]` (not null, not a crash); null handled |
-| Idempotent / no-op | the path that skips a query (same value, already applied) |
-| Branch flag true/false | e.g. `includeArchived` on vs off — assert the arg to the repo |
-| Optional field present/absent | `undefined` stripped vs included |
-| Collaborator failure | repo/adapter rejects → propagated, wrapped, or swallowed as designed |
+| Scenario                            | What to assert                                                       |
+| ----------------------------------- | -------------------------------------------------------------------- |
+| Happy path                          | expected return; correct collaborator args                           |
+| Validation / business rule          | invalid state/transition rejects the typed error                     |
+| Not found                           | repo returns `null` → typed not-found `AppError`                     |
+| Ownership / tenant (IDOR)           | actor A cannot read/mutate actor B's resource by id                  |
+| Permission / RBAC                   | authenticated-but-unauthorized path rejects                          |
+| Boundary: at / below / above limits | off-by-one correct; the hard list cap (100) enforced                 |
+| Empty / null                        | `[]` returns `[]` (not null, not a crash); null handled              |
+| Idempotent / no-op                  | the path that skips a query (same value, already applied)            |
+| Branch flag true/false              | e.g. `includeArchived` on vs off — assert the arg to the repo        |
+| Optional field present/absent       | `undefined` stripped vs included                                     |
+| Collaborator failure                | repo/adapter rejects → propagated, wrapped, or swallowed as designed |
 
 Per-unit thresholds and exclusions (`*.types.ts`, `*.enums.ts`, `*.constants.ts`, barrels, `model/**`, migrations) live in [coverage-policy.md](./coverage-policy.md). Don't pad data-only files — spend the effort on logic.
 
@@ -168,7 +180,9 @@ it('caps a list query at the hard maximum of 100', async () => {
 
   await repo.list({ limit: 5000 });
 
-  expect(driver.find).toHaveBeenCalledWith(expect.objectContaining({ take: MAX_LIST_LIMIT }));
+  expect(driver.find).toHaveBeenCalledWith(
+    expect.objectContaining({ take: MAX_LIST_LIMIT }),
+  );
 });
 ```
 
@@ -185,7 +199,9 @@ A fire-and-forget handler (event subscriber, notification) must **swallow its ow
 it('swallows a notification failure and resolves without rejecting', async () => {
   notifier.send.mockRejectedValue(new Error('provider down'));
 
-  await expect(handler.onOrderPlaced(orderPlacedEvent)).resolves.toBeUndefined();
+  await expect(
+    handler.onOrderPlaced(orderPlacedEvent),
+  ).resolves.toBeUndefined();
   expect(logger.error).toHaveBeenCalled();
 });
 ```
@@ -205,7 +221,9 @@ Never rerun-until-green, never paper over timing with `sleep`. Control everythin
 
 ```typescript
 // DO — frozen clock, restored afterwards
-beforeEach(() => vi.useFakeTimers().setSystemTime(new Date('2025-01-01T00:00:00Z')));
+beforeEach(() =>
+  vi.useFakeTimers().setSystemTime(new Date('2025-01-01T00:00:00Z')),
+);
 afterEach(() => vi.useRealTimers());
 ```
 

@@ -2,12 +2,12 @@
 
 ## Metadata
 
-| Field | Value |
-| --- | --- |
-| Test case ID | |
-| Related request ID | |
-| Business workflow | |
-| Owner | |
+| Field              | Value |
+| ------------------ | ----- |
+| Test case ID       |       |
+| Related request ID |       |
+| Business workflow  |       |
+| Owner              |       |
 
 ## Objective
 
@@ -29,4 +29,3 @@
 ## Business Acceptance Notes
 
 [Record wording, policy, reporting, or workflow observations.]
-

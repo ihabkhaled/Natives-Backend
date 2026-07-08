@@ -20,6 +20,8 @@ describe('toErrorBody', () => {
 
     expect(body.statusCode).toBe(400);
     expect(body.messageKey).toBe('errors.common.internalError');
+    expect(body.message).toBe('Internal server error');
+    expect(body.message).not.toBe('bad');
   });
 
   it('maps an unknown error to an opaque 500', () => {

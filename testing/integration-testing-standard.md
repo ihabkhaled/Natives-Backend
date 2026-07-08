@@ -6,11 +6,11 @@
 
 Unit tests mock boundaries and prove one unit in isolation ([unit-testing-standard.md](./unit-testing-standard.md)). Integration tests prove the seams: the controller → use case/service → repository → **real datastore** path, plus the events that fire after commit. E2E tests boot the whole app and exercise it as a black box ([e2e-testing-standard.md](./e2e-testing-standard.md)).
 
-| Layer | Wiring | Datastore | Network in | Mock surface |
-| --- | --- | --- | --- | --- |
-| Unit | `new Service(...)` or tiny module | none | none | every collaborator |
-| **Integration** | `TestingModule` (feature module) | **real, in a container** | supertest (in-process) | only true externals (adapters) |
-| E2E | full `AppModule` | real | supertest / HTTP | nothing internal |
+| Layer           | Wiring                            | Datastore                | Network in             | Mock surface                   |
+| --------------- | --------------------------------- | ------------------------ | ---------------------- | ------------------------------ |
+| Unit            | `new Service(...)` or tiny module | none                     | none                   | every collaborator             |
+| **Integration** | `TestingModule` (feature module)  | **real, in a container** | supertest (in-process) | only true externals (adapters) |
+| E2E             | full `AppModule`                  | real                     | supertest / HTTP       | nothing internal               |
 
 Rule of thumb: an integration test fails when **wiring, SQL, mappers, transactions, or event ordering** are wrong — exactly the bugs unit tests cannot see.
 
@@ -36,8 +36,14 @@ export interface DbHandle {
 }
 
 export async function startTestDatabase(): Promise<DbHandle> {
-  const container: StartedTestContainer = await new GenericContainer('postgres:16-alpine')
-    .withEnvironment({ POSTGRES_DB: 'app_test', POSTGRES_USER: 'app', POSTGRES_PASSWORD: 'app' })
+  const container: StartedTestContainer = await new GenericContainer(
+    'postgres:16-alpine',
+  )
+    .withEnvironment({
+      POSTGRES_DB: 'app_test',
+      POSTGRES_USER: 'app',
+      POSTGRES_PASSWORD: 'app',
+    })
     .withExposedPorts(5432)
     .start();
 
@@ -56,7 +62,10 @@ Import the **feature module** so DI, pipes, guards, and the repository binding a
 // test/order.integration.spec.ts
 import { Test, type TestingModule } from '@nestjs/testing';
 import { ValidationPipe, type INestApplication } from '@nestjs/common';
-import { FastifyAdapter, type NestFastifyApplication } from '@nestjs/platform-fastify';
+import {
+  FastifyAdapter,
+  type NestFastifyApplication,
+} from '@nestjs/platform-fastify';
 import request from 'supertest';
 import { OrderModule } from '@modules/order';
 import { CONFIG_TOKEN } from '@config/config.tokens';
@@ -79,8 +88,12 @@ describe('Order (integration)', () => {
       .useValue(emailGateway)
       .compile();
 
-    app = moduleRef.createNestApplication<NestFastifyApplication>(new FastifyAdapter());
-    app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+    app = moduleRef.createNestApplication<NestFastifyApplication>(
+      new FastifyAdapter(),
+    );
+    app.useGlobalPipes(
+      new ValidationPipe({ whitelist: true, transform: true }),
+    );
     await app.init();
     await app.getHttpAdapter().getInstance().ready(); // Fastify must be ready before requests
   });
@@ -129,8 +142,10 @@ Do not trust the response. Read state back through the repository and assert the
 it('persists the order owned by the caller', async () => {
   const token = await signTestToken({ sub: 'user-1', roles: ['customer'] });
   const { body } = await request(app.getHttpServer())
-    .post('/orders').set('Authorization', `Bearer ${token}`)
-    .send({ items: [{ sku: 'A-1', quantity: 2 }] }).expect(201);
+    .post('/orders')
+    .set('Authorization', `Bearer ${token}`)
+    .send({ items: [{ sku: 'A-1', quantity: 2 }] })
+    .expect(201);
 
   const repo = app.get(OrderRepository);
   const stored = await repo.findById(body.id);
@@ -150,7 +165,9 @@ For write-then-read flows, also verify the negative: a failed transaction must l
 ```typescript
 it('rolls back fully when a post-validation step throws', async () => {
   emailGateway.send.mockRejectedValueOnce(new Error('provider down'));
-  await request(app.getHttpServer()).post('/orders') /* ... */ .expect(500);
+  await request(app.getHttpServer())
+    .post('/orders') /* ... */
+    .expect(500);
   const repo = app.get(OrderRepository);
   expect(await repo.countByOwner('user-1')).toBe(0); // no orphan
 });
@@ -169,8 +186,10 @@ it('emits order.created after the transaction commits', async () => {
   );
 
   await request(app.getHttpServer())
-    .post('/orders').set('Authorization', `Bearer ${token}`)
-    .send({ items: [{ sku: 'A-1', quantity: 1 }] }).expect(201);
+    .post('/orders')
+    .set('Authorization', `Bearer ${token}`)
+    .send({ items: [{ sku: 'A-1', quantity: 1 }] })
+    .expect(201);
 
   await waitFor(() => captured.length === 1); // poll a condition, never sleep(n)
   expect(captured[0]).toMatchObject({
@@ -188,7 +207,10 @@ it('emits order.created after the transaction commits', async () => {
 ```typescript
 async function waitFor(
   predicate: () => boolean | Promise<boolean>,
-  { timeoutMs = 2000, stepMs = 25 }: { timeoutMs?: number; stepMs?: number } = {},
+  {
+    timeoutMs = 2000,
+    stepMs = 25,
+  }: { timeoutMs?: number; stepMs?: number } = {},
 ): Promise<void> {
   const deadline = Date.now() + timeoutMs;
   while (Date.now() < deadline) {
@@ -205,11 +227,11 @@ Arbitrary `sleep(10_000)` is banned — it is slow on green and flaky on red. Po
 
 Pick one strategy and apply it suite-wide. Tests must be order-independent and safe to re-run.
 
-| Strategy | How | Use when |
-| --- | --- | --- |
-| **Transaction rollback** | Wrap each test in a transaction, roll back in `afterEach` | Fastest; works when the code under test doesn't manage its own commit boundary |
-| **Truncate between tests** | `afterEach` truncates touched tables (respect FK order / cascade) | Default for use cases that commit their own transactions |
-| **Fresh container per file** | One container per spec file | Maximum isolation for migration/schema-sensitive suites |
+| Strategy                     | How                                                               | Use when                                                                       |
+| ---------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **Transaction rollback**     | Wrap each test in a transaction, roll back in `afterEach`         | Fastest; works when the code under test doesn't manage its own commit boundary |
+| **Truncate between tests**   | `afterEach` truncates touched tables (respect FK order / cascade) | Default for use cases that commit their own transactions                       |
+| **Fresh container per file** | One container per spec file                                       | Maximum isolation for migration/schema-sensitive suites                        |
 
 ```typescript
 afterEach(async () => {

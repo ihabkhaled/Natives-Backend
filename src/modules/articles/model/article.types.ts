@@ -5,16 +5,23 @@ export interface Article {
   readonly title: string;
   readonly body: string;
   readonly status: ArticleStatus;
+  readonly ownerId: string;
   readonly createdAt: string;
 }
 
 export interface CreateArticleData {
   readonly title: string;
   readonly body: string;
-  readonly status: ArticleStatus;
 }
 
 export interface ListArticlesQuery {
+  readonly limit?: number;
+  readonly offset?: number;
+}
+
+export interface ListArticlesResult {
+  readonly items: readonly Article[];
+  readonly total: number;
   readonly limit: number;
   readonly offset: number;
 }

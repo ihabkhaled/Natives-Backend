@@ -55,8 +55,8 @@ Prepare the team and the system to implement safely.
 ## Readiness Gaps
 
 | Gap | Owner | Resolution date | Status |
-| --- | --- | --- | --- |
-| | | | open |
+| --- | ----- | --------------- | ------ |
+|     |       |                 | open   |
 
 ## Go / Hold Decision
 
@@ -65,10 +65,10 @@ Prepare the team and the system to implement safely.
 
 ## Sign-Off
 
-| Role | Name | Decision | Date |
-| --- | --- | --- | --- |
-| Technical owner | | approve / hold | |
-| Release owner if applicable | | approve / hold | |
+| Role                        | Name | Decision       | Date |
+| --------------------------- | ---- | -------------- | ---- |
+| Technical owner             |      | approve / hold |      |
+| Release owner if applicable |      | approve / hold |      |
 
 ## Evidence And References To Attach
 

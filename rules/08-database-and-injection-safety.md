@@ -23,7 +23,7 @@ Bind every value. Concatenation or template literals carrying input into a query
 
 ```ts
 // DON'T — string interpolation: classic injection (' OR 1=1 --)
-qb.where(`account.email = '${filter.email}'`);                 // ❌ rule 31
+qb.where(`account.email = '${filter.email}'`); // ❌ rule 31
 const rows = await qb.where('a.title LIKE %' + query.q + '%').getMany(); // ❌
 ```
 
@@ -35,12 +35,12 @@ qb.andWhere('account.email = :email', { email: filter.email });
 return this.repo.findOne({ where: { id, deletedAt: null } });
 ```
 
-| Concern | Safe form (illustrative) |
-| --- | --- |
-| Query builder predicate | `qb.andWhere('a.status = :status', { status })` — always two args |
-| `IN (...)` list | `qb.andWhere('a.id IN (:...ids)', { ids })` — the client expands & binds each element |
-| Range / null / like | structured operators (`In`, `IsNull`, `LessThan`, `Between`, `ILike` / Prisma `in`, `lte`, `contains`) — not hand-written fragments |
-| Raw escape hatch | `manager.query('... WHERE x = $1', [value])` with a parameter array — **never** `'... ' + value` |
+| Concern                 | Safe form (illustrative)                                                                                                            |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Query builder predicate | `qb.andWhere('a.status = :status', { status })` — always two args                                                                   |
+| `IN (...)` list         | `qb.andWhere('a.id IN (:...ids)', { ids })` — the client expands & binds each element                                               |
+| Range / null / like     | structured operators (`In`, `IsNull`, `LessThan`, `Between`, `ILike` / Prisma `in`, `lte`, `contains`) — not hand-written fragments |
+| Raw escape hatch        | `manager.query('... WHERE x = $1', [value])` with a parameter array — **never** `'... ' + value`                                    |
 
 > If you genuinely need a raw query, it still uses placeholders + a bound argument array. A raw query that concatenates input is a review blocker, full stop.
 
@@ -65,7 +65,14 @@ export function applySorting<T extends ObjectLiteral>(
 
 ```ts
 // DO — sort field validated against an explicit allowlist (constant)
-applySorting(qb, 'account', query.sort, query.order, ACCOUNT_SORT_FIELDS, 'createdAt');
+applySorting(
+  qb,
+  'account',
+  query.sort,
+  query.order,
+  ACCOUNT_SORT_FIELDS,
+  'createdAt',
+);
 
 // DON'T — interpolate a client-supplied sort column straight into ORDER BY
 qb.orderBy(`account.${query.sort}`, 'DESC'); // ❌ identifier injection
@@ -81,12 +88,16 @@ Each filterable column is a deliberate, named, parameterized branch. There is no
 
 ```ts
 // DO — explicit, per-column, parameterized, added only when present
-if (filter.status)   qb.andWhere('account.status = :status', { status: filter.status });
-if (filter.ownerId)  qb.andWhere('account.ownerId = :ownerId', { ownerId: filter.ownerId });
-if (filter.from)     qb.andWhere('account.createdAt >= :from', { from: filter.from });
+if (filter.status)
+  qb.andWhere('account.status = :status', { status: filter.status });
+if (filter.ownerId)
+  qb.andWhere('account.ownerId = :ownerId', { ownerId: filter.ownerId });
+if (filter.from)
+  qb.andWhere('account.createdAt >= :from', { from: filter.from });
 
 // DON'T — generic "filter by any body key"
-for (const [col, val] of Object.entries(query)) qb.andWhere(`a.${col} = :v`, { v: val }); // ❌
+for (const [col, val] of Object.entries(query))
+  qb.andWhere(`a.${col} = :v`, { v: val }); // ❌
 ```
 
 - **Enum filters** (status / type / role) are validated against the enum in the DTO (`@IsEnum` / Zod native-enum / the `*_VALUES` tuple), then bound as parameters and compared to enum members — never raw literals (rules 8, 9; see [06-types-enums-constants.md](./06-types-enums-constants.md)).
@@ -101,7 +112,10 @@ For substring search the user string is a **value** (so bind it) — but `%` and
 qb.andWhere(`a.title ILIKE '%${q}%'`); // ❌ injection + wildcard abuse
 
 // DO — bind the value AND escape LIKE metacharacters
-const escaped = q.replaceAll('\\', '\\\\').replaceAll('%', '\\%').replaceAll('_', '\\_');
+const escaped = q
+  .replaceAll('\\', '\\\\')
+  .replaceAll('%', '\\%')
+  .replaceAll('_', '\\_');
 qb.andWhere("a.title ILIKE :q ESCAPE '\\'", { q: `%${escaped}%` });
 ```
 
@@ -202,13 +216,13 @@ catch (error) {
 
 Every new search / filter / sort / write surface ships with tests that prove the hole is closed (rule 42; write them first). Use the project test stack (Vitest + supertest); coverage floor 95%, near-100% on these paths.
 
-| Attack input | Expected behavior |
-| --- | --- |
-| `sort=id;DROP TABLE accounts;--` | falls back to the default field, `200`, no error, schema intact |
-| filter value `' OR '1'='1` / `%` / `_` / `\` | treated as a literal; zero or correctly-scoped rows, no extra results |
-| document query `?status[$ne]=x` / `?q[$gt]=` | rejected by the DTO or coerced to a primitive |
-| `limit=99999` / `-1` / `abc` | clamped into `[1, 100]` |
-| body carries `role` / `ownerId` / `isVerified` | stripped by the DTO; server value wins |
+| Attack input                                   | Expected behavior                                                     |
+| ---------------------------------------------- | --------------------------------------------------------------------- |
+| `sort=id;DROP TABLE accounts;--`               | falls back to the default field, `200`, no error, schema intact       |
+| filter value `' OR '1'='1` / `%` / `_` / `\`   | treated as a literal; zero or correctly-scoped rows, no extra results |
+| document query `?status[$ne]=x` / `?q[$gt]=`   | rejected by the DTO or coerced to a primitive                         |
+| `limit=99999` / `-1` / `abc`                   | clamped into `[1, 100]`                                               |
+| body carries `role` / `ownerId` / `isVerified` | stripped by the DTO; server value wins                                |
 
 ```ts
 // Integration sketch — sort allowlist neutralizes identifier injection

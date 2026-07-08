@@ -13,16 +13,16 @@ Align product intent with engineering, QA, security, operations, support, analyt
 
 ## Participants
 
-| Function | Name | Participation type |
-| --- | --- | --- |
-| Product | | required |
-| Engineering | | required |
-| QA | | required |
-| Security | | as needed |
-| DevOps / SRE | | as needed |
-| Support | | as needed |
-| Analytics | | as needed |
-| Other | | |
+| Function     | Name | Participation type |
+| ------------ | ---- | ------------------ |
+| Product      |      | required           |
+| Engineering  |      | required           |
+| QA           |      | required           |
+| Security     |      | as needed          |
+| DevOps / SRE |      | as needed          |
+| Support      |      | as needed          |
+| Analytics    |      | as needed          |
+| Other        |      |                    |
 
 ## Findings by Function
 
@@ -53,8 +53,8 @@ Align product intent with engineering, QA, security, operations, support, analyt
 ## Open Questions
 
 | Question | Owner | Due date | Status |
-| --- | --- | --- | --- |
-| | | | open |
+| -------- | ----- | -------- | ------ |
+|          |       |          | open   |
 
 ## Captured Decisions
 
@@ -70,10 +70,10 @@ Align product intent with engineering, QA, security, operations, support, analyt
 
 ## Sign-Off
 
-| Role | Name | Decision | Date |
-| --- | --- | --- | --- |
-| Technical owner | | approve / revise | |
-| Product owner | | approve / revise | |
+| Role            | Name | Decision         | Date |
+| --------------- | ---- | ---------------- | ---- |
+| Technical owner |      | approve / revise |      |
+| Product owner   |      | approve / revise |      |
 
 ## Evidence And References To Attach
 

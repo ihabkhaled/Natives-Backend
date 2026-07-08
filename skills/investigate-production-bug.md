@@ -11,7 +11,7 @@ A bug without a red test is unconfirmed; a fix without a regression test is unfi
 - **Reproduce before you fix.** Confirm with a failing automated test, not a manual click-through.
 - **Fix in the correct layer.** Symptom in the controller is usually a defect in a service, domain policy, repository, or adapter. Don't patch the boundary.
 - **Smallest safe change.** No opportunistic refactors, dependency churn, or formatting noise in a bug-fix branch.
-- **Preserve contracts.** Keep API/event/DB contracts stable unless the contract *is* the bug — then update DTOs, tests, and docs together.
+- **Preserve contracts.** Keep API/event/DB contracts stable unless the contract _is_ the bug — then update DTOs, tests, and docs together.
 - **Every new failure path is a typed `AppError`** carrying `errors.<feature>.<key>`, mapped by the global exception filter — never leak stacks/SQL/secrets ([create-error.md](./create-error.md), [18-error-handling-and-exceptions.md](../rules/18-error-handling-and-exceptions.md)).
 - **No diagnostic debt.** No `console.*` (use `@core/logger`), no `process.env` reads to "check a value", no `eslint-disable` to silence the fix.
 - **Behavior change ⇒ tests + docs in the same change** ([11-testing-and-coverage.md](../rules/11-testing-and-coverage.md)).
@@ -53,15 +53,15 @@ HTTP route
 
 Classify the defect into exactly one layer before touching code:
 
-| Symptom | Likely owning layer | Look at |
-| --- | --- | --- |
-| Bad/missing input accepted | DTO / validation | `api/dto/`, [05-dto-and-validation.md](../rules/05-dto-and-validation.md) |
-| Wrong status / business outcome | Domain policy / state machine | `domain/`, [03-application-services-and-use-cases.md](../rules/03-application-services-and-use-cases.md) |
-| Forbidden access / cross-tenant leak | Guard + ownership check | `core/guards/`, [07-security-authn-authz.md](../rules/07-security-authn-authz.md) |
-| Wrong/leaking/unbounded data | Repository query | `infrastructure/`, [04-repositories-and-persistence.md](../rules/04-repositories-and-persistence.md) |
-| Slow / N+1 / timeout | Repository / service batching | [09-performance-and-scalability.md](../rules/09-performance-and-scalability.md) |
-| External call fails / crashes process | Adapter resilience | `adapters/`, [10-reliability-and-durability.md](../rules/10-reliability-and-durability.md) |
-| Partial write / lost event | Use-case transaction / post-commit event | [19-async-events-and-jobs.md](../rules/19-async-events-and-jobs.md) |
+| Symptom                               | Likely owning layer                      | Look at                                                                                                  |
+| ------------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Bad/missing input accepted            | DTO / validation                         | `api/dto/`, [05-dto-and-validation.md](../rules/05-dto-and-validation.md)                                |
+| Wrong status / business outcome       | Domain policy / state machine            | `domain/`, [03-application-services-and-use-cases.md](../rules/03-application-services-and-use-cases.md) |
+| Forbidden access / cross-tenant leak  | Guard + ownership check                  | `core/guards/`, [07-security-authn-authz.md](../rules/07-security-authn-authz.md)                        |
+| Wrong/leaking/unbounded data          | Repository query                         | `infrastructure/`, [04-repositories-and-persistence.md](../rules/04-repositories-and-persistence.md)     |
+| Slow / N+1 / timeout                  | Repository / service batching            | [09-performance-and-scalability.md](../rules/09-performance-and-scalability.md)                          |
+| External call fails / crashes process | Adapter resilience                       | `adapters/`, [10-reliability-and-durability.md](../rules/10-reliability-and-durability.md)               |
+| Partial write / lost event            | Use-case transaction / post-commit event | [19-async-events-and-jobs.md](../rules/19-async-events-and-jobs.md)                                      |
 
 ## Step 3 — Check known traps before deep debugging
 
@@ -78,7 +78,10 @@ console.log('account', account, process.env.DB_URL);
 
 ```ts
 // Do — adapter, scoped, redacted, removed before commit
-this.logger.debug('listForOwner result', { ownerId, count: result.items.length });
+this.logger.debug('listForOwner result', {
+  ownerId,
+  count: result.items.length,
+});
 ```
 
 ## Step 5 — Fix in the owning layer, smallest safe change
@@ -111,7 +114,7 @@ async findActiveByOwner(ownerId: string, query: PageQuery): Promise<Page<Account
 
 ## Step 6 — Root-cause, then turn red green
 
-Ask *why the test exists could pass while production failed* — the root cause is usually a missing test boundary, not just a wrong line. Make the Step 1 test pass, then add **adjacent regression tests** for the sibling cases that share the defect (the other call site, the boundary value, the cross-tenant variant), so the bug class can't return through a different door.
+Ask _why the test exists could pass while production failed_ — the root cause is usually a missing test boundary, not just a wrong line. Make the Step 1 test pass, then add **adjacent regression tests** for the sibling cases that share the defect (the other call site, the boundary value, the cross-tenant variant), so the bug class can't return through a different door.
 
 ```ts
 it('also excludes soft-deleted accounts from the search path', async () => {
@@ -147,7 +150,7 @@ Run integration/e2e suites if routes, DB, or integrations were touched. Never by
 - **Fixing the symptom layer.** Re-filtering in the service/controller when the repository query is the real defect just hides the bug and adds an N+1.
 - **No red test first.** "I can't reproduce it" later becomes "I can't prove it's fixed." Always capture a failing test before changing code.
 - **Weakening the assertion to go green.** That ships the bug with a green check. Fix the code, not the test.
-- **Over-correcting.** Always add a test proving the *happy path still works*; a one-sided fix breaks valid cases.
+- **Over-correcting.** Always add a test proving the _happy path still works_; a one-sided fix breaks valid cases.
 - **Untyped `throw` / `NotFoundException()`** for a new failure path — every branch needs a keyed `AppError` or it leaks unsafely.
 - **Leaving debug instrumentation in.** Stray `console.*`, `process.env` peeks, or `logger.debug` dumps of PII fail review and rules 27–28.
 - **Refactor creep.** Unrelated cleanup in a bug-fix branch obscures the actual change and the blast radius.

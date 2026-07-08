@@ -12,12 +12,12 @@ The split exists so every project inherits the same correctness machinery while 
 
 ## Runtime & language
 
-| Item | Choice | Rationale |
-| --- | --- | --- |
-| Runtime | **Node.js 20+** (`engines.node >= 20`, `npm >= 10`) | LTS baseline; pin in `engines` so CI and local agree. |
-| Language | **TypeScript 6** for editor/types | Strongest editor inference; the build/typecheck tool is separate. |
-| Type-check / build helper | **tsgo** (`@typescript/native-preview`) | Native compiler; fast project-wide `--noEmit`. It type-checks — it does not execute `.ts`. |
-| Framework | **NestJS 11** on **Fastify** (`@nestjs/platform-fastify`) | DI + module boundaries match the layered architecture; Fastify for throughput. `@nestjs/platform-express` stays installed so a project can switch platforms. |
+| Item                      | Choice                                                    | Rationale                                                                                                                                                    |
+| ------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Runtime                   | **Node.js 20+** (`engines.node >= 20`, `npm >= 10`)       | LTS baseline; pin in `engines` so CI and local agree.                                                                                                        |
+| Language                  | **TypeScript 6** for editor/types                         | Strongest editor inference; the build/typecheck tool is separate.                                                                                            |
+| Type-check / build helper | **tsgo** (`@typescript/native-preview`)                   | Native compiler; fast project-wide `--noEmit`. It type-checks — it does not execute `.ts`.                                                                   |
+| Framework                 | **NestJS 11** on **Fastify** (`@nestjs/platform-fastify`) | DI + module boundaries match the layered architecture; Fastify for throughput. `@nestjs/platform-express` stays installed so a project can switch platforms. |
 
 > NestJS is the transport and DI substrate — there is no raw routing, no manual request/response plumbing. HTTP entry is a `@Controller`; cross-cutting concerns are guards, pipes, interceptors, filters, and decorators, never ad-hoc handlers.
 
@@ -41,13 +41,13 @@ DTO validation default is class-validator; a custom `ZodValidationPipe` is the d
 
 The following are deliberately **not** pinned, because they are domain-driven. Add the one the project needs and wrap it:
 
-| Concern | Wrap it behind | Rule |
-| --- | --- | --- |
-| ORM / DB driver (TypeORM, Prisma, Mongoose, Sequelize — interchangeable examples) | a repository (`infrastructure/<feature>.repository.ts`) | [04-repositories-and-persistence.md](../rules/04-repositories-and-persistence.md) |
-| Cache / queue / broker client | an adapter (`adapters/<vendor>.adapter.ts`) | [12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md), [19-async-events-and-jobs.md](../rules/19-async-events-and-jobs.md) |
-| Email provider / SMS gateway / notifications | an adapter | [12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md) |
-| Object storage / payment provider | an adapter | [12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md) |
-| APM / tracing | the logger adapter + an APM adapter | [14-observability-and-logging.md](../rules/14-observability-and-logging.md) |
+| Concern                                                                           | Wrap it behind                                          | Rule                                                                                                                                                     |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ORM / DB driver (TypeORM, Prisma, Mongoose, Sequelize — interchangeable examples) | a repository (`infrastructure/<feature>.repository.ts`) | [04-repositories-and-persistence.md](../rules/04-repositories-and-persistence.md)                                                                        |
+| Cache / queue / broker client                                                     | an adapter (`adapters/<vendor>.adapter.ts`)             | [12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md), [19-async-events-and-jobs.md](../rules/19-async-events-and-jobs.md) |
+| Email provider / SMS gateway / notifications                                      | an adapter                                              | [12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md)                                                                      |
+| Object storage / payment provider                                                 | an adapter                                              | [12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md)                                                                      |
+| APM / tracing                                                                     | the logger adapter + an APM adapter                     | [14-observability-and-logging.md](../rules/14-observability-and-logging.md)                                                                              |
 
 **Rule of thumb:** if a library can ever be swapped, the swap surface must be a single adapter or repository, not hundreds of direct imports. The ESLint architecture plugin enforces this — vendor libraries (ORMs, HTTP clients, loggers, brokers) may only be imported inside their adapter directory.
 
@@ -80,16 +80,16 @@ The architecture rules are what make "controllers stay thin", "services stay sho
 
 ## npm scripts (the canonical entrypoints)
 
-| Script | Command | Purpose |
-| --- | --- | --- |
-| `start:dev` | `nest start --watch` | Dev server with reload |
-| `build` | `nest build -p tsconfig.build.json` | Production build to `dist/` |
-| `start:prod` | `node dist/src/main` | Run the compiled build |
-| `typecheck` | `tsgo --pretty --noEmit --incremental false` | Project-wide type check |
-| `lint` / `lint:fix` | `eslint` / `eslint --fix` | Lint (0 errors / 0 warnings) |
-| `format` / `format:check` | `prettier --write .` / `--check .` | Format / verify |
-| `test` / `test:watch` | `vitest run` / `vitest` | Tests |
-| `test:coverage` | `vitest run --coverage` | Tests + coverage gate |
+| Script                    | Command                                      | Purpose                      |
+| ------------------------- | -------------------------------------------- | ---------------------------- |
+| `start:dev`               | `nest start --watch`                         | Dev server with reload       |
+| `build`                   | `nest build -p tsconfig.build.json`          | Production build to `dist/`  |
+| `start:prod`              | `node dist/src/main`                         | Run the compiled build       |
+| `typecheck`               | `tsgo --pretty --noEmit --incremental false` | Project-wide type check      |
+| `lint` / `lint:fix`       | `eslint` / `eslint --fix`                    | Lint (0 errors / 0 warnings) |
+| `format` / `format:check` | `prettier --write .` / `--check .`           | Format / verify              |
+| `test` / `test:watch`     | `vitest run` / `vitest`                      | Tests                        |
+| `test:coverage`           | `vitest run --coverage`                      | Tests + coverage gate        |
 
 CI and local hooks invoke **these same scripts** — no divergent shadow set of steps.
 
@@ -126,7 +126,7 @@ const bucket = process.env.BUCKET; // ✗ blocked by architecture/no-restricted-
 export class AvatarService {
   constructor(
     private readonly storage: ObjectStorageAdapter, // wraps the SDK (adapters/)
-    private readonly config: StorageConfig,          // typed @nestjs/config
+    private readonly config: StorageConfig, // typed @nestjs/config
   ) {}
 }
 ```

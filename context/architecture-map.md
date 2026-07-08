@@ -28,15 +28,15 @@ HTTP →  │ Transport        controllers (api/*.controller.ts)        │  thi
 
 ### Layer responsibilities (one line each)
 
-| Layer | Owns | Must NOT |
-| --- | --- | --- |
-| **Controller** (`api/*.controller.ts`) | Parse/shape HTTP, apply guards/pipes/decorators, delegate to **one** application method | Contain business logic, branching, transformation, or import repositories/infrastructure |
-| **Use case** (`application/*.use-case.ts`) | Orchestrate **one** business operation across services/repositories/policies/adapters; own the transaction boundary; emit domain events after commit | Import controllers or API DTOs; parse HTTP |
-| **Service** (`*.service.ts`) | A focused, reusable application/domain capability; may use repositories and adapters | Import controllers; exceed ~20 lines/method; do inline concurrency orchestration (`Promise.all`); hold inline types/consts |
-| **Domain** (`domain/`) | Business rules, invariants, calculations, state-machine transitions — pure and testable | Touch HTTP, persistence, or external SDKs |
-| **Repository** (`infrastructure/*.repository.ts`) | Data access: query/insert/update/delete, always parameterized, always bounded | Hold business policy, transformation, or import controllers/services/use-cases/DTOs |
-| **Adapter** (`adapters/*.adapter.ts`) | Wrap a single external library/SDK behind a typed, app-owned interface | Leak vendor types into business code |
-| **Config** (`config/`) | The **only** place (with `bootstrap/`) that reads `process.env`; validated, typed config | Be bypassed by ad-hoc `process.env` reads |
+| Layer                                             | Owns                                                                                                                                                 | Must NOT                                                                                                                   |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Controller** (`api/*.controller.ts`)            | Parse/shape HTTP, apply guards/pipes/decorators, delegate to **one** application method                                                              | Contain business logic, branching, transformation, or import repositories/infrastructure                                   |
+| **Use case** (`application/*.use-case.ts`)        | Orchestrate **one** business operation across services/repositories/policies/adapters; own the transaction boundary; emit domain events after commit | Import controllers or API DTOs; parse HTTP                                                                                 |
+| **Service** (`*.service.ts`)                      | A focused, reusable application/domain capability; may use repositories and adapters                                                                 | Import controllers; exceed ~20 lines/method; do inline concurrency orchestration (`Promise.all`); hold inline types/consts |
+| **Domain** (`domain/`)                            | Business rules, invariants, calculations, state-machine transitions — pure and testable                                                              | Touch HTTP, persistence, or external SDKs                                                                                  |
+| **Repository** (`infrastructure/*.repository.ts`) | Data access: query/insert/update/delete, always parameterized, always bounded                                                                        | Hold business policy, transformation, or import controllers/services/use-cases/DTOs                                        |
+| **Adapter** (`adapters/*.adapter.ts`)             | Wrap a single external library/SDK behind a typed, app-owned interface                                                                               | Leak vendor types into business code                                                                                       |
+| **Config** (`config/`)                            | The **only** place (with `bootstrap/`) that reads `process.env`; validated, typed config                                                             | Be bypassed by ad-hoc `process.env` reads                                                                                  |
 
 These responsibilities are **enforced by ESLint** via the custom `architecture/*` rules (see §6).
 
@@ -118,18 +118,18 @@ src/modules/<feature>/
 
 ## 4. NestJS building blocks → where they live
 
-| NestJS concept | Home | Notes |
-| --- | --- | --- |
-| `@Controller` | `api/*.controller.ts` | Thin; `@UseGuards`, `@UsePipes`, custom decorators only |
-| `@Injectable` provider | `application/*.service.ts` or `*.use-case.ts` | Constructor DI; `private readonly` deps |
-| Guard (`CanActivate`) | `core/guards/` | Auth, permissions (RBAC), ownership/tenant |
-| Interceptor | `core/interceptors/` | Logging, timeout, response shaping |
-| Pipe | global `ValidationPipe` in `bootstrap/`; custom pipes in `core/pipes/` | DTO validation |
-| Exception filter | `core/errors/` | Global filter sanitizes errors → safe `{ messageKey }` |
-| Custom decorator | `core/decorators/` or module `lib/` | e.g. `@CurrentUser()`, `@RequirePermissions()` |
-| Module | `<feature>.module.ts`, `app.module.ts` | Dependency wiring + public surface |
-| Config | `config/` | `ConfigModule.forRoot` + validated schema |
-| Repository / ORM | `infrastructure/*.repository.ts` | ORM client imported ONLY here (or an adapter) |
+| NestJS concept         | Home                                                                   | Notes                                                   |
+| ---------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------- |
+| `@Controller`          | `api/*.controller.ts`                                                  | Thin; `@UseGuards`, `@UsePipes`, custom decorators only |
+| `@Injectable` provider | `application/*.service.ts` or `*.use-case.ts`                          | Constructor DI; `private readonly` deps                 |
+| Guard (`CanActivate`)  | `core/guards/`                                                         | Auth, permissions (RBAC), ownership/tenant              |
+| Interceptor            | `core/interceptors/`                                                   | Logging, timeout, response shaping                      |
+| Pipe                   | global `ValidationPipe` in `bootstrap/`; custom pipes in `core/pipes/` | DTO validation                                          |
+| Exception filter       | `core/errors/`                                                         | Global filter sanitizes errors → safe `{ messageKey }`  |
+| Custom decorator       | `core/decorators/` or module `lib/`                                    | e.g. `@CurrentUser()`, `@RequirePermissions()`          |
+| Module                 | `<feature>.module.ts`, `app.module.ts`                                 | Dependency wiring + public surface                      |
+| Config                 | `config/`                                                              | `ConfigModule.forRoot` + validated schema               |
+| Repository / ORM       | `infrastructure/*.repository.ts`                                       | ORM client imported ONLY here (or an adapter)           |
 
 ---
 
@@ -161,7 +161,11 @@ The custom plugin in [`/eslint/architecture-plugin`](../eslint/architecture-plug
   - API DTOs cannot import services, repositories, or infrastructure;
   - external libraries (HTTP clients, loggers, ORMs, brokers) can only be imported inside their adapter directories;
   - `process.env` can only be read in `config/`, `bootstrap/`, `*.config.ts`, `*.providers.ts`.
-- **`no-restricted-syntax`** — no `const`/`enum`/`interface`/`type` declarations inside controllers/repositories/services; no `Promise.all|allSettled|any|race` inside services.
+- **`architecture/no-inline-layer-declarations`** — implementation-layer files (controllers, services, use cases, repositories, adapters, guards, interceptors, pipes) contain only the class/function that belongs to that layer. No module-level `const`/`enum`/`interface`/`type`/helper functions (only a file-local `LOG_PREFIX` is allowed).
+- **`architecture/no-dto-import-in-domain-or-use-case`** — domain and use-case logic depends on `model/*.types.ts` and `@shared/types`, not on API request/response DTOs.
+- **`architecture/no-use-case-import-in-service`** — dependency direction is one-way: use cases call services, never the reverse.
+- **`architecture/no-cross-module-internal-imports`** — private implementation layers of one module (`api/`, `application/`, `domain/`, `infrastructure/`) cannot be imported directly from another module. Use the owning module's `model/` layer or public barrel/index.
+- **`no-restricted-syntax`** — no `Promise.all|allSettled|any|race` inside services or adapters; module-level declaration coverage is now owned by the dedicated `architecture/no-inline-layer-declarations` rule.
 - **`max-lines-per-function: 20`** on `*.service.ts` — services stay orchestration-thin.
 
 To adapt conventions for a project, change `moduleSuffix`/`layer` in [`architecture.config.mjs`](../eslint/architecture.config.mjs) — never hardcode names in the rule implementations.

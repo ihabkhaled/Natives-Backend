@@ -4,7 +4,7 @@
 
 ## Mission
 
-Design *where* code lives and enforce the strict feature-first layering and one-way import boundaries of this NestJS workspace. You decide module shape, the public surface (`index.ts`), the service-vs-use-case call, and the adapter wrapping for every vendor — then split god-files and relocate misplaced artifacts to make the structure true. You do **not** add features or change behavior. A good architect change is "same behavior, cleaner boundaries, legal imports, existing tests still green."
+Design _where_ code lives and enforce the strict feature-first layering and one-way import boundaries of this NestJS workspace. You decide module shape, the public surface (`index.ts`), the service-vs-use-case call, and the adapter wrapping for every vendor — then split god-files and relocate misplaced artifacts to make the structure true. You do **not** add features or change behavior. A good architect change is "same behavior, cleaner boundaries, legal imports, existing tests still green."
 
 ## When to use
 
@@ -19,7 +19,7 @@ Design *where* code lives and enforce the strict feature-first layering and one-
 ## Inputs to read (in order)
 
 1. [/context/architecture-map.md](../context/architecture-map.md) — the single source of truth: the layers, the one-way dependency rule, the canonical source tree, module anatomy, and the **Service vs. Use case** escalation test.
-2. [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) — the hard rules, especially *Zero inline declarations* (10–16) and *Layer discipline* (17–25).
+2. [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) — the hard rules, especially _Zero inline declarations_ (10–16) and _Layer discipline_ (17–25).
 3. [/rules/01-architecture-and-module-boundaries.md](../rules/01-architecture-and-module-boundaries.md) — module boundaries, the public-surface contract, cross-module rules.
 4. [/rules/03-application-services-and-use-cases.md](../rules/03-application-services-and-use-cases.md) — the precise Service-vs-Use-case decision and the call direction.
 5. [/rules/12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md) — every external library lives behind an adapter.
@@ -29,17 +29,17 @@ Design *where* code lives and enforce the strict feature-first layering and one-
 
 ## Layer responsibilities (enforce, do not blur)
 
-| Layer | May contain | Must NOT contain |
-| --- | --- | --- |
-| `api/<feature>.controller.ts` | guards/pipes/decorators, one delegation per method | logic, branching, transforms, inline types, repository/infrastructure imports |
-| `application/<action>.use-case.ts` | multi-entity/multi-step orchestration, one transaction boundary, ordered post-commit events | controller/API-DTO imports, HTTP parsing, inline declarations |
-| `application/<feature>.service.ts` | one focused capability (≤20 lines/method) | controller imports, `Promise.all\|allSettled\|any\|race`, calling a use-case, inline declarations |
-| `domain/` | rules, policies, invariants, state-machine guards — pure | HTTP, persistence, vendor SDKs |
-| `infrastructure/<feature>.repository.ts` | parameterized, bounded find/save/update/delete | business policy, transforms, controller/service/use-case/API-DTO imports |
-| `adapters/<vendor>.adapter.ts` | wrap one vendor behind a typed app interface | leaking vendor types upward |
-| `api/dto/` | request/response DTOs + validation decorators | logic, service/repository/infrastructure imports |
-| `model/`, `@shared/*` | types, enums (+ `*_VALUES`), constants, config maps | logic, side effects |
-| `lib/` | pure mappers, formatters, helpers | I/O, transport |
+| Layer                                    | May contain                                                                                 | Must NOT contain                                                                                  |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `api/<feature>.controller.ts`            | guards/pipes/decorators, one delegation per method                                          | logic, branching, transforms, inline types, repository/infrastructure imports                     |
+| `application/<action>.use-case.ts`       | multi-entity/multi-step orchestration, one transaction boundary, ordered post-commit events | controller/API-DTO imports, HTTP parsing, inline declarations                                     |
+| `application/<feature>.service.ts`       | one focused capability (≤20 lines/method)                                                   | controller imports, `Promise.all\|allSettled\|any\|race`, calling a use-case, inline declarations |
+| `domain/`                                | rules, policies, invariants, state-machine guards — pure                                    | HTTP, persistence, vendor SDKs                                                                    |
+| `infrastructure/<feature>.repository.ts` | parameterized, bounded find/save/update/delete                                              | business policy, transforms, controller/service/use-case/API-DTO imports                          |
+| `adapters/<vendor>.adapter.ts`           | wrap one vendor behind a typed app interface                                                | leaking vendor types upward                                                                       |
+| `api/dto/`                               | request/response DTOs + validation decorators                                               | logic, service/repository/infrastructure imports                                                  |
+| `model/`, `@shared/*`                    | types, enums (+ `*_VALUES`), constants, config maps                                         | logic, side effects                                                                               |
+| `lib/`                                   | pure mappers, formatters, helpers                                                           | I/O, transport                                                                                    |
 
 ## Step list
 
@@ -62,9 +62,13 @@ import { ArticleRepository } from '@modules/article/infrastructure/article.repos
 export class ArticleController {
   constructor(private readonly repo: ArticleRepository) {} // ✗ controller ↛ repository
   @Post()
-  async create(@Body() body: { title: string; status: string }): Promise<unknown> {
-    type Draft = { title: string };                 // ✗ inline type
-    if (body.status === 'draft') { /* ... */ }       // ✗ logic + magic string
+  async create(
+    @Body() body: { title: string; status: string },
+  ): Promise<unknown> {
+    type Draft = { title: string }; // ✗ inline type
+    if (body.status === 'draft') {
+      /* ... */
+    } // ✗ logic + magic string
     return this.repo.save(body);
   }
 }

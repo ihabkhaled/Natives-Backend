@@ -10,15 +10,15 @@ Related: [02-controllers-and-http-transport.md](./02-controllers-and-http-transp
 
 A **boundary** is anything entering the app from outside the type system. Each one is parsed and shaped by a DTO before the controller delegates:
 
-| Boundary | How it is validated |
-| --- | --- |
-| Request **body** | `@Body() dto: CreateXDto` — DTO class with decorators |
-| Route **params** (`:id`) | `@Param() params: XParamsDto` (UUID/format checks) — never trust a raw `id` string |
-| **Query** string (filters, sort, pagination) | `@Query() query: ListXQueryDto` — coerce + bound + whitelist |
-| **Headers** read as data | a dedicated header DTO |
-| Uploaded **files** | MIME / extension / size checks (see [07-security-authn-authz.md](./07-security-authn-authz.md)) |
-| Inbound **webhooks** | a DTO in the integration module's `api/dto/` — payloads are attacker-controlled |
-| External **integration responses** | parse before trusting — a vendor can change its contract (see [12-library-wrapping-and-adapters.md](./12-library-wrapping-and-adapters.md)) |
+| Boundary                                     | How it is validated                                                                                                                         |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Request **body**                             | `@Body() dto: CreateXDto` — DTO class with decorators                                                                                       |
+| Route **params** (`:id`)                     | `@Param() params: XParamsDto` (UUID/format checks) — never trust a raw `id` string                                                          |
+| **Query** string (filters, sort, pagination) | `@Query() query: ListXQueryDto` — coerce + bound + whitelist                                                                                |
+| **Headers** read as data                     | a dedicated header DTO                                                                                                                      |
+| Uploaded **files**                           | MIME / extension / size checks (see [07-security-authn-authz.md](./07-security-authn-authz.md))                                             |
+| Inbound **webhooks**                         | a DTO in the integration module's `api/dto/` — payloads are attacker-controlled                                                             |
+| External **integration responses**           | parse before trusting — a vendor can change its contract (see [12-library-wrapping-and-adapters.md](./12-library-wrapping-and-adapters.md)) |
 
 The DTO is the only thing the controller hands to the application method. Identity is **never** taken from the body — it comes from the verified token via `@CurrentUser()` (see [07-security-authn-authz.md](./07-security-authn-authz.md)).
 
@@ -46,13 +46,13 @@ create(@Body() body: { title: string }) { /* inline shape = banned */ }
 
 ### File naming
 
-| Artifact | Convention | Example |
-| --- | --- | --- |
-| Create DTO | `create-<feature>.dto.ts` → `Create<Feature>Dto` | `CreateArticleDto` |
-| Update DTO | `update-<feature>.dto.ts` → `Update<Feature>Dto` | `UpdateArticleDto` |
-| Query DTO | `list-<feature>-query.dto.ts` → `List<Feature>QueryDto` | `ListArticleQueryDto` |
-| Action DTO | `<action>.dto.ts` → `<Action>Dto` | `PublishArticleDto` |
-| Response DTO | `<feature>-response.dto.ts` → `<Feature>ResponseDto` | `ArticleResponseDto` |
+| Artifact     | Convention                                              | Example               |
+| ------------ | ------------------------------------------------------- | --------------------- |
+| Create DTO   | `create-<feature>.dto.ts` → `Create<Feature>Dto`        | `CreateArticleDto`    |
+| Update DTO   | `update-<feature>.dto.ts` → `Update<Feature>Dto`        | `UpdateArticleDto`    |
+| Query DTO    | `list-<feature>-query.dto.ts` → `List<Feature>QueryDto` | `ListArticleQueryDto` |
+| Action DTO   | `<action>.dto.ts` → `<Action>Dto`                       | `PublishArticleDto`   |
+| Response DTO | `<feature>-response.dto.ts` → `<Feature>ResponseDto`    | `ArticleResponseDto`  |
 
 ---
 
@@ -64,11 +64,11 @@ Validation is configured **once** in `bootstrap/`, not per-controller. These fla
 // bootstrap/bootstrap.ts
 app.useGlobalPipes(
   new ValidationPipe({
-    whitelist: true,            // strip properties with no decorator
+    whitelist: true, // strip properties with no decorator
     forbidNonWhitelisted: true, // reject unknown properties (no silent extras)
-    transform: true,            // produce real DTO instances
+    transform: true, // produce real DTO instances
     transformOptions: { enableImplicitConversion: false }, // explicit @Type only
-    stopAtFirstError: false,    // collect every field error
+    stopAtFirstError: false, // collect every field error
   }),
 );
 ```
@@ -86,10 +86,24 @@ Bound **every** string (`@MaxLength`) and **every** array (`@ArrayMaxSize`). Use
 ```ts
 // api/dto/create-article.dto.ts
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { ArrayMaxSize, IsArray, IsEnum, IsInt, IsOptional, IsString, Max, MaxLength, Min } from 'class-validator';
+import {
+  ArrayMaxSize,
+  IsArray,
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  Max,
+  MaxLength,
+  Min,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 import { ArticleVisibility } from '@modules/article/model/article.enums';
-import { ARTICLE_BODY_MAX, ARTICLE_TAGS_MAX, ARTICLE_TITLE_MAX } from '@modules/article/model/article.constants';
+import {
+  ARTICLE_BODY_MAX,
+  ARTICLE_TAGS_MAX,
+  ARTICLE_TITLE_MAX,
+} from '@modules/article/model/article.constants';
 
 export class CreateArticleDto {
   @ApiProperty({ maxLength: ARTICLE_TITLE_MAX })
@@ -145,7 +159,9 @@ import { ArticleVisibility } from '@modules/article/model/article.enums';
 export class ArticleResponseDto {
   @Expose() @ApiProperty() readonly id!: string;
   @Expose() @ApiProperty() readonly title!: string;
-  @Expose() @ApiProperty({ enum: ArticleVisibility }) readonly visibility!: ArticleVisibility;
+  @Expose()
+  @ApiProperty({ enum: ArticleVisibility })
+  readonly visibility!: ArticleVisibility;
   @Expose() @ApiProperty() readonly createdAt!: string;
 }
 ```
@@ -166,33 +182,57 @@ Query DTOs are the trust boundary protecting [04-repositories-and-persistence.md
 // api/dto/list-article-query.dto.ts
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsEnum, IsInt, IsOptional, IsString, Max, MaxLength, Min } from 'class-validator';
-import { ArticleSortField, ArticleVisibility, SortDirection } from '@modules/article/model/article.enums';
+import {
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  Max,
+  MaxLength,
+  Min,
+} from 'class-validator';
+import {
+  ArticleSortField,
+  ArticleVisibility,
+  SortDirection,
+} from '@modules/article/model/article.enums';
 import { LIST_LIMIT_MAX, LIST_PAGE_DEFAULT } from '@shared/constants';
 
 export class ListArticleQueryDto {
   @ApiPropertyOptional({ minimum: 1, default: LIST_PAGE_DEFAULT })
-  @IsOptional() @Type(() => Number) @IsInt() @Min(1)
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
   readonly page: number = LIST_PAGE_DEFAULT;
 
   @ApiPropertyOptional({ minimum: 1, maximum: LIST_LIMIT_MAX })
-  @IsOptional() @Type(() => Number) @IsInt() @Min(1) @Max(LIST_LIMIT_MAX)
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  @Max(LIST_LIMIT_MAX)
   readonly limit: number = 20;
 
   @ApiPropertyOptional({ enum: ArticleSortField })
-  @IsOptional() @IsEnum(ArticleSortField, { message: 'errors.article.sortBy.invalid' })
+  @IsOptional()
+  @IsEnum(ArticleSortField, { message: 'errors.article.sortBy.invalid' })
   readonly sortBy: ArticleSortField = ArticleSortField.CREATED_AT;
 
   @ApiPropertyOptional({ enum: SortDirection })
-  @IsOptional() @IsEnum(SortDirection)
+  @IsOptional()
+  @IsEnum(SortDirection)
   readonly sortDirection: SortDirection = SortDirection.DESC;
 
   @ApiPropertyOptional({ enum: ArticleVisibility })
-  @IsOptional() @IsEnum(ArticleVisibility)
+  @IsOptional()
+  @IsEnum(ArticleVisibility)
   readonly visibility?: ArticleVisibility;
 
   @ApiPropertyOptional({ maxLength: 200 })
-  @IsOptional() @IsString() @MaxLength(200)
+  @IsOptional()
+  @IsString()
+  @MaxLength(200)
   readonly search?: string;
 }
 ```
@@ -210,19 +250,29 @@ Zod is the documented alternative when a project prefers single-source-of-truth 
 
 ```ts
 // core/pipes/zod-validation.pipe.ts
-import { Injectable, type ArgumentMetadata, type PipeTransform } from '@nestjs/common';
+import {
+  Injectable,
+  type ArgumentMetadata,
+  type PipeTransform,
+} from '@nestjs/common';
 import { type ZodType } from 'zod';
 import { ValidationFailedError } from '@core/errors/validation-failed.error';
 
 @Injectable()
-export class ZodValidationPipe<TOutput> implements PipeTransform<unknown, TOutput> {
+export class ZodValidationPipe<TOutput> implements PipeTransform<
+  unknown,
+  TOutput
+> {
   constructor(private readonly schema: ZodType<TOutput>) {}
 
   transform(value: unknown, _metadata: ArgumentMetadata): TOutput {
     const result = this.schema.safeParse(value);
     if (!result.success) {
       throw new ValidationFailedError(
-        result.error.issues.map((issue) => ({ field: issue.path.join('.'), messageKey: issue.message })),
+        result.error.issues.map(issue => ({
+          field: issue.path.join('.'),
+          messageKey: issue.message,
+        })),
       );
     }
     return result.data; // defaults + coercion applied
@@ -237,8 +287,12 @@ import { ArticleVisibility } from '@modules/article/model/article.enums';
 import { ARTICLE_TITLE_MAX } from '@modules/article/model/article.constants';
 
 export const createArticleSchema = z.object({
-  title: z.string({ message: 'errors.article.title.required' }).max(ARTICLE_TITLE_MAX, 'errors.article.title.maxLength'),
-  visibility: z.nativeEnum(ArticleVisibility, { message: 'errors.article.visibility.invalid' }),
+  title: z
+    .string({ message: 'errors.article.title.required' })
+    .max(ARTICLE_TITLE_MAX, 'errors.article.title.maxLength'),
+  visibility: z.nativeEnum(ArticleVisibility, {
+    message: 'errors.article.visibility.invalid',
+  }),
 });
 export type CreateArticleDto = z.infer<typeof createArticleSchema>;
 ```
@@ -268,9 +322,9 @@ A new DTO is **not done** until each supported locale has the new keys.
 ## 8. Keep validation in the DTO, not the service
 
 - Shape, length, format, and cross-field rules belong in the DTO — via decorators / a custom `@ValidatorConstraint`, or `.refine()` / `.superRefine()` in Zod. Services orchestrate; they do not re-validate shapes (see [03-application-services-and-use-cases.md](./03-application-services-and-use-cases.md)).
-- **Business invariants** (state-machine guards, ownership, balance checks) belong in `domain/`, not the DTO. The DTO proves the request is *well-formed*; the domain proves it is *allowed*.
+- **Business invariants** (state-machine guards, ownership, balance checks) belong in `domain/`, not the DTO. The DTO proves the request is _well-formed_; the domain proves it is _allowed_.
 - Avoid unsafe regex (ReDoS): no nested quantifiers. Split a simple regex from a `.refine()`/custom validator for the complex part (see [08-database-and-injection-safety.md](./08-database-and-injection-safety.md)).
-- Do not duplicate the same check across layers unless it is deliberately defensive — then comment *why*.
+- Do not duplicate the same check across layers unless it is deliberately defensive — then comment _why_.
 
 ---
 

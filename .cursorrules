@@ -9,7 +9,8 @@ Canonical precedence for this repository:
 1. `claude.md` is the canonical long-form operating policy.
 2. `.cursor/rules/*.mdc` are the active Cursor rules.
 3. `AGENTS.md` is the Codex bootstrap file.
-4. `codex.md` and `cursor.md` are mirrors/reference copies.
+4. `KIMI.md`, `GEMINI.md`, `GLM.md`, `QWEN.md`, and `DEEPSEEK.md` are dedicated entrypoints for their respective AI agent families.
+5. `codex.md` and `cursor.md` are mirrors/reference copies.
 
 If you are reading only this legacy file, do the following before any work:
 
