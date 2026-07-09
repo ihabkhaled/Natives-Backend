@@ -26,6 +26,16 @@ We wrap because the boundary buys us five things in one place: typed config, har
 
 > Rule of thumb: if you reach for an SDK, an HTTP client, or a protocol client inside a module's `application/` or `infrastructure/` code, **stop** — put it behind an adapter (module `adapters/` for a feature vendor, `src/core/` if it is cross-cutting infra), wire it through typed config, and record it below.
 
+### Recorded direct-use exceptions
+
+Every library used directly must be named here with its justifying column from the table above — an unrecorded direct import is a defect, not an exception.
+
+| Library  | Used directly in                                                                                                        | Why (per the decision rule)                                                                                                                                                                                                                                                                                           |
+| -------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bcrypt` | `src/modules/auth/lib/password.helpers.ts` (verify), `src/modules/users/infrastructure/users.repository.ts` (seed hash) | Pure, deterministic **hashing primitive** — no network, no secrets, no config, no vendor error types. Consumed through named helpers, never imported into a service/use-case body. Swapping the KDF is a one-helper change; cost factor and rotation policy live in [security-decisions.md](./security-decisions.md). |
+
+> **Project records:** when a project introduces a second KDF, a pepper, or a hashing service, promote this to a `PasswordHasherPort` + adapter ([/skills/add-library-adapter.md](../skills/add-library-adapter.md)) and delete the exception row.
+
 ---
 
 ## Where each wrapped concern lives

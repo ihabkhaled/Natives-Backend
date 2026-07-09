@@ -18,20 +18,20 @@ npm run typecheck   # tsgo --noEmit       → native type check, project-wide
 
 `eslint.config.mjs` composes small, single-purpose flat-config modules from `/eslint`. Each owns one concern so a rule's home is obvious and changes stay surgical.
 
-| Module                    | Owns                   | Highlights                                                                                                                  |
-| ------------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `base.config.mjs`         | Core JS correctness    | `no-console`, `no-debugger`, `eqeqeq` (smart), `curly` (all), `no-implicit-coercion`, `object-shorthand`, `prefer-template` |
-| `typescript.config.mjs`   | Type-aware strictness  | `recommendedTypeChecked` + `strictTypeChecked` + `stylisticTypeChecked` plus explicit overrides (below)                     |
-| `imports.config.mjs`      | Import hygiene         | `simple-import-sort` (imports/exports), `import-x/no-cycle`, `import-x/no-duplicates`, `unused-imports/*`                   |
-| `promise.config.mjs`      | Async safety           | `always-return`, `catch-or-return`, `no-multiple-resolved`, `no-nesting`, `prefer-await-to-then`                            |
-| `security.config.mjs`     | Vulnerability patterns | plugin `recommended` + `detect-object-injection`                                                                            |
-| `sonar.config.mjs`        | Bug / clean-code       | `cognitive-complexity: 20`, `no-identical-functions`, `no-duplicated-branches`, `prefer-immediate-return`                   |
-| `unicorn.config.mjs`      | Modern JS              | `prefer-node-protocol`, `prefer-array-some`, `prefer-includes`, `no-nested-ternary`, `no-unnecessary-await`                 |
-| `regexp.config.mjs`       | Regex safety           | `no-super-linear-backtracking` (ReDoS), `no-useless-*`, `prefer-d`, `optimal-quantifier-concatenation`                      |
-| `architecture.config.mjs` | **Layer boundaries**   | the custom `architecture/*` plugin + `no-restricted-syntax` + per-layer `max-lines-per-function`                            |
-| `prettier.config.mjs`     | Formatting as lint     | `prettier/prettier` error + `eslint-config-prettier` to disable conflicting stylistic rules                                 |
-| `test.config.mjs`         | Test relaxations       | loosens unsafe-* for mocks; **keeps** `no-explicit-any` / `no-non-null-assertion`; bans `.only`                             |
-| `ignores.config.mjs`      | Lint scope             | ignores `dist/`, `coverage/`, `node_modules/`, `**/*.{js,mjs,cjs}`, root `*.spec.ts`                                        |
+| Module                    | Owns                                  | Highlights                                                                                                                                                                                                                                                                                                                                                      |
+| ------------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `base.config.mjs`         | Core JS correctness + simplicity caps | `no-console`, `no-debugger`, `eqeqeq` (smart), `curly` (all), `no-implicit-coercion`, `object-shorthand`, `prefer-template`, `complexity: 15`, `max-depth: 3`, `no-nested-ternary`, `no-else-return`, `no-param-reassign`, `no-return-assign` (rules/20, 23)                                                                                                    |
+| `typescript.config.mjs`   | Type-aware strictness                 | `recommendedTypeChecked` + `strictTypeChecked` + `stylisticTypeChecked` plus explicit overrides (below)                                                                                                                                                                                                                                                         |
+| `imports.config.mjs`      | Import hygiene                        | `simple-import-sort` (imports/exports), `import-x/no-cycle`, `import-x/no-duplicates`, `unused-imports/*`                                                                                                                                                                                                                                                       |
+| `promise.config.mjs`      | Async safety                          | `always-return`, `catch-or-return`, `no-multiple-resolved`, `no-nesting`, `prefer-await-to-then`                                                                                                                                                                                                                                                                |
+| `security.config.mjs`     | Vulnerability patterns                | plugin `recommended` + `detect-object-injection`                                                                                                                                                                                                                                                                                                                |
+| `sonar.config.mjs`        | Bug / clean-code                      | `cognitive-complexity: 15`, `no-identical-functions`, `no-duplicated-branches`, `prefer-immediate-return`                                                                                                                                                                                                                                                       |
+| `unicorn.config.mjs`      | Modern JS                             | `prefer-node-protocol`, `prefer-array-some`, `prefer-includes`, `no-unnecessary-await` (nested-ternary banning lives in `base.config.mjs` — the core rule — because `eslint-config-prettier` disables the unicorn variant)                                                                                                                                      |
+| `regexp.config.mjs`       | Regex safety                          | `no-super-linear-backtracking` (ReDoS), `no-useless-*`, `prefer-d`, `optimal-quantifier-concatenation`                                                                                                                                                                                                                                                          |
+| `architecture.config.mjs` | **Layer boundaries**                  | the custom `architecture/*` plugin (incl. `no-inline-layer-declarations`) + `no-restricted-syntax` + per-layer `max-lines-per-function` + `max-classes-per-file: 1` on layer files. `files:` entries MUST be minimatch globs — a regex string there never matches and silently disables the override (guarded by `test/eslint/config-rule-activation.spec.mjs`) |
+| `prettier.config.mjs`     | Formatting as lint                    | `prettier/prettier` error + `eslint-config-prettier` to disable conflicting stylistic rules                                                                                                                                                                                                                                                                     |
+| `test.config.mjs`         | Test relaxations                      | loosens unsafe-* for mocks; **keeps** `no-explicit-any` / `no-non-null-assertion`; bans `.only`                                                                                                                                                                                                                                                                 |
+| `ignores.config.mjs`      | Lint scope                            | ignores `dist/`, `coverage/`, `node_modules/`, `**/*.{js,mjs,cjs}`, root `*.spec.ts`                                                                                                                                                                                                                                                                            |
 
 > All `typescript.config.mjs` rules are **type-aware** (`parserOptions.project` → `tsconfig.eslint.json`). They need a clean project graph — a tsconfig error can cascade into spurious lint errors, so fix `typecheck` first.
 
@@ -117,12 +117,12 @@ import { CreateOrderUseCase } from '../application/create-order.use-case';
 import { HttpAdapter } from '@core/http/http.adapter';
 ```
 
-### `no-restricted-syntax` — no inline declarations
+### `architecture/no-inline-layer-declarations` — no inline declarations
 
-In `*.controller.ts`, `*.service.ts`, and `*.repository.ts`, inline `const`, `enum`, `interface`, and `type` declarations are banned — move them to `model/<feature>.{types,enums,constants}.ts` or `@shared/*`. The class is the only thing in the file. See [06-types-enums-constants.md](./06-types-enums-constants.md).
+In controllers, services, use cases, repositories, adapters, guards, interceptors, and pipes, module-level `const`, `enum`, `interface`, `type`, and helper `function` declarations are banned — move them to `model/<feature>.{types,enums,constants}.ts`, `lib/`, or `@shared/*`. The class is the only thing in the file (the sole exception is a file-local `LOG_PREFIX` const). `max-classes-per-file: 1` on the same globs blocks a second helper class. See [06-types-enums-constants.md](./06-types-enums-constants.md).
 
 ```ts
-// Don't — inline declarations inside a service (no-restricted-syntax)
+// Don't — inline declarations inside a service (no-inline-layer-declarations)
 @Injectable()
 export class OrderService {
   private readonly MAX_ITEMS = 100; // inline const
@@ -214,28 +214,32 @@ For `*.spec.ts` and `test/**/*.ts` (`test.config.mjs`): `no-unsafe-*`, `unbound-
 
 Fix the cause, never the symptom. Disabling a rule is a non-negotiable violation (rule 4).
 
-| Finding                                           | Root-cause fix                                                                           |
-| ------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `no-explicit-any`                                 | Type it: `unknown` + narrowing, a real interface, or a generic                           |
-| `no-non-null-assertion` (`x!`)                    | Guard (`if (x === undefined) …`), default (`x ?? fallback`), or `x?.member`              |
-| `no-floating-promises`                            | `await` it, `return` it, or `void` it with a comment for true fire-and-forget (rules/19) |
-| `no-misused-promises`                             | Don't pass an `async` fn where a sync return is expected; wrap or restructure            |
-| `no-unnecessary-condition`                        | The value can't be nullish per its type — remove the check or fix the type               |
-| `prefer-nullish-coalescing`                       | Replace `\|\|` with `??` when guarding null/undefined (keeps `0`/`''` valid)             |
-| `restrict-template-expressions`                   | `String(x)` or narrow before interpolating non-primitives                                |
-| `switch-exhaustiveness-check`                     | Add the missing case, or a `default` with a `never` assertion                            |
-| `consistent-type-imports`                         | `import type { Foo }` for type-only imports (autofix)                                    |
-| `no-console`                                      | Use the logger adapter from `@core/logger` (rules/14)                                    |
-| `architecture/controller-no-logic`                | Move branching/transformation into a use case/service; leave one delegation              |
-| `architecture/no-restricted-layer-imports`        | Depend through the correct layer / module `index.ts`; wrap vendor in an adapter          |
-| `no-restricted-syntax` (inline decl)              | Extract to `model/*.types.ts` / `*.enums.ts` / `*.constants.ts`                          |
-| `no-restricted-syntax` (`Promise.all` in service) | Move concurrency to a use case or `lib/` helper                                          |
-| `max-lines-per-function` (service > 20)           | Extract helpers to `lib/`, or escalate to a use case                                     |
-| `import-x/no-cycle`                               | Break the cycle via an interface, a shared type module, or events                        |
-| `simple-import-sort/imports`                      | `npm run lint:fix`                                                                       |
-| `regexp/no-super-linear-backtracking`             | Rewrite to remove nested quantifiers; validate via a DTO instead                         |
-| `noUncheckedIndexedAccess` (`T \| undefined`)     | Narrow after index/array access before use                                               |
-| `exactOptionalPropertyTypes`                      | Conditionally spread; never assign explicit `undefined` to an optional                   |
+| Finding                                             | Root-cause fix                                                                                               |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `no-explicit-any`                                   | Type it: `unknown` + narrowing, a real interface, or a generic                                               |
+| `no-non-null-assertion` (`x!`)                      | Guard (`if (x === undefined) …`), default (`x ?? fallback`), or `x?.member`                                  |
+| `no-floating-promises`                              | `await` it, `return` it, or `void` it with a comment for true fire-and-forget (rules/19)                     |
+| `no-misused-promises`                               | Don't pass an `async` fn where a sync return is expected; wrap or restructure                                |
+| `no-unnecessary-condition`                          | The value can't be nullish per its type — remove the check or fix the type                                   |
+| `prefer-nullish-coalescing`                         | Replace `\|\|` with `??` when guarding null/undefined (keeps `0`/`''` valid)                                 |
+| `restrict-template-expressions`                     | `String(x)` or narrow before interpolating non-primitives                                                    |
+| `switch-exhaustiveness-check`                       | Add the missing case, or a `default` with a `never` assertion                                                |
+| `consistent-type-imports`                           | `import type { Foo }` for type-only imports (autofix)                                                        |
+| `no-console`                                        | Use the logger adapter from `@core/logger` (rules/14)                                                        |
+| `architecture/controller-no-logic`                  | Move branching/transformation into a use case/service; leave one delegation                                  |
+| `architecture/no-restricted-layer-imports`          | Depend through the correct layer / module `index.ts`; wrap vendor in an adapter                              |
+| `architecture/no-inline-layer-declarations`         | Extract to `model/*.types.ts` / `*.enums.ts` / `*.constants.ts` / `lib/*.helpers.ts`                         |
+| `no-restricted-syntax` (`Promise.all` in service)   | Move concurrency to a use case or `lib/` helper                                                              |
+| `max-lines-per-function` (service > 20)             | Extract helpers to `lib/`, or escalate to a use case                                                         |
+| `complexity` / `sonarjs/cognitive-complexity` (>15) | Extract named guards/policies/mappers per the routing in [23](./23-function-service-file-size-discipline.md) |
+| `max-depth` (> 3)                                   | Guard clauses and early returns instead of nesting (rules/20)                                                |
+| `no-nested-ternary` / `no-else-return`              | Simple branches or a named helper; return early                                                              |
+| `max-classes-per-file` (layer file)                 | Move the second class to its own owner file                                                                  |
+| `import-x/no-cycle`                                 | Break the cycle via an interface, a shared type module, or events                                            |
+| `simple-import-sort/imports`                        | `npm run lint:fix`                                                                                           |
+| `regexp/no-super-linear-backtracking`               | Rewrite to remove nested quantifiers; validate via a DTO instead                                             |
+| `noUncheckedIndexedAccess` (`T \| undefined`)       | Narrow after index/array access before use                                                                   |
+| `exactOptionalPropertyTypes`                        | Conditionally spread; never assign explicit `undefined` to an optional                                       |
 
 ---
 
@@ -244,8 +248,9 @@ Fix the cause, never the symptom. Disabling a rule is a non-negotiable violation
 - [ ] `npm run lint` is **0 errors AND 0 warnings**; `npm run typecheck` passes
 - [ ] No `eslint-disable`, `@ts-ignore`; `@ts-expect-error` only with a linked, justified reason
 - [ ] No `any`, no `!`, `===`/`!==` only, every nullable narrowed
-- [ ] No inline `const`/`enum`/`interface`/`type` in controllers/services/repositories
+- [ ] No inline `const`/`enum`/`interface`/`type`/helper `function` in layer files (controllers/services/use-cases/repositories/adapters/guards/interceptors/pipes)
 - [ ] No `Promise.all|allSettled|any|race` inside a service; service methods ≤ 20 lines
+- [ ] Within the simplicity caps: complexity ≤ 15, depth ≤ 3, no nested ternaries — and no clever TypeScript ([20 §4](./20-simple-readable-code.md))
 - [ ] Layer imports respected; vendor libs only inside adapters; `process.env` only in config/bootstrap
 - [ ] Controllers are one direct delegation per method
 - [ ] Imports sorted, de-duplicated, cycle-free; type imports are type-only

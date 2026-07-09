@@ -36,6 +36,14 @@ This document defines the minimum engineering quality bar for any change that mo
 - Meaningful modules should have documented ownership and responsibility.
 - Complex modules should expose stable public interfaces and avoid leaking internals.
 
+### 3b. Simple Readable Code
+
+- The best code is the code the next developer understands immediately; every change must be junior-readable and senior-trustworthy.
+- Run the Simple Code Ladder before writing new code: need it → reuse existing → native/platform → existing adapter → small helper → direct readable code → new abstraction only when justified.
+- No speculative abstraction, no clever type-level tricks, no parallel duplicates of existing owners.
+- Minimal always means minimum safe code — simplicity never removes validation, authorization, ownership checks, typed errors, bounds, tests, or documentation.
+- Full baseline: `docs/sdlc/simple-readable-code.md`; stack canon: `rules/20`–`rules/24`.
+
 ### 4. Error Handling
 
 - Handle happy path, failure path, timeout path, dependency failure path, and partial failure path.

@@ -20,7 +20,7 @@ Layer-specific detail lives in the numbered rule files ([README](./README.md)); 
 
 ## Zero inline declarations (10–16)
 
-> No inline **types**, **interfaces**, **enums**, **constants**, **DTOs**, **request/response shapes**, or **config maps** in `*.controller.ts`, `*.service.ts`, `*.use-case.ts`, `*.repository.ts`, guards, interceptors, pipes, or adapters. The class/function is the only thing in the file. (ESLint `no-restricted-syntax` enforces this on controllers/services/repositories.)
+> No inline **types**, **interfaces**, **enums**, **constants**, **DTOs**, **request/response shapes**, **config maps**, or **helper functions** in `*.controller.ts`, `*.service.ts`, `*.use-case.ts`, `*.repository.ts`, guards, interceptors, pipes, or adapters. The class/function is the only thing in the file. (ESLint `architecture/no-inline-layer-declarations` enforces this across all of those layers; `max-classes-per-file: 1` blocks a second class.)
 
 10. **No inline types** → `model/<feature>.types.ts` or `@shared/types`.
 11. **No inline interfaces** → same; prefer `interface` for object shapes (`consistent-type-definitions`).
@@ -68,6 +68,13 @@ Layer-specific detail lives in the numbered rule files ([README](./README.md)); 
 41. **No new integration, queue, job, or external dependency without an adapter + docs** and the required config/bootstrap wiring.
 42. **No behavior change without updating tests AND docs** in the same change. Write/adjust tests first; call out correctness/security behavior changes explicitly.
 
+## Simplicity & reuse (43–46)
+
+43. **Run the Simple Code Ladder before writing code:** need it → reuse an existing owner → native Node/TS/NestJS solution → an existing adapter/dependency → a small pure helper → the direct readable version → a new abstraction only with a real current reason (repeated use, layer boundary, external adapter, security isolation, transaction boundary, testability). The ladder runs after reading the touched code and never skips tests, docs, validation, or any gate. (rules/20)
+44. **No speculative abstraction (YAGNI).** No plugin system, base class, factory, strategy, event bus, queue, cache, generic CRUD framework, config value, env var, DTO, or helper for imaginary future needs. One use + no boundary reason ⇒ keep it direct; extract at two-to-three real call sites; security/auth/error-mapping logic extracts early for testability. Extraction required by a layer budget, a complexity cap, or domain ownership is **not** speculative abstraction (rules 21, 23). (rules/21)
+45. **Reuse before creating — search the owner first.** Before any new file, helper, constant, DTO, enum, error, adapter, or fixture: search `@shared/*`, `@core/*`, the module's `model/`/`lib/`/`domain/`, existing DTOs/errors/message keys/adapters/fixtures. Extend the correct owner; refactor a wrong owner; **never ship a parallel duplicate** — duplicated permission/ownership logic is the worst duplicate. (extends rule 13; rules/22)
+46. **Boring beats clever — and minimal means minimum SAFE code.** Junior-readable, senior-trustworthy: no type gymnastics, no nested chains or dense one-liners, complex conditions become named helpers; methods stay within their layer budget. Simplicity never cuts **any** other rule — validation, auth/permissions/ownership, typed errors, adapters, bounds, observability, tests, and docs all stay. (rules/20, 23, 24)
+
 ---
 
 ## Pre-flight checklist (run mentally before writing code)
@@ -84,5 +91,6 @@ Layer-specific detail lives in the numbered rule files ([README](./README.md)); 
 - [ ] Auth guard + permissions guard + ownership check present (rules 33–35)
 - [ ] No secret/stack leakage; paginated with a max limit (rules 36, 37)
 - [ ] Fail-safe side effects; terminal states for async work (rules 38, 39)
+- [ ] Simple Code Ladder run — owner reused, no speculative abstraction, boring direct version chosen (rules 43–46)
 - [ ] Tests written/updated first; docs updated (rule 42)
 - [ ] `npm run lint` / `typecheck` / `test` / `test:coverage` / `build` green

@@ -131,7 +131,7 @@ The process serves traffic even when **optional** dependencies are down. Disting
 async getProfile(id: AccountId): Promise<Account> {
   const cached = await this.cache.safeGet(id); // adapter swallows + logs cache errors
   if (cached !== null) return cached;
-  const account = await this.repository.findByIdOrThrow(id);
+  const account = await this.loadAccountOrThrow(id); // repo returns null; the service throws (rules/04)
   await this.cache.safeSet(id, account); // best-effort, never throws into the caller
   return account;
 }

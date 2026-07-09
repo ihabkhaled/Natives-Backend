@@ -91,19 +91,53 @@ export const architectureImportRuleOptions = {
 // Path patterns for class-based implementation layers where only the layer
 // class/function may live in the file. Mappers, factories, and pure-function
 // modules are intentionally excluded because the function *is* the layer.
+// Folder patterns match at ANY depth (`.+` not `[^/]+`): a vendor file nested
+// under adapters/ is still an implementation-layer file and must not escape the
+// rule. These regexes are the rules' own internal re-check; the `files` globs
+// below must stay at least as broad. See test/eslint/config-rule-activation.spec.mjs.
 export const implementationLayerPatterns = [
   "\\.controller(?:\\.ts)?$",
   "\\.service(?:\\.ts)?$",
   "\\.use-case(?:\\.ts)?$",
   "\\.repository(?:\\.ts)?$",
   "\\.adapter(?:\\.ts)?$",
-  "/adapters?/[^/]+\\.ts$",
+  "/adapters?/.+\\.ts$",
   "\\.guard(?:\\.ts)?$",
-  "/guards?/[^/]+\\.ts$",
+  "/guards?/.+\\.ts$",
   "\\.interceptor(?:\\.ts)?$",
-  "/interceptors?/[^/]+\\.ts$",
+  "/interceptors?/.+\\.ts$",
   "\\.pipe(?:\\.ts)?$",
-  "/pipes?/[^/]+\\.ts$",
+  "/pipes?/.+\\.ts$",
+];
+
+// Glob equivalents of implementationLayerPatterns. Flat-config `files` entries
+// are minimatch globs, not regexes — a regex string there never matches, which
+// silently disables the whole override. The custom rules still re-check the
+// regex patterns they receive as options, so these globs may be broader but
+// never narrower than the patterns above.
+export const implementationLayerGlobs = [
+  "**/*.controller.ts",
+  "**/*.service.ts",
+  "**/*.use-case.ts",
+  "**/*.repository.ts",
+  "**/*.adapter.ts",
+  "**/adapter/**/*.ts",
+  "**/adapters/**/*.ts",
+  "**/*.guard.ts",
+  "**/guard/**/*.ts",
+  "**/guards/**/*.ts",
+  "**/*.interceptor.ts",
+  "**/interceptor/**/*.ts",
+  "**/interceptors/**/*.ts",
+  "**/*.pipe.ts",
+  "**/pipe/**/*.ts",
+  "**/pipes/**/*.ts",
+];
+
+export const adapterFileGlobs = [
+  "**/*.adapter.ts",
+  "**/adapter/**/*.ts",
+  "**/adapters/**/*.ts",
 ];
 
 export const architectureBaseConfig = {
@@ -141,7 +175,7 @@ export const architectureOverrideConfigs = [
     },
   },
   {
-    files: implementationLayerPatterns,
+    files: implementationLayerGlobs,
     rules: {
       // Implementation-layer files contain only the class/function that belongs
       // to the layer. No module-level constants, enums, interfaces, types, or
@@ -151,6 +185,9 @@ export const architectureOverrideConfigs = [
         "error",
         { filePatterns: implementationLayerPatterns },
       ],
+      // One class per implementation-layer file — the layer class is the file
+      // (rules/23). A second helper class belongs in its own owner file.
+      "max-classes-per-file": ["error", 1],
     },
   },
   {
@@ -173,14 +210,20 @@ export const architectureOverrideConfigs = [
     },
   },
   {
-    files: ["/adapters?/", "\\.adapter(?:\\.ts)?$"],
+    files: adapterFileGlobs,
     rules: {
       // Adapters avoid inline concurrency orchestration.
       "no-restricted-syntax": ["error", ...serviceConcurrencyRestrictions],
     },
   },
   {
-    files: ["/domain/", suffixGlob(moduleSuffix.useCase)],
+    files: [
+      "**/domain/**/*.ts",
+      suffixGlob(moduleSuffix.useCase),
+      "**/*.policy.ts",
+      "**/*.entity.ts",
+      "**/*.state-machine.ts",
+    ],
     rules: {
       // Domain logic and use cases depend on model types, not API DTOs.
       "architecture/no-dto-import-in-domain-or-use-case": "error",

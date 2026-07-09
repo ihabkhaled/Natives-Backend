@@ -140,6 +140,8 @@ Every external library has one owner.
 - Named constants, meaningful errors, testable pure functions.
 - No deeply nested conditionals, no “smart” one-liners, no unreadable chained logic, no mixed responsibilities, no vague names, no unexplained abstractions.
 - Prefer boring, predictable code over cleverness.
+- Before writing code, run the IronNest Simple Code Ladder (`rules/20-simple-readable-code.md`, non-negotiable rules 43–46): need it → reuse existing → native/platform → existing adapter/dependency → small helper → direct readable code → new abstraction only when justified.
+- Be lazy about code volume, never lazy about reading, validation, security, auth, permissions, ownership checks, tests, docs, observability, or architecture. Canonical detail: `rules/20`–`rules/24`; router: `context/simple-code-map.md`.
 
 ## Testing expectations
 

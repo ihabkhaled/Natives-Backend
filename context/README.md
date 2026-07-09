@@ -17,6 +17,7 @@ This workspace is **stack- and domain-agnostic**: the layering, boundaries, and 
 | [codebase-navigation.md](./codebase-navigation.md) | A "where do I put / find X" guide: directory walk-through, common-task → file-list cheatsheets (add an endpoint, add an event, add a config value, add a migration), and how to trace a request end to end.                 | Locating code or scaffolding a change.            |
 | [reference-patterns.md](./reference-patterns.md)   | Copy-ready, genericized snippets for each layer — controller, use case, service, repository, DTO, typed `AppError`, guard chain, adapter, event handler — matching the architecture map exactly.                            | You want the canonical shape to copy from.        |
 | [glossary.md](./glossary.md)                       | Precise definitions of the vocabulary used everywhere: layer names, _service vs. use case_, `messageKey`, adapter, guard chain, ownership/tenant check, bounded query, quality gate.                                        | A term is ambiguous or you want shared language.  |
+| [simple-code-map.md](./simple-code-map.md)         | The simplicity router for [rules 20–24](../rules/README.md): where helpers/constants/decisions/shapes belong, when to extract, when **not** to create a new file, and which simplicity skill fits the situation.            | Running the Simple Code Ladder on any change.     |
 
 ---
 
@@ -82,7 +83,8 @@ A fast self-check that ties context to the gates you will actually face:
 
 - [ ] I have read [architecture-map.md](./architecture-map.md) and know which layer my change belongs to.
 - [ ] I have skimmed [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) and the rule for that layer.
-- [ ] I know the exact home for any new type/enum/constant/DTO (`model/`, `shared/`, `dto/`, `lib/`) — never inline.
+- [ ] I know the exact home for any new type/enum/constant/DTO (`model/`, `shared/`, `dto/`, `lib/`) — never inline ([simple-code-map.md](./simple-code-map.md)).
+- [ ] I have run the Simple Code Ladder (rules 43–46): existing owner reused, no speculative abstraction, boring direct version chosen.
 - [ ] I know the [skill](../skills/README.md) recipe for this task and the [reviewer agent](../agents/README.md) that will check it.
 - [ ] I can run, from memory, the quality gates from [stack-and-toolchain.md](./stack-and-toolchain.md):
 

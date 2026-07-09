@@ -1,17 +1,10 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { compare } from 'bcrypt';
 
 import type { UserCredentials } from '../../users';
 import { UsersService } from '../../users';
 import type { AuthUserIdentity } from '../auth.types';
-
-async function verifyPassword(
-  plainPassword: string,
-  passwordHash: string,
-): Promise<boolean> {
-  return compare(plainPassword, passwordHash);
-}
+import { verifyPassword } from '../lib/password.helpers';
 
 @Injectable()
 export class AuthService {

@@ -48,6 +48,12 @@ Never bypass a hook with `--no-verify`. A failed gate is reported with the **com
 - [ ] **SHOULD FIX** — no god files; oversized files split by ownership (see [/skills/decompose-large-file.md](../skills/decompose-large-file.md)). Transformation/mapping/formatting extracted to `lib/`.
 - [ ] **SHOULD FIX** — path aliases (`@core/*`, `@modules/*`, …) used; no deep `../../../` relatives. No new circular dependencies.
 
+## 2a. Readability & simplicity → [24-team-readable-code-review.md](./24-team-readable-code-review.md), [20-simple-readable-code.md](./20-simple-readable-code.md)
+
+- [ ] **SHOULD FIX** — junior-readable and senior-trustworthy: the nineteen questions of [24](./24-team-readable-code-review.md) all answer yes; no clever TypeScript, nested chains, or dense one-liners ([20 §4](./20-simple-readable-code.md)).
+- [ ] **SHOULD FIX** — no speculative abstraction or unused DTO/config/env/helper shipped ([21](./21-yagni-and-minimalism.md)); existing owners reused, no parallel duplicates ([22](./22-reuse-before-creating.md)).
+- [ ] **MUST FIX** — no safety guarantee (validation, guards, ownership, `AppError`/`messageKey`, adapters, bounds, tests, docs) cut in the name of simplicity (rule 46).
+
 ```typescript
 // MUST FIX — logic in the controller
 @Post()
@@ -133,6 +139,7 @@ Before declaring "done" or handing off for commit:
 - `process.env` outside `config/`/`bootstrap/`, a `console.*` call, or a vendor SDK used outside its adapter.
 - Behavior change without tests, a bug fix without a regression test, or touched-module coverage below 95%.
 - Behavior change with stale docs.
+- A safety guarantee cut in the name of simplicity or minimalism (rule 46).
 
 ---
 

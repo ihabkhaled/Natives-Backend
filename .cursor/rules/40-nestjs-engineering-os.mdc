@@ -33,6 +33,7 @@ Read `context/architecture-map.md` and `rules/00-non-negotiable-rules.md` before
 - Domain and use-case files must not import API DTOs — use model types from `model/*.types.ts` or `@shared/types`. Enforced by `architecture/no-dto-import-in-domain-or-use-case`.
 - Services must not import use cases; dependency direction is one-way. Enforced by `architecture/no-use-case-import-in-service`.
 - No behavior change without tests (written first) and docs in the same change.
+- Before writing code, run the Simple Code Ladder (`rules/20-simple-readable-code.md`, rules 43–46): need it → reuse existing owner → native/platform → existing adapter → small helper → direct readable code → new abstraction only when justified. No speculative abstraction, no clever TypeScript, no parallel duplicates; simplicity never cuts validation, guards, errors, adapters, bounds, tests, or docs. Detail: `rules/20`–`rules/24`, router `context/simple-code-map.md`.
 
 ## Gates (all green before done)
 

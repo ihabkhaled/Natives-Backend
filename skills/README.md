@@ -40,6 +40,21 @@ Skills are procedures, not policy. When a skill and a rule appear to disagree, t
 | [decompose-large-file.md](./decompose-large-file.md) | Split an oversized controller/service/use-case into focused collaborators behind a public surface that stays byte-for-byte stable. |
 | [migration-plan.md](./migration-plan.md)             | Plan a safe, reversible schema change (forward + rollback + sequencing) before any code is written.                                |
 
+### Simplicity — boring, reuse-first, minimal-safe ([rules 20–24](../rules/README.md))
+
+| Skill                                                                            | Use when you need to…                                                                                                        |
+| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| [write-simple-readable-code.md](./write-simple-readable-code.md)                 | Apply the Simple Code Ladder on every change: reuse → native → adapter → helper → direct code → justified abstraction.       |
+| [reuse-before-creating.md](./reuse-before-creating.md)                           | Search the existing owner before adding any file, helper, constant, DTO, enum, adapter, or fixture — never ship a duplicate. |
+| [simplify-existing-code.md](./simplify-existing-code.md)                         | Make an overbuilt or hard-to-scan file boring again behind characterization tests, without changing public behavior.         |
+| [extract-helper-safely.md](./extract-helper-safely.md)                           | Give repeated logic or a complex condition one named, typed, tested owner in the correct folder.                             |
+| [split-large-service.md](./split-large-service.md)                               | Break a multi-capability service apart by responsibility (decisions → `domain/`, shaping → `lib/`, facade if needed).        |
+| [split-large-use-case.md](./split-large-use-case.md)                             | Restore a god use case to a readable table of contents with an explicit transaction boundary and terminal states.            |
+| [split-large-repository.md](./split-large-repository.md)                         | Evict business logic from a repository and consolidate parameterized, allowlisted, bounded query helpers.                    |
+| [review-for-readable-code.md](./review-for-readable-code.md)                     | Run the nineteen readability questions of [rules/24](../rules/24-team-readable-code-review.md) on a diff before merge.       |
+| [remove-unnecessary-code.md](./remove-unnecessary-code.md)                       | Prove code/config/env/tests unused, then delete them and every reference — without touching a safety control.                |
+| [refactor-smart-code-to-boring-code.md](./refactor-smart-code-to-boring-code.md) | Rewrite clever chains, nested ternaries, and type gymnastics into named, direct, junior-readable code.                       |
+
 ### Test & verify — prove the thing works
 
 | Skill                                                      | Use when you need to…                                                                       |
@@ -77,13 +92,14 @@ Follow this for **every** task. Do not skip steps; depth scales with the change,
 1. **Read the rules.** [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) → the layer rule for what you're touching ([/rules/README.md](../rules/README.md)) → [/memory/known-pitfalls.md](../memory/known-pitfalls.md).
 2. **Open the matching skill** in this folder and follow it top to bottom.
 3. **Inspect the real code first.** Find a sibling module that already does the thing (use [/context/codebase-navigation.md](../context/codebase-navigation.md)) and mirror its structure. Cite real paths; never invent contracts.
-4. **Write or adjust tests FIRST** ([write-unit-tests.md](./write-unit-tests.md)). New or changed behavior without a test is incomplete (rule 42).
-5. **Make the minimal safe change.** Stay inside the right layer; don't refactor unrelated code into the diff.
-6. **Run the quality gates** (below) until every one is green.
-7. **Run integration/e2e tests** if you touched a route, the DB, or an adapter ([write-integration-tests.md](./write-integration-tests.md), [write-e2e-tests.md](./write-e2e-tests.md)).
-8. **Update docs in the same change** — Swagger decorators on the controller, module docs, the feature folder under [/docs/features/_template/](../docs/features/_template/), and the messageKey in each supported locale.
-9. **Log new pitfalls.** If you hit a recurring mistake, append a durable, abstract note to [/memory/known-pitfalls.md](../memory/known-pitfalls.md).
-10. **Before commit/push**, run [final-validation.md](./final-validation.md). Never stage blindly, never bypass hooks.
+4. **Run the Simple Code Ladder** ([write-simple-readable-code.md](./write-simple-readable-code.md), rules 43–46): reuse an existing owner before creating anything new; write the boring direct version; no speculative abstraction. Simplicity never cuts validation, guards, errors, adapters, bounds, tests, or docs.
+5. **Write or adjust tests FIRST** ([write-unit-tests.md](./write-unit-tests.md)). New or changed behavior without a test is incomplete (rule 42).
+6. **Make the minimal safe change.** Stay inside the right layer; don't refactor unrelated code into the diff.
+7. **Run the quality gates** (below) until every one is green.
+8. **Run integration/e2e tests** if you touched a route, the DB, or an adapter ([write-integration-tests.md](./write-integration-tests.md), [write-e2e-tests.md](./write-e2e-tests.md)).
+9. **Update docs in the same change** — Swagger decorators on the controller, module docs, the feature folder under [/docs/features/_template/](../docs/features/_template/), and the messageKey in each supported locale.
+10. **Log new pitfalls.** If you hit a recurring mistake, append a durable, abstract note to [/memory/known-pitfalls.md](../memory/known-pitfalls.md).
+11. **Before commit/push**, run [final-validation.md](./final-validation.md). Never stage blindly, never bypass hooks.
 
 ---
 
@@ -138,3 +154,4 @@ Never bypass hooks with `--no-verify`, and never silence a gate with `eslint-dis
 - No unbounded queries — paginate, cap `limit` at 100.
 - Side effects are fail-safe; async workflows reach a terminal state (success/failure/timeout).
 - No behavior change without tests **and** docs in the same change.
+- Simple Code Ladder on every change (rules 43–46): reuse the existing owner, no speculative abstraction, no clever TypeScript — boring, junior-readable, senior-trustworthy code. Minimal always means minimum **safe** code.

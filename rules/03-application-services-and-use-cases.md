@@ -78,7 +78,7 @@ export class OrderService {
   ) {}
 
   async publishOrder(orderId: string, actorId: string): Promise<Order> {
-    const order = await this.orderRepo.findByIdOrThrow(orderId); // precondition: exists
+    const order = await this.loadOrderOrThrow(orderId); // precondition: exists (repo returns null; the service throws)
     assertOwnership(order.ownerId, actorId); // precondition: ownership (lib/)
     const published = await transitionOrder(
       order,

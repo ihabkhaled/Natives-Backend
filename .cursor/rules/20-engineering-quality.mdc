@@ -16,6 +16,7 @@ Apply these rules generically regardless of language, framework, or architecture
 - document shared/common modules so future work reuses them instead of bypassing them
 - keep methods small, reviewable, and explicit
 - extract validation, transformation, mapping, policy logic, and branch-heavy logic into named helpers or dedicated modules when it improves ownership and readability
+- before writing code, run the Simple Code Ladder: need it → reuse existing → native/platform → existing adapter → small helper → direct readable code → new abstraction only when justified; be lazy about code volume, never about reading, validation, security, tests, docs, or architecture
 - never leak secrets, tokens, credentials, or protected data
 - validate input at trust boundaries
 - make async workflows observable, bounded, and failure-aware

@@ -42,6 +42,15 @@ Use this checklist for every pull request or change review. A reviewer should be
 - [ ] Error handling is explicit.
 - [ ] Logging and observability are present where needed.
 
+### Readability and Simplicity
+
+- [ ] A junior engineer can follow the flow; a senior engineer can trust the boundaries.
+- [ ] Existing owners were reused; no parallel duplicate helper, constant, validator, or permission logic was added.
+- [ ] No speculative abstraction, unused config/env value, or "maybe later" code shipped.
+- [ ] No clever expressions the team must decode: nested ternaries, dense one-liners, type gymnastics.
+- [ ] No safety control (validation, guards, ownership checks, error keys, bounds, tests, docs) was cut in the name of simplicity.
+- [ ] The full readability question list in `rules/24-team-readable-code-review.md` (and the baseline in `docs/sdlc/simple-readable-code.md`) was applied.
+
 ### Security and Privacy
 
 - [ ] Auth and permission behavior is correct.

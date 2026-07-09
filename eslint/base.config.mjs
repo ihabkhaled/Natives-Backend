@@ -27,6 +27,19 @@ export default [
       "prefer-template": "error",
       // Let simple-import-sort own import ordering.
       "sort-imports": "off",
+      // Cap cyclomatic complexity so branch-heavy logic is decomposed (rules/23).
+      complexity: ["error", { max: 15 }],
+      // Cap nesting depth; prefer guard clauses and early returns (rules/20).
+      "max-depth": ["error", { max: 3 }],
+      // Nested ternaries are unreadable; use branches or a named helper (rules/20).
+      // (The unicorn variant is disabled by eslint-config-prettier; the core rule is not.)
+      "no-nested-ternary": "error",
+      // Prefer early returns over else-after-return blocks (rules/20).
+      "no-else-return": ["error", { allowElseIf: false }],
+      // Keep parameters immutable; reassignment hides data flow (rules/20).
+      "no-param-reassign": "error",
+      // Disallow assignments inside return statements (rules/20).
+      "no-return-assign": ["error", "always"],
     },
   },
 ];

@@ -132,7 +132,7 @@ export class ArticlePublishService {
   }
 
   private persistPublished(article: Article): Promise<Article> {
-    return this.repo.update(article.id, { status: ArticleStatus.PUBLISHED });
+    return this.repo.update(article.id, { status: ArticleStatus.Published });
   }
 }
 ```

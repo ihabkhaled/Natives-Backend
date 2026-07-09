@@ -174,7 +174,7 @@ Each entrypoint restates the canonical file precedence, the NestJS backend archi
 
 - `rules/` — layer-by-layer engineering rules; start with `rules/00-non-negotiable-rules.md`.
 - `skills/` — step-by-step task playbooks that apply the rules.
-- `context/` — `context/architecture-map.md` (canonical architecture), `context/stack-and-toolchain.md`, `context/codebase-navigation.md` (task router), `context/reference-patterns.md` (copy-ready code).
+- `context/` — `context/architecture-map.md` (canonical architecture), `context/stack-and-toolchain.md`, `context/codebase-navigation.md` (task router), `context/reference-patterns.md` (copy-ready code), `context/simple-code-map.md` (simplicity router).
 - `memory/` — durable decisions + `memory/known-pitfalls.md`.
 - `agents/` — specialist review roles.
 - `testing/` — engineering test standards.
@@ -182,6 +182,8 @@ Each entrypoint restates the canonical file precedence, the NestJS backend archi
 Canonical architecture (one-way layered deps): Controller (`api/*.controller.ts`, thin, one delegation/method) → Application (`application/*.use-case.ts` for orchestration+transactions; `*.service.ts` focused, ≤20 lines/method) → Domain (`domain/`) → Persistence (`infrastructure/*.repository.ts`) → Integration (`adapters/*.adapter.ts`). Cross-cutting in `src/core`, `src/config`, `src/shared`.
 
 Before NestJS implementation read: `claude.md` → `context/architecture-map.md` → `rules/00-non-negotiable-rules.md` → the layer rule(s) and the matching skill. Then write tests first and keep every gate green: `npm run lint`, `npm run typecheck`, `npm run test:coverage`, `npm run build`. If engineering guidance ever conflicts with `claude.md`, `claude.md` wins; when two rules overlap, the stricter one applies.
+
+Before writing code, run the IronNest Simple Code Ladder (`rules/20-simple-readable-code.md`, non-negotiable rules 43–46): need it → reuse existing → native/platform → existing adapter/dependency → small helper → direct readable code → new abstraction only when justified. Be lazy about code volume, never lazy about reading, validation, security, auth, permissions, ownership checks, tests, docs, observability, or architecture. Canonical detail: `rules/20`–`rules/24`.
 
 ## Final Instruction
 

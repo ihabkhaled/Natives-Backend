@@ -127,7 +127,7 @@ export class ArticleController {
 @Post(':id/publish')
 publish(@Param('id') id: string): Promise<ArticleResponseDto> {
   const article = await this.articleService.getById(id);
-  if (article.status === ArticleStatus.DRAFT) return this.articleService.autoPublish(id);
+  if (article.status === ArticleStatus.Draft) return this.articleService.autoPublish(id);
   return this.articleService.publish(id); // rule belongs in the application layer
 }
 

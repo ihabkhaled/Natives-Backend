@@ -238,6 +238,40 @@ See [04-repositories-and-persistence.md](../rules/04-repositories-and-persistenc
 
 ---
 
+## J. Simplicity & over-production traps
+
+### J1. Speculative abstraction shipped "for later"
+
+- **Symptom:** a factory/strategy/base class/generic wrapper with exactly one implementation and one caller; nobody can say what second case it serves.
+- **Cause:** building for imaginary future needs instead of the current task (rule 44).
+- **Fix:** replace with direct concrete code; reintroduce the abstraction only when a real second call site or boundary reason appears. See [21-yagni-and-minimalism.md](../rules/21-yagni-and-minimalism.md) and [remove-unnecessary-code.md](../skills/remove-unnecessary-code.md).
+
+### J2. Parallel duplicate instead of extending the owner
+
+- **Symptom:** two helpers/constants/validators for the same concern drift apart; the stale one silently wins in some code paths.
+- **Cause:** creating a "cleaner" new file instead of searching for and extending the existing owner (rule 45) — worst when the duplicate is permission/ownership logic.
+- **Fix:** run the owner search of [22-reuse-before-creating.md](../rules/22-reuse-before-creating.md) first; extend or refactor the owner, then delete the duplicate. See [reuse-before-creating.md](../skills/reuse-before-creating.md).
+
+### J3. Clever one-liner that passes gates but stops reviewers
+
+- **Symptom:** a chained `filter/map/reduce` or nested optional-chain expression is re-read three times in review; the author must explain it in a comment or PR thread.
+- **Cause:** compressing several transformations into one expression instead of naming the steps (rule 46).
+- **Fix:** split into named variables/helpers per [20-simple-readable-code.md](../rules/20-simple-readable-code.md) §3; complexity explained in prose is a defect, not a justification. See [refactor-smart-code-to-boring-code.md](../skills/refactor-smart-code-to-boring-code.md).
+
+### J4. "Minimal" change that cut a safety guarantee
+
+- **Symptom:** a simplification deletes a DTO bound, an ownership check, an error `messageKey`, or a pagination cap because it "wasn't needed for the happy path".
+- **Cause:** reading minimalism as fewest-lines instead of minimum **safe** code (rule 46).
+- **Fix:** restore the guarantee; safety controls are only removable with proof they are dead **semantically**, not just unreferenced by new code. MUST FIX in review ([15 §2a](../rules/15-review-checklist.md)).
+
+### J5. Over-extraction into meaningless tiny files
+
+- **Symptom:** a 6-line method becomes three one-line files; navigation cost rises, coupling stays.
+- **Cause:** extracting to satisfy line-count fashion instead of responsibility ownership.
+- **Fix:** split by responsibility only ([23 §5](../rules/23-function-service-file-size-discipline.md)); inline the fragments back if each file has no reason to change independently.
+
+---
+
 ## Checklist before writing code
 
 - [ ] Narrowed every indexed/optional access — no `!` (A1, A2, A3)
@@ -249,6 +283,7 @@ See [04-repositories-and-persistence.md](../rules/04-repositories-and-persistenc
 - [ ] No N+1, no unbounded list, no raw-value queries (F1, F2, F3)
 - [ ] DTO decorates every field; identity from token not body (G1, G3)
 - [ ] No `process.env` in business code; typed `AppError` with `messageKey`; no inline constants (H1, H2, H3)
+- [ ] Simple Code Ladder run: owner reused, no speculative abstraction, boring direct version, no safety cut (J1–J5)
 - [ ] `lint` / `typecheck` / `test` / `test:coverage` / `build` green — never `--no-verify` (I1)
 
-**Related:** [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) · [reliability-patterns.md](./reliability-patterns.md) · [performance-decisions.md](./performance-decisions.md) · [security-decisions.md](./security-decisions.md) · [testing-strategy.md](./testing-strategy.md) · [ai-context-map.md](./ai-context-map.md)
+**Related:** [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) · [reliability-patterns.md](./reliability-patterns.md) · [performance-decisions.md](./performance-decisions.md) · [security-decisions.md](./security-decisions.md) · [code-simplicity-decisions.md](./code-simplicity-decisions.md) · [testing-strategy.md](./testing-strategy.md) · [ai-context-map.md](./ai-context-map.md)

@@ -98,6 +98,8 @@ Precedence within the engineering OS: [`context/architecture-map.md`](context/ar
 
 Before NestJS implementation: read this `claude.md`, then [`context/architecture-map.md`](context/architecture-map.md), [`rules/00-non-negotiable-rules.md`](rules/00-non-negotiable-rules.md), the layer rule(s) you are touching, and the matching skill — then write tests first and keep every gate green (`npm run lint` · `npm run typecheck` · `npm run test:coverage` · `npm run build`).
 
+Before writing code, run the IronNest Simple Code Ladder ([`rules/20-simple-readable-code.md`](rules/20-simple-readable-code.md), non-negotiable rules 43–46): need it → reuse existing → native/platform → existing adapter/dependency → small helper → direct readable code → new abstraction only when justified. Be lazy about code volume, never lazy about reading, validation, security, auth, permissions, ownership checks, tests, docs, observability, or architecture. Canonical detail: [`rules/20`](rules/20-simple-readable-code.md)–[`rules/24`](rules/24-team-readable-code-review.md), routed by [`context/simple-code-map.md`](context/simple-code-map.md).
+
 ## Standing Instruction To Claude Or Any AI Coding Agent
 
 You are operating inside a strict enterprise SDLC. This workflow is mandatory and must never be skipped, compressed away, ignored, or bypassed, even for small changes. Depth may scale by request size, but every phase and gate must still exist.

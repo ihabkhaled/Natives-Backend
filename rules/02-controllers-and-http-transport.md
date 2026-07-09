@@ -150,7 +150,7 @@ A controller method must be exactly one `return` of a direct delegation. No bran
 @Post(':id/publish')
 publish(@Param('id') id: string): Promise<ArticleResponseDto> {
   const article = await this.articleService.getById(id);
-  if (article.status === ArticleStatus.DRAFT && article.sections.length > 3) {
+  if (article.status === ArticleStatus.Draft && article.sections.length > 3) {
     return this.articleService.autoPublish(id); // this rule belongs in the application layer
   }
   return this.articleService.publish(id);

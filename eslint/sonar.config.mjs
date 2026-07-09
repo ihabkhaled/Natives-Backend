@@ -6,8 +6,8 @@ export default {
     sonarjs: sonarjsPlugin,
   },
   rules: {
-    // Keep function complexity within a readable limit.
-    "sonarjs/cognitive-complexity": ["error", 20],
+    // Keep cognitive complexity within a readable limit (rules/20, rules/23).
+    "sonarjs/cognitive-complexity": ["error", 15],
     // Prefer simpler condition nesting.
     "sonarjs/no-collapsible-if": "error",
     // Catch duplicated branch implementations.

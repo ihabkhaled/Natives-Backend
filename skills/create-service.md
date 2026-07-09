@@ -94,7 +94,7 @@ async publish(authorId: string, input: PublishArticleData): Promise<ArticleSumma
 
 - **Not found** → throw from the policy/helper, e.g. `ArticleNotFoundError('errors.article.notFound')`.
 - **Forbidden ownership** → `assertArticleOwnedBy` throws `ArticleForbiddenError('errors.article.forbidden')`.
-- Compare enum fields against enum members (`status === ArticleStatus.DRAFT`), never raw literals.
+- Compare enum fields against enum members (`status === ArticleStatus.Draft`), never raw literals.
 
 ## Step 5 — Extract everything that isn't orchestration
 
