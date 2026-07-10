@@ -39,6 +39,11 @@ ruleTester.run('architecture/no-cross-module-internal-imports', rule, {
       filename: 'src/core/logger.service.ts',
       code: `import { WinstonAdapter } from '../adapters/winston.adapter';`,
     },
+    {
+      name: 'import another module through its alias public entrypoint',
+      filename: 'src/modules/articles/application/articles.service.ts',
+      code: `import { UsersModule } from '@modules/users';`,
+    },
   ],
   invalid: [
     {
@@ -63,6 +68,42 @@ ruleTester.run('architecture/no-cross-module-internal-imports', rule, {
       name: 'import another module controller',
       filename: 'src/modules/articles/application/articles.service.ts',
       code: `import { UsersController } from '../../users/api/users.controller';`,
+      errors: [{ messageId: 'crossModuleInternalImport' }],
+    },
+    {
+      name: 'alias import cannot bypass another module service boundary',
+      filename: 'src/modules/articles/application/articles.service.ts',
+      code: `import { UsersService } from '@modules/users/application/users.service';`,
+      errors: [{ messageId: 'crossModuleInternalImport' }],
+    },
+    {
+      name: 'another module adapter is private',
+      filename: 'src/modules/articles/application/articles.service.ts',
+      code: `import { UserVendorAdapter } from '../../users/adapters/user-vendor.adapter';`,
+      errors: [{ messageId: 'crossModuleInternalImport' }],
+    },
+    {
+      name: 'another module lib helper is private',
+      filename: 'src/modules/articles/application/articles.service.ts',
+      code: `import { mapUser } from '../../users/lib/user.mapper';`,
+      errors: [{ messageId: 'crossModuleInternalImport' }],
+    },
+    {
+      name: 're-export cannot bypass another module boundary',
+      filename: 'src/modules/articles/index.ts',
+      code: `export { UsersService } from '@modules/users/application/users.service';`,
+      errors: [{ messageId: 'crossModuleInternalImport' }],
+    },
+    {
+      name: 'dynamic import cannot bypass another module boundary',
+      filename: 'src/modules/articles/application/articles.service.ts',
+      code: `export const loadUsers = () => import('@modules/users/infrastructure/users.repository');`,
+      errors: [{ messageId: 'crossModuleInternalImport' }],
+    },
+    {
+      name: 'template-literal import cannot bypass another module boundary',
+      filename: 'src/modules/articles/application/articles.service.ts',
+      code: 'export const loadUsers = () => import(`@modules/users/application/users.service`);',
       errors: [{ messageId: 'crossModuleInternalImport' }],
     },
   ],

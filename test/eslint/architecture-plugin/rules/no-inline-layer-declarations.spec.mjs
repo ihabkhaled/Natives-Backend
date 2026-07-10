@@ -82,6 +82,17 @@ ruleTester.run('architecture/no-inline-layer-declarations', rule, {
         }
       `,
     },
+    {
+      name: 'object value literals remain valid implementation details',
+      filename: 'src/modules/example/application/example.service.ts',
+      code: `
+        export class ExampleService {
+          result(): unknown {
+            return { id: 'example' };
+          }
+        }
+      `,
+    },
   ],
   invalid: [
     {
@@ -139,6 +150,50 @@ ruleTester.run('architecture/no-inline-layer-declarations', rule, {
         export class ExampleService {}
       `,
       errors: [{ messageId: 'noInlineFunction' }],
+    },
+    {
+      name: 'anonymous parameter contract in guard',
+      filename: 'src/modules/example/example.guard.ts',
+      code: `
+        export class ExampleGuard {
+          canActivate(request: { userId: string }): boolean {
+            return request.userId.length > 0;
+          }
+        }
+      `,
+      errors: [{ messageId: 'noInlineTypeLiteral' }],
+    },
+    {
+      name: 'anonymous result contract in service',
+      filename: 'src/modules/example/application/example.service.ts',
+      code: `
+        export class ExampleService {
+          find(): Promise<{ id: string }> {
+            return Promise.resolve({ id: 'example' });
+          }
+        }
+      `,
+      errors: [{ messageId: 'noInlineTypeLiteral' }],
+    },
+    {
+      name: 'anonymous generic request contract in guard',
+      filename: 'src/modules/example/example.guard.ts',
+      code: `
+        interface Context {
+          getRequest<T>(): T;
+        }
+
+        export class ExampleGuard {
+          canActivate(context: Context): boolean {
+            const request = context.getRequest<{ userId: string }>();
+            return request.userId.length > 0;
+          }
+        }
+      `,
+      errors: [
+        { messageId: 'noInlineInterface' },
+        { messageId: 'noInlineTypeLiteral' },
+      ],
     },
     {
       name: 'module-level const in repository',

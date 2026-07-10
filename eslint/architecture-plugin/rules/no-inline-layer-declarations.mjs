@@ -28,6 +28,20 @@ function isAllowedVariable(node, allowedNames) {
   );
 }
 
+function isInsideNamedTypeDeclaration(node) {
+  let current = node.parent;
+  while (current !== undefined && current.type !== "Program") {
+    if (
+      current.type === "TSInterfaceDeclaration" ||
+      current.type === "TSTypeAliasDeclaration"
+    ) {
+      return true;
+    }
+    current = current.parent;
+  }
+  return false;
+}
+
 /**
  * Project architecture rule: implementation-layer files must contain only the
  * class or function that belongs to that layer. No module-level consts, enums,
@@ -51,6 +65,8 @@ export default {
         "Do not declare interfaces in this file. Move them to a dedicated types/model module.",
       noInlineTypeAlias:
         "Do not declare type aliases in this file. Move them to a dedicated types/model module.",
+      noInlineTypeLiteral:
+        "Do not use an anonymous type literal in this implementation-layer file. Move the contract to its dedicated types/model module and import it.",
       noInlineFunction:
         "Do not declare helper functions in this file. Move them to a lib/*.helpers.ts or shared util module.",
     },
@@ -79,6 +95,11 @@ export default {
       },
       "Program > TSTypeAliasDeclaration"(node) {
         context.report({ node, messageId: "noInlineTypeAlias" });
+      },
+      TSTypeLiteral(node) {
+        if (!isInsideNamedTypeDeclaration(node)) {
+          context.report({ node, messageId: "noInlineTypeLiteral" });
+        }
       },
       "Program > FunctionDeclaration"(node) {
         context.report({ node, messageId: "noInlineFunction" });

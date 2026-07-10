@@ -1,4 +1,8 @@
-import { getFilename, getImportCandidates } from "../shared/source-utils.mjs";
+import {
+  getFilename,
+  getImportCandidates,
+  getImportSource,
+} from "../shared/source-utils.mjs";
 
 const patternList = { type: "array", items: { type: "string" } };
 
@@ -41,8 +45,11 @@ function isPrivateCrossModuleImport(filename, candidates, options) {
   const privateLayers = options.privateLayers ?? [
     "api",
     "application",
+    "adapters?",
     "domain",
+    "errors?",
     "infrastructure",
+    "lib",
   ];
   const publicLayerPatterns = options.publicLayerPatterns ?? [];
   const privateLayerPattern = new RegExp(`/(${privateLayers.join("|")})/`);
@@ -99,17 +106,30 @@ export default {
     const options = context.options[0] ?? {};
     const filename = getFilename(context);
 
-    return {
-      ImportDeclaration(node) {
-        const candidates = getImportCandidates(node.source.value, filename);
+    const checkImport = (node) => {
+      const source = getImportSource(node);
+      if (source === "") {
+        return;
+      }
+      const candidates = getImportCandidates(source, filename);
 
-        if (isPrivateCrossModuleImport(filename, candidates, options)) {
-          context.report({
-            node,
-            messageId: "crossModuleInternalImport",
-          });
+      if (isPrivateCrossModuleImport(filename, candidates, options)) {
+        context.report({
+          node,
+          messageId: "crossModuleInternalImport",
+        });
+      }
+    };
+
+    return {
+      ImportDeclaration: checkImport,
+      ExportAllDeclaration: checkImport,
+      ExportNamedDeclaration(node) {
+        if (node.source !== null) {
+          checkImport(node);
         }
       },
+      ImportExpression: checkImport,
     };
   },
 };

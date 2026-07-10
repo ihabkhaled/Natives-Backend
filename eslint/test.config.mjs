@@ -35,6 +35,9 @@ export default {
     "max-lines-per-function": "off",
     // Test files can import across layers to assemble unit fixtures.
     "architecture/no-restricted-layer-imports": "off",
+    // Test fixtures may declare local constants/types beside their scenarios.
+    "architecture/no-inline-layer-declarations": "off",
+    "max-classes-per-file": "off",
     // Focused tests must never be committed.
     "no-restricted-syntax": [
       "error",

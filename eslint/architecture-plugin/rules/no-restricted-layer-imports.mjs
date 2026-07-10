@@ -141,8 +141,11 @@ export default {
     const visitors = {};
 
     if (policies.length > 0) {
-      visitors.ImportDeclaration = (node) => {
+      const checkImport = (node) => {
         const source = getImportSource(node);
+        if (source === "") {
+          return;
+        }
         const candidates = getImportCandidates(source, filename);
 
         for (const policy of policies) {
@@ -155,6 +158,14 @@ export default {
           }
         }
       };
+      visitors.ImportDeclaration = checkImport;
+      visitors.ExportAllDeclaration = checkImport;
+      visitors.ExportNamedDeclaration = (node) => {
+        if (node.source !== null) {
+          checkImport(node);
+        }
+      };
+      visitors.ImportExpression = checkImport;
     }
 
     if (restrictedAccess.length > 0) {

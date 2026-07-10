@@ -47,9 +47,27 @@ const DOMAIN_FILE = path.join(
   'src/modules/example/domain/example.policy.ts',
 );
 const GUARD_FILE = path.join(repoRoot, 'src/modules/example/example.guard.ts');
+const PIPE_FILE = path.join(repoRoot, 'src/core/pipes/example.pipe.ts');
+const INTERCEPTOR_FILE = path.join(
+  repoRoot,
+  'src/core/interceptors/example.interceptor.ts',
+);
+const FILTER_FILE = path.join(repoRoot, 'src/core/errors/example.filter.ts');
+const HANDLER_FILE = path.join(
+  repoRoot,
+  'src/modules/example/handlers/example.handler.ts',
+);
+const USE_CASE_FILE = path.join(
+  repoRoot,
+  'src/modules/example/application/example.use-case.ts',
+);
 const SPEC_FILE = path.join(
   repoRoot,
   'src/modules/example/application/example.service.spec.ts',
+);
+const ADAPTER_SPEC_FILE = path.join(
+  repoRoot,
+  'src/modules/example/adapters/vendor.adapter.spec.ts',
 );
 const LIB_FILE = path.join(
   repoRoot,
@@ -91,6 +109,13 @@ describe('eslint.config.mjs rule activation', () => {
         15,
       ]);
     });
+
+    it('definite-assignment assertions are rejected on every TypeScript file', async () => {
+      const rules = await configFor(LIB_FILE);
+      expect(rules['architecture/no-definite-assignment-assertions'][0]).toBe(
+        ERROR_SEVERITY,
+      );
+    });
   });
 
   describe('service overrides stay active', () => {
@@ -117,6 +142,10 @@ describe('eslint.config.mjs rule activation', () => {
       ['nested adapter', NESTED_ADAPTER_FILE],
       ['guard', GUARD_FILE],
       ['nested guard', NESTED_GUARD_FILE],
+      ['pipe', PIPE_FILE],
+      ['interceptor', INTERCEPTOR_FILE],
+      ['filter', FILTER_FILE],
+      ['handler', HANDLER_FILE],
     ])(
       'no-inline-layer-declarations is active on %s files',
       async (_, file) => {
@@ -135,6 +164,10 @@ describe('eslint.config.mjs rule activation', () => {
       ['nested adapter', NESTED_ADAPTER_FILE],
       ['guard', GUARD_FILE],
       ['nested guard', NESTED_GUARD_FILE],
+      ['pipe', PIPE_FILE],
+      ['interceptor', INTERCEPTOR_FILE],
+      ['filter', FILTER_FILE],
+      ['handler', HANDLER_FILE],
     ])('max-classes-per-file caps %s files at one class', async (_, file) => {
       const rules = await configFor(file);
       expect(rules['max-classes-per-file']).toEqual([ERROR_SEVERITY, 1]);
@@ -163,6 +196,21 @@ describe('eslint.config.mjs rule activation', () => {
       );
     });
 
+    it.each([
+      ['use case', USE_CASE_FILE],
+      ['repository', REPOSITORY_FILE],
+      ['adapter', ADAPTER_FILE],
+      ['guard', GUARD_FILE],
+      ['pipe', PIPE_FILE],
+      ['interceptor', INTERCEPTOR_FILE],
+      ['filter', FILTER_FILE],
+      ['handler', HANDLER_FILE],
+    ])('%s methods are capped at 40 lines', async (_, file) => {
+      const rules = await configFor(file);
+      expect(rules['max-lines-per-function'][0]).toBe(ERROR_SEVERITY);
+      expect(rules['max-lines-per-function'][1]).toMatchObject({ max: 40 });
+    });
+
     it('lib files are NOT implementation layers (the function is the layer)', async () => {
       const rules = await configFor(LIB_FILE);
       expect(rules['architecture/no-inline-layer-declarations']).toBe(
@@ -176,6 +224,15 @@ describe('eslint.config.mjs rule activation', () => {
       const rules = await configFor(SPEC_FILE);
       expect(rules['max-lines-per-function'][0]).toBe(0);
       expect(rules['@typescript-eslint/no-explicit-any'][0]).toBe(
+        ERROR_SEVERITY,
+      );
+    });
+
+    it('adapter specs are not treated as implementation-layer source', async () => {
+      const rules = await configFor(ADAPTER_SPEC_FILE);
+      expect(rules['architecture/no-inline-layer-declarations'][0]).toBe(0);
+      expect(rules['max-classes-per-file'][0]).toBe(0);
+      expect(rules['architecture/no-definite-assignment-assertions'][0]).toBe(
         ERROR_SEVERITY,
       );
     });

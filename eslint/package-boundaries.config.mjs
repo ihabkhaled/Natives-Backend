@@ -19,42 +19,64 @@ export const packageImportBoundaries = [
   // --- Shipped vendors: one owning module each -------------------------------
   {
     // Logging vendor. Everything else logs through AppLogger (@core/logger).
-    forbid: ["^nestjs-pino$", "^pino$", "^pino-http$", "^pino-pretty$"],
+    forbid: [
+      "^nestjs-pino(?:/|$)",
+      "^pino(?:/|$)",
+      "^pino-http(?:/|$)",
+      "^pino-pretty(?:/|$)",
+    ],
     allowIn: ["/core/logger/"],
     message:
       "Import the logging vendor only inside src/core/logger — use AppLogger from @core/logger.",
   },
   {
     // Validation vendor. DTOs/config import the @core/validation re-exports.
-    forbid: ["^class-validator$", "^class-transformer$"],
+    forbid: ["^class-validator(?:/|$)", "^class-transformer(?:/|$)"],
     allowIn: ["/core/validation/"],
     message:
       "Import the validation vendor only inside src/core/validation — use the @core/validation re-exports.",
   },
   {
     // OpenAPI decorator vendor. Bootstrap owns document setup.
-    forbid: ["^@nestjs/swagger$"],
+    forbid: ["^@nestjs/swagger(?:/|$)"],
     allowIn: ["/core/openapi/", "/bootstrap/"],
     message:
       "Import @nestjs/swagger only in src/core/openapi (decorators) or src/bootstrap (document setup) — use @core/openapi.",
   },
   {
     // Rate-limiting vendor.
-    forbid: ["^@nestjs/throttler$"],
+    forbid: ["^@nestjs/throttler(?:/|$)"],
     allowIn: ["/core/rate-limit/"],
     message:
       "Import the rate-limit vendor only inside src/core/rate-limit — import RateLimitModule instead.",
   },
   {
     // Configuration vendor. Consumers inject the typed AppConfigService.
-    forbid: ["^@nestjs/config$"],
+    forbid: ["^@nestjs/config(?:/|$)"],
     allowIn: ["/config/"],
     message:
       "Import @nestjs/config only inside src/config — inject AppConfigService from @config/app-config.service.",
   },
   {
+    // Password hashing vendor. Application code depends on the auth-owned port.
+    forbid: ["^bcrypt(?:/|$)"],
+    allowIn: ["/modules/auth/adapters/"],
+    message:
+      "Import bcrypt only inside an adapter — inject the app-owned password hash port elsewhere.",
+  },
+  {
+    // JWT vendor. The auth module registers it; only an adapter consumes it.
+    forbid: ["^@nestjs/jwt(?:/|$)"],
+    allowIn: [
+      "/modules/auth/auth\\.module(?:\\.ts)?$",
+      "/modules/auth/adapters/",
+    ],
+    message:
+      "Import @nestjs/jwt only in auth module wiring or a token adapter — inject the app-owned token port elsewhere.",
+  },
+  {
     // HTTP platform vendor (Fastify + its plugins + the Nest platform binding).
-    forbid: ["^fastify$", "^@fastify/", "^@nestjs/platform-"],
+    forbid: ["^fastify(?:/|$)", "^@fastify/", "^@nestjs/platform-"],
     allowIn: ["/bootstrap/"],
     message:
       "The HTTP platform vendor lives only in src/bootstrap — cross-cutting code uses the structural types in @core/http.",
@@ -62,18 +84,28 @@ export const packageImportBoundaries = [
 
   // --- Generic policy for vendors a project adds later -----------------------
   {
-    forbid: ["^axios$", "^got$", "^undici$", "^node-fetch$"],
+    forbid: [
+      "^axios(?:/|$)",
+      "^got(?:/|$)",
+      "^undici(?:/|$)",
+      "^node-fetch(?:/|$)",
+    ],
     allowIn: ["/http/", ...adapterScope],
     message: "Import HTTP clients only through a typed HTTP adapter.",
   },
   {
-    forbid: ["^winston$", "^bunyan$"],
+    forbid: ["^winston(?:/|$)", "^bunyan(?:/|$)"],
     allowIn: ["/core/logger/", ...adapterScope],
     message:
       "Alternative logging vendors also belong inside the logger module.",
   },
   {
-    forbid: ["^typeorm$", "^@prisma/client$", "^mongoose$", "^sequelize$"],
+    forbid: [
+      "^typeorm(?:/|$)",
+      "^@prisma/client(?:/|$)",
+      "^mongoose(?:/|$)",
+      "^sequelize(?:/|$)",
+    ],
     allowIn: [
       "/infrastructure/",
       "/database/",
@@ -83,7 +115,12 @@ export const packageImportBoundaries = [
     message: "Import ORM/database clients only in the persistence layer.",
   },
   {
-    forbid: ["^amqplib$", "^kafkajs$", "^bullmq$", "^ioredis$"],
+    forbid: [
+      "^amqplib(?:/|$)",
+      "^kafkajs(?:/|$)",
+      "^bullmq(?:/|$)",
+      "^ioredis(?:/|$)",
+    ],
     allowIn: ["/messaging/", "/queue/", "/cache/", ...adapterScope],
     message: "Import brokers/queues/cache clients only through their adapter.",
   },

@@ -108,6 +108,10 @@ export const implementationLayerPatterns = [
   "/interceptors?/.+\\.ts$",
   "\\.pipe(?:\\.ts)?$",
   "/pipes?/.+\\.ts$",
+  "\\.filter(?:\\.ts)?$",
+  "/filters?/.+\\.ts$",
+  "\\.handler(?:\\.ts)?$",
+  "/handlers?/.+\\.ts$",
 ];
 
 // Glob equivalents of implementationLayerPatterns. Flat-config `files` entries
@@ -132,6 +136,12 @@ export const implementationLayerGlobs = [
   "**/*.pipe.ts",
   "**/pipe/**/*.ts",
   "**/pipes/**/*.ts",
+  "**/*.filter.ts",
+  "**/filter/**/*.ts",
+  "**/filters/**/*.ts",
+  "**/*.handler.ts",
+  "**/handler/**/*.ts",
+  "**/handlers/**/*.ts",
 ];
 
 export const adapterFileGlobs = [
@@ -153,6 +163,9 @@ export const architectureBaseConfig = {
     ],
     // Enforce module ownership: import from another module's public/model layer only.
     "architecture/no-cross-module-internal-imports": "error",
+    // `field!: Type` is an unchecked initialization escape hatch. DTOs use
+    // `declare`; stateful classes initialize fields in constructors.
+    "architecture/no-definite-assignment-assertions": "error",
   },
 };
 
@@ -188,6 +201,17 @@ export const architectureOverrideConfigs = [
       // One class per implementation-layer file — the layer class is the file
       // (rules/23). A second helper class belongs in its own owner file.
       "max-classes-per-file": ["error", 1],
+      // Non-service implementation methods get a conservative readability
+      // budget. Services are tightened to 20 by the later override.
+      "max-lines-per-function": [
+        "error",
+        {
+          max: 40,
+          skipBlankLines: true,
+          skipComments: true,
+          IIFEs: false,
+        },
+      ],
     },
   },
   {

@@ -31,7 +31,7 @@ export default defineConfig(
   sonarConfig,
   unicornConfig,
   architectureBaseConfig,
-  testConfig,
   ...architectureOverrideConfigs,
+  testConfig,
   prettierConflictConfig,
 );

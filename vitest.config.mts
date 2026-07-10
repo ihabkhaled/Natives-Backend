@@ -36,15 +36,30 @@ export default defineConfig({
       // bootstrap, config, logger setup) is proven by the e2e boot test, and
       // declarative files (dto/enums/types/constants) carry no branches.
       include: [
+        'src/config/app.config.ts',
+        'src/config/config-validation.helpers.ts',
+        'src/config/config.utils.ts',
+        'src/config/env.validation.ts',
+        'src/config/security.config.ts',
+        'src/core/auth/auth-identity.validator.ts',
+        'src/core/auth/bearer-token.parser.ts',
+        'src/core/auth/jwt-auth.guard.ts',
+        'src/core/auth/permission.helpers.ts',
+        'src/core/auth/permissions.guard.ts',
         'src/core/errors/error-body.mapper.ts',
         'src/core/errors/app-exception.filter.ts',
         'src/core/logger/app-logger.service.ts',
+        'src/core/logger/log-context.sanitizer.ts',
         'src/core/validation/validation-exception.factory.ts',
+        'src/core/validation/uuid-validation-error.factory.ts',
+        'src/core/validation/uuid-validation.pipe.ts',
         'src/core/health/health.service.ts',
         'src/modules/**/domain/**/*.ts',
         'src/modules/**/application/**/*.ts',
         'src/modules/**/infrastructure/**/*.ts',
         'src/modules/**/lib/**/*.ts',
+        'src/modules/**/adapters/**/*.ts',
+        'src/modules/**/errors/**/*.ts',
       ],
       thresholds: {
         // Branch floor is 90 (not 95): the decorator downlevel emit injects an
