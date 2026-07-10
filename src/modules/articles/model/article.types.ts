@@ -14,6 +14,13 @@ export interface CreateArticleData {
   readonly body: string;
 }
 
+export interface CreateArticleInput {
+  readonly data: CreateArticleData;
+  readonly id: string;
+  readonly ownerId: string;
+  readonly createdAt: Date;
+}
+
 export interface ListArticlesQuery {
   readonly limit?: number;
   readonly offset?: number;

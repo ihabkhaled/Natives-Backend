@@ -1,6 +1,10 @@
-import { compareSync } from 'bcrypt';
+import { Role } from '@shared/enums';
 import { beforeEach, describe, expect, it } from 'vitest';
 
+import {
+  REFERENCE_USER_EMAIL,
+  REFERENCE_USER_PASSWORD_HASH,
+} from '../model/user.constants';
 import { UsersRepository } from './users.repository';
 
 describe('UsersRepository', () => {
@@ -11,12 +15,12 @@ describe('UsersRepository', () => {
   });
 
   it('returns the seeded reference user by email', async () => {
-    const user = await repository.findByEmail('user@example.com');
+    const user = await repository.findByEmail(REFERENCE_USER_EMAIL);
 
     expect(user).not.toBeNull();
-    expect(user?.email).toBe('user@example.com');
-    expect(user?.roles).toContain('user');
-    expect(compareSync('password', user?.passwordHash ?? '')).toBe(true);
+    expect(user?.email).toBe(REFERENCE_USER_EMAIL);
+    expect(user?.roles).toContain(Role.User);
+    expect(user?.passwordHash).toBe(REFERENCE_USER_PASSWORD_HASH);
   });
 
   it('returns null for an unknown email', async () => {

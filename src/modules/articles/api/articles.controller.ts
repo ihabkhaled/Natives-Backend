@@ -1,4 +1,9 @@
 import {
+  type AuthUserIdentity,
+  CurrentUser,
+  RequirePermissions,
+} from '@core/auth';
+import {
   ApiCreatedResponse,
   ApiForbiddenResponse,
   ApiNotFoundResponse,
@@ -7,6 +12,7 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@core/openapi';
+import { UuidValidationPipe } from '@core/validation';
 import {
   Body,
   Controller,
@@ -14,24 +20,30 @@ import {
   HttpCode,
   HttpStatus,
   Param,
-  ParseUUIDPipe,
   Post,
   Query,
 } from '@nestjs/common';
+import { Permission } from '@shared/enums';
 
-import { type AuthUserIdentity, CurrentUser } from '../../auth';
 import { ArticlesService } from '../application/articles.service';
+import {
+  ARTICLE_API_TAG,
+  ARTICLE_ID_PARAM,
+  ARTICLE_ID_ROUTE,
+  ARTICLE_ROUTE,
+} from '../model/article.constants';
 import { ArticleResponseDto } from './dto/article-response.dto';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { ListArticlesQueryDto } from './dto/list-articles.query.dto';
 import { ListArticlesResponseDto } from './dto/list-articles.response.dto';
 
-@ApiTags('articles')
-@Controller('articles')
+@ApiTags(ARTICLE_API_TAG)
+@Controller(ARTICLE_ROUTE)
 export class ArticlesController {
   constructor(private readonly articlesService: ArticlesService) {}
 
   @Post()
+  @RequirePermissions(Permission.ArticleCreate)
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create a new article' })
   @ApiCreatedResponse({
@@ -46,20 +58,22 @@ export class ArticlesController {
     return this.articlesService.create(dto, user.userId);
   }
 
-  @Get(':id')
+  @Get(ARTICLE_ID_ROUTE)
+  @RequirePermissions(Permission.ArticleRead)
   @ApiOperation({ summary: 'Get an article by id' })
   @ApiOkResponse({ description: 'Article found', type: ArticleResponseDto })
   @ApiNotFoundResponse({ description: 'Article not found' })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   getById(
-    @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
+    @Param(ARTICLE_ID_PARAM, UuidValidationPipe) id: string,
     @CurrentUser() user: AuthUserIdentity,
   ): Promise<ArticleResponseDto> {
     return this.articlesService.getById(id, user.userId);
   }
 
   @Get()
+  @RequirePermissions(Permission.ArticleRead)
   @ApiOperation({ summary: 'List articles' })
   @ApiOkResponse({
     description: 'Articles list',

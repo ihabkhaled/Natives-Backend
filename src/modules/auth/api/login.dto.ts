@@ -1,13 +1,31 @@
 import { ApiProperty } from '@core/openapi';
-import { IsEmail, IsString, MinLength } from '@core/validation';
+import {
+  IsByteLength,
+  IsEmail,
+  IsString,
+  MaxLength,
+  MinLength,
+} from '@core/validation';
+
+import {
+  AUTH_EMAIL_MAX_LENGTH,
+  AUTH_PASSWORD_MAX_LENGTH,
+  AUTH_PASSWORD_MIN_LENGTH,
+} from '../model/auth.constants';
 
 export class LoginDto {
-  @ApiProperty()
+  @ApiProperty({ maxLength: AUTH_EMAIL_MAX_LENGTH })
   @IsEmail()
-  readonly email!: string;
+  @MaxLength(AUTH_EMAIL_MAX_LENGTH)
+  declare readonly email: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    minLength: AUTH_PASSWORD_MIN_LENGTH,
+    maxLength: AUTH_PASSWORD_MAX_LENGTH,
+  })
   @IsString()
-  @MinLength(1)
-  readonly password!: string;
+  @MinLength(AUTH_PASSWORD_MIN_LENGTH)
+  @MaxLength(AUTH_PASSWORD_MAX_LENGTH)
+  @IsByteLength(AUTH_PASSWORD_MIN_LENGTH, AUTH_PASSWORD_MAX_LENGTH)
+  declare readonly password: string;
 }

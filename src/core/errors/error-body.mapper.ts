@@ -1,9 +1,13 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
+import { SERVER_ERROR_MIN_STATUS } from '@shared/constants';
 
 import { AppError } from './app-error';
 import {
   GENERIC_ERROR_MESSAGE,
   GENERIC_ERROR_MESSAGE_KEY,
+  HTTP_ERROR_MESSAGE_KEYS,
+  HTTP_REQUEST_FAILED_MESSAGE,
+  HTTP_REQUEST_FAILED_MESSAGE_KEY,
 } from './error.constants';
 import type { ErrorBody } from './error.types';
 
@@ -23,8 +27,18 @@ export function toErrorBody(exception: unknown): ErrorBody {
   }
 
   if (exception instanceof HttpException) {
+    const statusCode = exception.getStatus();
+    if (statusCode < SERVER_ERROR_MIN_STATUS) {
+      return {
+        statusCode,
+        messageKey:
+          HTTP_ERROR_MESSAGE_KEYS.get(statusCode) ??
+          HTTP_REQUEST_FAILED_MESSAGE_KEY,
+        message: HTTP_REQUEST_FAILED_MESSAGE,
+      };
+    }
     return {
-      statusCode: exception.getStatus(),
+      statusCode,
       messageKey: GENERIC_ERROR_MESSAGE_KEY,
       message: GENERIC_ERROR_MESSAGE,
     };

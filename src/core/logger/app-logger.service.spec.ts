@@ -51,4 +51,22 @@ describe('AppLogger', () => {
     expect(pinoLogger.warn).toHaveBeenCalledWith(context, 'w');
     expect(pinoLogger.error).toHaveBeenCalledWith(context, 'e');
   });
+
+  it('redacts nested sensitive context before calling the vendor', () => {
+    const pinoLogger = createPinoLogger();
+    const logger = new AppLogger(pinoLogger);
+
+    logger.error('failed', {
+      requestId: 'request-1',
+      nested: { accessToken: 'secret-token' },
+    });
+
+    expect(pinoLogger.error).toHaveBeenCalledWith(
+      {
+        requestId: 'request-1',
+        nested: { accessToken: '[Redacted]' },
+      },
+      'failed',
+    );
+  });
 });

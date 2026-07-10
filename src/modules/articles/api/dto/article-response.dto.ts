@@ -4,20 +4,20 @@ import { ArticleStatus } from '../../model/article.enums';
 
 export class ArticleResponseDto {
   @ApiProperty()
-  readonly id!: string;
+  declare readonly id: string;
 
   @ApiProperty()
-  readonly title!: string;
+  declare readonly title: string;
 
   @ApiProperty()
-  readonly body!: string;
+  declare readonly body: string;
 
   @ApiProperty({ enum: ArticleStatus })
-  readonly status!: ArticleStatus;
+  declare readonly status: ArticleStatus;
 
   @ApiProperty()
-  readonly ownerId!: string;
+  declare readonly ownerId: string;
 
   @ApiProperty()
-  readonly createdAt!: string;
+  declare readonly createdAt: string;
 }

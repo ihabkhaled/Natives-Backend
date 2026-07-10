@@ -1,9 +1,7 @@
 import { AppModule } from '@app/app.module';
+import { JwtAuthGuard, PermissionsGuard } from '@core/auth';
 import { bindAppLogger } from '@core/logger';
-import { JwtAuthGuard } from '@modules/auth/jwt-auth.guard';
-import { RolesGuard } from '@modules/auth/roles.guard';
-import { NestFactory, Reflector } from '@nestjs/core';
-import { JwtService } from '@nestjs/jwt';
+import { NestFactory } from '@nestjs/core';
 import type { NestFastifyApplication } from '@nestjs/platform-fastify';
 
 import { createFastifyAdapter } from './fastify-adapter';
@@ -19,10 +17,7 @@ export async function createApp(): Promise<NestFastifyApplication> {
   );
   bindAppLogger(app);
 
-  app.useGlobalGuards(
-    new JwtAuthGuard(app.get(JwtService), app.get(Reflector)),
-    new RolesGuard(app.get(Reflector)),
-  );
+  app.useGlobalGuards(app.get(JwtAuthGuard), app.get(PermissionsGuard));
 
   return app;
 }

@@ -1,5 +1,7 @@
+import type { HealthState } from './health.enums';
+
 export interface HealthStatus {
-  readonly status: 'ok';
+  readonly status: HealthState;
   readonly uptimeSeconds: number;
   readonly timestamp: string;
 }

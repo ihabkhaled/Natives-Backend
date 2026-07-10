@@ -13,4 +13,5 @@ export {
   ApiPropertyOptional,
   ApiTags,
   ApiUnauthorizedResponse,
+  PartialType,
 } from '@nestjs/swagger';

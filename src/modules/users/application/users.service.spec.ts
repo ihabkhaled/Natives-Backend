@@ -1,4 +1,5 @@
 import { Test } from '@nestjs/testing';
+import { Role } from '@shared/enums';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { UsersRepository } from '../infrastructure/users.repository';
@@ -9,7 +10,7 @@ const user: User = {
   id: 'user-1',
   email: 'user@example.com',
   passwordHash: 'hash',
-  roles: ['user'],
+  roles: [Role.User],
 };
 
 describe('UsersService', () => {

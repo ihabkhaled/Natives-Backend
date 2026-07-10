@@ -15,10 +15,10 @@ export class CreateArticleDto {
   @IsString()
   @MinLength(ARTICLE_TITLE_MIN_LENGTH)
   @MaxLength(ARTICLE_TITLE_MAX_LENGTH)
-  readonly title!: string;
+  declare readonly title: string;
 
   @ApiProperty({ maxLength: ARTICLE_BODY_MAX_LENGTH })
   @IsString()
   @MaxLength(ARTICLE_BODY_MAX_LENGTH)
-  readonly body!: string;
+  declare readonly body: string;
 }

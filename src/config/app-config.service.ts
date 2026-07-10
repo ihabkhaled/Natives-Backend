@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
-import { APP_CONFIG_NAMESPACE } from './app.config';
+import {
+  APP_CONFIG_NAMESPACE,
+  SECURITY_CONFIG_NAMESPACE,
+} from './config.constants';
 import type { AppConfig, SecurityConfig } from './config.types';
-import { SECURITY_CONFIG_NAMESPACE } from './security.config';
 
 /**
  * The only injectable configuration surface. Wraps the config vendor

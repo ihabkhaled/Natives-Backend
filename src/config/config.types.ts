@@ -1,4 +1,4 @@
-import type { NodeEnv } from '@shared/enums';
+import type { LogLevel, NodeEnv } from '@shared/enums';
 
 export interface AppConfig {
   readonly nodeEnv: NodeEnv;
@@ -6,7 +6,7 @@ export interface AppConfig {
   readonly name: string;
   readonly globalPrefix: string;
   readonly swaggerEnabled: boolean;
-  readonly logLevel: string;
+  readonly logLevel: LogLevel;
 }
 
 export interface SecurityConfig {

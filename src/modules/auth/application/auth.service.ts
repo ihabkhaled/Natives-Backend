@@ -1,46 +1,41 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import { AUTH_TOKEN_PORT, type AuthTokenPort } from '@core/auth';
+import { Inject, Injectable } from '@nestjs/common';
 
-import type { UserCredentials } from '../../users';
 import { UsersService } from '../../users';
-import type { AuthUserIdentity } from '../auth.types';
-import { verifyPassword } from '../lib/password.helpers';
+import { InvalidCredentialsError } from '../errors/invalid-credentials.error';
+import { toAuthUserIdentity } from '../lib/auth-identity.mapper';
+import {
+  AUTH_DUMMY_PASSWORD_HASH,
+  PASSWORD_HASH_PORT,
+} from '../model/auth.constants';
+import type {
+  AuthCredentials,
+  AuthToken,
+  PasswordHashPort,
+} from '../model/auth.types';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
-    private readonly jwtService: JwtService,
+    @Inject(AUTH_TOKEN_PORT) private readonly tokenPort: AuthTokenPort,
+    @Inject(PASSWORD_HASH_PORT)
+    private readonly passwordHash: PasswordHashPort,
   ) {}
 
-  async login(credentials: UserCredentials): Promise<{ accessToken: string }> {
+  async login(credentials: AuthCredentials): Promise<AuthToken> {
     const user = await this.usersService.findByEmail(credentials.email);
-    if (user === null) {
-      throw new UnauthorizedException();
-    }
-
-    const passwordMatches = await verifyPassword(
+    const passwordHash = user?.passwordHash ?? AUTH_DUMMY_PASSWORD_HASH;
+    const passwordMatches = await this.passwordHash.matches(
       credentials.password,
-      user.passwordHash,
+      passwordHash,
     );
-    if (!passwordMatches) {
-      throw new UnauthorizedException();
+    if (user === null || !passwordMatches) {
+      throw new InvalidCredentialsError();
     }
 
     return {
-      accessToken: await this.jwtService.signAsync(this.toIdentity(user)),
-    };
-  }
-
-  private toIdentity(user: {
-    id: string;
-    email: string;
-    roles: readonly string[];
-  }): AuthUserIdentity {
-    return {
-      userId: user.id,
-      email: user.email,
-      roles: user.roles,
+      accessToken: await this.tokenPort.sign(toAuthUserIdentity(user)),
     };
   }
 }

@@ -1,37 +1,24 @@
-import { AppModule } from '@app/app.module';
 import { configureLifecycle } from '@app/bootstrap/configure-lifecycle';
 import { configureSecurity } from '@app/bootstrap/configure-security';
 import { configureValidation } from '@app/bootstrap/configure-validation';
-import { createFastifyAdapter } from '@app/bootstrap/fastify-adapter';
-import { JwtAuthGuard } from '@modules/auth/jwt-auth.guard';
-import { RolesGuard } from '@modules/auth/roles.guard';
-import { Reflector } from '@nestjs/core';
-import { JwtService } from '@nestjs/jwt';
+import { createApp } from '@app/bootstrap/create-app';
+import { AUTH_TOKEN_PORT, type AuthTokenPort } from '@core/auth';
 import type { NestFastifyApplication } from '@nestjs/platform-fastify';
-import { Test } from '@nestjs/testing';
+import { Role } from '@shared/enums';
 import request from 'supertest';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 describe('App (e2e)', () => {
   let app: NestFastifyApplication;
   let authToken: string;
+  let otherUserToken: string;
+  let noPermissionToken: string;
 
   beforeAll(async () => {
-    const moduleRef = await Test.createTestingModule({
-      imports: [AppModule],
-    }).compile();
-
-    app = moduleRef.createNestApplication<NestFastifyApplication>(
-      createFastifyAdapter(),
-    );
+    app = await createApp();
     await configureSecurity(app);
     await configureValidation(app);
     configureLifecycle(app);
-
-    app.useGlobalGuards(
-      new JwtAuthGuard(app.get(JwtService), app.get(Reflector)),
-      new RolesGuard(app.get(Reflector)),
-    );
 
     await app.init();
     await app.getHttpAdapter().getInstance().ready();
@@ -41,6 +28,17 @@ describe('App (e2e)', () => {
       .send({ email: 'user@example.com', password: 'password' });
 
     authToken = loginResponse.body.accessToken as string;
+    const tokenPort = app.get<AuthTokenPort>(AUTH_TOKEN_PORT);
+    otherUserToken = await tokenPort.sign({
+      userId: 'user-2',
+      email: 'other@example.com',
+      roles: [Role.User],
+    });
+    noPermissionToken = await tokenPort.sign({
+      userId: 'user-3',
+      email: 'restricted@example.com',
+      roles: [],
+    });
   });
 
   afterAll(async () => {
@@ -55,12 +53,73 @@ describe('App (e2e)', () => {
     expect(response.headers['x-content-type-options']).toBe('nosniff');
   });
 
+  it('POST /api/v1/auth/login returns an access token with 200', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/auth/login')
+      .send({ email: 'user@example.com', password: 'password' });
+
+    expect(response.status).toBe(200);
+    expect(response.body.accessToken).toBeDefined();
+  });
+
   it('POST /api/v1/articles without authentication returns 401', async () => {
     const response = await request(app.getHttpServer())
       .post('/api/v1/articles')
       .send({ title: 'Hello world', body: 'Body content' });
 
     expect(response.status).toBe(401);
+    expect(response.body.messageKey).toBe('errors.auth.tokenRequired');
+  });
+
+  it('GET /api/v1/articles rejects an invalid bearer token', async () => {
+    const response = await request(app.getHttpServer())
+      .get('/api/v1/articles')
+      .set('Authorization', 'Bearer invalid-token');
+
+    expect(response.status).toBe(401);
+    expect(response.body.messageKey).toBe('errors.auth.invalidToken');
+  });
+
+  it('POST /api/v1/auth/login rejects invalid credentials with a safe key', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/auth/login')
+      .send({ email: 'user@example.com', password: 'wrong-password' });
+
+    expect(response.status).toBe(401);
+    expect(response.body.messageKey).toBe('errors.auth.invalidCredentials');
+  });
+
+  it('POST /api/v1/auth/login rejects oversized credentials at the boundary', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'user@example.com',
+        password: 'x'.repeat(129),
+      });
+
+    expect(response.status).toBe(400);
+    expect(response.body.messageKey).toBe('errors.validation.failed');
+  });
+
+  it('POST /api/v1/auth/login enforces the bcrypt byte limit', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'user@example.com',
+        password: '🔐'.repeat(19),
+      });
+
+    expect(response.status).toBe(400);
+    expect(response.body.messageKey).toBe('errors.validation.failed');
+  });
+
+  it('GET /api/v1/articles rejects a caller without the required permission', async () => {
+    const response = await request(app.getHttpServer())
+      .get('/api/v1/articles')
+      .set('Authorization', `Bearer ${noPermissionToken}`);
+
+    expect(response.status).toBe(403);
+    expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
   });
 
   it('POST /api/v1/articles rejects an invalid DTO with 400 + messageKey', async () => {
@@ -100,6 +159,31 @@ describe('App (e2e)', () => {
       .set('Authorization', `Bearer ${authToken}`);
 
     expect(response.status).toBe(400);
+    expect(response.body.messageKey).toBe('errors.validation.invalidUuid');
+  });
+
+  it('GET /api/v1/articles/:id does not reveal another owner article', async () => {
+    const created = await request(app.getHttpServer())
+      .post('/api/v1/articles')
+      .set('Authorization', `Bearer ${authToken}`)
+      .send({ title: 'Private article', body: 'Owner-only body' });
+
+    const response = await request(app.getHttpServer())
+      .get(`/api/v1/articles/${created.body.id as string}`)
+      .set('Authorization', `Bearer ${otherUserToken}`);
+
+    expect(response.status).toBe(404);
+    expect(response.body.messageKey).toBe('errors.article.notFound');
+  });
+
+  it('GET /api/v1/articles excludes another owner items and total', async () => {
+    const response = await request(app.getHttpServer())
+      .get('/api/v1/articles')
+      .set('Authorization', `Bearer ${otherUserToken}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.items).toEqual([]);
+    expect(response.body.total).toBe(0);
   });
 
   it('GET /api/v1/articles returns a paginated envelope', async () => {

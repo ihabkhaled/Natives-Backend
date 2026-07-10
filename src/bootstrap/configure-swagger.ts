@@ -5,6 +5,7 @@ import {
   SWAGGER_BEARER_NAME,
   SWAGGER_DESCRIPTION,
   SWAGGER_PATH,
+  SWAGGER_PERSIST_AUTHORIZATION,
   SWAGGER_TITLE,
   SWAGGER_VERSION,
 } from './bootstrap.constants';
@@ -24,6 +25,8 @@ export function configureSwagger(app: INestApplication): void {
 
   const document = SwaggerModule.createDocument(app, documentConfig);
   SwaggerModule.setup(SWAGGER_PATH, app, document, {
-    swaggerOptions: { persistAuthorization: true },
+    swaggerOptions: {
+      persistAuthorization: SWAGGER_PERSIST_AUTHORIZATION,
+    },
   });
 }

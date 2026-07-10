@@ -4,14 +4,14 @@ import { ArticleResponseDto } from './article-response.dto';
 
 export class ListArticlesResponseDto {
   @ApiProperty({ type: ArticleResponseDto, isArray: true })
-  readonly items!: ArticleResponseDto[];
+  declare readonly items: ArticleResponseDto[];
 
   @ApiProperty()
-  readonly total!: number;
+  declare readonly total: number;
 
   @ApiProperty()
-  readonly limit!: number;
+  declare readonly limit: number;
 
   @ApiProperty()
-  readonly offset!: number;
+  declare readonly offset: number;
 }

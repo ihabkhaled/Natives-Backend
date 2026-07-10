@@ -1,6 +1,7 @@
 import { Injectable, Scope } from '@nestjs/common';
 import { PinoLogger } from 'nestjs-pino';
 
+import { sanitizeLogContext } from './log-context.sanitizer';
 import type { AppLoggerPort, LogContext } from './logger.port';
 
 /**
@@ -21,7 +22,7 @@ export class AppLogger implements AppLoggerPort {
       this.pinoLogger.debug(message);
       return;
     }
-    this.pinoLogger.debug(context, message);
+    this.pinoLogger.debug(sanitizeLogContext(context), message);
   }
 
   info(message: string, context?: LogContext): void {
@@ -29,7 +30,7 @@ export class AppLogger implements AppLoggerPort {
       this.pinoLogger.info(message);
       return;
     }
-    this.pinoLogger.info(context, message);
+    this.pinoLogger.info(sanitizeLogContext(context), message);
   }
 
   warn(message: string, context?: LogContext): void {
@@ -37,7 +38,7 @@ export class AppLogger implements AppLoggerPort {
       this.pinoLogger.warn(message);
       return;
     }
-    this.pinoLogger.warn(context, message);
+    this.pinoLogger.warn(sanitizeLogContext(context), message);
   }
 
   error(message: string, context?: LogContext): void {
@@ -45,6 +46,6 @@ export class AppLogger implements AppLoggerPort {
       this.pinoLogger.error(message);
       return;
     }
-    this.pinoLogger.error(context, message);
+    this.pinoLogger.error(sanitizeLogContext(context), message);
   }
 }

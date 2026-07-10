@@ -25,24 +25,31 @@ export class ArticleRepository {
     return Promise.resolve(article);
   }
 
-  findById(id: string): Promise<Article | null> {
-    return Promise.resolve(this.store.get(id) ?? null);
+  findByIdForOwner(id: string, ownerId: string): Promise<Article | null> {
+    const article = this.store.get(id);
+    if (article?.ownerId !== ownerId) {
+      return Promise.resolve(null);
+    }
+    return Promise.resolve(article);
   }
 
-  list(query: ListArticlesQuery): Promise<ListArticlesResult> {
+  listForOwner(
+    query: ListArticlesQuery,
+    ownerId: string,
+  ): Promise<ListArticlesResult> {
     const limit = Math.min(
       query.limit ?? ARTICLE_LIST_DEFAULT_LIMIT,
       ARTICLE_LIST_MAX_LIMIT,
     );
     const offset = query.offset ?? ARTICLE_LIST_DEFAULT_OFFSET;
-    const all = [...this.store.values()].sort((a, b) =>
-      a.createdAt.localeCompare(b.createdAt),
-    );
-    const items = all.slice(offset, offset + limit);
+    const ownedArticles = [...this.store.values()]
+      .filter(article => article.ownerId === ownerId)
+      .sort((first, second) => first.createdAt.localeCompare(second.createdAt));
+    const items = ownedArticles.slice(offset, offset + limit);
 
     return Promise.resolve({
       items,
-      total: all.length,
+      total: ownedArticles.length,
       limit,
       offset,
     });

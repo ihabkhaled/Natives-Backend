@@ -1,12 +1,5 @@
 import { ArticleStatus } from '../model/article.enums';
-import type { Article, CreateArticleData } from '../model/article.types';
-
-export interface CreateArticleInput {
-  readonly data: CreateArticleData;
-  readonly id: string;
-  readonly ownerId: string;
-  readonly createdAt: Date;
-}
+import type { Article, CreateArticleInput } from '../model/article.types';
 
 /**
  * Domain factory: creates a complete Article from validated inputs. The caller
