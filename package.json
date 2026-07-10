@@ -33,7 +33,7 @@
     "test:debug": "vitest --inspect-brk run --pool=forks --poolOptions.forks.singleFork=true",
     "test:coverage": "vitest run --coverage",
     "validate": "npm run format:check && npm run lint && npm run typecheck && npm run test:coverage && npm run build",
-    "security:audit": "npm audit --audit-level=low",
+    "security:audit": "npm audit --audit-level=high",
     "security:scan": "trivy fs --scanners vuln,secret,misconfig --include-dev-deps --skip-dirs node_modules,dist,coverage --exit-code 1 --severity HIGH,CRITICAL .",
     "security:scan:full": "trivy fs --scanners vuln,secret,misconfig --include-dev-deps --skip-dirs node_modules,dist,coverage .",
     "deps:check": "npm-check-updates",

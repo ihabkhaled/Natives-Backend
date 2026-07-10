@@ -1,0 +1,57 @@
+name: Gate - Security Scan
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+concurrency:
+  group: gate-security-scan-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  security-scan:
+    name: security:scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Audit Dependencies
+        run: npm run security:audit
+
+      - name: Setup Trivy
+        uses: aquasecurity/setup-trivy@v0.3.1
+
+      - name: Run Security Scan Gate
+        run: npm run security:scan
+
+      - name: Create Trivy SARIF Report
+        if: ${{ always() }}
+        run: >-
+          trivy fs --scanners vuln,secret,misconfig --include-dev-deps
+          --skip-dirs node_modules,dist,coverage
+          --format sarif --output trivy-results.sarif .
+
+      - name: Upload SARIF to Code Scanning
+        if: ${{ always() && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) }}
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: trivy-results.sarif
+          category: trivy-fs
