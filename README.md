@@ -29,7 +29,15 @@ Everything here is **100% broad and abstract for any NestJS backend** — modula
 
 ### Tooling kit (drop-in configs, exact pins)
 
-Root-level, ready to copy into any NestJS project: [`package.json`](./package.json), [`tsconfig.json`](./tsconfig.json) / [`tsconfig.eslint.json`](./tsconfig.eslint.json) / [`tsconfig.build.json`](./tsconfig.build.json), [`eslint.config.mjs`](./eslint.config.mjs), [`.prettierrc`](./.prettierrc), [`.lintstagedrc.cjs`](./.lintstagedrc.cjs), [`commitlint.config.cjs`](./commitlint.config.cjs), [`vitest.config.mts`](./vitest.config.mts), [`nest-cli.json`](./nest-cli.json), [`.husky/`](./.husky) (pre-commit, commit-msg, pre-push), [`.env.example`](./.env.example), [`.editorconfig`](./.editorconfig).
+Root-level, ready to copy into any NestJS project: [`package.json`](./package.json), [`.nvmrc`](./.nvmrc), [`tsconfig.json`](./tsconfig.json) / [`tsconfig.eslint.json`](./tsconfig.eslint.json) / [`tsconfig.build.json`](./tsconfig.build.json), [`eslint.config.mjs`](./eslint.config.mjs), [`.prettierrc`](./.prettierrc), [`.lintstagedrc.cjs`](./.lintstagedrc.cjs), [`commitlint.config.cjs`](./commitlint.config.cjs), [`vitest.config.mts`](./vitest.config.mts), [`nest-cli.json`](./nest-cli.json), [`.husky/`](./.husky) (pre-commit, commit-msg, pre-push), [`.github/`](./.github) (seven clean-environment gates + Dependabot), [`.env.example`](./.env.example), and [`.editorconfig`](./.editorconfig).
+
+### Runtime and TypeScript ownership
+
+- Node.js **24.18.0 LTS** and npm **>=11.16.0**.
+- `@typescript/native` (`npm:typescript@7.0.2`) supplies the default `tsc` used by `npm run typecheck` and `npm run build`.
+- The package named `typescript` (`npm:@typescript/typescript6@6.0.2`) supplies only the compatibility compiler API required by Nest CLI, typescript-eslint, SonarJS, ts-node, and similar tools.
+
+This is Microsoft's official TypeScript 7 side-by-side migration, not a downgrade. `@typescript/native-preview` is removed; no `.npmrc` legacy-peer bypass, `--force`, `--legacy-peer-deps`, or hand-edited lockfile metadata is used.
 
 ### SDLC governance (the "what / when / gates")
 
@@ -60,7 +68,8 @@ Dependencies point one way only, and the boundaries are **enforced by ESLint**, 
 The repo ships a real, runnable NestJS application under [`src/`](./src) that already wires the strict setup end to end.
 
 ```bash
-npm install         # pull the pinned toolchain + runtime deps
+nvm use             # use the Node LTS patch pinned in .nvmrc
+npm ci              # reproduce the lockfile exactly
 npm run prepare     # install the Husky hooks
 cp .env.example .env # development only; replace JWT_SECRET for real environments
 npm run lint:fix    # normalize imports/formatting once after install
@@ -73,7 +82,11 @@ Then hit it:
 - `GET /docs` → Swagger UI
 - `POST /api/v1/articles` with `{ "title": "Hello world", "body": "..." }` → 201 (try an invalid body to see the logged 400)
 
-Keep every gate green: `npm run lint && npm run typecheck && npm run test:coverage && npm run build`.
+Keep every gate green: `npm run validate && npm run security:audit && npm run security:scan`.
+
+### GitHub merge gates
+
+Pull requests and pushes to `main` run seven independent checks: `lint`, `typecheck`, `test:unit`, `test:e2e`, `test:coverage`, `build`, and `security:scan`. The E2E gate uses Nest/Fastify/Supertest; this backend has no Playwright dependency. Workflow ownership and required-check setup are documented in [`.github/README.md`](./.github/README.md) and [`runbooks/github-required-checks.md`](./runbooks/github-required-checks.md).
 
 **Build your own feature**
 
@@ -114,7 +127,7 @@ Every third-party package is importable **only inside the module that owns it** 
 | `@nestjs/jwt`                                        | [`src/modules/auth/`](./src/modules/auth)                   | `AuthTokenPort` through the JWT token adapter                |
 | `bcrypt`                                             | [`src/modules/auth/adapters/`](./src/modules/auth/adapters) | `PasswordHashPort` through the password adapter              |
 
-Dependencies are kept at **latest with `^` ranges** (`npm run deps:check` / `deps:upgrade`), and `npm run security:scan` (Trivy) gates HIGH/CRITICAL vulnerabilities, secrets, and misconfigurations.
+Dependencies track the **latest stable compatible** releases (`npm run deps:check` / `deps:upgrade`), using official migration or compatibility paths when required. Exact compatibility aliases are documented rather than hidden as downgrades. `npm run security:scan` (Trivy) gates HIGH/CRITICAL vulnerabilities, secrets, and misconfigurations.
 
 ## How the two systems fit together
 

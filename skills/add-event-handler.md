@@ -154,7 +154,7 @@ Write step 1 before writing the handler. The success path proves delegation; the
 
 ```bash
 npm run lint          # 0 errors AND 0 warnings — no inline decls, no magic strings, no Promise.all in services
-npm run typecheck     # tsgo --noEmit — typed payload, no any, no non-null assertion
+npm run typecheck     # tsc --noEmit (TypeScript 7) — typed payload, no any, no non-null assertion
 npm run test          # success path + failure-isolation + listener-count
 npm run test:coverage # touched-module floor 95%; critical paths near 100%
 npm run build         # compiles clean

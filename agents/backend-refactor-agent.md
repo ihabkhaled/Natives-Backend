@@ -86,7 +86,7 @@ async listArticles(user: AuthUser): Promise<ArticleListItem[]> {
 
 ```bash
 npm run lint            # architecture/* boundaries + max-lines-per-function (20 on services); 0 errors/0 warnings
-npm run typecheck       # tsgo --noEmit — no broken this.x / import after the move
+npm run typecheck       # tsc --noEmit (TypeScript 7) — no broken this.x / import after the move
 npm run test            # existing suite passes UNCHANGED (import paths may shift)
 npm run test:coverage   # ≥95% floor still holds per touched module
 npm run build           # compiles clean

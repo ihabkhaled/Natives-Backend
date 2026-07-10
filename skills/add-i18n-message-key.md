@@ -134,7 +134,7 @@ Confirm the route returns `{ statusCode, messageKey, code, details, correlationI
 
 ```bash
 npm run lint          # 0 errors AND 0 warnings — no eslint-disable
-npm run typecheck     # tsgo --noEmit — strict, no any / no !
+npm run typecheck     # tsc --noEmit (TypeScript 7) — strict, no any / no !
 npm run test          # unit + integration green
 npm run test:coverage # ≥95% on touched files; critical paths near 100%
 npm run build         # compiles clean

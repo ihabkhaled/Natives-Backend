@@ -172,7 +172,7 @@ getById(@CurrentUser() user: AuthUserIdentity, @Param('id') id: string): Promise
 
 ```bash
 npm run lint           # 0 errors, 0 warnings — incl. the architecture plugin
-npm run typecheck      # tsgo --noEmit, full strict
+npm run typecheck      # tsc --noEmit (TypeScript 7), full strict
 npm run test           # Vitest 4 — controller spec passes
 npm run test:coverage  # ≥ 95% on touched files
 npm run build

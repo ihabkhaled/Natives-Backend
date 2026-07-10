@@ -98,6 +98,8 @@ Precedence within the engineering OS: [`context/architecture-map.md`](context/ar
 
 Before NestJS implementation: read this `claude.md`, then [`context/architecture-map.md`](context/architecture-map.md), [`rules/00-non-negotiable-rules.md`](rules/00-non-negotiable-rules.md), the layer rule(s) you are touching, and the matching skill — then write tests first and keep every gate green (`npm run lint` · `npm run typecheck` · `npm run test:coverage` · `npm run build`).
 
+The current repository toolchain is Node.js 24.18.0 LTS with npm >=11.16.0 and Microsoft's official TypeScript 7 side-by-side migration: `@typescript/native` (`npm:typescript@7.0.2`) owns the default `tsc` used by typecheck/build, while the package named `typescript` (`npm:@typescript/typescript6@6.0.2`) exists only for tools that import the compiler API. This compatibility package is not a downgrade. The authoritative details live in [`context/stack-and-toolchain.md`](context/stack-and-toolchain.md).
+
 Before writing code, run the IronNest Simple Code Ladder ([`rules/20-simple-readable-code.md`](rules/20-simple-readable-code.md), non-negotiable rules 43–46): need it → reuse existing → native/platform → existing adapter/dependency → small helper → direct readable code → new abstraction only when justified. Be lazy about code volume, never lazy about reading, validation, security, auth, permissions, ownership checks, tests, docs, observability, or architecture.
 
 > **The best backend code is the code the next developer understands immediately.** Minimal code means minimum safe code. The complete readability/refactor/declaration/agent canon is [`rules/20`](rules/20-simple-readable-code.md)–[`rules/30`](rules/30-declaration-ownership.md), routed by [`context/simple-code-map.md`](context/simple-code-map.md), [`context/refactor-navigation.md`](context/refactor-navigation.md), and [`context/declaration-ownership-map.md`](context/declaration-ownership-map.md). Layer signatures do not hide anonymous contracts; DTOs use declarations rather than definite-assignment assertions; broad refactors are tests-first and responsibility-sliced.
@@ -932,6 +934,15 @@ Any third-party library that matters to product behavior, architecture, security
    - what public API it exposes
    - how it should be used
    - what must be updated if the underlying library changes
+
+### Package And Toolchain Compatibility Rules
+
+1. Prefer the latest stable packages that are compatible with the supported runtime, framework, peer contracts, and security baseline.
+2. For major-version migrations, use the vendor's official migration path, compatibility package, adapter, or supported side-by-side arrangement.
+3. Do not silently downgrade the primary runtime, language, framework, or quality tooling, and do not weaken gates to make dependency resolution appear successful. Any deliberate compatibility package or pin must have a documented owner and purpose.
+4. Treat lockfiles as package-manager-generated integrity artifacts. Never hand-edit dependency, package, or peer metadata in a lockfile to claim compatibility.
+5. Do not use or recommend `--force`, `--legacy-peer-deps`, or an `.npmrc` legacy-peer bypass to manufacture a green install.
+6. A successful dependency solve does not prove runtime API compatibility. After dependency or migration changes, validate a clean install and run the affected lint, type, test, and build gates.
 
 ### Frontend And Presentation Layer Discipline
 

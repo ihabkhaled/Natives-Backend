@@ -16,10 +16,10 @@ These map 1:1 to the Husky `pre-push` hook and CI. Run them yourself and report 
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide (not just staged)
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide (not just staged)
 npm run test            # vitest
 npm run test:coverage   # ≥95% statements/functions/lines; measured branches ≥90%; real critical branches ~100%
-npm run build           # nest build -p tsconfig.build.json
+npm run build           # tsc -p tsconfig.build.json
 ```
 
 - Run integration/e2e suites when routes, persistence, migrations, or integrations changed.

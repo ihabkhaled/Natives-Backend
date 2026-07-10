@@ -124,10 +124,10 @@ A privileged "view any" path is a **separate, permission-gated branch** (e.g. `@
 
 ```bash
 npm run lint          # eslint (architecture + security plugins) — 0 errors / 0 warnings
-npm run typecheck     # tsgo --noEmit (never plain tsc)
+npm run typecheck     # tsc --noEmit (TypeScript 7)
 npm run test          # vitest
 npm run test:coverage # 95% floor; auth/ownership paths near 100%
-npm run build         # nest build
+npm run build         # tsc -p tsconfig.build.json
 ```
 
 Never bypass Husky hooks with `--no-verify`. A green build is not proof of security — the deny tests are.

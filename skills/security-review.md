@@ -146,7 +146,7 @@ Write/adjust the tests before the fix — a security behavior change is a behavi
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings (security + architecture rules)
-npm run typecheck       # tsgo --noEmit
+npm run typecheck       # tsc --noEmit (TypeScript 7)
 npm run test            # all suites
 npm run test:coverage   # touched modules >= 95%, critical paths near 100%
 npm run build

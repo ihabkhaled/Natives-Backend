@@ -137,7 +137,7 @@ If the cause was a recurring trap or a non-obvious layer interaction, append it 
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings (incl. architecture/* + max-lines-per-function)
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide
 npm run test            # vitest — the reproducing test is now GREEN
 npm run test:coverage   # touched-module floor 95%, the fixed path near 100%
 npm run build           # compiles clean

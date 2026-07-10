@@ -12,7 +12,7 @@
 
 ### A1. `noUncheckedIndexedAccess` — indexed access is `T | undefined`
 
-- **Symptom:** `arr[0]` / `map[key]` works in editors but `tsgo --noEmit` flags it; the value is possibly `undefined`.
+- **Symptom:** `arr[0]` / `map[key]` works in editors but the TypeScript 7 `tsc --noEmit` gate flags it; the value is possibly `undefined`.
 - **Cause:** the flag is on (rule 1). Every index read widens to `T | undefined`, even when you "know" the key exists.
 - **Fix:** narrow with a guard, `??` default, or `.at()` + check. Never reach for the non-null assertion `!` — it is banned (rule 7). See [13-eslint-and-typescript.md](../rules/13-eslint-and-typescript.md).
 
@@ -221,8 +221,8 @@ See [04-repositories-and-persistence.md](../rules/04-repositories-and-persistenc
 ### I1. Project-wide typecheck fails on files you didn't touch
 
 - **Symptom:** the pre-commit gate blocks your commit on errors in unrelated files.
-- **Cause:** lint-staged scopes ESLint to staged files, but `npm run typecheck` (`tsgo --noEmit`) runs across the **whole** project.
-- **Fix:** fix the pre-existing breakage as part of your change; never add a suppression or bypass with `--no-verify`. The check is `tsgo --noEmit` (Husky pre-commit = lint-staged + typecheck; pre-push = test:coverage + build). See [13-eslint-and-typescript.md](../rules/13-eslint-and-typescript.md) and [quality-gates.md](../testing/quality-gates.md).
+- **Cause:** lint-staged scopes ESLint to staged files, but `npm run typecheck` (TypeScript 7 `tsc --noEmit`) runs across the **whole** project.
+- **Fix:** fix the pre-existing breakage as part of your change; never add a suppression or bypass with `--no-verify`. Husky pre-commit runs lint-staged + typecheck; pre-push runs test:coverage + the TypeScript 7 build. See [13-eslint-and-typescript.md](../rules/13-eslint-and-typescript.md) and [quality-gates.md](../testing/quality-gates.md).
 
 ### I2. Stale compiled `.js` next to `.ts` sources
 
@@ -235,6 +235,12 @@ See [04-repositories-and-persistence.md](../rules/04-repositories-and-persistenc
 - **Symptom:** measured branch coverage dips because decorated classes add branches you cannot execute.
 - **Cause:** the transform emits synthetic `typeof X === 'undefined' ? Object : X` guards per decorated property.
 - **Fix:** exclude pure type/enum/constant/entity-shape files from coverage; test the **real logic** (lifecycle hooks, mappers, policies) elsewhere. Don't chase synthetic branches. See [11-testing-and-coverage.md](../rules/11-testing-and-coverage.md), [coverage-policy.md](../testing/coverage-policy.md), and [testing-strategy.md](./testing-strategy.md).
+
+### I4. Hand-edited lockfile peer ranges create false compatibility
+
+- **Symptom:** npm resolution looks green after a peer range is manually broadened, but lint or build fails because a tool calls a compiler API that is not present.
+- **Cause:** lockfile dependency/peer metadata only influences resolution; it cannot restore missing runtime APIs or make an unsupported package compatible.
+- **Fix:** restore generated lockfile metadata and use the vendor-supported migration or compatibility package. Never use an `.npmrc` legacy-peer bypass, `--force`, or `--legacy-peer-deps`. Prove the real toolchain with clean `npm ci --dry-run`, lint, typecheck, and build runs.
 
 ---
 

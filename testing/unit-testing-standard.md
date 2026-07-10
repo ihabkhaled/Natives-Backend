@@ -287,8 +287,8 @@ The fix is always **more scenarios at the right boundary**, never a lower thresh
 - Type doubles to the collaborator interface; **never** `any`, `@ts-ignore`, `!`, or `eslint-disable` — strict TS and the non-negotiable rules ([/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md)) hold in tests too.
 
 ```text
-DON'T:  jest / jest.mock / jest.fn / jest.spyOn / ts-jest / @jest/globals / tsc --noEmit / any / @ts-ignore / eslint-disable
-DO:     vi.mock / vi.fn / vi.spyOn / vi.hoisted / vi.useFakeTimers / npm run test* / tsgo --noEmit
+DON'T:  jest / jest.mock / jest.fn / jest.spyOn / ts-jest / @jest/globals / any / @ts-ignore / eslint-disable
+DO:     vi.mock / vi.fn / vi.spyOn / vi.hoisted / vi.useFakeTimers / npm run test* / TypeScript 7 tsc gates
 ```
 
 ---
@@ -297,7 +297,7 @@ DO:     vi.mock / vi.fn / vi.spyOn / vi.hoisted / vi.useFakeTimers / npm run tes
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit, TypeScript 7, project-wide
 npm run test            # vitest run — full suite
 npm run test:coverage   # statements/functions/lines ≥95%; measured branches ≥90%; real critical branches ~100%
 npm run build           # compiles clean

@@ -118,10 +118,10 @@ All must be **green** before you are done. Commands come straight from `package.
 
 ```bash
 npm run lint            # eslint — 0 errors AND 0 warnings (zero tolerance)
-npm run typecheck       # tsgo --noEmit, project-wide (NOT tsc)
+npm run typecheck       # tsc --noEmit, TypeScript 7, project-wide
 npm run test            # vitest run
 npm run test:coverage   # 95% statements/functions/lines; 90% measured branches; real changed branches covered
-npm run build           # nest build — compiles clean
+npm run build           # tsc -p tsconfig.build.json — compiles clean
 ```
 
 Husky enforces a subset automatically:
@@ -136,16 +136,16 @@ Never bypass hooks with `--no-verify`, and never silence a gate with `eslint-dis
 
 ## Toolchain
 
-| Concern    | Tool                                            | Command                               | Never use                 |
-| ---------- | ----------------------------------------------- | ------------------------------------- | ------------------------- |
-| Type-check | **tsgo** (`@typescript/native-preview`)         | `npm run typecheck` → `tsgo --noEmit` | `tsc`, `tsc --noEmit`     |
-| Build      | **nest build** (`tsconfig.build.json`)          | `npm run build`                       | bare `tsc`                |
-| Tests      | **Vitest 4** + `@nestjs/testing` + `supertest`  | `npm run test` → `vitest run`         | Jest, ts-jest, `npx jest` |
-| Coverage   | Vitest + V8 provider                            | `npm run test:coverage`               | nyc, c8                   |
-| Lint       | **ESLint 10** flat config + architecture plugin | `npm run lint` → `eslint`             | —                         |
-| Format     | **Prettier 3** (via ESLint)                     | `npm run format`                      | manual reflow             |
+| Concern    | Tool                                                   | Command                                                           | Contract                |
+| ---------- | ------------------------------------------------------ | ----------------------------------------------------------------- | ----------------------- |
+| Type-check | **TypeScript 7.0.2 native CLI** (`@typescript/native`) | `npm run typecheck` → `tsc --pretty --noEmit --incremental false` | Project-wide, no emit   |
+| Build      | **TypeScript 7.0.2 native CLI** (`@typescript/native`) | `npm run build` → `tsc -p tsconfig.build.json`                    | Emits only to `dist/`   |
+| Tests      | **Vitest 4** + `@nestjs/testing` + `supertest`         | `npm run test` → `vitest run`                                     | No Jest/ts-jest         |
+| Coverage   | Vitest + V8 provider                                   | `npm run test:coverage`                                           | No nyc/c8               |
+| Lint       | **ESLint 10** flat config + architecture plugin        | `npm run lint` → `eslint`                                         | 0 errors and 0 warnings |
+| Format     | **Prettier 3** (via ESLint)                            | `npm run format`                                                  | No manual reflow        |
 
-`tsgo` type-checks only — it does not execute `.ts`. NestJS runs on **Fastify** by default; `@nestjs/platform-express` is installed so a project can switch platforms.
+The package named `typescript` is the TypeScript 6 compatibility API (`npm:@typescript/typescript6@6.0.2`) for tools that import it; it does not own typecheck or build. This is the official TypeScript 7 side-by-side migration. NestJS runs on **Fastify** by default; `@nestjs/platform-express` is installed so a project can switch platforms.
 
 ---
 

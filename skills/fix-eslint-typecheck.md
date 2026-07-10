@@ -1,6 +1,6 @@
 # Skill: Fix ESLint & Typecheck Failures
 
-> Drive `eslint` and `tsgo --noEmit` to **zero** by fixing the root cause — never by disabling. Implements the canon in [00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) and [13-eslint-and-typescript.md](../rules/13-eslint-and-typescript.md).
+> Drive `eslint` and the TypeScript 7 `tsc --noEmit` gate to **zero** by fixing the root cause — never by disabling. Implements the canon in [00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) and [13-eslint-and-typescript.md](../rules/13-eslint-and-typescript.md).
 
 ## Rules this skill enforces
 
@@ -24,7 +24,7 @@ A type/lint fix is still a behavior change if it alters narrowing, defaults, or 
 ### 1. Run the gates and read the FIRST error
 
 ```bash
-npm run typecheck    # tsgo --noEmit, project-wide — NOT just staged files
+npm run typecheck    # tsc --noEmit (TypeScript 7), project-wide — NOT just staged files
 npm run lint         # eslint . → must be 0 errors AND 0 warnings
 npm run lint:fix     # auto-fixes formatting, import-type, simple-import-sort, etc.
 ```
@@ -212,7 +212,7 @@ Permissible **only** with a dedicated, linked decision file justifying it. In pr
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide, 0 errors
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide, 0 errors
 npm run test            # affected + adjacent suites pass
 npm run test:coverage   # touched-module floor (95%) still met
 npm run build           # compiles clean

@@ -132,7 +132,7 @@ it('GET /orders/:id returns 403 for a non-owner', async () => {
 npm run test            # Vitest — full suite
 npm run test:coverage   # statements/functions/lines ≥95%; measured branches ≥90%; real critical branches ~100%
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide
 npm run build           # compiles clean
 ```
 

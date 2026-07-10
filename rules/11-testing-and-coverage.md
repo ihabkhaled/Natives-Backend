@@ -229,7 +229,7 @@ All gates green before "done" (Husky enforces lint+typecheck on pre-commit, test
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide
 npm run test            # vitest
 npm run test:coverage   # 95% floor met
 npm run build           # compiles clean
@@ -238,9 +238,11 @@ npm run build           # compiles clean
 ### Banned in test code
 
 ```text
-DON'T:  jest / jest.mock / jest.fn / jest.spyOn / ts-jest / @jest/globals / npx jest / tsc --noEmit / any / @ts-ignore / eslint-disable
-DO:     vi.mock / vi.fn / vi.spyOn / vi.hoisted / vi.useFakeTimers / npm run test* / tsgo --noEmit
+DON'T:  jest / jest.mock / jest.fn / jest.spyOn / ts-jest / @jest/globals / npx jest / any / @ts-ignore / eslint-disable
+DO:     vi.mock / vi.fn / vi.spyOn / vi.hoisted / vi.useFakeTimers / npm run test* / npm run typecheck
 ```
+
+The TypeScript 7 compiler gate validates types; it does not replace test execution.
 
 ---
 

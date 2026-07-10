@@ -113,7 +113,7 @@ const matches =
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings (security + architecture rules)
-npm run typecheck       # tsgo --noEmit
+npm run typecheck       # tsc --noEmit (TypeScript 7)
 npm run test            # all suites — integration mandatory when routes/auth/permissions changed
 npm run test:coverage   # touched modules >= 95%, critical/security paths near 100%
 npm run build

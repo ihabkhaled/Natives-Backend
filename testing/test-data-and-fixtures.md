@@ -315,7 +315,7 @@ Factories, fixtures, and seeds live under `test/` and are **excluded from the co
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings (no `any`/`!` in factories or fixtures)
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide
 npm run test            # vitest run — full suite, must pass in any order
 npm run test:coverage   # statements/functions/lines ≥95%; measured branches ≥90%; real critical branches ~100%
 npm run build           # compiles clean

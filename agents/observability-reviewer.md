@@ -112,7 +112,7 @@ async publish(order: Order): Promise<void> {
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings — no console.*, no magic strings, no inline declarations
-npm run typecheck       # tsgo --noEmit — narrowed catch, no any, no non-null assertion
+npm run typecheck       # tsc --noEmit (TypeScript 7) — narrowed catch, no any, no non-null assertion
 npm run test            # level + event-name + correlation-id + no-leak assertions
 npm run test:coverage   # touched-module floor 95%; critical paths near 100%
 npm run build           # compiles clean

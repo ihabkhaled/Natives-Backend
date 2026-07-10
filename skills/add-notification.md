@@ -155,7 +155,7 @@ Provide `NotificationAdapter` and the handler in the feature `*.module.ts`; expo
 
 ```bash
 npm run lint          # 0 errors, 0 warnings (architecture + style)
-npm run typecheck     # tsgo --noEmit, full strict
+npm run typecheck     # tsc --noEmit (TypeScript 7), full strict
 npm run test          # unit + integration, including the fail-safe path
 npm run test:coverage # ≥95% per-file; every locale branch covered
 npm run build         # production build

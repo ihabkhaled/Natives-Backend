@@ -40,7 +40,7 @@ Not for authoring code, deep architecture review, or first-pass correctness revi
 ### Hard gates (must be green, no exceptions)
 
 - [ ] **NO-GO** — `npm run lint` is **0 errors AND 0 warnings**.
-- [ ] **NO-GO** — `npm run typecheck` (`tsgo --noEmit`, project-wide) clean.
+- [ ] **NO-GO** — `npm run typecheck` (`tsc --noEmit`, TypeScript 7, project-wide) clean.
 - [ ] **NO-GO** — `npm run test` passes; no `.only`, no silently skipped specs.
 - [ ] **NO-GO** — coverage meets 95% statements/functions/lines and 90% measured branches; every real changed branch is proven.
 - [ ] **NO-GO** — `npm run build` compiles clean.
@@ -110,10 +110,10 @@ NO-GO — migration adds a NOT NULL column with no default and no backfill;
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide
 npm run test            # vitest
 npm run test:coverage   # ≥95% statements/functions/lines; measured branches ≥90%; real critical branches ~100%
-npm run build           # nest build -p tsconfig.build.json
+npm run build           # tsc -p tsconfig.build.json
 ```
 
 Run integration/e2e suites when routes, persistence, migrations, or integrations changed. Never bypass a Husky hook (`pre-commit`, `commit-msg`, `pre-push`) with `--no-verify` absent a recorded, approved emergency exception.

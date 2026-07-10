@@ -4,18 +4,19 @@
 
 A gate is **binary**: it passes or it blocks. There is no "mostly passes," no "passes with caveats," no "we'll fix it after launch." A red gate blocks merge and release until it turns green and is re-verified. Every gate exists because a specific class of defect escaped without it.
 
-## The six gates
+## The seven CI gates
 
-| #   | Gate                | Command                 | Proves                                                      | Blocks              |
-| --- | ------------------- | ----------------------- | ----------------------------------------------------------- | ------------------- |
-| 1   | Lint + architecture | `npm run lint`          | 0 errors AND 0 warnings; layer/boundary/inline rules upheld | commit, push, merge |
-| 2   | Type check          | `npm run typecheck`     | `tsgo --noEmit` clean under full strict TS                  | commit, push, merge |
-| 3   | Tests               | `npm run test`          | every Vitest suite green, 0 failures, 0 stray skips         | push, merge         |
-| 4   | Coverage            | `npm run test:coverage` | statements/functions/lines ≥ 95%, branches ≥ 90%            | push, merge         |
-| 5   | Build               | `npm run build`         | compiles to `dist/` clean — production artifact is valid    | push, merge, deploy |
-| 6   | Security review     | manual + scanners       | authz, secrets, injection, leakage cleared for the risk     | merge, deploy       |
+| #   | Gate              | Command                 | Proves                                                      | Blocks              |
+| --- | ----------------- | ----------------------- | ----------------------------------------------------------- | ------------------- |
+| 1   | Lint + format     | `npm run lint` + format | 0 errors/warnings; architecture and formatting upheld       | commit, push, merge |
+| 2   | Type check        | `npm run typecheck`     | full strict TypeScript contracts are clean                  | commit, push, merge |
+| 3   | Unit/static tests | `npm run test:unit`     | source and custom ESLint-rule suites are green              | push, merge         |
+| 4   | Backend E2E       | `npm run test:e2e`      | Nest/Fastify/Supertest production wiring works              | push, merge         |
+| 5   | Coverage          | `npm run test:coverage` | statements/functions/lines ≥ 95%, branches ≥ 90%            | push, merge         |
+| 6   | Build             | `npm run build`         | production artifact compiles cleanly                        | push, merge, deploy |
+| 7   | Security          | audit + Trivy + review  | dependencies, secrets, misconfig, and judgment checks clear | merge, deploy       |
 
-Gates 1–5 are automated and run identically locally (Husky) and in CI. Gate 6 is a structured human/agent review gated by [/skills/security-review.md](../skills/security-review.md); it is mandatory whenever a change touches auth, permissions, secrets, data access, file handling, or an external boundary.
+All seven checks are automated in GitHub Actions using authoritative npm scripts. Gate 7 also retains the structured human/agent review in [/skills/security-review.md](../skills/security-review.md) whenever a change touches auth, permissions, secrets, data access, file handling, or an external boundary.
 
 ## What each gate proves
 
@@ -38,22 +39,32 @@ The ESLint flat config bundles `strictTypeChecked` + `stylisticTypeChecked`, sec
 ### Gate 2 — Type check (`npm run typecheck`)
 
 ```bash
-npm run typecheck   # tsgo --pretty --noEmit --incremental false
+npm run typecheck   # tsc --pretty --noEmit --incremental false
 ```
 
 Project-wide type check with every strict flag on (`noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `noImplicitReturns`, `useUnknownInCatchVariables`, …). A failure means a contract between layers is broken: a DTO no longer matches its consumer, a new enum member left a `switch` non-exhaustive, a nullable was not handled.
 
-**Pass criteria:** zero type errors. `tsgo` type-checks only — it never executes `.ts` and never emits.
+The default `tsc` comes from `@typescript/native` (`npm:typescript@7.0.2`). The package named `typescript` is the TypeScript 6 compatibility API (`npm:@typescript/typescript6@6.0.2`) for lint/tool consumers and does not own this gate.
 
-### Gate 3 — Tests (`npm run test`)
+**Pass criteria:** zero TypeScript 7 errors. This command type-checks only — it never executes `.ts` and never emits.
+
+### Gate 3 — Unit/static tests (`npm run test:unit`)
 
 ```bash
-npm run test        # vitest run
+npm run test:unit   # Vitest except the backend E2E entrypoint
 ```
 
-Every unit, integration, and e2e suite (`@nestjs/testing` + `supertest`) must pass. Zero failures and zero unexpected skips. A failure means a behavior contract regressed or new code shipped without adequate coverage of its branches. Write or adjust tests **first**; see [/testing/testing-strategy.md](./testing-strategy.md).
+Every source-level suite and custom ESLint-rule regression suite must pass with zero failures and zero unexpected skips.
 
-### Gate 4 — Coverage (`npm run test:coverage`)
+### Gate 4 — Backend E2E (`npm run test:e2e`)
+
+```bash
+npm run test:e2e    # Vitest + Nest/Fastify/Supertest
+```
+
+This gate exercises production `createApp()` wiring and real HTTP flows without a browser. IronNest has no Playwright dependency.
+
+### Gate 5 — Coverage (`npm run test:coverage`)
 
 ```bash
 npm run test:coverage   # vitest run --coverage (v8 provider)
@@ -63,17 +74,17 @@ Coverage thresholds: statements/functions/lines at the **95%** workspace floor, 
 
 **Pass criteria:** each metric meets its configured threshold and the command exits 0; real changed branches are reviewed separately from synthetic decorator branches.
 
-### Gate 5 — Build (`npm run build`)
+### Gate 6 — Build (`npm run build`)
 
 ```bash
-npm run build       # nest build -p tsconfig.build.json
+npm run build       # tsc -p tsconfig.build.json
 ```
 
-Produces the deployable artifact in `dist/`. Catches problems type-check and tests can miss: a broken runtime import, a circular dependency, a misconfigured module, a dependency missing from `dependencies`. The artifact that builds clean is the artifact promoted to production.
+Uses the TypeScript 7 native CLI and produces the deployable artifact in `dist/`. Catches problems type-check and tests can miss: a broken runtime import, a circular dependency, a misconfigured module, a dependency missing from `dependencies`. The artifact that builds clean is the artifact promoted to production.
 
-### Gate 6 — Security review (manual + scanners)
+### Gate 7 — Security scan and review
 
-Not a single npm script — a structured pass against [/rules/07-security-authn-authz.md](../rules/07-security-authn-authz.md), [/rules/08-database-and-injection-safety.md](../rules/08-database-and-injection-safety.md), and [/rules/14-observability-and-logging.md](../rules/14-observability-and-logging.md). The `eslint-plugin-security` and `sonarjs` rules in Gate 1 do the mechanical scanning; a reviewer or the [backend-security-reviewer](../agents/backend-security-reviewer.md) confirms the judgment calls.
+CI runs `npm run security:audit` and the blocking Trivy `npm run security:scan`, then uploads SARIF. A structured pass against [/rules/07-security-authn-authz.md](../rules/07-security-authn-authz.md), [/rules/08-database-and-injection-safety.md](../rules/08-database-and-injection-safety.md), and [/rules/14-observability-and-logging.md](../rules/14-observability-and-logging.md) remains mandatory for judgment calls.
 
 **Pass criteria (when in scope):** every protected route chains auth guard + permissions guard + ownership/tenant check; identity comes from the verified token, never the client body; queries are parameterized and bounded; no secrets/PII/stack traces leak to clients or logs. No unresolved critical/high finding ships without a written, approved waiver.
 
@@ -103,24 +114,25 @@ Hooks install on `npm install` (Husky `prepare`). If a fresh clone shows no enfo
 CI reproduces the authoritative scripts in a clean environment — never a divergent shadow set of steps. Required jobs are version-controlled and enforced; none is marked optional or allow-failure.
 
 ```yaml
-# Conceptual pipeline — mirrors the local gates, in order
-steps:
-  - run: npm ci
-  - run: npm run lint # Gate 1
-  - run: npm run typecheck # Gate 2
-  - run: npm run test:coverage # Gates 3 + 4 (tests + thresholds)
-  - run: npm run build # Gate 5
-  # Gate 6: security review job / required reviewer approval
+# Independent required jobs; each starts with checkout, Node setup, and npm ci.
+required-checks:
+  - lint
+  - typecheck
+  - test:unit
+  - test:e2e
+  - test:coverage
+  - build
+  - security:scan
 ```
 
-CI is the source of truth for merge eligibility: a pull request merges only when every required job is green. A flaky pipeline is a defect — fix the root cause; do not rerun until green.
+The workflows live under [`.github/workflows`](../.github/workflows), and exact branch-protection setup lives in [`runbooks/github-required-checks.md`](../runbooks/github-required-checks.md). CI is the source of truth for merge eligibility: a pull request merges only when every required job is green. A flaky pipeline is a defect—fix the root cause; do not rerun until green.
 
 ## Do / Don't
 
 Do — fix at the root and re-run the full gate set:
 
 ```bash
-npm run lint && npm run typecheck && npm run test:coverage && npm run build
+npm run validate && npm run test:e2e && npm run security:audit && npm run security:scan
 ```
 
 Don't — bypass, suppress, or weaken a gate:
@@ -161,10 +173,11 @@ A change is gate-approved only when all gates are green in a single, uninterrupt
 
 - [ ] `npm run lint` — 0 errors AND 0 warnings
 - [ ] `npm run typecheck` — 0 errors, project-wide
-- [ ] `npm run test` — all suites pass, 0 failures, 0 stray skips
+- [ ] `npm run test:unit` — source and static-rule suites pass
+- [ ] `npm run test:e2e` — backend HTTP suite passes without Playwright
 - [ ] `npm run test:coverage` — statements/functions/lines ≥95%, measured branches ≥90%, all real changed branches covered
 - [ ] `npm run build` — compiles clean to `dist/`
-- [ ] Security review cleared for the change's risk (Gate 6)
+- [ ] `npm run security:audit` and `npm run security:scan` pass; human security review is cleared for the change's risk
 - [ ] Husky hooks ran (no `--no-verify`); CI required jobs green
 - [ ] Tests and docs updated in the same change; behavior changes called out
 

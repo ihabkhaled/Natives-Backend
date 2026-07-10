@@ -274,7 +274,7 @@ afterEach(async () => {
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide
 npm run test            # vitest
 npm run test:coverage   # 95% floor enforced
 npm run build           # compiles clean

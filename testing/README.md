@@ -2,7 +2,7 @@
 
 > The house testing standard for this NestJS backend: strategy, layers, coverage, fixtures, gates, and the bug→retest loop. It implements the canon — [00 non-negotiable rules](../rules/00-non-negotiable-rules.md) (rule 42: no behavior change without tests, written first), [11 testing & coverage](../rules/11-testing-and-coverage.md), and the [architecture map](../context/architecture-map.md) — and binds the engineering test suite to the SDLC test artifacts in [/docs](../docs/) and [/test-cases](../test-cases/).
 
-Toolchain is fixed: **Vitest 4** with the configured **V8 coverage provider** + **@nestjs/testing** + **supertest** on **NestJS 11 / Fastify**. No `jest`, no `ts-jest`, no `tsc`. See [stack-and-toolchain.md](../context/stack-and-toolchain.md).
+Toolchain is fixed: **Vitest 4** with the configured **V8 coverage provider** + **@nestjs/testing** + **supertest** on **NestJS 11 / Fastify**. Typecheck and build use the TypeScript 7 native `tsc`; compiler commands do not replace test execution. No `jest` or `ts-jest`. See [stack-and-toolchain.md](../context/stack-and-toolchain.md).
 
 ---
 
@@ -150,7 +150,7 @@ Reusable scenario cases (not just code) live under [/test-cases](../test-cases/)
 
 ## Delivery blockers — never declare "done" with any of these
 
-1. `npm run typecheck` not clean (`tsgo --noEmit`).
+1. `npm run typecheck` not clean (TypeScript 7 `tsc --noEmit`).
 2. `npm run lint` not **0 errors AND 0 warnings**.
 3. Any failing unit / integration / e2e test.
 4. Touched-module coverage below 95% without an approved, recorded waiver.
@@ -175,7 +175,7 @@ Full gate (must all be green before "done") — see [quality-gates.md](./quality
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit, TypeScript 7, project-wide
 npm run test            # vitest
 npm run test:coverage   # coverage thresholds met
 npm run build           # compiles clean

@@ -350,7 +350,7 @@ E2E contributes to the workspace coverage floor; it does not replace unit/integr
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide
 npm run test            # vitest
 npm run test:coverage   # statements/functions/lines ≥95%; measured branches ≥90%; critical journeys ~100%
 npm run build           # compiles clean

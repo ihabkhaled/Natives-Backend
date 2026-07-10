@@ -16,10 +16,10 @@ A green build is **not** proof of correctness. Walk every section and prove beha
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide (not just staged)
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide (not just staged)
 npm run test            # vitest
 npm run test:coverage   # ≥95% statements/functions/lines; configured branch floor + touched real branches reviewed
-npm run build           # nest build -p tsconfig.build.json
+npm run build           # tsc -p tsconfig.build.json
 ```
 
 Never bypass a hook with `--no-verify`. A failed gate is reported with the **command, failing file(s), exact error, and whether it relates to the change** — never claim green when a gate is red. See [/testing/quality-gates.md](../testing/quality-gates.md).

@@ -213,10 +213,10 @@ The chain — **authn guard → permissions guard → ownership check → bounde
 
 ```bash
 npm run lint          # eslint (security plugin + architecture plugin) — 0 errors / 0 warnings
-npm run typecheck     # tsgo --noEmit (never plain tsc)
+npm run typecheck     # tsc --noEmit (TypeScript 7)
 npm run test          # vitest
 npm run test:coverage # 95% floor; security-critical paths near 100%
-npm run build         # nest build
+npm run build         # tsc -p tsconfig.build.json
 ```
 
 Never bypass Husky hooks with `--no-verify`. A green build is not proof of security — prove the deny paths with tests.

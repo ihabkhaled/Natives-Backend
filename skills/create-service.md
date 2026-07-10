@@ -156,7 +156,7 @@ export class ArticleModule {}
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings (incl. architecture/* + max-lines-per-function)
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide
 npm run test            # vitest
 npm run test:coverage   # touched-module floor 95%, critical paths ~100%
 npm run build           # compiles clean

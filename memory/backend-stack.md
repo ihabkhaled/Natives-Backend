@@ -4,7 +4,7 @@
 
 ## Decision
 
-The framework and tooling below are **fixed**: NestJS 11, tsgo for type-checking, ESLint flat config with a custom architecture plugin, Vitest, and Husky gates. The **business stack** — ORM, database, cache, broker, mailer, object storage, APM — is intentionally **unfixed**: a project chooses it and hides it behind an adapter or repository so the rest of the codebase never imports a vendor directly.
+The framework and tooling below are **fixed**: NestJS 11, the TypeScript 7 native CLI for typecheck/build, the TypeScript 6 compatibility API for tool consumers, ESLint flat config with a custom architecture plugin, Vitest, and Husky gates. The **business stack** — ORM, database, cache, broker, mailer, object storage, APM — is intentionally **unfixed**: a project chooses it and hides it behind an adapter or repository so the rest of the codebase never imports a vendor directly.
 
 The split exists so every project inherits the same correctness machinery while staying free to pick the data and integration tech the domain actually needs.
 
@@ -12,16 +12,16 @@ The split exists so every project inherits the same correctness machinery while 
 
 ## Runtime & language
 
-| Item                      | Choice                                                    | Rationale                                                                                                                                                    |
-| ------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Runtime                   | **Node.js 20+** (`engines.node >= 20`, `npm >= 10`)       | LTS baseline; pin in `engines` so CI and local agree.                                                                                                        |
-| Language                  | **TypeScript 6** for editor/types                         | Strongest editor inference; the build/typecheck tool is separate.                                                                                            |
-| Type-check / build helper | **tsgo** (`@typescript/native-preview`)                   | Native compiler; fast project-wide `--noEmit`. It type-checks — it does not execute `.ts`.                                                                   |
-| Framework                 | **NestJS 11** on **Fastify** (`@nestjs/platform-fastify`) | DI + module boundaries match the layered architecture; Fastify for throughput. `@nestjs/platform-express` stays installed so a project can switch platforms. |
+| Item                   | Choice                                                     | Rationale                                                                                                                                                    |
+| ---------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Runtime                | **Node.js 24.18.0 LTS** (`>=24.18.0 <25`, `npm >=11.16.0`) | Exact LTS baseline; pin runtime and package manager so CI and local agree.                                                                                   |
+| Language and CLI       | **TypeScript 7.0.2** via `@typescript/native`              | `@typescript/native` aliases `npm:typescript@7.0.2` and supplies the default `tsc` executable for typecheck and build.                                       |
+| Tool compatibility API | **TypeScript 6** via the package named `typescript`        | `npm:@typescript/typescript6@6.0.2` exists solely for Nest CLI, typescript-eslint, SonarJS, ts-node, and other compiler-API consumers.                       |
+| Framework              | **NestJS 11** on **Fastify** (`@nestjs/platform-fastify`)  | DI + module boundaries match the layered architecture; Fastify for throughput. `@nestjs/platform-express` stays installed so a project can switch platforms. |
 
 > NestJS is the transport and DI substrate — there is no raw routing, no manual request/response plumbing. HTTP entry is a `@Controller`; cross-cutting concerns are guards, pipes, interceptors, filters, and decorators, never ad-hoc handlers.
 
-> The type tool is **tsgo**, invoked as `tsgo --noEmit`. Do not reference plain `tsc`/`tsc --noEmit` in scripts, docs, or hooks.
+> This is Microsoft's official TypeScript 7 side-by-side migration, not a downgrade. Typecheck and build use the TypeScript 7 `tsc`; only tools importing `typescript` receive the TypeScript 6 compatibility API. `@typescript/native-preview` is removed.
 
 ## Framework libraries (shipped, locked)
 
@@ -72,7 +72,7 @@ The architecture rules are what make "controllers stay thin", "services stay sho
 ## Commit & git-hook toolchain (locked)
 
 - **Husky 9** ([.husky/](../.husky)):
-  - **pre-commit** → `lint-staged` (eslint --fix on staged) + `typecheck` (project-wide `tsgo --noEmit`, not scoped to staged files).
+  - **pre-commit** → `lint-staged` (eslint --fix on staged) + `typecheck` (project-wide TypeScript 7 `tsc --noEmit`, not scoped to staged files).
   - **commit-msg** → `commitlint` (Conventional Commits).
   - **pre-push** → `test:coverage` + `build`.
 - **lint-staged** — lint+fix only staged files, then re-stage.
@@ -80,16 +80,16 @@ The architecture rules are what make "controllers stay thin", "services stay sho
 
 ## npm scripts (the canonical entrypoints)
 
-| Script                    | Command                                      | Purpose                      |
-| ------------------------- | -------------------------------------------- | ---------------------------- |
-| `start:dev`               | `nest start --watch`                         | Dev server with reload       |
-| `build`                   | `nest build -p tsconfig.build.json`          | Production build to `dist/`  |
-| `start:prod`              | `node dist/src/main`                         | Run the compiled build       |
-| `typecheck`               | `tsgo --pretty --noEmit --incremental false` | Project-wide type check      |
-| `lint` / `lint:fix`       | `eslint` / `eslint --fix`                    | Lint (0 errors / 0 warnings) |
-| `format` / `format:check` | `prettier --write .` / `--check .`           | Format / verify              |
-| `test` / `test:watch`     | `vitest run` / `vitest`                      | Tests                        |
-| `test:coverage`           | `vitest run --coverage`                      | Tests + coverage gate        |
+| Script                    | Command                                     | Purpose                       |
+| ------------------------- | ------------------------------------------- | ----------------------------- |
+| `start:dev`               | `nest start --watch`                        | Dev server with reload        |
+| `build`                   | `tsc -p tsconfig.build.json`                | TypeScript 7 build to `dist/` |
+| `start:prod`              | `node dist/src/main`                        | Run the compiled build        |
+| `typecheck`               | `tsc --pretty --noEmit --incremental false` | TypeScript 7 type check       |
+| `lint` / `lint:fix`       | `eslint` / `eslint --fix`                   | Lint (0 errors / 0 warnings)  |
+| `format` / `format:check` | `prettier --write .` / `--check .`          | Format / verify               |
+| `test` / `test:watch`     | `vitest run` / `vitest`                     | Tests                         |
+| `test:coverage`           | `vitest run --coverage`                     | Tests + coverage gate         |
 
 CI and local hooks invoke **these same scripts** — no divergent shadow set of steps.
 
@@ -97,10 +97,10 @@ CI and local hooks invoke **these same scripts** — no divergent shadow set of 
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit, TypeScript 7, project-wide
 npm run test            # vitest
 npm run test:coverage   # 95% statements/functions/lines; 90% measured branches; real changed branches covered
-npm run build           # compiles clean
+npm run build           # tsc -p tsconfig.build.json, TypeScript 7
 ```
 
 A green build is **not** proof of correctness — walk [15-review-checklist.md](../rules/15-review-checklist.md) and prove behavior with tests.
@@ -113,7 +113,8 @@ A green build is **not** proof of correctness — walk [15-review-checklist.md](
 
 - **Do** read the project specifics (the "Project records" lines) before touching data or integration code — they name the ORM, DB, and adapters in play.
 - **Do** add any new external library behind an adapter or repository, then update [library-boundaries.md](./library-boundaries.md).
-- **Don't** introduce a second test runner, a second validator as the default, or `tsc`/Jest references.
+- **Do** prefer latest stable compatible packages and official migration/compatibility paths; prove clean install, lint, typecheck, and build after dependency changes.
+- **Don't** introduce a second test runner or default validator, use an `.npmrc` legacy-peer bypass, pass `--force`/`--legacy-peer-deps`, or hand-edit lockfile dependency/peer metadata.
 - **Don't** read `process.env` outside `config/` or `bootstrap/`, or `console.*` instead of the logger adapter.
 
 ```ts

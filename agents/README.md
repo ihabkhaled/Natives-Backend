@@ -57,10 +57,10 @@ Run from the repo root. The exact `package.json` scripts:
 
 ```bash
 npm run lint            # eslint . — 0 errors AND 0 warnings (incl. the architecture plugin)
-npm run typecheck       # tsgo --noEmit, project-wide (TS native compiler)
+npm run typecheck       # tsc --noEmit, project-wide (TypeScript 7 native CLI)
 npm run test            # vitest run
 npm run test:coverage   # vitest run --coverage — 95% lines/functions/statements, 90% branches, critical paths near 100%
-npm run build           # nest build, compiles clean
+npm run build           # tsc -p tsconfig.build.json, compiles clean
 ```
 
 Husky enforces a subset automatically:
@@ -75,7 +75,8 @@ Never bypass hooks (`--no-verify`) and never weaken a gate to make it pass. A gr
 
 ### Locked toolchain facts (these win over any stale note)
 
-- Type-checker/compiler is **`tsgo`** (the native TypeScript compiler); builds go through `nest build`. Never invoke a legacy `tsc --noEmit` as the gate.
+- `@typescript/native` (`npm:typescript@7.0.2`) supplies the TypeScript 7 default `tsc` used for typecheck and build.
+- The package named `typescript` (`npm:@typescript/typescript6@6.0.2`) supplies only the compatibility compiler API used by Nest CLI, typescript-eslint, SonarJS, ts-node, and similar tools. This official side-by-side setup is not a downgrade.
 - Test runner is **Vitest 4** with `@nestjs/testing` + supertest; coverage provider is **v8** (see `vitest.config.mts` and [/testing/coverage-policy.md](../testing/coverage-policy.md)).
 - Validation is **class-validator + class-transformer** (primary); a custom Zod pipe is the documented alternative — [/rules/05-dto-and-validation.md](../rules/05-dto-and-validation.md).
 - ORM/database, cache, queue, mailer, and storage are **project choices behind an adapter** — never imported directly outside `adapters/` ([/rules/12-library-wrapping-and-adapters.md](../rules/12-library-wrapping-and-adapters.md)).

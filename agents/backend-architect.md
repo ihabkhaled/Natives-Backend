@@ -110,7 +110,7 @@ import { OrderModulePublicApi } from '@modules/order'; // index.ts barrel
 
 ```bash
 npm run lint            # architecture/* boundaries + no-restricted-syntax + max-lines-per-function (20)
-npm run typecheck       # tsgo --noEmit — no broken imports/this.x after moves
+npm run typecheck       # tsc --noEmit (TypeScript 7) — no broken imports/this.x after moves
 npm run test            # existing suite passes UNCHANGED (only import paths may shift)
 npm run test:coverage   # ≥95% floor still holds per touched module
 npm run build           # compiles clean

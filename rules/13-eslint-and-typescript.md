@@ -2,15 +2,23 @@
 
 > The complete lint + type gate and how to pass it. This file implements the canon: every rule below maps to a layer rule, an architecture boundary, or a strict compiler flag. When this doc and the config disagree, **the config wins** — then fix this doc.
 
-**Zero-tolerance gate.** `npm run lint` MUST print **0 errors AND 0 warnings**; `npm run typecheck` (`tsgo --noEmit`) MUST pass — both before any commit. Husky enforces them (`pre-commit` → `lint-staged` + `typecheck`; `pre-push` → `test:coverage` + `build`). **Never** silence a finding. No `// eslint-disable*`, no `@ts-ignore`. `@ts-expect-error` is allowed only with a ≥5-char justification (`ban-ts-comment: allow-with-description`) recorded in a linked decision file. See [00-non-negotiable-rules.md](./00-non-negotiable-rules.md) rules 1–7.
+**Zero-tolerance gate.** `npm run lint` MUST print **0 errors AND 0 warnings**; `npm run typecheck` (`tsc --pretty --noEmit --incremental false`) MUST pass — both before any commit. Husky enforces them (`pre-commit` → `lint-staged` + `typecheck`; `pre-push` → `test:coverage` + `build`). **Never** silence a finding. No `// eslint-disable*`, no `@ts-ignore`. `@ts-expect-error` is allowed only with a ≥5-char justification (`ban-ts-comment: allow-with-description`) recorded in a linked decision file. See [00-non-negotiable-rules.md](./00-non-negotiable-rules.md) rules 1–7.
 
 ```bash
 npm run lint        # eslint .            → must be 0/0
 npm run lint:fix    # eslint . --fix      → autofix mechanical issues (sort/format/unused)
-npm run typecheck   # tsgo --noEmit       → native type check, project-wide
+npm run typecheck   # TypeScript 7 tsc    → native type check, project-wide
+npm run build       # TypeScript 7 tsc    → emit with tsconfig.build.json
 ```
 
-> Type-checking is **tsgo** (`@typescript/native-preview`), never plain `tsc`. Tests run on Vitest — see [11-testing-and-coverage.md](./11-testing-and-coverage.md) and [/context/stack-and-toolchain.md](../context/stack-and-toolchain.md).
+## TypeScript 7 side-by-side ownership
+
+- `@typescript/native` aliases `npm:typescript@7.0.2` and supplies the default `tsc` executable. It exclusively owns `npm run typecheck` and `npm run build`.
+- The package named `typescript` aliases `npm:@typescript/typescript6@6.0.2`. It exists only for tools that import the compiler API, including Nest CLI, typescript-eslint, SonarJS, and ts-node; it is not the main language compiler and does not represent a downgrade.
+- This is Microsoft's official TypeScript 7 side-by-side migration. `@typescript/native-preview` is removed.
+- Do not use an `.npmrc` legacy-peer bypass, `--force`, `--legacy-peer-deps`, or hand-edited lockfile dependency/peer metadata. Use vendor-supported compatibility packages and prove the result with a clean install plus lint, typecheck, and build.
+
+Tests run on Vitest — see [11-testing-and-coverage.md](./11-testing-and-coverage.md) and [/context/stack-and-toolchain.md](../context/stack-and-toolchain.md).
 
 ---
 

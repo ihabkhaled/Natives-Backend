@@ -8,7 +8,7 @@ This is a memory note: decisions + rationale, written abstractly so any NestJS p
 
 ## Decision 1 — Vitest 4 is the runner
 
-**Decision.** The test runner is **Vitest 4**, paired with **@nestjs/testing** for module wiring and **supertest** for HTTP. Jest, ts-jest, `tsc`-based test runs, and Mocha are out.
+**Decision.** The test runner is **Vitest 4**, paired with **@nestjs/testing** for module wiring and **supertest** for HTTP. Jest, ts-jest, and Mocha are out; the TypeScript 7 compiler gates types/builds but does not replace test execution.
 
 **Rationale.**
 
@@ -138,7 +138,7 @@ Security tests are mandatory on protected routes, preferably as integration so t
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide
 npm run test            # vitest run — full suite
 npm run test:coverage   # 95% statements/functions/lines; 90% measured branches; real changed branches covered
 npm run build           # compiles clean

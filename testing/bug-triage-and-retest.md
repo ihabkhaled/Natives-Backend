@@ -231,7 +231,7 @@ Hotfixes are **faster, not looser** — every step still exists.
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide
 npm run test            # vitest — reproducing test green; revert the fix → it goes red
 npm run test:coverage   # ≥ 95% on touched files; critical paths near 100%
 npm run build           # compiles clean

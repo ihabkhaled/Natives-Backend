@@ -1,6 +1,6 @@
 ---
 description: NestJS engineering operating system — layered architecture, strict TypeScript, and the non-negotiable code rules enforced by ESLint and tsconfig
-globs: ["**/*.ts"]
+globs: ['**/*.ts']
 alwaysApply: true
 ---
 
@@ -34,6 +34,12 @@ Read `context/architecture-map.md` and `rules/00-non-negotiable-rules.md` before
 - Services must not import use cases; dependency direction is one-way. Enforced by `architecture/no-use-case-import-in-service`.
 - No behavior change without tests (written first) and docs in the same change.
 - Before writing code, run the Simple Code Ladder (`rules/20-simple-readable-code.md`, rules 43–46): need it → reuse existing owner → native/platform → existing adapter → small helper → direct readable code → new abstraction only when justified. No speculative abstraction, no clever TypeScript, no parallel duplicates; simplicity never cuts validation, guards, errors, adapters, bounds, tests, or docs. Complete canon: `rules/20`–`rules/30`; route declarations through `context/declaration-ownership-map.md` and broad cleanup through `skills/full-codebase-cleanup.md`.
+
+## Toolchain ownership
+
+Node.js 24.18.0 LTS and npm >=11.16.0 are required. Microsoft's official TypeScript 7 side-by-side migration is authoritative: `@typescript/native` (`npm:typescript@7.0.2`) supplies the default `tsc` for typecheck/build; the package named `typescript` (`npm:@typescript/typescript6@6.0.2`) supplies only the compiler API required by Nest CLI, typescript-eslint, SonarJS, ts-node, and similar tools. It is not a downgrade.
+
+Prefer latest stable compatible packages and official migration/compatibility paths. Never use `--force`, `--legacy-peer-deps`, an `.npmrc` legacy-peer bypass, or hand-edited lockfile dependency/peer metadata to manufacture compatibility.
 
 ## Gates (all green before done)
 

@@ -249,7 +249,7 @@ Every PR that adds a query or endpoint states, in the description: indexes added
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings (architecture + no-await-in-loop + no Promise.all in services)
-npm run typecheck       # tsgo --noEmit
+npm run typecheck       # tsc --noEmit (TypeScript 7)
 npm run test            # vitest
 npm run test:coverage   # ≥ 95% on touched modules
 npm run build           # compiles clean

@@ -96,7 +96,7 @@ A fast self-check that ties context to the gates you will actually face:
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide
 npm run test            # vitest
 npm run test:coverage   # 95% statements/functions/lines; 90% measured branches; real changed branches covered
 npm run build           # compiles clean

@@ -4,10 +4,12 @@
 
 ## Runtime & language
 
-- **Node.js 20+** (`engines.node >= 20`, `npm >= 10`).
-- **TypeScript 6** (`typescript 6.0.3`) for editor/types, type-checked & built with the toolchain below.
-- **tsgo** — `@typescript/native-preview`, the native TypeScript compiler used for fast type-checking (`npm run typecheck` → `tsgo --noEmit`). It type-checks; it does not run `.ts`.
+- **Node.js 24.18.0 LTS** (`engines.node >=24.18.0 <25`) with **npm >=11.16.0**.
+- **TypeScript 7.0.2 native CLI** — `@typescript/native` is the alias `npm:typescript@7.0.2` and owns the default `tsc` executable used by typecheck and build.
+- **TypeScript 6 compatibility API** — the package named `typescript` is the alias `npm:@typescript/typescript6@6.0.2` solely for Nest CLI, typescript-eslint, SonarJS, ts-node, and other tools that import the compiler API. It is not the language compiler or a downgrade.
 - **NestJS 11** on the **Fastify** platform (`@nestjs/platform-fastify`); `@nestjs/platform-express` is also installed so a project can switch platforms.
+
+This is Microsoft's official TypeScript 7 side-by-side migration. `@typescript/native-preview` is removed. Do not add an `.npmrc` legacy-peer bypass, use `--force` or `--legacy-peer-deps`, or hand-edit lockfile dependency/peer metadata.
 
 ## Framework & libraries (shipped)
 
@@ -22,7 +24,7 @@
 - **@fastify/helmet + @fastify/cors + @fastify/cookie** — security headers, CORS, cookie parsing; the HTTP platform vendor is owned by [`src/bootstrap`](../src/bootstrap).
 - **reflect-metadata, rxjs, tslib** — framework runtime.
 
-> **Vendor ownership is ESLint-enforced** ([`eslint/package-boundaries.config.mjs`](../eslint/package-boundaries.config.mjs)): each package above is importable only inside its owning module, so swapping any vendor touches exactly one folder. Dependencies are kept at **latest with `^` ranges** — `npm run deps:check` reports drift, `npm run deps:upgrade` bumps + reinstalls (then run every gate).
+> **Vendor ownership is ESLint-enforced** ([`eslint/package-boundaries.config.mjs`](../eslint/package-boundaries.config.mjs)): each package above is importable only inside its owning module, so swapping any vendor touches exactly one folder. Prefer the latest stable compatible packages and vendor-supported migration/compatibility paths. `npm run deps:check` reports drift; after `deps:upgrade`, prove a clean install and every gate. Exact aliases are valid when an official compatibility path requires them.
 
 > **Not shipped on purpose (you choose):** ORM/database driver, cache/queue client, mailer, object storage, APM. Add them behind an **adapter** (rules/12) so the rest of the codebase never imports the vendor directly. The reference module under [`../src/modules/articles`](../src/modules/articles) uses an in-memory repository so the starter runs with zero external services.
 
@@ -51,16 +53,16 @@
 
 ## npm scripts
 
-| Script                    | Command                                      | Purpose                     |
-| ------------------------- | -------------------------------------------- | --------------------------- |
-| `start:dev`               | `nest start --watch`                         | Dev server with reload      |
-| `build`                   | `nest build -p tsconfig.build.json`          | Production build to `dist/` |
-| `start:prod`              | `node dist/src/main`                         | Run the compiled build      |
-| `typecheck`               | `tsgo --pretty --noEmit --incremental false` | Project-wide type check     |
-| `lint` / `lint:fix`       | `eslint` / `eslint --fix`                    | Lint (0 errors/0 warnings)  |
-| `format` / `format:check` | `prettier --write .` / `--check .`           | Format / verify             |
-| `test` / `test:watch`     | `vitest run` / `vitest`                      | Tests                       |
-| `test:coverage`           | `vitest run --coverage`                      | Tests + coverage gate       |
+| Script                    | Command                                     | Purpose                              |
+| ------------------------- | ------------------------------------------- | ------------------------------------ |
+| `start:dev`               | `nest start --watch`                        | Dev server with reload               |
+| `build`                   | `tsc -p tsconfig.build.json`                | TypeScript 7 build to `dist/`        |
+| `start:prod`              | `node dist/src/main`                        | Run the compiled build               |
+| `typecheck`               | `tsc --pretty --noEmit --incremental false` | TypeScript 7 project-wide type check |
+| `lint` / `lint:fix`       | `eslint` / `eslint --fix`                   | Lint (0 errors/0 warnings)           |
+| `format` / `format:check` | `prettier --write .` / `--check .`          | Format / verify                      |
+| `test` / `test:watch`     | `vitest run` / `vitest`                     | Tests                                |
+| `test:coverage`           | `vitest run --coverage`                     | Tests + coverage gate                |
 
 ## Security scanning (Trivy)
 
@@ -72,10 +74,10 @@
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit, TypeScript 7, project-wide
 npm run test            # vitest
 npm run test:coverage   # coverage thresholds met
-npm run build           # compiles clean
+npm run build           # tsc -p tsconfig.build.json, TypeScript 7
 npm run security:scan   # trivy: no HIGH/CRITICAL vulns, secrets, or misconfig
 ```
 

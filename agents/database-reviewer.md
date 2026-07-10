@@ -102,7 +102,7 @@ export class OrderRepository {
 
 ```
 npm run lint
-npm run typecheck      # tsgo --noEmit
+npm run typecheck      # tsc --noEmit (TypeScript 7)
 npm run test
 npm run test:coverage  # floor 95%; critical data paths near 100%
 npm run build

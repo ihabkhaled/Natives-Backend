@@ -262,7 +262,7 @@ Record what was **not** run (and why, with the residual risk) instead of leaving
 
 ```bash
 npm run lint            # 0 errors AND 0 warnings
-npm run typecheck       # tsgo --noEmit, project-wide
+npm run typecheck       # tsc --noEmit (TypeScript 7), project-wide
 npm run test            # vitest run — full suite
 npm run test:coverage   # 95% floor met (critical paths near 100%)
 npm run build           # compiles clean
