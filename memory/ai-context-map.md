@@ -57,6 +57,8 @@ Pick the row that matches the change, then read its rule and run its skill.
 | Run a repository-wide cleanup                      | [28-codebase-refactor-discipline.md](../rules/28-codebase-refactor-discipline.md)                                                 | [full-codebase-cleanup.md](../skills/full-codebase-cleanup.md)                                                                                                                                                                   |
 | Refactor security/validation without weakening     | [07-security-authn-authz.md](../rules/07-security-authn-authz.md) / [05-dto-and-validation.md](../rules/05-dto-and-validation.md) | [cleanup-security-code-without-weakening.md](../skills/cleanup-security-code-without-weakening.md) / [cleanup-validation-code-without-weakening.md](../skills/cleanup-validation-code-without-weakening.md)                      |
 | Update agent entrypoints/mirrors                   | [29-agent-readiness-and-mirrors.md](../rules/29-agent-readiness-and-mirrors.md)                                                   | [prepare-agent-mirrors.md](../skills/prepare-agent-mirrors.md)                                                                                                                                                                   |
+| Resolve context for a task (compiled AI layer)     | —                                                                                                                                 | Run `npm run knowledge:context -- --task="…"`; read `.ai/local/current-context.md` (see [tools/knowledge](../tools/knowledge))                                                                                                   |
+| Change an API/event/schema/config/adapter contract | [contracts-map.md](../context/contracts-map.md) routes to the owner                                                               | the owner rule's skill (e.g. [create-dto-validation.md](../skills/create-dto-validation.md), [add-config-value.md](../skills/add-config-value.md), [add-library-adapter.md](../skills/add-library-adapter.md))                   |
 
 ---
 
@@ -98,6 +100,8 @@ Read these when a decision needs prior rationale — not on every task.
 | How are broad refactors sliced?                 | [refactor-decisions.md](./refactor-decisions.md)                                                                                            |
 | How do agent mirrors stay aligned?              | [agent-readiness-decisions.md](./agent-readiness-decisions.md)                                                                              |
 | How do security/validation refactors stay safe? | [security-refactor-decisions.md](./security-refactor-decisions.md) / [validation-refactor-decisions.md](./validation-refactor-decisions.md) |
+| What personal data does this repo process?      | [privacy-decisions.md](./privacy-decisions.md)                                                                                              |
+| What is the operational/deployment model?       | [operations-decisions.md](./operations-decisions.md)                                                                                        |
 | What blocks a release?                          | [release-checklist.md](./release-checklist.md)                                                                                              |
 
 > Project records: list any project-specific memory notes (third-party SLAs, tenancy model, region/compliance constraints) added beyond this set here.

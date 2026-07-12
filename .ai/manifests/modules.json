@@ -1,0 +1,140 @@
+{
+  "generatedAt": "2026-07-12T10:26:17.082Z",
+  "modules": [
+    {
+      "name": "articles",
+      "path": "src/modules/articles",
+      "layers": {
+        "controller": [
+          "src/modules/articles/api/articles.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/articles/api/dto/article-response.dto.ts",
+          "src/modules/articles/api/dto/create-article.dto.ts",
+          "src/modules/articles/api/dto/list-articles.query.dto.ts",
+          "src/modules/articles/api/dto/list-articles.response.dto.ts"
+        ],
+        "service": [
+          "src/modules/articles/application/articles.service.ts"
+        ],
+        "other": [
+          "src/modules/articles/articles.module.ts",
+          "src/modules/articles/index.ts"
+        ],
+        "domain": [
+          "src/modules/articles/domain/article-ownership.policy.ts",
+          "src/modules/articles/domain/article.entity.ts"
+        ],
+        "repository": [
+          "src/modules/articles/infrastructure/article.repository.ts"
+        ],
+        "lib": [
+          "src/modules/articles/lib/article.mapper.ts"
+        ],
+        "model": [
+          "src/modules/articles/model/article.constants.ts",
+          "src/modules/articles/model/article.enums.ts",
+          "src/modules/articles/model/article.types.ts"
+        ]
+      },
+      "fileCount": 15,
+      "specCount": 4,
+      "publicSurface": "src/modules/articles/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "auth",
+      "path": "src/modules/auth",
+      "layers": {
+        "adapter": [
+          "src/modules/auth/adapters/jwt-token.adapter.ts",
+          "src/modules/auth/adapters/password-hash.adapter.ts"
+        ],
+        "controller": [
+          "src/modules/auth/api/auth.controller.ts"
+        ],
+        "other": [
+          "src/modules/auth/api/login-response.dto.ts",
+          "src/modules/auth/api/login.dto.ts",
+          "src/modules/auth/auth.module.ts",
+          "src/modules/auth/errors/invalid-credentials.error.ts",
+          "src/modules/auth/index.ts"
+        ],
+        "service": [
+          "src/modules/auth/application/auth.service.ts"
+        ],
+        "lib": [
+          "src/modules/auth/lib/auth-identity.mapper.ts"
+        ],
+        "model": [
+          "src/modules/auth/model/auth.constants.ts",
+          "src/modules/auth/model/auth.types.ts"
+        ]
+      },
+      "fileCount": 12,
+      "specCount": 3,
+      "publicSurface": "src/modules/auth/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "users",
+      "path": "src/modules/users",
+      "layers": {
+        "service": [
+          "src/modules/users/application/users.service.ts"
+        ],
+        "other": [
+          "src/modules/users/index.ts",
+          "src/modules/users/users.module.ts"
+        ],
+        "repository": [
+          "src/modules/users/infrastructure/users.repository.ts"
+        ],
+        "model": [
+          "src/modules/users/model/user.constants.ts",
+          "src/modules/users/model/user.types.ts"
+        ]
+      },
+      "fileCount": 6,
+      "specCount": 2,
+      "publicSurface": "src/modules/users/index.ts",
+      "hasEvents": false
+    }
+  ],
+  "crossCutting": [
+    {
+      "name": "bootstrap",
+      "path": "src/bootstrap",
+      "submodules": []
+    },
+    {
+      "name": "config",
+      "path": "src/config",
+      "submodules": []
+    },
+    {
+      "name": "core",
+      "path": "src/core",
+      "submodules": [
+        "auth",
+        "clock",
+        "errors",
+        "health",
+        "http",
+        "id-generator",
+        "logger",
+        "openapi",
+        "rate-limit",
+        "validation"
+      ]
+    },
+    {
+      "name": "shared",
+      "path": "src/shared",
+      "submodules": [
+        "constants",
+        "enums"
+      ]
+    }
+  ]
+}

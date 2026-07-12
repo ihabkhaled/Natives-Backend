@@ -66,3 +66,8 @@ pids
 
 # Diagnostic reports
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Knowledge acceleration plane — per-run resolver output only.
+# .ai/manifests/, .ai/BOOTSTRAP.md, and everything else under .ai/ stay
+# committed for immediate cold-start; see tools/knowledge/.
+/.ai/local/
