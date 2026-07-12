@@ -186,19 +186,29 @@ If implementation work is completed in the same response, also include:
 ## Mandatory Repository Structure
 
 ```text
-/claude.md
-/AGENTS.md
-/codex.md
-/cursor.md
-/.cursor/rules/
+# Governance & SDLC
+/claude.md                              # canonical operating brain (this file)
+/AGENTS.md /codex.md /cursor.md         # cross-tool + mirror entrypoints
+/KIMI.md /GEMINI.md /GLM.md /QWEN.md /DEEPSEEK.md /MISTRAL.md   # per-model routers
+/.cursor/rules/                         # IDE-native project rules
 /.cursorrules (optional legacy compatibility)
-/docs/sdlc/
-/docs/features/<feature-slug>/
-/test-cases/
-/runbooks/
-/architecture/adrs/
-/release-notes/
-/support/
+/docs/sdlc/                             # permanent SDLC baselines (incl. exceptions-register.md)
+/docs/features/<feature-slug>/          # per-request phase artifacts
+/test-cases/ /runbooks/ /release-notes/ /support/
+/architecture/adrs/                     # decision records
+
+# Engineering operating system (the concrete "how")
+/rules/                                 # numbered engineering rules (00–30)
+/skills/                                # step-by-step task playbooks
+/context/                               # architecture/navigation/simplicity maps
+/memory/                                # durable decisions + known pitfalls
+/agents/                                # specialist reviewer roles
+/testing/                               # testing standards + coverage policy
+/eslint/                                # flat configs + custom architecture plugin
+
+# Compiled AI acceleration plane (generated)
+/tools/knowledge/                       # the generator + resolver + benchmark/verify gates
+/.ai/                                   # BOOTSTRAP.md + manifests (committed; .ai/local/ is not)
 ```
 
 The canonical request artifacts are:

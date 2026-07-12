@@ -4,25 +4,18 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { loadManifests } from './lib/load-manifests.mjs';
 import { rankContext, WARMUP_PATHS } from './lib/rank-context.mjs';
+import { mergePack } from './lib/resolve-pack.mjs';
+
+// Re-exported for the resolver's existing spec, which imports it from here.
+export { loadManifests };
 
 const REAL_REPO_ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   '..',
   '..',
 );
-const MANIFEST_NAMES = [
-  'repository',
-  'modules',
-  'documents',
-  'dependencyGraph',
-];
-const MANIFEST_FILES = {
-  repository: 'repository.json',
-  modules: 'modules.json',
-  documents: 'documents.json',
-  dependencyGraph: 'dependency-graph.json',
-};
 
 export function parseArgs(argv) {
   const parsed = { task: '', files: [], diff: null };
@@ -40,19 +33,6 @@ export function parseArgs(argv) {
     }
   }
   return parsed;
-}
-
-export function loadManifests(repoRoot) {
-  const manifestDir = path.join(repoRoot, '.ai', 'manifests');
-  const manifests = {};
-  for (const name of MANIFEST_NAMES) {
-    const filePath = path.join(manifestDir, MANIFEST_FILES[name]);
-    if (!existsSync(filePath)) {
-      return null;
-    }
-    manifests[name] = JSON.parse(readFileSync(filePath, 'utf8'));
-  }
-  return manifests;
 }
 
 // Never throws: an invalid range or a repo with no git history degrades to
@@ -108,6 +88,7 @@ export function buildContextOutput({ task, files, manifests, repoRoot }) {
     seedFiles: files,
     generatedAt: new Date().toISOString(),
     warmup,
+    pack: mergePack(task),
     ranked,
     modules: result.modules,
   };
@@ -125,6 +106,25 @@ function toMarkdown(output) {
   for (const item of output.warmup) {
     lines.push(
       `- \`${item.path}\`${item.tokens ? ` (~${item.tokens} tokens)` : ''}`,
+    );
+  }
+  if (output.pack) {
+    lines.push(
+      '',
+      `## Curated pack (${output.pack.lane} lane)`,
+      '',
+      `Matched task types: ${output.pack.matchedTaskTypes.join(', ')}`,
+      '',
+      '**Rules (read these):**',
+      ...output.pack.rules.map(rule => `- \`${rule}\``),
+      '',
+      '**Skills (follow these):**',
+      ...output.pack.skills.map(skill => `- \`${skill}\``),
+      '',
+      '**Reviewers:**',
+      ...output.pack.reviewers.map(reviewer => `- \`${reviewer}\``),
+      '',
+      `**Validation:** ${output.pack.validation.join(' · ')}`,
     );
   }
   lines.push('', '## Ranked context', '');

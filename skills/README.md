@@ -85,9 +85,10 @@ Skills are procedures, not policy. When a skill and a rule appear to disagree, t
 
 ### Plan & investigate — change safely under pressure
 
-| Skill                                                            | Use when you need to…                                                         |
-| ---------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| [investigate-production-bug.md](./investigate-production-bug.md) | Reproduce → locate → fix a reported defect with a failing test written first. |
+| Skill                                                            | Use when you need to…                                                                                                                                            |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [resolve-task-context.md](./resolve-task-context.md)             | **First step of every task** — run `npm run knowledge:context` to get the warm-up set, the curated rule/skill/reviewer pack, and the exact source/tests to read. |
+| [investigate-production-bug.md](./investigate-production-bug.md) | Reproduce → locate → fix a reported defect with a failing test written first.                                                                                    |
 
 > Each skill's **Related** section cross-links the others so you always land on canonical guidance for enums, permissions, errors/i18n, adapters, and the quality gates.
 
@@ -97,7 +98,8 @@ Skills are procedures, not policy. When a skill and a rule appear to disagree, t
 
 Follow this for **every** task. Do not skip steps; depth scales with the change, the steps do not.
 
-1. **Read the rules.** [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) → the layer rule for what you're touching ([/rules/README.md](../rules/README.md)) → [/memory/known-pitfalls.md](../memory/known-pitfalls.md).
+0. **Resolve the task context first** ([resolve-task-context.md](./resolve-task-context.md)). Run `npm run knowledge:context -- --task="…"` and read `.ai/local/current-context.md` — it hands you the warm-up set, the curated pack (rules/skills/reviewers/lane/validation), and the exact source/tests, so the steps below are routed, not a whole-corpus read.
+1. **Read the rules the pack named.** [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) → the layer rule for what you're touching ([/rules/README.md](../rules/README.md)) → [/memory/known-pitfalls.md](../memory/known-pitfalls.md).
 2. **Open the matching skill** in this folder and follow it top to bottom.
 3. **Inspect the real code first.** Find a sibling module that already does the thing (use [/context/codebase-navigation.md](../context/codebase-navigation.md)) and mirror its structure. Cite real paths; never invent contracts.
 4. **Run the Simple Code Ladder** ([write-simple-readable-code.md](./write-simple-readable-code.md), rules 43–46): reuse an existing owner before creating anything new; write the boring direct version; no speculative abstraction. Simplicity never cuts validation, guards, errors, adapters, bounds, tests, or docs.

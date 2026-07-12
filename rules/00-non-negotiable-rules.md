@@ -11,9 +11,9 @@ Layer-specific detail lives in the numbered rule files ([README](./README.md)); 
 1. **Full strict TypeScript.** Every strict flag is on (incl. `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`). Don't fight the compiler — handle the nulls.
 2. **Full strict ESLint.** `npm run lint` must be **0 errors AND 0 warnings**. No exceptions normalized.
 3. **No `any`.** Use `unknown` + narrowing or a real type. `@typescript-eslint/no-explicit-any` is `error`.
-4. **No `eslint-disable`.** Fix the root cause. Suppressions rot silently.
+4. **No `eslint-disable`.** Fix the root cause. Suppressions rot silently. Every _sanctioned_ relaxation (test-file rule loosening, the coverage branch floor, …) is a documented, owned entry in the [exceptions register](../docs/sdlc/exceptions-register.md); an unrecorded relaxation is a defect.
 5. **No `@ts-ignore`.** Resolve the type.
-6. **No `@ts-expect-error`** unless justified in a dedicated, linked docs decision file (`minimumDescriptionLength` enforced).
+6. **No `@ts-expect-error`** unless justified in a dedicated, linked docs decision file (`minimumDescriptionLength` enforced) and recorded in the [exceptions register](../docs/sdlc/exceptions-register.md).
 7. **No non-null assertion (`!`).** Use guards, `??`, or `?.`.
 8. **No magic strings/numbers.** Statuses, roles, permissions, event names, cache keys, TTLs, limits, message keys → named constants/enums in dedicated files.
 9. **No domain string comparisons.** Compare against enum members (`status === OrderStatus.Draft`), never raw literals.

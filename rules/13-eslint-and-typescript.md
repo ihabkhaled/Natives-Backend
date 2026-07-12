@@ -2,7 +2,7 @@
 
 > The complete lint + type gate and how to pass it. This file implements the canon: every rule below maps to a layer rule, an architecture boundary, or a strict compiler flag. When this doc and the config disagree, **the config wins** — then fix this doc.
 
-**Zero-tolerance gate.** `npm run lint` MUST print **0 errors AND 0 warnings**; `npm run typecheck` (`tsc --pretty --noEmit --incremental false`) MUST pass — both before any commit. Husky enforces them (`pre-commit` → `lint-staged` + `typecheck`; `pre-push` → `test:coverage` + `build`). **Never** silence a finding. No `// eslint-disable*`, no `@ts-ignore`. `@ts-expect-error` is allowed only with a ≥5-char justification (`ban-ts-comment: allow-with-description`) recorded in a linked decision file. See [00-non-negotiable-rules.md](./00-non-negotiable-rules.md) rules 1–7.
+**Zero-tolerance gate.** `npm run lint` MUST print **0 errors AND 0 warnings**; `npm run typecheck` (`tsc --pretty --noEmit --incremental false`) MUST pass — both before any commit. Husky enforces them (`pre-commit` → `lint-staged` + `typecheck`; `pre-push` → `test:coverage` + `build`). **Never** silence a finding. No `// eslint-disable*`, no `@ts-ignore`. `@ts-expect-error` is allowed only with a ≥5-char justification (`ban-ts-comment: allow-with-description`) recorded in a linked decision file. See [00-non-negotiable-rules.md](./00-non-negotiable-rules.md) rules 1–7. Every _sanctioned_ relaxation (the test-file loosenings below, the 90% branch floor, the lint-scope exclusions) is indexed in the [exceptions register](../docs/sdlc/exceptions-register.md) — an unrecorded relaxation is a defect, not an exception.
 
 ```bash
 npm run lint        # eslint .            → must be 0/0
