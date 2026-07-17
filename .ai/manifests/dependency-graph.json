@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T20:32:04.287Z",
+  "generatedAt": "2026-07-17T21:42:00.020Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -29,6 +29,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/identity/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -193,6 +198,11 @@
     },
     {
       "from": "src/config/config.module.ts",
+      "to": "src/config/identity.config.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/config.module.ts",
       "to": "src/config/security.config.ts",
       "type": "internal"
     },
@@ -260,6 +270,21 @@
       "from": "src/config/environment-variables.dto.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/config/identity.config.ts",
+      "to": "src/config/config.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/identity.config.ts",
+      "to": "src/config/config.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/identity.config.ts",
+      "to": "src/config/config.utils.ts",
+      "type": "internal"
     },
     {
       "from": "src/config/security.config.ts",
@@ -883,6 +908,11 @@
     },
     {
       "from": "src/database/database-error.mapper.ts",
+      "to": "src/core/errors/app-error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/database-error.mapper.ts",
       "to": "src/core/errors/integration.error.ts",
       "type": "cross-cutting"
     },
@@ -1253,88 +1283,13 @@
     },
     {
       "from": "src/modules/auth/adapters/password-hash.adapter.ts",
+      "to": "src/modules/auth/model/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/adapters/password-hash.adapter.ts",
       "to": "src/modules/auth/model/auth.types.ts",
       "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/api/auth.controller.ts",
-      "to": "src/core/auth/index.ts",
-      "type": "cross-cutting"
-    },
-    {
-      "from": "src/modules/auth/api/auth.controller.ts",
-      "to": "src/core/openapi/index.ts",
-      "type": "cross-cutting"
-    },
-    {
-      "from": "src/modules/auth/api/auth.controller.ts",
-      "to": "src/modules/auth/api/login-response.dto.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/api/auth.controller.ts",
-      "to": "src/modules/auth/api/login.dto.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/api/auth.controller.ts",
-      "to": "src/modules/auth/application/auth.service.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/api/auth.controller.ts",
-      "to": "src/modules/auth/model/auth.constants.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/api/login-response.dto.ts",
-      "to": "src/core/openapi/index.ts",
-      "type": "cross-cutting"
-    },
-    {
-      "from": "src/modules/auth/api/login.dto.ts",
-      "to": "src/core/openapi/index.ts",
-      "type": "cross-cutting"
-    },
-    {
-      "from": "src/modules/auth/api/login.dto.ts",
-      "to": "src/core/validation/index.ts",
-      "type": "cross-cutting"
-    },
-    {
-      "from": "src/modules/auth/api/login.dto.ts",
-      "to": "src/modules/auth/model/auth.constants.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/application/auth.service.ts",
-      "to": "src/core/auth/index.ts",
-      "type": "cross-cutting"
-    },
-    {
-      "from": "src/modules/auth/application/auth.service.ts",
-      "to": "src/modules/auth/errors/invalid-credentials.error.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/application/auth.service.ts",
-      "to": "src/modules/auth/lib/auth-identity.mapper.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/application/auth.service.ts",
-      "to": "src/modules/auth/model/auth.constants.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/application/auth.service.ts",
-      "to": "src/modules/auth/model/auth.types.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/application/auth.service.ts",
-      "to": "src/modules/users/index.ts",
-      "type": "cross-module"
     },
     {
       "from": "src/modules/auth/auth.module.ts",
@@ -1358,37 +1313,7 @@
     },
     {
       "from": "src/modules/auth/auth.module.ts",
-      "to": "src/modules/auth/api/auth.controller.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/auth.module.ts",
-      "to": "src/modules/auth/application/auth.service.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/auth.module.ts",
       "to": "src/modules/auth/model/auth.constants.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/auth.module.ts",
-      "to": "src/modules/users/index.ts",
-      "type": "cross-module"
-    },
-    {
-      "from": "src/modules/auth/errors/invalid-credentials.error.ts",
-      "to": "src/core/errors/unauthorized.error.ts",
-      "type": "cross-cutting"
-    },
-    {
-      "from": "src/modules/auth/errors/invalid-credentials.error.ts",
-      "to": "src/modules/auth/model/auth.constants.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/auth/index.ts",
-      "to": "src/modules/auth/application/auth.service.ts",
       "type": "internal"
     },
     {
@@ -1397,14 +1322,14 @@
       "type": "internal"
     },
     {
-      "from": "src/modules/auth/lib/auth-identity.mapper.ts",
-      "to": "src/core/auth/index.ts",
-      "type": "cross-cutting"
+      "from": "src/modules/auth/index.ts",
+      "to": "src/modules/auth/model/auth.constants.ts",
+      "type": "internal"
     },
     {
-      "from": "src/modules/auth/lib/auth-identity.mapper.ts",
-      "to": "src/modules/users/index.ts",
-      "type": "cross-module"
+      "from": "src/modules/auth/index.ts",
+      "to": "src/modules/auth/model/auth.types.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/auth/model/auth.constants.ts",
@@ -1412,64 +1337,1444 @@
       "type": "cross-cutting"
     },
     {
-      "from": "src/modules/users/application/users.service.ts",
-      "to": "src/modules/users/infrastructure/users.repository.ts",
+      "from": "src/modules/identity/adapters/crypto-secure-random.adapter.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
       "type": "internal"
     },
     {
-      "from": "src/modules/users/application/users.service.ts",
-      "to": "src/modules/users/model/user.types.ts",
+      "from": "src/modules/identity/adapters/crypto-secure-random.adapter.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
       "type": "internal"
     },
     {
-      "from": "src/modules/users/index.ts",
-      "to": "src/modules/users/application/users.service.ts",
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/api/dto/forgot-password.dto.ts",
       "type": "internal"
     },
     {
-      "from": "src/modules/users/index.ts",
-      "to": "src/modules/users/model/user.types.ts",
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/api/dto/login.dto.ts",
       "type": "internal"
     },
     {
-      "from": "src/modules/users/index.ts",
-      "to": "src/modules/users/users.module.ts",
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/api/dto/logout.dto.ts",
       "type": "internal"
     },
     {
-      "from": "src/modules/users/infrastructure/users.repository.ts",
-      "to": "src/modules/users/model/user.constants.ts",
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/api/dto/message-response.dto.ts",
       "type": "internal"
     },
     {
-      "from": "src/modules/users/infrastructure/users.repository.ts",
-      "to": "src/modules/users/model/user.types.ts",
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/api/dto/principal-response.dto.ts",
       "type": "internal"
     },
     {
-      "from": "src/modules/users/model/user.constants.ts",
-      "to": "src/modules/users/model/user.types.ts",
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/api/dto/refresh.dto.ts",
       "type": "internal"
     },
     {
-      "from": "src/modules/users/model/user.constants.ts",
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/api/dto/reset-password.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/api/dto/session-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/application/login.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/application/logout-all.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/application/logout.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/application/refresh-session.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/application/reset-password.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/accept-invitation.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/accept-invitation.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/accept-invitation.dto.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/create-invitation.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/create-invitation.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/create-invitation.dto.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/create-invitation.dto.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
     },
     {
-      "from": "src/modules/users/model/user.types.ts",
+      "from": "src/modules/identity/api/dto/forgot-password.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/forgot-password.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/forgot-password.dto.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/invitation-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/invitation-response.dto.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/invitation-response.dto.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
     },
     {
-      "from": "src/modules/users/users.module.ts",
-      "to": "src/modules/users/application/users.service.ts",
+      "from": "src/modules/identity/api/dto/login.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/login.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/login.dto.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
       "type": "internal"
     },
     {
-      "from": "src/modules/users/users.module.ts",
-      "to": "src/modules/users/infrastructure/users.repository.ts",
+      "from": "src/modules/identity/api/dto/logout.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/logout.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/logout.dto.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/message-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/principal-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/principal-response.dto.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/principal-response.dto.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/refresh.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/refresh.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/refresh.dto.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/reset-password.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/reset-password.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/reset-password.dto.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/session-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/modules/identity/api/dto/accept-invitation.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/modules/identity/api/dto/create-invitation.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/modules/identity/api/dto/invitation-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/modules/identity/api/dto/session-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/modules/identity/application/create-invitation.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/auth/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/identity/application/session-issuer.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/identity/domain/invitation.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/identity/errors/invitation-invalid.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/identity/infrastructure/password-credential.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/identity/infrastructure/user.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/identity/lib/token-hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/modules/identity/errors/invitation-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/modules/identity/infrastructure/user.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/modules/identity/lib/identity.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/modules/identity/lib/identity.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/modules/identity/lib/token-hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/expire-invitations.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/expire-invitations.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/expire-invitations.use-case.ts",
+      "to": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "to": "src/modules/identity/domain/user-status.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "to": "src/modules/identity/errors/invalid-credentials.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "to": "src/modules/identity/infrastructure/user.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "to": "src/modules/identity/lib/identity.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/auth/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/application/session-issuer.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/domain/failed-login.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/domain/user-status.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/errors/invalid-credentials.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/infrastructure/failed-login-state.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/infrastructure/user.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/lib/identity.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/logout-all.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/logout-all.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/logout-all.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/logout-all.use-case.ts",
+      "to": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/logout-all.use-case.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/logout-all.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/logout-all.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/logout.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/logout.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/logout.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/logout.use-case.ts",
+      "to": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/logout.use-case.ts",
+      "to": "src/modules/identity/lib/token-hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/logout.use-case.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/logout.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/logout.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/refresh-session.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/refresh-session.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/refresh-session.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/refresh-session.use-case.ts",
+      "to": "src/modules/identity/application/session-issuer.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/refresh-session.use-case.ts",
+      "to": "src/modules/identity/domain/refresh-session.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/refresh-session.use-case.ts",
+      "to": "src/modules/identity/domain/user-status.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/refresh-session.use-case.ts",
+      "to": "src/modules/identity/errors/invalid-refresh-token.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/refresh-session.use-case.ts",
+      "to": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/refresh-session.use-case.ts",
+      "to": "src/modules/identity/infrastructure/user.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/refresh-session.use-case.ts",
+      "to": "src/modules/identity/lib/token-hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/refresh-session.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/refresh-session.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/modules/identity/domain/user-status.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/modules/identity/infrastructure/password-reset-token.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/modules/identity/infrastructure/user.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/modules/identity/lib/identity.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/modules/identity/lib/token-hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/modules/identity/domain/invitation.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/modules/identity/errors/invitation-invalid.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/modules/identity/errors/invitation-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/modules/identity/lib/identity.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/modules/identity/lib/token-hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/modules/auth/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/modules/identity/domain/password-reset.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/modules/identity/errors/reset-token-invalid.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/modules/identity/infrastructure/password-credential.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/modules/identity/infrastructure/password-reset-token.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/modules/identity/lib/token-hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reset-password.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "to": "src/modules/identity/domain/invitation.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "to": "src/modules/identity/errors/invitation-invalid.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "to": "src/modules/identity/errors/invitation-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "to": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "to": "src/modules/identity/lib/identity.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/security-audit.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/security-audit.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/security-audit.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/security-audit.service.ts",
+      "to": "src/modules/identity/infrastructure/security-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/security-audit.service.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/session-issuer.service.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/session-issuer.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/session-issuer.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/session-issuer.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/session-issuer.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/session-issuer.service.ts",
+      "to": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/session-issuer.service.ts",
+      "to": "src/modules/identity/lib/identity.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/session-issuer.service.ts",
+      "to": "src/modules/identity/lib/token-hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/session-issuer.service.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/session-issuer.service.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/domain/failed-login.policy.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/domain/failed-login.policy.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/domain/invitation.policy.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/domain/invitation.policy.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/domain/password-reset.policy.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/domain/refresh-session.policy.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/domain/user-status.policy.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/domain/user-status.policy.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/errors/invalid-credentials.error.ts",
+      "to": "src/core/errors/unauthorized.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/errors/invalid-credentials.error.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/errors/invalid-refresh-token.error.ts",
+      "to": "src/core/errors/unauthorized.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/errors/invalid-refresh-token.error.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/errors/invitation-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/errors/invitation-conflict.error.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/errors/invitation-invalid.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/errors/invitation-invalid.error.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/errors/invitation-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/errors/invitation-not-found.error.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/errors/reset-token-invalid.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/errors/reset-token-invalid.error.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/auth/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/adapters/crypto-secure-random.adapter.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/api/auth.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/api/invitations.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/create-invitation.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/expire-invitations.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/login.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/logout-all.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/logout.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/refresh-session.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/reset-password.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/session-issuer.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/infrastructure/failed-login-state.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/infrastructure/password-credential.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/infrastructure/password-reset-token.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/infrastructure/security-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/infrastructure/user.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/index.ts",
+      "to": "src/modules/identity/identity.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/failed-login-state.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/failed-login-state.repository.ts",
+      "to": "src/modules/identity/lib/identity.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/failed-login-state.repository.ts",
+      "to": "src/modules/identity/model/identity.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/failed-login-state.repository.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "to": "src/modules/identity/lib/identity.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "to": "src/modules/identity/model/identity.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/password-credential.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/password-reset-token.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/password-reset-token.repository.ts",
+      "to": "src/modules/identity/lib/identity.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/password-reset-token.repository.ts",
+      "to": "src/modules/identity/model/identity.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/password-reset-token.repository.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "to": "src/modules/identity/lib/identity.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "to": "src/modules/identity/model/identity.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/security-event.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/security-event.repository.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/user.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/user.repository.ts",
+      "to": "src/modules/identity/lib/identity.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/user.repository.ts",
+      "to": "src/modules/identity/model/identity.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/user.repository.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/lib/identity.helpers.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/lib/identity.helpers.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/lib/identity.mapper.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/lib/identity.mapper.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/lib/token-hash.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/model/identity.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/model/identity.types.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/model/identity.types.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/shared/constants/index.ts",

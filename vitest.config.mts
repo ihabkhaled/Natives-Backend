@@ -41,6 +41,7 @@ export default defineConfig({
         'src/config/config.utils.ts',
         'src/config/database.config.ts',
         'src/config/env.validation.ts',
+        'src/config/identity.config.ts',
         'src/config/security.config.ts',
         'src/database/data-source.factory.ts',
         'src/database/database-error.mapper.ts',

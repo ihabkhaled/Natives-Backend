@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-17T20:32:04.287Z",
-  "treeHash": "sha256:627926f7adc8fb890ff7ad91096862bc5f337d1114ec91c81cb8ba6673814ff5",
+  "generatedAt": "2026-07-17T21:42:00.020Z",
+  "treeHash": "sha256:0c927ec1ba912301bea463fa36d7bdba47499a6d941f41aafbca4315a3c594b1",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:e5c3250332136170c03ffb8c1ca87a1cecbfbe0c7ad63aeba8129f50a00d5655",
-      "sizeBytes": 815
+      "hash": "sha256:0fae7963a5f1aee353ad5f1b80ed18ed3b4df5daa82f67ee1c7820e18dd60fc6",
+      "sizeBytes": 887
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -185,8 +185,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:f828e647c1ee9bfc85caf926b19cfba944c2b2ad29973f019c057c351f729aed",
-      "sizeBytes": 1020
+      "hash": "sha256:14abf619b7d00e3d0fe38ed079fa275b65fa8b7a19ee1f77a3ddc08b3638fc42",
+      "sizeBytes": 1212
     },
     {
       "path": "src/config/app.config.spec.ts",
@@ -275,6 +275,10 @@
         {
           "kind": "const",
           "name": "DATABASE_CONFIG_NAMESPACE"
+        },
+        {
+          "kind": "const",
+          "name": "IDENTITY_CONFIG_NAMESPACE"
         },
         {
           "kind": "const",
@@ -446,6 +450,78 @@
         },
         {
           "kind": "const",
+          "name": "DEFAULT_REFRESH_TOKEN_TTL_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_REFRESH_TOKEN_TTL_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_REFRESH_TOKEN_TTL_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_INVITATION_TTL_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_INVITATION_TTL_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_INVITATION_TTL_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_PASSWORD_RESET_TTL_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_PASSWORD_RESET_TTL_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_PASSWORD_RESET_TTL_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_MAX_FAILED_LOGIN_ATTEMPTS"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_MAX_FAILED_LOGIN_ATTEMPTS"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_MAX_FAILED_LOGIN_ATTEMPTS"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_FAILED_LOGIN_WINDOW_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_FAILED_LOGIN_WINDOW_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_FAILED_LOGIN_WINDOW_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_ACCOUNT_LOCKOUT_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_ACCOUNT_LOCKOUT_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_ACCOUNT_LOCKOUT_SECONDS"
+        },
+        {
+          "kind": "const",
           "name": "GLOBAL_PREFIX_PATTERN"
         },
         {
@@ -476,8 +552,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d08c4244099044d66661a1a27eb31e0f12e724dafb7354ef40191a25ea5c389c",
-      "sizeBytes": 3261
+      "hash": "sha256:63a90941a3239af752230ea604da5651955284a96af98207a519d32aac615b91",
+      "sizeBytes": 4632
     },
     {
       "path": "src/config/config.module.ts",
@@ -493,8 +569,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:bd4f472eed4a173cd9a6f2d464ae462c270487da751b80a09e68b7923bf820b6",
-      "sizeBytes": 834
+      "hash": "sha256:d55975d6e939a61c2778c58bccf8237c6c778c14018bbe404815c67bf9e460d6",
+      "sizeBytes": 902
     },
     {
       "path": "src/config/config.types.ts",
@@ -516,14 +592,18 @@
         },
         {
           "kind": "interface",
+          "name": "IdentityConfig"
+        },
+        {
+          "kind": "interface",
           "name": "RootConfig"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:91940cdd339de900e0e8ad2d443956b49ec0ff39eebdd2b3ed3465916c16f555",
-      "sizeBytes": 1023
+      "hash": "sha256:ec186f456de88c76233b844c22e8b5841d6261b680581af5860ecab7693eb80e",
+      "sizeBytes": 1355
     },
     {
       "path": "src/config/config.utils.spec.ts",
@@ -642,8 +722,37 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fd191c82f700497aa1aa98ece3ad077ae627483ba11795891121816460928886",
-      "sizeBytes": 3165
+      "hash": "sha256:86d05777ebfaebc5110b17f05a27b8fab9f7b160b289cc668bbc905d9a08b3ed",
+      "sizeBytes": 4691
+    },
+    {
+      "path": "src/config/identity.config.spec.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b788ff9e09344c7d8628f305f891c47ce3b9a03f45d024a0f8f108a984ae72b6",
+      "sizeBytes": 2406
+    },
+    {
+      "path": "src/config/identity.config.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "identityConfig"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/config/identity.config.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7c0cc2b1ad86f7fcfc53bec309085ba3039705d95c298ef4d3644d40e97e369f",
+      "sizeBytes": 1747
     },
     {
       "path": "src/config/security.config.spec.ts",
@@ -2056,8 +2165,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:4429da47a2c1918f8a5c5d4eaad6a34d292740418977f9b187ee7a7cafafb04a",
-      "sizeBytes": 814
+      "hash": "sha256:988df754bd0ffb4b8ca021a8edf33419f70ed153df5a51fb948b71c20c6dbe92",
+      "sizeBytes": 1101
     },
     {
       "path": "src/database/database-error.mapper.ts",
@@ -2073,8 +2182,8 @@
       "hasSpec": true,
       "specPath": "src/database/database-error.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:aa33e28540b5b29c58beabd701c9332f304b4b6f2401146c18e98684207bc1ad",
-      "sizeBytes": 678
+      "hash": "sha256:28de7c92ec81dcebd63a25055ea647d0a22de043a9d1f43d9529604cf0239370",
+      "sizeBytes": 906
     },
     {
       "path": "src/database/database.constants.ts",
@@ -2202,6 +2311,23 @@
       "kind": "source",
       "hash": "sha256:a04b32fb80ab8f4a449083fd514720154da627dbd9e882dad3bafebb3d0e6fad",
       "sizeBytes": 838
+    },
+    {
+      "path": "src/database/migrations/1721300000000-identity-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "IdentitySchema1721300000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:673d6d57178a471557de5ee1300f973ca341ea057e3201a973497979706f175d",
+      "sizeBytes": 6351
     },
     {
       "path": "src/database/naming.helpers.spec.ts",
@@ -2801,8 +2927,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:6138f0027bfd7548f05c63641cd9491d2c1c49f7d1e655a42316fb659275f379",
-      "sizeBytes": 625
+      "hash": "sha256:91884e56915de2ce3755e22ed2ffb21521a728f90d7ca1ebb5a72986e9d1a6ec",
+      "sizeBytes": 959
     },
     {
       "path": "src/modules/auth/adapters/password-hash.adapter.ts",
@@ -2818,88 +2944,8 @@
       "hasSpec": true,
       "specPath": "src/modules/auth/adapters/password-hash.adapter.spec.ts",
       "kind": "source",
-      "hash": "sha256:a5606ecb88865e77c91cbcde717d2362ee6c3a46e118dae5451815a21dadc8aa",
-      "sizeBytes": 349
-    },
-    {
-      "path": "src/modules/auth/api/auth.controller.ts",
-      "root": "modules",
-      "module": "auth",
-      "layer": "controller",
-      "symbols": [
-        {
-          "kind": "class",
-          "name": "AuthController"
-        }
-      ],
-      "hasSpec": false,
-      "specPath": null,
-      "kind": "source",
-      "hash": "sha256:3a7e127548072cbd7592a6090476bbfd5b28f08bc370d1e0765d7dca7d2fa048",
-      "sizeBytes": 1006
-    },
-    {
-      "path": "src/modules/auth/api/login-response.dto.ts",
-      "root": "modules",
-      "module": "auth",
-      "layer": "other",
-      "symbols": [
-        {
-          "kind": "class",
-          "name": "LoginResponseDto"
-        }
-      ],
-      "hasSpec": false,
-      "specPath": null,
-      "kind": "source",
-      "hash": "sha256:29afb3843e702812f48150554b73dc2edf3d117b7b640107731a5cfaf3b480d0",
-      "sizeBytes": 137
-    },
-    {
-      "path": "src/modules/auth/api/login.dto.ts",
-      "root": "modules",
-      "module": "auth",
-      "layer": "other",
-      "symbols": [
-        {
-          "kind": "class",
-          "name": "LoginDto"
-        }
-      ],
-      "hasSpec": false,
-      "specPath": null,
-      "kind": "source",
-      "hash": "sha256:4581f8def37d21b2fb23872f80f2ecc6af88050e258fd86a0fb0355cfb791db2",
-      "sizeBytes": 736
-    },
-    {
-      "path": "src/modules/auth/application/auth.service.spec.ts",
-      "root": "modules",
-      "module": "auth",
-      "layer": "service",
-      "symbols": [],
-      "hasSpec": null,
-      "specPath": null,
-      "kind": "spec",
-      "hash": "sha256:9583db6c534415a9469d35f480074f364157ac06bc26fe6d9264bd77df6a17d0",
-      "sizeBytes": 3052
-    },
-    {
-      "path": "src/modules/auth/application/auth.service.ts",
-      "root": "modules",
-      "module": "auth",
-      "layer": "service",
-      "symbols": [
-        {
-          "kind": "class",
-          "name": "AuthService"
-        }
-      ],
-      "hasSpec": true,
-      "specPath": "src/modules/auth/application/auth.service.spec.ts",
-      "kind": "source",
-      "hash": "sha256:35193c8c690b23a4de3f7a9f958dce876b4440c8f1270bec09b14b90eb41e1da",
-      "sizeBytes": 1290
+      "hash": "sha256:5d31470704a3cd4897061e2575414e8b6d09ff64660b1c961795db5b9a86e86d",
+      "sizeBytes": 537
     },
     {
       "path": "src/modules/auth/auth.module.ts",
@@ -2915,25 +2961,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:333ab956a66111335ec5a4738a61e40d4c31949e65db46827e5adeed338d9df0",
-      "sizeBytes": 1214
-    },
-    {
-      "path": "src/modules/auth/errors/invalid-credentials.error.ts",
-      "root": "modules",
-      "module": "auth",
-      "layer": "other",
-      "symbols": [
-        {
-          "kind": "class",
-          "name": "InvalidCredentialsError"
-        }
-      ],
-      "hasSpec": false,
-      "specPath": null,
-      "kind": "source",
-      "hash": "sha256:ead95c7d1d627bbb585dd4b504c08261c1359138e7d1e51b4ecb3b8ec1c755ee",
-      "sizeBytes": 381
+      "hash": "sha256:4847661bbbf5830228d183e57c7e6b0018712a2fa6f8da60193814018a13dc85",
+      "sizeBytes": 1444
     },
     {
       "path": "src/modules/auth/index.ts",
@@ -2944,25 +2973,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4894e321ce57e68e5b53b9f8d8af376d9c2d187e4847b573e73175830c471048",
-      "sizeBytes": 102
-    },
-    {
-      "path": "src/modules/auth/lib/auth-identity.mapper.ts",
-      "root": "modules",
-      "module": "auth",
-      "layer": "lib",
-      "symbols": [
-        {
-          "kind": "function",
-          "name": "toAuthUserIdentity"
-        }
-      ],
-      "hasSpec": false,
-      "specPath": null,
-      "kind": "source",
-      "hash": "sha256:8d447693065f1be9217316032755ccd67a5497c8c6e6c4caea197eb4995c8311",
-      "sizeBytes": 247
+      "hash": "sha256:2c1b2e7e1804e8b5dc30e3176f9391c590a529d9b26591354c021b9607971372",
+      "sizeBytes": 165
     },
     {
       "path": "src/modules/auth/model/auth.constants.ts",
@@ -2976,39 +2988,7 @@
         },
         {
           "kind": "const",
-          "name": "AUTH_ROUTE"
-        },
-        {
-          "kind": "const",
-          "name": "AUTH_LOGIN_ROUTE"
-        },
-        {
-          "kind": "const",
-          "name": "AUTH_API_TAG"
-        },
-        {
-          "kind": "const",
-          "name": "AUTH_EMAIL_MAX_LENGTH"
-        },
-        {
-          "kind": "const",
-          "name": "AUTH_PASSWORD_MIN_LENGTH"
-        },
-        {
-          "kind": "const",
-          "name": "AUTH_PASSWORD_MAX_LENGTH"
-        },
-        {
-          "kind": "const",
-          "name": "AUTH_DUMMY_PASSWORD_HASH"
-        },
-        {
-          "kind": "const",
-          "name": "AUTH_INVALID_CREDENTIALS_MESSAGE"
-        },
-        {
-          "kind": "const",
-          "name": "AUTH_INVALID_CREDENTIALS_MESSAGE_KEY"
+          "name": "AUTH_PASSWORD_SALT_ROUNDS"
         },
         {
           "kind": "const",
@@ -3022,8 +3002,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b6e9f41ef4f9a12f1eac48ba0d649d95f5d5305946e264f4d38759472ae71206",
-      "sizeBytes": 854
+      "hash": "sha256:9d4e00ad5b4021a3d48eeabdad26d3bfef4dac692c292c87f82542e6db27fba7",
+      "sizeBytes": 372
     },
     {
       "path": "src/modules/auth/model/auth.types.ts",
@@ -3047,141 +3027,1750 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a13749a734df2408a699d956ec31e0a90e80b26aad4087ff675d0fb2453570a8",
-      "sizeBytes": 269
+      "hash": "sha256:d8058b17dffe8203de7742f24c56ec72cd1e9673cdccb14644cde72f11408f9a",
+      "sizeBytes": 317
     },
     {
-      "path": "src/modules/users/application/users.service.spec.ts",
+      "path": "src/modules/identity/adapters/crypto-secure-random.adapter.spec.ts",
       "root": "modules",
-      "module": "users",
+      "module": "identity",
+      "layer": "adapter",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8dc9e0851792efa722d133148c52c80a59c730421d5aede4839a0c28ae4f4dbe",
+      "sizeBytes": 812
+    },
+    {
+      "path": "src/modules/identity/adapters/crypto-secure-random.adapter.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "adapter",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CryptoSecureRandomAdapter"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/adapters/crypto-secure-random.adapter.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8289a71338876233c261a3ef25f9e035912e336398424b91ef3e8cf0b462142f",
+      "sizeBytes": 681
+    },
+    {
+      "path": "src/modules/identity/api/auth.controller.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AuthController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dae0868f4020da56e51d7a51635cd6c012581c86b2c2d1178f952f796ab3aa63",
+      "sizeBytes": 5046
+    },
+    {
+      "path": "src/modules/identity/api/dto/accept-invitation.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AcceptInvitationDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ecb882ccfefc7669b8c8c42655bae40ec0a88c281a8b63f2adbfe0191ada384c",
+      "sizeBytes": 1257
+    },
+    {
+      "path": "src/modules/identity/api/dto/create-invitation.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateInvitationDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0bb7c9f092fdd857b69d4b52b47c5ba22422f706b527418267dab521d253a1cd",
+      "sizeBytes": 515
+    },
+    {
+      "path": "src/modules/identity/api/dto/forgot-password.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ForgotPasswordDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:89b73d083631e51912ea552d9844df0511992ffc34d1300539a3e147c326e910",
+      "sizeBytes": 330
+    },
+    {
+      "path": "src/modules/identity/api/dto/invitation-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvitationResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:57908556cad7078ab11c6575c2f988b5ac826b7390217872de8b10802e27534f",
+      "sizeBytes": 621
+    },
+    {
+      "path": "src/modules/identity/api/dto/login.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LoginDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6bb3f62d9d99a85378dc1fd0fb12d0cdd1de268e25037bcd55ee9d2bad889bf6",
+      "sizeBytes": 923
+    },
+    {
+      "path": "src/modules/identity/api/dto/logout.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LogoutDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:062367b4ef1dcd6624d2d58aa71eb4b77c3e4dcb1ef9507198edf75a748d505b",
+      "sizeBytes": 478
+    },
+    {
+      "path": "src/modules/identity/api/dto/message-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MessageResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ff196374a0c76af680acac37355e71afb248014ac28b16de340708ff06d35536",
+      "sizeBytes": 135
+    },
+    {
+      "path": "src/modules/identity/api/dto/principal-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PrincipalResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7d87cd93e8382bfd975135be204c604684bc49c70280ff0eb48777bf9011b62e",
+      "sizeBytes": 424
+    },
+    {
+      "path": "src/modules/identity/api/dto/refresh.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RefreshDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a6e029e956f206004a4ca41372804fd7926689196935c9a8c1b5404e5858ec4a",
+      "sizeBytes": 712
+    },
+    {
+      "path": "src/modules/identity/api/dto/reset-password.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ResetPasswordDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1dc456e05b5da798cc16e4bcf0a107cf52b69c519d96ea6f5d2f862b4abfcd04",
+      "sizeBytes": 810
+    },
+    {
+      "path": "src/modules/identity/api/dto/session-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9b365576b6a19f6e002d34137194141b6073cb0309150bda71367776f02a5e2e",
+      "sizeBytes": 354
+    },
+    {
+      "path": "src/modules/identity/api/invitations.controller.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvitationsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a2367108744413d8bae4a174f5e619d13d6238a480350b12b3e34a06512cc59f",
+      "sizeBytes": 3831
+    },
+    {
+      "path": "src/modules/identity/application/accept-invitation.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:088bc841fb370ef90cae161e3a543d7e761386873c17c2f9e5fd15b84146c5bb",
+      "sizeBytes": 5223
+    },
+    {
+      "path": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AcceptInvitationUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/accept-invitation.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ec406481b7ac93e27560ab0b3e5b6dabcc04e80b626dee6bb21f65b1a15eb035",
+      "sizeBytes": 3756
+    },
+    {
+      "path": "src/modules/identity/application/create-invitation.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:98eeb40eb2f0136df4665b6282f009c4ae5e05ff7e97ba827ac5b4dfa9f444cd",
+      "sizeBytes": 3821
+    },
+    {
+      "path": "src/modules/identity/application/create-invitation.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateInvitationUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/create-invitation.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:814213968af57a0c2b281f75af050d716ee0107a702c1268d7fd30bccbb509e7",
+      "sizeBytes": 3462
+    },
+    {
+      "path": "src/modules/identity/application/expire-invitations.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5398357eb1a8a32cf848da5ff7014c6c32040fab044f39a0034b25ca62e55f49",
+      "sizeBytes": 1306
+    },
+    {
+      "path": "src/modules/identity/application/expire-invitations.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ExpireInvitationsUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/expire-invitations.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e45268525f82c2dcbcfe1f01ad3d48d29f99817a3598383d106f8f9d47268bac",
+      "sizeBytes": 939
+    },
+    {
+      "path": "src/modules/identity/application/get-current-principal.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:fda985fa3a19c72ccb05b2dfc48a1c1c6b47e3787b3b173fa51ed113513b6da8",
+      "sizeBytes": 1997
+    },
+    {
+      "path": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GetCurrentPrincipalUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/get-current-principal.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:09e1d896d6b3b71dd9c7ce047d147113d55f3f93acc583815a8165bc3c125de2",
+      "sizeBytes": 1345
+    },
+    {
+      "path": "src/modules/identity/application/login.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e28fc8ee8faea97e36e5d1a2beb530c6e9285a272b3fd75fed208c88dc3a0996",
+      "sizeBytes": 7357
+    },
+    {
+      "path": "src/modules/identity/application/login.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LoginUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/login.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:19da90b6b8868a51f6c8bc05b3afa2959837b577700c3f2b719a9173b0af9791",
+      "sizeBytes": 5506
+    },
+    {
+      "path": "src/modules/identity/application/logout-all.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2b4f87106601f31cdf000d6f2840f346a8a1a6fc3ab8bfa691337666311f66c6",
+      "sizeBytes": 1485
+    },
+    {
+      "path": "src/modules/identity/application/logout-all.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LogoutAllUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/logout-all.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7b2c6e11476cd198cc8f2b9b0490697653261061e39151295c0b5de82a06ef10",
+      "sizeBytes": 1640
+    },
+    {
+      "path": "src/modules/identity/application/logout.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:fb1bf8658b2ccce9ec74823e027123065c6dc0bcdf87073feb57c67be1368460",
+      "sizeBytes": 2752
+    },
+    {
+      "path": "src/modules/identity/application/logout.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LogoutUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/logout.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2ae5b596f9fc20a85857bafd565fae04e3b3155e9cd810edb280f499ad9c56fc",
+      "sizeBytes": 1957
+    },
+    {
+      "path": "src/modules/identity/application/refresh-session.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2e1d96ecc19808b44d45c4763c1f5a69cb454821a6041fa71f80b6635b4f7933",
+      "sizeBytes": 5874
+    },
+    {
+      "path": "src/modules/identity/application/refresh-session.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RefreshSessionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/refresh-session.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:fb378b084cce9c818bd52af51f71432883812132eb110d80bad9aad9fe6b1c2a",
+      "sizeBytes": 3846
+    },
+    {
+      "path": "src/modules/identity/application/request-password-reset.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7b5318dbff543c27859d568dbcb082f1844ecdc73b2e7c99ea6ddadb044cd5e1",
+      "sizeBytes": 3286
+    },
+    {
+      "path": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RequestPasswordResetUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/request-password-reset.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5f7cef207f09e7412f4f86ab45d3dc7c4b615922c6c492e5f3afc7a8939b0e47",
+      "sizeBytes": 3029
+    },
+    {
+      "path": "src/modules/identity/application/resend-invitation.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:adab23673c9249b0e6e9bc888c07cf09d5c9d45531222ece49cdcc1e1d1631be",
+      "sizeBytes": 3273
+    },
+    {
+      "path": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ResendInvitationUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/resend-invitation.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:beaf0326245c26a7cc8352a775c9aeffe01d2e8d74a96fa23aaf3a24340d2ba9",
+      "sizeBytes": 2874
+    },
+    {
+      "path": "src/modules/identity/application/reset-password.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:920c6186bcf9050056387cf583d8ee111d0276b751ee8f95f80bb9f1eafbd5d6",
+      "sizeBytes": 3849
+    },
+    {
+      "path": "src/modules/identity/application/reset-password.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ResetPasswordUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/reset-password.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:242dfa312b0e1f3d94bcf6e080b20abd570ae7cb0747760559d0b7bf8bb689a2",
+      "sizeBytes": 2962
+    },
+    {
+      "path": "src/modules/identity/application/revoke-invitation.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:62008935e8a34cdc89a03aa7aa175159f396806dbd6983f321a33ae841484e49",
+      "sizeBytes": 2834
+    },
+    {
+      "path": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RevokeInvitationUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/revoke-invitation.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0d71f1c668305485b5ec9c2ced5603b85e68bb8ac3d83d77687491b7dc04edc2",
+      "sizeBytes": 2310
+    },
+    {
+      "path": "src/modules/identity/application/security-audit.service.spec.ts",
+      "root": "modules",
+      "module": "identity",
       "layer": "service",
       "symbols": [],
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:d956a5f2d216efe02be0f1312db35a8c846ebee78043a471f9e4ab20cec8fab6",
-      "sizeBytes": 1235
+      "hash": "sha256:9d5ab6ba39a4c461eb6e5fc6c91aa76199e820b5a68629ce1111cfa92ba21669",
+      "sizeBytes": 1625
     },
     {
-      "path": "src/modules/users/application/users.service.ts",
+      "path": "src/modules/identity/application/security-audit.service.ts",
       "root": "modules",
-      "module": "users",
+      "module": "identity",
       "layer": "service",
       "symbols": [
         {
           "kind": "class",
-          "name": "UsersService"
+          "name": "SecurityAuditService"
         }
       ],
       "hasSpec": true,
-      "specPath": "src/modules/users/application/users.service.spec.ts",
+      "specPath": "src/modules/identity/application/security-audit.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:b66bd9ff3c11f9244e57374f704530ce3a68361d2784ffb790106dd8b1a23754",
-      "sizeBytes": 394
+      "hash": "sha256:78c890890e17bea755e9ab1b9939cda0247f06228a96cf094aa7713f3424f762",
+      "sizeBytes": 1330
     },
     {
-      "path": "src/modules/users/index.ts",
+      "path": "src/modules/identity/application/session-issuer.service.spec.ts",
       "root": "modules",
-      "module": "users",
+      "module": "identity",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:82acffa7b72c7216dfa3da8bf7a1c8c0614884da056d43ce8be80a48da9de852",
+      "sizeBytes": 3259
+    },
+    {
+      "path": "src/modules/identity/application/session-issuer.service.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionIssuerService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/session-issuer.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8e77ce46240fe7a736e8efe0453a64dae6fbdc912e6cc85a16c9f6fab0dbb167",
+      "sizeBytes": 2857
+    },
+    {
+      "path": "src/modules/identity/domain/failed-login.policy.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:97eb620232f04421011d4b660022bf2007c8d82afa23d30abb2f8aee40989de9",
+      "sizeBytes": 4133
+    },
+    {
+      "path": "src/modules/identity/domain/failed-login.policy.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isLockedOut"
+        },
+        {
+          "kind": "function",
+          "name": "isWindowExpired"
+        },
+        {
+          "kind": "function",
+          "name": "shouldLock"
+        },
+        {
+          "kind": "function",
+          "name": "computeFailedLoginDecision"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/domain/failed-login.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:95a6b20c64ec19d171e9bf1817fec343c1770e0e9d6ca98053a1b640fe7b0814",
+      "sizeBytes": 1758
+    },
+    {
+      "path": "src/modules/identity/domain/invitation.policy.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6bc67d902c8cdcab6f1906453c75ed7eef9ffede1ebca0a1258650e057d9af14",
+      "sizeBytes": 3103
+    },
+    {
+      "path": "src/modules/identity/domain/invitation.policy.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isInvitationAcceptable"
+        },
+        {
+          "kind": "function",
+          "name": "isInvitationExpired"
+        },
+        {
+          "kind": "function",
+          "name": "isInvitationMutable"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/domain/invitation.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:baa9d0351ab6c45eb0449c1fb8109369e4a6ed208c5d2ff3887511e1f83381e1",
+      "sizeBytes": 1110
+    },
+    {
+      "path": "src/modules/identity/domain/password-reset.policy.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:cc84173ff6aa5efd1055bdbd4bceb382a74281f1dd2f13ff726f13f2a33dd6c5",
+      "sizeBytes": 1308
+    },
+    {
+      "path": "src/modules/identity/domain/password-reset.policy.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isResetTokenUsable"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/domain/password-reset.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ae225188a1e21ca97ad559e3398c40bb1e58f8c43dd079688c80929a8df52fbb",
+      "sizeBytes": 384
+    },
+    {
+      "path": "src/modules/identity/domain/refresh-session.policy.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:db5de84090a03e99f5e3519d000ece74d366f72bce4fcf0bf22c7507a50df1b1",
+      "sizeBytes": 2132
+    },
+    {
+      "path": "src/modules/identity/domain/refresh-session.policy.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isSessionActive"
+        },
+        {
+          "kind": "function",
+          "name": "isSessionReuse"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/domain/refresh-session.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2ce628f01b93d4c855cf80eaceaaf37b062e943216b78aa59742ec200388c2fe",
+      "sizeBytes": 836
+    },
+    {
+      "path": "src/modules/identity/domain/user-status.policy.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3b8dad7353d8d4e73beca3f279408aa4be8cc0a472e35ef31ce14bd69b35e46a",
+      "sizeBytes": 1751
+    },
+    {
+      "path": "src/modules/identity/domain/user-status.policy.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "canAuthenticate"
+        },
+        {
+          "kind": "function",
+          "name": "canRecoverAccount"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/domain/user-status.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a2e1a514b7ed9539c681cc78737298e3052b34981c83fa67e806f848fb25ba47",
+      "sizeBytes": 636
+    },
+    {
+      "path": "src/modules/identity/errors/invalid-credentials.error.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:52a9b7481188dd0fca63ab6d570cfd1753a270f6d2fdcf5a43c8995665aa1ad4",
+      "sizeBytes": 676
+    },
+    {
+      "path": "src/modules/identity/errors/invalid-credentials.error.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvalidCredentialsError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/errors/invalid-credentials.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4abc1c0b5fa824dc0b2d3deeb9c2f5ee011ed29d174fd4de92d2172a22e10078",
+      "sizeBytes": 542
+    },
+    {
+      "path": "src/modules/identity/errors/invalid-refresh-token.error.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e1b7d8612270d722ffc95da0d1eb40565bf6555a730197f909446f5595f7a95d",
+      "sizeBytes": 686
+    },
+    {
+      "path": "src/modules/identity/errors/invalid-refresh-token.error.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvalidRefreshTokenError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/errors/invalid-refresh-token.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:27c48dade658403150e19229190c40dc61b02bf899fd5808ede66bd104002637",
+      "sizeBytes": 568
+    },
+    {
+      "path": "src/modules/identity/errors/invitation-conflict.error.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3e0a2a15892eb27040cffa3c04a8afb62f2ff0a3e43437d967341e5d63f4eee0",
+      "sizeBytes": 667
+    },
+    {
+      "path": "src/modules/identity/errors/invitation-conflict.error.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvitationConflictError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/errors/invitation-conflict.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2acf324bb87e438a78188211eb1c74f1f6b0c7dfa7c8864eb1e29e2fffccd97f",
+      "sizeBytes": 470
+    },
+    {
+      "path": "src/modules/identity/errors/invitation-invalid.error.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:52564c325f97924d366e791bc2e8c5fb208c130c8c52708c04d21e6f3a784526",
+      "sizeBytes": 671
+    },
+    {
+      "path": "src/modules/identity/errors/invitation-invalid.error.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvitationInvalidError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/errors/invitation-invalid.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ec70629e07f4fdf789b2f3d0bcc188ddb1fdf67235624ad0a4f82999eff40ae9",
+      "sizeBytes": 517
+    },
+    {
+      "path": "src/modules/identity/errors/invitation-not-found.error.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d7151081e4783a87f45aeecdbe315baf671d06197500edd219fbb124504e71d6",
+      "sizeBytes": 671
+    },
+    {
+      "path": "src/modules/identity/errors/invitation-not-found.error.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvitationNotFoundError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/errors/invitation-not-found.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2a828736f22a513a2ca04efaa7917e07b713d265799a0642af5de9b266320e3c",
+      "sizeBytes": 427
+    },
+    {
+      "path": "src/modules/identity/errors/reset-token-invalid.error.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:80ab0298e4a82a54971341629fcecec1ba76f590d5ddc3e39f42b24ec9cb3f03",
+      "sizeBytes": 673
+    },
+    {
+      "path": "src/modules/identity/errors/reset-token-invalid.error.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ResetTokenInvalidError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/errors/reset-token-invalid.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1693552227ee28c921a747860f5823f56d739875543be71a19d40013292be26c",
+      "sizeBytes": 477
+    },
+    {
+      "path": "src/modules/identity/identity.module.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "IdentityModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fa91e1379de2f9f5418c6f600b109fe0002e7ed91c03f9763fee39952b3bf827",
+      "sizeBytes": 3366
+    },
+    {
+      "path": "src/modules/identity/index.ts",
+      "root": "modules",
+      "module": "identity",
       "layer": "other",
       "symbols": [],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:cb31153057d15b9a78146c365bae3ba4712c100c5e4f7627123b9bb6f5833a96",
-      "sizeBytes": 154
+      "hash": "sha256:46a32423ff0af57d9bd4cb3b4da715e328fc0118be1531f4e4913c8736377bb5",
+      "sizeBytes": 52
     },
     {
-      "path": "src/modules/users/infrastructure/users.repository.spec.ts",
+      "path": "src/modules/identity/infrastructure/failed-login-state.repository.spec.ts",
       "root": "modules",
-      "module": "users",
+      "module": "identity",
       "layer": "repository",
       "symbols": [],
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:d509e4cc175f83f946398ce46b27f01deb8a5e5fd594a8831782bd2cad68c677",
-      "sizeBytes": 898
+      "hash": "sha256:de10dbd5d672fb042d2519566d555ac7a6ef1ab21f8a7fe79799fb32fe50ead7",
+      "sizeBytes": 5319
     },
     {
-      "path": "src/modules/users/infrastructure/users.repository.ts",
+      "path": "src/modules/identity/infrastructure/failed-login-state.repository.ts",
       "root": "modules",
-      "module": "users",
+      "module": "identity",
       "layer": "repository",
       "symbols": [
         {
           "kind": "class",
-          "name": "UsersRepository"
+          "name": "FailedLoginStateRepository"
         }
       ],
       "hasSpec": true,
-      "specPath": "src/modules/users/infrastructure/users.repository.spec.ts",
+      "specPath": "src/modules/identity/infrastructure/failed-login-state.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:faaad51551648e40cefe69c9ca8d23ca11032a6ed4000a2a0520416b764cca70",
-      "sizeBytes": 419
+      "hash": "sha256:052bfa088820b03e4cfe75fdae7c931f11b467a025a70d949431a3c89aab7e03",
+      "sizeBytes": 2624
     },
     {
-      "path": "src/modules/users/model/user.constants.ts",
+      "path": "src/modules/identity/infrastructure/invitation.repository.spec.ts",
       "root": "modules",
-      "module": "users",
+      "module": "identity",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1a152c66d24708f2d4d917eb7576e5f3f5cf259eecc3f0102d3995a0f391d325",
+      "sizeBytes": 8091
+    },
+    {
+      "path": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvitationRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/infrastructure/invitation.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ee7ff4bc66483c7b676bd2c55006e273d385a902f37c86c29f49a9adb23c8113",
+      "sizeBytes": 4755
+    },
+    {
+      "path": "src/modules/identity/infrastructure/password-credential.repository.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5fd100edac7d41e463f6716a0bcaaa70901c84fb3071f55b0eb51f0db399b84c",
+      "sizeBytes": 1709
+    },
+    {
+      "path": "src/modules/identity/infrastructure/password-credential.repository.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PasswordCredentialRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/infrastructure/password-credential.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0acad10e34285a0ac0a864dc8bb2976e96795f121f2e2125bfc5e5d56ef911c5",
+      "sizeBytes": 1188
+    },
+    {
+      "path": "src/modules/identity/infrastructure/password-reset-token.repository.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f24b907f6d6f7e1c5f9f9e0443d9a3d07e203d012a7ac99c88f1de89c2a7d3b2",
+      "sizeBytes": 3242
+    },
+    {
+      "path": "src/modules/identity/infrastructure/password-reset-token.repository.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PasswordResetTokenRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/infrastructure/password-reset-token.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:54d533a85bfb331f7a704dfd72e17b6352bbf1e1b4b028075bed74f1573a25cb",
+      "sizeBytes": 2009
+    },
+    {
+      "path": "src/modules/identity/infrastructure/refresh-session.repository.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3d7b2835bc20df2fc241ae50d7f3563157c007d8908245eb7b9b1b3e1218623a",
+      "sizeBytes": 5951
+    },
+    {
+      "path": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RefreshSessionRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/infrastructure/refresh-session.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c75bec8a34e5a364dafe129f72190c0c14432ba409e5c75d386166ac33f1912a",
+      "sizeBytes": 3745
+    },
+    {
+      "path": "src/modules/identity/infrastructure/security-event.repository.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ad966a7bc51cd799d83ba6ea7d36c88fb8efba92c5901012dd00a62b16d3404e",
+      "sizeBytes": 1992
+    },
+    {
+      "path": "src/modules/identity/infrastructure/security-event.repository.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SecurityEventRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/infrastructure/security-event.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:099bb13cbb85385770b40a3adea1018d9660032448c9f784801089aa69f7805e",
+      "sizeBytes": 1004
+    },
+    {
+      "path": "src/modules/identity/infrastructure/user.repository.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f882481eabcb625c2de9f3f416aa7f210ecd3052bed86794aa6469e6f6c0f325",
+      "sizeBytes": 4054
+    },
+    {
+      "path": "src/modules/identity/infrastructure/user.repository.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UserRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/infrastructure/user.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e3fdbffe344101ab753681185fc8996aa5623a1c5b6601f9a316cefe7d044ba8",
+      "sizeBytes": 3333
+    },
+    {
+      "path": "src/modules/identity/lib/identity.helpers.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ce6cf5c9276a81c563512ab5840e2ace7c3cc03807248673e85fc94beab46fff",
+      "sizeBytes": 3020
+    },
+    {
+      "path": "src/modules/identity/lib/identity.helpers.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "normalizeEmail"
+        },
+        {
+          "kind": "function",
+          "name": "parseRole"
+        },
+        {
+          "kind": "function",
+          "name": "parseUserStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseInvitationStatus"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "firstRow"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/lib/identity.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0e0fe593f3c7d79f7814f03b46162d8e26b5a384d3bf0c0e9c742c82a6e90da1",
+      "sizeBytes": 2122
+    },
+    {
+      "path": "src/modules/identity/lib/identity.mapper.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1289253009df8e6c8bf6e55548b988bf30a0f58f567d37eec9b2951780506811",
+      "sizeBytes": 1731
+    },
+    {
+      "path": "src/modules/identity/lib/identity.mapper.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toAuthUserIdentity"
+        },
+        {
+          "kind": "function",
+          "name": "toPrincipal"
+        },
+        {
+          "kind": "function",
+          "name": "toInvitationSummary"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/lib/identity.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2a8371720194ce6098c500bd5e564cac8fb96f8cc42d3e1d8ecd34ff263aa588",
+      "sizeBytes": 984
+    },
+    {
+      "path": "src/modules/identity/lib/token-hash.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a101ac25751f828c219582d95e827672ccb09077eaf3d12488f4113aefb5cd4c",
+      "sizeBytes": 1023
+    },
+    {
+      "path": "src/modules/identity/lib/token-hash.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "hashOpaqueToken"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/lib/token-hash.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8d91304dcd31a35830146488c85220de28db1686c40cf23cb2682b0196af30f5",
+      "sizeBytes": 582
+    },
+    {
+      "path": "src/modules/identity/model/identity.constants.ts",
+      "root": "modules",
+      "module": "identity",
       "layer": "model",
       "symbols": [
         {
           "kind": "const",
-          "name": "REFERENCE_USER_ID"
+          "name": "SECURE_RANDOM_PORT"
         },
         {
           "kind": "const",
-          "name": "REFERENCE_USER_EMAIL"
+          "name": "AUTH_ROUTE"
         },
         {
           "kind": "const",
-          "name": "REFERENCE_USER_PASSWORD_HASH"
+          "name": "AUTH_API_TAG"
         },
         {
           "kind": "const",
-          "name": "REFERENCE_USER"
+          "name": "AUTH_LOGIN_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_REFRESH_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_LOGOUT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_LOGOUT_ALL_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_ME_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_FORGOT_PASSWORD_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_RESET_PASSWORD_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATIONS_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATIONS_ACCEPT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATIONS_RESEND_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATIONS_REVOKE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "EMAIL_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "PASSWORD_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "PASSWORD_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "DISPLAY_NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "DEVICE_LABEL_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OPAQUE_TOKEN_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OPAQUE_TOKEN_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "MILLISECONDS_PER_SECOND"
+        },
+        {
+          "kind": "const",
+          "name": "SECURE_TOKEN_BYTE_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OPAQUE_TOKEN_ENCODING"
+        },
+        {
+          "kind": "const",
+          "name": "TOKEN_HASH_ALGORITHM"
+        },
+        {
+          "kind": "const",
+          "name": "TOKEN_HASH_ENCODING"
+        },
+        {
+          "kind": "const",
+          "name": "DUMMY_PASSWORD_HASH"
+        },
+        {
+          "kind": "const",
+          "name": "RECOVERY_ACK_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RESET_ACK_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "LOGOUT_ACK_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "LOGOUT_ALL_ACK_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_CREDENTIALS_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_CREDENTIALS_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_REFRESH_TOKEN_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_REFRESH_TOKEN_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_INVALID_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_INVALID_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RESET_TOKEN_INVALID_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RESET_TOKEN_INVALID_MESSAGE_KEY"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ebb1bcc7c6dc7b536c635fdf761dcccd485627fd1ad624f8790c2f176a73b104",
-      "sizeBytes": 457
+      "hash": "sha256:4ce9067c1c96d9fea1590af0da2b77a76d4e891b00a6a38e4319128a8eebbb58",
+      "sizeBytes": 3778
     },
     {
-      "path": "src/modules/users/model/user.types.ts",
+      "path": "src/modules/identity/model/identity.enums.ts",
       "root": "modules",
-      "module": "users",
+      "module": "identity",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "UserStatus"
+        },
+        {
+          "kind": "const",
+          "name": "USER_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "InvitationStatus"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SecurityEventType"
+        },
+        {
+          "kind": "const",
+          "name": "SECURITY_EVENT_TYPE_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3f58669576a781c4bd64977ba74d1edefa5a77b9d299b301ef291031e9a11f6e",
+      "sizeBytes": 1157
+    },
+    {
+      "path": "src/modules/identity/model/identity.rows.ts",
+      "root": "modules",
+      "module": "identity",
       "layer": "model",
       "symbols": [
         {
           "kind": "interface",
-          "name": "User"
+          "name": "UserRow"
+        },
+        {
+          "kind": "interface",
+          "name": "UserWithCredentialRow"
+        },
+        {
+          "kind": "interface",
+          "name": "InvitationRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RefreshSessionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "PasswordResetTokenRow"
+        },
+        {
+          "kind": "interface",
+          "name": "FailedLoginStateRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CountRow"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4319aff804aeafbb60dc4f7a857d32dcc78d96282de60201852847176d563771",
-      "sizeBytes": 187
+      "hash": "sha256:69acebd332029bd4bf5486acc95d5694f473eb81b047f66651a01bfdbde27cd8",
+      "sizeBytes": 1861
     },
     {
-      "path": "src/modules/users/users.module.ts",
+      "path": "src/modules/identity/model/identity.types.ts",
       "root": "modules",
-      "module": "users",
-      "layer": "other",
+      "module": "identity",
+      "layer": "model",
       "symbols": [
         {
-          "kind": "class",
-          "name": "UsersModule"
+          "kind": "interface",
+          "name": "SecureRandomPort"
+        },
+        {
+          "kind": "interface",
+          "name": "User"
+        },
+        {
+          "kind": "interface",
+          "name": "UserWithCredential"
+        },
+        {
+          "kind": "interface",
+          "name": "Invitation"
+        },
+        {
+          "kind": "interface",
+          "name": "RefreshSession"
+        },
+        {
+          "kind": "interface",
+          "name": "PasswordResetToken"
+        },
+        {
+          "kind": "interface",
+          "name": "FailedLoginState"
+        },
+        {
+          "kind": "interface",
+          "name": "NewUser"
+        },
+        {
+          "kind": "interface",
+          "name": "NewInvitation"
+        },
+        {
+          "kind": "interface",
+          "name": "NewRefreshSession"
+        },
+        {
+          "kind": "interface",
+          "name": "NewPasswordResetToken"
+        },
+        {
+          "kind": "interface",
+          "name": "NewFailedLoginState"
+        },
+        {
+          "kind": "interface",
+          "name": "FailedLoginUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "FailedLoginDecision"
+        },
+        {
+          "kind": "interface",
+          "name": "RefreshSessionDraft"
+        },
+        {
+          "kind": "interface",
+          "name": "NewSecurityEvent"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateInvitationCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "AcceptInvitationCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "LoginCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "RefreshCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "ResetPasswordCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "IssuedSession"
+        },
+        {
+          "kind": "type",
+          "name": "SessionOutcome"
+        },
+        {
+          "kind": "interface",
+          "name": "Principal"
+        },
+        {
+          "kind": "interface",
+          "name": "Acknowledgement"
+        },
+        {
+          "kind": "interface",
+          "name": "InvitationSummary"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a5ec35f007a27d607bae8f2a9ff6810e9e2d86dd6725e63c888b9676a8c2353a",
-      "sizeBytes": 286
+      "hash": "sha256:1708bbd0cf2328007ccc057060b89c66c9464c4e2130af32450b2c83dac3a187",
+      "sizeBytes": 5178
     },
     {
       "path": "src/shared/constants/http-status.constants.ts",
@@ -3228,14 +4817,22 @@
         },
         {
           "kind": "const",
+          "name": "INVITATION_PERMISSIONS"
+        },
+        {
+          "kind": "const",
+          "name": "ADMIN_PERMISSIONS"
+        },
+        {
+          "kind": "const",
           "name": "ROLE_PERMISSIONS"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:99e88c84bd7ba87e6379d0b3f0e63452194ff6fe103b12811314f4d9f6ebe792",
-      "sizeBytes": 338
+      "hash": "sha256:1d8436162e8435b86aae5861c78eb35ff028839a2560ae847f8f6a99939d4095",
+      "sizeBytes": 611
     },
     {
       "path": "src/shared/enums/index.ts",
@@ -3309,8 +4906,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:7eb0d41bd7fc1410af45a37033e6923432fb7ef2978d0fccdf03aa9b19c2f756",
-      "sizeBytes": 181
+      "hash": "sha256:c7cf8c7b2314c27b1081fdc4f2242f8541d3193766788a4e02d332521198d2f2",
+      "sizeBytes": 303
     },
     {
       "path": "src/shared/enums/role.enum.ts",

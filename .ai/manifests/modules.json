@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T20:32:04.287Z",
+  "generatedAt": "2026-07-17T21:42:00.020Z",
   "modules": [
     {
       "name": "articles",
@@ -50,54 +50,103 @@
           "src/modules/auth/adapters/jwt-token.adapter.ts",
           "src/modules/auth/adapters/password-hash.adapter.ts"
         ],
-        "controller": [
-          "src/modules/auth/api/auth.controller.ts"
-        ],
         "other": [
-          "src/modules/auth/api/login-response.dto.ts",
-          "src/modules/auth/api/login.dto.ts",
           "src/modules/auth/auth.module.ts",
-          "src/modules/auth/errors/invalid-credentials.error.ts",
           "src/modules/auth/index.ts"
-        ],
-        "service": [
-          "src/modules/auth/application/auth.service.ts"
-        ],
-        "lib": [
-          "src/modules/auth/lib/auth-identity.mapper.ts"
         ],
         "model": [
           "src/modules/auth/model/auth.constants.ts",
           "src/modules/auth/model/auth.types.ts"
         ]
       },
-      "fileCount": 12,
-      "specCount": 3,
+      "fileCount": 6,
+      "specCount": 2,
       "publicSurface": "src/modules/auth/index.ts",
       "hasEvents": false
     },
     {
-      "name": "users",
-      "path": "src/modules/users",
+      "name": "identity",
+      "path": "src/modules/identity",
       "layers": {
+        "adapter": [
+          "src/modules/identity/adapters/crypto-secure-random.adapter.ts"
+        ],
+        "controller": [
+          "src/modules/identity/api/auth.controller.ts",
+          "src/modules/identity/api/invitations.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/identity/api/dto/accept-invitation.dto.ts",
+          "src/modules/identity/api/dto/create-invitation.dto.ts",
+          "src/modules/identity/api/dto/forgot-password.dto.ts",
+          "src/modules/identity/api/dto/invitation-response.dto.ts",
+          "src/modules/identity/api/dto/login.dto.ts",
+          "src/modules/identity/api/dto/logout.dto.ts",
+          "src/modules/identity/api/dto/message-response.dto.ts",
+          "src/modules/identity/api/dto/principal-response.dto.ts",
+          "src/modules/identity/api/dto/refresh.dto.ts",
+          "src/modules/identity/api/dto/reset-password.dto.ts",
+          "src/modules/identity/api/dto/session-response.dto.ts"
+        ],
+        "use-case": [
+          "src/modules/identity/application/accept-invitation.use-case.ts",
+          "src/modules/identity/application/create-invitation.use-case.ts",
+          "src/modules/identity/application/expire-invitations.use-case.ts",
+          "src/modules/identity/application/get-current-principal.use-case.ts",
+          "src/modules/identity/application/login.use-case.ts",
+          "src/modules/identity/application/logout-all.use-case.ts",
+          "src/modules/identity/application/logout.use-case.ts",
+          "src/modules/identity/application/refresh-session.use-case.ts",
+          "src/modules/identity/application/request-password-reset.use-case.ts",
+          "src/modules/identity/application/resend-invitation.use-case.ts",
+          "src/modules/identity/application/reset-password.use-case.ts",
+          "src/modules/identity/application/revoke-invitation.use-case.ts"
+        ],
         "service": [
-          "src/modules/users/application/users.service.ts"
+          "src/modules/identity/application/security-audit.service.ts",
+          "src/modules/identity/application/session-issuer.service.ts"
+        ],
+        "domain": [
+          "src/modules/identity/domain/failed-login.policy.ts",
+          "src/modules/identity/domain/invitation.policy.ts",
+          "src/modules/identity/domain/password-reset.policy.ts",
+          "src/modules/identity/domain/refresh-session.policy.ts",
+          "src/modules/identity/domain/user-status.policy.ts"
         ],
         "other": [
-          "src/modules/users/index.ts",
-          "src/modules/users/users.module.ts"
+          "src/modules/identity/errors/invalid-credentials.error.ts",
+          "src/modules/identity/errors/invalid-refresh-token.error.ts",
+          "src/modules/identity/errors/invitation-conflict.error.ts",
+          "src/modules/identity/errors/invitation-invalid.error.ts",
+          "src/modules/identity/errors/invitation-not-found.error.ts",
+          "src/modules/identity/errors/reset-token-invalid.error.ts",
+          "src/modules/identity/identity.module.ts",
+          "src/modules/identity/index.ts"
         ],
         "repository": [
-          "src/modules/users/infrastructure/users.repository.ts"
+          "src/modules/identity/infrastructure/failed-login-state.repository.ts",
+          "src/modules/identity/infrastructure/invitation.repository.ts",
+          "src/modules/identity/infrastructure/password-credential.repository.ts",
+          "src/modules/identity/infrastructure/password-reset-token.repository.ts",
+          "src/modules/identity/infrastructure/refresh-session.repository.ts",
+          "src/modules/identity/infrastructure/security-event.repository.ts",
+          "src/modules/identity/infrastructure/user.repository.ts"
+        ],
+        "lib": [
+          "src/modules/identity/lib/identity.helpers.ts",
+          "src/modules/identity/lib/identity.mapper.ts",
+          "src/modules/identity/lib/token-hash.ts"
         ],
         "model": [
-          "src/modules/users/model/user.constants.ts",
-          "src/modules/users/model/user.types.ts"
+          "src/modules/identity/model/identity.constants.ts",
+          "src/modules/identity/model/identity.enums.ts",
+          "src/modules/identity/model/identity.rows.ts",
+          "src/modules/identity/model/identity.types.ts"
         ]
       },
-      "fileCount": 6,
-      "specCount": 2,
-      "publicSurface": "src/modules/users/index.ts",
+      "fileCount": 55,
+      "specCount": 36,
+      "publicSurface": "src/modules/identity/index.ts",
       "hasEvents": false
     }
   ],

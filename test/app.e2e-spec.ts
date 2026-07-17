@@ -23,12 +23,16 @@ describe('App (e2e)', () => {
     await app.init();
     await app.getHttpAdapter().getInstance().ready();
 
-    const loginResponse = await request(app.getHttpServer())
-      .post('/api/v1/auth/login')
-      .send({ email: 'user@example.com', password: 'password' });
-
-    authToken = loginResponse.body.accessToken as string;
+    // Identity is now persisted (prompt 101): login requires a live database and
+    // is proven in the DB-gated integration + identity e2e suites. This boot-only
+    // e2e signs access tokens directly through the token port so the transport
+    // guards, permission checks, and article flows are exercised without a DB.
     const tokenPort = app.get<AuthTokenPort>(AUTH_TOKEN_PORT);
+    authToken = await tokenPort.sign({
+      userId: 'user-1',
+      email: 'user@example.com',
+      roles: [Role.User],
+    });
     otherUserToken = await tokenPort.sign({
       userId: 'user-2',
       email: 'other@example.com',
@@ -53,13 +57,11 @@ describe('App (e2e)', () => {
     expect(response.headers['x-content-type-options']).toBe('nosniff');
   });
 
-  it('POST /api/v1/auth/login returns an access token with 200', async () => {
-    const response = await request(app.getHttpServer())
-      .post('/api/v1/auth/login')
-      .send({ email: 'user@example.com', password: 'password' });
+  it('GET /api/v1/auth/me without a token returns 401', async () => {
+    const response = await request(app.getHttpServer()).get('/api/v1/auth/me');
 
-    expect(response.status).toBe(200);
-    expect(response.body.accessToken).toBeDefined();
+    expect(response.status).toBe(401);
+    expect(response.body.messageKey).toBe('errors.auth.tokenRequired');
   });
 
   it('POST /api/v1/articles without authentication returns 401', async () => {
@@ -78,15 +80,6 @@ describe('App (e2e)', () => {
 
     expect(response.status).toBe(401);
     expect(response.body.messageKey).toBe('errors.auth.invalidToken');
-  });
-
-  it('POST /api/v1/auth/login rejects invalid credentials with a safe key', async () => {
-    const response = await request(app.getHttpServer())
-      .post('/api/v1/auth/login')
-      .send({ email: 'user@example.com', password: 'wrong-password' });
-
-    expect(response.status).toBe(401);
-    expect(response.body.messageKey).toBe('errors.auth.invalidCredentials');
   });
 
   it('POST /api/v1/auth/login rejects oversized credentials at the boundary', async () => {
@@ -108,6 +101,15 @@ describe('App (e2e)', () => {
         email: 'user@example.com',
         password: '🔐'.repeat(19),
       });
+
+    expect(response.status).toBe(400);
+    expect(response.body.messageKey).toBe('errors.validation.failed');
+  });
+
+  it('POST /api/v1/auth/reset-password rejects a malformed body with 400', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/auth/reset-password')
+      .send({ token: 'short', password: 'short' });
 
     expect(response.status).toBe(400);
     expect(response.body.messageKey).toBe('errors.validation.failed');

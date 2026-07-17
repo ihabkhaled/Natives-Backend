@@ -32,8 +32,18 @@ export interface DatabaseConfig {
   readonly logging: boolean;
 }
 
+export interface IdentityConfig {
+  readonly refreshTokenTtlSeconds: number;
+  readonly invitationTtlSeconds: number;
+  readonly passwordResetTtlSeconds: number;
+  readonly maxFailedLoginAttempts: number;
+  readonly failedLoginWindowSeconds: number;
+  readonly accountLockoutSeconds: number;
+}
+
 export interface RootConfig {
   readonly app: AppConfig;
   readonly security: SecurityConfig;
   readonly database: DatabaseConfig;
+  readonly identity: IdentityConfig;
 }

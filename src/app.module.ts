@@ -4,6 +4,7 @@ import { CoreModule } from '@core/core.module';
 import { LoggerModule } from '@core/logger/logger.module';
 import { ArticlesModule } from '@modules/articles';
 import { AuthModule } from '@modules/auth';
+import { IdentityModule } from '@modules/identity';
 import { Module } from '@nestjs/common';
 
 /**
@@ -19,6 +20,7 @@ import { Module } from '@nestjs/common';
     DatabaseModule,
     CoreModule,
     AuthModule,
+    IdentityModule,
     ArticlesModule,
   ],
 })

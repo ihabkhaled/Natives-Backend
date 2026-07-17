@@ -1,4 +1,5 @@
 import { IntegrationError } from '@core/errors/integration.error';
+import { NotFoundError } from '@core/errors/not-found.error';
 import { describe, expect, it } from 'vitest';
 
 import { toDatabaseError } from './database-error.mapper';
@@ -9,6 +10,12 @@ describe('toDatabaseError', () => {
       'boom',
       'errors.database.requestFailed',
     );
+
+    expect(toDatabaseError(original)).toBe(original);
+  });
+
+  it('passes a domain AppError raised inside a transaction through unchanged', () => {
+    const original = new NotFoundError('missing', 'errors.identity.thing');
 
     expect(toDatabaseError(original)).toBe(original);
   });
