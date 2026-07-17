@@ -1,0 +1,35 @@
+# Legacy Cursor Compatibility
+
+This file exists only for older Cursor setups that still read `.cursorrules`.
+
+For modern Cursor setups, the active rules live in `.cursor/rules/*.mdc`.
+
+Canonical precedence for this repository:
+
+1. `claude.md` is the canonical long-form operating policy.
+2. `AGENTS.md` is the Codex bootstrap file.
+3. `.cursor/rules/*.mdc` are the active Cursor rules.
+4. `.cursorrules` is this legacy compatibility shim.
+5. `codex.md` and `cursor.md` are mirrors/reference copies.
+6. `KIMI.md`, `GEMINI.md`, `GLM.md`, `QWEN.md`, `DEEPSEEK.md`, and `MISTRAL.md` are compact family routers.
+
+If any file differs, `claude.md` wins. A stricter safety rule may block work but does not override canonical policy.
+
+If you are reading only this legacy file, do the following before any work:
+
+1. Read `claude.md`.
+2. Treat it as binding company policy.
+3. Never skip phases.
+4. Never implement before phases `00` through `13` are documented.
+5. Never merge or release without tests, docs, QA, security, observability, and rollback readiness.
+6. Update `claude.md` whenever a permanent rule changes.
+
+For NestJS backend code, also follow the engineering operating system enforced by `eslint.config.mjs`, `tsconfig.json`, and `.husky/`:
+
+1. Read `context/architecture-map.md` and `rules/00-non-negotiable-rules.md` before coding.
+2. Respect the layered architecture: thin controllers (one delegation/method) → application use-cases/services (≤20 lines/method) → domain → repositories → adapters.
+3. No `any`, no `eslint-disable`/`@ts-ignore`/`!`; no inline types/enums/consts/DTOs/helper functions in controllers, services, use cases, repositories, adapters, guards, interceptors, or pipes; no `process.env` outside config/bootstrap; logger adapter not `console.*`; wrap external libraries behind adapters.
+4. Keep `npm run lint` / `typecheck` / `test:coverage` / `build` green; write tests first; never bypass hooks with `--no-verify`.
+5. Active engineering rules live in `.cursor/rules/*.mdc`; full detail in `rules/`, `skills/`, and `context/`.
+6. Before writing code, run the Simple Code Ladder (`rules/20-simple-readable-code.md`): need it → reuse existing → native/platform → existing adapter → small helper → direct readable code → new abstraction only when justified. Be lazy about code volume, never lazy about reading, validation, security, auth, permissions, ownership checks, tests, docs, observability, or architecture.
+7. Read rules 20/22/28/30, `skills/full-codebase-cleanup.md`, `context/architecture-map.md`, `context/declaration-ownership-map.md`, and `memory/known-pitfalls.md`. No anonymous layer contracts or DTO definite-assignment assertions; broad refactors are tests-first and responsibility-sliced.

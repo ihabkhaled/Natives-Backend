@@ -1,0 +1,1275 @@
+{
+  "generatedAt": "2026-07-12T12:15:01.655Z",
+  "edges": [
+    {
+      "from": "src/app.module.ts",
+      "to": "src/config/config.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/core/core.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/core/logger/logger.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/articles/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/bootstrap.ts",
+      "to": "src/bootstrap/bootstrap.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/bootstrap.ts",
+      "to": "src/bootstrap/configure-lifecycle.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/bootstrap.ts",
+      "to": "src/bootstrap/configure-security.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/bootstrap.ts",
+      "to": "src/bootstrap/configure-swagger.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/bootstrap.ts",
+      "to": "src/bootstrap/configure-validation.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/bootstrap.ts",
+      "to": "src/bootstrap/create-app.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/bootstrap.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/configure-lifecycle.ts",
+      "to": "src/bootstrap/bootstrap.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/configure-lifecycle.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/configure-security.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/configure-swagger.ts",
+      "to": "src/bootstrap/bootstrap.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/configure-validation.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/configure-validation.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/create-app.ts",
+      "to": "src/app.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/create-app.ts",
+      "to": "src/bootstrap/fastify-adapter.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/create-app.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/create-app.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/fastify-adapter.ts",
+      "to": "src/bootstrap/bootstrap.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/app-config.service.ts",
+      "to": "src/config/config.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/app-config.service.ts",
+      "to": "src/config/config.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/app.config.ts",
+      "to": "src/config/config.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/app.config.ts",
+      "to": "src/config/config.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/app.config.ts",
+      "to": "src/config/config.utils.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/app.config.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/config/config-validation.helpers.ts",
+      "to": "src/config/config.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/config-validation.helpers.ts",
+      "to": "src/config/config.utils.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/config-validation.helpers.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/config/config.constants.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/config/config.module.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/config.module.ts",
+      "to": "src/config/app.config.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/config.module.ts",
+      "to": "src/config/env.validation.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/config.module.ts",
+      "to": "src/config/security.config.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/config.types.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/config/config.utils.ts",
+      "to": "src/config/config.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/config.utils.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/config/env.validation.ts",
+      "to": "src/config/config-validation.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/env.validation.ts",
+      "to": "src/config/config.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/env.validation.ts",
+      "to": "src/config/environment-variables.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/env.validation.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/config/environment-variables.dto.ts",
+      "to": "src/config/config.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/environment-variables.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/config/environment-variables.dto.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/config/security.config.ts",
+      "to": "src/config/config.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/security.config.ts",
+      "to": "src/config/config.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/security.config.ts",
+      "to": "src/config/config.utils.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/auth-identity.validator.ts",
+      "to": "src/core/auth/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/auth-identity.validator.ts",
+      "to": "src/core/auth/auth.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/auth-identity.validator.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/auth/auth.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/auth/auth.types.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/auth/bearer-token.parser.ts",
+      "to": "src/core/auth/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/current-user.decorator.ts",
+      "to": "src/core/auth/auth.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/index.ts",
+      "to": "src/core/auth/auth-identity.validator.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/index.ts",
+      "to": "src/core/auth/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/index.ts",
+      "to": "src/core/auth/auth.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/index.ts",
+      "to": "src/core/auth/current-user.decorator.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/index.ts",
+      "to": "src/core/auth/jwt-auth.guard.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/index.ts",
+      "to": "src/core/auth/permissions.guard.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/index.ts",
+      "to": "src/core/auth/public.decorator.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/index.ts",
+      "to": "src/core/auth/require-permissions.decorator.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/jwt-auth.guard.ts",
+      "to": "src/core/auth/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/jwt-auth.guard.ts",
+      "to": "src/core/auth/auth.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/jwt-auth.guard.ts",
+      "to": "src/core/auth/bearer-token.parser.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/jwt-auth.guard.ts",
+      "to": "src/core/errors/unauthorized.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/auth/permission.helpers.ts",
+      "to": "src/shared/constants/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/auth/permission.helpers.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/auth/permissions.guard.ts",
+      "to": "src/core/auth/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/permissions.guard.ts",
+      "to": "src/core/auth/auth.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/permissions.guard.ts",
+      "to": "src/core/auth/permission.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/permissions.guard.ts",
+      "to": "src/core/errors/forbidden.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/auth/permissions.guard.ts",
+      "to": "src/core/errors/unauthorized.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/auth/permissions.guard.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/auth/public.decorator.ts",
+      "to": "src/core/auth/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/require-permissions.decorator.ts",
+      "to": "src/core/auth/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/require-permissions.decorator.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/clock/clock.module.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/clock/clock.module.ts",
+      "to": "src/core/clock/system-clock.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/clock/system-clock.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/core.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/core.module.ts",
+      "to": "src/core/errors/app-exception.filter.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/core.module.ts",
+      "to": "src/core/health/health.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/core.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/core.module.ts",
+      "to": "src/core/rate-limit/rate-limit.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/errors/app-error.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/app-exception.filter.ts",
+      "to": "src/core/errors/error-body.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/app-exception.filter.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/app-exception.filter.ts",
+      "to": "src/core/http/http-reply.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/errors/app-exception.filter.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/errors/app-exception.filter.ts",
+      "to": "src/shared/constants/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/errors/conflict.error.ts",
+      "to": "src/core/errors/app-error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/error-body.mapper.ts",
+      "to": "src/core/errors/app-error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/error-body.mapper.ts",
+      "to": "src/core/errors/error.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/error-body.mapper.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/error-body.mapper.ts",
+      "to": "src/shared/constants/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/errors/error.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/forbidden.error.ts",
+      "to": "src/core/errors/app-error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/integration.error.ts",
+      "to": "src/core/errors/app-error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/not-found.error.ts",
+      "to": "src/core/errors/app-error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/unauthorized.error.ts",
+      "to": "src/core/errors/app-error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/validation.error.ts",
+      "to": "src/core/errors/app-error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/health.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/health/health.controller.ts",
+      "to": "src/core/health/health.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/health.controller.ts",
+      "to": "src/core/health/health.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/health.controller.ts",
+      "to": "src/core/health/health.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/health.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/health/health.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/health/health.module.ts",
+      "to": "src/core/health/health.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/health.module.ts",
+      "to": "src/core/health/health.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/health.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/health/health.service.ts",
+      "to": "src/core/health/health.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/health.service.ts",
+      "to": "src/core/health/health.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/health.types.ts",
+      "to": "src/core/health/health.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/id-generator/id-generator.module.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/id-generator/id-generator.module.ts",
+      "to": "src/core/id-generator/uuid-id-generator.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/id-generator/uuid-id-generator.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/app-logger.service.ts",
+      "to": "src/core/logger/log-context.sanitizer.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/app-logger.service.ts",
+      "to": "src/core/logger/logger.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/http-logging.options.ts",
+      "to": "src/config/config.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/logger/http-logging.options.ts",
+      "to": "src/core/logger/logger.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/http-logging.options.ts",
+      "to": "src/shared/constants/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/logger/http-logging.options.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/logger/index.ts",
+      "to": "src/core/logger/app-logger.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/index.ts",
+      "to": "src/core/logger/bind-app-logger.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/index.ts",
+      "to": "src/core/logger/logger.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/index.ts",
+      "to": "src/core/logger/logger.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/log-context.sanitizer.ts",
+      "to": "src/core/logger/logger.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/log-context.sanitizer.ts",
+      "to": "src/core/logger/logger.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/logger.module.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/logger/logger.module.ts",
+      "to": "src/core/logger/app-logger.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/logger.module.ts",
+      "to": "src/core/logger/http-logging.options.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/openapi/index.ts",
+      "to": "src/core/openapi/openapi.vendor.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/rate-limit/rate-limit.module.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/validation/index.ts",
+      "to": "src/core/validation/uuid-validation.pipe.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/validation/index.ts",
+      "to": "src/core/validation/validation-exception.factory.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/validation/index.ts",
+      "to": "src/core/validation/validation.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/validation/index.ts",
+      "to": "src/core/validation/validation.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/validation/index.ts",
+      "to": "src/core/validation/validation.vendor.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/validation/uuid-validation-error.factory.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/validation/uuid-validation-error.factory.ts",
+      "to": "src/core/validation/validation.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/validation/uuid-validation.pipe.ts",
+      "to": "src/core/validation/uuid-validation-error.factory.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/validation/uuid-validation.pipe.ts",
+      "to": "src/core/validation/validation.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/validation/validation-exception.factory.ts",
+      "to": "src/core/errors/error.constants.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/validation/validation-exception.factory.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/validation/validation-exception.factory.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/validation/validation-exception.factory.ts",
+      "to": "src/core/validation/validation.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/validation/validation-exception.factory.ts",
+      "to": "src/core/validation/validation.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/validation/validation.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/main.ts",
+      "to": "src/bootstrap/bootstrap.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/api/articles.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/api/articles.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/api/articles.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/api/articles.controller.ts",
+      "to": "src/modules/articles/api/dto/article-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/api/articles.controller.ts",
+      "to": "src/modules/articles/api/dto/create-article.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/api/articles.controller.ts",
+      "to": "src/modules/articles/api/dto/list-articles.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/api/articles.controller.ts",
+      "to": "src/modules/articles/api/dto/list-articles.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/api/articles.controller.ts",
+      "to": "src/modules/articles/application/articles.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/api/articles.controller.ts",
+      "to": "src/modules/articles/model/article.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/api/articles.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/api/dto/article-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/api/dto/article-response.dto.ts",
+      "to": "src/modules/articles/model/article.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/api/dto/create-article.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/api/dto/create-article.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/api/dto/create-article.dto.ts",
+      "to": "src/modules/articles/model/article.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/api/dto/list-articles.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/api/dto/list-articles.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/api/dto/list-articles.query.dto.ts",
+      "to": "src/modules/articles/model/article.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/api/dto/list-articles.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/api/dto/list-articles.response.dto.ts",
+      "to": "src/modules/articles/api/dto/article-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/application/articles.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/application/articles.service.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/application/articles.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/application/articles.service.ts",
+      "to": "src/modules/articles/api/dto/article-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/application/articles.service.ts",
+      "to": "src/modules/articles/api/dto/list-articles.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/application/articles.service.ts",
+      "to": "src/modules/articles/domain/article-ownership.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/application/articles.service.ts",
+      "to": "src/modules/articles/domain/article.entity.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/application/articles.service.ts",
+      "to": "src/modules/articles/infrastructure/article.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/application/articles.service.ts",
+      "to": "src/modules/articles/lib/article.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/application/articles.service.ts",
+      "to": "src/modules/articles/model/article.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/application/articles.service.ts",
+      "to": "src/modules/articles/model/article.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/articles.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/articles.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/articles.module.ts",
+      "to": "src/modules/articles/api/articles.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/articles.module.ts",
+      "to": "src/modules/articles/application/articles.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/articles.module.ts",
+      "to": "src/modules/articles/infrastructure/article.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/domain/article-ownership.policy.ts",
+      "to": "src/modules/articles/model/article.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/domain/article.entity.ts",
+      "to": "src/modules/articles/model/article.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/domain/article.entity.ts",
+      "to": "src/modules/articles/model/article.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/index.ts",
+      "to": "src/modules/articles/articles.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/infrastructure/article.repository.ts",
+      "to": "src/modules/articles/model/article.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/infrastructure/article.repository.ts",
+      "to": "src/modules/articles/model/article.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/lib/article.mapper.ts",
+      "to": "src/modules/articles/api/dto/article-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/lib/article.mapper.ts",
+      "to": "src/modules/articles/api/dto/list-articles.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/lib/article.mapper.ts",
+      "to": "src/modules/articles/model/article.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/articles/model/article.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/articles/model/article.types.ts",
+      "to": "src/modules/articles/model/article.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/adapters/jwt-token.adapter.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/auth/adapters/jwt-token.adapter.ts",
+      "to": "src/core/errors/integration.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/auth/adapters/jwt-token.adapter.ts",
+      "to": "src/modules/auth/model/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/adapters/password-hash.adapter.ts",
+      "to": "src/modules/auth/model/auth.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/api/auth.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/auth/api/auth.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/auth/api/auth.controller.ts",
+      "to": "src/modules/auth/api/login-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/api/auth.controller.ts",
+      "to": "src/modules/auth/api/login.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/api/auth.controller.ts",
+      "to": "src/modules/auth/application/auth.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/api/auth.controller.ts",
+      "to": "src/modules/auth/model/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/api/login-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/auth/api/login.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/auth/api/login.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/auth/api/login.dto.ts",
+      "to": "src/modules/auth/model/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/application/auth.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/auth/application/auth.service.ts",
+      "to": "src/modules/auth/errors/invalid-credentials.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/application/auth.service.ts",
+      "to": "src/modules/auth/lib/auth-identity.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/application/auth.service.ts",
+      "to": "src/modules/auth/model/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/application/auth.service.ts",
+      "to": "src/modules/auth/model/auth.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/application/auth.service.ts",
+      "to": "src/modules/users/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/auth/auth.module.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/auth/auth.module.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/auth/auth.module.ts",
+      "to": "src/modules/auth/adapters/jwt-token.adapter.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/auth.module.ts",
+      "to": "src/modules/auth/adapters/password-hash.adapter.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/auth.module.ts",
+      "to": "src/modules/auth/api/auth.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/auth.module.ts",
+      "to": "src/modules/auth/application/auth.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/auth.module.ts",
+      "to": "src/modules/auth/model/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/auth.module.ts",
+      "to": "src/modules/users/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/auth/errors/invalid-credentials.error.ts",
+      "to": "src/core/errors/unauthorized.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/auth/errors/invalid-credentials.error.ts",
+      "to": "src/modules/auth/model/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/index.ts",
+      "to": "src/modules/auth/application/auth.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/index.ts",
+      "to": "src/modules/auth/auth.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/lib/auth-identity.mapper.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/auth/lib/auth-identity.mapper.ts",
+      "to": "src/modules/users/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/auth/model/auth.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/users/application/users.service.ts",
+      "to": "src/modules/users/infrastructure/users.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/users/application/users.service.ts",
+      "to": "src/modules/users/model/user.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/users/index.ts",
+      "to": "src/modules/users/application/users.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/users/index.ts",
+      "to": "src/modules/users/model/user.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/users/index.ts",
+      "to": "src/modules/users/users.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/users/infrastructure/users.repository.ts",
+      "to": "src/modules/users/model/user.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/users/infrastructure/users.repository.ts",
+      "to": "src/modules/users/model/user.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/users/model/user.constants.ts",
+      "to": "src/modules/users/model/user.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/users/model/user.constants.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/users/model/user.types.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/users/users.module.ts",
+      "to": "src/modules/users/application/users.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/users/users.module.ts",
+      "to": "src/modules/users/infrastructure/users.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/shared/constants/index.ts",
+      "to": "src/shared/constants/http-status.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/shared/constants/index.ts",
+      "to": "src/shared/constants/role-permissions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/shared/constants/role-permissions.constants.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/shared/enums/index.ts",
+      "to": "src/shared/enums/log-level.enum.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/shared/enums/index.ts",
+      "to": "src/shared/enums/node-env.enum.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/shared/enums/index.ts",
+      "to": "src/shared/enums/permission.enum.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/shared/enums/index.ts",
+      "to": "src/shared/enums/role.enum.ts",
+      "type": "internal"
+    }
+  ]
+}

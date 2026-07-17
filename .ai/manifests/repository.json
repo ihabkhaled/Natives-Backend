@@ -1,0 +1,2712 @@
+{
+  "generatedAt": "2026-07-12T12:15:01.655Z",
+  "treeHash": "sha256:9bc2b657d5444e885a9c1acf5b8b5b0a56e00785bc88934eaa8048c75df957b0",
+  "files": [
+    {
+      "path": "src/app.module.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AppModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3753c85d3d934f8a7c5e1ee581bba31c676f57867d656b543a8ec2b4449503fb",
+      "sizeBytes": 669
+    },
+    {
+      "path": "src/bootstrap/bootstrap.constants.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "LISTEN_HOST"
+        },
+        {
+          "kind": "const",
+          "name": "TRUST_PROXY"
+        },
+        {
+          "kind": "const",
+          "name": "BODY_LIMIT_BYTES"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_API_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "SWAGGER_PATH"
+        },
+        {
+          "kind": "const",
+          "name": "SWAGGER_TITLE"
+        },
+        {
+          "kind": "const",
+          "name": "SWAGGER_DESCRIPTION"
+        },
+        {
+          "kind": "const",
+          "name": "SWAGGER_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "SWAGGER_BEARER_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "SWAGGER_PERSIST_AUTHORIZATION"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5f0a3c4ef76f944b41388f8aee8acbcbdaf8a0904f07f16014e11f917528cec5",
+      "sizeBytes": 522
+    },
+    {
+      "path": "src/bootstrap/bootstrap.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e540e0deb0312ef63bcf953de55aa842c103c8729e4277e66bb183a9ab24cd43",
+      "sizeBytes": 987
+    },
+    {
+      "path": "src/bootstrap/configure-lifecycle.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "configureLifecycle"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:53123c94277b6a33b20a0b54695b31c6f102dbdc3d139886ae5066c8ea3b5de0",
+      "sizeBytes": 686
+    },
+    {
+      "path": "src/bootstrap/configure-security.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4288963211936fff040c55ca2ece001c83d05862c45577fb70d0a1dac778351b",
+      "sizeBytes": 751
+    },
+    {
+      "path": "src/bootstrap/configure-swagger.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "configureSwagger"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1f5cd2fb0c1202c1947c7bbbb14d00e3f20bae0c892e2910f5bc73c3acf1066d",
+      "sizeBytes": 1023
+    },
+    {
+      "path": "src/bootstrap/configure-validation.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:69562df45599eb12ec895ab4774a0776406922424a69c9290cbd1ed17ede9989",
+      "sizeBytes": 996
+    },
+    {
+      "path": "src/bootstrap/create-app.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7a57886e6465111498bb2870f0b7d66bdcd7bca29ca21dd7e132e558197d9f95",
+      "sizeBytes": 881
+    },
+    {
+      "path": "src/bootstrap/fastify-adapter.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "createFastifyAdapter"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b0dbc9e4810fddf03a23640922362ea4da35fd972e273fa553175943f09e661f",
+      "sizeBytes": 526
+    },
+    {
+      "path": "src/config/app-config.service.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AppConfigService"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a9fcfbb31bfa5e5cf9c5fff042ebeca270515ca598bf75628d669fbf6b9bb8ca",
+      "sizeBytes": 837
+    },
+    {
+      "path": "src/config/app.config.spec.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:64faf14b3c00a64843f796f01514b090236e4492f962af490463dd6767616f84",
+      "sizeBytes": 1207
+    },
+    {
+      "path": "src/config/app.config.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "appConfig"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/config/app.config.spec.ts",
+      "kind": "source",
+      "hash": "sha256:dfc69b7e3457be4f9660afa9d3297ab3dfe4995260655618c16b5aa412b97b10",
+      "sizeBytes": 1039
+    },
+    {
+      "path": "src/config/config-validation.helpers.spec.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b4dbc6a5093cb80d0221e344f4cc68e1335d5796bbc93894b7b7995d901ee5e7",
+      "sizeBytes": 1837
+    },
+    {
+      "path": "src/config/config-validation.helpers.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "areCorsOriginsValid"
+        },
+        {
+          "kind": "function",
+          "name": "isProductionJwtSecretValid"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/config/config-validation.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a4d769258d95c4ccf823bb9e41b2119af0b99db3632f1e4c1dba7c689c9d0917",
+      "sizeBytes": 1545
+    },
+    {
+      "path": "src/config/config.constants.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "APP_CONFIG_NAMESPACE"
+        },
+        {
+          "kind": "const",
+          "name": "SECURITY_CONFIG_NAMESPACE"
+        },
+        {
+          "kind": "const",
+          "name": "NODE_ENV_CONFIG_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_APP_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_GLOBAL_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_LOG_LEVEL"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_CONFIG_TEXT_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_RATE_LIMIT_TTL_MS"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_RATE_LIMIT_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_RATE_LIMIT_TTL_MS"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_RATE_LIMIT_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_RATE_LIMIT_TTL_MS"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_RATE_LIMIT_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_JWT_EXPIRES_IN_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_JWT_EXPIRES_IN_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_JWT_EXPIRES_IN_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "JWT_SECRET_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "JWT_SECRET_MIN_UNIQUE_CHARACTERS"
+        },
+        {
+          "kind": "const",
+          "name": "JWT_SECRET_CONFIG_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "JWT_SECRET_FORBIDDEN_FRAGMENTS"
+        },
+        {
+          "kind": "const",
+          "name": "JWT_SECRET_FORBIDDEN_SEQUENCES"
+        },
+        {
+          "kind": "const",
+          "name": "JWT_SECRET_PRODUCTION_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "HTTP_PROTOCOL"
+        },
+        {
+          "kind": "const",
+          "name": "HTTPS_PROTOCOL"
+        },
+        {
+          "kind": "const",
+          "name": "FLAG_TRUE"
+        },
+        {
+          "kind": "const",
+          "name": "FLAG_FALSE"
+        },
+        {
+          "kind": "const",
+          "name": "BOOLEAN_FLAG_VALUES"
+        },
+        {
+          "kind": "const",
+          "name": "GLOBAL_PREFIX_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_ENV_MESSAGE_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_BOOLEAN_CONFIG_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "REQUIRED_CONFIG_MISSING_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_NODE_ENV_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_CORS_ORIGIN_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_PRODUCTION_JWT_SECRET_MESSAGE"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b901f449e9417900c94e64eaed1d180008b1919105b8cf2789819dcb03c57243",
+      "sizeBytes": 2179
+    },
+    {
+      "path": "src/config/config.module.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ConfigModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:35604b0f96cdf0e6b0ff2aab9f3fda5a84a0a82464a3f08d2197e6904cbdcfa8",
+      "sizeBytes": 766
+    },
+    {
+      "path": "src/config/config.types.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "AppConfig"
+        },
+        {
+          "kind": "interface",
+          "name": "SecurityConfig"
+        },
+        {
+          "kind": "interface",
+          "name": "RootConfig"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:99f2449d434f63abbbdd55fb044488b4fa736204aab267eec899d8d1ec0f383f",
+      "sizeBytes": 582
+    },
+    {
+      "path": "src/config/config.utils.spec.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:418ee01623f77c002e4e8e0a0f35ece704c1da438e0b18e539b9e30bdf08c9e8",
+      "sizeBytes": 1783
+    },
+    {
+      "path": "src/config/config.utils.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "parseCsv"
+        },
+        {
+          "kind": "function",
+          "name": "parseInteger"
+        },
+        {
+          "kind": "function",
+          "name": "parseBoolean"
+        },
+        {
+          "kind": "function",
+          "name": "requireConfigValue"
+        },
+        {
+          "kind": "function",
+          "name": "parseNodeEnv"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/config/config.utils.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5dc0c5b1c3a687ee3bb7a7a3c7eb2dd9d8324fc6464bf8f395f92cfb2639266c",
+      "sizeBytes": 1460
+    },
+    {
+      "path": "src/config/env.validation.spec.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d29b4bb5f64c7f7326ba32148df44f056f3aded83aebf7ca7e99c6980efcf886",
+      "sizeBytes": 2614
+    },
+    {
+      "path": "src/config/env.validation.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "validateEnv"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/config/env.validation.spec.ts",
+      "kind": "source",
+      "hash": "sha256:02be17583f7b925be72e7118713e4318414c854211deee4a22304ed290e5b398",
+      "sizeBytes": 1165
+    },
+    {
+      "path": "src/config/environment-variables.dto.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EnvironmentVariablesDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:58ebcca41ebbd9a23cd39fafa87d13cf3bd84050f0b1472f8e936b9c2610ded4",
+      "sizeBytes": 1740
+    },
+    {
+      "path": "src/config/security.config.spec.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ceedadaded37631b2122fbc0ea778e821ca89879fd6f929e14ef6c7adc680a05",
+      "sizeBytes": 1304
+    },
+    {
+      "path": "src/config/security.config.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "securityConfig"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/config/security.config.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bed5dcae47842a8a0feac2ef2264a8d587a497a8c7f51869d3591ba030372eff",
+      "sizeBytes": 976
+    },
+    {
+      "path": "src/core/auth/auth-identity.validator.spec.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:325971eee88271daedab648f2ea647f3995814f114fe359e9ceb8f0013ed95d8",
+      "sizeBytes": 957
+    },
+    {
+      "path": "src/core/auth/auth-identity.validator.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isAuthUserIdentity"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/auth/auth-identity.validator.spec.ts",
+      "kind": "source",
+      "hash": "sha256:447831ad5549b7dc18f7b0dfa168e67542e247cad47a920de302d890a583cbf2",
+      "sizeBytes": 870
+    },
+    {
+      "path": "src/core/auth/auth.constants.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "AUTH_TOKEN_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_PUBLIC_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_PERMISSIONS_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_BEARER_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_EMAIL_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_TOKEN_REQUIRED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_TOKEN_REQUIRED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_INVALID_TOKEN_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_INVALID_TOKEN_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_IDENTITY_REQUIRED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_IDENTITY_REQUIRED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_PERMISSION_DENIED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_PERMISSION_DENIED_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:59f2a5eaa230b2e0808b16943fcffd1447087892842cb6e697190096e7ea9995",
+      "sizeBytes": 1072
+    },
+    {
+      "path": "src/core/auth/auth.types.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "AuthUserIdentity"
+        },
+        {
+          "kind": "interface",
+          "name": "AuthHeaders"
+        },
+        {
+          "kind": "interface",
+          "name": "AuthRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "AuthenticatedRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "AuthTokenPort"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1a8762a662d8253387b0752d3be2cd51cbd44551509b3c98a26ed3383c29c259",
+      "sizeBytes": 561
+    },
+    {
+      "path": "src/core/auth/bearer-token.parser.spec.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8eb8b8a3301ba79d99ae14802e89b912a3feeb510cfe8fe320a23d4872175e64",
+      "sizeBytes": 702
+    },
+    {
+      "path": "src/core/auth/bearer-token.parser.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "extractBearerToken"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/auth/bearer-token.parser.spec.ts",
+      "kind": "source",
+      "hash": "sha256:aeef526b2c429ca2e801ca1e1e07a5b7744bb6f9c74d63d9cd1ee0c3274ba0c0",
+      "sizeBytes": 275
+    },
+    {
+      "path": "src/core/auth/current-user.decorator.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "CurrentUser"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1da14b4739babdea505a259a9dd49aa20df168c8f54e405fea369f7410c152e5",
+      "sizeBytes": 419
+    },
+    {
+      "path": "src/core/auth/index.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b90af43365dbe12cb544f9d6d8500be4cc79e3d167a8139a3125b0a5a8d2cb7f",
+      "sizeBytes": 409
+    },
+    {
+      "path": "src/core/auth/jwt-auth.guard.spec.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "guard",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:cb1b823a2cb8d4234a9b0bec715eefd94b3e930a22fbb3b9719b020cc6b2c6e9",
+      "sizeBytes": 3097
+    },
+    {
+      "path": "src/core/auth/jwt-auth.guard.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "guard",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "JwtAuthGuard"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/auth/jwt-auth.guard.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4d251dbb4064acce0f7b2b9bb1549563a780992710e84b3c387c12fcd7898506",
+      "sizeBytes": 1760
+    },
+    {
+      "path": "src/core/auth/permission.helpers.spec.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8f4e92539d4ce3182ec9cdfb592ab519bc48cef7a219766d208e213ef148adb3",
+      "sizeBytes": 692
+    },
+    {
+      "path": "src/core/auth/permission.helpers.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "hasRequiredPermissions"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/auth/permission.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7a0e649a855590c77c3a21f8eb75da7d91aafff2d823477530ce6d96485ddb3d",
+      "sizeBytes": 387
+    },
+    {
+      "path": "src/core/auth/permissions.guard.spec.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "guard",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a5c736afd000bf323ba5d183c4e683991cdcb18d5ba69c6f6e6d100e49964352",
+      "sizeBytes": 2640
+    },
+    {
+      "path": "src/core/auth/permissions.guard.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "guard",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PermissionsGuard"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/auth/permissions.guard.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0c7f7d101b0eb8a7a2e48f9065b448df421ecf8f0b23d9765fbc43c108b17664",
+      "sizeBytes": 1572
+    },
+    {
+      "path": "src/core/auth/public.decorator.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "Public"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4eacce4045a2001673810d93b3d70a1dc1d7c20d777298c005138876025fab1d",
+      "sizeBytes": 236
+    },
+    {
+      "path": "src/core/auth/require-permissions.decorator.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "RequirePermissions"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c9e4e4503a5d3b08799fc045d548db62033c921a22234fd95bdc7122cb1e7e36",
+      "sizeBytes": 365
+    },
+    {
+      "path": "src/core/clock/clock.module.ts",
+      "root": "core",
+      "module": "clock",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ClockModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c5b99b1f4e3964bc5055768578d58bf0d02faeefefa42d2d1b5201f7cb84a3fc",
+      "sizeBytes": 309
+    },
+    {
+      "path": "src/core/clock/clock.port.ts",
+      "root": "core",
+      "module": "clock",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "ClockPort"
+        },
+        {
+          "kind": "const",
+          "name": "CLOCK_PORT"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:07a71fb2922fa363ecf68f6b3da28ce51bb7af4f9b466497232535a8da43510f",
+      "sizeBytes": 115
+    },
+    {
+      "path": "src/core/clock/system-clock.service.ts",
+      "root": "core",
+      "module": "clock",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SystemClockService"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:44c3cbe0011bc7c1f18e671355c18c734644a0aff436e3410c7209174567699f",
+      "sizeBytes": 258
+    },
+    {
+      "path": "src/core/core.module.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CoreModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1eb2f709f75e947ec60d11559f1f6e7a3e1251ea5f338b9b0c185a87793cd0a4",
+      "sizeBytes": 807
+    },
+    {
+      "path": "src/core/errors/app-error.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b4f6bed2f1c75b20446842bf4bcd2aa00dac5b6309e4130ce8aa477858919e9d",
+      "sizeBytes": 685
+    },
+    {
+      "path": "src/core/errors/app-exception.filter.spec.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "filter",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0cc840d3d0a2c1528ff28b03ee5b008e7c38361ede9f2b90a608d2dcdf401644",
+      "sizeBytes": 1908
+    },
+    {
+      "path": "src/core/errors/app-exception.filter.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "filter",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AppExceptionFilter"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/errors/app-exception.filter.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c732a6826db72bb8dfd5dbf533e1ee3e5d3555797a58bc3b64c8eacf1b47694d",
+      "sizeBytes": 1455
+    },
+    {
+      "path": "src/core/errors/conflict.error.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b6266c25e680733957335b23ba1e473e9fd8f0ae744c1c09ac23ea8d42f9ee30",
+      "sizeBytes": 176
+    },
+    {
+      "path": "src/core/errors/error-body.mapper.spec.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5e0f060be2798fb3ac328d67e351f6617ec54d840136f772d0c20a54c64fd643",
+      "sizeBytes": 1937
+    },
+    {
+      "path": "src/core/errors/error-body.mapper.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toErrorBody"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/errors/error-body.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ebcb1dc2922afcf063dff6b776e193ce06911acbc772487696dc1436c6cde691",
+      "sizeBytes": 1542
+    },
+    {
+      "path": "src/core/errors/error.constants.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "GENERIC_ERROR_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "GENERIC_ERROR_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "VALIDATION_FAILED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "VALIDATION_FAILED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "HTTP_REQUEST_FAILED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "HTTP_REQUEST_FAILED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "HTTP_ERROR_MESSAGE_KEYS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0aa229e05846f8377f35cadd41c1b04f70ab237a07380f2c0e34aa8412594cdb",
+      "sizeBytes": 1081
+    },
+    {
+      "path": "src/core/errors/error.types.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "ErrorMessageKey"
+        },
+        {
+          "kind": "interface",
+          "name": "ErrorBody"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cecd7075b3633022f20f5dd0d1ae6b9daf602d9dab405b4ee110e478e822478b",
+      "sizeBytes": 181
+    },
+    {
+      "path": "src/core/errors/forbidden.error.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ForbiddenError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7328d83677e742645b680918d6d2a1ab5bbb2f8c60e6f06013d63238961c273f",
+      "sizeBytes": 178
+    },
+    {
+      "path": "src/core/errors/integration.error.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "IntegrationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6ccbf1e4294070ac43c5fc3ef9e9b00a9b1b9e9a2d21cf065d4c2ac3f2f86d66",
+      "sizeBytes": 182
+    },
+    {
+      "path": "src/core/errors/not-found.error.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:db51839428d2163c1e2989426ea83210dc36348badf929e29f45330b5e78dc94",
+      "sizeBytes": 177
+    },
+    {
+      "path": "src/core/errors/unauthorized.error.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UnauthorizedError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cb6472fd69065ae7b83efcedaf3f0d8b6156aada1379dfbe45cd67ebdf11aaed",
+      "sizeBytes": 184
+    },
+    {
+      "path": "src/core/errors/validation.error.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ValidationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:259539ddf8d9a27147ab4297cbd72f893dec40168dff10fdb2c1b872c91652fe",
+      "sizeBytes": 181
+    },
+    {
+      "path": "src/core/health/health.constants.ts",
+      "root": "core",
+      "module": "health",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "HEALTH_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "HEALTH_API_TAG"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:eba5e06ecdb8e8dab770082da0dbc9201ca9471b70084ee3a2758687ab077698",
+      "sizeBytes": 78
+    },
+    {
+      "path": "src/core/health/health.controller.ts",
+      "root": "core",
+      "module": "health",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "HealthController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bb47e3757a72271b657ccd81cd2e800eede8023c3ecfb0e777fc4b4efcd34761",
+      "sizeBytes": 539
+    },
+    {
+      "path": "src/core/health/health.enums.ts",
+      "root": "core",
+      "module": "health",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "HealthState"
+        },
+        {
+          "kind": "const",
+          "name": "HEALTH_STATE_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cd9faa2b17aec99226fe46c27117e67f5b56737897ab1af2c4bd9e662893e98d",
+      "sizeBytes": 131
+    },
+    {
+      "path": "src/core/health/health.module.ts",
+      "root": "core",
+      "module": "health",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "HealthModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f37ec9aa5cc85a75369223b7e85d657bc583f414bf44eea432e8fd51f87c955a",
+      "sizeBytes": 335
+    },
+    {
+      "path": "src/core/health/health.service.spec.ts",
+      "root": "core",
+      "module": "health",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:790b111a445cd6a7fbab4d2ed51a616d97b4c68e9ad7ea9d9779f144dca80ac4",
+      "sizeBytes": 538
+    },
+    {
+      "path": "src/core/health/health.service.ts",
+      "root": "core",
+      "module": "health",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "HealthService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/health/health.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f3f9e2675d4ef7d87318ed97e1286758e367927f15dc5aa23aabc1efddb2a015",
+      "sizeBytes": 523
+    },
+    {
+      "path": "src/core/health/health.types.ts",
+      "root": "core",
+      "module": "health",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "HealthStatus"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:626de5ae1257b59a1ccf4c2c186fced3160030df3fc197beac6f693d94cf484a",
+      "sizeBytes": 182
+    },
+    {
+      "path": "src/core/http/http-reply.types.ts",
+      "root": "core",
+      "module": "http",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "HttpReplyLike"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7c46f225a2717941b745adf73c5c061502044476c1fc49fc61d5de1fd3a9695b",
+      "sizeBytes": 376
+    },
+    {
+      "path": "src/core/id-generator/id-generator.module.ts",
+      "root": "core",
+      "module": "id-generator",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "IdGeneratorModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7ec3e1c9749cf4a9cb6f0a638392ff1122ee540e4cc96803524bef23eb67deeb",
+      "sizeBytes": 356
+    },
+    {
+      "path": "src/core/id-generator/id-generator.port.ts",
+      "root": "core",
+      "module": "id-generator",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "IdGeneratorPort"
+        },
+        {
+          "kind": "const",
+          "name": "ID_GENERATOR_PORT"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a04957bfcc6b04541d72bd9a3a07238174b10d7648445a41b51f1da84964af3b",
+      "sizeBytes": 122
+    },
+    {
+      "path": "src/core/id-generator/uuid-id-generator.service.ts",
+      "root": "core",
+      "module": "id-generator",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UuidIdGeneratorService"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8312e2d13df35b45411b6c1e01e08af9934e0e2dfd15dc05894171a1a73076c9",
+      "sizeBytes": 278
+    },
+    {
+      "path": "src/core/logger/app-logger.service.spec.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d768738b2847f3e1873785bcc6b8fad38320e83ceb2bd347540ae9b606d16bad",
+      "sizeBytes": 2123
+    },
+    {
+      "path": "src/core/logger/app-logger.service.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AppLogger"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/logger/app-logger.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b5751a4c11b7808ad6889eee1df857cfe2995612c63afd6cb32facf42fa1f08f",
+      "sizeBytes": 1547
+    },
+    {
+      "path": "src/core/logger/bind-app-logger.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "bindAppLogger"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8a093225871aef9fe432a46b3fe6015ea9dbb7e3e0757f68d4f322d210dc6102",
+      "sizeBytes": 349
+    },
+    {
+      "path": "src/core/logger/http-logging.options.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildPinoHttpOptions"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:96b8c64fee8396d3c4a4c23a91afc057f997cddddbd94d65a6bb3685e110a354",
+      "sizeBytes": 1185
+    },
+    {
+      "path": "src/core/logger/index.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2deeda167785375bd6f24b8e4bdee8d40ec4bcca1e3d4153e27bf0b0f783947e",
+      "sizeBytes": 213
+    },
+    {
+      "path": "src/core/logger/log-context.sanitizer.spec.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2e4239d94c3950a4e98b2c6ab6b5449f939d0c390918724a0c35303d75ed6ed8",
+      "sizeBytes": 3233
+    },
+    {
+      "path": "src/core/logger/log-context.sanitizer.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "sanitizeLogContext"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/logger/log-context.sanitizer.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3a0d078238cfaeeb4e3abf580900736d05fb3fbd579db776b57f059d9db1b453",
+      "sizeBytes": 2272
+    },
+    {
+      "path": "src/core/logger/logger.constants.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "REDACT_PATHS"
+        },
+        {
+          "kind": "const",
+          "name": "REDACT_CENSOR"
+        },
+        {
+          "kind": "const",
+          "name": "CIRCULAR_LOG_VALUE"
+        },
+        {
+          "kind": "const",
+          "name": "SENSITIVE_LOG_KEY_NAMES"
+        },
+        {
+          "kind": "const",
+          "name": "BEARER_LOG_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "BEARER_LOG_REPLACEMENT"
+        },
+        {
+          "kind": "const",
+          "name": "SENSITIVE_LOG_ASSIGNMENT_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "SENSITIVE_LOG_ASSIGNMENT_REPLACEMENT"
+        },
+        {
+          "kind": "const",
+          "name": "DEV_LOG_TRANSPORT"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a36019990f09df39ebc1ce2317454ef13e67efb27d4a6ebc847efa60de585182",
+      "sizeBytes": 1351
+    },
+    {
+      "path": "src/core/logger/logger.module.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LoggerModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1377bf5933ecd1d3c905f1ec3098f553a91158ed68c81b002c6b9df2fe930599",
+      "sizeBytes": 909
+    },
+    {
+      "path": "src/core/logger/logger.port.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "LogContext"
+        },
+        {
+          "kind": "interface",
+          "name": "AppLoggerPort"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:69a32f0bb48cfbdcc4df2a186c548ca2eb28eac4ed7f15f76fa88bf4b981b451",
+      "sizeBytes": 570
+    },
+    {
+      "path": "src/core/openapi/index.ts",
+      "root": "core",
+      "module": "openapi",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1a5e4c44f09aca57e6ea770a35920bace5821ae512509743063a6eec086bd3bb",
+      "sizeBytes": 34
+    },
+    {
+      "path": "src/core/openapi/openapi.vendor.ts",
+      "root": "core",
+      "module": "openapi",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fa0ccace09df27cb09a71ea8261e544a5761ab33f35af053262753624c117a0a",
+      "sizeBytes": 469
+    },
+    {
+      "path": "src/core/rate-limit/rate-limit.module.ts",
+      "root": "core",
+      "module": "rate-limit",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RateLimitModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c1c5e2553582345f047af224814cdf87d4e24f64f6d3097a78c1b48c4fe4d227",
+      "sizeBytes": 889
+    },
+    {
+      "path": "src/core/validation/index.ts",
+      "root": "core",
+      "module": "validation",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9a22c5504c8d44ed22a6a72867a291630dd3ba315810c0a47b8c0c2c10e44592",
+      "sizeBytes": 280
+    },
+    {
+      "path": "src/core/validation/uuid-validation-error.factory.ts",
+      "root": "core",
+      "module": "validation",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "createUuidValidationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7d47cebfd2796c61651fbd05da846eda46cb3d9804aae8720c2ffbe8f97ffcf2",
+      "sizeBytes": 304
+    },
+    {
+      "path": "src/core/validation/uuid-validation.pipe.spec.ts",
+      "root": "core",
+      "module": "validation",
+      "layer": "pipe",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:803df5f31145a563bae9142a51fa430353a163bf60f9eb01771f81ae75f538ed",
+      "sizeBytes": 914
+    },
+    {
+      "path": "src/core/validation/uuid-validation.pipe.ts",
+      "root": "core",
+      "module": "validation",
+      "layer": "pipe",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UuidValidationPipe"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/validation/uuid-validation.pipe.spec.ts",
+      "kind": "source",
+      "hash": "sha256:eebf8724ebb513e5ac72659753c313000eff48ba9ca83fac6623719a911a6285",
+      "sizeBytes": 388
+    },
+    {
+      "path": "src/core/validation/validation-exception.factory.spec.ts",
+      "root": "core",
+      "module": "validation",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f84974a4827083ec18f0f87467839c32b81931a3b291e87af0bbd73e2d3d0b99",
+      "sizeBytes": 1297
+    },
+    {
+      "path": "src/core/validation/validation-exception.factory.ts",
+      "root": "core",
+      "module": "validation",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "createValidationExceptionFactory"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/validation/validation-exception.factory.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f885cd03ba01b8c5de6f4d08139a4a2d27db6954ab8becae2ae8a8b0d76fa26f",
+      "sizeBytes": 1525
+    },
+    {
+      "path": "src/core/validation/validation.constants.ts",
+      "root": "core",
+      "module": "validation",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "VALIDATION_LOG_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "UUID_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "UUID_INVALID_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "UUID_INVALID_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:61b1b5b9d184ceac34709a7a838c0d2e83c1dcf8645f5091019aa85d8e1ed056",
+      "sizeBytes": 328
+    },
+    {
+      "path": "src/core/validation/validation.types.ts",
+      "root": "core",
+      "module": "validation",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "ValidationIssue"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bbb8219580492fb14cc39941079dbc5f3afe9f31bb5e75445fd029be50f70672",
+      "sizeBytes": 94
+    },
+    {
+      "path": "src/core/validation/validation.vendor.ts",
+      "root": "core",
+      "module": "validation",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0bad855223044032b8063c88b2c097f67a6f3c1950e7ea38ad0ff830d12e1115",
+      "sizeBytes": 617
+    },
+    {
+      "path": "src/main.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a70ced71b7b8415bd119b9c8ea4cbce0928e16a68cb4770001f49e06c30d2e7c",
+      "sizeBytes": 101
+    },
+    {
+      "path": "src/modules/articles/api/articles.controller.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ArticlesController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4fdafb17a524bcf9a34a01e995f08f80eb4486a9a249131a2a78475237c4fb19",
+      "sizeBytes": 2622
+    },
+    {
+      "path": "src/modules/articles/api/dto/article-response.dto.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ArticleResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9a17a0bbb1b945e7e8dd7773aab9e4e3beec834ef611f652eff3ac22238abb15",
+      "sizeBytes": 486
+    },
+    {
+      "path": "src/modules/articles/api/dto/create-article.dto.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateArticleDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6b1a524e152020ee1b55a975ce7d92828f32568ee5b396879ab43f7b786e29ae",
+      "sizeBytes": 651
+    },
+    {
+      "path": "src/modules/articles/api/dto/list-articles.query.dto.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListArticlesQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4a284379ccabe03e909da3eb159ef1469c6c1709e6ae95749446cc56147f223c",
+      "sizeBytes": 836
+    },
+    {
+      "path": "src/modules/articles/api/dto/list-articles.response.dto.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListArticlesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:88ad99bcf0987659a65bda805136771b49c49316d202b9efeefffbdb88699c41",
+      "sizeBytes": 414
+    },
+    {
+      "path": "src/modules/articles/application/articles.service.spec.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a517b8f877fbccb49097877a570fa5009c28db53cf46ebd27071c5fe2d5a5cdb",
+      "sizeBytes": 3940
+    },
+    {
+      "path": "src/modules/articles/application/articles.service.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ArticlesService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/articles/application/articles.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0b8251bd7ef08628db0b8581194fdd5d726e643a05b02a9ac9f045f19270ca9e",
+      "sizeBytes": 2227
+    },
+    {
+      "path": "src/modules/articles/articles.module.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ArticlesModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f13eade90a2ce7456db3747c89c37f71af12cde2ef43bcd4dd2462f804ed2f21",
+      "sizeBytes": 585
+    },
+    {
+      "path": "src/modules/articles/domain/article-ownership.policy.spec.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e50c4eb4171b4b13834685f8bdcc133f8f0f6ac37efe636b43ac868716f99d25",
+      "sizeBytes": 663
+    },
+    {
+      "path": "src/modules/articles/domain/article-ownership.policy.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isArticleOwnedBy"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/articles/domain/article-ownership.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d4a5cb4bb7564878f4f627801fab625f78d46f991c5b968a885d0620008d3e10",
+      "sizeBytes": 190
+    },
+    {
+      "path": "src/modules/articles/domain/article.entity.spec.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:861a1128c8d6272360f294dad0ab180b52af18541a5e131a93b118b88ee5a86c",
+      "sizeBytes": 941
+    },
+    {
+      "path": "src/modules/articles/domain/article.entity.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "createArticle"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/articles/domain/article.entity.spec.ts",
+      "kind": "source",
+      "hash": "sha256:762933fad332888b77e9194d1824091024889a9515938cdda1fea77704be2a55",
+      "sizeBytes": 621
+    },
+    {
+      "path": "src/modules/articles/index.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6fa6b9b0b7ed25b673a30e0ab3e41a122de29f4970e3732b6b963217d8e2fd9f",
+      "sizeBytes": 52
+    },
+    {
+      "path": "src/modules/articles/infrastructure/article.repository.spec.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7ee04d444ae4ed8e202dd2608224c3177985662af1390c8ed8839e97a441dd41",
+      "sizeBytes": 3016
+    },
+    {
+      "path": "src/modules/articles/infrastructure/article.repository.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ArticleRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/articles/infrastructure/article.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ec67c07242b5672eb1cc0b4ea0b91a8cefc73beb8ffed5cf46861c2890ea58d8",
+      "sizeBytes": 1651
+    },
+    {
+      "path": "src/modules/articles/lib/article.mapper.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toArticleResponse"
+        },
+        {
+          "kind": "function",
+          "name": "toListArticlesResponse"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6afbc12aaf5803ff0e326e4eafb9b5a0ecf399e21c6767818d58deb38693a0d5",
+      "sizeBytes": 754
+    },
+    {
+      "path": "src/modules/articles/model/article.constants.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ARTICLE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_TITLE_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_TITLE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_BODY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_NOT_FOUND_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:844b095a256b7bb5393c71876bcf43c38dd24af912eb88c1c6005c624725f589",
+      "sizeBytes": 694
+    },
+    {
+      "path": "src/modules/articles/model/article.enums.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ArticleStatus"
+        },
+        {
+          "kind": "const",
+          "name": "ARTICLE_STATUS_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:924574663160b899c34ae1024de28dec942ffacf1564006b3780c29ed3bebc2d",
+      "sizeBytes": 172
+    },
+    {
+      "path": "src/modules/articles/model/article.types.ts",
+      "root": "modules",
+      "module": "articles",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "Article"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateArticleData"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateArticleInput"
+        },
+        {
+          "kind": "interface",
+          "name": "ListArticlesQuery"
+        },
+        {
+          "kind": "interface",
+          "name": "ListArticlesResult"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:040bf46d93238d1620529729185cdea4a698546cf2a9b7d41efc45d095e5197d",
+      "sizeBytes": 750
+    },
+    {
+      "path": "src/modules/auth/adapters/jwt-token.adapter.spec.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "adapter",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:441fbb50b53dc5f81f324204e9f531e73be8ddd02ef3326d34ad01fce567c773",
+      "sizeBytes": 2211
+    },
+    {
+      "path": "src/modules/auth/adapters/jwt-token.adapter.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "adapter",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "JwtTokenAdapter"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/auth/adapters/jwt-token.adapter.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f8e3200edfc28355f268656d9145e17d588aad7efa3a934f9c9c817b94193639",
+      "sizeBytes": 1016
+    },
+    {
+      "path": "src/modules/auth/adapters/password-hash.adapter.spec.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "adapter",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6138f0027bfd7548f05c63641cd9491d2c1c49f7d1e655a42316fb659275f379",
+      "sizeBytes": 625
+    },
+    {
+      "path": "src/modules/auth/adapters/password-hash.adapter.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "adapter",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PasswordHashAdapter"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/auth/adapters/password-hash.adapter.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a5606ecb88865e77c91cbcde717d2362ee6c3a46e118dae5451815a21dadc8aa",
+      "sizeBytes": 349
+    },
+    {
+      "path": "src/modules/auth/api/auth.controller.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AuthController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3a7e127548072cbd7592a6090476bbfd5b28f08bc370d1e0765d7dca7d2fa048",
+      "sizeBytes": 1006
+    },
+    {
+      "path": "src/modules/auth/api/login-response.dto.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LoginResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:29afb3843e702812f48150554b73dc2edf3d117b7b640107731a5cfaf3b480d0",
+      "sizeBytes": 137
+    },
+    {
+      "path": "src/modules/auth/api/login.dto.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LoginDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4581f8def37d21b2fb23872f80f2ecc6af88050e258fd86a0fb0355cfb791db2",
+      "sizeBytes": 736
+    },
+    {
+      "path": "src/modules/auth/application/auth.service.spec.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9583db6c534415a9469d35f480074f364157ac06bc26fe6d9264bd77df6a17d0",
+      "sizeBytes": 3052
+    },
+    {
+      "path": "src/modules/auth/application/auth.service.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AuthService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/auth/application/auth.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:35193c8c690b23a4de3f7a9f958dce876b4440c8f1270bec09b14b90eb41e1da",
+      "sizeBytes": 1290
+    },
+    {
+      "path": "src/modules/auth/auth.module.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AuthModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:333ab956a66111335ec5a4738a61e40d4c31949e65db46827e5adeed338d9df0",
+      "sizeBytes": 1214
+    },
+    {
+      "path": "src/modules/auth/errors/invalid-credentials.error.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvalidCredentialsError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ead95c7d1d627bbb585dd4b504c08261c1359138e7d1e51b4ecb3b8ec1c755ee",
+      "sizeBytes": 381
+    },
+    {
+      "path": "src/modules/auth/index.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4894e321ce57e68e5b53b9f8d8af376d9c2d187e4847b573e73175830c471048",
+      "sizeBytes": 102
+    },
+    {
+      "path": "src/modules/auth/lib/auth-identity.mapper.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toAuthUserIdentity"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8d447693065f1be9217316032755ccd67a5497c8c6e6c4caea197eb4995c8311",
+      "sizeBytes": 247
+    },
+    {
+      "path": "src/modules/auth/model/auth.constants.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "PASSWORD_HASH_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_LOGIN_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_EMAIL_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_PASSWORD_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_PASSWORD_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_DUMMY_PASSWORD_HASH"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_INVALID_CREDENTIALS_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_INVALID_CREDENTIALS_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_TOKEN_ISSUE_FAILED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_TOKEN_ISSUE_FAILED_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b6e9f41ef4f9a12f1eac48ba0d649d95f5d5305946e264f4d38759472ae71206",
+      "sizeBytes": 854
+    },
+    {
+      "path": "src/modules/auth/model/auth.types.ts",
+      "root": "modules",
+      "module": "auth",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "AuthCredentials"
+        },
+        {
+          "kind": "interface",
+          "name": "AuthToken"
+        },
+        {
+          "kind": "interface",
+          "name": "PasswordHashPort"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a13749a734df2408a699d956ec31e0a90e80b26aad4087ff675d0fb2453570a8",
+      "sizeBytes": 269
+    },
+    {
+      "path": "src/modules/users/application/users.service.spec.ts",
+      "root": "modules",
+      "module": "users",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d956a5f2d216efe02be0f1312db35a8c846ebee78043a471f9e4ab20cec8fab6",
+      "sizeBytes": 1235
+    },
+    {
+      "path": "src/modules/users/application/users.service.ts",
+      "root": "modules",
+      "module": "users",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UsersService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/users/application/users.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b66bd9ff3c11f9244e57374f704530ce3a68361d2784ffb790106dd8b1a23754",
+      "sizeBytes": 394
+    },
+    {
+      "path": "src/modules/users/index.ts",
+      "root": "modules",
+      "module": "users",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cb31153057d15b9a78146c365bae3ba4712c100c5e4f7627123b9bb6f5833a96",
+      "sizeBytes": 154
+    },
+    {
+      "path": "src/modules/users/infrastructure/users.repository.spec.ts",
+      "root": "modules",
+      "module": "users",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d509e4cc175f83f946398ce46b27f01deb8a5e5fd594a8831782bd2cad68c677",
+      "sizeBytes": 898
+    },
+    {
+      "path": "src/modules/users/infrastructure/users.repository.ts",
+      "root": "modules",
+      "module": "users",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UsersRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/users/infrastructure/users.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:faaad51551648e40cefe69c9ca8d23ca11032a6ed4000a2a0520416b764cca70",
+      "sizeBytes": 419
+    },
+    {
+      "path": "src/modules/users/model/user.constants.ts",
+      "root": "modules",
+      "module": "users",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "REFERENCE_USER_ID"
+        },
+        {
+          "kind": "const",
+          "name": "REFERENCE_USER_EMAIL"
+        },
+        {
+          "kind": "const",
+          "name": "REFERENCE_USER_PASSWORD_HASH"
+        },
+        {
+          "kind": "const",
+          "name": "REFERENCE_USER"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ebb1bcc7c6dc7b536c635fdf761dcccd485627fd1ad624f8790c2f176a73b104",
+      "sizeBytes": 457
+    },
+    {
+      "path": "src/modules/users/model/user.types.ts",
+      "root": "modules",
+      "module": "users",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "User"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4319aff804aeafbb60dc4f7a857d32dcc78d96282de60201852847176d563771",
+      "sizeBytes": 187
+    },
+    {
+      "path": "src/modules/users/users.module.ts",
+      "root": "modules",
+      "module": "users",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UsersModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a5ec35f007a27d607bae8f2a9ff6810e9e2d86dd6725e63c888b9676a8c2353a",
+      "sizeBytes": 286
+    },
+    {
+      "path": "src/shared/constants/http-status.constants.ts",
+      "root": "shared",
+      "module": "constants",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "CLIENT_ERROR_MIN_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "SERVER_ERROR_MIN_STATUS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cb5a2ba330ef41eafb27e59fa6a055d992306b13f0588abf49489c40fd0074ae",
+      "sizeBytes": 88
+    },
+    {
+      "path": "src/shared/constants/index.ts",
+      "root": "shared",
+      "module": "constants",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fd4c68d8e5f9e9db5950297bb790e7dcab3cd52be0869fa5df54253399cf2507",
+      "sizeBytes": 87
+    },
+    {
+      "path": "src/shared/constants/role-permissions.constants.ts",
+      "root": "shared",
+      "module": "constants",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ARTICLE_PERMISSIONS"
+        },
+        {
+          "kind": "const",
+          "name": "ROLE_PERMISSIONS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:99e88c84bd7ba87e6379d0b3f0e63452194ff6fe103b12811314f4d9f6ebe792",
+      "sizeBytes": 338
+    },
+    {
+      "path": "src/shared/enums/index.ts",
+      "root": "shared",
+      "module": "enums",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5d70bdce71a54478ed3aaaad8db6e6e9ac2bc1cf95ee6c301d1a5017cf11b0b8",
+      "sizeBytes": 131
+    },
+    {
+      "path": "src/shared/enums/log-level.enum.ts",
+      "root": "shared",
+      "module": "enums",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "LogLevel"
+        },
+        {
+          "kind": "const",
+          "name": "LOG_LEVEL_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:51119ba02440b59c49bfa2d516db7d69c578b66c44ea88c2a06162678fe89205",
+      "sizeBytes": 235
+    },
+    {
+      "path": "src/shared/enums/node-env.enum.ts",
+      "root": "shared",
+      "module": "enums",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "NodeEnv"
+        },
+        {
+          "kind": "const",
+          "name": "NODE_ENV_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:882d3180f802c845f7ad34e62efdbcccda628dba2f9c44a81ca0e17c742a461f",
+      "sizeBytes": 177
+    },
+    {
+      "path": "src/shared/enums/permission.enum.ts",
+      "root": "shared",
+      "module": "enums",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "Permission"
+        },
+        {
+          "kind": "const",
+          "name": "PERMISSION_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7eb0d41bd7fc1410af45a37033e6923432fb7ef2978d0fccdf03aa9b19c2f756",
+      "sizeBytes": 181
+    },
+    {
+      "path": "src/shared/enums/role.enum.ts",
+      "root": "shared",
+      "module": "enums",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "Role"
+        },
+        {
+          "kind": "const",
+          "name": "ROLE_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c519bd252a0f7c9b32594d7444527446eac19fcd85dcf29502077335e50f9b20",
+      "sizeBytes": 123
+    }
+  ]
+}

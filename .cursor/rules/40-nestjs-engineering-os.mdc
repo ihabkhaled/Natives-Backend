@@ -1,0 +1,48 @@
+---
+description: NestJS engineering operating system — layered architecture, strict TypeScript, and the non-negotiable code rules enforced by ESLint and tsconfig
+globs: ['**/*.ts']
+alwaysApply: true
+---
+
+# NestJS Engineering Operating System
+
+`claude.md` defines the SDLC governance (phases and gates). This rule defines how NestJS backend code must be written. It is mechanically enforced by `eslint.config.mjs` (with the custom architecture plugin under `eslint/`), `tsconfig.json`, and the Husky hooks in `.husky/`. Full detail lives in `rules/`, `skills/`, `context/`, `memory/`, `agents/`, and `testing/`.
+
+## Canonical architecture (one-way dependencies)
+
+Controller (`api/*.controller.ts`, thin — exactly one delegation per method)
+→ Application (`application/*.use-case.ts` for orchestration + transactions; `*.service.ts` focused, ≤20 lines/method)
+→ Domain (`domain/` — policies, entities, state machines, pure)
+→ Persistence (`infrastructure/*.repository.ts` — parameterized, bounded)
+→ Integration (`adapters/*.adapter.ts` — every external library wrapped).
+Cross-cutting: `src/core` (logger, errors+exception filter, guards, interceptors, pipes, events), `src/config`, `src/shared`.
+
+Read `context/architecture-map.md` and `rules/00-non-negotiable-rules.md` before writing code.
+
+## Non-negotiable code rules
+
+- Strict TypeScript: no `any`, no `!` non-null assertion, no `eslint-disable`/`@ts-ignore`; resolve types at the root cause.
+- No magic strings; compare domain values against enums; enums live in `@shared/enums` (with a `*_VALUES` array each).
+- Zero inline declarations: no inline or anonymous types/interfaces/enums/constants/DTOs/config-maps/helper functions in controllers, services, use cases, repositories, guards, interceptors, pipes, filters, handlers, or adapters — extract to `model/`, `@shared/*`, `api/dto/`, `lib/`, `domain/`, `core/`, or `config/`. DTOs use declarations, never definite-assignment `!`. Enforced by `architecture/no-inline-layer-declarations`.
+- Thin controllers (one delegation/method); services orchestrate (≤20 lines/method); repositories only persist; use cases own transactions and post-commit events.
+- Validate at the boundary with DTOs (class-validator primary; Zod via a pipe is the documented alternative).
+- Every user-facing error is a typed `AppError` with a `messageKey` (`errors.<feature>.<key>`); a global exception filter sanitizes output — never leak stacks/SQL/secrets.
+- Typed config via `@nestjs/config`; never read `process.env` outside `config/`/`bootstrap/`. Logger adapter only; never `console.*`.
+- Parameterized queries only; list endpoints paginate with a hard max limit. Wrap every external library behind an adapter.
+- Every protected route: auth guard + permissions (RBAC) guard + ownership/tenant check; identity from the verified token.
+- Domain and use-case files must not import API DTOs — use model types from `model/*.types.ts` or `@shared/types`. Enforced by `architecture/no-dto-import-in-domain-or-use-case`.
+- Services must not import use cases; dependency direction is one-way. Enforced by `architecture/no-use-case-import-in-service`.
+- No behavior change without tests (written first) and docs in the same change.
+- Before writing code, run the Simple Code Ladder (`rules/20-simple-readable-code.md`, rules 43–46): need it → reuse existing owner → native/platform → existing adapter → small helper → direct readable code → new abstraction only when justified. No speculative abstraction, no clever TypeScript, no parallel duplicates; simplicity never cuts validation, guards, errors, adapters, bounds, tests, or docs. Complete canon: `rules/20`–`rules/30`; route declarations through `context/declaration-ownership-map.md` and broad cleanup through `skills/full-codebase-cleanup.md`.
+
+## Toolchain ownership
+
+Node.js 24.18.0 LTS and npm >=11.16.0 are required. Microsoft's official TypeScript 7 side-by-side migration is authoritative: `@typescript/native` (`npm:typescript@7.0.2`) supplies the default `tsc` for typecheck/build; the package named `typescript` (`npm:@typescript/typescript6@6.0.2`) supplies only the compiler API required by Nest CLI, typescript-eslint, SonarJS, ts-node, and similar tools. It is not a downgrade.
+
+Prefer latest stable compatible packages and official migration/compatibility paths. Never use `--force`, `--legacy-peer-deps`, an `.npmrc` legacy-peer bypass, or hand-edited lockfile dependency/peer metadata to manufacture compatibility.
+
+## Gates (all green before done)
+
+`npm run lint` · `npm run typecheck` · `npm run test:coverage` · `npm run build`. Never bypass Husky hooks with `--no-verify`. Fix lint at the root cause; never disable a rule.
+
+If anything here conflicts with `claude.md`, `claude.md` wins. When two rules overlap, the stricter one applies.

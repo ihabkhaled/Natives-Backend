@@ -1,0 +1,37 @@
+---
+description: Generic code quality, layering, testing, and documentation discipline
+alwaysApply: true
+---
+
+# Engineering Quality Rules
+
+Apply these rules generically regardless of language, framework, or architecture:
+
+- keep transport layers thin
+- keep business logic out of UI/presentation layers
+- keep persistence logic in dedicated persistence ownership
+- keep shared domain concepts defined once and reused consistently
+- do not leave reusable types, interfaces, enums, constants, schemas, policy maps, event names, or large config objects inline in logic-heavy or presentation-heavy files
+- wrap important third-party libraries behind local common modules, adapters, gateways, utilities, or shared UI components
+- document shared/common modules so future work reuses them instead of bypassing them
+- keep methods small, reviewable, and explicit
+- extract validation, transformation, mapping, policy logic, and branch-heavy logic into named helpers or dedicated modules when it improves ownership and readability
+- before writing code, run the Simple Code Ladder: need it → reuse existing → native/platform → existing adapter → small helper → direct readable code → new abstraction only when justified; be lazy about code volume, never about reading, validation, security, tests, docs, or architecture
+- declarations have one named owner: no anonymous request/result/config/permission contracts in implementation layers and no DTO definite-assignment assertions
+- refactor by responsibility with characterization tests first; move wiring/exports/docs together and leave no half-migrated duplicate owner
+- never leak secrets, tokens, credentials, or protected data
+- validate input at trust boundaries
+- make async workflows observable, bounded, and failure-aware
+- write tests for changed behavior
+- update documentation in the same delivery stream as behavior changes
+- measure coverage on touched modules, not only global averages
+
+Required validation mindset:
+
+- do not trust a passing happy path alone
+- do not trust isolated unit tests as the whole story
+- validate negative paths, boundaries, permissions, state transitions, and regressions
+- keep automated tests deterministic where practical
+- use repeatable QA evidence or harnesses for meaningful workflows
+
+Whenever a permanent engineering or quality rule changes, update `claude.md`.

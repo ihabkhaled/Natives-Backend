@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "test",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts",
+    "vitest.config.mts",
+    "eslint.config.mjs"
+  ]
+}

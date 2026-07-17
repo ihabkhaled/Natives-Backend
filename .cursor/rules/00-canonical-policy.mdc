@@ -1,0 +1,23 @@
+---
+description: Canonical policy bootstrap and file precedence for this repository
+alwaysApply: true
+---
+
+# Canonical Policy Bootstrap
+
+This repository has one canonical long-form operating policy: `claude.md`.
+
+Before doing analysis, planning, implementation, review, release work, or documentation work, read `claude.md` and follow it as binding company policy.
+
+File precedence for this repository:
+
+1. `claude.md` is the canonical long-form policy.
+2. `AGENTS.md` is the Codex bootstrap file.
+3. `.cursor/rules/*.mdc` are the Cursor-compatible rules.
+4. `.cursorrules` is legacy compatibility only.
+5. `codex.md` and `cursor.md` are mirror/reference copies.
+6. `KIMI.md`, `GEMINI.md`, `GLM.md`, `QWEN.md`, `DEEPSEEK.md`, and `MISTRAL.md` are compact entrypoints.
+
+If any of these files differ, `claude.md` wins. A stricter safety rule may block work but does not override canonical policy.
+
+Whenever you discover a new permanent rule, workflow, quality gate, architecture constraint, testing expectation, release rule, or operational rule, update `claude.md` first and then keep compatibility files aligned in the same delivery stream.

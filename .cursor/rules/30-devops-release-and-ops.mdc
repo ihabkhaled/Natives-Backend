@@ -1,0 +1,22 @@
+---
+description: DevOps, CI/CD, environment, migration, rollout, and operational readiness rules
+alwaysApply: true
+---
+
+# DevOps, Release, And Operations Rules
+
+Treat infrastructure, deployment, pipeline, runtime, and operational work as production code.
+
+Always enforce:
+
+- CI/CD must use authoritative commands or scripts and run required checks in a clean environment
+- required jobs must be enforced, visible, and not silently optional
+- local gates such as pre-commit, pre-push, and commit-message checks must not be bypassed without documented emergency approval
+- configuration, templates, bootstrap scripts, deployment manifests, and docs must be updated together
+- secrets must never be committed or exposed
+- feature flags and runtime toggles must have owner, rollout criteria, rollback criteria, and retirement expectations
+- new services, jobs, integrations, databases, topics, or storage dependencies must ship with health checks, logging, metrics, dashboards, alerts, runbooks, and support context
+- schema changes, backfills, and data operations need rollout sequencing, rollback or roll-forward thinking, observability, and validation of actual persisted state
+- release notes, runbooks, support guidance, and operational dashboards must be updated when behavior or operations change
+- release is blocked when rollback, monitoring, smoke tests, on-call readiness, or go/no-go approval are missing
+- hypercare and retrospective are mandatory parts of delivery, not optional cleanup
