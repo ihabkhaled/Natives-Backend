@@ -93,6 +93,9 @@ describeIfDb(suiteTitle, () => {
   let adminToken: string;
 
   beforeAll(async () => {
+    // Re-assert the test DB URL: sibling e2e suites reset DATABASE_URL in their
+    // afterAll, and this suite's app is only created now.
+    process.env['DATABASE_URL'] = TEST_DB_URL;
     app = await createApp();
     await configureSecurity(app);
     await configureValidation(app);

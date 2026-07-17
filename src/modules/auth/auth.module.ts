@@ -1,5 +1,6 @@
 import { AppConfigService } from '@config/app-config.service';
 import { AUTH_TOKEN_PORT, JwtAuthGuard, PermissionsGuard } from '@core/auth';
+import { RbacModule } from '@modules/rbac';
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 
@@ -16,6 +17,7 @@ import { PASSWORD_HASH_PORT } from './model/auth.constants';
  */
 @Module({
   imports: [
+    RbacModule,
     JwtModule.registerAsync({
       inject: [AppConfigService],
       useFactory: (appConfigService: AppConfigService) => ({

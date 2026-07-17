@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T21:42:00.020Z",
+  "generatedAt": "2026-07-17T22:59:35.205Z",
   "modules": [
     {
       "name": "articles",
@@ -147,6 +147,60 @@
       "fileCount": 55,
       "specCount": 36,
       "publicSurface": "src/modules/identity/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "rbac",
+      "path": "src/modules/rbac",
+      "layers": {
+        "api-dto": [
+          "src/modules/rbac/api/dto/assign-role.dto.ts",
+          "src/modules/rbac/api/dto/effective-permissions-response.dto.ts",
+          "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
+          "src/modules/rbac/api/dto/scope-query.dto.ts",
+          "src/modules/rbac/api/dto/user-assignments-response.dto.ts"
+        ],
+        "controller": [
+          "src/modules/rbac/api/rbac.controller.ts"
+        ],
+        "use-case": [
+          "src/modules/rbac/application/assign-role.use-case.ts",
+          "src/modules/rbac/application/get-effective-permissions.use-case.ts",
+          "src/modules/rbac/application/list-user-assignments.use-case.ts",
+          "src/modules/rbac/application/revoke-role-assignment.use-case.ts"
+        ],
+        "service": [
+          "src/modules/rbac/application/privilege-ceiling.service.ts",
+          "src/modules/rbac/application/rbac-permission-resolver.service.ts"
+        ],
+        "domain": [
+          "src/modules/rbac/domain/effective-permissions.policy.ts",
+          "src/modules/rbac/domain/permission-scope.policy.ts",
+          "src/modules/rbac/domain/privilege-ceiling.policy.ts"
+        ],
+        "other": [
+          "src/modules/rbac/errors/assignment-not-found.error.ts",
+          "src/modules/rbac/errors/escalation-denied.error.ts",
+          "src/modules/rbac/errors/role-not-found.error.ts",
+          "src/modules/rbac/index.ts",
+          "src/modules/rbac/rbac.module.ts"
+        ],
+        "repository": [
+          "src/modules/rbac/infrastructure/rbac.repository.ts"
+        ],
+        "lib": [
+          "src/modules/rbac/lib/rbac.helpers.ts"
+        ],
+        "model": [
+          "src/modules/rbac/model/rbac.constants.ts",
+          "src/modules/rbac/model/rbac.enums.ts",
+          "src/modules/rbac/model/rbac.rows.ts",
+          "src/modules/rbac/model/rbac.types.ts"
+        ]
+      },
+      "fileCount": 26,
+      "specCount": 14,
+      "publicSurface": "src/modules/rbac/index.ts",
       "hasEvents": false
     }
   ],

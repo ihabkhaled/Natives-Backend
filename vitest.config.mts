@@ -56,6 +56,7 @@ export default defineConfig({
         'src/core/auth/jwt-auth.guard.ts',
         'src/core/auth/permission.helpers.ts',
         'src/core/auth/permissions.guard.ts',
+        'src/core/auth/request-scope.extractor.ts',
         'src/core/errors/error-body.mapper.ts',
         'src/core/errors/app-exception.filter.ts',
         'src/core/logger/app-logger.service.ts',

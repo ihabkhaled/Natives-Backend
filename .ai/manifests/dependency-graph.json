@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T21:42:00.020Z",
+  "generatedAt": "2026-07-17T22:59:35.205Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -34,6 +34,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/identity/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/rbac/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -337,6 +342,11 @@
       "type": "internal"
     },
     {
+      "from": "src/core/auth/effective-permission-resolver.port.ts",
+      "to": "src/core/auth/auth.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/core/auth/index.ts",
       "to": "src/core/auth/auth-identity.validator.ts",
       "type": "internal"
@@ -358,7 +368,17 @@
     },
     {
       "from": "src/core/auth/index.ts",
+      "to": "src/core/auth/effective-permission-resolver.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/index.ts",
       "to": "src/core/auth/jwt-auth.guard.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/index.ts",
+      "to": "src/core/auth/permission.helpers.ts",
       "type": "internal"
     },
     {
@@ -369,6 +389,11 @@
     {
       "from": "src/core/auth/index.ts",
       "to": "src/core/auth/public.decorator.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/index.ts",
+      "to": "src/core/auth/request-scope.extractor.ts",
       "type": "internal"
     },
     {
@@ -418,7 +443,17 @@
     },
     {
       "from": "src/core/auth/permissions.guard.ts",
+      "to": "src/core/auth/effective-permission-resolver.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/permissions.guard.ts",
       "to": "src/core/auth/permission.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/permissions.guard.ts",
+      "to": "src/core/auth/request-scope.extractor.ts",
       "type": "internal"
     },
     {
@@ -439,6 +474,21 @@
     {
       "from": "src/core/auth/public.decorator.ts",
       "to": "src/core/auth/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/request-scope.extractor.ts",
+      "to": "src/core/auth/auth.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/request-scope.extractor.ts",
+      "to": "src/core/auth/auth.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/auth/request-scope.extractor.ts",
+      "to": "src/core/auth/effective-permission-resolver.port.ts",
       "type": "internal"
     },
     {
@@ -1315,6 +1365,11 @@
       "from": "src/modules/auth/auth.module.ts",
       "to": "src/modules/auth/model/auth.constants.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/auth/auth.module.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
     },
     {
       "from": "src/modules/auth/index.ts",
@@ -2777,13 +2832,538 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/rbac/api/dto/assign-role.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/assign-role.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/assign-role.dto.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/effective-permissions-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/scope-query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/scope-query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/user-assignments-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/user-assignments-response.dto.ts",
+      "to": "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/api/dto/assign-role.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/api/dto/effective-permissions-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/api/dto/scope-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/api/dto/user-assignments-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/application/assign-role.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/application/get-effective-permissions.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/application/list-user-assignments.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/lib/rbac.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/assign-role.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/assign-role.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/assign-role.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/assign-role.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/assign-role.use-case.ts",
+      "to": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/assign-role.use-case.ts",
+      "to": "src/modules/rbac/errors/role-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/assign-role.use-case.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/assign-role.use-case.ts",
+      "to": "src/modules/rbac/lib/rbac.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/assign-role.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/assign-role.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/get-effective-permissions.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/get-effective-permissions.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/list-user-assignments.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/list-user-assignments.use-case.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/list-user-assignments.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "to": "src/modules/rbac/domain/effective-permissions.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "to": "src/modules/rbac/domain/privilege-ceiling.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "to": "src/modules/rbac/errors/escalation-denied.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "to": "src/modules/rbac/lib/rbac.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/rbac-permission-resolver.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/rbac-permission-resolver.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/rbac-permission-resolver.service.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/rbac-permission-resolver.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/rbac-permission-resolver.service.ts",
+      "to": "src/modules/rbac/domain/effective-permissions.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/rbac-permission-resolver.service.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/rbac-permission-resolver.service.ts",
+      "to": "src/modules/rbac/lib/rbac.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/rbac-permission-resolver.service.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/rbac-permission-resolver.service.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "to": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "to": "src/modules/rbac/errors/assignment-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "to": "src/modules/rbac/lib/rbac.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/domain/effective-permissions.policy.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/domain/effective-permissions.policy.ts",
+      "to": "src/modules/rbac/domain/permission-scope.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/domain/effective-permissions.policy.ts",
+      "to": "src/modules/rbac/model/rbac.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/domain/effective-permissions.policy.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/domain/permission-scope.policy.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/domain/permission-scope.policy.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/errors/assignment-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/errors/assignment-not-found.error.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/errors/escalation-denied.error.ts",
+      "to": "src/core/errors/forbidden.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/errors/escalation-denied.error.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/errors/role-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/errors/role-not-found.error.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/index.ts",
+      "to": "src/modules/rbac/rbac.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "to": "src/modules/rbac/lib/rbac.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "to": "src/modules/rbac/model/rbac.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "to": "src/modules/rbac/model/rbac.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/lib/rbac.helpers.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/model/rbac.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/model/rbac.types.ts",
+      "to": "src/modules/rbac/model/rbac.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/api/rbac.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/assign-role.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/get-effective-permissions.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/list-user-assignments.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/rbac-permission-resolver.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/shared/constants/index.ts",
       "to": "src/shared/constants/http-status.constants.ts",
       "type": "internal"
     },
     {
       "from": "src/shared/constants/index.ts",
+      "to": "src/shared/constants/permission-catalog.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/shared/constants/index.ts",
+      "to": "src/shared/constants/role-bundles.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/shared/constants/index.ts",
       "to": "src/shared/constants/role-permissions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/shared/constants/permission-catalog.constants.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/shared/constants/role-bundles.constants.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/shared/constants/role-permissions.constants.ts",
+      "to": "src/shared/constants/role-bundles.constants.ts",
       "type": "internal"
     },
     {
@@ -2803,7 +3383,17 @@
     },
     {
       "from": "src/shared/enums/index.ts",
+      "to": "src/shared/enums/permission-area.enum.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/shared/enums/index.ts",
       "to": "src/shared/enums/permission.enum.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/shared/enums/index.ts",
+      "to": "src/shared/enums/rbac-role.enum.ts",
       "type": "internal"
     },
     {

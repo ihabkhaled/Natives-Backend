@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-17T21:42:00.020Z",
-  "treeHash": "sha256:0c927ec1ba912301bea463fa36d7bdba47499a6d941f41aafbca4315a3c594b1",
+  "generatedAt": "2026-07-17T22:59:35.205Z",
+  "treeHash": "sha256:3747509cb07be6cff12d8a83eeed1c14b5cbb1cabf6d991588ac92f1f711a68c",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0fae7963a5f1aee353ad5f1b80ed18ed3b4df5daa82f67ee1c7820e18dd60fc6",
-      "sizeBytes": 887
+      "hash": "sha256:9b6efcac3f6972e7a62308ab7e775ee649b8e3949e0728c929c1b5177169dec3",
+      "sizeBytes": 947
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -832,6 +832,14 @@
         },
         {
           "kind": "const",
+          "name": "AUTH_TEAM_ID_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_SEASON_ID_KEY"
+        },
+        {
+          "kind": "const",
           "name": "AUTH_BEARER_PATTERN"
         },
         {
@@ -874,8 +882,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:59f2a5eaa230b2e0808b16943fcffd1447087892842cb6e697190096e7ea9995",
-      "sizeBytes": 1072
+      "hash": "sha256:adc2f388a9f612aefa1334a16700df1bcb786d49e2e4cc0d9c3b3b2a9000449c",
+      "sizeBytes": 1239
     },
     {
       "path": "src/core/auth/auth.types.ts",
@@ -890,6 +898,10 @@
         {
           "kind": "interface",
           "name": "AuthHeaders"
+        },
+        {
+          "kind": "type",
+          "name": "RouteValues"
         },
         {
           "kind": "interface",
@@ -907,8 +919,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1a8762a662d8253387b0752d3be2cd51cbd44551509b3c98a26ed3383c29c259",
-      "sizeBytes": 561
+      "hash": "sha256:670c2e051e72ee7a8a615b520829a32787496deab8830c9cd18cb950ef4dae82",
+      "sizeBytes": 762
     },
     {
       "path": "src/core/auth/bearer-token.parser.spec.ts",
@@ -957,6 +969,31 @@
       "sizeBytes": 419
     },
     {
+      "path": "src/core/auth/effective-permission-resolver.port.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PermissionScope"
+        },
+        {
+          "kind": "interface",
+          "name": "EffectivePermissionResolverPort"
+        },
+        {
+          "kind": "const",
+          "name": "EFFECTIVE_PERMISSION_RESOLVER_PORT"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:39699e45c7ca504eb3cda03c6fb99c97ed2380791a43c20076e52837227beba9",
+      "sizeBytes": 1108
+    },
+    {
       "path": "src/core/auth/index.ts",
       "root": "core",
       "module": "auth",
@@ -965,8 +1002,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b90af43365dbe12cb544f9d6d8500be4cc79e3d167a8139a3125b0a5a8d2cb7f",
-      "sizeBytes": 409
+      "hash": "sha256:d6293a1a4f85e4c56c39b3ec0f5c7b2b465e343753c34567445f10b577e2bf01",
+      "sizeBytes": 722
     },
     {
       "path": "src/core/auth/jwt-auth.guard.spec.ts",
@@ -1006,8 +1043,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:8f4e92539d4ce3182ec9cdfb592ab519bc48cef7a219766d208e213ef148adb3",
-      "sizeBytes": 692
+      "hash": "sha256:b04047d569f52f1c18f89eb2b591f416749ace381cbff4d88e1108abdf45dd5c",
+      "sizeBytes": 1642
     },
     {
       "path": "src/core/auth/permission.helpers.ts",
@@ -1017,14 +1054,18 @@
       "symbols": [
         {
           "kind": "function",
-          "name": "hasRequiredPermissions"
+          "name": "bundlePermissionsForRoles"
+        },
+        {
+          "kind": "function",
+          "name": "hasAllPermissions"
         }
       ],
       "hasSpec": true,
       "specPath": "src/core/auth/permission.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:7a0e649a855590c77c3a21f8eb75da7d91aafff2d823477530ce6d96485ddb3d",
-      "sizeBytes": 387
+      "hash": "sha256:7f9a8186668acd3033e6fb8f3c30e9623fe0c030271107ce9dd8beef6cab873c",
+      "sizeBytes": 967
     },
     {
       "path": "src/core/auth/permissions.guard.spec.ts",
@@ -1035,8 +1076,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:a5c736afd000bf323ba5d183c4e683991cdcb18d5ba69c6f6e6d100e49964352",
-      "sizeBytes": 2640
+      "hash": "sha256:39401687a9f48c6fcaf1896745f6814f4de0b535b631628a7905239d623f9eeb",
+      "sizeBytes": 3119
     },
     {
       "path": "src/core/auth/permissions.guard.ts",
@@ -1052,8 +1093,8 @@
       "hasSpec": true,
       "specPath": "src/core/auth/permissions.guard.spec.ts",
       "kind": "source",
-      "hash": "sha256:0c7f7d101b0eb8a7a2e48f9065b448df421ecf8f0b23d9765fbc43c108b17664",
-      "sizeBytes": 1572
+      "hash": "sha256:e9ede4ceeae0d98d7159a0b48acabc20b1036a7b1851683f8a029269ba44d483",
+      "sizeBytes": 2417
     },
     {
       "path": "src/core/auth/public.decorator.ts",
@@ -1071,6 +1112,35 @@
       "kind": "source",
       "hash": "sha256:4eacce4045a2001673810d93b3d70a1dc1d7c20d777298c005138876025fab1d",
       "sizeBytes": 236
+    },
+    {
+      "path": "src/core/auth/request-scope.extractor.spec.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2efe07c75eac64a0db7290222114141da9d0c4db5e7597ee2538160605f6c345",
+      "sizeBytes": 1261
+    },
+    {
+      "path": "src/core/auth/request-scope.extractor.ts",
+      "root": "core",
+      "module": "auth",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "extractRequestScope"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/auth/request-scope.extractor.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e7aae65b25970b0019f2c8e1e0f2f65874ae5c030a13ee248989af45deba0a3a",
+      "sizeBytes": 1374
     },
     {
       "path": "src/core/auth/require-permissions.decorator.ts",
@@ -2095,8 +2165,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0bad855223044032b8063c88b2c097f67a6f3c1950e7ea38ad0ff830d12e1115",
-      "sizeBytes": 617
+      "hash": "sha256:be6fdda54aa6dcd87827d2622f759e70378a1c50ea2a29bcbf9c10970f5c8e90",
+      "sizeBytes": 643
     },
     {
       "path": "src/database/cli-data-source.ts",
@@ -2328,6 +2398,23 @@
       "kind": "source",
       "hash": "sha256:673d6d57178a471557de5ee1300f973ca341ea057e3201a973497979706f175d",
       "sizeBytes": 6351
+    },
+    {
+      "path": "src/database/migrations/1721400000000-rbac-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RbacSchema1721400000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b7f7e90701c47caec7a3b2209289c18d6113dcf40e8ed380b9645ef6b1c6b54e",
+      "sizeBytes": 17618
     },
     {
       "path": "src/database/naming.helpers.spec.ts",
@@ -2961,8 +3048,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4847661bbbf5830228d183e57c7e6b0018712a2fa6f8da60193814018a13dc85",
-      "sizeBytes": 1444
+      "hash": "sha256:e33fcd10991e89f1338fa4adc056c4124cc4f7dda01c5ee74a2691cb74a62f62",
+      "sizeBytes": 1504
     },
     {
       "path": "src/modules/auth/index.ts",
@@ -3277,8 +3364,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a2367108744413d8bae4a174f5e619d13d6238a480350b12b3e34a06512cc59f",
-      "sizeBytes": 3831
+      "hash": "sha256:3d8b07790e59227622367f362f4fd4c53f6f34aa41944c2e6b69bb1029268d32",
+      "sizeBytes": 3828
     },
     {
       "path": "src/modules/identity/application/accept-invitation.use-case.spec.ts",
@@ -4773,6 +4860,751 @@
       "sizeBytes": 5178
     },
     {
+      "path": "src/modules/rbac/api/dto/assign-role.dto.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssignRoleDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c02af9bf092ac7b5c930a2b667879560e9c2b54d76bd87236d0815689eba4598",
+      "sizeBytes": 554
+    },
+    {
+      "path": "src/modules/rbac/api/dto/effective-permissions-response.dto.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EffectivePermissionsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:250a3ff37a6efb30629845447f18201276d6db3b7b453ca59ced9187a774bea8",
+      "sizeBytes": 420
+    },
+    {
+      "path": "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RoleAssignmentResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ec90b80f5cf7238dc34f8b43cc74ab560431e48ad9e27653f6a3cb73c692a8b9",
+      "sizeBytes": 964
+    },
+    {
+      "path": "src/modules/rbac/api/dto/scope-query.dto.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScopeQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:01bb6fd24cd712a330a3b20ec9da802098683924af1d8a6b543f1f9e86c08a52",
+      "sizeBytes": 395
+    },
+    {
+      "path": "src/modules/rbac/api/dto/user-assignments-response.dto.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UserAssignmentsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:49cb52d48c72c60cf1423b2a08599580d612f1bfbd7bbf91b7c4f27871f3d6b1",
+      "sizeBytes": 344
+    },
+    {
+      "path": "src/modules/rbac/api/rbac.controller.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RbacController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e43bd7cc9000c811b2e48d70be5c4643aa8b361df083cf040b85456265984cd0",
+      "sizeBytes": 4432
+    },
+    {
+      "path": "src/modules/rbac/application/assign-role.use-case.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:288bb399925f414e7c8058200dec58f6bfd7540d92e58b1a2d3109efaf86b81f",
+      "sizeBytes": 3250
+    },
+    {
+      "path": "src/modules/rbac/application/assign-role.use-case.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssignRoleUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/assign-role.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c9785c393576122c50763421eb8f343854efe9fca022beca41569151e9690417",
+      "sizeBytes": 3571
+    },
+    {
+      "path": "src/modules/rbac/application/get-effective-permissions.use-case.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9cd9cc1b141b34d1fd1e2f43f005eb59b50b8820d8372b81c96c4da0796de5bb",
+      "sizeBytes": 1479
+    },
+    {
+      "path": "src/modules/rbac/application/get-effective-permissions.use-case.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GetEffectivePermissionsUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/get-effective-permissions.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8a897a390130e808611aabfe765e76c90f2af870029388217d3bf774c57069d4",
+      "sizeBytes": 1094
+    },
+    {
+      "path": "src/modules/rbac/application/list-user-assignments.use-case.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3e23a0c037d3f47c55f1531d35618ed592f13efffa358cbc85ac47b33b327fad",
+      "sizeBytes": 908
+    },
+    {
+      "path": "src/modules/rbac/application/list-user-assignments.use-case.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListUserAssignmentsUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/list-user-assignments.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f63c51f721956e9b04ef0f97829acb15e7291288b9220f86a219760fc25fbefb",
+      "sizeBytes": 903
+    },
+    {
+      "path": "src/modules/rbac/application/privilege-ceiling.service.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e4469c30979263dbb4fdd29063eccfa618d77acbc103641e4b2fcc1fb05a6253",
+      "sizeBytes": 2737
+    },
+    {
+      "path": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PrivilegeCeilingService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/privilege-ceiling.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:158eb2ed09332129f67f44267e3b623fc5971a68c09f6867d43fd1b69d6a98f9",
+      "sizeBytes": 2172
+    },
+    {
+      "path": "src/modules/rbac/application/rbac-permission-resolver.service.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:cc3f0c56e38735dde4394bdffef9601e78541648fc9696ce33a2e97c56efce18",
+      "sizeBytes": 3745
+    },
+    {
+      "path": "src/modules/rbac/application/rbac-permission-resolver.service.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RbacPermissionResolverService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/rbac-permission-resolver.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:daf277f39d196d436607465641ce7ee71f76fa80ba124865087d87801dc253d3",
+      "sizeBytes": 3981
+    },
+    {
+      "path": "src/modules/rbac/application/revoke-role-assignment.use-case.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8556267a48ba3d54250f247527f3876087e6ec467d3756b8e63834de9c590f60",
+      "sizeBytes": 3146
+    },
+    {
+      "path": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RevokeRoleAssignmentUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/revoke-role-assignment.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7a4bb8c6203c9ccb40ef273f4c9e7a7f35c8d1658b130ec49c660255a8eed8bb",
+      "sizeBytes": 3077
+    },
+    {
+      "path": "src/modules/rbac/domain/effective-permissions.policy.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:fb7b36bdd5fc263c69bea72528914d2ed18237a6e951b276853ba50317b8d9f8",
+      "sizeBytes": 2481
+    },
+    {
+      "path": "src/modules/rbac/domain/effective-permissions.policy.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveEffectivePermissions"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/domain/effective-permissions.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f62705ec8d1e7e845b94c3ec1d30a3a9a8f3047b5d905a21d06d6319222e57d1",
+      "sizeBytes": 1382
+    },
+    {
+      "path": "src/modules/rbac/domain/permission-scope.policy.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0414c870dd9c2098dfbe34ddb83d3b988eb30e3d2f065b2023c28b8169d22707",
+      "sizeBytes": 2203
+    },
+    {
+      "path": "src/modules/rbac/domain/permission-scope.policy.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "grantCoversScope"
+        },
+        {
+          "kind": "function",
+          "name": "grantIsInEffect"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/domain/permission-scope.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2346ef6b88f5505d92532e8c0245d43a8a6d28e2b07c19cc08338029f26c68c1",
+      "sizeBytes": 1393
+    },
+    {
+      "path": "src/modules/rbac/domain/privilege-ceiling.policy.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:30ccdd6c42a371cee620ea2dacfc71bc9c21e559a613027474e4e5879cc0e66d",
+      "sizeBytes": 806
+    },
+    {
+      "path": "src/modules/rbac/domain/privilege-ceiling.policy.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isWithinPrivilegeCeiling"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/domain/privilege-ceiling.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:48141b5da7aa22b2c244c1c41a00369d061f199b19fb208a183ed67018a1ee0a",
+      "sizeBytes": 551
+    },
+    {
+      "path": "src/modules/rbac/errors/assignment-not-found.error.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3fe7252b1eea8c2745c0963ea073ebb01532f683d868cbd23b4711185f322540",
+      "sizeBytes": 545
+    },
+    {
+      "path": "src/modules/rbac/errors/assignment-not-found.error.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssignmentNotFoundError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/errors/assignment-not-found.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b7e002362f903b17d285eab1ec998cb757bc786a32fcca210c682c47fddfcaaa",
+      "sizeBytes": 473
+    },
+    {
+      "path": "src/modules/rbac/errors/escalation-denied.error.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d9a9ded108571a607e86f9d4536b0a1bc96656d5e27a42b74ff7b82bf7a5421f",
+      "sizeBytes": 527
+    },
+    {
+      "path": "src/modules/rbac/errors/escalation-denied.error.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EscalationDeniedError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/errors/escalation-denied.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d0b1ae6cafcecc407b72f31de10e060fe5c7244860eaa0e85c2fc4cee562b05e",
+      "sizeBytes": 585
+    },
+    {
+      "path": "src/modules/rbac/errors/role-not-found.error.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7db05027cb18f66e0ac2d2b7f316336b9bb80a2e9759532e3e3b246ab9484a9c",
+      "sizeBytes": 503
+    },
+    {
+      "path": "src/modules/rbac/errors/role-not-found.error.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RoleNotFoundError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/errors/role-not-found.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:18ca2c90d2c6536a79d3c8d2b7db8b1d11ef0daf1bf547c5b45e2948201a3d2d",
+      "sizeBytes": 401
+    },
+    {
+      "path": "src/modules/rbac/index.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:88bf42b3529ee1df5fe8fd27f9382fa95531b7e952d19ccc221a6faaaca25bb9",
+      "sizeBytes": 44
+    },
+    {
+      "path": "src/modules/rbac/infrastructure/rbac.repository.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8800606c94c47a7878220f273ecb19b15f63256eda59474bdec913bcd143ef8a",
+      "sizeBytes": 6802
+    },
+    {
+      "path": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RbacRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/infrastructure/rbac.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c47c34441c219c08461423461702f46d3017b2bd34c0a3256d7610c37f6704cf",
+      "sizeBytes": 7543
+    },
+    {
+      "path": "src/modules/rbac/lib/rbac.helpers.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8e2b3febae96ad2c60caba0266697e6b7bb0c1a5b383978906cb83472f79a919",
+      "sizeBytes": 1612
+    },
+    {
+      "path": "src/modules/rbac/lib/rbac.helpers.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "toPermissionScope"
+        },
+        {
+          "kind": "function",
+          "name": "unionPermissions"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/lib/rbac.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:88c783345761588688c6bdc92251c4fe98ba4f496e174281ba3a52380a2367eb",
+      "sizeBytes": 1002
+    },
+    {
+      "path": "src/modules/rbac/model/rbac.constants.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "RBAC_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ASSIGNMENTS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ASSIGNMENT_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_USER_ASSIGNMENTS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ME_PERMISSIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ASSIGNMENT_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_USER_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ACTIVE_USER_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_SCOPED_RESOLUTION_FAILED_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ROLE_ASSIGNED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ROLE_REVOKED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ROLE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ROLE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ASSIGNMENT_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ASSIGNMENT_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ESCALATION_DENIED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ESCALATION_DENIED_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cfbc95d3d3ee5f801182e82640bdb7d17ad4a6e86f05fe3a783d9d9246b1de66",
+      "sizeBytes": 1996
+    },
+    {
+      "path": "src/modules/rbac/model/rbac.enums.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "GrantEffect"
+        },
+        {
+          "kind": "const",
+          "name": "GRANT_EFFECT_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:de4e48dc5b12d995374fae74fef476a1319c82e26bfde0760f671960505e4fcd",
+      "sizeBytes": 530
+    },
+    {
+      "path": "src/modules/rbac/model/rbac.rows.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PolicyVersionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "PermissionGrantRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RoleRow"
+        },
+        {
+          "kind": "interface",
+          "name": "PermissionKeyRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RoleAssignmentRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AffectedRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fa15391229d243a61d5918e64b2890e357e844a3458177f9360d47d1b6cca1aa",
+      "sizeBytes": 1155
+    },
+    {
+      "path": "src/modules/rbac/model/rbac.types.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PermissionGrant"
+        },
+        {
+          "kind": "interface",
+          "name": "RbacRoleRecord"
+        },
+        {
+          "kind": "interface",
+          "name": "RoleAssignment"
+        },
+        {
+          "kind": "interface",
+          "name": "NewRoleAssignment"
+        },
+        {
+          "kind": "interface",
+          "name": "NewRbacAuditEvent"
+        },
+        {
+          "kind": "interface",
+          "name": "AssignRoleCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "ResolverCacheEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "UserAssignmentsView"
+        },
+        {
+          "kind": "interface",
+          "name": "EffectivePermissionsView"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e2f93730793463d037e53b5733ec224cc00783000e31ba13bfadcb7ded802252",
+      "sizeBytes": 2721
+    },
+    {
+      "path": "src/modules/rbac/rbac.module.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RbacModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d0e46f4a050ed096b9d747a37b50073bbcfd814fa6f539286753456c31ea8ec9",
+      "sizeBytes": 1861
+    },
+    {
       "path": "src/shared/constants/http-status.constants.ts",
       "root": "shared",
       "module": "constants",
@@ -4802,8 +5634,78 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fd4c68d8e5f9e9db5950297bb790e7dcab3cd52be0869fa5df54253399cf2507",
-      "sizeBytes": 87
+      "hash": "sha256:c2b2c2ff4d3ded8a642fe9b4065a38b37f947e530f1a509073fce90f0980ba4e",
+      "sizeBytes": 177
+    },
+    {
+      "path": "src/shared/constants/permission-catalog.constants.ts",
+      "root": "shared",
+      "module": "constants",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PermissionCatalogEntry"
+        },
+        {
+          "kind": "const",
+          "name": "PERMISSION_CATALOG"
+        },
+        {
+          "kind": "const",
+          "name": "PERMISSION_CATALOG_KEYS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:05cc802e607e49907b9e6a37a2f773719343ce9f1b826e976e8e5046bc1bd716",
+      "sizeBytes": 11994
+    },
+    {
+      "path": "src/shared/constants/permission-catalog.spec.ts",
+      "root": "shared",
+      "module": "constants",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:13828d6af2fa72d2daf4217e28cc57ad63c5e987eba4f0954db974a7a2a02ae1",
+      "sizeBytes": 3522
+    },
+    {
+      "path": "src/shared/constants/role-bundles.constants.ts",
+      "root": "shared",
+      "module": "constants",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ROLE_BUNDLES"
+        },
+        {
+          "kind": "const",
+          "name": "ROLE_BUNDLE_METADATA"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:23b1edd9e9027b765ead8c1817484265c8422b6d930e295c14c620896d96ce70",
+      "sizeBytes": 4959
+    },
+    {
+      "path": "src/shared/constants/role-bundles.spec.ts",
+      "root": "shared",
+      "module": "constants",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:34cd73ec316ea6614c8f921ebe93da5f678457cb8990ce70768be9cdc40fef75",
+      "sizeBytes": 1926
     },
     {
       "path": "src/shared/constants/role-permissions.constants.ts",
@@ -4813,26 +5715,14 @@
       "symbols": [
         {
           "kind": "const",
-          "name": "ARTICLE_PERMISSIONS"
-        },
-        {
-          "kind": "const",
-          "name": "INVITATION_PERMISSIONS"
-        },
-        {
-          "kind": "const",
-          "name": "ADMIN_PERMISSIONS"
-        },
-        {
-          "kind": "const",
           "name": "ROLE_PERMISSIONS"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1d8436162e8435b86aae5861c78eb35ff028839a2560ae847f8f6a99939d4095",
-      "sizeBytes": 611
+      "hash": "sha256:0f8496b895a839d60c1136d7ebe13b30a6243dc5e5975fa606bbf4c340f97aea",
+      "sizeBytes": 1198
     },
     {
       "path": "src/shared/enums/index.ts",
@@ -4843,8 +5733,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:5d70bdce71a54478ed3aaaad8db6e6e9ac2bc1cf95ee6c301d1a5017cf11b0b8",
-      "sizeBytes": 131
+      "hash": "sha256:385ae31d52d95242fedacbbc01ce7668a2fdbb3beda7bfc465b667e4989b148f",
+      "sizeBytes": 205
     },
     {
       "path": "src/shared/enums/log-level.enum.ts",
@@ -4889,6 +5779,27 @@
       "sizeBytes": 177
     },
     {
+      "path": "src/shared/enums/permission-area.enum.ts",
+      "root": "shared",
+      "module": "enums",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "PermissionArea"
+        },
+        {
+          "kind": "const",
+          "name": "PERMISSION_AREA_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:21109a374345e85c5aad078f1ff9b1b221c77da6662cfb32820bda911fc46296",
+      "sizeBytes": 610
+    },
+    {
       "path": "src/shared/enums/permission.enum.ts",
       "root": "shared",
       "module": "enums",
@@ -4906,8 +5817,29 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:c7cf8c7b2314c27b1081fdc4f2242f8541d3193766788a4e02d332521198d2f2",
-      "sizeBytes": 303
+      "hash": "sha256:fb0781d0d8e70b40711e51c35699712aa4eac98f5e9959bdd2c76a90a1aa9137",
+      "sizeBytes": 5414
+    },
+    {
+      "path": "src/shared/enums/rbac-role.enum.ts",
+      "root": "shared",
+      "module": "enums",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "RbacRole"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ROLE_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:38c4d01faa18ec6b363ac76d125514c1666e8d5b683b649b73a69c81ed4fe8c9",
+      "sizeBytes": 628
     },
     {
       "path": "src/shared/enums/role.enum.ts",

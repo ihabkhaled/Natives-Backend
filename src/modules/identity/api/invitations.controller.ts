@@ -50,7 +50,7 @@ export class InvitationsController {
   ) {}
 
   @Post()
-  @RequirePermissions(Permission.InvitationCreate)
+  @RequirePermissions(Permission.MemberInvite)
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Invite a new member' })
   @ApiCreatedResponse({
@@ -70,7 +70,7 @@ export class InvitationsController {
   }
 
   @Post(INVITATIONS_RESEND_ROUTE)
-  @RequirePermissions(Permission.InvitationCreate)
+  @RequirePermissions(Permission.MemberInvite)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Resend a pending invitation' })
   @ApiOkResponse({
@@ -86,7 +86,7 @@ export class InvitationsController {
   }
 
   @Post(INVITATIONS_REVOKE_ROUTE)
-  @RequirePermissions(Permission.InvitationRevoke)
+  @RequirePermissions(Permission.MemberLifecycleManage)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Revoke a pending invitation' })
   @ApiOkResponse({
