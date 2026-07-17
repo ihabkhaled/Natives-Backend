@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-12T12:15:01.655Z",
-  "treeHash": "sha256:9bc2b657d5444e885a9c1acf5b8b5b0a56e00785bc88934eaa8048c75df957b0",
+  "generatedAt": "2026-07-17T20:32:04.287Z",
+  "treeHash": "sha256:627926f7adc8fb890ff7ad91096862bc5f337d1114ec91c81cb8ba6673814ff5",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:3753c85d3d934f8a7c5e1ee581bba31c676f57867d656b543a8ec2b4449503fb",
-      "sizeBytes": 669
+      "hash": "sha256:e5c3250332136170c03ffb8c1ca87a1cecbfbe0c7ad63aeba8129f50a00d5655",
+      "sizeBytes": 815
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -185,8 +185,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a9fcfbb31bfa5e5cf9c5fff042ebeca270515ca598bf75628d669fbf6b9bb8ca",
-      "sizeBytes": 837
+      "hash": "sha256:f828e647c1ee9bfc85caf926b19cfba944c2b2ad29973f019c057c351f729aed",
+      "sizeBytes": 1020
     },
     {
       "path": "src/config/app.config.spec.ts",
@@ -226,8 +226,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:b4dbc6a5093cb80d0221e344f4cc68e1335d5796bbc93894b7b7995d901ee5e7",
-      "sizeBytes": 1837
+      "hash": "sha256:d11fe2ba24936ffc73c7582b4338fb0a1831c42bd262993a2133ddf1737836d8",
+      "sizeBytes": 2818
     },
     {
       "path": "src/config/config-validation.helpers.ts",
@@ -242,13 +242,21 @@
         {
           "kind": "function",
           "name": "isProductionJwtSecretValid"
+        },
+        {
+          "kind": "function",
+          "name": "isDatabasePoolValid"
+        },
+        {
+          "kind": "function",
+          "name": "isProductionDatabaseSslValid"
         }
       ],
       "hasSpec": true,
       "specPath": "src/config/config-validation.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:a4d769258d95c4ccf823bb9e41b2119af0b99db3632f1e4c1dba7c689c9d0917",
-      "sizeBytes": 1545
+      "hash": "sha256:5bf97fcffabe15ba2357c8e6cbac4c2baece14d3e2a3b7aed17f3f0d0ec352de",
+      "sizeBytes": 1980
     },
     {
       "path": "src/config/config.constants.ts",
@@ -263,6 +271,10 @@
         {
           "kind": "const",
           "name": "SECURITY_CONFIG_NAMESPACE"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_CONFIG_NAMESPACE"
         },
         {
           "kind": "const",
@@ -378,6 +390,62 @@
         },
         {
           "kind": "const",
+          "name": "DEFAULT_DB_HOST"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_DB_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_DB_USERNAME"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_DB_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_DB_POOL_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_DB_POOL_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_DB_POOL_SIZE"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_DB_POOL_SIZE"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_DB_CONNECT_TIMEOUT_MS"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_DB_STATEMENT_TIMEOUT_MS"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_DB_TIMEOUT_MS"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_DB_TIMEOUT_MS"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_DB_POOL_BOUNDS_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_PRODUCTION_DB_SSL_MESSAGE"
+        },
+        {
+          "kind": "const",
           "name": "GLOBAL_PREFIX_PATTERN"
         },
         {
@@ -408,8 +476,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b901f449e9417900c94e64eaed1d180008b1919105b8cf2789819dcb03c57243",
-      "sizeBytes": 2179
+      "hash": "sha256:d08c4244099044d66661a1a27eb31e0f12e724dafb7354ef40191a25ea5c389c",
+      "sizeBytes": 3261
     },
     {
       "path": "src/config/config.module.ts",
@@ -425,8 +493,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:35604b0f96cdf0e6b0ff2aab9f3fda5a84a0a82464a3f08d2197e6904cbdcfa8",
-      "sizeBytes": 766
+      "hash": "sha256:bd4f472eed4a173cd9a6f2d464ae462c270487da751b80a09e68b7923bf820b6",
+      "sizeBytes": 834
     },
     {
       "path": "src/config/config.types.ts",
@@ -444,14 +512,18 @@
         },
         {
           "kind": "interface",
+          "name": "DatabaseConfig"
+        },
+        {
+          "kind": "interface",
           "name": "RootConfig"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:99f2449d434f63abbbdd55fb044488b4fa736204aab267eec899d8d1ec0f383f",
-      "sizeBytes": 582
+      "hash": "sha256:91940cdd339de900e0e8ad2d443956b49ec0ff39eebdd2b3ed3465916c16f555",
+      "sizeBytes": 1023
     },
     {
       "path": "src/config/config.utils.spec.ts",
@@ -499,6 +571,35 @@
       "sizeBytes": 1460
     },
     {
+      "path": "src/config/database.config.spec.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3f1e6e05f643a93214c95a9475786e30ed5cf19603bf8f77a7498e2bcaad2b42",
+      "sizeBytes": 2171
+    },
+    {
+      "path": "src/config/database.config.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "databaseConfig"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/config/database.config.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c586763a7efce13c0a8ad049561f4e8e077b043aebaa542655613755f16e08b8",
+      "sizeBytes": 1751
+    },
+    {
       "path": "src/config/env.validation.spec.ts",
       "root": "config",
       "module": "config",
@@ -507,8 +608,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:d29b4bb5f64c7f7326ba32148df44f056f3aded83aebf7ca7e99c6980efcf886",
-      "sizeBytes": 2614
+      "hash": "sha256:a74fabf5e690cfa263adbc039340c2df67022e9e6be53f685f76a09209d71679",
+      "sizeBytes": 3501
     },
     {
       "path": "src/config/env.validation.ts",
@@ -524,8 +625,8 @@
       "hasSpec": true,
       "specPath": "src/config/env.validation.spec.ts",
       "kind": "source",
-      "hash": "sha256:02be17583f7b925be72e7118713e4318414c854211deee4a22304ed290e5b398",
-      "sizeBytes": 1165
+      "hash": "sha256:b7db7d02f68500b1e8eeaf1e9048c09df81c76c93599d409af0064fb65ddd6dc",
+      "sizeBytes": 1615
     },
     {
       "path": "src/config/environment-variables.dto.ts",
@@ -541,8 +642,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:58ebcca41ebbd9a23cd39fafa87d13cf3bd84050f0b1472f8e936b9c2610ded4",
-      "sizeBytes": 1740
+      "hash": "sha256:fd191c82f700497aa1aa98ece3ad077ae627483ba11795891121816460928886",
+      "sizeBytes": 3165
     },
     {
       "path": "src/config/security.config.spec.ts",
@@ -1152,6 +1253,23 @@
       "sizeBytes": 177
     },
     {
+      "path": "src/core/errors/service-unavailable.error.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ServiceUnavailableError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4b0ffad1003267d4a58e097e2a7b10ebf5eea186bf69be9f16fcd096a1fd0146",
+      "sizeBytes": 414
+    },
+    {
       "path": "src/core/errors/unauthorized.error.ts",
       "root": "core",
       "module": "errors",
@@ -1198,13 +1316,25 @@
         {
           "kind": "const",
           "name": "HEALTH_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "READINESS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_UNAVAILABLE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_UNAVAILABLE_MESSAGE_KEY"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:eba5e06ecdb8e8dab770082da0dbc9201ca9471b70084ee3a2758687ab077698",
-      "sizeBytes": 78
+      "hash": "sha256:79eee5e1b779be37ebb8130d1d7029980f6f39569984ad3cf7a67b0dea68f60e",
+      "sizeBytes": 392
     },
     {
       "path": "src/core/health/health.controller.ts",
@@ -1220,8 +1350,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:bb47e3757a72271b657ccd81cd2e800eede8023c3ecfb0e777fc4b4efcd34761",
-      "sizeBytes": 539
+      "hash": "sha256:3ef799fe8d8df58a26ff03250661725c5b3212c768624d04f22da9cb0ef7017b",
+      "sizeBytes": 823
     },
     {
       "path": "src/core/health/health.enums.ts",
@@ -1236,13 +1366,29 @@
         {
           "kind": "const",
           "name": "HEALTH_STATE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ReadinessState"
+        },
+        {
+          "kind": "const",
+          "name": "READINESS_STATE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "DependencyState"
+        },
+        {
+          "kind": "const",
+          "name": "DEPENDENCY_STATE_VALUES"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:cd9faa2b17aec99226fe46c27117e67f5b56737897ab1af2c4bd9e662893e98d",
-      "sizeBytes": 131
+      "hash": "sha256:40f807d847b0b11e583a71e2bfb246c0780a64a6bcc79ad9792a5796ad03a2d8",
+      "sizeBytes": 429
     },
     {
       "path": "src/core/health/health.module.ts",
@@ -1258,8 +1404,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:f37ec9aa5cc85a75369223b7e85d657bc583f414bf44eea432e8fd51f87c955a",
-      "sizeBytes": 335
+      "hash": "sha256:e7c579a80a972f845d327c35df3ad35dfd127efdedffe9ca35bfce2b2c61dbec",
+      "sizeBytes": 563
     },
     {
       "path": "src/core/health/health.service.spec.ts",
@@ -1299,13 +1445,46 @@
         {
           "kind": "interface",
           "name": "HealthStatus"
+        },
+        {
+          "kind": "interface",
+          "name": "ReadinessStatus"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:626de5ae1257b59a1ccf4c2c186fced3160030df3fc197beac6f693d94cf484a",
-      "sizeBytes": 182
+      "hash": "sha256:b6f1bfe42991f7732db8c41b1a4b7e8283dfcf9a2b18b5709c1b2f1f3fed7997",
+      "sizeBytes": 363
+    },
+    {
+      "path": "src/core/health/readiness.service.spec.ts",
+      "root": "core",
+      "module": "health",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:aff818f2081d92474245302d9310f3f28c7e36b8088a04b0343af311e6b5c4da",
+      "sizeBytes": 1298
+    },
+    {
+      "path": "src/core/health/readiness.service.ts",
+      "root": "core",
+      "module": "health",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReadinessService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/health/readiness.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e901949e0a0635f9b8999b11bc301d704cf9eac61d2be123ce1ccf13aecc4ae9",
+      "sizeBytes": 1498
     },
     {
       "path": "src/core/http/http-reply.types.ts",
@@ -1595,6 +1774,60 @@
       "sizeBytes": 469
     },
     {
+      "path": "src/core/persistence/database-readiness.port.ts",
+      "root": "core",
+      "module": "persistence",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "DatabaseReadinessResult"
+        },
+        {
+          "kind": "interface",
+          "name": "DatabaseReadinessPort"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_READINESS_PORT"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:06f76e045d011f564b502077b2b499d8c94a44de39e3d63bd84d40a9b537fef7",
+      "sizeBytes": 549
+    },
+    {
+      "path": "src/core/persistence/unit-of-work.port.ts",
+      "root": "core",
+      "module": "persistence",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "TransactionScope"
+        },
+        {
+          "kind": "type",
+          "name": "TransactionalOperation"
+        },
+        {
+          "kind": "interface",
+          "name": "UnitOfWorkPort"
+        },
+        {
+          "kind": "const",
+          "name": "UNIT_OF_WORK_PORT"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d044ddc9c028f7a7adb032e3b0cc193d9c509090075cf48699a57bba711709d0",
+      "sizeBytes": 1158
+    },
+    {
       "path": "src/core/rate-limit/rate-limit.module.ts",
       "root": "core",
       "module": "rate-limit",
@@ -1755,6 +1988,398 @@
       "kind": "source",
       "hash": "sha256:0bad855223044032b8063c88b2c097f67a6f3c1950e7ea38ad0ff830d12e1115",
       "sizeBytes": 617
+    },
+    {
+      "path": "src/database/cli-data-source.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a58e88eb562d4e6c62804439b35ef697143d7d4da7075b8dd4f857ba383f94d8",
+      "sizeBytes": 636
+    },
+    {
+      "path": "src/database/data-source.factory.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:605b48bd291e2b0f3e60af2142d9a70e9167c1bc78660e45202fd243d56aa59e",
+      "sizeBytes": 2266
+    },
+    {
+      "path": "src/database/data-source.factory.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildDataSourceOptions"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/data-source.factory.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1d320cb33c3da8ff51519d64a64b46ac4dad04589edf81f794f17663f3618d56",
+      "sizeBytes": 1740
+    },
+    {
+      "path": "src/database/data-source.provider.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "dataSourceProvider"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8825452c08e7b962a13a120d669a877b67ebaf3c13c84e8ecf90adb7eb6e6525",
+      "sizeBytes": 1440
+    },
+    {
+      "path": "src/database/database-error.mapper.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4429da47a2c1918f8a5c5d4eaad6a34d292740418977f9b187ee7a7cafafb04a",
+      "sizeBytes": 814
+    },
+    {
+      "path": "src/database/database-error.mapper.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toDatabaseError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/database-error.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:aa33e28540b5b29c58beabd701c9332f304b4b6f2401146c18e98684207bc1ad",
+      "sizeBytes": 678
+    },
+    {
+      "path": "src/database/database.constants.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DATA_SOURCE"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_MIGRATIONS_TABLE"
+        },
+        {
+          "kind": "const",
+          "name": "MIGRATIONS_DIRECTORY"
+        },
+        {
+          "kind": "const",
+          "name": "MIGRATIONS_GLOB"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_LOG_CONTEXT"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_CONNECTED_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_CONNECTION_FAILED_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_DISCONNECTED_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_READINESS_LOG_CONTEXT"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_READINESS_FAILED_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_READINESS_PROBE"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_ERROR_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_ERROR_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "TEST_DATABASE_SUFFIX"
+        },
+        {
+          "kind": "const",
+          "name": "NON_TEST_ENV_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "NON_TEST_DATABASE_MESSAGE"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2d830d515faa3c4b5ff739fc02448680420422426018e6bd5532e658899dad13",
+      "sizeBytes": 1739
+    },
+    {
+      "path": "src/database/database.module.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DatabaseModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ae9394cacee86f61b9895c51f0b1c5cd0f38bc4af5dbda073b5e18f9aa15dbd1",
+      "sizeBytes": 1500
+    },
+    {
+      "path": "src/database/index.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c6931e1c381781939cd2e6a8115d98a38bd63cd2d7846be7e4781db074656aac",
+      "sizeBytes": 52
+    },
+    {
+      "path": "src/database/migrations/1721200000000-baseline-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "BaselineSchema1721200000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a04b32fb80ab8f4a449083fd514720154da627dbd9e882dad3bafebb3d0e6fad",
+      "sizeBytes": 838
+    },
+    {
+      "path": "src/database/naming.helpers.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:625338fa6646f5d7696dc1f6e8f6b427d1877c3e15df3b51b357f7c6dcb324da",
+      "sizeBytes": 556
+    },
+    {
+      "path": "src/database/naming.helpers.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toSnakeCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/naming.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:86c43670725147dcd95c84ad7e2dbe5565dcf3363b6838b24cf90e2571554fd4",
+      "sizeBytes": 499
+    },
+    {
+      "path": "src/database/snake-case-naming.strategy.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4bd68914505a3524ae26d7bc6ab5bdb8a82f07baa7fc7198c26f9f7b6956e28d",
+      "sizeBytes": 926
+    },
+    {
+      "path": "src/database/snake-case-naming.strategy.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SnakeCaseNamingStrategy"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/snake-case-naming.strategy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:6d9fa5f6772c08510dc6a771b1afe3fffb07c24f9b3c02d8c515ca35e6a10898",
+      "sizeBytes": 905
+    },
+    {
+      "path": "src/database/test-database.helpers.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ca8c21e3a644432e77954be79d1c9a2d151282ecc8e0ce4903ba1476699b2bb7",
+      "sizeBytes": 1896
+    },
+    {
+      "path": "src/database/test-database.helpers.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assertTestDatabase"
+        },
+        {
+          "kind": "function",
+          "name": "createTestDataSource"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/test-database.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c04fd0964f9c66f91b459c1c5e7188e7c6bfab33281de92cb5061f818b15757f",
+      "sizeBytes": 1423
+    },
+    {
+      "path": "src/database/typeorm-database-readiness.adapter.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "adapter",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9cbabd5b4b84b5c66fd1bc0bd314976bb4f4ea76a09d33c7c1f43b0ebfb6244a",
+      "sizeBytes": 2013
+    },
+    {
+      "path": "src/database/typeorm-database-readiness.adapter.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "adapter",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TypeormDatabaseReadinessAdapter"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/typeorm-database-readiness.adapter.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1b7748a6c5ff7dbcfb0197a5e1ef5d0e8b3385938c5e12c174f56669708eae6e",
+      "sizeBytes": 1434
+    },
+    {
+      "path": "src/database/typeorm-transaction-scope.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:eae20718730625c096b0e494239765e0dd1c2e8311496e60734837ad474bda25",
+      "sizeBytes": 926
+    },
+    {
+      "path": "src/database/typeorm-transaction-scope.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TypeormTransactionScope"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/typeorm-transaction-scope.spec.ts",
+      "kind": "source",
+      "hash": "sha256:eb3e50ce7e043dd134850e7549531dcef9e5908be82661f24ef1e46c3c69a471",
+      "sizeBytes": 737
+    },
+    {
+      "path": "src/database/typeorm-unit-of-work.adapter.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "adapter",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:661d9778577950a0fd171f11887fed5ed7ad91e365471a7c4e515eda1ea56e24",
+      "sizeBytes": 1997
+    },
+    {
+      "path": "src/database/typeorm-unit-of-work.adapter.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "adapter",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TypeormUnitOfWorkAdapter"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/typeorm-unit-of-work.adapter.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d4768cfc924a718344e7afd6b14c9cb24fc14fefacafda19252fdc7b99643cd7",
+      "sizeBytes": 1401
     },
     {
       "path": "src/main.ts",

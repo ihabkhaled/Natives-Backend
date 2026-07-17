@@ -2,6 +2,7 @@ import { LogLevel } from '@shared/enums';
 
 export const APP_CONFIG_NAMESPACE = 'app';
 export const SECURITY_CONFIG_NAMESPACE = 'security';
+export const DATABASE_CONFIG_NAMESPACE = 'database';
 export const NODE_ENV_CONFIG_NAME = 'NODE_ENV';
 
 export const DEFAULT_PORT = 3000;
@@ -45,6 +46,30 @@ export const HTTPS_PROTOCOL = 'https:';
 export const FLAG_TRUE = 'true';
 export const FLAG_FALSE = 'false';
 export const BOOLEAN_FLAG_VALUES: readonly string[] = [FLAG_TRUE, FLAG_FALSE];
+
+// --- Database ---------------------------------------------------------------
+// Discrete connection fields are optional: the factory prefers DATABASE_URL and
+// otherwise falls back to these defaults so local development boots without a
+// hand-written .env. Production still fails fast on a missing/weak SSL flag.
+export const DEFAULT_DB_HOST = 'localhost';
+export const DEFAULT_DB_PORT = 5432;
+export const DEFAULT_DB_USERNAME = 'postgres';
+export const DEFAULT_DB_NAME = 'ultimate_natives';
+
+export const DEFAULT_DB_POOL_MIN = 2;
+export const DEFAULT_DB_POOL_MAX = 10;
+export const MIN_DB_POOL_SIZE = 0;
+export const MAX_DB_POOL_SIZE = 100;
+
+export const DEFAULT_DB_CONNECT_TIMEOUT_MS = 10_000;
+export const DEFAULT_DB_STATEMENT_TIMEOUT_MS = 15_000;
+export const MIN_DB_TIMEOUT_MS = 1;
+export const MAX_DB_TIMEOUT_MS = 120_000;
+
+export const INVALID_DB_POOL_BOUNDS_MESSAGE =
+  'DB_POOL_MIN must be less than or equal to DB_POOL_MAX';
+export const INVALID_PRODUCTION_DB_SSL_MESSAGE =
+  'DB_SSL must be true in production';
 
 export const GLOBAL_PREFIX_PATTERN = /^[a-z0-9-]+$/u;
 export const INVALID_ENV_MESSAGE_PREFIX = 'Invalid environment configuration';

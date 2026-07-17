@@ -17,7 +17,23 @@ export interface SecurityConfig {
   readonly jwtExpiresInSeconds: number;
 }
 
+export interface DatabaseConfig {
+  readonly url: string | undefined;
+  readonly host: string;
+  readonly port: number;
+  readonly username: string;
+  readonly password: string | undefined;
+  readonly name: string;
+  readonly poolMin: number;
+  readonly poolMax: number;
+  readonly connectTimeoutMs: number;
+  readonly statementTimeoutMs: number;
+  readonly ssl: boolean;
+  readonly logging: boolean;
+}
+
 export interface RootConfig {
   readonly app: AppConfig;
   readonly security: SecurityConfig;
+  readonly database: DatabaseConfig;
 }

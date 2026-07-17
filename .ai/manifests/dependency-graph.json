@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T12:15:01.655Z",
+  "generatedAt": "2026-07-17T20:32:04.287Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -15,6 +15,11 @@
       "from": "src/app.module.ts",
       "to": "src/core/logger/logger.module.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/database/index.ts",
+      "type": "internal"
     },
     {
       "from": "src/app.module.ts",
@@ -178,6 +183,11 @@
     },
     {
       "from": "src/config/config.module.ts",
+      "to": "src/config/database.config.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/config.module.ts",
       "to": "src/config/env.validation.ts",
       "type": "internal"
     },
@@ -200,6 +210,21 @@
       "from": "src/config/config.utils.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/config/database.config.ts",
+      "to": "src/config/config.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/database.config.ts",
+      "to": "src/config/config.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/database.config.ts",
+      "to": "src/config/config.utils.ts",
+      "type": "internal"
     },
     {
       "from": "src/config/env.validation.ts",
@@ -517,6 +542,11 @@
       "type": "internal"
     },
     {
+      "from": "src/core/errors/service-unavailable.error.ts",
+      "to": "src/core/errors/app-error.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/core/errors/unauthorized.error.ts",
       "to": "src/core/errors/app-error.ts",
       "type": "internal"
@@ -525,6 +555,11 @@
       "from": "src/core/errors/validation.error.ts",
       "to": "src/core/errors/app-error.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/core/health/health.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/core/health/health.controller.ts",
@@ -548,6 +583,11 @@
     },
     {
       "from": "src/core/health/health.controller.ts",
+      "to": "src/core/health/readiness.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/health.controller.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
     },
@@ -564,6 +604,11 @@
     {
       "from": "src/core/health/health.module.ts",
       "to": "src/core/health/health.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/health.module.ts",
+      "to": "src/core/health/readiness.service.ts",
       "type": "internal"
     },
     {
@@ -585,6 +630,36 @@
       "from": "src/core/health/health.types.ts",
       "to": "src/core/health/health.enums.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/core/health/readiness.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/health/readiness.service.ts",
+      "to": "src/core/errors/service-unavailable.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/health/readiness.service.ts",
+      "to": "src/core/health/health.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/readiness.service.ts",
+      "to": "src/core/health/health.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/readiness.service.ts",
+      "to": "src/core/health/health.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/health/readiness.service.ts",
+      "to": "src/core/persistence/database-readiness.port.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/core/id-generator/id-generator.module.ts",
@@ -760,6 +835,166 @@
       "from": "src/core/validation/validation.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/cli-data-source.ts",
+      "to": "src/config/database.config.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/cli-data-source.ts",
+      "to": "src/database/data-source.factory.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/data-source.factory.ts",
+      "to": "src/config/config.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/data-source.factory.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/data-source.factory.ts",
+      "to": "src/database/snake-case-naming.strategy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/data-source.provider.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/data-source.provider.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/data-source.provider.ts",
+      "to": "src/database/data-source.factory.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/data-source.provider.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/database-error.mapper.ts",
+      "to": "src/core/errors/integration.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/database-error.mapper.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/database.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/database.module.ts",
+      "to": "src/core/persistence/database-readiness.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/database.module.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/database.module.ts",
+      "to": "src/database/data-source.provider.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/database.module.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/database.module.ts",
+      "to": "src/database/typeorm-database-readiness.adapter.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/database.module.ts",
+      "to": "src/database/typeorm-unit-of-work.adapter.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/index.ts",
+      "to": "src/database/database.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/snake-case-naming.strategy.ts",
+      "to": "src/database/naming.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/test-database.helpers.ts",
+      "to": "src/config/config.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/test-database.helpers.ts",
+      "to": "src/database/data-source.factory.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/test-database.helpers.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/test-database.helpers.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/typeorm-database-readiness.adapter.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/typeorm-database-readiness.adapter.ts",
+      "to": "src/core/persistence/database-readiness.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/typeorm-database-readiness.adapter.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/typeorm-transaction-scope.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/typeorm-unit-of-work.adapter.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/typeorm-unit-of-work.adapter.ts",
+      "to": "src/database/database-error.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/typeorm-unit-of-work.adapter.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/typeorm-unit-of-work.adapter.ts",
+      "to": "src/database/typeorm-transaction-scope.ts",
+      "type": "internal"
     },
     {
       "from": "src/main.ts",

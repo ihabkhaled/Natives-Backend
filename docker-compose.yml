@@ -1,0 +1,24 @@
+# Local development PostgreSQL for the Ultimate Natives backend.
+# Non-production credentials only, bound to loopback so the database is never
+# exposed on the network. Never point staging/production at this file.
+services:
+  postgres:
+    image: postgres:16
+    container_name: natives-postgres-dev
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: natives
+      POSTGRES_PASSWORD: natives_dev_password
+      POSTGRES_DB: ultimate_natives
+    ports:
+      - '127.0.0.1:5432:5432'
+    volumes:
+      - natives-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U natives -d ultimate_natives']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  natives-postgres-data:

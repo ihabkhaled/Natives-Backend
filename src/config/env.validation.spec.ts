@@ -28,6 +28,13 @@ describe('validateEnv', () => {
       RATE_LIMIT_MAX: '100',
       JWT_SECRET: 'test-secret-with-at-least-32-characters',
       JWT_EXPIRES_IN_SECONDS: '1800',
+      DATABASE_URL: 'postgres://user:pass@localhost:5432/app',
+      DB_POOL_MIN: '2',
+      DB_POOL_MAX: '10',
+      DB_CONNECT_TIMEOUT_MS: '10000',
+      DB_STATEMENT_TIMEOUT_MS: '15000',
+      DB_SSL: 'false',
+      DB_LOGGING: 'false',
     };
 
     expect(validateEnv(raw)).toBe(raw);
@@ -45,6 +52,10 @@ describe('validateEnv', () => {
     { JWT_EXPIRES_IN_SECONDS: '1801' },
     { CORS_ORIGIN: 'not a URL' },
     { CORS_ORIGIN: 'https://example.com/path' },
+    { DB_POOL_MIN: '11', DB_POOL_MAX: '10' },
+    { DB_POOL_MAX: '200' },
+    { DB_CONNECT_TIMEOUT_MS: '0' },
+    { DB_SSL: 'maybe' },
   ])('rejects invalid consumed config %#', invalid => {
     expect(() =>
       validateEnv({
@@ -77,6 +88,7 @@ describe('validateEnv', () => {
     const raw = {
       NODE_ENV: NodeEnv.Production,
       JWT_SECRET: VALID_JWT_SECRET,
+      DB_SSL: 'true',
     };
 
     expect(validateEnv(raw)).toBe(raw);
@@ -86,5 +98,25 @@ describe('validateEnv', () => {
     expect(() => validateEnv({ JWT_SECRET: VALID_JWT_SECRET })).toThrow(
       'Invalid environment configuration',
     );
+  });
+
+  it('requires database SSL in production', () => {
+    expect(() =>
+      validateEnv({
+        NODE_ENV: NodeEnv.Production,
+        JWT_SECRET: VALID_JWT_SECRET,
+        DB_SSL: 'false',
+      }),
+    ).toThrow('Invalid environment configuration');
+  });
+
+  it('accepts production when database SSL is enabled', () => {
+    const raw = {
+      NODE_ENV: NodeEnv.Production,
+      JWT_SECRET: VALID_JWT_SECRET,
+      DB_SSL: 'true',
+    };
+
+    expect(validateEnv(raw)).toBe(raw);
   });
 });

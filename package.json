@@ -32,6 +32,11 @@
     "test:watch": "vitest",
     "test:debug": "vitest --inspect-brk run --pool=forks --poolOptions.forks.singleFork=true",
     "test:coverage": "vitest run --coverage",
+    "typeorm": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "migration:generate": "npm run typeorm -- migration:generate -d src/database/cli-data-source.ts src/database/migrations/Migration",
+    "migration:run": "npm run typeorm -- migration:run -d src/database/cli-data-source.ts",
+    "migration:revert": "npm run typeorm -- migration:revert -d src/database/cli-data-source.ts",
+    "migration:show": "npm run typeorm -- migration:show -d src/database/cli-data-source.ts",
     "validate": "npm run format:check && npm run lint && npm run typecheck && npm run test:coverage && npm run build && npm run knowledge:check && npm run knowledge:verify",
     "knowledge:build": "node tools/knowledge/build-manifests.mjs && node tools/knowledge/build-summaries.mjs",
     "knowledge:check": "node tools/knowledge/build-hashes.mjs --check",
@@ -64,11 +69,13 @@
     "class-validator": "^0.15.1",
     "fastify": "^5.10.0",
     "nestjs-pino": "^4.6.1",
+    "pg": "8.22.0",
     "pino": "^10.3.1",
     "pino-http": "^11.0.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
-    "tslib": "^2.8.1"
+    "tslib": "^2.8.1",
+    "typeorm": "1.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.1",
