@@ -1,4 +1,18 @@
-# IronNest — Strict NestJS Backend Operating System
+# Natives-Backend — Ultimate Natives API
+
+> Production backend for the **Ultimate Natives** Frisbee team (Sheikh Zayed, Giza, Egypt):
+> NestJS + Fastify + Pino + TypeORM + PostgreSQL. Built on the **IronNest** strict clean-architecture
+> operating system, whose rules, gates, and attribution are preserved in full below.
+>
+> **Provenance:** derived from IronNest (`upstream-template`) at commit
+> `7d63b79d972332da3642731cda1f79426db79d80`. See [`docs/provenance.md`](./docs/provenance.md),
+> [`docs/product/open-decisions.md`](./docs/product/open-decisions.md), and
+> [`docs/source-data-handling.md`](./docs/source-data-handling.md). Private team data is **never**
+> committed; imports run only through the audited dry-run pipeline.
+
+---
+
+## Inherited engineering operating system (IronNest)
 
 > Iron discipline for NestJS backends — clean architecture enforced by custom ESLint rules, strict TypeScript, SDLC governance, an AI-agent knowledge base (rules · skills · memory · context), and a runnable Fastify + Pino reference app.
 

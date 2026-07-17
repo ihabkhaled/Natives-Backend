@@ -1,7 +1,7 @@
 {
-  "name": "iron-nest",
+  "name": "natives-backend",
   "version": "1.0.0",
-  "description": "Iron discipline for NestJS backends — clean architecture enforced by custom ESLint rules, strict TypeScript, SDLC governance, an AI-agent knowledge base (rules, skills, memory, context), and a runnable Fastify + Pino reference app.",
+  "description": "Ultimate Natives backend — NestJS + Fastify + TypeORM + PostgreSQL API for the Ultimate Natives Frisbee team, built on the IronNest strict clean-architecture operating system (custom ESLint rules, strict TypeScript, SDLC governance, and an AI-agent knowledge base).",
   "author": "",
   "private": true,
   "license": "UNLICENSED",

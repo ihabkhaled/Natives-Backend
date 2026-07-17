@@ -71,3 +71,23 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # .ai/manifests/, .ai/BOOTSTRAP.md, and everything else under .ai/ stay
 # committed for immediate cold-start; see tools/knowledge/.
 /.ai/local/
+
+# ---------------------------------------------------------------------------
+# Ultimate Natives — private source-data handling (NEVER commit team data)
+# See docs/source-data-handling.md. Import only through the private, audited,
+# dry-run import pipeline; production names/contacts/national IDs never enter Git.
+# ---------------------------------------------------------------------------
+/private-imports/
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+*.pdf
+/exports/
+/uploads/
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.bak
+/traces/
