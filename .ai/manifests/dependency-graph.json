@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T05:58:41.296Z",
+  "generatedAt": "2026-07-18T08:32:17.655Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -5682,6 +5682,151 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/api/dto/agenda-summary-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/api/dto/block-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/api/dto/complete-block.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/api/dto/create-block.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/api/dto/create-station.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/api/dto/reorder-blocks.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/api/dto/station-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/api/dto/update-block.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/application/agenda-block.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/application/agenda-station.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-block.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-group.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-group.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-group.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-group.controller.ts",
+      "to": "src/modules/practices/api/dto/assign-group-members.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-group.controller.ts",
+      "to": "src/modules/practices/api/dto/create-group.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-group.controller.ts",
+      "to": "src/modules/practices/api/dto/group-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-group.controller.ts",
+      "to": "src/modules/practices/application/agenda-group.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-group.controller.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-group.controller.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-group.controller.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/agenda-group.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/practices/api/attendance-participation.controller.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -5852,6 +5997,136 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/modules/practices/api/dto/create-drill.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/modules/practices/api/dto/drill-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/modules/practices/api/dto/list-drills-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/modules/practices/api/dto/list-drills.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/modules/practices/api/dto/update-drill.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/modules/practices/application/drill-catalog.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/modules/practices/application/drill-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/drills.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/agenda-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/agenda-response.dto.ts",
+      "to": "src/modules/practices/api/dto/block-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/agenda-response.dto.ts",
+      "to": "src/modules/practices/api/dto/group-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/agenda-response.dto.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/agenda-summary-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/agenda-summary-response.dto.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/agenda-version.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/agenda-version.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/agenda-version.dto.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/assign-group-members.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/assign-group-members.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/assign-group-members.dto.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/api/dto/attendance-history-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -5932,6 +6207,41 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/dto/block-fields.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/block-fields.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/block-fields.dto.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/block-fields.dto.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/block-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/block-response.dto.ts",
+      "to": "src/modules/practices/api/dto/station-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/block-response.dto.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/api/dto/bulk-mark-attendance.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -5977,6 +6287,36 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/dto/complete-block.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/complete-block.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/complete-block.dto.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/complete-block.dto.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/copy-agenda.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/copy-agenda.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/practices/api/dto/correct-attendance.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -5997,6 +6337,56 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/dto/create-agenda.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-agenda.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-agenda.dto.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-block.dto.ts",
+      "to": "src/modules/practices/api/dto/block-fields.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-drill.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-drill.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-drill.dto.ts",
+      "to": "src/modules/practices/api/dto/drill-fields.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-group.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-group.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-group.dto.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/api/dto/create-schedule.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -6034,6 +6424,51 @@
     {
       "from": "src/modules/practices/api/dto/create-session.dto.ts",
       "to": "src/modules/practices/model/practices.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-station.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-station.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-station.dto.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/drill-fields.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/drill-fields.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/drill-fields.dto.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/drill-fields.dto.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/drill-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/drill-response.dto.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
       "type": "internal"
     },
     {
@@ -6062,8 +6497,58 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/dto/group-member-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/group-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/group-response.dto.ts",
+      "to": "src/modules/practices/api/dto/group-member-response.dto.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/api/dto/list-attendance.query.dto.ts",
       "to": "src/modules/practices/api/dto/list-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-drills-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-drills-response.dto.ts",
+      "to": "src/modules/practices/api/dto/drill-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-drills.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-drills.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-drills.query.dto.ts",
+      "to": "src/modules/practices/api/dto/list-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-drills.query.dto.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-drills.query.dto.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
       "type": "internal"
     },
     {
@@ -6205,6 +6690,26 @@
       "from": "src/modules/practices/api/dto/participation.query.dto.ts",
       "to": "src/core/validation/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/reorder-blocks.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/reorder-blocks.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/reorder-blocks.dto.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/reorder-blocks.dto.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/practices/api/dto/reschedule-session.dto.ts",
@@ -6362,6 +6867,16 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/dto/station-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/station-response.dto.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/api/dto/status-event-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -6369,6 +6884,46 @@
     {
       "from": "src/modules/practices/api/dto/status-event-response.dto.ts",
       "to": "src/modules/practices/model/practices.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/update-block.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/update-block.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/update-block.dto.ts",
+      "to": "src/modules/practices/api/dto/block-fields.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/update-block.dto.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/update-drill.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/update-drill.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/update-drill.dto.ts",
+      "to": "src/modules/practices/api/dto/drill-fields.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/update-drill.dto.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
       "type": "internal"
     },
     {
@@ -6415,6 +6970,86 @@
       "from": "src/modules/practices/api/dto/update-session.dto.ts",
       "to": "src/modules/practices/model/practices.enums.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/modules/practices/api/dto/agenda-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/modules/practices/api/dto/agenda-summary-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/modules/practices/api/dto/agenda-version.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/modules/practices/api/dto/copy-agenda.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/modules/practices/api/dto/create-agenda.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/modules/practices/application/agenda-admin.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/modules/practices/application/agenda-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-agenda.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/practices/api/practice-rsvp.controller.ts",
@@ -6687,6 +7322,406 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/modules/practices/errors/agenda-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/modules/practices/lib/agendas.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/modules/practices/lib/agendas.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-admin.service.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/practices/application/agenda-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/practices/domain/agenda.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/practices/errors/drill-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/practices/errors/invalid-agenda-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/practices/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/practices/infrastructure/drill.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/practices/lib/agendas.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/practices/lib/agendas.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-block.service.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/modules/practices/application/agenda-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/modules/practices/errors/attendance-membership-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/modules/practices/infrastructure/agenda-group.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/modules/practices/lib/agendas.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/modules/practices/lib/agendas.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-group.service.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-lookup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-lookup.service.ts",
+      "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-lookup.service.ts",
+      "to": "src/modules/practices/domain/agenda.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-lookup.service.ts",
+      "to": "src/modules/practices/errors/agenda-block-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-lookup.service.ts",
+      "to": "src/modules/practices/errors/agenda-group-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-lookup.service.ts",
+      "to": "src/modules/practices/errors/agenda-locked.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-lookup.service.ts",
+      "to": "src/modules/practices/errors/agenda-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-lookup.service.ts",
+      "to": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-lookup.service.ts",
+      "to": "src/modules/practices/infrastructure/agenda-group.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-lookup.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-lookup.service.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-query.service.ts",
+      "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-query.service.ts",
+      "to": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-query.service.ts",
+      "to": "src/modules/practices/infrastructure/agenda-group.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-query.service.ts",
+      "to": "src/modules/practices/infrastructure/agenda-station.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-query.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-query.service.ts",
+      "to": "src/modules/practices/lib/agendas.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-query.service.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-query.service.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/modules/practices/application/agenda-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/modules/practices/errors/attendance-membership-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/modules/practices/errors/drill-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/modules/practices/infrastructure/agenda-station.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/modules/practices/infrastructure/drill.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/modules/practices/lib/agendas.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/modules/practices/lib/agendas.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/agenda-station.service.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/application/archive-practice-schedule.use-case.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -6868,6 +7903,161 @@
     },
     {
       "from": "src/modules/practices/application/attendance-sheet.service.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/modules/practices/application/agenda-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/modules/practices/domain/agenda.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/modules/practices/errors/invalid-agenda-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/modules/practices/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/modules/practices/lib/agendas.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/modules/practices/lib/agendas.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/practices/errors/agenda-locked.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/practices/errors/agenda-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/practices/infrastructure/agenda-group.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/practices/infrastructure/agenda-station.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/practices/lib/agendas.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/practices/lib/agendas.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/copy-agenda.use-case.ts",
       "to": "src/modules/practices/model/practices.types.ts",
       "type": "internal"
     },
@@ -7079,6 +8269,106 @@
     {
       "from": "src/modules/practices/application/create-practice-session.use-case.ts",
       "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/modules/practices/application/scope-validation.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/modules/practices/errors/drill-name-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/modules/practices/errors/drill-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/modules/practices/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/modules/practices/infrastructure/drill.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/modules/practices/lib/agendas.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/modules/practices/lib/agendas.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-catalog.service.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/drill-query.service.ts",
+      "to": "src/modules/practices/errors/drill-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-query.service.ts",
+      "to": "src/modules/practices/infrastructure/drill.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-query.service.ts",
+      "to": "src/modules/practices/lib/agendas.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-query.service.ts",
+      "to": "src/modules/practices/lib/agendas.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/drill-query.service.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
       "type": "internal"
     },
     {
@@ -7367,6 +8657,76 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/modules/practices/application/agenda-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/modules/practices/domain/agenda.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/modules/practices/errors/invalid-agenda-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/modules/practices/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/modules/practices/lib/agendas.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/modules/practices/lib/agendas.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/application/record-attendance.use-case.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -7439,6 +8799,76 @@
     {
       "from": "src/modules/practices/application/record-attendance.use-case.ts",
       "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/modules/practices/application/agenda-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/modules/practices/domain/agenda-ordering.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/modules/practices/errors/invalid-reorder.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/modules/practices/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/modules/practices/lib/agendas.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/modules/practices/lib/agendas.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
       "type": "internal"
     },
     {
@@ -8012,6 +9442,16 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/domain/agenda-ordering.policy.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/agenda.state-machine.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/domain/attendance-scoring.policy.ts",
       "to": "src/modules/practices/domain/attendance-status.policy.ts",
       "type": "internal"
@@ -8072,6 +9512,46 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/errors/agenda-block-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/agenda-block-not-found.error.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/agenda-group-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/agenda-group-not-found.error.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/agenda-locked.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/agenda-locked.error.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/agenda-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/agenda-not-found.error.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/errors/attendance-locked.error.ts",
       "to": "src/core/errors/conflict.error.ts",
       "type": "cross-cutting"
@@ -8122,6 +9602,36 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/errors/drill-name-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/drill-name-conflict.error.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/drill-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/drill-not-found.error.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/invalid-agenda-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/invalid-agenda-transition.error.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/errors/invalid-attendance-input.error.ts",
       "to": "src/core/errors/validation.error.ts",
       "type": "cross-cutting"
@@ -8139,6 +9649,16 @@
     {
       "from": "src/modules/practices/errors/invalid-attendance-transition.error.ts",
       "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/invalid-reorder.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/invalid-reorder.error.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
       "type": "internal"
     },
     {
@@ -8277,6 +9797,81 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "to": "src/modules/practices/lib/agendas.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "to": "src/modules/practices/model/agendas.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-group.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-group.repository.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-group.repository.ts",
+      "to": "src/modules/practices/model/agendas.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-group.repository.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-station.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-station.repository.ts",
+      "to": "src/modules/practices/lib/agendas.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-station.repository.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-station.repository.ts",
+      "to": "src/modules/practices/model/agendas.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/agenda-station.repository.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -8409,6 +10004,66 @@
     {
       "from": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
       "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/drill.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/drill.repository.ts",
+      "to": "src/modules/practices/lib/agendas.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/drill.repository.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/drill.repository.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/drill.repository.ts",
+      "to": "src/modules/practices/model/agendas.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/drill.repository.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "to": "src/modules/practices/lib/agendas.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "to": "src/modules/practices/model/agendas.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
       "type": "internal"
     },
     {
@@ -8569,6 +10224,56 @@
     {
       "from": "src/modules/practices/infrastructure/session-status-event.repository.ts",
       "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/agendas.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/lib/agendas.builders.ts",
+      "to": "src/modules/practices/model/agendas.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/agendas.builders.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/agendas.builders.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/agendas.builders.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/agendas.helpers.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/agendas.helpers.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/agendas.helpers.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/agendas.helpers.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/agendas.mapper.ts",
+      "to": "src/modules/practices/model/agendas.types.ts",
       "type": "internal"
     },
     {
@@ -8712,6 +10417,16 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/model/agendas.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/model/agendas.types.ts",
+      "to": "src/modules/practices/model/agendas.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/model/attendance.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
@@ -8768,12 +10483,32 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/api/agenda-block.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/api/agenda-group.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/api/attendance-participation.controller.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/api/attendance.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/api/drills.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/api/practice-agenda.controller.ts",
       "type": "internal"
     },
     {
@@ -8789,6 +10524,36 @@
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/api/practice-sessions.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/agenda-admin.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/agenda-block.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/agenda-group.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/agenda-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/agenda-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/agenda-station.service.ts",
       "type": "internal"
     },
     {
@@ -8813,6 +10578,16 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/correct-attendance.use-case.ts",
       "type": "internal"
     },
@@ -8824,6 +10599,16 @@
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/create-practice-session.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/drill-catalog.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/drill-query.service.ts",
       "type": "internal"
     },
     {
@@ -8853,7 +10638,17 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/record-attendance.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
       "type": "internal"
     },
     {
@@ -8913,6 +10708,21 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/agenda-group.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/agenda-station.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
       "type": "internal"
     },
@@ -8934,6 +10744,16 @@
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/drill.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
       "type": "internal"
     },
     {

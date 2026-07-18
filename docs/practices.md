@@ -244,14 +244,87 @@ contribution is `Σ present[type]·weight[type] − late·latePenalty − absent
 null only when there is no data at all. Rounding to a display percentage happens **only**
 in the response mapper.
 
-## 8. Session types
+## 8. Agendas, drill catalog, stations, groups, and completion (prompt 203)
+
+Agendas give coaches a **structured drill plan and execution record** for a session,
+explaining later performance observations. The module owns a reusable **drill catalog**
+plus a per-session **agenda tree** (ordered blocks → stations, with participant groups).
+Migration `1722100000000-practice-agendas-schema` (reversible; proven from-empty in
+`test/database/practice-agendas.integration.spec.ts`) adds six tables (the pack's
+`drill_definitions` / `practice_agendas` / `practice_drills` logical model, with blocks,
+stations, and groups as explicit aggregates):
+
+- `drill_definitions` — the reusable, team-scoped catalog entry: `category`, `objective`,
+  `instructions`, `equipment text[]`, `intensity`, `default_duration_minutes`
+  (**null-not-zero**), `skill_tags text[]`, `safety_notes`, `media_url`, and an
+  `active → archived` status. A partial unique index on active `(team_id, name)` keeps
+  drill names unique while active; **archiving never deletes** so a block that already
+  references a drill keeps a stable historical link (archive-in-use is safe).
+- `practice_agendas` — one per session (unique `session_id`) with a
+  `draft → published → completed` lifecycle (pure `agenda.state-machine`), a theme +
+  shared notes, publish/complete actor+instant, and an optimistic `version` that guards
+  structural edits and reorders.
+- `practice_agenda_blocks` — ordered blocks (`position`) with an optional `drill_id`
+  reference, type, `offset_minutes`, `duration_minutes`, `intensity`, `repetitions`,
+  `target`, a `planned → completed/skipped` `completion_status`, shared `notes`, and a
+  **private `coach_notes`**.
+- `practice_agenda_stations` — stations under a block, each with an optional drill /
+  participant-group / assigned-coach reference and its own completion.
+- `practice_agenda_groups` + `practice_agenda_group_members` — named participant groups
+  with an assigned coach, and their member assignments (unique `(agenda, membership)` —
+  one group per player per agenda).
+
+**Lifecycle & the publish lock.** A DRAFT agenda is fully editable. **Publish** locks the
+structure (`draft → published`, optimistic on the agenda version) and emits
+`practice.agenda.published`; further structural edits (add/update/remove/reorder a block,
+station, or group) return `409 agendaLocked`. Execution (**block completion**) is recorded
+only once published. **Complete** (`published → completed`) is the post-session review and
+emits `practice.agenda.completed`. Both events flow through the platform transactional
+outbox; audit diffs and event payloads carry only non-sensitive scalars — never the
+free-text `coach_notes`.
+
+**Reorder concurrency.** `POST …/agenda/blocks/reorder` takes the desired `blockIds`
+(validated by the pure `agenda-ordering.policy` to be an exact permutation of the current
+blocks) plus an `expectedVersion`; the reorder bumps the agenda version under an optimistic
+guard, so two concurrent reorders (or a reorder racing a structural edit) cannot both win —
+the loser gets `409 versionConflict`. All positions move in one set-based `UPDATE … FROM
+unnest(...)`.
+
+**Copy independence.** `POST …/agenda/copy` re-creates a source session's plan (blocks,
+stations, groups, members) into the target's fresh DRAFT agenda with **new ids**; drill
+references are carried by id (the catalog is shared). Editing the copy never touches the
+source. Copying over an existing non-empty or published agenda is refused.
+
+**Note privacy.** `GET …/agenda` (`practice.read`) is the broad read and **omits
+`coach_notes` entirely** (null); the coach plan `GET …/agenda/plan` (`drill.manage`)
+includes them. Coach notes never appear in team-wide reads or broad exports.
+
+**Endpoints** (team + session scoped, authenticated + permissioned). Reads require
+`practice.read`; all authoring and the coach plan require **`drill.manage`** (Coach /
+Team-Admin bundles):
+
+- Drills: `POST|GET /drills`, `GET|PATCH /drills/:id`, `POST /drills/:id/archive`.
+- Agenda: `GET /practice-sessions/:id/agenda` (broad), `.../agenda/plan` (coach),
+  `POST .../agenda` (create), `.../agenda/copy`, `.../agenda/publish`, `.../agenda/complete`.
+- Blocks: `POST .../agenda/blocks`, `POST .../agenda/blocks/reorder`,
+  `PATCH|DELETE .../agenda/blocks/:blockId`, `POST .../agenda/blocks/:blockId/complete`.
+- Stations: `POST .../agenda/blocks/:blockId/stations`,
+  `DELETE .../agenda/blocks/:blockId/stations/:stationId`.
+- Groups: `POST .../agenda/groups`, `DELETE .../agenda/groups/:groupId`,
+  `POST .../agenda/groups/:groupId/members`,
+  `DELETE .../agenda/groups/:groupId/members/:membershipId`.
+
+Historical drill/block ids stay stable so a later training score or evidence can cite the
+exact drill/block it observed.
+
+## 9. Session types
 
 Session type is a free-form catalog string (`practice`, `fitness`, `scrimmage`/`game`,
 `throwing`, `running`, `gym`, `rules`, or custom) — **no points are hard-coded** here;
 attendance scoring **inputs** cite a versioned rule (§7), and further scoring is the
 concern of later modules.
 
-## 9. Tests
+## 10. Tests
 
 - Unit: state machines + recurrence expansion, Cairo-time golden conversions (DST
   boundaries), helpers, the RSVP availability/deadline/waitlist policies, the
@@ -273,3 +346,12 @@ concern of later modules.
   RSVP self/override + waitlist, and attendance record/self-check-in/finalize →
   correct (audited) / re-finalize rejected / locked-after-finalize / participation
   inputs.
+- Agendas/drills (prompt 203): the agenda state machine + ordering policy, the drill/
+  agenda mappers and builders, and every use-case/service with mocked ports;
+  integration (`test/database/practice-agendas.integration.spec.ts`) — migrate-from-empty
+  - reversible down, drill insert/name-conflict/version-guard/archive-reuse, agenda
+    publish/complete/bump guards, block reorder + version guards, station/group/member
+    round-trips; e2e (`test/practice-agendas.e2e-spec.ts`) — drill authoring vs forbidden
+    member (403), coach-note privacy (broad vs plan vs member-403), publish lock (409),
+    optimistic + stale reorder (409), invalid reorder (400), copy independence,
+    archive-in-use, cross-team (403), wrong-team (404), malformed id (400), and auth (401).

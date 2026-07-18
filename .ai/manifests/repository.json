@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-18T05:58:41.296Z",
-  "treeHash": "sha256:f1e7ea7b173831dfcbbfd9cd89af4eb1c561287c19b4870bd586e9274d21e7f6",
+  "generatedAt": "2026-07-18T08:32:17.655Z",
+  "treeHash": "sha256:c59780a97818982d84632af3648a5e575715ea6de35b3b8feb681be06a6beba9",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -1949,8 +1949,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fa0ccace09df27cb09a71ea8261e544a5761ab33f35af053262753624c117a0a",
-      "sizeBytes": 469
+      "hash": "sha256:973cd2fbc6fce8346ca4dde3d2ffafac54979771945f8572b9a6f43c7c2475be",
+      "sizeBytes": 493
     },
     {
       "path": "src/core/persistence/database-readiness.port.ts",
@@ -2517,6 +2517,23 @@
       "kind": "source",
       "hash": "sha256:1f572cb43f6880188bf3cc53219809de9eced59c41063412de9ea9a7df340411",
       "sizeBytes": 9957
+    },
+    {
+      "path": "src/database/migrations/1722100000000-practice-agendas-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeAgendasSchema1722100000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ab52f38f6ee762ba8faf934c46cf999d9695cc36301cd5ca8cef2a02e4ddbbd2",
+      "sizeBytes": 13235
     },
     {
       "path": "src/database/naming.helpers.spec.ts",
@@ -8901,6 +8918,40 @@
       "sizeBytes": 3534
     },
     {
+      "path": "src/modules/practices/api/agenda-block.controller.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaBlockController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:71805592fab2a254112d8770ebfa65319e403bd5372b30de9d93f6f618631266",
+      "sizeBytes": 8327
+    },
+    {
+      "path": "src/modules/practices/api/agenda-group.controller.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaGroupController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:851c45465ecc43717c4bd12b2dad2a99c57e1b7d05da9a04b894ba8b4f6bfa98",
+      "sizeBytes": 4371
+    },
+    {
       "path": "src/modules/practices/api/attendance-participation.controller.ts",
       "root": "modules",
       "module": "practices",
@@ -8933,6 +8984,91 @@
       "kind": "source",
       "hash": "sha256:9b1353501afc731d24908f850d9303e818a4930bfea45b30d157ab8e923f0c77",
       "sizeBytes": 9558
+    },
+    {
+      "path": "src/modules/practices/api/drills.controller.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DrillsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:91a03aaecfd07c204c828c4bfb0e9b8a3e7bdec25616662f8d27f95921a60c3e",
+      "sizeBytes": 5150
+    },
+    {
+      "path": "src/modules/practices/api/dto/agenda-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b40418ded0ce13ef7b5ac262454e71660ba0b875e9f9411c703c88da9c9690ec",
+      "sizeBytes": 1476
+    },
+    {
+      "path": "src/modules/practices/api/dto/agenda-summary-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaSummaryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c39abdbca5d2f8c325869acd0e7a647ecf87baa3cf447e945c46f2bbe5a76da5",
+      "sizeBytes": 888
+    },
+    {
+      "path": "src/modules/practices/api/dto/agenda-version.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaVersionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cc13958722971c3f6afe5e758574d02a30bc1fd51a0cfee98785a56d7c0437db",
+      "sizeBytes": 460
+    },
+    {
+      "path": "src/modules/practices/api/dto/assign-group-members.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssignGroupMembersDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0671e3f6355c65f813ed91d88d06cfd8279d6082e4fab711bd4153dabe918740",
+      "sizeBytes": 646
     },
     {
       "path": "src/modules/practices/api/dto/attendance-history-response.dto.ts",
@@ -9037,6 +9173,40 @@
       "sizeBytes": 610
     },
     {
+      "path": "src/modules/practices/api/dto/block-fields.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "BlockFieldsDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:42c52bfbd52dd3af6c6498f540e7e983e175d3b1fa956867ebd2a6dc4a777545",
+      "sizeBytes": 2631
+    },
+    {
+      "path": "src/modules/practices/api/dto/block-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "BlockResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a4d41d864c02e7b18d4cf8de27a40a311bbc191ab2bb04d1e24a0770bffb7047",
+      "sizeBytes": 1830
+    },
+    {
       "path": "src/modules/practices/api/dto/bulk-mark-attendance.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -9088,6 +9258,40 @@
       "sizeBytes": 404
     },
     {
+      "path": "src/modules/practices/api/dto/complete-block.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompleteBlockDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:740ef4a4bf9aae3090b938c62e007209db5e5ff64bb3e0127f4b8a57fe0f74a2",
+      "sizeBytes": 673
+    },
+    {
+      "path": "src/modules/practices/api/dto/copy-agenda.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CopyAgendaDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bf65a3ce05838d52d44e9ca2d916f91b81d6677709b745cbe54bc6dd2a8bd8f7",
+      "sizeBytes": 292
+    },
+    {
       "path": "src/modules/practices/api/dto/correct-attendance.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -9103,6 +9307,74 @@
       "kind": "source",
       "hash": "sha256:9ee08d4b63a0251d371792070df022c90fb515fce0bad581a7caf6ee43a78a5a",
       "sizeBytes": 833
+    },
+    {
+      "path": "src/modules/practices/api/dto/create-agenda.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateAgendaDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2ad60fde081769462f5026d432c7ca7e7e9ab2aceaf7d6b93a8f39dc0e7d680f",
+      "sizeBytes": 633
+    },
+    {
+      "path": "src/modules/practices/api/dto/create-block.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateBlockDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:af5f244263b88264cc69d0ecb6cc61e2c78eae07bcab9252b44792fccb1a8969",
+      "sizeBytes": 189
+    },
+    {
+      "path": "src/modules/practices/api/dto/create-drill.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateDrillDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:596b0c8d7a0a421e26c0eb444931db3dc89ca98ea5963c82000bd79765ab9343",
+      "sizeBytes": 400
+    },
+    {
+      "path": "src/modules/practices/api/dto/create-group.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateGroupDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a7fe86bc964d08512979d35b61935bd393642ddc156b5116bbf8f5f687a0e0af",
+      "sizeBytes": 1096
     },
     {
       "path": "src/modules/practices/api/dto/create-schedule.dto.ts",
@@ -9139,6 +9411,57 @@
       "sizeBytes": 2314
     },
     {
+      "path": "src/modules/practices/api/dto/create-station.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateStationDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c6febecec4e55d2fa4faeb98bb9a8db66a12d5d692539029ef05f32857864c99",
+      "sizeBytes": 1658
+    },
+    {
+      "path": "src/modules/practices/api/dto/drill-fields.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DrillFieldsDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ba34ed55b5269cc4effda60888a7fbbec2e9772b5e608ee222af4441bad32401",
+      "sizeBytes": 2740
+    },
+    {
+      "path": "src/modules/practices/api/dto/drill-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DrillResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:45a60da15ac26f33e95afbcd0810eaab49f4b03b0abd98cc94100859cabc75fc",
+      "sizeBytes": 1416
+    },
+    {
       "path": "src/modules/practices/api/dto/finalize-attendance.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -9173,6 +9496,40 @@
       "sizeBytes": 493
     },
     {
+      "path": "src/modules/practices/api/dto/group-member-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GroupMemberResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d921e8123b0759721cadd0cca8d400124ad22b308abf04610e06c8ac4cddc906",
+      "sizeBytes": 218
+    },
+    {
+      "path": "src/modules/practices/api/dto/group-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GroupResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0f0eae2b2e2aa3287d33df46bace8bbed17b0feca65466c40a47df4c1d5422ad",
+      "sizeBytes": 769
+    },
+    {
       "path": "src/modules/practices/api/dto/list-attendance.query.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -9188,6 +9545,40 @@
       "kind": "source",
       "hash": "sha256:188504dd8c3cbae04f9a5031ca20abd8df20062ae77fd9645c436f22862f3f34",
       "sizeBytes": 323
+    },
+    {
+      "path": "src/modules/practices/api/dto/list-drills-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListDrillsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:82cfa37bec61668cdfb263346911ac71b990d1c1c41d54584800591431fe4901",
+      "sizeBytes": 454
+    },
+    {
+      "path": "src/modules/practices/api/dto/list-drills.query.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListDrillsQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:52406e4840c2b8b34f8f4ebd0ffa69d1e0c4254916d27e5525a5f3b45878afc4",
+      "sizeBytes": 945
     },
     {
       "path": "src/modules/practices/api/dto/list-query.dto.ts",
@@ -9358,6 +9749,23 @@
       "kind": "source",
       "hash": "sha256:9b0627fa23cd6fd51fd70bee76e4dca8bab0774821cbd3e2cbc9ae7226110d21",
       "sizeBytes": 418
+    },
+    {
+      "path": "src/modules/practices/api/dto/reorder-blocks.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReorderBlocksDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5a00e2714aa1e51857f6c2111ce7e63e33f7ca315715755524dc9cad1770e82f",
+      "sizeBytes": 1066
     },
     {
       "path": "src/modules/practices/api/dto/reschedule-session.dto.ts",
@@ -9581,6 +9989,23 @@
       "sizeBytes": 1393
     },
     {
+      "path": "src/modules/practices/api/dto/station-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StationResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c55e942b6292111823bd321296149707c13d3ffd680bd0c9bdb953e293f306b4",
+      "sizeBytes": 1068
+    },
+    {
       "path": "src/modules/practices/api/dto/status-event-response.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -9596,6 +10021,40 @@
       "kind": "source",
       "hash": "sha256:4aeacb8fa1cd951bae2009319ff1255000981a3b00bfe5daa73f59f03c94044c",
       "sizeBytes": 728
+    },
+    {
+      "path": "src/modules/practices/api/dto/update-block.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateBlockDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e2b827f6d788178858c4ae1fcfc7ffc9e91f48b1e2b5918364675143aaec2950",
+      "sizeBytes": 529
+    },
+    {
+      "path": "src/modules/practices/api/dto/update-drill.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateDrillDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:843cddbb795aa757ff1bf04834fed5d46f8cd987eb00c363a38f19c6122f6447",
+      "sizeBytes": 529
     },
     {
       "path": "src/modules/practices/api/dto/update-schedule.dto.ts",
@@ -9630,6 +10089,23 @@
       "kind": "source",
       "hash": "sha256:d2284dcc992bba87f1720984d225bb18f8ac65df4cf0019175eb1a5d57e24ad8",
       "sizeBytes": 1369
+    },
+    {
+      "path": "src/modules/practices/api/practice-agenda.controller.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeAgendaController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a91f9ec9a79adca8d4c5b5b69328599f85e84f5219d38bfab7ca19ec4c1dfc9e",
+      "sizeBytes": 5851
     },
     {
       "path": "src/modules/practices/api/practice-rsvp.controller.ts",
@@ -9681,6 +10157,180 @@
       "kind": "source",
       "hash": "sha256:d7dcbc3e250ba686caba0ac1762f496cef9995520cd0234bf744ebc88be94ea6",
       "sizeBytes": 9244
+    },
+    {
+      "path": "src/modules/practices/application/agenda-admin.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:24714f803d0cd599bfcb923fc277317386b4d2d385f1d91649ff8bc53010a5c2",
+      "sizeBytes": 2743
+    },
+    {
+      "path": "src/modules/practices/application/agenda-admin.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaAdminService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/agenda-admin.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:23650eeef4e3852674e7dbc81cefb62216cfe0e3c30a0b4b435089cfe16362a7",
+      "sizeBytes": 3840
+    },
+    {
+      "path": "src/modules/practices/application/agenda-block.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0a3055ce87c267d4129f28f03de7bfbf56348cf47cb82ce81fc4e085770011b6",
+      "sizeBytes": 5764
+    },
+    {
+      "path": "src/modules/practices/application/agenda-block.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaBlockService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/agenda-block.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b27323cccf8799087701cf2036d94332d78db73d680ee820cfa93c68e966ed82",
+      "sizeBytes": 8638
+    },
+    {
+      "path": "src/modules/practices/application/agenda-group.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:016b6612eacf158c3b7d36c3cc10b5456bd4d5f8ba9d100880b38f3ac84d72ad",
+      "sizeBytes": 4364
+    },
+    {
+      "path": "src/modules/practices/application/agenda-group.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaGroupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/agenda-group.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0255b695150f8bf90075226d83ae47a323e8ebb8c94dbde076d2c3dbb0512f6a",
+      "sizeBytes": 8751
+    },
+    {
+      "path": "src/modules/practices/application/agenda-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9845dd4307deeefa7c9241ca5abbb20236d72a6305803015b996882d40bab54d",
+      "sizeBytes": 3284
+    },
+    {
+      "path": "src/modules/practices/application/agenda-lookup.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/agenda-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b49a1f10163f45a08fe7640e72f0d8e59db9259cef26b05ded44a163bc09fe04",
+      "sizeBytes": 2887
+    },
+    {
+      "path": "src/modules/practices/application/agenda-query.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:90dbcb6e111ad62e7ff54c790093c392a7cd8fcbd173f4777b9d027f3b1d1440",
+      "sizeBytes": 2630
+    },
+    {
+      "path": "src/modules/practices/application/agenda-query.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/agenda-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1c12ab576ca954d532cfceb704339801da6570fc0b15db2b612ecdf01c550f3a",
+      "sizeBytes": 3733
+    },
+    {
+      "path": "src/modules/practices/application/agenda-station.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9e74a33d0e50343706d60ae6b0385c1af2a125ef54fcb7ad37a8a3255ef741c0",
+      "sizeBytes": 4528
+    },
+    {
+      "path": "src/modules/practices/application/agenda-station.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaStationService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/agenda-station.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4c2a17025d7b41ee69eda23b142769fc4a47a1454700a8e067388cf83bdf1d3d",
+      "sizeBytes": 6815
     },
     {
       "path": "src/modules/practices/application/archive-practice-schedule.use-case.spec.ts",
@@ -9799,6 +10449,64 @@
       "sizeBytes": 2499
     },
     {
+      "path": "src/modules/practices/application/complete-agenda.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4849840a2602b90ed58b586fd1e29a6a2f684a9c440c1541c3b7892eb648c14f",
+      "sizeBytes": 2792
+    },
+    {
+      "path": "src/modules/practices/application/complete-agenda.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompleteAgendaUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/complete-agenda.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:92568df010652a29d9d57272ae592a7c4f632a5eadbd2e4de67cf4de234c2378",
+      "sizeBytes": 3668
+    },
+    {
+      "path": "src/modules/practices/application/copy-agenda.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5e1c0bb60d98710d214ee296c318dd89eab2883d49f19ef5f054d3377357244b",
+      "sizeBytes": 5109
+    },
+    {
+      "path": "src/modules/practices/application/copy-agenda.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CopyAgendaUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/copy-agenda.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1e2d9eee6b3d60d24c163035eb420e99cac26223394a95f86fa37bd1ac39dc92",
+      "sizeBytes": 8503
+    },
+    {
       "path": "src/modules/practices/application/correct-attendance.use-case.spec.ts",
       "root": "modules",
       "module": "practices",
@@ -9884,6 +10592,64 @@
       "kind": "source",
       "hash": "sha256:0c552ace86508992e183b765252751763994a71a1ff6db861c6b82a2af34e23c",
       "sizeBytes": 5050
+    },
+    {
+      "path": "src/modules/practices/application/drill-catalog.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bb97dce7c8180572fe89a7fb52892518862161ecf0ac15849fac0a08fddcb68a",
+      "sizeBytes": 4953
+    },
+    {
+      "path": "src/modules/practices/application/drill-catalog.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DrillCatalogService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/drill-catalog.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9e4457d33c00aeb4fcc2d2c1d08064590e2e480af3a6c5a6278bab22b2150bf4",
+      "sizeBytes": 5510
+    },
+    {
+      "path": "src/modules/practices/application/drill-query.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:64b558b8f17b260210f1d60b4d65e6e6f77c09fd47bf5cbe0f3576fb56e91b21",
+      "sizeBytes": 2030
+    },
+    {
+      "path": "src/modules/practices/application/drill-query.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DrillQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/drill-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:429b324d3751bbc8aa2e60e0724ba8f0cffd7e5b10072009afaa74a5db57cfa3",
+      "sizeBytes": 2159
     },
     {
       "path": "src/modules/practices/application/finalize-attendance.use-case.spec.ts",
@@ -10031,6 +10797,35 @@
       "sizeBytes": 1721
     },
     {
+      "path": "src/modules/practices/application/publish-agenda.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4e8f6ce48f79a2ff095bbb60f8cd46d31e8fc7702b14e687775164e5014f1206",
+      "sizeBytes": 3075
+    },
+    {
+      "path": "src/modules/practices/application/publish-agenda.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublishAgendaUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/publish-agenda.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7684327af179aa311866005a81ee015a92707841bdeb98d3e198be639b248631",
+      "sizeBytes": 4112
+    },
+    {
       "path": "src/modules/practices/application/record-attendance.use-case.spec.ts",
       "root": "modules",
       "module": "practices",
@@ -10058,6 +10853,35 @@
       "kind": "source",
       "hash": "sha256:d7e62398715c8c0dfc28d648d03925c9a8af4cea569a152c3f488d6199b941e4",
       "sizeBytes": 5894
+    },
+    {
+      "path": "src/modules/practices/application/reorder-agenda-blocks.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7f096c040653844ff283b39a15b82fa63b976ca444b8c014d30c8322d01be96e",
+      "sizeBytes": 3471
+    },
+    {
+      "path": "src/modules/practices/application/reorder-agenda-blocks.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReorderAgendaBlocksUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/reorder-agenda-blocks.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:85c257ef68f27b55e06de6c3f0cc55ef3a3a927c33ba12e5a06eb35e51521aa5",
+      "sizeBytes": 3897
     },
     {
       "path": "src/modules/practices/application/reschedule-practice-session.use-case.spec.ts",
@@ -10379,6 +11203,88 @@
       "sizeBytes": 3973
     },
     {
+      "path": "src/modules/practices/domain/agenda-ordering.policy.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:928c39bcdf85f18a8e34d803d979ac95c4dd6cda95d9452df01ee990f7f447cb",
+      "sizeBytes": 1105
+    },
+    {
+      "path": "src/modules/practices/domain/agenda-ordering.policy.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isValidReorder"
+        },
+        {
+          "kind": "function",
+          "name": "toPositionWrites"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/domain/agenda-ordering.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:883ee0c74c8a86f98197cc50192d2b74f792a0c731407d892348b2045e1662ec",
+      "sizeBytes": 1269
+    },
+    {
+      "path": "src/modules/practices/domain/agenda.state-machine.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c8c636e0a5bfede6a8a6167950a68fe9763875d4fb7f9ac3901575b1d6a92dbc",
+      "sizeBytes": 1991
+    },
+    {
+      "path": "src/modules/practices/domain/agenda.state-machine.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransition"
+        },
+        {
+          "kind": "function",
+          "name": "canEditStructure"
+        },
+        {
+          "kind": "function",
+          "name": "canPublish"
+        },
+        {
+          "kind": "function",
+          "name": "canComplete"
+        },
+        {
+          "kind": "function",
+          "name": "canRecordExecution"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/domain/agenda.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ad677794d52e1a9de0826d65b68f37ecb5823ade13ec28aa7c20e95887b216e0",
+      "sizeBytes": 2120
+    },
+    {
       "path": "src/modules/practices/domain/attendance-scoring.policy.spec.ts",
       "root": "modules",
       "module": "practices",
@@ -10666,6 +11572,74 @@
       "sizeBytes": 1163
     },
     {
+      "path": "src/modules/practices/errors/agenda-block-not-found.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaBlockNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:301284ff200f8dfd05103b71a53e0f369683339c28e63e2b51197a5558b28655",
+      "sizeBytes": 433
+    },
+    {
+      "path": "src/modules/practices/errors/agenda-group-not-found.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaGroupNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2dd81906e4c66c25ccd0a835a831ea48ef23f5e16f045da90e97df2dc5347a89",
+      "sizeBytes": 433
+    },
+    {
+      "path": "src/modules/practices/errors/agenda-locked.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaLockedError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8454f2387b892c13084c19d7d79ba8f4eaf775cdea191a439c893e4c719c06c4",
+      "sizeBytes": 557
+    },
+    {
+      "path": "src/modules/practices/errors/agenda-not-found.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:be6a040abb7ef428b67d8774156c62c935e1b26916b06f37fcc66bf812d3403c",
+      "sizeBytes": 403
+    },
+    {
       "path": "src/modules/practices/errors/attendance-locked.error.ts",
       "root": "modules",
       "module": "practices",
@@ -10751,6 +11725,57 @@
       "sizeBytes": 570
     },
     {
+      "path": "src/modules/practices/errors/drill-name-conflict.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DrillNameConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:957164c8007b233a71c62febdaa659dc58214b4b156a6c94829cd2ba0768f07e",
+      "sizeBytes": 558
+    },
+    {
+      "path": "src/modules/practices/errors/drill-not-found.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DrillNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8de574e603dee8fe8b70f953f83c5ac7e25751ebe24d36cbde18cb379f31117e",
+      "sizeBytes": 396
+    },
+    {
+      "path": "src/modules/practices/errors/invalid-agenda-transition.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvalidAgendaTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a42c3767f787db3664ab22b8599c4108fe9c202de6009099de4b2a72ee0acced",
+      "sizeBytes": 549
+    },
+    {
       "path": "src/modules/practices/errors/invalid-attendance-input.error.ts",
       "root": "modules",
       "module": "practices",
@@ -10783,6 +11808,23 @@
       "kind": "source",
       "hash": "sha256:c1699b2a9cc5ba2996fcaafe99ef6dba9a3c4636af4accdd414f6be671316146",
       "sizeBytes": 643
+    },
+    {
+      "path": "src/modules/practices/errors/invalid-reorder.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvalidReorderError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e0da5343f1192006eb993dda337de66bb48b8d990de234c189b2417c6c608982",
+      "sizeBytes": 568
     },
     {
       "path": "src/modules/practices/errors/invalid-schedule.error.ts",
@@ -11018,6 +12060,57 @@
       "sizeBytes": 54
     },
     {
+      "path": "src/modules/practices/infrastructure/agenda-block.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaBlockRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6549e6ff03b52e0bb80193cdbbd4a39abf18d9e1689934aadc59afc6c41fbee1",
+      "sizeBytes": 7328
+    },
+    {
+      "path": "src/modules/practices/infrastructure/agenda-group.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaGroupRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:01689d0cde0d068caafe2a2d04ad69c75644eccc1c34314b7e84ab9da734f738",
+      "sizeBytes": 5261
+    },
+    {
+      "path": "src/modules/practices/infrastructure/agenda-station.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AgendaStationRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b9d040e21b265477826552f023f94cae900eedef204795cd5a763108da082817",
+      "sizeBytes": 3508
+    },
+    {
       "path": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
       "root": "modules",
       "module": "practices",
@@ -11101,6 +12194,40 @@
       "kind": "source",
       "hash": "sha256:94ac53297c9d1567b55a0c04d8305fdb38076380fb516985d1ebce39b4833549",
       "sizeBytes": 3912
+    },
+    {
+      "path": "src/modules/practices/infrastructure/drill.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DrillRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a4bec0545d0f292a19b18481a0a0e890750d43380770fe61edac4fb939e47e2a",
+      "sizeBytes": 6690
+    },
+    {
+      "path": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeAgendaRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3f408b5653b57b290646aec1b3f88e9ee3c835a46fee4a20298147bdb3f7d65c",
+      "sizeBytes": 4677
     },
     {
       "path": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
@@ -11220,6 +12347,217 @@
       "kind": "source",
       "hash": "sha256:295462394a59f542954e61c27ba61b4657f3b4abef9609e3e25cea4418b92726",
       "sizeBytes": 2238
+    },
+    {
+      "path": "src/modules/practices/lib/agendas.builders.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:05eb5855dcbc18b6a29950b0857c4357aa8b5db8f232101aa76f4114d7f9e16d",
+      "sizeBytes": 7449
+    },
+    {
+      "path": "src/modules/practices/lib/agendas.builders.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewDrill"
+        },
+        {
+          "kind": "function",
+          "name": "buildDrillUpdate"
+        },
+        {
+          "kind": "function",
+          "name": "buildDrillAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewAgenda"
+        },
+        {
+          "kind": "function",
+          "name": "buildAgendaLifecycleWrite"
+        },
+        {
+          "kind": "function",
+          "name": "buildAgendaAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildAgendaChildAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildAgendaEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewBlock"
+        },
+        {
+          "kind": "function",
+          "name": "buildBlockUpdate"
+        },
+        {
+          "kind": "function",
+          "name": "buildBlockCompletion"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewStation"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewGroup"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewGroupMember"
+        },
+        {
+          "kind": "function",
+          "name": "toBlockCommand"
+        },
+        {
+          "kind": "function",
+          "name": "toGroupCommand"
+        },
+        {
+          "kind": "function",
+          "name": "toStationCommand"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/agendas.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0d3324ec1de777aa6241462c5c166b0ddf9e54a84424420316771c715a9fed82",
+      "sizeBytes": 7497
+    },
+    {
+      "path": "src/modules/practices/lib/agendas.helpers.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5a1622ba5a9487dc3e0bd8e5c833bd2703060c3eef7cb29237357a42fb74d2f8",
+      "sizeBytes": 2166
+    },
+    {
+      "path": "src/modules/practices/lib/agendas.helpers.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "parseDrillCategory"
+        },
+        {
+          "kind": "function",
+          "name": "parseDrillIntensity"
+        },
+        {
+          "kind": "function",
+          "name": "parseNullableIntensity"
+        },
+        {
+          "kind": "function",
+          "name": "parseDrillStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseAgendaStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseBlockType"
+        },
+        {
+          "kind": "function",
+          "name": "parseCompletionStatus"
+        },
+        {
+          "kind": "function",
+          "name": "coalesceStrings"
+        },
+        {
+          "kind": "function",
+          "name": "resolveDrillsQuery"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/agendas.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:58bbe373cf7b0a1ccb4998d0483ef894b5e144fb1a1e68248310c51fd3b827d3",
+      "sizeBytes": 2459
+    },
+    {
+      "path": "src/modules/practices/lib/agendas.mapper.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:684da2068d13240d1ce62690d3830ef7d8fef433861f190d99edfa4bf39f7dc8",
+      "sizeBytes": 4586
+    },
+    {
+      "path": "src/modules/practices/lib/agendas.mapper.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toDrillView"
+        },
+        {
+          "kind": "function",
+          "name": "toListDrillsView"
+        },
+        {
+          "kind": "function",
+          "name": "toAgendaSummaryView"
+        },
+        {
+          "kind": "function",
+          "name": "toStationView"
+        },
+        {
+          "kind": "function",
+          "name": "toBlockView"
+        },
+        {
+          "kind": "function",
+          "name": "toGroupView"
+        },
+        {
+          "kind": "function",
+          "name": "emptyAgendaView"
+        },
+        {
+          "kind": "function",
+          "name": "toAgendaView"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/agendas.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:582db5e1f12a7e483081a91bf7fe06febc9477275282dc7217f84d35dd060c98",
+      "sizeBytes": 4758
     },
     {
       "path": "src/modules/practices/lib/attendance.builders.spec.ts",
@@ -11688,6 +13026,734 @@
       "kind": "source",
       "hash": "sha256:606fd1ba191ae5bca4e8c1cf769976863802c75a57693bf9bd5f2e10d9d7661b",
       "sizeBytes": 1883
+    },
+    {
+      "path": "src/modules/practices/model/agendas.constants.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DRILLS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_ARCHIVE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_PLAN_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_COPY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_PUBLISH_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_COMPLETE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_BLOCKS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_BLOCK_REORDER_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_BLOCK_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_BLOCK_COMPLETE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_STATIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_STATION_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_GROUPS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_GROUP_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_GROUP_MEMBERS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_GROUP_MEMBER_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "BLOCK_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "STATION_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "GROUP_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OBJECTIVE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "INSTRUCTIONS_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SAFETY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_URL_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "EQUIPMENT_MAX_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "EQUIPMENT_ITEM_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SKILL_TAGS_MAX_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "SKILL_TAG_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "BLOCK_TITLE_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "BLOCK_TITLE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "STATION_NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "STATION_NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "GROUP_NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "GROUP_NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "GROUP_COLOR_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "THEME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "TARGET_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_NOTES_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "COACH_NOTES_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "DURATION_MINUTES_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "DURATION_MINUTES_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "OFFSET_MINUTES_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "OFFSET_MINUTES_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "REPETITIONS_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "REPETITIONS_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "REORDER_BLOCKS_MIN_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "REORDER_BLOCKS_MAX_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "ASSIGN_MEMBERS_MIN_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "ASSIGN_MEMBERS_MAX_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_BLOCK_SCAN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_STATION_SCAN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_GROUP_SCAN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_GROUP_MEMBER_SCAN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_AGGREGATE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_PUBLISHED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_COMPLETED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_UPDATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_ARCHIVED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_COPIED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_PUBLISHED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_COMPLETED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "BLOCK_ADDED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "BLOCK_UPDATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "BLOCK_REORDERED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "BLOCK_COMPLETED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "BLOCK_REMOVED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "STATION_ADDED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "STATION_REMOVED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "GROUP_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "GROUP_MEMBER_ASSIGNED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "GROUP_MEMBER_REMOVED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "GROUP_REMOVED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "BLOCK_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "STATION_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "GROUP_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "BLOCK_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "STATION_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "GROUP_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "GROUP_MEMBER_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_NAME_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_NAME_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_BLOCK_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_BLOCK_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_GROUP_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_GROUP_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_LOCKED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_LOCKED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_AGENDA_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_AGENDA_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_REORDER_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_REORDER_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6c2436ee1a262b3d3368370193f12cf394bb264cf9b955f41fe1bcdcc960430d",
+      "sizeBytes": 8870
+    },
+    {
+      "path": "src/modules/practices/model/agendas.enums.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "DrillCategory"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_CATEGORY_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "DrillIntensity"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_INTENSITY_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "DrillStatus"
+        },
+        {
+          "kind": "const",
+          "name": "DRILL_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AgendaStatus"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AgendaBlockType"
+        },
+        {
+          "kind": "const",
+          "name": "AGENDA_BLOCK_TYPE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "CompletionStatus"
+        },
+        {
+          "kind": "const",
+          "name": "COMPLETION_STATUS_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:58ae9648f9e04a318613b9923d3ef588d12a148a93f4c28a1597926b7e43d310",
+      "sizeBytes": 2985
+    },
+    {
+      "path": "src/modules/practices/model/agendas.rows.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "DrillRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaBlockRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaStationRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaGroupRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaGroupMemberRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaCountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaBlockIdRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6f72af92943b8ad7e8cef57af7adcdb81d940fe408518ecd5f4a99c9218028a9",
+      "sizeBytes": 3434
+    },
+    {
+      "path": "src/modules/practices/model/agendas.types.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "Drill"
+        },
+        {
+          "kind": "interface",
+          "name": "DrillFields"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateDrillCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdateDrillCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "NewDrill"
+        },
+        {
+          "kind": "interface",
+          "name": "DrillUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "ListDrillsQuery"
+        },
+        {
+          "kind": "interface",
+          "name": "ListDrillsQueryInput"
+        },
+        {
+          "kind": "interface",
+          "name": "ListDrillsResult"
+        },
+        {
+          "kind": "interface",
+          "name": "DrillView"
+        },
+        {
+          "kind": "interface",
+          "name": "ListDrillsView"
+        },
+        {
+          "kind": "interface",
+          "name": "Agenda"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateAgendaCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CopyAgendaCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaVersionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAgenda"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaLifecycleWrite"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaBlock"
+        },
+        {
+          "kind": "interface",
+          "name": "BlockFields"
+        },
+        {
+          "kind": "type",
+          "name": "CreateBlockCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdateBlockCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CompleteBlockCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "ReorderBlocksCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAgendaBlock"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaBlockUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "BlockCompletionWrite"
+        },
+        {
+          "kind": "interface",
+          "name": "BlockPositionWrite"
+        },
+        {
+          "kind": "interface",
+          "name": "BlockView"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaStation"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateStationCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAgendaStation"
+        },
+        {
+          "kind": "interface",
+          "name": "StationView"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaGroup"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateGroupCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAgendaGroup"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaGroupMember"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAgendaGroupMember"
+        },
+        {
+          "kind": "interface",
+          "name": "AssignMembersCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "GroupMemberView"
+        },
+        {
+          "kind": "interface",
+          "name": "GroupView"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaSummaryView"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaView"
+        },
+        {
+          "kind": "interface",
+          "name": "AgendaTreeParts"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c4139d45749a440c33a88e8fa860d03929933b1ff92954651c1d193bd7012c1c",
+      "sizeBytes": 11806
     },
     {
       "path": "src/modules/practices/model/attendance.constants.ts",
@@ -13019,8 +15085,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:3d14eeba6d96f300fefdd27cd1595a1a07b4d71d6612ca879b9edb7193c8b495",
-      "sizeBytes": 5746
+      "hash": "sha256:da271397367e82b6214951a360fb84fd163d37b6c5673297c20dc10da10cd635",
+      "sizeBytes": 7886
     },
     {
       "path": "src/modules/rbac/api/dto/assign-role.dto.ts",
