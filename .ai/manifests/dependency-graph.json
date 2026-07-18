@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T17:40:24.497Z",
+  "generatedAt": "2026-07-18T18:57:02.870Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -1787,6 +1787,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/assessments/api/dto/assessment-value.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/assessment-value.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/assessment-value.dto.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/assessments/api/dto/category-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -1812,6 +1827,26 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/assessments/api/dto/correct-player-assessment.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/correct-player-assessment.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/correct-player-assessment.dto.ts",
+      "to": "src/modules/assessments/api/dto/assessment-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/correct-player-assessment.dto.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/assessments/api/dto/create-metric.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -1844,6 +1879,26 @@
     {
       "from": "src/modules/assessments/api/dto/create-period.dto.ts",
       "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-player-assessment.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-player-assessment.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-player-assessment.dto.ts",
+      "to": "src/modules/assessments/api/dto/assessment-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-player-assessment.dto.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
       "type": "internal"
     },
     {
@@ -1922,6 +1977,26 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/assessments/api/dto/list-player-assessments.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-player-assessments.response.dto.ts",
+      "to": "src/modules/assessments/api/dto/player-assessment-summary-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-published-assessments.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-published-assessments.response.dto.ts",
+      "to": "src/modules/assessments/api/dto/player-published-assessment-response.dto.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/assessments/api/dto/list-scales.response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -1952,6 +2027,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/assessments/api/dto/optimistic-version.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/optimistic-version.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/optimistic-version.dto.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/assessments/api/dto/period-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -1959,6 +2049,56 @@
     {
       "from": "src/modules/assessments/api/dto/period-response.dto.ts",
       "to": "src/modules/assessments/model/assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/player-assessment-record-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/player-assessment-record-response.dto.ts",
+      "to": "src/modules/assessments/model/player-assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/player-assessment-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/player-assessment-response.dto.ts",
+      "to": "src/modules/assessments/api/dto/player-assessment-record-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/player-assessment-response.dto.ts",
+      "to": "src/modules/assessments/api/dto/player-assessment-value-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/player-assessment-summary-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/player-assessment-summary-response.dto.ts",
+      "to": "src/modules/assessments/model/player-assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/player-assessment-value-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/player-published-assessment-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/player-published-assessment-response.dto.ts",
+      "to": "src/modules/assessments/model/player-assessments.enums.ts",
       "type": "internal"
     },
     {
@@ -1974,6 +2114,36 @@
     {
       "from": "src/modules/assessments/api/dto/publish-template.dto.ts",
       "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/review-player-assessment.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/review-player-assessment.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/review-player-assessment.dto.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/review-player-assessment.dto.ts",
+      "to": "src/modules/assessments/model/player-assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/revisions-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/revisions-response.dto.ts",
+      "to": "src/modules/assessments/api/dto/player-assessment-summary-response.dto.ts",
       "type": "internal"
     },
     {
@@ -2023,6 +2193,191 @@
     },
     {
       "from": "src/modules/assessments/api/dto/template-response.dto.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/update-player-assessment.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/update-player-assessment.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/update-player-assessment.dto.ts",
+      "to": "src/modules/assessments/api/dto/assessment-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/update-player-assessment.dto.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment-self.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment-self.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment-self.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment-self.controller.ts",
+      "to": "src/modules/assessments/api/dto/list-catalog.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment-self.controller.ts",
+      "to": "src/modules/assessments/api/dto/list-published-assessments.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment-self.controller.ts",
+      "to": "src/modules/assessments/application/player-assessment-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment-self.controller.ts",
+      "to": "src/modules/assessments/lib/assessments.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment-self.controller.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment-self.controller.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment-self.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/api/dto/correct-player-assessment.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/api/dto/create-player-assessment.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/api/dto/list-catalog.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/api/dto/list-player-assessments.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/api/dto/optimistic-version.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/api/dto/player-assessment-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/api/dto/review-player-assessment.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/api/dto/revisions-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/api/dto/update-player-assessment.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/application/player-assessment-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/lib/assessments.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/player-assessment.controller.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
     },
@@ -2107,6 +2462,71 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/application/player-assessment-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/domain/player-assessment.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/domain/player-assessment.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/invalid-assessment-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/assessments/application/create-metric-version.use-case.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -2267,6 +2687,71 @@
       "type": "cross-module"
     },
     {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/application/assessment-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/domain/player-assessment.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-duplicate.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/assessments/application/create-template-version.use-case.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -2387,6 +2872,116 @@
       "type": "cross-module"
     },
     {
+      "from": "src/modules/assessments/application/player-assessment-lookup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/player-assessment-lookup.service.ts",
+      "to": "src/modules/assessments/errors/player-assessment-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/player-assessment-lookup.service.ts",
+      "to": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/player-assessment-lookup.service.ts",
+      "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/player-assessment-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/player-assessment-query.service.ts",
+      "to": "src/modules/assessments/errors/player-assessment-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/player-assessment-query.service.ts",
+      "to": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/player-assessment-query.service.ts",
+      "to": "src/modules/assessments/lib/player-assessments.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/player-assessment-query.service.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/player-assessment-query.service.ts",
+      "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/application/player-assessment-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/domain/player-assessment.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/invalid-assessment-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/assessments/application/publish-template.use-case.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -2442,6 +3037,221 @@
       "type": "cross-module"
     },
     {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/application/player-assessment-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/domain/player-assessment.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/domain/player-assessment.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/invalid-assessment-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/application/player-assessment-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/domain/player-assessment.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/domain/player-assessment.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/invalid-assessment-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/application/player-assessment-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/domain/player-assessment.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/domain/player-assessment.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/errors/invalid-assessment-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/assessments/assessments.module.ts",
       "to": "src/core/clock/clock.module.ts",
       "type": "cross-cutting"
@@ -2468,6 +3278,16 @@
     },
     {
       "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/api/player-assessment-self.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/api/player-assessment.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
       "to": "src/modules/assessments/application/archive-metric.use-case.ts",
       "type": "internal"
     },
@@ -2479,6 +3299,11 @@
     {
       "from": "src/modules/assessments/assessments.module.ts",
       "to": "src/modules/assessments/application/assessment-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
       "type": "internal"
     },
     {
@@ -2498,6 +3323,11 @@
     },
     {
       "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
       "to": "src/modules/assessments/application/create-template-version.use-case.ts",
       "type": "internal"
     },
@@ -2508,7 +3338,37 @@
     },
     {
       "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/player-assessment-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/player-assessment-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
       "to": "src/modules/assessments/application/publish-template.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/update-player-assessment.use-case.ts",
       "type": "internal"
     },
     {
@@ -2519,6 +3379,11 @@
     {
       "from": "src/modules/assessments/assessments.module.ts",
       "to": "src/modules/assessments/infrastructure/assessment-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
       "type": "internal"
     },
     {
@@ -2542,6 +3407,31 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/assessments/domain/player-assessment.policy.ts",
+      "to": "src/modules/assessments/errors/assessment-incomplete.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/domain/player-assessment.policy.ts",
+      "to": "src/modules/assessments/errors/assessment-self-approval.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/domain/player-assessment.policy.ts",
+      "to": "src/modules/assessments/errors/assessment-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/domain/player-assessment.policy.ts",
+      "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/domain/player-assessment.state-machine.ts",
+      "to": "src/modules/assessments/model/player-assessments.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/assessments/errors/assessment-duplicate.error.ts",
       "to": "src/core/errors/conflict.error.ts",
       "type": "cross-cutting"
@@ -2549,6 +3439,16 @@
     {
       "from": "src/modules/assessments/errors/assessment-duplicate.error.ts",
       "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-incomplete.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-incomplete.error.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
       "type": "internal"
     },
     {
@@ -2579,6 +3479,16 @@
     {
       "from": "src/modules/assessments/errors/assessment-scope-not-found.error.ts",
       "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-self-approval.error.ts",
+      "to": "src/core/errors/forbidden.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-self-approval.error.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
       "type": "internal"
     },
     {
@@ -2622,6 +3532,26 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/assessments/errors/invalid-assessment-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/errors/invalid-assessment-transition.error.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/errors/player-assessment-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/errors/player-assessment-not-found.error.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/assessments/index.ts",
       "to": "src/modules/assessments/assessments.module.ts",
       "type": "internal"
@@ -2662,6 +3592,41 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "to": "src/modules/assessments/lib/player-assessments.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "to": "src/modules/assessments/model/assessments.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "to": "src/modules/assessments/model/player-assessments.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/assessments/lib/assessments.helpers.ts",
       "to": "src/modules/assessments/model/assessments.constants.ts",
       "type": "internal"
@@ -2697,6 +3662,56 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "to": "src/modules/assessments/domain/player-assessment.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "to": "src/modules/assessments/model/player-assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "to": "src/modules/assessments/model/player-assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/assessments/lib/player-assessments.mapper.ts",
+      "to": "src/modules/assessments/model/player-assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/player-assessments.mapper.ts",
+      "to": "src/modules/assessments/model/player-assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/player-assessments.mapper.ts",
+      "to": "src/modules/assessments/model/player-assessments.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/player-assessments.mapper.ts",
+      "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/assessments/model/assessments.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
@@ -2715,6 +3730,21 @@
       "from": "src/modules/assessments/model/assessments.types.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/model/player-assessments.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/model/player-assessments.types.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/model/player-assessments.types.ts",
+      "to": "src/modules/assessments/model/player-assessments.enums.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/auth/adapters/jwt-token.adapter.ts",

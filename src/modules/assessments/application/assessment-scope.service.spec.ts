@@ -9,6 +9,7 @@ function build() {
   const repository = {
     activeTeamExists: vi.fn().mockResolvedValue(true),
     seasonExistsInTeam: vi.fn().mockResolvedValue(true),
+    membershipExistsInTeam: vi.fn().mockResolvedValue(true),
   };
   return {
     repository,
@@ -42,6 +43,19 @@ describe('AssessmentScopeService', () => {
     harness.repository.seasonExistsInTeam.mockResolvedValueOnce(false);
     await expect(
       harness.service.validate(SCOPE, 'team-1', 'season-x'),
+    ).rejects.toBeInstanceOf(AssessmentScopeNotFoundError);
+  });
+
+  it('accepts a membership that belongs to the team', async () => {
+    await expect(
+      harness.service.requireMembership(SCOPE, 'team-1', 'member-1'),
+    ).resolves.toBeUndefined();
+  });
+
+  it('hides a membership outside the team behind not-found', async () => {
+    harness.repository.membershipExistsInTeam.mockResolvedValueOnce(false);
+    await expect(
+      harness.service.requireMembership(SCOPE, 'team-1', 'member-x'),
     ).rejects.toBeInstanceOf(AssessmentScopeNotFoundError);
   });
 });

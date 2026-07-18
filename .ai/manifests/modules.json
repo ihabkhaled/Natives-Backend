@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T17:40:24.497Z",
+  "generatedAt": "2026-07-18T18:57:02.870Z",
   "modules": [
     {
       "name": "articles",
@@ -49,72 +49,109 @@
         "controller": [
           "src/modules/assessments/api/assessment-catalog.controller.ts",
           "src/modules/assessments/api/assessment-period.controller.ts",
-          "src/modules/assessments/api/assessment-template.controller.ts"
+          "src/modules/assessments/api/assessment-template.controller.ts",
+          "src/modules/assessments/api/player-assessment-self.controller.ts",
+          "src/modules/assessments/api/player-assessment.controller.ts"
         ],
         "api-dto": [
           "src/modules/assessments/api/dto/archive-metric.dto.ts",
+          "src/modules/assessments/api/dto/assessment-value.dto.ts",
           "src/modules/assessments/api/dto/category-response.dto.ts",
           "src/modules/assessments/api/dto/category-weight.dto.ts",
+          "src/modules/assessments/api/dto/correct-player-assessment.dto.ts",
           "src/modules/assessments/api/dto/create-metric.dto.ts",
           "src/modules/assessments/api/dto/create-period.dto.ts",
+          "src/modules/assessments/api/dto/create-player-assessment.dto.ts",
           "src/modules/assessments/api/dto/create-template.dto.ts",
           "src/modules/assessments/api/dto/list-catalog.query.dto.ts",
           "src/modules/assessments/api/dto/list-categories.response.dto.ts",
           "src/modules/assessments/api/dto/list-metrics.response.dto.ts",
           "src/modules/assessments/api/dto/list-periods.response.dto.ts",
+          "src/modules/assessments/api/dto/list-player-assessments.response.dto.ts",
+          "src/modules/assessments/api/dto/list-published-assessments.response.dto.ts",
           "src/modules/assessments/api/dto/list-scales.response.dto.ts",
           "src/modules/assessments/api/dto/list-templates.response.dto.ts",
           "src/modules/assessments/api/dto/metric-response.dto.ts",
+          "src/modules/assessments/api/dto/optimistic-version.dto.ts",
           "src/modules/assessments/api/dto/period-response.dto.ts",
+          "src/modules/assessments/api/dto/player-assessment-record-response.dto.ts",
+          "src/modules/assessments/api/dto/player-assessment-response.dto.ts",
+          "src/modules/assessments/api/dto/player-assessment-summary-response.dto.ts",
+          "src/modules/assessments/api/dto/player-assessment-value-response.dto.ts",
+          "src/modules/assessments/api/dto/player-published-assessment-response.dto.ts",
           "src/modules/assessments/api/dto/publish-template.dto.ts",
+          "src/modules/assessments/api/dto/review-player-assessment.dto.ts",
+          "src/modules/assessments/api/dto/revisions-response.dto.ts",
           "src/modules/assessments/api/dto/scale-response.dto.ts",
           "src/modules/assessments/api/dto/template-metric.dto.ts",
-          "src/modules/assessments/api/dto/template-response.dto.ts"
+          "src/modules/assessments/api/dto/template-response.dto.ts",
+          "src/modules/assessments/api/dto/update-player-assessment.dto.ts"
         ],
         "use-case": [
           "src/modules/assessments/application/archive-metric.use-case.ts",
+          "src/modules/assessments/application/correct-player-assessment.use-case.ts",
           "src/modules/assessments/application/create-metric-version.use-case.ts",
           "src/modules/assessments/application/create-metric.use-case.ts",
           "src/modules/assessments/application/create-period.use-case.ts",
+          "src/modules/assessments/application/create-player-assessment.use-case.ts",
           "src/modules/assessments/application/create-template-version.use-case.ts",
           "src/modules/assessments/application/create-template.use-case.ts",
-          "src/modules/assessments/application/publish-template.use-case.ts"
+          "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+          "src/modules/assessments/application/publish-template.use-case.ts",
+          "src/modules/assessments/application/review-player-assessment.use-case.ts",
+          "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+          "src/modules/assessments/application/update-player-assessment.use-case.ts"
         ],
         "service": [
           "src/modules/assessments/application/assessment-query.service.ts",
-          "src/modules/assessments/application/assessment-scope.service.ts"
+          "src/modules/assessments/application/assessment-scope.service.ts",
+          "src/modules/assessments/application/player-assessment-lookup.service.ts",
+          "src/modules/assessments/application/player-assessment-query.service.ts"
         ],
         "other": [
           "src/modules/assessments/assessments.module.ts",
           "src/modules/assessments/errors/assessment-duplicate.error.ts",
+          "src/modules/assessments/errors/assessment-incomplete.error.ts",
           "src/modules/assessments/errors/assessment-metric-in-use.error.ts",
           "src/modules/assessments/errors/assessment-metric-not-found.error.ts",
           "src/modules/assessments/errors/assessment-scope-not-found.error.ts",
+          "src/modules/assessments/errors/assessment-self-approval.error.ts",
           "src/modules/assessments/errors/assessment-template-locked.error.ts",
           "src/modules/assessments/errors/assessment-template-not-found.error.ts",
           "src/modules/assessments/errors/assessment-validation.error.ts",
           "src/modules/assessments/errors/assessment-version-conflict.error.ts",
+          "src/modules/assessments/errors/invalid-assessment-transition.error.ts",
+          "src/modules/assessments/errors/player-assessment-not-found.error.ts",
           "src/modules/assessments/index.ts"
         ],
         "domain": [
-          "src/modules/assessments/domain/assessment-catalog.policy.ts"
+          "src/modules/assessments/domain/assessment-catalog.policy.ts",
+          "src/modules/assessments/domain/player-assessment.policy.ts",
+          "src/modules/assessments/domain/player-assessment.state-machine.ts"
         ],
         "repository": [
           "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
-          "src/modules/assessments/infrastructure/assessment-scope.repository.ts"
+          "src/modules/assessments/infrastructure/assessment-scope.repository.ts",
+          "src/modules/assessments/infrastructure/player-assessment.repository.ts"
         ],
         "lib": [
-          "src/modules/assessments/lib/assessments.helpers.ts"
+          "src/modules/assessments/lib/assessments.helpers.ts",
+          "src/modules/assessments/lib/player-assessments.builders.ts",
+          "src/modules/assessments/lib/player-assessments.mapper.ts"
         ],
         "model": [
           "src/modules/assessments/model/assessments.constants.ts",
           "src/modules/assessments/model/assessments.enums.ts",
           "src/modules/assessments/model/assessments.rows.ts",
-          "src/modules/assessments/model/assessments.types.ts"
+          "src/modules/assessments/model/assessments.types.ts",
+          "src/modules/assessments/model/player-assessments.constants.ts",
+          "src/modules/assessments/model/player-assessments.enums.ts",
+          "src/modules/assessments/model/player-assessments.rows.ts",
+          "src/modules/assessments/model/player-assessments.types.ts"
         ]
       },
-      "fileCount": 48,
-      "specCount": 13,
+      "fileCount": 85,
+      "specCount": 25,
       "publicSurface": "src/modules/assessments/index.ts",
       "hasEvents": false
     },

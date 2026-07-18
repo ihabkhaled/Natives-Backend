@@ -28,4 +28,17 @@ export class AssessmentScopeRepository {
     );
     return rows.length > 0;
   }
+
+  async membershipExistsInTeam(
+    scope: TransactionScope,
+    teamId: string,
+    membershipId: string,
+  ): Promise<boolean> {
+    const rows = await scope.run<IdRow>(
+      `SELECT "id" FROM "memberships"
+        WHERE "id" = $1 AND "team_id" = $2 AND "deleted_at" IS NULL`,
+      [membershipId, teamId],
+    );
+    return rows.length > 0;
+  }
 }

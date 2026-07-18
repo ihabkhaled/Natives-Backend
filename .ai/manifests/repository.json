@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-18T17:40:24.497Z",
-  "treeHash": "sha256:b1a5e72812e64392205e1fc8e608d56d9f85f33eeedb59bd998bc8b38b8e24bf",
+  "generatedAt": "2026-07-18T18:57:02.870Z",
+  "treeHash": "sha256:9f7f9e2aa339bae7ddf43b3e13ec4a8d7835df2060f37b5ea5f0e9353e1621a9",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -3015,6 +3015,23 @@
       "sizeBytes": 21336
     },
     {
+      "path": "src/database/migrations/1722400000000-player-assessment-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerAssessmentSchema1722400000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ce89206f5498a670006016bd7ae999f225bcc7c5b7b6d7e2b3b4a3d0a9a61b54",
+      "sizeBytes": 7984
+    },
+    {
       "path": "src/database/migrations/assessment-catalog-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3025,6 +3042,18 @@
       "kind": "spec",
       "hash": "sha256:0f6c3bf81874acafc5f342e970f39831e90b091abf3b8ffbdc18aeb8794dc027",
       "sizeBytes": 3116
+    },
+    {
+      "path": "src/database/migrations/player-assessment-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:16e0ed51c653f3c8958f7cb76ac871d7664e3b9c284f00f48392e005943373d7",
+      "sizeBytes": 2217
     },
     {
       "path": "src/database/migrations/practice-reminders-calendar-schema.spec.ts",
@@ -3765,6 +3794,23 @@
       "sizeBytes": 315
     },
     {
+      "path": "src/modules/assessments/api/dto/assessment-value.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentValueDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0aeabc5c60f897b5bc3914b39cbcf83cc944129d381c559fb316d84b724c02d8",
+      "sizeBytes": 1616
+    },
+    {
       "path": "src/modules/assessments/api/dto/category-response.dto.ts",
       "root": "modules",
       "module": "assessments",
@@ -3799,6 +3845,23 @@
       "sizeBytes": 687
     },
     {
+      "path": "src/modules/assessments/api/dto/correct-player-assessment.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CorrectPlayerAssessmentDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2682a2870f414224736bed84f318a9e879feba198425764d0b3d62388367bdcc",
+      "sizeBytes": 1276
+    },
+    {
       "path": "src/modules/assessments/api/dto/create-metric.dto.ts",
       "root": "modules",
       "module": "assessments",
@@ -3831,6 +3894,23 @@
       "kind": "source",
       "hash": "sha256:5ba6a0a6132cdc41fd1d0c9b14e2fcf97a31f25b42382e0378511c502e91a775",
       "sizeBytes": 1376
+    },
+    {
+      "path": "src/modules/assessments/api/dto/create-player-assessment.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreatePlayerAssessmentDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cef7d2f602a0fb9d715c3c39961981824a7272f73192d9df217bdb0e840be136",
+      "sizeBytes": 1226
     },
     {
       "path": "src/modules/assessments/api/dto/create-template.dto.ts",
@@ -3918,6 +3998,40 @@
       "sizeBytes": 405
     },
     {
+      "path": "src/modules/assessments/api/dto/list-player-assessments.response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListPlayerAssessmentsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:50e087641a0deaabcfbccd5001a7bbb3611c9ec55fb51f9dc5e413dda5e1c434",
+      "sizeBytes": 546
+    },
+    {
+      "path": "src/modules/assessments/api/dto/list-published-assessments.response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListPublishedAssessmentsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5c9690247e478fd226940871d4cd0a59e22257ac713d129764d1a761e8484c99",
+      "sizeBytes": 572
+    },
+    {
       "path": "src/modules/assessments/api/dto/list-scales.response.dto.ts",
       "root": "modules",
       "module": "assessments",
@@ -3969,6 +4083,23 @@
       "sizeBytes": 1914
     },
     {
+      "path": "src/modules/assessments/api/dto/optimistic-version.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OptimisticVersionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:47a8a1cf868863864d2b977b77ae383e42423a7b1af0cc43e39b01b9e959d79e",
+      "sizeBytes": 468
+    },
+    {
       "path": "src/modules/assessments/api/dto/period-response.dto.ts",
       "root": "modules",
       "module": "assessments",
@@ -3986,6 +4117,95 @@
       "sizeBytes": 1122
     },
     {
+      "path": "src/modules/assessments/api/dto/player-assessment-record-response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerAssessmentRecordResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6489f0a4d88b69353e55e2ef8776ec39057230fd7ce8f14925cb534cf8a80136",
+      "sizeBytes": 2402
+    },
+    {
+      "path": "src/modules/assessments/api/dto/player-assessment-response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerAssessmentResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:470b4630ad04c51c3cb74537c2f87a35d6ae07e0f38632814b523d0fabc5d3ab",
+      "sizeBytes": 618
+    },
+    {
+      "path": "src/modules/assessments/api/dto/player-assessment-summary-response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerAssessmentSummaryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3164e8693ed5e852fb929787ce19f74c1afd9affbd8a8040964f21db68273dfe",
+      "sizeBytes": 1123
+    },
+    {
+      "path": "src/modules/assessments/api/dto/player-assessment-value-response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerAssessmentValueResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6b7deb9288ca68ab4ed0c55cbaa3e3792d9ed0be3dfe4086c02f770a25a6c117",
+      "sizeBytes": 739
+    },
+    {
+      "path": "src/modules/assessments/api/dto/player-published-assessment-response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerPublishedValueResponseDto"
+        },
+        {
+          "kind": "class",
+          "name": "PlayerPublishedAssessmentResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f5db914c77b038fca65f9c57e60d93682cbdfebf75eeed814774d5d62d56e2e1",
+      "sizeBytes": 1529
+    },
+    {
       "path": "src/modules/assessments/api/dto/publish-template.dto.ts",
       "root": "modules",
       "module": "assessments",
@@ -4001,6 +4221,40 @@
       "kind": "source",
       "hash": "sha256:7c2c0b8b7f317490793b5ab21877b9b8357a26ef26fba88b7abfc879e5a20105",
       "sizeBytes": 317
+    },
+    {
+      "path": "src/modules/assessments/api/dto/review-player-assessment.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReviewPlayerAssessmentDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4f87da8f1c22f7f110293389f5b68fd3835cdeb4108b9f2fdf773f44e88ceca0",
+      "sizeBytes": 967
+    },
+    {
+      "path": "src/modules/assessments/api/dto/revisions-response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RevisionsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c67adeee39db64c11fbff940d1ac92392f27d7a23fd2ee06a151665172ce8510",
+      "sizeBytes": 388
     },
     {
       "path": "src/modules/assessments/api/dto/scale-response.dto.ts",
@@ -4052,6 +4306,57 @@
       "kind": "source",
       "hash": "sha256:4c78cb600973895383debc5aedabce7f6946b443ceeadefcfc0e10080d836b42",
       "sizeBytes": 2062
+    },
+    {
+      "path": "src/modules/assessments/api/dto/update-player-assessment.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdatePlayerAssessmentDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0a688cd32099be581bf08d10098385502b48722c8e691bf8728db56371f90cdf",
+      "sizeBytes": 1142
+    },
+    {
+      "path": "src/modules/assessments/api/player-assessment-self.controller.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerAssessmentSelfController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e2bfa18c66e18ebbc4926b618e150491e22a648b92fb1bb97e18cfaaea34d3fa",
+      "sizeBytes": 1971
+    },
+    {
+      "path": "src/modules/assessments/api/player-assessment.controller.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerAssessmentController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4e4cd1990ff9c4af009c898edd6184eae3d92a8bf0337d83860ee4832359bc37",
+      "sizeBytes": 10241
     },
     {
       "path": "src/modules/assessments/application/archive-metric.use-case.spec.ts",
@@ -4120,8 +4425,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:790f750e373d498d3b761d9cd8b776642a47062ab9b3155cad698a5f49a7d3ed",
-      "sizeBytes": 1529
+      "hash": "sha256:c65b1eb1a60c0a22bc3acb1ac00bf32c84ee750f6e75634998d12da3b260bf41",
+      "sizeBytes": 2091
     },
     {
       "path": "src/modules/assessments/application/assessment-scope.service.ts",
@@ -4137,8 +4442,37 @@
       "hasSpec": true,
       "specPath": "src/modules/assessments/application/assessment-scope.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:a44bf164b53973542473d5a2dbf2f9b3e9353e6fa026ecb2f5cbf74e5f73cac1",
-      "sizeBytes": 850
+      "hash": "sha256:2a29e148c394e71843703d720c92d6fcb7c989fd6bfe13baeee5ff16d4d4eb50",
+      "sizeBytes": 1165
+    },
+    {
+      "path": "src/modules/assessments/application/correct-player-assessment.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bd16468c004a0bb68656fd10bbbc7c104067a5516f47b1ca3ad35c74f6137fad",
+      "sizeBytes": 4547
+    },
+    {
+      "path": "src/modules/assessments/application/correct-player-assessment.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CorrectPlayerAssessmentUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/correct-player-assessment.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8beff3a9864a69e339b8c997d00041141b837591f9e8949d37edba1247900892",
+      "sizeBytes": 4736
     },
     {
       "path": "src/modules/assessments/application/create-metric-version.use-case.spec.ts",
@@ -4228,6 +4562,35 @@
       "sizeBytes": 3693
     },
     {
+      "path": "src/modules/assessments/application/create-player-assessment.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:73b18354d7007a91285bf5cc379c6efbc922645c03e31dd8ba69c237ba37f897",
+      "sizeBytes": 4751
+    },
+    {
+      "path": "src/modules/assessments/application/create-player-assessment.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreatePlayerAssessmentUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/create-player-assessment.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:dc889f8ba9c31f409e65d2e977aa4767621e873bd03443b1cdc6d4acfea0b43a",
+      "sizeBytes": 4804
+    },
+    {
       "path": "src/modules/assessments/application/create-template-version.use-case.spec.ts",
       "root": "modules",
       "module": "assessments",
@@ -4286,6 +4649,93 @@
       "sizeBytes": 4391
     },
     {
+      "path": "src/modules/assessments/application/player-assessment-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:42d10d4f8852d24706c9322ba86c6811e0534636b8721088c912646c9b524d6d",
+      "sizeBytes": 2224
+    },
+    {
+      "path": "src/modules/assessments/application/player-assessment-lookup.service.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerAssessmentLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/player-assessment-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a04f715c519a04ff1a4d4be278c2bea10910d18173a980d11969ebf4e9a9a6f1",
+      "sizeBytes": 1307
+    },
+    {
+      "path": "src/modules/assessments/application/player-assessment-query.service.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5b059cfb9c3adc4fb2f7008f310378d4234da03fcf10cb0b3f068b1cc39f6d3d",
+      "sizeBytes": 4053
+    },
+    {
+      "path": "src/modules/assessments/application/player-assessment-query.service.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerAssessmentQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/player-assessment-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ce6fc52815fad39523e564de8d1db1b1188cb3a5a9d1c1a91af3bbd6c6e7ed0f",
+      "sizeBytes": 3865
+    },
+    {
+      "path": "src/modules/assessments/application/publish-player-assessment.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4323af1ed076d3fe60623fd57b39fe55e66d13c48ef0c225594845d093cc8588",
+      "sizeBytes": 3291
+    },
+    {
+      "path": "src/modules/assessments/application/publish-player-assessment.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublishPlayerAssessmentUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/publish-player-assessment.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9dcb9dcd214c2ab22b77dbc55a35923530e6ee4efb65482eec06c72b711aa2f8",
+      "sizeBytes": 3812
+    },
+    {
       "path": "src/modules/assessments/application/publish-template.use-case.spec.ts",
       "root": "modules",
       "module": "assessments",
@@ -4315,6 +4765,93 @@
       "sizeBytes": 3362
     },
     {
+      "path": "src/modules/assessments/application/review-player-assessment.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:93bf55ca22640d0e4cd1f120cca9215d2ea18e5c05dd4db4a1a5670174bc79ef",
+      "sizeBytes": 4352
+    },
+    {
+      "path": "src/modules/assessments/application/review-player-assessment.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReviewPlayerAssessmentUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/review-player-assessment.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5effecea6afbcbc54b791bfd90c137b14688708fb74ab9031ecfaea3ab67e464",
+      "sizeBytes": 4194
+    },
+    {
+      "path": "src/modules/assessments/application/submit-player-assessment.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:82af67ab727e17d8647947b6bdd9ed18fe5a71181856d475c17ef2657d2cb8ad",
+      "sizeBytes": 4401
+    },
+    {
+      "path": "src/modules/assessments/application/submit-player-assessment.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SubmitPlayerAssessmentUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/submit-player-assessment.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1867074807d302f37391db69981f81c747426b7d49bcdd4700cf375cb042e818",
+      "sizeBytes": 4661
+    },
+    {
+      "path": "src/modules/assessments/application/update-player-assessment.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ac12043aa013ee094153857eb38cf217252880b80493a3f23bc932c10191f7ef",
+      "sizeBytes": 4005
+    },
+    {
+      "path": "src/modules/assessments/application/update-player-assessment.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdatePlayerAssessmentUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/update-player-assessment.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:48164d4beac88a5cdfd5f0f6af5cd9aa110ae1f525478c579b361b172b8a79db",
+      "sizeBytes": 4718
+    },
+    {
       "path": "src/modules/assessments/assessments.module.ts",
       "root": "modules",
       "module": "assessments",
@@ -4328,8 +4865,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:055a98e981ef003bbf74b8ae2a863d39576d75ab540066b2c9bcb1f941ee7141",
-      "sizeBytes": 2511
+      "hash": "sha256:bdf0853d7d57b1fe9edf73153adaeff5586d5ac2b72e54f4f43c936a88463984",
+      "sizeBytes": 3931
     },
     {
       "path": "src/modules/assessments/domain/assessment-catalog.policy.spec.ts",
@@ -4369,6 +4906,100 @@
       "sizeBytes": 1578
     },
     {
+      "path": "src/modules/assessments/domain/player-assessment.policy.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:943ef0d3686774297116a0102ca84edbd7149c6fc20fbdc26acef1189768091d",
+      "sizeBytes": 4343
+    },
+    {
+      "path": "src/modules/assessments/domain/player-assessment.policy.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isMeasured"
+        },
+        {
+          "kind": "function",
+          "name": "assertValuesAgainstTemplate"
+        },
+        {
+          "kind": "function",
+          "name": "assertComplete"
+        },
+        {
+          "kind": "function",
+          "name": "assertReviewerIndependence"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/domain/player-assessment.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ba22da2ca7ada97c741daf7e9fa51361ea12a1dcfe51bef9c8d107528290315b",
+      "sizeBytes": 3172
+    },
+    {
+      "path": "src/modules/assessments/domain/player-assessment.state-machine.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:38d0e74a22797f98af37ed3fff4be0ea9cd5ebc05205dea929865c130af8c13a",
+      "sizeBytes": 4022
+    },
+    {
+      "path": "src/modules/assessments/domain/player-assessment.state-machine.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransition"
+        },
+        {
+          "kind": "function",
+          "name": "canEditDraft"
+        },
+        {
+          "kind": "function",
+          "name": "canPublish"
+        },
+        {
+          "kind": "function",
+          "name": "canCorrect"
+        },
+        {
+          "kind": "function",
+          "name": "resolveReviewTarget"
+        },
+        {
+          "kind": "function",
+          "name": "reviewNeedsIndependence"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/domain/player-assessment.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a5ad1df2a6369c1a490a04216d12aee2cbad7199cb191d03e7a5e963254ddfbf",
+      "sizeBytes": 3188
+    },
+    {
       "path": "src/modules/assessments/errors/assessment-duplicate.error.ts",
       "root": "modules",
       "module": "assessments",
@@ -4384,6 +5015,23 @@
       "kind": "source",
       "hash": "sha256:f3d0cc5d62f4bec9bc74472516416b3a650bc68801178c97b474aab60a15e14b",
       "sizeBytes": 342
+    },
+    {
+      "path": "src/modules/assessments/errors/assessment-incomplete.error.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentIncompleteError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:69862d674cad7f1ca43b1375667045f065e87343d7f3e6648c8419c827614fe1",
+      "sizeBytes": 360
     },
     {
       "path": "src/modules/assessments/errors/assessment-metric-in-use.error.ts",
@@ -4434,6 +5082,23 @@
       "specPath": null,
       "kind": "source",
       "hash": "sha256:1f53b011d5734e2b07bfde44a6a2182554cd12db0c6376f2b6481f837239b596",
+      "sizeBytes": 390
+    },
+    {
+      "path": "src/modules/assessments/errors/assessment-self-approval.error.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentSelfApprovalError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0bfd6d116ced909e7c5deab5eea9c03c03004b5557dec2236c98405bfc8e5071",
       "sizeBytes": 390
     },
     {
@@ -4505,6 +5170,40 @@
       "sizeBytes": 395
     },
     {
+      "path": "src/modules/assessments/errors/invalid-assessment-transition.error.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvalidAssessmentTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8b3a613928e24fb504de24326052d56d69329d574cbe72325bbba1f26bf36fdd",
+      "sizeBytes": 412
+    },
+    {
+      "path": "src/modules/assessments/errors/player-assessment-not-found.error.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerAssessmentNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b5d208fcd79e2cce91e03cd374688383c7989f3a00ed83529b3f7c76f838240e",
+      "sizeBytes": 402
+    },
+    {
       "path": "src/modules/assessments/index.ts",
       "root": "modules",
       "module": "assessments",
@@ -4571,8 +5270,25 @@
       "hasSpec": true,
       "specPath": "src/modules/assessments/infrastructure/assessment-scope.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:14631278d4f510bb038caaa5d691dd8b01bba21b7f060be146c6212043b992fe",
-      "sizeBytes": 842
+      "hash": "sha256:6eec8c455582b59b2d628dd4f1cdfd9480a1b449b0bc330689e51fc5bf258323",
+      "sizeBytes": 1192
+    },
+    {
+      "path": "src/modules/assessments/infrastructure/player-assessment.repository.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerAssessmentRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6fd034de4f373b5d5cd173bc58077a18e0d20476af1fcdb4f84ec6e50335e3f5",
+      "sizeBytes": 14849
     },
     {
       "path": "src/modules/assessments/lib/assessments.helpers.spec.ts",
@@ -4622,6 +5338,124 @@
       "kind": "source",
       "hash": "sha256:13330f24ed149d019d76e48614420c61594e45962e1e01331faab1c0d241dc70",
       "sizeBytes": 6024
+    },
+    {
+      "path": "src/modules/assessments/lib/player-assessments.builders.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2e8e7c0b05c34b398abe2311aeb0be7f9397b7c12b8d0a20b7cc2158cba533c0",
+      "sizeBytes": 6278
+    },
+    {
+      "path": "src/modules/assessments/lib/player-assessments.builders.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewAssessment"
+        },
+        {
+          "kind": "function",
+          "name": "buildCorrectionAssessment"
+        },
+        {
+          "kind": "function",
+          "name": "buildValueRows"
+        },
+        {
+          "kind": "function",
+          "name": "buildSubmitTransition"
+        },
+        {
+          "kind": "function",
+          "name": "buildReviewTransition"
+        },
+        {
+          "kind": "function",
+          "name": "buildPublishTransition"
+        },
+        {
+          "kind": "function",
+          "name": "buildSupersede"
+        },
+        {
+          "kind": "function",
+          "name": "buildSubmittedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildPublishedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildRevisedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildAudit"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/lib/player-assessments.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c21f5ba63cdb040d848a00ca8e06a381652709968cc1c92ae3e6240c5190a064",
+      "sizeBytes": 6288
+    },
+    {
+      "path": "src/modules/assessments/lib/player-assessments.mapper.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:27d6df7c856c02b91bbd3e677761c9802fca53990464bd73a5d376be7e6b5dee",
+      "sizeBytes": 4275
+    },
+    {
+      "path": "src/modules/assessments/lib/player-assessments.mapper.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toPlayerAssessment"
+        },
+        {
+          "kind": "function",
+          "name": "toPlayerAssessmentValue"
+        },
+        {
+          "kind": "function",
+          "name": "toPlayerAssessmentSummary"
+        },
+        {
+          "kind": "function",
+          "name": "toPlayerPublishedAssessment"
+        },
+        {
+          "kind": "function",
+          "name": "toTemplateMetricBound"
+        },
+        {
+          "kind": "function",
+          "name": "toPlayerAssessmentContext"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/lib/player-assessments.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a4ac1cc9284d291e9f614cd86d6c182b2c54fc4bd381f545f99aa4a19087efae",
+      "sizeBytes": 4424
     },
     {
       "path": "src/modules/assessments/model/assessments.constants.ts",
@@ -5130,6 +5964,366 @@
       "kind": "source",
       "hash": "sha256:20b90a8eec5c72c804f05c19798ad3132920acd03573be74f3970412fed5f441",
       "sizeBytes": 6364
+    },
+    {
+      "path": "src/modules/assessments/model/player-assessments.constants.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENTS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MY_ASSESSMENTS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_DETAIL_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_VALUES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SUBMIT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_REVIEW_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_PUBLISH_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_CORRECT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_REVISIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SUMMARY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NOTE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REASON_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "TEXT_VALUE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "METRIC_VALUES_MAX_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "CONFIDENCE_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "CONFIDENCE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "OBSERVATION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "OBSERVATION_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "NUMERIC_VALUE_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "NUMERIC_VALUE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "RECORD_VERSION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "FIRST_REVISION"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_INCOMPLETE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_INCOMPLETE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SELF_APPROVAL_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SELF_APPROVAL_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_UPDATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_SUBMITTED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_REVIEWED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_PUBLISHED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_REVISED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SUBMITTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_PUBLISHED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_REVISED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_VALUE_COLUMNS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:32ca916a6830439b719b50f6a36a45b9f7bd6dde31b0b4a535210e9e1f32af1b",
+      "sizeBytes": 3564
+    },
+    {
+      "path": "src/modules/assessments/model/player-assessments.enums.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "PlayerAssessmentStatus"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_ASSESSMENT_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ReviewDecision"
+        },
+        {
+          "kind": "const",
+          "name": "REVIEW_DECISION_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2bc0070c3cc1d56c3de94fc658f03c0594c71a8a1e735369545484ba8ab8a884",
+      "sizeBytes": 1003
+    },
+    {
+      "path": "src/modules/assessments/model/player-assessments.rows.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PlayerAssessmentRow"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayerAssessmentValueRow"
+        },
+        {
+          "kind": "interface",
+          "name": "TemplateMetricBoundRow"
+        },
+        {
+          "kind": "interface",
+          "name": "ContextHeadRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e69ff3898c500d8607d76a87bdfb549178daf6a73fb85c35dbec4d8590253bfd",
+      "sizeBytes": 1565
+    },
+    {
+      "path": "src/modules/assessments/model/player-assessments.types.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PlayerAssessmentValue"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayerAssessment"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayerAssessmentDetail"
+        },
+        {
+          "kind": "interface",
+          "name": "TemplateMetricBound"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayerAssessmentContext"
+        },
+        {
+          "kind": "interface",
+          "name": "AssessmentValueInput"
+        },
+        {
+          "kind": "interface",
+          "name": "CreatePlayerAssessmentCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdatePlayerAssessmentCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "SubmitPlayerAssessmentCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewPlayerAssessmentCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "PublishPlayerAssessmentCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CorrectPlayerAssessmentCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "NewPlayerAssessment"
+        },
+        {
+          "kind": "interface",
+          "name": "NewPlayerAssessmentValue"
+        },
+        {
+          "kind": "interface",
+          "name": "AssessmentTransition"
+        },
+        {
+          "kind": "interface",
+          "name": "AssessmentSupersede"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayerAssessmentSummary"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayerPublishedValue"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayerPublishedAssessment"
+        },
+        {
+          "kind": "type",
+          "name": "PlayerAssessmentSummaryPage"
+        },
+        {
+          "kind": "type",
+          "name": "PlayerPublishedAssessmentPage"
+        },
+        {
+          "kind": "interface",
+          "name": "RevisionHistory"
+        },
+        {
+          "kind": "interface",
+          "name": "OwnPublishedResult"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:86d4af4f249399973b9a240f53b19b18039d8c7861518001affd5d3a2c6b120e",
+      "sizeBytes": 7092
     },
     {
       "path": "src/modules/auth/adapters/jwt-token.adapter.spec.ts",

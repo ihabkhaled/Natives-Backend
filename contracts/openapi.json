@@ -253,6 +253,38 @@
         ],
         "type": "object"
       },
+      "AssessmentValueDto": {
+        "properties": {
+          "confidence": {
+            "nullable": true,
+            "type": "number"
+          },
+          "metricDefinitionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "note": {
+            "nullable": true,
+            "type": "string"
+          },
+          "numericValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "observationCount": {
+            "nullable": true,
+            "type": "number"
+          },
+          "textValue": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "metricDefinitionId"
+        ],
+        "type": "object"
+      },
       "AssignGroupMembersDto": {
         "properties": {
           "membershipIds": {
@@ -1261,6 +1293,31 @@
         ],
         "type": "object"
       },
+      "CorrectPlayerAssessmentDto": {
+        "properties": {
+          "reason": {
+            "maxLength": 2000,
+            "minLength": 3,
+            "type": "string"
+          },
+          "summary": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "values": {
+            "items": {
+              "$ref": "#/components/schemas/AssessmentValueDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "reason",
+          "values"
+        ],
+        "type": "object"
+      },
       "CreateAgendaDto": {
         "properties": {
           "notes": {
@@ -1630,6 +1687,34 @@
           "name",
           "startsOn",
           "endsOn"
+        ],
+        "type": "object"
+      },
+      "CreatePlayerAssessmentDto": {
+        "properties": {
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "periodId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "summary": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "values": {
+            "items": {
+              "$ref": "#/components/schemas/AssessmentValueDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "periodId",
+          "membershipId"
         ],
         "type": "object"
       },
@@ -2648,6 +2733,58 @@
         ],
         "type": "object"
       },
+      "ListPlayerAssessmentsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/PlayerAssessmentSummaryResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListPublishedAssessmentsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/PlayerPublishedAssessmentResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListRsvpsResponseDto": {
         "properties": {
           "items": {
@@ -3631,6 +3768,18 @@
         ],
         "type": "object"
       },
+      "OptimisticVersionDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          }
+        },
+        "required": [
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "OutboxMetricsResponseDto": {
         "properties": {
           "completed": {
@@ -3871,6 +4020,266 @@
         ],
         "type": "object"
       },
+      "PlayerAssessmentRecordResponseDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "evaluatorUserId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "familyId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "periodId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "publishedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "reviewedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "reviewedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "submitted",
+              "in_review",
+              "approved",
+              "published",
+              "revised"
+            ],
+            "type": "string"
+          },
+          "submittedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "submittedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "summary": {
+            "nullable": true,
+            "type": "string"
+          },
+          "supersededAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "supersededById": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "templateId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "familyId",
+          "teamId",
+          "seasonId",
+          "periodId",
+          "templateId",
+          "membershipId",
+          "evaluatorUserId",
+          "status",
+          "revision",
+          "summary",
+          "recordVersion",
+          "submittedAt",
+          "submittedBy",
+          "reviewedAt",
+          "reviewedBy",
+          "publishedAt",
+          "publishedBy",
+          "supersededAt",
+          "supersededById",
+          "createdBy",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "PlayerAssessmentResponseDto": {
+        "properties": {
+          "assessment": {
+            "$ref": "#/components/schemas/PlayerAssessmentRecordResponseDto"
+          },
+          "values": {
+            "items": {
+              "$ref": "#/components/schemas/PlayerAssessmentValueResponseDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "assessment",
+          "values"
+        ],
+        "type": "object"
+      },
+      "PlayerAssessmentSummaryResponseDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "evaluatorUserId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "familyId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "periodId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "submitted",
+              "in_review",
+              "approved",
+              "published",
+              "revised"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "familyId",
+          "teamId",
+          "periodId",
+          "membershipId",
+          "evaluatorUserId",
+          "status",
+          "revision",
+          "recordVersion",
+          "createdAt",
+          "publishedAt"
+        ],
+        "type": "object"
+      },
+      "PlayerAssessmentValueResponseDto": {
+        "properties": {
+          "confidence": {
+            "nullable": true,
+            "type": "number"
+          },
+          "metricDefinitionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "note": {
+            "nullable": true,
+            "type": "string"
+          },
+          "numericValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "observationCount": {
+            "nullable": true,
+            "type": "number"
+          },
+          "textValue": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "metricDefinitionId",
+          "numericValue",
+          "textValue",
+          "note",
+          "confidence",
+          "observationCount"
+        ],
+        "type": "object"
+      },
       "PlayerProfileDto": {
         "properties": {
           "dateOfBirth": {
@@ -3944,6 +4353,94 @@
         },
         "required": [
           "fullName"
+        ],
+        "type": "object"
+      },
+      "PlayerPublishedAssessmentResponseDto": {
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "periodId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "submitted",
+              "in_review",
+              "approved",
+              "published",
+              "revised"
+            ],
+            "type": "string"
+          },
+          "summary": {
+            "nullable": true,
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "templateId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "values": {
+            "items": {
+              "$ref": "#/components/schemas/PlayerPublishedValueResponseDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "teamId",
+          "periodId",
+          "templateId",
+          "membershipId",
+          "status",
+          "revision",
+          "summary",
+          "publishedAt",
+          "values"
+        ],
+        "type": "object"
+      },
+      "PlayerPublishedValueResponseDto": {
+        "properties": {
+          "metricDefinitionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "numericValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "textValue": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "metricDefinitionId",
+          "numericValue",
+          "textValue"
         ],
         "type": "object"
       },
@@ -4269,6 +4766,46 @@
         "required": [
           "token",
           "password"
+        ],
+        "type": "object"
+      },
+      "ReviewPlayerAssessmentDto": {
+        "properties": {
+          "decision": {
+            "enum": [
+              "start_review",
+              "approve",
+              "reject"
+            ],
+            "type": "string"
+          },
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "note": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "decision",
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
+      "RevisionsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/PlayerAssessmentSummaryResponseDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
         ],
         "type": "object"
       },
@@ -5771,6 +6308,30 @@
         "required": [
           "name",
           "category"
+        ],
+        "type": "object"
+      },
+      "UpdatePlayerAssessmentDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "summary": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "values": {
+            "items": {
+              "$ref": "#/components/schemas/AssessmentValueDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "expectedRecordVersion",
+          "values"
         ],
         "type": "object"
       },
@@ -9667,6 +10228,520 @@
         "summary": "Invite a person into a team",
         "tags": [
           "members"
+        ]
+      }
+    },
+    "/teams/{teamId}/my-assessments": {
+      "get": {
+        "operationId": "PlayerAssessmentSelf.listOwn",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListPublishedAssessmentsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List my own published assessments for a team",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/player-assessments": {
+      "get": {
+        "operationId": "PlayerAssessment.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListPlayerAssessmentsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s player assessments",
+        "tags": [
+          "assessments"
+        ]
+      },
+      "post": {
+        "operationId": "PlayerAssessment.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePlayerAssessmentDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerAssessmentResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a draft player assessment",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/player-assessments/{assessmentId}": {
+      "get": {
+        "operationId": "PlayerAssessment.detail",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "assessmentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerAssessmentResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Read one player assessment with its values",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/player-assessments/{assessmentId}/correct": {
+      "post": {
+        "operationId": "PlayerAssessment.correct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "assessmentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CorrectPlayerAssessmentDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerAssessmentResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Correct a published assessment via a new revision",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/player-assessments/{assessmentId}/publish": {
+      "post": {
+        "operationId": "PlayerAssessment.publish",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "assessmentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OptimisticVersionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerAssessmentResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Publish an approved assessment",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/player-assessments/{assessmentId}/review": {
+      "post": {
+        "operationId": "PlayerAssessment.review",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "assessmentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewPlayerAssessmentDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerAssessmentResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Review (claim, approve, or reopen) an assessment",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/player-assessments/{assessmentId}/revisions": {
+      "get": {
+        "operationId": "PlayerAssessment.revisions",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "assessmentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RevisionsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List the revision history of an assessment family",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/player-assessments/{assessmentId}/submit": {
+      "post": {
+        "operationId": "PlayerAssessment.submit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "assessmentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OptimisticVersionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerAssessmentResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Submit a draft assessment for review",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/player-assessments/{assessmentId}/values": {
+      "put": {
+        "operationId": "PlayerAssessment.update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "assessmentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePlayerAssessmentDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerAssessmentResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Autosave a draft assessment’s values",
+        "tags": [
+          "assessments"
         ]
       }
     },

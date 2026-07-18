@@ -23,4 +23,20 @@ export class AssessmentScopeService {
       throw new AssessmentScopeNotFoundError();
     }
   }
+
+  async requireMembership(
+    scope: TransactionScope,
+    teamId: string,
+    membershipId: string,
+  ): Promise<void> {
+    if (
+      !(await this.repository.membershipExistsInTeam(
+        scope,
+        teamId,
+        membershipId,
+      ))
+    ) {
+      throw new AssessmentScopeNotFoundError();
+    }
+  }
 }
