@@ -3,6 +3,8 @@ import { describe, expect, it } from 'vitest';
 
 import {
   areCorsOriginsValid,
+  isDatabasePoolValid,
+  isProductionDatabaseSslValid,
   isProductionJwtSecretValid,
 } from './config-validation.helpers';
 
@@ -57,6 +59,31 @@ describe('config validation helpers', () => {
   it('accepts a strong production secret', () => {
     expect(isProductionJwtSecretValid(NodeEnv.Production, STRONG_SECRET)).toBe(
       true,
+    );
+  });
+
+  it('accepts pool bounds where min <= max and defaults when unset', () => {
+    expect(isDatabasePoolValid(2, 10)).toBe(true);
+    expect(isDatabasePoolValid(5, 5)).toBe(true);
+    expect(isDatabasePoolValid(undefined, undefined)).toBe(true);
+    expect(isDatabasePoolValid(undefined, 1)).toBe(false);
+  });
+
+  it('rejects pool bounds where min > max', () => {
+    expect(isDatabasePoolValid(11, 10)).toBe(false);
+  });
+
+  it('requires SSL only in production', () => {
+    expect(isProductionDatabaseSslValid(NodeEnv.Development, undefined)).toBe(
+      true,
+    );
+    expect(isProductionDatabaseSslValid(NodeEnv.Test, 'false')).toBe(true);
+    expect(isProductionDatabaseSslValid(NodeEnv.Production, 'true')).toBe(true);
+    expect(isProductionDatabaseSslValid(NodeEnv.Production, 'false')).toBe(
+      false,
+    );
+    expect(isProductionDatabaseSslValid(NodeEnv.Production, undefined)).toBe(
+      false,
     );
   });
 });

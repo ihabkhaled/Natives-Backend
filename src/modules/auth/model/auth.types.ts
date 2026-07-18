@@ -8,5 +8,6 @@ export interface AuthToken {
 }
 
 export interface PasswordHashPort {
+  hash(plainPassword: string): Promise<string>;
   matches(plainPassword: string, passwordHash: string): Promise<boolean>;
 }

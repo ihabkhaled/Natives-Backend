@@ -4,13 +4,16 @@
  * importable only here and in bootstrap/ (document setup), ESLint-enforced.
  */
 export {
+  ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
+  ApiNoContentResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
   ApiProperty,
   ApiPropertyOptional,
+  ApiSecurity,
   ApiTags,
   ApiUnauthorizedResponse,
   PartialType,

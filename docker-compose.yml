@@ -1,0 +1,33 @@
+# Local development PostgreSQL for the Ultimate Natives backend.
+# Non-production credentials only, bound to loopback so the database is never
+# exposed on the network. Never point staging/production at this file.
+#
+# All connection values are sourced from the sibling `.env` file (Docker Compose
+# loads it automatically), so the container and the application always agree on
+# host/port/user/password/database. The `:-default` fallbacks keep `docker
+# compose up` working even before `.env` is filled in.
+services:
+  postgres:
+    image: postgres:16
+    container_name: natives-postgres-dev
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-natives}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-natives_dev_password}
+      POSTGRES_DB: ${DB_NAME:-ultimate_natives}
+    ports:
+      - '127.0.0.1:${DB_PORT:-5432}:5432'
+    volumes:
+      - natives-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'pg_isready -U ${DB_USERNAME:-natives} -d ${DB_NAME:-ultimate_natives}',
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  natives-postgres-data:
