@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-18T03:11:38.114Z",
-  "treeHash": "sha256:9a2841e9df3a8d3f52a65d72a150a7217d65ccf3af8d83387fe45f52bd5d6149",
+  "generatedAt": "2026-07-18T03:56:50.925Z",
+  "treeHash": "sha256:c8a0c342e0df58813add5d960b6def5a82c66ca725d60d17ce292398626a09ad",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -2483,6 +2483,23 @@
       "kind": "source",
       "hash": "sha256:77a960aa18838ce275e7ffe7c7cf7473026935b9920569f0d8473490e8dc9ada",
       "sizeBytes": 8465
+    },
+    {
+      "path": "src/database/migrations/1721900000000-practice-rsvp-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeRsvpSchema1721900000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a16a58f34ea95ac5313b3d5043101f77ef268ed28a9d33bd2e5fbcdab8b3abc8",
+      "sizeBytes": 6127
     },
     {
       "path": "src/database/naming.helpers.spec.ts",
@@ -8935,6 +8952,40 @@
       "sizeBytes": 734
     },
     {
+      "path": "src/modules/practices/api/dto/list-rsvps-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListRsvpsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:98c8b25f850619c744d4214117b1ac418abd9632bcb555774b09629597d95ada",
+      "sizeBytes": 440
+    },
+    {
+      "path": "src/modules/practices/api/dto/list-rsvps.query.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListRsvpsQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:232577fa405c9fa77c01bac4a33401067c5f8b47b6a9dfa8c7554ba6cd619033",
+      "sizeBytes": 509
+    },
+    {
       "path": "src/modules/practices/api/dto/list-schedules-response.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -8986,6 +9037,23 @@
       "sizeBytes": 1241
     },
     {
+      "path": "src/modules/practices/api/dto/override-rsvp.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OverrideRsvpDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3c19c426cc4b5d70157a67dc19199d30bfdbf36b5cd0c75d1db341ad924aeff0",
+      "sizeBytes": 1700
+    },
+    {
       "path": "src/modules/practices/api/dto/reschedule-session.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -9001,6 +9069,91 @@
       "kind": "source",
       "hash": "sha256:6f40be570d3c5195853bbc6b076b3e5ba76473e3f29684e7e9a08f4ce818b12a",
       "sizeBytes": 1398
+    },
+    {
+      "path": "src/modules/practices/api/dto/rsvp-history-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RsvpHistoryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:15d03ab8245dd223b444ab953ac4faae95b4456b47b030a25221314e4d88d817",
+      "sizeBytes": 273
+    },
+    {
+      "path": "src/modules/practices/api/dto/rsvp-participant-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RsvpParticipantResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:eac53cc0e9742edd887ed1957dc966bfced220ae054358e9d686e23106331657",
+      "sizeBytes": 694
+    },
+    {
+      "path": "src/modules/practices/api/dto/rsvp-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RsvpResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4af7ca8b4e8a7b10aba774c8fdf5862cbd1fb280b10283c372ea2284c970281e",
+      "sizeBytes": 1253
+    },
+    {
+      "path": "src/modules/practices/api/dto/rsvp-revision-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RsvpRevisionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:df9903eb04ee3c836b2548678a5c29fd8efc3f3952924c6fc4036c4804ba4121",
+      "sizeBytes": 1381
+    },
+    {
+      "path": "src/modules/practices/api/dto/rsvp-summary-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RsvpSummaryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4643cb2387616ac3616576c6e9f54cff24b09bab7aa3fafdbf1a89be415df371",
+      "sizeBytes": 782
     },
     {
       "path": "src/modules/practices/api/dto/schedule-response.dto.ts",
@@ -9071,6 +9224,23 @@
       "sizeBytes": 792
     },
     {
+      "path": "src/modules/practices/api/dto/set-rsvp.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SetRsvpDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b657a1fb9b03a553491303070de8eaac7dfbf59c6cb561c3a3ccc252daf64baa",
+      "sizeBytes": 1393
+    },
+    {
       "path": "src/modules/practices/api/dto/status-event-response.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -9120,6 +9290,23 @@
       "kind": "source",
       "hash": "sha256:d2284dcc992bba87f1720984d225bb18f8ac65df4cf0019175eb1a5d57e24ad8",
       "sizeBytes": 1369
+    },
+    {
+      "path": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeRsvpController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:50faeedbace4291a9855fe8189aa42e8086f7228f43e4ddae133cba4065ca496",
+      "sizeBytes": 5953
     },
     {
       "path": "src/modules/practices/api/practice-schedules.controller.ts",
@@ -9272,6 +9459,35 @@
       "sizeBytes": 5766
     },
     {
+      "path": "src/modules/practices/application/override-rsvp.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:88b0acece62f09c00121d98488c549621486ed405250075ecb4999cc6dac7598",
+      "sizeBytes": 4176
+    },
+    {
+      "path": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OverrideRsvpUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/override-rsvp.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bbb199b70dfd7a2927e55d3c871cbcdf52a8fe8b4271d587700ac45d5b1de61f",
+      "sizeBytes": 3857
+    },
+    {
       "path": "src/modules/practices/application/practice-lookup.service.spec.ts",
       "root": "modules",
       "module": "practices",
@@ -9328,6 +9544,64 @@
       "kind": "source",
       "hash": "sha256:f3846d4118af8c966e33d909c36f65ba7e8745f73f0bd0be444290265b5ba84f",
       "sizeBytes": 6933
+    },
+    {
+      "path": "src/modules/practices/application/rsvp-query.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:273aa411cbc5a27b132614ba0ead5e55868cde4e1f916580077187ffa555d084",
+      "sizeBytes": 4653
+    },
+    {
+      "path": "src/modules/practices/application/rsvp-query.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RsvpQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/rsvp-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:63d0d73473c3c4be75b7a952f2b17d1e5d24c7b4a167ced56529143033eea381",
+      "sizeBytes": 4167
+    },
+    {
+      "path": "src/modules/practices/application/rsvp-recorder.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ea76ca860b158fa4a28aac2d89f4c2d4026978dd3b8c5f5ebcfbb42f2344fd02",
+      "sizeBytes": 8735
+    },
+    {
+      "path": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RsvpRecorderService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/rsvp-recorder.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2690fa04f2592a0e49c6caf35c35608d0224fd3e5bfa50fb77ef3ef052a3d447",
+      "sizeBytes": 6138
     },
     {
       "path": "src/modules/practices/application/schedule-query.service.spec.ts",
@@ -9415,6 +9689,35 @@
       "kind": "source",
       "hash": "sha256:7c7fc4df8551606096de5158dc47e70ecaf7fd5e8e5c6df8bbd3de87a3c64173",
       "sizeBytes": 2040
+    },
+    {
+      "path": "src/modules/practices/application/set-own-rsvp.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:793437a7e9934d4a06a241f7301ae3d4c12b158970e1dca4b212e5de393582f6",
+      "sizeBytes": 4239
+    },
+    {
+      "path": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SetOwnRsvpUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/set-own-rsvp.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4dbb7417753ac510b2c5db460277a5314c4140f646970a6878c5761ef5f886a3",
+      "sizeBytes": 3930
     },
     {
       "path": "src/modules/practices/application/transition-practice-session.use-case.spec.ts",
@@ -9586,6 +9889,80 @@
       "sizeBytes": 2964
     },
     {
+      "path": "src/modules/practices/domain/rsvp-availability.policy.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:daa13418915fb6d57f044707d5f7d7653837d57a11f50c03a28a0f6db65c1532",
+      "sizeBytes": 3109
+    },
+    {
+      "path": "src/modules/practices/domain/rsvp-availability.policy.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveWaitlisted"
+        },
+        {
+          "kind": "function",
+          "name": "hasFreeSpot"
+        },
+        {
+          "kind": "function",
+          "name": "isConfirmedGoing"
+        },
+        {
+          "kind": "function",
+          "name": "freedConfirmedSlot"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/domain/rsvp-availability.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:07173df0e4e9d04e9dc278001224f275a7c518bd6398d0a80ecd29d305fabb46",
+      "sizeBytes": 2005
+    },
+    {
+      "path": "src/modules/practices/domain/rsvp-deadline.policy.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ebbeac2380e611f9e8985095fe1a9349f2970aab3e8b3821db9851fdc2960441",
+      "sizeBytes": 1446
+    },
+    {
+      "path": "src/modules/practices/domain/rsvp-deadline.policy.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isRsvpWindowOpen"
+        },
+        {
+          "kind": "function",
+          "name": "canMemberRespond"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/domain/rsvp-deadline.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c5162442a39fd1cf89b716730d1ea564c589855b6c998eff1a0cad21be2e601e",
+      "sizeBytes": 1163
+    },
+    {
       "path": "src/modules/practices/errors/invalid-schedule.error.ts",
       "root": "modules",
       "module": "practices",
@@ -9705,6 +10082,74 @@
       "sizeBytes": 401
     },
     {
+      "path": "src/modules/practices/errors/rsvp-closed.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RsvpClosedError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7d8a98a86e8719b9cd9b7e19265173730ed9e09f2eedf52c5a2aebab8e479904",
+      "sizeBytes": 439
+    },
+    {
+      "path": "src/modules/practices/errors/rsvp-deadline-passed.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RsvpDeadlinePassedError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4749c16477cc185b6f9d16e99ad9afe75818dd4016e51eed63a1293ae3a1c888",
+      "sizeBytes": 505
+    },
+    {
+      "path": "src/modules/practices/errors/rsvp-membership-not-found.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RsvpMembershipNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bf64781fe0f2049ed91eeed40d9514ada9663fc19c7f9d0e3065764d2622e40b",
+      "sizeBytes": 579
+    },
+    {
+      "path": "src/modules/practices/errors/rsvp-not-member.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RsvpNotMemberError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fb56b47fea91339e37468989a84d519f702612d232d3af33cb52300ae75f5ec4",
+      "sizeBytes": 539
+    },
+    {
       "path": "src/modules/practices/errors/season-scope-not-found.error.ts",
       "root": "modules",
       "module": "practices",
@@ -9749,6 +10194,40 @@
       "kind": "source",
       "hash": "sha256:76732f10e446b43928c645e29eff9bd9f42f1f662aec94e398548aa2cb444319",
       "sizeBytes": 54
+    },
+    {
+      "path": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeRsvpRevisionRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:581ee7f92c9ad3fbdd9c44b7e5392ae39ce2afb86f520d1329179fee636c0254",
+      "sizeBytes": 3000
+    },
+    {
+      "path": "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeRsvpRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5332a6e8ac83d8b3ba6a051c299c97f998a5f41696d0c558e0f02ee38747ebbf",
+      "sizeBytes": 8470
     },
     {
       "path": "src/modules/practices/infrastructure/practice-schedule.repository.ts",
@@ -9800,6 +10279,23 @@
       "kind": "source",
       "hash": "sha256:df54d98b9bd57acf508735159ddd94a3a90230aa7fbc08a786e61fe0aa405a6a",
       "sizeBytes": 9554
+    },
+    {
+      "path": "src/modules/practices/infrastructure/rsvp-membership.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RsvpMembershipRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3a900deead1cdbed82089e9a9cf1739fcfcca86b864592839802c1a7fc95e63c",
+      "sizeBytes": 1787
     },
     {
       "path": "src/modules/practices/infrastructure/session-status-event.repository.ts",
@@ -9935,6 +10431,149 @@
       "kind": "source",
       "hash": "sha256:b375e3883d9553bcf4918c7bb30f9ff66c58dbe84e3e0520208975b2481fdf80",
       "sizeBytes": 5782
+    },
+    {
+      "path": "src/modules/practices/lib/rsvp.builders.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:326ed6752b015ed6493d1efe1bafca117cde2a2ffeee1ae58a64194ceac78ebb",
+      "sizeBytes": 5920
+    },
+    {
+      "path": "src/modules/practices/lib/rsvp.builders.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewRsvp"
+        },
+        {
+          "kind": "function",
+          "name": "buildRsvpUpdate"
+        },
+        {
+          "kind": "function",
+          "name": "buildRsvpRevision"
+        },
+        {
+          "kind": "function",
+          "name": "buildPromotionRevision"
+        },
+        {
+          "kind": "function",
+          "name": "buildRsvpAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildPromotionAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildRsvpEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildPromotionEvent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/rsvp.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:93e13b895637dada399e4b6b21e41d644995d7066918ffb12e4a4f76ee2b62c4",
+      "sizeBytes": 5859
+    },
+    {
+      "path": "src/modules/practices/lib/rsvp.helpers.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7c978ba0d8f893bf1916dc8ddf3ea47bc70b05f2960ae0d3e73e3f9136833abb",
+      "sizeBytes": 1918
+    },
+    {
+      "path": "src/modules/practices/lib/rsvp.helpers.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "parseRsvpStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseNullableRsvpStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseReasonCategory"
+        },
+        {
+          "kind": "function",
+          "name": "parseNoteVisibility"
+        },
+        {
+          "kind": "function",
+          "name": "parseRsvpSource"
+        },
+        {
+          "kind": "function",
+          "name": "resolveRsvpFilter"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/rsvp.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:72eabaa21623eb3361279ee20febe92cad1a709f52939879c5f15771ec5eef2f",
+      "sizeBytes": 2152
+    },
+    {
+      "path": "src/modules/practices/lib/rsvp.mapper.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b692dc53832618fe1e6c810bd4b8186f64b173aebd01394375510a7c91362af7",
+      "sizeBytes": 2287
+    },
+    {
+      "path": "src/modules/practices/lib/rsvp.mapper.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toRsvpView"
+        },
+        {
+          "kind": "function",
+          "name": "noResponseView"
+        },
+        {
+          "kind": "function",
+          "name": "toRsvpSummary"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/rsvp.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:606fd1ba191ae5bca4e8c1cf769976863802c75a57693bf9bd5f2e10d9d7661b",
+      "sizeBytes": 1883
     },
     {
       "path": "src/modules/practices/model/practices.constants.ts",
@@ -10497,6 +11136,310 @@
       "sizeBytes": 12034
     },
     {
+      "path": "src/modules/practices/model/rsvp.constants.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "RSVP_SELF_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_LIST_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_SUMMARY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_OVERRIDE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_HISTORY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "NOTE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OVERRIDE_REASON_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OVERRIDE_REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_HISTORY_SCAN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_AGGREGATE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_RECORDED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_PROMOTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_RECIPIENT_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_RECORDED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_OVERRIDDEN_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_PROMOTED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_REVISION_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_CLOSED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_CLOSED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_DEADLINE_PASSED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_DEADLINE_PASSED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_NOT_MEMBER_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_NOT_MEMBER_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_MEMBERSHIP_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_MEMBERSHIP_NOT_FOUND_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:abc0f1735ded4b167796a809ae622a3086f5fae347213669b9edc61ad15a6df9",
+      "sizeBytes": 3360
+    },
+    {
+      "path": "src/modules/practices/model/rsvp.enums.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "RsvpStatus"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RsvpReasonCategory"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_REASON_CATEGORY_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RsvpNoteVisibility"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_NOTE_VISIBILITY_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RsvpSource"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_SOURCE_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b0978f89126a78429cb9bfa60190374d7c41ed13ea75a67ef8e4a8c311a3544e",
+      "sizeBytes": 2214
+    },
+    {
+      "path": "src/modules/practices/model/rsvp.rows.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "RsvpRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpRevisionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpParticipantRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpCountsRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpTotalRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MembershipRefRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:44a067c3dd018816aa4c5d92c6e64f5e0f22cd70e492ccc434fa0ca60546b3da",
+      "sizeBytes": 2002
+    },
+    {
+      "path": "src/modules/practices/model/rsvp.types.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PracticeRsvp"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpRevision"
+        },
+        {
+          "kind": "interface",
+          "name": "MembershipRef"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpSlotState"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpView"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpParticipant"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpSummary"
+        },
+        {
+          "kind": "interface",
+          "name": "SetRsvpCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "OverrideRsvpCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpWriteContext"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpWriteOutcome"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpListQuery"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpListFilter"
+        },
+        {
+          "kind": "interface",
+          "name": "ListRsvpsResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ListRsvpRevisionsResult"
+        },
+        {
+          "kind": "interface",
+          "name": "NewRsvp"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpPromotion"
+        },
+        {
+          "kind": "interface",
+          "name": "NewRsvpRevision"
+        },
+        {
+          "kind": "interface",
+          "name": "RsvpCounts"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:94f1c54ff7607ec0a1be1373219227bdae77aac471fc12e89ed4e8679432862a",
+      "sizeBytes": 7518
+    },
+    {
       "path": "src/modules/practices/practices.module.ts",
       "root": "modules",
       "module": "practices",
@@ -10510,8 +11453,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:2303c94927bf3e71e7417253964c78b1bd83d4da9a77d76dcbc4c5feca30b34a",
-      "sizeBytes": 3078
+      "hash": "sha256:4a2e3a4c247ee98f9fe296082f8fa435d06ab8f9d8196e5baec3de2872843a57",
+      "sizeBytes": 3947
     },
     {
       "path": "src/modules/rbac/api/dto/assign-role.dto.ts",

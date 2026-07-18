@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T03:11:38.114Z",
+  "generatedAt": "2026-07-18T03:56:50.925Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -5747,6 +5747,36 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/dto/list-rsvps-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-rsvps-response.dto.ts",
+      "to": "src/modules/practices/api/dto/rsvp-participant-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-rsvps.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-rsvps.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-rsvps.query.dto.ts",
+      "to": "src/modules/practices/api/dto/list-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-rsvps.query.dto.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/api/dto/list-schedules-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -5792,6 +5822,31 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/dto/override-rsvp.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/override-rsvp.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/override-rsvp.dto.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/override-rsvp.dto.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/override-rsvp.dto.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/api/dto/reschedule-session.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -5805,6 +5860,51 @@
       "from": "src/modules/practices/api/dto/reschedule-session.dto.ts",
       "to": "src/modules/practices/model/practices.constants.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/rsvp-history-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/rsvp-history-response.dto.ts",
+      "to": "src/modules/practices/api/dto/rsvp-revision-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/rsvp-participant-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/rsvp-participant-response.dto.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/rsvp-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/rsvp-response.dto.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/rsvp-revision-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/rsvp-revision-response.dto.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/rsvp-summary-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/practices/api/dto/schedule-response.dto.ts",
@@ -5849,6 +5949,31 @@
     {
       "from": "src/modules/practices/api/dto/session-status.dto.ts",
       "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/set-rsvp.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/set-rsvp.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/set-rsvp.dto.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/set-rsvp.dto.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/set-rsvp.dto.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
       "type": "internal"
     },
     {
@@ -5905,6 +6030,91 @@
       "from": "src/modules/practices/api/dto/update-session.dto.ts",
       "to": "src/modules/practices/model/practices.enums.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/api/dto/list-rsvps-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/api/dto/list-rsvps.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/api/dto/override-rsvp.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/api/dto/rsvp-history-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/api/dto/rsvp-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/api/dto/rsvp-summary-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/api/dto/set-rsvp.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/application/rsvp-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/lib/rsvp.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/practices/api/practice-schedules.controller.ts",
@@ -6312,6 +6522,71 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/modules/practices/domain/rsvp-deadline.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/modules/practices/errors/rsvp-closed.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/modules/practices/errors/rsvp-membership-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/modules/practices/infrastructure/rsvp-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/modules/practices/lib/rsvp.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "to": "src/modules/practices/model/rsvp.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/application/practice-lookup.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -6422,6 +6697,106 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/application/rsvp-query.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-query.service.ts",
+      "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-query.service.ts",
+      "to": "src/modules/practices/errors/rsvp-not-member.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-query.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-query.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-query.service.ts",
+      "to": "src/modules/practices/infrastructure/rsvp-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-query.service.ts",
+      "to": "src/modules/practices/lib/rsvp.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-query.service.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-query.service.ts",
+      "to": "src/modules/practices/model/rsvp.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "to": "src/modules/practices/domain/rsvp-availability.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "to": "src/modules/practices/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "to": "src/modules/practices/lib/rsvp.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "to": "src/modules/practices/model/rsvp.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/application/schedule-query.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -6494,6 +6869,76 @@
     {
       "from": "src/modules/practices/application/session-query.service.ts",
       "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/modules/practices/application/rsvp-recorder.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/modules/practices/domain/rsvp-deadline.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/modules/practices/errors/rsvp-closed.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/modules/practices/errors/rsvp-deadline-passed.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/modules/practices/errors/rsvp-not-member.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/modules/practices/infrastructure/rsvp-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/modules/practices/lib/rsvp.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "to": "src/modules/practices/model/rsvp.types.ts",
       "type": "internal"
     },
     {
@@ -6702,6 +7147,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/domain/rsvp-availability.policy.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/rsvp-availability.policy.ts",
+      "to": "src/modules/practices/model/rsvp.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/rsvp-deadline.policy.ts",
+      "to": "src/modules/practices/model/practices.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/errors/invalid-schedule.error.ts",
       "to": "src/core/errors/validation.error.ts",
       "type": "cross-cutting"
@@ -6769,6 +7229,46 @@
     {
       "from": "src/modules/practices/errors/practice-team-not-found.error.ts",
       "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/rsvp-closed.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/rsvp-closed.error.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/rsvp-deadline-passed.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/rsvp-deadline-passed.error.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/rsvp-membership-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/rsvp-membership-not-found.error.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/rsvp-not-member.error.ts",
+      "to": "src/core/errors/forbidden.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/rsvp-not-member.error.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
       "type": "internal"
     },
     {
@@ -6797,6 +7297,66 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
+      "to": "src/modules/practices/lib/rsvp.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
+      "to": "src/modules/practices/model/rsvp.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
+      "to": "src/modules/practices/model/rsvp.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
+      "to": "src/modules/practices/lib/rsvp.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
+      "to": "src/modules/practices/model/rsvp.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
+      "to": "src/modules/practices/model/rsvp.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/infrastructure/practice-schedule.repository.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -6854,6 +7414,21 @@
     {
       "from": "src/modules/practices/infrastructure/practice-session.repository.ts",
       "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/rsvp-membership.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/rsvp-membership.repository.ts",
+      "to": "src/modules/practices/model/rsvp.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/rsvp-membership.repository.ts",
+      "to": "src/modules/practices/model/rsvp.types.ts",
       "type": "internal"
     },
     {
@@ -6907,6 +7482,51 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/lib/rsvp.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/lib/rsvp.builders.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/rsvp.builders.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/rsvp.builders.ts",
+      "to": "src/modules/practices/model/rsvp.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/rsvp.helpers.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/rsvp.helpers.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/rsvp.helpers.ts",
+      "to": "src/modules/practices/model/rsvp.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/rsvp.mapper.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/rsvp.mapper.ts",
+      "to": "src/modules/practices/model/rsvp.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/model/practices.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
@@ -6914,6 +7534,21 @@
     {
       "from": "src/modules/practices/model/practices.types.ts",
       "to": "src/modules/practices/model/practices.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/model/rsvp.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/model/rsvp.types.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/model/rsvp.types.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
       "type": "internal"
     },
     {
@@ -6930,6 +7565,11 @@
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/platform/index.ts",
       "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/api/practice-rsvp.controller.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/practices/practices.module.ts",
@@ -6963,12 +7603,27 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/override-rsvp.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/practice-lookup.service.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/reschedule-practice-session.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/rsvp-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/rsvp-recorder.service.ts",
       "type": "internal"
     },
     {
@@ -6988,6 +7643,11 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/set-own-rsvp.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/transition-practice-session.use-case.ts",
       "type": "internal"
     },
@@ -7003,6 +7663,16 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/infrastructure/practice-schedule.repository.ts",
       "type": "internal"
     },
@@ -7014,6 +7684,11 @@
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/infrastructure/practice-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/rsvp-membership.repository.ts",
       "type": "internal"
     },
     {

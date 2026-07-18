@@ -1,4 +1,4 @@
-# Practices — schedules, recurrence, sessions, venues, and cancellations
+# Practices — schedules, recurrence, sessions, cancellations, and RSVP
 
 Ultimate Natives plans practices as **recurring (or one-off) schedule templates** from
 which **stable, concrete session instances** are generated. A template is _not_ a
@@ -116,21 +116,84 @@ authentication + permission + team-scope + optimistic version. Reads require
 The calendar/list is bounded, paginated, and deterministically ordered by start instant,
 with allowlisted filters (`from`, `to`, `status`, `sessionType`, `seasonId`).
 
-## 6. Session types
+## 6. RSVP, availability, deadlines, and waitlist (prompt 201)
+
+RSVP captures **intention** (going / not going / maybe / no response) and is kept
+strictly separate from attendance — it **never awards points**. Migration
+`src/database/migrations/1721900000000-practice-rsvp-schema.ts` (reversible; proven
+from-empty in `test/database/practice-rsvp.integration.spec.ts`) adds:
+
+- `practice_rsvps` — the single **effective** response per member/session. A unique
+  index `(session_id, membership_id)` enforces "one effective RSVP per
+  member/session"; the row carries `reason_category`, a member `note` + its
+  `note_visibility` (`coaches|team`), `source` (`self|coach|admin|import|system`), a
+  `waitlisted` flag (a check constraint allows it only for a `going` status),
+  `responded_at`, actor audit, and an optimistic `version` for mobile races.
+- `practice_rsvp_revisions` — append-only history of every response change
+  (self, coach override with reason, and system waitlist promotions). Never updated
+  or deleted, so intent history survives even after a session is cancelled.
+
+**Availability rules** (pure, `domain/rsvp-availability.policy.ts` +
+`domain/rsvp-deadline.policy.ts`):
+
+- Self-service RSVP requires an **answerable** session state (`published` or
+  `rescheduled`) and the RSVP window to be open (`now <= rsvp_cutoff_at`, inclusive;
+  a null cutoff is always open). A closed state → `409 rsvpClosed`; a passed
+  deadline → `409 rsvpDeadlinePassed`.
+- A `going` answer is **confirmed** while confirmed-going (excluding self) is below
+  `capacity`; once capacity is reached it is **waitlisted**. An uncapped session
+  never waitlists (null-not-zero).
+- When a confirmed member changes away from `going`, the earliest waitlisted member
+  (by `responded_at`) is **promoted** in the same transaction.
+
+Every write appends a revision, an audit row, and enqueues a versioned outbox event
+(`practice.rsvp.recorded` / `practice.rsvp.promoted`, payload addressed to the
+affected member via `recipientUserId`) — the change/waitlist reminder path through
+the platform transactional outbox + notification preferences. Free-text notes and
+reason categories are **never** placed in audit diffs or event payloads.
+
+**Endpoints** (team + session scoped, all authenticated + permissioned):
+
+- `PUT|GET /practice-sessions/:id/rsvp` — a member sets/reads their **own**
+  availability (`practice.rsvp.self`; requires an active membership → else `403
+rsvpNotMember`). A GET before answering returns an explicit `no_response`.
+- `PUT /practice-sessions/:id/rsvps/:membershipId` — coach/admin **override**
+  (`practice.rsvp.override`), mandatory reason, **bypasses the deadline** but not the
+  session state or team scope. A membership outside the team → `404
+rsvpMembershipNotFound`.
+- `GET /practice-sessions/:id/rsvps` and `.../rsvps/summary` — the privacy-safe
+  participant list and planning aggregate (`practice.read`); counts are projections
+  from source and `spotsRemaining` is null when uncapped. The list omits notes and
+  reason categories.
+- `GET /practice-sessions/:id/rsvps/:membershipId/history` — a member's revision
+  history including notes and override reasons (`practice.rsvp.override`, coach-only).
+
+Conditional updates use optimistic `version` (`expectedVersion`), and the unique
+index turns a concurrent duplicate insert into a clean `409 versionConflict`, so
+mobile races never produce two effective rows. A cancelled session preserves all
+RSVP rows and history while refusing new responses.
+
+## 7. Session types
 
 Session type is a free-form catalog string (`practice`, `fitness`, `scrimmage`/`game`,
 `throwing`, `running`, `gym`, `rules`, or custom) — **no points are hard-coded** here;
 scoring inputs are the concern of later modules.
 
-## 7. Tests
+## 8. Tests
 
 - Unit: state machine + recurrence expansion (100% branches), Cairo-time golden
-  conversions (DST boundaries), helpers, and every use-case/service with mocked ports.
-- Integration (`test/database/practices.integration.spec.ts`, real PostgreSQL):
+  conversions (DST boundaries), helpers, the RSVP availability/deadline/waitlist
+  policies (100% branches), and every use-case/service with mocked ports.
+- Integration (`test/database/practices.integration.spec.ts` +
+  `test/database/practice-rsvp.integration.spec.ts`, real PostgreSQL):
   migrate-from-empty + reversible down, array/calendar column round-trips, idempotent
-  generation, UTC round-trips, calendar filters, status history, and scope probes.
-- E2E (`test/practices.e2e-spec.ts`): the authorization matrix — allowed, forbidden
-  (403), cross-team scope (403), suspended actor (403), invalid recurrence (400),
-  venue-not-in-scope (404), idempotent generation, the full publish/reschedule/cancel/
-  reopen flow, invalid transition (409), version conflict (409), wrong-team 404, and a
-  malformed id (400).
+  generation, UTC round-trips, calendar filters, status history, scope probes, RSVP
+  insert/version-guard/duplicate-null, confirmed-count + waitlist promotion, summary +
+  participant projections, and revision history.
+- E2E (`test/practices.e2e-spec.ts` + `test/practice-rsvp.e2e-spec.ts`): the
+  authorization matrix — allowed, forbidden (403), cross-team scope (403), suspended
+  actor (403), invalid recurrence (400), venue-not-in-scope (404), idempotent
+  generation, the full publish/reschedule/cancel/reopen flow, invalid transition
+  (409), version conflict (409), wrong-team 404, malformed id (400), plus RSVP
+  self/override, deadline boundaries, capacity/waitlist + promotion, cancellation, and
+  the override-not-member 404.

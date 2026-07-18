@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T03:11:38.114Z",
+  "generatedAt": "2026-07-18T03:56:50.925Z",
   "modules": [
     {
       "name": "articles",
@@ -331,19 +331,29 @@
           "src/modules/practices/api/dto/create-session.dto.ts",
           "src/modules/practices/api/dto/generation-result-response.dto.ts",
           "src/modules/practices/api/dto/list-query.dto.ts",
+          "src/modules/practices/api/dto/list-rsvps-response.dto.ts",
+          "src/modules/practices/api/dto/list-rsvps.query.dto.ts",
           "src/modules/practices/api/dto/list-schedules-response.dto.ts",
           "src/modules/practices/api/dto/list-sessions-response.dto.ts",
           "src/modules/practices/api/dto/list-sessions.query.dto.ts",
+          "src/modules/practices/api/dto/override-rsvp.dto.ts",
           "src/modules/practices/api/dto/reschedule-session.dto.ts",
+          "src/modules/practices/api/dto/rsvp-history-response.dto.ts",
+          "src/modules/practices/api/dto/rsvp-participant-response.dto.ts",
+          "src/modules/practices/api/dto/rsvp-response.dto.ts",
+          "src/modules/practices/api/dto/rsvp-revision-response.dto.ts",
+          "src/modules/practices/api/dto/rsvp-summary-response.dto.ts",
           "src/modules/practices/api/dto/schedule-response.dto.ts",
           "src/modules/practices/api/dto/session-history-response.dto.ts",
           "src/modules/practices/api/dto/session-response.dto.ts",
           "src/modules/practices/api/dto/session-status.dto.ts",
+          "src/modules/practices/api/dto/set-rsvp.dto.ts",
           "src/modules/practices/api/dto/status-event-response.dto.ts",
           "src/modules/practices/api/dto/update-schedule.dto.ts",
           "src/modules/practices/api/dto/update-session.dto.ts"
         ],
         "controller": [
+          "src/modules/practices/api/practice-rsvp.controller.ts",
           "src/modules/practices/api/practice-schedules.controller.ts",
           "src/modules/practices/api/practice-sessions.controller.ts"
         ],
@@ -352,20 +362,26 @@
           "src/modules/practices/application/create-practice-schedule.use-case.ts",
           "src/modules/practices/application/create-practice-session.use-case.ts",
           "src/modules/practices/application/generate-sessions.use-case.ts",
+          "src/modules/practices/application/override-rsvp.use-case.ts",
           "src/modules/practices/application/reschedule-practice-session.use-case.ts",
+          "src/modules/practices/application/set-own-rsvp.use-case.ts",
           "src/modules/practices/application/transition-practice-session.use-case.ts",
           "src/modules/practices/application/update-practice-schedule.use-case.ts",
           "src/modules/practices/application/update-practice-session.use-case.ts"
         ],
         "service": [
           "src/modules/practices/application/practice-lookup.service.ts",
+          "src/modules/practices/application/rsvp-query.service.ts",
+          "src/modules/practices/application/rsvp-recorder.service.ts",
           "src/modules/practices/application/schedule-query.service.ts",
           "src/modules/practices/application/scope-validation.service.ts",
           "src/modules/practices/application/session-query.service.ts"
         ],
         "domain": [
           "src/modules/practices/domain/practice-session.state-machine.ts",
-          "src/modules/practices/domain/recurrence.policy.ts"
+          "src/modules/practices/domain/recurrence.policy.ts",
+          "src/modules/practices/domain/rsvp-availability.policy.ts",
+          "src/modules/practices/domain/rsvp-deadline.policy.ts"
         ],
         "other": [
           "src/modules/practices/errors/invalid-schedule.error.ts",
@@ -375,30 +391,44 @@
           "src/modules/practices/errors/practice-schedule-not-found.error.ts",
           "src/modules/practices/errors/practice-session-not-found.error.ts",
           "src/modules/practices/errors/practice-team-not-found.error.ts",
+          "src/modules/practices/errors/rsvp-closed.error.ts",
+          "src/modules/practices/errors/rsvp-deadline-passed.error.ts",
+          "src/modules/practices/errors/rsvp-membership-not-found.error.ts",
+          "src/modules/practices/errors/rsvp-not-member.error.ts",
           "src/modules/practices/errors/season-scope-not-found.error.ts",
           "src/modules/practices/errors/venue-scope-not-found.error.ts",
           "src/modules/practices/index.ts",
           "src/modules/practices/practices.module.ts"
         ],
         "repository": [
+          "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
+          "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
           "src/modules/practices/infrastructure/practice-schedule.repository.ts",
           "src/modules/practices/infrastructure/practice-scope.repository.ts",
           "src/modules/practices/infrastructure/practice-session.repository.ts",
+          "src/modules/practices/infrastructure/rsvp-membership.repository.ts",
           "src/modules/practices/infrastructure/session-status-event.repository.ts"
         ],
         "lib": [
           "src/modules/practices/lib/cairo-time.ts",
-          "src/modules/practices/lib/practices.helpers.ts"
+          "src/modules/practices/lib/practices.helpers.ts",
+          "src/modules/practices/lib/rsvp.builders.ts",
+          "src/modules/practices/lib/rsvp.helpers.ts",
+          "src/modules/practices/lib/rsvp.mapper.ts"
         ],
         "model": [
           "src/modules/practices/model/practices.constants.ts",
           "src/modules/practices/model/practices.enums.ts",
           "src/modules/practices/model/practices.rows.ts",
-          "src/modules/practices/model/practices.types.ts"
+          "src/modules/practices/model/practices.types.ts",
+          "src/modules/practices/model/rsvp.constants.ts",
+          "src/modules/practices/model/rsvp.enums.ts",
+          "src/modules/practices/model/rsvp.rows.ts",
+          "src/modules/practices/model/rsvp.types.ts"
         ]
       },
-      "fileCount": 52,
-      "specCount": 16,
+      "fileCount": 82,
+      "specCount": 25,
       "publicSurface": "src/modules/practices/index.ts",
       "hasEvents": false
     },
