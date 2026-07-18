@@ -49,7 +49,9 @@ export class SessionIssuerService {
   ): Promise<IssuedSession> {
     const draft = this.buildDraft(user, deviceLabel, familyId);
     await this.sessions.insert(scope, draft.record);
-    const accessToken = await this.tokenPort.sign(toAuthUserIdentity(user));
+    const accessToken = await this.tokenPort.sign(
+      toAuthUserIdentity(user, draft.record.id),
+    );
     return {
       accessToken,
       refreshToken: draft.token,

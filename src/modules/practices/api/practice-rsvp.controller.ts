@@ -4,6 +4,7 @@ import {
   RequirePermissions,
 } from '@core/auth';
 import {
+  ApiConflictResponse,
   ApiForbiddenResponse,
   ApiOkResponse,
   ApiOperation,
@@ -53,6 +54,9 @@ export class PracticeRsvpController {
   @RequirePermissions(Permission.PracticeRsvpSelf)
   @ApiOperation({ summary: 'Set or change my own availability for a session' })
   @ApiOkResponse({ description: 'RSVP recorded', type: RsvpResponseDto })
+  @ApiConflictResponse({
+    description: 'The RSVP changed since the submitted expected version',
+  })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   setMyRsvp(

@@ -6,17 +6,22 @@ import { Inject, Injectable } from '@nestjs/common';
 
 import {
   buildDedupeKey,
+  buildDefaultDedupeSeed,
   resolveNotificationRoute,
   resolveRecipient,
 } from '../domain/notification-routing.policy';
 import { NotificationRepository } from '../infrastructure/notification.repository';
+import { NotificationAudienceRepository } from '../infrastructure/notification-audience.repository';
 import { NotificationDeliveryRepository } from '../infrastructure/notification-delivery.repository';
 import { NotificationPreferenceRepository } from '../infrastructure/notification-preference.repository';
 import {
+  DEDUPE_PAYLOAD_KEY,
+  NOTIFICATION_AUDIENCE_MAX_RECIPIENTS,
+  NOTIFICATION_AUDIENCE_PAGE_LIMIT,
   NOTIFICATION_SENDER_PORT,
   type NotificationRoute,
 } from '../model/platform.constants';
-import { DeliveryStatus } from '../model/platform.enums';
+import { DeliveryStatus, NotificationAudience } from '../model/platform.enums';
 import type {
   DomainEventEnvelope,
   NewNotification,
@@ -41,6 +46,7 @@ export class NotificationProjectionService implements OutboxEventHandlerPort {
     private readonly notifications: NotificationRepository,
     private readonly preferences: NotificationPreferenceRepository,
     private readonly deliveries: NotificationDeliveryRepository,
+    private readonly audience: NotificationAudienceRepository,
   ) {}
 
   async handle(
@@ -48,20 +54,73 @@ export class NotificationProjectionService implements OutboxEventHandlerPort {
     event: DomainEventEnvelope,
   ): Promise<void> {
     const route = resolveNotificationRoute(event.eventType);
-    const recipient = route === null ? null : resolveRecipient(event);
-    if (route === null || recipient === null) {
+    if (route === null) {
       return;
     }
+    if (route.audience === NotificationAudience.Team) {
+      await this.projectTeam(scope, event, route);
+      return;
+    }
+    const recipient = resolveRecipient(event);
+    if (recipient !== null) {
+      await this.projectIfEnabled(scope, event, route, recipient);
+    }
+  }
+
+  private async projectTeam(
+    scope: TransactionScopeLike,
+    event: DomainEventEnvelope,
+    route: NotificationRoute,
+  ): Promise<void> {
+    let after: string | null = null;
+    let delivered = 0;
+    while (delivered < NOTIFICATION_AUDIENCE_MAX_RECIPIENTS) {
+      const users = await this.teamUsers(scope, event.teamId, after);
+      await this.projectUsers(scope, event, route, users);
+      delivered += users.length;
+      after = users.at(-1) ?? null;
+      if (users.length < NOTIFICATION_AUDIENCE_PAGE_LIMIT) {
+        break;
+      }
+    }
+  }
+
+  private teamUsers(
+    scope: TransactionScopeLike,
+    teamId: string | null,
+    after: string | null,
+  ): Promise<readonly string[]> {
+    return teamId === null
+      ? Promise.resolve([])
+      : this.audience.listActiveTeamUsers(scope, teamId, after);
+  }
+
+  private async projectUsers(
+    scope: TransactionScopeLike,
+    event: DomainEventEnvelope,
+    route: NotificationRoute,
+    users: readonly string[],
+  ): Promise<void> {
+    for (const userId of users) {
+      await this.projectIfEnabled(scope, event, route, userId);
+    }
+  }
+
+  private async projectIfEnabled(
+    scope: TransactionScopeLike,
+    event: DomainEventEnvelope,
+    route: NotificationRoute,
+    recipient: string,
+  ): Promise<void> {
     const enabled = await this.preferences.isEnabled(
       scope,
       recipient,
       route.category,
       route.channel,
     );
-    if (!enabled) {
-      return;
+    if (enabled) {
+      await this.project(scope, event, route, recipient);
     }
-    await this.project(scope, event, route, recipient);
   }
 
   private async project(
@@ -93,9 +152,18 @@ export class NotificationProjectionService implements OutboxEventHandlerPort {
       titleKey: route.titleKey,
       bodyKey: route.bodyKey,
       params: event.payload,
-      dedupeKey: buildDedupeKey(event.eventType, event.aggregateId, recipient),
+      dedupeKey: buildDedupeKey(this.dedupeSeed(event), recipient),
       now: event.occurredAt,
     };
+  }
+
+  private dedupeSeed(event: DomainEventEnvelope): string {
+    const requested = new Map(Object.entries(event.payload)).get(
+      DEDUPE_PAYLOAD_KEY,
+    );
+    return typeof requested === 'string' && requested.length > 0
+      ? requested
+      : buildDefaultDedupeSeed(event);
   }
 
   private deliver(

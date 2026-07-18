@@ -13,7 +13,9 @@ import {
 
 // Startup is resilient: a failed connection is logged (host + database name
 // only — never credentials) and the process still boots so liveness stays up
-// while readiness reports not-ready. `synchronize` is always false.
+// while readiness reports not-ready. `synchronize` is always false. Database
+// creation and migrations are explicit operator actions (`npm run db:setup`);
+// normal startup therefore needs no CREATE DATABASE privilege.
 async function initializeDataSource(
   config: AppConfigService,
   logger: AppLogger,

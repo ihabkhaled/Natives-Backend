@@ -41,6 +41,12 @@ export interface IdentityConfig {
   readonly accountLockoutSeconds: number;
 }
 
+export interface SeedAdminConfig {
+  readonly email: string;
+  readonly password: string;
+  readonly displayName: string;
+}
+
 export interface RootConfig {
   readonly app: AppConfig;
   readonly security: SecurityConfig;

@@ -23,6 +23,8 @@ Do not use for one isolated finding; choose the focused skill. Do not turn clean
 7. Run focused tests after every slice; stop and fix the root cause of any regression.
 8. Run readable-code, security, observability, and no-weakening reviews.
 9. Run every repository gate and complete validation/defect/security/docs/readiness evidence.
+10. Communicate concisely, avoid unrelated detours and speculative work, decide reasonable in-scope
+    details promptly, and continue through verification without skipping any mandatory gate.
 
 ## Checklist
 

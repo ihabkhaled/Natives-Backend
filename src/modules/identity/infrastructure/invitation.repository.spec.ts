@@ -3,7 +3,10 @@ import { Role } from '@shared/enums';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { InvitationStatus } from '../model/identity.enums';
-import type { InvitationRow } from '../model/identity.rows';
+import type {
+  InvitationRow,
+  PublicInvitationRow,
+} from '../model/identity.rows';
 import { InvitationRepository } from './invitation.repository';
 
 function createScope(): { run: ReturnType<typeof vi.fn> } {
@@ -21,6 +24,11 @@ const INVITATION_ROW: InvitationRow = {
   revoked_at: null,
   created_at: '2026-01-01T00:00:00.000Z',
   updated_at: '2026-01-02T00:00:00.000Z',
+};
+
+const PUBLIC_INVITATION_ROW: PublicInvitationRow = {
+  ...INVITATION_ROW,
+  inviter_display_name: 'Coach One',
 };
 
 describe('InvitationRepository', () => {
@@ -121,6 +129,49 @@ describe('InvitationRepository', () => {
         'missing',
       ),
     ).resolves.toBeNull();
+  });
+
+  it('finds public invitation details by token hash without returning the hash', async () => {
+    scope.run.mockResolvedValue([PUBLIC_INVITATION_ROW]);
+
+    const invitation = await repository.findPublicByTokenHash(
+      scope as unknown as TransactionScope,
+      'hash-1',
+    );
+
+    expect(invitation).toMatchObject({
+      id: 'inv-1',
+      email: 'invitee@example.test',
+      inviterName: 'Coach One',
+    });
+    const [sql, params] = scope.run.mock.calls[0] as [string, unknown[]];
+    expect(sql).toContain('LEFT JOIN "users"');
+    expect(sql).not.toContain('"token_hash",');
+    expect(params).toEqual(['hash-1']);
+  });
+
+  it('returns null when a public invitation token does not match', async () => {
+    scope.run.mockResolvedValue([]);
+
+    await expect(
+      repository.findPublicByTokenHash(
+        scope as unknown as TransactionScope,
+        'missing',
+      ),
+    ).resolves.toBeNull();
+  });
+
+  it('maps an absent inviter display name to null', async () => {
+    scope.run.mockResolvedValue([
+      { ...PUBLIC_INVITATION_ROW, inviter_display_name: null },
+    ]);
+
+    const invitation = await repository.findPublicByTokenHash(
+      scope as unknown as TransactionScope,
+      'hash-1',
+    );
+
+    expect(invitation?.inviterName).toBeNull();
   });
 
   it('finds an active pending invitation by normalized email', async () => {

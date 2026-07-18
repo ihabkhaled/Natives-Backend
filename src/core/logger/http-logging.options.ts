@@ -7,6 +7,7 @@ import { NodeEnv } from '@shared/enums';
 import type { Level } from 'pino';
 import type { Options } from 'pino-http';
 
+import { serializeHttpRequest } from './http-request.serializer';
 import {
   DEV_LOG_TRANSPORT,
   REDACT_CENSOR,
@@ -30,6 +31,7 @@ export function buildPinoHttpOptions(app: AppConfig): Options {
     level: app.logLevel,
     autoLogging: true,
     redact: { paths: [...REDACT_PATHS], censor: REDACT_CENSOR },
+    serializers: { req: serializeHttpRequest },
     customLogLevel: (_request, response, error) =>
       error === undefined ? levelForStatus(response.statusCode) : 'error',
   };

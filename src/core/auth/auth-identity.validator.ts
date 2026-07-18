@@ -20,12 +20,15 @@ export function isAuthUserIdentity(value: unknown): value is AuthUserIdentity {
 
   const userId = value['userId'];
   const email = value['email'];
+  const sessionId = value['sessionId'];
   return (
     typeof userId === 'string' &&
     userId.trim().length > 0 &&
     typeof email === 'string' &&
     AUTH_EMAIL_PATTERN.test(email) &&
     Array.isArray(value['roles']) &&
-    value['roles'].every(isRole)
+    value['roles'].every(isRole) &&
+    (sessionId === undefined ||
+      (typeof sessionId === 'string' && sessionId.trim().length > 0))
   );
 }

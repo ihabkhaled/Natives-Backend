@@ -39,8 +39,12 @@ Migrate-from-empty and reversible rollback are proven in
   logged, or returned by the create/resend/forgot endpoints**. Refresh/reset
   plaintext is returned exactly once to the caller that minted the session.
 - **Access token** — short-lived JWT (`AUTH_TOKEN_PORT`) carrying `userId`,
-  `email`, and the minimal `roles` claim. No RBAC catalog resolution here (that
-  is prompt 102).
+  `email`, the minimal `roles` claim, and the issuing refresh-session `sessionId`.
+  Existing tokens without `sessionId` remain valid until expiry, but cannot use
+  revoke-others because the server will never guess which session to preserve.
+  A successful login separately resolves the caller's effective global
+  permission keys for immediate client hydration; permissions are never trusted
+  back from the client.
 
 ## Token lifetimes (typed config, `src/config/identity.config.ts`)
 
@@ -60,19 +64,23 @@ are validated fail-fast in `environment-variables.dto.ts`.
 
 Base path `/api/v1`.
 
-| Method & path                  | Auth                | Behaviour                                                                           |
-| ------------------------------ | ------------------- | ----------------------------------------------------------------------------------- |
-| `POST /invitations`            | `invitation:create` | Create a pending invitation (409 on active user/pending collision).                 |
-| `POST /invitations/:id/resend` | `invitation:create` | Rotate token + expiry on a pending invitation.                                      |
-| `POST /invitations/:id/revoke` | `invitation:revoke` | Revoke a pending invitation.                                                        |
-| `POST /invitations/accept`     | public              | Atomic: create user + credential + activate + consume invitation; issues a session. |
-| `POST /auth/login`             | public              | Verify credentials; issue access + refresh tokens.                                  |
-| `POST /auth/refresh`           | public              | Rotate the refresh session (reuse detection).                                       |
-| `POST /auth/logout`            | bearer              | Revoke the presented session.                                                       |
-| `POST /auth/logout-all`        | bearer              | Revoke every session for the caller.                                                |
-| `GET  /auth/me`                | bearer              | Current principal; re-checks live user state.                                       |
-| `POST /auth/forgot-password`   | public              | Always-generic acknowledgement (no enumeration).                                    |
-| `POST /auth/reset-password`    | public              | Consume a one-time token; replace credential; revoke all sessions.                  |
+| Method & path                       | Auth                | Behaviour                                                                           |
+| ----------------------------------- | ------------------- | ----------------------------------------------------------------------------------- |
+| `POST /invitations`                 | `invitation:create` | Create a pending invitation (409 on active user/pending collision).                 |
+| `POST /invitations/:id/resend`      | `invitation:create` | Rotate token + expiry on a pending invitation.                                      |
+| `POST /invitations/:id/revoke`      | `invitation:revoke` | Revoke a pending invitation.                                                        |
+| `POST /invitations/accept`          | public              | Atomic: create user + credential + activate + consume invitation; issues a session. |
+| `POST /auth/login`                  | public              | Verify credentials; return nested tokens plus enriched user/permission state.       |
+| `POST /auth/refresh`                | public              | Rotate the refresh session (reuse detection).                                       |
+| `POST /auth/logout`                 | bearer              | Revoke the presented session.                                                       |
+| `POST /auth/logout-all`             | bearer              | Revoke every session for the caller.                                                |
+| `GET  /auth/me`                     | bearer              | Current principal; re-checks live user state.                                       |
+| `GET  /auth/sessions`               | bearer + self scope | List active sessions in a bounded, ordered page.                                    |
+| `POST /auth/sessions/:id/revoke`    | bearer + self scope | Revoke one session only when it belongs to the caller.                              |
+| `POST /auth/sessions/revoke-others` | bearer + self scope | Revoke every other session while preserving the JWT session.                        |
+| `GET  /auth/invitations/:token`     | public              | Inspect minimal pending-invitation details by a high-entropy opaque token.          |
+| `POST /auth/forgot-password`        | public              | Always-generic acknowledgement (no enumeration).                                    |
+| `POST /auth/reset-password`         | public              | Consume a one-time token; replace credential; revoke all sessions.                  |
 
 ## Threat model → mitigations
 
@@ -90,6 +98,19 @@ Base path `/api/v1`.
   whole token family is revoked and a `session.reuseDetected` event recorded. The
   revocation is committed even though the caller receives a generic 401 (it is
   not rolled back by the error).
+- **Session IDOR / invasive tracking** — session list and revoke SQL is scoped by
+  the verified caller before count/order/pagination. Foreign and missing IDs
+  return the same 404. The projection uses the user-supplied device label and
+  issuance time only; it does not store or infer IP, location, fingerprint, or
+  background activity.
+- **Invitation-link disclosure** — the public lookup hashes the supplied token
+  and returns only email, role, optional inviter display name, and expiry for a
+  pending unexpired invitation. Every unknown, accepted, revoked, or expired
+  token returns the same sanitized error. Team context is omitted because the
+  current invitation schema has no team relationship. Before pino writes the
+  HTTP request record, the logger-owned serializer replaces the token path
+  segment and censors request referrer headers. It retains the sanitized route
+  alongside the standard method, request-id, status, and duration diagnostics.
 - **One-time token races** — invitation-accept and password-reset lock the token
   row `FOR UPDATE` and guard on `accepted_at`/`consumed_at`, so a token is
   redeemed exactly once under concurrent requests (proven under a simulated race
@@ -108,8 +129,9 @@ Base path `/api/v1`.
 - **Locked-out account** — the lockout auto-clears after
   `IDENTITY_ACCOUNT_LOCKOUT_SECONDS`; a successful login also clears the counter.
   Support can clear `failed_login_state` for the identity if warranted.
-- **Compromised account** — call `POST /auth/logout-all` (or revoke sessions
-  directly) and trigger a password reset; the reset revokes all sessions.
+- **Compromised account** — inspect `GET /auth/sessions`, revoke an owned device
+  with `POST /auth/sessions/:id/revoke`, or call `logout-all`, then trigger a
+  password reset; the reset revokes all sessions.
 - **Lost invitation** — resend (`POST /invitations/:id/resend`) issues a fresh
   token and expiry; the old link stops working. Stale pending invitations are
   swept to `expired` by `ExpireInvitationsUseCase`.
@@ -130,3 +152,42 @@ never real users, phones, or emails. There is **no seeded production account**.
 Tests freeze time via the `ClockPort`, generate ids via the `IdGeneratorPort`,
 and inject a deterministic `SecureRandomPort` so token flows are reproducible
 without ever exposing a real secret.
+
+## Login response contract
+
+`POST /api/v1/auth/login` intentionally differs from the flat session response
+used by refresh and invitation acceptance. It is a coordinated breaking contract
+for web/mobile clients:
+
+```json
+{
+  "tokens": {
+    "accessToken": "<jwt>",
+    "refreshToken": "<opaque-token>"
+  },
+  "user": {
+    "id": "<uuid>",
+    "email": "member@example.test",
+    "displayName": "Member",
+    "permissions": ["practice.read", "team.read"],
+    "accountState": "active",
+    "onboardingComplete": true,
+    "memberships": []
+  }
+}
+```
+
+Internal `active` maps to client `active`, `invited` maps to `pending`, and all
+other non-authenticating lifecycle states map to `suspended`. Permission keys are
+sorted for deterministic clients. `memberships` remains empty until the members
+bounded context exposes the required team/season-name projection.
+
+## Explicit local administrator bootstrap
+
+There is no default administrator password. To provision or deliberately rotate
+the local bootstrap administrator, set `SEED_ADMIN_PASSWORD` at command runtime
+and run `npm run seed:admin` after migrations, or use the complete
+`npm run db:setup` workflow. The command is idempotent: it restores the matching
+non-deleted account to active/admin, replaces its password hash, and ensures one
+global `TEAM_ADMIN` assignment. Never run it against a shared environment
+without explicit operator approval.

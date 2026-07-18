@@ -35,9 +35,9 @@ import {
   INVITATIONS_ROUTE,
 } from '../model/identity.constants';
 import { AcceptInvitationDto } from './dto/accept-invitation.dto';
+import { AuthSessionResponseDto } from './dto/auth-session-response.dto';
 import { CreateInvitationDto } from './dto/create-invitation.dto';
 import { InvitationResponseDto } from './dto/invitation-response.dto';
-import { SessionResponseDto } from './dto/session-response.dto';
 
 @ApiTags(INVITATIONS_API_TAG)
 @Controller(INVITATIONS_ROUTE)
@@ -107,9 +107,9 @@ export class InvitationsController {
   @ApiOperation({ summary: 'Accept an invitation and set a password' })
   @ApiCreatedResponse({
     description: 'Account activated and session issued',
-    type: SessionResponseDto,
+    type: AuthSessionResponseDto,
   })
-  accept(@Body() dto: AcceptInvitationDto): Promise<SessionResponseDto> {
+  accept(@Body() dto: AcceptInvitationDto): Promise<AuthSessionResponseDto> {
     return this.acceptInvitation.execute({
       token: dto.token,
       password: dto.password,

@@ -2,10 +2,21 @@ import type { TransactionScope } from '@core/persistence/unit-of-work.port';
 import { Injectable } from '@nestjs/common';
 
 import { firstRow, toDate, toNullableDate } from '../lib/identity.helpers';
-import type { RefreshSessionRow } from '../model/identity.rows';
+import {
+  SESSION_LIST_DEFAULT_OFFSET,
+  SESSION_LIST_MAX_LIMIT,
+  SESSION_LIST_MIN_LIMIT,
+} from '../model/identity.constants';
+import type {
+  CountRow,
+  IdentifierRow,
+  RefreshSessionRow,
+} from '../model/identity.rows';
 import type {
   NewRefreshSession,
   RefreshSession,
+  RefreshSessionPage,
+  SessionListQuery,
 } from '../model/identity.types';
 
 /**
@@ -106,6 +117,71 @@ export class RefreshSessionRepository {
         WHERE "user_id" = $1 AND "revoked_at" IS NULL
         RETURNING ${this.columns}`,
       [userId, now.toISOString()],
+    );
+    return rows.length;
+  }
+
+  async listActiveForUser(
+    scope: TransactionScope,
+    userId: string,
+    now: Date,
+    query: SessionListQuery,
+  ): Promise<RefreshSessionPage> {
+    const limit = Math.min(
+      Math.max(query.limit, SESSION_LIST_MIN_LIMIT),
+      SESSION_LIST_MAX_LIMIT,
+    );
+    const offset = Math.max(query.offset, SESSION_LIST_DEFAULT_OFFSET);
+    const countRows = await scope.run<CountRow>(
+      `SELECT COUNT(*)::int AS "count" FROM "refresh_sessions"
+        WHERE "user_id" = $1
+          AND "revoked_at" IS NULL
+          AND "expires_at" > $2`,
+      [userId, now.toISOString()],
+    );
+    const rows = await scope.run<RefreshSessionRow>(
+      `SELECT ${this.columns} FROM "refresh_sessions"
+        WHERE "user_id" = $1
+          AND "revoked_at" IS NULL
+          AND "expires_at" > $2
+        ORDER BY "issued_at" DESC, "id" ASC
+        LIMIT $3 OFFSET $4`,
+      [userId, now.toISOString(), limit, offset],
+    );
+    return {
+      items: rows.map(row => this.toSession(row)),
+      total: firstRow(countRows).count,
+    };
+  }
+
+  async revokeOwnedById(
+    scope: TransactionScope,
+    userId: string,
+    sessionId: string,
+    now: Date,
+  ): Promise<boolean> {
+    const rows = await scope.run<IdentifierRow>(
+      `UPDATE "refresh_sessions"
+          SET "revoked_at" = $3
+        WHERE "id" = $1 AND "user_id" = $2 AND "revoked_at" IS NULL
+        RETURNING "id"`,
+      [sessionId, userId, now.toISOString()],
+    );
+    return rows.length > 0;
+  }
+
+  async revokeOthersForUser(
+    scope: TransactionScope,
+    userId: string,
+    currentSessionId: string,
+    now: Date,
+  ): Promise<number> {
+    const rows = await scope.run<IdentifierRow>(
+      `UPDATE "refresh_sessions"
+          SET "revoked_at" = $3
+        WHERE "user_id" = $1 AND "id" <> $2 AND "revoked_at" IS NULL
+        RETURNING "id"`,
+      [userId, currentSessionId, now.toISOString()],
     );
     return rows.length;
   }

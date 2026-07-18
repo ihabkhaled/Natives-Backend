@@ -64,6 +64,12 @@ export enum NotificationCategory {
   System = 'system',
 }
 
+/** Recipient resolution policy for a routed domain event. */
+export enum NotificationAudience {
+  Actor = 'actor',
+  Team = 'team',
+}
+
 export const NOTIFICATION_CATEGORY_VALUES: readonly NotificationCategory[] =
   Object.values(NotificationCategory);
 

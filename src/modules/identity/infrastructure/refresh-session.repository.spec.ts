@@ -193,4 +193,125 @@ describe('RefreshSessionRepository', () => {
       ),
     ).resolves.toBe(0);
   });
+
+  it('lists only active owned sessions with deterministic bounded pagination', async () => {
+    scope.run
+      .mockResolvedValueOnce([{ count: 1 }])
+      .mockResolvedValueOnce([SESSION_ROW]);
+    const now = new Date('2026-01-02T00:00:00.000Z');
+
+    const result = await repository.listActiveForUser(
+      scope as unknown as TransactionScope,
+      'user-1',
+      now,
+      { limit: 20, offset: 0 },
+    );
+
+    expect(result).toEqual({
+      items: [expect.objectContaining({ id: 'sess-1', userId: 'user-1' })],
+      total: 1,
+    });
+    const [countSql, countParams] = scope.run.mock.calls[0] as [
+      string,
+      unknown[],
+    ];
+    const [listSql, listParams] = scope.run.mock.calls[1] as [
+      string,
+      unknown[],
+    ];
+    expect(countSql).toContain('"user_id" = $1');
+    expect(countSql).toContain('"revoked_at" IS NULL');
+    expect(countSql).toContain('"expires_at" > $2');
+    expect(countParams).toEqual(['user-1', now.toISOString()]);
+    expect(listSql).toContain('ORDER BY "issued_at" DESC, "id" ASC');
+    expect(listSql).toContain('LIMIT $3 OFFSET $4');
+    expect(listParams).toEqual(['user-1', now.toISOString(), 20, 0]);
+  });
+
+  it('returns an empty active-session page', async () => {
+    scope.run.mockResolvedValueOnce([{ count: 0 }]).mockResolvedValueOnce([]);
+
+    await expect(
+      repository.listActiveForUser(
+        scope as unknown as TransactionScope,
+        'user-1',
+        new Date('2026-01-02T00:00:00.000Z'),
+        { limit: 20, offset: 0 },
+      ),
+    ).resolves.toEqual({ items: [], total: 0 });
+  });
+
+  it.each([
+    [
+      { limit: 1_000, offset: -10 },
+      { limit: 100, offset: 0 },
+    ],
+    [
+      { limit: 0, offset: 10 },
+      { limit: 1, offset: 10 },
+    ],
+  ])('defensively bounds session-list options', async (query, expected) => {
+    scope.run.mockResolvedValueOnce([{ count: 0 }]).mockResolvedValueOnce([]);
+
+    await repository.listActiveForUser(
+      scope as unknown as TransactionScope,
+      'user-1',
+      new Date('2026-01-02T00:00:00.000Z'),
+      query,
+    );
+
+    const listParameters = scope.run.mock.calls[1]?.[1] as unknown[];
+    expect(listParameters.slice(2)).toEqual([expected.limit, expected.offset]);
+  });
+
+  it('revokes one active session only when it belongs to the user', async () => {
+    scope.run.mockResolvedValue([{ id: 'sess-1' }]);
+    const now = new Date('2026-01-02T00:00:00.000Z');
+
+    await expect(
+      repository.revokeOwnedById(
+        scope as unknown as TransactionScope,
+        'user-1',
+        'sess-1',
+        now,
+      ),
+    ).resolves.toBe(true);
+
+    const [sql, params] = scope.run.mock.calls[0] as [string, unknown[]];
+    expect(sql).toContain('"id" = $1 AND "user_id" = $2');
+    expect(sql).toContain('"revoked_at" IS NULL');
+    expect(params).toEqual(['sess-1', 'user-1', now.toISOString()]);
+  });
+
+  it('does not reveal a missing or foreign session during revoke', async () => {
+    scope.run.mockResolvedValue([]);
+
+    await expect(
+      repository.revokeOwnedById(
+        scope as unknown as TransactionScope,
+        'user-1',
+        'foreign-session',
+        new Date('2026-01-02T00:00:00.000Z'),
+      ),
+    ).resolves.toBe(false);
+  });
+
+  it('revokes every owned session except the current session', async () => {
+    scope.run.mockResolvedValue([{ id: 'session-2' }, { id: 'session-3' }]);
+    const now = new Date('2026-01-02T00:00:00.000Z');
+
+    await expect(
+      repository.revokeOthersForUser(
+        scope as unknown as TransactionScope,
+        'user-1',
+        'sess-1',
+        now,
+      ),
+    ).resolves.toBe(2);
+
+    const [sql, params] = scope.run.mock.calls[0] as [string, unknown[]];
+    expect(sql).toContain('"user_id" = $1 AND "id" <> $2');
+    expect(sql).toContain('"revoked_at" IS NULL');
+    expect(params).toEqual(['user-1', 'sess-1', now.toISOString()]);
+  });
 });

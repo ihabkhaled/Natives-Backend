@@ -1,4 +1,8 @@
 import { AppConfigService } from '@config/app-config.service';
+import {
+  EFFECTIVE_PERMISSION_RESOLVER_PORT,
+  type EffectivePermissionResolverPort,
+} from '@core/auth';
 import { CLOCK_PORT, type ClockPort } from '@core/clock/clock.port';
 import {
   ID_GENERATOR_PORT,
@@ -21,13 +25,14 @@ import { InvalidCredentialsError } from '../errors/invalid-credentials.error';
 import { FailedLoginStateRepository } from '../infrastructure/failed-login-state.repository';
 import { UserRepository } from '../infrastructure/user.repository';
 import { normalizeEmail } from '../lib/identity.helpers';
+import { buildLoginResponse, toAuthUserIdentity } from '../lib/identity.mapper';
 import { DUMMY_PASSWORD_HASH } from '../model/identity.constants';
 import { SecurityEventType } from '../model/identity.enums';
 import type {
   FailedLoginState,
-  IssuedSession,
   LoginCommand,
-  SessionOutcome,
+  LoginOutcome,
+  LoginResponse,
   User,
   UserWithCredential,
 } from '../model/identity.types';
@@ -48,6 +53,8 @@ export class LoginUseCase {
     @Inject(ID_GENERATOR_PORT) private readonly idGenerator: IdGeneratorPort,
     @Inject(PASSWORD_HASH_PORT)
     private readonly passwordHash: PasswordHashPort,
+    @Inject(EFFECTIVE_PERMISSION_RESOLVER_PORT)
+    private readonly permissionResolver: EffectivePermissionResolverPort,
     private readonly config: AppConfigService,
     private readonly users: UserRepository,
     private readonly failedLogins: FailedLoginStateRepository,
@@ -55,7 +62,7 @@ export class LoginUseCase {
     private readonly sessionIssuer: SessionIssuerService,
   ) {}
 
-  async execute(command: LoginCommand): Promise<IssuedSession> {
+  async execute(command: LoginCommand): Promise<LoginResponse> {
     const email = normalizeEmail(command.email);
     const outcome = await this.unitOfWork.runInTransaction(scope =>
       this.run(scope, command, email),
@@ -63,14 +70,23 @@ export class LoginUseCase {
     if (outcome.kind === 'denied') {
       throw new InvalidCredentialsError();
     }
-    return outcome.session;
+    const permissions = await this.resolvePermissions(outcome.user);
+    return buildLoginResponse(outcome.session, outcome.user, permissions);
+  }
+
+  private async resolvePermissions(user: User): Promise<readonly string[]> {
+    const granted = await this.permissionResolver.resolve(
+      toAuthUserIdentity(user),
+      {},
+    );
+    return [...granted].sort();
   }
 
   private async run(
     scope: TransactionScope,
     command: LoginCommand,
     email: string,
-  ): Promise<SessionOutcome> {
+  ): Promise<LoginOutcome> {
     const now = this.clock.now();
     const state = await this.failedLogins.findByEmailForUpdate(scope, email);
     if (state !== null && isLockedOut(state, now)) {
@@ -95,7 +111,7 @@ export class LoginUseCase {
       command.deviceLabel,
       this.idGenerator.generate(),
     );
-    return { kind: 'issued', session: issued };
+    return { kind: 'issued', session: issued, user };
   }
 
   private async authenticate(

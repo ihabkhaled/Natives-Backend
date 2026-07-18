@@ -13,6 +13,7 @@ import { ListNotificationsService } from './application/list-notifications.servi
 import { MarkNotificationReadService } from './application/mark-notification-read.service';
 import { NotificationPreferencesService } from './application/notification-preferences.service';
 import { NotificationProjectionService } from './application/notification-projection.service';
+import { NotificationQuietHoursService } from './application/notification-quiet-hours.service';
 import { OutboxMetricsService } from './application/outbox-metrics.service';
 import { ProcessOutboxBatchUseCase } from './application/process-outbox-batch.use-case';
 import { RecordDomainEventService } from './application/record-domain-event.service';
@@ -20,8 +21,10 @@ import { ReplayDeadLetterUseCase } from './application/replay-dead-letter.use-ca
 import { AuditLogRepository } from './infrastructure/audit-log.repository';
 import { IdempotencyRepository } from './infrastructure/idempotency.repository';
 import { NotificationRepository } from './infrastructure/notification.repository';
+import { NotificationAudienceRepository } from './infrastructure/notification-audience.repository';
 import { NotificationDeliveryRepository } from './infrastructure/notification-delivery.repository';
 import { NotificationPreferenceRepository } from './infrastructure/notification-preference.repository';
+import { NotificationQuietHoursRepository } from './infrastructure/notification-quiet-hours.repository';
 import { OutboxRepository } from './infrastructure/outbox.repository';
 import {
   NOTIFICATION_SENDER_PORT,
@@ -50,7 +53,9 @@ import {
     IdempotencyRepository,
     NotificationRepository,
     NotificationPreferenceRepository,
+    NotificationQuietHoursRepository,
     NotificationDeliveryRepository,
+    NotificationAudienceRepository,
     AuditRecorderService,
     RecordDomainEventService,
     IdempotencyService,
@@ -61,6 +66,7 @@ import {
     ListNotificationsService,
     MarkNotificationReadService,
     NotificationPreferencesService,
+    NotificationQuietHoursService,
     { provide: NOTIFICATION_SENDER_PORT, useClass: InAppNotificationAdapter },
     {
       provide: OUTBOX_EVENT_HANDLER_PORT,
@@ -72,6 +78,7 @@ import {
     RecordDomainEventService,
     IdempotencyService,
     ProcessOutboxBatchUseCase,
+    NotificationQuietHoursService,
   ],
 })
 export class PlatformModule {}

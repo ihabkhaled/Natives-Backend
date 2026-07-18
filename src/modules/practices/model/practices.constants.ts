@@ -81,6 +81,7 @@ export const PRACTICE_EVENT_VERSION = 1;
 export const PRACTICE_PUBLISHED_EVENT = 'practice.published';
 export const PRACTICE_RESCHEDULED_EVENT = 'practice.rescheduled';
 export const PRACTICE_CANCELLED_EVENT = 'practice.cancelled';
+export const PRACTICE_VENUE_CHANGED_EVENT = 'practice.venue_changed';
 
 // --- Audit action names ------------------------------------------------------
 export const SCHEDULE_CREATED_ACTION = 'practice.scheduleCreated';

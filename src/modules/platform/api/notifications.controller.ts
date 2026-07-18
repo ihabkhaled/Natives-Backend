@@ -26,10 +26,12 @@ import { Permission } from '@shared/enums';
 import { ListNotificationsService } from '../application/list-notifications.service';
 import { MarkNotificationReadService } from '../application/mark-notification-read.service';
 import { NotificationPreferencesService } from '../application/notification-preferences.service';
+import { NotificationQuietHoursService } from '../application/notification-quiet-hours.service';
 import { resolvePage } from '../lib/platform.helpers';
 import {
   NOTIFICATION_ID_PARAM,
   NOTIFICATION_PREFERENCES_ROUTE,
+  NOTIFICATION_QUIET_HOURS_ROUTE,
   NOTIFICATION_READ_ROUTE,
   NOTIFICATIONS_API_TAG,
   NOTIFICATIONS_ROUTE,
@@ -40,6 +42,10 @@ import {
   NotificationViewDto,
 } from './dto/notification-response.dto';
 import { PreferencesResponseDto } from './dto/preferences-response.dto';
+import {
+  QuietHoursResponseDto,
+  UpdateQuietHoursDto,
+} from './dto/quiet-hours.dto';
 import { UpdatePreferencesDto } from './dto/update-preferences.dto';
 
 @ApiTags(NOTIFICATIONS_API_TAG)
@@ -49,7 +55,31 @@ export class NotificationsController {
     private readonly list: ListNotificationsService,
     private readonly markService: MarkNotificationReadService,
     private readonly preferences: NotificationPreferencesService,
+    private readonly quietHours: NotificationQuietHoursService,
   ) {}
+
+  @Get(NOTIFICATION_QUIET_HOURS_ROUTE)
+  @RequirePermissions(Permission.NotificationPreferencesSelf)
+  @ApiOperation({ summary: 'Get my notification quiet hours' })
+  @ApiOkResponse({ type: QuietHoursResponseDto })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  getQuietHours(
+    @CurrentUser() actor: AuthUserIdentity,
+  ): Promise<QuietHoursResponseDto> {
+    return this.quietHours.get(actor);
+  }
+
+  @Put(NOTIFICATION_QUIET_HOURS_ROUTE)
+  @RequirePermissions(Permission.NotificationPreferencesSelf)
+  @ApiOperation({ summary: 'Update my notification quiet hours' })
+  @ApiOkResponse({ type: QuietHoursResponseDto })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  updateQuietHours(
+    @Body() dto: UpdateQuietHoursDto,
+    @CurrentUser() actor: AuthUserIdentity,
+  ): Promise<QuietHoursResponseDto> {
+    return this.quietHours.update(actor, dto);
+  }
 
   @Get(NOTIFICATION_PREFERENCES_ROUTE)
   @RequirePermissions(Permission.NotificationPreferencesSelf)

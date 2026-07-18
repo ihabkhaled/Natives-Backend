@@ -1,6 +1,6 @@
 import { ApiProperty } from '@core/openapi';
 
-export class SessionResponseDto {
+export class AuthSessionResponseDto {
   @ApiProperty()
   declare readonly accessToken: string;
 
