@@ -6,6 +6,10 @@ import type {
   AssessmentStatus,
   AssessmentTemplateStatus,
 } from './assessments.enums';
+import type {
+  CategoryWeightRow,
+  TemplateMetricRow,
+} from './assessments.rows';
 
 export interface PageRequest {
   readonly limit: number;
@@ -223,6 +227,11 @@ export interface PagedResult<TItem> {
   readonly total: number;
   readonly limit: number;
   readonly offset: number;
+}
+
+export interface TemplateRelations {
+  readonly weights: readonly CategoryWeightRow[];
+  readonly metrics: readonly TemplateMetricRow[];
 }
 
 export type AssessmentCategoryPage = PagedResult<AssessmentCategory>;

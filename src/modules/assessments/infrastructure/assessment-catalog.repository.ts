@@ -34,8 +34,10 @@ import type {
   NewPeriod,
   NewTemplate,
   PageRequest,
+  PagedResult,
   TemplateMetricInput,
   TemplatePublish,
+  TemplateRelations,
 } from '../model/assessments.types';
 import {
   toAssessmentCategory,
@@ -59,7 +61,11 @@ export class AssessmentCatalogRepository {
       [page.limit, page.offset],
     );
     const total = await this.count(scope, 'assessment_metric_categories');
-    return this.page(rows.map(toAssessmentCategory), total, page);
+    return this.page(
+      rows.map((row) => toAssessmentCategory(row)),
+      total,
+      page,
+    );
   }
 
   async listScales(
@@ -74,7 +80,11 @@ export class AssessmentCatalogRepository {
       [page.limit, page.offset],
     );
     const total = await this.count(scope, 'assessment_scales');
-    return this.page(rows.map(toAssessmentScale), total, page);
+    return this.page(
+      rows.map((row) => toAssessmentScale(row)),
+      total,
+      page,
+    );
   }
 
   async listMetrics(
@@ -96,7 +106,7 @@ export class AssessmentCatalogRepository {
       [teamId],
     );
     return this.page(
-      rows.map(toAssessmentMetric),
+      rows.map((row) => toAssessmentMetric(row)),
       totals[0]?.count ?? 0,
       page,
     );
@@ -381,7 +391,7 @@ export class AssessmentCatalogRepository {
       [teamId],
     );
     return this.page(
-      rows.map(toAssessmentPeriod),
+      rows.map((row) => toAssessmentPeriod(row)),
       totals[0]?.count ?? 0,
       page,
     );
@@ -476,10 +486,7 @@ export class AssessmentCatalogRepository {
   private async loadTemplateRelations(
     scope: TransactionScope,
     templateIds: readonly string[],
-  ): Promise<{
-    readonly weights: readonly CategoryWeightRow[];
-    readonly metrics: readonly TemplateMetricRow[];
-  }> {
+  ): Promise<TemplateRelations> {
     if (templateIds.length === 0) {
       return { weights: [], metrics: [] };
     }

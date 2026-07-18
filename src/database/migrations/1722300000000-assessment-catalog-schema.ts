@@ -398,34 +398,23 @@ export class AssessmentCatalogSchema1722300000000 implements MigrationInterface 
     categoryKey: string,
     metrics: readonly (readonly [string, string, string])[],
   ): Promise<void> {
-    for (let index = 0; index < metrics.length; index += 1) {
-      const metric = metrics[index];
-      if (metric === undefined) {
-        continue;
-      }
+    for (const [definitionKey, name, definition] of metrics) {
       await queryRunner.query(
         `WITH seed AS (SELECT gen_random_uuid() AS "id")
          INSERT INTO "assessment_metric_definitions"
           ("id", "family_id", "category_id", "scale_id", "definition_key",
            "name", "definition", "direction", "guidance", "applicability",
            "tags", "definition_version")
-         SELECT seed."id", seed."id", c."id", s."id", $1, $2, $3,
-                'higher_is_better',
+         SELECT seed."id", seed."id", c."id", s."id", '${definitionKey}',
+                '${name}', '${definition}', 'higher_is_better',
                 'Use observable behavior from the defined assessment period; use null when not observed.',
-                ARRAY['player'], ARRAY[$4], 1
+                ARRAY['player'], ARRAY['${categoryKey}'], 1
            FROM seed
            CROSS JOIN "assessment_metric_categories" c
            CROSS JOIN "assessment_scales" s
-          WHERE c."category_key" = $5
+          WHERE c."category_key" = '${categoryKey}'
             AND s."scale_key" = 'legacy_0_5'
          ON CONFLICT DO NOTHING`,
-        [
-          metric[0],
-          metric[1],
-          metric[2],
-          categoryKey,
-          categoryKey,
-        ],
       );
     }
   }
