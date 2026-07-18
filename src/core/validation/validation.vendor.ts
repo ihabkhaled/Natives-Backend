@@ -20,6 +20,8 @@ export {
   IsEnum,
   IsIn,
   IsInt,
+  IsNumber,
+  IsObject,
   IsOptional,
   IsString,
   IsUUID,

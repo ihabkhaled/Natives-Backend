@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T22:59:35.205Z",
+  "generatedAt": "2026-07-18T00:03:04.411Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -39,6 +39,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/rbac/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/teams/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -3329,6 +3334,1911 @@
     {
       "from": "src/modules/rbac/rbac.module.ts",
       "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/modules/teams/api/dto/catalog-entry-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/modules/teams/api/dto/catalog-list-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/modules/teams/api/dto/create-catalog-entry.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/modules/teams/api/dto/list-catalog-entries-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/modules/teams/application/catalog-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/catalogs.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/catalog-entry-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/catalog-entry-response.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/catalog-entry-response.dto.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/catalog-list-query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/catalog-list-query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/catalog-list-query.dto.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/catalog-list-query.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-catalog-entry.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-catalog-entry.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-catalog-entry.dto.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-catalog-entry.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-catalog-entry.dto.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-season.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-season.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-season.dto.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-season.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-setting-version.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-setting-version.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-setting-version.dto.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-setting-version.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-setting-version.dto.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-team.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-team.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-team.dto.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-venue.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-venue.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-venue.dto.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/effective-setting-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/effective-setting-response.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/effective-setting-response.dto.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-catalog-entries-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-catalog-entries-response.dto.ts",
+      "to": "src/modules/teams/api/dto/catalog-entry-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-query.dto.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-seasons-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-seasons-response.dto.ts",
+      "to": "src/modules/teams/api/dto/season-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-setting-versions-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-setting-versions-response.dto.ts",
+      "to": "src/modules/teams/api/dto/setting-version-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-teams-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-teams-response.dto.ts",
+      "to": "src/modules/teams/api/dto/team-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-venues-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/list-venues-response.dto.ts",
+      "to": "src/modules/teams/api/dto/venue-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/season-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/season-response.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-version-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-version-response.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-version-response.dto.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-versions-query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-versions-query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-versions-query.dto.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-versions-query.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/settings-snapshot-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/settings-snapshot-response.dto.ts",
+      "to": "src/modules/teams/api/dto/effective-setting-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/snapshot-query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/snapshot-query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/team-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/team-response.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/update-season.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/update-season.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/update-season.dto.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/update-season.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/update-team.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/update-team.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/update-team.dto.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/update-venue.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/update-venue.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/update-venue.dto.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/update-venue.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/venue-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/venue-response.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/modules/teams/api/dto/create-season.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/modules/teams/api/dto/list-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/modules/teams/api/dto/list-seasons-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/modules/teams/api/dto/season-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/modules/teams/api/dto/update-season.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/modules/teams/application/archive-season.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/modules/teams/application/create-season.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/modules/teams/application/season-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/modules/teams/application/update-season.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/seasons.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/api/dto/create-setting-version.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/api/dto/list-setting-versions-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/api/dto/setting-version-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/api/dto/setting-versions-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/api/dto/settings-snapshot-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/api/dto/snapshot-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/application/settings-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/modules/teams/api/dto/create-team.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/modules/teams/api/dto/list-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/modules/teams/api/dto/list-teams-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/modules/teams/api/dto/team-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/modules/teams/api/dto/update-team.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/modules/teams/application/archive-team.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/modules/teams/application/create-team.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/modules/teams/application/team-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/modules/teams/application/update-team.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/teams.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/modules/teams/api/dto/create-venue.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/modules/teams/api/dto/list-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/modules/teams/api/dto/list-venues-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/modules/teams/api/dto/update-venue.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/modules/teams/api/dto/venue-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/modules/teams/application/archive-venue.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/modules/teams/application/create-venue.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/modules/teams/application/update-venue.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/modules/teams/application/venue-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/venues.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/domain/catalog-entry.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/errors/catalog-entry-in-use.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/errors/catalog-entry-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/infrastructure/catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-season.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-season.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-season.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-season.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-season.use-case.ts",
+      "to": "src/modules/teams/errors/season-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-season.use-case.ts",
+      "to": "src/modules/teams/infrastructure/season.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-season.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-season.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-season.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-team.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-team.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-team.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-team.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-team.use-case.ts",
+      "to": "src/modules/teams/errors/team-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-team.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-team.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-team.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-team.use-case.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-team.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-venue.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-venue.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-venue.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-venue.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/archive-venue.use-case.ts",
+      "to": "src/modules/teams/errors/venue-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-venue.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-venue.use-case.ts",
+      "to": "src/modules/teams/infrastructure/venue.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-venue.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/archive-venue.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/catalog-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/catalog-query.service.ts",
+      "to": "src/modules/teams/infrastructure/catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/catalog-query.service.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/catalog-query.service.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/application/team-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/errors/slug-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/infrastructure/catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/modules/teams/application/team-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/modules/teams/domain/season-schedule.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/modules/teams/errors/season-overlap.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/modules/teams/errors/slug-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/modules/teams/infrastructure/season.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-season.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/application/team-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/errors/setting-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/infrastructure/setting-version.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-team.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-team.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-team.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-team.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-team.use-case.ts",
+      "to": "src/modules/teams/errors/slug-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-team.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-team.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-team.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-team.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-venue.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-venue.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-venue.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-venue.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/create-venue.use-case.ts",
+      "to": "src/modules/teams/application/team-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-venue.use-case.ts",
+      "to": "src/modules/teams/errors/slug-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-venue.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-venue.use-case.ts",
+      "to": "src/modules/teams/infrastructure/venue.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-venue.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-venue.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/season-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/season-query.service.ts",
+      "to": "src/modules/teams/infrastructure/season.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/season-query.service.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/settings-query.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/settings-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/settings-query.service.ts",
+      "to": "src/modules/teams/domain/effective-settings.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/settings-query.service.ts",
+      "to": "src/modules/teams/infrastructure/setting-version.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/settings-query.service.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/settings-query.service.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/team-lookup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/team-lookup.service.ts",
+      "to": "src/modules/teams/errors/team-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/team-lookup.service.ts",
+      "to": "src/modules/teams/infrastructure/team.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/team-lookup.service.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/team-lookup.service.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/team-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/team-query.service.ts",
+      "to": "src/modules/teams/errors/team-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/team-query.service.ts",
+      "to": "src/modules/teams/infrastructure/team.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/team-query.service.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/modules/teams/domain/season-schedule.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/modules/teams/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/modules/teams/errors/season-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/modules/teams/errors/season-overlap.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/modules/teams/errors/slug-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/modules/teams/infrastructure/season.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-season.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-team.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-team.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-team.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-team.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-team.use-case.ts",
+      "to": "src/modules/teams/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-team.use-case.ts",
+      "to": "src/modules/teams/errors/team-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-team.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-team.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-team.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-team.use-case.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-team.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-venue.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-venue.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-venue.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-venue.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/update-venue.use-case.ts",
+      "to": "src/modules/teams/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-venue.use-case.ts",
+      "to": "src/modules/teams/errors/slug-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-venue.use-case.ts",
+      "to": "src/modules/teams/errors/venue-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-venue.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-venue.use-case.ts",
+      "to": "src/modules/teams/infrastructure/venue.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-venue.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/update-venue.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/venue-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/venue-query.service.ts",
+      "to": "src/modules/teams/infrastructure/venue.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/venue-query.service.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/effective-settings.policy.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/effective-settings.policy.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/season-schedule.policy.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/catalog-entry-in-use.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/catalog-entry-in-use.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/catalog-entry-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/catalog-entry-not-found.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/optimistic-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/optimistic-conflict.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/season-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/season-not-found.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/season-overlap.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/season-overlap.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-version-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-version-conflict.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/slug-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/slug-conflict.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/team-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/team-not-found.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/venue-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/venue-not-found.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/index.ts",
+      "to": "src/modules/teams/teams.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/catalog.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/catalog.repository.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/catalog.repository.ts",
+      "to": "src/modules/teams/model/teams.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/catalog.repository.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/season.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/season.repository.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/season.repository.ts",
+      "to": "src/modules/teams/model/teams.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/season.repository.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/setting-version.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/setting-version.repository.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/setting-version.repository.ts",
+      "to": "src/modules/teams/model/teams.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/setting-version.repository.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/team.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/team.repository.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/team.repository.ts",
+      "to": "src/modules/teams/model/teams.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/team.repository.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/venue.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/venue.repository.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/venue.repository.ts",
+      "to": "src/modules/teams/model/teams.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/venue.repository.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/lib/teams.helpers.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/lib/teams.helpers.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/lib/teams.helpers.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/lib/teams.helpers.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/model/teams.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/model/teams.rows.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/model/teams.types.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/api/catalogs.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/api/seasons.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/api/settings.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/api/teams.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/api/venues.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/archive-season.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/archive-team.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/archive-venue.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/catalog-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/create-season.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/create-team.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/create-venue.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/season-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/settings-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/team-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/team-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/update-season.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/update-team.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/update-venue.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/venue-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/infrastructure/catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/infrastructure/season.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/infrastructure/setting-version.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/infrastructure/team.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/infrastructure/venue.repository.ts",
       "type": "internal"
     },
     {

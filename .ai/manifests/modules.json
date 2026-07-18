@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T22:59:35.205Z",
+  "generatedAt": "2026-07-18T00:03:04.411Z",
   "modules": [
     {
       "name": "articles",
@@ -201,6 +201,106 @@
       "fileCount": 26,
       "specCount": 14,
       "publicSurface": "src/modules/rbac/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "teams",
+      "path": "src/modules/teams",
+      "layers": {
+        "controller": [
+          "src/modules/teams/api/catalogs.controller.ts",
+          "src/modules/teams/api/seasons.controller.ts",
+          "src/modules/teams/api/settings.controller.ts",
+          "src/modules/teams/api/teams.controller.ts",
+          "src/modules/teams/api/venues.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/teams/api/dto/catalog-entry-response.dto.ts",
+          "src/modules/teams/api/dto/catalog-list-query.dto.ts",
+          "src/modules/teams/api/dto/create-catalog-entry.dto.ts",
+          "src/modules/teams/api/dto/create-season.dto.ts",
+          "src/modules/teams/api/dto/create-setting-version.dto.ts",
+          "src/modules/teams/api/dto/create-team.dto.ts",
+          "src/modules/teams/api/dto/create-venue.dto.ts",
+          "src/modules/teams/api/dto/effective-setting-response.dto.ts",
+          "src/modules/teams/api/dto/list-catalog-entries-response.dto.ts",
+          "src/modules/teams/api/dto/list-query.dto.ts",
+          "src/modules/teams/api/dto/list-seasons-response.dto.ts",
+          "src/modules/teams/api/dto/list-setting-versions-response.dto.ts",
+          "src/modules/teams/api/dto/list-teams-response.dto.ts",
+          "src/modules/teams/api/dto/list-venues-response.dto.ts",
+          "src/modules/teams/api/dto/season-response.dto.ts",
+          "src/modules/teams/api/dto/setting-version-response.dto.ts",
+          "src/modules/teams/api/dto/setting-versions-query.dto.ts",
+          "src/modules/teams/api/dto/settings-snapshot-response.dto.ts",
+          "src/modules/teams/api/dto/snapshot-query.dto.ts",
+          "src/modules/teams/api/dto/team-response.dto.ts",
+          "src/modules/teams/api/dto/update-season.dto.ts",
+          "src/modules/teams/api/dto/update-team.dto.ts",
+          "src/modules/teams/api/dto/update-venue.dto.ts",
+          "src/modules/teams/api/dto/venue-response.dto.ts"
+        ],
+        "use-case": [
+          "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+          "src/modules/teams/application/archive-season.use-case.ts",
+          "src/modules/teams/application/archive-team.use-case.ts",
+          "src/modules/teams/application/archive-venue.use-case.ts",
+          "src/modules/teams/application/create-catalog-entry.use-case.ts",
+          "src/modules/teams/application/create-season.use-case.ts",
+          "src/modules/teams/application/create-setting-version.use-case.ts",
+          "src/modules/teams/application/create-team.use-case.ts",
+          "src/modules/teams/application/create-venue.use-case.ts",
+          "src/modules/teams/application/update-season.use-case.ts",
+          "src/modules/teams/application/update-team.use-case.ts",
+          "src/modules/teams/application/update-venue.use-case.ts"
+        ],
+        "service": [
+          "src/modules/teams/application/catalog-query.service.ts",
+          "src/modules/teams/application/season-query.service.ts",
+          "src/modules/teams/application/settings-query.service.ts",
+          "src/modules/teams/application/team-lookup.service.ts",
+          "src/modules/teams/application/team-query.service.ts",
+          "src/modules/teams/application/venue-query.service.ts"
+        ],
+        "domain": [
+          "src/modules/teams/domain/catalog-entry.policy.ts",
+          "src/modules/teams/domain/effective-settings.policy.ts",
+          "src/modules/teams/domain/season-schedule.policy.ts"
+        ],
+        "other": [
+          "src/modules/teams/errors/catalog-entry-in-use.error.ts",
+          "src/modules/teams/errors/catalog-entry-not-found.error.ts",
+          "src/modules/teams/errors/optimistic-conflict.error.ts",
+          "src/modules/teams/errors/season-not-found.error.ts",
+          "src/modules/teams/errors/season-overlap.error.ts",
+          "src/modules/teams/errors/setting-version-conflict.error.ts",
+          "src/modules/teams/errors/slug-conflict.error.ts",
+          "src/modules/teams/errors/team-not-found.error.ts",
+          "src/modules/teams/errors/venue-not-found.error.ts",
+          "src/modules/teams/index.ts",
+          "src/modules/teams/teams.module.ts"
+        ],
+        "repository": [
+          "src/modules/teams/infrastructure/catalog.repository.ts",
+          "src/modules/teams/infrastructure/season.repository.ts",
+          "src/modules/teams/infrastructure/setting-version.repository.ts",
+          "src/modules/teams/infrastructure/team-audit.repository.ts",
+          "src/modules/teams/infrastructure/team.repository.ts",
+          "src/modules/teams/infrastructure/venue.repository.ts"
+        ],
+        "lib": [
+          "src/modules/teams/lib/teams.helpers.ts"
+        ],
+        "model": [
+          "src/modules/teams/model/teams.constants.ts",
+          "src/modules/teams/model/teams.enums.ts",
+          "src/modules/teams/model/teams.rows.ts",
+          "src/modules/teams/model/teams.types.ts"
+        ]
+      },
+      "fileCount": 72,
+      "specCount": 28,
+      "publicSurface": "src/modules/teams/index.ts",
       "hasEvents": false
     }
   ],

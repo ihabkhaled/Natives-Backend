@@ -13,9 +13,29 @@ export class TypeormTransactionScope implements TransactionScope {
     statement: string,
     parameters?: readonly unknown[],
   ): Promise<TRow[]> {
-    return (await this.queryRunner.query(
+    const result: unknown = await this.queryRunner.query(
       statement,
       parameters === undefined ? undefined : [...parameters],
-    )) as TRow[];
+    );
+    return normalizeQueryResult<TRow>(result);
   }
+}
+
+/**
+ * TypeORM's postgres driver returns a plain rows array for SELECT/INSERT, but an
+ * `[rows, affectedCount]` tuple for UPDATE/DELETE ... RETURNING. Unwrap that
+ * tuple so persistence code always receives the rows directly. A genuine rows
+ * array is never `[array, number]` (rows are objects), so the shape check is
+ * unambiguous.
+ */
+function normalizeQueryResult<TRow>(result: unknown): TRow[] {
+  if (
+    Array.isArray(result) &&
+    result.length === 2 &&
+    Array.isArray(result[0]) &&
+    typeof result[1] === 'number'
+  ) {
+    return result[0] as TRow[];
+  }
+  return result as TRow[];
 }

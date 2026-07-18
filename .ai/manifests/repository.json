@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-17T22:59:35.205Z",
-  "treeHash": "sha256:3747509cb07be6cff12d8a83eeed1c14b5cbb1cabf6d991588ac92f1f711a68c",
+  "generatedAt": "2026-07-18T00:03:04.411Z",
+  "treeHash": "sha256:4b3185ee12589611e95f607f9d2a33089dc250784c928e65707d4f7f898c546c",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9b6efcac3f6972e7a62308ab7e775ee649b8e3949e0728c929c1b5177169dec3",
-      "sizeBytes": 947
+      "hash": "sha256:09b72a5bf95c0b1bd651845792df12ae457ba317226fde4c72f3498d59ebf3eb",
+      "sizeBytes": 1010
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -2165,8 +2165,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:be6fdda54aa6dcd87827d2622f759e70378a1c50ea2a29bcbf9c10970f5c8e90",
-      "sizeBytes": 643
+      "hash": "sha256:1bc5622dc4006bb43f7d276397dd46cd07073a7e22dce68d88571d59b14e4365",
+      "sizeBytes": 667
     },
     {
       "path": "src/database/cli-data-source.ts",
@@ -2417,6 +2417,23 @@
       "sizeBytes": 17618
     },
     {
+      "path": "src/database/migrations/1721500000000-teams-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamsSchema1721500000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a564d61bb94aa4c82114878e0be43ebf298e567ef34fdba77029e7ae0bc8d172",
+      "sizeBytes": 8216
+    },
+    {
       "path": "src/database/naming.helpers.spec.ts",
       "root": "app",
       "module": "app",
@@ -2545,8 +2562,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:eae20718730625c096b0e494239765e0dd1c2e8311496e60734837ad474bda25",
-      "sizeBytes": 926
+      "hash": "sha256:a96f4cbf197aa8db33b60d66aaaff916f2e64927ceb83bdab3557b9c34246a76",
+      "sizeBytes": 1994
     },
     {
       "path": "src/database/typeorm-transaction-scope.ts",
@@ -2562,8 +2579,8 @@
       "hasSpec": true,
       "specPath": "src/database/typeorm-transaction-scope.spec.ts",
       "kind": "source",
-      "hash": "sha256:eb3e50ce7e043dd134850e7549531dcef9e5908be82661f24ef1e46c3c69a471",
-      "sizeBytes": 737
+      "hash": "sha256:9276631f13a7127c85a4f38be18986ec91bdbabcf1bdbb1ff65c741a44966bde",
+      "sizeBytes": 1394
     },
     {
       "path": "src/database/typeorm-unit-of-work.adapter.spec.ts",
@@ -5603,6 +5620,2093 @@
       "kind": "source",
       "hash": "sha256:d0e46f4a050ed096b9d747a37b50073bbcfd814fa6f539286753456c31ea8ec9",
       "sizeBytes": 1861
+    },
+    {
+      "path": "src/modules/teams/api/catalogs.controller.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CatalogsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ee8eca35b7509fe95e0ec3792a68352b92b807fa874d37ac0040a899df25a053",
+      "sizeBytes": 3613
+    },
+    {
+      "path": "src/modules/teams/api/dto/catalog-entry-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CatalogEntryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:99f1e34a78152a773cc7a1b59e6087d2c7ae4f8b9ee15d64948fe1f9bb897e24",
+      "sizeBytes": 1204
+    },
+    {
+      "path": "src/modules/teams/api/dto/catalog-list-query.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CatalogListQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:65b15039ba7db27ac047c3dfd4bcb28d8b2f6b9574692b941a7c1cef066787e6",
+      "sizeBytes": 916
+    },
+    {
+      "path": "src/modules/teams/api/dto/create-catalog-entry.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateCatalogEntryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:920358c24fa14869f826d66480bf41eb28c0082a2490f2b9082ca6ecef2a796a",
+      "sizeBytes": 1341
+    },
+    {
+      "path": "src/modules/teams/api/dto/create-season.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateSeasonDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c85f7544e6de4f429d5b9e06ea6450a86613d4f3c17dc2a2caf258660c2397c4",
+      "sizeBytes": 1209
+    },
+    {
+      "path": "src/modules/teams/api/dto/create-setting-version.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateSettingVersionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d32a01c56f5b4897ce8eca02cddcf35d15439b29a33aaa4f0f07a510d577532f",
+      "sizeBytes": 837
+    },
+    {
+      "path": "src/modules/teams/api/dto/create-team.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateTeamDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0f5138c56f02b22a3dac9df069cca96de3643810e93eca76021c0b6ecf778eff",
+      "sizeBytes": 1461
+    },
+    {
+      "path": "src/modules/teams/api/dto/create-venue.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateVenueDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8d0c35bd7a261757e54a9e360f7f920c83bc24aabfe02678631a09ac7a1cbdef",
+      "sizeBytes": 1286
+    },
+    {
+      "path": "src/modules/teams/api/dto/effective-setting-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EffectiveSettingResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d9cd6eb14dd22f7f49ce659a0cb403a2c2ce82026cc76800a0d80168d5b34df3",
+      "sizeBytes": 498
+    },
+    {
+      "path": "src/modules/teams/api/dto/list-catalog-entries-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListCatalogEntriesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:31e7d643127e45f8c3647f140bb480a5c80a1d0e6908b98ba97d210d2181f5fa",
+      "sizeBytes": 437
+    },
+    {
+      "path": "src/modules/teams/api/dto/list-query.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:78975b1d640e2d2af5c9ea09e4a79042bf8d2ce592fb09fa1eb0cbf8b69062d9",
+      "sizeBytes": 730
+    },
+    {
+      "path": "src/modules/teams/api/dto/list-seasons-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSeasonsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:53c936d1ee81c2bfad016d061e375fc6532eb3c819b8305f12abf7d1cfbb9f7e",
+      "sizeBytes": 405
+    },
+    {
+      "path": "src/modules/teams/api/dto/list-setting-versions-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSettingVersionsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:59986ec5a2e48fba88705fdf0eb878bc8aea6d8abaef5f3552faa13f2ff7781f",
+      "sizeBytes": 446
+    },
+    {
+      "path": "src/modules/teams/api/dto/list-teams-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListTeamsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5c042d71c0cb32666b609f829df7015157ee652792dc4f11262387611e3c77f1",
+      "sizeBytes": 395
+    },
+    {
+      "path": "src/modules/teams/api/dto/list-venues-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListVenuesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:edc94834eb071aa5fc5bacc55bbcac8bf529b1c5ac29da50177a457e0e494cb2",
+      "sizeBytes": 400
+    },
+    {
+      "path": "src/modules/teams/api/dto/season-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SeasonResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cafa9d0042e19732a37e3d07787e9dc4fdd81455bbc17290e476a32e8c2d411c",
+      "sizeBytes": 1038
+    },
+    {
+      "path": "src/modules/teams/api/dto/setting-version-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingVersionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ea53ce5441efc75182b70dc2a6ac8984f0c58d1256ee0641f9d8df0a3300cc91",
+      "sizeBytes": 828
+    },
+    {
+      "path": "src/modules/teams/api/dto/setting-versions-query.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingVersionsQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:03782549e7abb3b29026df5d8c12ae5795e0a1199b2a2f0fc66fc0097ae60a24",
+      "sizeBytes": 919
+    },
+    {
+      "path": "src/modules/teams/api/dto/settings-snapshot-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingsSnapshotResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2198baac15f109dda2db99dc712ffde158766d1204a841722f377a76c0179781",
+      "sizeBytes": 436
+    },
+    {
+      "path": "src/modules/teams/api/dto/snapshot-query.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SnapshotQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:06e417349517582e368a1a74715b98e6d128a7e63ae3686beb7ded912a67035c",
+      "sizeBytes": 362
+    },
+    {
+      "path": "src/modules/teams/api/dto/team-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f7c293c03d35e0cc62e9bbf11e8982ecee47189775f56cbe8e4f6ef534faf8d4",
+      "sizeBytes": 1103
+    },
+    {
+      "path": "src/modules/teams/api/dto/update-season.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateSeasonDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ee5da3ccaf25d57d017a16e2276d4e051dc41689a0aa960ba5e25b23e463e0a5",
+      "sizeBytes": 1262
+    },
+    {
+      "path": "src/modules/teams/api/dto/update-team.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateTeamDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:893412eb5d257663e752c67bc6aeea694c5b7ee1edbda7d49d9bffda538fc855",
+      "sizeBytes": 1301
+    },
+    {
+      "path": "src/modules/teams/api/dto/update-venue.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateVenueDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5515c1c829cc14e48e593b91ee1cc7f9c5e021c3fd54102a02f3d380075fc3de",
+      "sizeBytes": 1571
+    },
+    {
+      "path": "src/modules/teams/api/dto/venue-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "VenueResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:067be0be955486925af7dfe6ccffc6e244dc0aa0d38c3fe4f86834d057a5f3ce",
+      "sizeBytes": 1139
+    },
+    {
+      "path": "src/modules/teams/api/seasons.controller.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SeasonsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7ff840d6d8b1d41da5c6c3b50b946dc47c7dbdf974d81d48c01699ce52b9f635",
+      "sizeBytes": 4309
+    },
+    {
+      "path": "src/modules/teams/api/settings.controller.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fe9e2d435e86bc88fdbf5b829a03a5c48f6b8f05ec73c05dd48f09c67ae87df3",
+      "sizeBytes": 3532
+    },
+    {
+      "path": "src/modules/teams/api/teams.controller.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f169861c6d0047bb36ee70e5d65ed654c3db43175eecb8ba5e69540dd70d8ea4",
+      "sizeBytes": 4332
+    },
+    {
+      "path": "src/modules/teams/api/venues.controller.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "VenuesController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a9df860eb0723debca5fdc8d2e0272594728b7d6aa2b4edfd1975221f01e51ac",
+      "sizeBytes": 4348
+    },
+    {
+      "path": "src/modules/teams/application/archive-catalog-entry.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1419a3bb86b14fac0d7b715db16ea7fac61cd957c21d1c6038eed9c37111da85",
+      "sizeBytes": 3034
+    },
+    {
+      "path": "src/modules/teams/application/archive-catalog-entry.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ArchiveCatalogEntryUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/archive-catalog-entry.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:6c6862044d5c8e2a22b44c935e81b3914a903ccbb455c628d588ae5df4a62993",
+      "sizeBytes": 2941
+    },
+    {
+      "path": "src/modules/teams/application/archive-season.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4303ea6781011bf0fe88ec83fec767d2e156b86ad6b9301ff00184a748ba7eec",
+      "sizeBytes": 1979
+    },
+    {
+      "path": "src/modules/teams/application/archive-season.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ArchiveSeasonUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/archive-season.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:197d8b96f6e055a2af8a0b90aab93eb046b182766a5acae47cdf60aab528ccf3",
+      "sizeBytes": 2373
+    },
+    {
+      "path": "src/modules/teams/application/archive-team.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:072d7171f6880cfead056b7b9d17a3f5b312b3cb58b6811657b59f2e5e403bb4",
+      "sizeBytes": 2662
+    },
+    {
+      "path": "src/modules/teams/application/archive-team.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ArchiveTeamUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/archive-team.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:33612d7c58d853aeb2447a164222183dbb17bac9c62b964ee5f07e02b62d3072",
+      "sizeBytes": 2465
+    },
+    {
+      "path": "src/modules/teams/application/archive-venue.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:962735498a74a078a36d1fe47f0d7b0eba98d0c3c6078bfb24e9e0e17e247533",
+      "sizeBytes": 1964
+    },
+    {
+      "path": "src/modules/teams/application/archive-venue.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ArchiveVenueUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/archive-venue.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4bce7d43e27fcb6f4a94038274642365927b25d0dd4325791f59b378c7418ceb",
+      "sizeBytes": 2306
+    },
+    {
+      "path": "src/modules/teams/application/catalog-query.service.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:16cbbb4c9c073e20563608c52e1c8cae371a04bc985835e0a6bc884ea8139a5c",
+      "sizeBytes": 855
+    },
+    {
+      "path": "src/modules/teams/application/catalog-query.service.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CatalogQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/catalog-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c4521af2c9e43653398afeffb86425ffd99b331f5be308a4863f055de2b713d3",
+      "sizeBytes": 974
+    },
+    {
+      "path": "src/modules/teams/application/create-catalog-entry.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:681e6b3f217ac91252f72a4e3ecfea1f1a51f613ad8987304dc12f9f4753e789",
+      "sizeBytes": 2465
+    },
+    {
+      "path": "src/modules/teams/application/create-catalog-entry.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateCatalogEntryUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/create-catalog-entry.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:973824ade3bff980d4ccf19bd4c4466d2e0aba3fa3614cc06d96d6bf87122b54",
+      "sizeBytes": 3358
+    },
+    {
+      "path": "src/modules/teams/application/create-season.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8acc8eaaa8679d49440c130854f1b13786a714c14757ca8a26dba037e179a5cf",
+      "sizeBytes": 3408
+    },
+    {
+      "path": "src/modules/teams/application/create-season.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateSeasonUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/create-season.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2481b9289c9bc95965a933e85cd53d0d13afcf94d86ec563c79008e56fcbfbe2",
+      "sizeBytes": 4544
+    },
+    {
+      "path": "src/modules/teams/application/create-setting-version.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0f2cf7d08c80ed9c5237970183b0d0840fdc4ca12167fc0612e4b048fda934fc",
+      "sizeBytes": 2489
+    },
+    {
+      "path": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateSettingVersionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/create-setting-version.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f51c6627c8de68913933986e295223bc4a0f01783a9f6c2cb190591e96643210",
+      "sizeBytes": 3537
+    },
+    {
+      "path": "src/modules/teams/application/create-team.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a02eb8401f7a1cffdb361097362dcd9dce04f0db526d3ec2c313ed94bfcf3d09",
+      "sizeBytes": 2450
+    },
+    {
+      "path": "src/modules/teams/application/create-team.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateTeamUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/create-team.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:60bd624c6af6ca6fce05411136ee804c16177dfecc496a56a1d1c7e1a831e897",
+      "sizeBytes": 2928
+    },
+    {
+      "path": "src/modules/teams/application/create-venue.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bc7ef8d24766fedcff35fec3825d1c52aa2b18f7868d7fb6cab49ca85c2c0bd3",
+      "sizeBytes": 2271
+    },
+    {
+      "path": "src/modules/teams/application/create-venue.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateVenueUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/create-venue.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2de51d97046d020c43ef6e8ca3827527a8f0d15ce987876e94dde75cd26eb451",
+      "sizeBytes": 3028
+    },
+    {
+      "path": "src/modules/teams/application/season-query.service.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a32d0c254e2cecd3ed6e957579e3ca62a8f515cc0c56d2509042e629680aefb3",
+      "sizeBytes": 727
+    },
+    {
+      "path": "src/modules/teams/application/season-query.service.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SeasonQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/season-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7f8a79bb357c5999cc4934b99c9d57fc713f8b9c58cf388618c2f700d9e27cfd",
+      "sizeBytes": 914
+    },
+    {
+      "path": "src/modules/teams/application/settings-query.service.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6f49d3d79d2572b12588b27265ae6df92de68ca68a983565366061688af673e7",
+      "sizeBytes": 2246
+    },
+    {
+      "path": "src/modules/teams/application/settings-query.service.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingsQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/settings-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:43a8e6cf99b4cf3e1cb63861898dee5a0322268856674e02ca7e02203a2e498e",
+      "sizeBytes": 1896
+    },
+    {
+      "path": "src/modules/teams/application/team-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bd69d6a3e1ca9e3974f317c4f4ce89e2c272fcbd975a07d705551d785e27b398",
+      "sizeBytes": 1786
+    },
+    {
+      "path": "src/modules/teams/application/team-lookup.service.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/team-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:385dbe5f8837f15ec8e79c1d174d789854fd8b16dad84d37193545bbc6c33327",
+      "sizeBytes": 994
+    },
+    {
+      "path": "src/modules/teams/application/team-query.service.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4d3ade15d39cb987771ef438be1f3d869131cde019becdb9f5b8c594c9d49919",
+      "sizeBytes": 1854
+    },
+    {
+      "path": "src/modules/teams/application/team-query.service.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/team-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:40109e2838798f0b6b61b0d3dbc2872b93cd800cfb53cd30ebeda4103637ac57",
+      "sizeBytes": 1378
+    },
+    {
+      "path": "src/modules/teams/application/update-season.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4760ae041998284975585a619854cad0f0672578c29827cf1b8fd03615d11aee",
+      "sizeBytes": 4787
+    },
+    {
+      "path": "src/modules/teams/application/update-season.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateSeasonUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/update-season.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:238782f2278ccb868b2649bec4f87eea102b031061cfd424545f250d14a2ad3c",
+      "sizeBytes": 5399
+    },
+    {
+      "path": "src/modules/teams/application/update-team.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ddbd90dc5564fe19f3c714c4a19ec4452ea4cc8d92cb2f93e356d6eb5a11c07d",
+      "sizeBytes": 3010
+    },
+    {
+      "path": "src/modules/teams/application/update-team.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateTeamUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/update-team.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1bd8870ac25f15a448763728e7e720ce955a264cbacdcdfafa0eed67948b688d",
+      "sizeBytes": 3264
+    },
+    {
+      "path": "src/modules/teams/application/update-venue.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1a8702750ad27a0de6661155f094497e18889ff7c5b850836d31727aecf2c34a",
+      "sizeBytes": 3464
+    },
+    {
+      "path": "src/modules/teams/application/update-venue.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateVenueUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/update-venue.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9695a4bcf1f9b8787cda69cdd3182ac9ea67491a517c882f3e4cc5dbb01b35f7",
+      "sizeBytes": 3965
+    },
+    {
+      "path": "src/modules/teams/application/venue-query.service.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b2f98d8a35163eede1ed239fd19447fe381c952590fa344611f3711b914b3a86",
+      "sizeBytes": 688
+    },
+    {
+      "path": "src/modules/teams/application/venue-query.service.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "VenueQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/venue-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:733c0c8261b3a76fe5a9a8918966f5d35065ba14c3f8acf1e3d0b6134809129d",
+      "sizeBytes": 845
+    },
+    {
+      "path": "src/modules/teams/domain/catalog-entry.policy.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5369d5870edf85fd4c61fae337e690904a232e6d46fbc05e720fd86b0e074af1",
+      "sizeBytes": 457
+    },
+    {
+      "path": "src/modules/teams/domain/catalog-entry.policy.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isCatalogEntryReferenced"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/domain/catalog-entry.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:36548e85aa18fa373159fbcef9cc1b63e72991465352022021c716d22b151b02",
+      "sizeBytes": 482
+    },
+    {
+      "path": "src/modules/teams/domain/effective-settings.policy.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:13d5442596a8cd62037f15ed86c1df82ca2717a553c142051e015295ecfaeae4",
+      "sizeBytes": 1987
+    },
+    {
+      "path": "src/modules/teams/domain/effective-settings.policy.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildSettingsSnapshot"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/domain/effective-settings.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:10aebb6efac8d3642041740e43fdcc6786f23ce778795675ac97f66df63db92f",
+      "sizeBytes": 1224
+    },
+    {
+      "path": "src/modules/teams/domain/season-schedule.policy.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5da88b00a800cdf93544149c6d2b232250a192c61ec1b31836cf326a8f26974f",
+      "sizeBytes": 2210
+    },
+    {
+      "path": "src/modules/teams/domain/season-schedule.policy.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isValidSeasonRange"
+        },
+        {
+          "kind": "function",
+          "name": "rangesOverlap"
+        },
+        {
+          "kind": "function",
+          "name": "findOverlappingSeason"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/domain/season-schedule.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:64ee0cdb436310b233a4b22e823498e0e73ba0727e1fb05d3d43ef076cd011b7",
+      "sizeBytes": 1600
+    },
+    {
+      "path": "src/modules/teams/errors/catalog-entry-in-use.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CatalogEntryInUseError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5656c13c8c197a51320d74a40f59bf5a528a3a89d9eb0fb65fca8e5864f7abe8",
+      "sizeBytes": 416
+    },
+    {
+      "path": "src/modules/teams/errors/catalog-entry-not-found.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CatalogEntryNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ccc1ac0466f5f5246675f70f9407062f8ebced241ba3bacb478571af6310d65f",
+      "sizeBytes": 433
+    },
+    {
+      "path": "src/modules/teams/errors/optimistic-conflict.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OptimisticConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:af7b02eafae111b721cb6ca5f9964a35e28fdd3aabcee13c164ab89d7f2a5e10",
+      "sizeBytes": 484
+    },
+    {
+      "path": "src/modules/teams/errors/season-not-found.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SeasonNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0111e581baadaa0403a8c0bb3d2720f521d49a10df999694b1d28f8af93fd21f",
+      "sizeBytes": 392
+    },
+    {
+      "path": "src/modules/teams/errors/season-overlap.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SeasonOverlapError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e443ebf116a11d4315ac8e66d9e5223256a80d2f4ee203c92d97b278ea104b3d",
+      "sizeBytes": 389
+    },
+    {
+      "path": "src/modules/teams/errors/setting-version-conflict.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingVersionConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fe7973ce652ed6e369b52eb764c0da6f9f8e8da6722e518b664bc9b233d1dbfb",
+      "sizeBytes": 617
+    },
+    {
+      "path": "src/modules/teams/errors/slug-conflict.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SlugConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ad7783f7a79ec6be5a18bbe79d3b62c5a2885690a0fbdb88c05ac5802b2ec5b4",
+      "sizeBytes": 438
+    },
+    {
+      "path": "src/modules/teams/errors/team-not-found.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f027d63b6e8449abd964502b17f8c24b7eb058b291563fb457e0937fd4842dfc",
+      "sizeBytes": 348
+    },
+    {
+      "path": "src/modules/teams/errors/venue-not-found.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "VenueNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:98682fb6f3666f1c364a6e7a5b16d928d72a305cfc5360c3279ec4288750fb17",
+      "sizeBytes": 386
+    },
+    {
+      "path": "src/modules/teams/index.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7ee01d467de0d6f06f7f53bdcae18cdebd83a55200225e1388d172f2c62ea0c4",
+      "sizeBytes": 46
+    },
+    {
+      "path": "src/modules/teams/infrastructure/catalog.repository.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6b5141bdb5aacc2469ff80ba77ea231be5784ca8043fd6169c18142a02df03e0",
+      "sizeBytes": 3920
+    },
+    {
+      "path": "src/modules/teams/infrastructure/catalog.repository.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CatalogRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/infrastructure/catalog.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:fc3ba59c907bf8f61451ad6603bc0f9da2ba63c43d4672ff2933266f295e3753",
+      "sizeBytes": 5118
+    },
+    {
+      "path": "src/modules/teams/infrastructure/season.repository.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9eaa7919712b590ed7db17ad710773f44602c57d9a7faee717f87ff866a001b2",
+      "sizeBytes": 4819
+    },
+    {
+      "path": "src/modules/teams/infrastructure/season.repository.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SeasonRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/infrastructure/season.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8f852567506942ee102896d2f5d099f9cf96741cec8c5ad88b9836b20fba9ec1",
+      "sizeBytes": 6707
+    },
+    {
+      "path": "src/modules/teams/infrastructure/setting-version.repository.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2174df654f5ada7c115b5f66a3b037e1ef6d14c132831aab85091d86c691c1b0",
+      "sizeBytes": 3469
+    },
+    {
+      "path": "src/modules/teams/infrastructure/setting-version.repository.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingVersionRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/infrastructure/setting-version.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:013baf9d1b8106c82443faca1f29c23e3ac4e5976ab5b8ac45abab79ccce7fe7",
+      "sizeBytes": 4045
+    },
+    {
+      "path": "src/modules/teams/infrastructure/team-audit.repository.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:05e1bfab4d837e80964a147a03b45a67e733a4fcab8de6934455464f2757a45d",
+      "sizeBytes": 1056
+    },
+    {
+      "path": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamAuditRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/infrastructure/team-audit.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:89752bbbf2664ee064fd1c73363ac5f14ffae284c7af54d3f6f99e5cfff56a5f",
+      "sizeBytes": 918
+    },
+    {
+      "path": "src/modules/teams/infrastructure/team.repository.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5e2350f9c2aaaab4d58ce88bfe08650d3aa8e538d00c1889be99c11d6a500dec",
+      "sizeBytes": 4367
+    },
+    {
+      "path": "src/modules/teams/infrastructure/team.repository.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/infrastructure/team.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:67cecb64f35e1df2499a06f9d9267915b0b6239ac302e79c77d015758fab72e1",
+      "sizeBytes": 5377
+    },
+    {
+      "path": "src/modules/teams/infrastructure/venue.repository.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c4ebefad4aa6ba5e920a67a4fa139b7590048aa34d223ce1171f6c474a290cc6",
+      "sizeBytes": 4781
+    },
+    {
+      "path": "src/modules/teams/infrastructure/venue.repository.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "VenueRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/infrastructure/venue.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:cf12c397ca18faab6e54bcb5e2179dece902defa42ceed864363b3c4d20f7b53",
+      "sizeBytes": 5685
+    },
+    {
+      "path": "src/modules/teams/lib/teams.helpers.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:960ce45bc51f506d1c1b66bc83366b2f03d27368f65f3392ff9cf3c43cf381ab",
+      "sizeBytes": 2857
+    },
+    {
+      "path": "src/modules/teams/lib/teams.helpers.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableNumber"
+        },
+        {
+          "kind": "function",
+          "name": "isIsoCalendarDate"
+        },
+        {
+          "kind": "function",
+          "name": "resolvePage"
+        },
+        {
+          "kind": "function",
+          "name": "parseResourceStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseSeasonStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseCatalogName"
+        },
+        {
+          "kind": "function",
+          "name": "parseSettingKey"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/lib/teams.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0b9de080a47ac482fa4f086237153dc71fe7065ef0d0db3dda05adf4b8e5d6f0",
+      "sizeBytes": 2857
+    },
+    {
+      "path": "src/modules/teams/model/teams.constants.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TEAMS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAMS_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "VENUES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "VENUE_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_ENTRIES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_ENTRY_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VERSIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SETTINGS_SNAPSHOT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "VENUE_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_ENTRY_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "SLUG_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SLUG_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "LOCALE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "TIMEZONE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "COLOR_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_KEY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ADDRESS_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_KEY_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_KEY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "LABEL_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NOTE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SORT_ORDER_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "SORT_ORDER_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "LATITUDE_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "LATITUDE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "LONGITUDE_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "LONGITUDE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_LOCALE"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_TIMEZONE"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SORT_ORDER"
+        },
+        {
+          "kind": "const",
+          "name": "EMPTY_JSON_OBJECT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_SCAN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "SLUG_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "DATE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_CREATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_UPDATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ARCHIVED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_CREATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_UPDATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_ARCHIVED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "VENUE_CREATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "VENUE_UPDATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "VENUE_ARCHIVED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_ENTRY_CREATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_ENTRY_ARCHIVED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VERSION_CREATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "VENUE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "VENUE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_ENTRY_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_ENTRY_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SLUG_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SLUG_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_INVALID_RANGE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_INVALID_RANGE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_OVERLAP_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_OVERLAP_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_ENTRY_IN_USE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_ENTRY_IN_USE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VERSION_CONFLICT_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f5a198cb15b958e86734f944c78167a2072ff633c290e628a0742b5aa8ca0e87",
+      "sizeBytes": 5768
+    },
+    {
+      "path": "src/modules/teams/model/teams.enums.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ResourceStatus"
+        },
+        {
+          "kind": "const",
+          "name": "RESOURCE_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SeasonStatus"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "CatalogName"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_NAME_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SettingKey"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_KEY_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fdc60d5528ba56e75b31043a2ae3d4313581c419972519a3ac828564985748c6",
+      "sizeBytes": 1767
+    },
+    {
+      "path": "src/modules/teams/model/teams.rows.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "TeamRow"
+        },
+        {
+          "kind": "interface",
+          "name": "SeasonRow"
+        },
+        {
+          "kind": "interface",
+          "name": "SeasonRangeRow"
+        },
+        {
+          "kind": "interface",
+          "name": "VenueRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CatalogEntryRow"
+        },
+        {
+          "kind": "interface",
+          "name": "SettingVersionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c5fa96faa99d25e5abcc5d2f216a216094f6db7a27ac556d877c8f412328fc81",
+      "sizeBytes": 2666
+    },
+    {
+      "path": "src/modules/teams/model/teams.types.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "JsonObject"
+        },
+        {
+          "kind": "interface",
+          "name": "Team"
+        },
+        {
+          "kind": "interface",
+          "name": "Season"
+        },
+        {
+          "kind": "interface",
+          "name": "Venue"
+        },
+        {
+          "kind": "interface",
+          "name": "CatalogEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "SettingVersion"
+        },
+        {
+          "kind": "interface",
+          "name": "EffectiveSetting"
+        },
+        {
+          "kind": "interface",
+          "name": "SettingsSnapshot"
+        },
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "ListTeamsResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ListSeasonsResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ListVenuesResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ListCatalogEntriesResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ListSettingVersionsResult"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateTeamCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdateTeamCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateSeasonCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdateSeasonCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateVenueCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdateVenueCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateCatalogEntryCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateSettingVersionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CatalogListQuery"
+        },
+        {
+          "kind": "interface",
+          "name": "SettingVersionsQuery"
+        },
+        {
+          "kind": "interface",
+          "name": "NewTeam"
+        },
+        {
+          "kind": "interface",
+          "name": "TeamUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "NewSeason"
+        },
+        {
+          "kind": "interface",
+          "name": "SeasonUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "NewVenue"
+        },
+        {
+          "kind": "interface",
+          "name": "VenueUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "NewCatalogEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "NewSettingVersion"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAuditEvent"
+        },
+        {
+          "kind": "interface",
+          "name": "SeasonDateRange"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7967e22726de11a829277f03c8bb730d3fb6e271be12fa6f7998372db26a2582",
+      "sizeBytes": 8858
+    },
+    {
+      "path": "src/modules/teams/teams.module.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamsModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:24b47520d9d52145a209f68c968f314fb6988c7779d3d878874056d740624f3f",
+      "sizeBytes": 3576
     },
     {
       "path": "src/shared/constants/http-status.constants.ts",
