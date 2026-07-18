@@ -3,9 +3,16 @@ import { ConfigService } from '@nestjs/config';
 
 import {
   APP_CONFIG_NAMESPACE,
+  DATABASE_CONFIG_NAMESPACE,
+  IDENTITY_CONFIG_NAMESPACE,
   SECURITY_CONFIG_NAMESPACE,
 } from './config.constants';
-import type { AppConfig, SecurityConfig } from './config.types';
+import type {
+  AppConfig,
+  DatabaseConfig,
+  IdentityConfig,
+  SecurityConfig,
+} from './config.types';
 
 /**
  * The only injectable configuration surface. Wraps the config vendor
@@ -23,6 +30,18 @@ export class AppConfigService {
   get security(): SecurityConfig {
     return this.configService.getOrThrow<SecurityConfig>(
       SECURITY_CONFIG_NAMESPACE,
+    );
+  }
+
+  get database(): DatabaseConfig {
+    return this.configService.getOrThrow<DatabaseConfig>(
+      DATABASE_CONFIG_NAMESPACE,
+    );
+  }
+
+  get identity(): IdentityConfig {
+    return this.configService.getOrThrow<IdentityConfig>(
+      IDENTITY_CONFIG_NAMESPACE,
     );
   }
 }

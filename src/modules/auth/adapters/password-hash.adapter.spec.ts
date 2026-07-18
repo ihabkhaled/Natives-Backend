@@ -19,4 +19,14 @@ describe('PasswordHashAdapter', () => {
       adapter.matches('wrong-password', PASSWORD_HASH),
     ).resolves.toBe(false);
   });
+
+  it('hashes a password to a bcrypt digest that verifies', async () => {
+    const digest = await adapter.hash('another-password');
+
+    expect(digest).toMatch(/^\$2[aby]\$/u);
+    expect(digest).not.toContain('another-password');
+    await expect(adapter.matches('another-password', digest)).resolves.toBe(
+      true,
+    );
+  });
 });

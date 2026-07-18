@@ -2,6 +2,8 @@ import { HttpStatus } from '@nestjs/common';
 
 import type { ErrorMessageKey } from './error.types';
 
+export const ERROR_CONTENT_TYPE_HEADER = 'Content-Type';
+export const ERROR_CONTENT_TYPE = 'application/json; charset=utf-8';
 export const GENERIC_ERROR_MESSAGE = 'Internal server error';
 export const GENERIC_ERROR_MESSAGE_KEY: ErrorMessageKey =
   'errors.common.internalError';

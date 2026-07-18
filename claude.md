@@ -143,6 +143,9 @@ If information is missing, do not stop by default. Make the best reasonable assu
 18. Never skip documentation because the request looks small.
 19. Never skip rollback thinking because the request looks safe.
 20. Never leave support, operations, QA, or security surprised by a release.
+21. Execute with focus: communicate concisely, avoid unrelated detours and speculative work, make
+    reasonable in-scope decisions promptly, and continue through verification. This never permits
+    skipping analysis, architecture, security, testing, documentation, approval, or release gates.
 
 ## Mandatory Read-Before-Acting Sequence
 

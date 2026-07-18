@@ -4,6 +4,10 @@ import type { ArgumentsHost, ExceptionFilter } from '@nestjs/common';
 import { Catch } from '@nestjs/common';
 import { SERVER_ERROR_MIN_STATUS } from '@shared/constants';
 
+import {
+  ERROR_CONTENT_TYPE,
+  ERROR_CONTENT_TYPE_HEADER,
+} from './error.constants';
 import type { ErrorBody } from './error.types';
 import { toErrorBody } from './error-body.mapper';
 
@@ -22,7 +26,10 @@ export class AppExceptionFilter implements ExceptionFilter {
     const reply = host.switchToHttp().getResponse<HttpReplyLike>();
     const body = toErrorBody(exception);
     this.record(body, exception);
-    reply.status(body.statusCode).send(body);
+    reply
+      .header(ERROR_CONTENT_TYPE_HEADER, ERROR_CONTENT_TYPE)
+      .status(body.statusCode)
+      .send(body);
   }
 
   private record(body: ErrorBody, exception: unknown): void {

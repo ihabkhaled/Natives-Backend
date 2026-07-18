@@ -68,7 +68,7 @@ Layer-specific detail lives in the numbered rule files ([README](./README.md)); 
 41. **No new integration, queue, job, or external dependency without an adapter + docs** and the required config/bootstrap wiring.
 42. **No behavior change without updating tests AND docs** in the same change. Write/adjust tests first; call out correctness/security behavior changes explicitly.
 
-## Simplicity, ownership & agent readiness (43–50)
+## Simplicity, ownership & agent readiness (43–51)
 
 43. **Run the Simple Code Ladder before writing code:** need it → reuse an existing owner → native Node/TS/NestJS solution → an existing adapter/dependency → a small pure helper → the direct readable version → a new abstraction only with a real current reason (repeated use, layer boundary, external adapter, security isolation, transaction boundary, testability). The ladder runs after reading the touched code and never skips tests, docs, validation, or any gate. (rules/20)
 44. **No speculative abstraction (YAGNI).** No plugin system, base class, factory, strategy, event bus, queue, cache, generic CRUD framework, config value, env var, DTO, or helper for imaginary future needs. One use + no boundary reason ⇒ keep it direct; extract at two-to-three real call sites; security/auth/error-mapping logic extracts early for testability. Extraction required by a layer budget, a complexity cap, or domain ownership is **not** speculative abstraction (rules 21, 23). (rules/21)
@@ -78,6 +78,9 @@ Layer-specific detail lives in the numbered rule files ([README](./README.md)); 
 48. **TypeScript and helpers must reduce reading cost.** Apply the 30-second type rule; no one-use generic tricks or cast chains. Extract helpers only for repeated/meaningful logic, a layer budget, or an explicit security/testability owner; never hide side effects or architecture violations. (rules/25, 26)
 49. **Refactor by responsibility with behavior pinned first.** Baseline the flow, add characterization/regression tests, move one concern, update wiring/exports/docs, run focused gates, and never leave half-migrated duplicate owners. Protect human/AI context: no boilerplate, dead surfaces, giant mixed diffs, or duplicated policy bodies. (rules/27, 28)
 50. **Agent entrypoints stay aligned and compact.** `claude.md` remains canonical; rules are policy and skills are procedures. Every supported agent routes to rules 00/20/22/28/30, the architecture map, cleanup skill, and known pitfalls; mirrors never invent exceptions or duplicate large rule bodies. (rules/29)
+51. **Execute with focus.** Communicate concisely, avoid unrelated detours and speculative work,
+    make reasonable in-scope decisions promptly, and continue through verification. Focus never
+    bypasses analysis, architecture, security, testing, documentation, approval, or release gates.
 
 ---
 
@@ -100,5 +103,6 @@ Layer-specific detail lives in the numbered rule files ([README](./README.md)); 
 - [ ] Types/helpers pass the 30-second/current-need test; no hidden side effects (rule 48)
 - [ ] Refactor is responsibility-sliced, tests-first, complete, and context-efficient (rule 49)
 - [ ] Agent/mirror guidance still routes to canonical owners without duplicated policy (rule 50)
+- [ ] Work stayed concise and in scope without skipping any mandatory phase or gate (rule 51)
 - [ ] Tests written/updated first; docs updated (rule 42)
 - [ ] `npm run lint` / `typecheck` / `test` / `test:coverage` / `build` green
