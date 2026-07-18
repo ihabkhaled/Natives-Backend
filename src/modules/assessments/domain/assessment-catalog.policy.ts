@@ -51,4 +51,3 @@ function isCalendarDate(value: string): boolean {
     parsed.toISOString().slice(0, 10) === value
   );
 }
-

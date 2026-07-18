@@ -206,6 +206,18 @@
         ],
         "type": "object"
       },
+      "ArchiveMetricDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          }
+        },
+        "required": [
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "ArticleResponseDto": {
         "properties": {
           "body": {
@@ -960,6 +972,62 @@
         ],
         "type": "object"
       },
+      "CalendarFeedResponseDto": {
+        "properties": {
+          "expiresAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "feedPath": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "token": {
+            "description": "Shown once. Treat this calendar subscription token as a secret.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "token",
+          "feedPath",
+          "teamId",
+          "timezone",
+          "expiresAt"
+        ],
+        "type": "object"
+      },
+      "CalendarFeedRevokeResponseDto": {
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "revoked": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "revoked"
+        ],
+        "type": "object"
+      },
       "CatalogEntryResponseDto": {
         "properties": {
           "catalog": {
@@ -1033,6 +1101,69 @@
           "createdAt",
           "updatedAt",
           "version"
+        ],
+        "type": "object"
+      },
+      "CategoryResponseDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "sortOrder": {
+            "type": "number"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "key",
+          "name",
+          "description",
+          "sortOrder",
+          "status",
+          "version",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "CategoryWeightDto": {
+        "properties": {
+          "categoryId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "weightPercentage": {
+            "maximum": 100,
+            "minimum": 1,
+            "type": "number"
+          }
+        },
+        "required": [
+          "categoryId",
+          "weightPercentage"
         ],
         "type": "object"
       },
@@ -1227,6 +1358,24 @@
         ],
         "type": "object"
       },
+      "CreateCalendarFeedDto": {
+        "properties": {
+          "expiresInDays": {
+            "maximum": 365,
+            "minimum": 1,
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "timezone": {
+            "maxLength": 64,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "CreateCatalogEntryDto": {
         "properties": {
           "catalog": {
@@ -1381,6 +1530,106 @@
         },
         "required": [
           "email"
+        ],
+        "type": "object"
+      },
+      "CreateMetricDto": {
+        "properties": {
+          "applicability": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "categoryId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "definition": {
+            "maxLength": 2000,
+            "minLength": 2,
+            "type": "string"
+          },
+          "direction": {
+            "enum": [
+              "higher_is_better",
+              "lower_is_better",
+              "target_range",
+              "descriptive"
+            ],
+            "type": "string"
+          },
+          "guidance": {
+            "maxLength": 2000,
+            "minLength": 2,
+            "type": "string"
+          },
+          "key": {
+            "maxLength": 80,
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 160,
+            "minLength": 2,
+            "type": "string"
+          },
+          "scaleId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "key",
+          "categoryId",
+          "scaleId",
+          "name",
+          "definition",
+          "direction",
+          "guidance"
+        ],
+        "type": "object"
+      },
+      "CreatePeriodDto": {
+        "properties": {
+          "cohort": {
+            "maxLength": 120,
+            "nullable": true,
+            "type": "object"
+          },
+          "endsOn": {
+            "example": "2026-06-30",
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 160,
+            "minLength": 2,
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "startsOn": {
+            "example": "2026-01-01",
+            "type": "string"
+          },
+          "templateId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "templateId",
+          "name",
+          "startsOn",
+          "endsOn"
         ],
         "type": "object"
       },
@@ -1712,6 +1961,67 @@
         ],
         "type": "object"
       },
+      "CreateTemplateDto": {
+        "properties": {
+          "categoryWeights": {
+            "items": {
+              "$ref": "#/components/schemas/CategoryWeightDto"
+            },
+            "type": "array"
+          },
+          "cohort": {
+            "maxLength": 120,
+            "nullable": true,
+            "type": "object"
+          },
+          "evaluatorRoles": {
+            "items": {
+              "enum": [
+                "MEMBER",
+                "COACH",
+                "TEAM_ADMIN",
+                "SCOREKEEPER",
+                "ANALYST"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "key": {
+            "maxLength": 80,
+            "type": "string"
+          },
+          "metrics": {
+            "items": {
+              "$ref": "#/components/schemas/TemplateMetricDto"
+            },
+            "type": "array"
+          },
+          "name": {
+            "maxLength": 160,
+            "minLength": 2,
+            "type": "string"
+          },
+          "scoreVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "key",
+          "name",
+          "evaluatorRoles",
+          "scoreVersion",
+          "categoryWeights",
+          "metrics"
+        ],
+        "type": "object"
+      },
       "CreateVenueDto": {
         "properties": {
           "address": {
@@ -1740,6 +2050,34 @@
         },
         "required": [
           "name"
+        ],
+        "type": "object"
+      },
+      "DeviceSessionResponseDto": {
+        "properties": {
+          "approxLocation": {
+            "type": "string"
+          },
+          "current": {
+            "type": "boolean"
+          },
+          "device": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "lastActiveAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "device",
+          "approxLocation",
+          "lastActiveAt",
+          "current"
         ],
         "type": "object"
       },
@@ -2154,6 +2492,32 @@
         ],
         "type": "object"
       },
+      "ListCategoriesResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CategoryResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListDrillsResponseDto": {
         "properties": {
           "items": {
@@ -2206,6 +2570,32 @@
         ],
         "type": "object"
       },
+      "ListMetricsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MetricResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListNotificationsResponseDto": {
         "properties": {
           "items": {
@@ -2232,11 +2622,63 @@
         ],
         "type": "object"
       },
+      "ListPeriodsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/PeriodResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListRsvpsResponseDto": {
         "properties": {
           "items": {
             "items": {
               "$ref": "#/components/schemas/RsvpParticipantResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListScalesResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ScaleResponseDto"
             },
             "type": "array"
           },
@@ -2367,6 +2809,32 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/TeamResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListTemplatesResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/TemplateResponseDto"
             },
             "type": "array"
           },
@@ -2968,6 +3436,118 @@
         ],
         "type": "object"
       },
+      "MetricResponseDto": {
+        "properties": {
+          "applicability": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "archivedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "archivedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "categoryId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "definition": {
+            "type": "string"
+          },
+          "direction": {
+            "enum": [
+              "higher_is_better",
+              "lower_is_better",
+              "target_range",
+              "descriptive"
+            ],
+            "type": "string"
+          },
+          "familyId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "guidance": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "scaleId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "teamId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "familyId",
+          "teamId",
+          "categoryId",
+          "scaleId",
+          "key",
+          "name",
+          "definition",
+          "direction",
+          "guidance",
+          "applicability",
+          "tags",
+          "status",
+          "version",
+          "recordVersion",
+          "createdBy",
+          "archivedBy",
+          "createdAt",
+          "archivedAt"
+        ],
+        "type": "object"
+      },
       "NotificationPreferenceDto": {
         "properties": {
           "category": {
@@ -3221,6 +3801,76 @@
         ],
         "type": "object"
       },
+      "PeriodResponseDto": {
+        "properties": {
+          "cohort": {
+            "nullable": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "endsOn": {
+            "example": "2026-06-30",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "startsOn": {
+            "example": "2026-01-01",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "templateId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "teamId",
+          "seasonId",
+          "templateId",
+          "name",
+          "cohort",
+          "startsOn",
+          "endsOn",
+          "status",
+          "recordVersion",
+          "createdBy",
+          "createdAt"
+        ],
+        "type": "object"
+      },
       "PlayerProfileDto": {
         "properties": {
           "dateOfBirth": {
@@ -3311,6 +3961,76 @@
         ],
         "type": "object"
       },
+      "PublicInvitationResponseDto": {
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "inviterName": {
+            "nullable": true,
+            "type": "object"
+          },
+          "role": {
+            "enum": [
+              "admin",
+              "user"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "role",
+          "expiresAt"
+        ],
+        "type": "object"
+      },
+      "PublishTemplateDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          }
+        },
+        "required": [
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
+      "QuietHoursResponseDto": {
+        "properties": {
+          "endsLocal": {
+            "example": "07:00",
+            "type": "string"
+          },
+          "startsLocal": {
+            "example": "22:00",
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "urgentCancellationOverride": {
+            "type": "boolean"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId",
+          "timezone",
+          "startsLocal",
+          "endsLocal",
+          "urgentCancellationOverride"
+        ],
+        "type": "object"
+      },
       "RecordScanDto": {
         "properties": {
           "outcome": {
@@ -3342,6 +4062,89 @@
         },
         "required": [
           "refreshToken"
+        ],
+        "type": "object"
+      },
+      "ReminderDispatchResponseDto": {
+        "properties": {
+          "candidates": {
+            "type": "number"
+          },
+          "enqueued": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "candidates",
+          "enqueued"
+        ],
+        "type": "object"
+      },
+      "ReminderPreviewResponseDto": {
+        "properties": {
+          "cutoff": {
+            "type": "boolean"
+          },
+          "kinds": {
+            "items": {
+              "enum": [
+                "published",
+                "upcoming",
+                "no_response",
+                "cutoff",
+                "rescheduled",
+                "cancelled",
+                "venue_changed",
+                "attendance_corrected",
+                "test"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "noResponse": {
+            "type": "number"
+          },
+          "sessionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "totalEligible": {
+            "type": "number"
+          },
+          "upcoming": {
+            "type": "boolean"
+          },
+          "urgentCancellationOverride": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "sessionId",
+          "totalEligible",
+          "noResponse",
+          "upcoming",
+          "cutoff",
+          "urgentCancellationOverride",
+          "kinds"
+        ],
+        "type": "object"
+      },
+      "ReminderTestResponseDto": {
+        "properties": {
+          "enqueued": {
+            "type": "boolean"
+          },
+          "reason": {
+            "enum": [
+              "quiet_hours"
+            ],
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "enqueued"
         ],
         "type": "object"
       },
@@ -3466,6 +4269,17 @@
         "required": [
           "token",
           "password"
+        ],
+        "type": "object"
+      },
+      "RevokeOtherSessionsResponseDto": {
+        "properties": {
+          "revokedCount": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "revokedCount"
         ],
         "type": "object"
       },
@@ -3863,6 +4677,86 @@
         ],
         "type": "object"
       },
+      "ScaleResponseDto": {
+        "properties": {
+          "categoricalOptions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "guidance": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "maximumValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "minimumValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "stepValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "unit": {
+            "nullable": true,
+            "type": "string"
+          },
+          "valueKind": {
+            "enum": [
+              "legacy_0_5",
+              "timed",
+              "count",
+              "percentage",
+              "categorical",
+              "text"
+            ],
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "key",
+          "name",
+          "valueKind",
+          "unit",
+          "minimumValue",
+          "maximumValue",
+          "stepValue",
+          "categoricalOptions",
+          "guidance",
+          "status",
+          "version",
+          "createdAt"
+        ],
+        "type": "object"
+      },
       "ScheduleResponseDto": {
         "properties": {
           "createdAt": {
@@ -4101,6 +4995,32 @@
         },
         "required": [
           "items"
+        ],
+        "type": "object"
+      },
+      "SessionListResponseDto": {
+        "properties": {
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "sessions": {
+            "items": {
+              "$ref": "#/components/schemas/DeviceSessionResponseDto"
+            },
+            "type": "array"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "sessions",
+          "total",
+          "limit",
+          "offset"
         ],
         "type": "object"
       },
@@ -4559,6 +5479,141 @@
         ],
         "type": "object"
       },
+      "TemplateMetricDto": {
+        "properties": {
+          "metricDefinitionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "sortOrder": {
+            "maximum": 10000,
+            "minimum": 0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "metricDefinitionId",
+          "required",
+          "sortOrder"
+        ],
+        "type": "object"
+      },
+      "TemplateResponseDto": {
+        "properties": {
+          "categoryWeights": {
+            "items": {
+              "$ref": "#/components/schemas/CategoryWeightDto"
+            },
+            "type": "array"
+          },
+          "cohort": {
+            "nullable": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "evaluatorRoles": {
+            "items": {
+              "enum": [
+                "MEMBER",
+                "COACH",
+                "TEAM_ADMIN",
+                "SCOREKEEPER",
+                "ANALYST"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "familyId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "metrics": {
+            "items": {
+              "$ref": "#/components/schemas/TemplateMetricDto"
+            },
+            "type": "array"
+          },
+          "name": {
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "publishedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "scoreVersion": {
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "published",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "familyId",
+          "teamId",
+          "seasonId",
+          "key",
+          "name",
+          "cohort",
+          "evaluatorRoles",
+          "scoreVersion",
+          "status",
+          "version",
+          "recordVersion",
+          "publishedAt",
+          "publishedBy",
+          "createdBy",
+          "createdAt",
+          "categoryWeights",
+          "metrics"
+        ],
+        "type": "object"
+      },
       "TransitionDto": {
         "properties": {
           "effectiveAt": {
@@ -4762,6 +5817,34 @@
         "required": [
           "profile",
           "expectedVersion"
+        ],
+        "type": "object"
+      },
+      "UpdateQuietHoursDto": {
+        "properties": {
+          "endsLocal": {
+            "example": "07:00",
+            "type": "string"
+          },
+          "startsLocal": {
+            "example": "22:00",
+            "type": "string"
+          },
+          "timezone": {
+            "example": "Africa/Cairo",
+            "maxLength": 64,
+            "type": "string"
+          },
+          "urgentCancellationOverride": {
+            "description": "Allow urgent practice cancellations during quiet hours.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "timezone",
+          "startsLocal",
+          "endsLocal",
+          "urgentCancellationOverride"
         ],
         "type": "object"
       },
@@ -5372,6 +6455,42 @@
         ]
       }
     },
+    "/auth/invitations/{token}": {
+      "get": {
+        "operationId": "PublicInvitations.get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "token",
+            "required": true,
+            "schema": {
+              "maxLength": 512,
+              "minLength": 20,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicInvitationResponseDto"
+                }
+              }
+            },
+            "description": "Minimal pending invitation details"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Inspect a pending invitation by opaque token",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
     "/auth/login": {
       "post": {
         "operationId": "Auth.login",
@@ -5565,6 +6684,143 @@
         "summary": "Reset a password with a one-time token",
         "tags": [
           "auth"
+        ]
+      }
+    },
+    "/auth/sessions": {
+      "get": {
+        "operationId": "Auth.listSessions",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionListResponseDto"
+                }
+              }
+            },
+            "description": "Bounded active session page"
+          }
+        },
+        "summary": "List active refresh sessions for the caller",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/sessions/{id}/revoke": {
+      "post": {
+        "operationId": "Auth.revokeSession",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponseDto"
+                }
+              }
+            },
+            "description": "Session revoked"
+          },
+          "404": {
+            "description": "Session not found"
+          }
+        },
+        "summary": "Revoke one owned refresh session",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/auth/sessions/revoke-others": {
+      "post": {
+        "operationId": "Auth.revokeOtherSessions",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RevokeOtherSessionsResponseDto"
+                }
+              }
+            },
+            "description": "Other sessions revoked"
+          }
+        },
+        "summary": "Revoke all refresh sessions except the current one",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/calendar/feeds/{feedToken}.ics": {
+      "get": {
+        "operationId": "PublicPracticeCalendar.render",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "feedToken",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "RFC 5545 calendar"
+          },
+          "404": {
+            "description": "Calendar feed unavailable"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Render a scoped practice calendar subscription",
+        "tags": [
+          "practices"
         ]
       }
     },
@@ -5874,6 +7130,64 @@
           }
         },
         "summary": "Update one notification preference",
+        "tags": [
+          "notifications"
+        ]
+      }
+    },
+    "/notifications/quiet-hours": {
+      "get": {
+        "operationId": "Notifications.getQuietHours",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuietHoursResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Get my notification quiet hours",
+        "tags": [
+          "notifications"
+        ]
+      },
+      "put": {
+        "operationId": "Notifications.updateQuietHours",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateQuietHoursDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuietHoursResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Update my notification quiet hours",
         "tags": [
           "notifications"
         ]
@@ -6245,6 +7559,636 @@
         "summary": "Update a team",
         "tags": [
           "teams"
+        ]
+      }
+    },
+    "/teams/{teamId}/assessment-catalog/categories": {
+      "get": {
+        "operationId": "AssessmentCatalog.listCategories",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListCategoriesResponseDto"
+                }
+              }
+            },
+            "description": "Categories"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List assessment metric categories",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/assessment-catalog/metrics": {
+      "get": {
+        "operationId": "AssessmentCatalog.listMetrics",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListMetricsResponseDto"
+                }
+              }
+            },
+            "description": "Metrics"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List current assessment metric definitions",
+        "tags": [
+          "assessments"
+        ]
+      },
+      "post": {
+        "operationId": "AssessmentCatalog.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMetricDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricResponseDto"
+                }
+              }
+            },
+            "description": "Metric created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a team metric definition (version 1)",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/assessment-catalog/metrics/{metricId}/archive": {
+      "post": {
+        "operationId": "AssessmentCatalog.archive",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "metricId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArchiveMetricDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricResponseDto"
+                }
+              }
+            },
+            "description": "Metric archived"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Archive a metric definition (must be unused)",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/assessment-catalog/metrics/{metricId}/versions": {
+      "post": {
+        "operationId": "AssessmentCatalog.createVersion",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "metricId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMetricDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricResponseDto"
+                }
+              }
+            },
+            "description": "Version created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Append a new version of a metric definition",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/assessment-catalog/periods": {
+      "get": {
+        "operationId": "AssessmentPeriod.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListPeriodsResponseDto"
+                }
+              }
+            },
+            "description": "Periods"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List assessment periods for a team",
+        "tags": [
+          "assessments"
+        ]
+      },
+      "post": {
+        "operationId": "AssessmentPeriod.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePeriodDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeriodResponseDto"
+                }
+              }
+            },
+            "description": "Period created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Open an assessment period for a published template",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/assessment-catalog/scales": {
+      "get": {
+        "operationId": "AssessmentCatalog.listScales",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListScalesResponseDto"
+                }
+              }
+            },
+            "description": "Scales"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List assessment scales",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/assessment-catalog/templates": {
+      "get": {
+        "operationId": "AssessmentTemplate.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListTemplatesResponseDto"
+                }
+              }
+            },
+            "description": "Templates"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List assessment templates for a team",
+        "tags": [
+          "assessments"
+        ]
+      },
+      "post": {
+        "operationId": "AssessmentTemplate.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTemplateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TemplateResponseDto"
+                }
+              }
+            },
+            "description": "Template created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a draft assessment template (version 1)",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/assessment-catalog/templates/{templateId}/publish": {
+      "post": {
+        "operationId": "AssessmentTemplate.publish",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "templateId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishTemplateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TemplateResponseDto"
+                }
+              }
+            },
+            "description": "Template published"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Publish and lock a draft template version",
+        "tags": [
+          "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/assessment-catalog/templates/{templateId}/versions": {
+      "post": {
+        "operationId": "AssessmentTemplate.createVersion",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "templateId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTemplateDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TemplateResponseDto"
+                }
+              }
+            },
+            "description": "Version created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Append a new draft version of a template",
+        "tags": [
+          "assessments"
         ]
       }
     },
@@ -7723,6 +9667,98 @@
         "summary": "Invite a person into a team",
         "tags": [
           "members"
+        ]
+      }
+    },
+    "/teams/{teamId}/practice-calendar-feeds": {
+      "post": {
+        "operationId": "PracticeCalendar.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCalendarFeedDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalendarFeedResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a revocable practice calendar feed",
+        "tags": [
+          "practices"
+        ]
+      }
+    },
+    "/teams/{teamId}/practice-calendar-feeds/{feedId}": {
+      "delete": {
+        "operationId": "PracticeCalendar.revoke",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "feedId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalendarFeedRevokeResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Revoke one of my practice calendar feeds",
+        "tags": [
+          "practices"
         ]
       }
     },
@@ -9784,6 +11820,132 @@
         ]
       }
     },
+    "/teams/{teamId}/practice-sessions/{sessionId}/reminders/dispatch": {
+      "post": {
+        "operationId": "PracticeReminderAdmin.dispatch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "sessionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReminderDispatchResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Enqueue due practice reminders",
+        "tags": [
+          "practices"
+        ]
+      }
+    },
+    "/teams/{teamId}/practice-sessions/{sessionId}/reminders/preview": {
+      "get": {
+        "operationId": "PracticeReminderAdmin.preview",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "sessionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReminderPreviewResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Preview due practice reminders",
+        "tags": [
+          "practices"
+        ]
+      }
+    },
+    "/teams/{teamId}/practice-sessions/{sessionId}/reminders/test": {
+      "post": {
+        "operationId": "PracticeReminderAdmin.sendTest",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "sessionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReminderTestResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Enqueue a safe practice reminder test to myself",
+        "tags": [
+          "practices"
+        ]
+      }
+    },
     "/teams/{teamId}/practice-sessions/{sessionId}/reopen": {
       "post": {
         "operationId": "PracticeSessions.reopen",
@@ -9981,6 +12143,9 @@
           },
           "403": {
             "description": "Forbidden"
+          },
+          "409": {
+            "description": "The RSVP changed since the submitted expected version"
           }
         },
         "summary": "Set or change my own availability for a session",

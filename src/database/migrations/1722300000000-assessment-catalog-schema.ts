@@ -349,47 +349,175 @@ export class AssessmentCatalogSchema1722300000000 implements MigrationInterface 
       ON CONFLICT ("scale_key", "scale_version") DO NOTHING
     `);
     await this.seedMetricGroup(queryRunner, 'technical', [
-      ['handling', 'Handling', 'Maintains secure, balanced disc control under pressure.'],
-      ['short_throws', 'Short Throws', 'Completes accurate short-range throws with appropriate touch.'],
-      ['long_throws', 'Long Throws', 'Delivers accurate, catchable long-range throws.'],
-      ['vision', 'Vision', 'Scans the field and identifies developing options early.'],
-      ['playmaking', 'Playmaking', 'Creates advantageous continuation opportunities for teammates.'],
-      ['catching', 'Catching', 'Secures routine and contested catches with sound technique.'],
-      ['jumping', 'Jumping', 'Times and controls aerial contests safely and effectively.'],
-      ['cutting', 'Cutting', 'Creates separation with timing, angles, and changes of pace.'],
-      ['dribbling', 'Dribbling', 'Uses legal rapid give-go movement to advance possession.'],
-      ['defense', 'Defense', 'Applies effective marking and matchup positioning without fouling.'],
+      [
+        'handling',
+        'Handling',
+        'Maintains secure, balanced disc control under pressure.',
+      ],
+      [
+        'short_throws',
+        'Short Throws',
+        'Completes accurate short-range throws with appropriate touch.',
+      ],
+      [
+        'long_throws',
+        'Long Throws',
+        'Delivers accurate, catchable long-range throws.',
+      ],
+      [
+        'vision',
+        'Vision',
+        'Scans the field and identifies developing options early.',
+      ],
+      [
+        'playmaking',
+        'Playmaking',
+        'Creates advantageous continuation opportunities for teammates.',
+      ],
+      [
+        'catching',
+        'Catching',
+        'Secures routine and contested catches with sound technique.',
+      ],
+      [
+        'jumping',
+        'Jumping',
+        'Times and controls aerial contests safely and effectively.',
+      ],
+      [
+        'cutting',
+        'Cutting',
+        'Creates separation with timing, angles, and changes of pace.',
+      ],
+      [
+        'dribbling',
+        'Dribbling',
+        'Uses legal rapid give-go movement to advance possession.',
+      ],
+      [
+        'defense',
+        'Defense',
+        'Applies effective marking and matchup positioning without fouling.',
+      ],
     ]);
     await this.seedMetricGroup(queryRunner, 'tactical', [
-      ['decision_making', 'Decision-making', 'Selects appropriate options for game context and risk.'],
-      ['positioning', 'Positioning', 'Occupies effective space relative to disc, teammates, and threats.'],
-      ['game_awareness', 'Game Awareness', 'Tracks score, time, matchups, and evolving field state.'],
-      ['communication', 'Communication', 'Shares timely, actionable information with teammates.'],
-      ['adaptability', 'Adaptability', 'Adjusts execution when opponents, conditions, or roles change.'],
-      ['stack_formation', 'Stack/Formation', 'Maintains and restores the team formation and spacing.'],
+      [
+        'decision_making',
+        'Decision-making',
+        'Selects appropriate options for game context and risk.',
+      ],
+      [
+        'positioning',
+        'Positioning',
+        'Occupies effective space relative to disc, teammates, and threats.',
+      ],
+      [
+        'game_awareness',
+        'Game Awareness',
+        'Tracks score, time, matchups, and evolving field state.',
+      ],
+      [
+        'communication',
+        'Communication',
+        'Shares timely, actionable information with teammates.',
+      ],
+      [
+        'adaptability',
+        'Adaptability',
+        'Adjusts execution when opponents, conditions, or roles change.',
+      ],
+      [
+        'stack_formation',
+        'Stack/Formation',
+        'Maintains and restores the team formation and spacing.',
+      ],
     ]);
     await this.seedMetricGroup(queryRunner, 'physical', [
-      ['speed', 'Speed', 'Reaches useful running speed for offensive and defensive actions.'],
-      ['agility', 'Agility', 'Changes direction efficiently while maintaining control.'],
-      ['strength', 'Strength', 'Produces and absorbs sport-relevant force safely.'],
-      ['stamina', 'Stamina', 'Sustains effective work rate across repeated points.'],
-      ['reaction', 'Reaction', 'Responds quickly and appropriately to visual and game cues.'],
+      [
+        'speed',
+        'Speed',
+        'Reaches useful running speed for offensive and defensive actions.',
+      ],
+      [
+        'agility',
+        'Agility',
+        'Changes direction efficiently while maintaining control.',
+      ],
+      [
+        'strength',
+        'Strength',
+        'Produces and absorbs sport-relevant force safely.',
+      ],
+      [
+        'stamina',
+        'Stamina',
+        'Sustains effective work rate across repeated points.',
+      ],
+      [
+        'reaction',
+        'Reaction',
+        'Responds quickly and appropriately to visual and game cues.',
+      ],
     ]);
     await this.seedMetricGroup(queryRunner, 'psychological', [
-      ['confidence', 'Confidence', 'Acts decisively with realistic belief in current capability.'],
-      ['mindset', 'Mindset', 'Approaches challenge and feedback with a growth orientation.'],
-      ['focus', 'Focus', 'Maintains attention on relevant cues and the current assignment.'],
-      ['resilience', 'Resilience', 'Recovers constructively after errors, setbacks, or pressure.'],
-      ['motivation', 'Motivation', 'Shows sustained intent to train, compete, and improve.'],
-      ['spirit', 'Spirit', 'Upholds fair play, respect, and self-officiation responsibilities.'],
-      ['composure', 'Composure', 'Regulates emotion and decision quality in high-pressure moments.'],
+      [
+        'confidence',
+        'Confidence',
+        'Acts decisively with realistic belief in current capability.',
+      ],
+      [
+        'mindset',
+        'Mindset',
+        'Approaches challenge and feedback with a growth orientation.',
+      ],
+      [
+        'focus',
+        'Focus',
+        'Maintains attention on relevant cues and the current assignment.',
+      ],
+      [
+        'resilience',
+        'Resilience',
+        'Recovers constructively after errors, setbacks, or pressure.',
+      ],
+      [
+        'motivation',
+        'Motivation',
+        'Shows sustained intent to train, compete, and improve.',
+      ],
+      [
+        'spirit',
+        'Spirit',
+        'Upholds fair play, respect, and self-officiation responsibilities.',
+      ],
+      [
+        'composure',
+        'Composure',
+        'Regulates emotion and decision quality in high-pressure moments.',
+      ],
     ]);
     await this.seedMetricGroup(queryRunner, 'behavioral', [
       ['teamwork', 'Teamwork', 'Contributes reliably to shared team outcomes.'],
-      ['coachability', 'Coachability', 'Receives, clarifies, and applies constructive feedback.'],
-      ['attitude', 'Attitude', 'Demonstrates constructive energy and respect toward others.'],
-      ['consistency', 'Consistency', 'Repeats expected preparation, effort, and execution habits.'],
-      ['leadership', 'Leadership', 'Improves collective clarity, standards, and confidence.'],
+      [
+        'coachability',
+        'Coachability',
+        'Receives, clarifies, and applies constructive feedback.',
+      ],
+      [
+        'attitude',
+        'Attitude',
+        'Demonstrates constructive energy and respect toward others.',
+      ],
+      [
+        'consistency',
+        'Consistency',
+        'Repeats expected preparation, effort, and execution habits.',
+      ],
+      [
+        'leadership',
+        'Leadership',
+        'Improves collective clarity, standards, and confidence.',
+      ],
     ]);
   }
 
@@ -398,34 +526,23 @@ export class AssessmentCatalogSchema1722300000000 implements MigrationInterface 
     categoryKey: string,
     metrics: readonly (readonly [string, string, string])[],
   ): Promise<void> {
-    for (let index = 0; index < metrics.length; index += 1) {
-      const metric = metrics[index];
-      if (metric === undefined) {
-        continue;
-      }
+    for (const [definitionKey, name, definition] of metrics) {
       await queryRunner.query(
         `WITH seed AS (SELECT gen_random_uuid() AS "id")
          INSERT INTO "assessment_metric_definitions"
           ("id", "family_id", "category_id", "scale_id", "definition_key",
            "name", "definition", "direction", "guidance", "applicability",
            "tags", "definition_version")
-         SELECT seed."id", seed."id", c."id", s."id", $1, $2, $3,
-                'higher_is_better',
+         SELECT seed."id", seed."id", c."id", s."id", '${definitionKey}',
+                '${name}', '${definition}', 'higher_is_better',
                 'Use observable behavior from the defined assessment period; use null when not observed.',
-                ARRAY['player'], ARRAY[$4], 1
+                ARRAY['player'], ARRAY['${categoryKey}'], 1
            FROM seed
            CROSS JOIN "assessment_metric_categories" c
            CROSS JOIN "assessment_scales" s
-          WHERE c."category_key" = $5
+          WHERE c."category_key" = '${categoryKey}'
             AND s."scale_key" = 'legacy_0_5'
          ON CONFLICT DO NOTHING`,
-        [
-          metric[0],
-          metric[1],
-          metric[2],
-          categoryKey,
-          categoryKey,
-        ],
       );
     }
   }

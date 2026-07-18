@@ -8,4 +8,3 @@ Critical paths targeted near 100%: weight totals, scale invariants, date orderin
 published/used immutability, archive/concurrency conflicts, null/zero mapping, and transaction
 audit/outbox behavior. Declarative DTOs, enums, constants, rows, module wiring, and migration DDL
 are validated by contract/migration tests rather than coverage padding. No waiver is requested.
-

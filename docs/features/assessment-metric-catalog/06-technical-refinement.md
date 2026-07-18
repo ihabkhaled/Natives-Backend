@@ -18,4 +18,3 @@ Alternatives rejected:
 
 Trade-off: normalized child rows require a transaction and joins, accepted for correctness and
 auditability.
-

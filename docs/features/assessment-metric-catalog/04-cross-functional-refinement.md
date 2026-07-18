@@ -15,4 +15,3 @@
 Decision: template metric references pin a concrete metric-definition row/version. Published
 templates are immutable; later edits create another template version. No unresolved requirement
 blocks implementation. Formal independent approvals remain release gates.
-

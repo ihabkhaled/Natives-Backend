@@ -45,4 +45,3 @@ describe('AssessmentScopeService', () => {
     ).rejects.toBeInstanceOf(AssessmentScopeNotFoundError);
   });
 });
-

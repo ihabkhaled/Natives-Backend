@@ -12,4 +12,3 @@ Public contract changes are additive team-scoped REST routes. Data flow is reque
 scope/policy → one UnitOfWork transaction → assessment rows + audit/outbox. No topology, config,
 vendor, or runtime change. ADR not required because this follows existing modular-monolith,
 versioned-row, audit, and outbox decisions.
-

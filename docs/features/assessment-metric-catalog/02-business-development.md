@@ -7,4 +7,3 @@ administrators and coaches; players consume published assessment results in late
 Adoption risks are overly technical scale language and template misconfiguration. Mitigations are
 seeded defaults, stable guidance, explicit evaluator roles, and validation that category weights
 total 100. Enablement material is the metric dictionary and template-versioning guide.
-

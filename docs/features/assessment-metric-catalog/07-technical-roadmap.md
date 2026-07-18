@@ -11,4 +11,3 @@
   the tables are new, down removes only this feature's data. Export/backup team custom catalog data
   before down in any environment where users have written it.
 - A later contract migration is unnecessary; no old column is renamed or removed.
-

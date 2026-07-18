@@ -13,4 +13,3 @@ Assumptions: the existing team/season UUID scope and RBAC permission catalog are
 cohort is a bounded label in this slice because a cohort aggregate does not yet exist. Dependency:
 prompts 301–304 will reference the immutable definition/template versions created here. Without the
 change, later assessments risk silent scale drift and historically invalid scoring.
-

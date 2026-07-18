@@ -34,6 +34,7 @@ export const TAGS_MAX_ITEMS = 30;
 export const APPLICABILITY_MAX_ITEMS = 20;
 export const TEMPLATE_METRICS_MAX_ITEMS = 100;
 export const TEMPLATE_CATEGORIES_MAX_ITEMS = 20;
+export const EVALUATOR_ROLES_MAX_ITEMS = 10;
 export const WEIGHT_TOTAL = 100;
 export const WEIGHT_MIN = 1;
 export const WEIGHT_MAX = 100;
@@ -41,7 +42,8 @@ export const SORT_ORDER_MIN = 0;
 export const SORT_ORDER_MAX = 10_000;
 export const VERSION_MIN = 1;
 export const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/u;
-export const DEFINITION_KEY_PATTERN = /^[a-z0-9]+(?:_[a-z0-9]+)*$/u;
+export const DEFINITION_KEY_PATTERN =
+  /^[a-z0-9]$|^[a-z0-9][a-z0-9_]*[a-z0-9]$/u;
 
 export const ASSESSMENT_VALIDATION_MESSAGE =
   'The assessment catalog input violates a domain rule';
@@ -108,4 +110,3 @@ export const PERIOD_COLUMNS = `"id", "team_id", "season_id", "template_id",
   "name", "cohort", to_char("starts_on", 'YYYY-MM-DD') AS "starts_on",
   to_char("ends_on", 'YYYY-MM-DD') AS "ends_on", "status", "record_version",
   "created_by", "created_at"`;
-

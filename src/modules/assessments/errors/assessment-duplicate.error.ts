@@ -10,4 +10,3 @@ export class AssessmentDuplicateError extends ConflictError {
     super(ASSESSMENT_DUPLICATE_MESSAGE, ASSESSMENT_DUPLICATE_MESSAGE_KEY);
   }
 }
-

@@ -13,4 +13,3 @@ export class AssessmentTemplateLockedError extends ConflictError {
     );
   }
 }
-

@@ -21,7 +21,7 @@ This file is the permanent operating brain for AI-assisted delivery. It is not a
 - Errors, config, logging, i18n (26–30)
 - Data access & security (31–37)
 - Reliability, observability, change discipline (38–42)
-- Simplicity, ownership & agent readiness (43–50)
+- Simplicity, ownership & agent readiness (43–51)
 
 ## Fast task protocol
 

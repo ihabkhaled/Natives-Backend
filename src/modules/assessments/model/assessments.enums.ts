@@ -36,4 +36,3 @@ export enum AssessmentScaleKind {
 
 export const ASSESSMENT_SCALE_KIND_VALUES: readonly AssessmentScaleKind[] =
   Object.values(AssessmentScaleKind);
-

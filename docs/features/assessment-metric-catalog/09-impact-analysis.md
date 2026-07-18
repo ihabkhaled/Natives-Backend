@@ -11,4 +11,3 @@ Reporting gains stable keys/versions. Privacy impact is low: no player values or
 stored. Support must understand locked published versions and null-not-zero semantics. Migration
 down is structurally reversible but removes feature data, so production rollback requires an export
 or roll-forward decision.
-
