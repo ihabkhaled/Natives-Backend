@@ -11,8 +11,13 @@ export const AUTH_REFRESH_ROUTE = 'refresh';
 export const AUTH_LOGOUT_ROUTE = 'logout';
 export const AUTH_LOGOUT_ALL_ROUTE = 'logout-all';
 export const AUTH_ME_ROUTE = 'me';
+export const AUTH_SESSIONS_ROUTE = 'sessions';
+export const AUTH_SESSION_REVOKE_ROUTE = 'sessions/:id/revoke';
+export const AUTH_SESSIONS_REVOKE_OTHERS_ROUTE = 'sessions/revoke-others';
+export const AUTH_PUBLIC_INVITATION_ROUTE = 'invitations/:token';
 export const AUTH_FORGOT_PASSWORD_ROUTE = 'forgot-password';
 export const AUTH_RESET_PASSWORD_ROUTE = 'reset-password';
+export const AUTH_SESSION_ID_PARAM = 'id';
 
 export const INVITATIONS_ROUTE = 'invitations';
 export const INVITATIONS_API_TAG = 'invitations';
@@ -29,6 +34,12 @@ export const DISPLAY_NAME_MAX_LENGTH = 120;
 export const DEVICE_LABEL_MAX_LENGTH = 120;
 export const OPAQUE_TOKEN_MIN_LENGTH = 20;
 export const OPAQUE_TOKEN_MAX_LENGTH = 512;
+export const SESSION_LIST_DEFAULT_LIMIT = 20;
+export const SESSION_LIST_MIN_LIMIT = 1;
+export const SESSION_LIST_MAX_LIMIT = 100;
+export const SESSION_LIST_DEFAULT_OFFSET = 0;
+export const UNKNOWN_DEVICE_LABEL = 'Unknown device';
+export const UNKNOWN_APPROXIMATE_LOCATION = '';
 
 // --- Token generation --------------------------------------------------------
 // 32 bytes of CSPRNG entropy, base64url-encoded, delivered out-of-band. Only the
@@ -52,6 +63,13 @@ export const RECOVERY_ACK_MESSAGE =
 export const RESET_ACK_MESSAGE = 'Your password has been reset.';
 export const LOGOUT_ACK_MESSAGE = 'Session revoked.';
 export const LOGOUT_ALL_ACK_MESSAGE = 'All sessions revoked.';
+export const SESSION_NOT_FOUND_MESSAGE = 'The session was not found';
+export const SESSION_NOT_FOUND_MESSAGE_KEY: ErrorMessageKey =
+  'errors.identity.sessionNotFound';
+export const SESSION_CONTEXT_REQUIRED_MESSAGE =
+  'The access token is missing current-session context';
+export const SESSION_CONTEXT_REQUIRED_MESSAGE_KEY: ErrorMessageKey =
+  'errors.identity.sessionContextRequired';
 
 // --- Error messages & keys ---------------------------------------------------
 export const INVALID_CREDENTIALS_MESSAGE = 'Credentials are invalid';

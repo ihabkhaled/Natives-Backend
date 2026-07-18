@@ -4,6 +4,7 @@ export interface AuthUserIdentity {
   readonly userId: string;
   readonly email: string;
   readonly roles: readonly Role[];
+  readonly sessionId?: string;
 }
 
 export interface AuthHeaders {

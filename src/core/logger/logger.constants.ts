@@ -3,6 +3,8 @@
 export const REDACT_PATHS: readonly string[] = [
   'req.headers.authorization',
   'req.headers.cookie',
+  'req.headers.referer',
+  'req.headers.referrer',
   'req.body.password',
   'req.body.token',
   'req.body.accessToken',
@@ -14,6 +16,11 @@ export const REDACT_PATHS: readonly string[] = [
 ];
 
 export const REDACT_CENSOR = '[Redacted]';
+export const SENSITIVE_HTTP_URL_SEGMENTS = [
+  { routeMarker: '/auth/invitations/' },
+  { routeMarker: '/calendar/feeds/', preservedSuffix: '.ics' },
+] as const;
+export const HTTP_URL_SEGMENT_END_PATTERN = /[/?#]/u;
 export const CIRCULAR_LOG_VALUE = '[Circular]';
 export const SENSITIVE_LOG_KEY_NAMES: readonly string[] = [
   'apikey',

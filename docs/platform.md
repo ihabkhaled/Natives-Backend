@@ -107,10 +107,10 @@ import never double-applies.
 `NotificationProjectionService` (the outbox handler) turns routed events into
 notifications:
 
-- resolves the recipient (an explicit `recipientUserId` payload scalar, else the
-  actor), honors the recipient's category/channel **preference** (default enabled),
-  and inserts with a stable `dedupe_key` (`eventType:aggregateId:recipient`) using
-  `ON CONFLICT DO NOTHING` — a **retried event yields one notification**.
+- resolves an explicit/actor recipient or fans practice changes out to a bounded,
+  keyset-paginated active-team audience; honors category/channel preferences; and
+  inserts with event-type/aggregate/occurred-instant/recipient dedupe. Reminders supply a stable
+  event-type/session-version seed, so scheduler retries also converge.
 - records a delivery attempt through `NOTIFICATION_SENDER_PORT`
   (`InAppNotificationAdapter`; in-app delivery succeeds once the inbox row exists).
 
@@ -120,6 +120,8 @@ Self-service surface (`/notifications`):
 - `POST /notifications/:id/read` — idempotent, ownership-scoped (404 if not owned).
 - `GET|PUT /notifications/preferences` — per-user toggles
   (`notification.preferences.self`).
+- `GET|PUT /notifications/quiet-hours` — owner timezone, local `HH:MM` window,
+  and urgent-cancellation override.
 
 Identity always comes from the token, never the body.
 

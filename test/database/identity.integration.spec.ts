@@ -5,7 +5,10 @@ import { assertTestDatabase } from '@app/database/test-database.helpers';
 import { TypeormUnitOfWorkAdapter } from '@app/database/typeorm-unit-of-work.adapter';
 import type { AppConfigService } from '@config/app-config.service';
 import type { DatabaseConfig } from '@config/config.types';
-import type { AuthTokenPort } from '@core/auth';
+import type {
+  AuthTokenPort,
+  EffectivePermissionResolverPort,
+} from '@core/auth';
 import type { ClockPort } from '@core/clock/clock.port';
 import type { IdGeneratorPort } from '@core/id-generator/id-generator.port';
 import { PasswordHashAdapter } from '@modules/auth/adapters/password-hash.adapter';
@@ -99,6 +102,9 @@ function buildWiring(dataSource: DataSource, secureRandom: SecureRandomPort) {
     verify: () => null,
   };
   const passwordHash = new PasswordHashAdapter();
+  const permissionResolver: EffectivePermissionResolverPort = {
+    resolve: () => Promise.resolve(new Set(['practice.read', 'team.read'])),
+  };
   const config = { identity: IDENTITY_CONFIG } as unknown as AppConfigService;
 
   const users = new UserRepository();
@@ -145,6 +151,7 @@ function buildWiring(dataSource: DataSource, secureRandom: SecureRandomPort) {
       clock,
       idGenerator,
       passwordHash,
+      permissionResolver,
       config,
       users,
       failedLogins,
@@ -274,15 +281,23 @@ describeIfDb(suiteTitle, () => {
     });
 
     const rotated = await wiring.refresh.execute({
-      refreshToken: loggedIn.refreshToken,
+      refreshToken: loggedIn.tokens.refreshToken,
       deviceLabel: 'browser',
     });
-    expect(rotated.refreshToken).not.toBe(loggedIn.refreshToken);
+    expect(rotated.refreshToken).not.toBe(loggedIn.tokens.refreshToken);
+    expect(loggedIn.user).toMatchObject({
+      email,
+      displayName: 'Player One',
+      permissions: ['practice.read', 'team.read'],
+      accountState: 'active',
+      onboardingComplete: true,
+      memberships: [],
+    });
 
     // Presenting the already-rotated token is reuse: it revokes the family.
     await expect(
       wiring.refresh.execute({
-        refreshToken: loggedIn.refreshToken,
+        refreshToken: loggedIn.tokens.refreshToken,
         deviceLabel: 'browser',
       }),
     ).rejects.toThrow();
@@ -341,7 +356,7 @@ describeIfDb(suiteTitle, () => {
     // The pre-reset session is revoked.
     await expect(
       wiring.refresh.execute({
-        refreshToken: session.refreshToken,
+        refreshToken: session.tokens.refreshToken,
         deviceLabel: null,
       }),
     ).rejects.toThrow();
@@ -352,7 +367,7 @@ describeIfDb(suiteTitle, () => {
       password: NEW_PASSWORD,
       deviceLabel: null,
     });
-    expect(relogin.accessToken).toBe('jwt-access-token');
+    expect(relogin.tokens.accessToken).toBe('jwt-access-token');
   });
 
   it('always answers forgot-password generically for unknown accounts', async () => {

@@ -76,6 +76,18 @@ export interface EnabledRow {
   readonly enabled: boolean;
 }
 
+export interface QuietHoursRow {
+  readonly user_id: string;
+  readonly timezone: string;
+  readonly starts_local: string;
+  readonly ends_local: string;
+  readonly urgent_cancellation_override: boolean;
+}
+
+export interface AudienceUserRow {
+  readonly user_id: string;
+}
+
 export interface IdRow {
   readonly id: string;
 }

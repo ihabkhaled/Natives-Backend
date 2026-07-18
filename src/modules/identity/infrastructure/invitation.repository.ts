@@ -9,8 +9,15 @@ import {
   toNullableDate,
 } from '../lib/identity.helpers';
 import { InvitationStatus } from '../model/identity.enums';
-import type { InvitationRow } from '../model/identity.rows';
-import type { Invitation, NewInvitation } from '../model/identity.types';
+import type {
+  InvitationRow,
+  PublicInvitationRow,
+} from '../model/identity.rows';
+import type {
+  Invitation,
+  NewInvitation,
+  PublicInvitationRecord,
+} from '../model/identity.types';
 
 /**
  * Persistence for invitations. Stores the sha-256 token hash only; the plaintext
@@ -69,6 +76,26 @@ export class InvitationRepository {
     );
     const row = rows[0];
     return row === undefined ? null : this.toInvitation(row);
+  }
+
+  async findPublicByTokenHash(
+    scope: TransactionScope,
+    tokenHash: string,
+  ): Promise<PublicInvitationRecord | null> {
+    const rows = await scope.run<PublicInvitationRow>(
+      `SELECT i."id", i."email", i."invited_by", i."role", i."status",
+              i."expires_at", i."accepted_at", i."revoked_at",
+              i."created_at", i."updated_at",
+              u."display_name" AS "inviter_display_name"
+         FROM "invitations" i
+         LEFT JOIN "users" u ON u."id" = i."invited_by"
+        WHERE i."token_hash" = $1`,
+      [tokenHash],
+    );
+    const row = rows[0];
+    return row === undefined
+      ? null
+      : { ...this.toInvitation(row), inviterName: row.inviter_display_name };
   }
 
   async findActivePendingByEmail(

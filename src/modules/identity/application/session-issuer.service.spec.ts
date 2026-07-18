@@ -102,6 +102,7 @@ describe('SessionIssuerService', () => {
       userId: 'user-1',
       email: 'coach@example.test',
       roles: [Role.Admin],
+      sessionId: 'session-id',
     });
   });
 

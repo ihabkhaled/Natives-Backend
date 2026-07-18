@@ -5,6 +5,7 @@
  * bootstrap/. See rules/12.
  */
 export interface HttpReplyLike {
+  header(name: string, value: string): HttpReplyLike;
   status(statusCode: number): HttpReplyLike;
   send(body: unknown): unknown;
 }

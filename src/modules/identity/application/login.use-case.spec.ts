@@ -1,7 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { InvalidCredentialsError } from '../errors/invalid-credentials.error';
-import { SecurityEventType, UserStatus } from '../model/identity.enums';
+import {
+  AccountState,
+  SecurityEventType,
+  UserStatus,
+} from '../model/identity.enums';
 import type { IssuedSession, User } from '../model/identity.types';
 import { LoginUseCase } from './login.use-case';
 
@@ -45,6 +49,9 @@ function build() {
   const clock = { now: vi.fn().mockReturnValue(NOW), uptime: vi.fn() };
   const idGenerator = { generate: vi.fn().mockReturnValue('generated-id') };
   const passwordHash = { hash: vi.fn(), matches: vi.fn() };
+  const permissionResolver = {
+    resolve: vi.fn().mockResolvedValue(new Set(['team.read', 'practice.read'])),
+  };
   const config = { identity: IDENTITY_CONFIG };
   const users = {
     findWithCredentialByEmail: vi.fn(),
@@ -66,6 +73,7 @@ function build() {
     clock,
     idGenerator,
     passwordHash,
+    permissionResolver,
     config as never,
     users as never,
     failedLogins,
@@ -77,6 +85,7 @@ function build() {
     useCase,
     clock,
     passwordHash,
+    permissionResolver,
     users,
     failedLogins,
     audit,
@@ -91,7 +100,7 @@ describe('LoginUseCase', () => {
     harness = build();
   });
 
-  it('issues a session, clears failures, and audits on success', async () => {
+  it('issues a nested enriched response, clears failures, and audits on success', async () => {
     harness.users.findWithCredentialByEmail.mockResolvedValue({
       user: ACTIVE_USER,
       passwordHash: '$2b$10$hash',
@@ -104,7 +113,29 @@ describe('LoginUseCase', () => {
       deviceLabel: 'iphone',
     });
 
-    expect(result).toEqual(ISSUED);
+    expect(result).toEqual({
+      tokens: {
+        accessToken: ISSUED.accessToken,
+        refreshToken: ISSUED.refreshToken,
+      },
+      user: {
+        id: ACTIVE_USER.id,
+        email: ACTIVE_USER.email,
+        displayName: ACTIVE_USER.displayName,
+        permissions: ['practice.read', 'team.read'],
+        accountState: AccountState.Active,
+        onboardingComplete: true,
+        memberships: [],
+      },
+    });
+    expect(harness.permissionResolver.resolve).toHaveBeenCalledWith(
+      {
+        userId: ACTIVE_USER.id,
+        email: ACTIVE_USER.email,
+        roles: [ACTIVE_USER.role],
+      },
+      {},
+    );
     expect(harness.failedLogins.clearByEmail).toHaveBeenCalledWith(
       expect.anything(),
       'coach@example.test',
@@ -118,6 +149,23 @@ describe('LoginUseCase', () => {
     expect(harness.sessionIssuer.issue).toHaveBeenCalled();
   });
 
+  it('uses an empty permission list when the resolver grants nothing', async () => {
+    harness.users.findWithCredentialByEmail.mockResolvedValue({
+      user: ACTIVE_USER,
+      passwordHash: '$2b$10$hash',
+    });
+    harness.passwordHash.matches.mockResolvedValue(true);
+    harness.permissionResolver.resolve.mockResolvedValue(new Set());
+
+    const result = await harness.useCase.execute({
+      email: ACTIVE_USER.email,
+      password: 'correct-horse-battery',
+      deviceLabel: null,
+    });
+
+    expect(result.user.permissions).toEqual([]);
+  });
+
   it('rejects an unknown account generically after comparing a dummy hash', async () => {
     harness.users.findWithCredentialByEmail.mockResolvedValue(null);
     harness.passwordHash.matches.mockResolvedValue(false);
@@ -129,6 +177,7 @@ describe('LoginUseCase', () => {
         deviceLabel: null,
       }),
     ).rejects.toBeInstanceOf(InvalidCredentialsError);
+    expect(harness.permissionResolver.resolve).not.toHaveBeenCalled();
     expect(harness.passwordHash.matches).toHaveBeenCalled();
     expect(harness.failedLogins.insert).toHaveBeenCalled();
     expect(harness.audit.record).toHaveBeenCalledWith(
@@ -153,6 +202,7 @@ describe('LoginUseCase', () => {
         deviceLabel: null,
       }),
     ).rejects.toBeInstanceOf(InvalidCredentialsError);
+    expect(harness.permissionResolver.resolve).not.toHaveBeenCalled();
   });
 
   it('denies a non-active user even with a correct password', async () => {
@@ -170,6 +220,7 @@ describe('LoginUseCase', () => {
       }),
     ).rejects.toBeInstanceOf(InvalidCredentialsError);
     expect(harness.sessionIssuer.issue).not.toHaveBeenCalled();
+    expect(harness.permissionResolver.resolve).not.toHaveBeenCalled();
   });
 
   it('denies immediately when the identity is locked out', async () => {
@@ -189,6 +240,7 @@ describe('LoginUseCase', () => {
       }),
     ).rejects.toBeInstanceOf(InvalidCredentialsError);
     expect(harness.users.findWithCredentialByEmail).not.toHaveBeenCalled();
+    expect(harness.permissionResolver.resolve).not.toHaveBeenCalled();
   });
 
   it('locks the account when repeated failures reach the ceiling', async () => {

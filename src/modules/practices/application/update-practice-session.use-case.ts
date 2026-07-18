@@ -9,15 +9,21 @@ import {
   type AuditInput,
   AuditOutcome,
   AuditRecorderService,
+  type DomainEventInput,
+  RecordDomainEventService,
 } from '@modules/platform';
 import { Inject, Injectable } from '@nestjs/common';
 
 import { OptimisticConflictError } from '../errors/optimistic-conflict.error';
 import { PracticeSessionRepository } from '../infrastructure/practice-session.repository';
 import {
+  PRACTICE_EVENT_VERSION,
+  PRACTICE_VENUE_CHANGED_EVENT,
+  SESSION_AGGREGATE_TYPE,
   SESSION_RESOURCE_TYPE,
   SESSION_UPDATED_ACTION,
 } from '../model/practices.constants';
+import { SessionStatus } from '../model/practices.enums';
 import type {
   PracticeSession,
   SessionDetailsUpdate,
@@ -42,6 +48,7 @@ export class UpdatePracticeSessionUseCase {
     private readonly scopeValidation: ScopeValidationService,
     private readonly sessions: PracticeSessionRepository,
     private readonly audit: AuditRecorderService,
+    private readonly events: RecordDomainEventService,
   ) {}
 
   execute(
@@ -72,12 +79,13 @@ export class UpdatePracticeSessionUseCase {
       null,
       command.venueId,
     );
-    return this.applyUpdate(scope, actor, teamId, sessionId, command);
+    return this.applyUpdate(scope, actor, existing, teamId, sessionId, command);
   }
 
   private async applyUpdate(
     scope: TransactionScope,
     actor: AuthUserIdentity,
+    existing: PracticeSession,
     teamId: string,
     sessionId: string,
     command: UpdateSessionCommand,
@@ -90,7 +98,51 @@ export class UpdatePracticeSessionUseCase {
       throw new OptimisticConflictError();
     }
     await this.audit.record(scope, this.buildAudit(actor, updated));
+    await this.recordVenueChange(scope, actor, existing, updated);
     return updated;
+  }
+
+  private async recordVenueChange(
+    scope: TransactionScope,
+    actor: AuthUserIdentity,
+    existing: PracticeSession,
+    updated: PracticeSession,
+  ): Promise<void> {
+    if (!this.isVisibleVenueChange(existing, updated)) {
+      return;
+    }
+    await this.events.enqueue(scope, this.buildVenueEvent(actor, updated));
+  }
+
+  private isVisibleVenueChange(
+    existing: PracticeSession,
+    updated: PracticeSession,
+  ): boolean {
+    const visible =
+      existing.status === SessionStatus.Published ||
+      existing.status === SessionStatus.Rescheduled;
+    return (
+      visible &&
+      (existing.venueId !== updated.venueId || existing.field !== updated.field)
+    );
+  }
+
+  private buildVenueEvent(
+    actor: AuthUserIdentity,
+    session: PracticeSession,
+  ): DomainEventInput {
+    return {
+      aggregateType: SESSION_AGGREGATE_TYPE,
+      aggregateId: session.id,
+      eventType: PRACTICE_VENUE_CHANGED_EVENT,
+      eventVersion: PRACTICE_EVENT_VERSION,
+      actorUserId: actor.userId,
+      teamId: session.teamId,
+      seasonId: session.seasonId,
+      correlationId: null,
+      causationId: null,
+      payload: { venueId: session.venueId, field: session.field },
+    };
   }
 
   private buildUpdate(

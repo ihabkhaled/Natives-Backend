@@ -3,15 +3,19 @@ import { IdGeneratorModule } from '@core/id-generator/id-generator.module';
 import { PlatformModule } from '@modules/platform';
 import { Module } from '@nestjs/common';
 
+import { CalendarTokenAdapter } from './adapters/calendar-token.adapter';
 import { AgendaBlockController } from './api/agenda-block.controller';
 import { AgendaGroupController } from './api/agenda-group.controller';
 import { AttendanceController } from './api/attendance.controller';
 import { AttendanceParticipationController } from './api/attendance-participation.controller';
 import { DrillsController } from './api/drills.controller';
 import { PracticeAgendaController } from './api/practice-agenda.controller';
+import { PracticeCalendarController } from './api/practice-calendar.controller';
+import { PracticeReminderAdminController } from './api/practice-reminder-admin.controller';
 import { PracticeRsvpController } from './api/practice-rsvp.controller';
 import { PracticeSchedulesController } from './api/practice-schedules.controller';
 import { PracticeSessionsController } from './api/practice-sessions.controller';
+import { PublicPracticeCalendarController } from './api/public-practice-calendar.controller';
 import { AgendaAdminService } from './application/agenda-admin.service';
 import { AgendaBlockService } from './application/agenda-block.service';
 import { AgendaGroupService } from './application/agenda-group.service';
@@ -22,6 +26,7 @@ import { ArchivePracticeScheduleUseCase } from './application/archive-practice-s
 import { AttendanceQueryService } from './application/attendance-query.service';
 import { AttendanceRecorderService } from './application/attendance-recorder.service';
 import { AttendanceSheetService } from './application/attendance-sheet.service';
+import { CalendarFeedService } from './application/calendar-feed.service';
 import { CompleteAgendaUseCase } from './application/complete-agenda.use-case';
 import { CopyAgendaUseCase } from './application/copy-agenda.use-case';
 import { CorrectAttendanceUseCase } from './application/correct-attendance.use-case';
@@ -34,6 +39,7 @@ import { GenerateSessionsUseCase } from './application/generate-sessions.use-cas
 import { OverrideRsvpUseCase } from './application/override-rsvp.use-case';
 import { ParticipationQueryService } from './application/participation-query.service';
 import { PracticeLookupService } from './application/practice-lookup.service';
+import { PracticeReminderAdminService } from './application/practice-reminder-admin.service';
 import { PublishAgendaUseCase } from './application/publish-agenda.use-case';
 import { RecordAttendanceUseCase } from './application/record-attendance.use-case';
 import { ReorderAgendaBlocksUseCase } from './application/reorder-agenda-blocks.use-case';
@@ -56,8 +62,10 @@ import { AttendanceRecordRepository } from './infrastructure/attendance-record.r
 import { AttendanceRecordRevisionRepository } from './infrastructure/attendance-record-revision.repository';
 import { AttendanceScoringRuleRepository } from './infrastructure/attendance-scoring-rule.repository';
 import { AttendanceSheetRepository } from './infrastructure/attendance-sheet.repository';
+import { CalendarFeedTokenRepository } from './infrastructure/calendar-feed-token.repository';
 import { DrillRepository } from './infrastructure/drill.repository';
 import { PracticeAgendaRepository } from './infrastructure/practice-agenda.repository';
+import { PracticeReminderRepository } from './infrastructure/practice-reminder.repository';
 import { PracticeRsvpRepository } from './infrastructure/practice-rsvp.repository';
 import { PracticeRsvpRevisionRepository } from './infrastructure/practice-rsvp-revision.repository';
 import { PracticeScheduleRepository } from './infrastructure/practice-schedule.repository';
@@ -65,6 +73,7 @@ import { PracticeScopeRepository } from './infrastructure/practice-scope.reposit
 import { PracticeSessionRepository } from './infrastructure/practice-session.repository';
 import { RsvpMembershipRepository } from './infrastructure/rsvp-membership.repository';
 import { SessionStatusEventRepository } from './infrastructure/session-status-event.repository';
+import { CALENDAR_TOKEN_PORT } from './model/calendar.constants';
 
 /**
  * Practices bounded context (schedules, recurrence, sessions, and cancellations).
@@ -81,10 +90,13 @@ import { SessionStatusEventRepository } from './infrastructure/session-status-ev
     PracticeSchedulesController,
     PracticeSessionsController,
     PracticeRsvpController,
+    PracticeReminderAdminController,
     AttendanceController,
     AttendanceParticipationController,
     DrillsController,
     PracticeAgendaController,
+    PracticeCalendarController,
+    PublicPracticeCalendarController,
     AgendaBlockController,
     AgendaGroupController,
   ],
@@ -106,6 +118,8 @@ import { SessionStatusEventRepository } from './infrastructure/session-status-ev
     AgendaBlockRepository,
     AgendaStationRepository,
     AgendaGroupRepository,
+    CalendarFeedTokenRepository,
+    PracticeReminderRepository,
     PracticeLookupService,
     ScopeValidationService,
     CreatePracticeScheduleUseCase,
@@ -142,6 +156,9 @@ import { SessionStatusEventRepository } from './infrastructure/session-status-ev
     PublishAgendaUseCase,
     CompleteAgendaUseCase,
     ReorderAgendaBlocksUseCase,
+    CalendarFeedService,
+    PracticeReminderAdminService,
+    { provide: CALENDAR_TOKEN_PORT, useClass: CalendarTokenAdapter },
   ],
 })
 export class PracticesModule {}

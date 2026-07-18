@@ -9,6 +9,19 @@ export enum UserStatus {
 export const USER_STATUS_VALUES: readonly UserStatus[] =
   Object.values(UserStatus);
 
+/**
+ * Stable client-facing account states. Internal lifecycle statuses deliberately
+ * collapse into this smaller compatibility contract at the identity boundary.
+ */
+export enum AccountState {
+  Active = 'active',
+  Pending = 'pending',
+  Suspended = 'suspended',
+}
+
+export const ACCOUNT_STATE_VALUES: readonly AccountState[] =
+  Object.values(AccountState);
+
 export enum InvitationStatus {
   Pending = 'pending',
   Accepted = 'accepted',
@@ -26,6 +39,7 @@ export enum SecurityEventType {
   TokenRefreshed = 'session.refreshed',
   RefreshReuseDetected = 'session.reuseDetected',
   SessionRevoked = 'session.revoked',
+  OtherSessionsRevoked = 'session.othersRevoked',
   AllSessionsRevoked = 'session.allRevoked',
   InvitationCreated = 'invitation.created',
   InvitationResent = 'invitation.resent',

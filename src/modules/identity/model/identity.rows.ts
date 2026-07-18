@@ -33,6 +33,10 @@ export interface InvitationRow {
   readonly updated_at: string | Date;
 }
 
+export interface PublicInvitationRow extends InvitationRow {
+  readonly inviter_display_name: string | null;
+}
+
 export interface RefreshSessionRow {
   readonly id: string;
   readonly user_id: string;
@@ -62,4 +66,8 @@ export interface FailedLoginStateRow {
 
 export interface CountRow {
   readonly count: number;
+}
+
+export interface IdentifierRow {
+  readonly id: string;
 }

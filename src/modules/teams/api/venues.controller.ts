@@ -40,7 +40,7 @@ import {
   VENUES_ROUTE,
 } from '../model/teams.constants';
 import { CreateVenueDto } from './dto/create-venue.dto';
-import { ListQueryDto } from './dto/list-query.dto';
+import { TeamListQueryDto } from './dto/list-query.dto';
 import { ListVenuesResponseDto } from './dto/list-venues-response.dto';
 import { UpdateVenueDto } from './dto/update-venue.dto';
 import { VenueResponseDto } from './dto/venue-response.dto';
@@ -83,7 +83,7 @@ export class VenuesController {
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   list(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
-    @Query() query: ListQueryDto,
+    @Query() query: TeamListQueryDto,
   ): Promise<ListVenuesResponseDto> {
     return this.venueQuery.listVenues(
       teamId,

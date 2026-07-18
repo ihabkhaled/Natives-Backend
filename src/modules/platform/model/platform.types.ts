@@ -228,6 +228,23 @@ export interface PreferenceUpdate {
   readonly enabled: boolean;
 }
 
+/** Per-user local quiet-hour window for intrusive notification channels. */
+export interface NotificationQuietHours {
+  readonly userId: string;
+  readonly timezone: string;
+  readonly startsLocal: string;
+  readonly endsLocal: string;
+  readonly urgentCancellationOverride: boolean;
+}
+
+/** A caller-owned quiet-hour preference update. */
+export interface QuietHoursUpdate {
+  readonly timezone: string;
+  readonly startsLocal: string;
+  readonly endsLocal: string;
+  readonly urgentCancellationOverride: boolean;
+}
+
 /** A delivery attempt of a notification over a channel. */
 export interface NewDelivery {
   readonly id: string;

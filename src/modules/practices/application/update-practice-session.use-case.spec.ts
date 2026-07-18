@@ -58,9 +58,15 @@ function build() {
     validateReferences: vi.fn().mockResolvedValue(undefined),
   };
   const sessions = {
-    updateDetails: vi.fn().mockResolvedValue({ ...SESSION, version: 2 }),
+    updateDetails: vi.fn().mockResolvedValue({
+      ...SESSION,
+      venueId: 'venue-2',
+      field: 'Field B',
+      version: 2,
+    }),
   };
   const audit = { record: vi.fn() };
+  const events = { enqueue: vi.fn().mockResolvedValue({ eventId: 'event-1' }) };
   const useCase = new UpdatePracticeSessionUseCase(
     unitOfWork as never,
     clock,
@@ -68,8 +74,9 @@ function build() {
     scopeValidation as never,
     sessions as never,
     audit as never,
+    events as never,
   );
-  return { useCase, scopeValidation, sessions, audit };
+  return { useCase, scopeValidation, sessions, audit, events, lookup };
 }
 
 describe('UpdatePracticeSessionUseCase', () => {
@@ -94,6 +101,26 @@ describe('UpdatePracticeSessionUseCase', () => {
       'venue-2',
     );
     expect(harness.audit.record).toHaveBeenCalledOnce();
+    expect(harness.events.enqueue.mock.calls[0]?.[1]).toMatchObject({
+      eventType: 'practice.venue_changed',
+      aggregateId: 'ses-1',
+      payload: { venueId: 'venue-2', field: 'Field B' },
+    });
+  });
+
+  it('does not notify for a draft venue edit', async () => {
+    harness.lookup.requireSession.mockResolvedValue({
+      ...SESSION,
+      status: SessionStatus.Draft,
+    });
+    harness.sessions.updateDetails.mockResolvedValue({
+      ...SESSION,
+      status: SessionStatus.Draft,
+      venueId: 'venue-2',
+      version: 2,
+    });
+    await harness.useCase.execute(ACTOR, 'team-1', 'ses-1', COMMAND);
+    expect(harness.events.enqueue).not.toHaveBeenCalled();
   });
 
   it('rejects a stale expected version before writing', async () => {

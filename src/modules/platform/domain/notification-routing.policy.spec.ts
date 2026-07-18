@@ -8,6 +8,7 @@ import { NotificationCategory } from '../model/platform.enums';
 import type { DomainEventEnvelope } from '../model/platform.types';
 import {
   buildDedupeKey,
+  buildDefaultDedupeSeed,
   resolveNotificationRoute,
   resolveRecipient,
 } from './notification-routing.policy';
@@ -70,9 +71,16 @@ describe('notification-routing.policy', () => {
   });
 
   describe('buildDedupeKey', () => {
-    it('composes a stable per-recipient key', () => {
-      expect(buildDedupeKey('member.invited', 'mem-1', 'user-1')).toBe(
-        'member.invited:mem-1:user-1',
+    it('composes a stable per-fact recipient key', () => {
+      const first = event();
+      const seed = buildDefaultDedupeSeed(first);
+      expect(buildDedupeKey(seed, 'user-1')).toContain(
+        'member.invited:mem-1:2026-06-01T12:00:00.000Z',
+      );
+      expect(buildDefaultDedupeSeed(first)).not.toBe(
+        buildDefaultDedupeSeed(
+          event({ occurredAt: new Date('2026-06-01T12:00:01.000Z') }),
+        ),
       );
     });
   });

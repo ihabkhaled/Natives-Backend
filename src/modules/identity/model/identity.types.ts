@@ -1,6 +1,7 @@
 import type { Role } from '@shared/enums';
 
 import type {
+  AccountState,
   InvitationStatus,
   SecurityEventType,
   UserStatus,
@@ -46,6 +47,10 @@ export interface Invitation {
   readonly revokedAt: Date | null;
   readonly createdAt: Date;
   readonly updatedAt: Date;
+}
+
+export interface PublicInvitationRecord extends Invitation {
+  readonly inviterName: string | null;
 }
 
 export interface RefreshSession {
@@ -192,6 +197,41 @@ export type SessionOutcome =
   | { readonly kind: 'issued'; readonly session: IssuedSession }
   | { readonly kind: 'denied' };
 
+export type LoginOutcome =
+  | {
+      readonly kind: 'issued';
+      readonly session: IssuedSession;
+      readonly user: User;
+    }
+  | { readonly kind: 'denied' };
+
+export interface AuthTokensPayload {
+  readonly accessToken: string;
+  readonly refreshToken: string;
+}
+
+export interface AuthMembershipPayload {
+  readonly teamId: string;
+  readonly teamName: string;
+  readonly seasonId: string;
+  readonly seasonName: string;
+}
+
+export interface AuthUserPayload {
+  readonly id: string;
+  readonly email: string;
+  readonly displayName: string;
+  readonly permissions: readonly string[];
+  readonly accountState: AccountState;
+  readonly onboardingComplete: boolean;
+  readonly memberships: readonly AuthMembershipPayload[];
+}
+
+export interface LoginResponse {
+  readonly tokens: AuthTokensPayload;
+  readonly user: AuthUserPayload;
+}
+
 export interface Principal {
   readonly userId: string;
   readonly email: string;
@@ -210,4 +250,40 @@ export interface InvitationSummary {
   readonly status: InvitationStatus;
   readonly expiresAt: Date;
   readonly createdAt: Date;
+}
+
+export interface SessionListQuery {
+  readonly limit: number;
+  readonly offset: number;
+}
+
+export interface RefreshSessionPage {
+  readonly items: readonly RefreshSession[];
+  readonly total: number;
+}
+
+export interface DeviceSessionSummary {
+  readonly id: string;
+  readonly device: string;
+  readonly approxLocation: string;
+  readonly lastActiveAt: Date;
+  readonly current: boolean;
+}
+
+export interface DeviceSessionList {
+  readonly sessions: readonly DeviceSessionSummary[];
+  readonly total: number;
+  readonly limit: number;
+  readonly offset: number;
+}
+
+export interface RevokeOtherSessionsResult {
+  readonly revokedCount: number;
+}
+
+export interface PublicInvitationDetails {
+  readonly email: string;
+  readonly role: Role;
+  readonly inviterName: string | null;
+  readonly expiresAt: Date;
 }

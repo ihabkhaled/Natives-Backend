@@ -7,10 +7,18 @@ import {
   toDate,
   toNullableDate,
 } from '../lib/practices.helpers';
+import { CALENDAR_FEED_PAGE_LIMIT } from '../model/calendar.constants';
+import type {
+  CalendarFeedSessionCursor,
+  CalendarFeedSessionPage,
+  CalendarFeedToken,
+  CalendarFeedWindow,
+} from '../model/calendar.types';
 import {
   GENERATED_CONFLICT_CLAUSE,
   SESSION_COLUMNS,
 } from '../model/practices.constants';
+import { SessionStatus, SessionVisibility } from '../model/practices.enums';
 import type {
   CountRow,
   OccurrenceDateRow,
@@ -190,6 +198,60 @@ export class PracticeSessionRepository {
       total: counts[0]?.count ?? 0,
       limit: filter.limit,
       offset: filter.offset,
+    };
+  }
+
+  async listCalendarPage(
+    scope: TransactionScope,
+    token: CalendarFeedToken,
+    window: CalendarFeedWindow,
+    cursor: CalendarFeedSessionCursor,
+  ): Promise<CalendarFeedSessionPage> {
+    const rows = await scope.run<SessionRow>(
+      `SELECT ${SESSION_COLUMNS} FROM "practice_sessions"
+        WHERE "team_id" = $1
+          AND ($2::uuid IS NULL OR "season_id" = $2)
+          AND "status" = ANY($3::text[])
+          AND "visibility" = ANY($4::text[])
+          AND "starts_at" >= $5 AND "starts_at" <= $6
+          AND ($7::timestamptz IS NULL OR ("starts_at", "id") > ($7, $8::uuid))
+        ORDER BY "starts_at" ASC, "id" ASC
+        LIMIT $9`,
+      this.calendarParameters(token, window, cursor),
+    );
+    return this.toCalendarPage(rows);
+  }
+
+  private calendarParameters(
+    token: CalendarFeedToken,
+    window: CalendarFeedWindow,
+    cursor: CalendarFeedSessionCursor,
+  ): readonly unknown[] {
+    return [
+      token.teamId,
+      token.seasonId,
+      [
+        SessionStatus.Published,
+        SessionStatus.Rescheduled,
+        SessionStatus.Cancelled,
+      ],
+      [SessionVisibility.Team, SessionVisibility.Public],
+      window.from.toISOString(),
+      window.to.toISOString(),
+      cursor.startsAt === null ? null : cursor.startsAt.toISOString(),
+      cursor.id,
+      CALENDAR_FEED_PAGE_LIMIT,
+    ];
+  }
+
+  private toCalendarPage(rows: readonly SessionRow[]): CalendarFeedSessionPage {
+    const last = rows.at(-1);
+    const hasNext =
+      rows.length === CALENDAR_FEED_PAGE_LIMIT && last !== undefined;
+    return {
+      items: rows.map(row => this.toSession(row)),
+      nextStartsAt: hasNext ? toDate(last.starts_at) : null,
+      nextId: hasNext ? last.id : null,
     };
   }
 

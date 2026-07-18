@@ -40,7 +40,7 @@ import {
   TEAMS_ROUTE,
 } from '../model/teams.constants';
 import { CreateSeasonDto } from './dto/create-season.dto';
-import { ListQueryDto } from './dto/list-query.dto';
+import { TeamListQueryDto } from './dto/list-query.dto';
 import { ListSeasonsResponseDto } from './dto/list-seasons-response.dto';
 import { SeasonResponseDto } from './dto/season-response.dto';
 import { UpdateSeasonDto } from './dto/update-season.dto';
@@ -86,7 +86,7 @@ export class SeasonsController {
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   list(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
-    @Query() query: ListQueryDto,
+    @Query() query: TeamListQueryDto,
   ): Promise<ListSeasonsResponseDto> {
     return this.seasonQuery.listSeasons(
       teamId,

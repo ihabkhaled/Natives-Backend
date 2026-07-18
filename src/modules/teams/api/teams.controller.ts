@@ -38,7 +38,7 @@ import {
   TEAMS_ROUTE,
 } from '../model/teams.constants';
 import { CreateTeamDto } from './dto/create-team.dto';
-import { ListQueryDto } from './dto/list-query.dto';
+import { TeamListQueryDto } from './dto/list-query.dto';
 import { ListTeamsResponseDto } from './dto/list-teams-response.dto';
 import { TeamResponseDto } from './dto/team-response.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
@@ -79,7 +79,7 @@ export class TeamsController {
   @ApiOperation({ summary: 'List teams' })
   @ApiOkResponse({ description: 'Teams', type: ListTeamsResponseDto })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
-  list(@Query() query: ListQueryDto): Promise<ListTeamsResponseDto> {
+  list(@Query() query: TeamListQueryDto): Promise<ListTeamsResponseDto> {
     return this.teamQuery.listTeams(resolvePage(query.limit, query.offset));
   }
 

@@ -57,6 +57,9 @@ All database env vars are read **only** in `src/config/database.config.ts`
   failure is logged (host + database name only — never credentials) and the
   process still boots, so **liveness** stays up while **readiness** reports
   not-ready. `synchronize` is hard-coded `false` — always.
+- Normal app startup never checks for or creates the configured database. The
+  runtime role therefore needs privileges only inside the application database,
+  not PostgreSQL `CREATEDB`.
 - `DatabaseModule` (global) closes the connection on `onApplicationShutdown`.
 - Pool bounds, connect timeout, and `statement_timeout` are passed through to
   node-postgres so queries stay bounded.
@@ -77,6 +80,8 @@ All database env vars are read **only** in `src/config/database.config.ts`
 - The baseline migration (`1721200000000-baseline-schema.ts`) enables `pgcrypto`
   (for `gen_random_uuid()`), is fully reversible, and adds no tables (no entities
   yet). Feature migrations build on top of it.
+- `1722200000000-practice-reminders-calendar-schema.ts` adds digest-only,
+  revocable calendar credentials and self-owned notification quiet hours.
 - CLI (uses the same typed config via `src/database/cli-data-source.ts`):
 
   ```bash
@@ -98,6 +103,14 @@ All database env vars are read **only** in `src/config/database.config.ts`
 
 - **Local dev:** `docker compose up -d` (`docker-compose.yml`) — Postgres 16,
   healthcheck, non-production credentials, bound to `127.0.0.1:5432`.
+- **Explicit first-time setup:** set a runtime-only `SEED_ADMIN_PASSWORD`, then
+  run `npm run db:setup`. This executes `db:ensure` (maintenance connection and
+  database creation if missing), migrations, then the idempotent admin seed.
+  `db:ensure` fails non-zero if the maintenance role cannot create the missing
+  database; it is never invoked by `start`, `start:dev`, or `start:prod`.
+- **Existing database:** use `npm run migration:run` and `npm run seed:admin`
+  separately when creation is managed by infrastructure and the app/operator
+  role intentionally lacks `CREATEDB`.
 - **Integration tests:** `docker compose -f docker-compose.test.yml up -d` —
   Postgres 16 on `127.0.0.1:55432`, database `natives_test`, tmpfs-backed and
   disposable.
@@ -111,6 +124,9 @@ All database env vars are read **only** in `src/config/database.config.ts`
 
 - Supply `DATABASE_URL` (or `DB_*`) and secrets from a secret manager — never
   from committed files. `DB_SSL=true` is mandatory in production.
+- Provision the database through approved infrastructure or an explicit
+  privileged deployment step. Do not grant the normal application role
+  `CREATEDB`, and do not run the local admin seed implicitly at application boot.
 - Size `DB_POOL_MAX` to the database's connection budget; keep
   `DB_STATEMENT_TIMEOUT_MS` tight to protect against runaway queries.
 - Run migrations as a deploy step (`npm run migration:run`); the app never

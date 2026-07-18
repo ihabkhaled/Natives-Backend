@@ -1,26 +1,39 @@
-import { type AuthUserIdentity, CurrentUser, Public } from '@core/auth';
 import {
+  type AuthUserIdentity,
+  CurrentUser,
+  Public,
+  RequirePermissions,
+} from '@core/auth';
+import {
+  ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@core/openapi';
+import { UuidValidationPipe } from '@core/validation';
 import {
   Body,
   Controller,
   Get,
   HttpCode,
   HttpStatus,
+  Param,
   Post,
+  Query,
 } from '@nestjs/common';
+import { Permission } from '@shared/enums';
 
 import { GetCurrentPrincipalUseCase } from '../application/get-current-principal.use-case';
+import { ListSessionsUseCase } from '../application/list-sessions.use-case';
 import { LoginUseCase } from '../application/login.use-case';
 import { LogoutUseCase } from '../application/logout.use-case';
 import { LogoutAllUseCase } from '../application/logout-all.use-case';
 import { RefreshSessionUseCase } from '../application/refresh-session.use-case';
 import { RequestPasswordResetUseCase } from '../application/request-password-reset.use-case';
 import { ResetPasswordUseCase } from '../application/reset-password.use-case';
+import { RevokeOtherSessionsUseCase } from '../application/revoke-other-sessions.use-case';
+import { RevokeSessionUseCase } from '../application/revoke-session.use-case';
 import {
   AUTH_API_TAG,
   AUTH_FORGOT_PASSWORD_ROUTE,
@@ -31,15 +44,22 @@ import {
   AUTH_REFRESH_ROUTE,
   AUTH_RESET_PASSWORD_ROUTE,
   AUTH_ROUTE,
+  AUTH_SESSION_ID_PARAM,
+  AUTH_SESSION_REVOKE_ROUTE,
+  AUTH_SESSIONS_REVOKE_OTHERS_ROUTE,
+  AUTH_SESSIONS_ROUTE,
 } from '../model/identity.constants';
+import { AuthSessionResponseDto } from './dto/auth-session-response.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { LoginDto } from './dto/login.dto';
+import { AuthUserDto, LoginResponseDto } from './dto/login-response.dto';
 import { LogoutDto } from './dto/logout.dto';
 import { MessageResponseDto } from './dto/message-response.dto';
-import { PrincipalResponseDto } from './dto/principal-response.dto';
 import { RefreshDto } from './dto/refresh.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
-import { SessionResponseDto } from './dto/session-response.dto';
+import { RevokeOtherSessionsResponseDto } from './dto/revoke-other-sessions-response.dto';
+import { SessionListQueryDto } from './dto/session-list-query.dto';
+import { SessionListResponseDto } from './dto/session-list-response.dto';
 
 @ApiTags(AUTH_API_TAG)
 @Controller(AUTH_ROUTE)
@@ -52,15 +72,18 @@ export class AuthController {
     private readonly getCurrentPrincipal: GetCurrentPrincipalUseCase,
     private readonly requestPasswordReset: RequestPasswordResetUseCase,
     private readonly resetPasswordUseCase: ResetPasswordUseCase,
+    private readonly listSessionsUseCase: ListSessionsUseCase,
+    private readonly revokeSessionUseCase: RevokeSessionUseCase,
+    private readonly revokeOtherSessionsUseCase: RevokeOtherSessionsUseCase,
   ) {}
 
   @Public()
   @Post(AUTH_LOGIN_ROUTE)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Authenticate and receive access + refresh tokens' })
-  @ApiOkResponse({ description: 'Session issued', type: SessionResponseDto })
+  @ApiOkResponse({ description: 'Session issued', type: LoginResponseDto })
   @ApiUnauthorizedResponse({ description: 'Invalid credentials' })
-  login(@Body() dto: LoginDto): Promise<SessionResponseDto> {
+  login(@Body() dto: LoginDto): Promise<LoginResponseDto> {
     return this.loginUseCase.execute({
       email: dto.email,
       password: dto.password,
@@ -72,9 +95,12 @@ export class AuthController {
   @Post(AUTH_REFRESH_ROUTE)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Rotate a refresh session' })
-  @ApiOkResponse({ description: 'Session rotated', type: SessionResponseDto })
+  @ApiOkResponse({
+    description: 'Session rotated',
+    type: AuthSessionResponseDto,
+  })
   @ApiUnauthorizedResponse({ description: 'Invalid refresh token' })
-  refresh(@Body() dto: RefreshDto): Promise<SessionResponseDto> {
+  refresh(@Body() dto: RefreshDto): Promise<AuthSessionResponseDto> {
     return this.refreshUseCase.execute({
       refreshToken: dto.refreshToken,
       deviceLabel: dto.deviceLabel ?? null,
@@ -108,11 +134,57 @@ export class AuthController {
   @ApiOperation({ summary: 'Get the current principal' })
   @ApiOkResponse({
     description: 'Current principal',
-    type: PrincipalResponseDto,
+    type: AuthUserDto,
   })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
-  me(@CurrentUser() user: AuthUserIdentity): Promise<PrincipalResponseDto> {
+  me(@CurrentUser() user: AuthUserIdentity): Promise<AuthUserDto> {
     return this.getCurrentPrincipal.execute(user.userId);
+  }
+
+  @Get(AUTH_SESSIONS_ROUTE)
+  @RequirePermissions(Permission.MemberProfileUpdateSelf)
+  @ApiOperation({ summary: 'List active refresh sessions for the caller' })
+  @ApiOkResponse({
+    description: 'Bounded active session page',
+    type: SessionListResponseDto,
+  })
+  listSessions(
+    @CurrentUser() user: AuthUserIdentity,
+    @Query() query: SessionListQueryDto,
+  ): Promise<SessionListResponseDto> {
+    return this.listSessionsUseCase.execute(user.userId, user.sessionId, query);
+  }
+
+  @Post(AUTH_SESSIONS_REVOKE_OTHERS_ROUTE)
+  @RequirePermissions(Permission.MemberProfileUpdateSelf)
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Revoke all refresh sessions except the current one',
+  })
+  @ApiOkResponse({
+    description: 'Other sessions revoked',
+    type: RevokeOtherSessionsResponseDto,
+  })
+  revokeOtherSessions(
+    @CurrentUser() user: AuthUserIdentity,
+  ): Promise<RevokeOtherSessionsResponseDto> {
+    return this.revokeOtherSessionsUseCase.execute(user.userId, user.sessionId);
+  }
+
+  @Post(AUTH_SESSION_REVOKE_ROUTE)
+  @RequirePermissions(Permission.MemberProfileUpdateSelf)
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Revoke one owned refresh session' })
+  @ApiOkResponse({
+    description: 'Session revoked',
+    type: MessageResponseDto,
+  })
+  @ApiNotFoundResponse({ description: 'Session not found' })
+  revokeSession(
+    @CurrentUser() user: AuthUserIdentity,
+    @Param(AUTH_SESSION_ID_PARAM, UuidValidationPipe) sessionId: string,
+  ): Promise<MessageResponseDto> {
+    return this.revokeSessionUseCase.execute(user.userId, sessionId);
   }
 
   @Public()

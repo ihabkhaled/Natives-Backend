@@ -6,6 +6,24 @@ export const DATABASE_CONFIG_NAMESPACE = 'database';
 export const IDENTITY_CONFIG_NAMESPACE = 'identity';
 export const NODE_ENV_CONFIG_NAME = 'NODE_ENV';
 
+// --- Bootstrap / seeding ----------------------------------------------------
+// Defaults for the idempotent default-admin seed. The password has no default:
+// the seed fails fast when SEED_ADMIN_PASSWORD is unset so a blank credential is
+// never provisioned.
+export const DEFAULT_SEED_ADMIN_EMAIL = 'admin@ultimatenatives.local';
+export const DEFAULT_SEED_ADMIN_DISPLAY_NAME = 'Ultimate Natives Admin';
+export const SEED_ADMIN_PASSWORD_MIN_LENGTH = 12;
+export const SEED_ADMIN_PASSWORD_MAX_BYTES = 72;
+export const SEED_ADMIN_EMAIL_WHITESPACE_PATTERN = /\s/u;
+export const SEED_ADMIN_PASSWORD_REQUIRED_MESSAGE =
+  'SEED_ADMIN_PASSWORD must be provided at runtime and contain at least 12 characters';
+export const SEED_ADMIN_PASSWORD_TOO_LONG_MESSAGE =
+  'SEED_ADMIN_PASSWORD must not exceed 72 UTF-8 bytes';
+export const SEED_ADMIN_EMAIL_INVALID_MESSAGE =
+  'SEED_ADMIN_EMAIL must be a valid email address';
+export const SEED_ADMIN_DISPLAY_NAME_INVALID_MESSAGE =
+  'SEED_ADMIN_DISPLAY_NAME must not be blank';
+
 export const DEFAULT_PORT = 3000;
 export const MIN_PORT = 1;
 export const MAX_PORT = 65535;

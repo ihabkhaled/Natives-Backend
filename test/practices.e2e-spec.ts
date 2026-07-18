@@ -20,6 +20,8 @@ import { TeamsSchema1721500000000 } from '../src/database/migrations/17215000000
 import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
 import { PlatformSchema1721700000000 } from '../src/database/migrations/1721700000000-platform-schema';
 import { PracticesSchema1721800000000 } from '../src/database/migrations/1721800000000-practices-schema';
+import { PracticeRsvpSchema1721900000000 } from '../src/database/migrations/1721900000000-practice-rsvp-schema';
+import { PracticeRemindersCalendarSchema1722200000000 } from '../src/database/migrations/1722200000000-practice-reminders-calendar-schema';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -53,6 +55,8 @@ const MIGRATIONS = [
   MembersSchema1721600000000,
   PlatformSchema1721700000000,
   PracticesSchema1721800000000,
+  PracticeRsvpSchema1721900000000,
+  PracticeRemindersCalendarSchema1722200000000,
 ];
 
 interface Fixture {
@@ -188,6 +192,11 @@ describeIfDb(suiteTitle, () => {
       .send({ slug: `natives-${randomUUID().slice(0, 8)}`, name: 'Natives' });
     teamId = created.body.id;
     await assignTeamAdmin(fixture.teamAdminUserId, teamId);
+    await fixture.dataSource.query(
+      `INSERT INTO "memberships" ("id", "team_id", "user_id", "status")
+       VALUES ($1, $2, $3, 'active')`,
+      [randomUUID(), teamId, fixture.memberId],
+    );
   });
 
   afterAll(async () => {
@@ -384,5 +393,134 @@ describeIfDb(suiteTitle, () => {
       .set('Authorization', `Bearer ${token}`);
     expect(response.status).toBe(200);
     expect(Array.isArray(response.body.items)).toBe(true);
+  });
+
+  it('creates, renders, and revokes a privacy-safe calendar feed', async () => {
+    const adminToken = await tokenFor(fixture.adminId, [Role.Admin]);
+    const memberToken = await tokenFor(fixture.memberId, [Role.User]);
+    const createdSession = await post(
+      '/practice-sessions',
+      adminToken,
+      sessionBody({ notes: 'PRIVATE COACH NOTE' }),
+    );
+    const published = await post(
+      `/practice-sessions/${createdSession.body.id}/publish`,
+      adminToken,
+      { expectedVersion: createdSession.body.version },
+    );
+    expect(published.status).toBe(201);
+
+    const createdFeed = await post('/practice-calendar-feeds', memberToken, {
+      timezone: 'Africa/Cairo',
+      expiresInDays: 30,
+    });
+    expect(createdFeed.status).toBe(201);
+    expect(createdFeed.body.token).toMatch(/^[A-Za-z0-9_-]{43}$/u);
+    expect(createdFeed.body.feedPath).toContain(createdFeed.body.token);
+
+    const rendered = await request(app.getHttpServer()).get(
+      `/api/v1/${createdFeed.body.feedPath}`,
+    );
+    expect(rendered.status).toBe(200);
+    expect(rendered.headers['content-type']).toContain(
+      'text/calendar; charset=utf-8',
+    );
+    expect(rendered.text).toContain('BEGIN:VCALENDAR\r\n');
+    const unfoldedCalendar = rendered.text.replaceAll('\r\n ', '');
+    expect(unfoldedCalendar).toContain(
+      `UID:practice-session-${published.body.id}@ultimate-natives.local`,
+    );
+    expect(rendered.text).not.toContain('PRIVATE COACH NOTE');
+
+    const revoked = await request(app.getHttpServer())
+      .delete(
+        `/api/v1/teams/${teamId}/practice-calendar-feeds/${createdFeed.body.id}`,
+      )
+      .set('Authorization', `Bearer ${memberToken}`);
+    expect(revoked.status).toBe(200);
+    expect(revoked.body).toEqual({
+      id: createdFeed.body.id,
+      revoked: true,
+    });
+
+    const unavailable = await request(app.getHttpServer()).get(
+      `/api/v1/${createdFeed.body.feedPath}`,
+    );
+    expect(unavailable.status).toBe(404);
+    expect(unavailable.body.message).toBe('The calendar feed is unavailable');
+  });
+
+  it('protects calendar feed creation and hides membership existence', async () => {
+    const unauthenticated = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/practice-calendar-feeds`)
+      .send({ timezone: 'UTC' });
+    expect(unauthenticated.status).toBe(401);
+
+    const teamAdminToken = await tokenFor(fixture.teamAdminUserId, [Role.User]);
+    const noMembership = await post(
+      '/practice-calendar-feeds',
+      teamAdminToken,
+      { timezone: 'UTC' },
+    );
+    expect(noMembership.status).toBe(404);
+    expect(noMembership.body.message).toBe('The calendar feed is unavailable');
+  });
+
+  it('previews and dispatches reminders through the admin HTTP contract', async () => {
+    const adminToken = await tokenFor(fixture.adminId, [Role.Admin]);
+    const memberToken = await tokenFor(fixture.memberId, [Role.User]);
+    const startsAt = new Date(Date.now() + 12 * 60 * 60 * 1000);
+    const endsAt = new Date(startsAt.getTime() + 2 * 60 * 60 * 1000);
+    const rsvpCutoffAt = new Date(startsAt.getTime() - 6 * 60 * 60 * 1000);
+    const created = await post(
+      '/practice-sessions',
+      adminToken,
+      sessionBody({
+        startsAt: startsAt.toISOString(),
+        endsAt: endsAt.toISOString(),
+        rsvpCutoffAt: rsvpCutoffAt.toISOString(),
+      }),
+    );
+    const published = await post(
+      `/practice-sessions/${created.body.id}/publish`,
+      adminToken,
+      { expectedVersion: created.body.version },
+    );
+    expect(published.status).toBe(201);
+    const reminderBase = `/api/v1/teams/${teamId}/practice-sessions/${published.body.id}/reminders`;
+
+    const preview = await request(app.getHttpServer())
+      .get(`${reminderBase}/preview`)
+      .set('Authorization', `Bearer ${adminToken}`);
+    expect(preview.status).toBe(200);
+    expect(preview.body).toEqual(
+      expect.objectContaining({
+        sessionId: published.body.id,
+        totalEligible: expect.any(Number),
+        noResponse: expect.any(Number),
+        kinds: expect.any(Array),
+      }),
+    );
+    expect(preview.body.totalEligible).toBeGreaterThanOrEqual(1);
+    expect(preview.body.noResponse).toBeGreaterThanOrEqual(1);
+
+    const forbidden = await request(app.getHttpServer())
+      .get(`${reminderBase}/preview`)
+      .set('Authorization', `Bearer ${memberToken}`);
+    expect(forbidden.status).toBe(403);
+
+    const dispatched = await request(app.getHttpServer())
+      .post(`${reminderBase}/dispatch`)
+      .set('Authorization', `Bearer ${adminToken}`);
+    expect(dispatched.status).toBe(200);
+    expect(dispatched.body.candidates).toBeGreaterThanOrEqual(1);
+    expect(dispatched.body.enqueued).toBeGreaterThanOrEqual(1);
+
+    const testReminder = await request(app.getHttpServer())
+      .post(`${reminderBase}/test`)
+      .set('Authorization', `Bearer ${adminToken}`);
+    expect(testReminder.status).toBe(200);
+    expect(testReminder.body.enqueued).toEqual(expect.any(Boolean));
+    expect([null, 'quiet_hours']).toContain(testReminder.body.reason);
   });
 });

@@ -57,6 +57,11 @@ describe('buildDataSourceOptions', () => {
     expect(migrations[0]?.replaceAll('\\', '/')).toContain(
       'database/migrations',
     );
+    expect(
+      migrations[0]
+        ?.replaceAll('\\', '/')
+        .endsWith('database/migrations/[0-9]*.{ts,js}'),
+    ).toBe(true);
   });
 
   it('uses the connection url when present and omits discrete fields', () => {

@@ -31,9 +31,13 @@ export function resolveRecipient(event: DomainEventEnvelope): string | null {
 
 /** Stable per-recipient dedupe key so a retried event yields one notification. */
 export function buildDedupeKey(
-  eventType: string,
-  aggregateId: string,
+  eventId: string,
   recipientUserId: string,
 ): string {
-  return `${eventType}:${aggregateId}:${recipientUserId}`;
+  return `${eventId}:${recipientUserId}`;
+}
+
+/** Stable identity for one occurred aggregate fact; retries reuse the instant. */
+export function buildDefaultDedupeSeed(event: DomainEventEnvelope): string {
+  return `${event.eventType}:${event.aggregateId}:${event.occurredAt.toISOString()}`;
 }

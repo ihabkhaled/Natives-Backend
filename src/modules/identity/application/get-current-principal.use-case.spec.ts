@@ -27,13 +27,17 @@ function build() {
     ),
   };
   const users = { findById: vi.fn() };
+  const permissionResolver = {
+    resolve: vi.fn().mockResolvedValue(new Set(['team.read', 'practice.read'])),
+  };
 
   const useCase = new GetCurrentPrincipalUseCase(
     unitOfWork as never,
+    permissionResolver,
     users as never,
   );
 
-  return { useCase, users };
+  return { permissionResolver, useCase, users };
 }
 
 describe('GetCurrentPrincipalUseCase', () => {
@@ -43,17 +47,28 @@ describe('GetCurrentPrincipalUseCase', () => {
     harness = build();
   });
 
-  it('returns the principal for an active user', async () => {
+  it('returns the frontend auth-user contract for an active user', async () => {
     harness.users.findById.mockResolvedValue(ACTIVE_USER);
 
     const result = await harness.useCase.execute('user-1');
 
     expect(result).toEqual({
-      userId: ACTIVE_USER.id,
+      id: ACTIVE_USER.id,
       email: ACTIVE_USER.email,
-      role: ACTIVE_USER.role,
-      status: ACTIVE_USER.status,
+      displayName: 'Coach',
+      permissions: ['practice.read', 'team.read'],
+      accountState: 'active',
+      onboardingComplete: true,
+      memberships: [],
     });
+    expect(harness.permissionResolver.resolve).toHaveBeenCalledWith(
+      {
+        userId: ACTIVE_USER.id,
+        email: ACTIVE_USER.email,
+        roles: [ACTIVE_USER.role],
+      },
+      {},
+    );
   });
 
   it('throws when the user is missing', async () => {

@@ -3,7 +3,7 @@ import { ApiProperty } from '@core/openapi';
 import { MembershipStatus } from '../../model/members.enums';
 
 /** One immutable lifecycle-transition record. */
-export class StatusEventResponseDto {
+export class MemberStatusEventResponseDto {
   @ApiProperty()
   declare readonly id: string;
 
@@ -31,6 +31,6 @@ export class StatusEventResponseDto {
 
 /** The append-only status-history timeline for a membership. */
 export class MemberHistoryResponseDto {
-  @ApiProperty({ type: [StatusEventResponseDto] })
-  declare readonly items: readonly StatusEventResponseDto[];
+  @ApiProperty({ type: [MemberStatusEventResponseDto] })
+  declare readonly items: readonly MemberStatusEventResponseDto[];
 }

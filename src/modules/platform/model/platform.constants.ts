@@ -1,6 +1,10 @@
 import type { ErrorMessageKey } from '@core/errors/error.types';
 
-import { NotificationCategory, NotificationChannel } from './platform.enums';
+import {
+  NotificationAudience,
+  NotificationCategory,
+  NotificationChannel,
+} from './platform.enums';
 
 // --- Ports -------------------------------------------------------------------
 // Channel provider seam (in-app now; email/push later) and the outbox event
@@ -13,6 +17,7 @@ export const NOTIFICATIONS_ROUTE = 'notifications';
 export const NOTIFICATIONS_API_TAG = 'notifications';
 export const NOTIFICATION_READ_ROUTE = ':notificationId/read';
 export const NOTIFICATION_PREFERENCES_ROUTE = 'preferences';
+export const NOTIFICATION_QUIET_HOURS_ROUTE = 'quiet-hours';
 
 export const AUDIT_ROUTE = 'teams/:teamId/audit';
 export const AUDIT_API_TAG = 'audit';
@@ -33,10 +38,18 @@ export const LIST_MIN_LIMIT = 1;
 export const LIST_MAX_LIMIT = 100;
 export const LIST_DEFAULT_OFFSET = 0;
 export const LIST_MAX_OFFSET = 100000;
+export const NOTIFICATION_AUDIENCE_PAGE_LIMIT = 100;
+export const NOTIFICATION_AUDIENCE_MAX_RECIPIENTS = 1000;
 
 // --- Field bounds ------------------------------------------------------------
 export const CATEGORY_MAX_LENGTH = 64;
 export const CHANNEL_MAX_LENGTH = 32;
+export const TIMEZONE_MAX_LENGTH = 64;
+export const LOCAL_TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d$/u;
+export const DEFAULT_QUIET_HOURS_TIMEZONE = 'Africa/Cairo';
+export const DEFAULT_QUIET_HOURS_START = '22:00';
+export const DEFAULT_QUIET_HOURS_END = '07:00';
+export const DEFAULT_URGENT_CANCELLATION_OVERRIDE = true;
 
 // --- Outbox worker tuning ----------------------------------------------------
 // A domain-owned dispatch policy, not environment config: bounded batch, a lease
@@ -79,6 +92,15 @@ export const REDACTION_DENY_SUBSTRINGS: readonly string[] = [
 export const MEMBER_INVITED_EVENT = 'member.invited';
 export const MEMBER_TRANSITIONED_EVENT = 'member.transitioned';
 export const PRACTICE_SCHEDULED_EVENT = 'practice.scheduled';
+export const PRACTICE_PUBLISHED_EVENT = 'practice.published';
+export const PRACTICE_RESCHEDULED_EVENT = 'practice.rescheduled';
+export const PRACTICE_CANCELLED_EVENT = 'practice.cancelled';
+export const PRACTICE_VENUE_CHANGED_EVENT = 'practice.venue_changed';
+export const PRACTICE_UPCOMING_REMINDER_EVENT = 'practice.reminder.upcoming';
+export const PRACTICE_NO_RESPONSE_REMINDER_EVENT =
+  'practice.reminder.no_response';
+export const PRACTICE_CUTOFF_REMINDER_EVENT = 'practice.reminder.cutoff';
+export const ATTENDANCE_CORRECTED_EVENT = 'attendance.corrected';
 
 // --- Notification i18n keys --------------------------------------------------
 export const NOTIF_MEMBER_INVITED_TITLE = 'notifications.member.invited.title';
@@ -91,9 +113,38 @@ export const NOTIF_PRACTICE_SCHEDULED_TITLE =
   'notifications.practice.scheduled.title';
 export const NOTIF_PRACTICE_SCHEDULED_BODY =
   'notifications.practice.scheduled.body';
+export const NOTIF_PRACTICE_PUBLISHED_TITLE =
+  'notifications.practice.published.title';
+export const NOTIF_PRACTICE_PUBLISHED_BODY =
+  'notifications.practice.published.body';
+export const NOTIF_PRACTICE_RESCHEDULED_TITLE =
+  'notifications.practice.rescheduled.title';
+export const NOTIF_PRACTICE_RESCHEDULED_BODY =
+  'notifications.practice.rescheduled.body';
+export const NOTIF_PRACTICE_CANCELLED_TITLE =
+  'notifications.practice.cancelled.title';
+export const NOTIF_PRACTICE_CANCELLED_BODY =
+  'notifications.practice.cancelled.body';
+export const NOTIF_PRACTICE_VENUE_CHANGED_TITLE =
+  'notifications.practice.venueChanged.title';
+export const NOTIF_PRACTICE_VENUE_CHANGED_BODY =
+  'notifications.practice.venueChanged.body';
+export const NOTIF_PRACTICE_REMINDER_TITLE =
+  'notifications.practice.reminder.title';
+export const NOTIF_PRACTICE_UPCOMING_BODY =
+  'notifications.practice.reminder.upcoming.body';
+export const NOTIF_PRACTICE_NO_RESPONSE_BODY =
+  'notifications.practice.reminder.noResponse.body';
+export const NOTIF_PRACTICE_CUTOFF_BODY =
+  'notifications.practice.reminder.cutoff.body';
+export const NOTIF_ATTENDANCE_CORRECTED_TITLE =
+  'notifications.attendance.corrected.title';
+export const NOTIF_ATTENDANCE_CORRECTED_BODY =
+  'notifications.attendance.corrected.body';
 
 /** Payload key the projector reads to target a recipient other than the actor. */
 export const RECIPIENT_PAYLOAD_KEY = 'recipientUserId';
+export const DEDUPE_PAYLOAD_KEY = 'notificationDedupeKey';
 
 /**
  * Routing table: which past-tense event types fan out to an in-app notification,
@@ -101,6 +152,7 @@ export const RECIPIENT_PAYLOAD_KEY = 'recipientUserId';
  * in the outbox and completed with no notification (audit/tracing only).
  */
 export interface NotificationRoute {
+  readonly audience: NotificationAudience;
   readonly category: NotificationCategory;
   readonly channel: NotificationChannel;
   readonly titleKey: string;
@@ -112,6 +164,7 @@ export const NOTIFICATION_ROUTES: ReadonlyMap<string, NotificationRoute> =
     [
       MEMBER_INVITED_EVENT,
       {
+        audience: NotificationAudience.Actor,
         category: NotificationCategory.MemberLifecycle,
         channel: NotificationChannel.InApp,
         titleKey: NOTIF_MEMBER_INVITED_TITLE,
@@ -121,6 +174,7 @@ export const NOTIFICATION_ROUTES: ReadonlyMap<string, NotificationRoute> =
     [
       MEMBER_TRANSITIONED_EVENT,
       {
+        audience: NotificationAudience.Actor,
         category: NotificationCategory.MemberLifecycle,
         channel: NotificationChannel.InApp,
         titleKey: NOTIF_MEMBER_TRANSITIONED_TITLE,
@@ -130,10 +184,91 @@ export const NOTIFICATION_ROUTES: ReadonlyMap<string, NotificationRoute> =
     [
       PRACTICE_SCHEDULED_EVENT,
       {
+        audience: NotificationAudience.Actor,
         category: NotificationCategory.Practice,
         channel: NotificationChannel.InApp,
         titleKey: NOTIF_PRACTICE_SCHEDULED_TITLE,
         bodyKey: NOTIF_PRACTICE_SCHEDULED_BODY,
+      },
+    ],
+    [
+      PRACTICE_PUBLISHED_EVENT,
+      {
+        audience: NotificationAudience.Team,
+        category: NotificationCategory.Practice,
+        channel: NotificationChannel.InApp,
+        titleKey: NOTIF_PRACTICE_PUBLISHED_TITLE,
+        bodyKey: NOTIF_PRACTICE_PUBLISHED_BODY,
+      },
+    ],
+    [
+      PRACTICE_RESCHEDULED_EVENT,
+      {
+        audience: NotificationAudience.Team,
+        category: NotificationCategory.Practice,
+        channel: NotificationChannel.InApp,
+        titleKey: NOTIF_PRACTICE_RESCHEDULED_TITLE,
+        bodyKey: NOTIF_PRACTICE_RESCHEDULED_BODY,
+      },
+    ],
+    [
+      PRACTICE_CANCELLED_EVENT,
+      {
+        audience: NotificationAudience.Team,
+        category: NotificationCategory.Practice,
+        channel: NotificationChannel.InApp,
+        titleKey: NOTIF_PRACTICE_CANCELLED_TITLE,
+        bodyKey: NOTIF_PRACTICE_CANCELLED_BODY,
+      },
+    ],
+    [
+      PRACTICE_VENUE_CHANGED_EVENT,
+      {
+        audience: NotificationAudience.Team,
+        category: NotificationCategory.Practice,
+        channel: NotificationChannel.InApp,
+        titleKey: NOTIF_PRACTICE_VENUE_CHANGED_TITLE,
+        bodyKey: NOTIF_PRACTICE_VENUE_CHANGED_BODY,
+      },
+    ],
+    [
+      PRACTICE_UPCOMING_REMINDER_EVENT,
+      {
+        audience: NotificationAudience.Actor,
+        category: NotificationCategory.Practice,
+        channel: NotificationChannel.InApp,
+        titleKey: NOTIF_PRACTICE_REMINDER_TITLE,
+        bodyKey: NOTIF_PRACTICE_UPCOMING_BODY,
+      },
+    ],
+    [
+      PRACTICE_NO_RESPONSE_REMINDER_EVENT,
+      {
+        audience: NotificationAudience.Actor,
+        category: NotificationCategory.Practice,
+        channel: NotificationChannel.InApp,
+        titleKey: NOTIF_PRACTICE_REMINDER_TITLE,
+        bodyKey: NOTIF_PRACTICE_NO_RESPONSE_BODY,
+      },
+    ],
+    [
+      PRACTICE_CUTOFF_REMINDER_EVENT,
+      {
+        audience: NotificationAudience.Actor,
+        category: NotificationCategory.Practice,
+        channel: NotificationChannel.InApp,
+        titleKey: NOTIF_PRACTICE_REMINDER_TITLE,
+        bodyKey: NOTIF_PRACTICE_CUTOFF_BODY,
+      },
+    ],
+    [
+      ATTENDANCE_CORRECTED_EVENT,
+      {
+        audience: NotificationAudience.Actor,
+        category: NotificationCategory.Attendance,
+        channel: NotificationChannel.InApp,
+        titleKey: NOTIF_ATTENDANCE_CORRECTED_TITLE,
+        bodyKey: NOTIF_ATTENDANCE_CORRECTED_BODY,
       },
     ],
   ]);
@@ -164,6 +299,8 @@ export const NOTIFICATION_COLUMNS = `"id", "user_id", "team_id", "category",
   "created_at"`;
 
 export const PREFERENCE_COLUMNS = `"user_id", "category", "channel", "enabled"`;
+export const QUIET_HOURS_COLUMNS = `"user_id", "timezone", "starts_local",
+  "ends_local", "urgent_cancellation_override"`;
 
 // --- Error messages & keys ---------------------------------------------------
 export const IDEMPOTENCY_CONFLICT_MESSAGE =
@@ -178,6 +315,10 @@ export const NOTIFICATION_NOT_FOUND_MESSAGE_KEY: ErrorMessageKey =
 export const OUTBOX_EVENT_NOT_FOUND_MESSAGE = 'The outbox event was not found';
 export const OUTBOX_EVENT_NOT_FOUND_MESSAGE_KEY: ErrorMessageKey =
   'errors.platform.outboxEventNotFound';
+export const NOTIFICATION_QUIET_HOURS_MESSAGE =
+  'The notification quiet-hours configuration is invalid';
+export const NOTIFICATION_QUIET_HOURS_MESSAGE_KEY: ErrorMessageKey =
+  'errors.platform.notificationQuietHoursInvalid';
 
 // --- Log messages ------------------------------------------------------------
 export const OUTBOX_HANDLER_FAILED_LOG = 'Outbox event handler failed';

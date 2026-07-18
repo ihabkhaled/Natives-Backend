@@ -42,6 +42,9 @@ No one should modify code they have not read.
 8. Tests and documentation must be updated in the same delivery stream as behavior changes.
 9. Coverage is measured on touched modules, not only on global repository averages.
 10. No change is done unless it is reviewed, tested, secure, observable, documented, and reversible.
+11. Execute with focus: communicate concisely, avoid unrelated detours and speculative work, make
+    reasonable in-scope decisions promptly, and continue through verification without bypassing a
+    mandatory phase or gate.
 
 ## Mandatory SDLC Shape
 
