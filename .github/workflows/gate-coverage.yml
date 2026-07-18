@@ -19,6 +19,20 @@ jobs:
     name: test:coverage
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: natives_test
+          POSTGRES_PASSWORD: natives_test
+          POSTGRES_DB: natives_test
+        ports:
+          - 55432:5432
+        options: >-
+          --health-cmd "pg_isready -U natives_test -d natives_test"
+          --health-interval 3s
+          --health-timeout 3s
+          --health-retries 20
     steps:
       - name: Checkout
         uses: actions/checkout@v7
