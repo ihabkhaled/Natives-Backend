@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-18T02:09:44.814Z",
-  "treeHash": "sha256:c5ab539bae183ec6c8cf9e6e1287c18985f9b8b9838cca40980943a8aa76abb7",
+  "generatedAt": "2026-07-18T03:11:38.114Z",
+  "treeHash": "sha256:9a2841e9df3a8d3f52a65d72a150a7217d65ccf3af8d83387fe45f52bd5d6149",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:87b36af6dae4f9de06b9b690b4b454aa666ef687e1035426c8ad8e46e61bcfa2",
-      "sizeBytes": 1151
+      "hash": "sha256:5addd907166c37ba039de64fe7cdfc01c23d3a20bbe90ad213339744f413b317",
+      "sizeBytes": 1226
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -2466,6 +2466,23 @@
       "kind": "source",
       "hash": "sha256:9081e70d57b50e575898280cf11f74c2b6a203022e061b7162d4ee4cab1275f9",
       "sizeBytes": 9478
+    },
+    {
+      "path": "src/database/migrations/1721800000000-practices-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticesSchema1721800000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:77a960aa18838ce275e7ffe7c7cf7473026935b9920569f0d8473490e8dc9ada",
+      "sizeBytes": 8465
     },
     {
       "path": "src/database/naming.helpers.spec.ts",
@@ -8848,6 +8865,1653 @@
       "kind": "source",
       "hash": "sha256:fa50d1e70a6fecd5c939a724e62cb4e39c27f033ce0c0e3527e56772e480224b",
       "sizeBytes": 3534
+    },
+    {
+      "path": "src/modules/practices/api/dto/create-schedule.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateScheduleDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c29b286c1dc46d9ffa1dc3ef795a3c40cb5e6bd0e4acfab06a62835cee580dcb",
+      "sizeBytes": 4374
+    },
+    {
+      "path": "src/modules/practices/api/dto/create-session.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateSessionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5ff6a20b78cec13ee3e7ab6cbba83deda58581320ea03f1664d39083a3eb058a",
+      "sizeBytes": 2314
+    },
+    {
+      "path": "src/modules/practices/api/dto/generation-result-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GenerationResultResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d4605cfcbc8e70c3ccac7c350741cce1902ba01e2d8a6510d346b6376fc5d948",
+      "sizeBytes": 493
+    },
+    {
+      "path": "src/modules/practices/api/dto/list-query.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5df8e2e15c4fe0509afed470a49c17ef7bb65d1da1c59ef304cf50dd65d03680",
+      "sizeBytes": 734
+    },
+    {
+      "path": "src/modules/practices/api/dto/list-schedules-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSchedulesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f6a4cbe38ad70511a7a877e3eca1eee06d547de71b80f1bbb9f0dcf11db2cd1e",
+      "sizeBytes": 415
+    },
+    {
+      "path": "src/modules/practices/api/dto/list-sessions-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSessionsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2dcaf7187731ec2c79353dc5ccf86e18b2f3f9b759f9d05efdafda22f182d1e1",
+      "sizeBytes": 410
+    },
+    {
+      "path": "src/modules/practices/api/dto/list-sessions.query.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSessionsQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6ed1d0f0962cd8d9cd89621959ed97a9d04c3b9cfe12534b87381571ab484173",
+      "sizeBytes": 1241
+    },
+    {
+      "path": "src/modules/practices/api/dto/reschedule-session.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RescheduleSessionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6f40be570d3c5195853bbc6b076b3e5ba76473e3f29684e7e9a08f4ce818b12a",
+      "sizeBytes": 1398
+    },
+    {
+      "path": "src/modules/practices/api/dto/schedule-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScheduleResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c90ec539785e5929e7f6aeaba5e0c57c66b51d85538e5ebd1e2bdd4df95c73b4",
+      "sizeBytes": 2430
+    },
+    {
+      "path": "src/modules/practices/api/dto/session-history-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionHistoryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0fc15bb5182494cf2734d14868a4fbef630e6a9a0bf5f7023da3a0572d8d3b0f",
+      "sizeBytes": 272
+    },
+    {
+      "path": "src/modules/practices/api/dto/session-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dfdd493c52f1aeaf7b872d6304e7a933fd000fdd89124d79495dbd7aa8796891",
+      "sizeBytes": 2251
+    },
+    {
+      "path": "src/modules/practices/api/dto/session-status.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionStatusDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ff4f8d13c8c046c268fa6e8e29bd4c3864ea61e1aed43506da034e620ba2b275",
+      "sizeBytes": 792
+    },
+    {
+      "path": "src/modules/practices/api/dto/status-event-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StatusEventResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4aeacb8fa1cd951bae2009319ff1255000981a3b00bfe5daa73f59f03c94044c",
+      "sizeBytes": 728
+    },
+    {
+      "path": "src/modules/practices/api/dto/update-schedule.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateScheduleDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f42f7161bbe93305ea3b0f5f2614821d48e188df9bf200f816b7f3496d051adf",
+      "sizeBytes": 816
+    },
+    {
+      "path": "src/modules/practices/api/dto/update-session.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateSessionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d2284dcc992bba87f1720984d225bb18f8ac65df4cf0019175eb1a5d57e24ad8",
+      "sizeBytes": 1369
+    },
+    {
+      "path": "src/modules/practices/api/practice-schedules.controller.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeSchedulesController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9176c3a7a9565bbb0df0ad977d145d883db5e3dd8840130c9bc1692fa6578ec5",
+      "sizeBytes": 7552
+    },
+    {
+      "path": "src/modules/practices/api/practice-sessions.controller.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeSessionsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d7dcbc3e250ba686caba0ac1762f496cef9995520cd0234bf744ebc88be94ea6",
+      "sizeBytes": 9244
+    },
+    {
+      "path": "src/modules/practices/application/archive-practice-schedule.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bf123b4e4c341ab1bc0ab0399c5f2f9adad240aacca74400d1f783cca8e920ba",
+      "sizeBytes": 2535
+    },
+    {
+      "path": "src/modules/practices/application/archive-practice-schedule.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ArchivePracticeScheduleUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/archive-practice-schedule.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b97360a0cd339baf550caf7cf8b6829674f18c7d3e39c882d1c00a6fc061aa1b",
+      "sizeBytes": 2669
+    },
+    {
+      "path": "src/modules/practices/application/create-practice-schedule.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6a9ba2910865d6194b343b2c211c4e724d0b3262862340a87ab187dc41b27ed1",
+      "sizeBytes": 3657
+    },
+    {
+      "path": "src/modules/practices/application/create-practice-schedule.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreatePracticeScheduleUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/create-practice-schedule.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b78dad47c75b397873c95f2136d53a0fc2d66ebac8adfbe5bb5b448ff674ca02",
+      "sizeBytes": 4486
+    },
+    {
+      "path": "src/modules/practices/application/create-practice-session.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f4c29255830c349e1723769ad68a7cbf9b9ce4238df606459babc1034ea13547",
+      "sizeBytes": 3246
+    },
+    {
+      "path": "src/modules/practices/application/create-practice-session.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreatePracticeSessionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/create-practice-session.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0c552ace86508992e183b765252751763994a71a1ff6db861c6b82a2af34e23c",
+      "sizeBytes": 5050
+    },
+    {
+      "path": "src/modules/practices/application/generate-sessions.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1b312fc444724a66223fcf45342b016561a7f51dcd56f11a75344036559ad129",
+      "sizeBytes": 4295
+    },
+    {
+      "path": "src/modules/practices/application/generate-sessions.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GenerateSessionsUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/generate-sessions.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4181d653ff72c03c5c59b4ffe9ab957a9743bf85719f7cd0874c154766263ae9",
+      "sizeBytes": 5766
+    },
+    {
+      "path": "src/modules/practices/application/practice-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e7e0d4802217e20d4261afe5658e64c1d394110bd74b808fc837b94375233796",
+      "sizeBytes": 1832
+    },
+    {
+      "path": "src/modules/practices/application/practice-lookup.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/practice-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9f5e81e3952749b20f2279766a0df537d6d8fc787c9ef4bb0ba1649ffb451289",
+      "sizeBytes": 1721
+    },
+    {
+      "path": "src/modules/practices/application/reschedule-practice-session.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1130aeaf4491dbe9dc4788fd6a92f0cf48958e83fc7a9cd5ea8b7129bea1c298",
+      "sizeBytes": 4823
+    },
+    {
+      "path": "src/modules/practices/application/reschedule-practice-session.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReschedulePracticeSessionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/reschedule-practice-session.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f3846d4118af8c966e33d909c36f65ba7e8745f73f0bd0be444290265b5ba84f",
+      "sizeBytes": 6933
+    },
+    {
+      "path": "src/modules/practices/application/schedule-query.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:dfc156f67c4b897d70e2087ec8e46bf9e392789336fefdd98ccd127e531d891e",
+      "sizeBytes": 1402
+    },
+    {
+      "path": "src/modules/practices/application/schedule-query.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScheduleQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/schedule-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:673820a343bceea45db45966354775281c435fed72361ced1cea566a26e5161c",
+      "sizeBytes": 1360
+    },
+    {
+      "path": "src/modules/practices/application/scope-validation.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3fd895b7582ed7420b6e25c8b04f45ae676fc96c2906209596d699e00a2b1fa9",
+      "sizeBytes": 2437
+    },
+    {
+      "path": "src/modules/practices/application/scope-validation.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScopeValidationService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/scope-validation.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3be40552a41159948a422cf7e0f353475c05f602da2f18f9b106ff168574b88e",
+      "sizeBytes": 2316
+    },
+    {
+      "path": "src/modules/practices/application/session-query.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:03bacf04d8ccc612b782fcdec6baa43ce4d0863571f824745bc64263b4ab2a76",
+      "sizeBytes": 1855
+    },
+    {
+      "path": "src/modules/practices/application/session-query.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/session-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7c7fc4df8551606096de5158dc47e70ecaf7fd5e8e5c6df8bbd3de87a3c64173",
+      "sizeBytes": 2040
+    },
+    {
+      "path": "src/modules/practices/application/transition-practice-session.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2157e98e05de13545e9a363f8368eb3ee6cc0291be14b2a5de67c1536664b59e",
+      "sizeBytes": 5392
+    },
+    {
+      "path": "src/modules/practices/application/transition-practice-session.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionPracticeSessionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/transition-practice-session.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d72f78fa2813a5fb76da9111c518f31d5f9f21ce0fee08e9764bb8c3cc91f592",
+      "sizeBytes": 7081
+    },
+    {
+      "path": "src/modules/practices/application/update-practice-schedule.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b77dd991fc1f620f05e82e4cd7651923aec9386fdbefab796e44ead4137a0938",
+      "sizeBytes": 4071
+    },
+    {
+      "path": "src/modules/practices/application/update-practice-schedule.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdatePracticeScheduleUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/update-practice-schedule.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:81e583f9efa8209c5fed8f2d1377b314402d194689873d0027dc61e072d08d59",
+      "sizeBytes": 5145
+    },
+    {
+      "path": "src/modules/practices/application/update-practice-session.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:87b4f83e2aa4d49207dd37b2a78fde15d55dc48cb320e5f223fbc9c97b2bea8c",
+      "sizeBytes": 3267
+    },
+    {
+      "path": "src/modules/practices/application/update-practice-session.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdatePracticeSessionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/update-practice-session.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:acdf16678c1629d9cd47705348b50cbc22b5dd11ab37b07bee6501215bef702d",
+      "sizeBytes": 3973
+    },
+    {
+      "path": "src/modules/practices/domain/practice-session.state-machine.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:645befe5914699d1f07e55f47eb52c41814df63761d27b3c6cbafd2358df2e16",
+      "sizeBytes": 2640
+    },
+    {
+      "path": "src/modules/practices/domain/practice-session.state-machine.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransition"
+        },
+        {
+          "kind": "function",
+          "name": "isTerminal"
+        },
+        {
+          "kind": "function",
+          "name": "canReschedule"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/domain/practice-session.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:16f48f3ae1042ef27a0da126215910c2c6f141ae0f43813d292749a9f6d2cc41",
+      "sizeBytes": 2411
+    },
+    {
+      "path": "src/modules/practices/domain/recurrence.policy.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ae6e41b6c942c6b1326399586408b44763b51f3b092d0a1530c62d2949cff2c7",
+      "sizeBytes": 3345
+    },
+    {
+      "path": "src/modules/practices/domain/recurrence.policy.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "localWeekday"
+        },
+        {
+          "kind": "function",
+          "name": "addDays"
+        },
+        {
+          "kind": "function",
+          "name": "daysBetween"
+        },
+        {
+          "kind": "function",
+          "name": "generateOccurrenceDates"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/domain/recurrence.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:82106c4a6dd0b652d71d3e130f9bff3dfb32d43510e187f073e6cf35215fece3",
+      "sizeBytes": 2964
+    },
+    {
+      "path": "src/modules/practices/errors/invalid-schedule.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvalidScheduleError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:665b1af1b6e04ceb00c36050d6f2acda58af47721e22d59e3edc5e469692158e",
+      "sizeBytes": 411
+    },
+    {
+      "path": "src/modules/practices/errors/invalid-session-times.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvalidSessionTimesError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c7e11a6bc333a4e9e90203b10b73cbef957beb50da312e985c2602b3badddb50",
+      "sizeBytes": 431
+    },
+    {
+      "path": "src/modules/practices/errors/invalid-session-transition.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvalidSessionTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:88cfc5d277756c947249cc85ac6df503ec7cf9a48c2ee53ad6a98ee53f455096",
+      "sizeBytes": 419
+    },
+    {
+      "path": "src/modules/practices/errors/optimistic-conflict.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OptimisticConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:22b930e058545344b5e42ddddc746f1c55364b5696d4d2caf116d15d680b15b4",
+      "sizeBytes": 487
+    },
+    {
+      "path": "src/modules/practices/errors/practice-schedule-not-found.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeScheduleNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:adfaebf24a5b9ba1bdfa3f21153d5a0a877a00e2c0649c27776c5d96a65b5043",
+      "sizeBytes": 425
+    },
+    {
+      "path": "src/modules/practices/errors/practice-session-not-found.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeSessionNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:459d1e3c4de5283f14327d1817cc4205c7851af611f1730e0061f89471bf6992",
+      "sizeBytes": 419
+    },
+    {
+      "path": "src/modules/practices/errors/practice-team-not-found.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeTeamNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f5609183aefdaee998695f25b814aeb08329abc48c3c3357139febd458ed6c3d",
+      "sizeBytes": 401
+    },
+    {
+      "path": "src/modules/practices/errors/season-scope-not-found.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SeasonScopeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:61f80296cb75fb5360cd63958a428157334e92c4356af767c416a0035815952c",
+      "sizeBytes": 409
+    },
+    {
+      "path": "src/modules/practices/errors/venue-scope-not-found.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "VenueScopeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:efacc2e50bcc846e34def9e68fdf5580a8933c29cb9f32f846aa1528ac0d7783",
+      "sizeBytes": 403
+    },
+    {
+      "path": "src/modules/practices/index.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:76732f10e446b43928c645e29eff9bd9f42f1f662aec94e398548aa2cb444319",
+      "sizeBytes": 54
+    },
+    {
+      "path": "src/modules/practices/infrastructure/practice-schedule.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeScheduleRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:31b1573a4196d0a1da15b2f5797f68c905944cab2293991cc23f02e48f7e2ca1",
+      "sizeBytes": 7620
+    },
+    {
+      "path": "src/modules/practices/infrastructure/practice-scope.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeScopeRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5b241982599de11896ad330a3d09ab62320a5eb8b3175803f67ac4f4c7754b5c",
+      "sizeBytes": 1430
+    },
+    {
+      "path": "src/modules/practices/infrastructure/practice-session.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeSessionRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:df54d98b9bd57acf508735159ddd94a3a90230aa7fbc08a786e61fe0aa405a6a",
+      "sizeBytes": 9554
+    },
+    {
+      "path": "src/modules/practices/infrastructure/session-status-event.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionStatusEventRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:295462394a59f542954e61c27ba61b4657f3b4abef9609e3e25cea4418b92726",
+      "sizeBytes": 2238
+    },
+    {
+      "path": "src/modules/practices/lib/cairo-time.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:539e21bcb349778a9e61e50097d3e103aeb2a26622022a83f0183a96aa25dc86",
+      "sizeBytes": 2236
+    },
+    {
+      "path": "src/modules/practices/lib/cairo-time.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "readPart"
+        },
+        {
+          "kind": "function",
+          "name": "getTimeZoneOffsetMs"
+        },
+        {
+          "kind": "function",
+          "name": "zonedLocalToUtc"
+        },
+        {
+          "kind": "function",
+          "name": "combineLocalDateTimeToUtc"
+        },
+        {
+          "kind": "function",
+          "name": "addMinutes"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/cairo-time.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4b713897f9771ca046fdbdd2bf798c8dcdd8cf09001c37b1982628f44f2324f6",
+      "sizeBytes": 3327
+    },
+    {
+      "path": "src/modules/practices/lib/practices.helpers.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:96a873e8cf61ac6c2b0132a9e57571c6267d37344cfb6ffddae76cd0584bf6c0",
+      "sizeBytes": 6886
+    },
+    {
+      "path": "src/modules/practices/lib/practices.helpers.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "isIsoCalendarDate"
+        },
+        {
+          "kind": "function",
+          "name": "isValidLocalTime"
+        },
+        {
+          "kind": "function",
+          "name": "resolvePage"
+        },
+        {
+          "kind": "function",
+          "name": "parseSessionStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseScheduleStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseVisibility"
+        },
+        {
+          "kind": "function",
+          "name": "parseFrequency"
+        },
+        {
+          "kind": "function",
+          "name": "isValidScheduleCommand"
+        },
+        {
+          "kind": "function",
+          "name": "resolveSessionFilter"
+        },
+        {
+          "kind": "function",
+          "name": "resolveOccurrenceWindow"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/practices.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b375e3883d9553bcf4918c7bb30f9ff66c58dbe84e3e0520208975b2481fdf80",
+      "sizeBytes": 5782
+    },
+    {
+      "path": "src/modules/practices/model/practices.constants.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "PRACTICES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICES_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULE_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULE_GENERATE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_HISTORY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_PUBLISH_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_RESCHEDULE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_CANCEL_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_REOPEN_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULE_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_TYPE_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_TYPE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "FIELD_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NOTES_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "TIMEZONE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "WEEKDAY_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "WEEKDAY_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "WEEKDAYS_MAX_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "INTERVAL_WEEKS_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "INTERVAL_WEEKS_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "DURATION_MINUTES_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "DURATION_MINUTES_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "OFFSET_MINUTES_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "OFFSET_MINUTES_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "CAPACITY_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "CAPACITY_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "EXCEPTIONS_MAX_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "EXPECTED_VERSION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_TIMEZONE"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_INTERVAL_WEEKS"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_HORIZON_DAYS"
+        },
+        {
+          "kind": "const",
+          "name": "MAX_GENERATED_OCCURRENCES"
+        },
+        {
+          "kind": "const",
+          "name": "OCCURRENCE_SCAN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "HISTORY_SCAN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "LOCAL_TIME_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "DATE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_AGGREGATE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_PUBLISHED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_RESCHEDULED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_CANCELLED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULE_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULE_UPDATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULE_ARCHIVED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SESSIONS_GENERATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_UPDATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_TRANSITIONED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_RESCHEDULED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_ARCHIVED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULE_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULE_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "STATUS_EVENT_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "GENERATED_CONFLICT_CLAUSE"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "VENUE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "VENUE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_SCHEDULE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_SCHEDULE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_SESSION_TIMES_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_SESSION_TIMES_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "VERSION_CONFLICT_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6bf9977f8e8b58f7dfe6d0328965f0f9a88d0dc66a0848d62f4fb37e78ef6e96",
+      "sizeBytes": 7927
+    },
+    {
+      "path": "src/modules/practices/model/practices.enums.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SessionStatus"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RecurrenceFrequency"
+        },
+        {
+          "kind": "const",
+          "name": "RECURRENCE_FREQUENCY_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SessionVisibility"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_VISIBILITY_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ScheduleStatus"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULE_STATUS_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e9ba0a681ed8234f91de4291d1b8596b8337d68945e03d60d0e975485d11cc85",
+      "sizeBytes": 2106
+    },
+    {
+      "path": "src/modules/practices/model/practices.rows.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "ScheduleRow"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "StatusEventRow"
+        },
+        {
+          "kind": "interface",
+          "name": "OccurrenceDateRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:34948fc16938ca7c5791f01c509718e55c068adbf8482de7a2c2553cb6fdb94a",
+      "sizeBytes": 2795
+    },
+    {
+      "path": "src/modules/practices/model/practices.types.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PracticeSchedule"
+        },
+        {
+          "kind": "interface",
+          "name": "PracticeSession"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionStatusEvent"
+        },
+        {
+          "kind": "interface",
+          "name": "RecurrenceRule"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionWindow"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateScheduleCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdateScheduleCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateSessionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdateSessionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "RescheduleSessionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionStatusCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionListFilter"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionFilterClause"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionListQuery"
+        },
+        {
+          "kind": "interface",
+          "name": "NewSchedule"
+        },
+        {
+          "kind": "interface",
+          "name": "ScheduleUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "NewSession"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionDetailsUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionRescheduleWrite"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "NewStatusEvent"
+        },
+        {
+          "kind": "interface",
+          "name": "GeneratedOccurrence"
+        },
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "ListSchedulesResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ListSessionsResult"
+        },
+        {
+          "kind": "interface",
+          "name": "GenerationResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ListStatusEventsResult"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c6d5c0410af1ebd114bc6736c31a9e854163377b931fbc6e3b78814c86d7dc5a",
+      "sizeBytes": 12034
+    },
+    {
+      "path": "src/modules/practices/practices.module.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticesModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2303c94927bf3e71e7417253964c78b1bd83d4da9a77d76dcbc4c5feca30b34a",
+      "sizeBytes": 3078
     },
     {
       "path": "src/modules/rbac/api/dto/assign-role.dto.ts",

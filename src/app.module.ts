@@ -7,6 +7,7 @@ import { AuthModule } from '@modules/auth';
 import { IdentityModule } from '@modules/identity';
 import { MembersModule } from '@modules/members';
 import { PlatformModule } from '@modules/platform';
+import { PracticesModule } from '@modules/practices';
 import { RbacModule } from '@modules/rbac';
 import { TeamsModule } from '@modules/teams';
 import { Module } from '@nestjs/common';
@@ -29,6 +30,7 @@ import { Module } from '@nestjs/common';
     TeamsModule,
     MembersModule,
     PlatformModule,
+    PracticesModule,
     ArticlesModule,
   ],
 })

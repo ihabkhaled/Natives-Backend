@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T02:09:44.814Z",
+  "generatedAt": "2026-07-18T03:11:38.114Z",
   "modules": [
     {
       "name": "articles",
@@ -320,6 +320,86 @@
       "fileCount": 45,
       "specCount": 28,
       "publicSurface": "src/modules/platform/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "practices",
+      "path": "src/modules/practices",
+      "layers": {
+        "api-dto": [
+          "src/modules/practices/api/dto/create-schedule.dto.ts",
+          "src/modules/practices/api/dto/create-session.dto.ts",
+          "src/modules/practices/api/dto/generation-result-response.dto.ts",
+          "src/modules/practices/api/dto/list-query.dto.ts",
+          "src/modules/practices/api/dto/list-schedules-response.dto.ts",
+          "src/modules/practices/api/dto/list-sessions-response.dto.ts",
+          "src/modules/practices/api/dto/list-sessions.query.dto.ts",
+          "src/modules/practices/api/dto/reschedule-session.dto.ts",
+          "src/modules/practices/api/dto/schedule-response.dto.ts",
+          "src/modules/practices/api/dto/session-history-response.dto.ts",
+          "src/modules/practices/api/dto/session-response.dto.ts",
+          "src/modules/practices/api/dto/session-status.dto.ts",
+          "src/modules/practices/api/dto/status-event-response.dto.ts",
+          "src/modules/practices/api/dto/update-schedule.dto.ts",
+          "src/modules/practices/api/dto/update-session.dto.ts"
+        ],
+        "controller": [
+          "src/modules/practices/api/practice-schedules.controller.ts",
+          "src/modules/practices/api/practice-sessions.controller.ts"
+        ],
+        "use-case": [
+          "src/modules/practices/application/archive-practice-schedule.use-case.ts",
+          "src/modules/practices/application/create-practice-schedule.use-case.ts",
+          "src/modules/practices/application/create-practice-session.use-case.ts",
+          "src/modules/practices/application/generate-sessions.use-case.ts",
+          "src/modules/practices/application/reschedule-practice-session.use-case.ts",
+          "src/modules/practices/application/transition-practice-session.use-case.ts",
+          "src/modules/practices/application/update-practice-schedule.use-case.ts",
+          "src/modules/practices/application/update-practice-session.use-case.ts"
+        ],
+        "service": [
+          "src/modules/practices/application/practice-lookup.service.ts",
+          "src/modules/practices/application/schedule-query.service.ts",
+          "src/modules/practices/application/scope-validation.service.ts",
+          "src/modules/practices/application/session-query.service.ts"
+        ],
+        "domain": [
+          "src/modules/practices/domain/practice-session.state-machine.ts",
+          "src/modules/practices/domain/recurrence.policy.ts"
+        ],
+        "other": [
+          "src/modules/practices/errors/invalid-schedule.error.ts",
+          "src/modules/practices/errors/invalid-session-times.error.ts",
+          "src/modules/practices/errors/invalid-session-transition.error.ts",
+          "src/modules/practices/errors/optimistic-conflict.error.ts",
+          "src/modules/practices/errors/practice-schedule-not-found.error.ts",
+          "src/modules/practices/errors/practice-session-not-found.error.ts",
+          "src/modules/practices/errors/practice-team-not-found.error.ts",
+          "src/modules/practices/errors/season-scope-not-found.error.ts",
+          "src/modules/practices/errors/venue-scope-not-found.error.ts",
+          "src/modules/practices/index.ts",
+          "src/modules/practices/practices.module.ts"
+        ],
+        "repository": [
+          "src/modules/practices/infrastructure/practice-schedule.repository.ts",
+          "src/modules/practices/infrastructure/practice-scope.repository.ts",
+          "src/modules/practices/infrastructure/practice-session.repository.ts",
+          "src/modules/practices/infrastructure/session-status-event.repository.ts"
+        ],
+        "lib": [
+          "src/modules/practices/lib/cairo-time.ts",
+          "src/modules/practices/lib/practices.helpers.ts"
+        ],
+        "model": [
+          "src/modules/practices/model/practices.constants.ts",
+          "src/modules/practices/model/practices.enums.ts",
+          "src/modules/practices/model/practices.rows.ts",
+          "src/modules/practices/model/practices.types.ts"
+        ]
+      },
+      "fileCount": 52,
+      "specCount": 16,
+      "publicSurface": "src/modules/practices/index.ts",
       "hasEvents": false
     },
     {
