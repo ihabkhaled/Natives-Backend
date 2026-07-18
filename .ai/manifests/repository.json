@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-18T01:19:50.516Z",
-  "treeHash": "sha256:0ba8b9b64f08b46d8dfea9ae944568fad7c92bb2904de8a09d245af389ff7b27",
+  "generatedAt": "2026-07-18T02:09:44.814Z",
+  "treeHash": "sha256:c5ab539bae183ec6c8cf9e6e1287c18985f9b8b9838cca40980943a8aa76abb7",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4c49146bdf4380e48c8b9ffb7f6eef39a968d916b7fa1fd8163e3b7d814fee99",
-      "sizeBytes": 1079
+      "hash": "sha256:87b36af6dae4f9de06b9b690b4b454aa666ef687e1035426c8ad8e46e61bcfa2",
+      "sizeBytes": 1151
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -2165,8 +2165,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1bc5622dc4006bb43f7d276397dd46cd07073a7e22dce68d88571d59b14e4365",
-      "sizeBytes": 667
+      "hash": "sha256:9fed434c368bbe3298fafe77f80b3d0fec8574b942f7391f5b48aeaf5be6aa00",
+      "sizeBytes": 680
     },
     {
       "path": "src/database/cli-data-source.ts",
@@ -2449,6 +2449,23 @@
       "kind": "source",
       "hash": "sha256:4b80cbd5126c35ce88e0f616383136c2b2fd2b82063138cda321633ded655812",
       "sizeBytes": 9516
+    },
+    {
+      "path": "src/database/migrations/1721700000000-platform-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlatformSchema1721700000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9081e70d57b50e575898280cf11f74c2b6a203022e061b7162d4ee4cab1275f9",
+      "sizeBytes": 9478
     },
     {
       "path": "src/database/naming.helpers.spec.ts",
@@ -7239,6 +7256,1598 @@
       "kind": "source",
       "hash": "sha256:0e1c73d904ff9ee51577c145a6b1eb4252f24316ee475dedc97efd0df1db0bb2",
       "sizeBytes": 12001
+    },
+    {
+      "path": "src/modules/platform/adapters/in-app-notification.adapter.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "adapter",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6bdbca2a441a506c58aa58128edb8f2f8ecf011226771ad9018b5618c5a41013",
+      "sizeBytes": 1055
+    },
+    {
+      "path": "src/modules/platform/adapters/in-app-notification.adapter.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "adapter",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InAppNotificationAdapter"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/adapters/in-app-notification.adapter.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2300f015109495e0b6139719a9a60a1d323844de42f018f39b191032fe52eaee",
+      "sizeBytes": 794
+    },
+    {
+      "path": "src/modules/platform/api/audit.controller.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AuditController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3f1e1cce42c4fbb1dc45c36ebb1ed41b9efbf86326de7b75cb2ccd07df973187",
+      "sizeBytes": 1303
+    },
+    {
+      "path": "src/modules/platform/api/dto/audit-query.dto.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AuditQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:49dfd9ff8bc0d36c6821314173d6f452dcc81e470a9825e97cb9f0899cabba1e",
+      "sizeBytes": 793
+    },
+    {
+      "path": "src/modules/platform/api/dto/audit-response.dto.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AuditEntryDto"
+        },
+        {
+          "kind": "class",
+          "name": "ListAuditResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0fd015b9d77e9da6d8b27db56ee39ea1d283630c60092cbf981554eac121046b",
+      "sizeBytes": 1481
+    },
+    {
+      "path": "src/modules/platform/api/dto/list-notifications.query.dto.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListNotificationsQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f7c41279cb08e20b992f7518cce6936b4c9cfa53124b3836e80aea528a01ff38",
+      "sizeBytes": 806
+    },
+    {
+      "path": "src/modules/platform/api/dto/notification-response.dto.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationViewDto"
+        },
+        {
+          "kind": "class",
+          "name": "ListNotificationsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0b2d0f8ddf581c6ce84a83cb57d0eaeb118419a78c5dba63340be42b5fd1f01d",
+      "sizeBytes": 1333
+    },
+    {
+      "path": "src/modules/platform/api/dto/outbox-metrics-response.dto.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OutboxMetricsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:77b48cc20624f3a399789ad7cb389bf6777034cac35d2ece8df1d37e169761f4",
+      "sizeBytes": 373
+    },
+    {
+      "path": "src/modules/platform/api/dto/preferences-response.dto.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationPreferenceDto"
+        },
+        {
+          "kind": "class",
+          "name": "PreferencesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2ec009fbbd65677e9a171be15dc8c22d07566923f51120c23c9970daed89ae35",
+      "sizeBytes": 688
+    },
+    {
+      "path": "src/modules/platform/api/dto/replay-response.dto.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReplayResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:061c913bde915550fbf09cd973e67a2227ca6dda3e4362413b063e7fde707cc8",
+      "sizeBytes": 265
+    },
+    {
+      "path": "src/modules/platform/api/dto/update-preferences.dto.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdatePreferencesDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e3dd3bf78cfe92905709a3c132b3aae887ae155b305e5e4b016f6ee4de297af0",
+      "sizeBytes": 640
+    },
+    {
+      "path": "src/modules/platform/api/notifications.controller.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d463d42affa346169aa408156d2408c59f30d032314f901885687a47c2e17c06",
+      "sizeBytes": 3583
+    },
+    {
+      "path": "src/modules/platform/api/outbox-admin.controller.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OutboxAdminController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e25c8d5824cabf5053d4b660062f79e6104b4d0923b42eece50da8ff8de1c4d0",
+      "sizeBytes": 1958
+    },
+    {
+      "path": "src/modules/platform/application/audit-query.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:fe241904dd269d842291f9778148996c6799c090d5a804ac238bdbc7bbff55df",
+      "sizeBytes": 1027
+    },
+    {
+      "path": "src/modules/platform/application/audit-query.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AuditQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/audit-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bd694bf28b0b9320f3d36cbf13bd73a87fae8b5bf4c599a0ebcf636d4b7f1d9d",
+      "sizeBytes": 991
+    },
+    {
+      "path": "src/modules/platform/application/audit-recorder.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6d5788c4e6108f27daf33779296491b6f9f391a384b865fd53f084a72093eca5",
+      "sizeBytes": 1507
+    },
+    {
+      "path": "src/modules/platform/application/audit-recorder.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AuditRecorderService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/audit-recorder.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1c6e33009793f38d30175b38d3c9194cd24e33ccdfb22f73b09134ae23b665c8",
+      "sizeBytes": 1408
+    },
+    {
+      "path": "src/modules/platform/application/idempotency.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:871378847b366d453f152c213f1a0aecc4c5a8ddd4fd15f05d8c3c7ee8de632f",
+      "sizeBytes": 3322
+    },
+    {
+      "path": "src/modules/platform/application/idempotency.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "IdempotencyService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/idempotency.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:dc49b9193babe995fe4b5088274ad8ca8e19f26c58e1683596ab1ac69a59c6e1",
+      "sizeBytes": 2645
+    },
+    {
+      "path": "src/modules/platform/application/list-notifications.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a4d371d251458a60f9311470c97082525b7ea478ab1e4b33fa21c1db232f2675",
+      "sizeBytes": 1828
+    },
+    {
+      "path": "src/modules/platform/application/list-notifications.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListNotificationsService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/list-notifications.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:10c3e82bae748b31e0b50b7b6dab5cc656096a0fdf81e087598eb80bcaf763b2",
+      "sizeBytes": 1253
+    },
+    {
+      "path": "src/modules/platform/application/mark-notification-read.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e5deff4795e44b79eb37daa85332f819febefeeddd36a5caed37373e405fdf42",
+      "sizeBytes": 2092
+    },
+    {
+      "path": "src/modules/platform/application/mark-notification-read.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MarkNotificationReadService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/mark-notification-read.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3360d89d44f42bc19b1f03e6462ddd4c29eeb19f31836813270d915181bbb366",
+      "sizeBytes": 1528
+    },
+    {
+      "path": "src/modules/platform/application/notification-preferences.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0a6c3be81647a46f8fd71132c347a322589a447ae0a725240bc5c03977d3746f",
+      "sizeBytes": 1841
+    },
+    {
+      "path": "src/modules/platform/application/notification-preferences.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationPreferencesService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/notification-preferences.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:72981281d9745ceb189e61a585475f68e6be9930447fe86cb2e11c08c9c58059",
+      "sizeBytes": 1781
+    },
+    {
+      "path": "src/modules/platform/application/notification-projection.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:158b2912bb5673edd1f5f5597e8399588cdc4808eb72ee345ae437f43431282f",
+      "sizeBytes": 3967
+    },
+    {
+      "path": "src/modules/platform/application/notification-projection.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationProjectionService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/notification-projection.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:826639fd0a78f662866959d156cfb8e9ac96079f023a94a8d09ce45f9d1f73b5",
+      "sizeBytes": 3630
+    },
+    {
+      "path": "src/modules/platform/application/outbox-metrics.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:85dc34266258f276fb68f97a41a7bf33252d58ff084b050788942a3b51902eb8",
+      "sizeBytes": 899
+    },
+    {
+      "path": "src/modules/platform/application/outbox-metrics.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OutboxMetricsService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/outbox-metrics.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:afed053c780c407645d20b00f803b55d086921a2bed167217d6eb150acd2a0d2",
+      "sizeBytes": 971
+    },
+    {
+      "path": "src/modules/platform/application/process-outbox-batch.use-case.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2709cc0d5fa41a51705d1717163927f7a38355319eafbe58f7188f199f8730bf",
+      "sizeBytes": 3233
+    },
+    {
+      "path": "src/modules/platform/application/process-outbox-batch.use-case.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ProcessOutboxBatchUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/process-outbox-batch.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:88338241162dc461f7e14b87302cba397d526859acceaaad7ae9a616131a5d0a",
+      "sizeBytes": 3556
+    },
+    {
+      "path": "src/modules/platform/application/record-domain-event.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:083b99bdcefab0574c95bd09a9af5c376841e03e737ff2e784bb2fa340fda699",
+      "sizeBytes": 1554
+    },
+    {
+      "path": "src/modules/platform/application/record-domain-event.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RecordDomainEventService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/record-domain-event.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2474f61811170cdac24e13cfda2ea3d1baacde03fd723fce4a8e67a06c781d93",
+      "sizeBytes": 1387
+    },
+    {
+      "path": "src/modules/platform/application/replay-dead-letter.use-case.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2a4efaa591124fe5e0a7deca753aaab5c5de79e477aa36b18e74d87a7da13e48",
+      "sizeBytes": 2382
+    },
+    {
+      "path": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReplayDeadLetterUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/replay-dead-letter.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7273dd99004add43bd8230025e27cc33f68fd6cc8ac5ebe19a4b2591e4c67f20",
+      "sizeBytes": 2511
+    },
+    {
+      "path": "src/modules/platform/domain/event-envelope.factory.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c7562f02cd90a4b451fe4b857c272d33814b85974f3d563cfa38ffe850aa834c",
+      "sizeBytes": 1635
+    },
+    {
+      "path": "src/modules/platform/domain/event-envelope.factory.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildEventEnvelope"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/domain/event-envelope.factory.spec.ts",
+      "kind": "source",
+      "hash": "sha256:17d82c6cb5f435c7439a4daeae3e30f5fd80f0c8fffce5d0423ec33526c90771",
+      "sizeBytes": 936
+    },
+    {
+      "path": "src/modules/platform/domain/idempotency.policy.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8c7575a47af1795ea743906294539f8c7cc2fe998e50947bff16f59dcf4661ba",
+      "sizeBytes": 1441
+    },
+    {
+      "path": "src/modules/platform/domain/idempotency.policy.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "classifyIdempotency"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/domain/idempotency.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:092c61e0945e8c4f345c041b436621f0550f543908103c1c69539ab08b7e8ef2",
+      "sizeBytes": 1080
+    },
+    {
+      "path": "src/modules/platform/domain/notification-routing.policy.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8b0112d7f55257771dac91f9e8a6b1368fa7bb5270252d61b18512bd9f362009",
+      "sizeBytes": 2318
+    },
+    {
+      "path": "src/modules/platform/domain/notification-routing.policy.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveNotificationRoute"
+        },
+        {
+          "kind": "function",
+          "name": "resolveRecipient"
+        },
+        {
+          "kind": "function",
+          "name": "buildDedupeKey"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/domain/notification-routing.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a8c63dbdbc845ecb4104a216dc66291e3b90e973550ca8534ee59969a32a1d55",
+      "sizeBytes": 1340
+    },
+    {
+      "path": "src/modules/platform/domain/outbox-backoff.policy.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6c401c231ba52b123b5cdb9c000c07e61e3ecc305e5af3fa8151d8a04939ca94",
+      "sizeBytes": 1397
+    },
+    {
+      "path": "src/modules/platform/domain/outbox-backoff.policy.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "planRetry"
+        },
+        {
+          "kind": "function",
+          "name": "backoffDelayMs"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/domain/outbox-backoff.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9e8facd1c090fbb5669774dbec18e7ce3a30243149f933569652e13dbfc8d10a",
+      "sizeBytes": 1141
+    },
+    {
+      "path": "src/modules/platform/domain/redaction.policy.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:25af5146280d1b11a2c6bfbf9df3355d44f693a76ed9566b30ae52d13fc63cd0",
+      "sizeBytes": 1465
+    },
+    {
+      "path": "src/modules/platform/domain/redaction.policy.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isSensitiveKey"
+        },
+        {
+          "kind": "function",
+          "name": "redactScalarPayload"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/domain/redaction.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:129b8a0d6a9517f38d7760ab62633d9a1ec1cbbe7089e4ab63c395c0fbd336f3",
+      "sizeBytes": 1310
+    },
+    {
+      "path": "src/modules/platform/errors/idempotency-conflict.error.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:477e1d72dd4c7dd95472d91b46afa4d0138041a406e7b5fe5f4753de4dd9365f",
+      "sizeBytes": 540
+    },
+    {
+      "path": "src/modules/platform/errors/idempotency-conflict.error.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "IdempotencyConflictError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/errors/idempotency-conflict.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d2a33cf261b3850f2a29c52fcb970f297cc856bbc71fc1bd97166e8a8d3f7885",
+      "sizeBytes": 508
+    },
+    {
+      "path": "src/modules/platform/errors/notification-not-found.error.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8c55ebb9c84bf297e5093e7a3b836dddb9a33d9730618253e3e9c423f28540cc",
+      "sizeBytes": 552
+    },
+    {
+      "path": "src/modules/platform/errors/notification-not-found.error.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationNotFoundError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/errors/notification-not-found.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3bc09ffffde4fa924af642744aade4620136efd6127ce07de4cbdc11f8049870",
+      "sizeBytes": 429
+    },
+    {
+      "path": "src/modules/platform/errors/outbox-event-not-found.error.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5b24128c9c23b003ea2f04f456e3aa6b3efe8a7015709ab0aa63bbfec10017d0",
+      "sizeBytes": 549
+    },
+    {
+      "path": "src/modules/platform/errors/outbox-event-not-found.error.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OutboxEventNotFoundError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/errors/outbox-event-not-found.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7b3a493ce216c84ec35b53de464d60572d08b6bc683b3c595f86c11823216e4b",
+      "sizeBytes": 424
+    },
+    {
+      "path": "src/modules/platform/index.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1805ac3721b4fea22413226d42d722a1ece2b97ba21a9f3e89670d9b8a66eab7",
+      "sizeBytes": 645
+    },
+    {
+      "path": "src/modules/platform/infrastructure/audit-log.repository.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ab28125a0e657e1249af3112b53aa8a187054ea2ffe6e4f241728cf24215e2af",
+      "sizeBytes": 2446
+    },
+    {
+      "path": "src/modules/platform/infrastructure/audit-log.repository.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AuditLogRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/infrastructure/audit-log.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f232e219d1f4bc756713b8b489a6eb5949cba483906578bd0c95215ca5439ebf",
+      "sizeBytes": 2189
+    },
+    {
+      "path": "src/modules/platform/infrastructure/idempotency.repository.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1c138800ffa3b4b24f255f88f439ce65cd3379141efc015b4fcf495ffb78bbd6",
+      "sizeBytes": 2387
+    },
+    {
+      "path": "src/modules/platform/infrastructure/idempotency.repository.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "IdempotencyRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/infrastructure/idempotency.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:862458587e25dc5c460e07b25980086871f97378d893c31e32fc7e36cd99d2c9",
+      "sizeBytes": 2373
+    },
+    {
+      "path": "src/modules/platform/infrastructure/notification-delivery.repository.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5de3f49767e30d423792ba2e448a93b99d5c76ea7e2b36e2770b36077613860e",
+      "sizeBytes": 1199
+    },
+    {
+      "path": "src/modules/platform/infrastructure/notification-delivery.repository.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationDeliveryRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/infrastructure/notification-delivery.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:194c337ea4b9e9c53db20c22d239ca7842511435f3b6c978ffbbcddcc6ebb3c5",
+      "sizeBytes": 950
+    },
+    {
+      "path": "src/modules/platform/infrastructure/notification-preference.repository.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c5553bf798680261a8f6d98986464e103c01c6f96974b599b49c65f5aec652d0",
+      "sizeBytes": 2182
+    },
+    {
+      "path": "src/modules/platform/infrastructure/notification-preference.repository.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationPreferenceRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/infrastructure/notification-preference.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:30b78ea5f62e0443722eebb6d80cfbdda6c7e24647542f9df8caeac3d1cc3587",
+      "sizeBytes": 2110
+    },
+    {
+      "path": "src/modules/platform/infrastructure/notification.repository.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a637047f486ffe68af988bfd2d504bfa931132ed480218c78dc9e289b90842b3",
+      "sizeBytes": 3020
+    },
+    {
+      "path": "src/modules/platform/infrastructure/notification.repository.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/infrastructure/notification.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:21e88949bdf8ef6d774bb4d874c72ba916e6f9d7278cc5deb7dad07fd489b706",
+      "sizeBytes": 2958
+    },
+    {
+      "path": "src/modules/platform/infrastructure/outbox.repository.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5c3ce3d0c084c5c01841a503da66f87e06c52538c5d6ff527389ef5789940250",
+      "sizeBytes": 3539
+    },
+    {
+      "path": "src/modules/platform/infrastructure/outbox.repository.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OutboxRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/infrastructure/outbox.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c1e12909826ebf85573f8ddb1d697b5b52a575ae7978c620dd566cb3132aed80",
+      "sizeBytes": 4754
+    },
+    {
+      "path": "src/modules/platform/lib/platform.helpers.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:74af905f9a910afb8b667dd282d044546b2b206ce17cea5fa770e2c122275af5",
+      "sizeBytes": 2661
+    },
+    {
+      "path": "src/modules/platform/lib/platform.helpers.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "resolvePage"
+        },
+        {
+          "kind": "function",
+          "name": "parseAuditOutcome"
+        },
+        {
+          "kind": "function",
+          "name": "parseOutboxStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseIdempotencyStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseNotificationCategory"
+        },
+        {
+          "kind": "function",
+          "name": "parseNotificationChannel"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/lib/platform.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:fcba460af08c0b00772e79af28f774b17690660310df1f3d87d37875996254c1",
+      "sizeBytes": 2433
+    },
+    {
+      "path": "src/modules/platform/lib/platform.mapper.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:efa143873465defc07ea78d0ff169ab20fdee11d42ab897579cea101163eb8ab",
+      "sizeBytes": 4391
+    },
+    {
+      "path": "src/modules/platform/lib/platform.mapper.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toAuditEntry"
+        },
+        {
+          "kind": "function",
+          "name": "toEventEnvelope"
+        },
+        {
+          "kind": "function",
+          "name": "toLeasedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "toIdempotencyRecord"
+        },
+        {
+          "kind": "function",
+          "name": "toNotification"
+        },
+        {
+          "kind": "function",
+          "name": "toPreference"
+        },
+        {
+          "kind": "function",
+          "name": "toNotificationView"
+        },
+        {
+          "kind": "function",
+          "name": "toOutboxMetrics"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/lib/platform.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:528f82d4d21d88e31e7fdaa2415eb210d91ec23635fad1de04aacdfe05a395f7",
+      "sizeBytes": 4065
+    },
+    {
+      "path": "src/modules/platform/model/platform.constants.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_SENDER_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_EVENT_HANDLER_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATIONS_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_READ_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_PREFERENCES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUDIT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUDIT_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_ADMIN_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_ADMIN_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_METRICS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_REPLAY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "EVENT_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "CATEGORY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CHANNEL_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_BATCH_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_LEASE_MS"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_MAX_ATTEMPTS"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_BACKOFF_BASE_MS"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_BACKOFF_CAP_MS"
+        },
+        {
+          "kind": "const",
+          "name": "REDACTED_VALUE"
+        },
+        {
+          "kind": "const",
+          "name": "REDACTION_DENY_SUBSTRINGS"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_INVITED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_TRANSITIONED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_SCHEDULED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_MEMBER_INVITED_TITLE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_MEMBER_INVITED_BODY"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_MEMBER_TRANSITIONED_TITLE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_MEMBER_TRANSITIONED_BODY"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_SCHEDULED_TITLE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_SCHEDULED_BODY"
+        },
+        {
+          "kind": "const",
+          "name": "RECIPIENT_PAYLOAD_KEY"
+        },
+        {
+          "kind": "interface",
+          "name": "NotificationRoute"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_ROUTES"
+        },
+        {
+          "kind": "const",
+          "name": "AUDIT_OUTBOX_REPLAYED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "AUDIT_RESOURCE_OUTBOX_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_WORKER_ID"
+        },
+        {
+          "kind": "const",
+          "name": "AUDIT_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "IDEMPOTENCY_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "PREFERENCE_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "IDEMPOTENCY_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "IDEMPOTENCY_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_EVENT_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_EVENT_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_HANDLER_FAILED_LOG"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:53ba04d4cbe2d1efcd7c91533f9a40a16441690b00f0733e749fedafc46f96b2",
+      "sizeBytes": 7394
+    },
+    {
+      "path": "src/modules/platform/model/platform.enums.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "AuditOutcome"
+        },
+        {
+          "kind": "const",
+          "name": "AUDIT_OUTCOME_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "OutboxStatus"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "IdempotencyStatus"
+        },
+        {
+          "kind": "const",
+          "name": "IDEMPOTENCY_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "IdempotencyOutcome"
+        },
+        {
+          "kind": "enum",
+          "name": "NotificationChannel"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_CHANNEL_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "NotificationCategory"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_CATEGORY_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "DeliveryStatus"
+        },
+        {
+          "kind": "const",
+          "name": "DELIVERY_STATUS_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6b4ac4c1b1643d6cfac163385ab650ab57aa42b9a3b61a26340f6a2b542a2f50",
+      "sizeBytes": 2340
+    },
+    {
+      "path": "src/modules/platform/model/platform.rows.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "AuditEntryRow"
+        },
+        {
+          "kind": "interface",
+          "name": "OutboxEventRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdempotencyRow"
+        },
+        {
+          "kind": "interface",
+          "name": "NotificationRow"
+        },
+        {
+          "kind": "interface",
+          "name": "PreferenceRow"
+        },
+        {
+          "kind": "interface",
+          "name": "EnabledRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "StatusCountRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6ddfa4f29cef19c1b12f89aba58fe4b32aa68943310acb2d5dfa6a7dcd5a5b57",
+      "sizeBytes": 2559
+    },
+    {
+      "path": "src/modules/platform/model/platform.types.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "JsonScalar"
+        },
+        {
+          "kind": "type",
+          "name": "ScalarPayload"
+        },
+        {
+          "kind": "interface",
+          "name": "AuditInput"
+        },
+        {
+          "kind": "interface",
+          "name": "AuditEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAuditEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "DomainEventInput"
+        },
+        {
+          "kind": "interface",
+          "name": "DomainEventEnvelope"
+        },
+        {
+          "kind": "interface",
+          "name": "LeasedEvent"
+        },
+        {
+          "kind": "interface",
+          "name": "OutboxMetrics"
+        },
+        {
+          "kind": "interface",
+          "name": "ReplayResult"
+        },
+        {
+          "kind": "interface",
+          "name": "OutboxBatchResult"
+        },
+        {
+          "kind": "interface",
+          "name": "RetryPlan"
+        },
+        {
+          "kind": "interface",
+          "name": "OutboxEventHandlerPort"
+        },
+        {
+          "kind": "interface",
+          "name": "IdempotencyLookup"
+        },
+        {
+          "kind": "interface",
+          "name": "IdempotencyRecord"
+        },
+        {
+          "kind": "interface",
+          "name": "NewIdempotencyRecord"
+        },
+        {
+          "kind": "interface",
+          "name": "IdempotencyDecision"
+        },
+        {
+          "kind": "interface",
+          "name": "Notification"
+        },
+        {
+          "kind": "interface",
+          "name": "NewNotification"
+        },
+        {
+          "kind": "interface",
+          "name": "NotificationPreference"
+        },
+        {
+          "kind": "interface",
+          "name": "PreferenceUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "NewDelivery"
+        },
+        {
+          "kind": "interface",
+          "name": "SendResult"
+        },
+        {
+          "kind": "interface",
+          "name": "NotificationSenderPort"
+        },
+        {
+          "kind": "interface",
+          "name": "NotificationView"
+        },
+        {
+          "kind": "interface",
+          "name": "PreferencesView"
+        },
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "PagedResult"
+        },
+        {
+          "kind": "interface",
+          "name": "TransactionScopeLike"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6d7af60e873bde2b1c129d712aaf3a3ef72fd41ed177cd984f193e24b557ac9d",
+      "sizeBytes": 9189
+    },
+    {
+      "path": "src/modules/platform/platform.module.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlatformModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fa50d1e70a6fecd5c939a724e62cb4e39c27f033ce0c0e3527e56772e480224b",
+      "sizeBytes": 3534
     },
     {
       "path": "src/modules/rbac/api/dto/assign-role.dto.ts",

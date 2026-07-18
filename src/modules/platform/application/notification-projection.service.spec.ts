@@ -1,0 +1,123 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+import { MEMBER_INVITED_EVENT } from '../model/platform.constants';
+import { DeliveryStatus, NotificationCategory } from '../model/platform.enums';
+import type {
+  DomainEventEnvelope,
+  Notification,
+} from '../model/platform.types';
+import { NotificationProjectionService } from './notification-projection.service';
+
+const SCOPE = {} as never;
+const NOW = new Date('2026-06-01T12:00:00.000Z');
+
+function event(
+  overrides: Partial<DomainEventEnvelope> = {},
+): DomainEventEnvelope {
+  return {
+    eventId: 'ev-1',
+    aggregateType: 'membership',
+    aggregateId: 'mem-1',
+    eventType: MEMBER_INVITED_EVENT,
+    eventVersion: 1,
+    actorUserId: 'user-1',
+    teamId: 'team-1',
+    seasonId: null,
+    correlationId: null,
+    causationId: null,
+    payload: { membershipId: 'mem-1' },
+    occurredAt: NOW,
+    ...overrides,
+  };
+}
+
+const CREATED: Notification = {
+  id: 'n-1',
+  userId: 'user-1',
+  teamId: 'team-1',
+  category: NotificationCategory.MemberLifecycle,
+  eventType: MEMBER_INVITED_EVENT,
+  titleKey: 'notifications.member.invited.title',
+  bodyKey: 'notifications.member.invited.body',
+  params: { membershipId: 'mem-1' },
+  dedupeKey: 'member.invited:mem-1:user-1',
+  readAt: null,
+  createdAt: NOW,
+};
+
+function build() {
+  const idGenerator = { generate: vi.fn().mockReturnValue('gen') };
+  const sender = {
+    channel: 'in_app',
+    send: vi
+      .fn()
+      .mockReturnValue({ notificationId: 'n-1', delivered: true, error: null }),
+  };
+  const notifications = { insert: vi.fn().mockResolvedValue(CREATED) };
+  const preferences = { isEnabled: vi.fn().mockResolvedValue(true) };
+  const deliveries = { insert: vi.fn().mockResolvedValue(undefined) };
+  const service = new NotificationProjectionService(
+    idGenerator,
+    sender as never,
+    notifications as never,
+    preferences as never,
+    deliveries,
+  );
+  return { service, sender, notifications, preferences, deliveries };
+}
+
+describe('NotificationProjectionService', () => {
+  let harness: ReturnType<typeof build>;
+
+  beforeEach(() => {
+    harness = build();
+  });
+
+  it('creates a notification and records a delivered attempt', async () => {
+    await harness.service.handle(SCOPE, event());
+    expect(harness.notifications.insert.mock.calls[0]?.[1]).toMatchObject({
+      userId: 'user-1',
+      dedupeKey: 'member.invited:mem-1:user-1',
+    });
+    expect(harness.deliveries.insert.mock.calls[0]?.[1]).toMatchObject({
+      notificationId: 'n-1',
+      status: DeliveryStatus.Sent,
+    });
+  });
+
+  it('ignores an unmapped event type', async () => {
+    await harness.service.handle(SCOPE, event({ eventType: 'unknown.event' }));
+    expect(harness.preferences.isEnabled).not.toHaveBeenCalled();
+    expect(harness.notifications.insert).not.toHaveBeenCalled();
+  });
+
+  it('ignores an event with no derivable recipient', async () => {
+    await harness.service.handle(SCOPE, event({ actorUserId: null }));
+    expect(harness.notifications.insert).not.toHaveBeenCalled();
+  });
+
+  it('skips creation when the recipient disabled the category', async () => {
+    harness.preferences.isEnabled.mockResolvedValue(false);
+    await harness.service.handle(SCOPE, event());
+    expect(harness.notifications.insert).not.toHaveBeenCalled();
+  });
+
+  it('records no delivery when the dedupe suppresses the insert', async () => {
+    harness.notifications.insert.mockResolvedValue(null);
+    await harness.service.handle(SCOPE, event());
+    expect(harness.deliveries.insert).not.toHaveBeenCalled();
+  });
+
+  it('records a failed delivery when the channel rejects the send', async () => {
+    harness.sender.send.mockReturnValue({
+      notificationId: 'n-1',
+      delivered: false,
+      error: 'nope',
+    });
+    await harness.service.handle(SCOPE, event());
+    expect(harness.deliveries.insert.mock.calls[0]?.[1]).toMatchObject({
+      status: DeliveryStatus.Failed,
+      lastError: 'nope',
+    });
+  });
+});

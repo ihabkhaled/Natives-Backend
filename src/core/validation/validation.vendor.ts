@@ -14,6 +14,7 @@ export {
 export {
   ArrayMaxSize,
   IsArray,
+  IsBoolean,
   IsByteLength,
   IsDateString,
   IsEmail,

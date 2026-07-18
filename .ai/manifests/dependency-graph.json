@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T01:19:50.516Z",
+  "generatedAt": "2026-07-18T02:09:44.814Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -39,6 +39,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/members/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/platform/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -4644,6 +4649,1031 @@
     {
       "from": "src/modules/members/model/members.types.ts",
       "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/adapters/in-app-notification.adapter.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/adapters/in-app-notification.adapter.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/audit.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/audit.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/audit.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/audit.controller.ts",
+      "to": "src/modules/platform/api/dto/audit-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/audit.controller.ts",
+      "to": "src/modules/platform/api/dto/audit-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/audit.controller.ts",
+      "to": "src/modules/platform/application/audit-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/audit.controller.ts",
+      "to": "src/modules/platform/lib/platform.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/audit.controller.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/audit.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/audit-query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/audit-query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/audit-query.dto.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/dto/audit-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/audit-response.dto.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/dto/audit-response.dto.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/dto/list-notifications.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/list-notifications.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/list-notifications.query.dto.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/dto/notification-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/notification-response.dto.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/dto/notification-response.dto.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/dto/outbox-metrics-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/preferences-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/preferences-response.dto.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/dto/replay-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/update-preferences.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/update-preferences.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/update-preferences.dto.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/modules/platform/api/dto/list-notifications.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/modules/platform/api/dto/notification-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/modules/platform/api/dto/preferences-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/modules/platform/api/dto/update-preferences.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/modules/platform/application/list-notifications.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/modules/platform/application/mark-notification-read.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/modules/platform/application/notification-preferences.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/modules/platform/lib/platform.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/modules/platform/api/dto/outbox-metrics-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/modules/platform/api/dto/replay-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/modules/platform/application/outbox-metrics.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/audit-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/audit-query.service.ts",
+      "to": "src/modules/platform/infrastructure/audit-log.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/audit-query.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/audit-recorder.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/audit-recorder.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/audit-recorder.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/audit-recorder.service.ts",
+      "to": "src/modules/platform/domain/redaction.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/audit-recorder.service.ts",
+      "to": "src/modules/platform/infrastructure/audit-log.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/audit-recorder.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/idempotency.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/idempotency.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/idempotency.service.ts",
+      "to": "src/modules/platform/domain/idempotency.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/idempotency.service.ts",
+      "to": "src/modules/platform/errors/idempotency-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/idempotency.service.ts",
+      "to": "src/modules/platform/infrastructure/idempotency.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/idempotency.service.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/idempotency.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/list-notifications.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/list-notifications.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/list-notifications.service.ts",
+      "to": "src/modules/platform/infrastructure/notification.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/list-notifications.service.ts",
+      "to": "src/modules/platform/lib/platform.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/list-notifications.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/mark-notification-read.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/mark-notification-read.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/mark-notification-read.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/mark-notification-read.service.ts",
+      "to": "src/modules/platform/errors/notification-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/mark-notification-read.service.ts",
+      "to": "src/modules/platform/infrastructure/notification.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/mark-notification-read.service.ts",
+      "to": "src/modules/platform/lib/platform.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/mark-notification-read.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-preferences.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/notification-preferences.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/notification-preferences.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/notification-preferences.service.ts",
+      "to": "src/modules/platform/infrastructure/notification-preference.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-preferences.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-projection.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/notification-projection.service.ts",
+      "to": "src/modules/platform/domain/notification-routing.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-projection.service.ts",
+      "to": "src/modules/platform/infrastructure/notification-delivery.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-projection.service.ts",
+      "to": "src/modules/platform/infrastructure/notification-preference.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-projection.service.ts",
+      "to": "src/modules/platform/infrastructure/notification.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-projection.service.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-projection.service.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-projection.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/outbox-metrics.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/outbox-metrics.service.ts",
+      "to": "src/modules/platform/infrastructure/outbox.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/outbox-metrics.service.ts",
+      "to": "src/modules/platform/lib/platform.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/outbox-metrics.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/process-outbox-batch.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/process-outbox-batch.use-case.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/process-outbox-batch.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/process-outbox-batch.use-case.ts",
+      "to": "src/modules/platform/domain/outbox-backoff.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/process-outbox-batch.use-case.ts",
+      "to": "src/modules/platform/infrastructure/outbox.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/process-outbox-batch.use-case.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/process-outbox-batch.use-case.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/record-domain-event.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/record-domain-event.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/record-domain-event.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/record-domain-event.service.ts",
+      "to": "src/modules/platform/domain/event-envelope.factory.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/record-domain-event.service.ts",
+      "to": "src/modules/platform/infrastructure/outbox.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/record-domain-event.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "to": "src/modules/platform/application/audit-recorder.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "to": "src/modules/platform/errors/outbox-event-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "to": "src/modules/platform/infrastructure/outbox.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/domain/event-envelope.factory.ts",
+      "to": "src/modules/platform/domain/redaction.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/domain/event-envelope.factory.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/domain/idempotency.policy.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/domain/idempotency.policy.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/domain/notification-routing.policy.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/domain/notification-routing.policy.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/domain/outbox-backoff.policy.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/domain/outbox-backoff.policy.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/domain/redaction.policy.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/domain/redaction.policy.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/errors/idempotency-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/errors/idempotency-conflict.error.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/errors/notification-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/errors/notification-not-found.error.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/errors/outbox-event-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/errors/outbox-event-not-found.error.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/index.ts",
+      "to": "src/modules/platform/application/audit-recorder.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/index.ts",
+      "to": "src/modules/platform/application/idempotency.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/index.ts",
+      "to": "src/modules/platform/application/process-outbox-batch.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/index.ts",
+      "to": "src/modules/platform/application/record-domain-event.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/index.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/index.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/index.ts",
+      "to": "src/modules/platform/platform.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/audit-log.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/audit-log.repository.ts",
+      "to": "src/modules/platform/lib/platform.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/audit-log.repository.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/audit-log.repository.ts",
+      "to": "src/modules/platform/model/platform.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/audit-log.repository.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/idempotency.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/idempotency.repository.ts",
+      "to": "src/modules/platform/lib/platform.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/idempotency.repository.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/idempotency.repository.ts",
+      "to": "src/modules/platform/model/platform.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/idempotency.repository.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-delivery.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-delivery.repository.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-preference.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-preference.repository.ts",
+      "to": "src/modules/platform/lib/platform.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-preference.repository.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-preference.repository.ts",
+      "to": "src/modules/platform/model/platform.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-preference.repository.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification.repository.ts",
+      "to": "src/modules/platform/lib/platform.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification.repository.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification.repository.ts",
+      "to": "src/modules/platform/model/platform.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification.repository.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/outbox.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/outbox.repository.ts",
+      "to": "src/modules/platform/lib/platform.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/outbox.repository.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/outbox.repository.ts",
+      "to": "src/modules/platform/model/platform.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/outbox.repository.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/lib/platform.helpers.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/lib/platform.helpers.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/lib/platform.helpers.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/lib/platform.helpers.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/lib/platform.mapper.ts",
+      "to": "src/modules/platform/lib/platform.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/lib/platform.mapper.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/lib/platform.mapper.ts",
+      "to": "src/modules/platform/model/platform.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/lib/platform.mapper.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/model/platform.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/model/platform.constants.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/model/platform.rows.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/model/platform.types.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/adapters/in-app-notification.adapter.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/api/audit.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/api/notifications.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/api/outbox-admin.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/audit-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/audit-recorder.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/idempotency.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/list-notifications.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/mark-notification-read.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/notification-preferences.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/notification-projection.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/outbox-metrics.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/process-outbox-batch.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/record-domain-event.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/infrastructure/audit-log.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/infrastructure/idempotency.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/infrastructure/notification-delivery.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/infrastructure/notification-preference.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/infrastructure/notification.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/infrastructure/outbox.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
       "type": "internal"
     },
     {
