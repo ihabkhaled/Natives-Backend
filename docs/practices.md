@@ -173,27 +173,103 @@ index turns a concurrent duplicate insert into a clean `409 versionConflict`, so
 mobile races never produce two effective rows. A cancelled session preserves all
 RSVP rows and history while refusing new responses.
 
-## 7. Session types
+## 7. Attendance, finalization, corrections, and scoring inputs (prompt 202)
+
+Attendance is the **auditable record of who actually took part** in a session. It is
+deliberately **separate from RSVP** intention (§6) and from any computed score — this
+module only ever stores raw facts and exposes reproducible scoring **INPUTS**; the
+versioned scoring engine is a later module. Four tables (migration
+`1722000000000-attendance-schema`):
+
+- `attendance_sheets` — one per session (unique `session_id`) holding the
+  `OPEN → FINALIZED → CORRECTED` state, the finalize actor/instant, and an optimistic
+  `version`. A pure `attendance.state-machine` encodes the lifecycle
+  (`canRecordInto`/`canFinalize`/`canCorrect`).
+- `attendance_records` — the single **effective** record per membership/session
+  (partial-free unique index on `(session_id, membership_id)`): status, check-in/out,
+  lateness minutes, excuse category, restricted note, evidence ref, source, recorder,
+  and an optimistic `version`. `lateness_minutes` is **null when not measured, 0 only
+  when measured on-time** (null-not-zero), enforced by DB check constraints
+  (lateness only for `present_late`, excuse category only for `excused`/`injured`).
+- `attendance_record_revisions` — append-only history of every mark, self check-in,
+  and privileged correction (with its mandatory reason). Never updated or deleted.
+- `attendance_scoring_rules` — versioned weights/penalties/denominator policy. Seeded
+  with **one legacy CANDIDATE rule** (`legacy-candidate-v1`: Practice 3, Fitness 2,
+  Game 3, Throwing 4; late/absent penalty as explicit components; excused excluded
+  from the denominator) — **data in a table, not constants**, and never adopted as
+  final policy without an approved version.
+
+**Statuses** (`AttendanceStatus`): `present_on_time`, `present_late`, `excused`,
+`injured`, `absent`, `remote_approved`, `other_approved`. Legacy P/L/E/A maps onto
+`present_on_time` / `present_late` / `excused`(or `injured`) / `absent`.
+
+**Workflow.** An OPEN sheet accepts coach marks (single + **atomic bulk**), optional
+member **self check-in** (status derived from the clock, never trusted from the
+client), late conversion, and excuse approval — all as status changes on the mark
+endpoint. **Finalize** locks the sheet (`OPEN → FINALIZED`, optimistic on the sheet
+version) and emits `attendance.finalized`. After finalization, changes require the
+privileged **correction** endpoint (`FINALIZED → CORRECTED`), which appends a revision
+with a mandatory reason and emits `attendance.corrected` (addressed to the affected
+member). Both events flow through the platform transactional outbox; free-text notes,
+evidence, and excuse categories are **never** placed in audit diffs or event payloads.
+
+**Endpoints** (team + session scoped, all authenticated + permissioned):
+
+- `GET /practice-sessions/:id/attendance` — the roster + sheet state (`attendance.read.team`).
+  Every active member appears; unmarked members carry a **null** status (prefill source
+  - zero-contribution completeness). Notes and reasons are omitted.
+- `GET|POST /practice-sessions/:id/attendance/me` and `.../check-in` — a member reads
+  or self-records their own attendance (`attendance.read.self`; requires an active
+  membership → else `403 attendanceNotMember`).
+- `PUT /practice-sessions/:id/attendance/:membershipId` — coach records one participant
+  (`attendance.record`); `POST .../attendance/bulk` — atomic bulk mark. Recording into a
+  finalized sheet → `409 attendanceLocked`.
+- `POST /practice-sessions/:id/attendance/finalize` — `attendance.finalize`; re-finalize
+  → `409 invalidAttendanceTransition`.
+- `PUT /practice-sessions/:id/attendance/:membershipId/correction` — audited privileged
+  correction (`attendance.correct`, mandatory reason).
+- `GET /practice-sessions/:id/attendance/:membershipId/history` — correction history
+  (`attendance.read.team`).
+- `GET /attendance/participation/:membershipId` and `/attendance/me/participation` —
+  the scoring **INPUTS** projection (`attendance.read.team` / `.self`): eligible /
+  present / late / excused / absent counts, the **unrounded** rate + points contribution,
+  and the **cited rule version**. Projected from **finalized** facts against the cited
+  rule — never a stored editable total.
+
+**Golden rules.** `attendanceRate = attended / (eligible − excused)` with excused/injured
+excluded from the denominator only through the rule; **no eligible sessions → null**
+("not enough data"), never divide-by-zero or a misleading 0%. A member who had eligible
+sessions but attended none gets a **measured** `0` rate (distinct from missing). Points
+contribution is `Σ present[type]·weight[type] − late·latePenalty − absent·absentPenalty`,
+null only when there is no data at all. Rounding to a display percentage happens **only**
+in the response mapper.
+
+## 8. Session types
 
 Session type is a free-form catalog string (`practice`, `fitness`, `scrimmage`/`game`,
 `throwing`, `running`, `gym`, `rules`, or custom) — **no points are hard-coded** here;
-scoring inputs are the concern of later modules.
+attendance scoring **inputs** cite a versioned rule (§7), and further scoring is the
+concern of later modules.
 
-## 8. Tests
+## 9. Tests
 
-- Unit: state machine + recurrence expansion (100% branches), Cairo-time golden
-  conversions (DST boundaries), helpers, the RSVP availability/deadline/waitlist
-  policies (100% branches), and every use-case/service with mocked ports.
-- Integration (`test/database/practices.integration.spec.ts` +
-  `test/database/practice-rsvp.integration.spec.ts`, real PostgreSQL):
-  migrate-from-empty + reversible down, array/calendar column round-trips, idempotent
-  generation, UTC round-trips, calendar filters, status history, scope probes, RSVP
-  insert/version-guard/duplicate-null, confirmed-count + waitlist promotion, summary +
-  participant projections, and revision history.
-- E2E (`test/practices.e2e-spec.ts` + `test/practice-rsvp.e2e-spec.ts`): the
-  authorization matrix — allowed, forbidden (403), cross-team scope (403), suspended
-  actor (403), invalid recurrence (400), venue-not-in-scope (404), idempotent
-  generation, the full publish/reschedule/cancel/reopen flow, invalid transition
-  (409), version conflict (409), wrong-team 404, malformed id (400), plus RSVP
-  self/override, deadline boundaries, capacity/waitlist + promotion, cancellation, and
-  the override-not-member 404.
+- Unit: state machines + recurrence expansion, Cairo-time golden conversions (DST
+  boundaries), helpers, the RSVP availability/deadline/waitlist policies, the
+  attendance state machine + status policy, the **participation golden tests**
+  (every status contributes per the cited version; excused denominator; null vs
+  measured zero), the mappers, and every use-case/service with mocked ports.
+- Integration (`test/database/practices.integration.spec.ts`,
+  `.../practice-rsvp.integration.spec.ts`, `.../attendance.integration.spec.ts`, real
+  PostgreSQL): migrate-from-empty + reversible down, array/calendar column
+  round-trips, idempotent generation, UTC round-trips, status history, scope probes,
+  RSVP + attendance insert/version-guard/duplicate-null, sheet finalize/correct
+  guards, the roster LEFT JOIN (unmarked ⇒ null), participation facts filtered to
+  finalized sheets, the seeded default rule, and revision history.
+- E2E (`test/practices.e2e-spec.ts`, `.../practice-rsvp.e2e-spec.ts`,
+  `.../attendance.e2e-spec.ts`): the authorization matrix — allowed, forbidden (403),
+  cross-team scope (403), suspended actor (403), invalid recurrence (400),
+  venue-not-in-scope (404), the full publish/reschedule/cancel/reopen flow, invalid
+  transition (409), version conflict (409), wrong-team 404, malformed id (400), plus
+  RSVP self/override + waitlist, and attendance record/self-check-in/finalize →
+  correct (audited) / re-finalize rejected / locked-after-finalize / participation
+  inputs.

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T03:56:50.925Z",
+  "generatedAt": "2026-07-18T05:58:41.296Z",
   "modules": [
     {
       "name": "articles",
@@ -326,24 +326,48 @@
       "name": "practices",
       "path": "src/modules/practices",
       "layers": {
+        "controller": [
+          "src/modules/practices/api/attendance-participation.controller.ts",
+          "src/modules/practices/api/attendance.controller.ts",
+          "src/modules/practices/api/practice-rsvp.controller.ts",
+          "src/modules/practices/api/practice-schedules.controller.ts",
+          "src/modules/practices/api/practice-sessions.controller.ts"
+        ],
         "api-dto": [
+          "src/modules/practices/api/dto/attendance-history-response.dto.ts",
+          "src/modules/practices/api/dto/attendance-mark.dto.ts",
+          "src/modules/practices/api/dto/attendance-response.dto.ts",
+          "src/modules/practices/api/dto/attendance-revision-response.dto.ts",
+          "src/modules/practices/api/dto/attendance-sheet-response.dto.ts",
+          "src/modules/practices/api/dto/attendance-status-response.dto.ts",
+          "src/modules/practices/api/dto/bulk-mark-attendance.dto.ts",
+          "src/modules/practices/api/dto/bulk-mark-entry.dto.ts",
+          "src/modules/practices/api/dto/bulk-record-response.dto.ts",
+          "src/modules/practices/api/dto/correct-attendance.dto.ts",
           "src/modules/practices/api/dto/create-schedule.dto.ts",
           "src/modules/practices/api/dto/create-session.dto.ts",
+          "src/modules/practices/api/dto/finalize-attendance.dto.ts",
           "src/modules/practices/api/dto/generation-result-response.dto.ts",
+          "src/modules/practices/api/dto/list-attendance.query.dto.ts",
           "src/modules/practices/api/dto/list-query.dto.ts",
           "src/modules/practices/api/dto/list-rsvps-response.dto.ts",
           "src/modules/practices/api/dto/list-rsvps.query.dto.ts",
           "src/modules/practices/api/dto/list-schedules-response.dto.ts",
           "src/modules/practices/api/dto/list-sessions-response.dto.ts",
           "src/modules/practices/api/dto/list-sessions.query.dto.ts",
+          "src/modules/practices/api/dto/mark-attendance.dto.ts",
           "src/modules/practices/api/dto/override-rsvp.dto.ts",
+          "src/modules/practices/api/dto/participation-response.dto.ts",
+          "src/modules/practices/api/dto/participation.query.dto.ts",
           "src/modules/practices/api/dto/reschedule-session.dto.ts",
+          "src/modules/practices/api/dto/roster-entry-response.dto.ts",
           "src/modules/practices/api/dto/rsvp-history-response.dto.ts",
           "src/modules/practices/api/dto/rsvp-participant-response.dto.ts",
           "src/modules/practices/api/dto/rsvp-response.dto.ts",
           "src/modules/practices/api/dto/rsvp-revision-response.dto.ts",
           "src/modules/practices/api/dto/rsvp-summary-response.dto.ts",
           "src/modules/practices/api/dto/schedule-response.dto.ts",
+          "src/modules/practices/api/dto/self-check-in.dto.ts",
           "src/modules/practices/api/dto/session-history-response.dto.ts",
           "src/modules/practices/api/dto/session-response.dto.ts",
           "src/modules/practices/api/dto/session-status.dto.ts",
@@ -352,24 +376,27 @@
           "src/modules/practices/api/dto/update-schedule.dto.ts",
           "src/modules/practices/api/dto/update-session.dto.ts"
         ],
-        "controller": [
-          "src/modules/practices/api/practice-rsvp.controller.ts",
-          "src/modules/practices/api/practice-schedules.controller.ts",
-          "src/modules/practices/api/practice-sessions.controller.ts"
-        ],
         "use-case": [
           "src/modules/practices/application/archive-practice-schedule.use-case.ts",
+          "src/modules/practices/application/correct-attendance.use-case.ts",
           "src/modules/practices/application/create-practice-schedule.use-case.ts",
           "src/modules/practices/application/create-practice-session.use-case.ts",
+          "src/modules/practices/application/finalize-attendance.use-case.ts",
           "src/modules/practices/application/generate-sessions.use-case.ts",
           "src/modules/practices/application/override-rsvp.use-case.ts",
+          "src/modules/practices/application/record-attendance.use-case.ts",
           "src/modules/practices/application/reschedule-practice-session.use-case.ts",
+          "src/modules/practices/application/self-check-in.use-case.ts",
           "src/modules/practices/application/set-own-rsvp.use-case.ts",
           "src/modules/practices/application/transition-practice-session.use-case.ts",
           "src/modules/practices/application/update-practice-schedule.use-case.ts",
           "src/modules/practices/application/update-practice-session.use-case.ts"
         ],
         "service": [
+          "src/modules/practices/application/attendance-query.service.ts",
+          "src/modules/practices/application/attendance-recorder.service.ts",
+          "src/modules/practices/application/attendance-sheet.service.ts",
+          "src/modules/practices/application/participation-query.service.ts",
           "src/modules/practices/application/practice-lookup.service.ts",
           "src/modules/practices/application/rsvp-query.service.ts",
           "src/modules/practices/application/rsvp-recorder.service.ts",
@@ -378,12 +405,22 @@
           "src/modules/practices/application/session-query.service.ts"
         ],
         "domain": [
+          "src/modules/practices/domain/attendance-scoring.policy.ts",
+          "src/modules/practices/domain/attendance-status.policy.ts",
+          "src/modules/practices/domain/attendance.state-machine.ts",
           "src/modules/practices/domain/practice-session.state-machine.ts",
           "src/modules/practices/domain/recurrence.policy.ts",
           "src/modules/practices/domain/rsvp-availability.policy.ts",
           "src/modules/practices/domain/rsvp-deadline.policy.ts"
         ],
         "other": [
+          "src/modules/practices/errors/attendance-locked.error.ts",
+          "src/modules/practices/errors/attendance-membership-not-found.error.ts",
+          "src/modules/practices/errors/attendance-not-member.error.ts",
+          "src/modules/practices/errors/attendance-rule-missing.error.ts",
+          "src/modules/practices/errors/attendance-sheet-not-found.error.ts",
+          "src/modules/practices/errors/invalid-attendance-input.error.ts",
+          "src/modules/practices/errors/invalid-attendance-transition.error.ts",
           "src/modules/practices/errors/invalid-schedule.error.ts",
           "src/modules/practices/errors/invalid-session-times.error.ts",
           "src/modules/practices/errors/invalid-session-transition.error.ts",
@@ -401,6 +438,11 @@
           "src/modules/practices/practices.module.ts"
         ],
         "repository": [
+          "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+          "src/modules/practices/infrastructure/attendance-record-revision.repository.ts",
+          "src/modules/practices/infrastructure/attendance-record.repository.ts",
+          "src/modules/practices/infrastructure/attendance-scoring-rule.repository.ts",
+          "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
           "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
           "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
           "src/modules/practices/infrastructure/practice-schedule.repository.ts",
@@ -410,6 +452,9 @@
           "src/modules/practices/infrastructure/session-status-event.repository.ts"
         ],
         "lib": [
+          "src/modules/practices/lib/attendance.builders.ts",
+          "src/modules/practices/lib/attendance.helpers.ts",
+          "src/modules/practices/lib/attendance.mapper.ts",
           "src/modules/practices/lib/cairo-time.ts",
           "src/modules/practices/lib/practices.helpers.ts",
           "src/modules/practices/lib/rsvp.builders.ts",
@@ -417,6 +462,10 @@
           "src/modules/practices/lib/rsvp.mapper.ts"
         ],
         "model": [
+          "src/modules/practices/model/attendance.constants.ts",
+          "src/modules/practices/model/attendance.enums.ts",
+          "src/modules/practices/model/attendance.rows.ts",
+          "src/modules/practices/model/attendance.types.ts",
           "src/modules/practices/model/practices.constants.ts",
           "src/modules/practices/model/practices.enums.ts",
           "src/modules/practices/model/practices.rows.ts",
@@ -427,8 +476,8 @@
           "src/modules/practices/model/rsvp.types.ts"
         ]
       },
-      "fileCount": 82,
-      "specCount": 25,
+      "fileCount": 131,
+      "specCount": 39,
       "publicSurface": "src/modules/practices/index.ts",
       "hasEvents": false
     },

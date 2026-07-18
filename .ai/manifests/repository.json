@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-18T03:56:50.925Z",
-  "treeHash": "sha256:c8a0c342e0df58813add5d960b6def5a82c66ca725d60d17ce292398626a09ad",
+  "generatedAt": "2026-07-18T05:58:41.296Z",
+  "treeHash": "sha256:f1e7ea7b173831dfcbbfd9cd89af4eb1c561287c19b4870bd586e9274d21e7f6",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -2165,8 +2165,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9fed434c368bbe3298fafe77f80b3d0fec8574b942f7391f5b48aeaf5be6aa00",
-      "sizeBytes": 680
+      "hash": "sha256:498125595cb44915f70bdc91a193e03c0dc1fefef2397e64372ecd91154f7dc9",
+      "sizeBytes": 713
     },
     {
       "path": "src/database/cli-data-source.ts",
@@ -2500,6 +2500,23 @@
       "kind": "source",
       "hash": "sha256:a16a58f34ea95ac5313b3d5043101f77ef268ed28a9d33bd2e5fbcdab8b3abc8",
       "sizeBytes": 6127
+    },
+    {
+      "path": "src/database/migrations/1722000000000-attendance-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceSchema1722000000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1f572cb43f6880188bf3cc53219809de9eced59c41063412de9ea9a7df340411",
+      "sizeBytes": 9957
     },
     {
       "path": "src/database/naming.helpers.spec.ts",
@@ -8884,6 +8901,210 @@
       "sizeBytes": 3534
     },
     {
+      "path": "src/modules/practices/api/attendance-participation.controller.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceParticipationController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:797958e1196fa8c128888279a4d886dc7645ac4e774902f37bdd247c6e5b0a3c",
+      "sizeBytes": 2392
+    },
+    {
+      "path": "src/modules/practices/api/attendance.controller.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9b1353501afc731d24908f850d9303e818a4930bfea45b30d157ab8e923f0c77",
+      "sizeBytes": 9558
+    },
+    {
+      "path": "src/modules/practices/api/dto/attendance-history-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceHistoryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:647a585b9d28769d5fcd62e52a8276b5b56b64c55bb8797f6cc397b642614cdd",
+      "sizeBytes": 378
+    },
+    {
+      "path": "src/modules/practices/api/dto/attendance-mark.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceMarkDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4d4789af793fbb5e3a5839f67dd38d59321452c9fdf8278191db0dc2402c3fd3",
+      "sizeBytes": 2176
+    },
+    {
+      "path": "src/modules/practices/api/dto/attendance-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e1be031c455bdba7169e492e3fa5c091fd8d3d4c4d513eb2c7ead7fea16c02eb",
+      "sizeBytes": 1414
+    },
+    {
+      "path": "src/modules/practices/api/dto/attendance-revision-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceRevisionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1ba9c83d3f73873f77157336dc7677ec953b02a9a708f9f426a24a3f93a46f0d",
+      "sizeBytes": 1281
+    },
+    {
+      "path": "src/modules/practices/api/dto/attendance-sheet-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceSheetResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dca98f946389efef275ccb8131752a46e031fc485de0d8c2bb193e39a689475f",
+      "sizeBytes": 1055
+    },
+    {
+      "path": "src/modules/practices/api/dto/attendance-status-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceStatusResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1120456d6da896a267d83986a06f152b89913530c92b415674b30967fbc7820c",
+      "sizeBytes": 610
+    },
+    {
+      "path": "src/modules/practices/api/dto/bulk-mark-attendance.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "BulkMarkAttendanceDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5a85acdee470a6c95d858611c34908d7c557e9ed7688a6febfc9e953e777e727",
+      "sizeBytes": 816
+    },
+    {
+      "path": "src/modules/practices/api/dto/bulk-mark-entry.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "BulkMarkEntryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:aceedc2b15f34ce5d6101c2dc40d552a0a7f8c98b50ddec5851cebb5d3050c5e",
+      "sizeBytes": 528
+    },
+    {
+      "path": "src/modules/practices/api/dto/bulk-record-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "BulkRecordResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:710b0dab04b3e5d76cfe49906769f019d057bcaf30d903f0526e0d789958c3c7",
+      "sizeBytes": 404
+    },
+    {
+      "path": "src/modules/practices/api/dto/correct-attendance.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CorrectAttendanceDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9ee08d4b63a0251d371792070df022c90fb515fce0bad581a7caf6ee43a78a5a",
+      "sizeBytes": 833
+    },
+    {
       "path": "src/modules/practices/api/dto/create-schedule.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -8918,6 +9139,23 @@
       "sizeBytes": 2314
     },
     {
+      "path": "src/modules/practices/api/dto/finalize-attendance.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FinalizeAttendanceDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5e9fa80fe5f03e598e2b685342a3e585027b2b81a03479536cdef97fdb443031",
+      "sizeBytes": 526
+    },
+    {
       "path": "src/modules/practices/api/dto/generation-result-response.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -8933,6 +9171,23 @@
       "kind": "source",
       "hash": "sha256:d4605cfcbc8e70c3ccac7c350741cce1902ba01e2d8a6510d346b6376fc5d948",
       "sizeBytes": 493
+    },
+    {
+      "path": "src/modules/practices/api/dto/list-attendance.query.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListAttendanceQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:188504dd8c3cbae04f9a5031ca20abd8df20062ae77fd9645c436f22862f3f34",
+      "sizeBytes": 323
     },
     {
       "path": "src/modules/practices/api/dto/list-query.dto.ts",
@@ -9037,6 +9292,23 @@
       "sizeBytes": 1241
     },
     {
+      "path": "src/modules/practices/api/dto/mark-attendance.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MarkAttendanceDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4b90bab2c9dfd17a11ed960f019b544114a556f161a7233f859ae95c2cd605dc",
+      "sizeBytes": 336
+    },
+    {
       "path": "src/modules/practices/api/dto/override-rsvp.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -9054,6 +9326,40 @@
       "sizeBytes": 1700
     },
     {
+      "path": "src/modules/practices/api/dto/participation-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ParticipationResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:44decedc59c0034e313ee9227c8bec5346709b97cf84b630f96f27493126a421",
+      "sizeBytes": 1951
+    },
+    {
+      "path": "src/modules/practices/api/dto/participation.query.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ParticipationQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9b0627fa23cd6fd51fd70bee76e4dca8bab0774821cbd3e2cbc9ae7226110d21",
+      "sizeBytes": 418
+    },
+    {
       "path": "src/modules/practices/api/dto/reschedule-session.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -9069,6 +9375,23 @@
       "kind": "source",
       "hash": "sha256:6f40be570d3c5195853bbc6b076b3e5ba76473e3f29684e7e9a08f4ce818b12a",
       "sizeBytes": 1398
+    },
+    {
+      "path": "src/modules/practices/api/dto/roster-entry-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterEntryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a0cf1642d450bb17550f9a735e6a5e749c81cc10d126560d5fe788cd415a1c9a",
+      "sizeBytes": 1279
     },
     {
       "path": "src/modules/practices/api/dto/rsvp-history-response.dto.ts",
@@ -9171,6 +9494,23 @@
       "kind": "source",
       "hash": "sha256:c90ec539785e5929e7f6aeaba5e0c57c66b51d85538e5ebd1e2bdd4df95c73b4",
       "sizeBytes": 2430
+    },
+    {
+      "path": "src/modules/practices/api/dto/self-check-in.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SelfCheckInDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f00089a4e026dd62788d2f8941c0aa7694aeed0dbc4c9a0087e88f2ba5a41314",
+      "sizeBytes": 591
     },
     {
       "path": "src/modules/practices/api/dto/session-history-response.dto.ts",
@@ -9372,6 +9712,122 @@
       "sizeBytes": 2669
     },
     {
+      "path": "src/modules/practices/application/attendance-query.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:21fd8ef4b5a3d1a35a4a1e028210d19f27a33a00d9c1c94223f116d9aef67fc3",
+      "sizeBytes": 3696
+    },
+    {
+      "path": "src/modules/practices/application/attendance-query.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/attendance-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f2379d1b638a59c4583f9cdb58e98498fd7da289e64bcf97308f46f062301c16",
+      "sizeBytes": 4594
+    },
+    {
+      "path": "src/modules/practices/application/attendance-recorder.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1328b990d9a44450bdc004aa45426bcee226d17835285a0650bfb4e0a4604e93",
+      "sizeBytes": 4905
+    },
+    {
+      "path": "src/modules/practices/application/attendance-recorder.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceRecorderService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/attendance-recorder.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7198b360cc9db2d35f89391aae47c8ac45249bbed7538d65d4bf21e3302003ab",
+      "sizeBytes": 3648
+    },
+    {
+      "path": "src/modules/practices/application/attendance-sheet.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:634c97be028efbfc76b49a2b3fa0a2faa6f66ac0eb4d168ce1cfaf16c80799ba",
+      "sizeBytes": 4239
+    },
+    {
+      "path": "src/modules/practices/application/attendance-sheet.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceSheetService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/attendance-sheet.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:58601d98d07944949c2105decb9641c0589d98ded6a1cc547f10d38f01608d31",
+      "sizeBytes": 2499
+    },
+    {
+      "path": "src/modules/practices/application/correct-attendance.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5e01bc351933f45dc5a3e8eb075512728130207b2873878fae8b2be118ce0f8a",
+      "sizeBytes": 5791
+    },
+    {
+      "path": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CorrectAttendanceUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/correct-attendance.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a6c3e2bd3605b30b805f00647934bb2ca15c5ec3c51e80e22c593afcf04e2e6b",
+      "sizeBytes": 5399
+    },
+    {
       "path": "src/modules/practices/application/create-practice-schedule.use-case.spec.ts",
       "root": "modules",
       "module": "practices",
@@ -9428,6 +9884,35 @@
       "kind": "source",
       "hash": "sha256:0c552ace86508992e183b765252751763994a71a1ff6db861c6b82a2af34e23c",
       "sizeBytes": 5050
+    },
+    {
+      "path": "src/modules/practices/application/finalize-attendance.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f4521e6aad277c40af52987ae82c16951582a6bbbbf6055b310d0022531ed9f8",
+      "sizeBytes": 4052
+    },
+    {
+      "path": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FinalizeAttendanceUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/finalize-attendance.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f17a6d780ca738ac18497a2a2968216cbaedcfd7eb979b81bd18f28bc4a0fe0b",
+      "sizeBytes": 4067
     },
     {
       "path": "src/modules/practices/application/generate-sessions.use-case.spec.ts",
@@ -9488,6 +9973,35 @@
       "sizeBytes": 3857
     },
     {
+      "path": "src/modules/practices/application/participation-query.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ab3664e137338b148b11615eaeecd6da2c1ea49b74ef43f07b395437fd277f6f",
+      "sizeBytes": 3492
+    },
+    {
+      "path": "src/modules/practices/application/participation-query.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ParticipationQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/participation-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4aa4c2fa12fc39cf7af0eea61e7db55d1337881c5dc0d7825449785e0c1c3882",
+      "sizeBytes": 4462
+    },
+    {
       "path": "src/modules/practices/application/practice-lookup.service.spec.ts",
       "root": "modules",
       "module": "practices",
@@ -9515,6 +10029,35 @@
       "kind": "source",
       "hash": "sha256:9f5e81e3952749b20f2279766a0df537d6d8fc787c9ef4bb0ba1649ffb451289",
       "sizeBytes": 1721
+    },
+    {
+      "path": "src/modules/practices/application/record-attendance.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6e7f16c63542b995e78bd56f619d3e4f26b98ae9123f29bfdd66d135eadce383",
+      "sizeBytes": 5889
+    },
+    {
+      "path": "src/modules/practices/application/record-attendance.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RecordAttendanceUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/record-attendance.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d7e62398715c8c0dfc28d648d03925c9a8af4cea569a152c3f488d6199b941e4",
+      "sizeBytes": 5894
     },
     {
       "path": "src/modules/practices/application/reschedule-practice-session.use-case.spec.ts",
@@ -9662,6 +10205,35 @@
       "sizeBytes": 2316
     },
     {
+      "path": "src/modules/practices/application/self-check-in.use-case.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5f78eeb20d3365ff7162d8c77353d1c29f4556c88b47c46300b0b5d4585174b4",
+      "sizeBytes": 4018
+    },
+    {
+      "path": "src/modules/practices/application/self-check-in.use-case.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SelfCheckInUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/self-check-in.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ad83e20ffda07dbcb3a52a8897511b30685de0d12eae25631ca7d2393160a358",
+      "sizeBytes": 3324
+    },
+    {
       "path": "src/modules/practices/application/session-query.service.spec.ts",
       "root": "modules",
       "module": "practices",
@@ -9805,6 +10377,137 @@
       "kind": "source",
       "hash": "sha256:acdf16678c1629d9cd47705348b50cbc22b5dd11ab37b07bee6501215bef702d",
       "sizeBytes": 3973
+    },
+    {
+      "path": "src/modules/practices/domain/attendance-scoring.policy.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4401c216bb70b0d2584e9f73c134edec95cafcc7da2c9e8a4b096cc29e10a0d1",
+      "sizeBytes": 4444
+    },
+    {
+      "path": "src/modules/practices/domain/attendance-scoring.policy.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "weightForSessionType"
+        },
+        {
+          "kind": "function",
+          "name": "computeParticipation"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/domain/attendance-scoring.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2ae4ba59b7783cc8e1b65569cfc4294b9b0d2d3cfc81139fa30769aae8a5ca4c",
+      "sizeBytes": 4851
+    },
+    {
+      "path": "src/modules/practices/domain/attendance-status.policy.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c8d1db128b1366d46a0383c19c45999441991e85ae4374ae546776375b1f90b4",
+      "sizeBytes": 2350
+    },
+    {
+      "path": "src/modules/practices/domain/attendance-status.policy.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isAttended"
+        },
+        {
+          "kind": "function",
+          "name": "isExcused"
+        },
+        {
+          "kind": "function",
+          "name": "isAbsent"
+        },
+        {
+          "kind": "function",
+          "name": "isLate"
+        },
+        {
+          "kind": "function",
+          "name": "allowsLateness"
+        },
+        {
+          "kind": "function",
+          "name": "allowsExcuseCategory"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/domain/attendance-status.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:62dc63cafa0e13dc6d45580ccc1d8c97b2ab8520e209411e6721bd488a53a569",
+      "sizeBytes": 2023
+    },
+    {
+      "path": "src/modules/practices/domain/attendance.state-machine.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:66fea4d45e53d23b2d9a3d1f666c70e0676502f39f6486e96dcab7ccf61f022b",
+      "sizeBytes": 2460
+    },
+    {
+      "path": "src/modules/practices/domain/attendance.state-machine.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransition"
+        },
+        {
+          "kind": "function",
+          "name": "canRecordInto"
+        },
+        {
+          "kind": "function",
+          "name": "canFinalize"
+        },
+        {
+          "kind": "function",
+          "name": "canCorrect"
+        },
+        {
+          "kind": "function",
+          "name": "isLocked"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/domain/attendance.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7e7d5e2f4bc04ad3ccc5b72582a27925d9e665247a77c93c8671322b7cf56bc1",
+      "sizeBytes": 2101
     },
     {
       "path": "src/modules/practices/domain/practice-session.state-machine.spec.ts",
@@ -9961,6 +10664,125 @@
       "kind": "source",
       "hash": "sha256:c5162442a39fd1cf89b716730d1ea564c589855b6c998eff1a0cad21be2e601e",
       "sizeBytes": 1163
+    },
+    {
+      "path": "src/modules/practices/errors/attendance-locked.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceLockedError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3efdda27c947abebec8cdf7b4219f64a03a1ef56c2ae967c9ecf648cf6501ecb",
+      "sizeBytes": 579
+    },
+    {
+      "path": "src/modules/practices/errors/attendance-membership-not-found.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceMembershipNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c5268b9805655b3726035588d6b718d167ae12bdca3bb52626bb10594d694588",
+      "sizeBytes": 626
+    },
+    {
+      "path": "src/modules/practices/errors/attendance-not-member.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceNotMemberError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:84ddc2b9929fb1a176d4734b034af5a0c698f7867470f55e995e5d7d0468dace",
+      "sizeBytes": 564
+    },
+    {
+      "path": "src/modules/practices/errors/attendance-rule-missing.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceRuleMissingError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c1f9049cbca3c3938368e823019661f0b801edef07e6dd9ca75ccfbce1941f17",
+      "sizeBytes": 589
+    },
+    {
+      "path": "src/modules/practices/errors/attendance-sheet-not-found.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceSheetNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e6b97649972a921229537abfd3deb5ccef1f5cf3c4017405d9ee1509d26ed440",
+      "sizeBytes": 570
+    },
+    {
+      "path": "src/modules/practices/errors/invalid-attendance-input.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvalidAttendanceInputError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1d0cdb0a583d298749ecb3510ef892ea1af419639e471d6eb5144f8ecf203b25",
+      "sizeBytes": 643
+    },
+    {
+      "path": "src/modules/practices/errors/invalid-attendance-transition.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvalidAttendanceTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c1699b2a9cc5ba2996fcaafe99ef6dba9a3c4636af4accdd414f6be671316146",
+      "sizeBytes": 643
     },
     {
       "path": "src/modules/practices/errors/invalid-schedule.error.ts",
@@ -10196,6 +11018,91 @@
       "sizeBytes": 54
     },
     {
+      "path": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceMembershipRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1bfba47bb563f9d1ebe20dacca7a57cf3b3d385c71ac982e71201b0903d18bcd",
+      "sizeBytes": 2334
+    },
+    {
+      "path": "src/modules/practices/infrastructure/attendance-record-revision.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceRecordRevisionRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3c36f3941da1a62e344fd432fd0a7577bd3437403d31f94bebe61ab0792b6b8d",
+      "sizeBytes": 3108
+    },
+    {
+      "path": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceRecordRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3d69accc8be6f02a66f8e0647e97606675582dbae9eba45940708ff76aae827d",
+      "sizeBytes": 8371
+    },
+    {
+      "path": "src/modules/practices/infrastructure/attendance-scoring-rule.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceScoringRuleRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:21e1d15167ae14260c1476eb8411fb76ec788dcf7e0b09b1e0062e7df302ca2b",
+      "sizeBytes": 1587
+    },
+    {
+      "path": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceSheetRepository"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:94ac53297c9d1567b55a0c04d8305fdb38076380fb516985d1ebce39b4833549",
+      "sizeBytes": 3912
+    },
+    {
       "path": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
       "root": "modules",
       "module": "practices",
@@ -10313,6 +11220,213 @@
       "kind": "source",
       "hash": "sha256:295462394a59f542954e61c27ba61b4657f3b4abef9609e3e25cea4418b92726",
       "sizeBytes": 2238
+    },
+    {
+      "path": "src/modules/practices/lib/attendance.builders.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d4fb4112dbf15fdb97ef8413c116d1316afbd1b826182d9b2e4d0c9fce358705",
+      "sizeBytes": 9134
+    },
+    {
+      "path": "src/modules/practices/lib/attendance.builders.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewSheet"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewRecord"
+        },
+        {
+          "kind": "function",
+          "name": "buildRecordUpdate"
+        },
+        {
+          "kind": "function",
+          "name": "buildAttendanceRevision"
+        },
+        {
+          "kind": "function",
+          "name": "buildMarkContext"
+        },
+        {
+          "kind": "function",
+          "name": "buildCheckInContext"
+        },
+        {
+          "kind": "function",
+          "name": "buildCorrectionContext"
+        },
+        {
+          "kind": "function",
+          "name": "buildSheetFinalize"
+        },
+        {
+          "kind": "function",
+          "name": "buildSheetCorrection"
+        },
+        {
+          "kind": "function",
+          "name": "buildRecordAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildBulkAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildFinalizeAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildFinalizedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildCorrectedEvent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/attendance.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:11721a348d98be33b483756f61ad16c046c2db55ed5b4d56c7edbe888a72a193",
+      "sizeBytes": 9908
+    },
+    {
+      "path": "src/modules/practices/lib/attendance.helpers.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:81170b061accb757a12bbe4f7f4fec374bdb2dd31b914e59b8b27cea74a61aaf",
+      "sizeBytes": 5295
+    },
+    {
+      "path": "src/modules/practices/lib/attendance.helpers.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "parseAttendanceStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseNullableAttendanceStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseAttendanceState"
+        },
+        {
+          "kind": "function",
+          "name": "parseAttendanceSource"
+        },
+        {
+          "kind": "function",
+          "name": "parseNullableAttendanceSource"
+        },
+        {
+          "kind": "function",
+          "name": "parseExcuseCategory"
+        },
+        {
+          "kind": "function",
+          "name": "parseRuleStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseWeights"
+        },
+        {
+          "kind": "function",
+          "name": "resolveAttendancePage"
+        },
+        {
+          "kind": "function",
+          "name": "deriveCheckInStatus"
+        },
+        {
+          "kind": "function",
+          "name": "isMarkConsistent"
+        },
+        {
+          "kind": "function",
+          "name": "hasDuplicateMembership"
+        },
+        {
+          "kind": "function",
+          "name": "toIsoOrNull"
+        },
+        {
+          "kind": "function",
+          "name": "parseNullableInstant"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/attendance.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:88fda238956d43ef24e0f1de523fe0d79ecfa0ef7ec81553448a5353e972b641",
+      "sizeBytes": 5406
+    },
+    {
+      "path": "src/modules/practices/lib/attendance.mapper.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:85a84a80f51a8eb35a661fe01a870386538e289b38bb336eb754afebe3fb2ea9",
+      "sizeBytes": 5293
+    },
+    {
+      "path": "src/modules/practices/lib/attendance.mapper.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toAttendanceView"
+        },
+        {
+          "kind": "function",
+          "name": "notRecordedView"
+        },
+        {
+          "kind": "function",
+          "name": "toSheetView"
+        },
+        {
+          "kind": "function",
+          "name": "toSheetStatusView"
+        },
+        {
+          "kind": "function",
+          "name": "toParticipationView"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/attendance.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:077683ce7c7da58e9cba3573a4a393d6636c66a15b56683f42a66328b1cc2891",
+      "sizeBytes": 3150
     },
     {
       "path": "src/modules/practices/lib/cairo-time.spec.ts",
@@ -10574,6 +11688,458 @@
       "kind": "source",
       "hash": "sha256:606fd1ba191ae5bca4e8c1cf769976863802c75a57693bf9bd5f2e10d9d7661b",
       "sizeBytes": 1883
+    },
+    {
+      "path": "src/modules/practices/model/attendance.constants.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_LIST_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_SELF_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_CHECK_IN_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_BULK_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_FINALIZE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_RECORD_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_CORRECTION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_HISTORY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "PARTICIPATION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "PARTICIPATION_SELF_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_ID_QUERY"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_NOTE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "EVIDENCE_REF_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CORRECTION_REASON_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CORRECTION_REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "LATENESS_MINUTES_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "LATENESS_MINUTES_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "BULK_MARKS_MIN_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "BULK_MARKS_MAX_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_HISTORY_SCAN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "PARTICIPATION_SCAN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_SCORING_RULE_CODE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_AGGREGATE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_FINALIZED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_CORRECTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_RECIPIENT_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_RECORDED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_BULK_RECORDED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_CHECKED_IN_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_FINALIZED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_CORRECTED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_RECORD_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_SHEET_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_SHEET_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_RECORD_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_REVISION_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_RULE_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_LOCKED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_LOCKED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_SHEET_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_SHEET_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_MEMBERSHIP_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_MEMBERSHIP_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_NOT_MEMBER_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_NOT_MEMBER_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_INVALID_INPUT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_INVALID_INPUT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_RULE_MISSING_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_RULE_MISSING_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:757633ced47d9144071cb90c4684b859d10de31e3c4950e223d91021a7ae7f50",
+      "sizeBytes": 6064
+    },
+    {
+      "path": "src/modules/practices/model/attendance.enums.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "AttendanceStatus"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AttendanceState"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_STATE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AttendanceSource"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_SOURCE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AttendanceExcuseCategory"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_EXCUSE_CATEGORY_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AttendanceRuleStatus"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_RULE_STATUS_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6dfa41941931ac78187fceadc7e2187d9c0b30a20d6892bfb1202b82485d7898",
+      "sizeBytes": 3306
+    },
+    {
+      "path": "src/modules/practices/model/attendance.rows.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "AttendanceSheetRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceRecordRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceRevisionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceScoringRuleRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterEntryRow"
+        },
+        {
+          "kind": "interface",
+          "name": "ParticipationFactRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceCountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceMembershipRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7483f0fb20e81eb9d2d7c6a6377871c07c7a6ef4c2ab1510b86e44bbf5ade857",
+      "sizeBytes": 3026
+    },
+    {
+      "path": "src/modules/practices/model/attendance.types.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "AttendanceSheet"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceRecord"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceRevision"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceScoringRule"
+        },
+        {
+          "kind": "interface",
+          "name": "MembershipRef"
+        },
+        {
+          "kind": "interface",
+          "name": "ParticipationFact"
+        },
+        {
+          "kind": "interface",
+          "name": "ParticipationInputs"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceMarkFields"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceMarkInput"
+        },
+        {
+          "kind": "interface",
+          "name": "RecordAttendanceCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "SelfCheckInCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "SelfCheckInDerivation"
+        },
+        {
+          "kind": "interface",
+          "name": "CorrectAttendanceCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "FinalizeAttendanceCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceWriteContext"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceListQuery"
+        },
+        {
+          "kind": "interface",
+          "name": "ParticipationQuery"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceSheetView"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceSheetStatusView"
+        },
+        {
+          "kind": "interface",
+          "name": "BulkRecordResult"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceView"
+        },
+        {
+          "kind": "interface",
+          "name": "ListAttendanceRevisionsResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ParticipationView"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAttendanceSheet"
+        },
+        {
+          "kind": "interface",
+          "name": "SheetFinalize"
+        },
+        {
+          "kind": "interface",
+          "name": "SheetCorrection"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAttendanceRecord"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceRecordUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAttendanceRevision"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:382cebc473de05e7e5c49b072dd3f2e0553fe691f1ad009816fd19b74484b1c9",
+      "sizeBytes": 12270
     },
     {
       "path": "src/modules/practices/model/practices.constants.ts",
@@ -11453,8 +13019,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4a2e3a4c247ee98f9fe296082f8fa435d06ab8f9d8196e5baec3de2872843a57",
-      "sizeBytes": 3947
+      "hash": "sha256:3d14eeba6d96f300fefdd27cd1595a1a07b4d71d6612ca879b9edb7193c8b495",
+      "sizeBytes": 5746
     },
     {
       "path": "src/modules/rbac/api/dto/assign-role.dto.ts",

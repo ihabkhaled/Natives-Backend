@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T03:56:50.925Z",
+  "generatedAt": "2026-07-18T05:58:41.296Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -5682,6 +5682,321 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/modules/practices/api/dto/participation-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/modules/practices/api/dto/participation.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/modules/practices/application/participation-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/api/dto/attendance-history-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/api/dto/attendance-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/api/dto/attendance-sheet-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/api/dto/attendance-status-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/api/dto/bulk-mark-attendance.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/api/dto/bulk-record-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/api/dto/correct-attendance.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/api/dto/finalize-attendance.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/api/dto/list-attendance.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/api/dto/mark-attendance.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/api/dto/self-check-in.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/application/attendance-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/application/record-attendance.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/application/self-check-in.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/lib/attendance.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/modules/practices/model/rsvp.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-history-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-history-response.dto.ts",
+      "to": "src/modules/practices/api/dto/attendance-revision-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-mark.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-mark.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-mark.dto.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-mark.dto.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-mark.dto.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-response.dto.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-revision-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-revision-response.dto.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-sheet-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-sheet-response.dto.ts",
+      "to": "src/modules/practices/api/dto/roster-entry-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-sheet-response.dto.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-status-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-status-response.dto.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/bulk-mark-attendance.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/bulk-mark-attendance.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/bulk-mark-attendance.dto.ts",
+      "to": "src/modules/practices/api/dto/bulk-mark-entry.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/bulk-mark-attendance.dto.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/bulk-mark-entry.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/bulk-mark-entry.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/bulk-mark-entry.dto.ts",
+      "to": "src/modules/practices/api/dto/attendance-mark.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/bulk-record-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/bulk-record-response.dto.ts",
+      "to": "src/modules/practices/api/dto/attendance-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/correct-attendance.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/correct-attendance.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/correct-attendance.dto.ts",
+      "to": "src/modules/practices/api/dto/attendance-mark.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/correct-attendance.dto.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/api/dto/create-schedule.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -5719,6 +6034,21 @@
     {
       "from": "src/modules/practices/api/dto/create-session.dto.ts",
       "to": "src/modules/practices/model/practices.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/finalize-attendance.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/finalize-attendance.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/finalize-attendance.dto.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
       "type": "internal"
     },
     {
@@ -5729,6 +6059,11 @@
     {
       "from": "src/modules/practices/api/dto/generation-result-response.dto.ts",
       "to": "src/modules/practices/api/dto/session-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/list-attendance.query.dto.ts",
+      "to": "src/modules/practices/api/dto/list-query.dto.ts",
       "type": "internal"
     },
     {
@@ -5822,6 +6157,11 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/dto/mark-attendance.dto.ts",
+      "to": "src/modules/practices/api/dto/attendance-mark.dto.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/api/dto/override-rsvp.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -5847,6 +6187,26 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/dto/participation-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/participation-response.dto.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/participation.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/participation.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/practices/api/dto/reschedule-session.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -5859,6 +6219,16 @@
     {
       "from": "src/modules/practices/api/dto/reschedule-session.dto.ts",
       "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/roster-entry-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/roster-entry-response.dto.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
       "type": "internal"
     },
     {
@@ -5914,6 +6284,21 @@
     {
       "from": "src/modules/practices/api/dto/schedule-response.dto.ts",
       "to": "src/modules/practices/model/practices.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/self-check-in.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/self-check-in.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/self-check-in.dto.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
       "type": "internal"
     },
     {
@@ -6342,6 +6727,241 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/modules/practices/errors/attendance-not-member.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-record-revision.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/modules/practices/lib/attendance.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-recorder.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-recorder.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-recorder.service.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-recorder.service.ts",
+      "to": "src/modules/practices/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-recorder.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-record-revision.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-recorder.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-recorder.service.ts",
+      "to": "src/modules/practices/lib/attendance.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-recorder.service.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-sheet.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-sheet.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-sheet.service.ts",
+      "to": "src/modules/practices/domain/attendance.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-sheet.service.ts",
+      "to": "src/modules/practices/errors/attendance-locked.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-sheet.service.ts",
+      "to": "src/modules/practices/errors/attendance-sheet-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-sheet.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-sheet.service.ts",
+      "to": "src/modules/practices/lib/attendance.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-sheet.service.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-sheet.service.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/application/attendance-recorder.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/application/attendance-sheet.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/domain/attendance.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/errors/attendance-membership-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/errors/invalid-attendance-input.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/errors/invalid-attendance-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/lib/attendance.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/lib/attendance.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/lib/attendance.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/application/create-practice-schedule.use-case.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -6459,6 +7079,76 @@
     {
       "from": "src/modules/practices/application/create-practice-session.use-case.ts",
       "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/modules/practices/application/attendance-sheet.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/modules/practices/domain/attendance.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/modules/practices/errors/invalid-attendance-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/modules/practices/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/modules/practices/lib/attendance.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/modules/practices/lib/attendance.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/finalize-attendance.use-case.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
       "type": "internal"
     },
     {
@@ -6587,6 +7277,66 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/application/participation-query.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/participation-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/participation-query.service.ts",
+      "to": "src/modules/practices/domain/attendance-scoring.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/participation-query.service.ts",
+      "to": "src/modules/practices/errors/attendance-membership-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/participation-query.service.ts",
+      "to": "src/modules/practices/errors/attendance-not-member.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/participation-query.service.ts",
+      "to": "src/modules/practices/errors/attendance-rule-missing.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/participation-query.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/participation-query.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/participation-query.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-scoring-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/participation-query.service.ts",
+      "to": "src/modules/practices/lib/attendance.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/participation-query.service.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/participation-query.service.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/application/practice-lookup.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -6613,6 +7363,81 @@
     },
     {
       "from": "src/modules/practices/application/practice-lookup.service.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/modules/practices/application/attendance-recorder.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/modules/practices/application/attendance-sheet.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/modules/practices/errors/attendance-membership-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/modules/practices/errors/invalid-attendance-input.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/modules/practices/lib/attendance.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/modules/practices/lib/attendance.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/modules/practices/lib/attendance.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/record-attendance.use-case.ts",
       "to": "src/modules/practices/model/practices.types.ts",
       "type": "internal"
     },
@@ -6839,6 +7664,66 @@
     {
       "from": "src/modules/practices/application/scope-validation.service.ts",
       "to": "src/modules/practices/infrastructure/practice-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/application/attendance-recorder.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/application/attendance-sheet.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/errors/attendance-not-member.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/lib/attendance.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/lib/attendance.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/lib/attendance.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
       "type": "internal"
     },
     {
@@ -7127,6 +8012,31 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/domain/attendance-scoring.policy.ts",
+      "to": "src/modules/practices/domain/attendance-status.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/attendance-scoring.policy.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/attendance-scoring.policy.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/attendance-status.policy.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/attendance.state-machine.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/domain/practice-session.state-machine.ts",
       "to": "src/modules/practices/model/practices.enums.ts",
       "type": "internal"
@@ -7159,6 +8069,76 @@
     {
       "from": "src/modules/practices/domain/rsvp-deadline.policy.ts",
       "to": "src/modules/practices/model/practices.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/attendance-locked.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/attendance-locked.error.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/attendance-membership-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/attendance-membership-not-found.error.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/attendance-not-member.error.ts",
+      "to": "src/core/errors/forbidden.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/attendance-not-member.error.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/attendance-rule-missing.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/attendance-rule-missing.error.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/attendance-sheet-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/attendance-sheet-not-found.error.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/invalid-attendance-input.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/invalid-attendance-input.error.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/invalid-attendance-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/invalid-attendance-transition.error.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
       "type": "internal"
     },
     {
@@ -7297,6 +8277,141 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "to": "src/modules/practices/model/attendance.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record-revision.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record-revision.repository.ts",
+      "to": "src/modules/practices/lib/attendance.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record-revision.repository.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record-revision.repository.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record-revision.repository.ts",
+      "to": "src/modules/practices/model/attendance.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record-revision.repository.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "to": "src/modules/practices/lib/attendance.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "to": "src/modules/practices/model/attendance.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-scoring-rule.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-scoring-rule.repository.ts",
+      "to": "src/modules/practices/lib/attendance.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-scoring-rule.repository.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-scoring-rule.repository.ts",
+      "to": "src/modules/practices/model/attendance.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-scoring-rule.repository.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+      "to": "src/modules/practices/lib/attendance.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+      "to": "src/modules/practices/model/attendance.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -7453,6 +8568,76 @@
     },
     {
       "from": "src/modules/practices/infrastructure/session-status-event.repository.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.builders.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.builders.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.builders.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.builders.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.helpers.ts",
+      "to": "src/modules/practices/domain/attendance-status.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.helpers.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.helpers.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.helpers.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.helpers.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.helpers.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.mapper.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.mapper.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/attendance.mapper.ts",
       "to": "src/modules/practices/model/practices.types.ts",
       "type": "internal"
     },
@@ -7527,6 +8712,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/model/attendance.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/model/attendance.types.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/model/attendance.types.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/model/practices.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
@@ -7568,6 +8768,16 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/api/attendance-participation.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/api/attendance.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/api/practice-rsvp.controller.ts",
       "type": "internal"
     },
@@ -7588,12 +8798,37 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/attendance-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/attendance-recorder.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/attendance-sheet.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/correct-attendance.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/create-practice-schedule.use-case.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/create-practice-session.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/finalize-attendance.use-case.ts",
       "type": "internal"
     },
     {
@@ -7608,7 +8843,17 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/participation-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/record-attendance.use-case.ts",
       "type": "internal"
     },
     {
@@ -7638,6 +8883,11 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/self-check-in.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/session-query.service.ts",
       "type": "internal"
     },
@@ -7659,6 +8909,31 @@
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/update-practice-session.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/attendance-record-revision.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/attendance-scoring-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
       "type": "internal"
     },
     {

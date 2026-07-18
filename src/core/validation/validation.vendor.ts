@@ -13,6 +13,8 @@ export {
 } from 'class-transformer';
 export {
   ArrayMaxSize,
+  ArrayMinSize,
+  ArrayNotEmpty,
   IsArray,
   IsBoolean,
   IsByteLength,
