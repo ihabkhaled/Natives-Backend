@@ -29,4 +29,3 @@ export class AssessmentScopeRepository {
     return rows.length > 0;
   }
 }
-

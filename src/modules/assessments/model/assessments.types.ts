@@ -6,10 +6,7 @@ import type {
   AssessmentStatus,
   AssessmentTemplateStatus,
 } from './assessments.enums';
-import type {
-  CategoryWeightRow,
-  TemplateMetricRow,
-} from './assessments.rows';
+import type { CategoryWeightRow, TemplateMetricRow } from './assessments.rows';
 
 export interface PageRequest {
   readonly limit: number;
@@ -124,10 +121,6 @@ export interface CreateMetricCommand {
   readonly tags: readonly string[];
 }
 
-export interface CreateMetricVersionCommand extends CreateMetricCommand {
-  readonly expectedRecordVersion: number;
-}
-
 export interface ArchiveMetricCommand {
   readonly expectedRecordVersion: number;
 }
@@ -141,10 +134,6 @@ export interface CreateTemplateCommand {
   readonly scoreVersion: number;
   readonly categoryWeights: readonly CategoryWeightInput[];
   readonly metrics: readonly TemplateMetricInput[];
-}
-
-export interface CreateTemplateVersionCommand extends CreateTemplateCommand {
-  readonly expectedRecordVersion: number;
 }
 
 export interface PublishTemplateCommand {
@@ -239,4 +228,3 @@ export type AssessmentScalePage = PagedResult<AssessmentScale>;
 export type AssessmentMetricPage = PagedResult<AssessmentMetric>;
 export type AssessmentTemplatePage = PagedResult<AssessmentTemplate>;
 export type AssessmentPeriodPage = PagedResult<AssessmentPeriod>;
-

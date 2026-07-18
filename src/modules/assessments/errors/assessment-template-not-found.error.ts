@@ -13,4 +13,3 @@ export class AssessmentTemplateNotFoundError extends NotFoundError {
     );
   }
 }
-

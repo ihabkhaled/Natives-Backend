@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-18T08:32:17.655Z",
-  "treeHash": "sha256:c59780a97818982d84632af3648a5e575715ea6de35b3b8feb681be06a6beba9",
+  "generatedAt": "2026-07-18T17:40:24.497Z",
+  "treeHash": "sha256:b1a5e72812e64392205e1fc8e608d56d9f85f33eeedb59bd998bc8b38b8e24bf",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:5addd907166c37ba039de64fe7cdfc01c23d3a20bbe90ad213339744f413b317",
-      "sizeBytes": 1226
+      "hash": "sha256:61b490479da05a2443811eb082f23870201cd37d1e9bd9f0da7caf659a1fe720",
+      "sizeBytes": 1307
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -127,8 +127,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1f5cd2fb0c1202c1947c7bbbb14d00e3f20bae0c892e2910f5bc73c3acf1066d",
-      "sizeBytes": 1023
+      "hash": "sha256:5da360fabd6e0105fcd054c479a8270aff77407b856953f5b19a2a50612b87d0",
+      "sizeBytes": 680
     },
     {
       "path": "src/bootstrap/configure-validation.ts",
@@ -170,6 +170,227 @@
       "kind": "source",
       "hash": "sha256:b0dbc9e4810fddf03a23640922362ea4da35fd972e273fa553175943f09e661f",
       "sizeBytes": 526
+    },
+    {
+      "path": "src/bootstrap/openapi-artifact.constants.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "OPENAPI_CHECK_FLAG"
+        },
+        {
+          "kind": "const",
+          "name": "OPENAPI_ALLOW_BREAKING_FLAG"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2a5fdb561356ad118a936d2ed335a65b704b58a4ffbc49fbe9823e17edd0e5ab",
+      "sizeBytes": 108
+    },
+    {
+      "path": "src/bootstrap/openapi-artifact.spec.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d043611b486bd987fa181e82394caa4a22be73914bc236cc9aa8a010b8101468",
+      "sizeBytes": 1467
+    },
+    {
+      "path": "src/bootstrap/openapi-artifact.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "normalizeJsonValue"
+        },
+        {
+          "kind": "function",
+          "name": "serializeOpenApiValue"
+        },
+        {
+          "kind": "function",
+          "name": "serializeOpenApiDocument"
+        },
+        {
+          "kind": "function",
+          "name": "hashOpenApiArtifact"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/bootstrap/openapi-artifact.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1bdc7cd0296b86e7da87460ed5a92b6e605a21abe5034dbc75f7e9ec5a6f8241",
+      "sizeBytes": 1722
+    },
+    {
+      "path": "src/bootstrap/openapi-compatibility.enums.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "OpenApiChangeKind"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1f678ed8f0d81e85e2c7b927a82c4e3cdecd692699d1e916d0994a2d6fa1391d",
+      "sizeBytes": 169
+    },
+    {
+      "path": "src/bootstrap/openapi-compatibility.spec.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:84e56c2d1fe8e1dfe89415ea4658a35545987dcc0b793f16bec5775bfdadd444",
+      "sizeBytes": 4490
+    },
+    {
+      "path": "src/bootstrap/openapi-compatibility.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "classifyOpenApiChange"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/bootstrap/openapi-compatibility.spec.ts",
+      "kind": "source",
+      "hash": "sha256:84f942ed63eb0f2357813aef6b2b77ce9543a2a9a06e777f935838cf68f67a98",
+      "sizeBytes": 6752
+    },
+    {
+      "path": "src/bootstrap/openapi-compatibility.types.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "OpenApiChangeReport"
+        },
+        {
+          "kind": "interface",
+          "name": "OpenApiOperationEntry"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0a7b95b32f2446aa31240adbea8bcfe3eac9fe8c38a5ec0781a0155333795099",
+      "sizeBytes": 393
+    },
+    {
+      "path": "src/bootstrap/openapi-document.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "createOpenApiDocument"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bd05eab15794754db562db36b17e1b5cba06806ec3ccd1deaa74b4dca80a4532",
+      "sizeBytes": 935
+    },
+    {
+      "path": "src/bootstrap/openapi-document.types.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "OpenApiDocument"
+        },
+        {
+          "kind": "type",
+          "name": "OpenApiPathItem"
+        },
+        {
+          "kind": "type",
+          "name": "OpenApiOperation"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b33c632ff1f04946970bce123199d225490ba4a7777aa2c5fa140e817aae3356",
+      "sizeBytes": 232
+    },
+    {
+      "path": "src/bootstrap/openapi-json.types.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "JsonPrimitive"
+        },
+        {
+          "kind": "type",
+          "name": "JsonValue"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a11cdeb322fa504ee2ff7fb899c64e1f999fc23b293d124a071b4a0a8b20650b",
+      "sizeBytes": 167
+    },
+    {
+      "path": "src/bootstrap/openapi-operation-id.spec.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8a271838e33b607bdf1c4b38d0ec81b12d20cdf9320e96092908eaa76217cae0",
+      "sizeBytes": 480
+    },
+    {
+      "path": "src/bootstrap/openapi-operation-id.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "createOpenApiOperationId"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/bootstrap/openapi-operation-id.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e817d5eb3e24c58ca793e10f4e4127330ef22d391d5c30e11b49c14fa7e0453d",
+      "sizeBytes": 247
     },
     {
       "path": "src/config/app-config.service.ts",
@@ -283,6 +504,42 @@
         {
           "kind": "const",
           "name": "NODE_ENV_CONFIG_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SEED_ADMIN_EMAIL"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SEED_ADMIN_DISPLAY_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_ADMIN_PASSWORD_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_ADMIN_PASSWORD_MAX_BYTES"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_ADMIN_EMAIL_WHITESPACE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_ADMIN_PASSWORD_REQUIRED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_ADMIN_PASSWORD_TOO_LONG_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_ADMIN_EMAIL_INVALID_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_ADMIN_DISPLAY_NAME_INVALID_MESSAGE"
         },
         {
           "kind": "const",
@@ -552,8 +809,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:63a90941a3239af752230ea604da5651955284a96af98207a519d32aac615b91",
-      "sizeBytes": 4632
+      "hash": "sha256:e52786cbc7892fc75e4e9107ba607385f7e00ae4d936be7127b7e43177bbb38d",
+      "sizeBytes": 5648
     },
     {
       "path": "src/config/config.module.ts",
@@ -596,14 +853,18 @@
         },
         {
           "kind": "interface",
+          "name": "SeedAdminConfig"
+        },
+        {
+          "kind": "interface",
           "name": "RootConfig"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ec186f456de88c76233b844c22e8b5841d6261b680581af5860ecab7693eb80e",
-      "sizeBytes": 1355
+      "hash": "sha256:741ddc91d7945fb0e87de3a53af3b1dd2262ad9ad16b92bdf4f5b824e2b5dc0f",
+      "sizeBytes": 1480
     },
     {
       "path": "src/config/config.utils.spec.ts",
@@ -784,6 +1045,35 @@
       "sizeBytes": 976
     },
     {
+      "path": "src/config/seed-admin.config.spec.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3dae1443c20c1d9cdb552bfa5334dea9b8774cf7d97d870e271058d5ddaa1d04",
+      "sizeBytes": 2470
+    },
+    {
+      "path": "src/config/seed-admin.config.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "loadSeedAdminConfig"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/config/seed-admin.config.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e34d0f3c663a10a9ff26f628a7436a7f9b48e3b510172aa6781f880474643fa4",
+      "sizeBytes": 1992
+    },
+    {
       "path": "src/core/auth/auth-identity.validator.spec.ts",
       "root": "core",
       "module": "auth",
@@ -792,8 +1082,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:325971eee88271daedab648f2ea647f3995814f114fe359e9ceb8f0013ed95d8",
-      "sizeBytes": 957
+      "hash": "sha256:e29922ee983bf0b8ac1a586668301a7554465d4136598a6382d7942ebf552b39",
+      "sizeBytes": 1437
     },
     {
       "path": "src/core/auth/auth-identity.validator.ts",
@@ -809,8 +1099,8 @@
       "hasSpec": true,
       "specPath": "src/core/auth/auth-identity.validator.spec.ts",
       "kind": "source",
-      "hash": "sha256:447831ad5549b7dc18f7b0dfa168e67542e247cad47a920de302d890a583cbf2",
-      "sizeBytes": 870
+      "hash": "sha256:7eefe8798776bc932f309535433d3cde51d75d598ab6a55f4ada142f15cb8ca6",
+      "sizeBytes": 1015
     },
     {
       "path": "src/core/auth/auth.constants.ts",
@@ -919,8 +1209,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:670c2e051e72ee7a8a615b520829a32787496deab8830c9cd18cb950ef4dae82",
-      "sizeBytes": 762
+      "hash": "sha256:e92b72a68943dea2260e94f8394b676b4ef9300006b75ff58b52d96507bb81e0",
+      "sizeBytes": 793
     },
     {
       "path": "src/core/auth/bearer-token.parser.spec.ts",
@@ -1110,8 +1400,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4eacce4045a2001673810d93b3d70a1dc1d7c20d777298c005138876025fab1d",
-      "sizeBytes": 236
+      "hash": "sha256:e6dab1a2802a1ea7ee718ad9dd817e86396a0e7cd24128411be1ff14f668ad1e",
+      "sizeBytes": 296
     },
     {
       "path": "src/core/auth/request-scope.extractor.spec.ts",
@@ -1252,8 +1542,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:0cc840d3d0a2c1528ff28b03ee5b008e7c38361ede9f2b90a608d2dcdf401644",
-      "sizeBytes": 1908
+      "hash": "sha256:9433409b2c243e6eff8d0d755f236917724eedce88317b324ab52b66749ebc1c",
+      "sizeBytes": 2139
     },
     {
       "path": "src/core/errors/app-exception.filter.ts",
@@ -1269,8 +1559,8 @@
       "hasSpec": true,
       "specPath": "src/core/errors/app-exception.filter.spec.ts",
       "kind": "source",
-      "hash": "sha256:c732a6826db72bb8dfd5dbf533e1ee3e5d3555797a58bc3b64c8eacf1b47694d",
-      "sizeBytes": 1455
+      "hash": "sha256:48fd07a8e5e96ced5682ed36d70f0e84a57030119756f4bd2062a52499a2134b",
+      "sizeBytes": 1618
     },
     {
       "path": "src/core/errors/conflict.error.ts",
@@ -1326,6 +1616,14 @@
       "symbols": [
         {
           "kind": "const",
+          "name": "ERROR_CONTENT_TYPE_HEADER"
+        },
+        {
+          "kind": "const",
+          "name": "ERROR_CONTENT_TYPE"
+        },
+        {
+          "kind": "const",
           "name": "GENERIC_ERROR_MESSAGE"
         },
         {
@@ -1356,8 +1654,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0aa229e05846f8377f35cadd41c1b04f70ab237a07380f2c0e34aa8412594cdb",
-      "sizeBytes": 1081
+      "hash": "sha256:3acff02cfc7eabd066ae86ce8be1159eb31bd7d5da1f6f1c7668f56ccc79d7a1",
+      "sizeBytes": 1207
     },
     {
       "path": "src/core/errors/error.types.ts",
@@ -1679,8 +1977,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:7c46f225a2717941b745adf73c5c061502044476c1fc49fc61d5de1fd3a9695b",
-      "sizeBytes": 376
+      "hash": "sha256:d7a30b473a7591b8e427c1696c1bf6ccb5f9869b5b3224f6ac5799d44b1b266f",
+      "sizeBytes": 430
     },
     {
       "path": "src/core/id-generator/id-generator.module.ts",
@@ -1797,8 +2095,54 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:96b8c64fee8396d3c4a4c23a91afc057f997cddddbd94d65a6bb3685e110a354",
-      "sizeBytes": 1185
+      "hash": "sha256:53eb1a88c7b11a1f3e498d5f6753693101776215bca700a8f84e7d9a65a8e23d",
+      "sizeBytes": 1299
+    },
+    {
+      "path": "src/core/logger/http-request-url.sanitizer.spec.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b9d69ff90e87e28cf524887a67594555af5af129f92823c54f47cb5154c21644",
+      "sizeBytes": 2202
+    },
+    {
+      "path": "src/core/logger/http-request-url.sanitizer.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "sanitizeHttpRequestUrl"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/logger/http-request-url.sanitizer.spec.ts",
+      "kind": "source",
+      "hash": "sha256:840317e96cbb89ccf5f15fd6a539702f8d914abebd72a9486c61a46bf3bfea6c",
+      "sizeBytes": 1124
+    },
+    {
+      "path": "src/core/logger/http-request.serializer.ts",
+      "root": "core",
+      "module": "logger",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "serializeHttpRequest"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:17ab51407f37ef4e9839383f1208af9f9c7ad2e8ddd7221a694a2557088c81ed",
+      "sizeBytes": 394
     },
     {
       "path": "src/core/logger/index.ts",
@@ -1857,6 +2201,14 @@
         },
         {
           "kind": "const",
+          "name": "SENSITIVE_HTTP_URL_SEGMENTS"
+        },
+        {
+          "kind": "const",
+          "name": "HTTP_URL_SEGMENT_END_PATTERN"
+        },
+        {
+          "kind": "const",
           "name": "CIRCULAR_LOG_VALUE"
         },
         {
@@ -1887,8 +2239,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a36019990f09df39ebc1ce2317454ef13e67efb27d4a6ebc847efa60de585182",
-      "sizeBytes": 1351
+      "hash": "sha256:d5a403e3989b99fbf64a4e2f92ea5932dea3f173396931e01b696dab9426fe91",
+      "sizeBytes": 1618
     },
     {
       "path": "src/core/logger/logger.module.ts",
@@ -1949,8 +2301,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:973cd2fbc6fce8346ca4dde3d2ffafac54979771945f8572b9a6f43c7c2475be",
-      "sizeBytes": 493
+      "hash": "sha256:68055a9b3f9f34aea70c00bade0344b943fdb0298722f72f5df746264e681be1",
+      "sizeBytes": 531
     },
     {
       "path": "src/core/persistence/database-readiness.port.ts",
@@ -2189,8 +2541,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:605b48bd291e2b0f3e60af2142d9a70e9167c1bc78660e45202fd243d56aa59e",
-      "sizeBytes": 2266
+      "hash": "sha256:449ef1880363b24070245bb6437c25418c2cf685f242864cb29797d1e2d8db70",
+      "sizeBytes": 2405
     },
     {
       "path": "src/database/data-source.factory.ts",
@@ -2223,8 +2575,29 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:8825452c08e7b962a13a120d669a877b67ebaf3c13c84e8ecf90adb7eb6e6525",
-      "sizeBytes": 1440
+      "hash": "sha256:d19c4df3a0a7c4a133a5582cc4927ad4692fac61ef093003424c61379805b340",
+      "sizeBytes": 1592
+    },
+    {
+      "path": "src/database/database-cli.helpers.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "writeDatabaseCliMessage"
+        },
+        {
+          "kind": "function",
+          "name": "describeDatabaseCliError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9277545fa2c8e5b1b1344e3292901fca6bf843722450559cb5f34f9b5327f0fc",
+      "sizeBytes": 323
     },
     {
       "path": "src/database/database-error.mapper.spec.ts",
@@ -2299,6 +2672,42 @@
         },
         {
           "kind": "const",
+          "name": "MAINTENANCE_DATABASE"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_POSTGRES_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_CREATED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_ALREADY_EXISTS_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_SETUP_FAILED_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "ADMIN_SEED_FAILED_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "UNKNOWN_DATABASE_CLI_ERROR"
+        },
+        {
+          "kind": "const",
+          "name": "SAFE_DATABASE_NAME_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "UNSAFE_DATABASE_NAME_MESSAGE"
+        },
+        {
+          "kind": "const",
           "name": "DATABASE_READINESS_LOG_CONTEXT"
         },
         {
@@ -2333,8 +2742,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:2d830d515faa3c4b5ff739fc02448680420422426018e6bd5532e658899dad13",
-      "sizeBytes": 1739
+      "hash": "sha256:f8f746235cbdb0d6149b02eb228bced571a1cf80b961bb834f027e3e43ffb339",
+      "sizeBytes": 2815
     },
     {
       "path": "src/database/database.module.ts",
@@ -2352,6 +2761,42 @@
       "kind": "source",
       "hash": "sha256:ae9394cacee86f61b9895c51f0b1c5cd0f38bc4af5dbda073b5e18f9aa15dbd1",
       "sizeBytes": 1500
+    },
+    {
+      "path": "src/database/ensure-database.cli.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4ce9ad63e657c266dd8901569bf7e3c53753ba492dda0614691e3932a0b5785f",
+      "sizeBytes": 736
+    },
+    {
+      "path": "src/database/ensure-database.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f7fc9b9955b723d167b8f9de10592b7d2754ab4b4bd9dea4afb77aa619be617a",
+      "sizeBytes": 4181
+    },
+    {
+      "path": "src/database/ensure-database.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": true,
+      "specPath": "src/database/ensure-database.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ba55cefa2c859cfe8021d7e521c2d4a17d503e18369d30293e8f77fa83fe95ce",
+      "sizeBytes": 2894
     },
     {
       "path": "src/database/index.ts",
@@ -2536,6 +2981,64 @@
       "sizeBytes": 13235
     },
     {
+      "path": "src/database/migrations/1722200000000-practice-reminders-calendar-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeRemindersCalendarSchema1722200000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:36443e06c186931ba3765f5e3961f8e68a1f8ee1fd8d468450b889b93f1480c5",
+      "sizeBytes": 2711
+    },
+    {
+      "path": "src/database/migrations/1722300000000-assessment-catalog-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentCatalogSchema1722300000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:827826d4b039b7a1b0e0c3a42dc7927f126a86e207290a25cebb24bf55d04fba",
+      "sizeBytes": 21336
+    },
+    {
+      "path": "src/database/migrations/assessment-catalog-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0f6c3bf81874acafc5f342e970f39831e90b091abf3b8ffbdc18aeb8794dc027",
+      "sizeBytes": 3116
+    },
+    {
+      "path": "src/database/migrations/practice-reminders-calendar-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2ac6cd2bde65de60827353e3bd0143ae8d97b6b792c2f2669ead7467acd18cf9",
+      "sizeBytes": 1521
+    },
+    {
       "path": "src/database/naming.helpers.spec.ts",
       "root": "app",
       "module": "app",
@@ -2563,6 +3066,104 @@
       "kind": "source",
       "hash": "sha256:86c43670725147dcd95c84ad7e2dbe5565dcf3363b6838b24cf90e2571554fd4",
       "sizeBytes": 499
+    },
+    {
+      "path": "src/database/seeds/seed-admin.cli.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7676d17dcb916724e46894a76566db316ef8f2c2e45b5873c8451ef9bf2e2d58",
+      "sizeBytes": 1862
+    },
+    {
+      "path": "src/database/seeds/seed-admin.constants.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ADMIN_ROLE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ADMIN_ROLE_MISSING_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ADMIN_USER_INSERT_FAILED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_CONNECTION_UNAVAILABLE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ADMIN_CREATED_LABEL"
+        },
+        {
+          "kind": "const",
+          "name": "ADMIN_UPDATED_LABEL"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c9d315706999c74740233994d3cb3d149134c85a323dde96796a6c32b587f572",
+      "sizeBytes": 550
+    },
+    {
+      "path": "src/database/seeds/seed-admin.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9015ef8de587521b2d93b793fd05f18d3b203b5a791b388146b294178aff63d7",
+      "sizeBytes": 5828
+    },
+    {
+      "path": "src/database/seeds/seed-admin.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": true,
+      "specPath": "src/database/seeds/seed-admin.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3acea29e3121abbf097a9f85135ca0d75fe1e260b860870d8bae2ff25282284d",
+      "sizeBytes": 5068
+    },
+    {
+      "path": "src/database/seeds/seed-admin.types.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "SeedAdminInput"
+        },
+        {
+          "kind": "interface",
+          "name": "SeedAdminResult"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e7650b9ad63990e4573b678589e347793f250c2dab355ffb9f70e6b803ec91a0",
+      "sizeBytes": 272
     },
     {
       "path": "src/database/snake-case-naming.strategy.spec.ts",
@@ -3096,6 +3697,1441 @@
       "sizeBytes": 750
     },
     {
+      "path": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentCatalogController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:100e5fa8a9d5d734051319be817d59013442b658d51960d81e0d96cd76fe0b17",
+      "sizeBytes": 6388
+    },
+    {
+      "path": "src/modules/assessments/api/assessment-period.controller.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentPeriodController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a2edda552fc07d7714b5490c48232399a5ff3dd661ff2e028ac290fa549c84e6",
+      "sizeBytes": 2741
+    },
+    {
+      "path": "src/modules/assessments/api/assessment-template.controller.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentTemplateController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0928f4ecc14976970902c713db76050d5362a1da28defe1ded2e92a690132278",
+      "sizeBytes": 5167
+    },
+    {
+      "path": "src/modules/assessments/api/dto/archive-metric.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ArchiveMetricDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:da1dc31d9d34c315c593da3a42e8f5133c19ef8dc45b98eaf002828636655dfd",
+      "sizeBytes": 315
+    },
+    {
+      "path": "src/modules/assessments/api/dto/category-response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CategoryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:59f9bd0bd9582c2526421f035280ac4e54a7d3548eb3ba73f73099f916e297db",
+      "sizeBytes": 665
+    },
+    {
+      "path": "src/modules/assessments/api/dto/category-weight.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CategoryWeightDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:46d601840b28f68b3677f5b2c68c2f85c2166b2da264293336ad8ef2c95e0a46",
+      "sizeBytes": 687
+    },
+    {
+      "path": "src/modules/assessments/api/dto/create-metric.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateMetricDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f3c050100166da580f5c1ffd212089596588419fa1469e8d51ef89d45dfc88f9",
+      "sizeBytes": 2294
+    },
+    {
+      "path": "src/modules/assessments/api/dto/create-period.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreatePeriodDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5ba6a0a6132cdc41fd1d0c9b14e2fcf97a31f25b42382e0378511c502e91a775",
+      "sizeBytes": 1376
+    },
+    {
+      "path": "src/modules/assessments/api/dto/create-template.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateTemplateDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:764ad329c6a440f5d3756f3eb1c539f95bf63c419c885f42bc49bedcc5efbe05",
+      "sizeBytes": 2489
+    },
+    {
+      "path": "src/modules/assessments/api/dto/list-catalog.query.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListCatalogQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:64a8ba3a56fce8e4b61169ca0539bc831185dff421c33aab55c874b9c750815d",
+      "sizeBytes": 743
+    },
+    {
+      "path": "src/modules/assessments/api/dto/list-categories.response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListCategoriesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4c0f68ba5c215ed8fd47fe34fd6aa2c6aae15c10af37cb902288e64cfe0c9164",
+      "sizeBytes": 416
+    },
+    {
+      "path": "src/modules/assessments/api/dto/list-metrics.response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListMetricsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cfaff0ff1c5636dec6d5dc2ff444293d2fc85ef5367c061816ec7d6f8297e72a",
+      "sizeBytes": 405
+    },
+    {
+      "path": "src/modules/assessments/api/dto/list-periods.response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListPeriodsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f39a64728afabce5eecdc2aa7b24ff662c5c2cdf0e7cf199cdd10f6cec82acab",
+      "sizeBytes": 405
+    },
+    {
+      "path": "src/modules/assessments/api/dto/list-scales.response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListScalesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:69a763881df6ff3e556c2a618427d6112f9faf8f107a7ac37c7ba79d201a8f8a",
+      "sizeBytes": 400
+    },
+    {
+      "path": "src/modules/assessments/api/dto/list-templates.response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListTemplatesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:21e1b94a50711e9631bb580525200998648036ca9eb61f919c9a45fa521f110b",
+      "sizeBytes": 415
+    },
+    {
+      "path": "src/modules/assessments/api/dto/metric-response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MetricResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ad5326b177648d50398a1ba7df81d2c8d16bb8fe00409672ff26fe2504d6fd3a",
+      "sizeBytes": 1914
+    },
+    {
+      "path": "src/modules/assessments/api/dto/period-response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PeriodResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9dbf15385e949b487e28dd9a45b421719efa77c69e0ebfe38ffdbce99240ee6a",
+      "sizeBytes": 1122
+    },
+    {
+      "path": "src/modules/assessments/api/dto/publish-template.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublishTemplateDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7c2c0b8b7f317490793b5ab21877b9b8357a26ef26fba88b7abfc879e5a20105",
+      "sizeBytes": 317
+    },
+    {
+      "path": "src/modules/assessments/api/dto/scale-response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScaleResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9a40554bc62a7deb497651a4a5e9ee40e9b091a070f445ac811400048f0ef09a",
+      "sizeBytes": 1439
+    },
+    {
+      "path": "src/modules/assessments/api/dto/template-metric.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TemplateMetricDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:23db75607a71a06dc7d1b85c014f7679a4b18241193ffd68893326c74f8f0dec",
+      "sizeBytes": 749
+    },
+    {
+      "path": "src/modules/assessments/api/dto/template-response.dto.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TemplateResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4c78cb600973895383debc5aedabce7f6946b443ceeadefcfc0e10080d836b42",
+      "sizeBytes": 2062
+    },
+    {
+      "path": "src/modules/assessments/application/archive-metric.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f6180f129fea8cc0f1cb65dd220e174b371c26342b13d7b72367d9b9d616711d",
+      "sizeBytes": 3810
+    },
+    {
+      "path": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ArchiveMetricUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/archive-metric.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4a154fb557dc9ae1cb40efd7067516072b5d3a8e2387f50a2b4fd0b1d921cc01",
+      "sizeBytes": 3231
+    },
+    {
+      "path": "src/modules/assessments/application/assessment-query.service.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d67a109f307af5434dc5ebe98a64bbf677ae168003f85a0e3466fbdd04f9899f",
+      "sizeBytes": 1949
+    },
+    {
+      "path": "src/modules/assessments/application/assessment-query.service.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/assessment-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f6c24c657c1e95e9ac8e23b7994e848f6eeaac1c4a6716a9fcae1d7e8cadcfa8",
+      "sizeBytes": 1979
+    },
+    {
+      "path": "src/modules/assessments/application/assessment-scope.service.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:790f750e373d498d3b761d9cd8b776642a47062ab9b3155cad698a5f49a7d3ed",
+      "sizeBytes": 1529
+    },
+    {
+      "path": "src/modules/assessments/application/assessment-scope.service.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentScopeService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/assessment-scope.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a44bf164b53973542473d5a2dbf2f9b3e9353e6fa026ecb2f5cbf74e5f73cac1",
+      "sizeBytes": 850
+    },
+    {
+      "path": "src/modules/assessments/application/create-metric-version.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e071fed4bacbc62a2bcbcbb040660a5c146ff77ba71c8a7e81105da4a1670376",
+      "sizeBytes": 3822
+    },
+    {
+      "path": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateMetricVersionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/create-metric-version.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:06eee8b800da711c210985540852410ba60754fae6a660c0be69241d255ad007",
+      "sizeBytes": 4270
+    },
+    {
+      "path": "src/modules/assessments/application/create-metric.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:89518568b64ca9a873b57c0591a61fb88fc750cc85870c28ebed1d98a2cdc80f",
+      "sizeBytes": 3752
+    },
+    {
+      "path": "src/modules/assessments/application/create-metric.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateMetricUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/create-metric.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4ca6efff000700bc3f456c574b2eec6adbc9b627accb1697515f87f5ded26352",
+      "sizeBytes": 4044
+    },
+    {
+      "path": "src/modules/assessments/application/create-period.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e6e3ca9c1af946b19a6bf3077a7dfc41050202a1c906abb4403d9b1ea20f7640",
+      "sizeBytes": 3161
+    },
+    {
+      "path": "src/modules/assessments/application/create-period.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreatePeriodUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/create-period.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:fd980f4e22f356b870884b6470e76b598524c2a4fcfba25d3f1803ad90a3fc73",
+      "sizeBytes": 3693
+    },
+    {
+      "path": "src/modules/assessments/application/create-template-version.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b0370b11e965eb94c3d2f4b533c7701a4a19d308e69e8050ce5416d7010bd6b3",
+      "sizeBytes": 3969
+    },
+    {
+      "path": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateTemplateVersionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/create-template-version.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3411683253bb373dda645f688593e60cd7e633329bd6a56a672ac25a306a0bf4",
+      "sizeBytes": 4591
+    },
+    {
+      "path": "src/modules/assessments/application/create-template.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a7200f22f5872f30e488033ca8aaf79a236d71d5358edae3d8d387b62656e2a3",
+      "sizeBytes": 4036
+    },
+    {
+      "path": "src/modules/assessments/application/create-template.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateTemplateUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/create-template.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ebfa5628b38642663e63b1df2e0b5b8abea43257d7d76ab239e3a38105e3462a",
+      "sizeBytes": 4391
+    },
+    {
+      "path": "src/modules/assessments/application/publish-template.use-case.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bac94c609856ba7951e89c9ec867e24fe14eb0945ff11cb71e06272dddf6ee9a",
+      "sizeBytes": 3686
+    },
+    {
+      "path": "src/modules/assessments/application/publish-template.use-case.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublishTemplateUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/publish-template.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7b02a5b9b38090d89de7b9f4c46ab84d5bda48fac532dab0d299a9d3f4ba671f",
+      "sizeBytes": 3362
+    },
+    {
+      "path": "src/modules/assessments/assessments.module.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentsModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:055a98e981ef003bbf74b8ae2a863d39576d75ab540066b2c9bcb1f941ee7141",
+      "sizeBytes": 2511
+    },
+    {
+      "path": "src/modules/assessments/domain/assessment-catalog.policy.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e91f1a2a5b6e56ec1c181e904a255a5716f5114a09db0f5aa080e0e8616ee4c9",
+      "sizeBytes": 2791
+    },
+    {
+      "path": "src/modules/assessments/domain/assessment-catalog.policy.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assertCategoryWeights"
+        },
+        {
+          "kind": "function",
+          "name": "assertRequiredMetrics"
+        },
+        {
+          "kind": "function",
+          "name": "assertPeriodRange"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/domain/assessment-catalog.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:060289fba0883f445f711d0e44fae8f87e61b9441266a174374e0a89b8c5e852",
+      "sizeBytes": 1578
+    },
+    {
+      "path": "src/modules/assessments/errors/assessment-duplicate.error.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentDuplicateError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f3d0cc5d62f4bec9bc74472516416b3a650bc68801178c97b474aab60a15e14b",
+      "sizeBytes": 342
+    },
+    {
+      "path": "src/modules/assessments/errors/assessment-metric-in-use.error.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentMetricInUseError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e000f533f9d5ac4040da02c955ffcd5d8b792c85300f2bcfeb4c14abbfe767e0",
+      "sizeBytes": 379
+    },
+    {
+      "path": "src/modules/assessments/errors/assessment-metric-not-found.error.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentMetricNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7992b07d5b399112427807b656a7bf7525cc04d2f11b07aef45b51f06047b135",
+      "sizeBytes": 395
+    },
+    {
+      "path": "src/modules/assessments/errors/assessment-scope-not-found.error.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentScopeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1f53b011d5734e2b07bfde44a6a2182554cd12db0c6376f2b6481f837239b596",
+      "sizeBytes": 390
+    },
+    {
+      "path": "src/modules/assessments/errors/assessment-template-locked.error.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentTemplateLockedError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a65b354d3d716a62c06392148f604bf4ce670f8c0fe85a597fcf9af2af11f566",
+      "sizeBytes": 390
+    },
+    {
+      "path": "src/modules/assessments/errors/assessment-template-not-found.error.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentTemplateNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d4cbea02600f596c2e60310c713e8ee84ed30e68c2a834a566d0f346a14d70de",
+      "sizeBytes": 405
+    },
+    {
+      "path": "src/modules/assessments/errors/assessment-validation.error.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentValidationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e099e31b8e97f33d13f666e95e12bcd65f38054e0508e291c1a0928d83370032",
+      "sizeBytes": 353
+    },
+    {
+      "path": "src/modules/assessments/errors/assessment-version-conflict.error.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentVersionConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:94f17c81fab7391f304623b9e34c2066763b9b4f37553820a55c48fe9e922bcf",
+      "sizeBytes": 395
+    },
+    {
+      "path": "src/modules/assessments/index.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:16d75c96bbf3522110fbcefe9f47e221848515356ae946779856462a3a998774",
+      "sizeBytes": 58
+    },
+    {
+      "path": "src/modules/assessments/infrastructure/assessment-catalog.repository.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8b11088433658b6ba430f2c630633f04738a5e56c1da9eb7d6d513dec0f20445",
+      "sizeBytes": 17582
+    },
+    {
+      "path": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentCatalogRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/infrastructure/assessment-catalog.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:761a7d1562c486a027d8740cc607a87ca233b676af9f865d6e0bfa1087acf937",
+      "sizeBytes": 17203
+    },
+    {
+      "path": "src/modules/assessments/infrastructure/assessment-scope.repository.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:832038e19109452d180a73971ce216c497d09b3f0831408a567e5ea62f4d37c8",
+      "sizeBytes": 1710
+    },
+    {
+      "path": "src/modules/assessments/infrastructure/assessment-scope.repository.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentScopeRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/infrastructure/assessment-scope.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:14631278d4f510bb038caaa5d691dd8b01bba21b7f060be146c6212043b992fe",
+      "sizeBytes": 842
+    },
+    {
+      "path": "src/modules/assessments/lib/assessments.helpers.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5c784a293be1edbc564fe531d026c389b5ef10c6badd2fd85d07c0689effa26f",
+      "sizeBytes": 6688
+    },
+    {
+      "path": "src/modules/assessments/lib/assessments.helpers.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveAssessmentPage"
+        },
+        {
+          "kind": "function",
+          "name": "toAssessmentCategory"
+        },
+        {
+          "kind": "function",
+          "name": "toAssessmentScale"
+        },
+        {
+          "kind": "function",
+          "name": "toAssessmentMetric"
+        },
+        {
+          "kind": "function",
+          "name": "toAssessmentTemplate"
+        },
+        {
+          "kind": "function",
+          "name": "toAssessmentPeriod"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/lib/assessments.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:13330f24ed149d019d76e48614420c61594e45962e1e01331faab1c0d241dc70",
+      "sizeBytes": 6024
+    },
+    {
+      "path": "src/modules/assessments/model/assessments.constants.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ASSESSMENTS_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_CATALOG_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_CATEGORIES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SCALES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_METRICS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_METRIC_VERSIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_METRIC_ARCHIVE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_TEMPLATES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_TEMPLATE_VERSIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_TEMPLATE_PUBLISH_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_PERIODS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "METRIC_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "TEMPLATE_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "KEY_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "KEY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "DESCRIPTION_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "GUIDANCE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "COHORT_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "TAG_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "TAGS_MAX_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "APPLICABILITY_MAX_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "TEMPLATE_METRICS_MAX_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "TEMPLATE_CATEGORIES_MAX_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "EVALUATOR_ROLES_MAX_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "WEIGHT_TOTAL"
+        },
+        {
+          "kind": "const",
+          "name": "WEIGHT_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "WEIGHT_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "SORT_ORDER_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "SORT_ORDER_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "VERSION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "DATE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "DEFINITION_KEY_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_VALIDATION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_VALIDATION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SCOPE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SCOPE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_METRIC_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_METRIC_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_METRIC_IN_USE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_METRIC_IN_USE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_TEMPLATE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_TEMPLATE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_TEMPLATE_LOCKED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_TEMPLATE_LOCKED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_DUPLICATE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_DUPLICATE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "METRIC_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "METRIC_VERSION_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "METRIC_ARCHIVED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "TEMPLATE_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "TEMPLATE_VERSION_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "TEMPLATE_PUBLISHED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "PERIOD_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "METRIC_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "TEMPLATE_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "PERIOD_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "TEMPLATE_PUBLISHED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "CATEGORY_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "SCALE_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "METRIC_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "TEMPLATE_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "PERIOD_COLUMNS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:762c8a8419862e796ed901649e31c61078c5216c29a94dc931764b9261452399",
+      "sizeBytes": 5549
+    },
+    {
+      "path": "src/modules/assessments/model/assessments.enums.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "AssessmentDirection"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_DIRECTION_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AssessmentStatus"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AssessmentTemplateStatus"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_TEMPLATE_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AssessmentScaleKind"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SCALE_KIND_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0610ad71a7724975e06d3b8f84389afa43ac27ca30bcee930876c42c36bb4db0",
+      "sizeBytes": 1019
+    },
+    {
+      "path": "src/modules/assessments/model/assessments.rows.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CategoryRow"
+        },
+        {
+          "kind": "interface",
+          "name": "ScaleRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MetricRow"
+        },
+        {
+          "kind": "interface",
+          "name": "TemplateRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CategoryWeightRow"
+        },
+        {
+          "kind": "interface",
+          "name": "TemplateMetricRow"
+        },
+        {
+          "kind": "interface",
+          "name": "PeriodRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3482eb4c027952cc21c55f2f3bf0d972aeba1120b2e484e58255ca30c8710253",
+      "sizeBytes": 2833
+    },
+    {
+      "path": "src/modules/assessments/model/assessments.types.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "AssessmentCategory"
+        },
+        {
+          "kind": "interface",
+          "name": "AssessmentScale"
+        },
+        {
+          "kind": "interface",
+          "name": "AssessmentMetric"
+        },
+        {
+          "kind": "interface",
+          "name": "CategoryWeightInput"
+        },
+        {
+          "kind": "interface",
+          "name": "TemplateMetricInput"
+        },
+        {
+          "kind": "interface",
+          "name": "AssessmentTemplate"
+        },
+        {
+          "kind": "interface",
+          "name": "AssessmentPeriod"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateMetricCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "ArchiveMetricCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateTemplateCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "PublishTemplateCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CreatePeriodCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "NewMetric"
+        },
+        {
+          "kind": "interface",
+          "name": "MetricArchive"
+        },
+        {
+          "kind": "interface",
+          "name": "NewTemplate"
+        },
+        {
+          "kind": "interface",
+          "name": "TemplatePublish"
+        },
+        {
+          "kind": "interface",
+          "name": "NewPeriod"
+        },
+        {
+          "kind": "interface",
+          "name": "PagedResult"
+        },
+        {
+          "kind": "interface",
+          "name": "TemplateRelations"
+        },
+        {
+          "kind": "type",
+          "name": "AssessmentCategoryPage"
+        },
+        {
+          "kind": "type",
+          "name": "AssessmentScalePage"
+        },
+        {
+          "kind": "type",
+          "name": "AssessmentMetricPage"
+        },
+        {
+          "kind": "type",
+          "name": "AssessmentTemplatePage"
+        },
+        {
+          "kind": "type",
+          "name": "AssessmentPeriodPage"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:20b90a8eec5c72c804f05c19798ad3132920acd03573be74f3970412fed5f441",
+      "sizeBytes": 6364
+    },
+    {
       "path": "src/modules/auth/adapters/jwt-token.adapter.spec.ts",
       "root": "modules",
       "module": "auth",
@@ -3279,8 +5315,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:dae0868f4020da56e51d7a51635cd6c012581c86b2c2d1178f952f796ab3aa63",
-      "sizeBytes": 5046
+      "hash": "sha256:c40ed1cbd89acd18e53d9f905a3771261b95ce6200b8a1c288d91cffa150b263",
+      "sizeBytes": 7624
     },
     {
       "path": "src/modules/identity/api/dto/accept-invitation.dto.ts",
@@ -3300,6 +5336,23 @@
       "sizeBytes": 1257
     },
     {
+      "path": "src/modules/identity/api/dto/auth-session-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AuthSessionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:28fad3c8fad777ae9d11794b967d2186631b590e4263c7e0186801ca8854e696",
+      "sizeBytes": 358
+    },
+    {
       "path": "src/modules/identity/api/dto/create-invitation.dto.ts",
       "root": "modules",
       "module": "identity",
@@ -3315,6 +5368,23 @@
       "kind": "source",
       "hash": "sha256:0bb7c9f092fdd857b69d4b52b47c5ba22422f706b527418267dab521d253a1cd",
       "sizeBytes": 515
+    },
+    {
+      "path": "src/modules/identity/api/dto/device-session-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DeviceSessionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2e0fe9dd11fd77b15f08b20c7d4bc66fc1f6cf01fdbf9199c7074cdaa19f118f",
+      "sizeBytes": 399
     },
     {
       "path": "src/modules/identity/api/dto/forgot-password.dto.ts",
@@ -3349,6 +5419,52 @@
       "kind": "source",
       "hash": "sha256:57908556cad7078ab11c6575c2f988b5ac826b7390217872de8b10802e27534f",
       "sizeBytes": 621
+    },
+    {
+      "path": "src/modules/identity/api/dto/invitation-token-params.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvitationTokenParamsDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:af857c572650b3ee02d22792df8d5a39a2ffe7434fc7f7b1ab974e7c362ff94a",
+      "sizeBytes": 486
+    },
+    {
+      "path": "src/modules/identity/api/dto/login-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AuthTokensDto"
+        },
+        {
+          "kind": "class",
+          "name": "AuthMembershipDto"
+        },
+        {
+          "kind": "class",
+          "name": "AuthUserDto"
+        },
+        {
+          "kind": "class",
+          "name": "LoginResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b670f665045696365331228a528a63e5470205383e92dbad3989eedc28481eeb",
+      "sizeBytes": 1239
     },
     {
       "path": "src/modules/identity/api/dto/login.dto.ts",
@@ -3419,6 +5535,23 @@
       "sizeBytes": 424
     },
     {
+      "path": "src/modules/identity/api/dto/public-invitation-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublicInvitationResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ce97e03a52afdfdc49982c7f4a42da35c42c91ff5a1a0518b516eac0c14733a7",
+      "sizeBytes": 446
+    },
+    {
       "path": "src/modules/identity/api/dto/refresh.dto.ts",
       "root": "modules",
       "module": "identity",
@@ -3453,21 +5586,55 @@
       "sizeBytes": 810
     },
     {
-      "path": "src/modules/identity/api/dto/session-response.dto.ts",
+      "path": "src/modules/identity/api/dto/revoke-other-sessions-response.dto.ts",
       "root": "modules",
       "module": "identity",
       "layer": "api-dto",
       "symbols": [
         {
           "kind": "class",
-          "name": "SessionResponseDto"
+          "name": "RevokeOtherSessionsResponseDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9b365576b6a19f6e002d34137194141b6073cb0309150bda71367776f02a5e2e",
-      "sizeBytes": 354
+      "hash": "sha256:465c40da929937ce28e959b7d0876db618712561d56c953458851ab720603575",
+      "sizeBytes": 152
+    },
+    {
+      "path": "src/modules/identity/api/dto/session-list-query.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionListQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e8e237437a4532082557dc25f6d0abe49592419a97975b4e71f4e99bcd3636b5",
+      "sizeBytes": 893
+    },
+    {
+      "path": "src/modules/identity/api/dto/session-list-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionListResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fe51822c214d607ca37b8af593f5bd382d5efa88a5594696e5cca4132a5c4ec4",
+      "sizeBytes": 437
     },
     {
       "path": "src/modules/identity/api/invitations.controller.ts",
@@ -3483,8 +5650,25 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:3d8b07790e59227622367f362f4fd4c53f6f34aa41944c2e6b69bb1029268d32",
-      "sizeBytes": 3828
+      "hash": "sha256:974ea2e0f0ec30db2603331ac6ac771e85188b569165f5b7402cb038a8f26cd1",
+      "sizeBytes": 3845
+    },
+    {
+      "path": "src/modules/identity/api/public-invitations.controller.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublicInvitationsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:34b49dbbbcc9cbf98bccb813d3b9e3e2f59cf9ae1ed1fecc6d65b9ae54f2096a",
+      "sizeBytes": 1124
     },
     {
       "path": "src/modules/identity/application/accept-invitation.use-case.spec.ts",
@@ -3582,8 +5766,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:fda985fa3a19c72ccb05b2dfc48a1c1c6b47e3787b3b173fa51ed113513b6da8",
-      "sizeBytes": 1997
+      "hash": "sha256:3029e67c418f23ffed5dab44ed8c41d645cdb0c764b577fa47edea4e3ec69818",
+      "sizeBytes": 2476
     },
     {
       "path": "src/modules/identity/application/get-current-principal.use-case.ts",
@@ -3599,8 +5783,66 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/get-current-principal.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:09e1d896d6b3b71dd9c7ce047d147113d55f3f93acc583815a8165bc3c125de2",
-      "sizeBytes": 1345
+      "hash": "sha256:2a6514fae9ace7f3a50e1dc9184ef691185cd8b5636ef8ec96e9df580286ade3",
+      "sizeBytes": 1794
+    },
+    {
+      "path": "src/modules/identity/application/get-invitation-details.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:aa32caea5c787a4f12b20fdc1b73808014c0d1a43bd72a378150431929f84f28",
+      "sizeBytes": 2427
+    },
+    {
+      "path": "src/modules/identity/application/get-invitation-details.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GetInvitationDetailsUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/get-invitation-details.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d193229c6db69bc5acb5625024e286c617a38c6a5b769fe161e366c96c778c0f",
+      "sizeBytes": 1565
+    },
+    {
+      "path": "src/modules/identity/application/list-sessions.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5d0bd38747772f73ed420f22a559b37b669192d6f722ffdeb62f8c29cb1f23e2",
+      "sizeBytes": 2342
+    },
+    {
+      "path": "src/modules/identity/application/list-sessions.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSessionsUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/list-sessions.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7322a03d7ada931c8b43cb13772468150eca8ac03c7e3a894dfaf611738b1656",
+      "sizeBytes": 1380
     },
     {
       "path": "src/modules/identity/application/login.use-case.spec.ts",
@@ -3611,8 +5853,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:e28fc8ee8faea97e36e5d1a2beb530c6e9285a272b3fd75fed208c88dc3a0996",
-      "sizeBytes": 7357
+      "hash": "sha256:5f9200eb6a6ac4473d9a95dae5d1a9053d12206ab2e7ba9987178b4b41a2cc4f",
+      "sizeBytes": 9003
     },
     {
       "path": "src/modules/identity/application/login.use-case.ts",
@@ -3628,8 +5870,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/login.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:19da90b6b8868a51f6c8bc05b3afa2959837b577700c3f2b719a9173b0af9791",
-      "sizeBytes": 5506
+      "hash": "sha256:3a1004abf6e52d4504a993b81521a445e988d215d0395450a319857c554b5497",
+      "sizeBytes": 6157
     },
     {
       "path": "src/modules/identity/application/logout-all.use-case.spec.ts",
@@ -3835,6 +6077,64 @@
       "sizeBytes": 2310
     },
     {
+      "path": "src/modules/identity/application/revoke-other-sessions.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c7431dbc8ac33f2dac445fb8c17d987502bd794a1e22cda21e23ca93bbc2b2dc",
+      "sizeBytes": 1958
+    },
+    {
+      "path": "src/modules/identity/application/revoke-other-sessions.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RevokeOtherSessionsUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/revoke-other-sessions.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a3bfd1cc72dac7312577b471369a2899398c6dc398243f1d8d00994230feee5f",
+      "sizeBytes": 1762
+    },
+    {
+      "path": "src/modules/identity/application/revoke-session.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:11fcbdc66891ced54de8cfc1b31904d27300171687fafb569f36a2eea273350a",
+      "sizeBytes": 1947
+    },
+    {
+      "path": "src/modules/identity/application/revoke-session.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RevokeSessionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/revoke-session.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b3731bcf57dcdab36b239e885d4068d6eabb2d7a55c018f39c914beabeea372a",
+      "sizeBytes": 1639
+    },
+    {
       "path": "src/modules/identity/application/security-audit.service.spec.ts",
       "root": "modules",
       "module": "identity",
@@ -3872,8 +6172,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:82acffa7b72c7216dfa3da8bf7a1c8c0614884da056d43ce8be80a48da9de852",
-      "sizeBytes": 3259
+      "hash": "sha256:abf221cf82310d74aba5e17faa296dd35f0ca4bdfba44c613b3e0284011cad3f",
+      "sizeBytes": 3290
     },
     {
       "path": "src/modules/identity/application/session-issuer.service.ts",
@@ -3889,8 +6189,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/session-issuer.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:8e77ce46240fe7a736e8efe0453a64dae6fbdc912e6cc85a16c9f6fab0dbb167",
-      "sizeBytes": 2857
+      "hash": "sha256:9ce9ae3e891322eb6197a57a7c4ab2217baa489a22e5aaad54e2adb3bf64f09d",
+      "sizeBytes": 2887
     },
     {
       "path": "src/modules/identity/domain/failed-login.policy.spec.ts",
@@ -4240,6 +6540,64 @@
       "sizeBytes": 477
     },
     {
+      "path": "src/modules/identity/errors/session-context-required.error.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:955d42965eb1fe4e9c3cb49ed263150db7ce9aa609d4eb3c6a6e87138d6c62bd",
+      "sizeBytes": 676
+    },
+    {
+      "path": "src/modules/identity/errors/session-context-required.error.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionContextRequiredError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/errors/session-context-required.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:feb9d0aa9fb7c4d46fba8708d72187e1846ecc38b861ebc2241b4eef8e956daa",
+      "sizeBytes": 389
+    },
+    {
+      "path": "src/modules/identity/errors/session-not-found.error.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:22fc282ac919d3f33f92d5d77d098522cfae049645e015811f9def7157edbec4",
+      "sizeBytes": 617
+    },
+    {
+      "path": "src/modules/identity/errors/session-not-found.error.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionNotFoundError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/errors/session-not-found.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:afdf810b488b71feb74b8ff5e125fe07d9d34423fdc67f5d5365e237f90834a3",
+      "sizeBytes": 324
+    },
+    {
       "path": "src/modules/identity/identity.module.ts",
       "root": "modules",
       "module": "identity",
@@ -4253,8 +6611,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fa91e1379de2f9f5418c6f600b109fe0002e7ed91c03f9763fee39952b3bf827",
-      "sizeBytes": 3366
+      "hash": "sha256:f405b8ea63babedde6683d55e1f5dcbf85c6c259117e0dee92036221da9aad2d",
+      "sizeBytes": 4138
     },
     {
       "path": "src/modules/identity/index.ts",
@@ -4265,8 +6623,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:46a32423ff0af57d9bd4cb3b4da715e328fc0118be1531f4e4913c8736377bb5",
-      "sizeBytes": 52
+      "hash": "sha256:bd56392ef17538fb6f19bfeb608399e67938cb0778b5946d720bf497f3b94b0b",
+      "sizeBytes": 180
     },
     {
       "path": "src/modules/identity/infrastructure/failed-login-state.repository.spec.ts",
@@ -4306,8 +6664,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:1a152c66d24708f2d4d917eb7576e5f3f5cf259eecc3f0102d3995a0f391d325",
-      "sizeBytes": 8091
+      "hash": "sha256:7aec60cc2477a14f90ab3a07ae967d5ef93d3e4cfc133f214ae48282a7c1658c",
+      "sizeBytes": 9513
     },
     {
       "path": "src/modules/identity/infrastructure/invitation.repository.ts",
@@ -4323,8 +6681,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/infrastructure/invitation.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:ee7ff4bc66483c7b676bd2c55006e273d385a902f37c86c29f49a9adb23c8113",
-      "sizeBytes": 4755
+      "hash": "sha256:5d1ad41ab7a46039673fa520204ad62ff742f66e473851307c1c9d47606ea9a7",
+      "sizeBytes": 5531
     },
     {
       "path": "src/modules/identity/infrastructure/password-credential.repository.spec.ts",
@@ -4393,8 +6751,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:3d7b2835bc20df2fc241ae50d7f3563157c007d8908245eb7b9b1b3e1218623a",
-      "sizeBytes": 5951
+      "hash": "sha256:c8f133b96fffb64ea0f38808010089d77d9a139bb147fcd7949253689281847f",
+      "sizeBytes": 9819
     },
     {
       "path": "src/modules/identity/infrastructure/refresh-session.repository.ts",
@@ -4410,8 +6768,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/infrastructure/refresh-session.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:c75bec8a34e5a364dafe129f72190c0c14432ba409e5c75d386166ac33f1912a",
-      "sizeBytes": 3745
+      "hash": "sha256:750e371188009ea970de79825d5b8b0305f2dacdb47dc6f4dfeb9d60cf4089fd",
+      "sizeBytes": 5867
     },
     {
       "path": "src/modules/identity/infrastructure/security-event.repository.spec.ts",
@@ -4533,8 +6891,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:1289253009df8e6c8bf6e55548b988bf30a0f58f567d37eec9b2951780506811",
-      "sizeBytes": 1731
+      "hash": "sha256:4f83c5e0dc623503705a6505547c4ff1cb91b10bae37d8e27f270792c5bfe8d8",
+      "sizeBytes": 4040
     },
     {
       "path": "src/modules/identity/lib/identity.mapper.ts",
@@ -4552,14 +6910,30 @@
         },
         {
           "kind": "function",
+          "name": "buildAuthUserPayload"
+        },
+        {
+          "kind": "function",
+          "name": "toAccountState"
+        },
+        {
+          "kind": "function",
+          "name": "buildLoginResponse"
+        },
+        {
+          "kind": "function",
           "name": "toInvitationSummary"
+        },
+        {
+          "kind": "function",
+          "name": "toDeviceSessionList"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/identity/lib/identity.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:2a8371720194ce6098c500bd5e564cac8fb96f8cc42d3e1d8ecd34ff263aa588",
-      "sizeBytes": 984
+      "hash": "sha256:a8dc0f537d768ffec7aa9925463be12e1306e0d73f3b1d9db45382c9175de265",
+      "sizeBytes": 3178
     },
     {
       "path": "src/modules/identity/lib/token-hash.spec.ts",
@@ -4630,11 +7004,31 @@
         },
         {
           "kind": "const",
+          "name": "AUTH_SESSIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_SESSION_REVOKE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_SESSIONS_REVOKE_OTHERS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_PUBLIC_INVITATION_ROUTE"
+        },
+        {
+          "kind": "const",
           "name": "AUTH_FORGOT_PASSWORD_ROUTE"
         },
         {
           "kind": "const",
           "name": "AUTH_RESET_PASSWORD_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_SESSION_ID_PARAM"
         },
         {
           "kind": "const",
@@ -4690,6 +7084,30 @@
         },
         {
           "kind": "const",
+          "name": "SESSION_LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "UNKNOWN_DEVICE_LABEL"
+        },
+        {
+          "kind": "const",
+          "name": "UNKNOWN_APPROXIMATE_LOCATION"
+        },
+        {
+          "kind": "const",
           "name": "MILLISECONDS_PER_SECOND"
         },
         {
@@ -4727,6 +7145,22 @@
         {
           "kind": "const",
           "name": "LOGOUT_ALL_ACK_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_CONTEXT_REQUIRED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_CONTEXT_REQUIRED_MESSAGE_KEY"
         },
         {
           "kind": "const",
@@ -4780,8 +7214,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4ce9067c1c96d9fea1590af0da2b77a76d4e891b00a6a38e4319128a8eebbb58",
-      "sizeBytes": 3778
+      "hash": "sha256:0c42c1b28effd40aa11190918610c9bdb12effa370c321c75fea701166e48f9b",
+      "sizeBytes": 4738
     },
     {
       "path": "src/modules/identity/model/identity.enums.ts",
@@ -4796,6 +7230,14 @@
         {
           "kind": "const",
           "name": "USER_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AccountState"
+        },
+        {
+          "kind": "const",
+          "name": "ACCOUNT_STATE_VALUES"
         },
         {
           "kind": "enum",
@@ -4817,8 +7259,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:3f58669576a781c4bd64977ba74d1edefa5a77b9d299b301ef291031e9a11f6e",
-      "sizeBytes": 1157
+      "hash": "sha256:01e169d2d5a8a24e034cbe8141bc61adfa87f5e86f579cd1f750e85e1f4a852e",
+      "sizeBytes": 1569
     },
     {
       "path": "src/modules/identity/model/identity.rows.ts",
@@ -4840,6 +7282,10 @@
         },
         {
           "kind": "interface",
+          "name": "PublicInvitationRow"
+        },
+        {
+          "kind": "interface",
           "name": "RefreshSessionRow"
         },
         {
@@ -4853,13 +7299,17 @@
         {
           "kind": "interface",
           "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdentifierRow"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:69acebd332029bd4bf5486acc95d5694f473eb81b047f66651a01bfdbde27cd8",
-      "sizeBytes": 1861
+      "hash": "sha256:4a9d51e9f702ab2971619386a881dbf579299ac09e0da2df83f621492b8fb1bc",
+      "sizeBytes": 2032
     },
     {
       "path": "src/modules/identity/model/identity.types.ts",
@@ -4882,6 +7332,10 @@
         {
           "kind": "interface",
           "name": "Invitation"
+        },
+        {
+          "kind": "interface",
+          "name": "PublicInvitationRecord"
         },
         {
           "kind": "interface",
@@ -4960,6 +7414,26 @@
           "name": "SessionOutcome"
         },
         {
+          "kind": "type",
+          "name": "LoginOutcome"
+        },
+        {
+          "kind": "interface",
+          "name": "AuthTokensPayload"
+        },
+        {
+          "kind": "interface",
+          "name": "AuthMembershipPayload"
+        },
+        {
+          "kind": "interface",
+          "name": "AuthUserPayload"
+        },
+        {
+          "kind": "interface",
+          "name": "LoginResponse"
+        },
+        {
           "kind": "interface",
           "name": "Principal"
         },
@@ -4970,13 +7444,37 @@
         {
           "kind": "interface",
           "name": "InvitationSummary"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionListQuery"
+        },
+        {
+          "kind": "interface",
+          "name": "RefreshSessionPage"
+        },
+        {
+          "kind": "interface",
+          "name": "DeviceSessionSummary"
+        },
+        {
+          "kind": "interface",
+          "name": "DeviceSessionList"
+        },
+        {
+          "kind": "interface",
+          "name": "RevokeOtherSessionsResult"
+        },
+        {
+          "kind": "interface",
+          "name": "PublicInvitationDetails"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1708bbd0cf2328007ccc057060b89c66c9464c4e2130af32450b2c83dac3a187",
-      "sizeBytes": 5178
+      "hash": "sha256:22ecb505de9aae94d58a13d8f7136cfd6590cf990968f08893cb8fa2e0ea3e94",
+      "sizeBytes": 6947
     },
     {
       "path": "src/modules/members/adapters/signed-url-media-storage.adapter.spec.ts",
@@ -5146,7 +7644,7 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "StatusEventResponseDto"
+          "name": "MemberStatusEventResponseDto"
         },
         {
           "kind": "class",
@@ -5156,8 +7654,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1baeeded3cdaeabdc260d765d68e9a511264b202e7f84942e9382d5b4ec394b6",
-      "sizeBytes": 1107
+      "hash": "sha256:bf71ddd2aefb2b2ef74c697a2eba73ad305f62cc300803663dd1404dff9cc1f8",
+      "sizeBytes": 1125
     },
     {
       "path": "src/modules/members/api/dto/member-view-response.dto.ts",
@@ -7486,6 +9984,27 @@
       "sizeBytes": 688
     },
     {
+      "path": "src/modules/platform/api/dto/quiet-hours.dto.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateQuietHoursDto"
+        },
+        {
+          "kind": "class",
+          "name": "QuietHoursResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9b7783d09349ef676f35276e1204fc4483d20e6de65137657b7be605a1e048b2",
+      "sizeBytes": 1223
+    },
+    {
       "path": "src/modules/platform/api/dto/replay-response.dto.ts",
       "root": "modules",
       "module": "platform",
@@ -7533,8 +10052,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d463d42affa346169aa408156d2408c59f30d032314f901885687a47c2e17c06",
-      "sizeBytes": 3583
+      "hash": "sha256:33ea540282155e9096d19c8d89d0c41fbc4f793f8a4ba1a8a7b8d7b1b06525a5",
+      "sizeBytes": 4755
     },
     {
       "path": "src/modules/platform/api/outbox-admin.controller.ts",
@@ -7736,8 +10255,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:158b2912bb5673edd1f5f5597e8399588cdc4808eb72ee345ae437f43431282f",
-      "sizeBytes": 3967
+      "hash": "sha256:09a4a9bdd78b8967624dcf9919eadac2c6cefe2def31bc14e5beb2f96a6c51ef",
+      "sizeBytes": 5532
     },
     {
       "path": "src/modules/platform/application/notification-projection.service.ts",
@@ -7753,8 +10272,37 @@
       "hasSpec": true,
       "specPath": "src/modules/platform/application/notification-projection.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:826639fd0a78f662866959d156cfb8e9ac96079f023a94a8d09ce45f9d1f73b5",
-      "sizeBytes": 3630
+      "hash": "sha256:2dec9e07fd982a946fec84354f2058c4c3defc91ffdee746c6043bd3b806641a",
+      "sizeBytes": 5674
+    },
+    {
+      "path": "src/modules/platform/application/notification-quiet-hours.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:fc1d9c9ceab6fa6beb1edda61804a78b51cfa3cbf6bad5c40549abd792937164",
+      "sizeBytes": 3387
+    },
+    {
+      "path": "src/modules/platform/application/notification-quiet-hours.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationQuietHoursService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/notification-quiet-hours.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:52f216aaeb470cdc01c1502b4bccc87a81fa18157e9ac229da9d63780324806c",
+      "sizeBytes": 2865
     },
     {
       "path": "src/modules/platform/application/outbox-metrics.service.spec.ts",
@@ -7931,6 +10479,39 @@
       "sizeBytes": 1080
     },
     {
+      "path": "src/modules/platform/domain/notification-quiet-hours.policy.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:93a2ecb8049183522a5884a976a481ce8a7ea251844339dc09cc864be255d1b2",
+      "sizeBytes": 1838
+    },
+    {
+      "path": "src/modules/platform/domain/notification-quiet-hours.policy.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isWithinQuietHours"
+        },
+        {
+          "kind": "function",
+          "name": "isDeliveryAllowed"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/domain/notification-quiet-hours.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:02d132b50ac95b15b49ff0278303ee711f0b7ff1cfff87597e5d2c49f78e3855",
+      "sizeBytes": 1568
+    },
+    {
       "path": "src/modules/platform/domain/notification-routing.policy.spec.ts",
       "root": "modules",
       "module": "platform",
@@ -7939,8 +10520,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:8b0112d7f55257771dac91f9e8a6b1368fa7bb5270252d61b18512bd9f362009",
-      "sizeBytes": 2318
+      "hash": "sha256:8c0a270932356eec5f9bfd28f338d9d9c0c1d15614c59b335c4892a64c74cbae",
+      "sizeBytes": 2607
     },
     {
       "path": "src/modules/platform/domain/notification-routing.policy.ts",
@@ -7959,13 +10540,17 @@
         {
           "kind": "function",
           "name": "buildDedupeKey"
+        },
+        {
+          "kind": "function",
+          "name": "buildDefaultDedupeSeed"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/platform/domain/notification-routing.policy.spec.ts",
       "kind": "source",
-      "hash": "sha256:a8c63dbdbc845ecb4104a216dc66291e3b90e973550ca8534ee59969a32a1d55",
-      "sizeBytes": 1340
+      "hash": "sha256:f22b31d5652bc0abf892d662a36b1184f67e60ec5f51a5412c474c9173d8e4a1",
+      "sizeBytes": 1547
     },
     {
       "path": "src/modules/platform/domain/outbox-backoff.policy.spec.ts",
@@ -8092,6 +10677,23 @@
       "sizeBytes": 429
     },
     {
+      "path": "src/modules/platform/errors/notification-quiet-hours.error.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationQuietHoursError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b336baa0fff551686b2168e6dcb649e32ddeedc7642910dc603025cd26c072d6",
+      "sizeBytes": 460
+    },
+    {
       "path": "src/modules/platform/errors/outbox-event-not-found.error.spec.ts",
       "root": "modules",
       "module": "platform",
@@ -8129,8 +10731,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1805ac3721b4fea22413226d42d722a1ece2b97ba21a9f3e89670d9b8a66eab7",
-      "sizeBytes": 645
+      "hash": "sha256:d627c0c90d0287a3d096e9b68ffdfe900dc51286cec88405680e95fd58fdb38d",
+      "sizeBytes": 741
     },
     {
       "path": "src/modules/platform/infrastructure/audit-log.repository.spec.ts",
@@ -8191,6 +10793,35 @@
       "sizeBytes": 2373
     },
     {
+      "path": "src/modules/platform/infrastructure/notification-audience.repository.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bcb7d5721ceaafbcd3f07c08ed9c7636a34ad5360e57a2900351eb76a5e5ce68",
+      "sizeBytes": 788
+    },
+    {
+      "path": "src/modules/platform/infrastructure/notification-audience.repository.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationAudienceRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/infrastructure/notification-audience.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:84108a269e147727155ce36d6bed16987d757fff3a48754dc1fe1040d14fdbfe",
+      "sizeBytes": 1067
+    },
+    {
       "path": "src/modules/platform/infrastructure/notification-delivery.repository.spec.ts",
       "root": "modules",
       "module": "platform",
@@ -8247,6 +10878,35 @@
       "kind": "source",
       "hash": "sha256:30b78ea5f62e0443722eebb6d80cfbdda6c7e24647542f9df8caeac3d1cc3587",
       "sizeBytes": 2110
+    },
+    {
+      "path": "src/modules/platform/infrastructure/notification-quiet-hours.repository.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:39483fd25a90499a195697fc563b86bd1b9d1a0ef04467eabf710ec0c3908e36",
+      "sizeBytes": 2076
+    },
+    {
+      "path": "src/modules/platform/infrastructure/notification-quiet-hours.repository.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationQuietHoursRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/infrastructure/notification-quiet-hours.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c8ddecd2c62e6aae8117c4568548f3c3da9b092bad38bc0f81850cc3ffe31f39",
+      "sizeBytes": 1937
     },
     {
       "path": "src/modules/platform/infrastructure/notification.repository.spec.ts",
@@ -8452,6 +11112,10 @@
         },
         {
           "kind": "const",
+          "name": "NOTIFICATION_QUIET_HOURS_ROUTE"
+        },
+        {
+          "kind": "const",
           "name": "AUDIT_ROUTE"
         },
         {
@@ -8508,11 +11172,43 @@
         },
         {
           "kind": "const",
+          "name": "NOTIFICATION_AUDIENCE_PAGE_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_AUDIENCE_MAX_RECIPIENTS"
+        },
+        {
+          "kind": "const",
           "name": "CATEGORY_MAX_LENGTH"
         },
         {
           "kind": "const",
           "name": "CHANNEL_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "TIMEZONE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "LOCAL_TIME_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_QUIET_HOURS_TIMEZONE"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_QUIET_HOURS_START"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_QUIET_HOURS_END"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_URGENT_CANCELLATION_OVERRIDE"
         },
         {
           "kind": "const",
@@ -8556,6 +11252,38 @@
         },
         {
           "kind": "const",
+          "name": "PRACTICE_PUBLISHED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_RESCHEDULED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_CANCELLED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_VENUE_CHANGED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_UPCOMING_REMINDER_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_NO_RESPONSE_REMINDER_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_CUTOFF_REMINDER_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_CORRECTED_EVENT"
+        },
+        {
+          "kind": "const",
           "name": "NOTIF_MEMBER_INVITED_TITLE"
         },
         {
@@ -8580,7 +11308,67 @@
         },
         {
           "kind": "const",
+          "name": "NOTIF_PRACTICE_PUBLISHED_TITLE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_PUBLISHED_BODY"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_RESCHEDULED_TITLE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_RESCHEDULED_BODY"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_CANCELLED_TITLE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_CANCELLED_BODY"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_VENUE_CHANGED_TITLE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_VENUE_CHANGED_BODY"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_REMINDER_TITLE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_UPCOMING_BODY"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_NO_RESPONSE_BODY"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_PRACTICE_CUTOFF_BODY"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_ATTENDANCE_CORRECTED_TITLE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIF_ATTENDANCE_CORRECTED_BODY"
+        },
+        {
+          "kind": "const",
           "name": "RECIPIENT_PAYLOAD_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "DEDUPE_PAYLOAD_KEY"
         },
         {
           "kind": "interface",
@@ -8624,6 +11412,10 @@
         },
         {
           "kind": "const",
+          "name": "QUIET_HOURS_COLUMNS"
+        },
+        {
+          "kind": "const",
           "name": "IDEMPOTENCY_CONFLICT_MESSAGE"
         },
         {
@@ -8648,14 +11440,22 @@
         },
         {
           "kind": "const",
+          "name": "NOTIFICATION_QUIET_HOURS_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_QUIET_HOURS_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
           "name": "OUTBOX_HANDLER_FAILED_LOG"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:53ba04d4cbe2d1efcd7c91533f9a40a16441690b00f0733e749fedafc46f96b2",
-      "sizeBytes": 7394
+      "hash": "sha256:3b3163bbff5d3eb29885517ccad080c2e09a6f857c2a9a95f7f82d230fb0e038",
+      "sizeBytes": 12797
     },
     {
       "path": "src/modules/platform/model/platform.enums.ts",
@@ -8704,6 +11504,10 @@
           "name": "NotificationCategory"
         },
         {
+          "kind": "enum",
+          "name": "NotificationAudience"
+        },
+        {
           "kind": "const",
           "name": "NOTIFICATION_CATEGORY_VALUES"
         },
@@ -8719,8 +11523,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6b4ac4c1b1643d6cfac163385ab650ab57aa42b9a3b61a26340f6a2b542a2f50",
-      "sizeBytes": 2340
+      "hash": "sha256:41aa12affaef8f015b1ceeef38338f50611d01f40052a86351b730ed9dfa6058",
+      "sizeBytes": 2476
     },
     {
       "path": "src/modules/platform/model/platform.rows.ts",
@@ -8754,6 +11558,14 @@
         },
         {
           "kind": "interface",
+          "name": "QuietHoursRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AudienceUserRow"
+        },
+        {
+          "kind": "interface",
           "name": "IdRow"
         },
         {
@@ -8768,8 +11580,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6ddfa4f29cef19c1b12f89aba58fe4b32aa68943310acb2d5dfa6a7dcd5a5b57",
-      "sizeBytes": 2559
+      "hash": "sha256:026ebe2e3ec3aae08148ab8b6f58468c25e0c7dccf77513e5883c59c4275db22",
+      "sizeBytes": 2832
     },
     {
       "path": "src/modules/platform/model/platform.types.ts",
@@ -8863,6 +11675,14 @@
         },
         {
           "kind": "interface",
+          "name": "NotificationQuietHours"
+        },
+        {
+          "kind": "interface",
+          "name": "QuietHoursUpdate"
+        },
+        {
+          "kind": "interface",
           "name": "NewDelivery"
         },
         {
@@ -8897,8 +11717,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6d7af60e873bde2b1c129d712aaf3a3ef72fd41ed177cd984f193e24b557ac9d",
-      "sizeBytes": 9189
+      "hash": "sha256:2a8dfae84ce07d71cb889bcec1425ddd4ed07ea536528760e4e7aad375b67dd8",
+      "sizeBytes": 9707
     },
     {
       "path": "src/modules/platform/platform.module.ts",
@@ -8914,8 +11734,37 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fa50d1e70a6fecd5c939a724e62cb4e39c27f033ce0c0e3527e56772e480224b",
-      "sizeBytes": 3534
+      "hash": "sha256:59b744a7aba1725ee19ed2fe372122ce9d8a0002eedb0838fb5b2db21bbd0e20",
+      "sizeBytes": 3979
+    },
+    {
+      "path": "src/modules/practices/adapters/calendar-token.adapter.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "adapter",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:63d5331973b763abdceb7b57c20bd068375632eeadc6016e4695c245c40030ac",
+      "sizeBytes": 856
+    },
+    {
+      "path": "src/modules/practices/adapters/calendar-token.adapter.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "adapter",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalendarTokenAdapter"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/adapters/calendar-token.adapter.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ff9e0921185770ada71d4fbe88cec7e02ee1ad92d9ca4654d161c6addb087605",
+      "sizeBytes": 691
     },
     {
       "path": "src/modules/practices/api/agenda-block.controller.ts",
@@ -9258,6 +12107,27 @@
       "sizeBytes": 404
     },
     {
+      "path": "src/modules/practices/api/dto/calendar-feed-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalendarFeedResponseDto"
+        },
+        {
+          "kind": "class",
+          "name": "CalendarFeedRevokeResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1c50fba6a824df4f01fcc0c497fd9048a92bee7df053d60cac48f978d44c7345",
+      "sizeBytes": 866
+    },
+    {
       "path": "src/modules/practices/api/dto/complete-block.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -9341,6 +12211,23 @@
       "kind": "source",
       "hash": "sha256:af5f244263b88264cc69d0ecb6cc61e2c78eae07bcab9252b44792fccb1a8969",
       "sizeBytes": 189
+    },
+    {
+      "path": "src/modules/practices/api/dto/create-calendar-feed.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateCalendarFeedDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2943afe2311f30c899a57c19f98b90c241b4700eae0248e5a5a48600ff8ac6c9",
+      "sizeBytes": 994
     },
     {
       "path": "src/modules/practices/api/dto/create-drill.dto.ts",
@@ -9751,6 +12638,31 @@
       "sizeBytes": 418
     },
     {
+      "path": "src/modules/practices/api/dto/reminder-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReminderPreviewResponseDto"
+        },
+        {
+          "kind": "class",
+          "name": "ReminderDispatchResponseDto"
+        },
+        {
+          "kind": "class",
+          "name": "ReminderTestResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d7ba4204d9041a1c57d0142f039f10b1862ea56bfefdb453eee05befc946828a",
+      "sizeBytes": 1050
+    },
+    {
       "path": "src/modules/practices/api/dto/reorder-blocks.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -10108,6 +13020,40 @@
       "sizeBytes": 5851
     },
     {
+      "path": "src/modules/practices/api/practice-calendar.controller.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeCalendarController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8dcd611cd1e753c47e919d1b0e97cbd8411cbbaf6dcff10b3efc831aa111b4ca",
+      "sizeBytes": 2441
+    },
+    {
+      "path": "src/modules/practices/api/practice-reminder-admin.controller.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeReminderAdminController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:96dd1df08f1ff11ab86d921ca5fa16f039a46b27379b4280fdf167ac9d3b68c8",
+      "sizeBytes": 2823
+    },
+    {
       "path": "src/modules/practices/api/practice-rsvp.controller.ts",
       "root": "modules",
       "module": "practices",
@@ -10121,8 +13067,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:50faeedbace4291a9855fe8189aa42e8086f7228f43e4ddae133cba4065ca496",
-      "sizeBytes": 5953
+      "hash": "sha256:45ebc6d1ef26e2ef75f4d9a924ce9cbd63f85c1a2791c99f51bad5470bd0fef5",
+      "sizeBytes": 6080
     },
     {
       "path": "src/modules/practices/api/practice-schedules.controller.ts",
@@ -10157,6 +13103,23 @@
       "kind": "source",
       "hash": "sha256:d7dcbc3e250ba686caba0ac1762f496cef9995520cd0234bf744ebc88be94ea6",
       "sizeBytes": 9244
+    },
+    {
+      "path": "src/modules/practices/api/public-practice-calendar.controller.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublicPracticeCalendarController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1c21a6c340e71d125c1cbf7fb2b4b17c45b9ebd597379e7558d31fa8ab148dde",
+      "sizeBytes": 1123
     },
     {
       "path": "src/modules/practices/application/agenda-admin.service.spec.ts",
@@ -10447,6 +13410,35 @@
       "kind": "source",
       "hash": "sha256:58601d98d07944949c2105decb9641c0589d98ded6a1cc547f10d38f01608d31",
       "sizeBytes": 2499
+    },
+    {
+      "path": "src/modules/practices/application/calendar-feed.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:43f213734ca1aa286957edec43a6aedde2111a2b42554c542e8c8d580405edf8",
+      "sizeBytes": 7539
+    },
+    {
+      "path": "src/modules/practices/application/calendar-feed.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalendarFeedService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/calendar-feed.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c07fcccf3d66a41d17d29b296b99e039343c5e8c01e7161c4d2b8987afc2208d",
+      "sizeBytes": 8532
     },
     {
       "path": "src/modules/practices/application/complete-agenda.use-case.spec.ts",
@@ -10795,6 +13787,35 @@
       "kind": "source",
       "hash": "sha256:9f5e81e3952749b20f2279766a0df537d6d8fc787c9ef4bb0ba1649ffb451289",
       "sizeBytes": 1721
+    },
+    {
+      "path": "src/modules/practices/application/practice-reminder-admin.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a1a02e99ed16e0711e39644d8d9f5b6f82fcd385125ff5749d07703e67df3045",
+      "sizeBytes": 3800
+    },
+    {
+      "path": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeReminderAdminService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/practice-reminder-admin.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7a64da52b0242ce9f9a42b2aac53ff3ddefe62befc2bb67ab5e30912272f9ac4",
+      "sizeBytes": 8612
     },
     {
       "path": "src/modules/practices/application/publish-agenda.use-case.spec.ts",
@@ -11182,8 +14203,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:87b4f83e2aa4d49207dd37b2a78fde15d55dc48cb320e5f223fbc9c97b2bea8c",
-      "sizeBytes": 3267
+      "hash": "sha256:0f51839b94e1578abaa422cce39865521910d13bac94b079f17e25f14d450f54",
+      "sizeBytes": 4130
     },
     {
       "path": "src/modules/practices/application/update-practice-session.use-case.ts",
@@ -11199,8 +14220,8 @@
       "hasSpec": true,
       "specPath": "src/modules/practices/application/update-practice-session.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:acdf16678c1629d9cd47705348b50cbc22b5dd11ab37b07bee6501215bef702d",
-      "sizeBytes": 3973
+      "hash": "sha256:c73cec68a32fffd6704afa1c50449925f4e330dbe3d613d512906250a62a2cd2",
+      "sizeBytes": 5539
     },
     {
       "path": "src/modules/practices/domain/agenda-ordering.policy.spec.ts",
@@ -11414,6 +14435,35 @@
       "kind": "source",
       "hash": "sha256:7e7d5e2f4bc04ad3ccc5b72582a27925d9e665247a77c93c8671322b7cf56bc1",
       "sizeBytes": 2101
+    },
+    {
+      "path": "src/modules/practices/domain/practice-reminder.policy.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:373d6f9156dfa523b3ec1bf59066e7778a8d4e99110397f179a174190872d341",
+      "sizeBytes": 1767
+    },
+    {
+      "path": "src/modules/practices/domain/practice-reminder.policy.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveReminderKinds"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/domain/practice-reminder.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:95d5b008601ae09709fd71a3994d07c5390c10a5a066cf2a25eb52bd23f74fe3",
+      "sizeBytes": 1036
     },
     {
       "path": "src/modules/practices/domain/practice-session.state-machine.spec.ts",
@@ -11723,6 +14773,57 @@
       "kind": "source",
       "hash": "sha256:e6b97649972a921229537abfd3deb5ccef1f5cf3c4017405d9ee1509d26ed440",
       "sizeBytes": 570
+    },
+    {
+      "path": "src/modules/practices/errors/calendar-feed-limit.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalendarFeedLimitError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:671081d355f50c6e88abdce100ab9020495770fcc05e4e515b2bc89925c18829",
+      "sizeBytes": 412
+    },
+    {
+      "path": "src/modules/practices/errors/calendar-feed-timezone.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalendarFeedTimezoneError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:104bbf021cca821b3aa05ed8542adff80cb52d688c6a648d8a610986d83e31ac",
+      "sizeBytes": 421
+    },
+    {
+      "path": "src/modules/practices/errors/calendar-feed-unavailable.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalendarFeedUnavailableError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ef620cab84cf1ba4d77dd7a836037496a832a9256309255e73ed3f3a243c66df",
+      "sizeBytes": 467
     },
     {
       "path": "src/modules/practices/errors/drill-name-conflict.error.ts",
@@ -12196,6 +15297,35 @@
       "sizeBytes": 3912
     },
     {
+      "path": "src/modules/practices/infrastructure/calendar-feed-token.repository.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7a9fa738f97b92b1ff20a48ab6bd7f069de9a5b81ebdeaed70034b2248e93c18",
+      "sizeBytes": 2989
+    },
+    {
+      "path": "src/modules/practices/infrastructure/calendar-feed-token.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalendarFeedTokenRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/infrastructure/calendar-feed-token.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bc4341725abca41844a91fc863355cfa37fa03a76d539d81d35fe4a953e0b5a2",
+      "sizeBytes": 3343
+    },
+    {
       "path": "src/modules/practices/infrastructure/drill.repository.ts",
       "root": "modules",
       "module": "practices",
@@ -12228,6 +15358,35 @@
       "kind": "source",
       "hash": "sha256:3f408b5653b57b290646aec1b3f88e9ee3c835a46fee4a20298147bdb3f7d65c",
       "sizeBytes": 4677
+    },
+    {
+      "path": "src/modules/practices/infrastructure/practice-reminder.repository.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d1f40c219d28dcc218d5a4697a27872d651dc1d81526d9fb47babef250ae2a1b",
+      "sizeBytes": 1281
+    },
+    {
+      "path": "src/modules/practices/infrastructure/practice-reminder.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeReminderRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/infrastructure/practice-reminder.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1fb5b4522bfaec54ad6b628df39c49badf6b455e55d017f1bd6fd9c058aaac8a",
+      "sizeBytes": 2419
     },
     {
       "path": "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
@@ -12311,8 +15470,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:df54d98b9bd57acf508735159ddd94a3a90230aa7fbc08a786e61fe0aa405a6a",
-      "sizeBytes": 9554
+      "hash": "sha256:854dcc2e20cfbb79f710e2e780b31885ffe89c0f4bfc577f8c710f42e0ccb927",
+      "sizeBytes": 11580
     },
     {
       "path": "src/modules/practices/infrastructure/rsvp-membership.repository.ts",
@@ -12810,6 +15969,72 @@
       "kind": "source",
       "hash": "sha256:4b713897f9771ca046fdbdd2bf798c8dcdd8cf09001c37b1982628f44f2324f6",
       "sizeBytes": 3327
+    },
+    {
+      "path": "src/modules/practices/lib/calendar.helpers.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveCalendarTimezone"
+        },
+        {
+          "kind": "function",
+          "name": "resolveCalendarExpiry"
+        },
+        {
+          "kind": "function",
+          "name": "calendarFeedWindow"
+        },
+        {
+          "kind": "function",
+          "name": "isValidIanaTimezone"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3567637229595da27541c8073bd6c2b4692598c8ad6cf864d850c6b39b343c3d",
+      "sizeBytes": 1222
+    },
+    {
+      "path": "src/modules/practices/lib/ics-calendar.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6e32aec6787c5823cba8067d1713a250c2ae378035a313a71e41d91257cf7258",
+      "sizeBytes": 3739
+    },
+    {
+      "path": "src/modules/practices/lib/ics-calendar.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildPracticeCalendar"
+        },
+        {
+          "kind": "function",
+          "name": "calendarEventUid"
+        },
+        {
+          "kind": "function",
+          "name": "foldIcsLine"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/ics-calendar.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a51fdd24b883e6c2d298d0ed3039f3209cf9580e7a9a313596d5c716d309cb1a",
+      "sizeBytes": 2717
     },
     {
       "path": "src/modules/practices/lib/practices.helpers.spec.ts",
@@ -14208,6 +17433,318 @@
       "sizeBytes": 12270
     },
     {
+      "path": "src/modules/practices/model/calendar.constants.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "CALENDAR_TOKEN_BYTES"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_TOKEN_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_TOKEN_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_TOKEN_DIGEST_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_TOKEN_TTL_DAYS_DEFAULT"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_TOKEN_TTL_DAYS_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_TOKEN_TTL_DAYS_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_TOKEN_MAX_ACTIVE_PER_USER_TEAM"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEEDS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEED_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "PUBLIC_CALENDAR_FEED_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "FEED_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "FEED_TOKEN_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEED_LOOKBACK_DAYS"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEED_LOOKAHEAD_DAYS"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEED_PAGE_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEED_MAX_EVENTS"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEED_MAX_PAGES"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_UID_DOMAIN"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_PRODUCT_ID"
+        },
+        {
+          "kind": "const",
+          "name": "ICS_MAX_LINE_BYTES"
+        },
+        {
+          "kind": "const",
+          "name": "ICS_CONTINUATION_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "ICS_LINE_BREAK"
+        },
+        {
+          "kind": "const",
+          "name": "ICS_DATE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "ICS_MILLISECONDS_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "UPCOMING_REMINDER_WINDOW_MS"
+        },
+        {
+          "kind": "const",
+          "name": "RSVP_CUTOFF_REMINDER_WINDOW_MS"
+        },
+        {
+          "kind": "const",
+          "name": "REMINDER_CANDIDATE_PAGE_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "REMINDER_CANDIDATE_MAX_RECIPIENTS"
+        },
+        {
+          "kind": "const",
+          "name": "REMINDER_CANDIDATE_MAX_PAGES"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_REMINDER_PREVIEW_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_REMINDER_DISPATCH_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_REMINDER_TEST_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_UPCOMING_REMINDER_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_NO_RESPONSE_REMINDER_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_CUTOFF_REMINDER_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEED_UNAVAILABLE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEED_UNAVAILABLE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEED_LIMIT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEED_LIMIT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEED_TIMEZONE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "CALENDAR_FEED_TIMEZONE_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:485f043b7476dff91725310cf1eadb63b7a4a098b80c7c34487aa08e5fb54fb5",
+      "sizeBytes": 2962
+    },
+    {
+      "path": "src/modules/practices/model/calendar.enums.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ReminderKind"
+        },
+        {
+          "kind": "const",
+          "name": "REMINDER_KIND_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7cf5ba8d8760bd6ce13c8d70e2fc8038d8ff66749e9d823ce0eed879b7a98b03",
+      "sizeBytes": 459
+    },
+    {
+      "path": "src/modules/practices/model/calendar.rows.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "CalendarFeedTokenRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CalendarCountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CalendarIdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "ReminderCandidateRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:820c9b59d274b694a6342112ebce428bd5d400514470d512a540710a1ed6717b",
+      "sizeBytes": 856
+    },
+    {
+      "path": "src/modules/practices/model/calendar.types.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "CalendarTokenCredential"
+        },
+        {
+          "kind": "interface",
+          "name": "CalendarTokenPort"
+        },
+        {
+          "kind": "interface",
+          "name": "CalendarFeedToken"
+        },
+        {
+          "kind": "type",
+          "name": "NewCalendarFeedToken"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateCalendarFeedCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CalendarFeedCredentialView"
+        },
+        {
+          "kind": "interface",
+          "name": "CalendarFeedRevokeResult"
+        },
+        {
+          "kind": "interface",
+          "name": "CalendarFeedSessionPage"
+        },
+        {
+          "kind": "interface",
+          "name": "CalendarFeedSessionCursor"
+        },
+        {
+          "kind": "interface",
+          "name": "CalendarFeedWindow"
+        },
+        {
+          "kind": "interface",
+          "name": "ReminderPolicyInput"
+        },
+        {
+          "kind": "interface",
+          "name": "ReminderCandidate"
+        },
+        {
+          "kind": "interface",
+          "name": "ReminderDispatchResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ReminderPreview"
+        },
+        {
+          "kind": "interface",
+          "name": "ReminderTestResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ReminderCollectionState"
+        },
+        {
+          "kind": "interface",
+          "name": "CalendarFeedRepositoryPort"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:89184af394600a5ec0e566b9d84c8a9af48680b33022a43e321182a5ff65cd69",
+      "sizeBytes": 2972
+    },
+    {
       "path": "src/modules/practices/model/practices.constants.ts",
       "root": "modules",
       "module": "practices",
@@ -14427,6 +17964,10 @@
         },
         {
           "kind": "const",
+          "name": "PRACTICE_VENUE_CHANGED_EVENT"
+        },
+        {
+          "kind": "const",
           "name": "SCHEDULE_CREATED_ACTION"
         },
         {
@@ -14561,8 +18102,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6bf9977f8e8b58f7dfe6d0328965f0f9a88d0dc66a0848d62f4fb37e78ef6e96",
-      "sizeBytes": 7927
+      "hash": "sha256:e20f8235aced43351089e8719d956789f773b465e0701803344c68680508c838",
+      "sizeBytes": 7997
     },
     {
       "path": "src/modules/practices/model/practices.enums.ts",
@@ -15085,8 +18626,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:da271397367e82b6214951a360fb84fd163d37b6c5673297c20dc10da10cd635",
-      "sizeBytes": 7886
+      "hash": "sha256:8082c8410385ef5efc5d436160bac11fc643574e4a49a43fba5ccef8beac78f1",
+      "sizeBytes": 8950
     },
     {
       "path": "src/modules/rbac/api/dto/assign-role.dto.ts",
@@ -16011,14 +19552,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "ListQueryDto"
+          "name": "TeamListQueryDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:78975b1d640e2d2af5c9ea09e4a79042bf8d2ce592fb09fa1eb0cbf8b69062d9",
-      "sizeBytes": 730
+      "hash": "sha256:b6dea27abf9c649e47a357360333f845aaf3b1c714f9361884befa0ef329d873",
+      "sizeBytes": 734
     },
     {
       "path": "src/modules/teams/api/dto/list-seasons-response.dto.ts",
@@ -16272,8 +19813,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:7ff840d6d8b1d41da5c6c3b50b946dc47c7dbdf974d81d48c01699ce52b9f635",
-      "sizeBytes": 4309
+      "hash": "sha256:ceacfe7241d58f04d10dad713a0a3ac0e9b883614f526a5e53f61ca302da4af9",
+      "sizeBytes": 4317
     },
     {
       "path": "src/modules/teams/api/settings.controller.ts",
@@ -16306,8 +19847,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:f169861c6d0047bb36ee70e5d65ed654c3db43175eecb8ba5e69540dd70d8ea4",
-      "sizeBytes": 4332
+      "hash": "sha256:9abcef1a1a9363f6359317939489c0e9d3c61b3b5122df83e9084206dd51d4a1",
+      "sizeBytes": 4340
     },
     {
       "path": "src/modules/teams/api/venues.controller.ts",
@@ -16323,8 +19864,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a9df860eb0723debca5fdc8d2e0272594728b7d6aa2b4edfd1975221f01e51ac",
-      "sizeBytes": 4348
+      "hash": "sha256:d418f8619611ce46443a977465c4a3c1054f111159df11234dc85f22bfa172aa",
+      "sizeBytes": 4356
     },
     {
       "path": "src/modules/teams/application/archive-catalog-entry.use-case.spec.ts",

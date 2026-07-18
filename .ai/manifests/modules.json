@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T08:32:17.655Z",
+  "generatedAt": "2026-07-18T17:40:24.497Z",
   "modules": [
     {
       "name": "articles",
@@ -43,6 +43,82 @@
       "hasEvents": false
     },
     {
+      "name": "assessments",
+      "path": "src/modules/assessments",
+      "layers": {
+        "controller": [
+          "src/modules/assessments/api/assessment-catalog.controller.ts",
+          "src/modules/assessments/api/assessment-period.controller.ts",
+          "src/modules/assessments/api/assessment-template.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/assessments/api/dto/archive-metric.dto.ts",
+          "src/modules/assessments/api/dto/category-response.dto.ts",
+          "src/modules/assessments/api/dto/category-weight.dto.ts",
+          "src/modules/assessments/api/dto/create-metric.dto.ts",
+          "src/modules/assessments/api/dto/create-period.dto.ts",
+          "src/modules/assessments/api/dto/create-template.dto.ts",
+          "src/modules/assessments/api/dto/list-catalog.query.dto.ts",
+          "src/modules/assessments/api/dto/list-categories.response.dto.ts",
+          "src/modules/assessments/api/dto/list-metrics.response.dto.ts",
+          "src/modules/assessments/api/dto/list-periods.response.dto.ts",
+          "src/modules/assessments/api/dto/list-scales.response.dto.ts",
+          "src/modules/assessments/api/dto/list-templates.response.dto.ts",
+          "src/modules/assessments/api/dto/metric-response.dto.ts",
+          "src/modules/assessments/api/dto/period-response.dto.ts",
+          "src/modules/assessments/api/dto/publish-template.dto.ts",
+          "src/modules/assessments/api/dto/scale-response.dto.ts",
+          "src/modules/assessments/api/dto/template-metric.dto.ts",
+          "src/modules/assessments/api/dto/template-response.dto.ts"
+        ],
+        "use-case": [
+          "src/modules/assessments/application/archive-metric.use-case.ts",
+          "src/modules/assessments/application/create-metric-version.use-case.ts",
+          "src/modules/assessments/application/create-metric.use-case.ts",
+          "src/modules/assessments/application/create-period.use-case.ts",
+          "src/modules/assessments/application/create-template-version.use-case.ts",
+          "src/modules/assessments/application/create-template.use-case.ts",
+          "src/modules/assessments/application/publish-template.use-case.ts"
+        ],
+        "service": [
+          "src/modules/assessments/application/assessment-query.service.ts",
+          "src/modules/assessments/application/assessment-scope.service.ts"
+        ],
+        "other": [
+          "src/modules/assessments/assessments.module.ts",
+          "src/modules/assessments/errors/assessment-duplicate.error.ts",
+          "src/modules/assessments/errors/assessment-metric-in-use.error.ts",
+          "src/modules/assessments/errors/assessment-metric-not-found.error.ts",
+          "src/modules/assessments/errors/assessment-scope-not-found.error.ts",
+          "src/modules/assessments/errors/assessment-template-locked.error.ts",
+          "src/modules/assessments/errors/assessment-template-not-found.error.ts",
+          "src/modules/assessments/errors/assessment-validation.error.ts",
+          "src/modules/assessments/errors/assessment-version-conflict.error.ts",
+          "src/modules/assessments/index.ts"
+        ],
+        "domain": [
+          "src/modules/assessments/domain/assessment-catalog.policy.ts"
+        ],
+        "repository": [
+          "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+          "src/modules/assessments/infrastructure/assessment-scope.repository.ts"
+        ],
+        "lib": [
+          "src/modules/assessments/lib/assessments.helpers.ts"
+        ],
+        "model": [
+          "src/modules/assessments/model/assessments.constants.ts",
+          "src/modules/assessments/model/assessments.enums.ts",
+          "src/modules/assessments/model/assessments.rows.ts",
+          "src/modules/assessments/model/assessments.types.ts"
+        ]
+      },
+      "fileCount": 48,
+      "specCount": 13,
+      "publicSurface": "src/modules/assessments/index.ts",
+      "hasEvents": false
+    },
+    {
       "name": "auth",
       "path": "src/modules/auth",
       "layers": {
@@ -73,26 +149,36 @@
         ],
         "controller": [
           "src/modules/identity/api/auth.controller.ts",
-          "src/modules/identity/api/invitations.controller.ts"
+          "src/modules/identity/api/invitations.controller.ts",
+          "src/modules/identity/api/public-invitations.controller.ts"
         ],
         "api-dto": [
           "src/modules/identity/api/dto/accept-invitation.dto.ts",
+          "src/modules/identity/api/dto/auth-session-response.dto.ts",
           "src/modules/identity/api/dto/create-invitation.dto.ts",
+          "src/modules/identity/api/dto/device-session-response.dto.ts",
           "src/modules/identity/api/dto/forgot-password.dto.ts",
           "src/modules/identity/api/dto/invitation-response.dto.ts",
+          "src/modules/identity/api/dto/invitation-token-params.dto.ts",
+          "src/modules/identity/api/dto/login-response.dto.ts",
           "src/modules/identity/api/dto/login.dto.ts",
           "src/modules/identity/api/dto/logout.dto.ts",
           "src/modules/identity/api/dto/message-response.dto.ts",
           "src/modules/identity/api/dto/principal-response.dto.ts",
+          "src/modules/identity/api/dto/public-invitation-response.dto.ts",
           "src/modules/identity/api/dto/refresh.dto.ts",
           "src/modules/identity/api/dto/reset-password.dto.ts",
-          "src/modules/identity/api/dto/session-response.dto.ts"
+          "src/modules/identity/api/dto/revoke-other-sessions-response.dto.ts",
+          "src/modules/identity/api/dto/session-list-query.dto.ts",
+          "src/modules/identity/api/dto/session-list-response.dto.ts"
         ],
         "use-case": [
           "src/modules/identity/application/accept-invitation.use-case.ts",
           "src/modules/identity/application/create-invitation.use-case.ts",
           "src/modules/identity/application/expire-invitations.use-case.ts",
           "src/modules/identity/application/get-current-principal.use-case.ts",
+          "src/modules/identity/application/get-invitation-details.use-case.ts",
+          "src/modules/identity/application/list-sessions.use-case.ts",
           "src/modules/identity/application/login.use-case.ts",
           "src/modules/identity/application/logout-all.use-case.ts",
           "src/modules/identity/application/logout.use-case.ts",
@@ -100,7 +186,9 @@
           "src/modules/identity/application/request-password-reset.use-case.ts",
           "src/modules/identity/application/resend-invitation.use-case.ts",
           "src/modules/identity/application/reset-password.use-case.ts",
-          "src/modules/identity/application/revoke-invitation.use-case.ts"
+          "src/modules/identity/application/revoke-invitation.use-case.ts",
+          "src/modules/identity/application/revoke-other-sessions.use-case.ts",
+          "src/modules/identity/application/revoke-session.use-case.ts"
         ],
         "service": [
           "src/modules/identity/application/security-audit.service.ts",
@@ -120,6 +208,8 @@
           "src/modules/identity/errors/invitation-invalid.error.ts",
           "src/modules/identity/errors/invitation-not-found.error.ts",
           "src/modules/identity/errors/reset-token-invalid.error.ts",
+          "src/modules/identity/errors/session-context-required.error.ts",
+          "src/modules/identity/errors/session-not-found.error.ts",
           "src/modules/identity/identity.module.ts",
           "src/modules/identity/index.ts"
         ],
@@ -144,8 +234,8 @@
           "src/modules/identity/model/identity.types.ts"
         ]
       },
-      "fileCount": 55,
-      "specCount": 36,
+      "fileCount": 69,
+      "specCount": 42,
       "publicSurface": "src/modules/identity/index.ts",
       "hasEvents": false
     },
@@ -266,6 +356,7 @@
           "src/modules/platform/api/dto/notification-response.dto.ts",
           "src/modules/platform/api/dto/outbox-metrics-response.dto.ts",
           "src/modules/platform/api/dto/preferences-response.dto.ts",
+          "src/modules/platform/api/dto/quiet-hours.dto.ts",
           "src/modules/platform/api/dto/replay-response.dto.ts",
           "src/modules/platform/api/dto/update-preferences.dto.ts"
         ],
@@ -277,6 +368,7 @@
           "src/modules/platform/application/mark-notification-read.service.ts",
           "src/modules/platform/application/notification-preferences.service.ts",
           "src/modules/platform/application/notification-projection.service.ts",
+          "src/modules/platform/application/notification-quiet-hours.service.ts",
           "src/modules/platform/application/outbox-metrics.service.ts",
           "src/modules/platform/application/record-domain-event.service.ts"
         ],
@@ -287,6 +379,7 @@
         "domain": [
           "src/modules/platform/domain/event-envelope.factory.ts",
           "src/modules/platform/domain/idempotency.policy.ts",
+          "src/modules/platform/domain/notification-quiet-hours.policy.ts",
           "src/modules/platform/domain/notification-routing.policy.ts",
           "src/modules/platform/domain/outbox-backoff.policy.ts",
           "src/modules/platform/domain/redaction.policy.ts"
@@ -294,6 +387,7 @@
         "other": [
           "src/modules/platform/errors/idempotency-conflict.error.ts",
           "src/modules/platform/errors/notification-not-found.error.ts",
+          "src/modules/platform/errors/notification-quiet-hours.error.ts",
           "src/modules/platform/errors/outbox-event-not-found.error.ts",
           "src/modules/platform/index.ts",
           "src/modules/platform/platform.module.ts"
@@ -301,8 +395,10 @@
         "repository": [
           "src/modules/platform/infrastructure/audit-log.repository.ts",
           "src/modules/platform/infrastructure/idempotency.repository.ts",
+          "src/modules/platform/infrastructure/notification-audience.repository.ts",
           "src/modules/platform/infrastructure/notification-delivery.repository.ts",
           "src/modules/platform/infrastructure/notification-preference.repository.ts",
+          "src/modules/platform/infrastructure/notification-quiet-hours.repository.ts",
           "src/modules/platform/infrastructure/notification.repository.ts",
           "src/modules/platform/infrastructure/outbox.repository.ts"
         ],
@@ -317,8 +413,8 @@
           "src/modules/platform/model/platform.types.ts"
         ]
       },
-      "fileCount": 45,
-      "specCount": 28,
+      "fileCount": 51,
+      "specCount": 32,
       "publicSurface": "src/modules/platform/index.ts",
       "hasEvents": false
     },
@@ -326,6 +422,9 @@
       "name": "practices",
       "path": "src/modules/practices",
       "layers": {
+        "adapter": [
+          "src/modules/practices/adapters/calendar-token.adapter.ts"
+        ],
         "controller": [
           "src/modules/practices/api/agenda-block.controller.ts",
           "src/modules/practices/api/agenda-group.controller.ts",
@@ -333,9 +432,12 @@
           "src/modules/practices/api/attendance.controller.ts",
           "src/modules/practices/api/drills.controller.ts",
           "src/modules/practices/api/practice-agenda.controller.ts",
+          "src/modules/practices/api/practice-calendar.controller.ts",
+          "src/modules/practices/api/practice-reminder-admin.controller.ts",
           "src/modules/practices/api/practice-rsvp.controller.ts",
           "src/modules/practices/api/practice-schedules.controller.ts",
-          "src/modules/practices/api/practice-sessions.controller.ts"
+          "src/modules/practices/api/practice-sessions.controller.ts",
+          "src/modules/practices/api/public-practice-calendar.controller.ts"
         ],
         "api-dto": [
           "src/modules/practices/api/dto/agenda-response.dto.ts",
@@ -353,11 +455,13 @@
           "src/modules/practices/api/dto/bulk-mark-attendance.dto.ts",
           "src/modules/practices/api/dto/bulk-mark-entry.dto.ts",
           "src/modules/practices/api/dto/bulk-record-response.dto.ts",
+          "src/modules/practices/api/dto/calendar-feed-response.dto.ts",
           "src/modules/practices/api/dto/complete-block.dto.ts",
           "src/modules/practices/api/dto/copy-agenda.dto.ts",
           "src/modules/practices/api/dto/correct-attendance.dto.ts",
           "src/modules/practices/api/dto/create-agenda.dto.ts",
           "src/modules/practices/api/dto/create-block.dto.ts",
+          "src/modules/practices/api/dto/create-calendar-feed.dto.ts",
           "src/modules/practices/api/dto/create-drill.dto.ts",
           "src/modules/practices/api/dto/create-group.dto.ts",
           "src/modules/practices/api/dto/create-schedule.dto.ts",
@@ -382,6 +486,7 @@
           "src/modules/practices/api/dto/override-rsvp.dto.ts",
           "src/modules/practices/api/dto/participation-response.dto.ts",
           "src/modules/practices/api/dto/participation.query.dto.ts",
+          "src/modules/practices/api/dto/reminder-response.dto.ts",
           "src/modules/practices/api/dto/reorder-blocks.dto.ts",
           "src/modules/practices/api/dto/reschedule-session.dto.ts",
           "src/modules/practices/api/dto/roster-entry-response.dto.ts",
@@ -413,10 +518,12 @@
           "src/modules/practices/application/attendance-query.service.ts",
           "src/modules/practices/application/attendance-recorder.service.ts",
           "src/modules/practices/application/attendance-sheet.service.ts",
+          "src/modules/practices/application/calendar-feed.service.ts",
           "src/modules/practices/application/drill-catalog.service.ts",
           "src/modules/practices/application/drill-query.service.ts",
           "src/modules/practices/application/participation-query.service.ts",
           "src/modules/practices/application/practice-lookup.service.ts",
+          "src/modules/practices/application/practice-reminder-admin.service.ts",
           "src/modules/practices/application/rsvp-query.service.ts",
           "src/modules/practices/application/rsvp-recorder.service.ts",
           "src/modules/practices/application/schedule-query.service.ts",
@@ -449,6 +556,7 @@
           "src/modules/practices/domain/attendance-scoring.policy.ts",
           "src/modules/practices/domain/attendance-status.policy.ts",
           "src/modules/practices/domain/attendance.state-machine.ts",
+          "src/modules/practices/domain/practice-reminder.policy.ts",
           "src/modules/practices/domain/practice-session.state-machine.ts",
           "src/modules/practices/domain/recurrence.policy.ts",
           "src/modules/practices/domain/rsvp-availability.policy.ts",
@@ -464,6 +572,9 @@
           "src/modules/practices/errors/attendance-not-member.error.ts",
           "src/modules/practices/errors/attendance-rule-missing.error.ts",
           "src/modules/practices/errors/attendance-sheet-not-found.error.ts",
+          "src/modules/practices/errors/calendar-feed-limit.error.ts",
+          "src/modules/practices/errors/calendar-feed-timezone.error.ts",
+          "src/modules/practices/errors/calendar-feed-unavailable.error.ts",
           "src/modules/practices/errors/drill-name-conflict.error.ts",
           "src/modules/practices/errors/drill-not-found.error.ts",
           "src/modules/practices/errors/invalid-agenda-transition.error.ts",
@@ -495,8 +606,10 @@
           "src/modules/practices/infrastructure/attendance-record.repository.ts",
           "src/modules/practices/infrastructure/attendance-scoring-rule.repository.ts",
           "src/modules/practices/infrastructure/attendance-sheet.repository.ts",
+          "src/modules/practices/infrastructure/calendar-feed-token.repository.ts",
           "src/modules/practices/infrastructure/drill.repository.ts",
           "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+          "src/modules/practices/infrastructure/practice-reminder.repository.ts",
           "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
           "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
           "src/modules/practices/infrastructure/practice-schedule.repository.ts",
@@ -513,6 +626,8 @@
           "src/modules/practices/lib/attendance.helpers.ts",
           "src/modules/practices/lib/attendance.mapper.ts",
           "src/modules/practices/lib/cairo-time.ts",
+          "src/modules/practices/lib/calendar.helpers.ts",
+          "src/modules/practices/lib/ics-calendar.ts",
           "src/modules/practices/lib/practices.helpers.ts",
           "src/modules/practices/lib/rsvp.builders.ts",
           "src/modules/practices/lib/rsvp.helpers.ts",
@@ -527,6 +642,10 @@
           "src/modules/practices/model/attendance.enums.ts",
           "src/modules/practices/model/attendance.rows.ts",
           "src/modules/practices/model/attendance.types.ts",
+          "src/modules/practices/model/calendar.constants.ts",
+          "src/modules/practices/model/calendar.enums.ts",
+          "src/modules/practices/model/calendar.rows.ts",
+          "src/modules/practices/model/calendar.types.ts",
           "src/modules/practices/model/practices.constants.ts",
           "src/modules/practices/model/practices.enums.ts",
           "src/modules/practices/model/practices.rows.ts",
@@ -537,8 +656,8 @@
           "src/modules/practices/model/rsvp.types.ts"
         ]
       },
-      "fileCount": 192,
-      "specCount": 56,
+      "fileCount": 213,
+      "specCount": 63,
       "publicSurface": "src/modules/practices/index.ts",
       "hasEvents": false
     },

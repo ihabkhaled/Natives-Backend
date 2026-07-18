@@ -22,4 +22,3 @@
 Out of scope: player assessment drafts/publication (301), feedback/goals (302), score computation
 (303), and physical measurement attempts/protocols (304). User-facing errors use stable message
 keys. OpenAPI DTO decorators document every route. No notification is required for catalog edits.
-

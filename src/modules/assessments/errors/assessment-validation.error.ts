@@ -10,4 +10,3 @@ export class AssessmentValidationError extends ValidationError {
     super(ASSESSMENT_VALIDATION_MESSAGE, ASSESSMENT_VALIDATION_MESSAGE_KEY);
   }
 }
-

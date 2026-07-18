@@ -14,4 +14,3 @@
 
 No new permanent repository rule was discovered, so canonical policy files are not changed by
 UN-300. Existing focus-rule edits from the parent worktree are preserved.
-

@@ -13,4 +13,3 @@ export class AssessmentScopeNotFoundError extends NotFoundError {
     );
   }
 }
-

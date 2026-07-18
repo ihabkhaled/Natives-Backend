@@ -56,6 +56,16 @@ describe('assessment catalog policy', () => {
     );
   });
 
+  it('rejects a date that does not match the calendar pattern', () => {
+    expect(() => assertPeriodRange('not-a-date', '2026-06-30')).toThrow(
+      AssessmentValidationError,
+    );
+  });
+
+  it('rejects an empty required-metric set', () => {
+    expect(() => assertRequiredMetrics([])).toThrow(AssessmentValidationError);
+  });
+
   it('accepts unique required/optional metrics with deterministic positions', () => {
     expect(() => assertRequiredMetrics(METRICS)).not.toThrow();
   });
@@ -75,4 +85,3 @@ describe('assessment catalog policy', () => {
     ).toThrow(AssessmentValidationError);
   });
 });
-

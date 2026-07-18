@@ -3,6 +3,7 @@ import { ConfigModule } from '@config/config.module';
 import { CoreModule } from '@core/core.module';
 import { LoggerModule } from '@core/logger/logger.module';
 import { ArticlesModule } from '@modules/articles';
+import { AssessmentsModule } from '@modules/assessments';
 import { AuthModule } from '@modules/auth';
 import { IdentityModule } from '@modules/identity';
 import { MembersModule } from '@modules/members';
@@ -31,6 +32,7 @@ import { Module } from '@nestjs/common';
     MembersModule,
     PlatformModule,
     PracticesModule,
+    AssessmentsModule,
     ArticlesModule,
   ],
 })

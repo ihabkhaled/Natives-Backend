@@ -13,4 +13,3 @@ export class AssessmentVersionConflictError extends ConflictError {
     );
   }
 }
-

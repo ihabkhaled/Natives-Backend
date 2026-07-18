@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T08:32:17.655Z",
+  "generatedAt": "2026-07-18T17:40:24.497Z",
   "documents": [
     {
       "path": "agents/backend-architect.md",
@@ -2295,7 +2295,7 @@
         "wins"
       ],
       "relatedPaths": [],
-      "hash": "sha256:e9a47a23809aa82bb01dfdb13e8e32b4a841d0ca60ac17bd460b11677867ca4f"
+      "hash": "sha256:ab33175c880c73bdb1efe9c040a8ac1a981dfc87839fbc895ca5330b8b8ae277"
     },
     {
       "path": "rules/01-architecture-and-module-boundaries.md",
@@ -5422,7 +5422,7 @@
         "./review-for-readable-code.md",
         "./final-validation.md"
       ],
-      "hash": "sha256:3cd0c31ac2dbc8b66c25056f37a23b9dd929cf7b6888c75f44e5ebd9211453a1"
+      "hash": "sha256:e7577cd06d12b26fb8554fbfcaaaf64d544f490a1f38cbff68e14b7c1307861a"
     },
     {
       "path": "skills/investigate-production-bug.md",

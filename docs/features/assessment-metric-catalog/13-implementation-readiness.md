@@ -15,4 +15,3 @@
 - Rollout, rollback, observability, security, test, documentation, and review plans are recorded.
 - Readiness decision: phase 14 may begin. Release remains NO-GO until independent QA, security/UAT,
   exact-toolchain gates, contract regeneration, deploy smoke, and formal approvals are recorded.
-

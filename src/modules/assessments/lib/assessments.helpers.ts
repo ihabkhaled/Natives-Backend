@@ -1,12 +1,21 @@
-import { LIST_DEFAULT_LIMIT, LIST_DEFAULT_OFFSET, LIST_MAX_LIMIT } from '../model/assessments.constants';
+import type { RbacRole } from '@shared/enums';
+import { RBAC_ROLE_VALUES } from '@shared/enums';
+
 import {
+  LIST_DEFAULT_LIMIT,
+  LIST_DEFAULT_OFFSET,
+  LIST_MAX_LIMIT,
+} from '../model/assessments.constants';
+import type {
   AssessmentDirection,
-  ASSESSMENT_DIRECTION_VALUES,
   AssessmentScaleKind,
-  ASSESSMENT_SCALE_KIND_VALUES,
   AssessmentStatus,
-  ASSESSMENT_STATUS_VALUES,
   AssessmentTemplateStatus,
+} from '../model/assessments.enums';
+import {
+  ASSESSMENT_DIRECTION_VALUES,
+  ASSESSMENT_SCALE_KIND_VALUES,
+  ASSESSMENT_STATUS_VALUES,
   ASSESSMENT_TEMPLATE_STATUS_VALUES,
 } from '../model/assessments.enums';
 import type {
@@ -28,7 +37,6 @@ import type {
   PageRequest,
   TemplateMetricInput,
 } from '../model/assessments.types';
-import { RbacRole, RBAC_ROLE_VALUES } from '@shared/enums';
 
 export function resolveAssessmentPage(
   limit: number | undefined,
@@ -108,7 +116,7 @@ export function toAssessmentTemplate(
     key: row.template_key,
     name: row.name,
     cohort: row.cohort,
-    evaluatorRoles: row.evaluator_roles.map(parseRbacRole),
+    evaluatorRoles: row.evaluator_roles.map(role => parseRbacRole(role)),
     scoreVersion: row.score_version,
     status: parseTemplateStatus(row.status),
     version: row.template_version,
@@ -211,4 +219,3 @@ function parseEnum<TValue extends string>(
   }
   return value;
 }
-

@@ -12,4 +12,3 @@
   seeded defaults; immutable published/used definitions; bounded scoped APIs.
 - Critical-risk flags: cross-team IDOR, score semantics, immutable history, migration seed
   determinism, optimistic concurrency, archive-in-use behavior.
-

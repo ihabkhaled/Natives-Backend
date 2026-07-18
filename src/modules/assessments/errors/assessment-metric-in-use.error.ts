@@ -13,4 +13,3 @@ export class AssessmentMetricInUseError extends ConflictError {
     );
   }
 }
-

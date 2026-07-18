@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T08:32:17.655Z",
+  "generatedAt": "2026-07-18T17:40:24.497Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -24,6 +24,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/articles/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/assessments/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -117,6 +122,11 @@
       "type": "internal"
     },
     {
+      "from": "src/bootstrap/configure-swagger.ts",
+      "to": "src/bootstrap/openapi-document.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/bootstrap/configure-validation.ts",
       "to": "src/core/logger/index.ts",
       "type": "cross-cutting"
@@ -149,6 +159,61 @@
     {
       "from": "src/bootstrap/fastify-adapter.ts",
       "to": "src/bootstrap/bootstrap.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/openapi-artifact.ts",
+      "to": "src/bootstrap/openapi-document.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/openapi-artifact.ts",
+      "to": "src/bootstrap/openapi-json.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/openapi-compatibility.ts",
+      "to": "src/bootstrap/openapi-artifact.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/openapi-compatibility.ts",
+      "to": "src/bootstrap/openapi-compatibility.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/openapi-compatibility.ts",
+      "to": "src/bootstrap/openapi-compatibility.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/openapi-compatibility.ts",
+      "to": "src/bootstrap/openapi-document.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/openapi-compatibility.types.ts",
+      "to": "src/bootstrap/openapi-compatibility.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/openapi-compatibility.types.ts",
+      "to": "src/bootstrap/openapi-document.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/openapi-document.ts",
+      "to": "src/bootstrap/bootstrap.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/openapi-document.ts",
+      "to": "src/bootstrap/openapi-document.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/bootstrap/openapi-document.ts",
+      "to": "src/bootstrap/openapi-operation-id.ts",
       "type": "internal"
     },
     {
@@ -327,6 +392,16 @@
       "type": "internal"
     },
     {
+      "from": "src/config/seed-admin.config.ts",
+      "to": "src/config/config.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/seed-admin.config.ts",
+      "to": "src/config/config.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/core/auth/auth-identity.validator.ts",
       "to": "src/core/auth/auth.constants.ts",
       "type": "internal"
@@ -497,6 +572,11 @@
       "type": "internal"
     },
     {
+      "from": "src/core/auth/public.decorator.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/core/auth/request-scope.extractor.ts",
       "to": "src/core/auth/auth.constants.ts",
       "type": "internal"
@@ -569,6 +649,11 @@
     {
       "from": "src/core/errors/app-exception.filter.ts",
       "to": "src/core/errors/error-body.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/app-exception.filter.ts",
+      "to": "src/core/errors/error.constants.ts",
       "type": "internal"
     },
     {
@@ -788,6 +873,11 @@
     },
     {
       "from": "src/core/logger/http-logging.options.ts",
+      "to": "src/core/logger/http-request.serializer.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/http-logging.options.ts",
       "to": "src/core/logger/logger.constants.ts",
       "type": "internal"
     },
@@ -800,6 +890,16 @@
       "from": "src/core/logger/http-logging.options.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/logger/http-request-url.sanitizer.ts",
+      "to": "src/core/logger/logger.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/logger/http-request.serializer.ts",
+      "to": "src/core/logger/http-request-url.sanitizer.ts",
+      "type": "internal"
     },
     {
       "from": "src/core/logger/index.ts",
@@ -977,6 +1077,11 @@
       "type": "internal"
     },
     {
+      "from": "src/database/database-cli.helpers.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/database/database-error.mapper.ts",
       "to": "src/core/errors/app-error.ts",
       "type": "cross-cutting"
@@ -1027,9 +1132,119 @@
       "type": "internal"
     },
     {
+      "from": "src/database/ensure-database.cli.ts",
+      "to": "src/config/database.config.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/ensure-database.cli.ts",
+      "to": "src/database/database-cli.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/ensure-database.cli.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/ensure-database.cli.ts",
+      "to": "src/database/ensure-database.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/ensure-database.ts",
+      "to": "src/config/config.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/ensure-database.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/database/index.ts",
       "to": "src/database/database.module.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.cli.ts",
+      "to": "src/app.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.cli.ts",
+      "to": "src/config/seed-admin.config.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.cli.ts",
+      "to": "src/database/database-cli.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.cli.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.cli.ts",
+      "to": "src/database/seeds/seed-admin.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.cli.ts",
+      "to": "src/database/seeds/seed-admin.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.cli.ts",
+      "to": "src/database/seeds/seed-admin.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.cli.ts",
+      "to": "src/modules/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.cli.ts",
+      "to": "src/modules/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.constants.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.ts",
+      "to": "src/config/config.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.ts",
+      "to": "src/database/seeds/seed-admin.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.ts",
+      "to": "src/database/seeds/seed-admin.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.ts",
+      "to": "src/modules/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.ts",
+      "to": "src/modules/identity/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/database/snake-case-naming.strategy.ts",
@@ -1337,6 +1552,1171 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/api/dto/archive-metric.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/api/dto/create-metric.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/api/dto/list-catalog.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/api/dto/list-categories.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/api/dto/list-metrics.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/api/dto/list-scales.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/api/dto/metric-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/application/assessment-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/application/create-metric.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/lib/assessments.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-period.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-period.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-period.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-period.controller.ts",
+      "to": "src/modules/assessments/api/dto/create-period.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-period.controller.ts",
+      "to": "src/modules/assessments/api/dto/list-catalog.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-period.controller.ts",
+      "to": "src/modules/assessments/api/dto/list-periods.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-period.controller.ts",
+      "to": "src/modules/assessments/api/dto/period-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-period.controller.ts",
+      "to": "src/modules/assessments/application/assessment-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-period.controller.ts",
+      "to": "src/modules/assessments/application/create-period.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-period.controller.ts",
+      "to": "src/modules/assessments/lib/assessments.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-period.controller.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-period.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/modules/assessments/api/dto/create-template.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/modules/assessments/api/dto/list-catalog.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/modules/assessments/api/dto/list-templates.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/modules/assessments/api/dto/publish-template.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/modules/assessments/api/dto/template-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/modules/assessments/application/assessment-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/modules/assessments/application/create-template.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/modules/assessments/application/publish-template.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/modules/assessments/lib/assessments.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/assessment-template.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/archive-metric.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/archive-metric.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/archive-metric.dto.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/category-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/category-response.dto.ts",
+      "to": "src/modules/assessments/model/assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/category-weight.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/category-weight.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/category-weight.dto.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-metric.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-metric.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-metric.dto.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-metric.dto.ts",
+      "to": "src/modules/assessments/model/assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-period.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-period.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-period.dto.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-template.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-template.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-template.dto.ts",
+      "to": "src/modules/assessments/api/dto/category-weight.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-template.dto.ts",
+      "to": "src/modules/assessments/api/dto/template-metric.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-template.dto.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/create-template.dto.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-catalog.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-catalog.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-catalog.query.dto.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-categories.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-categories.response.dto.ts",
+      "to": "src/modules/assessments/api/dto/category-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-metrics.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-metrics.response.dto.ts",
+      "to": "src/modules/assessments/api/dto/metric-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-periods.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-periods.response.dto.ts",
+      "to": "src/modules/assessments/api/dto/period-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-scales.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-scales.response.dto.ts",
+      "to": "src/modules/assessments/api/dto/scale-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-templates.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/list-templates.response.dto.ts",
+      "to": "src/modules/assessments/api/dto/template-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/metric-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/metric-response.dto.ts",
+      "to": "src/modules/assessments/model/assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/period-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/period-response.dto.ts",
+      "to": "src/modules/assessments/model/assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/publish-template.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/publish-template.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/publish-template.dto.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/scale-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/scale-response.dto.ts",
+      "to": "src/modules/assessments/model/assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/template-metric.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/template-metric.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/template-metric.dto.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/template-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/template-response.dto.ts",
+      "to": "src/modules/assessments/api/dto/category-weight.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/template-response.dto.ts",
+      "to": "src/modules/assessments/api/dto/template-metric.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/template-response.dto.ts",
+      "to": "src/modules/assessments/model/assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/api/dto/template-response.dto.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-metric-in-use.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-metric-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/assessments/application/assessment-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/assessment-query.service.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/assessment-query.service.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/assessment-scope.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/assessment-scope.service.ts",
+      "to": "src/modules/assessments/errors/assessment-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/assessment-scope.service.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-metric-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric.use-case.ts",
+      "to": "src/modules/assessments/application/assessment-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-duplicate.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-metric.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/assessments/application/create-period.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-period.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-period.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-period.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-period.use-case.ts",
+      "to": "src/modules/assessments/application/assessment-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-period.use-case.ts",
+      "to": "src/modules/assessments/domain/assessment-catalog.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-period.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-template-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-period.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-period.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-period.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-period.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "to": "src/modules/assessments/application/assessment-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "to": "src/modules/assessments/domain/assessment-catalog.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-template-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template.use-case.ts",
+      "to": "src/modules/assessments/application/assessment-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template.use-case.ts",
+      "to": "src/modules/assessments/domain/assessment-catalog.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-duplicate.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/create-template.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-template.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-template.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-template.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-template.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-template-locked.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-template.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-template-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-template.use-case.ts",
+      "to": "src/modules/assessments/errors/assessment-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-template.use-case.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-template.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-template.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-template.use-case.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/publish-template.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/api/assessment-catalog.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/api/assessment-period.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/api/assessment-template.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/archive-metric.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/assessment-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/assessment-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/create-metric-version.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/create-metric.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/create-period.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/create-template-version.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/create-template.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/publish-template.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/assessments/domain/assessment-catalog.policy.ts",
+      "to": "src/modules/assessments/errors/assessment-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/domain/assessment-catalog.policy.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/domain/assessment-catalog.policy.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-duplicate.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-duplicate.error.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-metric-in-use.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-metric-in-use.error.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-metric-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-metric-not-found.error.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-scope-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-scope-not-found.error.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-template-locked.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-template-locked.error.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-template-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-template-not-found.error.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-validation.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-validation.error.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-version-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/errors/assessment-version-conflict.error.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/index.ts",
+      "to": "src/modules/assessments/assessments.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "to": "src/modules/assessments/lib/assessments.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "to": "src/modules/assessments/model/assessments.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/assessment-scope.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/assessment-scope.repository.ts",
+      "to": "src/modules/assessments/model/assessments.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/assessments.helpers.ts",
+      "to": "src/modules/assessments/model/assessments.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/assessments.helpers.ts",
+      "to": "src/modules/assessments/model/assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/assessments.helpers.ts",
+      "to": "src/modules/assessments/model/assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/assessments.helpers.ts",
+      "to": "src/modules/assessments/model/assessments.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/assessments.helpers.ts",
+      "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/assessments.helpers.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/lib/assessments.helpers.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/model/assessments.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/model/assessments.types.ts",
+      "to": "src/modules/assessments/model/assessments.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/model/assessments.types.ts",
+      "to": "src/modules/assessments/model/assessments.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/model/assessments.types.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/auth/adapters/jwt-token.adapter.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -1433,7 +2813,22 @@
     },
     {
       "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/api/dto/auth-session-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
       "to": "src/modules/identity/api/dto/forgot-password.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/api/dto/login-response.dto.ts",
       "type": "internal"
     },
     {
@@ -1453,11 +2848,6 @@
     },
     {
       "from": "src/modules/identity/api/auth.controller.ts",
-      "to": "src/modules/identity/api/dto/principal-response.dto.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/identity/api/auth.controller.ts",
       "to": "src/modules/identity/api/dto/refresh.dto.ts",
       "type": "internal"
     },
@@ -1468,12 +2858,27 @@
     },
     {
       "from": "src/modules/identity/api/auth.controller.ts",
-      "to": "src/modules/identity/api/dto/session-response.dto.ts",
+      "to": "src/modules/identity/api/dto/revoke-other-sessions-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/api/dto/session-list-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/api/dto/session-list-response.dto.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/identity/api/auth.controller.ts",
       "to": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/application/list-sessions.use-case.ts",
       "type": "internal"
     },
     {
@@ -1508,8 +2913,23 @@
     },
     {
       "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/application/revoke-other-sessions.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/modules/identity/application/revoke-session.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
       "to": "src/modules/identity/model/identity.constants.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/auth.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/identity/api/dto/accept-invitation.dto.ts",
@@ -1525,6 +2945,11 @@
       "from": "src/modules/identity/api/dto/accept-invitation.dto.ts",
       "to": "src/modules/identity/model/identity.constants.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/auth-session-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/identity/api/dto/create-invitation.dto.ts",
@@ -1544,6 +2969,11 @@
     {
       "from": "src/modules/identity/api/dto/create-invitation.dto.ts",
       "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/device-session-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -1575,6 +3005,31 @@
       "from": "src/modules/identity/api/dto/invitation-response.dto.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/invitation-token-params.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/invitation-token-params.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/invitation-token-params.dto.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/login-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/login-response.dto.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/identity/api/dto/login.dto.ts",
@@ -1627,6 +3082,16 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/identity/api/dto/public-invitation-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/public-invitation-response.dto.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/identity/api/dto/refresh.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -1657,9 +3122,34 @@
       "type": "internal"
     },
     {
-      "from": "src/modules/identity/api/dto/session-response.dto.ts",
+      "from": "src/modules/identity/api/dto/revoke-other-sessions-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/session-list-query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/session-list-query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/session-list-query.dto.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/session-list-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/session-list-response.dto.ts",
+      "to": "src/modules/identity/api/dto/device-session-response.dto.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/identity/api/invitations.controller.ts",
@@ -1683,17 +3173,17 @@
     },
     {
       "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/modules/identity/api/dto/auth-session-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
       "to": "src/modules/identity/api/dto/create-invitation.dto.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/identity/api/invitations.controller.ts",
       "to": "src/modules/identity/api/dto/invitation-response.dto.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/identity/api/invitations.controller.ts",
-      "to": "src/modules/identity/api/dto/session-response.dto.ts",
       "type": "internal"
     },
     {
@@ -1725,6 +3215,36 @@
       "from": "src/modules/identity/api/invitations.controller.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/public-invitations.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/public-invitations.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/public-invitations.controller.ts",
+      "to": "src/modules/identity/api/dto/invitation-token-params.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/public-invitations.controller.ts",
+      "to": "src/modules/identity/api/dto/public-invitation-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/public-invitations.controller.ts",
+      "to": "src/modules/identity/application/get-invitation-details.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/public-invitations.controller.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/identity/application/accept-invitation.use-case.ts",
@@ -1883,6 +3403,11 @@
     },
     {
       "from": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/get-current-principal.use-case.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
     },
@@ -1912,8 +3437,73 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/application/get-invitation-details.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/get-invitation-details.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/get-invitation-details.use-case.ts",
+      "to": "src/modules/identity/domain/invitation.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/get-invitation-details.use-case.ts",
+      "to": "src/modules/identity/errors/invitation-invalid.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/get-invitation-details.use-case.ts",
+      "to": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/get-invitation-details.use-case.ts",
+      "to": "src/modules/identity/lib/token-hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/get-invitation-details.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/list-sessions.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/list-sessions.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/list-sessions.use-case.ts",
+      "to": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/list-sessions.use-case.ts",
+      "to": "src/modules/identity/lib/identity.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/list-sessions.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/identity/application/login.use-case.ts",
       "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -1974,6 +3564,11 @@
     {
       "from": "src/modules/identity/application/login.use-case.ts",
       "to": "src/modules/identity/lib/identity.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/lib/identity.mapper.ts",
       "type": "internal"
     },
     {
@@ -2372,6 +3967,81 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/application/revoke-other-sessions.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-other-sessions.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-other-sessions.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-other-sessions.use-case.ts",
+      "to": "src/modules/identity/errors/session-context-required.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-other-sessions.use-case.ts",
+      "to": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-other-sessions.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-other-sessions.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-session.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-session.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-session.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-session.use-case.ts",
+      "to": "src/modules/identity/errors/session-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-session.use-case.ts",
+      "to": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-session.use-case.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-session.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/revoke-session.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/identity/application/security-audit.service.ts",
       "to": "src/core/clock/clock.port.ts",
       "type": "cross-cutting"
@@ -2547,6 +4217,26 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/errors/session-context-required.error.ts",
+      "to": "src/core/errors/unauthorized.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/errors/session-context-required.error.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/errors/session-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/errors/session-not-found.error.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/identity/identity.module.ts",
       "to": "src/core/clock/clock.module.ts",
       "type": "cross-cutting"
@@ -2578,6 +4268,11 @@
     },
     {
       "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/api/public-invitations.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/application/accept-invitation.use-case.ts",
       "type": "internal"
     },
@@ -2594,6 +4289,16 @@
     {
       "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/get-invitation-details.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/list-sessions.use-case.ts",
       "type": "internal"
     },
     {
@@ -2634,6 +4339,16 @@
     {
       "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/application/revoke-invitation.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/revoke-other-sessions.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/revoke-session.use-case.ts",
       "type": "internal"
     },
     {
@@ -2687,8 +4402,23 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/identity/index.ts",
       "to": "src/modules/identity/identity.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/index.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/index.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
       "type": "internal"
     },
     {
@@ -2773,6 +4503,11 @@
     },
     {
       "from": "src/modules/identity/infrastructure/refresh-session.repository.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/infrastructure/refresh-session.repository.ts",
       "to": "src/modules/identity/model/identity.rows.ts",
       "type": "internal"
     },
@@ -2825,6 +4560,16 @@
       "from": "src/modules/identity/lib/identity.mapper.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/lib/identity.mapper.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/lib/identity.mapper.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/identity/lib/identity.mapper.ts",
@@ -4787,6 +6532,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/platform/api/dto/quiet-hours.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/quiet-hours.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/quiet-hours.dto.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/platform/api/dto/replay-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -4838,6 +6598,11 @@
     },
     {
       "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/modules/platform/api/dto/quiet-hours.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
       "to": "src/modules/platform/api/dto/update-preferences.dto.ts",
       "type": "internal"
     },
@@ -4854,6 +6619,11 @@
     {
       "from": "src/modules/platform/api/notifications.controller.ts",
       "to": "src/modules/platform/application/notification-preferences.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/notifications.controller.ts",
+      "to": "src/modules/platform/application/notification-quiet-hours.service.ts",
       "type": "internal"
     },
     {
@@ -5093,6 +6863,11 @@
     },
     {
       "from": "src/modules/platform/application/notification-projection.service.ts",
+      "to": "src/modules/platform/infrastructure/notification-audience.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-projection.service.ts",
       "to": "src/modules/platform/infrastructure/notification-delivery.repository.ts",
       "type": "internal"
     },
@@ -5118,6 +6893,46 @@
     },
     {
       "from": "src/modules/platform/application/notification-projection.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-quiet-hours.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/notification-quiet-hours.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/notification-quiet-hours.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/notification-quiet-hours.service.ts",
+      "to": "src/modules/platform/domain/notification-quiet-hours.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-quiet-hours.service.ts",
+      "to": "src/modules/platform/errors/notification-quiet-hours.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-quiet-hours.service.ts",
+      "to": "src/modules/platform/infrastructure/notification-quiet-hours.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-quiet-hours.service.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/notification-quiet-hours.service.ts",
       "to": "src/modules/platform/model/platform.types.ts",
       "type": "internal"
     },
@@ -5272,6 +7087,11 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/platform/domain/notification-quiet-hours.policy.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/platform/domain/notification-routing.policy.ts",
       "to": "src/modules/platform/model/platform.constants.ts",
       "type": "internal"
@@ -5322,6 +7142,16 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/platform/errors/notification-quiet-hours.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/errors/notification-quiet-hours.error.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/platform/errors/outbox-event-not-found.error.ts",
       "to": "src/core/errors/not-found.error.ts",
       "type": "cross-cutting"
@@ -5339,6 +7169,11 @@
     {
       "from": "src/modules/platform/index.ts",
       "to": "src/modules/platform/application/idempotency.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/index.ts",
+      "to": "src/modules/platform/application/notification-quiet-hours.service.ts",
       "type": "internal"
     },
     {
@@ -5417,6 +7252,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/platform/infrastructure/notification-audience.repository.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-audience.repository.ts",
+      "to": "src/modules/platform/model/platform.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-audience.repository.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/platform/infrastructure/notification-delivery.repository.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -5448,6 +7298,26 @@
     },
     {
       "from": "src/modules/platform/infrastructure/notification-preference.repository.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-quiet-hours.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-quiet-hours.repository.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-quiet-hours.repository.ts",
+      "to": "src/modules/platform/model/platform.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/notification-quiet-hours.repository.ts",
       "to": "src/modules/platform/model/platform.types.ts",
       "type": "internal"
     },
@@ -5628,6 +7498,11 @@
     },
     {
       "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/notification-quiet-hours.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
       "to": "src/modules/platform/application/outbox-metrics.service.ts",
       "type": "internal"
     },
@@ -5658,12 +7533,22 @@
     },
     {
       "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/infrastructure/notification-audience.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
       "to": "src/modules/platform/infrastructure/notification-delivery.repository.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/platform/platform.module.ts",
       "to": "src/modules/platform/infrastructure/notification-preference.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/infrastructure/notification-quiet-hours.repository.ts",
       "type": "internal"
     },
     {
@@ -5679,6 +7564,16 @@
     {
       "from": "src/modules/platform/platform.module.ts",
       "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/adapters/calendar-token.adapter.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/adapters/calendar-token.adapter.ts",
+      "to": "src/modules/practices/model/calendar.types.ts",
       "type": "internal"
     },
     {
@@ -6287,6 +8182,11 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/dto/calendar-feed-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/practices/api/dto/complete-block.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -6354,6 +8254,26 @@
     {
       "from": "src/modules/practices/api/dto/create-block.dto.ts",
       "to": "src/modules/practices/api/dto/block-fields.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-calendar-feed.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-calendar-feed.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-calendar-feed.dto.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/create-calendar-feed.dto.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
       "type": "internal"
     },
     {
@@ -6690,6 +8610,16 @@
       "from": "src/modules/practices/api/dto/participation.query.dto.ts",
       "to": "src/core/validation/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/reminder-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/reminder-response.dto.ts",
+      "to": "src/modules/practices/model/calendar.enums.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/practices/api/dto/reorder-blocks.dto.ts",
@@ -7052,6 +8982,91 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/practices/api/practice-calendar.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-calendar.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-calendar.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-calendar.controller.ts",
+      "to": "src/modules/practices/api/dto/calendar-feed-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-calendar.controller.ts",
+      "to": "src/modules/practices/api/dto/create-calendar-feed.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-calendar.controller.ts",
+      "to": "src/modules/practices/application/calendar-feed.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-calendar.controller.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-calendar.controller.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-calendar.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-reminder-admin.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-reminder-admin.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-reminder-admin.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/practice-reminder-admin.controller.ts",
+      "to": "src/modules/practices/api/dto/reminder-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-reminder-admin.controller.ts",
+      "to": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-reminder-admin.controller.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-reminder-admin.controller.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-reminder-admin.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/practices/api/practice-rsvp.controller.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -7320,6 +9335,31 @@
       "from": "src/modules/practices/api/practice-sessions.controller.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/public-practice-calendar.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/public-practice-calendar.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/public-practice-calendar.controller.ts",
+      "to": "src/modules/practices/application/calendar-feed.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/public-practice-calendar.controller.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/public-practice-calendar.controller.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/practices/application/agenda-admin.service.ts",
@@ -7903,6 +9943,86 @@
     },
     {
       "from": "src/modules/practices/application/attendance-sheet.service.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/modules/practices/application/scope-validation.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/modules/practices/errors/calendar-feed-limit.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/modules/practices/errors/calendar-feed-timezone.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/modules/practices/errors/calendar-feed-unavailable.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/modules/practices/infrastructure/calendar-feed-token.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/modules/practices/infrastructure/rsvp-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/modules/practices/lib/calendar.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/modules/practices/lib/ics-calendar.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
+      "to": "src/modules/practices/model/calendar.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/calendar-feed.service.ts",
       "to": "src/modules/practices/model/practices.types.ts",
       "type": "internal"
     },
@@ -8654,6 +10774,66 @@
     {
       "from": "src/modules/practices/application/practice-lookup.service.ts",
       "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "to": "src/modules/practices/domain/practice-reminder.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "to": "src/modules/practices/errors/practice-session-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-reminder.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "to": "src/modules/practices/model/calendar.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "to": "src/modules/practices/model/calendar.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/practice-reminder-admin.service.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
       "type": "internal"
     },
     {
@@ -9438,6 +11618,11 @@
     },
     {
       "from": "src/modules/practices/application/update-practice-session.use-case.ts",
+      "to": "src/modules/practices/model/practices.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/update-practice-session.use-case.ts",
       "to": "src/modules/practices/model/practices.types.ts",
       "type": "internal"
     },
@@ -9474,6 +11659,21 @@
     {
       "from": "src/modules/practices/domain/attendance.state-machine.ts",
       "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/practice-reminder.policy.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/practice-reminder.policy.ts",
+      "to": "src/modules/practices/model/calendar.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/practice-reminder.policy.ts",
+      "to": "src/modules/practices/model/calendar.types.ts",
       "type": "internal"
     },
     {
@@ -9599,6 +11799,36 @@
     {
       "from": "src/modules/practices/errors/attendance-sheet-not-found.error.ts",
       "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/calendar-feed-limit.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/calendar-feed-limit.error.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/calendar-feed-timezone.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/calendar-feed-timezone.error.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/calendar-feed-unavailable.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/calendar-feed-unavailable.error.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
       "type": "internal"
     },
     {
@@ -10007,6 +12237,26 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/infrastructure/calendar-feed-token.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/calendar-feed-token.repository.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/calendar-feed-token.repository.ts",
+      "to": "src/modules/practices/model/calendar.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/calendar-feed-token.repository.ts",
+      "to": "src/modules/practices/model/calendar.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/infrastructure/drill.repository.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -10064,6 +12314,31 @@
     {
       "from": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
       "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-reminder.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-reminder.repository.ts",
+      "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-reminder.repository.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-reminder.repository.ts",
+      "to": "src/modules/practices/model/calendar.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-reminder.repository.ts",
+      "to": "src/modules/practices/model/calendar.types.ts",
       "type": "internal"
     },
     {
@@ -10173,7 +12448,22 @@
     },
     {
       "from": "src/modules/practices/infrastructure/practice-session.repository.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-session.repository.ts",
+      "to": "src/modules/practices/model/calendar.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-session.repository.ts",
       "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-session.repository.ts",
+      "to": "src/modules/practices/model/practices.enums.ts",
       "type": "internal"
     },
     {
@@ -10347,6 +12637,36 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/lib/calendar.helpers.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/calendar.helpers.ts",
+      "to": "src/modules/practices/model/calendar.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/calendar.helpers.ts",
+      "to": "src/modules/practices/model/practices.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/ics-calendar.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/ics-calendar.ts",
+      "to": "src/modules/practices/model/practices.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/ics-calendar.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/lib/practices.helpers.ts",
       "to": "src/modules/practices/lib/cairo-time.ts",
       "type": "internal"
@@ -10442,6 +12762,26 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/model/calendar.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/model/calendar.types.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/model/calendar.types.ts",
+      "to": "src/modules/practices/model/calendar.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/model/calendar.types.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/model/practices.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
@@ -10483,6 +12823,11 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/adapters/calendar-token.adapter.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/api/agenda-block.controller.ts",
       "type": "internal"
     },
@@ -10513,6 +12858,16 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/api/practice-calendar.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/api/practice-reminder-admin.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/api/practice-rsvp.controller.ts",
       "type": "internal"
     },
@@ -10524,6 +12879,11 @@
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/api/practice-sessions.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/api/public-practice-calendar.controller.ts",
       "type": "internal"
     },
     {
@@ -10574,6 +12934,11 @@
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/attendance-sheet.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/calendar-feed.service.ts",
       "type": "internal"
     },
     {
@@ -10634,6 +12999,11 @@
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/practice-reminder-admin.service.ts",
       "type": "internal"
     },
     {
@@ -10748,12 +13118,22 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/calendar-feed-token.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/infrastructure/drill.repository.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/practice-reminder.repository.ts",
       "type": "internal"
     },
     {
@@ -10789,6 +13169,11 @@
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/infrastructure/session-status-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
       "type": "internal"
     },
     {

@@ -2,6 +2,13 @@ import type { TransactionScope } from '@core/persistence/unit-of-work.port';
 import { Injectable } from '@nestjs/common';
 
 import {
+  toAssessmentCategory,
+  toAssessmentMetric,
+  toAssessmentPeriod,
+  toAssessmentScale,
+  toAssessmentTemplate,
+} from '../lib/assessments.helpers';
+import {
   CATEGORY_COLUMNS,
   METRIC_COLUMNS,
   PERIOD_COLUMNS,
@@ -33,19 +40,12 @@ import type {
   NewMetric,
   NewPeriod,
   NewTemplate,
-  PageRequest,
   PagedResult,
+  PageRequest,
   TemplateMetricInput,
   TemplatePublish,
   TemplateRelations,
 } from '../model/assessments.types';
-import {
-  toAssessmentCategory,
-  toAssessmentMetric,
-  toAssessmentPeriod,
-  toAssessmentScale,
-  toAssessmentTemplate,
-} from '../lib/assessments.helpers';
 
 @Injectable()
 export class AssessmentCatalogRepository {
@@ -62,7 +62,7 @@ export class AssessmentCatalogRepository {
     );
     const total = await this.count(scope, 'assessment_metric_categories');
     return this.page(
-      rows.map((row) => toAssessmentCategory(row)),
+      rows.map(row => toAssessmentCategory(row)),
       total,
       page,
     );
@@ -81,7 +81,7 @@ export class AssessmentCatalogRepository {
     );
     const total = await this.count(scope, 'assessment_scales');
     return this.page(
-      rows.map((row) => toAssessmentScale(row)),
+      rows.map(row => toAssessmentScale(row)),
       total,
       page,
     );
@@ -106,7 +106,7 @@ export class AssessmentCatalogRepository {
       [teamId],
     );
     return this.page(
-      rows.map((row) => toAssessmentMetric(row)),
+      rows.map(row => toAssessmentMetric(row)),
       totals[0]?.count ?? 0,
       page,
     );
@@ -154,6 +154,18 @@ export class AssessmentCatalogRepository {
     );
     const row = rows[0];
     return row === undefined ? null : toAssessmentMetric(row);
+  }
+
+  async nextMetricVersion(
+    scope: TransactionScope,
+    familyId: string,
+  ): Promise<number> {
+    const rows = await scope.run<CountRow>(
+      `SELECT COALESCE(MAX("definition_version"), 0)::int + 1 AS "count"
+         FROM "assessment_metric_definitions" WHERE "family_id" = $1`,
+      [familyId],
+    );
+    return rows[0]?.count ?? 1;
   }
 
   async insertMetric(
@@ -261,6 +273,18 @@ export class AssessmentCatalogRepository {
     return toAssessmentTemplate(row, relations.weights, relations.metrics);
   }
 
+  async nextTemplateVersion(
+    scope: TransactionScope,
+    familyId: string,
+  ): Promise<number> {
+    const rows = await scope.run<CountRow>(
+      `SELECT COALESCE(MAX("template_version"), 0)::int + 1 AS "count"
+         FROM "assessment_templates" WHERE "family_id" = $1`,
+      [familyId],
+    );
+    return rows[0]?.count ?? 1;
+  }
+
   async insertTemplate(
     scope: TransactionScope,
     template: NewTemplate,
@@ -276,8 +300,10 @@ export class AssessmentCatalogRepository {
        RETURNING ${TEMPLATE_COLUMNS}`,
       this.templateParameters(template),
     );
+    const row = this.requireRow(rows);
     await this.insertTemplateRelations(scope, template.id, weights, metrics);
-    return toAssessmentTemplate(this.requireRow(rows), [], []);
+    const relations = await this.loadTemplateRelations(scope, [row.id]);
+    return toAssessmentTemplate(row, relations.weights, relations.metrics);
   }
 
   async publishTemplate(
@@ -391,7 +417,7 @@ export class AssessmentCatalogRepository {
       [teamId],
     );
     return this.page(
-      rows.map((row) => toAssessmentPeriod(row)),
+      rows.map(row => toAssessmentPeriod(row)),
       totals[0]?.count ?? 0,
       page,
     );
@@ -507,10 +533,7 @@ export class AssessmentCatalogRepository {
     return { weights, metrics };
   }
 
-  private async count(
-    scope: TransactionScope,
-    table: string,
-  ): Promise<number> {
+  private async count(scope: TransactionScope, table: string): Promise<number> {
     const statement =
       table === 'assessment_metric_categories'
         ? `SELECT COUNT(*)::int AS "count"
@@ -525,12 +548,7 @@ export class AssessmentCatalogRepository {
     items: readonly TItem[],
     total: number,
     page: PageRequest,
-  ): {
-    readonly items: readonly TItem[];
-    readonly total: number;
-    readonly limit: number;
-    readonly offset: number;
-  } {
+  ): PagedResult<TItem> {
     return { items, total, limit: page.limit, offset: page.offset };
   }
 
@@ -542,4 +560,3 @@ export class AssessmentCatalogRepository {
     return row;
   }
 }
-
