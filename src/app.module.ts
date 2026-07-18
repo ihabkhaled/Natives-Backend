@@ -5,6 +5,7 @@ import { LoggerModule } from '@core/logger/logger.module';
 import { ArticlesModule } from '@modules/articles';
 import { AuthModule } from '@modules/auth';
 import { IdentityModule } from '@modules/identity';
+import { MembersModule } from '@modules/members';
 import { RbacModule } from '@modules/rbac';
 import { TeamsModule } from '@modules/teams';
 import { Module } from '@nestjs/common';
@@ -25,6 +26,7 @@ import { Module } from '@nestjs/common';
     AuthModule,
     IdentityModule,
     TeamsModule,
+    MembersModule,
     ArticlesModule,
   ],
 })

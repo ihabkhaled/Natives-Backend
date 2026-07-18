@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T00:03:04.411Z",
+  "generatedAt": "2026-07-18T01:19:50.516Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -34,6 +34,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/identity/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/members/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -2835,6 +2840,1811 @@
       "from": "src/modules/identity/model/identity.types.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/adapters/signed-url-media-storage.adapter.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/adapters/signed-url-media-storage.adapter.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/adapters/signed-url-media-storage.adapter.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/add-alias.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/add-alias.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/add-alias.dto.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/add-alias.dto.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/alias-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/alias-response.dto.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/avatar-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/invite-member.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/invite-member.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/invite-member.dto.ts",
+      "to": "src/modules/members/api/dto/player-profile.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/list-members.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/list-members.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/list-members.query.dto.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/media-asset-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/media-asset-response.dto.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/member-directory-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/member-directory-response.dto.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/member-history-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/member-history-response.dto.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/member-view-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/member-view-response.dto.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/membership-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/membership-response.dto.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/player-profile.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/player-profile.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/player-profile.dto.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/player-profile.dto.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/record-scan.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/record-scan.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/record-scan.dto.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/request-avatar.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/request-avatar.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/request-avatar.dto.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/transition.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/transition.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/transition.dto.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/update-profile.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/update-profile.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/update-profile.dto.ts",
+      "to": "src/modules/members/api/dto/player-profile.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/api/dto/add-alias.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/api/dto/alias-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/api/dto/avatar-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/api/dto/media-asset-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/api/dto/member-view-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/api/dto/record-scan.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/api/dto/request-avatar.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/application/add-member-alias.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/application/get-avatar.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/application/member-alias-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/application/record-media-scan.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/api/dto/invite-member.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/api/dto/list-members.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/api/dto/member-directory-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/api/dto/member-history-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/api/dto/member-view-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/api/dto/membership-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/api/dto/transition.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/api/dto/update-profile.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/application/anonymize-member.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/application/invite-member.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/application/member-directory.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/application/member-history.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/application/member-view.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/application/transition-member.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/application/update-member-profile.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/lib/members.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/lib/profile-input.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/members.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/modules/members/domain/alias-normalization.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/modules/members/errors/alias-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-alias.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/modules/members/lib/member.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/add-member-alias.use-case.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/modules/members/domain/membership-lifecycle.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/modules/members/errors/invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/modules/members/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-alias.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/status-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/anonymize-member.use-case.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/get-avatar.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/get-avatar.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/get-avatar.service.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/get-avatar.service.ts",
+      "to": "src/modules/members/infrastructure/media-asset.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/get-avatar.service.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/get-avatar.service.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/get-avatar.service.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/modules/members/errors/membership-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/modules/members/errors/team-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/status-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/team-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/modules/members/lib/members.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/invite-member.use-case.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-access.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-access.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-access.service.ts",
+      "to": "src/modules/members/infrastructure/membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-access.service.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-access.service.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-access.service.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-alias-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-alias-query.service.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-alias-query.service.ts",
+      "to": "src/modules/members/infrastructure/member-alias.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-alias-query.service.ts",
+      "to": "src/modules/members/lib/member.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-alias-query.service.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-alias-query.service.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-directory.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-directory.service.ts",
+      "to": "src/modules/members/infrastructure/membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-directory.service.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-history.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-history.service.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-history.service.ts",
+      "to": "src/modules/members/infrastructure/status-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-history.service.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-history.service.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-lookup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-lookup.service.ts",
+      "to": "src/modules/members/errors/membership-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-lookup.service.ts",
+      "to": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-lookup.service.ts",
+      "to": "src/modules/members/infrastructure/membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-lookup.service.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-view.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-view.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-view.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-view.service.ts",
+      "to": "src/modules/members/application/member-access.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-view.service.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-view.service.ts",
+      "to": "src/modules/members/domain/member-age.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-view.service.ts",
+      "to": "src/modules/members/domain/member-privacy.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-view.service.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/record-media-scan.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/record-media-scan.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/record-media-scan.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/record-media-scan.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/record-media-scan.use-case.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/record-media-scan.use-case.ts",
+      "to": "src/modules/members/errors/media-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/record-media-scan.use-case.ts",
+      "to": "src/modules/members/infrastructure/media-asset.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/record-media-scan.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/record-media-scan.use-case.ts",
+      "to": "src/modules/members/lib/member.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/record-media-scan.use-case.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/record-media-scan.use-case.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "to": "src/modules/members/errors/alias-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-alias.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/modules/members/application/member-access.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/modules/members/domain/media-validation.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/modules/members/errors/media-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/modules/members/errors/profile-forbidden.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/modules/members/infrastructure/media-asset.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/application/member-access.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/domain/member-age.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/domain/member-privacy.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/errors/media-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/errors/media-not-scanned.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/errors/membership-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/errors/profile-forbidden.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/infrastructure/media-asset.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/modules/members/domain/membership-lifecycle.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/modules/members/errors/invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/modules/members/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/modules/members/infrastructure/status-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/transition-member.use-case.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/application/member-access.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/domain/jersey.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/domain/member-age.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/domain/member-privacy.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/domain/membership-lifecycle.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/errors/jersey-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/errors/optimistic-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/errors/profile-forbidden.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/lib/members.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/update-member-profile.use-case.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/domain/jersey.policy.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/domain/media-validation.policy.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/domain/media-validation.policy.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/domain/member-age.policy.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/domain/member-age.policy.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/domain/member-privacy.policy.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/domain/member-privacy.policy.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/domain/member-privacy.policy.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/domain/membership-lifecycle.state-machine.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/errors/alias-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/alias-conflict.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/errors/alias-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/alias-not-found.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/errors/invalid-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/invalid-transition.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/errors/jersey-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/jersey-conflict.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/errors/media-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/media-not-found.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/errors/media-not-scanned.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/media-not-scanned.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/errors/media-validation.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/media-validation.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/errors/membership-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/membership-conflict.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/errors/membership-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/membership-not-found.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/errors/optimistic-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/optimistic-conflict.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/errors/profile-forbidden.error.ts",
+      "to": "src/core/errors/forbidden.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/profile-forbidden.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/errors/team-scope-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/team-scope-not-found.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/index.ts",
+      "to": "src/modules/members/members.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/media-asset.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/infrastructure/media-asset.repository.ts",
+      "to": "src/modules/members/lib/members.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/media-asset.repository.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/media-asset.repository.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/media-asset.repository.ts",
+      "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/media-asset.repository.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-alias.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-alias.repository.ts",
+      "to": "src/modules/members/lib/members.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-alias.repository.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-alias.repository.ts",
+      "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-alias.repository.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "to": "src/modules/members/lib/members.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/membership.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/infrastructure/membership.repository.ts",
+      "to": "src/modules/members/lib/members.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/membership.repository.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/membership.repository.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/membership.repository.ts",
+      "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/membership.repository.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/status-event.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/infrastructure/status-event.repository.ts",
+      "to": "src/modules/members/lib/members.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/status-event.repository.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/status-event.repository.ts",
+      "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/status-event.repository.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/team-scope.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/infrastructure/team-scope.repository.ts",
+      "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/member.mapper.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/members.helpers.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/members.helpers.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/members.helpers.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/members.helpers.ts",
+      "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/members.helpers.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/profile-input.mapper.ts",
+      "to": "src/modules/members/api/dto/player-profile.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/profile-input.mapper.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/adapters/signed-url-media-storage.adapter.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/api/member-media.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/api/members.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/add-member-alias.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/anonymize-member.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/get-avatar.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/invite-member.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/member-access.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/member-alias-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/member-directory.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/member-history.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/member-view.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/record-media-scan.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/transition-member.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/update-member-profile.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/infrastructure/media-asset.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/infrastructure/member-alias.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/infrastructure/membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/infrastructure/status-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/infrastructure/team-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/members/model/members.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/model/members.constants.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/model/members.types.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/rbac/api/dto/assign-role.dto.ts",

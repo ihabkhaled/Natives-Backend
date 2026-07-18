@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-18T00:03:04.411Z",
-  "treeHash": "sha256:4b3185ee12589611e95f607f9d2a33089dc250784c928e65707d4f7f898c546c",
+  "generatedAt": "2026-07-18T01:19:50.516Z",
+  "treeHash": "sha256:0ba8b9b64f08b46d8dfea9ae944568fad7c92bb2904de8a09d245af389ff7b27",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:09b72a5bf95c0b1bd651845792df12ae457ba317226fde4c72f3498d59ebf3eb",
-      "sizeBytes": 1010
+      "hash": "sha256:4c49146bdf4380e48c8b9ffb7f6eef39a968d916b7fa1fd8163e3b7d814fee99",
+      "sizeBytes": 1079
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -2432,6 +2432,23 @@
       "kind": "source",
       "hash": "sha256:a564d61bb94aa4c82114878e0be43ebf298e567ef34fdba77029e7ae0bc8d172",
       "sizeBytes": 8216
+    },
+    {
+      "path": "src/database/migrations/1721600000000-members-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MembersSchema1721600000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4b80cbd5126c35ce88e0f616383136c2b2fd2b82063138cda321633ded655812",
+      "sizeBytes": 9516
     },
     {
       "path": "src/database/naming.helpers.spec.ts",
@@ -4875,6 +4892,2353 @@
       "kind": "source",
       "hash": "sha256:1708bbd0cf2328007ccc057060b89c66c9464c4e2130af32450b2c83dac3a187",
       "sizeBytes": 5178
+    },
+    {
+      "path": "src/modules/members/adapters/signed-url-media-storage.adapter.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "adapter",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bb8b0c28a0ae5d1f4903469e18ef63898e1068b17f35363d487370fab711b32a",
+      "sizeBytes": 2028
+    },
+    {
+      "path": "src/modules/members/adapters/signed-url-media-storage.adapter.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "adapter",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SignedUrlMediaStorageAdapter"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/adapters/signed-url-media-storage.adapter.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d73a67237df4f6a7047caa21a89bf8b356ceff4ea0cf21a182a76ea6d24a3e82",
+      "sizeBytes": 2161
+    },
+    {
+      "path": "src/modules/members/api/dto/add-alias.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AddAliasDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:10c022bb72df2cecd6d254e5aa60350b049e43b0da147e63293076560aa4e6e0",
+      "sizeBytes": 723
+    },
+    {
+      "path": "src/modules/members/api/dto/alias-response.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AliasResponseDto"
+        },
+        {
+          "kind": "class",
+          "name": "ListAliasesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b2269f5781937c7ec9c0f7e6eee36cf2229610ab7326d749ecdb8eacb5212a23",
+      "sizeBytes": 718
+    },
+    {
+      "path": "src/modules/members/api/dto/avatar-response.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AvatarTicketResponseDto"
+        },
+        {
+          "kind": "class",
+          "name": "AvatarAccessResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0335777bb889c5a4e6d0a7f9e1ea9e265ec2a36b895c75b77be0eda9dc88b923",
+      "sizeBytes": 718
+    },
+    {
+      "path": "src/modules/members/api/dto/invite-member.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InviteMemberDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a2515f69fc0ab46614ebe8664f51a52f7d799643b0eb9ccf39f07a8d85cfc203",
+      "sizeBytes": 835
+    },
+    {
+      "path": "src/modules/members/api/dto/list-members.query.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListMembersQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bb2f96496e9204b7fa20f9c811315a11fa7379507956ef6cee49fe0f4d236bf5",
+      "sizeBytes": 797
+    },
+    {
+      "path": "src/modules/members/api/dto/media-asset-response.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MediaAssetResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:896ff026884b384f2e0df12dcc71edef14c1e7da897ab2fecfd64753be217479",
+      "sizeBytes": 913
+    },
+    {
+      "path": "src/modules/members/api/dto/member-directory-response.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberDirectoryItemDto"
+        },
+        {
+          "kind": "class",
+          "name": "ListMembersResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:39b6a612a466382e99365cae80f98224e281ab0b344f01e3572bdb2c17b687e9",
+      "sizeBytes": 1158
+    },
+    {
+      "path": "src/modules/members/api/dto/member-history-response.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StatusEventResponseDto"
+        },
+        {
+          "kind": "class",
+          "name": "MemberHistoryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1baeeded3cdaeabdc260d765d68e9a511264b202e7f84942e9382d5b4ec394b6",
+      "sizeBytes": 1107
+    },
+    {
+      "path": "src/modules/members/api/dto/member-view-response.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberViewResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3c213785fd743271a2e16a4adb984f280cce6aecc647b103da673d382f293db1",
+      "sizeBytes": 2662
+    },
+    {
+      "path": "src/modules/members/api/dto/membership-response.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MembershipResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0676b01f21f10a98cb7ada18c5bc06775cb8727f5bb4353fec0c0d788fb13721",
+      "sizeBytes": 1681
+    },
+    {
+      "path": "src/modules/members/api/dto/player-profile.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerProfileDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:de0fca0152e3e397e7008fdea01d8137be462d5c9c84aa075b329571b0c32f09",
+      "sizeBytes": 3523
+    },
+    {
+      "path": "src/modules/members/api/dto/record-scan.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RecordScanDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:30b2590c1d4cf551d9d604fb968a32c9c725570ad8c2f09beabbf39227bb1e0e",
+      "sizeBytes": 376
+    },
+    {
+      "path": "src/modules/members/api/dto/request-avatar.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RequestAvatarDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7ade98819e043629e3e04623f18e71c62a2858f37896b32d0a1198ffb295f78e",
+      "sizeBytes": 1381
+    },
+    {
+      "path": "src/modules/members/api/dto/transition.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fb280cab0354be1cb2046eea4a7726d1028e9a7cfb4b29312b882f884e179860",
+      "sizeBytes": 753
+    },
+    {
+      "path": "src/modules/members/api/dto/update-profile.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateProfileDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e165b13e5e8b4ab2e3b6e5313ece94b4ee123b7b61189c98e5f04d6247b02f34",
+      "sizeBytes": 672
+    },
+    {
+      "path": "src/modules/members/api/member-media.controller.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberMediaController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9f8d2cfb11626026dfebd308d922b626d83d3f01d1328c5722efbbaa7cae6a8b",
+      "sizeBytes": 7000
+    },
+    {
+      "path": "src/modules/members/api/members.controller.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MembersController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:27218fbd7d5f9d86173eacf52ce6782836d0439e64aa3de633ac71d7b7c4cd3f",
+      "sizeBytes": 10535
+    },
+    {
+      "path": "src/modules/members/application/add-member-alias.use-case.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:00466ad305211b978bc7e25fe93b6cfd09180f76fbce3906100576d758d27c43",
+      "sizeBytes": 2947
+    },
+    {
+      "path": "src/modules/members/application/add-member-alias.use-case.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AddMemberAliasUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/add-member-alias.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7868a4d40b6b5eadbc575e079b22790186c918c28cb7b17c4fd6211b0afa8b9b",
+      "sizeBytes": 3735
+    },
+    {
+      "path": "src/modules/members/application/anonymize-member.use-case.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:dcca84058196de4b47b87a060a1d8ba8095f9bab51f77f9e75c058e6ab29b008",
+      "sizeBytes": 3343
+    },
+    {
+      "path": "src/modules/members/application/anonymize-member.use-case.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AnonymizeMemberUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/anonymize-member.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:fdf479b764a86ca0727af9266a029652f6d87dad12135a32f178af683688e20e",
+      "sizeBytes": 5329
+    },
+    {
+      "path": "src/modules/members/application/get-avatar.service.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d49341d0db9ce74887906120a81d6a1277a029e61984111119897345c4774f6f",
+      "sizeBytes": 2955
+    },
+    {
+      "path": "src/modules/members/application/get-avatar.service.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GetAvatarService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/get-avatar.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4bde1cdaaddaf88a49c7f486046380dc6f2f7575268545d957bc360653de79ab",
+      "sizeBytes": 2721
+    },
+    {
+      "path": "src/modules/members/application/invite-member.use-case.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:17f1e22e5f8a5463563844c21a888f0ad2ee2bea46ecc7d2d9cd974b9a696c22",
+      "sizeBytes": 4144
+    },
+    {
+      "path": "src/modules/members/application/invite-member.use-case.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InviteMemberUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/invite-member.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4460d4ed474f142a9c4ae592c58906b2bf72c38c81081472d461c800424d66e7",
+      "sizeBytes": 5611
+    },
+    {
+      "path": "src/modules/members/application/member-access.service.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:62b88ebc7e28829170ecd3760ede3854423c4ac5e84caacb4a3aefc7d2599062",
+      "sizeBytes": 3219
+    },
+    {
+      "path": "src/modules/members/application/member-access.service.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberAccessService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/member-access.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:93ccdc9a6d1aed9052399a2e8a6eae8599b92fff4e48240394f3e2197a91a36b",
+      "sizeBytes": 2660
+    },
+    {
+      "path": "src/modules/members/application/member-alias-query.service.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:79ced28c5d97fff17dbd6e7877c8a31324fd036827bc1ea019c67ad1959af124",
+      "sizeBytes": 1617
+    },
+    {
+      "path": "src/modules/members/application/member-alias-query.service.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberAliasQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/member-alias-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7b605ce139fd664302fa73f558ddc156ae34a3162cbb7a69df54097da58783f5",
+      "sizeBytes": 1582
+    },
+    {
+      "path": "src/modules/members/application/member-directory.service.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8c7e7244d86bc2281475f80110ce9d672e9094218d8ffb5b0a8c271a9b93f29a",
+      "sizeBytes": 954
+    },
+    {
+      "path": "src/modules/members/application/member-directory.service.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberDirectoryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/member-directory.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ccf3fe5c97beaf04b5890a60c5b4b68e1f308ba250672bbac61b2b8924a4df63",
+      "sizeBytes": 960
+    },
+    {
+      "path": "src/modules/members/application/member-history.service.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b08efee7989f50fbf120a119d229fc99f614bfd2ec36616d0adc95eabdc3a007",
+      "sizeBytes": 1438
+    },
+    {
+      "path": "src/modules/members/application/member-history.service.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberHistoryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/member-history.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:47c171d77f6dd8976fc8198b53670e73077077b0e5f91c545763e73e14d37f3b",
+      "sizeBytes": 1472
+    },
+    {
+      "path": "src/modules/members/application/member-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3bf3ecbac90c168a4c213dc8ecd7c14777065068f554010684ed3ac346522f92",
+      "sizeBytes": 2405
+    },
+    {
+      "path": "src/modules/members/application/member-lookup.service.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/member-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e3cecc9ebd49770080ef49873b38c85b70ca97439894d1ab87d998ac83f2e6bc",
+      "sizeBytes": 1662
+    },
+    {
+      "path": "src/modules/members/application/member-view.service.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:42c959fa5be3bedc83721a63848757e4c1e86a9c228a0f41b79be7c4932d6a57",
+      "sizeBytes": 2832
+    },
+    {
+      "path": "src/modules/members/application/member-view.service.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberViewService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/member-view.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:973ff497c996016ea10ab8187f57b20e6ccdf7c1e9fffa65d2a4034de730ed56",
+      "sizeBytes": 1780
+    },
+    {
+      "path": "src/modules/members/application/record-media-scan.use-case.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:eb6e5a8270c6ce6ff0f7bd5d63b55851d380b68b31afe77ebc25e29ded73fea3",
+      "sizeBytes": 2749
+    },
+    {
+      "path": "src/modules/members/application/record-media-scan.use-case.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RecordMediaScanUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/record-media-scan.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2c5114fa15bc6bc2106597ba95560a9fc6663220a98f0755d8ac61478527c0bd",
+      "sizeBytes": 3134
+    },
+    {
+      "path": "src/modules/members/application/remove-member-alias.use-case.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:49e1212b7042bcc988a703849c10e51737d85f7863d550fdf8c9ba530d9c0f10",
+      "sizeBytes": 2001
+    },
+    {
+      "path": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RemoveMemberAliasUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/remove-member-alias.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ae1cf673b4b4967ee962b40e240760c3e7b25c6fdf050d1e7bc1bc26566cd64f",
+      "sizeBytes": 2802
+    },
+    {
+      "path": "src/modules/members/application/request-avatar-upload.use-case.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f0e93f82ad0dde5d50a6cb5739618e9ae8fb8cedbe6facad114a1b3ba6342885",
+      "sizeBytes": 3199
+    },
+    {
+      "path": "src/modules/members/application/request-avatar-upload.use-case.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RequestAvatarUploadUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/request-avatar-upload.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c7214b5762354b2bd2dcffb81222650c70f5cf326927c46fe19274befed4f96e",
+      "sizeBytes": 4475
+    },
+    {
+      "path": "src/modules/members/application/set-member-avatar.use-case.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:338145a9a9c1caed2bfd1e27264f190639feb0d49abdffba0e6e6654773944bf",
+      "sizeBytes": 4805
+    },
+    {
+      "path": "src/modules/members/application/set-member-avatar.use-case.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SetMemberAvatarUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/set-member-avatar.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:02537e748c271b789da40cd566b866f1333381e005ed9a70a5d07f69f8aadaaf",
+      "sizeBytes": 4570
+    },
+    {
+      "path": "src/modules/members/application/transition-member.use-case.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e47abb147cd0341dc2f22e5193177efc04bd31bbc843c1bdd752ac13e636d794",
+      "sizeBytes": 3900
+    },
+    {
+      "path": "src/modules/members/application/transition-member.use-case.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionMemberUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/transition-member.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f17d4c5d1f12a4eeea60fc9cd0b00bfbfe2461fc119f6a2ff00c3d435664de9a",
+      "sizeBytes": 5837
+    },
+    {
+      "path": "src/modules/members/application/update-member-profile.use-case.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6d67e2e9d7084e450ebe889edfeb7f2c6e46a81ef888f3966b2660645f4d1444",
+      "sizeBytes": 6155
+    },
+    {
+      "path": "src/modules/members/application/update-member-profile.use-case.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateMemberProfileUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/update-member-profile.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:84afde99015db954f5fbfd482b1fc59efd2b49a1b13e6d9aa3846e520c6a9ed1",
+      "sizeBytes": 5735
+    },
+    {
+      "path": "src/modules/members/domain/alias-normalization.policy.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2b5b3b720064ba33de04a854315524363ebcbae88a7978cac68eaa4e822feda7",
+      "sizeBytes": 1500
+    },
+    {
+      "path": "src/modules/members/domain/alias-normalization.policy.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "normalizeAlias"
+        },
+        {
+          "kind": "function",
+          "name": "isMatchableAlias"
+        },
+        {
+          "kind": "function",
+          "name": "aliasesCollide"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/domain/alias-normalization.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ebb79ae47a827db250319b36b6eb58252d32034d34287168b61908380c72d247",
+      "sizeBytes": 1486
+    },
+    {
+      "path": "src/modules/members/domain/jersey.policy.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:cbe2a9ea2f4239bacd97d93de2c5e6aaac5fa2e3399be8e935e35ceceb9473f4",
+      "sizeBytes": 1088
+    },
+    {
+      "path": "src/modules/members/domain/jersey.policy.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "findJerseyConflict"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/domain/jersey.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:449961ae793b259e5eea3f3f39cf63b4217c4d48b0df3228bb40ebc47424e549",
+      "sizeBytes": 1065
+    },
+    {
+      "path": "src/modules/members/domain/media-validation.policy.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:99a831c1f9dad80cbbfdf9fd13f19322b1fa6ef6bb00b94483107b428c4db8c3",
+      "sizeBytes": 2672
+    },
+    {
+      "path": "src/modules/members/domain/media-validation.policy.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isAllowedContentType"
+        },
+        {
+          "kind": "function",
+          "name": "isWithinSizeLimit"
+        },
+        {
+          "kind": "function",
+          "name": "isValidDimension"
+        },
+        {
+          "kind": "function",
+          "name": "isValidAvatarUpload"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/domain/media-validation.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7aff18687188cff03a762027e95458ac62c413cabb33c5c5597a8a0605fc8069",
+      "sizeBytes": 1492
+    },
+    {
+      "path": "src/modules/members/domain/member-age.policy.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ab0fbf52981227d17e3a381d599f30a07d8eb8dd52b85763907d00faf360f902",
+      "sizeBytes": 2394
+    },
+    {
+      "path": "src/modules/members/domain/member-age.policy.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "computeAgeYears"
+        },
+        {
+          "kind": "function",
+          "name": "classifyAge"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/domain/member-age.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:97ffdd2ac7ebb80807142f0c614e33c728d76fc22116b469c97b9c6179cce68a",
+      "sizeBytes": 2058
+    },
+    {
+      "path": "src/modules/members/domain/member-privacy.policy.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:cd7417a3ab4acde0a235f30d1dccf9c94fa4b2f751712fdcac8381bd624efe66",
+      "sizeBytes": 5842
+    },
+    {
+      "path": "src/modules/members/domain/member-privacy.policy.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveAudienceLabel"
+        },
+        {
+          "kind": "function",
+          "name": "shapeMemberView"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/domain/member-privacy.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:880f25a33de546722f5b227f02ca2f013356196c359b65229ade70d7cb30f82a",
+      "sizeBytes": 4661
+    },
+    {
+      "path": "src/modules/members/domain/membership-lifecycle.state-machine.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:498691f8c25dd88624290cf329eac9ae389197dd6dfbf037d1950e9d4e7b008d",
+      "sizeBytes": 3557
+    },
+    {
+      "path": "src/modules/members/domain/membership-lifecycle.state-machine.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "canTransition"
+        },
+        {
+          "kind": "function",
+          "name": "allowedTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "isTerminal"
+        },
+        {
+          "kind": "function",
+          "name": "canMutateTeamData"
+        },
+        {
+          "kind": "function",
+          "name": "canEditProfile"
+        },
+        {
+          "kind": "function",
+          "name": "canSelfEditProfile"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/domain/membership-lifecycle.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1c1be1a907224d8ab121333921e47dcf58b53e503f6746d3a6546cf112a5ce33",
+      "sizeBytes": 3106
+    },
+    {
+      "path": "src/modules/members/errors/alias-conflict.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AliasConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:18b21e45f7a86a74894fae2abd894f2eff03e14ee9627016e3c33ff549a7eced",
+      "sizeBytes": 395
+    },
+    {
+      "path": "src/modules/members/errors/alias-not-found.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AliasNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2b90755c737f3c0e4da7b912cecfcd561664c6850bbab7439603f685e22f8a14",
+      "sizeBytes": 386
+    },
+    {
+      "path": "src/modules/members/errors/invalid-transition.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:87e92080493c9243273a184c3feb95d246ee86863c2d5e74e5872177de4bdab3",
+      "sizeBytes": 412
+    },
+    {
+      "path": "src/modules/members/errors/jersey-conflict.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "JerseyConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:509fe2ac0ce87ae9cf0643018455539870dbad926e39331acfa61e0e2c52f863",
+      "sizeBytes": 398
+    },
+    {
+      "path": "src/modules/members/errors/media-not-found.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MediaNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ab5610be39bb6dad877c6f28b9fc8cf7f1f6f43d33c0ee7ffc7287cc27f82abe",
+      "sizeBytes": 391
+    },
+    {
+      "path": "src/modules/members/errors/media-not-scanned.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MediaNotScannedError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3f17f7b4d1574f285c6098fd78def01f81dcf0755c686dca11846c29c9f34b7c",
+      "sizeBytes": 404
+    },
+    {
+      "path": "src/modules/members/errors/media-validation.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MediaValidationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bb84a358ad2ce8586d10a9b9b92f622796a9c0cc5b6047475303c050e9afe325",
+      "sizeBytes": 401
+    },
+    {
+      "path": "src/modules/members/errors/membership-conflict.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MembershipConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d4978acd9bc700ec15392ae8bbe64f6661da5417826aed5001a658bb01a22c54",
+      "sizeBytes": 415
+    },
+    {
+      "path": "src/modules/members/errors/membership-not-found.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MembershipNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:48ec42e066e326b90fe883af3fcb5f02eb2125cbf58895dad4a99b801b728633",
+      "sizeBytes": 418
+    },
+    {
+      "path": "src/modules/members/errors/optimistic-conflict.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OptimisticConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1fd48041fdc1c86a3c28b06b824182422e123358047f391aad026d132980a86a",
+      "sizeBytes": 485
+    },
+    {
+      "path": "src/modules/members/errors/profile-forbidden.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ProfileForbiddenError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:24a1f84a932caa9d05a457059b85cdf6a130a2255ccf59955318b272141f9fc6",
+      "sizeBytes": 496
+    },
+    {
+      "path": "src/modules/members/errors/team-scope-not-found.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamScopeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c8bb1a4131c51bde09d85ea1acec2a0f521620d3b9bf2530019122b8923d0e95",
+      "sizeBytes": 505
+    },
+    {
+      "path": "src/modules/members/index.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cc08b8793e6390cc829e117fdc9ad843b31e67bb3906b7203fcbef5fd85836ab",
+      "sizeBytes": 50
+    },
+    {
+      "path": "src/modules/members/infrastructure/media-asset.repository.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4a290ba173bbbf7ffeb244e5d71f06cebd3691bc2e82dd922875275a4565b81f",
+      "sizeBytes": 2860
+    },
+    {
+      "path": "src/modules/members/infrastructure/media-asset.repository.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MediaAssetRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/infrastructure/media-asset.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:69ba6ec4e55ec400ffc1a876bdb897501e1231484073deeb9236dd8c926e2f8e",
+      "sizeBytes": 2594
+    },
+    {
+      "path": "src/modules/members/infrastructure/member-alias.repository.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:057d1ba9c995378a5d8ba0ca2569107974c0ae68470c72ad63f98bd7f9cbd655",
+      "sizeBytes": 3374
+    },
+    {
+      "path": "src/modules/members/infrastructure/member-alias.repository.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberAliasRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/infrastructure/member-alias.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:886b15b2b05b34bda5492c0ee6534c120eecd34ba12595192b8e7bef4650385c",
+      "sizeBytes": 3495
+    },
+    {
+      "path": "src/modules/members/infrastructure/member-audit.repository.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b291e5cbd81a4aa6ef9e742e377c34a6f142d10ed19dacd611c917246a7eca11",
+      "sizeBytes": 1133
+    },
+    {
+      "path": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberAuditRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/infrastructure/member-audit.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:70f0adf9c52f64dd12d540b8c9cde02c8919c7d9a1caa57942d73b40474bed8c",
+      "sizeBytes": 1023
+    },
+    {
+      "path": "src/modules/members/infrastructure/member-profile.repository.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f771f85c2befab7c2d9ad9accafd9ab889e804c5b389b7baa98c75c3d152bc91",
+      "sizeBytes": 4611
+    },
+    {
+      "path": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberProfileRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/infrastructure/member-profile.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ee35c4f6341192ac4a93ca592dd717bd22cb28ddf10a5fb69cc78d4982be75b4",
+      "sizeBytes": 6223
+    },
+    {
+      "path": "src/modules/members/infrastructure/membership.repository.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f7cb4d1d45b4ae92832844f5d7a8f20a11d80f24538286586bc8ba045537a447",
+      "sizeBytes": 5951
+    },
+    {
+      "path": "src/modules/members/infrastructure/membership.repository.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MembershipRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/infrastructure/membership.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:130f9ec84f41ee815be71f2ce5a011653034dfd9dc190c48f995be98834bdfab",
+      "sizeBytes": 6130
+    },
+    {
+      "path": "src/modules/members/infrastructure/status-event.repository.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bd2ecbb8174b6fc788876cf737a34f584c3f82d51dbcfc082e856fbd152ea2c7",
+      "sizeBytes": 1651
+    },
+    {
+      "path": "src/modules/members/infrastructure/status-event.repository.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StatusEventRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/infrastructure/status-event.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5c7c690683d92c2403cf031d8f2ef0162e20a0033a79c2c15f5175e60748653b",
+      "sizeBytes": 1774
+    },
+    {
+      "path": "src/modules/members/infrastructure/team-scope.repository.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bba2e14d9c30d576a616b58243c87d93b75353ad485a7cde821e9a9863f9c962",
+      "sizeBytes": 831
+    },
+    {
+      "path": "src/modules/members/infrastructure/team-scope.repository.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamScopeRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/infrastructure/team-scope.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:638f17cdaec14cb1fa80484d43ed5b6d4ee8e739a412fca87ba15701a6cbb798",
+      "sizeBytes": 809
+    },
+    {
+      "path": "src/modules/members/lib/member.mapper.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9c692a7c482426aefb19ef3130510ba48e536d564cd3da7cf936b402b9fd180c",
+      "sizeBytes": 1767
+    },
+    {
+      "path": "src/modules/members/lib/member.mapper.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toAliasResponse"
+        },
+        {
+          "kind": "function",
+          "name": "toListAliasesResponse"
+        },
+        {
+          "kind": "function",
+          "name": "toMediaAssetResponse"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/lib/member.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0af5f2e5bae826c83511fcd516e857c678039f67174d0ede2c5cedf6cf962a76",
+      "sizeBytes": 1145
+    },
+    {
+      "path": "src/modules/members/lib/members.helpers.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2eeba2303231dfe9e674c96986058b53231b2474310926351de1f335a80cc0b6",
+      "sizeBytes": 6051
+    },
+    {
+      "path": "src/modules/members/lib/members.helpers.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableNumber"
+        },
+        {
+          "kind": "function",
+          "name": "isIsoCalendarDate"
+        },
+        {
+          "kind": "function",
+          "name": "resolvePage"
+        },
+        {
+          "kind": "function",
+          "name": "parseMembershipStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseNullableGender"
+        },
+        {
+          "kind": "function",
+          "name": "parseMediaScanStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseMediaPurpose"
+        },
+        {
+          "kind": "function",
+          "name": "parseAliasSource"
+        },
+        {
+          "kind": "function",
+          "name": "toMembership"
+        },
+        {
+          "kind": "function",
+          "name": "toMemberProfile"
+        },
+        {
+          "kind": "function",
+          "name": "toStatusEvent"
+        },
+        {
+          "kind": "function",
+          "name": "toAlias"
+        },
+        {
+          "kind": "function",
+          "name": "toMediaAsset"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/lib/members.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2bfcd178a00a03c61ef5407f8bbe833d0309b57b718f921b6954b1cbcb1e666d",
+      "sizeBytes": 6245
+    },
+    {
+      "path": "src/modules/members/lib/profile-input.mapper.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6cc07d39c6882ee870c4f5b89e956ed9bc31c45b544994a4a5432881f68e59a2",
+      "sizeBytes": 1374
+    },
+    {
+      "path": "src/modules/members/lib/profile-input.mapper.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toProfileInput"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/lib/profile-input.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1731485bc55ae24f0109ef6f83baefa4f2459c9ca03cb0ae5b78d5f2eb923f43",
+      "sizeBytes": 1018
+    },
+    {
+      "path": "src/modules/members/members.module.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MembersModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a155f750930267ed5b0946fc04a3cb0aa97a20ac1fa19d5f6bba3b5ac79dbb76",
+      "sizeBytes": 3707
+    },
+    {
+      "path": "src/modules/members/model/members.constants.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MEDIA_STORAGE_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERS_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_INVITE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_PROFILE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ACTIVATE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_DEACTIVATE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_SUSPEND_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_LEAVE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ARCHIVE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ANONYMIZE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_HISTORY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ALIASES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ALIAS_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_AVATAR_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_AVATAR_ATTACH_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_MEDIA_SCAN_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "ALIAS_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NICKNAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "EMAIL_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "PHONE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ALIAS_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ALIAS_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "JERSEY_SIZE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "DIVISION_KEY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "POSITION_KEY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "POSITIONS_MAX_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "JERSEY_NUMBER_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "JERSEY_NUMBER_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "HEIGHT_CM_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "HEIGHT_CM_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "WEIGHT_KG_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "WEIGHT_KG_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "STORAGE_KEY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CONTENT_TYPE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "AVATAR_MAX_BYTES"
+        },
+        {
+          "kind": "const",
+          "name": "AVATAR_MIN_DIMENSION"
+        },
+        {
+          "kind": "const",
+          "name": "AVATAR_MAX_DIMENSION"
+        },
+        {
+          "kind": "const",
+          "name": "AVATAR_ALLOWED_CONTENT_TYPES"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_UPLOAD_URL_TTL_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_DOWNLOAD_URL_TTL_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_MEDIA_PURPOSE"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_STORAGE_BASE_URL"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_KEY_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_SIGNATURE_ALGORITHM"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_UPLOAD_METHOD"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_DOWNLOAD_METHOD"
+        },
+        {
+          "kind": "const",
+          "name": "MILLISECONDS_PER_SECOND"
+        },
+        {
+          "kind": "const",
+          "name": "AGE_U17_MAX_EXCLUSIVE"
+        },
+        {
+          "kind": "const",
+          "name": "AGE_U20_MAX_EXCLUSIVE"
+        },
+        {
+          "kind": "const",
+          "name": "AGE_MASTERS_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "AGE_GRAND_MASTERS_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "JERSEY_SCAN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "ALIAS_LIST_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "HISTORY_LIST_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "DATE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_PROFILE_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "STATUS_EVENT_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "ALIAS_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_ASSET_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_INVITED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_TRANSITIONED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ANONYMIZED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_PROFILE_UPDATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ALIAS_ADDED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ALIAS_REMOVED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_AVATAR_REQUESTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_AVATAR_ATTACHED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_MEDIA_SCANNED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ANONYMIZED_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_SCOPE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_SCOPE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "PROFILE_FORBIDDEN_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "PROFILE_FORBIDDEN_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "JERSEY_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "JERSEY_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ALIAS_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ALIAS_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ALIAS_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ALIAS_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_VALIDATION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_VALIDATION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_NOT_SCANNED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_NOT_SCANNED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "PROFILE_INVALID_DATE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "PROFILE_INVALID_DATE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ALIAS_INVALID_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ALIAS_INVALID_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fd09d295682269602c48318031e3bf7d84fe7dffcf8561af156195b678f3c102",
+      "sizeBytes": 9772
+    },
+    {
+      "path": "src/modules/members/model/members.enums.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MembershipStatus"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "PlayerGender"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_GENDER_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "MediaScanStatus"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_SCAN_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "MediaPurpose"
+        },
+        {
+          "kind": "const",
+          "name": "MEDIA_PURPOSE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AliasSource"
+        },
+        {
+          "kind": "const",
+          "name": "ALIAS_SOURCE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "MemberViewTier"
+        },
+        {
+          "kind": "enum",
+          "name": "MemberAudience"
+        },
+        {
+          "kind": "enum",
+          "name": "AgeClassification"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:92d012d5fb8614b546a5bc593d88e71cca043e9f70548e28ec81aef16dc2776a",
+      "sizeBytes": 2835
+    },
+    {
+      "path": "src/modules/members/model/members.rows.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "MembershipRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberProfileRow"
+        },
+        {
+          "kind": "interface",
+          "name": "StatusEventRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AliasRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MediaAssetRow"
+        },
+        {
+          "kind": "interface",
+          "name": "JerseyRow"
+        },
+        {
+          "kind": "interface",
+          "name": "DirectoryRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:14ee6901c57c0965ad1cc347db6446327eea8675175424e2b3db8afc648ba817",
+      "sizeBytes": 3449
+    },
+    {
+      "path": "src/modules/members/model/members.types.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "Membership"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberProfile"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberRecord"
+        },
+        {
+          "kind": "interface",
+          "name": "MembershipStatusEvent"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberAlias"
+        },
+        {
+          "kind": "interface",
+          "name": "MediaAsset"
+        },
+        {
+          "kind": "interface",
+          "name": "SignedUrl"
+        },
+        {
+          "kind": "interface",
+          "name": "SignedUrlRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "SignedDownloadRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "MediaStoragePort"
+        },
+        {
+          "kind": "interface",
+          "name": "ViewerContext"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberAccess"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberView"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberDirectoryItem"
+        },
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "ListMembersResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ListHistoryResult"
+        },
+        {
+          "kind": "interface",
+          "name": "AliasResponse"
+        },
+        {
+          "kind": "interface",
+          "name": "ListAliasesResponse"
+        },
+        {
+          "kind": "interface",
+          "name": "MediaAssetResponse"
+        },
+        {
+          "kind": "interface",
+          "name": "ProfileInput"
+        },
+        {
+          "kind": "interface",
+          "name": "InviteMemberCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdateProfileCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "TransitionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "TransitionContext"
+        },
+        {
+          "kind": "interface",
+          "name": "AddAliasCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "RequestAvatarCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "RecordScanCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "AvatarUploadTicket"
+        },
+        {
+          "kind": "interface",
+          "name": "AvatarAccess"
+        },
+        {
+          "kind": "interface",
+          "name": "NewMembership"
+        },
+        {
+          "kind": "interface",
+          "name": "MembershipStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "NewMemberProfile"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberProfileUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "ProfileRedaction"
+        },
+        {
+          "kind": "interface",
+          "name": "NewStatusEvent"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAlias"
+        },
+        {
+          "kind": "interface",
+          "name": "NewMediaAsset"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAuditEvent"
+        },
+        {
+          "kind": "interface",
+          "name": "JerseyReservation"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0e1c73d904ff9ee51577c145a6b1eb4252f24316ee475dedc97efd0df1db0bb2",
+      "sizeBytes": 12001
     },
     {
       "path": "src/modules/rbac/api/dto/assign-role.dto.ts",
