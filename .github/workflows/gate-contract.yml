@@ -35,6 +35,9 @@ jobs:
         run: npm ci
 
       - name: Verify Canonical OpenAPI Artifact
+        env:
+          NODE_ENV: test
+          JWT_SECRET: ci-synthetic-contract-generation-value-0123456789abcdefghij
         run: npm run contract:check
 
       - name: Read Base Contract
