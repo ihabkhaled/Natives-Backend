@@ -8,13 +8,21 @@ import { Role } from '@shared/enums';
 import request from 'supertest';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
+// Unreachable database URL: this suite is the boot-only, no-database smoke test.
+// Pinning DATABASE_URL to an unreachable target makes the resolver degrade to the
+// account-role baseline deterministically, regardless of sibling e2e suites that
+// point DATABASE_URL at the test database during collection.
+const UNREACHABLE_DATABASE_URL = 'postgres://none:none@127.0.0.1:1/none';
+
 describe('App (e2e)', () => {
   let app: NestFastifyApplication;
   let authToken: string;
   let otherUserToken: string;
   let noPermissionToken: string;
+  const originalDatabaseUrl = process.env['DATABASE_URL'];
 
   beforeAll(async () => {
+    process.env['DATABASE_URL'] = UNREACHABLE_DATABASE_URL;
     app = await createApp();
     await configureSecurity(app);
     await configureValidation(app);
@@ -23,12 +31,16 @@ describe('App (e2e)', () => {
     await app.init();
     await app.getHttpAdapter().getInstance().ready();
 
-    const loginResponse = await request(app.getHttpServer())
-      .post('/api/v1/auth/login')
-      .send({ email: 'user@example.com', password: 'password' });
-
-    authToken = loginResponse.body.accessToken as string;
+    // Identity is now persisted (prompt 101): login requires a live database and
+    // is proven in the DB-gated integration + identity e2e suites. This boot-only
+    // e2e signs access tokens directly through the token port so the transport
+    // guards, permission checks, and article flows are exercised without a DB.
     const tokenPort = app.get<AuthTokenPort>(AUTH_TOKEN_PORT);
+    authToken = await tokenPort.sign({
+      userId: 'user-1',
+      email: 'user@example.com',
+      roles: [Role.User],
+    });
     otherUserToken = await tokenPort.sign({
       userId: 'user-2',
       email: 'other@example.com',
@@ -43,6 +55,11 @@ describe('App (e2e)', () => {
 
   afterAll(async () => {
     await app.close();
+    if (originalDatabaseUrl === undefined) {
+      delete process.env['DATABASE_URL'];
+    } else {
+      process.env['DATABASE_URL'] = originalDatabaseUrl;
+    }
   });
 
   it('GET /api/v1/health returns ok with security headers', async () => {
@@ -53,13 +70,11 @@ describe('App (e2e)', () => {
     expect(response.headers['x-content-type-options']).toBe('nosniff');
   });
 
-  it('POST /api/v1/auth/login returns an access token with 200', async () => {
-    const response = await request(app.getHttpServer())
-      .post('/api/v1/auth/login')
-      .send({ email: 'user@example.com', password: 'password' });
+  it('GET /api/v1/auth/me without a token returns 401', async () => {
+    const response = await request(app.getHttpServer()).get('/api/v1/auth/me');
 
-    expect(response.status).toBe(200);
-    expect(response.body.accessToken).toBeDefined();
+    expect(response.status).toBe(401);
+    expect(response.body.messageKey).toBe('errors.auth.tokenRequired');
   });
 
   it('POST /api/v1/articles without authentication returns 401', async () => {
@@ -78,15 +93,6 @@ describe('App (e2e)', () => {
 
     expect(response.status).toBe(401);
     expect(response.body.messageKey).toBe('errors.auth.invalidToken');
-  });
-
-  it('POST /api/v1/auth/login rejects invalid credentials with a safe key', async () => {
-    const response = await request(app.getHttpServer())
-      .post('/api/v1/auth/login')
-      .send({ email: 'user@example.com', password: 'wrong-password' });
-
-    expect(response.status).toBe(401);
-    expect(response.body.messageKey).toBe('errors.auth.invalidCredentials');
   });
 
   it('POST /api/v1/auth/login rejects oversized credentials at the boundary', async () => {
@@ -108,6 +114,15 @@ describe('App (e2e)', () => {
         email: 'user@example.com',
         password: '🔐'.repeat(19),
       });
+
+    expect(response.status).toBe(400);
+    expect(response.body.messageKey).toBe('errors.validation.failed');
+  });
+
+  it('POST /api/v1/auth/reset-password rejects a malformed body with 400', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/auth/reset-password')
+      .send({ token: 'short', password: 'short' });
 
     expect(response.status).toBe(400);
     expect(response.body.messageKey).toBe('errors.validation.failed');

@@ -1,6 +1,9 @@
 import { NodeEnv } from '@shared/enums';
 
 import {
+  DEFAULT_DB_POOL_MAX,
+  DEFAULT_DB_POOL_MIN,
+  FLAG_TRUE,
   HTTP_PROTOCOL,
   HTTPS_PROTOCOL,
   JWT_SECRET_FORBIDDEN_FRAGMENTS,
@@ -50,4 +53,21 @@ export function isProductionJwtSecretValid(
     JWT_SECRET_PRODUCTION_PATTERN.test(secret) &&
     uniqueCharacterCount >= JWT_SECRET_MIN_UNIQUE_CHARACTERS
   );
+}
+
+export function isDatabasePoolValid(
+  min: number | undefined,
+  max: number | undefined,
+): boolean {
+  return (min ?? DEFAULT_DB_POOL_MIN) <= (max ?? DEFAULT_DB_POOL_MAX);
+}
+
+export function isProductionDatabaseSslValid(
+  nodeEnv: NodeEnv,
+  ssl: string | undefined,
+): boolean {
+  if (nodeEnv !== NodeEnv.Production) {
+    return true;
+  }
+  return ssl === FLAG_TRUE;
 }

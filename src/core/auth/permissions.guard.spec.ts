@@ -25,65 +25,74 @@ function buildContext(request: AuthRequest): ExecutionContext {
   } as unknown as ExecutionContext;
 }
 
+const IDENTITY = {
+  userId: 'user-1',
+  email: 'user@example.com',
+  roles: [Role.User],
+};
+
 describe('PermissionsGuard', () => {
   const reflector = { getAllAndOverride: vi.fn() };
+  const resolver = { resolve: vi.fn() };
   let guard: PermissionsGuard;
 
   beforeEach(() => {
-    guard = new PermissionsGuard(reflector as unknown as Reflector);
+    guard = new PermissionsGuard(reflector as unknown as Reflector, resolver);
   });
 
-  it('allows routes with no permission metadata', () => {
+  it('allows routes with no permission metadata', async () => {
     reflector.getAllAndOverride.mockReturnValue(undefined);
 
-    expect(guard.canActivate(buildContext({ headers: {} }))).toBe(true);
+    await expect(
+      guard.canActivate(buildContext({ headers: {} })),
+    ).resolves.toBe(true);
   });
 
-  it('throws a typed unauthorized error when identity is missing', () => {
-    reflector.getAllAndOverride.mockReturnValue([Permission.ArticleRead]);
+  it('allows routes with an empty permission requirement', async () => {
+    reflector.getAllAndOverride.mockReturnValue([]);
 
-    expect(() => guard.canActivate(buildContext({ headers: {} }))).toThrow(
+    await expect(
+      guard.canActivate(buildContext({ headers: {} })),
+    ).resolves.toBe(true);
+  });
+
+  it('throws a typed unauthorized error when identity is missing', async () => {
+    reflector.getAllAndOverride.mockReturnValue([Permission.TeamRead]);
+
+    await expect(
+      guard.canActivate(buildContext({ headers: {} })),
+    ).rejects.toThrow(
       expect.objectContaining<Partial<UnauthorizedError>>({
         messageKey: AUTH_IDENTITY_REQUIRED_MESSAGE_KEY,
       }),
     );
   });
 
-  it('allows an identity with all required permissions', () => {
-    reflector.getAllAndOverride.mockReturnValue([
-      Permission.ArticleCreate,
-      Permission.ArticleRead,
-    ]);
+  it('resolves permissions for the request scope and allows when granted', async () => {
+    reflector.getAllAndOverride.mockReturnValue([Permission.TeamRead]);
+    resolver.resolve.mockResolvedValue(new Set<string>([Permission.TeamRead]));
 
-    expect(
-      guard.canActivate(
-        buildContext({
-          headers: {},
-          user: {
-            userId: 'user-1',
-            email: 'user@example.com',
-            roles: [Role.User],
-          },
-        }),
-      ),
-    ).toBe(true);
+    const result = await guard.canActivate(
+      buildContext({
+        headers: {},
+        user: IDENTITY,
+        params: { teamId: 'team-1' },
+      }),
+    );
+
+    expect(result).toBe(true);
+    expect(resolver.resolve).toHaveBeenCalledWith(IDENTITY, {
+      teamId: 'team-1',
+    });
   });
 
-  it('throws a typed forbidden error when permission is missing', () => {
-    reflector.getAllAndOverride.mockReturnValue([Permission.ArticleRead]);
+  it('throws a typed forbidden error when a required permission is missing in scope', async () => {
+    reflector.getAllAndOverride.mockReturnValue([Permission.TeamRead]);
+    resolver.resolve.mockResolvedValue(new Set<string>());
 
-    expect(() =>
-      guard.canActivate(
-        buildContext({
-          headers: {},
-          user: {
-            userId: 'user-1',
-            email: 'user@example.com',
-            roles: [],
-          },
-        }),
-      ),
-    ).toThrow(
+    await expect(
+      guard.canActivate(buildContext({ headers: {}, user: IDENTITY })),
+    ).rejects.toThrow(
       expect.objectContaining<Partial<ForbiddenError>>({
         messageKey: AUTH_PERMISSION_DENIED_MESSAGE_KEY,
       }),

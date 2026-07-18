@@ -1,0 +1,45 @@
+/**
+ * Raw persistence row shapes (snake_case) returned by the RBAC SQL layer.
+ * Repositories map these into vendor-free domain types so implementation files
+ * stay free of inline declarations.
+ */
+
+export interface PolicyVersionRow {
+  readonly version: number;
+}
+
+export interface PermissionGrantRow {
+  readonly permission: string;
+  readonly team_id: string | null;
+  readonly season_id: string | null;
+  readonly effective_from: string | Date;
+  readonly effective_to: string | Date | null;
+}
+
+export interface RoleRow {
+  readonly id: string;
+  readonly key: string;
+}
+
+export interface PermissionKeyRow {
+  readonly key: string;
+}
+
+export interface RoleAssignmentRow {
+  readonly id: string;
+  readonly user_id: string;
+  readonly role_id: string;
+  readonly role_key: string;
+  readonly team_id: string | null;
+  readonly season_id: string | null;
+  readonly effective_from: string | Date;
+  readonly effective_to: string | Date | null;
+  readonly granted_by: string | null;
+  readonly revoked_at: string | Date | null;
+  readonly created_at: string | Date;
+  readonly version: number;
+}
+
+export interface AffectedRow {
+  readonly id: string;
+}

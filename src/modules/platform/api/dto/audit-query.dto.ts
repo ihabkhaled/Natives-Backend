@@ -1,0 +1,34 @@
+import { ApiPropertyOptional } from '@core/openapi';
+import { IsInt, IsOptional, Max, Min, Type } from '@core/validation';
+
+import {
+  LIST_DEFAULT_LIMIT,
+  LIST_DEFAULT_OFFSET,
+  LIST_MAX_LIMIT,
+  LIST_MIN_LIMIT,
+} from '../../model/platform.constants';
+
+/** Bounded pagination query for the team audit ledger. */
+export class AuditQueryDto {
+  @ApiPropertyOptional({
+    default: LIST_DEFAULT_LIMIT,
+    maximum: LIST_MAX_LIMIT,
+    minimum: LIST_MIN_LIMIT,
+  })
+  @Type(() => Number)
+  @IsInt()
+  @Min(LIST_MIN_LIMIT)
+  @Max(LIST_MAX_LIMIT)
+  @IsOptional()
+  readonly limit?: number;
+
+  @ApiPropertyOptional({
+    default: LIST_DEFAULT_OFFSET,
+    minimum: LIST_DEFAULT_OFFSET,
+  })
+  @Type(() => Number)
+  @IsInt()
+  @Min(LIST_DEFAULT_OFFSET)
+  @IsOptional()
+  readonly offset?: number;
+}

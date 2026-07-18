@@ -25,13 +25,21 @@ describe('AppExceptionFilter', () => {
   it('logs a 4xx as warn and sends the sanitized body', () => {
     const logger = createLogger();
     const filter = new AppExceptionFilter(logger);
-    const reply = { status: vi.fn().mockReturnThis(), send: vi.fn() };
+    const reply = {
+      header: vi.fn().mockReturnThis(),
+      status: vi.fn().mockReturnThis(),
+      send: vi.fn(),
+    };
 
     filter.catch(
       new NotFoundError('missing', 'errors.article.notFound'),
       createHost(reply),
     );
 
+    expect(reply.header).toHaveBeenCalledWith(
+      'Content-Type',
+      'application/json; charset=utf-8',
+    );
     expect(reply.status).toHaveBeenCalledWith(404);
     expect(reply.send).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -49,7 +57,11 @@ describe('AppExceptionFilter', () => {
   it('logs a 5xx as error with the original exception attached', () => {
     const logger = createLogger();
     const filter = new AppExceptionFilter(logger);
-    const reply = { status: vi.fn().mockReturnThis(), send: vi.fn() };
+    const reply = {
+      header: vi.fn().mockReturnThis(),
+      status: vi.fn().mockReturnThis(),
+      send: vi.fn(),
+    };
     const boom = new Error('boom');
 
     filter.catch(boom, createHost(reply));

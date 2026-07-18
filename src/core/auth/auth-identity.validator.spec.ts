@@ -14,6 +14,17 @@ describe('isAuthUserIdentity', () => {
     ).toBe(true);
   });
 
+  it('accepts a session-aware identity', () => {
+    expect(
+      isAuthUserIdentity({
+        userId: 'user-1',
+        email: 'user@example.com',
+        roles: [Role.User],
+        sessionId: 'session-1',
+      }),
+    ).toBe(true);
+  });
+
   it.each([
     null,
     {},
@@ -23,6 +34,18 @@ describe('isAuthUserIdentity', () => {
     { userId: 'user-1', email: 'invalid-email', roles: [Role.User] },
     { userId: 'user-1', email: 'user@example.com', roles: 'user' },
     { userId: 'user-1', email: 'user@example.com', roles: ['unknown'] },
+    {
+      userId: 'user-1',
+      email: 'user@example.com',
+      roles: [Role.User],
+      sessionId: 1,
+    },
+    {
+      userId: 'user-1',
+      email: 'user@example.com',
+      roles: [Role.User],
+      sessionId: '   ',
+    },
   ])('rejects malformed identity %#', value => {
     expect(isAuthUserIdentity(value)).toBe(false);
   });

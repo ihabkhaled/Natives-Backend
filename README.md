@@ -87,9 +87,17 @@ nvm use             # use the Node LTS patch pinned in .nvmrc
 npm ci              # reproduce the lockfile exactly
 npm run prepare     # install the Husky hooks
 cp .env.example .env # development only; replace JWT_SECRET for real environments
+docker compose up -d # start loopback-only local PostgreSQL
+# Set a unique SEED_ADMIN_PASSWORD in ignored .env or the current shell.
+npm run db:setup     # explicitly ensure DB, migrate, and seed the local admin
 npm run lint:fix    # normalize imports/formatting once after install
 npm run start:dev   # boots on http://localhost:3000
 ```
+
+Normal application startup never creates databases or runs seeds. The runtime
+database role does not need `CREATEDB`; use the explicit setup command only in
+an approved local/bootstrap context. See [`docs/database.md`](./docs/database.md)
+and [`docs/identity.md`](./docs/identity.md).
 
 Then hit it:
 
