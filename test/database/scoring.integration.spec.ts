@@ -9,6 +9,8 @@ import { ScoreSourceRepository } from '@modules/scoring/infrastructure/score-sou
 import {
   computeMembershipProjection,
   groupSourcesByMembership,
+  indexAttendanceByMembership,
+  withAttendanceSource,
 } from '@modules/scoring/lib/scoring.builders';
 import {
   CalculationRuleStatus,
@@ -223,10 +225,41 @@ describeIfDb(suiteTitle, () => {
     }
   }
 
-  function target(
-    teamId: string,
-    membershipId: string,
-  ): ProjectionTarget {
+  async function seedAttendance(
+    scope: { teamId: string; membershipId: string },
+    statuses: readonly string[],
+  ): Promise<void> {
+    for (const status of statuses) {
+      const sessionId = randomUUID();
+      const sheetId = randomUUID();
+      await active.query(
+        `INSERT INTO "practice_sessions"
+          ("id", "team_id", "session_type", "starts_at", "ends_at")
+         VALUES ($1, $2, 'practice', now(), now())`,
+        [sessionId, scope.teamId],
+      );
+      await active.query(
+        `INSERT INTO "attendance_sheets" ("id", "session_id", "team_id", "state")
+         VALUES ($1, $2, $3, 'finalized')`,
+        [sheetId, sessionId, scope.teamId],
+      );
+      await active.query(
+        `INSERT INTO "attendance_records"
+          ("id", "sheet_id", "session_id", "team_id", "membership_id", "status")
+         VALUES ($1, $2, $3, $4, $5, $6)`,
+        [
+          randomUUID(),
+          sheetId,
+          sessionId,
+          scope.teamId,
+          scope.membershipId,
+          status,
+        ],
+      );
+    }
+  }
+
+  function target(teamId: string, membershipId: string): ProjectionTarget {
     return {
       id: randomUUID(),
       teamId,
@@ -236,13 +269,16 @@ describeIfDb(suiteTitle, () => {
     };
   }
 
-  async function publishedRule(teamId: string): Promise<CalculationRule> {
+  async function publishedRule(
+    teamId: string,
+    ruleContent: RuleContent = content(),
+  ): Promise<CalculationRule> {
     return unitOfWork.runInTransaction(async tx => {
       const draft = await rules.insert(tx, {
         id: randomUUID(),
         teamId,
         version: 1,
-        content: content(),
+        content: ruleContent,
         createdBy: null as never,
         now: NOW,
       });
@@ -319,6 +355,69 @@ describeIfDb(suiteTitle, () => {
     expect(rows[0].source_hash).toBe(projection.sourceHash);
     expect(rows[0].record_version).toBe(2);
     expect(rows[0].status).toBe('ready');
+  });
+
+  it('aggregates finalized attendance, excusing injured/excused from the denominator', async () => {
+    const scope = await seedScope();
+    await seedAttendance(scope, [
+      'present_on_time',
+      'present_on_time',
+      'present_on_time',
+      'absent',
+      'excused',
+      'injured',
+    ]);
+    const rows = await unitOfWork.runInTransaction(tx =>
+      sources.attendanceCountsForTeam(tx, scope.teamId),
+    );
+    const counts = indexAttendanceByMembership(rows).get(scope.membershipId);
+    expect(counts).toEqual({
+      membershipId: scope.membershipId,
+      attendedEligible: 3,
+      absentCount: 1,
+      excusedSessions: 2,
+    });
+  });
+
+  it('projects a normalized attendance category from finalized records', async () => {
+    const scope = await seedScope();
+    await seedAttendance(scope, [
+      'present_on_time',
+      'present_on_time',
+      'present_on_time',
+      'absent',
+      'excused',
+    ]);
+    const attendanceRule = await publishedRule(
+      scope.teamId,
+      content({
+        ruleKey: `attendance_${randomUUID().slice(0, 8)}`,
+        components: [
+          { categoryKey: ScoreCategory.Attendance, weight: 1, minSample: 1 },
+        ],
+      }),
+    );
+    const built = await unitOfWork.runInTransaction(async tx => {
+      const attendance = indexAttendanceByMembership(
+        await sources.attendanceCountsForTeam(tx, scope.teamId),
+      );
+      const merged = withAttendanceSource(
+        [],
+        attendance.get(scope.membershipId),
+      );
+      return computeMembershipProjection(
+        attendanceRule,
+        target(scope.teamId, scope.membershipId),
+        merged,
+        NOW,
+      );
+    });
+    // 3 attended of (3 attended + 1 absent) eligible => 0.75 -> 0.75 * 5 = 3.75.
+    expect(built.result.value).toBe(3.75);
+    const attendanceComponent = built.explanation.components.find(
+      component => component.categoryKey === ScoreCategory.Attendance,
+    );
+    expect(attendanceComponent?.included).toBe(true);
   });
 
   it('enforces one published rule per team and rule key', async () => {

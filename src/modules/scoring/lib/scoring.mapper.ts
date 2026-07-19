@@ -5,11 +5,13 @@ import {
   SCORE_PROJECTION_STATUS_VALUES,
 } from '../model/scoring.enums';
 import type {
+  AttendanceCountsRow,
   CalculationRuleRow,
   CategorySourceRow,
   ScoreProjectionRow,
 } from '../model/scoring.rows';
 import type {
+  AttendanceCounts,
   CalculationRule,
   CategorySource,
   RuleComponent,
@@ -115,6 +117,16 @@ export function toCategorySource(
       values: row.values.map(value => toNumber(value)),
       totalMetrics: row.total_metrics,
     },
+  };
+}
+
+/** Map a raw attendance-tally row into typed per-membership counts. */
+export function toAttendanceCounts(row: AttendanceCountsRow): AttendanceCounts {
+  return {
+    membershipId: row.membership_id,
+    attendedEligible: row.attended,
+    absentCount: row.absent,
+    excusedSessions: row.excused,
   };
 }
 

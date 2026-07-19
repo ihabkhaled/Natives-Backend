@@ -170,6 +170,87 @@ export interface PerformanceScoreResult {
   readonly components: readonly ComponentScore[];
 }
 
+// --- Attendance calculators --------------------------------------------------
+
+/**
+ * Eligible-session counts for the legacy attendance percentage. `excusedSessions`
+ * (excused/injured) are removed from the denominator, never counted as absences.
+ */
+export interface AttendancePercentageInput {
+  readonly attendedEligible: number;
+  readonly eligibleSessions: number;
+  readonly excusedSessions: number;
+}
+
+/**
+ * The explained attendance percentage. `value` is the attended fraction (0–1), or
+ * null when no session is eligible after excusals — never a divide-by-zero or a
+ * misleading 0%. Numerator/denominator/excluded are carried for the explanation.
+ */
+export interface AttendancePercentageResult {
+  readonly value: number | null;
+  readonly numerator: number;
+  readonly denominator: number;
+  readonly excludedCount: number;
+}
+
+/** Per-session-type present counts plus late/absent tallies (legacy weighted). */
+export interface WeightedAttendanceInput {
+  readonly practicePresent: number;
+  readonly fitnessPresent: number;
+  readonly gamePresent: number;
+  readonly throwingPresent: number;
+  readonly lateCount: number;
+  readonly absentCount: number;
+}
+
+/**
+ * The versioned session-type weights and penalties for the legacy weighted
+ * attendance score. Seeded candidate weights are Practice 3, Fitness 2, Game 3,
+ * Throwing 4 with a unit late and absent penalty — a named CANDIDATE, never
+ * hard-coded final policy.
+ */
+export interface WeightedAttendanceWeights {
+  readonly practice: number;
+  readonly fitness: number;
+  readonly game: number;
+  readonly throwing: number;
+  readonly latePenalty: number;
+  readonly absentPenalty: number;
+}
+
+/** One weighted session-type contribution line carried in the explanation. */
+export interface WeightedAttendanceLine {
+  readonly key: string;
+  readonly present: number;
+  readonly weight: number;
+  readonly contribution: number;
+}
+
+/**
+ * The explained legacy weighted attendance score: the positive per-type
+ * contributions minus the late and absent penalties, with every line preserved so
+ * the arithmetic can be reproduced and shown.
+ */
+export interface WeightedAttendanceResult {
+  readonly value: number;
+  readonly lines: readonly WeightedAttendanceLine[];
+  readonly latePenalty: number;
+  readonly absentPenalty: number;
+}
+
+/**
+ * Per-membership attendance tallies read from module 202 (finalized sheets only)
+ * that feed the attendance category of a projection. Excused/injured are held
+ * separately so they can be excluded from the denominator, never inferred as zero.
+ */
+export interface AttendanceCounts {
+  readonly membershipId: string;
+  readonly attendedEligible: number;
+  readonly absentCount: number;
+  readonly excusedSessions: number;
+}
+
 // --- Explanation -------------------------------------------------------------
 
 /** The rule version a result is projected from. */

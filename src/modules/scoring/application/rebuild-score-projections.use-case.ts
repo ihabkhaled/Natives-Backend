@@ -25,6 +25,8 @@ import {
   buildRebuildAudit,
   computeMembershipProjection,
   groupSourcesByMembership,
+  indexAttendanceByMembership,
+  withAttendanceSource,
 } from '../lib/scoring.builders';
 import { PROJECTION_REBUILT_ACTION } from '../model/scoring.constants';
 import type {
@@ -88,9 +90,15 @@ export class RebuildScoreProjectionsUseCase {
     const grouped = groupSourcesByMembership(
       await this.sources.categorySourcesForTeam(tx, teamId),
     );
+    const attendance = indexAttendanceByMembership(
+      await this.sources.attendanceCountsForTeam(tx, teamId),
+    );
     let rebuilt = 0;
     for (const membership of memberships) {
-      const sources = grouped.get(membership.membership_id) ?? [];
+      const sources = withAttendanceSource(
+        grouped.get(membership.membership_id) ?? [],
+        attendance.get(membership.membership_id),
+      );
       const ok = await this.rebuildOne(
         tx,
         rule,

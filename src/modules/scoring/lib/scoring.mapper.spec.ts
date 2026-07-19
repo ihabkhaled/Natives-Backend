@@ -7,12 +7,15 @@ import type {
 } from '../model/scoring.rows';
 import {
   parseComponents,
+  toAttendanceCounts,
   toCalculationRule,
   toCategorySource,
   toScoreProjection,
 } from './scoring.mapper';
 
-function ruleRow(overrides: Partial<CalculationRuleRow> = {}): CalculationRuleRow {
+function ruleRow(
+  overrides: Partial<CalculationRuleRow> = {},
+): CalculationRuleRow {
   return {
     id: 'rule-1',
     team_id: 'team-1',
@@ -118,6 +121,23 @@ describe('toScoreProjection', () => {
     expect(projection.numerator).toBeNull();
     expect(projection.explanation).toBeNull();
     expect(projection.computedAt).toBeNull();
+  });
+});
+
+describe('toAttendanceCounts', () => {
+  it('maps a raw attendance-tally row into typed counts', () => {
+    const counts = toAttendanceCounts({
+      membership_id: 'mem-1',
+      attended: 5,
+      absent: 2,
+      excused: 1,
+    });
+    expect(counts).toEqual({
+      membershipId: 'mem-1',
+      attendedEligible: 5,
+      absentCount: 2,
+      excusedSessions: 1,
+    });
   });
 });
 

@@ -48,18 +48,18 @@ describe('assertRuleContent', () => {
   });
 
   it('rejects a non-finite or inverted scale', () => {
-    expect(() =>
-      assertRuleContent(content({ scaleMin: Number.NaN })),
-    ).toThrow(ScoringValidationError);
-    expect(() => assertRuleContent(content({ scaleMin: 5, scaleMax: 5 }))).toThrow(
+    expect(() => assertRuleContent(content({ scaleMin: Number.NaN }))).toThrow(
       ScoringValidationError,
     );
     expect(() =>
-      assertRuleContent(content({ scaleMin: -1 })),
+      assertRuleContent(content({ scaleMin: 5, scaleMax: 5 })),
     ).toThrow(ScoringValidationError);
-    expect(() =>
-      assertRuleContent(content({ scaleMax: 100_000 })),
-    ).toThrow(ScoringValidationError);
+    expect(() => assertRuleContent(content({ scaleMin: -1 }))).toThrow(
+      ScoringValidationError,
+    );
+    expect(() => assertRuleContent(content({ scaleMax: 100_000 }))).toThrow(
+      ScoringValidationError,
+    );
   });
 
   it('rejects an empty or over-large component set', () => {
@@ -84,14 +84,18 @@ describe('assertRuleContent', () => {
   it('rejects an out-of-range weight or minimum sample', () => {
     expect(() =>
       assertRuleContent(
-        content({ components: [component(ScoreCategory.Training, { weight: 0 })] }),
+        content({
+          components: [component(ScoreCategory.Training, { weight: 0 })],
+        }),
       ),
     ).toThrow(ScoringValidationError);
     expect(() =>
       assertRuleContent(
         content({
           components: [
-            component(ScoreCategory.Training, { weight: Number.POSITIVE_INFINITY }),
+            component(ScoreCategory.Training, {
+              weight: Number.POSITIVE_INFINITY,
+            }),
           ],
         }),
       ),
@@ -119,9 +123,9 @@ describe('assertRuleContent', () => {
     expect(() => assertRuleContent(content({ minComponents: 3 }))).toThrow(
       ScoringValidationError,
     );
-    expect(() =>
-      assertRuleContent(content({ minComponents: 1.5 })),
-    ).toThrow(ScoringValidationError);
+    expect(() => assertRuleContent(content({ minComponents: 1.5 }))).toThrow(
+      ScoringValidationError,
+    );
   });
 
   it('rejects an inverted effective window', () => {

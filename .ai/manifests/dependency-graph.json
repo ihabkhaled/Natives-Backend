@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T01:15:01.468Z",
+  "generatedAt": "2026-07-19T13:13:09.046Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -64,6 +64,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/rbac/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/scoring/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -16774,6 +16779,1266 @@
     {
       "from": "src/modules/rbac/rbac.module.ts",
       "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/api/dto/create-rule.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/api/dto/list-rules.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/api/dto/list-scoring.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/api/dto/rule-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/api/dto/simulate-rule.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/api/dto/simulation-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/api/dto/transition-rule.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/api/dto/update-rule.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/application/rule-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/lib/scoring-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/lib/scoring.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/create-rule.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/create-rule.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/create-rule.dto.ts",
+      "to": "src/modules/scoring/api/dto/rule-component.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/create-rule.dto.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/list-rules.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/list-rules.response.dto.ts",
+      "to": "src/modules/scoring/api/dto/rule-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/list-scores.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/list-scores.response.dto.ts",
+      "to": "src/modules/scoring/api/dto/score-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/list-scoring.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/list-scoring.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/list-scoring.query.dto.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/overall-explanation.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/rebuild-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/rule-component-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/rule-component-response.dto.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/rule-component.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/rule-component.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/rule-component.dto.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/rule-component.dto.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/rule-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/rule-response.dto.ts",
+      "to": "src/modules/scoring/api/dto/rule-component-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/rule-response.dto.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-component.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-component.response.dto.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-explanation.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-explanation.response.dto.ts",
+      "to": "src/modules/scoring/api/dto/overall-explanation.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-explanation.response.dto.ts",
+      "to": "src/modules/scoring/api/dto/score-component.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-explanation.response.dto.ts",
+      "to": "src/modules/scoring/api/dto/score-rule-reference.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-explanation.response.dto.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-list.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-list.response.dto.ts",
+      "to": "src/modules/scoring/api/dto/score-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-response.dto.ts",
+      "to": "src/modules/scoring/api/dto/score-explanation.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-response.dto.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/score-rule-reference.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/simulate-rule.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/simulate-rule.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/simulation-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/simulation-response.dto.ts",
+      "to": "src/modules/scoring/api/dto/score-explanation.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/transition-rule.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/transition-rule.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/transition-rule.dto.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/transition-rule.dto.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/update-rule.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/update-rule.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/update-rule.dto.ts",
+      "to": "src/modules/scoring/api/dto/create-rule.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/dto/update-rule.dto.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/score-self.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/score-self.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/score-self.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/score-self.controller.ts",
+      "to": "src/modules/scoring/api/dto/score-list.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/score-self.controller.ts",
+      "to": "src/modules/scoring/application/score-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/score-self.controller.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/score-self.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/score.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/score.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/score.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/api/score.controller.ts",
+      "to": "src/modules/scoring/api/dto/list-scores.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/score.controller.ts",
+      "to": "src/modules/scoring/api/dto/list-scoring.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/score.controller.ts",
+      "to": "src/modules/scoring/api/dto/rebuild-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/score.controller.ts",
+      "to": "src/modules/scoring/api/dto/score-list.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/score.controller.ts",
+      "to": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/score.controller.ts",
+      "to": "src/modules/scoring/application/score-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/score.controller.ts",
+      "to": "src/modules/scoring/lib/scoring.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/score.controller.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/api/score.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/application/scoring-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/domain/calculation-rule.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/lib/scoring.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/modules/scoring/application/scoring-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/modules/scoring/domain/rule-selection.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/modules/scoring/errors/calculation-rule-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/modules/scoring/infrastructure/score-projection.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/modules/scoring/infrastructure/score-source.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/modules/scoring/lib/scoring.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rule-lookup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/rule-lookup.service.ts",
+      "to": "src/modules/scoring/errors/calculation-rule-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rule-lookup.service.ts",
+      "to": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rule-lookup.service.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rule-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/rule-query.service.ts",
+      "to": "src/modules/scoring/application/rule-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rule-query.service.ts",
+      "to": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/rule-query.service.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/score-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/score-query.service.ts",
+      "to": "src/modules/scoring/errors/score-projection-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/score-query.service.ts",
+      "to": "src/modules/scoring/infrastructure/score-projection.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/score-query.service.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/scoring-scope.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/scoring-scope.service.ts",
+      "to": "src/modules/scoring/errors/scoring-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/scoring-scope.service.ts",
+      "to": "src/modules/scoring/infrastructure/scoring-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/application/rule-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/application/scoring-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/domain/rule-selection.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/infrastructure/score-source.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/lib/scoring.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/application/rule-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/domain/calculation-rule.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/errors/calculation-rule-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/errors/calculation-rule-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/infrastructure/score-projection.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/lib/scoring.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/application/rule-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/domain/calculation-rule.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/domain/calculation-rule.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/errors/calculation-rule-not-editable.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/errors/calculation-rule-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/lib/scoring.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/domain/attendance-score.engine.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/domain/calculation-rule.policy.ts",
+      "to": "src/modules/scoring/errors/scoring-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/domain/calculation-rule.policy.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/domain/calculation-rule.policy.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/domain/calculation-rule.state-machine.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/domain/performance-score.engine.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/domain/performance-score.engine.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/domain/performance-score.engine.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/domain/rule-selection.policy.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/domain/rule-selection.policy.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/errors/calculation-rule-invalid-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/errors/calculation-rule-invalid-transition.error.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/errors/calculation-rule-not-editable.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/errors/calculation-rule-not-editable.error.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/errors/calculation-rule-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/errors/calculation-rule-not-found.error.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/errors/calculation-rule-version-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/errors/calculation-rule-version-conflict.error.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/errors/score-projection-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/errors/score-projection-not-found.error.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/errors/scoring-scope-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/errors/scoring-scope-not-found.error.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/errors/scoring-validation.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/errors/scoring-validation.error.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/index.ts",
+      "to": "src/modules/scoring/scoring.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "to": "src/modules/scoring/lib/scoring.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "to": "src/modules/scoring/model/scoring.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/score-projection.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/score-projection.repository.ts",
+      "to": "src/modules/scoring/lib/scoring.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/score-projection.repository.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/score-projection.repository.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/score-projection.repository.ts",
+      "to": "src/modules/scoring/model/scoring.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/score-projection.repository.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/score-source.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/score-source.repository.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/score-source.repository.ts",
+      "to": "src/modules/scoring/model/scoring.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/scoring-scope.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/infrastructure/scoring-scope.repository.ts",
+      "to": "src/modules/scoring/model/scoring.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/score-explanation.builder.ts",
+      "to": "src/modules/scoring/lib/scoring.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/score-explanation.builder.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/score-explanation.builder.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring-command.mapper.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring-command.mapper.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/scoring/domain/attendance-score.engine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/scoring/domain/calculation-rule.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/scoring/domain/performance-score.engine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/scoring/lib/score-explanation.builder.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/scoring/lib/scoring.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/scoring/lib/scoring.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/scoring/model/scoring.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.builders.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.helpers.ts",
+      "to": "src/modules/scoring/model/scoring.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.helpers.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.mapper.ts",
+      "to": "src/modules/scoring/lib/scoring.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.mapper.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.mapper.ts",
+      "to": "src/modules/scoring/model/scoring.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/lib/scoring.mapper.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/model/scoring.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/model/scoring.constants.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/model/scoring.constants.ts",
+      "to": "src/modules/scoring/model/scoring.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/model/scoring.types.ts",
+      "to": "src/modules/scoring/model/scoring.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/api/score-self.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/api/score.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/application/rule-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/application/rule-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/application/score-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/application/scoring-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/infrastructure/score-projection.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/infrastructure/score-source.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/scoring/scoring.module.ts",
+      "to": "src/modules/scoring/infrastructure/scoring-scope.repository.ts",
       "type": "internal"
     },
     {

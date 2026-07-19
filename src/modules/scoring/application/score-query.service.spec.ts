@@ -14,7 +14,10 @@ function build() {
     listForMembership: vi.fn(() => [{ id: 'proj-1' }]),
     listForUser: vi.fn(() => [{ id: 'proj-1' }]),
   };
-  const service = new ScoreQueryService(unitOfWork as never, repository as never);
+  const service = new ScoreQueryService(
+    unitOfWork as never,
+    repository as never,
+  );
   return { repository, service };
 }
 

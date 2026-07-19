@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import { CalculationRuleInvalidTransitionError } from '../errors/calculation-rule-invalid-transition.error';
 import { CalculationRuleVersionConflictError } from '../errors/calculation-rule-version-conflict.error';
@@ -26,7 +26,9 @@ function rule(status: CalculationRuleStatus): CalculationRule {
     scaleMin: 0,
     scaleMax: 5,
     minComponents: 1,
-    components: [{ categoryKey: ScoreCategory.Training, weight: 1, minSample: 1 }],
+    components: [
+      { categoryKey: ScoreCategory.Training, weight: 1, minSample: 1 },
+    ],
     effectiveFrom: null,
     effectiveTo: null,
     recordVersion: 1,

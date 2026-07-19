@@ -47,7 +47,11 @@ describe('selectEffectiveRule', () => {
       [
         rule({ ruleId: 'v1', version: 1 }),
         rule({ ruleId: 'v2', version: 2 }),
-        rule({ ruleId: 'draft', version: 3, status: CalculationRuleStatus.Draft }),
+        rule({
+          ruleId: 'draft',
+          version: 3,
+          status: CalculationRuleStatus.Draft,
+        }),
       ],
       '2026-06-01',
     );
@@ -56,7 +60,10 @@ describe('selectEffectiveRule', () => {
 
   it('honours an effective-from bound', () => {
     expect(
-      selectEffectiveRule([rule({ effectiveFrom: '2026-07-01' })], '2026-06-01'),
+      selectEffectiveRule(
+        [rule({ effectiveFrom: '2026-07-01' })],
+        '2026-06-01',
+      ),
     ).toBeNull();
     expect(
       selectEffectiveRule([rule({ effectiveFrom: '2026-01-01' })], '2026-06-01')

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T01:15:01.468Z",
+  "generatedAt": "2026-07-19T13:13:09.046Z",
   "modules": [
     {
       "name": "articles",
@@ -857,6 +857,91 @@
       "fileCount": 26,
       "specCount": 14,
       "publicSurface": "src/modules/rbac/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "scoring",
+      "path": "src/modules/scoring",
+      "layers": {
+        "controller": [
+          "src/modules/scoring/api/calculation-rule.controller.ts",
+          "src/modules/scoring/api/score-self.controller.ts",
+          "src/modules/scoring/api/score.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/scoring/api/dto/create-rule.dto.ts",
+          "src/modules/scoring/api/dto/list-rules.response.dto.ts",
+          "src/modules/scoring/api/dto/list-scores.response.dto.ts",
+          "src/modules/scoring/api/dto/list-scoring.query.dto.ts",
+          "src/modules/scoring/api/dto/overall-explanation.response.dto.ts",
+          "src/modules/scoring/api/dto/rebuild-response.dto.ts",
+          "src/modules/scoring/api/dto/rule-component-response.dto.ts",
+          "src/modules/scoring/api/dto/rule-component.dto.ts",
+          "src/modules/scoring/api/dto/rule-response.dto.ts",
+          "src/modules/scoring/api/dto/score-component.response.dto.ts",
+          "src/modules/scoring/api/dto/score-explanation.response.dto.ts",
+          "src/modules/scoring/api/dto/score-list.response.dto.ts",
+          "src/modules/scoring/api/dto/score-response.dto.ts",
+          "src/modules/scoring/api/dto/score-rule-reference.response.dto.ts",
+          "src/modules/scoring/api/dto/simulate-rule.dto.ts",
+          "src/modules/scoring/api/dto/simulation-response.dto.ts",
+          "src/modules/scoring/api/dto/transition-rule.dto.ts",
+          "src/modules/scoring/api/dto/update-rule.dto.ts"
+        ],
+        "use-case": [
+          "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+          "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+          "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+          "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+          "src/modules/scoring/application/update-calculation-rule.use-case.ts"
+        ],
+        "service": [
+          "src/modules/scoring/application/rule-lookup.service.ts",
+          "src/modules/scoring/application/rule-query.service.ts",
+          "src/modules/scoring/application/score-query.service.ts",
+          "src/modules/scoring/application/scoring-scope.service.ts"
+        ],
+        "domain": [
+          "src/modules/scoring/domain/attendance-score.engine.ts",
+          "src/modules/scoring/domain/calculation-rule.policy.ts",
+          "src/modules/scoring/domain/calculation-rule.state-machine.ts",
+          "src/modules/scoring/domain/performance-score.engine.ts",
+          "src/modules/scoring/domain/rule-selection.policy.ts"
+        ],
+        "other": [
+          "src/modules/scoring/errors/calculation-rule-invalid-transition.error.ts",
+          "src/modules/scoring/errors/calculation-rule-not-editable.error.ts",
+          "src/modules/scoring/errors/calculation-rule-not-found.error.ts",
+          "src/modules/scoring/errors/calculation-rule-version-conflict.error.ts",
+          "src/modules/scoring/errors/score-projection-not-found.error.ts",
+          "src/modules/scoring/errors/scoring-scope-not-found.error.ts",
+          "src/modules/scoring/errors/scoring-validation.error.ts",
+          "src/modules/scoring/index.ts",
+          "src/modules/scoring/scoring.module.ts"
+        ],
+        "repository": [
+          "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+          "src/modules/scoring/infrastructure/score-projection.repository.ts",
+          "src/modules/scoring/infrastructure/score-source.repository.ts",
+          "src/modules/scoring/infrastructure/scoring-scope.repository.ts"
+        ],
+        "lib": [
+          "src/modules/scoring/lib/score-explanation.builder.ts",
+          "src/modules/scoring/lib/scoring-command.mapper.ts",
+          "src/modules/scoring/lib/scoring.builders.ts",
+          "src/modules/scoring/lib/scoring.helpers.ts",
+          "src/modules/scoring/lib/scoring.mapper.ts"
+        ],
+        "model": [
+          "src/modules/scoring/model/scoring.constants.ts",
+          "src/modules/scoring/model/scoring.enums.ts",
+          "src/modules/scoring/model/scoring.rows.ts",
+          "src/modules/scoring/model/scoring.types.ts"
+        ]
+      },
+      "fileCount": 57,
+      "specCount": 23,
+      "publicSurface": "src/modules/scoring/index.ts",
       "hasEvents": false
     },
     {

@@ -12,7 +12,11 @@ import { ScoringValidationError } from './scoring-validation.error';
 describe('scoring errors', () => {
   it('carry the right status and stable message key', () => {
     const cases = [
-      [new CalculationRuleNotFoundError(), HttpStatus.NOT_FOUND, 'errors.scoring.ruleNotFound'],
+      [
+        new CalculationRuleNotFoundError(),
+        HttpStatus.NOT_FOUND,
+        'errors.scoring.ruleNotFound',
+      ],
       [
         new CalculationRuleInvalidTransitionError(),
         HttpStatus.CONFLICT,
@@ -28,7 +32,11 @@ describe('scoring errors', () => {
         HttpStatus.CONFLICT,
         'errors.scoring.ruleNotEditable',
       ],
-      [new ScoringValidationError(), HttpStatus.BAD_REQUEST, 'errors.scoring.validation'],
+      [
+        new ScoringValidationError(),
+        HttpStatus.BAD_REQUEST,
+        'errors.scoring.validation',
+      ],
       [
         new ScoringScopeNotFoundError(),
         HttpStatus.NOT_FOUND,

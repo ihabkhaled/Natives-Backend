@@ -21,7 +21,9 @@ function rule(): CalculationRule {
     scaleMin: 0,
     scaleMax: 5,
     minComponents: 1,
-    components: [{ categoryKey: ScoreCategory.Training, weight: 1, minSample: 1 }],
+    components: [
+      { categoryKey: ScoreCategory.Training, weight: 1, minSample: 1 },
+    ],
     effectiveFrom: null,
     effectiveTo: null,
     recordVersion: 1,
@@ -58,6 +60,7 @@ function build() {
       { membership_id: 'mem-2' },
     ]),
     categorySourcesForTeam: vi.fn(() => [sourceRow('mem-1')]),
+    attendanceCountsForTeam: vi.fn(() => [] as unknown[]),
   };
   const projections = {
     upsertReady: vi.fn(),
@@ -101,6 +104,25 @@ describe('RebuildScoreProjectionsUseCase', () => {
     expect(harness.events.enqueue.mock.calls[0]?.[1].eventType).toBe(
       'scoring.projection.rebuilt.v1',
     );
+  });
+
+  it('feeds finalized attendance into the projection as the attendance category', async () => {
+    harness.rules.listPublishedForTeam.mockReturnValueOnce([
+      {
+        ...rule(),
+        components: [
+          { categoryKey: ScoreCategory.Attendance, weight: 1, minSample: 1 },
+        ],
+      },
+    ]);
+    harness.sources.categorySourcesForTeam.mockReturnValueOnce([]);
+    harness.sources.attendanceCountsForTeam.mockReturnValueOnce([
+      { membership_id: 'mem-1', attended: 3, absent: 1, excused: 2 },
+    ]);
+    await harness.useCase.execute(actor, 'team-1');
+    // 3 attended of (3 attended + 1 absent) eligible => 0.75 -> 0.75 * 5 = 3.75.
+    const built = harness.projections.upsertReady.mock.calls[0]?.[1];
+    expect(built.result.value).toBe(3.75);
   });
 
   it('404s when there is no effective published rule', async () => {

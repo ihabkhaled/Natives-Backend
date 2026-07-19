@@ -30,6 +30,9 @@ import {
   buildStatusChange,
   computeMembershipProjection,
   groupSourcesByMembership,
+  indexAttendanceByMembership,
+  toAttendanceCategorySource,
+  withAttendanceSource,
 } from './scoring.builders';
 
 const NOW = new Date('2026-03-01T00:00:00.000Z');
@@ -176,6 +179,57 @@ describe('groupSourcesByMembership', () => {
   });
 });
 
+describe('attendance sourcing', () => {
+  it('normalizes the attended fraction onto the 0–5 scale (excused excluded)', () => {
+    const source = toAttendanceCategorySource({
+      membershipId: 'mem-1',
+      attendedEligible: 3,
+      absentCount: 1,
+      excusedSessions: 2,
+    });
+    expect(source.categoryKey).toBe(ScoreCategory.Attendance);
+    // 3 / (3 + 1) = 0.75 -> 0.75 * 5 = 3.75.
+    expect(source.values).toEqual([3.75]);
+    expect(source.totalMetrics).toBe(1);
+  });
+
+  it('yields an empty value (null attendance) when no session is eligible', () => {
+    const source = toAttendanceCategorySource({
+      membershipId: 'mem-1',
+      attendedEligible: 0,
+      absentCount: 0,
+      excusedSessions: 3,
+    });
+    expect(source.values).toEqual([]);
+    expect(source.totalMetrics).toBe(1);
+  });
+
+  it('appends attendance only when counts are present', () => {
+    const base: readonly CategorySource[] = [
+      { categoryKey: ScoreCategory.Training, values: [4], totalMetrics: 1 },
+    ];
+    expect(withAttendanceSource(base, undefined)).toBe(base);
+    const merged = withAttendanceSource(base, {
+      membershipId: 'mem-1',
+      attendedEligible: 2,
+      absentCount: 2,
+      excusedSessions: 0,
+    });
+    expect(merged).toHaveLength(2);
+    expect(merged[1]?.categoryKey).toBe(ScoreCategory.Attendance);
+  });
+
+  it('indexes attendance rows by membership id', () => {
+    const map = indexAttendanceByMembership([
+      { membership_id: 'mem-1', attended: 1, absent: 0, excused: 0 },
+      { membership_id: 'mem-2', attended: 0, absent: 2, excused: 1 },
+    ]);
+    expect(map.get('mem-1')?.attendedEligible).toBe(1);
+    expect(map.get('mem-2')?.absentCount).toBe(2);
+    expect(map.get('mem-2')?.excusedSessions).toBe(1);
+  });
+});
+
 describe('audit and event builders', () => {
   it('builds a rule audit and the rule lifecycle events', () => {
     const audit = buildRuleAudit(RULE_CREATED_ACTION, 'admin-1', rule());
@@ -203,9 +257,20 @@ describe('audit and event builders', () => {
       ruleId: 'rule-1',
       ruleVersion: 2,
     };
-    const audit = buildRebuildAudit('rebuild', 'admin-1', outcome, 'team-1', null);
+    const audit = buildRebuildAudit(
+      'rebuild',
+      'admin-1',
+      outcome,
+      'team-1',
+      null,
+    );
     expect(audit.diff.rebuilt).toBe(2);
-    const event = buildProjectionRebuiltEvent('admin-1', 'team-1', null, outcome);
+    const event = buildProjectionRebuiltEvent(
+      'admin-1',
+      'team-1',
+      null,
+      outcome,
+    );
     expect(event.eventType).toBe(PROJECTION_REBUILT_EVENT);
     expect(event.payload.failed).toBe(1);
   });

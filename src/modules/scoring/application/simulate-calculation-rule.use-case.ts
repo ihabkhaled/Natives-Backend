@@ -16,6 +16,8 @@ import { ScoreSourceRepository } from '../infrastructure/score-source.repository
 import {
   computeMembershipProjection,
   groupSourcesByMembership,
+  indexAttendanceByMembership,
+  withAttendanceSource,
 } from '../lib/scoring.builders';
 import type {
   CalculationRule,
@@ -89,7 +91,17 @@ export class SimulateCalculationRuleUseCase {
       teamId,
       membershipId,
     );
-    return groupSourcesByMembership(rows).get(membershipId) ?? [];
+    const attendance = indexAttendanceByMembership(
+      await this.sources.attendanceCountsForMembership(
+        tx,
+        teamId,
+        membershipId,
+      ),
+    );
+    return withAttendanceSource(
+      groupSourcesByMembership(rows).get(membershipId) ?? [],
+      attendance.get(membershipId),
+    );
   }
 
   private async publishedExplanation(

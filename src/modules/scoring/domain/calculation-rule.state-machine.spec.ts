@@ -55,6 +55,9 @@ describe('calculation-rule.state-machine', () => {
       ),
     ).toBe(false);
     expect(allowedRuleTransitions(CalculationRuleStatus.Retired)).toEqual([]);
+    expect(allowedRuleTransitions('unknown' as CalculationRuleStatus)).toEqual(
+      [],
+    );
   });
 
   it('resolves each transition verb to its target status', () => {

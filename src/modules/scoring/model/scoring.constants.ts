@@ -105,6 +105,49 @@ export const ASSESSMENT_SOURCED_CATEGORIES: readonly ScoreCategory[] = [
   ScoreCategory.Behavioral,
 ];
 
+// --- Attendance sourcing -----------------------------------------------------
+
+/**
+ * Legacy CANDIDATE session-type weights and penalties (11-SCHEMAS
+ * legacy-business-rules.yaml). Data, not final policy — supplied to the pure
+ * weighted-attendance calculator and golden-tested; never adopted automatically.
+ */
+export const LEGACY_ATTENDANCE_WEIGHTS = {
+  practice: 3,
+  fitness: 2,
+  game: 3,
+  throwing: 4,
+  latePenalty: 1,
+  absentPenalty: 1,
+} as const;
+
+/**
+ * The attendance percentage (0–1) is normalized onto the shared 0–5 observation
+ * scale so it sits alongside assessment category means in the weighted overall:
+ * 100% attendance reads as 5.0.
+ */
+export const ATTENDANCE_NORMALIZED_MAX = 5;
+
+/** Attendance record statuses (module 202) counted as attended (present-like). */
+export const ATTENDED_STATUSES: readonly string[] = [
+  'present_on_time',
+  'present_late',
+  'remote_approved',
+  'other_approved',
+];
+
+/** Attendance statuses excused/injured — excluded from the denominator. */
+export const EXCUSED_STATUSES: readonly string[] = ['excused', 'injured'];
+
+/** The absent attendance status. */
+export const ABSENT_STATUS = 'absent';
+
+/** Attendance-sheet states whose records are final enough to score. */
+export const SCORABLE_SHEET_STATES: readonly string[] = [
+  'finalized',
+  'corrected',
+];
+
 export const EXCLUDED_MISSING_REASON = 'no assessed data for this category';
 export const EXCLUDED_ZERO_WEIGHT_REASON = 'component weight is not positive';
 export const INSUFFICIENT_DATA_REASON =

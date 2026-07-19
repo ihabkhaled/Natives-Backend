@@ -5,7 +5,9 @@ import { RuleQueryService } from './rule-query.service';
 function build() {
   const tx = {} as never;
   const unitOfWork = {
-    runInTransaction: vi.fn(async (cb: (t: never) => unknown) => cb(tx)),
+    runInTransaction: vi.fn((cb: (t: never) => unknown) =>
+      Promise.resolve(cb(tx)),
+    ),
   };
   const repository = {
     listForTeam: vi.fn(() => [{ ruleId: 'rule-1' }]),

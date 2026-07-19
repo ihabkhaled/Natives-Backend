@@ -20,7 +20,7 @@ describe('ScoringSchema1722700000000', () => {
     expect(statements).toContain('"performance_score_projections"');
     expect(statements).toContain('"components" jsonb');
     expect(statements).toContain('"ux_calculation_rule_published"');
-    expect(statements).toContain("WHERE \"status\" = 'published'");
+    expect(statements).toContain('WHERE "status" = \'published\'');
     expect(statements).toContain('"ux_score_projection_member_rule"');
     expect(statements).toContain("'legacy_overall'");
     expect(statements).toContain("'draft'");

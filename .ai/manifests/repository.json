@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-19T01:15:01.468Z",
-  "treeHash": "sha256:9b91fa96b1aa8ade0200adf7e3017f72858009d642de160374c8694c0ef5ab7f",
+  "generatedAt": "2026-07-19T13:13:09.046Z",
+  "treeHash": "sha256:9728c19bff972cbd3eb38911139b8d74af97e1057151781d6e68b8269f6fae30",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:c90d053bcf742824f83fecca4ff9b26805e918a75abe3f57a34f7539f41fea40",
-      "sizeBytes": 1388
+      "hash": "sha256:97d462ceacd74643cf492a416dfb39aab0833136faab37d2e339a0edd06c911f",
+      "sizeBytes": 1457
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -3187,6 +3187,23 @@
       "sizeBytes": 1516
     },
     {
+      "path": "src/database/migrations/1722700000000-scoring-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoringSchema1722700000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e7639dc72ff7a4d1e2421ab11c3361763fb727525312413ac6ac443fa372b228",
+      "sizeBytes": 8414
+    },
+    {
       "path": "src/database/migrations/assessment-catalog-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3233,6 +3250,18 @@
       "kind": "spec",
       "hash": "sha256:2ac6cd2bde65de60827353e3bd0143ae8d97b6b792c2f2669ead7467acd18cf9",
       "sizeBytes": 1521
+    },
+    {
+      "path": "src/database/migrations/scoring-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:cf190492f53853b8d6fae72eada820ffb61d155a2d21d4dd00eb7c0aded30217",
+      "sizeBytes": 2156
     },
     {
       "path": "src/database/migrations/seed-history-schema.spec.ts",
@@ -23328,6 +23357,1970 @@
       "sizeBytes": 1861
     },
     {
+      "path": "src/modules/scoring/api/calculation-rule.controller.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalculationRuleController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b0b6a8c6aaa4b15f944c2378926966fb565b3349ab0f2d2ab06f37adbcf641c0",
+      "sizeBytes": 6267
+    },
+    {
+      "path": "src/modules/scoring/api/dto/create-rule.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateRuleDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:903cbde680220071f9705c5e646027b3f0faa450e60005c0f628b09cd3080f71",
+      "sizeBytes": 2799
+    },
+    {
+      "path": "src/modules/scoring/api/dto/list-rules.response.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListRulesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:180d47ea9d247f70f8b7cde501cbdd01848c223ab2182644f4901b29e44121c4",
+      "sizeBytes": 439
+    },
+    {
+      "path": "src/modules/scoring/api/dto/list-scores.response.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListScoresResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d4fee862aba519cdafe724e07a5dbde94447b66fa869a903353df3471475a188",
+      "sizeBytes": 456
+    },
+    {
+      "path": "src/modules/scoring/api/dto/list-scoring.query.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListScoringQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:550ca2d869409549ee70fc86f28e56a9cfb6bb0222dd342c2bf3e425f057444f",
+      "sizeBytes": 711
+    },
+    {
+      "path": "src/modules/scoring/api/dto/overall-explanation.response.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OverallExplanationResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:33c05666666933bb4199150bd05a9479d8472af5f039e64a26381d7c7d6c96b3",
+      "sizeBytes": 658
+    },
+    {
+      "path": "src/modules/scoring/api/dto/rebuild-response.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RebuildResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9fe4cd73e2c91e3b3c1e2493f39785bdf037731ef41df6d208dd52a8c298fb7b",
+      "sizeBytes": 432
+    },
+    {
+      "path": "src/modules/scoring/api/dto/rule-component-response.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RuleComponentResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ddf796d91a8cadc7a1bf097753dbb6e16371449275ce3da98afd2af2a149bc4f",
+      "sizeBytes": 406
+    },
+    {
+      "path": "src/modules/scoring/api/dto/rule-component.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RuleComponentDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7a1d0ee55dc7b620dbe1e5bc2edd5857a2632fc584786012beed7f6843250dc1",
+      "sizeBytes": 1044
+    },
+    {
+      "path": "src/modules/scoring/api/dto/rule-response.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RuleResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1d32fcd728a72e1c2acb805de69e5886214cc221e8eb815d3e88cfc488d2ea33",
+      "sizeBytes": 2144
+    },
+    {
+      "path": "src/modules/scoring/api/dto/score-component.response.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoreComponentResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:68357dd36c4fd2790fa5dea77f2c57a4f76fcae5dfe9ff01c2bf8f9c12af699a",
+      "sizeBytes": 821
+    },
+    {
+      "path": "src/modules/scoring/api/dto/score-explanation.response.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoreExplanationResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:52fb01d6d2a9533794e67a6c15f9f21d7aab773a586ea2d924079ae987c5250f",
+      "sizeBytes": 1191
+    },
+    {
+      "path": "src/modules/scoring/api/dto/score-list.response.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoreListResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:505bb921e5b4879cfd84cb00372d2f75f7e8006523a7a19bef232712c250ae30",
+      "sizeBytes": 317
+    },
+    {
+      "path": "src/modules/scoring/api/dto/score-response.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoreResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f034594805c7bed0aa75d8d0eeba4aac6a1bfdd48ac68253945aa1ebe29d7e11",
+      "sizeBytes": 2202
+    },
+    {
+      "path": "src/modules/scoring/api/dto/score-rule-reference.response.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoreRuleReferenceResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:39d4fdd4a8b9424f2c4790adfb79a887637457367e20e9447f3d70c019bbf2df",
+      "sizeBytes": 374
+    },
+    {
+      "path": "src/modules/scoring/api/dto/simulate-rule.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SimulateRuleDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e05075972b067f9f6c9ea433fac7947116006c088c445abf319e72d1327818aa",
+      "sizeBytes": 288
+    },
+    {
+      "path": "src/modules/scoring/api/dto/simulation-response.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SimulationResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d005add47e98fd493973140ed93e38f2d92a5ff681e72e3c71f29ac6ed58ff57",
+      "sizeBytes": 730
+    },
+    {
+      "path": "src/modules/scoring/api/dto/transition-rule.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionRuleDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a8cc38c7c514e342d820d0f22aaaa96dad3f95a112d32aaace6805608db59c6d",
+      "sizeBytes": 630
+    },
+    {
+      "path": "src/modules/scoring/api/dto/update-rule.dto.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateRuleDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:302e9b657bb6f0aac480d832c915955b4087f95dd68d65bb3da9983325d686f5",
+      "sizeBytes": 566
+    },
+    {
+      "path": "src/modules/scoring/api/score-self.controller.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoreSelfController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ddbedc7be9232abb537e7585e87abaad61231d9909212e719189acca0361810b",
+      "sizeBytes": 1458
+    },
+    {
+      "path": "src/modules/scoring/api/score.controller.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoreController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7b18e8fdedd7aecf29a3066e4a5ecc41e16ed14263cf82008742b5de81943299",
+      "sizeBytes": 3193
+    },
+    {
+      "path": "src/modules/scoring/application/create-calculation-rule.use-case.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8ccb4c34b38318cf174a0db534aab227a2381978c1c29e3107a583c89311f608",
+      "sizeBytes": 3206
+    },
+    {
+      "path": "src/modules/scoring/application/create-calculation-rule.use-case.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateCalculationRuleUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/application/create-calculation-rule.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4d771ffe8f87107c188f850589cf4f38b3965d85937013a237a3f33d972b0938",
+      "sizeBytes": 3059
+    },
+    {
+      "path": "src/modules/scoring/application/rebuild-score-projections.use-case.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:88fb8b7e5b63fadafcb2ce96b63d9db89384de119ba17981c5442ce16f6a7459",
+      "sizeBytes": 5012
+    },
+    {
+      "path": "src/modules/scoring/application/rebuild-score-projections.use-case.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RebuildScoreProjectionsUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/application/rebuild-score-projections.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4b94bb631bb8a4c33620717bbdf77e06af0b490ef5708d4e92a86154bd7c53c9",
+      "sizeBytes": 5829
+    },
+    {
+      "path": "src/modules/scoring/application/rule-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:15aa653f12776218d532dee48a093f6b77bab3a6d61e9e2534f39a93ee5b1294",
+      "sizeBytes": 1568
+    },
+    {
+      "path": "src/modules/scoring/application/rule-lookup.service.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RuleLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/application/rule-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:51be42df48983057973157a3a2271f330b9f5eb07a5d4f134a8befb64b12eef7",
+      "sizeBytes": 1333
+    },
+    {
+      "path": "src/modules/scoring/application/rule-query.service.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8e57b85f929c3e3af4e834e2936f51ba96b49e09213fe73d65cf9896c9afa880",
+      "sizeBytes": 1323
+    },
+    {
+      "path": "src/modules/scoring/application/rule-query.service.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RuleQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/application/rule-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:52517d375924def8a7115b5ae0b8a3340a36862fb6af103d10d216ec7b0e36fa",
+      "sizeBytes": 1645
+    },
+    {
+      "path": "src/modules/scoring/application/score-query.service.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ecaa8bb8856d2ef06b6bca24c5378a84d3dd2ca0a8aa2a4c43ff49c5dd083802",
+      "sizeBytes": 1734
+    },
+    {
+      "path": "src/modules/scoring/application/score-query.service.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoreQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/application/score-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2fc10d9bbd72b2854bb4d68e19883c3e6485e6d97516f5b41f7f39e9b56356ee",
+      "sizeBytes": 2419
+    },
+    {
+      "path": "src/modules/scoring/application/scoring-scope.service.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ecb1bb34823b2b049a15460f5b8787e8504d5a1396e8c53c7a372cc14691405c",
+      "sizeBytes": 1988
+    },
+    {
+      "path": "src/modules/scoring/application/scoring-scope.service.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoringScopeService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/application/scoring-scope.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:51b4625796e71ccb7baaed54d958828ae34dc7d454f019e36dfdf1c383d5eea9",
+      "sizeBytes": 1548
+    },
+    {
+      "path": "src/modules/scoring/application/simulate-calculation-rule.use-case.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6f65ffefa82c1db14f82ab17f864e18a2b4f8cf6e4a101f5c0aaaf66ed6285f1",
+      "sizeBytes": 3349
+    },
+    {
+      "path": "src/modules/scoring/application/simulate-calculation-rule.use-case.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SimulateCalculationRuleUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/application/simulate-calculation-rule.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a1f64a03576af40c0f8e20c1b87f4dd6baea6c75d69f06a22751cc8fa4c70f2a",
+      "sizeBytes": 4684
+    },
+    {
+      "path": "src/modules/scoring/application/transition-calculation-rule.use-case.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5e42a97412ab453823392f3f2f7970c0cf0fa2ec8c774d8a5746c03d97f9ed66",
+      "sizeBytes": 4746
+    },
+    {
+      "path": "src/modules/scoring/application/transition-calculation-rule.use-case.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionCalculationRuleUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/application/transition-calculation-rule.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1ede6999bdccd1b4e6e320ba2eeb43ba9522897fed7a72f0abf212c29b5befea",
+      "sizeBytes": 4651
+    },
+    {
+      "path": "src/modules/scoring/application/update-calculation-rule.use-case.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e9162c90f0987607be25df37ae4061e750e217ed4f670f7ee1111aa3c3763faa",
+      "sizeBytes": 3655
+    },
+    {
+      "path": "src/modules/scoring/application/update-calculation-rule.use-case.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateCalculationRuleUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/application/update-calculation-rule.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3e159c1737100d3e0d6904c0f41ead216522c28ec107eb47f67c964804df0e9d",
+      "sizeBytes": 3017
+    },
+    {
+      "path": "src/modules/scoring/domain/attendance-score.engine.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1ecec030ff41c7b94e149b6ddb26aa8f4055c1a26076c7c57cd7a6a2b55ff8ab",
+      "sizeBytes": 3590
+    },
+    {
+      "path": "src/modules/scoring/domain/attendance-score.engine.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "computeAttendancePercentage"
+        },
+        {
+          "kind": "function",
+          "name": "computeLegacyWeightedAttendance"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/domain/attendance-score.engine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:49afe36cd952e8439a651b3bd09a2e6ac652f342b5be597ec2f8387713a61f08",
+      "sizeBytes": 2761
+    },
+    {
+      "path": "src/modules/scoring/domain/calculation-rule.policy.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:858a23c9fad474c4174e1ea0a1fe6da11b9d1d075502436b8e5c92ef2cc7c200",
+      "sizeBytes": 3957
+    },
+    {
+      "path": "src/modules/scoring/domain/calculation-rule.policy.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assertRuleContent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/domain/calculation-rule.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5d774bdeb8bfb0f8592c6078ff2210cef784b20460cf6c3906f2735950d33141",
+      "sizeBytes": 3091
+    },
+    {
+      "path": "src/modules/scoring/domain/calculation-rule.state-machine.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ec85f5c72bab46187c71de7fa52e729186762816977d9060ff8a2fc75d08c0b9",
+      "sizeBytes": 2553
+    },
+    {
+      "path": "src/modules/scoring/domain/calculation-rule.state-machine.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedRuleTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransitionRule"
+        },
+        {
+          "kind": "function",
+          "name": "resolveRuleTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isRuleEditable"
+        },
+        {
+          "kind": "function",
+          "name": "isPublishTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isRetireTarget"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/domain/calculation-rule.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bc27c07b6ec9d5e94b1c34ddaaaf6dbfabac2417311e881bd74d75dc68ce2761",
+      "sizeBytes": 2528
+    },
+    {
+      "path": "src/modules/scoring/domain/performance-score.engine.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:950bb94dafa85c3e4ed3b792a8e90c1f542c1bfac2dd79181819fde1062beee4",
+      "sizeBytes": 8040
+    },
+    {
+      "path": "src/modules/scoring/domain/performance-score.engine.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "aggregateWeighted"
+        },
+        {
+          "kind": "function",
+          "name": "computeCategoryScore"
+        },
+        {
+          "kind": "function",
+          "name": "deriveConfidence"
+        },
+        {
+          "kind": "function",
+          "name": "isComponentPresent"
+        },
+        {
+          "kind": "function",
+          "name": "computePerformanceScore"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/domain/performance-score.engine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7a8125d2bf89033ffd5483b291225b0ba0e30824258109e40bef2a6c8a84c75f",
+      "sizeBytes": 5212
+    },
+    {
+      "path": "src/modules/scoring/domain/rule-selection.policy.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:318564069393878325c0135525cbbf312eff41f458d2027be77857df26fa6cd0",
+      "sizeBytes": 2244
+    },
+    {
+      "path": "src/modules/scoring/domain/rule-selection.policy.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "selectEffectiveRule"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/domain/rule-selection.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:16bf0bdc093d70e4694141eed5e0f43b59d1ffeecc30f1a7f5dda5d3e54b0a3d",
+      "sizeBytes": 1269
+    },
+    {
+      "path": "src/modules/scoring/errors/calculation-rule-invalid-transition.error.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalculationRuleInvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c4cded54a644323d7e70eb7c29f0c2854abdbad647bbf92c6065c2f28ad81591",
+      "sizeBytes": 363
+    },
+    {
+      "path": "src/modules/scoring/errors/calculation-rule-not-editable.error.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalculationRuleNotEditableError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d751d84aaba4ad96ce16547551b58db8e28c03bd9d27cad23ebdcaa90e0a4b63",
+      "sizeBytes": 333
+    },
+    {
+      "path": "src/modules/scoring/errors/calculation-rule-not-found.error.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalculationRuleNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:958fae22805757100395e13260303bd6eda013167b26da6677192579544283ad",
+      "sizeBytes": 319
+    },
+    {
+      "path": "src/modules/scoring/errors/calculation-rule-version-conflict.error.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalculationRuleVersionConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:50e9e6be02d24c24783520e2b2016180f10b96bb03e8585b95be8f6d598ac28a",
+      "sizeBytes": 353
+    },
+    {
+      "path": "src/modules/scoring/errors/score-projection-not-found.error.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoreProjectionNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:82e10cd0ab52ccb4ddfdf238af6eb47937f271a56167312c8f9bdb43ddef62df",
+      "sizeBytes": 343
+    },
+    {
+      "path": "src/modules/scoring/errors/scoring-errors.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a750ced922be2656562c6154607824e28d878d1f0867b955ff096eff66360e48",
+      "sizeBytes": 1971
+    },
+    {
+      "path": "src/modules/scoring/errors/scoring-scope-not-found.error.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoringScopeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:68d5a4d565f7cae9a869059a5ed2ec2e78edea1dfea8ffb257b43a9958f0c1aa",
+      "sizeBytes": 352
+    },
+    {
+      "path": "src/modules/scoring/errors/scoring-validation.error.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoringValidationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:442b6cb316d6c58c395840e6c00b16923b5c2f22ff60131ab97b9b94fba3551c",
+      "sizeBytes": 334
+    },
+    {
+      "path": "src/modules/scoring/index.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:79f7cef029eb4f1d2350dfb59f54f4bc84be34640571c97e6168f2d770b951ef",
+      "sizeBytes": 50
+    },
+    {
+      "path": "src/modules/scoring/infrastructure/calculation-rule.repository.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2b76504012263b0c2cf1d6d7a1538a50045c90dab4cffdde9ee716487ff234ef",
+      "sizeBytes": 6998
+    },
+    {
+      "path": "src/modules/scoring/infrastructure/calculation-rule.repository.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalculationRuleRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/infrastructure/calculation-rule.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:284c9d5137b1af1c398c435965800a2de30ba99aa8fc1896b9ff6d0c0c8ce085",
+      "sizeBytes": 8247
+    },
+    {
+      "path": "src/modules/scoring/infrastructure/score-projection.repository.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e4f59685dff4a645248cfc27b13375b3d00a0b58fb4c465021aa6c89dab833c9",
+      "sizeBytes": 4992
+    },
+    {
+      "path": "src/modules/scoring/infrastructure/score-projection.repository.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoreProjectionRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/infrastructure/score-projection.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:08bd4c8b5c36ba4823a27bb04bacd974202d0447ccdc191a649d9554bf2ab6c6",
+      "sizeBytes": 7606
+    },
+    {
+      "path": "src/modules/scoring/infrastructure/score-source.repository.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:dca03b5cf4a2c74413ee24e2291179ed4ca2bd5250331b2660edc6291e5b876d",
+      "sizeBytes": 2849
+    },
+    {
+      "path": "src/modules/scoring/infrastructure/score-source.repository.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoreSourceRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/infrastructure/score-source.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e5a35462eb3f74ec49cd4a6bea4718817c2e7cc4661bc354d3f4702e63c5b449",
+      "sizeBytes": 4511
+    },
+    {
+      "path": "src/modules/scoring/infrastructure/scoring-scope.repository.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:cd6dbeaa9b70599f351e1218644c64cc26a62bb2ff75cea801cd7a8c6d9989ed",
+      "sizeBytes": 1420
+    },
+    {
+      "path": "src/modules/scoring/infrastructure/scoring-scope.repository.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoringScopeRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/infrastructure/scoring-scope.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:fef83613dfadcb97fe16d11e391c55a102490fb2c6aae98d9b3432b2e867801a",
+      "sizeBytes": 1426
+    },
+    {
+      "path": "src/modules/scoring/lib/score-explanation.builder.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:53bf300b1708e5e438cf0dcd94205bc3b2aa2de30dfb726c7794e48663a03f13",
+      "sizeBytes": 3298
+    },
+    {
+      "path": "src/modules/scoring/lib/score-explanation.builder.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildScoreExplanation"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/lib/score-explanation.builder.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f5acba27d0aabcec12bbc4bb01765a7d83a5df6bb6f64914c5e41af7c3a8ee3c",
+      "sizeBytes": 2367
+    },
+    {
+      "path": "src/modules/scoring/lib/scoring-command.mapper.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3b4d2a1119899da1252e4ecfe3b4e7be2e349a15a802cf196e80efbe3a627869",
+      "sizeBytes": 1625
+    },
+    {
+      "path": "src/modules/scoring/lib/scoring-command.mapper.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toRuleContent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/lib/scoring-command.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f26d340713b32dca8987a7e456969eb2e6a997f389179464a2f5586aae21e874",
+      "sizeBytes": 1285
+    },
+    {
+      "path": "src/modules/scoring/lib/scoring.builders.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5c071d93c7d2b8bd343f07cbf5e9d7f280c4a9ebef8d3d50ee4d5c4525b2cd7f",
+      "sizeBytes": 8457
+    },
+    {
+      "path": "src/modules/scoring/lib/scoring.builders.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewRule"
+        },
+        {
+          "kind": "function",
+          "name": "buildCategoryInputs"
+        },
+        {
+          "kind": "function",
+          "name": "computeMembershipProjection"
+        },
+        {
+          "kind": "function",
+          "name": "buildStatusChange"
+        },
+        {
+          "kind": "function",
+          "name": "groupSourcesByMembership"
+        },
+        {
+          "kind": "function",
+          "name": "toAttendanceCategorySource"
+        },
+        {
+          "kind": "function",
+          "name": "withAttendanceSource"
+        },
+        {
+          "kind": "function",
+          "name": "indexAttendanceByMembership"
+        },
+        {
+          "kind": "function",
+          "name": "buildRuleAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildRebuildAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildRuleCreatedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildRulePublishedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildRuleRetiredEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildProjectionRequestedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildProjectionRebuiltEvent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/lib/scoring.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:069d7f993b7bd4018c1e184032c7ed8f08c6270cac6235d170d94fbf87a61af7",
+      "sizeBytes": 9892
+    },
+    {
+      "path": "src/modules/scoring/lib/scoring.helpers.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c34e224eb236b6947c976fe2256b16a934ee4d998f973816c7eecec280055e2b",
+      "sizeBytes": 2953
+    },
+    {
+      "path": "src/modules/scoring/lib/scoring.helpers.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveScoringPage"
+        },
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableNumber"
+        },
+        {
+          "kind": "function",
+          "name": "toNumber"
+        },
+        {
+          "kind": "function",
+          "name": "parseEnumValue"
+        },
+        {
+          "kind": "function",
+          "name": "roundNullable"
+        },
+        {
+          "kind": "function",
+          "name": "buildSourceHash"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/lib/scoring.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7a3f5478666f1441288bb474d54418bc3df940c3842d6f06819553aba01fd3c6",
+      "sizeBytes": 2650
+    },
+    {
+      "path": "src/modules/scoring/lib/scoring.mapper.spec.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3c6a82ea21f90f1f1acbde91af51c736db360b6ed2432533a424b578f3000b1a",
+      "sizeBytes": 4391
+    },
+    {
+      "path": "src/modules/scoring/lib/scoring.mapper.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toCalculationRule"
+        },
+        {
+          "kind": "function",
+          "name": "toScoreProjection"
+        },
+        {
+          "kind": "interface",
+          "name": "MembershipCategorySource"
+        },
+        {
+          "kind": "function",
+          "name": "toCategorySource"
+        },
+        {
+          "kind": "function",
+          "name": "toAttendanceCounts"
+        },
+        {
+          "kind": "function",
+          "name": "parseComponents"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/scoring/lib/scoring.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5e404851efde92ba5d454fa07c369c64a3afc5257bd8b8f0a83cf1346d7e563b",
+      "sizeBytes": 4198
+    },
+    {
+      "path": "src/modules/scoring/model/scoring.constants.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SCORING_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "CALCULATION_RULES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "PERFORMANCE_SCORES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MY_PERFORMANCE_SCORE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_DETAIL_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_TRANSITION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_SIMULATE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SCORE_REBUILD_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SCORE_MEMBER_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "REBUILD_SCAN_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_KEY_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_KEY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_DESCRIPTION_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_COMPONENTS_MIN_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_COMPONENTS_MAX_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "COMPONENT_WEIGHT_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "COMPONENT_WEIGHT_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "COMPONENT_MIN_SAMPLE_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "COMPONENT_MIN_SAMPLE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_COMPONENTS_FLOOR"
+        },
+        {
+          "kind": "const",
+          "name": "SCALE_MIN_FLOOR"
+        },
+        {
+          "kind": "const",
+          "name": "SCALE_MAX_CEILING"
+        },
+        {
+          "kind": "const",
+          "name": "RECORD_VERSION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "FIRST_RULE_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SCALE_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SCALE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "SCORE_DISPLAY_DECIMALS"
+        },
+        {
+          "kind": "const",
+          "name": "COMPLETENESS_DISPLAY_DECIMALS"
+        },
+        {
+          "kind": "const",
+          "name": "ISO_DATE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "CONFIDENCE_HIGH_THRESHOLD"
+        },
+        {
+          "kind": "const",
+          "name": "CONFIDENCE_MEDIUM_THRESHOLD"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_RULE_ID"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_RULE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_RULE_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_RULE_DESCRIPTION"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_RULE_WEIGHT"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_RULE_MIN_SAMPLE"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_RULE_MIN_COMPONENTS"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_RULE_CATEGORIES"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_RULE_COMPONENTS"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SOURCED_CATEGORIES"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_ATTENDANCE_WEIGHTS"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_NORMALIZED_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDED_STATUSES"
+        },
+        {
+          "kind": "const",
+          "name": "EXCUSED_STATUSES"
+        },
+        {
+          "kind": "const",
+          "name": "ABSENT_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "SCORABLE_SHEET_STATES"
+        },
+        {
+          "kind": "const",
+          "name": "EXCLUDED_MISSING_REASON"
+        },
+        {
+          "kind": "const",
+          "name": "EXCLUDED_ZERO_WEIGHT_REASON"
+        },
+        {
+          "kind": "const",
+          "name": "INSUFFICIENT_DATA_REASON"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_NOT_EDITABLE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_NOT_EDITABLE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SCORING_VALIDATION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SCORING_VALIDATION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SCORING_SCOPE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SCORING_SCOPE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "PROJECTION_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "PROJECTION_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "PROJECTION_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_UPDATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_TRANSITIONED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "PROJECTION_REBUILT_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SCORING_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_CREATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_PUBLISHED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_RETIRED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PROJECTION_REQUESTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "PROJECTION_REBUILT_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "CALCULATION_RULE_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "SCORE_PROJECTION_COLUMNS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2daaa50a770de6acaa14b244c8bce284fc7706eab1bacb3a99670195259b950e",
+      "sizeBytes": 8970
+    },
+    {
+      "path": "src/modules/scoring/model/scoring.enums.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "CalculationRuleStatus"
+        },
+        {
+          "kind": "const",
+          "name": "CALCULATION_RULE_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "CalculationRuleTransition"
+        },
+        {
+          "kind": "const",
+          "name": "CALCULATION_RULE_TRANSITION_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ScoreProjectionStatus"
+        },
+        {
+          "kind": "const",
+          "name": "SCORE_PROJECTION_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ScoreConfidence"
+        },
+        {
+          "kind": "const",
+          "name": "SCORE_CONFIDENCE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ScoreCategory"
+        },
+        {
+          "kind": "const",
+          "name": "SCORE_CATEGORY_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f14d8d6c36e3fdd23da7d9403c0a39215747deaa4601ccffd60d137f378f1273",
+      "sizeBytes": 2725
+    },
+    {
+      "path": "src/modules/scoring/model/scoring.rows.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "CalculationRuleRow"
+        },
+        {
+          "kind": "interface",
+          "name": "ScoreProjectionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CategorySourceRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MembershipRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceCountsRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8b42cc55e88773aee9f16c2c266097396cf14650ea598574ffe0230886ce3c09",
+      "sizeBytes": 2790
+    },
+    {
+      "path": "src/modules/scoring/model/scoring.types.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "PagedResult"
+        },
+        {
+          "kind": "interface",
+          "name": "RuleComponent"
+        },
+        {
+          "kind": "interface",
+          "name": "ScoreRuleDefinition"
+        },
+        {
+          "kind": "interface",
+          "name": "CalculationRule"
+        },
+        {
+          "kind": "interface",
+          "name": "RuleContent"
+        },
+        {
+          "kind": "interface",
+          "name": "NewCalculationRule"
+        },
+        {
+          "kind": "interface",
+          "name": "RuleContentUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "RuleStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "WeightedComponent"
+        },
+        {
+          "kind": "interface",
+          "name": "WeightedAggregation"
+        },
+        {
+          "kind": "interface",
+          "name": "CategoryInput"
+        },
+        {
+          "kind": "interface",
+          "name": "ComponentScore"
+        },
+        {
+          "kind": "interface",
+          "name": "PerformanceScoreResult"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendancePercentageInput"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendancePercentageResult"
+        },
+        {
+          "kind": "interface",
+          "name": "WeightedAttendanceInput"
+        },
+        {
+          "kind": "interface",
+          "name": "WeightedAttendanceWeights"
+        },
+        {
+          "kind": "interface",
+          "name": "WeightedAttendanceLine"
+        },
+        {
+          "kind": "interface",
+          "name": "WeightedAttendanceResult"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceCounts"
+        },
+        {
+          "kind": "interface",
+          "name": "ScoreRuleReference"
+        },
+        {
+          "kind": "interface",
+          "name": "OverallExplanation"
+        },
+        {
+          "kind": "interface",
+          "name": "ComponentExplanation"
+        },
+        {
+          "kind": "interface",
+          "name": "ScoreExplanation"
+        },
+        {
+          "kind": "interface",
+          "name": "CategorySource"
+        },
+        {
+          "kind": "interface",
+          "name": "MembershipScoreInputs"
+        },
+        {
+          "kind": "interface",
+          "name": "ProjectionTarget"
+        },
+        {
+          "kind": "interface",
+          "name": "ComputedProjection"
+        },
+        {
+          "kind": "interface",
+          "name": "ScoreProjection"
+        },
+        {
+          "kind": "interface",
+          "name": "RebuildOutcome"
+        },
+        {
+          "kind": "interface",
+          "name": "SimulationComparison"
+        },
+        {
+          "kind": "interface",
+          "name": "RuleComponentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "RuleContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateRuleCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdateRuleCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "TransitionRuleCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "SimulateRuleCommand"
+        },
+        {
+          "kind": "type",
+          "name": "CalculationRulePage"
+        },
+        {
+          "kind": "type",
+          "name": "ScoreProjectionPage"
+        },
+        {
+          "kind": "interface",
+          "name": "ScoreProjectionList"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1da88d1165bc51ae66b3611d6ebfaaac1bab6cc1de6ed2b3bb7deea9a1c168cc",
+      "sizeBytes": 14024
+    },
+    {
+      "path": "src/modules/scoring/scoring.module.ts",
+      "root": "modules",
+      "module": "scoring",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScoringModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:25df5869c69696aa8f78f2777a5241048e8ae993fc107459aec2cbf11397bd9d",
+      "sizeBytes": 2895
+    },
+    {
       "path": "src/modules/teams/api/catalogs.controller.ts",
       "root": "modules",
       "module": "teams",
@@ -25502,8 +27495,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:23b1edd9e9027b765ead8c1817484265c8422b6d930e295c14c620896d96ce70",
-      "sizeBytes": 4959
+      "hash": "sha256:64abbb12efea2944a194ffa81dde719930ef00dd5b5c78834bc7f6b3d23a15fd",
+      "sizeBytes": 4991
     },
     {
       "path": "src/shared/constants/role-bundles.spec.ts",

@@ -21,7 +21,9 @@ function content(name = 'Legacy overall'): RuleContent {
     minComponents: 1,
     effectiveFrom: null,
     effectiveTo: null,
-    components: [{ categoryKey: ScoreCategory.Training, weight: 1, minSample: 1 }],
+    components: [
+      { categoryKey: ScoreCategory.Training, weight: 1, minSample: 1 },
+    ],
   };
 }
 
@@ -38,7 +40,9 @@ function rule(status = CalculationRuleStatus.Draft): CalculationRule {
     scaleMin: 0,
     scaleMax: 5,
     minComponents: 1,
-    components: [{ categoryKey: ScoreCategory.Training, weight: 1, minSample: 1 }],
+    components: [
+      { categoryKey: ScoreCategory.Training, weight: 1, minSample: 1 },
+    ],
     effectiveFrom: null,
     effectiveTo: null,
     recordVersion: 2,

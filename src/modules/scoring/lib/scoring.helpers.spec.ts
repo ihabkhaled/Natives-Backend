@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { ScoreCategory, SCORE_CATEGORY_VALUES } from '../model/scoring.enums';
+import { SCORE_CATEGORY_VALUES, ScoreCategory } from '../model/scoring.enums';
 import type { CategoryInput } from '../model/scoring.types';
 import {
   buildSourceHash,
@@ -49,9 +49,9 @@ describe('date and number coercion', () => {
 
 describe('parseEnumValue', () => {
   it('returns a known value and throws on an unknown one', () => {
-    expect(
-      parseEnumValue(SCORE_CATEGORY_VALUES, 'training', 'category'),
-    ).toBe(ScoreCategory.Training);
+    expect(parseEnumValue(SCORE_CATEGORY_VALUES, 'training', 'category')).toBe(
+      ScoreCategory.Training,
+    );
     expect(() =>
       parseEnumValue(SCORE_CATEGORY_VALUES, 'nope', 'category'),
     ).toThrow('Unrecognized category: nope');
@@ -82,7 +82,9 @@ describe('buildSourceHash', () => {
   });
 
   it('changes when the rule version or a value changes', () => {
-    const base = buildSourceHash('rule-1', 1, [input(ScoreCategory.Training, 4)]);
+    const base = buildSourceHash('rule-1', 1, [
+      input(ScoreCategory.Training, 4),
+    ]);
     expect(base).not.toBe(
       buildSourceHash('rule-1', 2, [input(ScoreCategory.Training, 4)]),
     );

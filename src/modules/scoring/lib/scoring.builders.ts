@@ -1,6 +1,7 @@
 import type { AuditInput, DomainEventInput } from '@modules/platform';
 import { AuditOutcome } from '@modules/platform';
 
+import { computeAttendancePercentage } from '../domain/attendance-score.engine';
 import {
   isPublishTarget,
   isRetireTarget,
@@ -10,6 +11,7 @@ import {
   computePerformanceScore,
 } from '../domain/performance-score.engine';
 import {
+  ATTENDANCE_NORMALIZED_MAX,
   PROJECTION_AGGREGATE,
   PROJECTION_REBUILT_EVENT,
   PROJECTION_REQUESTED_EVENT,
@@ -21,8 +23,13 @@ import {
   SCORING_EVENT_VERSION,
 } from '../model/scoring.constants';
 import type { CalculationRuleStatus } from '../model/scoring.enums';
-import type { CategorySourceRow } from '../model/scoring.rows';
+import { ScoreCategory } from '../model/scoring.enums';
 import type {
+  AttendanceCountsRow,
+  CategorySourceRow,
+} from '../model/scoring.rows';
+import type {
+  AttendanceCounts,
   CalculationRule,
   CategoryInput,
   CategorySource,
@@ -36,7 +43,7 @@ import type {
 } from '../model/scoring.types';
 import { buildScoreExplanation } from './score-explanation.builder';
 import { buildSourceHash } from './scoring.helpers';
-import { toCategorySource } from './scoring.mapper';
+import { toAttendanceCounts, toCategorySource } from './scoring.mapper';
 
 /** Build a DRAFT rule row from a create command. */
 export function buildNewRule(
@@ -156,6 +163,52 @@ export function groupSourcesByMembership(
     const bucket = map.get(mapped.membershipId) ?? [];
     bucket.push(mapped.source);
     map.set(mapped.membershipId, bucket);
+  }
+  return map;
+}
+
+/**
+ * Turn a membership's attendance tallies into the attendance category source. The
+ * attended fraction (excused excluded from the denominator; null when no eligible
+ * session) is normalized onto the shared 0–5 observation scale so it sits beside
+ * the assessment category means. A null percentage yields an empty value list — the
+ * attendance category then stays null (excluded), never averaged as zero.
+ */
+export function toAttendanceCategorySource(
+  counts: AttendanceCounts,
+): CategorySource {
+  const percentage = computeAttendancePercentage({
+    attendedEligible: counts.attendedEligible,
+    eligibleSessions:
+      counts.attendedEligible + counts.absentCount + counts.excusedSessions,
+    excusedSessions: counts.excusedSessions,
+  }).value;
+  return {
+    categoryKey: ScoreCategory.Attendance,
+    values: percentage === null ? [] : [percentage * ATTENDANCE_NORMALIZED_MAX],
+    totalMetrics: 1,
+  };
+}
+
+/** Append the attendance category source when a membership has attendance data. */
+export function withAttendanceSource(
+  sources: readonly CategorySource[],
+  counts: AttendanceCounts | undefined,
+): readonly CategorySource[] {
+  if (counts === undefined) {
+    return sources;
+  }
+  return [...sources, toAttendanceCategorySource(counts)];
+}
+
+/** Index raw attendance-tally rows by membership id. */
+export function indexAttendanceByMembership(
+  rows: readonly AttendanceCountsRow[],
+): ReadonlyMap<string, AttendanceCounts> {
+  const map = new Map<string, AttendanceCounts>();
+  for (const row of rows) {
+    const counts = toAttendanceCounts(row);
+    map.set(counts.membershipId, counts);
   }
   return map;
 }

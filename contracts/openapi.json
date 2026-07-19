@@ -2024,6 +2024,66 @@
         ],
         "type": "object"
       },
+      "CreateRuleDto": {
+        "properties": {
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/RuleComponentDto"
+            },
+            "type": "array"
+          },
+          "description": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "effectiveFrom": {
+            "nullable": true,
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "type": "object"
+          },
+          "effectiveTo": {
+            "nullable": true,
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "type": "object"
+          },
+          "minComponents": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "name": {
+            "maxLength": 200,
+            "minLength": 2,
+            "type": "string"
+          },
+          "ruleKey": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "scaleMax": {
+            "maximum": 1000,
+            "minimum": 0,
+            "type": "number"
+          },
+          "scaleMin": {
+            "maximum": 1000,
+            "minimum": 0,
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "ruleKey",
+          "name",
+          "components"
+        ],
+        "type": "object"
+      },
       "CreateScheduleDto": {
         "properties": {
           "defaultCapacity": {
@@ -3546,6 +3606,32 @@
         ],
         "type": "object"
       },
+      "ListRulesResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RuleResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListScalesResponseDto": {
         "properties": {
           "items": {
@@ -3577,6 +3663,32 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/ScheduleResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListScoresResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ScoreResponseDto"
             },
             "type": "array"
           },
@@ -4564,6 +4676,43 @@
         ],
         "type": "object"
       },
+      "OverallExplanationResponseDto": {
+        "properties": {
+          "denominator": {
+            "type": "number"
+          },
+          "display": {
+            "nullable": true,
+            "type": "number"
+          },
+          "excludedCount": {
+            "type": "number"
+          },
+          "includedCount": {
+            "type": "number"
+          },
+          "numerator": {
+            "type": "number"
+          },
+          "sufficient": {
+            "type": "boolean"
+          },
+          "unrounded": {
+            "nullable": true,
+            "type": "number"
+          }
+        },
+        "required": [
+          "unrounded",
+          "display",
+          "numerator",
+          "denominator",
+          "includedCount",
+          "excludedCount",
+          "sufficient"
+        ],
+        "type": "object"
+      },
       "OverrideRsvpDto": {
         "properties": {
           "expectedVersion": {
@@ -5286,6 +5435,34 @@
           "startsLocal",
           "endsLocal",
           "urgentCancellationOverride"
+        ],
+        "type": "object"
+      },
+      "RebuildResponseDto": {
+        "properties": {
+          "failed": {
+            "type": "number"
+          },
+          "rebuilt": {
+            "type": "number"
+          },
+          "ruleId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "ruleVersion": {
+            "type": "number"
+          },
+          "scanned": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "scanned",
+          "rebuilt",
+          "failed",
+          "ruleId",
+          "ruleVersion"
         ],
         "type": "object"
       },
@@ -6023,6 +6200,186 @@
         ],
         "type": "object"
       },
+      "RuleComponentDto": {
+        "properties": {
+          "categoryKey": {
+            "enum": [
+              "training",
+              "technical",
+              "tactical",
+              "physical",
+              "psychological",
+              "behavioral",
+              "attendance"
+            ],
+            "type": "string"
+          },
+          "minSample": {
+            "default": 0,
+            "maximum": 1000,
+            "minimum": 0,
+            "type": "number"
+          },
+          "weight": {
+            "maximum": 1000,
+            "minimum": 0.000001,
+            "type": "number"
+          }
+        },
+        "required": [
+          "categoryKey",
+          "weight"
+        ],
+        "type": "object"
+      },
+      "RuleComponentResponseDto": {
+        "properties": {
+          "categoryKey": {
+            "enum": [
+              "training",
+              "technical",
+              "tactical",
+              "physical",
+              "psychological",
+              "behavioral",
+              "attendance"
+            ],
+            "type": "string"
+          },
+          "minSample": {
+            "type": "number"
+          },
+          "weight": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "categoryKey",
+          "weight",
+          "minSample"
+        ],
+        "type": "object"
+      },
+      "RuleResponseDto": {
+        "properties": {
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/RuleComponentResponseDto"
+            },
+            "type": "array"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "effectiveFrom": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "effectiveTo": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "minComponents": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "publishedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "retiredAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "ruleId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "ruleKey": {
+            "type": "string"
+          },
+          "scaleMax": {
+            "type": "number"
+          },
+          "scaleMin": {
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "approved",
+              "published",
+              "retired"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "ruleId",
+          "teamId",
+          "seasonId",
+          "ruleKey",
+          "version",
+          "name",
+          "description",
+          "status",
+          "scaleMin",
+          "scaleMax",
+          "minComponents",
+          "components",
+          "effectiveFrom",
+          "effectiveTo",
+          "recordVersion",
+          "createdBy",
+          "publishedBy",
+          "publishedAt",
+          "retiredAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
       "ScaleResponseDto": {
         "properties": {
           "categoricalOptions": {
@@ -6250,6 +6607,265 @@
           "createdAt",
           "updatedAt",
           "version"
+        ],
+        "type": "object"
+      },
+      "ScoreComponentResponseDto": {
+        "properties": {
+          "assessedMetrics": {
+            "type": "number"
+          },
+          "categoryKey": {
+            "enum": [
+              "training",
+              "technical",
+              "tactical",
+              "physical",
+              "psychological",
+              "behavioral",
+              "attendance"
+            ],
+            "type": "string"
+          },
+          "display": {
+            "nullable": true,
+            "type": "number"
+          },
+          "excludedReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "included": {
+            "type": "boolean"
+          },
+          "totalMetrics": {
+            "type": "number"
+          },
+          "unrounded": {
+            "nullable": true,
+            "type": "number"
+          },
+          "weight": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "categoryKey",
+          "weight",
+          "unrounded",
+          "display",
+          "included",
+          "assessedMetrics",
+          "totalMetrics",
+          "excludedReason"
+        ],
+        "type": "object"
+      },
+      "ScoreExplanationResponseDto": {
+        "properties": {
+          "completeness": {
+            "type": "number"
+          },
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/ScoreComponentResponseDto"
+            },
+            "type": "array"
+          },
+          "confidence": {
+            "enum": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ],
+            "type": "string"
+          },
+          "formulaVersion": {
+            "type": "number"
+          },
+          "overall": {
+            "$ref": "#/components/schemas/OverallExplanationResponseDto"
+          },
+          "rule": {
+            "$ref": "#/components/schemas/ScoreRuleReferenceResponseDto"
+          }
+        },
+        "required": [
+          "rule",
+          "overall",
+          "components",
+          "completeness",
+          "confidence",
+          "formulaVersion"
+        ],
+        "type": "object"
+      },
+      "ScoreListResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ScoreResponseDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "ScoreResponseDto": {
+        "properties": {
+          "completeness": {
+            "type": "number"
+          },
+          "computedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "confidence": {
+            "enum": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ],
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "denominator": {
+            "nullable": true,
+            "type": "number"
+          },
+          "error": {
+            "nullable": true,
+            "type": "string"
+          },
+          "excludedCount": {
+            "type": "number"
+          },
+          "explanation": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ScoreExplanationResponseDto"
+              }
+            ],
+            "nullable": true,
+            "type": "object"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "includedCount": {
+            "type": "number"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "numerator": {
+            "nullable": true,
+            "type": "number"
+          },
+          "periodId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "ruleId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "ruleKey": {
+            "type": "string"
+          },
+          "ruleVersion": {
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "sourceHash": {
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "stale",
+              "building",
+              "ready",
+              "failed"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "value": {
+            "nullable": true,
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "teamId",
+          "seasonId",
+          "membershipId",
+          "periodId",
+          "ruleId",
+          "ruleKey",
+          "ruleVersion",
+          "status",
+          "value",
+          "numerator",
+          "denominator",
+          "includedCount",
+          "excludedCount",
+          "completeness",
+          "confidence",
+          "explanation",
+          "sourceHash",
+          "error",
+          "computedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "ScoreRuleReferenceResponseDto": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "ruleId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "ruleKey": {
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "ruleId",
+          "ruleKey",
+          "version",
+          "name"
         ],
         "type": "object"
       },
@@ -6726,6 +7342,49 @@
         ],
         "type": "object"
       },
+      "SimulateRuleDto": {
+        "properties": {
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "membershipId"
+        ],
+        "type": "object"
+      },
+      "SimulationResponseDto": {
+        "properties": {
+          "delta": {
+            "nullable": true,
+            "type": "number"
+          },
+          "draft": {
+            "$ref": "#/components/schemas/ScoreExplanationResponseDto"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "published": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ScoreExplanationResponseDto"
+              }
+            ],
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "membershipId",
+          "draft",
+          "published",
+          "delta"
+        ],
+        "type": "object"
+      },
       "StationResponseDto": {
         "properties": {
           "blockId": {
@@ -7083,6 +7742,28 @@
         ],
         "type": "object"
       },
+      "TransitionRuleDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "transition": {
+            "enum": [
+              "approve",
+              "publish",
+              "retire",
+              "revert"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "transition",
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "UpdateBlockDto": {
         "properties": {
           "blockType": {
@@ -7422,6 +8103,71 @@
           "startsLocal",
           "endsLocal",
           "urgentCancellationOverride"
+        ],
+        "type": "object"
+      },
+      "UpdateRuleDto": {
+        "properties": {
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/RuleComponentDto"
+            },
+            "type": "array"
+          },
+          "description": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "effectiveFrom": {
+            "nullable": true,
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "type": "object"
+          },
+          "effectiveTo": {
+            "nullable": true,
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "type": "object"
+          },
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "minComponents": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "name": {
+            "maxLength": 200,
+            "minLength": 2,
+            "type": "string"
+          },
+          "ruleKey": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "scaleMax": {
+            "maximum": 1000,
+            "minimum": 0,
+            "type": "number"
+          },
+          "scaleMin": {
+            "maximum": 1000,
+            "minimum": 0,
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "ruleKey",
+          "name",
+          "components",
+          "expectedRecordVersion"
         ],
         "type": "object"
       },
@@ -9921,6 +10667,311 @@
         ]
       }
     },
+    "/teams/{teamId}/calculation-rules": {
+      "get": {
+        "operationId": "CalculationRule.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListRulesResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s calculation rules and candidates",
+        "tags": [
+          "scoring"
+        ]
+      },
+      "post": {
+        "operationId": "CalculationRule.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRuleDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuleResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a draft calculation rule",
+        "tags": [
+          "scoring"
+        ]
+      }
+    },
+    "/teams/{teamId}/calculation-rules/{ruleId}": {
+      "get": {
+        "operationId": "CalculationRule.detail",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "ruleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuleResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Read one calculation rule with its components",
+        "tags": [
+          "scoring"
+        ]
+      },
+      "put": {
+        "operationId": "CalculationRule.update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "ruleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRuleDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuleResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Edit a draft calculation rule",
+        "tags": [
+          "scoring"
+        ]
+      }
+    },
+    "/teams/{teamId}/calculation-rules/{ruleId}/simulate": {
+      "post": {
+        "operationId": "CalculationRule.simulate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "ruleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimulateRuleDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimulationResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Dry-run a rule for a member (writes nothing)",
+        "tags": [
+          "scoring"
+        ]
+      }
+    },
+    "/teams/{teamId}/calculation-rules/{ruleId}/transition": {
+      "post": {
+        "operationId": "CalculationRule.transition",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "ruleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransitionRuleDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RuleResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Approve, publish, revert, or retire a rule",
+        "tags": [
+          "scoring"
+        ]
+      }
+    },
     "/teams/{teamId}/catalog-entries": {
       "get": {
         "operationId": "Catalogs.list",
@@ -12207,6 +13258,174 @@
         "summary": "Acknowledge feedback shared with me",
         "tags": [
           "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/my-performance-score": {
+      "get": {
+        "operationId": "ScoreSelf.mine",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScoreListResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Read my own performance scores",
+        "tags": [
+          "scoring"
+        ]
+      }
+    },
+    "/teams/{teamId}/performance-scores": {
+      "get": {
+        "operationId": "Score.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListScoresResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s performance-score projections",
+        "tags": [
+          "scoring"
+        ]
+      }
+    },
+    "/teams/{teamId}/performance-scores/{membershipId}": {
+      "get": {
+        "operationId": "Score.member",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "membershipId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScoreListResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Read one member’s performance scores",
+        "tags": [
+          "scoring"
+        ]
+      }
+    },
+    "/teams/{teamId}/performance-scores/rebuild": {
+      "post": {
+        "operationId": "Score.rebuildScores",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RebuildResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Rebuild the team’s score projections",
+        "tags": [
+          "scoring"
         ]
       }
     },

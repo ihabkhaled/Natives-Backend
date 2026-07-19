@@ -17,7 +17,9 @@ function build() {
   return { scope, repository: new CalculationRuleRepository() };
 }
 
-function ruleRow(overrides: Partial<CalculationRuleRow> = {}): CalculationRuleRow {
+function ruleRow(
+  overrides: Partial<CalculationRuleRow> = {},
+): CalculationRuleRow {
   return {
     id: 'rule-1',
     team_id: 'team-1',
@@ -55,16 +57,31 @@ function content(): RuleContent {
     minComponents: 1,
     effectiveFrom: null,
     effectiveTo: null,
-    components: [{ categoryKey: ScoreCategory.Training, weight: 1, minSample: 1 }],
+    components: [
+      { categoryKey: ScoreCategory.Training, weight: 1, minSample: 1 },
+    ],
   };
 }
 
 function newRule(): NewCalculationRule {
-  return { id: 'rule-1', teamId: 'team-1', version: 1, content: content(), createdBy: 'admin-1', now: NOW };
+  return {
+    id: 'rule-1',
+    teamId: 'team-1',
+    version: 1,
+    content: content(),
+    createdBy: 'admin-1',
+    now: NOW,
+  };
 }
 
 function update(): RuleContentUpdate {
-  return { id: 'rule-1', teamId: 'team-1', expectedRecordVersion: 1, content: content(), now: NOW };
+  return {
+    id: 'rule-1',
+    teamId: 'team-1',
+    expectedRecordVersion: 1,
+    content: content(),
+    now: NOW,
+  };
 }
 
 function statusChange(): RuleStatusChange {
@@ -101,33 +118,57 @@ describe('CalculationRuleRepository', () => {
   it('computes the next version, defaulting to 1', async () => {
     harness.scope.run.mockResolvedValueOnce([{ count: 2 }]);
     await expect(
-      harness.repository.nextVersion(harness.scope as never, 'team-1', 'legacy_overall'),
+      harness.repository.nextVersion(
+        harness.scope as never,
+        'team-1',
+        'legacy_overall',
+      ),
     ).resolves.toBe(3);
     harness.scope.run.mockResolvedValueOnce([]);
     await expect(
-      harness.repository.nextVersion(harness.scope as never, 'team-1', 'legacy_overall'),
+      harness.repository.nextVersion(
+        harness.scope as never,
+        'team-1',
+        'legacy_overall',
+      ),
     ).resolves.toBe(1);
   });
 
   it('finds a rule for write or returns null', async () => {
     harness.scope.run.mockResolvedValueOnce([ruleRow()]);
     await expect(
-      harness.repository.findForWrite(harness.scope as never, 'team-1', 'rule-1'),
+      harness.repository.findForWrite(
+        harness.scope as never,
+        'team-1',
+        'rule-1',
+      ),
     ).resolves.toMatchObject({ ruleId: 'rule-1' });
     harness.scope.run.mockResolvedValueOnce([]);
     await expect(
-      harness.repository.findForWrite(harness.scope as never, 'team-1', 'rule-1'),
+      harness.repository.findForWrite(
+        harness.scope as never,
+        'team-1',
+        'rule-1',
+      ),
     ).resolves.toBeNull();
   });
 
   it('finds a visible rule or returns null', async () => {
     harness.scope.run.mockResolvedValueOnce([ruleRow()]);
     await expect(
-      harness.repository.findVisible(harness.scope as never, 'team-1', 'rule-1'),
+      harness.repository.findVisible(
+        harness.scope as never,
+        'team-1',
+        'rule-1',
+      ),
     ).resolves.toMatchObject({ ruleId: 'rule-1' });
     harness.scope.run.mockResolvedValueOnce([]);
     await expect(
-      harness.repository.findVisible(harness.scope as never, 'team-1', 'rule-1'),
+      harness.repository.findVisible(
+        harness.scope as never,
+        'team-1',
+        'rule-1',
+      ),
     ).resolves.toBeNull();
   });
 
@@ -145,29 +186,53 @@ describe('CalculationRuleRepository', () => {
   it('applies a status change or returns null on a version miss', async () => {
     harness.scope.run.mockResolvedValueOnce([ruleRow({ status: 'published' })]);
     await expect(
-      harness.repository.applyStatusChange(harness.scope as never, statusChange()),
+      harness.repository.applyStatusChange(
+        harness.scope as never,
+        statusChange(),
+      ),
     ).resolves.toMatchObject({ status: CalculationRuleStatus.Published });
     harness.scope.run.mockResolvedValueOnce([]);
     await expect(
-      harness.repository.applyStatusChange(harness.scope as never, statusChange()),
+      harness.repository.applyStatusChange(
+        harness.scope as never,
+        statusChange(),
+      ),
     ).resolves.toBeNull();
   });
 
   it('retires prior published rules and reports the count', async () => {
     harness.scope.run.mockResolvedValueOnce([{ count: 1 }]);
     await expect(
-      harness.repository.retirePublished(harness.scope as never, 'team-1', 'legacy_overall', 'rule-2', NOW),
+      harness.repository.retirePublished(
+        harness.scope as never,
+        'team-1',
+        'legacy_overall',
+        'rule-2',
+        NOW,
+      ),
     ).resolves.toBe(1);
     harness.scope.run.mockResolvedValueOnce([]);
     await expect(
-      harness.repository.retirePublished(harness.scope as never, 'team-1', 'legacy_overall', 'rule-2', NOW),
+      harness.repository.retirePublished(
+        harness.scope as never,
+        'team-1',
+        'legacy_overall',
+        'rule-2',
+        NOW,
+      ),
     ).resolves.toBe(0);
   });
 
   it('lists and counts rules for a team', async () => {
-    harness.scope.run.mockResolvedValueOnce([ruleRow(), ruleRow({ id: 'rule-2' })]);
+    harness.scope.run.mockResolvedValueOnce([
+      ruleRow(),
+      ruleRow({ id: 'rule-2' }),
+    ]);
     await expect(
-      harness.repository.listForTeam(harness.scope as never, 'team-1', { limit: 20, offset: 0 }),
+      harness.repository.listForTeam(harness.scope as never, 'team-1', {
+        limit: 20,
+        offset: 0,
+      }),
     ).resolves.toHaveLength(2);
     harness.scope.run.mockResolvedValueOnce([{ count: 5 }]);
     await expect(

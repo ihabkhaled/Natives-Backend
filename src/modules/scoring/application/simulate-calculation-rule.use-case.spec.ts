@@ -6,10 +6,7 @@ import { SimulateCalculationRuleUseCase } from './simulate-calculation-rule.use-
 
 const NOW = new Date('2026-03-01T00:00:00.000Z');
 
-function rule(
-  ruleId: string,
-  status: CalculationRuleStatus,
-): CalculationRule {
+function rule(ruleId: string, status: CalculationRuleStatus): CalculationRule {
   return {
     ruleId,
     teamId: 'team-1',
@@ -22,7 +19,9 @@ function rule(
     scaleMin: 0,
     scaleMax: 5,
     minComponents: 1,
-    components: [{ categoryKey: ScoreCategory.Training, weight: 1, minSample: 1 }],
+    components: [
+      { categoryKey: ScoreCategory.Training, weight: 1, minSample: 1 },
+    ],
     effectiveFrom: null,
     effectiveTo: null,
     recordVersion: 1,
@@ -58,6 +57,7 @@ function build() {
   const rules = { listPublishedForTeam: vi.fn(() => []) };
   const sources = {
     categorySourcesForMembership: vi.fn(() => [sourceRow('mem-1')]),
+    attendanceCountsForMembership: vi.fn(() => [] as unknown[]),
   };
   const useCase = new SimulateCalculationRuleUseCase(
     unitOfWork as never,

@@ -66,6 +66,17 @@ export interface MembershipRow {
   readonly membership_id: string;
 }
 
+/**
+ * Per-membership attendance tallies aggregated from finalized attendance sheets
+ * (module 202): attended (present-like), absent, and excused/injured counts.
+ */
+export interface AttendanceCountsRow {
+  readonly membership_id: string;
+  readonly attended: number;
+  readonly absent: number;
+  readonly excused: number;
+}
+
 /** A generic count row. */
 export interface CountRow {
   readonly count: number;
