@@ -2,12 +2,17 @@ import { AuditOutcome } from '@modules/platform';
 import { describe, expect, it } from 'vitest';
 
 import {
+  ACTIVITY_APPROVED_EVENT,
+  ACTIVITY_CHANGES_REQUESTED_EVENT,
+  ACTIVITY_CORRECTED_EVENT,
+  ACTIVITY_REJECTED_EVENT,
   ACTIVITY_SUBMITTED_EVENT,
   ACTIVITY_WITHDRAWN_EVENT,
 } from '../model/activities.constants';
 import {
   BuddyStatus,
   EvidenceKind,
+  ReviewDecision,
   SubmissionStatus,
 } from '../model/activity.enums';
 import type {
@@ -17,6 +22,8 @@ import type {
   EvidenceItem,
 } from '../model/activity.types';
 import {
+  buildAbuseFacts,
+  buildActivityCorrectedEvent,
   buildActivitySubmittedEvent,
   buildActivityWithdrawnEvent,
   buildBuddyAudit,
@@ -25,8 +32,13 @@ import {
   buildContentUpdate,
   buildEvidenceRows,
   buildNewSubmission,
+  buildReviewClaim,
+  buildReviewDecisionChange,
+  buildReviewOutcomeEvent,
+  buildReviewReversalChange,
   buildStatusChange,
   buildSubmissionAudit,
+  resolveReviewDecisionEvent,
 } from './activity.builders';
 
 const NOW = new Date('2024-06-01T00:00:00.000Z');
@@ -65,6 +77,11 @@ function submission(
     submittedBy: 'u1',
     reviewedAt: null,
     reviewedBy: null,
+    reviewerUserId: null,
+    reviewStartedAt: null,
+    reversalReason: null,
+    reversedAt: null,
+    reversedBy: null,
     withdrawnAt: null,
     createdBy: 'u1',
     createdAt: NOW,
@@ -216,5 +233,92 @@ describe('activity.builders', () => {
     expect(event.eventType).toBe(ACTIVITY_WITHDRAWN_EVENT);
     expect(event.payload.status).toBe(SubmissionStatus.Withdrawn);
     expect(JSON.stringify(event)).not.toContain('SECRET-NOTE');
+  });
+
+  it('builds review claim, decision, and reversal change models', () => {
+    expect(buildReviewClaim('s1', 't1', 2, 'coach', NOW)).toEqual({
+      id: 's1',
+      teamId: 't1',
+      expectedRecordVersion: 2,
+      reviewerUserId: 'coach',
+      now: NOW,
+    });
+    expect(
+      buildReviewDecisionChange(
+        's1',
+        't1',
+        2,
+        SubmissionStatus.Rejected,
+        'not enough evidence',
+        'coach',
+        NOW,
+      ),
+    ).toMatchObject({
+      toStatus: SubmissionStatus.Rejected,
+      reviewNote: 'not enough evidence',
+      reviewerUserId: 'coach',
+    });
+    expect(
+      buildReviewReversalChange('s1', 't1', 3, 'duplicate', 'admin', NOW),
+    ).toMatchObject({ reversalReason: 'duplicate', actorUserId: 'admin' });
+  });
+
+  it('resolves the outbox event type per decision', () => {
+    expect(resolveReviewDecisionEvent(ReviewDecision.Approve)).toBe(
+      ACTIVITY_APPROVED_EVENT,
+    );
+    expect(resolveReviewDecisionEvent(ReviewDecision.Reject)).toBe(
+      ACTIVITY_REJECTED_EVENT,
+    );
+    expect(resolveReviewDecisionEvent(ReviewDecision.RequestChanges)).toBe(
+      ACTIVITY_CHANGES_REQUESTED_EVENT,
+    );
+    expect(() => resolveReviewDecisionEvent('bogus' as ReviewDecision)).toThrow(
+      'Unrecognized review decision',
+    );
+  });
+
+  it('builds a privacy-safe review outcome event (no notes or reason)', () => {
+    const event = buildReviewOutcomeEvent(
+      submission({ status: SubmissionStatus.Approved }),
+      ACTIVITY_APPROVED_EVENT,
+      'coach',
+    );
+    expect(event.eventType).toBe(ACTIVITY_APPROVED_EVENT);
+    expect(event.actorUserId).toBe('coach');
+    expect(event.payload).toEqual({
+      submissionId: 's1',
+      membershipId: 'm1',
+      activityTypeId: 'type-1',
+      status: SubmissionStatus.Approved,
+      performedOn: '2024-05-30',
+    });
+    expect(JSON.stringify(event)).not.toContain('SECRET-NOTE');
+  });
+
+  it('builds an ActivityCorrected event for a reversal', () => {
+    const event = buildActivityCorrectedEvent(
+      submission({ status: SubmissionStatus.Reversed }),
+      'admin',
+    );
+    expect(event.eventType).toBe(ACTIVITY_CORRECTED_EVENT);
+    expect(event.actorUserId).toBe('admin');
+    expect(event.payload.status).toBe(SubmissionStatus.Reversed);
+  });
+
+  it('assembles anti-abuse facts from probe counts (null-not-zero duration)', () => {
+    const facts = buildAbuseFacts(
+      submission({ durationMinutes: null }),
+      '2024-06-02',
+      { sameDay: 1, windowCount: 9, buddyRepeat: 2 },
+    );
+    expect(facts).toEqual({
+      performedOn: '2024-05-30',
+      today: '2024-06-02',
+      durationMinutes: null,
+      sameDayLiveCount: 1,
+      windowLiveCount: 9,
+      maxBuddyRepeatCount: 2,
+    });
   });
 });

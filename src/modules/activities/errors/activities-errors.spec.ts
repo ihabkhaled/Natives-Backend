@@ -5,6 +5,8 @@ import { ActivityBuddyConflictError } from './activity-buddy-conflict.error';
 import { ActivityBuddyNotFoundError } from './activity-buddy-not-found.error';
 import { ActivityDuplicateSubmissionError } from './activity-duplicate-submission.error';
 import { ActivityInvalidTransitionError } from './activity-invalid-transition.error';
+import { ActivityReviewForbiddenError } from './activity-review-forbidden.error';
+import { ActivityReviewNoteRequiredError } from './activity-review-note-required.error';
 import { ActivityScopeNotFoundError } from './activity-scope-not-found.error';
 import { ActivitySubmissionNotFoundError } from './activity-submission-not-found.error';
 import { ActivityTypeNotFoundError } from './activity-type-not-found.error';
@@ -58,6 +60,16 @@ describe('activities errors', () => {
         new ActivityValidationError(),
         HttpStatus.BAD_REQUEST,
         'errors.activities.validation',
+      ],
+      [
+        new ActivityReviewForbiddenError(),
+        HttpStatus.FORBIDDEN,
+        'errors.activities.reviewForbidden',
+      ],
+      [
+        new ActivityReviewNoteRequiredError(),
+        HttpStatus.BAD_REQUEST,
+        'errors.activities.reviewNoteRequired',
       ],
     ] as const;
     for (const [error, status, key] of cases) {

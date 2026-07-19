@@ -58,6 +58,11 @@ const SUBMISSION_ROW: ActivitySubmissionRow = {
   submitted_by: 'u1',
   reviewed_at: null,
   reviewed_by: null,
+  reviewer_user_id: null,
+  review_started_at: null,
+  reversal_reason: null,
+  reversed_at: null,
+  reversed_by: null,
   withdrawn_at: null,
   created_by: 'u1',
   created_at: '2024-05-30T00:00:00.000Z',
@@ -96,6 +101,29 @@ describe('activity.mapper', () => {
       new Date('2024-05-31T00:00:00.000Z'),
     );
     expect(submission.withdrawnAt).toBeNull();
+  });
+
+  it('maps reviewer + reversal fields on a corrected submission', () => {
+    const submission = toActivitySubmission({
+      ...SUBMISSION_ROW,
+      status: 'reversed',
+      review_note: 'looks off',
+      reviewed_at: '2024-06-02T00:00:00.000Z',
+      reviewed_by: 'coach-1',
+      reviewer_user_id: 'coach-1',
+      review_started_at: '2024-06-01T00:00:00.000Z',
+      reversal_reason: 'duplicate of another claim',
+      reversed_at: '2024-06-03T00:00:00.000Z',
+      reversed_by: 'admin-1',
+    });
+    expect(submission.status).toBe(SubmissionStatus.Reversed);
+    expect(submission.reviewerUserId).toBe('coach-1');
+    expect(submission.reviewStartedAt).toEqual(
+      new Date('2024-06-01T00:00:00.000Z'),
+    );
+    expect(submission.reversalReason).toBe('duplicate of another claim');
+    expect(submission.reversedAt).toEqual(new Date('2024-06-03T00:00:00.000Z'));
+    expect(submission.reversedBy).toBe('admin-1');
   });
 
   it('maps an evidence row with its private reference', () => {

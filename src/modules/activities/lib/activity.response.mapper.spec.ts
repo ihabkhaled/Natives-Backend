@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  AbuseSignal,
   ActivityCategory,
   ActivityTypeStatus,
   BuddyStatus,
@@ -19,6 +20,8 @@ import {
   toActivityTypeView,
   toBuddyView,
   toEvidenceView,
+  toReviewDetailView,
+  toReviewSubmissionView,
   toSubmissionDetailView,
   toSubmissionView,
 } from './activity.response.mapper';
@@ -62,6 +65,11 @@ function submission(
     submittedBy: 'u1',
     reviewedAt: null,
     reviewedBy: null,
+    reviewerUserId: null,
+    reviewStartedAt: null,
+    reversalReason: null,
+    reversedAt: null,
+    reversedBy: null,
     withdrawnAt: null,
     createdBy: 'u1',
     createdAt: new Date('2024-05-30T00:00:00.000Z'),
@@ -144,5 +152,41 @@ describe('activity.response.mapper', () => {
     const view = toEvidenceView(EVIDENCE);
     expect(view.storageReference).toBe('private/ref');
     expect(view.kind).toBe(EvidenceKind.Link);
+  });
+
+  it('keeps the reviewer note in the reviewer submission view', () => {
+    const view = toReviewSubmissionView(
+      submission({
+        status: SubmissionStatus.Reversed,
+        reviewedAt: new Date('2024-06-02T00:00:00.000Z'),
+        reviewedBy: 'coach',
+        reviewerUserId: 'coach',
+        reversalReason: 'duplicate claim',
+        reversedAt: new Date('2024-06-03T00:00:00.000Z'),
+        reversedBy: 'admin',
+      }),
+    );
+    expect(view.reviewNote).toBe('REVIEWER-ONLY-SECRET');
+    expect(view.submitterUserId).toBe('u1');
+    expect(view.reviewedAt).toBe('2024-06-02T00:00:00.000Z');
+    expect(view.reviewerUserId).toBe('coach');
+    expect(view.reversalReason).toBe('duplicate claim');
+    expect(view.reversedAt).toBe('2024-06-03T00:00:00.000Z');
+  });
+
+  it('assembles a reviewer detail view with abuse signals', () => {
+    const view = toReviewDetailView({
+      submission: submission(),
+      buddies: [BUDDY],
+      evidenceCount: 2,
+      signals: [AbuseSignal.DuplicateDay, AbuseSignal.UnusualVolume],
+    });
+    expect(view.submission.reviewNote).toBe('REVIEWER-ONLY-SECRET');
+    expect(view.buddies).toHaveLength(1);
+    expect(view.evidenceCount).toBe(2);
+    expect(view.signals).toEqual([
+      AbuseSignal.DuplicateDay,
+      AbuseSignal.UnusualVolume,
+    ]);
   });
 });

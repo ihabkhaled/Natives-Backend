@@ -31,6 +31,7 @@ import { SeedHistorySchema1722600000000 } from '../src/database/migrations/17226
 import { ScoringSchema1722700000000 } from '../src/database/migrations/1722700000000-scoring-schema';
 import { MeasurementsSchema1722800000000 } from '../src/database/migrations/1722800000000-measurements-schema';
 import { ActivitiesSchema1722900000000 } from '../src/database/migrations/1722900000000-activities-schema';
+import { ActivityReviewSchema1723000000000 } from '../src/database/migrations/1723000000000-activity-review-schema';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -77,6 +78,7 @@ const MIGRATIONS = [
   ScoringSchema1722700000000,
   MeasurementsSchema1722800000000,
   ActivitiesSchema1722900000000,
+  ActivityReviewSchema1723000000000,
 ];
 
 const SECRET_REFERENCE = 'private/evidence/REVIEWER-ONLY-KEY';

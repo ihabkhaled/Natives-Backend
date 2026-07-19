@@ -3,7 +3,12 @@ import { describe, expect, it } from 'vitest';
 import { SubmissionStatus } from '../model/activity.enums';
 import {
   allowedSubmissionTransitions,
+  canApproveSubmission,
+  canClaimForReview,
   canEditSubmission,
+  canRejectSubmission,
+  canRequestChangesOnSubmission,
+  canReverseSubmission,
   canSubmitSubmission,
   canTransitionSubmission,
   canWithdrawSubmission,
@@ -79,5 +84,32 @@ describe('activity-submission.state-machine', () => {
     expect(canWithdrawSubmission(SubmissionStatus.ChangesRequested)).toBe(true);
     expect(canWithdrawSubmission(SubmissionStatus.Approved)).toBe(false);
     expect(canWithdrawSubmission(SubmissionStatus.Rejected)).toBe(false);
+  });
+
+  it('claims only a submitted claim into review', () => {
+    expect(canClaimForReview(SubmissionStatus.Submitted)).toBe(true);
+    expect(canClaimForReview(SubmissionStatus.UnderReview)).toBe(false);
+    expect(canClaimForReview(SubmissionStatus.ChangesRequested)).toBe(false);
+    expect(canClaimForReview(SubmissionStatus.Draft)).toBe(false);
+  });
+
+  it('decides only from submitted or under_review', () => {
+    for (const decide of [
+      canApproveSubmission,
+      canRejectSubmission,
+      canRequestChangesOnSubmission,
+    ]) {
+      expect(decide(SubmissionStatus.Submitted)).toBe(true);
+      expect(decide(SubmissionStatus.UnderReview)).toBe(true);
+      expect(decide(SubmissionStatus.Draft)).toBe(false);
+      expect(decide(SubmissionStatus.Approved)).toBe(false);
+    }
+  });
+
+  it('reverses only an approved claim', () => {
+    expect(canReverseSubmission(SubmissionStatus.Approved)).toBe(true);
+    expect(canReverseSubmission(SubmissionStatus.Submitted)).toBe(false);
+    expect(canReverseSubmission(SubmissionStatus.Rejected)).toBe(false);
+    expect(canReverseSubmission(SubmissionStatus.Reversed)).toBe(false);
   });
 });

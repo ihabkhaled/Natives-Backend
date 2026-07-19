@@ -4,11 +4,14 @@ import type {
   ActivitySubmission,
   ActivitySubmissionDetail,
   ActivityType,
+  ReviewSubmissionDetail,
 } from '../model/activity.types';
 import type {
   ActivityTypeView,
   BuddyView,
   EvidenceView,
+  ReviewDetailView,
+  ReviewSubmissionView,
   SubmissionDetailView,
   SubmissionView,
 } from '../model/activity.views';
@@ -75,6 +78,51 @@ export function toSubmissionDetailView(
     submission: toSubmissionView(detail.submission),
     buddies: detail.buddies.map(buddy => toBuddyView(buddy)),
     evidenceCount: detail.evidenceCount,
+  };
+}
+
+/**
+ * Reviewer-scoped submission projection: carries the reviewer note, review actor/
+ * instant, reversal reason, and submitter identity. Still omits any evidence
+ * storage reference — that stays behind the dedicated reviewer evidence endpoint.
+ */
+export function toReviewSubmissionView(
+  submission: ActivitySubmission,
+): ReviewSubmissionView {
+  return {
+    id: submission.id,
+    teamId: submission.teamId,
+    seasonId: submission.seasonId,
+    membershipId: submission.membershipId,
+    activityTypeId: submission.activityTypeId,
+    submitterUserId: submission.submitterUserId,
+    status: submission.status,
+    performedOn: submission.performedOn,
+    durationMinutes: submission.durationMinutes,
+    quantity: submission.quantity,
+    notes: submission.notes,
+    reviewNote: submission.reviewNote,
+    recordVersion: submission.recordVersion,
+    submittedAt: nullableIso(submission.submittedAt),
+    reviewedAt: nullableIso(submission.reviewedAt),
+    reviewedBy: submission.reviewedBy,
+    reviewerUserId: submission.reviewerUserId,
+    reversalReason: submission.reversalReason,
+    reversedAt: nullableIso(submission.reversedAt),
+    createdAt: submission.createdAt.toISOString(),
+    updatedAt: submission.updatedAt.toISOString(),
+  };
+}
+
+/** Reviewer detail: the submission, credited buddies, count, and abuse signals. */
+export function toReviewDetailView(
+  detail: ReviewSubmissionDetail,
+): ReviewDetailView {
+  return {
+    submission: toReviewSubmissionView(detail.submission),
+    buddies: detail.buddies.map(buddy => toBuddyView(buddy)),
+    evidenceCount: detail.evidenceCount,
+    signals: detail.signals,
   };
 }
 

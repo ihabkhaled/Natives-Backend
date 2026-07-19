@@ -1,11 +1,21 @@
 import { describe, expect, it } from 'vitest';
 
-import { EvidenceKind } from '../model/activity.enums';
+import { REVIEW_QUEUE_DEFAULT_STATUSES } from '../model/activities.constants';
+import {
+  EvidenceKind,
+  ReviewDecision,
+  SubmissionStatus,
+} from '../model/activity.enums';
 import {
   toBuddyMembershipIds,
   toEvidenceItems,
+  toReviewCorrectionCommand,
+  toReviewDecisionCommand,
+  toReviewQueueQuery,
   toSubmissionContent,
 } from './activity-command.mapper';
+
+const PAGE = { limit: 20, offset: 0 };
 
 describe('activity-command.mapper', () => {
   it('normalises full submission content', () => {
@@ -78,5 +88,57 @@ describe('activity-command.mapper', () => {
   it('defaults omitted buddy ids to an empty list', () => {
     expect(toBuddyMembershipIds(undefined)).toEqual([]);
     expect(toBuddyMembershipIds(['a', 'b'])).toEqual(['a', 'b']);
+  });
+
+  it('defaults the review queue to the actionable states', () => {
+    expect(toReviewQueueQuery(undefined, undefined, undefined, PAGE)).toEqual({
+      page: PAGE,
+      statuses: REVIEW_QUEUE_DEFAULT_STATUSES,
+      activityTypeId: null,
+      membershipId: null,
+    });
+  });
+
+  it('narrows the review queue to an allowlisted status and filters', () => {
+    expect(
+      toReviewQueueQuery(SubmissionStatus.Approved, 'type-1', 'm1', PAGE),
+    ).toEqual({
+      page: PAGE,
+      statuses: [SubmissionStatus.Approved],
+      activityTypeId: 'type-1',
+      membershipId: 'm1',
+    });
+  });
+
+  it('normalises a review decision command with its fixed decision', () => {
+    expect(
+      toReviewDecisionCommand(
+        { expectedRecordVersion: 2 },
+        ReviewDecision.Approve,
+      ),
+    ).toEqual({
+      expectedRecordVersion: 2,
+      decision: ReviewDecision.Approve,
+      reviewNote: null,
+    });
+    expect(
+      toReviewDecisionCommand(
+        { expectedRecordVersion: 2, reviewNote: 'nope' },
+        ReviewDecision.Reject,
+      ),
+    ).toEqual({
+      expectedRecordVersion: 2,
+      decision: ReviewDecision.Reject,
+      reviewNote: 'nope',
+    });
+  });
+
+  it('normalises a correction command', () => {
+    expect(
+      toReviewCorrectionCommand({
+        expectedRecordVersion: 3,
+        reason: 'duplicate',
+      }),
+    ).toEqual({ expectedRecordVersion: 3, reason: 'duplicate' });
   });
 });

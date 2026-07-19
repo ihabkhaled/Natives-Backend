@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T21:05:08.024Z",
+  "generatedAt": "2026-07-19T21:51:04.053Z",
   "modules": [
     {
       "name": "activities",
@@ -11,6 +11,8 @@
           "src/modules/activities/errors/activity-buddy-not-found.error.ts",
           "src/modules/activities/errors/activity-duplicate-submission.error.ts",
           "src/modules/activities/errors/activity-invalid-transition.error.ts",
+          "src/modules/activities/errors/activity-review-forbidden.error.ts",
+          "src/modules/activities/errors/activity-review-note-required.error.ts",
           "src/modules/activities/errors/activity-scope-not-found.error.ts",
           "src/modules/activities/errors/activity-submission-not-found.error.ts",
           "src/modules/activities/errors/activity-type-not-found.error.ts",
@@ -21,20 +23,27 @@
         "controller": [
           "src/modules/activities/api/activity-buddy.controller.ts",
           "src/modules/activities/api/activity-evidence.controller.ts",
+          "src/modules/activities/api/activity-review.controller.ts",
           "src/modules/activities/api/activity-submission.controller.ts",
           "src/modules/activities/api/activity-type.controller.ts"
         ],
         "api-dto": [
           "src/modules/activities/api/dto/activity-type-response.dto.ts",
           "src/modules/activities/api/dto/buddy-response.dto.ts",
+          "src/modules/activities/api/dto/correct-submission.dto.ts",
           "src/modules/activities/api/dto/create-submission.dto.ts",
           "src/modules/activities/api/dto/evidence-response.dto.ts",
           "src/modules/activities/api/dto/list-activities.query.dto.ts",
           "src/modules/activities/api/dto/list-activity-types.response.dto.ts",
           "src/modules/activities/api/dto/list-buddies.response.dto.ts",
           "src/modules/activities/api/dto/list-evidence.response.dto.ts",
+          "src/modules/activities/api/dto/list-review-queue.query.dto.ts",
+          "src/modules/activities/api/dto/list-review-queue.response.dto.ts",
           "src/modules/activities/api/dto/list-submissions.response.dto.ts",
           "src/modules/activities/api/dto/optimistic-version.dto.ts",
+          "src/modules/activities/api/dto/review-decision.dto.ts",
+          "src/modules/activities/api/dto/review-detail-response.dto.ts",
+          "src/modules/activities/api/dto/review-submission-response.dto.ts",
           "src/modules/activities/api/dto/submission-detail-response.dto.ts",
           "src/modules/activities/api/dto/submission-evidence.dto.ts",
           "src/modules/activities/api/dto/submission-response.dto.ts",
@@ -45,25 +54,34 @@
           "src/modules/activities/application/activity-scope.service.ts",
           "src/modules/activities/application/buddy-query.service.ts",
           "src/modules/activities/application/evidence-query.service.ts",
+          "src/modules/activities/application/review-detail.service.ts",
+          "src/modules/activities/application/review-eligibility.service.ts",
+          "src/modules/activities/application/review-queue.service.ts",
           "src/modules/activities/application/submission-lookup.service.ts",
           "src/modules/activities/application/submission-query.service.ts"
         ],
         "use-case": [
+          "src/modules/activities/application/claim-review.use-case.ts",
+          "src/modules/activities/application/correct-submission.use-case.ts",
           "src/modules/activities/application/create-submission.use-case.ts",
+          "src/modules/activities/application/record-review-decision.use-case.ts",
           "src/modules/activities/application/respond-to-buddy.use-case.ts",
           "src/modules/activities/application/submit-submission.use-case.ts",
           "src/modules/activities/application/update-submission.use-case.ts",
           "src/modules/activities/application/withdraw-submission.use-case.ts"
         ],
         "domain": [
+          "src/modules/activities/domain/activity-abuse.policy.ts",
           "src/modules/activities/domain/activity-buddy.policy.ts",
           "src/modules/activities/domain/activity-catalog.policy.ts",
+          "src/modules/activities/domain/activity-review.policy.ts",
           "src/modules/activities/domain/activity-submission.policy.ts",
           "src/modules/activities/domain/activity-submission.state-machine.ts"
         ],
         "repository": [
           "src/modules/activities/infrastructure/activity-buddy.repository.ts",
           "src/modules/activities/infrastructure/activity-evidence.repository.ts",
+          "src/modules/activities/infrastructure/activity-review.repository.ts",
           "src/modules/activities/infrastructure/activity-scope.repository.ts",
           "src/modules/activities/infrastructure/activity-submission.repository.ts",
           "src/modules/activities/infrastructure/activity-type.repository.ts"
@@ -83,8 +101,8 @@
           "src/modules/activities/model/activity.views.ts"
         ]
       },
-      "fileCount": 59,
-      "specCount": 25,
+      "fileCount": 77,
+      "specCount": 34,
       "publicSurface": "src/modules/activities/index.ts",
       "hasEvents": false
     },

@@ -101,3 +101,35 @@ export enum ActivityTypeStatus {
 
 export const ACTIVITY_TYPE_STATUS_VALUES: readonly ActivityTypeStatus[] =
   Object.values(ActivityTypeStatus);
+
+/**
+ * A reviewer's moderation decision on a submitted claim. `approve` accepts the
+ * claim, `reject` denies it, and `request_changes` returns it to the member for
+ * edits (both denial paths require a structured reviewer note). Corrections of an
+ * already-approved claim are a separate compensating flow, not a decision here.
+ */
+export enum ReviewDecision {
+  Approve = 'approve',
+  Reject = 'reject',
+  RequestChanges = 'request_changes',
+}
+
+export const REVIEW_DECISION_VALUES: readonly ReviewDecision[] =
+  Object.values(ReviewDecision);
+
+/**
+ * Anti-abuse signals raised while reviewing a claim. Each is a review PROMPT, not
+ * an automated verdict: it flags a pattern (a same-day duplicate, an unusually
+ * high recent volume, an extreme backdate, an implausible duration, or a repeated
+ * buddy pairing) for a human reviewer to weigh — never an opaque auto-rejection.
+ */
+export enum AbuseSignal {
+  DuplicateDay = 'duplicate_day',
+  UnusualVolume = 'unusual_volume',
+  ExtremeBackdating = 'extreme_backdating',
+  ImplausibleDuration = 'implausible_duration',
+  RepeatedBuddy = 'repeated_buddy',
+}
+
+export const ABUSE_SIGNAL_VALUES: readonly AbuseSignal[] =
+  Object.values(AbuseSignal);

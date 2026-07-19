@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T21:05:08.024Z",
+  "generatedAt": "2026-07-19T21:51:04.053Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -1513,6 +1513,11 @@
     },
     {
       "from": "src/modules/activities/activities.module.ts",
+      "to": "src/modules/activities/api/activity-review.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/activities.module.ts",
       "to": "src/modules/activities/api/activity-submission.controller.ts",
       "type": "internal"
     },
@@ -1538,6 +1543,16 @@
     },
     {
       "from": "src/modules/activities/activities.module.ts",
+      "to": "src/modules/activities/application/claim-review.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/activities.module.ts",
+      "to": "src/modules/activities/application/correct-submission.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/activities.module.ts",
       "to": "src/modules/activities/application/create-submission.use-case.ts",
       "type": "internal"
     },
@@ -1548,7 +1563,27 @@
     },
     {
       "from": "src/modules/activities/activities.module.ts",
+      "to": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/activities.module.ts",
       "to": "src/modules/activities/application/respond-to-buddy.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/activities.module.ts",
+      "to": "src/modules/activities/application/review-detail.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/activities.module.ts",
+      "to": "src/modules/activities/application/review-eligibility.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/activities.module.ts",
+      "to": "src/modules/activities/application/review-queue.service.ts",
       "type": "internal"
     },
     {
@@ -1584,6 +1619,11 @@
     {
       "from": "src/modules/activities/activities.module.ts",
       "to": "src/modules/activities/infrastructure/activity-evidence.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/activities.module.ts",
+      "to": "src/modules/activities/infrastructure/activity-review.repository.ts",
       "type": "internal"
     },
     {
@@ -1698,6 +1738,96 @@
     },
     {
       "from": "src/modules/activities/api/activity-evidence.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/api/dto/correct-submission.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/api/dto/list-review-queue.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/api/dto/list-review-queue.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/api/dto/optimistic-version.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/api/dto/review-decision.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/api/dto/review-detail-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/application/claim-review.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/application/correct-submission.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/application/review-queue.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/lib/activity-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/lib/activity.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
+      "to": "src/modules/activities/model/activity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/activity-review.controller.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
     },
@@ -1857,6 +1987,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/activities/api/dto/correct-submission.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/dto/correct-submission.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/dto/correct-submission.dto.ts",
+      "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/activities/api/dto/create-submission.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -1932,6 +2077,36 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/activities/api/dto/list-review-queue.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/dto/list-review-queue.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/dto/list-review-queue.query.dto.ts",
+      "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/dto/list-review-queue.query.dto.ts",
+      "to": "src/modules/activities/model/activity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/dto/list-review-queue.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/dto/list-review-queue.response.dto.ts",
+      "to": "src/modules/activities/api/dto/review-submission-response.dto.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/activities/api/dto/list-submissions.response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -1954,6 +2129,51 @@
     {
       "from": "src/modules/activities/api/dto/optimistic-version.dto.ts",
       "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/dto/review-decision.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/dto/review-decision.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/dto/review-decision.dto.ts",
+      "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/dto/review-detail-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/dto/review-detail-response.dto.ts",
+      "to": "src/modules/activities/api/dto/buddy-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/dto/review-detail-response.dto.ts",
+      "to": "src/modules/activities/api/dto/review-submission-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/dto/review-detail-response.dto.ts",
+      "to": "src/modules/activities/model/activity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/api/dto/review-submission-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/api/dto/review-submission-response.dto.ts",
+      "to": "src/modules/activities/model/activity.enums.ts",
       "type": "internal"
     },
     {
@@ -2097,6 +2317,146 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/modules/activities/application/review-detail.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/modules/activities/application/review-eligibility.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/modules/activities/domain/activity-submission.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/modules/activities/errors/activity-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/modules/activities/errors/activity-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/modules/activities/infrastructure/activity-review.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/modules/activities/lib/activity.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/modules/activities/model/activity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/modules/activities/model/activity.views.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/claim-review.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/modules/activities/application/review-detail.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/modules/activities/application/review-eligibility.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/modules/activities/domain/activity-submission.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/modules/activities/errors/activity-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/modules/activities/errors/activity-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/modules/activities/infrastructure/activity-review.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/modules/activities/lib/activity.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/modules/activities/model/activity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/modules/activities/model/activity.views.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/activities/application/create-submission.use-case.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -2230,6 +2590,86 @@
       "from": "src/modules/activities/application/evidence-query.service.ts",
       "to": "src/modules/activities/model/activity.views.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/activities/application/review-detail.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/activities/application/review-eligibility.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/activities/domain/activity-review.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/activities/domain/activity-submission.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/activities/errors/activity-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/activities/errors/activity-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/activities/infrastructure/activity-review.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/activities/lib/activity.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/activities/model/activity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/activities/model/activity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/activities/model/activity.views.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
     },
     {
       "from": "src/modules/activities/application/respond-to-buddy.use-case.ts",
@@ -2302,6 +2742,131 @@
       "type": "cross-module"
     },
     {
+      "from": "src/modules/activities/application/review-detail.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/review-detail.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/review-detail.service.ts",
+      "to": "src/modules/activities/domain/activity-abuse.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-detail.service.ts",
+      "to": "src/modules/activities/infrastructure/activity-buddy.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-detail.service.ts",
+      "to": "src/modules/activities/infrastructure/activity-evidence.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-detail.service.ts",
+      "to": "src/modules/activities/infrastructure/activity-review.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-detail.service.ts",
+      "to": "src/modules/activities/lib/activity.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-detail.service.ts",
+      "to": "src/modules/activities/lib/activity.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-detail.service.ts",
+      "to": "src/modules/activities/lib/activity.response.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-detail.service.ts",
+      "to": "src/modules/activities/model/activity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-detail.service.ts",
+      "to": "src/modules/activities/model/activity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-detail.service.ts",
+      "to": "src/modules/activities/model/activity.views.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-eligibility.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/review-eligibility.service.ts",
+      "to": "src/modules/activities/application/submission-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-eligibility.service.ts",
+      "to": "src/modules/activities/domain/activity-review.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-eligibility.service.ts",
+      "to": "src/modules/activities/infrastructure/activity-review.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-eligibility.service.ts",
+      "to": "src/modules/activities/model/activity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-queue.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/application/review-queue.service.ts",
+      "to": "src/modules/activities/application/review-detail.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-queue.service.ts",
+      "to": "src/modules/activities/errors/activity-submission-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-queue.service.ts",
+      "to": "src/modules/activities/infrastructure/activity-review.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-queue.service.ts",
+      "to": "src/modules/activities/infrastructure/activity-submission.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-queue.service.ts",
+      "to": "src/modules/activities/lib/activity.response.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-queue.service.ts",
+      "to": "src/modules/activities/model/activity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/application/review-queue.service.ts",
+      "to": "src/modules/activities/model/activity.views.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/activities/application/submission-lookup.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -2652,6 +3217,21 @@
       "type": "cross-module"
     },
     {
+      "from": "src/modules/activities/domain/activity-abuse.policy.ts",
+      "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/domain/activity-abuse.policy.ts",
+      "to": "src/modules/activities/model/activity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/domain/activity-abuse.policy.ts",
+      "to": "src/modules/activities/model/activity.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/activities/domain/activity-buddy.policy.ts",
       "to": "src/modules/activities/errors/activity-validation.error.ts",
       "type": "internal"
@@ -2673,6 +3253,31 @@
     },
     {
       "from": "src/modules/activities/domain/activity-catalog.policy.ts",
+      "to": "src/modules/activities/model/activity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/domain/activity-review.policy.ts",
+      "to": "src/modules/activities/errors/activity-review-forbidden.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/domain/activity-review.policy.ts",
+      "to": "src/modules/activities/errors/activity-review-note-required.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/domain/activity-review.policy.ts",
+      "to": "src/modules/activities/errors/activity-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/domain/activity-review.policy.ts",
+      "to": "src/modules/activities/model/activity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/domain/activity-review.policy.ts",
       "to": "src/modules/activities/model/activity.types.ts",
       "type": "internal"
     },
@@ -2733,6 +3338,26 @@
     },
     {
       "from": "src/modules/activities/errors/activity-invalid-transition.error.ts",
+      "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/errors/activity-review-forbidden.error.ts",
+      "to": "src/core/errors/forbidden.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/errors/activity-review-forbidden.error.ts",
+      "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/errors/activity-review-note-required.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/errors/activity-review-note-required.error.ts",
       "to": "src/modules/activities/model/activities.constants.ts",
       "type": "internal"
     },
@@ -2842,6 +3467,31 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/activities/infrastructure/activity-review.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/infrastructure/activity-review.repository.ts",
+      "to": "src/modules/activities/lib/activity.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/infrastructure/activity-review.repository.ts",
+      "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/infrastructure/activity-review.repository.ts",
+      "to": "src/modules/activities/model/activity.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/infrastructure/activity-review.repository.ts",
+      "to": "src/modules/activities/model/activity.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/activities/infrastructure/activity-scope.repository.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -2899,6 +3549,16 @@
     {
       "from": "src/modules/activities/infrastructure/activity-type.repository.ts",
       "to": "src/modules/activities/model/activity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/lib/activity-command.mapper.ts",
+      "to": "src/modules/activities/model/activities.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/activities/lib/activity-command.mapper.ts",
+      "to": "src/modules/activities/model/activity.enums.ts",
       "type": "internal"
     },
     {
@@ -2980,6 +3640,11 @@
       "from": "src/modules/activities/model/activities.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/activities/model/activities.constants.ts",
+      "to": "src/modules/activities/model/activity.enums.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/activities/model/activity.types.ts",

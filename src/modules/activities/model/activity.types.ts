@@ -1,10 +1,12 @@
 import type {
+  AbuseSignal,
   ActivityCategory,
   ActivityTypeStatus,
   BuddyStatus,
   EvidenceKind,
   EvidenceScanStatus,
   PointsApproval,
+  ReviewDecision,
   SubmissionStatus,
 } from './activity.enums';
 
@@ -70,6 +72,11 @@ export interface ActivitySubmission {
   readonly submittedBy: string | null;
   readonly reviewedAt: Date | null;
   readonly reviewedBy: string | null;
+  readonly reviewerUserId: string | null;
+  readonly reviewStartedAt: Date | null;
+  readonly reversalReason: string | null;
+  readonly reversedAt: Date | null;
+  readonly reversedBy: string | null;
   readonly withdrawnAt: Date | null;
   readonly createdBy: string | null;
   readonly createdAt: Date;
@@ -218,4 +225,105 @@ export interface BuddyResponseUpdate {
   readonly toStatus: BuddyStatus;
   readonly actorUserId: string;
   readonly now: Date;
+}
+
+// --- Review / moderation (401) -----------------------------------------------
+
+/** A reviewer claiming a submitted claim into review (submitted → under_review). */
+export interface ReviewClaimChange {
+  readonly id: string;
+  readonly teamId: string;
+  readonly expectedRecordVersion: number;
+  readonly reviewerUserId: string;
+  readonly now: Date;
+}
+
+/** A reviewer's decided transition with the structured reviewer note. */
+export interface ReviewDecisionChange {
+  readonly id: string;
+  readonly teamId: string;
+  readonly expectedRecordVersion: number;
+  readonly toStatus: SubmissionStatus;
+  readonly reviewNote: string | null;
+  readonly reviewerUserId: string;
+  readonly now: Date;
+}
+
+/** A correction of an approved claim (approved → reversed) with its reason. */
+export interface ReviewReversalChange {
+  readonly id: string;
+  readonly teamId: string;
+  readonly expectedRecordVersion: number;
+  readonly reversalReason: string;
+  readonly actorUserId: string;
+  readonly now: Date;
+}
+
+/** Loosely-typed reviewer decision body as it arrives from the DTO. */
+export interface ReviewDecisionInput {
+  readonly expectedRecordVersion: number;
+  readonly reviewNote?: string | null;
+}
+
+/** Loosely-typed correction body as it arrives from the DTO. */
+export interface ReviewCorrectionInput {
+  readonly expectedRecordVersion: number;
+  readonly reason: string;
+}
+
+/** Transport-normalized moderation decision command from the reviewer DTO. */
+export interface ReviewDecisionCommand {
+  readonly expectedRecordVersion: number;
+  readonly decision: ReviewDecision;
+  readonly reviewNote: string | null;
+}
+
+/** Transport-normalized correction command from the correction DTO. */
+export interface ReviewCorrectionCommand {
+  readonly expectedRecordVersion: number;
+  readonly reason: string;
+}
+
+/** Allowlisted, bounded, deterministic review-queue filter. */
+export interface ReviewQueueQuery {
+  readonly page: PageRequest;
+  readonly statuses: readonly SubmissionStatus[];
+  readonly activityTypeId: string | null;
+  readonly membershipId: string | null;
+}
+
+/**
+ * The measured facts an anti-abuse evaluation weighs. Counts come from bounded
+ * repository probes; `today` is the frozen server clock's UTC calendar day. Pure
+ * inputs so the signal policy is fully branch-testable without a database.
+ */
+export interface AbuseSignalFacts {
+  readonly performedOn: string;
+  readonly today: string;
+  readonly durationMinutes: number | null;
+  readonly sameDayLiveCount: number;
+  readonly windowLiveCount: number;
+  readonly maxBuddyRepeatCount: number;
+}
+
+/** The date bounds an anti-abuse probe scans (all YYYY-MM-DD, UTC). */
+export interface AbuseProbeWindow {
+  readonly windowFrom: string;
+  readonly windowTo: string;
+  readonly buddyFrom: string;
+}
+
+/** Bounded probe counts backing the anti-abuse evaluation. */
+export interface AbuseCounts {
+  readonly sameDay: number;
+  readonly windowCount: number;
+  readonly buddyRepeat: number;
+}
+
+/** A submission plus the anti-abuse signals raised for the reviewer to weigh. */
+export interface ReviewSubmissionDetail {
+  readonly submission: ActivitySubmission;
+  readonly buddies: readonly ActivityBuddy[];
+  readonly evidenceCount: number;
+  readonly signals: readonly AbuseSignal[];
 }

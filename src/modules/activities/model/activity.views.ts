@@ -1,4 +1,5 @@
 import type {
+  AbuseSignal,
   ActivityCategory,
   BuddyStatus,
   EvidenceKind,
@@ -74,4 +75,42 @@ export interface EvidenceView {
   readonly description: string | null;
   readonly scanStatus: EvidenceScanStatus;
   readonly createdAt: string;
+}
+
+/**
+ * Reviewer-scoped submission projection (activity.review). Unlike the member view
+ * it carries the reviewer note, the reviewing actor/instant, the reversal reason,
+ * and the submitter identity a reviewer needs — but still never an evidence
+ * storage reference, which stays behind the dedicated reviewer evidence endpoint.
+ */
+export interface ReviewSubmissionView {
+  readonly id: string;
+  readonly teamId: string;
+  readonly seasonId: string | null;
+  readonly membershipId: string;
+  readonly activityTypeId: string;
+  readonly submitterUserId: string;
+  readonly status: SubmissionStatus;
+  readonly performedOn: string;
+  readonly durationMinutes: number | null;
+  readonly quantity: number | null;
+  readonly notes: string | null;
+  readonly reviewNote: string | null;
+  readonly recordVersion: number;
+  readonly submittedAt: string | null;
+  readonly reviewedAt: string | null;
+  readonly reviewedBy: string | null;
+  readonly reviewerUserId: string | null;
+  readonly reversalReason: string | null;
+  readonly reversedAt: string | null;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+}
+
+/** A reviewer's submission detail with credited buddies and anti-abuse signals. */
+export interface ReviewDetailView {
+  readonly submission: ReviewSubmissionView;
+  readonly buddies: readonly BuddyView[];
+  readonly evidenceCount: number;
+  readonly signals: readonly AbuseSignal[];
 }

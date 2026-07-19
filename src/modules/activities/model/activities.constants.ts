@@ -1,11 +1,14 @@
 import type { ErrorMessageKey } from '@core/errors/error.types';
 
+import { SubmissionStatus } from './activity.enums';
+
 // --- API surface -------------------------------------------------------------
 
 export const ACTIVITIES_API_TAG = 'activities';
 export const ACTIVITY_TYPES_ROUTE = 'teams/:teamId/activity-types';
 export const ACTIVITY_SUBMISSIONS_ROUTE = 'teams/:teamId/activity-submissions';
 export const MY_ACTIVITY_BUDDIES_ROUTE = 'teams/:teamId/my-activity-buddies';
+export const ACTIVITY_REVIEW_ROUTE = 'teams/:teamId/activity-review';
 
 export const TEAM_ID_PARAM = 'teamId';
 export const SUBMISSION_ID_PARAM = 'submissionId';
@@ -17,6 +20,12 @@ export const SUBMISSION_WITHDRAW_ROUTE = ':submissionId/withdraw';
 export const SUBMISSION_EVIDENCE_ROUTE = ':submissionId/evidence';
 export const BUDDY_CONFIRM_ROUTE = ':buddyId/confirm';
 export const BUDDY_DECLINE_ROUTE = ':buddyId/decline';
+export const REVIEW_DETAIL_ROUTE = ':submissionId';
+export const REVIEW_CLAIM_ROUTE = ':submissionId/claim';
+export const REVIEW_APPROVE_ROUTE = ':submissionId/approve';
+export const REVIEW_REJECT_ROUTE = ':submissionId/reject';
+export const REVIEW_REQUEST_CHANGES_ROUTE = ':submissionId/request-changes';
+export const REVIEW_CORRECT_ROUTE = ':submissionId/correct';
 
 // --- Pagination --------------------------------------------------------------
 
@@ -33,6 +42,10 @@ export const DURATION_MAX_MINUTES = 1440;
 export const QUANTITY_MIN = 0;
 export const QUANTITY_MAX = 1_000_000;
 export const RECORD_VERSION_MIN = 1;
+
+export const REVIEW_NOTE_MAX_LENGTH = 2000;
+export const REVERSAL_REASON_MIN_LENGTH = 1;
+export const REVERSAL_REASON_MAX_LENGTH = 2000;
 
 export const BUDDIES_MAX_ITEMS = 20;
 export const EVIDENCE_MAX_ITEMS = 10;
@@ -52,6 +65,40 @@ export const BUDDY_CONFIRMATION_REQUIRED = true;
 
 /** ISO date-only (YYYY-MM-DD) — activities are performed on a calendar day. */
 export const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/u;
+
+// --- Anti-abuse signal thresholds (versioned policy data, never guilt) --------
+
+/** Rolling window (days, inclusive) over which submission volume is assessed. */
+export const ABUSE_VOLUME_WINDOW_DAYS = 7;
+/** More than this many live claims in the window flags an unusual-volume signal. */
+export const ABUSE_VOLUME_MAX_IN_WINDOW = 14;
+/** Backdating a claim more than this many days before today is flagged. */
+export const ABUSE_BACKDATE_MAX_DAYS = 60;
+/** A single-session duration beyond this many minutes is implausible. */
+export const ABUSE_IMPLAUSIBLE_DURATION_MINUTES = 600;
+/** Pairing with the same buddy more than this many times recently is flagged. */
+export const ABUSE_REPEATED_BUDDY_MAX = 5;
+/** Lookback (days) over which repeated-buddy pairings are counted. */
+export const ABUSE_BUDDY_WINDOW_DAYS = 30;
+
+// --- Review queue --------------------------------------------------------------
+
+/** The states a reviewer works on when no explicit status filter is supplied. */
+export const REVIEW_QUEUE_DEFAULT_STATUSES: readonly SubmissionStatus[] = [
+  SubmissionStatus.Submitted,
+  SubmissionStatus.UnderReview,
+  SubmissionStatus.ChangesRequested,
+];
+
+/** The allowlisted states a reviewer may filter the queue to (never drafts). */
+export const REVIEW_QUEUE_FILTERABLE_STATUSES: readonly SubmissionStatus[] = [
+  SubmissionStatus.Submitted,
+  SubmissionStatus.UnderReview,
+  SubmissionStatus.ChangesRequested,
+  SubmissionStatus.Approved,
+  SubmissionStatus.Rejected,
+  SubmissionStatus.Reversed,
+];
 
 // --- Error messages ----------------------------------------------------------
 
@@ -91,6 +138,14 @@ export const BUDDY_ALREADY_RESOLVED_MESSAGE =
   'The training buddy credit has already been answered';
 export const BUDDY_ALREADY_RESOLVED_MESSAGE_KEY: ErrorMessageKey =
   'errors.activities.buddyAlreadyResolved';
+export const ACTIVITY_REVIEW_FORBIDDEN_MESSAGE =
+  'A reviewer may not review or correct their own or a buddied submission';
+export const ACTIVITY_REVIEW_FORBIDDEN_MESSAGE_KEY: ErrorMessageKey =
+  'errors.activities.reviewForbidden';
+export const ACTIVITY_REVIEW_NOTE_REQUIRED_MESSAGE =
+  'A structured reviewer note is required for this decision';
+export const ACTIVITY_REVIEW_NOTE_REQUIRED_MESSAGE_KEY: ErrorMessageKey =
+  'errors.activities.reviewNoteRequired';
 
 // --- Audit actions / resources ----------------------------------------------
 
@@ -102,12 +157,20 @@ export const SUBMISSION_UPDATED_ACTION = 'activities.submission.updated';
 export const SUBMISSION_SUBMITTED_ACTION = 'activities.submission.submitted';
 export const SUBMISSION_WITHDRAWN_ACTION = 'activities.submission.withdrawn';
 export const BUDDY_RESPONDED_ACTION = 'activities.buddy.responded';
+export const REVIEW_CLAIMED_ACTION = 'activities.review.claimed';
+export const REVIEW_DECIDED_ACTION = 'activities.review.decided';
+export const REVIEW_CORRECTED_ACTION = 'activities.review.corrected';
 
 // --- Domain events (past-tense, versioned, privacy-safe payloads) ------------
 
 export const ACTIVITIES_EVENT_VERSION = 1;
 export const ACTIVITY_SUBMITTED_EVENT = 'activities.submission.submitted.v1';
 export const ACTIVITY_WITHDRAWN_EVENT = 'activities.submission.withdrawn.v1';
+export const ACTIVITY_APPROVED_EVENT = 'activities.submission.approved.v1';
+export const ACTIVITY_REJECTED_EVENT = 'activities.submission.rejected.v1';
+export const ACTIVITY_CHANGES_REQUESTED_EVENT =
+  'activities.submission.changes_requested.v1';
+export const ACTIVITY_CORRECTED_EVENT = 'activities.submission.corrected.v1';
 
 // --- Static column lists (never SELECT *) ------------------------------------
 
@@ -120,7 +183,9 @@ export const ACTIVITY_SUBMISSION_COLUMNS = `"id", "team_id", "season_id",
   "membership_id", "activity_type_id", "submitter_user_id", "status",
   "performed_on", "duration_minutes", "quantity", "notes", "review_note",
   "record_version", "submitted_at", "submitted_by", "reviewed_at", "reviewed_by",
-  "withdrawn_at", "created_by", "created_at", "updated_at", "deleted_at"`;
+  "reviewer_user_id", "review_started_at", "reversal_reason", "reversed_at",
+  "reversed_by", "withdrawn_at", "created_by", "created_at", "updated_at",
+  "deleted_at"`;
 
 export const ACTIVITY_EVIDENCE_COLUMNS = `"id", "submission_id", "kind",
   "storage_reference", "content_type", "byte_size", "description", "scan_status",

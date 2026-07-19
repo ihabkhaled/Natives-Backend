@@ -1775,6 +1775,24 @@
         ],
         "type": "object"
       },
+      "CorrectSubmissionDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "reason": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "expectedRecordVersion",
+          "reason"
+        ],
+        "type": "object"
+      },
       "CreateAgendaDto": {
         "properties": {
           "notes": {
@@ -4121,6 +4139,32 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/PlayerPublishedAssessmentResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListReviewQueueResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewSubmissionResponseDto"
             },
             "type": "array"
           },
@@ -6573,6 +6617,59 @@
         ],
         "type": "object"
       },
+      "ReviewDecisionDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "reviewNote": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
+      "ReviewDetailResponseDto": {
+        "properties": {
+          "buddies": {
+            "items": {
+              "$ref": "#/components/schemas/BuddyResponseDto"
+            },
+            "type": "array"
+          },
+          "evidenceCount": {
+            "type": "number"
+          },
+          "signals": {
+            "items": {
+              "enum": [
+                "duplicate_day",
+                "unusual_volume",
+                "extreme_backdating",
+                "implausible_duration",
+                "repeated_buddy"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "submission": {
+            "$ref": "#/components/schemas/ReviewSubmissionResponseDto"
+          }
+        },
+        "required": [
+          "submission",
+          "buddies",
+          "evidenceCount",
+          "signals"
+        ],
+        "type": "object"
+      },
       "ReviewGoalDto": {
         "properties": {
           "evidence": {
@@ -6629,6 +6726,132 @@
         "required": [
           "decision",
           "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
+      "ReviewSubmissionResponseDto": {
+        "properties": {
+          "activityTypeId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "durationMinutes": {
+            "nullable": true,
+            "type": "number"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "notes": {
+            "nullable": true,
+            "type": "string"
+          },
+          "performedOn": {
+            "format": "date",
+            "type": "string"
+          },
+          "quantity": {
+            "nullable": true,
+            "type": "number"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "reversalReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "reversedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "reviewedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "reviewedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "reviewerUserId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "reviewNote": {
+            "nullable": true,
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "submitted",
+              "under_review",
+              "changes_requested",
+              "approved",
+              "rejected",
+              "withdrawn",
+              "reversed"
+            ],
+            "type": "string"
+          },
+          "submittedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "submitterUserId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "teamId",
+          "seasonId",
+          "membershipId",
+          "activityTypeId",
+          "submitterUserId",
+          "status",
+          "performedOn",
+          "durationMinutes",
+          "quantity",
+          "notes",
+          "reviewNote",
+          "recordVersion",
+          "submittedAt",
+          "reviewedAt",
+          "reviewedBy",
+          "reviewerUserId",
+          "reversalReason",
+          "reversedAt",
+          "createdAt",
+          "updatedAt"
         ],
         "type": "object"
       },
@@ -10920,6 +11143,410 @@
         "summary": "Update a team",
         "tags": [
           "teams"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-review": {
+      "get": {
+        "operationId": "ActivityReview.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "enum": [
+                "submitted",
+                "under_review",
+                "changes_requested",
+                "approved",
+                "rejected",
+                "reversed"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "activityTypeId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "membershipId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListReviewQueueResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List the reviewer queue (bounded, filterable)",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-review/{submissionId}": {
+      "get": {
+        "operationId": "ActivityReview.detail",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "submissionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewDetailResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Read a submission for review with abuse signals",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-review/{submissionId}/approve": {
+      "post": {
+        "operationId": "ActivityReview.approve",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "submissionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewDecisionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewDetailResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Approve a submitted or under-review claim",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-review/{submissionId}/claim": {
+      "post": {
+        "operationId": "ActivityReview.claim",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "submissionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OptimisticVersionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewDetailResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Claim a submitted claim into review",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-review/{submissionId}/correct": {
+      "post": {
+        "operationId": "ActivityReview.correct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "submissionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CorrectSubmissionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewDetailResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Correct an approved claim via a compensating reversal",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-review/{submissionId}/reject": {
+      "post": {
+        "operationId": "ActivityReview.reject",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "submissionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewDecisionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewDetailResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Reject a claim with a required reviewer note",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-review/{submissionId}/request-changes": {
+      "post": {
+        "operationId": "ActivityReview.requestChanges",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "submissionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewDecisionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewDetailResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Return a claim for changes with a required note",
+        "tags": [
+          "activities"
         ]
       }
     },

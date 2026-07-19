@@ -82,3 +82,30 @@ export function canSubmitSubmission(status: SubmissionStatus): boolean {
 export function canWithdrawSubmission(status: SubmissionStatus): boolean {
   return canTransitionSubmission(status, SubmissionStatus.Withdrawn);
 }
+
+/** A reviewer may claim a submitted claim into review (→ under_review). */
+export function canClaimForReview(status: SubmissionStatus): boolean {
+  return canTransitionSubmission(status, SubmissionStatus.UnderReview);
+}
+
+/** A submitted or under-review claim may be approved. */
+export function canApproveSubmission(status: SubmissionStatus): boolean {
+  return canTransitionSubmission(status, SubmissionStatus.Approved);
+}
+
+/** A submitted or under-review claim may be rejected. */
+export function canRejectSubmission(status: SubmissionStatus): boolean {
+  return canTransitionSubmission(status, SubmissionStatus.Rejected);
+}
+
+/** A submitted or under-review claim may be returned for changes. */
+export function canRequestChangesOnSubmission(
+  status: SubmissionStatus,
+): boolean {
+  return canTransitionSubmission(status, SubmissionStatus.ChangesRequested);
+}
+
+/** An approved claim may be reversed by a compensating correction. */
+export function canReverseSubmission(status: SubmissionStatus): boolean {
+  return canTransitionSubmission(status, SubmissionStatus.Reversed);
+}

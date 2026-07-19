@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-19T21:05:08.024Z",
-  "treeHash": "sha256:8ef5a47150c5cfcdc9cd47d0d3e50fef749620d4c0061e4198a55c2bf5ade45f",
+  "generatedAt": "2026-07-19T21:51:04.053Z",
+  "treeHash": "sha256:8ad3e1990eee6a2afcbd825a82c938627abb52066d9804cd6d9a7bbfefdfda19",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -3238,6 +3238,23 @@
       "sizeBytes": 12558
     },
     {
+      "path": "src/database/migrations/1723000000000-activity-review-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityReviewSchema1723000000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dfa32e25955b980f349ea07be227499b55421181f96fdbd76d81bd847d1d21a4",
+      "sizeBytes": 2626
+    },
+    {
       "path": "src/database/migrations/activities-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3248,6 +3265,18 @@
       "kind": "spec",
       "hash": "sha256:e4a0bb6bc8e08dff359da6b54663abfb33fc5cde6ccb90d40e2f6fd80e6e91cf",
       "sizeBytes": 3456
+    },
+    {
+      "path": "src/database/migrations/activity-review-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e43c5a71b0078c2eead368d1025f7b431104553701d147a81a0d801cb890f084",
+      "sizeBytes": 2046
     },
     {
       "path": "src/database/migrations/assessment-catalog-schema.spec.ts",
@@ -3857,8 +3886,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:bf3f667c1d11e739f32de9b5e47415285a3acfa5246cba9757e41a10789e593f",
-      "sizeBytes": 3194
+      "hash": "sha256:f9c7687098835af1cab58ad9243c19fe48594c83fbe0ce7c8dffd99af3631574",
+      "sizeBytes": 4071
     },
     {
       "path": "src/modules/activities/api/activity-buddy.controller.ts",
@@ -3893,6 +3922,23 @@
       "kind": "source",
       "hash": "sha256:855c79203c332dfe6f93da0aafd4c26c61bef139e8eaee548adf99e2e10dce65",
       "sizeBytes": 1581
+    },
+    {
+      "path": "src/modules/activities/api/activity-review.controller.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityReviewController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d5eb3057ab3ce8aa9f9c6c15ded256afa592eea7ab9a5d2514ef8fd339e8a37e",
+      "sizeBytes": 7367
     },
     {
       "path": "src/modules/activities/api/activity-submission.controller.ts",
@@ -3961,6 +4007,23 @@
       "kind": "source",
       "hash": "sha256:01e956685bbb73d7b2b43b4237f2adaeedb8edcf234d12d7db87ee2a9efed481",
       "sizeBytes": 750
+    },
+    {
+      "path": "src/modules/activities/api/dto/correct-submission.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CorrectSubmissionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:59784fa6838176b8e609d1590f3614533e2815d2882983bfcd12ec471e83e9ec",
+      "sizeBytes": 895
     },
     {
       "path": "src/modules/activities/api/dto/create-submission.dto.ts",
@@ -4065,6 +4128,40 @@
       "sizeBytes": 482
     },
     {
+      "path": "src/modules/activities/api/dto/list-review-queue.query.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListReviewQueueQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1fd821e4ce41e7f2bfc2522fa2c62c80dc05e67530659aa47a4734d541014a9c",
+      "sizeBytes": 1339
+    },
+    {
+      "path": "src/modules/activities/api/dto/list-review-queue.response.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListReviewQueueResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7c9eb0f8541ef70b1f8d741d9fce2c526118686224b75bd43adea7b8938da28a",
+      "sizeBytes": 522
+    },
+    {
       "path": "src/modules/activities/api/dto/list-submissions.response.dto.ts",
       "root": "modules",
       "module": "activities",
@@ -4097,6 +4194,57 @@
       "kind": "source",
       "hash": "sha256:172965df6d1af615c4b5890b54c0ff108bffcd66da8d5f54c4709232b9e91532",
       "sizeBytes": 415
+    },
+    {
+      "path": "src/modules/activities/api/dto/review-decision.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReviewDecisionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8c5b61ab94f8f39f72f802ffc99c0b8ba388d2ca7a0186a7cdce6a852291bf4a",
+      "sizeBytes": 857
+    },
+    {
+      "path": "src/modules/activities/api/dto/review-detail-response.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReviewDetailResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e6da44e6c679ea55a246982b5ce6988f6b50212c58484bb78cdf056cdd6008de",
+      "sizeBytes": 928
+    },
+    {
+      "path": "src/modules/activities/api/dto/review-submission-response.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReviewSubmissionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:423c2aa363d6a3277baadcabbefdfb36f13b50397cb752649e532af3982f2df0",
+      "sizeBytes": 2428
     },
     {
       "path": "src/modules/activities/api/dto/submission-detail-response.dto.ts",
@@ -4254,6 +4402,64 @@
       "sizeBytes": 1848
     },
     {
+      "path": "src/modules/activities/application/claim-review.use-case.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e03dd3c5655d0859d7357646ec79819e0ca82b0fe5dcda3370f19a431358b6ab",
+      "sizeBytes": 3742
+    },
+    {
+      "path": "src/modules/activities/application/claim-review.use-case.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ClaimReviewUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/claim-review.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:03fe479e304fcd9de740cd441b37a85a95f6f1de22af01b20b497ab84c5e6fd8",
+      "sizeBytes": 3380
+    },
+    {
+      "path": "src/modules/activities/application/correct-submission.use-case.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:375e7aad2bfc351a202f449e62979c1472cdd815dbc0f49091dc6b5bd140a672",
+      "sizeBytes": 3623
+    },
+    {
+      "path": "src/modules/activities/application/correct-submission.use-case.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CorrectSubmissionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/correct-submission.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ab832a0b602467a8689edc21266b5036acd12725ae52818677b40b9864cdca20",
+      "sizeBytes": 3952
+    },
+    {
       "path": "src/modules/activities/application/create-submission.use-case.spec.ts",
       "root": "modules",
       "module": "activities",
@@ -4262,8 +4468,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:5e707dd904cc728a93f54bbdc728b41cc5bfd31e32070e79f8b33bef1fdd27a3",
-      "sizeBytes": 4591
+      "hash": "sha256:66a23804b4423cb892241cf2e1d995da86459a578049c29f76bb7bc090af179e",
+      "sizeBytes": 4704
     },
     {
       "path": "src/modules/activities/application/create-submission.use-case.ts",
@@ -4291,8 +4497,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:6f9af1ff45ff7654bcf62e81940643fdf2674a8d420c3dc4a36147bc85e8e88c",
-      "sizeBytes": 2444
+      "hash": "sha256:81dd95bfbed4e19d40fc6030e1327b58167a35b0f8f1f2607b5e2a9a3b5dea8f",
+      "sizeBytes": 2557
     },
     {
       "path": "src/modules/activities/application/evidence-query.service.ts",
@@ -4310,6 +4516,35 @@
       "kind": "source",
       "hash": "sha256:bd4c0fff7f32dbd37e201f4333ac6ccee21c3418adf9b65a17073ae0f66ce430",
       "sizeBytes": 2221
+    },
+    {
+      "path": "src/modules/activities/application/record-review-decision.use-case.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a0555cce9916699c31ff3cf74a8a544b5cdd12db5954db0f022c2f3e608f8d3e",
+      "sizeBytes": 4689
+    },
+    {
+      "path": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RecordReviewDecisionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/record-review-decision.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0cc55605010abbdb215fc3d480a77c26a255db9e858fb0556b251a28ac1c10b4",
+      "sizeBytes": 4356
     },
     {
       "path": "src/modules/activities/application/respond-to-buddy.use-case.spec.ts",
@@ -4341,6 +4576,93 @@
       "sizeBytes": 3210
     },
     {
+      "path": "src/modules/activities/application/review-detail.service.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ed6d6d450322b8ea88137d0974ab9ccd606e072e21c1f1450c5ce9312c5f2a05",
+      "sizeBytes": 2517
+    },
+    {
+      "path": "src/modules/activities/application/review-detail.service.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReviewDetailService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/review-detail.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e6eef955499a481a24eb21fd195a6efe59915f4f3b3f8ba2383c7287383cfc48",
+      "sizeBytes": 2479
+    },
+    {
+      "path": "src/modules/activities/application/review-eligibility.service.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:af55ae72f2b5c2da5c7a9f124062564d05f91c7fec678d6347dd0d01699720a6",
+      "sizeBytes": 2309
+    },
+    {
+      "path": "src/modules/activities/application/review-eligibility.service.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReviewEligibilityService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/review-eligibility.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:36cf1ad69c8099b05f0760d3efa25cdc5117bc93833da9d3ea48b24767c4b2c6",
+      "sizeBytes": 1445
+    },
+    {
+      "path": "src/modules/activities/application/review-queue.service.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ce287a74e5a0aed8a69ab36db9c1d850a8aeb7479b35f7e4a23acde9bdef9eae",
+      "sizeBytes": 2762
+    },
+    {
+      "path": "src/modules/activities/application/review-queue.service.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReviewQueueService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/review-queue.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:64035636d3bc7a1888ab5d41e32b4a19d453c96c7a6776ff9fbedfa975b1aea1",
+      "sizeBytes": 2885
+    },
+    {
       "path": "src/modules/activities/application/submission-lookup.service.spec.ts",
       "root": "modules",
       "module": "activities",
@@ -4349,8 +4671,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:c9d1f5823aec97a619a1af220221721c965428fe9d6d7f5ee4dce3b062cdc6d0",
-      "sizeBytes": 2104
+      "hash": "sha256:8719aff98f8806cc1fa3bf687523ac8326d1701def148ea46dc3e223ff97159d",
+      "sizeBytes": 2227
     },
     {
       "path": "src/modules/activities/application/submission-lookup.service.ts",
@@ -4378,8 +4700,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:8682d99d4af6a9957b284033dfbc6d541871a5a51c8099d99ad31289c7633b5d",
-      "sizeBytes": 3830
+      "hash": "sha256:ad8860991892aa7aac0cc72e9cb6e85a1e40d29d5224bd3e6842a82352f8d138",
+      "sizeBytes": 3953
     },
     {
       "path": "src/modules/activities/application/submission-query.service.ts",
@@ -4407,8 +4729,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:8d77b620c6ab3f30fba0351f993fc9cdf536dba0eae0065748476f20b041096d",
-      "sizeBytes": 3920
+      "hash": "sha256:42219156b8635e7711f6a2003ecc35bd917fe0fc426f9f1b6cf5958b4bc40391",
+      "sizeBytes": 4043
     },
     {
       "path": "src/modules/activities/application/submit-submission.use-case.ts",
@@ -4436,8 +4758,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:4310aefc870e50500cec1448d44081d42802b0c2fec97898fc394b9b283be00f",
-      "sizeBytes": 5005
+      "hash": "sha256:f9d84ffe557eb2c78ab8b79cb6e0d68dc7b30ce39d50b7627cc90681e3eb7669",
+      "sizeBytes": 5128
     },
     {
       "path": "src/modules/activities/application/update-submission.use-case.ts",
@@ -4465,8 +4787,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:5d44c072c9d5bcbad6d177343ddaf2fe020a3eb4b4d9869d52d65617809f89d1",
-      "sizeBytes": 3464
+      "hash": "sha256:680e256988f6654fb40418e449a6b5eed5fb64ce37a0f63c412634cd131d8251",
+      "sizeBytes": 3587
     },
     {
       "path": "src/modules/activities/application/withdraw-submission.use-case.ts",
@@ -4484,6 +4806,39 @@
       "kind": "source",
       "hash": "sha256:84ede3cd37fe751ca77620653815a4bf9c6f16b0e98f90de692418817bab6727",
       "sizeBytes": 4528
+    },
+    {
+      "path": "src/modules/activities/domain/activity-abuse.policy.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e5b74ab7a12cb40c144e4f40acfeb3d24487ade5024a20330cc026a9ac549d4a",
+      "sizeBytes": 2866
+    },
+    {
+      "path": "src/modules/activities/domain/activity-abuse.policy.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "daysBetween"
+        },
+        {
+          "kind": "function",
+          "name": "detectAbuseSignals"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/domain/activity-abuse.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0bb0249bacc9dd7244462487db4996e5edd3f9d0f0fc507a91e6196694f84d7c",
+      "sizeBytes": 1944
     },
     {
       "path": "src/modules/activities/domain/activity-buddy.policy.spec.ts",
@@ -4560,6 +4915,51 @@
       "sizeBytes": 977
     },
     {
+      "path": "src/modules/activities/domain/activity-review.policy.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6e6f2f8fed9ecae90cf163de579cbca5977ee5c6f9a3806fc36bd3ee783ecd68",
+      "sizeBytes": 3518
+    },
+    {
+      "path": "src/modules/activities/domain/activity-review.policy.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isSelfReview"
+        },
+        {
+          "kind": "function",
+          "name": "assertReviewerMayReview"
+        },
+        {
+          "kind": "function",
+          "name": "resolveDecisionStatus"
+        },
+        {
+          "kind": "function",
+          "name": "isReviewNoteRequired"
+        },
+        {
+          "kind": "function",
+          "name": "assertReviewNote"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/domain/activity-review.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d4f4a85549aecb71370169acd51e30d4d176d92fce980d1e4075ac35be9be86f",
+      "sizeBytes": 2957
+    },
+    {
       "path": "src/modules/activities/domain/activity-submission.policy.spec.ts",
       "root": "modules",
       "module": "activities",
@@ -4568,8 +4968,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:f53bfd02a99364128cd5b1e8453822a1ccf229b3ea5572ab3c1c47d92a256cb2",
-      "sizeBytes": 4503
+      "hash": "sha256:6ab5feb3d45385d1f13e4087dee79d22725702ae89d12a2225c520099e19c3f1",
+      "sizeBytes": 4626
     },
     {
       "path": "src/modules/activities/domain/activity-submission.policy.ts",
@@ -4601,8 +5001,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:b3cf1983c318bdde21b7a205a9a0542e62c1631ae0366f788d1a8aef5da63079",
-      "sizeBytes": 3170
+      "hash": "sha256:46a5f810ff02cb4735603bfbc30afdf4f7f59db41bfe12308e0a42c995e29a23",
+      "sizeBytes": 4439
     },
     {
       "path": "src/modules/activities/domain/activity-submission.state-machine.ts",
@@ -4629,13 +5029,33 @@
         {
           "kind": "function",
           "name": "canWithdrawSubmission"
+        },
+        {
+          "kind": "function",
+          "name": "canClaimForReview"
+        },
+        {
+          "kind": "function",
+          "name": "canApproveSubmission"
+        },
+        {
+          "kind": "function",
+          "name": "canRejectSubmission"
+        },
+        {
+          "kind": "function",
+          "name": "canRequestChangesOnSubmission"
+        },
+        {
+          "kind": "function",
+          "name": "canReverseSubmission"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/activities/domain/activity-submission.state-machine.spec.ts",
       "kind": "source",
-      "hash": "sha256:e1b17f0a8413cb90389f7c60884eb834fca8fc56769b1c41d8f1f5e0c756129f",
-      "sizeBytes": 2832
+      "hash": "sha256:29990114e8e884a64b6cecaa659e84df762c4ff6b1b34d80da438fa00d641104",
+      "sizeBytes": 3918
     },
     {
       "path": "src/modules/activities/errors/activities-errors.spec.ts",
@@ -4646,8 +5066,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:9413d693322f4d6fe5d12eb3e85e80a370aea1c3b8c7ca94287e79a3c7ae1969",
-      "sizeBytes": 2388
+      "hash": "sha256:91f66cf3ed29c0cd3e9303dcf94fac63d9b825cac9cdd45ae04ce7e99c7c8f9c",
+      "sizeBytes": 2839
     },
     {
       "path": "src/modules/activities/errors/activity-buddy-conflict.error.ts",
@@ -4716,6 +5136,40 @@
       "kind": "source",
       "hash": "sha256:f7d25a2c50c6cc434704f664d46d4a8443e840510996a6dbcc82c690df61fd94",
       "sizeBytes": 394
+    },
+    {
+      "path": "src/modules/activities/errors/activity-review-forbidden.error.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityReviewForbiddenError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:033ee2cb1339f1d1b3c34dbc3b5c4ab39f6499bab39bd73ffdd93e3fdf462dde",
+      "sizeBytes": 632
+    },
+    {
+      "path": "src/modules/activities/errors/activity-review-note-required.error.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityReviewNoteRequiredError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:59d8bb615eee60476d0d660365469339b0023e7f942a530ea6f54e9cd2003c96",
+      "sizeBytes": 567
     },
     {
       "path": "src/modules/activities/errors/activity-scope-not-found.error.ts",
@@ -4873,6 +5327,35 @@
       "sizeBytes": 3757
     },
     {
+      "path": "src/modules/activities/infrastructure/activity-review.repository.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6de28c6bbf7a49a7d52b4305608871d0fde4316561be95b4753065a55d2e60bb",
+      "sizeBytes": 6578
+    },
+    {
+      "path": "src/modules/activities/infrastructure/activity-review.repository.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityReviewRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/infrastructure/activity-review.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c1f07dced0345b64d951f73138f9933c7fe67bc7f9eafafb874c8340c7654eaf",
+      "sizeBytes": 7201
+    },
+    {
       "path": "src/modules/activities/infrastructure/activity-scope.repository.spec.ts",
       "root": "modules",
       "module": "activities",
@@ -4910,8 +5393,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:31b12edb86d70a587cba52af398775f3fbf4a3f50b5f12039a09524bc01860e4",
-      "sizeBytes": 5514
+      "hash": "sha256:921cf5f8cbebf3040773e3f7862791f872522cb028270ce6cdc4f4e435c85ba0",
+      "sizeBytes": 5634
     },
     {
       "path": "src/modules/activities/infrastructure/activity-submission.repository.ts",
@@ -4968,8 +5451,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:bfdc3cf5b44f8a1daf3060bd8a074753c00512b80da3641ef9e263e6cb43b1d2",
-      "sizeBytes": 2086
+      "hash": "sha256:1c990366f4cf1aaca067aba528c588559048068b2e1f4b555f9eae01d9e05ea6",
+      "sizeBytes": 3750
     },
     {
       "path": "src/modules/activities/lib/activity-command.mapper.ts",
@@ -4988,13 +5471,25 @@
         {
           "kind": "function",
           "name": "toBuddyMembershipIds"
+        },
+        {
+          "kind": "function",
+          "name": "toReviewQueueQuery"
+        },
+        {
+          "kind": "function",
+          "name": "toReviewDecisionCommand"
+        },
+        {
+          "kind": "function",
+          "name": "toReviewCorrectionCommand"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/activities/lib/activity-command.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:040a81d0ee97d8fe7e045e137de6f696b4912f1f8652b95f467bf5b1ca125577",
-      "sizeBytes": 1194
+      "hash": "sha256:df89138953e57a97d4e4a623bcd8e97ccfe5dfad14c3b2864a09c4b0f0af0573",
+      "sizeBytes": 2731
     },
     {
       "path": "src/modules/activities/lib/activity.builders.spec.ts",
@@ -5005,8 +5500,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:8ecd18ac4b0a6520192b2e522bb1f93f450b98e7c462ac2b6bdfc17725f26bc6",
-      "sizeBytes": 5701
+      "hash": "sha256:15d5a3138156ae3b98b2319b2bfa45cb96d31463117aadc0aa1315e42216f29b",
+      "sizeBytes": 8884
     },
     {
       "path": "src/modules/activities/lib/activity.builders.ts",
@@ -5053,13 +5548,41 @@
         {
           "kind": "function",
           "name": "buildActivityWithdrawnEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildReviewClaim"
+        },
+        {
+          "kind": "function",
+          "name": "buildReviewDecisionChange"
+        },
+        {
+          "kind": "function",
+          "name": "buildReviewReversalChange"
+        },
+        {
+          "kind": "function",
+          "name": "resolveReviewDecisionEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildReviewOutcomeEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildActivityCorrectedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildAbuseFacts"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/activities/lib/activity.builders.spec.ts",
       "kind": "source",
-      "hash": "sha256:3c7a1af9231ddc62c3579ea9584984ab9a8cd91f30465cdb161d8c3427ff0af6",
-      "sizeBytes": 5209
+      "hash": "sha256:2d092835cc386f66c3bd632515005e4311025e797de7995978a69c1a6fa23fc0",
+      "sizeBytes": 8757
     },
     {
       "path": "src/modules/activities/lib/activity.helpers.spec.ts",
@@ -5070,8 +5593,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:11353107b7e577bf68d6771d678d8a2384583d3b74faee97a0a76846002776e6",
-      "sizeBytes": 1550
+      "hash": "sha256:fd150cae03ddc5ccb1ecf69183712e932a751b78b135ddb3475c84710bd8a562",
+      "sizeBytes": 2085
     },
     {
       "path": "src/modules/activities/lib/activity.helpers.ts",
@@ -5101,14 +5624,22 @@
         },
         {
           "kind": "function",
+          "name": "subtractDays"
+        },
+        {
+          "kind": "function",
+          "name": "buildAbuseProbeWindow"
+        },
+        {
+          "kind": "function",
           "name": "parseEnumValue"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/activities/lib/activity.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:81bc8077e67fc65649c695d1699721f45cde15ff96f52e590aa3c5c8e7514552",
-      "sizeBytes": 1328
+      "hash": "sha256:f16f3abe4165438c08b5a4bea5c72f7b59788a98eb1769db157f64930d66779b",
+      "sizeBytes": 1982
     },
     {
       "path": "src/modules/activities/lib/activity.mapper.spec.ts",
@@ -5119,8 +5650,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:bbdce63fc91a2f6b9173d915482a32b1e8f62a8bf276bb6706b7da7f1d7f2a44",
-      "sizeBytes": 3857
+      "hash": "sha256:291264831490f368f64f44077bfd5d2eda7135c4855adf4810dcc95fee27c4d7",
+      "sizeBytes": 4913
     },
     {
       "path": "src/modules/activities/lib/activity.mapper.ts",
@@ -5148,8 +5679,8 @@
       "hasSpec": true,
       "specPath": "src/modules/activities/lib/activity.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:d598f0a0901d5b96ddfd5904342cad3c3d0df21e77cbfb129d22d41d4faf4472",
-      "sizeBytes": 3401
+      "hash": "sha256:862f51f96bfd6703fce8d38f0d9cc7303c0122ec17858c1954aa9185462cbe4f",
+      "sizeBytes": 3626
     },
     {
       "path": "src/modules/activities/lib/activity.response.mapper.spec.ts",
@@ -5160,8 +5691,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:f14b87931e8ba42ef2252dcca713da3c4e15b495348ca56adee96a6189d04847",
-      "sizeBytes": 4082
+      "hash": "sha256:a8878e9fedda9f01cf625858e0d1aea93afc243701dc311c08b0c843606029e5",
+      "sizeBytes": 5578
     },
     {
       "path": "src/modules/activities/lib/activity.response.mapper.ts",
@@ -5187,14 +5718,22 @@
         },
         {
           "kind": "function",
+          "name": "toReviewSubmissionView"
+        },
+        {
+          "kind": "function",
+          "name": "toReviewDetailView"
+        },
+        {
+          "kind": "function",
           "name": "toEvidenceView"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/activities/lib/activity.response.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:47e2c3b5c392b72b034a8a50123241d25a40de64e6605f89e7ef89d7777e1ccb",
-      "sizeBytes": 2799
+      "hash": "sha256:754394a48e6961d598e6902af2a6cd47575fd138432de20979bd41f51dc2c546",
+      "sizeBytes": 4518
     },
     {
       "path": "src/modules/activities/model/activities.constants.ts",
@@ -5217,6 +5756,10 @@
         {
           "kind": "const",
           "name": "MY_ACTIVITY_BUDDIES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_REVIEW_ROUTE"
         },
         {
           "kind": "const",
@@ -5253,6 +5796,30 @@
         {
           "kind": "const",
           "name": "BUDDY_DECLINE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "REVIEW_DETAIL_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "REVIEW_CLAIM_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "REVIEW_APPROVE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "REVIEW_REJECT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "REVIEW_REQUEST_CHANGES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "REVIEW_CORRECT_ROUTE"
         },
         {
           "kind": "const",
@@ -5296,6 +5863,18 @@
         },
         {
           "kind": "const",
+          "name": "REVIEW_NOTE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REVERSAL_REASON_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REVERSAL_REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
           "name": "BUDDIES_MAX_ITEMS"
         },
         {
@@ -5329,6 +5908,38 @@
         {
           "kind": "const",
           "name": "ISO_DATE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "ABUSE_VOLUME_WINDOW_DAYS"
+        },
+        {
+          "kind": "const",
+          "name": "ABUSE_VOLUME_MAX_IN_WINDOW"
+        },
+        {
+          "kind": "const",
+          "name": "ABUSE_BACKDATE_MAX_DAYS"
+        },
+        {
+          "kind": "const",
+          "name": "ABUSE_IMPLAUSIBLE_DURATION_MINUTES"
+        },
+        {
+          "kind": "const",
+          "name": "ABUSE_REPEATED_BUDDY_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "ABUSE_BUDDY_WINDOW_DAYS"
+        },
+        {
+          "kind": "const",
+          "name": "REVIEW_QUEUE_DEFAULT_STATUSES"
+        },
+        {
+          "kind": "const",
+          "name": "REVIEW_QUEUE_FILTERABLE_STATUSES"
         },
         {
           "kind": "const",
@@ -5404,6 +6015,22 @@
         },
         {
           "kind": "const",
+          "name": "ACTIVITY_REVIEW_FORBIDDEN_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_REVIEW_FORBIDDEN_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_REVIEW_NOTE_REQUIRED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_REVIEW_NOTE_REQUIRED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
           "name": "SUBMISSION_RESOURCE_TYPE"
         },
         {
@@ -5436,6 +6063,18 @@
         },
         {
           "kind": "const",
+          "name": "REVIEW_CLAIMED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "REVIEW_DECIDED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "REVIEW_CORRECTED_ACTION"
+        },
+        {
+          "kind": "const",
           "name": "ACTIVITIES_EVENT_VERSION"
         },
         {
@@ -5445,6 +6084,22 @@
         {
           "kind": "const",
           "name": "ACTIVITY_WITHDRAWN_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_APPROVED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_REJECTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_CHANGES_REQUESTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_CORRECTED_EVENT"
         },
         {
           "kind": "const",
@@ -5466,8 +6121,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:296391a26d3ca55bf6887a7f63b8d174b4cee0ff0377eb0d67e5cb74c423fba3",
-      "sizeBytes": 6242
+      "hash": "sha256:5b4b8305f4a4dd16c8d4394754768ba89b2734bbfadbf49635f1520c0aa00a2e",
+      "sizeBytes": 9480
     },
     {
       "path": "src/modules/activities/model/activity.enums.ts",
@@ -5538,13 +6193,29 @@
         {
           "kind": "const",
           "name": "ACTIVITY_TYPE_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ReviewDecision"
+        },
+        {
+          "kind": "const",
+          "name": "REVIEW_DECISION_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AbuseSignal"
+        },
+        {
+          "kind": "const",
+          "name": "ABUSE_SIGNAL_VALUES"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6b5877fd88776ec3703857606753a0e298d38992265dd0b8bf2518b57c45ea1a",
-      "sizeBytes": 3137
+      "hash": "sha256:5cedf1b7bd3f074a38428c2d329fc69fa5b8c66d73f923e28e00c3ceea242bf4",
+      "sizeBytes": 4338
     },
     {
       "path": "src/modules/activities/model/activity.rows.ts",
@@ -5574,6 +6245,10 @@
         },
         {
           "kind": "interface",
+          "name": "AbuseCountsRow"
+        },
+        {
+          "kind": "interface",
           "name": "EvidenceCountRow"
         },
         {
@@ -5584,8 +6259,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b446c8ee4ae3db4dabe3a247182d120fa903008ae28071530fb20f5d9c54811a",
-      "sizeBytes": 2598
+      "hash": "sha256:c6e1a8fb987efc3f8b251c86553940297ba85f7540d5e09654db31a553d4305f",
+      "sizeBytes": 3031
     },
     {
       "path": "src/modules/activities/model/activity.types.ts",
@@ -5672,13 +6347,61 @@
         {
           "kind": "interface",
           "name": "BuddyResponseUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewClaimChange"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewDecisionChange"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewReversalChange"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewDecisionInput"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewCorrectionInput"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewDecisionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewCorrectionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewQueueQuery"
+        },
+        {
+          "kind": "interface",
+          "name": "AbuseSignalFacts"
+        },
+        {
+          "kind": "interface",
+          "name": "AbuseProbeWindow"
+        },
+        {
+          "kind": "interface",
+          "name": "AbuseCounts"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewSubmissionDetail"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:17dd74abf92dff98237a1c1e12cca7e287c0000c59e2712e69437084c9a19b09",
-      "sizeBytes": 6594
+      "hash": "sha256:264ab659152650e02aded26cf2154060dc2fc10f8f88b83201e86749922090b1",
+      "sizeBytes": 10081
     },
     {
       "path": "src/modules/activities/model/activity.views.ts",
@@ -5705,13 +6428,21 @@
         {
           "kind": "interface",
           "name": "EvidenceView"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewSubmissionView"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewDetailView"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b794435ed193671c975ea8b3ac82860d3c56e80cfdcc6fca4a194c5ec1c7192f",
-      "sizeBytes": 2389
+      "hash": "sha256:5bb5ea0ff5ee967bf2bc84d07c80775bdec33add61a81e94b77396cd3a6e31aa",
+      "sizeBytes": 3811
     },
     {
       "path": "src/modules/articles/api/articles.controller.ts",

@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  buildAbuseProbeWindow,
   parseEnumValue,
   resolveActivityPage,
+  subtractDays,
   toCalendarDay,
   toDate,
   toNullableDate,
@@ -45,5 +47,19 @@ describe('activity.helpers', () => {
     expect(() => parseEnumValue(['a'] as const, 'z', 'label')).toThrow(
       'Unrecognized label: z',
     );
+  });
+
+  it('subtracts whole UTC days across a month boundary', () => {
+    expect(subtractDays('2024-06-02', 7)).toBe('2024-05-26');
+    expect(subtractDays('2024-06-02', 30)).toBe('2024-05-03');
+    expect(subtractDays('2024-03-01', 1)).toBe('2024-02-29');
+  });
+
+  it('builds the anti-abuse probe window relative to today', () => {
+    expect(buildAbuseProbeWindow('2024-06-02')).toEqual({
+      windowFrom: '2024-05-26',
+      windowTo: '2024-06-02',
+      buddyFrom: '2024-05-03',
+    });
   });
 });

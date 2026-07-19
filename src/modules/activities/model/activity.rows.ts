@@ -36,6 +36,11 @@ export interface ActivitySubmissionRow {
   readonly submitted_by: string | null;
   readonly reviewed_at: string | Date | null;
   readonly reviewed_by: string | null;
+  readonly reviewer_user_id: string | null;
+  readonly review_started_at: string | Date | null;
+  readonly reversal_reason: string | null;
+  readonly reversed_at: string | Date | null;
+  readonly reversed_by: string | null;
   readonly withdrawn_at: string | Date | null;
   readonly created_by: string | null;
   readonly created_at: string | Date;
@@ -70,6 +75,13 @@ export interface ActivityBuddyRow {
 
 export interface CountRow {
   readonly count: number;
+}
+
+/** Single-row anti-abuse probe result carrying the three bounded counts. */
+export interface AbuseCountsRow {
+  readonly same_day: number;
+  readonly window_count: number;
+  readonly buddy_repeat: number;
 }
 
 /** Grouped evidence count per submission for a batched N+1-free list assembly. */
