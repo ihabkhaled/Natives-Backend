@@ -69,6 +69,9 @@ function build() {
   };
   const audit = { record: vi.fn().mockResolvedValue(undefined) };
   const events = { enqueue: vi.fn().mockResolvedValue(undefined) };
+  const pointsReversal = {
+    reverseForCorrection: vi.fn().mockResolvedValue(undefined),
+  };
   const useCase = new CorrectSubmissionUseCase(
     unitOfWork as never,
     clock as never,
@@ -77,8 +80,17 @@ function build() {
     detail as never,
     audit as never,
     events as never,
+    pointsReversal as never,
   );
-  return { eligibility, review, detail, audit, events, useCase };
+  return {
+    eligibility,
+    review,
+    detail,
+    audit,
+    events,
+    pointsReversal,
+    useCase,
+  };
 }
 
 const COMMAND = {
@@ -93,12 +105,16 @@ describe('CorrectSubmissionUseCase', () => {
     harness = build();
   });
 
-  it('reverses an approved claim and emits ActivityCorrected', async () => {
+  it('reverses an approved claim, compensates points, and emits ActivityCorrected', async () => {
     await harness.useCase.execute(ACTOR, 't1', 's1', COMMAND);
     expect(harness.audit.record).toHaveBeenCalledOnce();
     expect(harness.events.enqueue.mock.calls[0]?.[1]?.eventType).toBe(
       ACTIVITY_CORRECTED_EVENT,
     );
+    expect(harness.pointsReversal.reverseForCorrection).toHaveBeenCalledOnce();
+    expect(
+      harness.pointsReversal.reverseForCorrection.mock.calls[0]?.[1],
+    ).toMatchObject({ submissionId: 's1', membershipId: 'm1' });
   });
 
   it('rejects correcting a non-approved claim', async () => {

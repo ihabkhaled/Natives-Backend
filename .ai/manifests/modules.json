@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T21:51:04.053Z",
+  "generatedAt": "2026-07-19T22:47:11.657Z",
   "modules": [
     {
       "name": "activities",
@@ -748,6 +748,85 @@
       "fileCount": 51,
       "specCount": 32,
       "publicSurface": "src/modules/platform/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "points",
+      "path": "src/modules/points",
+      "layers": {
+        "api-dto": [
+          "src/modules/points/api/dto/create-adjustment.dto.ts",
+          "src/modules/points/api/dto/create-rule.dto.ts",
+          "src/modules/points/api/dto/leaderboard-row-response.dto.ts",
+          "src/modules/points/api/dto/leaderboard.response.dto.ts",
+          "src/modules/points/api/dto/ledger-entry-response.dto.ts",
+          "src/modules/points/api/dto/list-points.query.dto.ts",
+          "src/modules/points/api/dto/list-rules.response.dto.ts",
+          "src/modules/points/api/dto/player-badge-response.dto.ts",
+          "src/modules/points/api/dto/point-entry-response.dto.ts",
+          "src/modules/points/api/dto/point-entry.dto.ts",
+          "src/modules/points/api/dto/points-summary.response.dto.ts",
+          "src/modules/points/api/dto/rule-response.dto.ts",
+          "src/modules/points/api/dto/transition-rule.dto.ts"
+        ],
+        "controller": [
+          "src/modules/points/api/points-rule.controller.ts",
+          "src/modules/points/api/points-self.controller.ts",
+          "src/modules/points/api/points.controller.ts"
+        ],
+        "service": [
+          "src/modules/points/application/award-activity-points.service.ts",
+          "src/modules/points/application/badge-sync.service.ts",
+          "src/modules/points/application/points-query.service.ts",
+          "src/modules/points/application/points-scope.service.ts",
+          "src/modules/points/application/points-summary.service.ts",
+          "src/modules/points/application/reverse-activity-points.service.ts",
+          "src/modules/points/application/rule-lookup.service.ts",
+          "src/modules/points/application/rule-query.service.ts"
+        ],
+        "use-case": [
+          "src/modules/points/application/create-adjustment.use-case.ts",
+          "src/modules/points/application/create-points-rule.use-case.ts",
+          "src/modules/points/application/transition-points-rule.use-case.ts"
+        ],
+        "domain": [
+          "src/modules/points/domain/badge-award.policy.ts",
+          "src/modules/points/domain/points-award.policy.ts",
+          "src/modules/points/domain/points-rule.policy.ts",
+          "src/modules/points/domain/points-rule.state-machine.ts"
+        ],
+        "other": [
+          "src/modules/points/errors/points-adjustment-conflict.error.ts",
+          "src/modules/points/errors/points-rule-invalid-transition.error.ts",
+          "src/modules/points/errors/points-rule-not-found.error.ts",
+          "src/modules/points/errors/points-rule-version-conflict.error.ts",
+          "src/modules/points/errors/points-scope-not-found.error.ts",
+          "src/modules/points/errors/points-validation.error.ts",
+          "src/modules/points/index.ts",
+          "src/modules/points/points.module.ts"
+        ],
+        "repository": [
+          "src/modules/points/infrastructure/badge.repository.ts",
+          "src/modules/points/infrastructure/points-ledger.repository.ts",
+          "src/modules/points/infrastructure/points-rule.repository.ts",
+          "src/modules/points/infrastructure/points-scope.repository.ts"
+        ],
+        "lib": [
+          "src/modules/points/lib/points-command.mapper.ts",
+          "src/modules/points/lib/points.builders.ts",
+          "src/modules/points/lib/points.helpers.ts",
+          "src/modules/points/lib/points.mapper.ts"
+        ],
+        "model": [
+          "src/modules/points/model/points.constants.ts",
+          "src/modules/points/model/points.enums.ts",
+          "src/modules/points/model/points.rows.ts",
+          "src/modules/points/model/points.types.ts"
+        ]
+      },
+      "fileCount": 51,
+      "specCount": 23,
+      "publicSurface": "src/modules/points/index.ts",
       "hasEvents": false
     },
     {

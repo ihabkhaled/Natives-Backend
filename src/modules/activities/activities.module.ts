@@ -1,6 +1,7 @@
 import { ClockModule } from '@core/clock/clock.module';
 import { IdGeneratorModule } from '@core/id-generator/id-generator.module';
 import { PlatformModule } from '@modules/platform';
+import { PointsModule } from '@modules/points';
 import { Module } from '@nestjs/common';
 
 import { ActivityBuddyController } from './api/activity-buddy.controller';
@@ -42,7 +43,7 @@ import { ActivityTypeRepository } from './infrastructure/activity-type.repositor
  * ActivityWithdrawn event commit atomically. Review/moderation is prompt 401.
  */
 @Module({
-  imports: [ClockModule, IdGeneratorModule, PlatformModule],
+  imports: [ClockModule, IdGeneratorModule, PlatformModule, PointsModule],
   controllers: [
     ActivityTypeController,
     ActivitySubmissionController,

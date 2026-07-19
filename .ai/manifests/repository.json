@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-19T21:51:04.053Z",
-  "treeHash": "sha256:8ad3e1990eee6a2afcbd825a82c938627abb52066d9804cd6d9a7bbfefdfda19",
+  "generatedAt": "2026-07-19T22:47:11.657Z",
+  "treeHash": "sha256:9572db1e999bf4f52c9a7f7c8e60ba9343507cd0bb3ff2f0bcafad6f778e7bf6",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:8ecf52eaca926febae9cbbbdb9eba695ffdcb96e8f0323bda19b3b7b7918d26d",
-      "sizeBytes": 1619
+      "hash": "sha256:9bcc6dec2c9e2256a29d507ddf7737eeb4d351a778de4aef4f99aa753e3e1340",
+      "sizeBytes": 1685
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -3255,6 +3255,23 @@
       "sizeBytes": 2626
     },
     {
+      "path": "src/database/migrations/1723100000000-points-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsSchema1723100000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0cbcb96f4f9fe06bc96f7cb1e279e62deb4ab80f36ace07d34a241602c701034",
+      "sizeBytes": 13633
+    },
+    {
       "path": "src/database/migrations/activities-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3325,6 +3342,18 @@
       "kind": "spec",
       "hash": "sha256:16e0ed51c653f3c8958f7cb76ac871d7664e3b9c284f00f48392e005943373d7",
       "sizeBytes": 2217
+    },
+    {
+      "path": "src/database/migrations/points-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5d8c605b6d1e82960025c8fe1773a7f37687720ee1fe25f9290a97104166030e",
+      "sizeBytes": 3469
     },
     {
       "path": "src/database/migrations/practice-reminders-calendar-schema.spec.ts",
@@ -3886,8 +3915,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:f9c7687098835af1cab58ad9243c19fe48594c83fbe0ce7c8dffd99af3631574",
-      "sizeBytes": 4071
+      "hash": "sha256:a0468aba10ea65b1566b0881cc7a367950057d3b3e44457fbba3409d44a92e4b",
+      "sizeBytes": 4133
     },
     {
       "path": "src/modules/activities/api/activity-buddy.controller.ts",
@@ -4439,8 +4468,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:375e7aad2bfc351a202f449e62979c1472cdd815dbc0f49091dc6b5bd140a672",
-      "sizeBytes": 3623
+      "hash": "sha256:78d1e04183c4b6bb7e315076c2bd2b28ebba808d24f80a1badd00c6d9b1c399b",
+      "sizeBytes": 4043
     },
     {
       "path": "src/modules/activities/application/correct-submission.use-case.ts",
@@ -4456,8 +4485,8 @@
       "hasSpec": true,
       "specPath": "src/modules/activities/application/correct-submission.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:ab832a0b602467a8689edc21266b5036acd12725ae52818677b40b9864cdca20",
-      "sizeBytes": 3952
+      "hash": "sha256:9696eace94d4f07479f920f4d4ae2dab8a0140e5962e191db4dc7e670af9b4d8",
+      "sizeBytes": 4288
     },
     {
       "path": "src/modules/activities/application/create-submission.use-case.spec.ts",
@@ -4526,8 +4555,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:a0555cce9916699c31ff3cf74a8a544b5cdd12db5954db0f022c2f3e608f8d3e",
-      "sizeBytes": 4689
+      "hash": "sha256:461c4663c8a09739df51ed1554134486695d21bbede365c7f329b289658b763a",
+      "sizeBytes": 5113
     },
     {
       "path": "src/modules/activities/application/record-review-decision.use-case.ts",
@@ -4543,8 +4572,8 @@
       "hasSpec": true,
       "specPath": "src/modules/activities/application/record-review-decision.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:0cc55605010abbdb215fc3d480a77c26a255db9e858fb0556b251a28ac1c10b4",
-      "sizeBytes": 4356
+      "hash": "sha256:7900169c0b014b7f5d382a36a6438e5fed7e411ff9eb044c0094c5ab7cd146ea",
+      "sizeBytes": 5043
     },
     {
       "path": "src/modules/activities/application/respond-to-buddy.use-case.spec.ts",
@@ -20119,6 +20148,1868 @@
       "kind": "source",
       "hash": "sha256:59b744a7aba1725ee19ed2fe372122ce9d8a0002eedb0838fb5b2db21bbd0e20",
       "sizeBytes": 3979
+    },
+    {
+      "path": "src/modules/points/api/dto/create-adjustment.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateAdjustmentDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:09cd731d30728a775f63432cca5950252948ba25ba585c8a8559cb61d53226c9",
+      "sizeBytes": 1305
+    },
+    {
+      "path": "src/modules/points/api/dto/create-rule.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateRuleDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:76c5e763475e5227399e3c8bf0dacba34d415bfb92bee5e4a8b28d3d2ce8d642",
+      "sizeBytes": 2138
+    },
+    {
+      "path": "src/modules/points/api/dto/leaderboard-row-response.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LeaderboardRowResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3fabf62bea6d373b90321297ddc63a6bee38cd680f545a201aec6c90ec389a8a",
+      "sizeBytes": 406
+    },
+    {
+      "path": "src/modules/points/api/dto/leaderboard.response.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LeaderboardResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:077e544f7840423aeae6e724f0416a75eb09e3516a58691bc2704665dbb6b251",
+      "sizeBytes": 500
+    },
+    {
+      "path": "src/modules/points/api/dto/ledger-entry-response.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LedgerEntryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:903113fedfc1924ffe3ab196c92aadbfad7b1a4963812fa22ec752f040c83769",
+      "sizeBytes": 1002
+    },
+    {
+      "path": "src/modules/points/api/dto/list-points.query.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListPointsQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3bf188c8545268e8971a3396f224e053e2f624de610ba53811d0a688be2ae8de",
+      "sizeBytes": 708
+    },
+    {
+      "path": "src/modules/points/api/dto/list-rules.response.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListRulesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6f397d9d3bd5a7752b76bea65943ec633ce54976731c3944574630e485adff90",
+      "sizeBytes": 457
+    },
+    {
+      "path": "src/modules/points/api/dto/player-badge-response.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerBadgeResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2ff1550be3b57ccddfa3862ad9472c3ca9c732f879d70204bae82f9b10627eed",
+      "sizeBytes": 388
+    },
+    {
+      "path": "src/modules/points/api/dto/point-entry-response.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointEntryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a6352de9784bb8a365578d700a9d6f4685dd4d783aaebcf7eb9059525c601bcd",
+      "sizeBytes": 491
+    },
+    {
+      "path": "src/modules/points/api/dto/point-entry.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointEntryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3f337accfc0fac0c6ffbe30532ba602987f59bd95d16e060c1969910ba7abab6",
+      "sizeBytes": 1609
+    },
+    {
+      "path": "src/modules/points/api/dto/points-summary.response.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsSummaryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2ce66fd113331454cab65279dbf05963fc602a64e06d4df528e37c150734346e",
+      "sizeBytes": 747
+    },
+    {
+      "path": "src/modules/points/api/dto/rule-response.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RuleResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:429a2753c220c2c245ae0126a54a98cfb9a0ec9dad382da43cde3a2285048e6c",
+      "sizeBytes": 1946
+    },
+    {
+      "path": "src/modules/points/api/dto/transition-rule.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionRuleDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ab9e49f9afd79686c32cb2185b81cb88332728079f58f80110e40e98e4b0a462",
+      "sizeBytes": 603
+    },
+    {
+      "path": "src/modules/points/api/points-rule.controller.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsRuleController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6a173724a933cc31b03ba38948bcc8de51615a373e3ae602d7c2ddc15122b216",
+      "sizeBytes": 3782
+    },
+    {
+      "path": "src/modules/points/api/points-self.controller.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsSelfController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e2f58ac7f6d07addd2dba88e20d946f00ff2158d668f667977d40a913fcb6106",
+      "sizeBytes": 1452
+    },
+    {
+      "path": "src/modules/points/api/points.controller.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ee238660bdbb61f59555bedfe8b6d97a758ae8dc48c747931e3645d617dec251",
+      "sizeBytes": 3468
+    },
+    {
+      "path": "src/modules/points/application/award-activity-points.service.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b88e16c6caea6f8e84617105587fa5aca9e8546257304f13c726a22e955a076c",
+      "sizeBytes": 4126
+    },
+    {
+      "path": "src/modules/points/application/award-activity-points.service.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AwardActivityPointsService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/award-activity-points.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bf4aeaffee0300f621b410f8d10bdd74de5d7a407e70df918b6ff353444dce9f",
+      "sizeBytes": 4689
+    },
+    {
+      "path": "src/modules/points/application/badge-sync.service.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:694cb6434d8a37dabbdd86087728f8ebd573fda3c03fa33f6e5683220a0f372d",
+      "sizeBytes": 2236
+    },
+    {
+      "path": "src/modules/points/application/badge-sync.service.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "BadgeSyncService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/badge-sync.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:63a0d44198560f8179ffa46023a1856c4d42c3caee6579956ceef36e4c6b2051",
+      "sizeBytes": 2900
+    },
+    {
+      "path": "src/modules/points/application/create-adjustment.use-case.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ddb9b5d08edca9cc690da19973758b4e196670f00ee1b64de7003cd3319d7b53",
+      "sizeBytes": 2879
+    },
+    {
+      "path": "src/modules/points/application/create-adjustment.use-case.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateAdjustmentUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/create-adjustment.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5eca0c8375d9e5b2a603c5f82595f6744e45bb13c8f95fe060ada263ff903f00",
+      "sizeBytes": 3623
+    },
+    {
+      "path": "src/modules/points/application/create-points-rule.use-case.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0ee3e8a0fbc9e0d4850217d4fe23792ab312bdb4589f54648242e3e9efc00cfb",
+      "sizeBytes": 2821
+    },
+    {
+      "path": "src/modules/points/application/create-points-rule.use-case.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreatePointsRuleUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/create-points-rule.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9b813c650a66c61f0cff0e4fa77cafff883f43d35dbfd5e2bee6e2ec08962a5b",
+      "sizeBytes": 2988
+    },
+    {
+      "path": "src/modules/points/application/points-query.service.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5eff88713b34b7f3c779bfcd437a5b4a06bcd6d0394133311e3ae14816d34ebc",
+      "sizeBytes": 1920
+    },
+    {
+      "path": "src/modules/points/application/points-query.service.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/points-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9a6c956ce2f937b9f6967319e9ae88b957b3560eae5f5fea8d9c3256a4016435",
+      "sizeBytes": 2557
+    },
+    {
+      "path": "src/modules/points/application/points-scope.service.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:47b865720b84c5435f3cb84a44aa3152062460f64423f6873d1bd38aee4e9d85",
+      "sizeBytes": 2391
+    },
+    {
+      "path": "src/modules/points/application/points-scope.service.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsScopeService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/points-scope.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:43ce48e0c96567340dac03d7adcdef4bfc5c80abe637f12e74161b0d8b3e6ff6",
+      "sizeBytes": 2021
+    },
+    {
+      "path": "src/modules/points/application/points-summary.service.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7a774c217fa4e48b9e1a397d14fa5208d4a084a9cc10e98483d7275fb7f1c6dc",
+      "sizeBytes": 1761
+    },
+    {
+      "path": "src/modules/points/application/points-summary.service.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsSummaryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/points-summary.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:6f31de1c3fdf5cebf569ca96a19d2aec3a56622b18b0e6f95d96d622c40d7e6c",
+      "sizeBytes": 1469
+    },
+    {
+      "path": "src/modules/points/application/reverse-activity-points.service.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c3921f1d1c279ebdc7f957deccd99a498e2eeb1e3a22b1ff30d8a5737dad7175",
+      "sizeBytes": 2895
+    },
+    {
+      "path": "src/modules/points/application/reverse-activity-points.service.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReverseActivityPointsService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/reverse-activity-points.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7c0f284d07a371fc2db6c4f1ead4cae8b630b0728816c0c35db6d7eaaca9703c",
+      "sizeBytes": 2615
+    },
+    {
+      "path": "src/modules/points/application/rule-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bef480151ded442287e7f55371267f6a7703503a365aae6cae79e6bc7cdbee8e",
+      "sizeBytes": 907
+    },
+    {
+      "path": "src/modules/points/application/rule-lookup.service.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RuleLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/rule-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:67e3ba96f2dd9b9d46c84a4fff450365414dcf5f40d37fb503aed14617201a2c",
+      "sizeBytes": 985
+    },
+    {
+      "path": "src/modules/points/application/rule-query.service.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:966289663cfd41cd1998624c09ae2979c762443ba1fb53c20b8b30ec4fab11c5",
+      "sizeBytes": 825
+    },
+    {
+      "path": "src/modules/points/application/rule-query.service.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RuleQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/rule-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:30b5e50944587261056e8b419f138e9a37b7f79177d5d4efeee699e703be12f2",
+      "sizeBytes": 1282
+    },
+    {
+      "path": "src/modules/points/application/transition-points-rule.use-case.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:de6151a15efaf994d22598e9273d5ebf498da89298c02dc3013f12ed25d1a58c",
+      "sizeBytes": 3995
+    },
+    {
+      "path": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionPointsRuleUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/transition-points-rule.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b74df38ce3a5098ffb1dc49cacedd7952846c000a42b52576cceaace99fd6c82",
+      "sizeBytes": 4203
+    },
+    {
+      "path": "src/modules/points/domain/badge-award.policy.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:335af9ca0b2b7e872031c80ca4e80902fddb8c1be8a40a0ce54297c32f1645e0",
+      "sizeBytes": 2169
+    },
+    {
+      "path": "src/modules/points/domain/badge-award.policy.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "badgesToAward"
+        },
+        {
+          "kind": "function",
+          "name": "isCrossed"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/domain/badge-award.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f6d860280af868023d71646cd2b88dbbf81a792b409c680a755ec23eea985910",
+      "sizeBytes": 1200
+    },
+    {
+      "path": "src/modules/points/domain/points-award.policy.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:aced609bf1654c51fce5bcdf85edf860451d5735275454235c54b4fe78e80ee4",
+      "sizeBytes": 4281
+    },
+    {
+      "path": "src/modules/points/domain/points-award.policy.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "computeAward"
+        },
+        {
+          "kind": "function",
+          "name": "resolvePointEntry"
+        },
+        {
+          "kind": "function",
+          "name": "daysBetween"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/domain/points-award.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:86be552ad8d1dd3c9b6b5033fbc681df523b1c6ba362ef84843230a1fa65f09a",
+      "sizeBytes": 2623
+    },
+    {
+      "path": "src/modules/points/domain/points-rule.policy.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7d5a8a50431bfc5bbf00279ce1f30f6bf3d36aac4664e45df5a802d6a45004ca",
+      "sizeBytes": 1466
+    },
+    {
+      "path": "src/modules/points/domain/points-rule.policy.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assertRuleContent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/domain/points-rule.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e4f31c0a60d84543ab6e436bb4d69b1b0601091bf9159e161502131e922778ea",
+      "sizeBytes": 827
+    },
+    {
+      "path": "src/modules/points/domain/points-rule.state-machine.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:27ee48ff51854b6703e0a929f8f93c1d420b53836c81e1b296a61d3b4cc24ad2",
+      "sizeBytes": 1924
+    },
+    {
+      "path": "src/modules/points/domain/points-rule.state-machine.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedRuleTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransitionRule"
+        },
+        {
+          "kind": "function",
+          "name": "resolveRuleTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isPublishTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isRetireTarget"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/domain/points-rule.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3d878ec0584319c1d8316aed5537d4c38317d5f1a84bf409fea79535730dfd19",
+      "sizeBytes": 2172
+    },
+    {
+      "path": "src/modules/points/errors/points-adjustment-conflict.error.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsAdjustmentConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7adafe4d1366a2f5d593dec48d1763b794a2f3ce0db6043e05c0ac2c999afe7d",
+      "sizeBytes": 338
+    },
+    {
+      "path": "src/modules/points/errors/points-errors.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5059308bef1d9646089461a21463b44065e68ddedd39f8bcab05474cedcd5868",
+      "sizeBytes": 1690
+    },
+    {
+      "path": "src/modules/points/errors/points-rule-invalid-transition.error.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsRuleInvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1d8e29af03ab1ac0f1cd9283cd88b46083a090105ed5fc8a4b2658b47304ed50",
+      "sizeBytes": 357
+    },
+    {
+      "path": "src/modules/points/errors/points-rule-not-found.error.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsRuleNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ce74ea4d642fdc8a03f705a5b17b27452b5ccbc90f128b8f9abfb8d5ea2e5d48",
+      "sizeBytes": 313
+    },
+    {
+      "path": "src/modules/points/errors/points-rule-version-conflict.error.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsRuleVersionConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9ebe9444ac0e7b6fa7e9732ee76c6f2c611a14f6cbb55d4e618d878a6ec199d7",
+      "sizeBytes": 347
+    },
+    {
+      "path": "src/modules/points/errors/points-scope-not-found.error.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsScopeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cc9f94586c0a25f99418f70e2a40eedf13ac39db64b4b0f1d06bb5a14b4b2b32",
+      "sizeBytes": 346
+    },
+    {
+      "path": "src/modules/points/errors/points-validation.error.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsValidationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:52fb8f3eb5a6d27212ac58d8bc52fba4137a4b85ab456929037dc763aa2c0030",
+      "sizeBytes": 328
+    },
+    {
+      "path": "src/modules/points/index.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bcd9cfa266fb84e981d73f30f9f3bbb30a9e9af7b388f0e077be94b78fe2e01e",
+      "sizeBytes": 328
+    },
+    {
+      "path": "src/modules/points/infrastructure/badge.repository.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:41e68db84993edcd094b24edf0e38fc3f2429074bafdff81ffdf6c8db198491c",
+      "sizeBytes": 2838
+    },
+    {
+      "path": "src/modules/points/infrastructure/badge.repository.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "BadgeRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/infrastructure/badge.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:58f2eb5973d970eb1d0552164d1d9144caf85940e2510b2f83549bd875eb90ac",
+      "sizeBytes": 3163
+    },
+    {
+      "path": "src/modules/points/infrastructure/points-ledger.repository.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:73ee64d86a95e22ab1af420ccd6d23eded80e7b0208472ed6cf2c5dd4433c462",
+      "sizeBytes": 5426
+    },
+    {
+      "path": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsLedgerRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/infrastructure/points-ledger.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e3e26d5442ffb06d9405eb2432716781ec28b592fc45fbc6fe08409a63fb13d5",
+      "sizeBytes": 5927
+    },
+    {
+      "path": "src/modules/points/infrastructure/points-rule.repository.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6589761153bf99042a2b068651dfb72ce4530a9fa57eb1f50f9c65e7039a9969",
+      "sizeBytes": 5446
+    },
+    {
+      "path": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsRuleRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/infrastructure/points-rule.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c93a3f0e75930b9407389d69d4256664dae2a9936ab2cae34c87a5505570b804",
+      "sizeBytes": 6038
+    },
+    {
+      "path": "src/modules/points/infrastructure/points-scope.repository.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:dad8963676b3d52132c231020404bc20a00145917ca2cdd5d7e1d6e88ec2957f",
+      "sizeBytes": 1358
+    },
+    {
+      "path": "src/modules/points/infrastructure/points-scope.repository.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsScopeRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/infrastructure/points-scope.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:961c92134901a293b2f12b9684fd332fc145e234375da20810759d4c34d129e6",
+      "sizeBytes": 1834
+    },
+    {
+      "path": "src/modules/points/lib/points-command.mapper.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5f49ca6345148d6c925cda22d19165abb3cb2afcfa1f569ae0d01b6cfc92eb55",
+      "sizeBytes": 1498
+    },
+    {
+      "path": "src/modules/points/lib/points-command.mapper.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toRuleContent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/lib/points-command.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:6fec6246d298de97125b9a605dd1468822e20e4b1b061afeb4330dd0100ab938",
+      "sizeBytes": 1045
+    },
+    {
+      "path": "src/modules/points/lib/points.builders.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9cc619b3539126228c6cdeedd54a537af6441be63123564a1bc42f33c618d0ad",
+      "sizeBytes": 8197
+    },
+    {
+      "path": "src/modules/points/lib/points.builders.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewRule"
+        },
+        {
+          "kind": "function",
+          "name": "buildRuleStatusChange"
+        },
+        {
+          "kind": "function",
+          "name": "buildAwardEntry"
+        },
+        {
+          "kind": "function",
+          "name": "buildReversalEntry"
+        },
+        {
+          "kind": "function",
+          "name": "buildAdjustmentEntry"
+        },
+        {
+          "kind": "function",
+          "name": "buildPlayerBadge"
+        },
+        {
+          "kind": "function",
+          "name": "buildLedgerAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildRuleAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildPointsAwardedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildPointsReversedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildPointsAdjustedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildBadgeEarnedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildRuleCreatedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildRulePublishedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildRuleRetiredEvent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/lib/points.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:df20d3e992e4a57616c255db22cea8c42f9dcca9538fc481b83ae23394d98fe6",
+      "sizeBytes": 8702
+    },
+    {
+      "path": "src/modules/points/lib/points.helpers.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0708dc0417b43f57a61d0f0b3696a6af8a1efb672742a1688f6133455f9a0c7d",
+      "sizeBytes": 2466
+    },
+    {
+      "path": "src/modules/points/lib/points.helpers.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolvePointsPage"
+        },
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNumber"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableNumber"
+        },
+        {
+          "kind": "function",
+          "name": "toTotal"
+        },
+        {
+          "kind": "function",
+          "name": "parseEnumValue"
+        },
+        {
+          "kind": "function",
+          "name": "toIsoDate"
+        },
+        {
+          "kind": "function",
+          "name": "buildAwardKey"
+        },
+        {
+          "kind": "function",
+          "name": "buildReversalKey"
+        },
+        {
+          "kind": "function",
+          "name": "buildAdjustmentKey"
+        },
+        {
+          "kind": "function",
+          "name": "computeRank"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/lib/points.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8b25f26871de78786de7948d384d1dd10ab659da71ffafed5dcdfd891f0db514",
+      "sizeBytes": 2616
+    },
+    {
+      "path": "src/modules/points/lib/points.mapper.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f74e719ecabfc642d5c90f65f9f6a5441fd5fbea92de4a931cd3e02c909d1791",
+      "sizeBytes": 5830
+    },
+    {
+      "path": "src/modules/points/lib/points.mapper.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toPointsRule"
+        },
+        {
+          "kind": "function",
+          "name": "toLedgerEntry"
+        },
+        {
+          "kind": "function",
+          "name": "toBadgeDefinition"
+        },
+        {
+          "kind": "function",
+          "name": "toPlayerBadge"
+        },
+        {
+          "kind": "function",
+          "name": "toActivityTypePoints"
+        },
+        {
+          "kind": "function",
+          "name": "toLeaderboardRow"
+        },
+        {
+          "kind": "function",
+          "name": "toLedgerEntryView"
+        },
+        {
+          "kind": "function",
+          "name": "toPlayerBadgeView"
+        },
+        {
+          "kind": "function",
+          "name": "parsePointEntries"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/lib/points.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:995ceb130bfeb917363dd8d54a4263b3336646b61008b298c36917327b31b90a",
+      "sizeBytes": 4947
+    },
+    {
+      "path": "src/modules/points/model/points.constants.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "POINTS_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MY_POINTS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_RULES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_MEMBER_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_ADJUSTMENT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_TRANSITION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "LEDGER_HISTORY_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_BADGE_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_KEY_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_KEY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_DESCRIPTION_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_ENTRIES_MIN_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_ENTRIES_MAX_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_CATEGORY_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_CATEGORY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ENTRY_POINTS_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ENTRY_POINTS_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "ENTRY_CAP_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ENTRY_CAP_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "ENTRY_COOLDOWN_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ENTRY_COOLDOWN_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "RECORD_VERSION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "FIRST_RULE_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "ADJUSTMENT_AMOUNT_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ADJUSTMENT_AMOUNT_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "ADJUSTMENT_REASON_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ADJUSTMENT_REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OPERATION_KEY_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OPERATION_KEY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ISO_DATE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "ISO_DATE_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "GLOBAL_SCOPE_SENTINEL"
+        },
+        {
+          "kind": "const",
+          "name": "MILLISECONDS_PER_DAY"
+        },
+        {
+          "kind": "const",
+          "name": "AWARD_KEY_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "REVERSAL_KEY_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "ADJUSTMENT_KEY_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "KEY_SEGMENT_SEPARATOR"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_POINTS_RULE_ID"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_POINTS_RULE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_POINTS_RULE_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "TROPHY_BADGE_ID"
+        },
+        {
+          "kind": "const",
+          "name": "GLOBE_BADGE_ID"
+        },
+        {
+          "kind": "const",
+          "name": "DRAGON_BADGE_ID"
+        },
+        {
+          "kind": "const",
+          "name": "BROKEN_TIER_BADGE_ID"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_VALIDATION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_VALIDATION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_SCOPE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_SCOPE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ADJUSTMENT_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ADJUSTMENT_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "LEDGER_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "LEDGER_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "BADGE_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_AWARDED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_REVERSED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_ADJUSTED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_TRANSITIONED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_AWARDED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_REVERSED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_ADJUSTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "BADGE_EARNED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_CREATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_PUBLISHED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_RETIRED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_RULE_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "LEDGER_ENTRY_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "BADGE_DEFINITION_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "PLAYER_BADGE_COLUMNS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:80e6bebd1748fbe216392b0be1b329452bfc4ff639ef5c02bd9b7b74e1a94eb1",
+      "sizeBytes": 7127
+    },
+    {
+      "path": "src/modules/points/model/points.enums.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "PointsRuleStatus"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_RULE_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "PointsRuleTransition"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_RULE_TRANSITION_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "LedgerEntryType"
+        },
+        {
+          "kind": "const",
+          "name": "LEDGER_ENTRY_TYPE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "LedgerSourceType"
+        },
+        {
+          "kind": "const",
+          "name": "LEDGER_SOURCE_TYPE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "PointsApproval"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_APPROVAL_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AwardSkipReason"
+        },
+        {
+          "kind": "const",
+          "name": "AWARD_SKIP_REASON_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "BadgeStatus"
+        },
+        {
+          "kind": "const",
+          "name": "BADGE_STATUS_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:33394d6e5ae8ddab42ce0337e4a6a672129bbd80f118967c732d26474b8c26ea",
+      "sizeBytes": 3546
+    },
+    {
+      "path": "src/modules/points/model/points.rows.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PointsRuleRow"
+        },
+        {
+          "kind": "interface",
+          "name": "LedgerEntryRow"
+        },
+        {
+          "kind": "interface",
+          "name": "BadgeDefinitionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayerBadgeRow"
+        },
+        {
+          "kind": "interface",
+          "name": "ActivityTypePointsRow"
+        },
+        {
+          "kind": "interface",
+          "name": "LeaderboardRowRaw"
+        },
+        {
+          "kind": "interface",
+          "name": "AwardFactsRow"
+        },
+        {
+          "kind": "interface",
+          "name": "TotalRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:939b57832acfc122cfead3e7454ffb0a5087882bce7866b1318c0f1675550481",
+      "sizeBytes": 3044
+    },
+    {
+      "path": "src/modules/points/model/points.types.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "PagedResult"
+        },
+        {
+          "kind": "interface",
+          "name": "RulePointEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "PointsRule"
+        },
+        {
+          "kind": "interface",
+          "name": "RuleContent"
+        },
+        {
+          "kind": "interface",
+          "name": "NewPointsRule"
+        },
+        {
+          "kind": "interface",
+          "name": "RuleStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "ActivityTypePoints"
+        },
+        {
+          "kind": "interface",
+          "name": "AwardFacts"
+        },
+        {
+          "kind": "interface",
+          "name": "AwardInput"
+        },
+        {
+          "kind": "interface",
+          "name": "AwardDecision"
+        },
+        {
+          "kind": "interface",
+          "name": "ActivityAwardCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "ActivityReversalCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "LedgerEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "NewLedgerEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "AdjustmentCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "BadgeDefinition"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayerBadge"
+        },
+        {
+          "kind": "interface",
+          "name": "NewPlayerBadge"
+        },
+        {
+          "kind": "interface",
+          "name": "BadgeScope"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateRuleCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "TransitionRuleCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "RulePointEntryInput"
+        },
+        {
+          "kind": "interface",
+          "name": "RuleContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "LedgerEntryView"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayerBadgeView"
+        },
+        {
+          "kind": "interface",
+          "name": "PointsSummaryView"
+        },
+        {
+          "kind": "interface",
+          "name": "LeaderboardRow"
+        },
+        {
+          "kind": "type",
+          "name": "LeaderboardPage"
+        },
+        {
+          "kind": "type",
+          "name": "PointsRulePage"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8ffb2e956026c5678ccef9cf97a41e0a68e325d8f7a919906298e875dbaf4e1e",
+      "sizeBytes": 10141
+    },
+    {
+      "path": "src/modules/points/points.module.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:11da476788664b85a886bf6ab8a3df5942dae8f50777ad98d92f24f7567c7d4e",
+      "sizeBytes": 3050
     },
     {
       "path": "src/modules/practices/adapters/calendar-token.adapter.spec.ts",

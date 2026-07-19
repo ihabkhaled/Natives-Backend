@@ -11,6 +11,7 @@ import { IdentityModule } from '@modules/identity';
 import { MeasurementsModule } from '@modules/measurements';
 import { MembersModule } from '@modules/members';
 import { PlatformModule } from '@modules/platform';
+import { PointsModule } from '@modules/points';
 import { PracticesModule } from '@modules/practices';
 import { RbacModule } from '@modules/rbac';
 import { ScoringModule } from '@modules/scoring';
@@ -41,6 +42,7 @@ import { Module } from '@nestjs/common';
     ScoringModule,
     MeasurementsModule,
     ActivitiesModule,
+    PointsModule,
     ArticlesModule,
   ],
 })

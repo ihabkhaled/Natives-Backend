@@ -9,6 +9,7 @@ import {
   AuditRecorderService,
   RecordDomainEventService,
 } from '@modules/platform';
+import { ReverseActivityPointsService } from '@modules/points';
 import { Inject, Injectable } from '@nestjs/common';
 
 import { canReverseSubmission } from '../domain/activity-submission.state-machine';
@@ -46,6 +47,7 @@ export class CorrectSubmissionUseCase {
     private readonly detail: ReviewDetailService,
     private readonly audit: AuditRecorderService,
     private readonly events: RecordDomainEventService,
+    private readonly pointsReversal: ReverseActivityPointsService,
   ) {}
 
   execute(
@@ -115,6 +117,12 @@ export class CorrectSubmissionUseCase {
       tx,
       buildActivityCorrectedEvent(reversed, actor.userId),
     );
+    await this.pointsReversal.reverseForCorrection(tx, {
+      submissionId: reversed.id,
+      teamId: reversed.teamId,
+      membershipId: reversed.membershipId,
+      actorUserId: actor.userId,
+    });
     return this.detail.assembleDetail(tx, reversed);
   }
 }

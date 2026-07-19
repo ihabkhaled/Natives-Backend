@@ -9,6 +9,7 @@ import {
   AuditRecorderService,
   RecordDomainEventService,
 } from '@modules/platform';
+import { AwardActivityPointsService } from '@modules/points';
 import { Inject, Injectable } from '@nestjs/common';
 
 import {
@@ -26,7 +27,7 @@ import {
   resolveReviewDecisionEvent,
 } from '../lib/activity.builders';
 import { REVIEW_DECIDED_ACTION } from '../model/activities.constants';
-import type { SubmissionStatus } from '../model/activity.enums';
+import { SubmissionStatus } from '../model/activity.enums';
 import type {
   ActivitySubmission,
   ReviewDecisionCommand,
@@ -51,6 +52,7 @@ export class RecordReviewDecisionUseCase {
     private readonly detail: ReviewDetailService,
     private readonly audit: AuditRecorderService,
     private readonly events: RecordDomainEventService,
+    private readonly award: AwardActivityPointsService,
   ) {}
 
   execute(
@@ -129,6 +131,26 @@ export class RecordReviewDecisionUseCase {
         actor.userId,
       ),
     );
+    await this.maybeAward(tx, actor, decided);
     return this.detail.assembleDetail(tx, decided);
+  }
+
+  private async maybeAward(
+    tx: TransactionScope,
+    actor: AuthUserIdentity,
+    decided: ActivitySubmission,
+  ): Promise<void> {
+    if (decided.status !== SubmissionStatus.Approved) {
+      return;
+    }
+    await this.award.awardForApproval(tx, {
+      submissionId: decided.id,
+      teamId: decided.teamId,
+      seasonId: decided.seasonId,
+      membershipId: decided.membershipId,
+      activityTypeId: decided.activityTypeId,
+      performedOn: decided.performedOn,
+      actorUserId: actor.userId,
+    });
   }
 }

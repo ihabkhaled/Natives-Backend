@@ -73,6 +73,7 @@ function build() {
   };
   const audit = { record: vi.fn().mockResolvedValue(undefined) };
   const events = { enqueue: vi.fn().mockResolvedValue(undefined) };
+  const award = { awardForApproval: vi.fn().mockResolvedValue(undefined) };
   const useCase = new RecordReviewDecisionUseCase(
     unitOfWork as never,
     clock as never,
@@ -81,8 +82,9 @@ function build() {
     detail as never,
     audit as never,
     events as never,
+    award as never,
   );
-  return { eligibility, review, detail, audit, events, useCase };
+  return { eligibility, review, detail, audit, events, award, useCase };
 }
 
 function command(decision: ReviewDecision, reviewNote: string | null) {
@@ -107,9 +109,15 @@ describe('RecordReviewDecisionUseCase', () => {
     expect(harness.events.enqueue.mock.calls[0]?.[1]?.eventType).toBe(
       ACTIVITY_APPROVED_EVENT,
     );
+    expect(harness.award.awardForApproval).toHaveBeenCalledOnce();
+    expect(harness.award.awardForApproval.mock.calls[0]?.[1]).toMatchObject({
+      submissionId: 's1',
+      membershipId: 'm1',
+      activityTypeId: 'type-1',
+    });
   });
 
-  it('rejects with a note and emits ActivityRejected', async () => {
+  it('rejects with a note and emits ActivityRejected without awarding', async () => {
     harness.review.applyDecision.mockResolvedValue(
       submission(SubmissionStatus.Rejected),
     );
@@ -122,6 +130,7 @@ describe('RecordReviewDecisionUseCase', () => {
     expect(harness.events.enqueue.mock.calls[0]?.[1]?.eventType).toBe(
       ACTIVITY_REJECTED_EVENT,
     );
+    expect(harness.award.awardForApproval).not.toHaveBeenCalled();
   });
 
   it('requires a note to reject', async () => {

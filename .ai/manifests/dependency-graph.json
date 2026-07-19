@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T21:51:04.053Z",
+  "generatedAt": "2026-07-19T22:47:11.657Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -64,6 +64,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/platform/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/points/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -1647,6 +1652,11 @@
       "type": "cross-module"
     },
     {
+      "from": "src/modules/activities/activities.module.ts",
+      "to": "src/modules/points/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/activities/api/activity-buddy.controller.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -2457,6 +2467,11 @@
       "type": "cross-module"
     },
     {
+      "from": "src/modules/activities/application/correct-submission.use-case.ts",
+      "to": "src/modules/points/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/activities/application/create-submission.use-case.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -2669,6 +2684,11 @@
     {
       "from": "src/modules/activities/application/record-review-decision.use-case.ts",
       "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/activities/application/record-review-decision.use-case.ts",
+      "to": "src/modules/points/index.ts",
       "type": "cross-module"
     },
     {
@@ -14094,6 +14114,1166 @@
     {
       "from": "src/modules/platform/platform.module.ts",
       "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/create-adjustment.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/create-adjustment.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/create-adjustment.dto.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/create-rule.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/create-rule.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/create-rule.dto.ts",
+      "to": "src/modules/points/api/dto/point-entry.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/create-rule.dto.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/leaderboard-row-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/leaderboard.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/leaderboard.response.dto.ts",
+      "to": "src/modules/points/api/dto/leaderboard-row-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/ledger-entry-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/ledger-entry-response.dto.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/list-points.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/list-points.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/list-points.query.dto.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/list-rules.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/list-rules.response.dto.ts",
+      "to": "src/modules/points/api/dto/rule-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/player-badge-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/point-entry-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/point-entry.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/point-entry.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/point-entry.dto.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/points-summary.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/points-summary.response.dto.ts",
+      "to": "src/modules/points/api/dto/ledger-entry-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/points-summary.response.dto.ts",
+      "to": "src/modules/points/api/dto/player-badge-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/rule-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/rule-response.dto.ts",
+      "to": "src/modules/points/api/dto/point-entry-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/rule-response.dto.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/transition-rule.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/transition-rule.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/transition-rule.dto.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/transition-rule.dto.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/modules/points/api/dto/create-rule.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/modules/points/api/dto/list-points.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/modules/points/api/dto/list-rules.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/modules/points/api/dto/rule-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/modules/points/api/dto/transition-rule.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/modules/points/application/create-points-rule.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/modules/points/application/rule-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/modules/points/lib/points-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/modules/points/lib/points.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-rule.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/points-self.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/points-self.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/points-self.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/points-self.controller.ts",
+      "to": "src/modules/points/api/dto/points-summary.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-self.controller.ts",
+      "to": "src/modules/points/application/points-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-self.controller.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points-self.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/modules/points/api/dto/create-adjustment.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/modules/points/api/dto/leaderboard.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/modules/points/api/dto/list-points.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/modules/points/api/dto/points-summary.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/modules/points/application/create-adjustment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/modules/points/application/points-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/modules/points/lib/points.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/award-activity-points.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/award-activity-points.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/award-activity-points.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/award-activity-points.service.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/points/application/award-activity-points.service.ts",
+      "to": "src/modules/points/application/badge-sync.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/award-activity-points.service.ts",
+      "to": "src/modules/points/domain/points-award.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/award-activity-points.service.ts",
+      "to": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/award-activity-points.service.ts",
+      "to": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/award-activity-points.service.ts",
+      "to": "src/modules/points/lib/points.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/award-activity-points.service.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/award-activity-points.service.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/badge-sync.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/badge-sync.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/badge-sync.service.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/points/application/badge-sync.service.ts",
+      "to": "src/modules/points/domain/badge-award.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/badge-sync.service.ts",
+      "to": "src/modules/points/infrastructure/badge.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/badge-sync.service.ts",
+      "to": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/badge-sync.service.ts",
+      "to": "src/modules/points/lib/points.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/badge-sync.service.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/modules/points/application/badge-sync.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/modules/points/application/points-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/modules/points/application/points-summary.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/modules/points/errors/points-adjustment-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/modules/points/lib/points.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-adjustment.use-case.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-points-rule.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/create-points-rule.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/create-points-rule.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/create-points-rule.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/create-points-rule.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/points/application/create-points-rule.use-case.ts",
+      "to": "src/modules/points/application/points-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-points-rule.use-case.ts",
+      "to": "src/modules/points/domain/points-rule.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-points-rule.use-case.ts",
+      "to": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-points-rule.use-case.ts",
+      "to": "src/modules/points/lib/points.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-points-rule.use-case.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/create-points-rule.use-case.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/points-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/points-query.service.ts",
+      "to": "src/modules/points/application/points-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/points-query.service.ts",
+      "to": "src/modules/points/application/points-summary.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/points-query.service.ts",
+      "to": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/points-query.service.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/points-scope.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/points-scope.service.ts",
+      "to": "src/modules/points/errors/points-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/points-scope.service.ts",
+      "to": "src/modules/points/infrastructure/points-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/points-summary.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/points-summary.service.ts",
+      "to": "src/modules/points/infrastructure/badge.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/points-summary.service.ts",
+      "to": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/points-summary.service.ts",
+      "to": "src/modules/points/lib/points.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/points-summary.service.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/reverse-activity-points.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/reverse-activity-points.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/reverse-activity-points.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/reverse-activity-points.service.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/points/application/reverse-activity-points.service.ts",
+      "to": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/reverse-activity-points.service.ts",
+      "to": "src/modules/points/lib/points.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/reverse-activity-points.service.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/reverse-activity-points.service.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/rule-lookup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/rule-lookup.service.ts",
+      "to": "src/modules/points/errors/points-rule-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/rule-lookup.service.ts",
+      "to": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/rule-lookup.service.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/rule-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/rule-query.service.ts",
+      "to": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/rule-query.service.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/modules/points/application/rule-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/modules/points/domain/points-rule.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/modules/points/errors/points-rule-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/modules/points/errors/points-rule-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/modules/points/lib/points.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/domain/badge-award.policy.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/domain/badge-award.policy.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/domain/points-award.policy.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/domain/points-award.policy.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/domain/points-award.policy.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/domain/points-rule.policy.ts",
+      "to": "src/modules/points/errors/points-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/domain/points-rule.policy.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/domain/points-rule.state-machine.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/errors/points-adjustment-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/errors/points-adjustment-conflict.error.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/errors/points-rule-invalid-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/errors/points-rule-invalid-transition.error.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/errors/points-rule-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/errors/points-rule-not-found.error.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/errors/points-rule-version-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/errors/points-rule-version-conflict.error.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/errors/points-scope-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/errors/points-scope-not-found.error.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/errors/points-validation.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/errors/points-validation.error.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/index.ts",
+      "to": "src/modules/points/application/award-activity-points.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/index.ts",
+      "to": "src/modules/points/application/reverse-activity-points.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/index.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/index.ts",
+      "to": "src/modules/points/points.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/badge.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/infrastructure/badge.repository.ts",
+      "to": "src/modules/points/lib/points.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/badge.repository.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/badge.repository.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/badge.repository.ts",
+      "to": "src/modules/points/model/points.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/badge.repository.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "to": "src/modules/points/lib/points.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "to": "src/modules/points/lib/points.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "to": "src/modules/points/model/points.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "to": "src/modules/points/lib/points.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "to": "src/modules/points/model/points.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-scope.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-scope.repository.ts",
+      "to": "src/modules/points/model/points.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/points-command.mapper.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/points.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/points/lib/points.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/points/lib/points.builders.ts",
+      "to": "src/modules/points/domain/points-rule.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/points.builders.ts",
+      "to": "src/modules/points/lib/points.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/points.builders.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/points.builders.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/points.builders.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/points.helpers.ts",
+      "to": "src/modules/points/model/points.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/points.helpers.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/points.mapper.ts",
+      "to": "src/modules/points/lib/points.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/points.mapper.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/points.mapper.ts",
+      "to": "src/modules/points/model/points.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/points.mapper.ts",
+      "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/model/points.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/model/points.types.ts",
+      "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/api/points-rule.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/api/points-self.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/api/points.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/award-activity-points.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/badge-sync.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/create-adjustment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/create-points-rule.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/points-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/points-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/points-summary.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/reverse-activity-points.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/rule-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/rule-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/transition-points-rule.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/infrastructure/badge.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/infrastructure/points-ledger.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/infrastructure/points-rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/infrastructure/points-scope.repository.ts",
       "type": "internal"
     },
     {
