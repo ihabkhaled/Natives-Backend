@@ -5,6 +5,7 @@ import { LoggerModule } from '@core/logger/logger.module';
 import { ArticlesModule } from '@modules/articles';
 import { AssessmentsModule } from '@modules/assessments';
 import { AuthModule } from '@modules/auth';
+import { DevelopmentModule } from '@modules/development';
 import { IdentityModule } from '@modules/identity';
 import { MembersModule } from '@modules/members';
 import { PlatformModule } from '@modules/platform';
@@ -33,6 +34,7 @@ import { Module } from '@nestjs/common';
     PlatformModule,
     PracticesModule,
     AssessmentsModule,
+    DevelopmentModule,
     ArticlesModule,
   ],
 })

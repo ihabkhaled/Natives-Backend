@@ -28,6 +28,20 @@
         ],
         "type": "object"
       },
+      "AcknowledgeFeedbackDto": {
+        "properties": {
+          "clarificationNote": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "clarificationRequested": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
       "AddAliasDto": {
         "properties": {
           "alias": {
@@ -1199,6 +1213,175 @@
         ],
         "type": "object"
       },
+      "CoachFeedbackRecordResponseDto": {
+        "properties": {
+          "authorUserId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "coachNote": {
+            "nullable": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "familyId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "frisbeeImprovement": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "mentalImprovement": {
+            "nullable": true,
+            "type": "string"
+          },
+          "positiveFrisbee": {
+            "nullable": true,
+            "type": "string"
+          },
+          "positiveMental": {
+            "nullable": true,
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "publishedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "recommendedPosition": {
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "in_review",
+              "published",
+              "revised"
+            ],
+            "type": "string"
+          },
+          "submittedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "submittedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "summary": {
+            "nullable": true,
+            "type": "string"
+          },
+          "supersededAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "supersededById": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "teamRole": {
+            "nullable": true,
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "familyId",
+          "teamId",
+          "seasonId",
+          "membershipId",
+          "authorUserId",
+          "status",
+          "revision",
+          "recordVersion",
+          "positiveFrisbee",
+          "frisbeeImprovement",
+          "positiveMental",
+          "mentalImprovement",
+          "teamRole",
+          "recommendedPosition",
+          "summary",
+          "coachNote",
+          "submittedAt",
+          "submittedBy",
+          "publishedAt",
+          "publishedBy",
+          "supersededAt",
+          "supersededById",
+          "createdBy",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "CoachFeedbackResponseDto": {
+        "properties": {
+          "acknowledgement": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FeedbackAcknowledgementResponseDto"
+              }
+            ],
+            "nullable": true,
+            "type": "object"
+          },
+          "feedback": {
+            "$ref": "#/components/schemas/CoachFeedbackRecordResponseDto"
+          }
+        },
+        "required": [
+          "feedback",
+          "acknowledgement"
+        ],
+        "type": "object"
+      },
       "CompleteBlockDto": {
         "properties": {
           "completionStatus": {
@@ -1289,6 +1472,22 @@
         },
         "required": [
           "status",
+          "reason"
+        ],
+        "type": "object"
+      },
+      "CorrectFeedbackDto": {
+        "properties": {
+          "fields": {
+            "$ref": "#/components/schemas/FeedbackFieldsDto"
+          },
+          "reason": {
+            "maxLength": 2000,
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "required": [
           "reason"
         ],
         "type": "object"
@@ -1543,6 +1742,113 @@
         "required": [
           "name",
           "category"
+        ],
+        "type": "object"
+      },
+      "CreateFeedbackDto": {
+        "properties": {
+          "fields": {
+            "$ref": "#/components/schemas/FeedbackFieldsDto"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "membershipId"
+        ],
+        "type": "object"
+      },
+      "CreateGoalDto": {
+        "properties": {
+          "actions": {
+            "items": {
+              "$ref": "#/components/schemas/GoalActionDto"
+            },
+            "type": "array"
+          },
+          "baselineValue": {
+            "maximum": 1000000000,
+            "minimum": -1000000000,
+            "nullable": true,
+            "type": "object"
+          },
+          "description": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "dueDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "evidence": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "feedbackId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "measurableTarget": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "metricDefinitionId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "ownerUserId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "progressNote": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "progressValue": {
+            "maximum": 1000000000,
+            "minimum": -1000000000,
+            "nullable": true,
+            "type": "object"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "targetValue": {
+            "maximum": 1000000000,
+            "minimum": -1000000000,
+            "nullable": true,
+            "type": "object"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 2,
+            "type": "string"
+          }
+        },
+        "required": [
+          "membershipId",
+          "title"
         ],
         "type": "object"
       },
@@ -2138,6 +2444,169 @@
         ],
         "type": "object"
       },
+      "DevelopmentGoalRecordResponseDto": {
+        "properties": {
+          "baselineValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "completedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "dueDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "evidence": {
+            "nullable": true,
+            "type": "string"
+          },
+          "feedbackId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "measurableTarget": {
+            "nullable": true,
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "metricDefinitionId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "ownerUserId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "progressNote": {
+            "nullable": true,
+            "type": "string"
+          },
+          "progressValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "reviewedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "reviewedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "reviewNote": {
+            "nullable": true,
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "proposed",
+              "active",
+              "achieved",
+              "missed",
+              "cancelled"
+            ],
+            "type": "string"
+          },
+          "targetValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "teamId",
+          "seasonId",
+          "membershipId",
+          "feedbackId",
+          "metricDefinitionId",
+          "ownerUserId",
+          "title",
+          "description",
+          "measurableTarget",
+          "targetValue",
+          "baselineValue",
+          "progressValue",
+          "progressNote",
+          "evidence",
+          "status",
+          "dueDate",
+          "completedAt",
+          "reviewNote",
+          "reviewedAt",
+          "reviewedBy",
+          "recordVersion",
+          "createdBy",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "DevelopmentGoalResponseDto": {
+        "properties": {
+          "actions": {
+            "items": {
+              "$ref": "#/components/schemas/GoalActionResponseDto"
+            },
+            "type": "array"
+          },
+          "goal": {
+            "$ref": "#/components/schemas/DevelopmentGoalRecordResponseDto"
+          }
+        },
+        "required": [
+          "goal",
+          "actions"
+        ],
+        "type": "object"
+      },
       "DeviceSessionResponseDto": {
         "properties": {
           "approxLocation": {
@@ -2323,6 +2792,167 @@
         ],
         "type": "object"
       },
+      "FeedbackAcknowledgementResponseDto": {
+        "properties": {
+          "acknowledgedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "clarificationNote": {
+            "nullable": true,
+            "type": "string"
+          },
+          "clarificationRequested": {
+            "type": "boolean"
+          },
+          "feedbackId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "feedbackId",
+          "membershipId",
+          "userId",
+          "acknowledgedAt",
+          "clarificationRequested",
+          "clarificationNote"
+        ],
+        "type": "object"
+      },
+      "FeedbackFieldsDto": {
+        "properties": {
+          "coachNote": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "frisbeeImprovement": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "mentalImprovement": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "positiveFrisbee": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "positiveMental": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "recommendedPosition": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "summary": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "teamRole": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "FeedbackRevisionsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/FeedbackSummaryResponseDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "FeedbackSummaryResponseDto": {
+        "properties": {
+          "authorUserId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "familyId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "in_review",
+              "published",
+              "revised"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "familyId",
+          "teamId",
+          "membershipId",
+          "authorUserId",
+          "status",
+          "revision",
+          "recordVersion",
+          "createdAt",
+          "publishedAt"
+        ],
+        "type": "object"
+      },
       "FinalizeAttendanceDto": {
         "properties": {
           "expectedVersion": {
@@ -2368,6 +2998,59 @@
           "created",
           "skipped",
           "sessions"
+        ],
+        "type": "object"
+      },
+      "GoalActionDto": {
+        "properties": {
+          "description": {
+            "maxLength": 1000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "done": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dueDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "sortOrder": {
+            "maximum": 1000,
+            "minimum": 0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "description",
+          "sortOrder"
+        ],
+        "type": "object"
+      },
+      "GoalActionResponseDto": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "done": {
+            "type": "boolean"
+          },
+          "dueDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "sortOrder": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "description",
+          "sortOrder",
+          "done",
+          "dueDate"
         ],
         "type": "object"
       },
@@ -2582,6 +3265,58 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/CategoryResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListCoachFeedbackResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/FeedbackSummaryResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListDevelopmentGoalsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/DevelopmentGoalResponseDto"
             },
             "type": "array"
           },
@@ -2920,6 +3655,32 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/SettingVersionResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListSharedFeedbackResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/SharedFeedbackResponseDto"
             },
             "type": "array"
           },
@@ -4627,6 +5388,21 @@
         ],
         "type": "object"
       },
+      "RemindersResponseDto": {
+        "properties": {
+          "feedbackReminders": {
+            "type": "number"
+          },
+          "goalReminders": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "feedbackReminders",
+          "goalReminders"
+        ],
+        "type": "object"
+      },
       "ReminderTestResponseDto": {
         "properties": {
           "enqueued": {
@@ -4766,6 +5542,39 @@
         "required": [
           "token",
           "password"
+        ],
+        "type": "object"
+      },
+      "ReviewGoalDto": {
+        "properties": {
+          "evidence": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "progressNote": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "progressValue": {
+            "maximum": 1000000000,
+            "minimum": -1000000000,
+            "nullable": true,
+            "type": "object"
+          },
+          "reviewNote": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "expectedRecordVersion"
         ],
         "type": "object"
       },
@@ -5830,6 +6639,93 @@
         ],
         "type": "object"
       },
+      "SharedFeedbackResponseDto": {
+        "properties": {
+          "acknowledgedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "clarificationRequested": {
+            "type": "boolean"
+          },
+          "frisbeeImprovement": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "mentalImprovement": {
+            "nullable": true,
+            "type": "string"
+          },
+          "positiveFrisbee": {
+            "nullable": true,
+            "type": "string"
+          },
+          "positiveMental": {
+            "nullable": true,
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "recommendedPosition": {
+            "nullable": true,
+            "type": "string"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "in_review",
+              "published",
+              "revised"
+            ],
+            "type": "string"
+          },
+          "summary": {
+            "nullable": true,
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "teamRole": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "teamId",
+          "membershipId",
+          "status",
+          "revision",
+          "positiveFrisbee",
+          "frisbeeImprovement",
+          "positiveMental",
+          "mentalImprovement",
+          "teamRole",
+          "recommendedPosition",
+          "summary",
+          "publishedAt",
+          "acknowledgedAt",
+          "clarificationRequested"
+        ],
+        "type": "object"
+      },
       "StationResponseDto": {
         "properties": {
           "blockId": {
@@ -6164,6 +7060,29 @@
         },
         "type": "object"
       },
+      "TransitionGoalDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "transition": {
+            "enum": [
+              "activate",
+              "achieve",
+              "miss",
+              "cancel",
+              "reopen"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "transition",
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "UpdateBlockDto": {
         "properties": {
           "blockType": {
@@ -6308,6 +7227,103 @@
         "required": [
           "name",
           "category"
+        ],
+        "type": "object"
+      },
+      "UpdateFeedbackDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "fields": {
+            "$ref": "#/components/schemas/FeedbackFieldsDto"
+          }
+        },
+        "required": [
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
+      "UpdateGoalDto": {
+        "properties": {
+          "actions": {
+            "items": {
+              "$ref": "#/components/schemas/GoalActionDto"
+            },
+            "type": "array"
+          },
+          "baselineValue": {
+            "maximum": 1000000000,
+            "minimum": -1000000000,
+            "nullable": true,
+            "type": "object"
+          },
+          "description": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "dueDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "evidence": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "feedbackId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "measurableTarget": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "metricDefinitionId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "ownerUserId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "progressNote": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "progressValue": {
+            "maximum": 1000000000,
+            "minimum": -1000000000,
+            "nullable": true,
+            "type": "object"
+          },
+          "targetValue": {
+            "maximum": 1000000000,
+            "minimum": -1000000000,
+            "nullable": true,
+            "type": "object"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 2,
+            "type": "string"
+          }
+        },
+        "required": [
+          "expectedRecordVersion",
+          "title"
         ],
         "type": "object"
       },
@@ -9063,6 +10079,752 @@
         ]
       }
     },
+    "/teams/{teamId}/coach-feedback": {
+      "get": {
+        "operationId": "CoachFeedback.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListCoachFeedbackResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s coach feedback (note-free summaries)",
+        "tags": [
+          "development"
+        ]
+      },
+      "post": {
+        "operationId": "CoachFeedback.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFeedbackDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachFeedbackResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a draft coach feedback",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/coach-feedback/{feedbackId}": {
+      "get": {
+        "operationId": "CoachFeedback.detail",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "feedbackId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachFeedbackResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Read one coach feedback with its coach note",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/coach-feedback/{feedbackId}/correct": {
+      "post": {
+        "operationId": "CoachFeedback.correct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "feedbackId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CorrectFeedbackDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachFeedbackResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Correct a published feedback via a new revision",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/coach-feedback/{feedbackId}/fields": {
+      "put": {
+        "operationId": "CoachFeedback.update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "feedbackId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFeedbackDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachFeedbackResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Autosave a draft feedback’s structured fields",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/coach-feedback/{feedbackId}/publish": {
+      "post": {
+        "operationId": "CoachFeedback.publish",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "feedbackId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OptimisticVersionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachFeedbackResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Publish (share) an in-review feedback",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/coach-feedback/{feedbackId}/revisions": {
+      "get": {
+        "operationId": "CoachFeedback.revisions",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "feedbackId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackRevisionsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List the revision history of a feedback family",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/coach-feedback/{feedbackId}/submit": {
+      "post": {
+        "operationId": "CoachFeedback.submit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "feedbackId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OptimisticVersionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoachFeedbackResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Submit a draft feedback for review",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/development-goals": {
+      "get": {
+        "operationId": "DevelopmentGoal.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListDevelopmentGoalsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s development goals",
+        "tags": [
+          "development"
+        ]
+      },
+      "post": {
+        "operationId": "DevelopmentGoal.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGoalDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DevelopmentGoalResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a proposed development goal",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/development-goals/{goalId}": {
+      "get": {
+        "operationId": "DevelopmentGoal.detail",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "goalId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DevelopmentGoalResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Read one development goal with its action plan",
+        "tags": [
+          "development"
+        ]
+      },
+      "put": {
+        "operationId": "DevelopmentGoal.update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "goalId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGoalDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DevelopmentGoalResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Update a development goal and its action plan",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/development-goals/{goalId}/review": {
+      "post": {
+        "operationId": "DevelopmentGoal.review",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "goalId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewGoalDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DevelopmentGoalResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Record a coach review of a development goal",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/development-goals/{goalId}/transition": {
+      "post": {
+        "operationId": "DevelopmentGoal.transition",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "goalId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransitionGoalDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DevelopmentGoalResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Move a development goal through its lifecycle",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/development-reminders": {
+      "post": {
+        "operationId": "DevelopmentReminder.enqueue",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemindersResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Queue reminders for unacknowledged feedback and overdue goals",
+        "tags": [
+          "development"
+        ]
+      }
+    },
     "/teams/{teamId}/drills": {
       "get": {
         "operationId": "Drills.listDrills",
@@ -10283,6 +12045,168 @@
         "summary": "List my own published assessments for a team",
         "tags": [
           "assessments"
+        ]
+      }
+    },
+    "/teams/{teamId}/my-development-goals": {
+      "get": {
+        "operationId": "DevelopmentGoalSelf.listOwn",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListDevelopmentGoalsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List my own development goals for a team",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/my-feedback": {
+      "get": {
+        "operationId": "CoachFeedbackSelf.listOwn",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListSharedFeedbackResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List my own shared feedback for a team",
+        "tags": [
+          "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/my-feedback/{feedbackId}/acknowledge": {
+      "post": {
+        "operationId": "CoachFeedbackSelf.acknowledge",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "feedbackId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcknowledgeFeedbackDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackAcknowledgementResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Acknowledge feedback shared with me",
+        "tags": [
+          "development"
         ]
       }
     },

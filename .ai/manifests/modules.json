@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T18:57:02.870Z",
+  "generatedAt": "2026-07-19T00:23:31.879Z",
   "modules": [
     {
       "name": "articles",
@@ -175,6 +175,113 @@
       "fileCount": 6,
       "specCount": 2,
       "publicSurface": "src/modules/auth/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "development",
+      "path": "src/modules/development",
+      "layers": {
+        "controller": [
+          "src/modules/development/api/coach-feedback-self.controller.ts",
+          "src/modules/development/api/coach-feedback.controller.ts",
+          "src/modules/development/api/development-goal-self.controller.ts",
+          "src/modules/development/api/development-goal.controller.ts",
+          "src/modules/development/api/development-reminder.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/development/api/dto/acknowledge-feedback.dto.ts",
+          "src/modules/development/api/dto/coach-feedback-record-response.dto.ts",
+          "src/modules/development/api/dto/coach-feedback-response.dto.ts",
+          "src/modules/development/api/dto/correct-feedback.dto.ts",
+          "src/modules/development/api/dto/create-feedback.dto.ts",
+          "src/modules/development/api/dto/create-goal.dto.ts",
+          "src/modules/development/api/dto/development-goal-record-response.dto.ts",
+          "src/modules/development/api/dto/development-goal-response.dto.ts",
+          "src/modules/development/api/dto/feedback-acknowledgement-response.dto.ts",
+          "src/modules/development/api/dto/feedback-fields.dto.ts",
+          "src/modules/development/api/dto/feedback-revisions.response.dto.ts",
+          "src/modules/development/api/dto/feedback-summary-response.dto.ts",
+          "src/modules/development/api/dto/goal-action-response.dto.ts",
+          "src/modules/development/api/dto/goal-action.dto.ts",
+          "src/modules/development/api/dto/list-coach-feedback.response.dto.ts",
+          "src/modules/development/api/dto/list-development-goals.response.dto.ts",
+          "src/modules/development/api/dto/list-development.query.dto.ts",
+          "src/modules/development/api/dto/list-shared-feedback.response.dto.ts",
+          "src/modules/development/api/dto/optimistic-version.dto.ts",
+          "src/modules/development/api/dto/reminders-response.dto.ts",
+          "src/modules/development/api/dto/review-goal.dto.ts",
+          "src/modules/development/api/dto/shared-feedback-response.dto.ts",
+          "src/modules/development/api/dto/transition-goal.dto.ts",
+          "src/modules/development/api/dto/update-feedback.dto.ts",
+          "src/modules/development/api/dto/update-goal.dto.ts"
+        ],
+        "use-case": [
+          "src/modules/development/application/acknowledge-feedback.use-case.ts",
+          "src/modules/development/application/correct-feedback.use-case.ts",
+          "src/modules/development/application/create-feedback.use-case.ts",
+          "src/modules/development/application/create-goal.use-case.ts",
+          "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+          "src/modules/development/application/publish-feedback.use-case.ts",
+          "src/modules/development/application/review-goal.use-case.ts",
+          "src/modules/development/application/submit-feedback.use-case.ts",
+          "src/modules/development/application/transition-goal.use-case.ts",
+          "src/modules/development/application/update-feedback.use-case.ts",
+          "src/modules/development/application/update-goal.use-case.ts"
+        ],
+        "service": [
+          "src/modules/development/application/development-scope.service.ts",
+          "src/modules/development/application/feedback-lookup.service.ts",
+          "src/modules/development/application/feedback-query.service.ts",
+          "src/modules/development/application/goal-lookup.service.ts",
+          "src/modules/development/application/goal-query.service.ts"
+        ],
+        "other": [
+          "src/modules/development/development.module.ts",
+          "src/modules/development/errors/coach-feedback-not-found.error.ts",
+          "src/modules/development/errors/development-goal-not-found.error.ts",
+          "src/modules/development/errors/development-scope-not-found.error.ts",
+          "src/modules/development/errors/development-validation.error.ts",
+          "src/modules/development/errors/feedback-already-acknowledged.error.ts",
+          "src/modules/development/errors/feedback-invalid-transition.error.ts",
+          "src/modules/development/errors/feedback-version-conflict.error.ts",
+          "src/modules/development/errors/goal-invalid-transition.error.ts",
+          "src/modules/development/errors/goal-version-conflict.error.ts",
+          "src/modules/development/index.ts"
+        ],
+        "domain": [
+          "src/modules/development/domain/feedback-visibility.policy.ts",
+          "src/modules/development/domain/feedback.state-machine.ts",
+          "src/modules/development/domain/goal.policy.ts",
+          "src/modules/development/domain/goal.state-machine.ts"
+        ],
+        "repository": [
+          "src/modules/development/infrastructure/coach-feedback.repository.ts",
+          "src/modules/development/infrastructure/development-goal.repository.ts",
+          "src/modules/development/infrastructure/development-scope.repository.ts"
+        ],
+        "lib": [
+          "src/modules/development/lib/development-command.mapper.ts",
+          "src/modules/development/lib/development.helpers.ts",
+          "src/modules/development/lib/feedback.builders.ts",
+          "src/modules/development/lib/feedback.mapper.ts",
+          "src/modules/development/lib/goal.builders.ts",
+          "src/modules/development/lib/goal.mapper.ts"
+        ],
+        "model": [
+          "src/modules/development/model/development.constants.ts",
+          "src/modules/development/model/development.rows.ts",
+          "src/modules/development/model/development.types.ts",
+          "src/modules/development/model/feedback.enums.ts",
+          "src/modules/development/model/feedback.rows.ts",
+          "src/modules/development/model/feedback.types.ts",
+          "src/modules/development/model/goal.enums.ts",
+          "src/modules/development/model/goal.rows.ts",
+          "src/modules/development/model/goal.types.ts"
+        ]
+      },
+      "fileCount": 79,
+      "specCount": 29,
+      "publicSurface": "src/modules/development/index.ts",
       "hasEvents": false
     },
     {

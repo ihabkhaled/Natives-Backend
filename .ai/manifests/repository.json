@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-18T18:57:02.870Z",
-  "treeHash": "sha256:9f7f9e2aa339bae7ddf43b3e13ec4a8d7835df2060f37b5ea5f0e9353e1621a9",
+  "generatedAt": "2026-07-19T00:23:31.879Z",
+  "treeHash": "sha256:f4164f8a0233022cc83e9774af55c1a6721a41c09c08d5210be6060b5dade86d",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:61b490479da05a2443811eb082f23870201cd37d1e9bd9f0da7caf659a1fe720",
-      "sizeBytes": 1307
+      "hash": "sha256:c90d053bcf742824f83fecca4ff9b26805e918a75abe3f57a34f7539f41fea40",
+      "sizeBytes": 1388
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -81,8 +81,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:e540e0deb0312ef63bcf953de55aa842c103c8729e4277e66bb183a9ab24cd43",
-      "sizeBytes": 987
+      "hash": "sha256:699259bfc87dd3441771a83542b63f96f26fa88201b0d0dd385df58cecac6569",
+      "sizeBytes": 1537
     },
     {
       "path": "src/bootstrap/configure-lifecycle.ts",
@@ -3032,6 +3032,23 @@
       "sizeBytes": 7984
     },
     {
+      "path": "src/database/migrations/1722500000000-development-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentSchema1722500000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b85533300be1182c88b9dbed808d5307e7ffccb86fe1a9721fb619e0430b944f",
+      "sizeBytes": 10794
+    },
+    {
       "path": "src/database/migrations/assessment-catalog-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3042,6 +3059,18 @@
       "kind": "spec",
       "hash": "sha256:0f6c3bf81874acafc5f342e970f39831e90b091abf3b8ffbdc18aeb8794dc027",
       "sizeBytes": 3116
+    },
+    {
+      "path": "src/database/migrations/development-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:eecc455047bae3aa6ae2fc091bd419650d2372a381500288a9d1c6888784f583",
+      "sizeBytes": 2551
     },
     {
       "path": "src/database/migrations/player-assessment-schema.spec.ts",
@@ -6465,6 +6494,2364 @@
       "kind": "source",
       "hash": "sha256:d8058b17dffe8203de7742f24c56ec72cd1e9673cdccb14644cde72f11408f9a",
       "sizeBytes": 317
+    },
+    {
+      "path": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CoachFeedbackSelfController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bba687a7c21967160b659dd47433c09df78abcb54c0ad430f71ca6a3b83ec29a",
+      "sizeBytes": 3115
+    },
+    {
+      "path": "src/modules/development/api/coach-feedback.controller.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CoachFeedbackController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7e9134343d6a15776bc3702954c623527b1f4fb333694498261af0452ccfd250",
+      "sizeBytes": 8058
+    },
+    {
+      "path": "src/modules/development/api/development-goal-self.controller.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentGoalSelfController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:852167df7bbec010213ad822e06485190e20996cd8fc519b859bac7ff997b3f6",
+      "sizeBytes": 1760
+    },
+    {
+      "path": "src/modules/development/api/development-goal.controller.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentGoalController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:74486e80655e083b10099c492b444342b4c3a9b65f9db1c1787ed9ea1968afd0",
+      "sizeBytes": 6469
+    },
+    {
+      "path": "src/modules/development/api/development-reminder.controller.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentReminderController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0e0cd25a7256c42b40f380dfb342529c7d04a081a10432d0ef7edba6f6d86c83",
+      "sizeBytes": 1627
+    },
+    {
+      "path": "src/modules/development/api/dto/acknowledge-feedback.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AcknowledgeFeedbackDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1ff6603be5d6eb08c8a4fff02e44b516c1975cfedc54d6e0272c718f90a8d608",
+      "sizeBytes": 662
+    },
+    {
+      "path": "src/modules/development/api/dto/coach-feedback-record-response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CoachFeedbackRecordResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e3935a3643d222b34be66e0b5967d94653d663160c1d4445ceea818f865a130c",
+      "sizeBytes": 2807
+    },
+    {
+      "path": "src/modules/development/api/dto/coach-feedback-response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CoachFeedbackResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5f4a57e4001d28e7843de7d697cac38de0df803710d20b328c933c95ab0f9548",
+      "sizeBytes": 630
+    },
+    {
+      "path": "src/modules/development/api/dto/correct-feedback.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CorrectFeedbackDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f9c5a2f4081a65831d997bf1da730f21d99d92afd360dd47c4761d83acc553e8",
+      "sizeBytes": 797
+    },
+    {
+      "path": "src/modules/development/api/dto/create-feedback.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateFeedbackDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bfa22cd6676e2d78e76584d1ca862eb5dea15434168e5ed8c60391b9ab80ada1",
+      "sizeBytes": 682
+    },
+    {
+      "path": "src/modules/development/api/dto/create-goal.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateGoalDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d08007d6ea307ce2b93770227737c2cbab0e2d014e2dc55943ec5929bf1e1e0a",
+      "sizeBytes": 3262
+    },
+    {
+      "path": "src/modules/development/api/dto/development-goal-record-response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentGoalRecordResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:59519a24fec9ee0a5b84d5f39681b7c8e6f0cb72ae49e407b4680110fa074912",
+      "sizeBytes": 2578
+    },
+    {
+      "path": "src/modules/development/api/dto/development-goal-response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentGoalResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ca2492708f60a0b679255be58b74603474fe5091478a6b7ab31b6fc02d542d7c",
+      "sizeBytes": 543
+    },
+    {
+      "path": "src/modules/development/api/dto/feedback-acknowledgement-response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FeedbackAcknowledgementResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:831b93a1438e2699faca23a3e7daa48ed2c0da216b8e2816b89c89d80eaa9cba",
+      "sizeBytes": 719
+    },
+    {
+      "path": "src/modules/development/api/dto/feedback-fields.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FeedbackFieldsDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a2d581f6025d6a5e7a7c7fa7c37f91fb0834effa4b13d50d13e91579f586ae3f",
+      "sizeBytes": 2044
+    },
+    {
+      "path": "src/modules/development/api/dto/feedback-revisions.response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FeedbackRevisionsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c28c6236dbb45e911116119e3ee3b0f383109926040ec14f20203cf53131a698",
+      "sizeBytes": 355
+    },
+    {
+      "path": "src/modules/development/api/dto/feedback-summary-response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FeedbackSummaryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:57b1a72ab980a4b2f173cabe6986c4a5a20fa507665dbb2e71eb25fb3452ca9c",
+      "sizeBytes": 1128
+    },
+    {
+      "path": "src/modules/development/api/dto/goal-action-response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GoalActionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:10d6ddfc4ea0ef184a07302d66e64123c9a76a061502f499a5f2f29d61892d90",
+      "sizeBytes": 419
+    },
+    {
+      "path": "src/modules/development/api/dto/goal-action.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GoalActionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5377c48cb7f3f8833b4dd78410df6d4b98f3547f0b8f369ab51b41fe5e776b56",
+      "sizeBytes": 1037
+    },
+    {
+      "path": "src/modules/development/api/dto/list-coach-feedback.response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListCoachFeedbackResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:747bbc05be5eb9232f731fe46c98d53ea0c54af80b4294f5b2176ba84e1d43bd",
+      "sizeBytes": 509
+    },
+    {
+      "path": "src/modules/development/api/dto/list-development-goals.response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListDevelopmentGoalsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a00d2f4a12191820bb8c4f44c55272fff08f4f7883ae0f68d390995f3badb1f2",
+      "sizeBytes": 519
+    },
+    {
+      "path": "src/modules/development/api/dto/list-development.query.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListDevelopmentQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:56754186b0f38243040e044c34820ed82ab7243df9c666ca01f115bc7aeab47a",
+      "sizeBytes": 723
+    },
+    {
+      "path": "src/modules/development/api/dto/list-shared-feedback.response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSharedFeedbackResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2bbbc257a56cb2f55c50877005a0ee6c66a3179dab8ebf8730c44f37b9c1855f",
+      "sizeBytes": 526
+    },
+    {
+      "path": "src/modules/development/api/dto/optimistic-version.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OptimisticVersionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2961cf77c3527e92867d79b393fb2c542a8c835e7a8b88a4ebaf97808bad8bc2",
+      "sizeBytes": 408
+    },
+    {
+      "path": "src/modules/development/api/dto/reminders-response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RemindersResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2f72e2338760a72162c5bb9a8e88658e5a31bf7f45a7b9ad9ee33d6647bc4def",
+      "sizeBytes": 291
+    },
+    {
+      "path": "src/modules/development/api/dto/review-goal.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReviewGoalDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:79ea2a6f533bc184adde22b8be92c6fe7b0fd33c58e19e1087d3cbff73d710c9",
+      "sizeBytes": 1323
+    },
+    {
+      "path": "src/modules/development/api/dto/shared-feedback-response.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SharedFeedbackResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:68cb4cb5f07b30092f0572e686ad4fa74afd4444d09c47b3ad46fdf84946a2d1",
+      "sizeBytes": 1714
+    },
+    {
+      "path": "src/modules/development/api/dto/transition-goal.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionGoalDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b6de2ab8e047a4ba014591dc1cae1283b89fa3d83a5abe31c092dab6476cb93b",
+      "sizeBytes": 587
+    },
+    {
+      "path": "src/modules/development/api/dto/update-feedback.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateFeedbackDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6370d4a8c49d1c152aeca2b6bb7d71f0e8b77c3c77f2428d069283df3713992c",
+      "sizeBytes": 682
+    },
+    {
+      "path": "src/modules/development/api/dto/update-goal.dto.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateGoalDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ee230efdecf9c73cb240c0781c150ae32dec1016a1da1bb70ca479fd76a179ac",
+      "sizeBytes": 3212
+    },
+    {
+      "path": "src/modules/development/application/acknowledge-feedback.use-case.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d5439bd883e1e1d0029751c9dd0f908da1a2f03b085ede2cbd61635959b593b2",
+      "sizeBytes": 4034
+    },
+    {
+      "path": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AcknowledgeFeedbackUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/acknowledge-feedback.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a29b878957c8c36848435bf18058fc4640dc6114f514b988fa3c2831021c357c",
+      "sizeBytes": 3743
+    },
+    {
+      "path": "src/modules/development/application/correct-feedback.use-case.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c7eba5e74ef4e5b327896b3af15366d72737a13ace15112b650cd6a18fa017cf",
+      "sizeBytes": 3662
+    },
+    {
+      "path": "src/modules/development/application/correct-feedback.use-case.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CorrectFeedbackUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/correct-feedback.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:33ca99e710d8ace75e4b92a0a93a97a73f1c47199ccd9e805c5c808571776243",
+      "sizeBytes": 4017
+    },
+    {
+      "path": "src/modules/development/application/create-feedback.use-case.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f7012870ad4435ca9e1588c4eae5bd6e0a6b3f65d8b4baf57a3a1ef0e86f4dd7",
+      "sizeBytes": 2653
+    },
+    {
+      "path": "src/modules/development/application/create-feedback.use-case.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateFeedbackUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/create-feedback.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:88a2bc5a8e4006f2f6cffae87cfdadf7b06faebad2431c1868da2d6d03931e22",
+      "sizeBytes": 2802
+    },
+    {
+      "path": "src/modules/development/application/create-goal.use-case.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ee3fdd01bbe2c11ef8f636bbf262e2accafa2faf6bb0ef47e4f47615bb66a908",
+      "sizeBytes": 3239
+    },
+    {
+      "path": "src/modules/development/application/create-goal.use-case.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateGoalUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/create-goal.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a3524f1e8696b237df98f360f777b0471191f41f6dd3dbceb541a15d4bee45a2",
+      "sizeBytes": 3494
+    },
+    {
+      "path": "src/modules/development/application/development-scope.service.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:fb5ad677bc2038891d9ce74c5a24d911acb9633f1f8ce82e018c2741223805ca",
+      "sizeBytes": 2355
+    },
+    {
+      "path": "src/modules/development/application/development-scope.service.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentScopeService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/development-scope.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4892ee3e496f8e26fa852e7cc1b75993ec30b33eb532491b41131686622fa7b3",
+      "sizeBytes": 1584
+    },
+    {
+      "path": "src/modules/development/application/enqueue-development-reminders.use-case.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9343edd7884ab8e0108fa557967482f1e1b7ec9c99a294d66c4b1a878b3f5f54",
+      "sizeBytes": 2263
+    },
+    {
+      "path": "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EnqueueDevelopmentRemindersUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/enqueue-development-reminders.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:152b8d774722caf10f89890849c901d4dd0e9f270170ade5d7f0cfaf72a900bd",
+      "sizeBytes": 2668
+    },
+    {
+      "path": "src/modules/development/application/feedback-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0283f1c7b8e46f48226b8d6b16916b7b6e7ce45646cdb02b5547f3b88113e04c",
+      "sizeBytes": 2261
+    },
+    {
+      "path": "src/modules/development/application/feedback-lookup.service.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FeedbackLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/feedback-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:67011cf8732f207bb53ad48453a2c49f4cbae1c0370d3b9dd927c39898493830",
+      "sizeBytes": 1248
+    },
+    {
+      "path": "src/modules/development/application/feedback-query.service.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:507b7a070aab85ad81a998b3d771ad2c446fe95bff98dbbd7ed6821471759ba7",
+      "sizeBytes": 4169
+    },
+    {
+      "path": "src/modules/development/application/feedback-query.service.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FeedbackQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/feedback-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:75b66c55a9337696fa9ede29fd36a4335eace80c1d3d53c2a0b2ba8e035092b4",
+      "sizeBytes": 3859
+    },
+    {
+      "path": "src/modules/development/application/goal-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b78bf1394edd4a4d7fbd34f82f28a01245367e8217de478e11d16f1c259ad69c",
+      "sizeBytes": 1071
+    },
+    {
+      "path": "src/modules/development/application/goal-lookup.service.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GoalLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/goal-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:82b625e7fba32e7a4fded132f33d0c12f64e942c80cf40bd5c917d8a86ed671e",
+      "sizeBytes": 958
+    },
+    {
+      "path": "src/modules/development/application/goal-query.service.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:deb84fb2949801298d6caacc06ee3952a44015e703ab3f12d306ca2c658b5fd0",
+      "sizeBytes": 3278
+    },
+    {
+      "path": "src/modules/development/application/goal-query.service.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GoalQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/goal-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0af54b1e67a1812ad9941598aa5ca353c503ca67bb3ae7160a88acd489d32daf",
+      "sizeBytes": 3399
+    },
+    {
+      "path": "src/modules/development/application/publish-feedback.use-case.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b569498b6056bab30741fdb8deb550460221407b4d18f971161bd80c0491fbf2",
+      "sizeBytes": 3098
+    },
+    {
+      "path": "src/modules/development/application/publish-feedback.use-case.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublishFeedbackUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/publish-feedback.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8c9d8c19dcd2ea85aab6809fc649eca255f52110728adf1044082895e737efe2",
+      "sizeBytes": 3616
+    },
+    {
+      "path": "src/modules/development/application/review-goal.use-case.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:82a95c981c63266aa536d052cb0abaa5a6868d56b162514d98918a7e7669dacf",
+      "sizeBytes": 2457
+    },
+    {
+      "path": "src/modules/development/application/review-goal.use-case.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReviewGoalUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/review-goal.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7d9a397916488c2e5530a4335a70449875b69212710d68c9124f633d18a34a9b",
+      "sizeBytes": 3308
+    },
+    {
+      "path": "src/modules/development/application/submit-feedback.use-case.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bdec69a6b9d06e8550a95ed0f50cf3ec2a8adb221e3720001e46fb73207605b9",
+      "sizeBytes": 3303
+    },
+    {
+      "path": "src/modules/development/application/submit-feedback.use-case.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SubmitFeedbackUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/submit-feedback.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:30f1f03d2c76a902a7230bb5a264a8ad66087a9ac8d342ad8395a7041dc9d287",
+      "sizeBytes": 3302
+    },
+    {
+      "path": "src/modules/development/application/transition-goal.use-case.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2c5ca43e675a723c91cef4957307365af087f928b5a726a829d20e9b558e4914",
+      "sizeBytes": 3451
+    },
+    {
+      "path": "src/modules/development/application/transition-goal.use-case.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionGoalUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/transition-goal.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:34c0265b9c3cf2f698cb3427ba42ce6c98c26d20a403c789cc17346f8b3f5818",
+      "sizeBytes": 3694
+    },
+    {
+      "path": "src/modules/development/application/update-feedback.use-case.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e325f1ecf8adf025a391aabb59a68265f79afb0c8c8c721c6b4957c7268ca8e2",
+      "sizeBytes": 3600
+    },
+    {
+      "path": "src/modules/development/application/update-feedback.use-case.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateFeedbackUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/update-feedback.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7a0acc9ca3f708ab46a0fab9205b145fcd0a8217186e8911b014757a6f2c1777",
+      "sizeBytes": 3319
+    },
+    {
+      "path": "src/modules/development/application/update-goal.use-case.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:591dd96b55e1ea1c67e579660ccbfd59aff11de3156b378df2ce21d573fdd618",
+      "sizeBytes": 3240
+    },
+    {
+      "path": "src/modules/development/application/update-goal.use-case.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateGoalUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/application/update-goal.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:add623a5221e2953709b32564089483516d49c4b2d93a81c7ce797e39ba87350",
+      "sizeBytes": 3745
+    },
+    {
+      "path": "src/modules/development/development.module.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b659783cc37cb1829a29998a23e2b3898ff1912466e74fc28b63e3c9e0fbfe15",
+      "sizeBytes": 3673
+    },
+    {
+      "path": "src/modules/development/domain/feedback-visibility.policy.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9db60c36180c31092443ed5dc479c5678aad2cacfdfbce0081efcd2a449c1222",
+      "sizeBytes": 2981
+    },
+    {
+      "path": "src/modules/development/domain/feedback-visibility.policy.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isPlayerVisible"
+        },
+        {
+          "kind": "function",
+          "name": "toSharedFeedback"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/domain/feedback-visibility.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3d2a282ada83bccfbf632ecc010ac1d34d747b8f4c4793c1a371402b827e620d",
+      "sizeBytes": 1993
+    },
+    {
+      "path": "src/modules/development/domain/feedback.state-machine.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5012c757c69438b033a1ebf583cbbc332a4ce7cf0d332eac67b6bc2773ef7b07",
+      "sizeBytes": 2172
+    },
+    {
+      "path": "src/modules/development/domain/feedback.state-machine.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedFeedbackTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransitionFeedback"
+        },
+        {
+          "kind": "function",
+          "name": "canEditFeedbackDraft"
+        },
+        {
+          "kind": "function",
+          "name": "canPublishFeedback"
+        },
+        {
+          "kind": "function",
+          "name": "canCorrectFeedback"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/domain/feedback.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1d92995f64948d374c59ea1ed771c9bce55c55f5d3fbf099244baee2b6e9e51c",
+      "sizeBytes": 2063
+    },
+    {
+      "path": "src/modules/development/domain/goal.policy.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2852d776e0de85b659f4ac2556e8b3ee39cb4a351273fb143b8600da59fc7e0d",
+      "sizeBytes": 3464
+    },
+    {
+      "path": "src/modules/development/domain/goal.policy.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assertGoalContent"
+        },
+        {
+          "kind": "function",
+          "name": "isGoalOverdue"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/domain/goal.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b40005bbd8cb6a8707818b47977fe6bcb01aed4d5e7a4638482b3dd220e45333",
+      "sizeBytes": 2360
+    },
+    {
+      "path": "src/modules/development/domain/goal.state-machine.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8080d3a25aa5c6a3dc49a05ddb86a5fedf33151ef2cf5a028bd7bbac39affad7",
+      "sizeBytes": 2232
+    },
+    {
+      "path": "src/modules/development/domain/goal.state-machine.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedGoalTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransitionGoal"
+        },
+        {
+          "kind": "function",
+          "name": "resolveGoalTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isGoalCompletion"
+        },
+        {
+          "kind": "function",
+          "name": "isGoalOpen"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/domain/goal.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d04fe2e25691f548725d43014176ec12fd1720fb80dcaef84fbd3d85f94f7b77",
+      "sizeBytes": 2120
+    },
+    {
+      "path": "src/modules/development/errors/coach-feedback-not-found.error.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CoachFeedbackNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d36843526dfb69beffeb4f6d2e2d057658df143b0ab73364b882903c0085cd16",
+      "sizeBytes": 337
+    },
+    {
+      "path": "src/modules/development/errors/development-errors.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ad11c3a8b988882d33c0e21f025aad3d70ed2fe0f0759b6a2b561ecc8ff5fed7",
+      "sizeBytes": 2635
+    },
+    {
+      "path": "src/modules/development/errors/development-goal-not-found.error.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentGoalNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1e94dbac8bf17b952f016f96b4289702351621aea76111aca03b5ecfefa5a161",
+      "sizeBytes": 323
+    },
+    {
+      "path": "src/modules/development/errors/development-scope-not-found.error.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentScopeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d2858fc82ee2aecd11774ed67d122b5dddbf835b200e0a23cac28eb38669aa7b",
+      "sizeBytes": 395
+    },
+    {
+      "path": "src/modules/development/errors/development-validation.error.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentValidationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:491bcb3aa62604968d053150a6746d52bc9fb6407fc48335a8de2c9de28ac8e9",
+      "sizeBytes": 358
+    },
+    {
+      "path": "src/modules/development/errors/feedback-already-acknowledged.error.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FeedbackAlreadyAcknowledgedError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:01342b0c28a2f7cabe9c41d44c0fe0e89bec0129569cfdfa18d78a6f4823da4c",
+      "sizeBytes": 405
+    },
+    {
+      "path": "src/modules/development/errors/feedback-invalid-transition.error.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FeedbackInvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:31d8f94a2411504ae9e6f4182076e67a3fa0ed6b41571eaebaf457ae04ee74c8",
+      "sizeBytes": 395
+    },
+    {
+      "path": "src/modules/development/errors/feedback-version-conflict.error.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FeedbackVersionConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6d0e2338a84e5c18e169cb1bb11d88895860f72425ab13d8aa4ac35c6c6378d2",
+      "sizeBytes": 385
+    },
+    {
+      "path": "src/modules/development/errors/goal-invalid-transition.error.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GoalInvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6c068f40bbd521bd53457864805b00edf439220be573ac118b95b699632b419c",
+      "sizeBytes": 356
+    },
+    {
+      "path": "src/modules/development/errors/goal-version-conflict.error.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GoalVersionConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:19a6b17204484d25bd7010cb50ec0f62cf14bc83450e618da25a9acea1bd4add",
+      "sizeBytes": 346
+    },
+    {
+      "path": "src/modules/development/index.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cb070ebe79fb82ae36d04d48c6b0adf3b24054caf8b00fee78a579453e94ac1c",
+      "sizeBytes": 58
+    },
+    {
+      "path": "src/modules/development/infrastructure/coach-feedback.repository.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6e34300a28fc85e68bc97b9e059066ea194a88cce293d26f0eba2e28bdba2cbd",
+      "sizeBytes": 11198
+    },
+    {
+      "path": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CoachFeedbackRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/infrastructure/coach-feedback.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:05fbdaffa89a2fe749fe8fdea0471f28be98393697da6e1c888e8a5f5989b04e",
+      "sizeBytes": 13966
+    },
+    {
+      "path": "src/modules/development/infrastructure/development-goal.repository.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c1272fd1b81dc7dd75107216bbcd12e0a30dfb69d61d35c53d1a35c023a6866b",
+      "sizeBytes": 9651
+    },
+    {
+      "path": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentGoalRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/infrastructure/development-goal.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:677d11b6a9aa7028ac4954d734ca2356993d1c415b3fa094a7375a43cccf9999",
+      "sizeBytes": 11780
+    },
+    {
+      "path": "src/modules/development/infrastructure/development-scope.repository.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e6eb64ad8750ae874e3c150fe87d11eb53153945c383f7692e6f1a4a8c210abd",
+      "sizeBytes": 2354
+    },
+    {
+      "path": "src/modules/development/infrastructure/development-scope.repository.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DevelopmentScopeRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/infrastructure/development-scope.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:75c269d9ba4f7788c9b743830e03bad6041fd69bef2795065f90607ff51c96c6",
+      "sizeBytes": 1366
+    },
+    {
+      "path": "src/modules/development/lib/development-command.mapper.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6351a2c0819a91ecc2eaccfdad21ba802abe9ddbdbfa5b4912656e318329862a",
+      "sizeBytes": 1526
+    },
+    {
+      "path": "src/modules/development/lib/development-command.mapper.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toFeedbackFields"
+        },
+        {
+          "kind": "function",
+          "name": "toGoalContent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/lib/development-command.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:6c878500f44ea93921be9bc2bfbee090e7702cabaa3725b424610d3088732e18",
+      "sizeBytes": 2020
+    },
+    {
+      "path": "src/modules/development/lib/development.helpers.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6b41af30eca9dcc7e8099e7fac69ab4316a361dcb85e0e6c9d5389ae05eaf885",
+      "sizeBytes": 1450
+    },
+    {
+      "path": "src/modules/development/lib/development.helpers.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveDevelopmentPage"
+        },
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableNumber"
+        },
+        {
+          "kind": "function",
+          "name": "parseEnumValue"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/lib/development.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f64f5baea58d8164b13e1b3bc2d78a35e4bf27d026532f195a34069276518dd4",
+      "sizeBytes": 1161
+    },
+    {
+      "path": "src/modules/development/lib/feedback.builders.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f23a303843858033f11e4c92beac67f71fc63ca403ac3993f542f4a6f276a1b7",
+      "sizeBytes": 5988
+    },
+    {
+      "path": "src/modules/development/lib/feedback.builders.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewFeedback"
+        },
+        {
+          "kind": "function",
+          "name": "buildCorrectionFeedback"
+        },
+        {
+          "kind": "function",
+          "name": "buildSubmitTransition"
+        },
+        {
+          "kind": "function",
+          "name": "buildReopenTransition"
+        },
+        {
+          "kind": "function",
+          "name": "buildPublishTransition"
+        },
+        {
+          "kind": "function",
+          "name": "buildFeedbackSupersede"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewAcknowledgement"
+        },
+        {
+          "kind": "function",
+          "name": "buildFeedbackAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildFeedbackPublishedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildFeedbackRevisedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildFeedbackAcknowledgedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildFeedbackReminderEvent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/lib/feedback.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1167313a73b007324b7347212f7dc0d91d149a5b5bb810842838b14cae85b3b8",
+      "sizeBytes": 6615
+    },
+    {
+      "path": "src/modules/development/lib/feedback.mapper.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:00864fb5458db1bd7141be477501afc1c3f4bdb34a0da587cf2f756aeb390a1f",
+      "sizeBytes": 2913
+    },
+    {
+      "path": "src/modules/development/lib/feedback.mapper.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toCoachFeedback"
+        },
+        {
+          "kind": "function",
+          "name": "toFeedbackSummary"
+        },
+        {
+          "kind": "function",
+          "name": "toFeedbackAcknowledgement"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/lib/feedback.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8e6fba8962118a27bf25182ed112a252548135b95d9a456fb9cfb007d653919c",
+      "sizeBytes": 2494
+    },
+    {
+      "path": "src/modules/development/lib/goal.builders.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c6613ea828194271991599bc3d86abb88e53259e62eb6106141f54cb155077c2",
+      "sizeBytes": 3906
+    },
+    {
+      "path": "src/modules/development/lib/goal.builders.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewGoal"
+        },
+        {
+          "kind": "function",
+          "name": "buildActionRows"
+        },
+        {
+          "kind": "function",
+          "name": "buildGoalAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildGoalCreatedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildGoalUpdatedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildGoalOverdueReminderEvent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/lib/goal.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c6ea8fc69fe98ebffb90dc854eee4c44e2bfebfc68ae896653dcc5bf9f96e561",
+      "sizeBytes": 3284
+    },
+    {
+      "path": "src/modules/development/lib/goal.mapper.spec.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:dd82e17fa93ad8105f13cf2228ace4e329236d84b1663915508082beebaac4e0",
+      "sizeBytes": 1978
+    },
+    {
+      "path": "src/modules/development/lib/goal.mapper.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toDevelopmentGoal"
+        },
+        {
+          "kind": "function",
+          "name": "toGoalAction"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/development/lib/goal.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e8a9f455d3c0b33b79ec3871285977219f765aa6ff4da54b090f60414b658099",
+      "sizeBytes": 1721
+    },
+    {
+      "path": "src/modules/development/model/development.constants.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DEVELOPMENT_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "COACH_FEEDBACK_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MY_FEEDBACK_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "DEVELOPMENT_GOALS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MY_GOALS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "DEVELOPMENT_REMINDERS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_DETAIL_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_FIELDS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_SUBMIT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_PUBLISH_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_CORRECT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_REVISIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_ACKNOWLEDGE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_DETAIL_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_TRANSITION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_REVIEW_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "REMINDER_SCAN_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_FIELD_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "COACH_NOTE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CLARIFICATION_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REASON_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_TITLE_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_TITLE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_TEXT_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ACTION_TEXT_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIONS_MAX_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "ACTION_SORT_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ACTION_SORT_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_NUMERIC_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_NUMERIC_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "RECORD_VERSION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "FIRST_REVISION"
+        },
+        {
+          "kind": "const",
+          "name": "ISO_DATE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_ALREADY_ACKNOWLEDGED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_ALREADY_ACKNOWLEDGED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "DEVELOPMENT_VALIDATION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "DEVELOPMENT_VALIDATION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "DEVELOPMENT_SCOPE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "DEVELOPMENT_SCOPE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_UPDATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_SUBMITTED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_PUBLISHED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_REVISED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_ACKNOWLEDGED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_UPDATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_TRANSITIONED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "DEVELOPMENT_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_PUBLISHED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_REVISED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_ACKNOWLEDGED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_CLARIFICATION_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_REMINDER_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_CREATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_UPDATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_OVERDUE_REMINDER_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "COACH_FEEDBACK_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "COACH_FEEDBACK_SUMMARY_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_ACKNOWLEDGEMENT_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "DEVELOPMENT_GOAL_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_ACTION_COLUMNS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d63e3e37371428600342b52321b0c5464c7bed0cc077a34ab34473ec4015aa44",
+      "sizeBytes": 7821
+    },
+    {
+      "path": "src/modules/development/model/development.rows.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f55c73b0f74fd768380e8e406364d06f02f40229b5f622c014c58b22f842157b",
+      "sizeBytes": 107
+    },
+    {
+      "path": "src/modules/development/model/development.types.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "PagedResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ReminderResult"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ec181b74def2d561b2acf508446af88bcb26cb4c5731316b3a4effe649e691c3",
+      "sizeBytes": 437
+    },
+    {
+      "path": "src/modules/development/model/feedback.enums.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "FeedbackStatus"
+        },
+        {
+          "kind": "const",
+          "name": "FEEDBACK_STATUS_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4dc1f6a051a2aadaffb6e3da8b100433ec9c4442db51c869e3253cb25857a2d5",
+      "sizeBytes": 695
+    },
+    {
+      "path": "src/modules/development/model/feedback.rows.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "CoachFeedbackRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CoachFeedbackSummaryRow"
+        },
+        {
+          "kind": "interface",
+          "name": "FeedbackAcknowledgementRow"
+        },
+        {
+          "kind": "interface",
+          "name": "FeedbackReminderRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d5b0bb90f0c2d273c35a614716a26592f0b14054bc285f467c8444fe6c29ea41",
+      "sizeBytes": 2350
+    },
+    {
+      "path": "src/modules/development/model/feedback.types.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "CoachFeedback"
+        },
+        {
+          "kind": "interface",
+          "name": "FeedbackFieldsInput"
+        },
+        {
+          "kind": "interface",
+          "name": "FeedbackFields"
+        },
+        {
+          "kind": "interface",
+          "name": "FeedbackAcknowledgement"
+        },
+        {
+          "kind": "interface",
+          "name": "CoachFeedbackDetail"
+        },
+        {
+          "kind": "interface",
+          "name": "FeedbackSummary"
+        },
+        {
+          "kind": "interface",
+          "name": "SharedFeedback"
+        },
+        {
+          "kind": "type",
+          "name": "FeedbackSummaryPage"
+        },
+        {
+          "kind": "type",
+          "name": "SharedFeedbackPage"
+        },
+        {
+          "kind": "interface",
+          "name": "FeedbackRevisionHistory"
+        },
+        {
+          "kind": "interface",
+          "name": "OwnFeedbackResult"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateFeedbackCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdateFeedbackCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "FeedbackVersionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CorrectFeedbackCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "AcknowledgeFeedbackCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "NewCoachFeedback"
+        },
+        {
+          "kind": "interface",
+          "name": "FeedbackTransition"
+        },
+        {
+          "kind": "interface",
+          "name": "FeedbackSupersede"
+        },
+        {
+          "kind": "interface",
+          "name": "NewFeedbackAcknowledgement"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:db1ebd3142f95209fc4241cc8aecf20a60a5cf8bba1c560a6c36019ca213e59b",
+      "sizeBytes": 7033
+    },
+    {
+      "path": "src/modules/development/model/goal.enums.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "GoalStatus"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "GoalTransition"
+        },
+        {
+          "kind": "const",
+          "name": "GOAL_TRANSITION_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:312983f9ced240aaac14cdb1d83128b27fc134d81450d3c973c448e436ae54f7",
+      "sizeBytes": 888
+    },
+    {
+      "path": "src/modules/development/model/goal.rows.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "DevelopmentGoalRow"
+        },
+        {
+          "kind": "interface",
+          "name": "GoalActionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "GoalReminderRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fbb36454092680cd6ebb3e12cda3828f13b581cee4bbc4f0e0bea22cb73da6ee",
+      "sizeBytes": 1716
+    },
+    {
+      "path": "src/modules/development/model/goal.types.ts",
+      "root": "modules",
+      "module": "development",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "GoalAction"
+        },
+        {
+          "kind": "interface",
+          "name": "DevelopmentGoal"
+        },
+        {
+          "kind": "interface",
+          "name": "DevelopmentGoalDetail"
+        },
+        {
+          "kind": "type",
+          "name": "DevelopmentGoalDetailPage"
+        },
+        {
+          "kind": "interface",
+          "name": "GoalActionInput"
+        },
+        {
+          "kind": "interface",
+          "name": "GoalContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "GoalContent"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateGoalCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdateGoalCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "TransitionGoalCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewGoalCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "NewDevelopmentGoal"
+        },
+        {
+          "kind": "interface",
+          "name": "GoalContentUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "GoalReview"
+        },
+        {
+          "kind": "interface",
+          "name": "GoalStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "NewGoalAction"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5282052ca715aeda879c75e32c2bd1059b5156848168b86f12da5cdba4156109",
+      "sizeBytes": 5466
     },
     {
       "path": "src/modules/identity/adapters/crypto-secure-random.adapter.spec.ts",

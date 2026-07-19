@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T18:57:02.870Z",
+  "generatedAt": "2026-07-19T00:23:31.879Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -34,6 +34,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/development/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -3820,6 +3825,1916 @@
       "from": "src/modules/auth/model/auth.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "to": "src/modules/development/api/dto/acknowledge-feedback.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "to": "src/modules/development/api/dto/feedback-acknowledgement-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "to": "src/modules/development/api/dto/list-development.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "to": "src/modules/development/api/dto/list-shared-feedback.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "to": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "to": "src/modules/development/application/feedback-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "to": "src/modules/development/lib/development.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/api/dto/coach-feedback-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/api/dto/correct-feedback.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/api/dto/create-feedback.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/api/dto/feedback-revisions.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/api/dto/list-coach-feedback.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/api/dto/list-development.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/api/dto/optimistic-version.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/api/dto/update-feedback.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/application/correct-feedback.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/application/create-feedback.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/application/feedback-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/application/publish-feedback.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/application/submit-feedback.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/application/update-feedback.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/lib/development-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/lib/development.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/coach-feedback.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/development-goal-self.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/development-goal-self.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/development-goal-self.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/development-goal-self.controller.ts",
+      "to": "src/modules/development/api/dto/list-development-goals.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal-self.controller.ts",
+      "to": "src/modules/development/api/dto/list-development.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal-self.controller.ts",
+      "to": "src/modules/development/application/goal-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal-self.controller.ts",
+      "to": "src/modules/development/lib/development.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal-self.controller.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal-self.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/api/dto/create-goal.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/api/dto/development-goal-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/api/dto/list-development-goals.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/api/dto/list-development.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/api/dto/review-goal.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/api/dto/transition-goal.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/api/dto/update-goal.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/application/create-goal.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/application/goal-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/application/review-goal.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/application/transition-goal.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/application/update-goal.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/lib/development-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/lib/development.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-goal.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/development-reminder.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/development-reminder.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/development-reminder.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/development-reminder.controller.ts",
+      "to": "src/modules/development/api/dto/reminders-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-reminder.controller.ts",
+      "to": "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-reminder.controller.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/development-reminder.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/acknowledge-feedback.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/acknowledge-feedback.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/acknowledge-feedback.dto.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/coach-feedback-record-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/coach-feedback-record-response.dto.ts",
+      "to": "src/modules/development/model/feedback.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/coach-feedback-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/coach-feedback-response.dto.ts",
+      "to": "src/modules/development/api/dto/coach-feedback-record-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/coach-feedback-response.dto.ts",
+      "to": "src/modules/development/api/dto/feedback-acknowledgement-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/correct-feedback.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/correct-feedback.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/correct-feedback.dto.ts",
+      "to": "src/modules/development/api/dto/feedback-fields.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/correct-feedback.dto.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/create-feedback.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/create-feedback.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/create-feedback.dto.ts",
+      "to": "src/modules/development/api/dto/feedback-fields.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/create-goal.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/create-goal.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/create-goal.dto.ts",
+      "to": "src/modules/development/api/dto/goal-action.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/create-goal.dto.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/development-goal-record-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/development-goal-record-response.dto.ts",
+      "to": "src/modules/development/model/goal.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/development-goal-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/development-goal-response.dto.ts",
+      "to": "src/modules/development/api/dto/development-goal-record-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/development-goal-response.dto.ts",
+      "to": "src/modules/development/api/dto/goal-action-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/feedback-acknowledgement-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/feedback-fields.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/feedback-fields.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/feedback-fields.dto.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/feedback-revisions.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/feedback-revisions.response.dto.ts",
+      "to": "src/modules/development/api/dto/feedback-summary-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/feedback-summary-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/feedback-summary-response.dto.ts",
+      "to": "src/modules/development/model/feedback.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/goal-action-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/goal-action.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/goal-action.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/goal-action.dto.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/list-coach-feedback.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/list-coach-feedback.response.dto.ts",
+      "to": "src/modules/development/api/dto/feedback-summary-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/list-development-goals.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/list-development-goals.response.dto.ts",
+      "to": "src/modules/development/api/dto/development-goal-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/list-development.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/list-development.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/list-development.query.dto.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/list-shared-feedback.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/list-shared-feedback.response.dto.ts",
+      "to": "src/modules/development/api/dto/shared-feedback-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/optimistic-version.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/optimistic-version.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/optimistic-version.dto.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/reminders-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/review-goal.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/review-goal.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/review-goal.dto.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/shared-feedback-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/shared-feedback-response.dto.ts",
+      "to": "src/modules/development/model/feedback.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/transition-goal.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/transition-goal.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/transition-goal.dto.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/transition-goal.dto.ts",
+      "to": "src/modules/development/model/goal.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/update-feedback.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/update-feedback.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/update-feedback.dto.ts",
+      "to": "src/modules/development/api/dto/feedback-fields.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/update-feedback.dto.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/update-goal.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/update-goal.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/api/dto/update-goal.dto.ts",
+      "to": "src/modules/development/api/dto/goal-action.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/api/dto/update-goal.dto.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "to": "src/modules/development/errors/coach-feedback-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "to": "src/modules/development/errors/feedback-already-acknowledged.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "to": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "to": "src/modules/development/lib/feedback.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/application/correct-feedback.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/correct-feedback.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/correct-feedback.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/correct-feedback.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/correct-feedback.use-case.ts",
+      "to": "src/modules/development/application/feedback-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/correct-feedback.use-case.ts",
+      "to": "src/modules/development/domain/feedback.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/correct-feedback.use-case.ts",
+      "to": "src/modules/development/errors/feedback-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/correct-feedback.use-case.ts",
+      "to": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/correct-feedback.use-case.ts",
+      "to": "src/modules/development/lib/feedback.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/correct-feedback.use-case.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/correct-feedback.use-case.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/correct-feedback.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/application/create-feedback.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/create-feedback.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/create-feedback.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/create-feedback.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/create-feedback.use-case.ts",
+      "to": "src/modules/development/application/development-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/create-feedback.use-case.ts",
+      "to": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/create-feedback.use-case.ts",
+      "to": "src/modules/development/lib/feedback.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/create-feedback.use-case.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/create-feedback.use-case.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/create-feedback.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/application/create-goal.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/create-goal.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/create-goal.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/create-goal.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/create-goal.use-case.ts",
+      "to": "src/modules/development/application/development-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/create-goal.use-case.ts",
+      "to": "src/modules/development/domain/goal.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/create-goal.use-case.ts",
+      "to": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/create-goal.use-case.ts",
+      "to": "src/modules/development/lib/goal.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/create-goal.use-case.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/create-goal.use-case.ts",
+      "to": "src/modules/development/model/goal.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/create-goal.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/application/development-scope.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/development-scope.service.ts",
+      "to": "src/modules/development/errors/development-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/development-scope.service.ts",
+      "to": "src/modules/development/infrastructure/development-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+      "to": "src/modules/development/application/development-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+      "to": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+      "to": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+      "to": "src/modules/development/lib/feedback.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+      "to": "src/modules/development/lib/goal.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+      "to": "src/modules/development/model/development.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/application/feedback-lookup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/feedback-lookup.service.ts",
+      "to": "src/modules/development/errors/coach-feedback-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/feedback-lookup.service.ts",
+      "to": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/feedback-lookup.service.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/feedback-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/feedback-query.service.ts",
+      "to": "src/modules/development/domain/feedback-visibility.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/feedback-query.service.ts",
+      "to": "src/modules/development/errors/coach-feedback-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/feedback-query.service.ts",
+      "to": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/feedback-query.service.ts",
+      "to": "src/modules/development/model/development.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/feedback-query.service.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/goal-lookup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/goal-lookup.service.ts",
+      "to": "src/modules/development/errors/development-goal-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/goal-lookup.service.ts",
+      "to": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/goal-lookup.service.ts",
+      "to": "src/modules/development/model/goal.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/goal-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/goal-query.service.ts",
+      "to": "src/modules/development/errors/development-goal-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/goal-query.service.ts",
+      "to": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/goal-query.service.ts",
+      "to": "src/modules/development/model/development.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/goal-query.service.ts",
+      "to": "src/modules/development/model/goal.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/publish-feedback.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/publish-feedback.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/publish-feedback.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/publish-feedback.use-case.ts",
+      "to": "src/modules/development/application/feedback-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/publish-feedback.use-case.ts",
+      "to": "src/modules/development/domain/feedback.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/publish-feedback.use-case.ts",
+      "to": "src/modules/development/errors/feedback-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/publish-feedback.use-case.ts",
+      "to": "src/modules/development/errors/feedback-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/publish-feedback.use-case.ts",
+      "to": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/publish-feedback.use-case.ts",
+      "to": "src/modules/development/lib/feedback.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/publish-feedback.use-case.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/publish-feedback.use-case.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/publish-feedback.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/application/review-goal.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/review-goal.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/review-goal.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/review-goal.use-case.ts",
+      "to": "src/modules/development/application/goal-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/review-goal.use-case.ts",
+      "to": "src/modules/development/errors/goal-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/review-goal.use-case.ts",
+      "to": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/review-goal.use-case.ts",
+      "to": "src/modules/development/lib/goal.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/review-goal.use-case.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/review-goal.use-case.ts",
+      "to": "src/modules/development/model/goal.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/review-goal.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/modules/development/application/feedback-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/modules/development/domain/feedback.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/modules/development/errors/feedback-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/modules/development/errors/feedback-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/modules/development/lib/feedback.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/modules/development/model/feedback.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/submit-feedback.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/modules/development/application/goal-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/modules/development/domain/goal.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/modules/development/errors/goal-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/modules/development/errors/goal-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/modules/development/lib/goal.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/modules/development/model/goal.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/modules/development/model/goal.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/transition-goal.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/application/update-feedback.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/update-feedback.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/update-feedback.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/update-feedback.use-case.ts",
+      "to": "src/modules/development/application/feedback-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-feedback.use-case.ts",
+      "to": "src/modules/development/domain/feedback.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-feedback.use-case.ts",
+      "to": "src/modules/development/errors/feedback-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-feedback.use-case.ts",
+      "to": "src/modules/development/errors/feedback-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-feedback.use-case.ts",
+      "to": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-feedback.use-case.ts",
+      "to": "src/modules/development/lib/feedback.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-feedback.use-case.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-feedback.use-case.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-feedback.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/application/update-goal.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/update-goal.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/update-goal.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/update-goal.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/application/update-goal.use-case.ts",
+      "to": "src/modules/development/application/goal-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-goal.use-case.ts",
+      "to": "src/modules/development/domain/goal.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-goal.use-case.ts",
+      "to": "src/modules/development/errors/goal-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-goal.use-case.ts",
+      "to": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-goal.use-case.ts",
+      "to": "src/modules/development/lib/goal.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-goal.use-case.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-goal.use-case.ts",
+      "to": "src/modules/development/model/goal.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/application/update-goal.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/api/coach-feedback-self.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/api/coach-feedback.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/api/development-goal-self.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/api/development-goal.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/api/development-reminder.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/acknowledge-feedback.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/correct-feedback.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/create-feedback.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/create-goal.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/development-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/enqueue-development-reminders.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/feedback-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/feedback-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/goal-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/goal-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/publish-feedback.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/review-goal.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/submit-feedback.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/transition-goal.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/update-feedback.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/application/update-goal.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/development/infrastructure/development-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/development.module.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/domain/feedback-visibility.policy.ts",
+      "to": "src/modules/development/model/feedback.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/domain/feedback-visibility.policy.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/domain/feedback.state-machine.ts",
+      "to": "src/modules/development/model/feedback.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/domain/goal.policy.ts",
+      "to": "src/modules/development/errors/development-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/domain/goal.policy.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/domain/goal.policy.ts",
+      "to": "src/modules/development/model/goal.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/domain/goal.policy.ts",
+      "to": "src/modules/development/model/goal.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/domain/goal.state-machine.ts",
+      "to": "src/modules/development/model/goal.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/errors/coach-feedback-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/errors/coach-feedback-not-found.error.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/errors/development-goal-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/errors/development-goal-not-found.error.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/errors/development-scope-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/errors/development-scope-not-found.error.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/errors/development-validation.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/errors/development-validation.error.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/errors/feedback-already-acknowledged.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/errors/feedback-already-acknowledged.error.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/errors/feedback-invalid-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/errors/feedback-invalid-transition.error.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/errors/feedback-version-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/errors/feedback-version-conflict.error.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/errors/goal-invalid-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/errors/goal-invalid-transition.error.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/errors/goal-version-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/errors/goal-version-conflict.error.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/index.ts",
+      "to": "src/modules/development/development.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "to": "src/modules/development/lib/feedback.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "to": "src/modules/development/model/development.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "to": "src/modules/development/model/development.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "to": "src/modules/development/model/feedback.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/coach-feedback.repository.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "to": "src/modules/development/lib/goal.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "to": "src/modules/development/model/development.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "to": "src/modules/development/model/development.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "to": "src/modules/development/model/goal.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/development-goal.repository.ts",
+      "to": "src/modules/development/model/goal.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/infrastructure/development-scope.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/infrastructure/development-scope.repository.ts",
+      "to": "src/modules/development/model/development.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/development-command.mapper.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/development-command.mapper.ts",
+      "to": "src/modules/development/model/goal.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/development.helpers.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/development.helpers.ts",
+      "to": "src/modules/development/model/development.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/feedback.builders.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/feedback.builders.ts",
+      "to": "src/modules/development/model/feedback.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/feedback.builders.ts",
+      "to": "src/modules/development/model/feedback.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/feedback.builders.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/feedback.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/lib/feedback.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/lib/feedback.mapper.ts",
+      "to": "src/modules/development/lib/development.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/feedback.mapper.ts",
+      "to": "src/modules/development/model/feedback.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/feedback.mapper.ts",
+      "to": "src/modules/development/model/feedback.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/feedback.mapper.ts",
+      "to": "src/modules/development/model/feedback.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/feedback.mapper.ts",
+      "to": "src/modules/development/model/feedback.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/goal.builders.ts",
+      "to": "src/modules/development/model/development.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/goal.builders.ts",
+      "to": "src/modules/development/model/goal.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/goal.builders.ts",
+      "to": "src/modules/development/model/goal.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/goal.builders.ts",
+      "to": "src/modules/development/model/goal.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/goal.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/lib/goal.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/development/lib/goal.mapper.ts",
+      "to": "src/modules/development/lib/development.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/goal.mapper.ts",
+      "to": "src/modules/development/model/goal.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/goal.mapper.ts",
+      "to": "src/modules/development/model/goal.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/goal.mapper.ts",
+      "to": "src/modules/development/model/goal.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/lib/goal.mapper.ts",
+      "to": "src/modules/development/model/goal.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/model/development.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/development/model/feedback.types.ts",
+      "to": "src/modules/development/model/development.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/model/feedback.types.ts",
+      "to": "src/modules/development/model/feedback.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/model/goal.types.ts",
+      "to": "src/modules/development/model/development.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/development/model/goal.types.ts",
+      "to": "src/modules/development/model/goal.enums.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/identity/adapters/crypto-secure-random.adapter.ts",
