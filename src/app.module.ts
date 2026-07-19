@@ -11,6 +11,7 @@ import { MembersModule } from '@modules/members';
 import { PlatformModule } from '@modules/platform';
 import { PracticesModule } from '@modules/practices';
 import { RbacModule } from '@modules/rbac';
+import { ScoringModule } from '@modules/scoring';
 import { TeamsModule } from '@modules/teams';
 import { Module } from '@nestjs/common';
 
@@ -35,6 +36,7 @@ import { Module } from '@nestjs/common';
     PracticesModule,
     AssessmentsModule,
     DevelopmentModule,
+    ScoringModule,
     ArticlesModule,
   ],
 })

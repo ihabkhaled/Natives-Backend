@@ -24,6 +24,7 @@ const MEMBER_BUNDLE: readonly Permission[] = [
   Permission.FeedbackReadSelf,
   Permission.ActivitySubmitSelf,
   Permission.ActivityReadSelf,
+  Permission.AnalyticsReadSelf,
   Permission.PointsReadSelf,
   Permission.LeaderboardRead,
   Permission.CompetitionRead,
