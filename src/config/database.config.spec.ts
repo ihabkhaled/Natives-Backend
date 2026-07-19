@@ -15,6 +15,8 @@ const DB_KEYS = [
   'DB_STATEMENT_TIMEOUT_MS',
   'DB_SSL',
   'DB_LOGGING',
+  'DB_MIGRATIONS_RUN_ON_START',
+  'DB_SEED_ON_START',
 ] as const;
 
 function clearDatabaseEnv(): void {
@@ -46,7 +48,20 @@ describe('databaseConfig', () => {
       statementTimeoutMs: 15_000,
       ssl: false,
       logging: false,
+      migrationsRunOnStart: true,
+      seedOnStart: true,
     });
+  });
+
+  it('reads the boot-lifecycle flags from the environment', () => {
+    clearDatabaseEnv();
+    process.env['DB_MIGRATIONS_RUN_ON_START'] = 'false';
+    process.env['DB_SEED_ON_START'] = 'false';
+
+    const config = databaseConfig();
+
+    expect(config.migrationsRunOnStart).toBe(false);
+    expect(config.seedOnStart).toBe(false);
   });
 
   it('reads discrete connection fields and flags from the environment', () => {

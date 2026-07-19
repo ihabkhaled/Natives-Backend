@@ -168,6 +168,14 @@ export class EnvironmentVariablesDto {
   declare readonly DB_LOGGING?: string;
 
   @IsOptional()
+  @IsIn(BOOLEAN_FLAG_VALUES)
+  declare readonly DB_MIGRATIONS_RUN_ON_START?: string;
+
+  @IsOptional()
+  @IsIn(BOOLEAN_FLAG_VALUES)
+  declare readonly DB_SEED_ON_START?: string;
+
+  @IsOptional()
   @Type(() => Number)
   @IsInt()
   @Min(MIN_REFRESH_TOKEN_TTL_SECONDS)

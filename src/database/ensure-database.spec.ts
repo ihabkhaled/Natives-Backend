@@ -34,6 +34,8 @@ const CONFIG: DatabaseConfig = {
   statementTimeoutMs: 5000,
   ssl: false,
   logging: false,
+  migrationsRunOnStart: false,
+  seedOnStart: false,
 };
 
 describe('ensureDatabaseExists', () => {

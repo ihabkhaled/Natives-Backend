@@ -30,6 +30,8 @@ export interface DatabaseConfig {
   readonly statementTimeoutMs: number;
   readonly ssl: boolean;
   readonly logging: boolean;
+  readonly migrationsRunOnStart: boolean;
+  readonly seedOnStart: boolean;
 }
 
 export interface IdentityConfig {

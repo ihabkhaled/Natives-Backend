@@ -29,20 +29,22 @@ All database env vars are read **only** in `src/config/database.config.ts`
 (`registerAs('database')`) and exposed as `DatabaseConfig` via
 `AppConfigService.database`. Nothing else reads `process.env` for the database.
 
-| Env var                   | Default            | Notes                                             |
-| ------------------------- | ------------------ | ------------------------------------------------- |
-| `DATABASE_URL`            | _(unset)_          | Preferred. Overrides the discrete fields below.   |
-| `DB_HOST`                 | `localhost`        | Discrete connection host.                         |
-| `DB_PORT`                 | `5432`             | 1–65535.                                          |
-| `DB_USERNAME`             | `postgres`         | Discrete connection user.                         |
-| `DB_PASSWORD`             | _(unset)_          | Never logged.                                     |
-| `DB_NAME`                 | `ultimate_natives` | Discrete database name.                           |
-| `DB_POOL_MIN`             | `2`                | 0–100. Must be `<= DB_POOL_MAX`.                  |
-| `DB_POOL_MAX`             | `10`               | 0–100.                                            |
-| `DB_CONNECT_TIMEOUT_MS`   | `10000`            | 1–120000.                                         |
-| `DB_STATEMENT_TIMEOUT_MS` | `15000`            | 1–120000. Bounds every statement.                 |
-| `DB_SSL`                  | `false`            | Boolean flag. **Must be `true` in production.**   |
-| `DB_LOGGING`              | `false`            | Boolean flag. Verbose SQL — local debugging only. |
+| Env var                      | Default            | Notes                                             |
+| ---------------------------- | ------------------ | ------------------------------------------------- |
+| `DATABASE_URL`               | _(unset)_          | Preferred. Overrides the discrete fields below.   |
+| `DB_HOST`                    | `localhost`        | Discrete connection host.                         |
+| `DB_PORT`                    | `5432`             | 1–65535.                                          |
+| `DB_USERNAME`                | `postgres`         | Discrete connection user.                         |
+| `DB_PASSWORD`                | _(unset)_          | Never logged.                                     |
+| `DB_NAME`                    | `ultimate_natives` | Discrete database name.                           |
+| `DB_POOL_MIN`                | `2`                | 0–100. Must be `<= DB_POOL_MAX`.                  |
+| `DB_POOL_MAX`                | `10`               | 0–100.                                            |
+| `DB_CONNECT_TIMEOUT_MS`      | `10000`            | 1–120000.                                         |
+| `DB_STATEMENT_TIMEOUT_MS`    | `15000`            | 1–120000. Bounds every statement.                 |
+| `DB_SSL`                     | `false`            | Boolean flag. **Must be `true` in production.**   |
+| `DB_LOGGING`                 | `false`            | Boolean flag. Verbose SQL — local debugging only. |
+| `DB_MIGRATIONS_RUN_ON_START` | `true`             | Apply pending migrations on boot (see lifecycle). |
+| `DB_SEED_ON_START`           | `true`             | Run the once-only seed framework on boot.         |
 
 **Fail-fast cross-field validation** (in `env.validation.ts`, throws at startup):
 
@@ -99,6 +101,45 @@ All database env vars are read **only** in `src/config/database.config.ts`
   The migrate-from-empty and reversible-rollback behavior is proven in
   `test/database/database.integration.spec.ts`.
 
+## Boot lifecycle (migrations + once-only seeding)
+
+`DatabaseLifecycleService` (in `src/database`) runs once at startup — after config
+is validated and the `DataSource` is built, but **before the server binds a
+port** — wired from `src/bootstrap/bootstrap.ts`. It never runs during the
+DB-less boot smoke test or the DB-gated e2e suites (those assemble the app
+directly); the lifecycle is invoked only by the real long-running entrypoint.
+
+1. **Advisory lock.** The whole lifecycle runs while holding a fixed Postgres
+   session advisory lock (`pg_advisory_lock`). Concurrent instances and
+   serverless cold starts **block** on the same key instead of racing, so a
+   pending migration or first-run seed can never double-run. The lock is always
+   released and its connection returned, even on failure.
+2. **Migrations on start** (`DB_MIGRATIONS_RUN_ON_START`, default `true`). Every
+   pending migration is applied in order, one at a time, logging each migration's
+   name and duration (never credentials). **A migration failure aborts the
+   boot** (the process exits) — traffic is never served on a wrong schema. When
+   the flag is off, that is logged and the schema is expected to be applied by an
+   external step.
+3. **Once-only seeding** (`DB_SEED_ON_START`, default `true`). The seed framework
+   applies only the seeders whose key is absent from the `seed_history` table,
+   inserting the history row **in the same transaction** as the seeder. A
+   first-time fresh database therefore seeds exactly once; every later boot finds
+   the row and **skips** — nothing is ever re-seeded. If a seeder's
+   content-derived `checksum` differs from the recorded one, the framework logs
+   an auditable warning and does **not** re-run it (no hidden mutation). The
+   runtime admin credential (`SEED_ADMIN_PASSWORD`) is read lazily, only when a
+   seeder actually runs — i.e. only on a fresh database.
+
+`seed_history` columns: `id` (uuid), `seed_key` (unique), `checksum`,
+`applied_at` (timestamptz UTC), `applied_by` (`boot` or `cli`). The framework is
+exercised end-to-end (empty boot applies all migrations + seeds; a second run
+applies nothing; two concurrent instances → exactly one migrates) in
+`test/database/lifecycle.integration.spec.ts`.
+
+The existing admin seed is folded into this framework: `npm run seed:admin` runs
+through the same once-only registry, so re-running it after the first application
+is a clean no-op.
+
 ## Local vs test safety
 
 - **Local dev:** `docker compose up -d` (`docker-compose.yml`) — Postgres 16,
@@ -131,6 +172,13 @@ All database env vars are read **only** in `src/config/database.config.ts`
   `DB_STATEMENT_TIMEOUT_MS` tight to protect against runaway queries.
 - Run migrations as a deploy step (`npm run migration:run`); the app never
   auto-synchronizes.
+- **Serverless (e.g. Vercel).** Boot-time migrations are safe there (the advisory
+  lock serializes cold starts), but you may prefer to apply the schema out of
+  band: set `DB_MIGRATIONS_RUN_ON_START=false` (and, if desired,
+  `DB_SEED_ON_START=false`) and run `npm run db:setup` (`db:ensure` +
+  `migration:run` + `seed:admin`) — or the build-time bootstrap — as an explicit
+  deploy step instead. The seed framework stays once-only regardless of which
+  path applies it.
 
 ## Data conventions (for every future entity)
 

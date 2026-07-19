@@ -36,6 +36,23 @@ export const UNSAFE_DATABASE_NAME_MESSAGE =
 export const DATABASE_READINESS_LOG_CONTEXT = 'DatabaseReadiness';
 export const DATABASE_READINESS_FAILED_LOG = 'Database readiness probe failed';
 
+// Boot-time database lifecycle (migrations + once-only seeding).
+export const DATABASE_LIFECYCLE_LOG_CONTEXT = 'DatabaseLifecycle';
+// Fixed application-wide key for the Postgres session advisory lock that
+// serializes the boot lifecycle. Concurrent instances / serverless cold starts
+// block on this key so pending migrations and first-run seeds never double-run.
+export const DATABASE_LIFECYCLE_LOCK_KEY = 907_002;
+export const ADVISORY_LOCK_SQL = 'SELECT pg_advisory_lock($1)';
+export const ADVISORY_UNLOCK_SQL = 'SELECT pg_advisory_unlock($1)';
+
+export const MIGRATIONS_MANAGED_EXTERNALLY_LOG =
+  'Migrations-on-start disabled; database schema is managed externally';
+export const DATABASE_LIFECYCLE_SKIPPED_LOG =
+  'Database unavailable at startup; skipping boot migrations/seed (readiness will report not ready)';
+export const MIGRATIONS_UP_TO_DATE_LOG = 'No pending migrations';
+export const MIGRATION_APPLIED_LOG = 'Migration applied';
+export const MIGRATIONS_COMPLETED_LOG = 'Pending migrations applied';
+
 // Cheapest possible liveness probe against Postgres.
 export const DATABASE_READINESS_PROBE = 'SELECT 1';
 

@@ -20,6 +20,8 @@ const TEST_CONFIG: DatabaseConfig = {
   statementTimeoutMs: 4000,
   ssl: false,
   logging: false,
+  migrationsRunOnStart: false,
+  seedOnStart: false,
 };
 
 describe('assertTestDatabase', () => {

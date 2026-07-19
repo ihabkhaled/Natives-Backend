@@ -40,6 +40,8 @@ const TEST_DB_CONFIG: DatabaseConfig = {
   statementTimeoutMs: 5000,
   ssl: false,
   logging: false,
+  migrationsRunOnStart: false,
+  seedOnStart: false,
 };
 
 interface Fixture {

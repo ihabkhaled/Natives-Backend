@@ -4,10 +4,12 @@ import {
   DATABASE_CONFIG_NAMESPACE,
   DEFAULT_DB_CONNECT_TIMEOUT_MS,
   DEFAULT_DB_HOST,
+  DEFAULT_DB_MIGRATIONS_RUN_ON_START,
   DEFAULT_DB_NAME,
   DEFAULT_DB_POOL_MAX,
   DEFAULT_DB_POOL_MIN,
   DEFAULT_DB_PORT,
+  DEFAULT_DB_SEED_ON_START,
   DEFAULT_DB_STATEMENT_TIMEOUT_MS,
   DEFAULT_DB_USERNAME,
 } from './config.constants';
@@ -42,5 +44,13 @@ export const databaseConfig = registerAs(
     ),
     ssl: parseBoolean(process.env['DB_SSL'], false),
     logging: parseBoolean(process.env['DB_LOGGING'], false),
+    migrationsRunOnStart: parseBoolean(
+      process.env['DB_MIGRATIONS_RUN_ON_START'],
+      DEFAULT_DB_MIGRATIONS_RUN_ON_START,
+    ),
+    seedOnStart: parseBoolean(
+      process.env['DB_SEED_ON_START'],
+      DEFAULT_DB_SEED_ON_START,
+    ),
   }),
 );

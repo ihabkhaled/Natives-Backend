@@ -90,6 +90,14 @@ export const INVALID_DB_POOL_BOUNDS_MESSAGE =
 export const INVALID_PRODUCTION_DB_SSL_MESSAGE =
   'DB_SSL must be true in production';
 
+// Runtime database-lifecycle flags. Both default true so a normal boot applies
+// pending migrations and, on a first-time fresh database only, runs the seed
+// framework. Disable migrations-on-start (`DB_MIGRATIONS_RUN_ON_START=false`)
+// where the schema is applied by an external deploy step (e.g. `npm run
+// db:setup` on serverless); disable seeding-on-start with `DB_SEED_ON_START=false`.
+export const DEFAULT_DB_MIGRATIONS_RUN_ON_START = true;
+export const DEFAULT_DB_SEED_ON_START = true;
+
 // --- Identity: token lifetimes & login throttling ---------------------------
 // TTLs are seconds; instants are derived at the edge (ClockPort.now + ttl) and
 // stored in UTC. Bounds keep every value sane and fail-fast on misconfiguration.

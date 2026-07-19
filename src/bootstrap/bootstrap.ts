@@ -1,4 +1,7 @@
+import { buildSeeders, DatabaseLifecycleService } from '@app/database';
 import { AppConfigService } from '@config/app-config.service';
+import { loadSeedAdminConfig } from '@config/seed-admin.config';
+import { PASSWORD_HASH_PORT, type PasswordHashPort } from '@modules/auth';
 import type { NestFastifyApplication } from '@nestjs/platform-fastify';
 
 import { LISTEN_HOST } from './bootstrap.constants';
@@ -27,12 +30,30 @@ export async function createConfiguredApp(): Promise<NestFastifyApplication> {
   return app;
 }
 
-// Long-running-process entrypoint: assemble the app, then bind the port. Each
-// step lives in its own file so this stays a readable, testable recipe. See
-// context/architecture-map.md.
+// Run the boot-time database lifecycle (migrations + once-only seeds) after the
+// app (and its DataSource) are assembled but before the port is bound, so the
+// process never serves traffic on a wrong schema. The seed registry is built
+// here at the composition root: the password-hash port and the lazy admin-config
+// loader are supplied so the database layer stays free of auth/module coupling.
+async function runBootDatabaseLifecycle(
+  app: NestFastifyApplication,
+): Promise<void> {
+  const passwordHash = app.get<PasswordHashPort>(PASSWORD_HASH_PORT);
+  const seeders = buildSeeders({
+    passwordHash,
+    loadAdminConfig: loadSeedAdminConfig,
+  });
+  await app.get(DatabaseLifecycleService).run(seeders);
+}
+
+// Long-running-process entrypoint: assemble the app, run the database lifecycle,
+// then bind the port. Each step lives in its own file so this stays a readable,
+// testable recipe. See context/architecture-map.md.
 export async function bootstrap(): Promise<void> {
   const app = await createConfiguredApp();
-  const { port } = app.get(AppConfigService).app;
 
+  await runBootDatabaseLifecycle(app);
+
+  const { port } = app.get(AppConfigService).app;
   await app.listen(port, LISTEN_HOST);
 }

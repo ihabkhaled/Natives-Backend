@@ -25,7 +25,8 @@ if (!hasDatabaseConfig) {
   process.exit(0);
 }
 
-const dataSource = require('../../dist/src/database/cli-data-source.js').default;
+const dataSource =
+  require('../../dist/src/database/cli-data-source.js').default;
 
 await dataSource.initialize();
 const applied = await dataSource.runMigrations();

@@ -1,9 +1,14 @@
-import type { SeedAdminConfig } from '@config/config.types';
-import type { PasswordHashPort } from '@modules/auth';
 import { UserStatus } from '@modules/identity';
 import { Role } from '@shared/enums';
-import type { DataSource, QueryRunner } from 'typeorm';
+import type { QueryRunner } from 'typeorm';
 
+import { ADMIN_SEED_DEFINITION, SEED_ADMIN_KEY } from './seed.constants';
+import type {
+  SeedAdminRuntimeConfig,
+  Seeder,
+  SeedPasswordHashPort,
+  SeedScope,
+} from './seed.types';
 import {
   ADMIN_ROLE_KEY,
   ADMIN_ROLE_MISSING_MESSAGE,
@@ -14,47 +19,48 @@ import type {
   SeedAdminInput,
   SeedAdminResult,
 } from './seed-admin.types';
+import { computeSeedChecksum } from './seed-checksum';
 
 /**
- * Hash the runtime-only password and provision the administrator atomically.
- * Reruns deliberately restore the account to active/admin and rotate the stored
- * credential while preserving a single global TEAM_ADMIN assignment.
+ * Build the default-administrator seeder for the once-only seed framework. The
+ * runtime credential is resolved lazily via `loadConfig`, so it is required only
+ * on the first-time fresh database where the seeder actually runs — a database
+ * that has already recorded this seed never touches the credential again. The
+ * checksum fingerprints the seeder DEFINITION only, so rotating the password
+ * does not look like a definition change.
  */
-export async function runSeedAdmin(
-  dataSource: DataSource,
-  passwordHash: PasswordHashPort,
-  config: SeedAdminConfig,
-): Promise<SeedAdminResult> {
+export function createSeedAdminSeeder(
+  passwordHash: SeedPasswordHashPort,
+  loadConfig: () => SeedAdminRuntimeConfig,
+): Seeder {
+  return {
+    key: SEED_ADMIN_KEY,
+    checksum: computeSeedChecksum(ADMIN_SEED_DEFINITION),
+    run: (scope: SeedScope): Promise<void> =>
+      runAdminSeed(scope, passwordHash, loadConfig()),
+  };
+}
+
+async function runAdminSeed(
+  scope: SeedScope,
+  passwordHash: SeedPasswordHashPort,
+  config: SeedAdminRuntimeConfig,
+): Promise<void> {
   const hashedPassword = await passwordHash.hash(config.password);
-  return runInTransaction(dataSource, {
+  await seedAdmin(scope.queryRunner, {
     email: config.email,
     displayName: config.displayName,
     passwordHash: hashedPassword,
   });
 }
 
-async function runInTransaction(
-  dataSource: DataSource,
-  input: SeedAdminInput,
-): Promise<SeedAdminResult> {
-  const queryRunner = dataSource.createQueryRunner();
-  try {
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
-    const result = await seedAdmin(queryRunner, input);
-    await queryRunner.commitTransaction();
-    return result;
-  } catch (error) {
-    if (queryRunner.isTransactionActive) {
-      await queryRunner.rollbackTransaction();
-    }
-    throw error;
-  } finally {
-    await queryRunner.release();
-  }
-}
-
-async function seedAdmin(
+/**
+ * Provision the administrator inside the caller-owned transaction scope. Creates
+ * the account on a fresh database, or restores an existing one to active/admin
+ * and rotates its stored credential, while preserving a single global TEAM_ADMIN
+ * assignment. The framework runs this exactly once per database.
+ */
+export async function seedAdmin(
   queryRunner: QueryRunner,
   input: SeedAdminInput,
 ): Promise<SeedAdminResult> {

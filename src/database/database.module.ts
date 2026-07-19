@@ -6,6 +6,7 @@ import { DataSource } from 'typeorm';
 
 import { dataSourceProvider } from './data-source.provider';
 import { DATA_SOURCE } from './database.constants';
+import { DatabaseLifecycleService } from './database-lifecycle.service';
 import { TypeormDatabaseReadinessAdapter } from './typeorm-database-readiness.adapter';
 import { TypeormUnitOfWorkAdapter } from './typeorm-unit-of-work.adapter';
 
@@ -19,13 +20,19 @@ import { TypeormUnitOfWorkAdapter } from './typeorm-unit-of-work.adapter';
 @Module({
   providers: [
     dataSourceProvider,
+    DatabaseLifecycleService,
     { provide: UNIT_OF_WORK_PORT, useClass: TypeormUnitOfWorkAdapter },
     {
       provide: DATABASE_READINESS_PORT,
       useClass: TypeormDatabaseReadinessAdapter,
     },
   ],
-  exports: [DATA_SOURCE, UNIT_OF_WORK_PORT, DATABASE_READINESS_PORT],
+  exports: [
+    DATA_SOURCE,
+    DatabaseLifecycleService,
+    UNIT_OF_WORK_PORT,
+    DATABASE_READINESS_PORT,
+  ],
 })
 export class DatabaseModule implements OnApplicationShutdown {
   constructor(@Inject(DATA_SOURCE) private readonly dataSource: DataSource) {}

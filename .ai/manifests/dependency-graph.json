@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T00:23:31.879Z",
+  "generatedAt": "2026-07-19T01:15:01.468Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -104,6 +104,21 @@
     {
       "from": "src/bootstrap/bootstrap.ts",
       "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/bootstrap.ts",
+      "to": "src/config/seed-admin.config.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/bootstrap.ts",
+      "to": "src/database/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/bootstrap.ts",
+      "to": "src/modules/auth/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -1037,6 +1052,11 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/database/advisory-lock.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/database/cli-data-source.ts",
       "to": "src/config/database.config.ts",
       "type": "cross-cutting"
@@ -1102,6 +1122,46 @@
       "type": "internal"
     },
     {
+      "from": "src/database/database-lifecycle.service.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/database-lifecycle.service.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/database-lifecycle.service.ts",
+      "to": "src/database/advisory-lock.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/database-lifecycle.service.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/database-lifecycle.service.ts",
+      "to": "src/database/migration-runner.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/database-lifecycle.service.ts",
+      "to": "src/database/seeds/seed-runner.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/database-lifecycle.service.ts",
+      "to": "src/database/seeds/seed.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/database-lifecycle.service.ts",
+      "to": "src/database/seeds/seed.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/database/database.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
@@ -1119,6 +1179,11 @@
     {
       "from": "src/database/database.module.ts",
       "to": "src/database/data-source.provider.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/database.module.ts",
+      "to": "src/database/database-lifecycle.service.ts",
       "type": "internal"
     },
     {
@@ -1168,7 +1233,32 @@
     },
     {
       "from": "src/database/index.ts",
+      "to": "src/database/database-lifecycle.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/index.ts",
       "to": "src/database/database.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/index.ts",
+      "to": "src/database/seeds/seed-registry.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/index.ts",
+      "to": "src/database/seeds/seed.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/migration-runner.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/migration-runner.ts",
+      "to": "src/database/database.constants.ts",
       "type": "internal"
     },
     {
@@ -1179,6 +1269,11 @@
     {
       "from": "src/database/seeds/seed-admin.cli.ts",
       "to": "src/config/seed-admin.config.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.cli.ts",
+      "to": "src/core/logger/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -1198,12 +1293,22 @@
     },
     {
       "from": "src/database/seeds/seed-admin.cli.ts",
-      "to": "src/database/seeds/seed-admin.ts",
+      "to": "src/database/seeds/seed-registry.ts",
       "type": "internal"
     },
     {
       "from": "src/database/seeds/seed-admin.cli.ts",
-      "to": "src/database/seeds/seed-admin.types.ts",
+      "to": "src/database/seeds/seed-runner.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.cli.ts",
+      "to": "src/database/seeds/seed.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.cli.ts",
+      "to": "src/database/seeds/seed.types.ts",
       "type": "internal"
     },
     {
@@ -1223,11 +1328,6 @@
     },
     {
       "from": "src/database/seeds/seed-admin.ts",
-      "to": "src/config/config.types.ts",
-      "type": "cross-cutting"
-    },
-    {
-      "from": "src/database/seeds/seed-admin.ts",
       "to": "src/database/seeds/seed-admin.constants.ts",
       "type": "internal"
     },
@@ -1238,8 +1338,18 @@
     },
     {
       "from": "src/database/seeds/seed-admin.ts",
-      "to": "src/modules/auth/index.ts",
-      "type": "cross-cutting"
+      "to": "src/database/seeds/seed-checksum.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.ts",
+      "to": "src/database/seeds/seed.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-admin.ts",
+      "to": "src/database/seeds/seed.types.ts",
+      "type": "internal"
     },
     {
       "from": "src/database/seeds/seed-admin.ts",
@@ -1250,6 +1360,51 @@
       "from": "src/database/seeds/seed-admin.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-policy.ts",
+      "to": "src/database/seeds/seed.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-policy.ts",
+      "to": "src/database/seeds/seed.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-registry.ts",
+      "to": "src/database/seeds/seed-admin.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-registry.ts",
+      "to": "src/database/seeds/seed.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-runner.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-runner.ts",
+      "to": "src/database/seeds/seed-policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-runner.ts",
+      "to": "src/database/seeds/seed.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-runner.ts",
+      "to": "src/database/seeds/seed.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed.constants.ts",
+      "to": "src/database/seeds/seed.types.ts",
+      "type": "internal"
     },
     {
       "from": "src/database/snake-case-naming.strategy.ts",

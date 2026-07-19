@@ -17,6 +17,8 @@ const DISCRETE_CONFIG: DatabaseConfig = {
   statementTimeoutMs: 7000,
   ssl: true,
   logging: true,
+  migrationsRunOnStart: false,
+  seedOnStart: false,
 };
 
 describe('buildDataSourceOptions', () => {

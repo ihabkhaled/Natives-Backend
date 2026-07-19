@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-19T00:23:31.879Z",
-  "treeHash": "sha256:f4164f8a0233022cc83e9774af55c1a6721a41c09c08d5210be6060b5dade86d",
+  "generatedAt": "2026-07-19T01:15:01.468Z",
+  "treeHash": "sha256:9b91fa96b1aa8ade0200adf7e3017f72858009d642de160374c8694c0ef5ab7f",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -81,8 +81,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:699259bfc87dd3441771a83542b63f96f26fa88201b0d0dd385df58cecac6569",
-      "sizeBytes": 1537
+      "hash": "sha256:d02005432aa9b6db9c985523f7872db6b51fa5ddc51c64e4bc63844656566b26",
+      "sizeBytes": 2537
     },
     {
       "path": "src/bootstrap/configure-lifecycle.ts",
@@ -707,6 +707,14 @@
         },
         {
           "kind": "const",
+          "name": "DEFAULT_DB_MIGRATIONS_RUN_ON_START"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_DB_SEED_ON_START"
+        },
+        {
+          "kind": "const",
           "name": "DEFAULT_REFRESH_TOKEN_TTL_SECONDS"
         },
         {
@@ -809,8 +817,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:e52786cbc7892fc75e4e9107ba607385f7e00ae4d936be7127b7e43177bbb38d",
-      "sizeBytes": 5648
+      "hash": "sha256:0dddfc64c8421f11892f130a11e59adfe5110bd1c8b600e1933337cec517d3d8",
+      "sizeBytes": 6146
     },
     {
       "path": "src/config/config.module.ts",
@@ -863,8 +871,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:741ddc91d7945fb0e87de3a53af3b1dd2262ad9ad16b92bdf4f5b824e2b5dc0f",
-      "sizeBytes": 1480
+      "hash": "sha256:784dae4d44329317f40c0df8f67514130c27cd3a824c4234ac47adc0905c30d8",
+      "sizeBytes": 1555
     },
     {
       "path": "src/config/config.utils.spec.ts",
@@ -920,8 +928,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:3f1e6e05f643a93214c95a9475786e30ed5cf19603bf8f77a7498e2bcaad2b42",
-      "sizeBytes": 2171
+      "hash": "sha256:38b6ea95ea1b85e70256e97136cc64a3f18c4de7e599eff99aa6c8739033bccb",
+      "sizeBytes": 2623
     },
     {
       "path": "src/config/database.config.ts",
@@ -937,8 +945,8 @@
       "hasSpec": true,
       "specPath": "src/config/database.config.spec.ts",
       "kind": "source",
-      "hash": "sha256:c586763a7efce13c0a8ad049561f4e8e077b043aebaa542655613755f16e08b8",
-      "sizeBytes": 1751
+      "hash": "sha256:cb587a4844e4b8b9a39bbb6cf7eadcf631ef82d6607c797ef52bd21d60ccda25",
+      "sizeBytes": 2064
     },
     {
       "path": "src/config/env.validation.spec.ts",
@@ -983,8 +991,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:86d05777ebfaebc5110b17f05a27b8fab9f7b160b289cc668bbc905d9a08b3ed",
-      "sizeBytes": 4691
+      "hash": "sha256:960de68368fb83277f12b6990eb90b18fe90b31527db99ee358e8f25af9cddf4",
+      "sizeBytes": 4885
     },
     {
       "path": "src/config/identity.config.spec.ts",
@@ -2521,6 +2529,30 @@
       "sizeBytes": 713
     },
     {
+      "path": "src/database/advisory-lock.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1310e671eb7f8e730277ab2863939ae523b356e852ac6283e5358baa9043b899",
+      "sizeBytes": 1923
+    },
+    {
+      "path": "src/database/advisory-lock.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": true,
+      "specPath": "src/database/advisory-lock.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bcc95aadcb4fa04aff5e3fddaa28c24a0f8639f4bc73fcc131ed0196e6f099f9",
+      "sizeBytes": 925
+    },
+    {
       "path": "src/database/cli-data-source.ts",
       "root": "app",
       "module": "app",
@@ -2541,8 +2573,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:449ef1880363b24070245bb6437c25418c2cf685f242864cb29797d1e2d8db70",
-      "sizeBytes": 2405
+      "hash": "sha256:a24d4ab31cf4adde0904840f06add6db6569386403df3736535f4a6ed0370b08",
+      "sizeBytes": 2458
     },
     {
       "path": "src/database/data-source.factory.ts",
@@ -2627,6 +2659,35 @@
       "kind": "source",
       "hash": "sha256:28de7c92ec81dcebd63a25055ea647d0a22de043a9d1f43d9529604cf0239370",
       "sizeBytes": 906
+    },
+    {
+      "path": "src/database/database-lifecycle.service.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3261373e2a3d7a907b1fd06aa090f48ff68e2f1ec651964a215610846ae98285",
+      "sizeBytes": 4581
+    },
+    {
+      "path": "src/database/database-lifecycle.service.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DatabaseLifecycleService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/database-lifecycle.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0de30b154c7f7bc273dbdca697c4268585fc03b880eeac662914284d50e55d4d",
+      "sizeBytes": 2416
     },
     {
       "path": "src/database/database.constants.ts",
@@ -2716,6 +2777,42 @@
         },
         {
           "kind": "const",
+          "name": "DATABASE_LIFECYCLE_LOG_CONTEXT"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_LIFECYCLE_LOCK_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ADVISORY_LOCK_SQL"
+        },
+        {
+          "kind": "const",
+          "name": "ADVISORY_UNLOCK_SQL"
+        },
+        {
+          "kind": "const",
+          "name": "MIGRATIONS_MANAGED_EXTERNALLY_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "DATABASE_LIFECYCLE_SKIPPED_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "MIGRATIONS_UP_TO_DATE_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "MIGRATION_APPLIED_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "MIGRATIONS_COMPLETED_LOG"
+        },
+        {
+          "kind": "const",
           "name": "DATABASE_READINESS_PROBE"
         },
         {
@@ -2742,8 +2839,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:f8f746235cbdb0d6149b02eb228bced571a1cf80b961bb834f027e3e43ffb339",
-      "sizeBytes": 2815
+      "hash": "sha256:5ea9e3e68c10c9816215fd377494a55393f60a5025305c2b2faf03724b0587ed",
+      "sizeBytes": 3833
     },
     {
       "path": "src/database/database.module.ts",
@@ -2759,8 +2856,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ae9394cacee86f61b9895c51f0b1c5cd0f38bc4af5dbda073b5e18f9aa15dbd1",
-      "sizeBytes": 1500
+      "hash": "sha256:24638f29209b33289b147a21e2b5bb0812d2461be9203b35a5191f99cb1a840e",
+      "sizeBytes": 1650
     },
     {
       "path": "src/database/ensure-database.cli.ts",
@@ -2783,8 +2880,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:f7fc9b9955b723d167b8f9de10592b7d2754ab4b4bd9dea4afb77aa619be617a",
-      "sizeBytes": 4181
+      "hash": "sha256:b7908a40e447c0a1cd1c53f4fc661bd099c8fa004046611b9159fca315a79087",
+      "sizeBytes": 4234
     },
     {
       "path": "src/database/ensure-database.ts",
@@ -2807,8 +2904,32 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:c6931e1c381781939cd2e6a8115d98a38bd63cd2d7846be7e4781db074656aac",
-      "sizeBytes": 52
+      "hash": "sha256:d5a67be9df1e76b53f53b666b340d9622584ff904336a3802bc564dab5dfb4b2",
+      "sizeBytes": 242
+    },
+    {
+      "path": "src/database/migration-runner.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c7e9c3dd15987a931b1edc5671f4c272d410f5082731981b051a720877df8f4a",
+      "sizeBytes": 3110
+    },
+    {
+      "path": "src/database/migration-runner.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": true,
+      "specPath": "src/database/migration-runner.spec.ts",
+      "kind": "source",
+      "hash": "sha256:340fe3679174b8fec2085505833b23978352ede69e00e550918350f22106a7ed",
+      "sizeBytes": 1846
     },
     {
       "path": "src/database/migrations/1721200000000-baseline-schema.ts",
@@ -3049,6 +3170,23 @@
       "sizeBytes": 10794
     },
     {
+      "path": "src/database/migrations/1722600000000-seed-history-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SeedHistorySchema1722600000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d759adb38261f87e896c2555d2553567cc2a594ab69043e73ba836fd4388e457",
+      "sizeBytes": 1516
+    },
+    {
       "path": "src/database/migrations/assessment-catalog-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3097,6 +3235,18 @@
       "sizeBytes": 1521
     },
     {
+      "path": "src/database/migrations/seed-history-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b5ecac97411181cd61c681b17747c6ab583095ccbe1b6f364059158e60679687",
+      "sizeBytes": 1401
+    },
+    {
       "path": "src/database/naming.helpers.spec.ts",
       "root": "app",
       "module": "app",
@@ -3134,8 +3284,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:7676d17dcb916724e46894a76566db316ef8f2c2e45b5873c8451ef9bf2e2d58",
-      "sizeBytes": 1862
+      "hash": "sha256:86a0b0812f24cd86b2fec7e6445478e02cee1d216958061290aeeb0e293def04",
+      "sizeBytes": 2228
     },
     {
       "path": "src/database/seeds/seed-admin.constants.ts",
@@ -3158,21 +3308,13 @@
         {
           "kind": "const",
           "name": "DATABASE_CONNECTION_UNAVAILABLE_MESSAGE"
-        },
-        {
-          "kind": "const",
-          "name": "ADMIN_CREATED_LABEL"
-        },
-        {
-          "kind": "const",
-          "name": "ADMIN_UPDATED_LABEL"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:c9d315706999c74740233994d3cb3d149134c85a323dde96796a6c32b587f572",
-      "sizeBytes": 550
+      "hash": "sha256:c6cda6a1c9cf9c9bb83e4967162323a7696f710613621bb340073fc16346e458",
+      "sizeBytes": 458
     },
     {
       "path": "src/database/seeds/seed-admin.spec.ts",
@@ -3183,20 +3325,25 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:9015ef8de587521b2d93b793fd05f18d3b203b5a791b388146b294178aff63d7",
-      "sizeBytes": 5828
+      "hash": "sha256:bf93f2802c3d83ddf1920992fb29c65235f3e019af7ed8eb14576bc3eb41a7f7",
+      "sizeBytes": 5456
     },
     {
       "path": "src/database/seeds/seed-admin.ts",
       "root": "app",
       "module": "app",
       "layer": "other",
-      "symbols": [],
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "createSeedAdminSeeder"
+        }
+      ],
       "hasSpec": true,
       "specPath": "src/database/seeds/seed-admin.spec.ts",
       "kind": "source",
-      "hash": "sha256:3acea29e3121abbf097a9f85135ca0d75fe1e260b860870d8bae2ff25282284d",
-      "sizeBytes": 5068
+      "hash": "sha256:81baafde673fdcc7717876c1bcb79722eb87f026f4946754cc2bf742e57432cc",
+      "sizeBytes": 5485
     },
     {
       "path": "src/database/seeds/seed-admin.types.ts",
@@ -3222,6 +3369,231 @@
       "kind": "source",
       "hash": "sha256:e7650b9ad63990e4573b678589e347793f250c2dab355ffb9f70e6b803ec91a0",
       "sizeBytes": 272
+    },
+    {
+      "path": "src/database/seeds/seed-checksum.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bf591d32ee0327962a79f405afc18ebe403856e255db50d8e8da3e24061acc3f",
+      "sizeBytes": 657
+    },
+    {
+      "path": "src/database/seeds/seed-checksum.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "computeSeedChecksum"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/seeds/seed-checksum.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f5c823460c7a21bb971d5d470e9e16fdef46f51aed97c300b6418d1f36dfe4b1",
+      "sizeBytes": 505
+    },
+    {
+      "path": "src/database/seeds/seed-policy.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:266297cd9ea276baa4e84eca9230347d0da5c56cb38f38520c853268b4911420",
+      "sizeBytes": 857
+    },
+    {
+      "path": "src/database/seeds/seed-policy.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "decideSeedApplication"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/seeds/seed-policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5851c9e2e971a595216a80960065a68a2b888ef434e4bc54b56adae0a8727145",
+      "sizeBytes": 772
+    },
+    {
+      "path": "src/database/seeds/seed-registry.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:032b82b9ad39265a545c7572d76d56f3e5510418ad87c885ced9bf12ccafc503",
+      "sizeBytes": 905
+    },
+    {
+      "path": "src/database/seeds/seed-registry.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildSeeders"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/seeds/seed-registry.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b2764a48354e49e5976b775eb65b582885f595db1add0307dafde2d0c20782bf",
+      "sizeBytes": 661
+    },
+    {
+      "path": "src/database/seeds/seed-runner.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:dba469eda32e58d00902d8857cb9ecb6fdc64b67e5c7f164eeea2c308f733505",
+      "sizeBytes": 5063
+    },
+    {
+      "path": "src/database/seeds/seed-runner.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": true,
+      "specPath": "src/database/seeds/seed-runner.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d6f9afe189770bb8dbce5f896b296a1769898a230faf74fd54ac618d77c9ddfa",
+      "sizeBytes": 2748
+    },
+    {
+      "path": "src/database/seeds/seed.constants.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SEED_HISTORY_TABLE"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_APPLIED"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_SKIPPED"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_CHANGED"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_ADMIN_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_APPLIED_BY_BOOT"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_APPLIED_BY_CLI"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_LOG_CONTEXT"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_APPLIED_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_SKIPPED_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_CHECKSUM_CHANGED_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "ADMIN_SEED_DEFINITION"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_HISTORY_LOOKUP_SQL"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_HISTORY_INSERT_SQL"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b02e17d9b07b002b629f1e3933fc2d2daa08f4df00406b95139d777414080798",
+      "sizeBytes": 1758
+    },
+    {
+      "path": "src/database/seeds/seed.types.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "SeedScope"
+        },
+        {
+          "kind": "interface",
+          "name": "Seeder"
+        },
+        {
+          "kind": "interface",
+          "name": "SeedContext"
+        },
+        {
+          "kind": "interface",
+          "name": "SeedPasswordHashPort"
+        },
+        {
+          "kind": "interface",
+          "name": "SeedAdminRuntimeConfig"
+        },
+        {
+          "kind": "interface",
+          "name": "SeedHistoryRecord"
+        },
+        {
+          "kind": "type",
+          "name": "SeedApplication"
+        },
+        {
+          "kind": "interface",
+          "name": "SeedOutcome"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a34de63bb6733e9391d4f3185b91d7c04f8fd84eca115c9fd9d64c1f800bc714",
+      "sizeBytes": 1726
     },
     {
       "path": "src/database/snake-case-naming.strategy.spec.ts",
@@ -3261,8 +3633,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:ca8c21e3a644432e77954be79d1c9a2d151282ecc8e0ce4903ba1476699b2bb7",
-      "sizeBytes": 1896
+      "hash": "sha256:25b7bca87b08bb88ef293cced75b545dbf2e003a7a5730b3619dfaac9fe116c6",
+      "sizeBytes": 1949
     },
     {
       "path": "src/database/test-database.helpers.ts",
@@ -3381,8 +3753,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a70ced71b7b8415bd119b9c8ea4cbce0928e16a68cb4770001f49e06c30d2e7c",
-      "sizeBytes": 101
+      "hash": "sha256:3487f9c5989f7835e092b8abd6aa93ab89bc19a7fd3474f5ed1d615533e6b595",
+      "sizeBytes": 124
     },
     {
       "path": "src/modules/articles/api/articles.controller.ts",
