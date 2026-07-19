@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-19T13:13:09.046Z",
-  "treeHash": "sha256:9728c19bff972cbd3eb38911139b8d74af97e1057151781d6e68b8269f6fae30",
+  "generatedAt": "2026-07-19T14:10:45.234Z",
+  "treeHash": "sha256:93d73818bd74697313ace4875ff578e73b6fecc37c5a898009e8b51d1291a714",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:97d462ceacd74643cf492a416dfb39aab0833136faab37d2e339a0edd06c911f",
-      "sizeBytes": 1457
+      "hash": "sha256:ebe582442c54685ff5b7ce44fb2a17e2aee486b9eebf14058a702d47351e3189",
+      "sizeBytes": 1541
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -3204,6 +3204,23 @@
       "sizeBytes": 8414
     },
     {
+      "path": "src/database/migrations/1722800000000-measurements-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementsSchema1722800000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:eda1d4471358985b560c9ef59c3368c5a0050a12ef4c88054cb3d44a0d59795c",
+      "sizeBytes": 10724
+    },
+    {
       "path": "src/database/migrations/assessment-catalog-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3226,6 +3243,18 @@
       "kind": "spec",
       "hash": "sha256:eecc455047bae3aa6ae2fc091bd419650d2372a381500288a9d1c6888784f583",
       "sizeBytes": 2551
+    },
+    {
+      "path": "src/database/migrations/measurements-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:83d5592fa3c5bf706b9e6acd7cf794c9729999fa8210d0f952c5b23d9ec45fd4",
+      "sizeBytes": 2357
     },
     {
       "path": "src/database/migrations/player-assessment-schema.spec.ts",
@@ -11457,6 +11486,1748 @@
       "kind": "source",
       "hash": "sha256:22ecb505de9aae94d58a13d8f7136cfd6590cf990968f08893cb8fa2e0ea3e94",
       "sizeBytes": 6947
+    },
+    {
+      "path": "src/modules/measurements/api/dto/attempt-input.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttemptInputDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:21945d3ccb86e007479ce0904d13e02adbbdbdf1fd59fe61a8feb565a392da2d",
+      "sizeBytes": 1637
+    },
+    {
+      "path": "src/modules/measurements/api/dto/attempt-response.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttemptResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e9708bec6372c267b46c2abf6a8c7530720e05124db3704740e18777786573b0",
+      "sizeBytes": 1527
+    },
+    {
+      "path": "src/modules/measurements/api/dto/create-protocol.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateProtocolDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:184f977b520e1f7a384e348bb2d7d15774e8d7b1f32f519d48e2dc5fc9f9120a",
+      "sizeBytes": 2989
+    },
+    {
+      "path": "src/modules/measurements/api/dto/create-session.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateSessionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:35a432533a3ea6bedf3d562362f6f0ce15ce14684002f03151ae8bfc21b6baef",
+      "sizeBytes": 1419
+    },
+    {
+      "path": "src/modules/measurements/api/dto/history-response.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "HistoryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0682ba085a77aac9f3b375f3eb93f05be1cf986a9a8e6b096620cc4def50493d",
+      "sizeBytes": 450
+    },
+    {
+      "path": "src/modules/measurements/api/dto/list-measurements.query.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListMeasurementsQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:36d521ba808060b50743bdcf589efd7ba3b14b00e68047903e285e0869c20afb",
+      "sizeBytes": 725
+    },
+    {
+      "path": "src/modules/measurements/api/dto/list-protocols.response.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListProtocolsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5cac47b96e8755f1b7a8860bc3e3af9aff8f2964b0798cee0c4d50718889e606",
+      "sizeBytes": 463
+    },
+    {
+      "path": "src/modules/measurements/api/dto/list-sessions.response.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSessionsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2a70226b91ab94276adcbfe31ea04a4ee7043ab95393fcc978d17fd021bae15b",
+      "sizeBytes": 457
+    },
+    {
+      "path": "src/modules/measurements/api/dto/protocol-history-entry.response.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ProtocolHistoryEntryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0757c49caf99ea313ada3d15e05f8898bd094c4c631b3142536ce9e85e6dcad4",
+      "sizeBytes": 694
+    },
+    {
+      "path": "src/modules/measurements/api/dto/protocol-response.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ProtocolResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:68065027e39356e859a53a9c2d2b4068ed889f555a1887881fa16f0b0803f3f1",
+      "sizeBytes": 2001
+    },
+    {
+      "path": "src/modules/measurements/api/dto/record-measurement.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RecordMeasurementDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1ad485b0e256eb4e81943c2798a2045bad91f9cbe1f0dd90e5f0f00e19d0a8ec",
+      "sizeBytes": 824
+    },
+    {
+      "path": "src/modules/measurements/api/dto/recorded-measurement.response.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RecordedMeasurementResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b623e14b4c8ce6fe89f37ec49afc52886911e554bf2658681ffb1edb1598cdcc",
+      "sizeBytes": 844
+    },
+    {
+      "path": "src/modules/measurements/api/dto/result-selection.response.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ResultSelectionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:384eabf289d430aeda707375f96a73cb6b0ce05e9935977f9d58cf29dee9b58c",
+      "sizeBytes": 1064
+    },
+    {
+      "path": "src/modules/measurements/api/dto/session-detail-response.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionDetailResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f4756185d493d6cc3d96863c383d2fbd2094977eb1b5412ac9db2f42efd04e40",
+      "sizeBytes": 488
+    },
+    {
+      "path": "src/modules/measurements/api/dto/session-response.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b1ea9942dd678ce3e8704792d3fcf00e4fb10eec318649a3928de5a10d31002a",
+      "sizeBytes": 1451
+    },
+    {
+      "path": "src/modules/measurements/api/dto/transition-session.dto.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionSessionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:be3cde5f4d388aaf7ace9af80ec429593cb83ba3d10c2a793c486171ddc24df5",
+      "sizeBytes": 614
+    },
+    {
+      "path": "src/modules/measurements/api/measurement-history.controller.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementHistoryController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e20f448bdc4a38c450032eaea7866c10599e7416eb8668155440fc48461500b0",
+      "sizeBytes": 1567
+    },
+    {
+      "path": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementProtocolController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9b3d67df90164e62ede3d324143bb11a5b812c1f602886ebe7410d5b37dcf50f",
+      "sizeBytes": 3348
+    },
+    {
+      "path": "src/modules/measurements/api/measurement-self.controller.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementSelfController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b48c8ead989ca3131d33546024aeb26a2475d1675e7cd19662a42b7d02ea2eb9",
+      "sizeBytes": 1489
+    },
+    {
+      "path": "src/modules/measurements/api/measurement-session.controller.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementSessionController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ff33e12a0d31a528aefb45eb7a231f4d85cef3e7caa8e1dfe28ec565f96be2dc",
+      "sizeBytes": 5689
+    },
+    {
+      "path": "src/modules/measurements/application/create-measurement-protocol.use-case.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b75201cd087edb84d92b098abbb7e38caec674b51f5376cc9f1cb2ddf9cce676",
+      "sizeBytes": 3729
+    },
+    {
+      "path": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateMeasurementProtocolUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/application/create-measurement-protocol.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5ddfe3c23687ca370b11fa42a023c51ea2cb3b78c831b900741cc4af62d56255",
+      "sizeBytes": 3301
+    },
+    {
+      "path": "src/modules/measurements/application/create-measurement-session.use-case.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1705968d8e5cb2550210a0148fff19c48c0ead1384463b822c5e2e1ed075aaf1",
+      "sizeBytes": 2174
+    },
+    {
+      "path": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateMeasurementSessionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/application/create-measurement-session.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ea5825ace30ffa92251506a02991b346e18fd5a373a7ac3011dd1c92ad8d4789",
+      "sizeBytes": 2444
+    },
+    {
+      "path": "src/modules/measurements/application/measurement-history.service.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:50f9751d4dfd14d3c663a42423f8d682693eacaa49fde989cf2921cc19c54971",
+      "sizeBytes": 3234
+    },
+    {
+      "path": "src/modules/measurements/application/measurement-history.service.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementHistoryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/application/measurement-history.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:da49f9e419816341eb7b1cf7070e49b2442725ce7a614f9a40e8d47772acf6cb",
+      "sizeBytes": 2781
+    },
+    {
+      "path": "src/modules/measurements/application/measurement-scope.service.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:21b36767264d425a2be838c3a653914be233b72932f80fdadc57b253fd2fbec6",
+      "sizeBytes": 2755
+    },
+    {
+      "path": "src/modules/measurements/application/measurement-scope.service.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementScopeService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/application/measurement-scope.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e675898f1334793015dff0465a3ac1f50e572088fd192139496cdf5b830be293",
+      "sizeBytes": 2030
+    },
+    {
+      "path": "src/modules/measurements/application/protocol-query.service.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bdb9c84115b23d08c922062fb21e4fedbad15777a17c0209aff49541970f6cb4",
+      "sizeBytes": 1606
+    },
+    {
+      "path": "src/modules/measurements/application/protocol-query.service.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ProtocolQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/application/protocol-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:577a4260b099810a2d3ae5d164dc1847ac959b92043d22d470b5fb560fdb4503",
+      "sizeBytes": 2031
+    },
+    {
+      "path": "src/modules/measurements/application/record-measurement.use-case.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f20ac9c071caa40d9e90a739625a5a2db7bface4118ab31a393a4b878cde984f",
+      "sizeBytes": 5209
+    },
+    {
+      "path": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RecordMeasurementUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/application/record-measurement.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:19428af9479bd6795a7ac7c3db18495677078a47dd843e87f75671bd29c59695",
+      "sizeBytes": 5746
+    },
+    {
+      "path": "src/modules/measurements/application/session-query.service.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9036733ffc8ab2c4f31a335d2e73ce8470367fc18125d9b47d866e134f93e578",
+      "sizeBytes": 1773
+    },
+    {
+      "path": "src/modules/measurements/application/session-query.service.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/application/session-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d08d888c3a1151e83828a8b79222a679ca72b02239af0dc2c61342e89306d395",
+      "sizeBytes": 2145
+    },
+    {
+      "path": "src/modules/measurements/application/transition-measurement-session.use-case.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0dc56c3a80999b0c5997fbc73acca1084dbf80446bc2d7df9077d971eb7dd088",
+      "sizeBytes": 3539
+    },
+    {
+      "path": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionMeasurementSessionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/application/transition-measurement-session.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:994f286825a3f30df1ea1d20845fa584d37fce85d21851afa6e126ed2322a891",
+      "sizeBytes": 4049
+    },
+    {
+      "path": "src/modules/measurements/domain/measurement-attempt.policy.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:201d630a65acb51e065a15014699e556337d92cf0021d36f2a69b1ad4a313fed",
+      "sizeBytes": 3905
+    },
+    {
+      "path": "src/modules/measurements/domain/measurement-attempt.policy.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assertAttempts"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/domain/measurement-attempt.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b798971e5269f10ffb493faaf0a56497f55d2f4f0b2849d27d857ab444aa5d19",
+      "sizeBytes": 2370
+    },
+    {
+      "path": "src/modules/measurements/domain/measurement-protocol.policy.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d507c62b87dfc710ce45d176588c6169ad8a22ebdef11300a0032c82f4bc0101",
+      "sizeBytes": 2335
+    },
+    {
+      "path": "src/modules/measurements/domain/measurement-protocol.policy.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assertProtocolContent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/domain/measurement-protocol.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0aaaaf0b5d6469ca3f37888fa5f3224373ef0c3d2c0a6586bd4b594babaac25e",
+      "sizeBytes": 1670
+    },
+    {
+      "path": "src/modules/measurements/domain/measurement-session.state-machine.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d7b72c4bd4da7d8e5d09aaccdf44669b9a584ee5a87403b5b79f87b219892d12",
+      "sizeBytes": 1177
+    },
+    {
+      "path": "src/modules/measurements/domain/measurement-session.state-machine.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "nextSessionStatus"
+        },
+        {
+          "kind": "function",
+          "name": "acceptsAttempts"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/domain/measurement-session.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:42488d968c952117cbd2f1635019c0e7fe65109aa42552220aae49fc1a3c1125",
+      "sizeBytes": 997
+    },
+    {
+      "path": "src/modules/measurements/domain/result-selection.policy.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:89add7e8edf161c6b024715bc7a6fdd1531ac65175fa6e30c58773e47a0f0855",
+      "sizeBytes": 3067
+    },
+    {
+      "path": "src/modules/measurements/domain/result-selection.policy.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "selectResult"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/domain/result-selection.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f52b0eafc43b0e5e9b4ebc73de95cc2adb95a5fa904cce07e337dcc3b8a76f98",
+      "sizeBytes": 2489
+    },
+    {
+      "path": "src/modules/measurements/domain/unit-conversion.policy.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:61e89fc4f0e4a95ae2cdb81cb2c214a18b11a3b01372d475a8c1a6bd2ec8aa87",
+      "sizeBytes": 2153
+    },
+    {
+      "path": "src/modules/measurements/domain/unit-conversion.policy.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "dimensionOf"
+        },
+        {
+          "kind": "function",
+          "name": "areUnitsCompatible"
+        },
+        {
+          "kind": "function",
+          "name": "convertValue"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/domain/unit-conversion.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:805f47efc7c97aacf47f99fe6b733df73b159e91e834b833c4b702f0f0c5852e",
+      "sizeBytes": 1746
+    },
+    {
+      "path": "src/modules/measurements/errors/measurement-invalid-transition.error.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementInvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e942bfe5fc23cd49537155057826c5484b132322bce43f4c82fad7067014194b",
+      "sizeBytes": 344
+    },
+    {
+      "path": "src/modules/measurements/errors/measurement-protocol-duplicate.error.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementProtocolDuplicateError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1704d260879e082d53cbda8c302dca21a94daa019039d2ffd3e0fda425f96313",
+      "sizeBytes": 344
+    },
+    {
+      "path": "src/modules/measurements/errors/measurement-protocol-not-found.error.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementProtocolNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c411aa213a9597f4cc257079f95394834a8299c789b458a1a79a52ad313128a1",
+      "sizeBytes": 344
+    },
+    {
+      "path": "src/modules/measurements/errors/measurement-scope-not-found.error.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementScopeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b0b59acb34981360480dec0cf4b0537aa6f5dbb61992d8eda92a63e88e2fee27",
+      "sizeBytes": 396
+    },
+    {
+      "path": "src/modules/measurements/errors/measurement-session-not-found.error.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementSessionNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:46fb071d2b985fd8669bb48b6d6a042706622492cc0ef587c38e6eb680c40252",
+      "sizeBytes": 339
+    },
+    {
+      "path": "src/modules/measurements/errors/measurement-validation.error.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementValidationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c66d7863619e9c6eef8add991db3bc5a8ec0ae158baac4353033ace38d1f4eef",
+      "sizeBytes": 359
+    },
+    {
+      "path": "src/modules/measurements/errors/measurement-version-conflict.error.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementVersionConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e842c4777704d93b0b0c5155ae106e11029fe1f128dfd172698992ed2b589c42",
+      "sizeBytes": 334
+    },
+    {
+      "path": "src/modules/measurements/errors/measurements-errors.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d3925f1a88af831d23110ee8c735c2a9d9134086938c6452118334fef9081e2c",
+      "sizeBytes": 2253
+    },
+    {
+      "path": "src/modules/measurements/errors/unit-incompatible.error.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UnitIncompatibleError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:053cbece8ff82825e706bd230f05889a46b86a0da679b378c72b3d67a7303d4a",
+      "sizeBytes": 334
+    },
+    {
+      "path": "src/modules/measurements/index.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cdfb908f6ca51db296f034a57df9ac1c27abab5f120016e425a6e9d07372ce64",
+      "sizeBytes": 60
+    },
+    {
+      "path": "src/modules/measurements/infrastructure/measurement-attempt.repository.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ecfcebfc1b957957ae60514ac57ad60f6d063b9329681de5a808d86713be7226",
+      "sizeBytes": 3529
+    },
+    {
+      "path": "src/modules/measurements/infrastructure/measurement-attempt.repository.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementAttemptRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/infrastructure/measurement-attempt.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9720c8e39032320606b95f6d71daeef3623262067a89a9b54a2a8e83aac470a9",
+      "sizeBytes": 4962
+    },
+    {
+      "path": "src/modules/measurements/infrastructure/measurement-protocol.repository.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f30d5dfacedab5312aea8758c2cca4cd0ea80b4a122a886ae6f7adb74dfddc19",
+      "sizeBytes": 4595
+    },
+    {
+      "path": "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementProtocolRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/infrastructure/measurement-protocol.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:dc62bd1728f8bd061fdadd89a2522d69ece69a98af71f2d66c248bb7bbcbe193",
+      "sizeBytes": 4843
+    },
+    {
+      "path": "src/modules/measurements/infrastructure/measurement-scope.repository.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:68d1574ee149e1f933a6d439c0576f781340459897de695cce869b1394de05e1",
+      "sizeBytes": 1912
+    },
+    {
+      "path": "src/modules/measurements/infrastructure/measurement-scope.repository.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementScopeRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/infrastructure/measurement-scope.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:73619739ee87bc1a8daffe52beee4a6da2c2b4d36ed52c519e6c84999d3e8b78",
+      "sizeBytes": 2006
+    },
+    {
+      "path": "src/modules/measurements/infrastructure/measurement-session.repository.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:57f4e2eb99d4ed43f9bba0f6c2ae866325b9f596b4bec3a23a219a453bf89738",
+      "sizeBytes": 3968
+    },
+    {
+      "path": "src/modules/measurements/infrastructure/measurement-session.repository.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementSessionRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/infrastructure/measurement-session.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1338c9722cabaada31e496855630baa4818aa3ed4039976193958138a510254c",
+      "sizeBytes": 4299
+    },
+    {
+      "path": "src/modules/measurements/lib/measurements-command.mapper.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:47a0bfae39f0c74752ce3ff63b0dcd247084a7a48369968e2a14c87c6976cf9b",
+      "sizeBytes": 3046
+    },
+    {
+      "path": "src/modules/measurements/lib/measurements-command.mapper.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toProtocolContent"
+        },
+        {
+          "kind": "function",
+          "name": "toSessionContent"
+        },
+        {
+          "kind": "function",
+          "name": "toAttemptInputs"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/lib/measurements-command.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ff54597c58f2d3825d3849ef84b91d4d46a81b385de04a7426bbc258c9e7afdf",
+      "sizeBytes": 1752
+    },
+    {
+      "path": "src/modules/measurements/lib/measurements.builders.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ca46ca5922b62ff2bb9c331455a7e4d86ef01f1336ad0e5c5f5c855d95b99c2d",
+      "sizeBytes": 7476
+    },
+    {
+      "path": "src/modules/measurements/lib/measurements.builders.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewProtocol"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewSession"
+        },
+        {
+          "kind": "function",
+          "name": "buildSessionStatusChange"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewAttempts"
+        },
+        {
+          "kind": "function",
+          "name": "toSelectableAttempts"
+        },
+        {
+          "kind": "function",
+          "name": "selectProtocolResult"
+        },
+        {
+          "kind": "function",
+          "name": "buildRecordedMeasurement"
+        },
+        {
+          "kind": "function",
+          "name": "buildHistoryEntries"
+        },
+        {
+          "kind": "function",
+          "name": "buildProtocolAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildSessionAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildRecordAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildMeasurementRecordedEvent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/lib/measurements.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c47e4a76954758e6ac0247e4d8d43a1c74f9fc8daf9c965288ead5e1c7853496",
+      "sizeBytes": 7908
+    },
+    {
+      "path": "src/modules/measurements/lib/measurements.helpers.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b06eccf5fbaad5336be7d48161ecaa997e5c2ecd289c43b6fcc890bda82b2ef8",
+      "sizeBytes": 1534
+    },
+    {
+      "path": "src/modules/measurements/lib/measurements.helpers.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveMeasurementsPage"
+        },
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableNumber"
+        },
+        {
+          "kind": "function",
+          "name": "parseEnumValue"
+        },
+        {
+          "kind": "function",
+          "name": "roundNullable"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/lib/measurements.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0ef2f86228234ff34d6887a5d05e67bea7f04937ab26e9714c80d0c1b768b820",
+      "sizeBytes": 1635
+    },
+    {
+      "path": "src/modules/measurements/lib/measurements.mapper.spec.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:fad31347d718f20debe28a1af8fdb7e59a24a3635dfef200cd7610402c3089d7",
+      "sizeBytes": 3991
+    },
+    {
+      "path": "src/modules/measurements/lib/measurements.mapper.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toMeasurementProtocol"
+        },
+        {
+          "kind": "function",
+          "name": "toMeasurementSession"
+        },
+        {
+          "kind": "function",
+          "name": "toMeasurementAttempt"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/measurements/lib/measurements.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bf2ee4ebb27cff3d02daadd3b610e35d4cbf398bff81d253026025491544d7ee",
+      "sizeBytes": 3036
+    },
+    {
+      "path": "src/modules/measurements/measurements.module.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MeasurementsModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a5dd60cbbc7fee9a2b2726ec19af5740d79c43ecdecd802ca59bf3c5bde5dc37",
+      "sizeBytes": 3005
+    },
+    {
+      "path": "src/modules/measurements/model/measurements.constants.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "MEASUREMENTS_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_PROTOCOLS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_SESSIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_HISTORY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MY_MEASUREMENTS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_DETAIL_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_DETAIL_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_TRANSITION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_ATTEMPTS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "HISTORY_MEMBER_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "HISTORY_SCAN_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_KEY_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_KEY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_TEXT_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_VALUE_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_VALUE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_TITLE_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_TITLE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_TEXT_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ATTEMPTS_MIN_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "ATTEMPTS_MAX_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "ATTEMPT_VALUE_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ATTEMPT_VALUE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "ATTEMPT_NOTE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "DQ_REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "FIRST_ATTEMPT_NUMBER"
+        },
+        {
+          "kind": "const",
+          "name": "RECORD_VERSION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "RESULT_DISPLAY_DECIMALS"
+        },
+        {
+          "kind": "const",
+          "name": "UNIT_METADATA"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_SCOPE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_SCOPE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_DUPLICATE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_DUPLICATE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_VALIDATION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_VALIDATION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "UNIT_INCOMPATIBLE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "UNIT_INCOMPATIBLE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_TRANSITIONED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_RECORDED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_RECORDED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "SEEDED_PROTOCOL_ID_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_PROTOCOL_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_SESSION_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_ATTEMPT_COLUMNS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c818ef530d49e899779dd79cfd503c9b7860f32aa0865b199cddb3f49e3b2b15",
+      "sizeBytes": 7807
+    },
+    {
+      "path": "src/modules/measurements/model/measurements.enums.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "MeasurementDiscipline"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_DISCIPLINE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "MeasurementUnit"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_UNIT_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "MeasurementDimension"
+        },
+        {
+          "kind": "enum",
+          "name": "MeasurementDirection"
+        },
+        {
+          "kind": "const",
+          "name": "MEASUREMENT_DIRECTION_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ResultPolicy"
+        },
+        {
+          "kind": "const",
+          "name": "RESULT_POLICY_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ProtocolStatus"
+        },
+        {
+          "kind": "const",
+          "name": "PROTOCOL_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SessionStatus"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SessionTransition"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_TRANSITION_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d55d6f9f4a59caca48ad732d893d773bf92d222c4a4f7298c195073c9c61b641",
+      "sizeBytes": 4021
+    },
+    {
+      "path": "src/modules/measurements/model/measurements.rows.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "MeasurementProtocolRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MeasurementSessionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MeasurementAttemptRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MembershipIdRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bd9e2a99cb8d964705d8a15eef578b43eb90e6b27527a824b52bfc518e1f1d9b",
+      "sizeBytes": 2266
+    },
+    {
+      "path": "src/modules/measurements/model/measurements.types.ts",
+      "root": "modules",
+      "module": "measurements",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "UnitMetadata"
+        },
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "PagedResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ProtocolContent"
+        },
+        {
+          "kind": "interface",
+          "name": "ProtocolContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "NewProtocol"
+        },
+        {
+          "kind": "interface",
+          "name": "MeasurementProtocol"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateProtocolCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionContent"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "NewSession"
+        },
+        {
+          "kind": "interface",
+          "name": "MeasurementSession"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateSessionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "TransitionSessionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "AttemptInput"
+        },
+        {
+          "kind": "interface",
+          "name": "RawAttemptInput"
+        },
+        {
+          "kind": "interface",
+          "name": "RecordMeasurementCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "NewAttempt"
+        },
+        {
+          "kind": "interface",
+          "name": "MeasurementAttempt"
+        },
+        {
+          "kind": "interface",
+          "name": "RecordTarget"
+        },
+        {
+          "kind": "interface",
+          "name": "SelectableAttempt"
+        },
+        {
+          "kind": "interface",
+          "name": "ResultSelection"
+        },
+        {
+          "kind": "interface",
+          "name": "ProtocolHistoryEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "MeasurementHistory"
+        },
+        {
+          "kind": "interface",
+          "name": "RecordedMeasurement"
+        },
+        {
+          "kind": "type",
+          "name": "ProtocolPage"
+        },
+        {
+          "kind": "type",
+          "name": "SessionPage"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionDetail"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b5c7584b143981b1afdeca83511dec2688f4cacc7028efcba48b4ca105da2168",
+      "sizeBytes": 9752
     },
     {
       "path": "src/modules/members/adapters/signed-url-media-storage.adapter.spec.ts",

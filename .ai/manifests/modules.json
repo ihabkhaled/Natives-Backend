@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T13:13:09.046Z",
+  "generatedAt": "2026-07-19T14:10:45.234Z",
   "modules": [
     {
       "name": "articles",
@@ -381,6 +381,89 @@
       "fileCount": 69,
       "specCount": 42,
       "publicSurface": "src/modules/identity/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "measurements",
+      "path": "src/modules/measurements",
+      "layers": {
+        "api-dto": [
+          "src/modules/measurements/api/dto/attempt-input.dto.ts",
+          "src/modules/measurements/api/dto/attempt-response.dto.ts",
+          "src/modules/measurements/api/dto/create-protocol.dto.ts",
+          "src/modules/measurements/api/dto/create-session.dto.ts",
+          "src/modules/measurements/api/dto/history-response.dto.ts",
+          "src/modules/measurements/api/dto/list-measurements.query.dto.ts",
+          "src/modules/measurements/api/dto/list-protocols.response.dto.ts",
+          "src/modules/measurements/api/dto/list-sessions.response.dto.ts",
+          "src/modules/measurements/api/dto/protocol-history-entry.response.dto.ts",
+          "src/modules/measurements/api/dto/protocol-response.dto.ts",
+          "src/modules/measurements/api/dto/record-measurement.dto.ts",
+          "src/modules/measurements/api/dto/recorded-measurement.response.dto.ts",
+          "src/modules/measurements/api/dto/result-selection.response.dto.ts",
+          "src/modules/measurements/api/dto/session-detail-response.dto.ts",
+          "src/modules/measurements/api/dto/session-response.dto.ts",
+          "src/modules/measurements/api/dto/transition-session.dto.ts"
+        ],
+        "controller": [
+          "src/modules/measurements/api/measurement-history.controller.ts",
+          "src/modules/measurements/api/measurement-protocol.controller.ts",
+          "src/modules/measurements/api/measurement-self.controller.ts",
+          "src/modules/measurements/api/measurement-session.controller.ts"
+        ],
+        "use-case": [
+          "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+          "src/modules/measurements/application/create-measurement-session.use-case.ts",
+          "src/modules/measurements/application/record-measurement.use-case.ts",
+          "src/modules/measurements/application/transition-measurement-session.use-case.ts"
+        ],
+        "service": [
+          "src/modules/measurements/application/measurement-history.service.ts",
+          "src/modules/measurements/application/measurement-scope.service.ts",
+          "src/modules/measurements/application/protocol-query.service.ts",
+          "src/modules/measurements/application/session-query.service.ts"
+        ],
+        "domain": [
+          "src/modules/measurements/domain/measurement-attempt.policy.ts",
+          "src/modules/measurements/domain/measurement-protocol.policy.ts",
+          "src/modules/measurements/domain/measurement-session.state-machine.ts",
+          "src/modules/measurements/domain/result-selection.policy.ts",
+          "src/modules/measurements/domain/unit-conversion.policy.ts"
+        ],
+        "other": [
+          "src/modules/measurements/errors/measurement-invalid-transition.error.ts",
+          "src/modules/measurements/errors/measurement-protocol-duplicate.error.ts",
+          "src/modules/measurements/errors/measurement-protocol-not-found.error.ts",
+          "src/modules/measurements/errors/measurement-scope-not-found.error.ts",
+          "src/modules/measurements/errors/measurement-session-not-found.error.ts",
+          "src/modules/measurements/errors/measurement-validation.error.ts",
+          "src/modules/measurements/errors/measurement-version-conflict.error.ts",
+          "src/modules/measurements/errors/unit-incompatible.error.ts",
+          "src/modules/measurements/index.ts",
+          "src/modules/measurements/measurements.module.ts"
+        ],
+        "repository": [
+          "src/modules/measurements/infrastructure/measurement-attempt.repository.ts",
+          "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+          "src/modules/measurements/infrastructure/measurement-scope.repository.ts",
+          "src/modules/measurements/infrastructure/measurement-session.repository.ts"
+        ],
+        "lib": [
+          "src/modules/measurements/lib/measurements-command.mapper.ts",
+          "src/modules/measurements/lib/measurements.builders.ts",
+          "src/modules/measurements/lib/measurements.helpers.ts",
+          "src/modules/measurements/lib/measurements.mapper.ts"
+        ],
+        "model": [
+          "src/modules/measurements/model/measurements.constants.ts",
+          "src/modules/measurements/model/measurements.enums.ts",
+          "src/modules/measurements/model/measurements.rows.ts",
+          "src/modules/measurements/model/measurements.types.ts"
+        ]
+      },
+      "fileCount": 55,
+      "specCount": 21,
+      "publicSurface": "src/modules/measurements/index.ts",
       "hasEvents": false
     },
     {

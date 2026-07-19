@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T13:13:09.046Z",
+  "generatedAt": "2026-07-19T14:10:45.234Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -44,6 +44,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/identity/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/measurements/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -7700,6 +7705,1256 @@
       "from": "src/modules/identity/model/identity.types.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/attempt-input.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/attempt-input.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/attempt-input.dto.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/attempt-input.dto.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/attempt-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/attempt-response.dto.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/create-protocol.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/create-protocol.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/create-protocol.dto.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/create-protocol.dto.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/create-session.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/create-session.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/create-session.dto.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/history-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/history-response.dto.ts",
+      "to": "src/modules/measurements/api/dto/protocol-history-entry.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/list-measurements.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/list-measurements.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/list-measurements.query.dto.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/list-protocols.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/list-protocols.response.dto.ts",
+      "to": "src/modules/measurements/api/dto/protocol-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/list-sessions.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/list-sessions.response.dto.ts",
+      "to": "src/modules/measurements/api/dto/session-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/protocol-history-entry.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/protocol-history-entry.response.dto.ts",
+      "to": "src/modules/measurements/api/dto/attempt-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/protocol-history-entry.response.dto.ts",
+      "to": "src/modules/measurements/api/dto/protocol-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/protocol-history-entry.response.dto.ts",
+      "to": "src/modules/measurements/api/dto/result-selection.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/protocol-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/protocol-response.dto.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/record-measurement.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/record-measurement.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/record-measurement.dto.ts",
+      "to": "src/modules/measurements/api/dto/attempt-input.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/record-measurement.dto.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/recorded-measurement.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/recorded-measurement.response.dto.ts",
+      "to": "src/modules/measurements/api/dto/attempt-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/recorded-measurement.response.dto.ts",
+      "to": "src/modules/measurements/api/dto/protocol-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/recorded-measurement.response.dto.ts",
+      "to": "src/modules/measurements/api/dto/result-selection.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/result-selection.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/result-selection.response.dto.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/session-detail-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/session-detail-response.dto.ts",
+      "to": "src/modules/measurements/api/dto/attempt-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/session-detail-response.dto.ts",
+      "to": "src/modules/measurements/api/dto/session-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/session-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/session-response.dto.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/transition-session.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/transition-session.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/transition-session.dto.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/dto/transition-session.dto.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-history.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-history.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-history.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-history.controller.ts",
+      "to": "src/modules/measurements/api/dto/history-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-history.controller.ts",
+      "to": "src/modules/measurements/application/measurement-history.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-history.controller.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-history.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/modules/measurements/api/dto/create-protocol.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/modules/measurements/api/dto/list-measurements.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/modules/measurements/api/dto/list-protocols.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/modules/measurements/api/dto/protocol-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/modules/measurements/application/protocol-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/modules/measurements/lib/measurements-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/modules/measurements/lib/measurements.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-self.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-self.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-self.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-self.controller.ts",
+      "to": "src/modules/measurements/api/dto/history-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-self.controller.ts",
+      "to": "src/modules/measurements/application/measurement-history.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-self.controller.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-self.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/api/dto/create-session.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/api/dto/list-measurements.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/api/dto/list-sessions.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/api/dto/record-measurement.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/api/dto/recorded-measurement.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/api/dto/session-detail-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/api/dto/session-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/api/dto/transition-session.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/application/session-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/lib/measurements-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/lib/measurements.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/api/measurement-session.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "to": "src/modules/measurements/application/measurement-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "to": "src/modules/measurements/domain/measurement-protocol.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "to": "src/modules/measurements/errors/measurement-protocol-duplicate.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "to": "src/modules/measurements/lib/measurements.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/application/measurement-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/lib/measurements.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/measurements/application/measurement-history.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/measurement-history.service.ts",
+      "to": "src/modules/measurements/application/measurement-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/measurement-history.service.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-attempt.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/measurement-history.service.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/measurement-history.service.ts",
+      "to": "src/modules/measurements/lib/measurements.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/measurement-history.service.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/measurement-scope.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/measurement-scope.service.ts",
+      "to": "src/modules/measurements/errors/measurement-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/measurement-scope.service.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/protocol-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/protocol-query.service.ts",
+      "to": "src/modules/measurements/errors/measurement-protocol-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/protocol-query.service.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/protocol-query.service.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/measurements/application/measurement-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/measurements/domain/measurement-attempt.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/measurements/domain/measurement-session.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/measurements/errors/measurement-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/measurements/errors/measurement-protocol-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/measurements/errors/measurement-session-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-attempt.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/measurements/lib/measurements.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/measurements/application/session-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/session-query.service.ts",
+      "to": "src/modules/measurements/errors/measurement-session-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/session-query.service.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-attempt.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/session-query.service.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/session-query.service.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/application/measurement-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/domain/measurement-session.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/errors/measurement-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/errors/measurement-session-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/errors/measurement-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/lib/measurements.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/measurements/domain/measurement-attempt.policy.ts",
+      "to": "src/modules/measurements/domain/unit-conversion.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/measurement-attempt.policy.ts",
+      "to": "src/modules/measurements/errors/measurement-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/measurement-attempt.policy.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/measurement-attempt.policy.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/measurement-protocol.policy.ts",
+      "to": "src/modules/measurements/errors/measurement-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/measurement-protocol.policy.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/measurement-protocol.policy.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/measurement-session.state-machine.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/result-selection.policy.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/result-selection.policy.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/unit-conversion.policy.ts",
+      "to": "src/modules/measurements/errors/unit-incompatible.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/unit-conversion.policy.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/unit-conversion.policy.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/domain/unit-conversion.policy.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-invalid-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-invalid-transition.error.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-protocol-duplicate.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-protocol-duplicate.error.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-protocol-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-protocol-not-found.error.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-scope-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-scope-not-found.error.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-session-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-session-not-found.error.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-validation.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-validation.error.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-version-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/errors/measurement-version-conflict.error.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/errors/unit-incompatible.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/errors/unit-incompatible.error.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/index.ts",
+      "to": "src/modules/measurements/measurements.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-attempt.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-attempt.repository.ts",
+      "to": "src/modules/measurements/lib/measurements.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-attempt.repository.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-attempt.repository.ts",
+      "to": "src/modules/measurements/model/measurements.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-attempt.repository.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+      "to": "src/modules/measurements/lib/measurements.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+      "to": "src/modules/measurements/model/measurements.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-scope.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-scope.repository.ts",
+      "to": "src/modules/measurements/model/measurements.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-session.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-session.repository.ts",
+      "to": "src/modules/measurements/lib/measurements.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-session.repository.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-session.repository.ts",
+      "to": "src/modules/measurements/model/measurements.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/infrastructure/measurement-session.repository.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements-command.mapper.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.builders.ts",
+      "to": "src/modules/measurements/domain/result-selection.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.builders.ts",
+      "to": "src/modules/measurements/domain/unit-conversion.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.builders.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.builders.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.builders.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.helpers.ts",
+      "to": "src/modules/measurements/model/measurements.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.helpers.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.mapper.ts",
+      "to": "src/modules/measurements/lib/measurements.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.mapper.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.mapper.ts",
+      "to": "src/modules/measurements/model/measurements.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/lib/measurements.mapper.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/api/measurement-history.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/api/measurement-protocol.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/api/measurement-self.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/api/measurement-session.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/application/create-measurement-protocol.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/application/create-measurement-session.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/application/measurement-history.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/application/measurement-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/application/protocol-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/application/record-measurement.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/application/session-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/application/transition-measurement-session.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-attempt.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-protocol.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/measurements/infrastructure/measurement-session.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/measurements.module.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/measurements/model/measurements.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/measurements/model/measurements.constants.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/model/measurements.constants.ts",
+      "to": "src/modules/measurements/model/measurements.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/measurements/model/measurements.types.ts",
+      "to": "src/modules/measurements/model/measurements.enums.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/members/adapters/signed-url-media-storage.adapter.ts",

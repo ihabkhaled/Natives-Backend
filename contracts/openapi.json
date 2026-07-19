@@ -342,6 +342,147 @@
         ],
         "type": "object"
       },
+      "AttemptInputDto": {
+        "properties": {
+          "disqualified": {
+            "default": false,
+            "type": "boolean"
+          },
+          "dqReason": {
+            "maxLength": 500,
+            "nullable": true,
+            "type": "object"
+          },
+          "notes": {
+            "maxLength": 1000,
+            "nullable": true,
+            "type": "object"
+          },
+          "unit": {
+            "enum": [
+              "seconds",
+              "milliseconds",
+              "meters",
+              "centimeters",
+              "kilograms",
+              "meters_per_second",
+              "count",
+              "level",
+              "percent"
+            ],
+            "type": "string"
+          },
+          "valid": {
+            "default": true,
+            "type": "boolean"
+          },
+          "value": {
+            "maximum": 1000000,
+            "minimum": -1000000,
+            "nullable": true,
+            "type": "number"
+          }
+        },
+        "required": [
+          "unit"
+        ],
+        "type": "object"
+      },
+      "AttemptResponseDto": {
+        "properties": {
+          "attemptNumber": {
+            "type": "number"
+          },
+          "canonicalValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "disqualified": {
+            "type": "boolean"
+          },
+          "dqReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "evaluatorUserId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "notes": {
+            "nullable": true,
+            "type": "string"
+          },
+          "protocolId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "rawValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "recordedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "sessionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "unit": {
+            "enum": [
+              "seconds",
+              "milliseconds",
+              "meters",
+              "centimeters",
+              "kilograms",
+              "meters_per_second",
+              "count",
+              "level",
+              "percent"
+            ],
+            "type": "string"
+          },
+          "valid": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "sessionId",
+          "teamId",
+          "membershipId",
+          "protocolId",
+          "attemptNumber",
+          "rawValue",
+          "unit",
+          "canonicalValue",
+          "valid",
+          "disqualified",
+          "dqReason",
+          "evaluatorUserId",
+          "notes",
+          "recordedAt",
+          "createdAt"
+        ],
+        "type": "object"
+      },
       "AttendanceHistoryResponseDto": {
         "properties": {
           "items": {
@@ -2024,6 +2165,105 @@
         ],
         "type": "object"
       },
+      "CreateProtocolDto": {
+        "properties": {
+          "description": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "direction": {
+            "enum": [
+              "better_higher",
+              "better_lower"
+            ],
+            "type": "string"
+          },
+          "discipline": {
+            "enum": [
+              "speed",
+              "agility",
+              "endurance",
+              "strength_power",
+              "reaction",
+              "throwing_accuracy",
+              "throwing_distance",
+              "catching",
+              "jumping",
+              "custom"
+            ],
+            "type": "string"
+          },
+          "instructions": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "maxValue": {
+            "maximum": 1000000,
+            "minimum": -1000000,
+            "nullable": true,
+            "type": "object"
+          },
+          "minValue": {
+            "maximum": 1000000,
+            "minimum": -1000000,
+            "nullable": true,
+            "type": "object"
+          },
+          "name": {
+            "maxLength": 200,
+            "minLength": 2,
+            "type": "string"
+          },
+          "protocolKey": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "resultPolicy": {
+            "enum": [
+              "best",
+              "average",
+              "latest"
+            ],
+            "type": "string"
+          },
+          "safetyNotes": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "unit": {
+            "enum": [
+              "seconds",
+              "milliseconds",
+              "meters",
+              "centimeters",
+              "kilograms",
+              "meters_per_second",
+              "count",
+              "level",
+              "percent"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "protocolKey",
+          "name",
+          "discipline",
+          "unit",
+          "direction",
+          "resultPolicy"
+        ],
+        "type": "object"
+      },
       "CreateRuleDto": {
         "properties": {
           "components": {
@@ -2239,69 +2479,39 @@
       },
       "CreateSessionDto": {
         "properties": {
-          "capacity": {
-            "maximum": 10000,
-            "minimum": 0,
-            "type": "number"
+          "conditions": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
           },
-          "endsAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "field": {
-            "maxLength": 120,
-            "type": "string"
-          },
-          "meetAt": {
-            "format": "date-time",
-            "type": "string"
+          "location": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
           },
           "notes": {
             "maxLength": 2000,
-            "type": "string"
+            "nullable": true,
+            "type": "object"
           },
-          "organizerUserId": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "rsvpCutoffAt": {
+          "scheduledAt": {
             "format": "date-time",
             "type": "string"
           },
           "seasonId": {
             "format": "uuid",
-            "type": "string"
+            "nullable": true,
+            "type": "object"
           },
-          "sessionType": {
-            "maxLength": 64,
-            "minLength": 1,
-            "type": "string"
-          },
-          "startsAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "timezone": {
-            "maxLength": 64,
-            "type": "string"
-          },
-          "venueId": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "visibility": {
-            "enum": [
-              "team",
-              "coaches",
-              "public"
-            ],
+          "title": {
+            "maxLength": 200,
+            "minLength": 2,
             "type": "string"
           }
         },
         "required": [
-          "sessionType",
-          "startsAt",
-          "endsAt"
+          "title",
+          "scheduledAt"
         ],
         "type": "object"
       },
@@ -3166,6 +3376,25 @@
         ],
         "type": "object"
       },
+      "HistoryResponseDto": {
+        "properties": {
+          "entries": {
+            "items": {
+              "$ref": "#/components/schemas/ProtocolHistoryEntryResponseDto"
+            },
+            "type": "array"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "membershipId",
+          "entries"
+        ],
+        "type": "object"
+      },
       "InvitationResponseDto": {
         "properties": {
           "createdAt": {
@@ -3533,6 +3762,32 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/PlayerAssessmentSummaryResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListProtocolsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ProtocolResponseDto"
             },
             "type": "array"
           },
@@ -5368,6 +5623,161 @@
         ],
         "type": "object"
       },
+      "ProtocolHistoryEntryResponseDto": {
+        "properties": {
+          "attempts": {
+            "items": {
+              "$ref": "#/components/schemas/AttemptResponseDto"
+            },
+            "type": "array"
+          },
+          "protocol": {
+            "$ref": "#/components/schemas/ProtocolResponseDto"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ResultSelectionResponseDto"
+          }
+        },
+        "required": [
+          "protocol",
+          "attempts",
+          "result"
+        ],
+        "type": "object"
+      },
+      "ProtocolResponseDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "direction": {
+            "enum": [
+              "better_higher",
+              "better_lower"
+            ],
+            "type": "string"
+          },
+          "discipline": {
+            "enum": [
+              "speed",
+              "agility",
+              "endurance",
+              "strength_power",
+              "reaction",
+              "throwing_accuracy",
+              "throwing_distance",
+              "catching",
+              "jumping",
+              "custom"
+            ],
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "instructions": {
+            "nullable": true,
+            "type": "string"
+          },
+          "maxValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "minValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "protocolKey": {
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "resultPolicy": {
+            "enum": [
+              "best",
+              "average",
+              "latest"
+            ],
+            "type": "string"
+          },
+          "safetyNotes": {
+            "nullable": true,
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "unit": {
+            "enum": [
+              "seconds",
+              "milliseconds",
+              "meters",
+              "centimeters",
+              "kilograms",
+              "meters_per_second",
+              "count",
+              "level",
+              "percent"
+            ],
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "teamId",
+          "seasonId",
+          "protocolKey",
+          "name",
+          "description",
+          "discipline",
+          "unit",
+          "direction",
+          "resultPolicy",
+          "instructions",
+          "safetyNotes",
+          "minValue",
+          "maxValue",
+          "status",
+          "recordVersion",
+          "createdBy",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
       "PublicInvitationResponseDto": {
         "properties": {
           "email": {
@@ -5463,6 +5873,62 @@
           "failed",
           "ruleId",
           "ruleVersion"
+        ],
+        "type": "object"
+      },
+      "RecordedMeasurementResponseDto": {
+        "properties": {
+          "attempts": {
+            "items": {
+              "$ref": "#/components/schemas/AttemptResponseDto"
+            },
+            "type": "array"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "protocol": {
+            "$ref": "#/components/schemas/ProtocolResponseDto"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ResultSelectionResponseDto"
+          },
+          "sessionId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "sessionId",
+          "membershipId",
+          "protocol",
+          "attempts",
+          "result"
+        ],
+        "type": "object"
+      },
+      "RecordMeasurementDto": {
+        "properties": {
+          "attempts": {
+            "items": {
+              "$ref": "#/components/schemas/AttemptInputDto"
+            },
+            "type": "array"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "protocolId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "membershipId",
+          "protocolId",
+          "attempts"
         ],
         "type": "object"
       },
@@ -5719,6 +6185,58 @@
         "required": [
           "token",
           "password"
+        ],
+        "type": "object"
+      },
+      "ResultSelectionResponseDto": {
+        "properties": {
+          "average": {
+            "nullable": true,
+            "type": "number"
+          },
+          "best": {
+            "nullable": true,
+            "type": "number"
+          },
+          "consideredCount": {
+            "type": "number"
+          },
+          "direction": {
+            "enum": [
+              "better_higher",
+              "better_lower"
+            ],
+            "type": "string"
+          },
+          "excludedCount": {
+            "type": "number"
+          },
+          "latest": {
+            "nullable": true,
+            "type": "number"
+          },
+          "method": {
+            "enum": [
+              "best",
+              "average",
+              "latest"
+            ],
+            "type": "string"
+          },
+          "selected": {
+            "nullable": true,
+            "type": "number"
+          }
+        },
+        "required": [
+          "method",
+          "direction",
+          "selected",
+          "best",
+          "average",
+          "latest",
+          "consideredCount",
+          "excludedCount"
         ],
         "type": "object"
       },
@@ -6946,6 +7464,24 @@
         },
         "type": "object"
       },
+      "SessionDetailResponseDto": {
+        "properties": {
+          "attempts": {
+            "items": {
+              "$ref": "#/components/schemas/AttemptResponseDto"
+            },
+            "type": "array"
+          },
+          "session": {
+            "$ref": "#/components/schemas/SessionResponseDto"
+          }
+        },
+        "required": [
+          "session",
+          "attempts"
+        ],
+        "type": "object"
+      },
       "SessionHistoryResponseDto": {
         "properties": {
           "items": {
@@ -6988,35 +7524,29 @@
       },
       "SessionResponseDto": {
         "properties": {
-          "cancellationReason": {
+          "conditions": {
             "nullable": true,
             "type": "string"
           },
-          "capacity": {
+          "conductedAt": {
+            "format": "date-time",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "createdAt": {
             "format": "date-time",
             "type": "string"
           },
           "createdBy": {
-            "nullable": true,
-            "type": "string"
-          },
-          "endsAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "field": {
+            "format": "uuid",
             "nullable": true,
             "type": "string"
           },
           "id": {
+            "format": "uuid",
             "type": "string"
           },
-          "meetAt": {
-            "format": "date-time",
+          "location": {
             "nullable": true,
             "type": "string"
           },
@@ -7024,72 +7554,35 @@
             "nullable": true,
             "type": "string"
           },
-          "occurrenceDate": {
-            "nullable": true,
-            "type": "string"
+          "recordVersion": {
+            "type": "number"
           },
-          "organizerUserId": {
-            "nullable": true,
-            "type": "string"
-          },
-          "rsvpCutoffAt": {
+          "scheduledAt": {
             "format": "date-time",
-            "nullable": true,
-            "type": "string"
-          },
-          "scheduleId": {
-            "nullable": true,
             "type": "string"
           },
           "seasonId": {
+            "format": "uuid",
             "nullable": true,
-            "type": "string"
-          },
-          "sessionType": {
-            "type": "string"
-          },
-          "startsAt": {
-            "format": "date-time",
             "type": "string"
           },
           "status": {
             "enum": [
-              "draft",
-              "published",
-              "rescheduled",
-              "cancelled",
-              "completed",
-              "archived"
+              "scheduled",
+              "conducted",
+              "cancelled"
             ],
             "type": "string"
           },
           "teamId": {
+            "format": "uuid",
             "type": "string"
           },
-          "timezone": {
+          "title": {
             "type": "string"
           },
           "updatedAt": {
             "format": "date-time",
-            "type": "string"
-          },
-          "updatedBy": {
-            "nullable": true,
-            "type": "string"
-          },
-          "venueId": {
-            "nullable": true,
-            "type": "string"
-          },
-          "version": {
-            "type": "number"
-          },
-          "visibility": {
-            "enum": [
-              "team",
-              "coaches",
-              "public"
-            ],
             "type": "string"
           }
         },
@@ -7097,27 +7590,17 @@
           "id",
           "teamId",
           "seasonId",
-          "scheduleId",
-          "occurrenceDate",
-          "sessionType",
-          "timezone",
-          "venueId",
-          "field",
-          "capacity",
-          "meetAt",
-          "startsAt",
-          "endsAt",
-          "rsvpCutoffAt",
-          "visibility",
-          "organizerUserId",
-          "notes",
+          "title",
           "status",
-          "cancellationReason",
+          "scheduledAt",
+          "conductedAt",
+          "location",
+          "conditions",
+          "notes",
+          "recordVersion",
           "createdBy",
-          "updatedBy",
           "createdAt",
-          "updatedAt",
-          "version"
+          "updatedAt"
         ],
         "type": "object"
       },
@@ -7754,6 +8237,26 @@
               "publish",
               "retire",
               "revert"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "transition",
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
+      "TransitionSessionDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "transition": {
+            "enum": [
+              "conduct",
+              "cancel"
             ],
             "type": "string"
           }
@@ -12157,6 +12660,442 @@
         ]
       }
     },
+    "/teams/{teamId}/measurement-history/{membershipId}": {
+      "get": {
+        "operationId": "MeasurementHistory.forMember",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "membershipId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoryResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Read a player’s measurement history",
+        "tags": [
+          "measurements"
+        ]
+      }
+    },
+    "/teams/{teamId}/measurement-protocols": {
+      "get": {
+        "operationId": "MeasurementProtocol.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListProtocolsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s measurement protocols",
+        "tags": [
+          "measurements"
+        ]
+      },
+      "post": {
+        "operationId": "MeasurementProtocol.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProtocolDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProtocolResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a measurement protocol",
+        "tags": [
+          "measurements"
+        ]
+      }
+    },
+    "/teams/{teamId}/measurement-protocols/{protocolId}": {
+      "get": {
+        "operationId": "MeasurementProtocol.detail",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "protocolId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProtocolResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Read one measurement protocol",
+        "tags": [
+          "measurements"
+        ]
+      }
+    },
+    "/teams/{teamId}/measurement-sessions": {
+      "get": {
+        "operationId": "MeasurementSession.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListSessionsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s measurement sessions",
+        "tags": [
+          "measurements"
+        ]
+      },
+      "post": {
+        "operationId": "MeasurementSession.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSessionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Schedule a measurement session",
+        "tags": [
+          "measurements"
+        ]
+      }
+    },
+    "/teams/{teamId}/measurement-sessions/{sessionId}": {
+      "get": {
+        "operationId": "MeasurementSession.detail",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "sessionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionDetailResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Read one measurement session with its attempts",
+        "tags": [
+          "measurements"
+        ]
+      }
+    },
+    "/teams/{teamId}/measurement-sessions/{sessionId}/attempts": {
+      "post": {
+        "operationId": "MeasurementSession.recordAttempts",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "sessionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecordMeasurementDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordedMeasurementResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Record a player’s attempts for a protocol",
+        "tags": [
+          "measurements"
+        ]
+      }
+    },
+    "/teams/{teamId}/measurement-sessions/{sessionId}/transition": {
+      "post": {
+        "operationId": "MeasurementSession.transition",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "sessionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransitionSessionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Conduct or cancel a measurement session",
+        "tags": [
+          "measurements"
+        ]
+      }
+    },
     "/teams/{teamId}/members": {
       "get": {
         "operationId": "Members.list",
@@ -13258,6 +14197,40 @@
         "summary": "Acknowledge feedback shared with me",
         "tags": [
           "development"
+        ]
+      }
+    },
+    "/teams/{teamId}/my-measurements": {
+      "get": {
+        "operationId": "MeasurementSelf.mine",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoryResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Read my own measurement history",
+        "tags": [
+          "measurements"
         ]
       }
     },
