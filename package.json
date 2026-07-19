@@ -54,7 +54,7 @@
     "security:scan:full": "trivy fs --scanners vuln,secret,misconfig --include-dev-deps --skip-dirs node_modules,dist,coverage .",
     "deps:check": "npm-check-updates",
     "deps:upgrade": "npm-check-updates -u && npm install",
-    "prepare": "husky",
+    "prepare": "node .husky/install.mjs",
     "lint-staged": "lint-staged"
   },
   "dependencies": {
