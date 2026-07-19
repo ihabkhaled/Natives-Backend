@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-19T14:10:45.234Z",
-  "treeHash": "sha256:93d73818bd74697313ace4875ff578e73b6fecc37c5a898009e8b51d1291a714",
+  "generatedAt": "2026-07-19T21:05:08.024Z",
+  "treeHash": "sha256:8ef5a47150c5cfcdc9cd47d0d3e50fef749620d4c0061e4198a55c2bf5ade45f",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ebe582442c54685ff5b7ce44fb2a17e2aee486b9eebf14058a702d47351e3189",
-      "sizeBytes": 1541
+      "hash": "sha256:8ecf52eaca926febae9cbbbdb9eba695ffdcb96e8f0323bda19b3b7b7918d26d",
+      "sizeBytes": 1619
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -3221,6 +3221,35 @@
       "sizeBytes": 10724
     },
     {
+      "path": "src/database/migrations/1722900000000-activities-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivitiesSchema1722900000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8092527468f9688766b2976d88ae426e475a9a86bc29d3bed7cddbd0df7a45de",
+      "sizeBytes": 12558
+    },
+    {
+      "path": "src/database/migrations/activities-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e4a0bb6bc8e08dff359da6b54663abfb33fc5cde6ccb90d40e2f6fd80e6e91cf",
+      "sizeBytes": 3456
+    },
+    {
       "path": "src/database/migrations/assessment-catalog-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3813,6 +3842,1876 @@
       "kind": "source",
       "hash": "sha256:3487f9c5989f7835e092b8abd6aa93ab89bc19a7fd3474f5ed1d615533e6b595",
       "sizeBytes": 124
+    },
+    {
+      "path": "src/modules/activities/activities.module.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivitiesModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bf3f667c1d11e739f32de9b5e47415285a3acfa5246cba9757e41a10789e593f",
+      "sizeBytes": 3194
+    },
+    {
+      "path": "src/modules/activities/api/activity-buddy.controller.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityBuddyController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:398b00675fdad7bde7f11c3722675850ae09cf79ee8b5b9afeeb140001a1279c",
+      "sizeBytes": 3253
+    },
+    {
+      "path": "src/modules/activities/api/activity-evidence.controller.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityEvidenceController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:855c79203c332dfe6f93da0aafd4c26c61bef139e8eaee548adf99e2e10dce65",
+      "sizeBytes": 1581
+    },
+    {
+      "path": "src/modules/activities/api/activity-submission.controller.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivitySubmissionController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:44eb0820bb62d35fdeb51bdba916e0b0217244982d3e912dcfbb8d633d92f3d5",
+      "sizeBytes": 6784
+    },
+    {
+      "path": "src/modules/activities/api/activity-type.controller.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityTypeController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3a638ce3ec4841cc38bd7ffff86d1acee9495e25ac3a7d432be9fd28af01aa7d",
+      "sizeBytes": 1646
+    },
+    {
+      "path": "src/modules/activities/api/dto/activity-type-response.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityTypeResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:80a2b582220c501e2a63e5dd76d40bb13435522d44fe6d3ff1f1cb9b5fd0ddbb",
+      "sizeBytes": 1375
+    },
+    {
+      "path": "src/modules/activities/api/dto/buddy-response.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "BuddyResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:01e956685bbb73d7b2b43b4237f2adaeedb8edcf234d12d7db87ee2a9efed481",
+      "sizeBytes": 750
+    },
+    {
+      "path": "src/modules/activities/api/dto/create-submission.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateSubmissionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7f883d56e69b039e0d12397397ee607820b6a429540c9370045bf5c4678ea14f",
+      "sizeBytes": 2220
+    },
+    {
+      "path": "src/modules/activities/api/dto/evidence-response.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EvidenceResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c84a88ba33248bb14c05e88848c979d8717d5f0cc967a9693cdcdd26e30fb3f1",
+      "sizeBytes": 1164
+    },
+    {
+      "path": "src/modules/activities/api/dto/list-activities.query.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListActivitiesQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8e60bf6daabf1368c152fcaff99ea9a1558629afb2d612fecf931fe93c9c68f0",
+      "sizeBytes": 644
+    },
+    {
+      "path": "src/modules/activities/api/dto/list-activity-types.response.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListActivityTypesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:eef35116a4413f5e76a5ebb42619f493fb0c356983a40072eb2d190e1d0fbe52",
+      "sizeBytes": 499
+    },
+    {
+      "path": "src/modules/activities/api/dto/list-buddies.response.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListBuddiesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:65189f50134d3639b93bac6abcc13686edf27d99c6343d9c25a17ed63b0a2770",
+      "sizeBytes": 475
+    },
+    {
+      "path": "src/modules/activities/api/dto/list-evidence.response.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListEvidenceResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9f2660dc8a7959b63108cd894d995e1e1fba93a96f5a58da23e7d95573b9811b",
+      "sizeBytes": 482
+    },
+    {
+      "path": "src/modules/activities/api/dto/list-submissions.response.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSubmissionsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:efd0fd3799ad10bd4f38ca618dc36cfc1e33c8487bc76b243b39beedfd71570f",
+      "sizeBytes": 536
+    },
+    {
+      "path": "src/modules/activities/api/dto/optimistic-version.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OptimisticVersionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:172965df6d1af615c4b5890b54c0ff108bffcd66da8d5f54c4709232b9e91532",
+      "sizeBytes": 415
+    },
+    {
+      "path": "src/modules/activities/api/dto/submission-detail-response.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SubmissionDetailResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d30e2bbf9889e2b71020980fc4026ca7d7fe7b97af0d1de38268c39ecb8ab834",
+      "sizeBytes": 557
+    },
+    {
+      "path": "src/modules/activities/api/dto/submission-evidence.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SubmissionEvidenceDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9c43e3ed74996d989bb294d447ce6eb62eb1a91cb02578f34e57c3fac396513c",
+      "sizeBytes": 1660
+    },
+    {
+      "path": "src/modules/activities/api/dto/submission-response.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SubmissionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e13baa4c0c6a069420b4d8ff8238838695f0590775e6ad7cb4dbd0ad796d46f1",
+      "sizeBytes": 1681
+    },
+    {
+      "path": "src/modules/activities/api/dto/update-submission.dto.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateSubmissionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:99dd4cb3059408e2e93f4d55e6084a7b8235e72c6b4b7b6bcbfbe6c50bd081c9",
+      "sizeBytes": 2152
+    },
+    {
+      "path": "src/modules/activities/application/activity-catalog.service.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:05ce70246564501d3d7c0600ddee813ea496ed291f09b05a2b2dfc6f8b157d85",
+      "sizeBytes": 2432
+    },
+    {
+      "path": "src/modules/activities/application/activity-catalog.service.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityCatalogService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/activity-catalog.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f81f081dd35e63c8cb3a8b87bbcd29629dc3deeaaf5a4c11b08cdf0c937b8ccc",
+      "sizeBytes": 2163
+    },
+    {
+      "path": "src/modules/activities/application/activity-scope.service.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:06d56490104147ae871d9ef5e9c7837a1e42ca961c3b0328065b32e3df152ab2",
+      "sizeBytes": 2974
+    },
+    {
+      "path": "src/modules/activities/application/activity-scope.service.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityScopeService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/activity-scope.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a71f9c4476ee8f1e2a5ad803b863c1dd86b4321c78df55ce02ffb62eb072661e",
+      "sizeBytes": 2142
+    },
+    {
+      "path": "src/modules/activities/application/buddy-query.service.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8a79c77917f929d5ae01071056a1ddca1d95a307937fc00c2b7c08257fe1a200",
+      "sizeBytes": 1467
+    },
+    {
+      "path": "src/modules/activities/application/buddy-query.service.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "BuddyQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/buddy-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7bb608ea83e41299f703b3df24fc4200d738b9e26ba8ce274e05512d2eeee42d",
+      "sizeBytes": 1848
+    },
+    {
+      "path": "src/modules/activities/application/create-submission.use-case.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5e707dd904cc728a93f54bbdc728b41cc5bfd31e32070e79f8b33bef1fdd27a3",
+      "sizeBytes": 4591
+    },
+    {
+      "path": "src/modules/activities/application/create-submission.use-case.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateSubmissionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/create-submission.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:20bff2d357527fd09715256b08a86540fc1fab08b8bfffef3fcc2cd60ee211a2",
+      "sizeBytes": 6134
+    },
+    {
+      "path": "src/modules/activities/application/evidence-query.service.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6f9af1ff45ff7654bcf62e81940643fdf2674a8d420c3dc4a36147bc85e8e88c",
+      "sizeBytes": 2444
+    },
+    {
+      "path": "src/modules/activities/application/evidence-query.service.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EvidenceQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/evidence-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bd4c0fff7f32dbd37e201f4333ac6ccee21c3418adf9b65a17073ae0f66ce430",
+      "sizeBytes": 2221
+    },
+    {
+      "path": "src/modules/activities/application/respond-to-buddy.use-case.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:25b2e666fad46a72c6ae981a7594f25066a8da39f06d3c4de7c43a7a049afb56",
+      "sizeBytes": 3344
+    },
+    {
+      "path": "src/modules/activities/application/respond-to-buddy.use-case.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RespondToBuddyUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/respond-to-buddy.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:974059704284dbc64689f002111488328225aab6ce099ceb10f08fd0cf7aa6de",
+      "sizeBytes": 3210
+    },
+    {
+      "path": "src/modules/activities/application/submission-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c9d1f5823aec97a619a1af220221721c965428fe9d6d7f5ee4dce3b062cdc6d0",
+      "sizeBytes": 2104
+    },
+    {
+      "path": "src/modules/activities/application/submission-lookup.service.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SubmissionLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/submission-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:6b3f27f18d650e3e55e248adfb5f5362b4fdde9cb409d80ea97d8bc7a6b85d48",
+      "sizeBytes": 1398
+    },
+    {
+      "path": "src/modules/activities/application/submission-query.service.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8682d99d4af6a9957b284033dfbc6d541871a5a51c8099d99ad31289c7633b5d",
+      "sizeBytes": 3830
+    },
+    {
+      "path": "src/modules/activities/application/submission-query.service.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SubmissionQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/submission-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b5fe412e97485bd15a38ec2a4ad69b7cd1ce4ab087786481e045c95f9328eae0",
+      "sizeBytes": 4177
+    },
+    {
+      "path": "src/modules/activities/application/submit-submission.use-case.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8d77b620c6ab3f30fba0351f993fc9cdf536dba0eae0065748476f20b041096d",
+      "sizeBytes": 3920
+    },
+    {
+      "path": "src/modules/activities/application/submit-submission.use-case.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SubmitSubmissionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/submit-submission.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8c36d050ace1adec8a80cc8d9e1c18f73b305abeec073aa08afa2f2e1246e95b",
+      "sizeBytes": 4552
+    },
+    {
+      "path": "src/modules/activities/application/update-submission.use-case.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4310aefc870e50500cec1448d44081d42802b0c2fec97898fc394b9b283be00f",
+      "sizeBytes": 5005
+    },
+    {
+      "path": "src/modules/activities/application/update-submission.use-case.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UpdateSubmissionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/update-submission.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1bb26635e911e8227dc76e1770da9558556cc886db947f2ee8af38f106be0b52",
+      "sizeBytes": 6041
+    },
+    {
+      "path": "src/modules/activities/application/withdraw-submission.use-case.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5d44c072c9d5bcbad6d177343ddaf2fe020a3eb4b4d9869d52d65617809f89d1",
+      "sizeBytes": 3464
+    },
+    {
+      "path": "src/modules/activities/application/withdraw-submission.use-case.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "WithdrawSubmissionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/application/withdraw-submission.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:84ede3cd37fe751ca77620653815a4bf9c6f16b0e98f90de692418817bab6727",
+      "sizeBytes": 4528
+    },
+    {
+      "path": "src/modules/activities/domain/activity-buddy.policy.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c19d6289d551fdc3344ca0aca609fd076431ccb89148f69829a6ce27a6fbc791",
+      "sizeBytes": 1940
+    },
+    {
+      "path": "src/modules/activities/domain/activity-buddy.policy.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assertBuddyMemberships"
+        },
+        {
+          "kind": "function",
+          "name": "resolveInitialBuddyStatus"
+        },
+        {
+          "kind": "function",
+          "name": "canRespondToBuddy"
+        },
+        {
+          "kind": "function",
+          "name": "resolveBuddyResponse"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/domain/activity-buddy.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1b3c3e36ecfb6c3e0ba5dcea41aea24a66a735bf31d3ea33d98c3c3babad2324",
+      "sizeBytes": 2025
+    },
+    {
+      "path": "src/modules/activities/domain/activity-catalog.policy.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e5daa9b325cdaf8f2826be731e6ee115ab3185e049d57960004bd7d17d3b5db1",
+      "sizeBytes": 1803
+    },
+    {
+      "path": "src/modules/activities/domain/activity-catalog.policy.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isPointValueResolvable"
+        },
+        {
+          "kind": "function",
+          "name": "nextCatalogVersion"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/domain/activity-catalog.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f34e3b1c6d82d5d68cb75b4112439287b7e0815f7b1dd4d6742d29e5a282c419",
+      "sizeBytes": 977
+    },
+    {
+      "path": "src/modules/activities/domain/activity-submission.policy.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f53bfd02a99364128cd5b1e8453822a1ccf229b3ea5572ab3c1c47d92a256cb2",
+      "sizeBytes": 4503
+    },
+    {
+      "path": "src/modules/activities/domain/activity-submission.policy.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isSubmissionOwnedBy"
+        },
+        {
+          "kind": "function",
+          "name": "assertSubmissionContent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/domain/activity-submission.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7dc358a8cd4272af80684c0ac0ee3c347c20e998ae443a1a59ece945dfde073e",
+      "sizeBytes": 2614
+    },
+    {
+      "path": "src/modules/activities/domain/activity-submission.state-machine.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b3cf1983c318bdde21b7a205a9a0542e62c1631ae0366f788d1a8aef5da63079",
+      "sizeBytes": 3170
+    },
+    {
+      "path": "src/modules/activities/domain/activity-submission.state-machine.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedSubmissionTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransitionSubmission"
+        },
+        {
+          "kind": "function",
+          "name": "canEditSubmission"
+        },
+        {
+          "kind": "function",
+          "name": "canSubmitSubmission"
+        },
+        {
+          "kind": "function",
+          "name": "canWithdrawSubmission"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/domain/activity-submission.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e1b17f0a8413cb90389f7c60884eb834fca8fc56769b1c41d8f1f5e0c756129f",
+      "sizeBytes": 2832
+    },
+    {
+      "path": "src/modules/activities/errors/activities-errors.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9413d693322f4d6fe5d12eb3e85e80a370aea1c3b8c7ca94287e79a3c7ae1969",
+      "sizeBytes": 2388
+    },
+    {
+      "path": "src/modules/activities/errors/activity-buddy-conflict.error.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityBuddyConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9ce2ccc461a40e45a248f0b43a77f2ddfc77e933e32482f90b04db5e14b2834f",
+      "sizeBytes": 351
+    },
+    {
+      "path": "src/modules/activities/errors/activity-buddy-not-found.error.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityBuddyNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6c1cbd1459d232b8d568b8abc9c51810b4f551b6fd92b483a37b43f7c1f6b84d",
+      "sizeBytes": 324
+    },
+    {
+      "path": "src/modules/activities/errors/activity-duplicate-submission.error.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityDuplicateSubmissionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a1bb04b033fe0f66896e7a2ca0dd1437a2caad5ddcdd347f6274a4a50c7ddb0c",
+      "sizeBytes": 341
+    },
+    {
+      "path": "src/modules/activities/errors/activity-invalid-transition.error.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityInvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f7d25a2c50c6cc434704f664d46d4a8443e840510996a6dbcc82c690df61fd94",
+      "sizeBytes": 394
+    },
+    {
+      "path": "src/modules/activities/errors/activity-scope-not-found.error.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityScopeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8e7a2993c9e545bf874c9309a5a00ef55e4be39b6635fb06de97ee6c849eecb3",
+      "sizeBytes": 379
+    },
+    {
+      "path": "src/modules/activities/errors/activity-submission-not-found.error.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivitySubmissionNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bb6ba1fe2d117c94f5a0bd4b32476ebae89e573e3679b5cbb6594d1fb30cce1c",
+      "sizeBytes": 349
+    },
+    {
+      "path": "src/modules/activities/errors/activity-type-not-found.error.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityTypeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9d5b889085fb97ec2a268805851dcfab80fa0ebe54c82447ce6b4e63597af690",
+      "sizeBytes": 355
+    },
+    {
+      "path": "src/modules/activities/errors/activity-validation.error.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityValidationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8c5672c2c343ebcb05f42a40b1e31ddf93e54f1b2836c73d06516142fe19790f",
+      "sizeBytes": 342
+    },
+    {
+      "path": "src/modules/activities/errors/activity-version-conflict.error.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityVersionConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4b8853680818adb540a8c82b7f2f7093ceba2bc0c0f7a6307900ed164e85b0de",
+      "sizeBytes": 384
+    },
+    {
+      "path": "src/modules/activities/index.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b841f5af2e1779661fbeb56cfe9ebd2d7eae88479f518958aad10cfbc7d1c5e1",
+      "sizeBytes": 56
+    },
+    {
+      "path": "src/modules/activities/infrastructure/activity-buddy.repository.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8b5fbf077ac4733447f161ec2c6b25138edba0ddadab367236a96aa8b9fca685",
+      "sizeBytes": 4653
+    },
+    {
+      "path": "src/modules/activities/infrastructure/activity-buddy.repository.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityBuddyRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/infrastructure/activity-buddy.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a778d2b373ea6085bf07d59bc514e920dd275efb2d75ffd60625f7dbbc9819ce",
+      "sizeBytes": 5687
+    },
+    {
+      "path": "src/modules/activities/infrastructure/activity-evidence.repository.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e8adb8ea335b31828762dd3002de74c37491b445ce06265797cfc4c13d2a0b95",
+      "sizeBytes": 3278
+    },
+    {
+      "path": "src/modules/activities/infrastructure/activity-evidence.repository.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityEvidenceRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/infrastructure/activity-evidence.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ed318652d01115fb4830e5eed5431c30a0e3982c0f8901dbac9c77112ddf3997",
+      "sizeBytes": 3757
+    },
+    {
+      "path": "src/modules/activities/infrastructure/activity-scope.repository.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2dc92a10cedfadad1b2864c61922a15b32aa3e687c5dbd475b2dcf8c3b0b39ec",
+      "sizeBytes": 2476
+    },
+    {
+      "path": "src/modules/activities/infrastructure/activity-scope.repository.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityScopeRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/infrastructure/activity-scope.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d72472a3e0618e54637e97dd322a32d99e9a049f40159e75e557ab3b4119054c",
+      "sizeBytes": 2046
+    },
+    {
+      "path": "src/modules/activities/infrastructure/activity-submission.repository.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:31b12edb86d70a587cba52af398775f3fbf4a3f50b5f12039a09524bc01860e4",
+      "sizeBytes": 5514
+    },
+    {
+      "path": "src/modules/activities/infrastructure/activity-submission.repository.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivitySubmissionRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/infrastructure/activity-submission.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:248db4b98eecaa8fe6e70ef4e12735c3c62c6ffc26855d71aa301d5135d7d5f1",
+      "sizeBytes": 6523
+    },
+    {
+      "path": "src/modules/activities/infrastructure/activity-type.repository.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:334c31e73cc0930eee20fce4a24bca4e0d57e78762258221f918a3fd8409e7de",
+      "sizeBytes": 2186
+    },
+    {
+      "path": "src/modules/activities/infrastructure/activity-type.repository.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ActivityTypeRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/infrastructure/activity-type.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:44d4cd6179248cae957587373b132a2d938122a9f74a006e891ee487f61ca1c8",
+      "sizeBytes": 1714
+    },
+    {
+      "path": "src/modules/activities/lib/activity-command.mapper.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bfdc3cf5b44f8a1daf3060bd8a074753c00512b80da3641ef9e263e6cb43b1d2",
+      "sizeBytes": 2086
+    },
+    {
+      "path": "src/modules/activities/lib/activity-command.mapper.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toSubmissionContent"
+        },
+        {
+          "kind": "function",
+          "name": "toEvidenceItems"
+        },
+        {
+          "kind": "function",
+          "name": "toBuddyMembershipIds"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/lib/activity-command.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:040a81d0ee97d8fe7e045e137de6f696b4912f1f8652b95f467bf5b1ca125577",
+      "sizeBytes": 1194
+    },
+    {
+      "path": "src/modules/activities/lib/activity.builders.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8ecd18ac4b0a6520192b2e522bb1f93f450b98e7c462ac2b6bdfc17725f26bc6",
+      "sizeBytes": 5701
+    },
+    {
+      "path": "src/modules/activities/lib/activity.builders.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewSubmission"
+        },
+        {
+          "kind": "function",
+          "name": "buildBuddyRows"
+        },
+        {
+          "kind": "function",
+          "name": "buildEvidenceRows"
+        },
+        {
+          "kind": "function",
+          "name": "buildContentUpdate"
+        },
+        {
+          "kind": "function",
+          "name": "buildStatusChange"
+        },
+        {
+          "kind": "function",
+          "name": "buildBuddyResponseUpdate"
+        },
+        {
+          "kind": "function",
+          "name": "buildSubmissionAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildBuddyAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildActivitySubmittedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildActivityWithdrawnEvent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/lib/activity.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3c7a1af9231ddc62c3579ea9584984ab9a8cd91f30465cdb161d8c3427ff0af6",
+      "sizeBytes": 5209
+    },
+    {
+      "path": "src/modules/activities/lib/activity.helpers.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:11353107b7e577bf68d6771d678d8a2384583d3b74faee97a0a76846002776e6",
+      "sizeBytes": 1550
+    },
+    {
+      "path": "src/modules/activities/lib/activity.helpers.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveActivityPage"
+        },
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableNumber"
+        },
+        {
+          "kind": "function",
+          "name": "toCalendarDay"
+        },
+        {
+          "kind": "function",
+          "name": "parseEnumValue"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/lib/activity.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:81bc8077e67fc65649c695d1699721f45cde15ff96f52e590aa3c5c8e7514552",
+      "sizeBytes": 1328
+    },
+    {
+      "path": "src/modules/activities/lib/activity.mapper.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bbdce63fc91a2f6b9173d915482a32b1e8f62a8bf276bb6706b7da7f1d7f2a44",
+      "sizeBytes": 3857
+    },
+    {
+      "path": "src/modules/activities/lib/activity.mapper.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toActivityType"
+        },
+        {
+          "kind": "function",
+          "name": "toActivitySubmission"
+        },
+        {
+          "kind": "function",
+          "name": "toActivityEvidence"
+        },
+        {
+          "kind": "function",
+          "name": "toActivityBuddy"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/lib/activity.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d598f0a0901d5b96ddfd5904342cad3c3d0df21e77cbfb129d22d41d4faf4472",
+      "sizeBytes": 3401
+    },
+    {
+      "path": "src/modules/activities/lib/activity.response.mapper.spec.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f14b87931e8ba42ef2252dcca713da3c4e15b495348ca56adee96a6189d04847",
+      "sizeBytes": 4082
+    },
+    {
+      "path": "src/modules/activities/lib/activity.response.mapper.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toActivityTypeView"
+        },
+        {
+          "kind": "function",
+          "name": "toSubmissionView"
+        },
+        {
+          "kind": "function",
+          "name": "toBuddyView"
+        },
+        {
+          "kind": "function",
+          "name": "toSubmissionDetailView"
+        },
+        {
+          "kind": "function",
+          "name": "toEvidenceView"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/activities/lib/activity.response.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:47e2c3b5c392b72b034a8a50123241d25a40de64e6605f89e7ef89d7777e1ccb",
+      "sizeBytes": 2799
+    },
+    {
+      "path": "src/modules/activities/model/activities.constants.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ACTIVITIES_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_TYPES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_SUBMISSIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MY_ACTIVITY_BUDDIES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDY_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_DETAIL_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_SUBMIT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_WITHDRAW_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_EVIDENCE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDY_CONFIRM_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDY_DECLINE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "NOTES_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "DURATION_MIN_MINUTES"
+        },
+        {
+          "kind": "const",
+          "name": "DURATION_MAX_MINUTES"
+        },
+        {
+          "kind": "const",
+          "name": "QUANTITY_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "QUANTITY_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "RECORD_VERSION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDIES_MAX_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "EVIDENCE_MAX_ITEMS"
+        },
+        {
+          "kind": "const",
+          "name": "EVIDENCE_REFERENCE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "EVIDENCE_DESCRIPTION_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "EVIDENCE_CONTENT_TYPE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "EVIDENCE_BYTE_SIZE_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "EVIDENCE_BYTE_SIZE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDY_CONFIRMATION_REQUIRED"
+        },
+        {
+          "kind": "const",
+          "name": "ISO_DATE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_TYPE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_TYPE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_SCOPE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_SCOPE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_VALIDATION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_VALIDATION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_DUPLICATE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_DUPLICATE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDY_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDY_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDY_ALREADY_RESOLVED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDY_ALREADY_RESOLVED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDY_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_UPDATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_SUBMITTED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_WITHDRAWN_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDY_RESPONDED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITIES_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_SUBMITTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_WITHDRAWN_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_TYPE_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_SUBMISSION_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_EVIDENCE_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_BUDDY_COLUMNS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:296391a26d3ca55bf6887a7f63b8d174b4cee0ff0377eb0d67e5cb74c423fba3",
+      "sizeBytes": 6242
+    },
+    {
+      "path": "src/modules/activities/model/activity.enums.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SubmissionStatus"
+        },
+        {
+          "kind": "const",
+          "name": "SUBMISSION_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "EvidenceKind"
+        },
+        {
+          "kind": "const",
+          "name": "EVIDENCE_KIND_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "EvidenceScanStatus"
+        },
+        {
+          "kind": "const",
+          "name": "EVIDENCE_SCAN_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "BuddyStatus"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDY_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "BuddyDecision"
+        },
+        {
+          "kind": "const",
+          "name": "BUDDY_DECISION_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ActivityCategory"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_CATEGORY_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "PointsApproval"
+        },
+        {
+          "kind": "const",
+          "name": "POINTS_APPROVAL_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ActivityTypeStatus"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVITY_TYPE_STATUS_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6b5877fd88776ec3703857606753a0e298d38992265dd0b8bf2518b57c45ea1a",
+      "sizeBytes": 3137
+    },
+    {
+      "path": "src/modules/activities/model/activity.rows.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "ActivityTypeRow"
+        },
+        {
+          "kind": "interface",
+          "name": "ActivitySubmissionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "ActivityEvidenceRow"
+        },
+        {
+          "kind": "interface",
+          "name": "ActivityBuddyRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "EvidenceCountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b446c8ee4ae3db4dabe3a247182d120fa903008ae28071530fb20f5d9c54811a",
+      "sizeBytes": 2598
+    },
+    {
+      "path": "src/modules/activities/model/activity.types.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "PagedResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ActivityType"
+        },
+        {
+          "kind": "interface",
+          "name": "ActivitySubmission"
+        },
+        {
+          "kind": "interface",
+          "name": "ActivityEvidence"
+        },
+        {
+          "kind": "interface",
+          "name": "ActivityBuddy"
+        },
+        {
+          "kind": "interface",
+          "name": "ActivitySubmissionDetail"
+        },
+        {
+          "kind": "interface",
+          "name": "SubmissionContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "EvidenceInput"
+        },
+        {
+          "kind": "interface",
+          "name": "SubmissionContent"
+        },
+        {
+          "kind": "interface",
+          "name": "EvidenceItem"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateSubmissionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "UpdateSubmissionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "SubmissionVersionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "NewActivitySubmission"
+        },
+        {
+          "kind": "interface",
+          "name": "SubmissionContentUpdate"
+        },
+        {
+          "kind": "interface",
+          "name": "SubmissionStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "NewActivityEvidence"
+        },
+        {
+          "kind": "interface",
+          "name": "NewActivityBuddy"
+        },
+        {
+          "kind": "interface",
+          "name": "BuddyResponseUpdate"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:17dd74abf92dff98237a1c1e12cca7e287c0000c59e2712e69437084c9a19b09",
+      "sizeBytes": 6594
+    },
+    {
+      "path": "src/modules/activities/model/activity.views.ts",
+      "root": "modules",
+      "module": "activities",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "ActivityTypeView"
+        },
+        {
+          "kind": "interface",
+          "name": "SubmissionView"
+        },
+        {
+          "kind": "interface",
+          "name": "BuddyView"
+        },
+        {
+          "kind": "interface",
+          "name": "SubmissionDetailView"
+        },
+        {
+          "kind": "interface",
+          "name": "EvidenceView"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b794435ed193671c975ea8b3ac82860d3c56e80cfdcc6fca4a194c5ec1c7192f",
+      "sizeBytes": 2389
     },
     {
       "path": "src/modules/articles/api/articles.controller.ts",

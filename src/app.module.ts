@@ -2,6 +2,7 @@ import { DatabaseModule } from '@app/database';
 import { ConfigModule } from '@config/config.module';
 import { CoreModule } from '@core/core.module';
 import { LoggerModule } from '@core/logger/logger.module';
+import { ActivitiesModule } from '@modules/activities';
 import { ArticlesModule } from '@modules/articles';
 import { AssessmentsModule } from '@modules/assessments';
 import { AuthModule } from '@modules/auth';
@@ -39,6 +40,7 @@ import { Module } from '@nestjs/common';
     DevelopmentModule,
     ScoringModule,
     MeasurementsModule,
+    ActivitiesModule,
     ArticlesModule,
   ],
 })

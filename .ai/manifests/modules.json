@@ -1,6 +1,93 @@
 {
-  "generatedAt": "2026-07-19T14:10:45.234Z",
+  "generatedAt": "2026-07-19T21:05:08.024Z",
   "modules": [
+    {
+      "name": "activities",
+      "path": "src/modules/activities",
+      "layers": {
+        "other": [
+          "src/modules/activities/activities.module.ts",
+          "src/modules/activities/errors/activity-buddy-conflict.error.ts",
+          "src/modules/activities/errors/activity-buddy-not-found.error.ts",
+          "src/modules/activities/errors/activity-duplicate-submission.error.ts",
+          "src/modules/activities/errors/activity-invalid-transition.error.ts",
+          "src/modules/activities/errors/activity-scope-not-found.error.ts",
+          "src/modules/activities/errors/activity-submission-not-found.error.ts",
+          "src/modules/activities/errors/activity-type-not-found.error.ts",
+          "src/modules/activities/errors/activity-validation.error.ts",
+          "src/modules/activities/errors/activity-version-conflict.error.ts",
+          "src/modules/activities/index.ts"
+        ],
+        "controller": [
+          "src/modules/activities/api/activity-buddy.controller.ts",
+          "src/modules/activities/api/activity-evidence.controller.ts",
+          "src/modules/activities/api/activity-submission.controller.ts",
+          "src/modules/activities/api/activity-type.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/activities/api/dto/activity-type-response.dto.ts",
+          "src/modules/activities/api/dto/buddy-response.dto.ts",
+          "src/modules/activities/api/dto/create-submission.dto.ts",
+          "src/modules/activities/api/dto/evidence-response.dto.ts",
+          "src/modules/activities/api/dto/list-activities.query.dto.ts",
+          "src/modules/activities/api/dto/list-activity-types.response.dto.ts",
+          "src/modules/activities/api/dto/list-buddies.response.dto.ts",
+          "src/modules/activities/api/dto/list-evidence.response.dto.ts",
+          "src/modules/activities/api/dto/list-submissions.response.dto.ts",
+          "src/modules/activities/api/dto/optimistic-version.dto.ts",
+          "src/modules/activities/api/dto/submission-detail-response.dto.ts",
+          "src/modules/activities/api/dto/submission-evidence.dto.ts",
+          "src/modules/activities/api/dto/submission-response.dto.ts",
+          "src/modules/activities/api/dto/update-submission.dto.ts"
+        ],
+        "service": [
+          "src/modules/activities/application/activity-catalog.service.ts",
+          "src/modules/activities/application/activity-scope.service.ts",
+          "src/modules/activities/application/buddy-query.service.ts",
+          "src/modules/activities/application/evidence-query.service.ts",
+          "src/modules/activities/application/submission-lookup.service.ts",
+          "src/modules/activities/application/submission-query.service.ts"
+        ],
+        "use-case": [
+          "src/modules/activities/application/create-submission.use-case.ts",
+          "src/modules/activities/application/respond-to-buddy.use-case.ts",
+          "src/modules/activities/application/submit-submission.use-case.ts",
+          "src/modules/activities/application/update-submission.use-case.ts",
+          "src/modules/activities/application/withdraw-submission.use-case.ts"
+        ],
+        "domain": [
+          "src/modules/activities/domain/activity-buddy.policy.ts",
+          "src/modules/activities/domain/activity-catalog.policy.ts",
+          "src/modules/activities/domain/activity-submission.policy.ts",
+          "src/modules/activities/domain/activity-submission.state-machine.ts"
+        ],
+        "repository": [
+          "src/modules/activities/infrastructure/activity-buddy.repository.ts",
+          "src/modules/activities/infrastructure/activity-evidence.repository.ts",
+          "src/modules/activities/infrastructure/activity-scope.repository.ts",
+          "src/modules/activities/infrastructure/activity-submission.repository.ts",
+          "src/modules/activities/infrastructure/activity-type.repository.ts"
+        ],
+        "lib": [
+          "src/modules/activities/lib/activity-command.mapper.ts",
+          "src/modules/activities/lib/activity.builders.ts",
+          "src/modules/activities/lib/activity.helpers.ts",
+          "src/modules/activities/lib/activity.mapper.ts",
+          "src/modules/activities/lib/activity.response.mapper.ts"
+        ],
+        "model": [
+          "src/modules/activities/model/activities.constants.ts",
+          "src/modules/activities/model/activity.enums.ts",
+          "src/modules/activities/model/activity.rows.ts",
+          "src/modules/activities/model/activity.types.ts",
+          "src/modules/activities/model/activity.views.ts"
+        ]
+      },
+      "fileCount": 59,
+      "specCount": 25,
+      "publicSurface": "src/modules/activities/index.ts",
+      "hasEvents": false
+    },
     {
       "name": "articles",
       "path": "src/modules/articles",

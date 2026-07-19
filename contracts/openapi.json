@@ -42,6 +42,81 @@
         },
         "type": "object"
       },
+      "ActivityTypeResponseDto": {
+        "properties": {
+          "catalogVersion": {
+            "type": "number"
+          },
+          "category": {
+            "enum": [
+              "gym",
+              "running",
+              "throwing",
+              "pickup",
+              "other_sport",
+              "team_drills",
+              "rules_quiz",
+              "accreditation",
+              "custom"
+            ],
+            "type": "string"
+          },
+          "defaultPointValue": {
+            "nullable": true,
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "maxDurationMinutes": {
+            "nullable": true,
+            "type": "number"
+          },
+          "minDurationMinutes": {
+            "nullable": true,
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "pointsApproval": {
+            "enum": [
+              "approved",
+              "pending"
+            ],
+            "type": "string"
+          },
+          "requiresEvidence": {
+            "type": "boolean"
+          },
+          "typeKey": {
+            "type": "string"
+          },
+          "unit": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "typeKey",
+          "name",
+          "description",
+          "category",
+          "unit",
+          "defaultPointValue",
+          "pointsApproval",
+          "requiresEvidence",
+          "minDurationMinutes",
+          "maxDurationMinutes",
+          "catalogVersion"
+        ],
+        "type": "object"
+      },
       "AddAliasDto": {
         "properties": {
           "alias": {
@@ -1063,6 +1138,48 @@
           "notes",
           "coachNotes",
           "stations"
+        ],
+        "type": "object"
+      },
+      "BuddyResponseDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "respondedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "confirmed",
+              "declined"
+            ],
+            "type": "string"
+          },
+          "submissionId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "submissionId",
+          "membershipId",
+          "status",
+          "respondedAt",
+          "createdAt"
         ],
         "type": "object"
       },
@@ -2587,6 +2704,58 @@
         ],
         "type": "object"
       },
+      "CreateSubmissionDto": {
+        "properties": {
+          "activityTypeId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "buddyMembershipIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "durationMinutes": {
+            "maximum": 1440,
+            "minimum": 1,
+            "nullable": true,
+            "type": "object"
+          },
+          "evidence": {
+            "items": {
+              "$ref": "#/components/schemas/SubmissionEvidenceDto"
+            },
+            "type": "array"
+          },
+          "notes": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "performedOn": {
+            "format": "date",
+            "type": "string"
+          },
+          "quantity": {
+            "maximum": 1000000,
+            "minimum": 0,
+            "nullable": true,
+            "type": "object"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "activityTypeId",
+          "performedOn"
+        ],
+        "type": "object"
+      },
       "CreateTeamDto": {
         "properties": {
           "locale": {
@@ -3062,6 +3231,66 @@
         ],
         "type": "object"
       },
+      "EvidenceResponseDto": {
+        "properties": {
+          "byteSize": {
+            "nullable": true,
+            "type": "number"
+          },
+          "contentType": {
+            "nullable": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "link",
+              "file",
+              "note"
+            ],
+            "type": "string"
+          },
+          "scanStatus": {
+            "enum": [
+              "pending",
+              "clean",
+              "infected",
+              "failed"
+            ],
+            "type": "string"
+          },
+          "storageReference": {
+            "type": "string"
+          },
+          "submissionId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "submissionId",
+          "kind",
+          "storageReference",
+          "contentType",
+          "byteSize",
+          "description",
+          "scanStatus",
+          "createdAt"
+        ],
+        "type": "object"
+      },
       "FeedbackAcknowledgementResponseDto": {
         "properties": {
           "acknowledgedAt": {
@@ -3457,6 +3686,32 @@
         ],
         "type": "object"
       },
+      "ListActivityTypesResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ActivityTypeResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListAliasesResponseDto": {
         "properties": {
           "items": {
@@ -3502,6 +3757,32 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/AuditEntryDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListBuddiesResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/BuddyResponseDto"
             },
             "type": "array"
           },
@@ -3632,6 +3913,32 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/DrillResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListEvidenceResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/EvidenceResponseDto"
             },
             "type": "array"
           },
@@ -4048,6 +4355,32 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/SharedFeedbackResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListSubmissionsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/SubmissionDetailResponseDto"
             },
             "type": "array"
           },
@@ -7985,6 +8318,158 @@
         ],
         "type": "object"
       },
+      "SubmissionDetailResponseDto": {
+        "properties": {
+          "buddies": {
+            "items": {
+              "$ref": "#/components/schemas/BuddyResponseDto"
+            },
+            "type": "array"
+          },
+          "evidenceCount": {
+            "type": "number"
+          },
+          "submission": {
+            "$ref": "#/components/schemas/SubmissionResponseDto"
+          }
+        },
+        "required": [
+          "submission",
+          "buddies",
+          "evidenceCount"
+        ],
+        "type": "object"
+      },
+      "SubmissionEvidenceDto": {
+        "properties": {
+          "byteSize": {
+            "maximum": 104857600,
+            "minimum": 1,
+            "nullable": true,
+            "type": "object"
+          },
+          "contentType": {
+            "maxLength": 255,
+            "nullable": true,
+            "type": "object"
+          },
+          "description": {
+            "maxLength": 500,
+            "nullable": true,
+            "type": "object"
+          },
+          "kind": {
+            "enum": [
+              "link",
+              "file",
+              "note"
+            ],
+            "type": "string"
+          },
+          "storageReference": {
+            "maxLength": 1024,
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "storageReference"
+        ],
+        "type": "object"
+      },
+      "SubmissionResponseDto": {
+        "properties": {
+          "activityTypeId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "durationMinutes": {
+            "nullable": true,
+            "type": "number"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "notes": {
+            "nullable": true,
+            "type": "string"
+          },
+          "performedOn": {
+            "format": "date",
+            "type": "string"
+          },
+          "quantity": {
+            "nullable": true,
+            "type": "number"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "submitted",
+              "under_review",
+              "changes_requested",
+              "approved",
+              "rejected",
+              "withdrawn",
+              "reversed"
+            ],
+            "type": "string"
+          },
+          "submittedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "withdrawnAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "teamId",
+          "seasonId",
+          "membershipId",
+          "activityTypeId",
+          "status",
+          "performedOn",
+          "durationMinutes",
+          "quantity",
+          "notes",
+          "recordVersion",
+          "submittedAt",
+          "withdrawnAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
       "TeamResponseDto": {
         "properties": {
           "createdAt": {
@@ -8881,6 +9366,56 @@
         "required": [
           "visibility",
           "expectedVersion"
+        ],
+        "type": "object"
+      },
+      "UpdateSubmissionDto": {
+        "properties": {
+          "activityTypeId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "durationMinutes": {
+            "maximum": 1440,
+            "minimum": 1,
+            "nullable": true,
+            "type": "object"
+          },
+          "evidence": {
+            "items": {
+              "$ref": "#/components/schemas/SubmissionEvidenceDto"
+            },
+            "type": "array"
+          },
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "notes": {
+            "maxLength": 4000,
+            "nullable": true,
+            "type": "object"
+          },
+          "performedOn": {
+            "format": "date",
+            "type": "string"
+          },
+          "quantity": {
+            "maximum": 1000000,
+            "minimum": 0,
+            "nullable": true,
+            "type": "object"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "expectedRecordVersion",
+          "activityTypeId",
+          "performedOn"
         ],
         "type": "object"
       },
@@ -10385,6 +10920,404 @@
         "summary": "Update a team",
         "tags": [
           "teams"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-submissions": {
+      "get": {
+        "operationId": "ActivitySubmission.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListSubmissionsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List my own external-training submissions",
+        "tags": [
+          "activities"
+        ]
+      },
+      "post": {
+        "operationId": "ActivitySubmission.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSubmissionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionDetailResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a draft external-training submission",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-submissions/{submissionId}": {
+      "get": {
+        "operationId": "ActivitySubmission.detail",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "submissionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionDetailResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Read one of my own submissions",
+        "tags": [
+          "activities"
+        ]
+      },
+      "patch": {
+        "operationId": "ActivitySubmission.update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "submissionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSubmissionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionDetailResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Edit an editable draft/changes-requested submission",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-submissions/{submissionId}/evidence": {
+      "get": {
+        "operationId": "ActivityEvidence.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "submissionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListEvidenceResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a submission’s evidence (reviewer only)",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-submissions/{submissionId}/submit": {
+      "post": {
+        "operationId": "ActivitySubmission.submit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "submissionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OptimisticVersionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionDetailResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Submit (or resubmit) a claim for review",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-submissions/{submissionId}/withdraw": {
+      "post": {
+        "operationId": "ActivitySubmission.withdraw",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "submissionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OptimisticVersionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionDetailResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Withdraw my own non-decided claim",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/activity-types": {
+      "get": {
+        "operationId": "ActivityType.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListActivityTypesResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List the active external-training activity types",
+        "tags": [
+          "activities"
         ]
       }
     },
@@ -13980,6 +14913,143 @@
         "summary": "Invite a person into a team",
         "tags": [
           "members"
+        ]
+      }
+    },
+    "/teams/{teamId}/my-activity-buddies": {
+      "get": {
+        "operationId": "ActivityBuddy.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListBuddiesResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List my pending training-buddy credits",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/my-activity-buddies/{buddyId}/confirm": {
+      "post": {
+        "operationId": "ActivityBuddy.confirm",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "buddyId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BuddyResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Confirm a training-buddy credit",
+        "tags": [
+          "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/my-activity-buddies/{buddyId}/decline": {
+      "post": {
+        "operationId": "ActivityBuddy.decline",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "buddyId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BuddyResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Decline a training-buddy credit",
+        "tags": [
+          "activities"
         ]
       }
     },
