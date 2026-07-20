@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T22:47:11.657Z",
+  "generatedAt": "2026-07-20T10:00:23.996Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -14117,6 +14117,11 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/points/api/dto/category-contribution-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/points/api/dto/create-adjustment.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -14157,6 +14162,16 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/points/api/dto/leaderboard-row-response.dto.ts",
+      "to": "src/modules/points/api/dto/category-contribution-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/leaderboard-row-response.dto.ts",
+      "to": "src/modules/points/model/leaderboard.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/points/api/dto/leaderboard.response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -14167,6 +14182,11 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/points/api/dto/leaderboard.response.dto.ts",
+      "to": "src/modules/points/model/leaderboard.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/points/api/dto/ledger-entry-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -14174,6 +14194,31 @@
     {
       "from": "src/modules/points/api/dto/ledger-entry-response.dto.ts",
       "to": "src/modules/points/model/points.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/list-leaderboard.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/list-leaderboard.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/api/dto/list-leaderboard.query.dto.ts",
+      "to": "src/modules/points/model/leaderboard.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/list-leaderboard.query.dto.ts",
+      "to": "src/modules/points/model/leaderboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/dto/list-leaderboard.query.dto.ts",
+      "to": "src/modules/points/model/points.constants.ts",
       "type": "internal"
     },
     {
@@ -14413,7 +14458,7 @@
     },
     {
       "from": "src/modules/points/api/points.controller.ts",
-      "to": "src/modules/points/api/dto/list-points.query.dto.ts",
+      "to": "src/modules/points/api/dto/list-leaderboard.query.dto.ts",
       "type": "internal"
     },
     {
@@ -14428,12 +14473,17 @@
     },
     {
       "from": "src/modules/points/api/points.controller.ts",
+      "to": "src/modules/points/application/leaderboard-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/api/points.controller.ts",
       "to": "src/modules/points/application/points-query.service.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/points/api/points.controller.ts",
-      "to": "src/modules/points/lib/points.helpers.ts",
+      "to": "src/modules/points/lib/leaderboard.mapper.ts",
       "type": "internal"
     },
     {
@@ -14662,6 +14712,76 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/points/application/leaderboard-data.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-data.service.ts",
+      "to": "src/modules/points/infrastructure/leaderboard.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-data.service.ts",
+      "to": "src/modules/points/model/leaderboard.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-query.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-query.service.ts",
+      "to": "src/modules/points/application/leaderboard-data.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-query.service.ts",
+      "to": "src/modules/points/application/points-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-query.service.ts",
+      "to": "src/modules/points/errors/points-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-query.service.ts",
+      "to": "src/modules/points/errors/points-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-query.service.ts",
+      "to": "src/modules/points/infrastructure/leaderboard.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-query.service.ts",
+      "to": "src/modules/points/lib/leaderboard-window.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-query.service.ts",
+      "to": "src/modules/points/lib/leaderboard.assembler.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-query.service.ts",
+      "to": "src/modules/points/model/leaderboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/leaderboard-query.service.ts",
+      "to": "src/modules/points/model/leaderboard.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/points/application/points-query.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -14674,11 +14794,6 @@
     {
       "from": "src/modules/points/application/points-query.service.ts",
       "to": "src/modules/points/application/points-summary.service.ts",
-      "type": "internal"
-    },
-    {
-      "from": "src/modules/points/application/points-query.service.ts",
-      "to": "src/modules/points/infrastructure/points-ledger.repository.ts",
       "type": "internal"
     },
     {
@@ -14877,6 +14992,16 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/points/domain/leaderboard-ranking.policy.ts",
+      "to": "src/modules/points/model/leaderboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/domain/leaderboard-ranking.policy.ts",
+      "to": "src/modules/points/model/leaderboard.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/points/domain/points-award.policy.ts",
       "to": "src/modules/points/model/points.constants.ts",
       "type": "internal"
@@ -15017,6 +15142,36 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/points/infrastructure/leaderboard.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/infrastructure/leaderboard.repository.ts",
+      "to": "src/modules/points/lib/leaderboard.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/leaderboard.repository.ts",
+      "to": "src/modules/points/model/leaderboard.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/leaderboard.repository.ts",
+      "to": "src/modules/points/model/leaderboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/leaderboard.repository.ts",
+      "to": "src/modules/points/model/leaderboard.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/leaderboard.repository.ts",
+      "to": "src/modules/points/model/points.rows.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/points/infrastructure/points-ledger.repository.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -15088,6 +15243,56 @@
     },
     {
       "from": "src/modules/points/infrastructure/points-scope.repository.ts",
+      "to": "src/modules/points/model/points.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/leaderboard-window.ts",
+      "to": "src/modules/points/model/leaderboard.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/leaderboard-window.ts",
+      "to": "src/modules/points/model/leaderboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/leaderboard-window.ts",
+      "to": "src/modules/points/model/leaderboard.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/leaderboard.assembler.ts",
+      "to": "src/modules/points/domain/leaderboard-ranking.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/leaderboard.assembler.ts",
+      "to": "src/modules/points/model/leaderboard.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/leaderboard.mapper.ts",
+      "to": "src/modules/points/lib/points.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/leaderboard.mapper.ts",
+      "to": "src/modules/points/model/leaderboard.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/leaderboard.mapper.ts",
+      "to": "src/modules/points/model/leaderboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/leaderboard.mapper.ts",
+      "to": "src/modules/points/model/leaderboard.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/leaderboard.mapper.ts",
       "to": "src/modules/points/model/points.rows.ts",
       "type": "internal"
     },
@@ -15162,6 +15367,16 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/points/model/leaderboard.constants.ts",
+      "to": "src/modules/points/model/leaderboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/model/leaderboard.types.ts",
+      "to": "src/modules/points/model/leaderboard.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/points/model/points.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
@@ -15223,6 +15438,16 @@
     },
     {
       "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/leaderboard-data.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/leaderboard-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
       "to": "src/modules/points/application/points-query.service.ts",
       "type": "internal"
     },
@@ -15259,6 +15484,11 @@
     {
       "from": "src/modules/points/points.module.ts",
       "to": "src/modules/points/infrastructure/badge.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/infrastructure/leaderboard.repository.ts",
       "type": "internal"
     },
     {

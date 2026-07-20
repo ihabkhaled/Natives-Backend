@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-19T22:47:11.657Z",
-  "treeHash": "sha256:9572db1e999bf4f52c9a7f7c8e60ba9343507cd0bb3ff2f0bcafad6f778e7bf6",
+  "generatedAt": "2026-07-20T10:00:23.996Z",
+  "treeHash": "sha256:5ef860111ef8054849fddbba7b9f78379b42812613c90081b35ac6f24cdac2b6",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -3272,6 +3272,23 @@
       "sizeBytes": 13633
     },
     {
+      "path": "src/database/migrations/1723200000000-leaderboard-indexes.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LeaderboardIndexes1723200000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0a7834315044f826e66a859ff871b6a16f4b143c7685a1031be13a5c5a72616a",
+      "sizeBytes": 1299
+    },
+    {
       "path": "src/database/migrations/activities-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3318,6 +3335,18 @@
       "kind": "spec",
       "hash": "sha256:eecc455047bae3aa6ae2fc091bd419650d2372a381500288a9d1c6888784f583",
       "sizeBytes": 2551
+    },
+    {
+      "path": "src/database/migrations/leaderboard-indexes-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:179a686573b07088fb32672427f59b3430a782e6d212ac4f5f84b0aea8a02c87",
+      "sizeBytes": 1233
     },
     {
       "path": "src/database/migrations/measurements-schema.spec.ts",
@@ -20150,6 +20179,23 @@
       "sizeBytes": 3979
     },
     {
+      "path": "src/modules/points/api/dto/category-contribution-response.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CategoryContributionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9ce65cd4e00dc35c723438a12bab320950adfd990beaf3e4fd3abaa1fb1bbc0d",
+      "sizeBytes": 274
+    },
+    {
       "path": "src/modules/points/api/dto/create-adjustment.dto.ts",
       "root": "modules",
       "module": "points",
@@ -20197,8 +20243,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:3fabf62bea6d373b90321297ddc63a6bee38cd680f545a201aec6c90ec389a8a",
-      "sizeBytes": 406
+      "hash": "sha256:ef8cf7e3e7212b01cbfd58696da32e5d1998e444e0c7d3293d619600ee26f307",
+      "sizeBytes": 1186
     },
     {
       "path": "src/modules/points/api/dto/leaderboard.response.dto.ts",
@@ -20214,8 +20260,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:077e544f7840423aeae6e724f0416a75eb09e3516a58691bc2704665dbb6b251",
-      "sizeBytes": 500
+      "hash": "sha256:3df0504916482519e4827f9c82b79a383f963bce1f206a55753370cad4c285c2",
+      "sizeBytes": 1228
     },
     {
       "path": "src/modules/points/api/dto/ledger-entry-response.dto.ts",
@@ -20233,6 +20279,23 @@
       "kind": "source",
       "hash": "sha256:903113fedfc1924ffe3ab196c92aadbfad7b1a4963812fa22ec752f040c83769",
       "sizeBytes": 1002
+    },
+    {
+      "path": "src/modules/points/api/dto/list-leaderboard.query.dto.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListLeaderboardQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d3b4b54b72e83e69c67449b7c3c06177e826ac6cf7f94e1c3c1b6fbe17a87bd1",
+      "sizeBytes": 2023
     },
     {
       "path": "src/modules/points/api/dto/list-points.query.dto.ts",
@@ -20418,8 +20481,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ee238660bdbb61f59555bedfe8b6d97a758ae8dc48c747931e3645d617dec251",
-      "sizeBytes": 3468
+      "hash": "sha256:01ca1120346908a9692cdef8d23cda9768647caaaece463fdad4319178f7c54d",
+      "sizeBytes": 3632
     },
     {
       "path": "src/modules/points/application/award-activity-points.service.spec.ts",
@@ -20538,6 +20601,64 @@
       "sizeBytes": 2988
     },
     {
+      "path": "src/modules/points/application/leaderboard-data.service.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:080ae4a5bc37cdb7f2b4845c1b43299f8ccf33cd78fc7c78cc9ee946e80efbb9",
+      "sizeBytes": 2161
+    },
+    {
+      "path": "src/modules/points/application/leaderboard-data.service.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LeaderboardDataService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/leaderboard-data.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7e7ab1541d5eb9987856894922330d777a2e64b1659631c10607a832b0d74c99",
+      "sizeBytes": 2660
+    },
+    {
+      "path": "src/modules/points/application/leaderboard-query.service.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:74e121aa5a17a28ec21ae8d557efe95a60f5a7e9e6926bb3161a9a5ad3ad8581",
+      "sizeBytes": 3284
+    },
+    {
+      "path": "src/modules/points/application/leaderboard-query.service.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LeaderboardQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/leaderboard-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7800123262609edf0a4b5d6610ff5ef4e0aa7e177deb718ec9e81d53978cc60f",
+      "sizeBytes": 3185
+    },
+    {
       "path": "src/modules/points/application/points-query.service.spec.ts",
       "root": "modules",
       "module": "points",
@@ -20546,8 +20667,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:5eff88713b34b7f3c779bfcd437a5b4a06bcd6d0394133311e3ae14816d34ebc",
-      "sizeBytes": 1920
+      "hash": "sha256:8b1f28f4a06c9012e4a0a4eaba819d7f947985b64d8297d3c63fdbf19deb1369",
+      "sizeBytes": 1404
     },
     {
       "path": "src/modules/points/application/points-query.service.ts",
@@ -20563,8 +20684,8 @@
       "hasSpec": true,
       "specPath": "src/modules/points/application/points-query.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:9a6c956ce2f937b9f6967319e9ae88b957b3560eae5f5fea8d9c3256a4016435",
-      "sizeBytes": 2557
+      "hash": "sha256:92af5e14704e51af003d9cae6f266f7537cc3441bec73c014d6bb176624de3a7",
+      "sizeBytes": 1855
     },
     {
       "path": "src/modules/points/application/points-scope.service.spec.ts",
@@ -20772,6 +20893,39 @@
       "kind": "source",
       "hash": "sha256:f6d860280af868023d71646cd2b88dbbf81a792b409c680a755ec23eea985910",
       "sizeBytes": 1200
+    },
+    {
+      "path": "src/modules/points/domain/leaderboard-ranking.policy.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8632da18bad9279c221b59b3da8003628815e7e12023af26dbda9a2c30f5ee9a",
+      "sizeBytes": 3352
+    },
+    {
+      "path": "src/modules/points/domain/leaderboard-ranking.policy.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "rankStandings"
+        },
+        {
+          "kind": "function",
+          "name": "rankOf"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/domain/leaderboard-ranking.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:488d2cc99dca884dcba2d253b91618307c556c2ab8e4e392a5566f962aeba667",
+      "sizeBytes": 4073
     },
     {
       "path": "src/modules/points/domain/points-award.policy.spec.ts",
@@ -21040,6 +21194,35 @@
       "sizeBytes": 3163
     },
     {
+      "path": "src/modules/points/infrastructure/leaderboard.repository.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a93cd2cab299d8c0ab98826f7fac616c19500065061ff870d3c39fa091c99d48",
+      "sizeBytes": 3739
+    },
+    {
+      "path": "src/modules/points/infrastructure/leaderboard.repository.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LeaderboardRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/infrastructure/leaderboard.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d3326888ff738d5124e9215937fbf69327095ed1da44eafdc6a777274dcde990",
+      "sizeBytes": 4285
+    },
+    {
       "path": "src/modules/points/infrastructure/points-ledger.repository.spec.ts",
       "root": "modules",
       "module": "points",
@@ -21048,8 +21231,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:73ee64d86a95e22ab1af420ccd6d23eded80e7b0208472ed6cf2c5dd4433c462",
-      "sizeBytes": 5426
+      "hash": "sha256:74c84be71a02fc820cf8e42b835db40790957e471e4cf2864ffc60bfa92843d3",
+      "sizeBytes": 4505
     },
     {
       "path": "src/modules/points/infrastructure/points-ledger.repository.ts",
@@ -21065,8 +21248,8 @@
       "hasSpec": true,
       "specPath": "src/modules/points/infrastructure/points-ledger.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:e3e26d5442ffb06d9405eb2432716781ec28b592fc45fbc6fe08409a63fb13d5",
-      "sizeBytes": 5927
+      "hash": "sha256:8530606b3e00481d0c583a39eedf7b3985402ab25b99f567e52d2a30efe6d4b7",
+      "sizeBytes": 4763
     },
     {
       "path": "src/modules/points/infrastructure/points-rule.repository.spec.ts",
@@ -21125,6 +21308,141 @@
       "kind": "source",
       "hash": "sha256:961c92134901a293b2f12b9684fd332fc145e234375da20810759d4c34d129e6",
       "sizeBytes": 1834
+    },
+    {
+      "path": "src/modules/points/lib/leaderboard-window.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e681217b81f5b5e7082e5eb83171d46fc5e49976b841e46a27fbb3dffec049c6",
+      "sizeBytes": 5421
+    },
+    {
+      "path": "src/modules/points/lib/leaderboard-window.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "readPart"
+        },
+        {
+          "kind": "function",
+          "name": "cairoDateParts"
+        },
+        {
+          "kind": "function",
+          "name": "cairoOffsetMs"
+        },
+        {
+          "kind": "function",
+          "name": "cairoMidnightUtc"
+        },
+        {
+          "kind": "function",
+          "name": "shiftDate"
+        },
+        {
+          "kind": "function",
+          "name": "computePeriodWindows"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/lib/leaderboard-window.spec.ts",
+      "kind": "source",
+      "hash": "sha256:10459580ad838be62dafda1d651ca162f564a9f9a9d9d1298bb2a75d6f88e529",
+      "sizeBytes": 5795
+    },
+    {
+      "path": "src/modules/points/lib/leaderboard.assembler.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c528494ee9d505b9bf0d60ba137609c4e80e741c8b7c8171b809500a8add8441",
+      "sizeBytes": 3308
+    },
+    {
+      "path": "src/modules/points/lib/leaderboard.assembler.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assembleLeaderboard"
+        },
+        {
+          "kind": "function",
+          "name": "toMemberStandings"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/lib/leaderboard.assembler.spec.ts",
+      "kind": "source",
+      "hash": "sha256:51d270b74c818ed1c329502fb0da3628138e4b37bd30b6e1ddfca3b33ef3121e",
+      "sizeBytes": 2860
+    },
+    {
+      "path": "src/modules/points/lib/leaderboard.mapper.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:882eeed72391dd780d82f7a9fda06614a888c966aec6c7d0a36623d9a4a7df4f",
+      "sizeBytes": 3189
+    },
+    {
+      "path": "src/modules/points/lib/leaderboard.mapper.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toCohortMember"
+        },
+        {
+          "kind": "function",
+          "name": "toMemberTotal"
+        },
+        {
+          "kind": "function",
+          "name": "toMemberCategoryTotal"
+        },
+        {
+          "kind": "function",
+          "name": "toMemberBadgeCount"
+        },
+        {
+          "kind": "function",
+          "name": "toSeasonBounds"
+        },
+        {
+          "kind": "function",
+          "name": "cohortStatuses"
+        },
+        {
+          "kind": "function",
+          "name": "resolveLeaderboardQuery"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/lib/leaderboard.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f935498faaa6f57127d1de1592b3a5a59bbe72d8a7c478decdf44bd9c631c4dc",
+      "sizeBytes": 3158
     },
     {
       "path": "src/modules/points/lib/points-command.mapper.spec.ts",
@@ -21249,8 +21567,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:0708dc0417b43f57a61d0f0b3696a6af8a1efb672742a1688f6133455f9a0c7d",
-      "sizeBytes": 2466
+      "hash": "sha256:fa806f7a4708f048afb2cecc3583e73b1279de391a922f728cda2954800cd353",
+      "sizeBytes": 2299
     },
     {
       "path": "src/modules/points/lib/points.helpers.ts",
@@ -21301,17 +21619,13 @@
         {
           "kind": "function",
           "name": "buildAdjustmentKey"
-        },
-        {
-          "kind": "function",
-          "name": "computeRank"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/points/lib/points.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:8b25f26871de78786de7948d384d1dd10ab659da71ffafed5dcdfd891f0db514",
-      "sizeBytes": 2616
+      "hash": "sha256:6669512a98731ad71ab212dc2c4ae9225c47e4facd2d2c065fec05ca9a94ef9f",
+      "sizeBytes": 2434
     },
     {
       "path": "src/modules/points/lib/points.mapper.spec.ts",
@@ -21322,8 +21636,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:f74e719ecabfc642d5c90f65f9f6a5441fd5fbea92de4a931cd3e02c909d1791",
-      "sizeBytes": 5830
+      "hash": "sha256:ce1bfd1b295b85e929cc728ddb82ec3a1f03df3c276352612d8a4e2ab37bb815",
+      "sizeBytes": 5166
     },
     {
       "path": "src/modules/points/lib/points.mapper.ts",
@@ -21353,10 +21667,6 @@
         },
         {
           "kind": "function",
-          "name": "toLeaderboardRow"
-        },
-        {
-          "kind": "function",
           "name": "toLedgerEntryView"
         },
         {
@@ -21371,8 +21681,195 @@
       "hasSpec": true,
       "specPath": "src/modules/points/lib/points.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:995ceb130bfeb917363dd8d54a4263b3336646b61008b298c36917327b31b90a",
-      "sizeBytes": 4947
+      "hash": "sha256:47dbc04f3b4fc00bcb1fbb49b1e587229bfb24387c3443f1de8e3b7049c8592b",
+      "sizeBytes": 4599
+    },
+    {
+      "path": "src/modules/points/model/leaderboard.constants.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "LEADERBOARD_TIME_ZONE"
+        },
+        {
+          "kind": "const",
+          "name": "WEEK_START_DOW"
+        },
+        {
+          "kind": "const",
+          "name": "DAYS_PER_WEEK"
+        },
+        {
+          "kind": "const",
+          "name": "MONTHS_PER_YEAR"
+        },
+        {
+          "kind": "const",
+          "name": "LEADERBOARD_COHORT_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_LEADERBOARD_PERIOD"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_LEADERBOARD_TIE_MODE"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_LEADERBOARD_COHORT"
+        },
+        {
+          "kind": "const",
+          "name": "ADJUSTMENT_CONTRIBUTION_CATEGORY"
+        },
+        {
+          "kind": "const",
+          "name": "ACTIVE_COHORT_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "INACTIVE_COHORT_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "SUSPENDED_COHORT_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "LEADERBOARD_CATEGORY_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "LEADERBOARD_CATEGORY_MAX_LENGTH"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dc2469d71943b92314fc2178a9ab184f75d4b63a4bfa2d4e4d0b42a8a5857195",
+      "sizeBytes": 2096
+    },
+    {
+      "path": "src/modules/points/model/leaderboard.enums.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "LeaderboardPeriod"
+        },
+        {
+          "kind": "const",
+          "name": "LEADERBOARD_PERIOD_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "LeaderboardTieMode"
+        },
+        {
+          "kind": "const",
+          "name": "LEADERBOARD_TIE_MODE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "LeaderboardCohort"
+        },
+        {
+          "kind": "const",
+          "name": "LEADERBOARD_COHORT_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RankMovement"
+        },
+        {
+          "kind": "const",
+          "name": "RANK_MOVEMENT_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8b80efde57539492203ca3ccf4423518d4ae77aab1371e48888cf3779fa651cf",
+      "sizeBytes": 2441
+    },
+    {
+      "path": "src/modules/points/model/leaderboard.types.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "LeaderboardQuery"
+        },
+        {
+          "kind": "interface",
+          "name": "PeriodWindow"
+        },
+        {
+          "kind": "interface",
+          "name": "LeaderboardWindows"
+        },
+        {
+          "kind": "interface",
+          "name": "SeasonBounds"
+        },
+        {
+          "kind": "interface",
+          "name": "CohortMember"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberTotal"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberCategoryTotal"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberBadgeCount"
+        },
+        {
+          "kind": "interface",
+          "name": "LeaderboardData"
+        },
+        {
+          "kind": "interface",
+          "name": "CategoryContribution"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberStanding"
+        },
+        {
+          "kind": "interface",
+          "name": "RankedLeaderboardRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RankMovementOutcome"
+        },
+        {
+          "kind": "interface",
+          "name": "LeaderboardResult"
+        },
+        {
+          "kind": "interface",
+          "name": "LeaderboardQueryInput"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b70ee2eb9ab0d538929c913ea9239294f5899fe50cf4c9430cea299cb820c5d4",
+      "sizeBytes": 5535
     },
     {
       "path": "src/modules/points/model/points.constants.ts",
@@ -21836,10 +22333,6 @@
         },
         {
           "kind": "interface",
-          "name": "LeaderboardRowRaw"
-        },
-        {
-          "kind": "interface",
           "name": "AwardFactsRow"
         },
         {
@@ -21853,13 +22346,33 @@
         {
           "kind": "interface",
           "name": "IdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CohortMemberRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberTotalRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberCategoryTotalRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberBadgeCountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "SeasonBoundsRow"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:939b57832acfc122cfead3e7454ffb0a5087882bce7866b1318c0f1675550481",
-      "sizeBytes": 3044
+      "hash": "sha256:c817f3df9f56da47b68024e58c1c92b44c34664ea0454112c50475c81084644a",
+      "sizeBytes": 3714
     },
     {
       "path": "src/modules/points/model/points.types.ts",
@@ -21976,14 +22489,6 @@
           "name": "PointsSummaryView"
         },
         {
-          "kind": "interface",
-          "name": "LeaderboardRow"
-        },
-        {
-          "kind": "type",
-          "name": "LeaderboardPage"
-        },
-        {
           "kind": "type",
           "name": "PointsRulePage"
         }
@@ -21991,8 +22496,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:8ffb2e956026c5678ccef9cf97a41e0a68e325d8f7a919906298e875dbaf4e1e",
-      "sizeBytes": 10141
+      "hash": "sha256:17d1abe310ae02e31066d68a64534a80f15c7a9a5b6ccfeebb65d8f970edcad2",
+      "sizeBytes": 9849
     },
     {
       "path": "src/modules/points/points.module.ts",
@@ -22008,8 +22513,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:11da476788664b85a886bf6ab8a3df5942dae8f50777ad98d92f24f7567c7d4e",
-      "sizeBytes": 3050
+      "hash": "sha256:08409da4553f6ef500b01d8010a78b681464b8b7eed7c6f5416dd27162257fa3",
+      "sizeBytes": 3379
     },
     {
       "path": "src/modules/practices/adapters/calendar-token.adapter.spec.ts",

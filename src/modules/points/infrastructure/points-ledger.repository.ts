@@ -2,11 +2,7 @@ import type { TransactionScope } from '@core/persistence/unit-of-work.port';
 import { Injectable } from '@nestjs/common';
 
 import { toTotal } from '../lib/points.helpers';
-import {
-  toActivityTypePoints,
-  toLeaderboardRow,
-  toLedgerEntry,
-} from '../lib/points.mapper';
+import { toActivityTypePoints, toLedgerEntry } from '../lib/points.mapper';
 import {
   LEDGER_ENTRY_COLUMNS,
   LEDGER_HISTORY_LIMIT,
@@ -15,18 +11,14 @@ import { LedgerEntryType } from '../model/points.enums';
 import type {
   ActivityTypePointsRow,
   AwardFactsRow,
-  CountRow,
-  LeaderboardRowRaw,
   LedgerEntryRow,
   TotalRow,
 } from '../model/points.rows';
 import type {
   ActivityTypePoints,
   AwardFacts,
-  LeaderboardRow,
   LedgerEntry,
   NewLedgerEntry,
-  PageRequest,
 } from '../model/points.types';
 
 /**
@@ -118,38 +110,6 @@ export class PointsLedgerRepository {
       [teamId, membershipId],
     );
     return rows.map(row => toLedgerEntry(row));
-  }
-
-  async leaderboard(
-    scope: TransactionScope,
-    teamId: string,
-    page: PageRequest,
-  ): Promise<readonly LeaderboardRow[]> {
-    const rows = await scope.run<LeaderboardRowRaw>(
-      `SELECT m."id" AS "membership_id",
-         (SELECT SUM(l."amount") FROM "points_ledger" l
-           WHERE l."membership_id" = m."id") AS "total",
-         (SELECT COUNT(*) FROM "player_badges" b
-           WHERE b."membership_id" = m."id") AS "badge_count"
-       FROM "memberships" m
-       WHERE m."team_id" = $1 AND m."deleted_at" IS NULL
-       ORDER BY "total" DESC NULLS LAST, m."id" ASC
-       LIMIT $2 OFFSET $3`,
-      [teamId, page.limit, page.offset],
-    );
-    return rows.map((row, index) => toLeaderboardRow(row, page.offset, index));
-  }
-
-  async countActiveMemberships(
-    scope: TransactionScope,
-    teamId: string,
-  ): Promise<number> {
-    const rows = await scope.run<CountRow>(
-      `SELECT COUNT(*)::int AS "count" FROM "memberships"
-        WHERE "team_id" = $1 AND "deleted_at" IS NULL`,
-      [teamId],
-    );
-    return rows[0]?.count ?? 0;
   }
 
   async findActivityTypePoints(

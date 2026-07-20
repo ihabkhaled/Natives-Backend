@@ -1408,6 +1408,21 @@
         ],
         "type": "object"
       },
+      "CategoryContributionResponseDto": {
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "points": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "category",
+          "points"
+        ],
+        "type": "object"
+      },
       "CategoryResponseDto": {
         "properties": {
           "createdAt": {
@@ -3717,6 +3732,23 @@
       },
       "LeaderboardResponseDto": {
         "properties": {
+          "asOf": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "category": {
+            "nullable": true,
+            "type": "string"
+          },
+          "cohort": {
+            "enum": [
+              "active",
+              "inactive",
+              "suspended",
+              "all"
+            ],
+            "type": "string"
+          },
           "items": {
             "items": {
               "$ref": "#/components/schemas/LeaderboardRowResponseDto"
@@ -3729,6 +3761,23 @@
           "offset": {
             "type": "number"
           },
+          "period": {
+            "enum": [
+              "weekly",
+              "monthly",
+              "season",
+              "all_time"
+            ],
+            "type": "string"
+          },
+          "tieMode": {
+            "enum": [
+              "competition",
+              "dense",
+              "ordinal"
+            ],
+            "type": "string"
+          },
           "total": {
             "type": "number"
           }
@@ -3737,7 +3786,12 @@
           "items",
           "total",
           "limit",
-          "offset"
+          "offset",
+          "period",
+          "tieMode",
+          "cohort",
+          "category",
+          "asOf"
         ],
         "type": "object"
       },
@@ -3746,12 +3800,38 @@
           "badgeCount": {
             "type": "number"
           },
+          "contributions": {
+            "items": {
+              "$ref": "#/components/schemas/CategoryContributionResponseDto"
+            },
+            "type": "array"
+          },
           "membershipId": {
             "format": "uuid",
             "type": "string"
           },
+          "movement": {
+            "enum": [
+              "up",
+              "down",
+              "steady",
+              "none"
+            ],
+            "type": "string"
+          },
+          "previousRank": {
+            "nullable": true,
+            "type": "number"
+          },
           "rank": {
             "type": "number"
+          },
+          "rankDelta": {
+            "nullable": true,
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
           },
           "total": {
             "type": "number"
@@ -3759,9 +3839,14 @@
         },
         "required": [
           "membershipId",
+          "status",
           "total",
           "rank",
-          "badgeCount"
+          "previousRank",
+          "rankDelta",
+          "movement",
+          "badgeCount",
+          "contributions"
         ],
         "type": "object"
       },
@@ -16816,13 +16901,73 @@
     },
     "/teams/{teamId}/points": {
       "get": {
-        "operationId": "Points.leaderboard",
+        "operationId": "Points.teamLeaderboard",
         "parameters": [
           {
             "in": "path",
             "name": "teamId",
             "required": true,
             "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "period",
+            "required": false,
+            "schema": {
+              "enum": [
+                "weekly",
+                "monthly",
+                "season",
+                "all_time"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "tieMode",
+            "required": false,
+            "schema": {
+              "enum": [
+                "competition",
+                "dense",
+                "ordinal"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "cohort",
+            "required": false,
+            "schema": {
+              "enum": [
+                "active",
+                "inactive",
+                "suspended",
+                "all"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "seasonId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "required": false,
+            "schema": {
+              "maxLength": 50,
+              "minLength": 2,
               "type": "string"
             }
           },

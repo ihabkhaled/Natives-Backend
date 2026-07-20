@@ -311,15 +311,6 @@ export interface PointsSummaryView {
   readonly badges: readonly PlayerBadgeView[];
 }
 
-/** One ranked leaderboard row — a projected total, never a stored counter. */
-export interface LeaderboardRow {
-  readonly membershipId: string;
-  readonly total: number;
-  readonly rank: number;
-  readonly badgeCount: number;
-}
-
 // --- Read envelopes ----------------------------------------------------------
 
-export type LeaderboardPage = PagedResult<LeaderboardRow>;
 export type PointsRulePage = PagedResult<PointsRule>;

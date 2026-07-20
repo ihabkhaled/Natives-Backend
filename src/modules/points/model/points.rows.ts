@@ -74,13 +74,6 @@ export interface ActivityTypePointsRow {
   readonly points_approval: string;
 }
 
-/** One aggregated leaderboard row: a membership's projected total + badge count. */
-export interface LeaderboardRowRaw {
-  readonly membership_id: string;
-  readonly total: string | null;
-  readonly badge_count: string | number;
-}
-
 /** The award-facts aggregation for the cap/cooldown decision. */
 export interface AwardFactsRow {
   readonly same_day_count: string | number;
@@ -100,4 +93,35 @@ export interface CountRow {
 /** A single-column id probe row for existence checks. */
 export interface IdRow {
   readonly id: string;
+}
+
+/** A cohort membership row: its id and the status that admitted it. */
+export interface CohortMemberRow {
+  readonly membership_id: string;
+  readonly status: string;
+}
+
+/** A per-member windowed total row (null when the member has no in-window rows). */
+export interface MemberTotalRow {
+  readonly membership_id: string;
+  readonly total: string | null;
+}
+
+/** A per-member, per-category windowed total row (category null = adjustment). */
+export interface MemberCategoryTotalRow {
+  readonly membership_id: string;
+  readonly activity_category: string | null;
+  readonly total: string | null;
+}
+
+/** A per-member badge-count row. */
+export interface MemberBadgeCountRow {
+  readonly membership_id: string;
+  readonly badge_count: string | number;
+}
+
+/** The Africa/Cairo calendar bounds of a season. */
+export interface SeasonBoundsRow {
+  readonly starts_on: string;
+  readonly ends_on: string;
 }

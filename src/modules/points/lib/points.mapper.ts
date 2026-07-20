@@ -8,7 +8,6 @@ import {
 import type {
   ActivityTypePointsRow,
   BadgeDefinitionRow,
-  LeaderboardRowRaw,
   LedgerEntryRow,
   PlayerBadgeRow,
   PointsRuleRow,
@@ -16,7 +15,6 @@ import type {
 import type {
   ActivityTypePoints,
   BadgeDefinition,
-  LeaderboardRow,
   LedgerEntry,
   LedgerEntryView,
   PlayerBadge,
@@ -25,12 +23,10 @@ import type {
   RulePointEntry,
 } from '../model/points.types';
 import {
-  computeRank,
   parseEnumValue,
   toDate,
   toNullableNumber,
   toNumber,
-  toTotal,
 } from './points.helpers';
 
 interface RawPointEntry {
@@ -136,19 +132,6 @@ export function toActivityTypePoints(
       row.points_approval,
       'activity points approval',
     ),
-  };
-}
-
-export function toLeaderboardRow(
-  row: LeaderboardRowRaw,
-  offset: number,
-  index: number,
-): LeaderboardRow {
-  return {
-    membershipId: row.membership_id,
-    total: toTotal(row.total),
-    rank: computeRank(offset, index),
-    badgeCount: toNumber(row.badge_count),
   };
 }
 

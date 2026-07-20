@@ -10,6 +10,8 @@ import { AwardActivityPointsService } from './application/award-activity-points.
 import { BadgeSyncService } from './application/badge-sync.service';
 import { CreateAdjustmentUseCase } from './application/create-adjustment.use-case';
 import { CreatePointsRuleUseCase } from './application/create-points-rule.use-case';
+import { LeaderboardDataService } from './application/leaderboard-data.service';
+import { LeaderboardQueryService } from './application/leaderboard-query.service';
 import { PointsQueryService } from './application/points-query.service';
 import { PointsScopeService } from './application/points-scope.service';
 import { PointsSummaryService } from './application/points-summary.service';
@@ -18,6 +20,7 @@ import { RuleLookupService } from './application/rule-lookup.service';
 import { RuleQueryService } from './application/rule-query.service';
 import { TransitionPointsRuleUseCase } from './application/transition-points-rule.use-case';
 import { BadgeRepository } from './infrastructure/badge.repository';
+import { LeaderboardRepository } from './infrastructure/leaderboard.repository';
 import { PointsLedgerRepository } from './infrastructure/points-ledger.repository';
 import { PointsRuleRepository } from './infrastructure/points-rule.repository';
 import { PointsScopeRepository } from './infrastructure/points-scope.repository';
@@ -40,6 +43,7 @@ import { PointsScopeRepository } from './infrastructure/points-scope.repository'
     PointsScopeRepository,
     PointsRuleRepository,
     PointsLedgerRepository,
+    LeaderboardRepository,
     BadgeRepository,
     PointsScopeService,
     BadgeSyncService,
@@ -47,6 +51,8 @@ import { PointsScopeRepository } from './infrastructure/points-scope.repository'
     ReverseActivityPointsService,
     PointsSummaryService,
     PointsQueryService,
+    LeaderboardDataService,
+    LeaderboardQueryService,
     RuleLookupService,
     RuleQueryService,
     CreateAdjustmentUseCase,

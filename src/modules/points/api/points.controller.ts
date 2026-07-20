@@ -25,8 +25,9 @@ import {
 import { Permission } from '@shared/enums';
 
 import { CreateAdjustmentUseCase } from '../application/create-adjustment.use-case';
+import { LeaderboardQueryService } from '../application/leaderboard-query.service';
 import { PointsQueryService } from '../application/points-query.service';
-import { resolvePointsPage } from '../lib/points.helpers';
+import { resolveLeaderboardQuery } from '../lib/leaderboard.mapper';
 import {
   MEMBERSHIP_ID_PARAM,
   POINTS_ADJUSTMENT_ROUTE,
@@ -37,7 +38,7 @@ import {
 } from '../model/points.constants';
 import { CreateAdjustmentDto } from './dto/create-adjustment.dto';
 import { LeaderboardResponseDto } from './dto/leaderboard.response.dto';
-import { ListPointsQueryDto } from './dto/list-points.query.dto';
+import { ListLeaderboardQueryDto } from './dto/list-leaderboard.query.dto';
 import { PointsSummaryResponseDto } from './dto/points-summary.response.dto';
 
 /**
@@ -51,6 +52,7 @@ import { PointsSummaryResponseDto } from './dto/points-summary.response.dto';
 export class PointsController {
   constructor(
     private readonly query: PointsQueryService,
+    private readonly leaderboard: LeaderboardQueryService,
     private readonly adjust: CreateAdjustmentUseCase,
   ) {}
 
@@ -59,13 +61,13 @@ export class PointsController {
   @ApiOperation({ summary: 'Read the team points leaderboard' })
   @ApiOkResponse({ type: LeaderboardResponseDto })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
-  leaderboard(
+  teamLeaderboard(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
-    @Query() query: ListPointsQueryDto,
+    @Query() query: ListLeaderboardQueryDto,
   ): Promise<LeaderboardResponseDto> {
-    return this.query.teamLeaderboard(
+    return this.leaderboard.teamLeaderboard(
       teamId,
-      resolvePointsPage(query.limit, query.offset),
+      resolveLeaderboardQuery(query),
     );
   }
 

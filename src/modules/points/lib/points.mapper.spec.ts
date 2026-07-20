@@ -9,7 +9,6 @@ import {
 } from '../model/points.enums';
 import type {
   BadgeDefinitionRow,
-  LeaderboardRowRaw,
   LedgerEntryRow,
   PlayerBadgeRow,
   PointsRuleRow,
@@ -19,7 +18,6 @@ import {
   parsePointEntries,
   toActivityTypePoints,
   toBadgeDefinition,
-  toLeaderboardRow,
   toLedgerEntry,
   toLedgerEntryView,
   toPlayerBadge,
@@ -157,33 +155,6 @@ describe('toActivityTypePoints', () => {
       activityTypeId: 'type-1',
       category: 'gym',
       pointsApproval: PointsApproval.Pending,
-    });
-  });
-});
-
-describe('toLeaderboardRow', () => {
-  it('ranks positionally and coalesces a null total to zero', () => {
-    const first: LeaderboardRowRaw = {
-      membership_id: 'a',
-      total: '90',
-      badge_count: 1,
-    };
-    const second: LeaderboardRowRaw = {
-      membership_id: 'b',
-      total: null,
-      badge_count: '0',
-    };
-    expect(toLeaderboardRow(first, 0, 0)).toEqual({
-      membershipId: 'a',
-      total: 90,
-      rank: 1,
-      badgeCount: 1,
-    });
-    expect(toLeaderboardRow(second, 0, 1)).toEqual({
-      membershipId: 'b',
-      total: 0,
-      rank: 2,
-      badgeCount: 0,
     });
   });
 });

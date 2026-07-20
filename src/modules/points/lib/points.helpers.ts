@@ -77,11 +77,6 @@ export function buildAdjustmentKey(
   return join(ADJUSTMENT_KEY_PREFIX, membershipId, operationKey);
 }
 
-/** Positional 1-based rank within a bounded, deterministically ordered page. */
-export function computeRank(offset: number, index: number): number {
-  return offset + index + 1;
-}
-
 function join(...segments: readonly string[]): string {
   return segments.join(KEY_SEGMENT_SEPARATOR);
 }

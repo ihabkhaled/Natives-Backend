@@ -33,6 +33,7 @@ import { MeasurementsSchema1722800000000 } from '../src/database/migrations/1722
 import { ActivitiesSchema1722900000000 } from '../src/database/migrations/1722900000000-activities-schema';
 import { ActivityReviewSchema1723000000000 } from '../src/database/migrations/1723000000000-activity-review-schema';
 import { PointsSchema1723100000000 } from '../src/database/migrations/1723100000000-points-schema';
+import { LeaderboardIndexes1723200000000 } from '../src/database/migrations/1723200000000-leaderboard-indexes';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -81,6 +82,7 @@ const MIGRATIONS = [
   ActivitiesSchema1722900000000,
   ActivityReviewSchema1723000000000,
   PointsSchema1723100000000,
+  LeaderboardIndexes1723200000000,
 ];
 
 interface Fixture {
@@ -358,5 +360,50 @@ describeIfDb(suiteTitle, () => {
       .set('Authorization', `Bearer ${token}`);
     expect(response.status).toBe(403);
     expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('returns a ranked leaderboard page echoing the resolved scope (200)', async () => {
+    const token = await tokenFor(fixture.coachId, [Role.User]);
+    const response = await request(app.getHttpServer())
+      .get(pointsBase('?period=monthly&tieMode=dense&cohort=all'))
+      .set('Authorization', `Bearer ${token}`);
+    expect(response.status).toBe(200);
+    expect(response.body.period).toBe('monthly');
+    expect(response.body.tieMode).toBe('dense');
+    expect(response.body.cohort).toBe('all');
+    expect(Array.isArray(response.body.items)).toBe(true);
+    const member = response.body.items.find(
+      (row: { membershipId: string }) =>
+        row.membershipId === memberMembershipId,
+    );
+    expect(member.rank).toBeGreaterThanOrEqual(1);
+    expect(Array.isArray(member.contributions)).toBe(true);
+  });
+
+  it('filters the leaderboard by activity category (200)', async () => {
+    const token = await tokenFor(fixture.coachId, [Role.User]);
+    const response = await request(app.getHttpServer())
+      .get(pointsBase('?category=throwing'))
+      .set('Authorization', `Bearer ${token}`);
+    expect(response.status).toBe(200);
+    expect(response.body.category).toBe('throwing');
+  });
+
+  it('rejects an out-of-bounds page size (400 validation.failed)', async () => {
+    const token = await tokenFor(fixture.coachId, [Role.User]);
+    const response = await request(app.getHttpServer())
+      .get(pointsBase('?limit=5000'))
+      .set('Authorization', `Bearer ${token}`);
+    expect(response.status).toBe(400);
+    expect(response.body.messageKey).toBe('errors.validation.failed');
+  });
+
+  it('rejects an unknown leaderboard period (400 validation.failed)', async () => {
+    const token = await tokenFor(fixture.coachId, [Role.User]);
+    const response = await request(app.getHttpServer())
+      .get(pointsBase('?period=decade'))
+      .set('Authorization', `Bearer ${token}`);
+    expect(response.status).toBe(400);
+    expect(response.body.messageKey).toBe('errors.validation.failed');
   });
 });

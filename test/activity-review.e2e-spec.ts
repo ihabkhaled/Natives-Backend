@@ -33,6 +33,7 @@ import { MeasurementsSchema1722800000000 } from '../src/database/migrations/1722
 import { ActivitiesSchema1722900000000 } from '../src/database/migrations/1722900000000-activities-schema';
 import { ActivityReviewSchema1723000000000 } from '../src/database/migrations/1723000000000-activity-review-schema';
 import { PointsSchema1723100000000 } from '../src/database/migrations/1723100000000-points-schema';
+import { LeaderboardIndexes1723200000000 } from '../src/database/migrations/1723200000000-leaderboard-indexes';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -81,6 +82,7 @@ const MIGRATIONS = [
   ActivitiesSchema1722900000000,
   ActivityReviewSchema1723000000000,
   PointsSchema1723100000000,
+  LeaderboardIndexes1723200000000,
 ];
 
 interface Fixture {

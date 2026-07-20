@@ -134,32 +134,6 @@ describe('PointsLedgerRepository', () => {
     expect(items[0]?.amount).toBe(4);
   });
 
-  it('ranks the leaderboard positionally with zero-contribution members present', async () => {
-    harness.run.mockResolvedValueOnce([
-      { membership_id: 'a', total: '30', badge_count: 1 },
-      { membership_id: 'b', total: null, badge_count: 0 },
-    ]);
-    const rows = await harness.repository.leaderboard(harness.scope, 'team-1', {
-      limit: 20,
-      offset: 0,
-    });
-    expect(rows).toEqual([
-      { membershipId: 'a', total: 30, rank: 1, badgeCount: 1 },
-      { membershipId: 'b', total: 0, rank: 2, badgeCount: 0 },
-    ]);
-  });
-
-  it('counts active memberships', async () => {
-    harness.run.mockResolvedValueOnce([{ count: 5 }]);
-    expect(
-      await harness.repository.countActiveMemberships(harness.scope, 'team-1'),
-    ).toBe(5);
-    harness.run.mockResolvedValueOnce([]);
-    expect(
-      await harness.repository.countActiveMemberships(harness.scope, 'team-1'),
-    ).toBe(0);
-  });
-
   it('reads the point-relevant activity type or null', async () => {
     harness.run.mockResolvedValueOnce([
       { id: 'type-1', category: 'gym', points_approval: 'approved' },

@@ -10,13 +10,25 @@ import { OutboxRepository } from '@modules/platform/infrastructure/outbox.reposi
 import { AwardActivityPointsService } from '@modules/points/application/award-activity-points.service';
 import { BadgeSyncService } from '@modules/points/application/badge-sync.service';
 import { CreateAdjustmentUseCase } from '@modules/points/application/create-adjustment.use-case';
+import { LeaderboardDataService } from '@modules/points/application/leaderboard-data.service';
+import { LeaderboardQueryService } from '@modules/points/application/leaderboard-query.service';
 import { PointsScopeService } from '@modules/points/application/points-scope.service';
 import { PointsSummaryService } from '@modules/points/application/points-summary.service';
 import { ReverseActivityPointsService } from '@modules/points/application/reverse-activity-points.service';
 import { BadgeRepository } from '@modules/points/infrastructure/badge.repository';
+import { LeaderboardRepository } from '@modules/points/infrastructure/leaderboard.repository';
 import { PointsLedgerRepository } from '@modules/points/infrastructure/points-ledger.repository';
 import { PointsRuleRepository } from '@modules/points/infrastructure/points-rule.repository';
 import { PointsScopeRepository } from '@modules/points/infrastructure/points-scope.repository';
+import {
+  LeaderboardCohort,
+  LeaderboardPeriod,
+  LeaderboardTieMode,
+} from '@modules/points/model/leaderboard.enums';
+import type {
+  LeaderboardQuery,
+  RankedLeaderboardRow,
+} from '@modules/points/model/leaderboard.types';
 import type { ActivityAwardCommand } from '@modules/points/model/points.types';
 import { NodeEnv } from '@shared/enums';
 import { DataSource } from 'typeorm';
@@ -42,6 +54,7 @@ import { MeasurementsSchema1722800000000 } from '../../src/database/migrations/1
 import { ActivitiesSchema1722900000000 } from '../../src/database/migrations/1722900000000-activities-schema';
 import { ActivityReviewSchema1723000000000 } from '../../src/database/migrations/1723000000000-activity-review-schema';
 import { PointsSchema1723100000000 } from '../../src/database/migrations/1723100000000-points-schema';
+import { LeaderboardIndexes1723200000000 } from '../../src/database/migrations/1723200000000-leaderboard-indexes';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -80,6 +93,7 @@ const MIGRATIONS = [
   ActivitiesSchema1722900000000,
   ActivityReviewSchema1723000000000,
   PointsSchema1723100000000,
+  LeaderboardIndexes1723200000000,
 ];
 
 const CLOCK = { now: () => NOW, uptime: () => 0 };
@@ -158,6 +172,81 @@ describeIfDb(suiteTitle, () => {
     audit,
     events,
   );
+  const leaderboardRepo = new LeaderboardRepository();
+  const LEADERBOARD_CLOCK = {
+    now: () => new Date('2026-03-15T12:00:00.000Z'),
+    uptime: () => 0,
+  };
+  const leaderboard = new LeaderboardQueryService(
+    unitOfWork,
+    LEADERBOARD_CLOCK,
+    new PointsScopeService(scopeRepo),
+    leaderboardRepo,
+    new LeaderboardDataService(leaderboardRepo),
+  );
+
+  function leaderboardQuery(
+    overrides: Partial<LeaderboardQuery> = {},
+  ): LeaderboardQuery {
+    return {
+      period: LeaderboardPeriod.AllTime,
+      tieMode: LeaderboardTieMode.Competition,
+      cohort: LeaderboardCohort.Active,
+      seasonId: null,
+      category: null,
+      limit: 100,
+      offset: 0,
+      ...overrides,
+    };
+  }
+
+  function rankFor(
+    rows: readonly RankedLeaderboardRow[],
+    membershipId: string,
+  ): number | undefined {
+    return rows.find(row => row.membershipId === membershipId)?.rank;
+  }
+
+  async function addMembership(teamId: string): Promise<string> {
+    const userId = randomUUID();
+    const membershipId = randomUUID();
+    await active.query(
+      `INSERT INTO "users" ("id", "email", "role", "status")
+       VALUES ($1, $2, 'user', 'active')`,
+      [userId, `user-${userId}@example.test`],
+    );
+    await active.query(
+      `INSERT INTO "memberships" ("id", "team_id", "user_id", "status")
+       VALUES ($1, $2, $3, 'active')`,
+      [membershipId, teamId, userId],
+    );
+    return membershipId;
+  }
+
+  async function insertLedger(
+    teamId: string,
+    membershipId: string,
+    amount: number,
+    createdAtIso: string,
+  ): Promise<void> {
+    const id = randomUUID();
+    await active.query(
+      `INSERT INTO "points_ledger"
+        ("id", "team_id", "membership_id", "entry_type", "amount",
+         "source_type", "activity_category", "idempotency_key", "effective_on",
+         "created_at")
+       VALUES ($1, $2, $3, 'award', $4, 'manual', 'throwing', $5, $6, $7)`,
+      [
+        id,
+        teamId,
+        membershipId,
+        amount,
+        `k-${id}`,
+        createdAtIso.slice(0, 10),
+        createdAtIso,
+      ],
+    );
+  }
 
   afterAll(async () => {
     let remaining = MIGRATIONS.length;
@@ -392,5 +481,57 @@ describeIfDb(suiteTitle, () => {
       badges.listActive(tx, scope.teamId),
     );
     expect(activeDefs.some(def => def.badgeKey === 'broken_tier')).toBe(false);
+  });
+
+  it('lands a Cairo month-boundary award in the correct month (golden)', async () => {
+    const scope = await seedScope();
+    const other = await addMembership(scope.teamId);
+    // 22:30Z on 28 Feb is 00:30 on 1 Mar in Cairo (+2) -> inside March.
+    await insertLedger(
+      scope.teamId,
+      scope.membershipId,
+      5,
+      '2026-02-28T22:30:00.000Z',
+    );
+    // 21:30Z on 28 Feb is 23:30 on 28 Feb in Cairo -> outside March.
+    await insertLedger(scope.teamId, other, 5, '2026-02-28T21:30:00.000Z');
+    const page = await leaderboard.teamLeaderboard(
+      scope.teamId,
+      leaderboardQuery({ period: LeaderboardPeriod.Monthly }),
+    );
+    const rows = new Map(page.items.map(row => [row.membershipId, row.total]));
+    expect(rows.get(scope.membershipId)).toBe(5);
+    expect(rows.get(other)).toBe(0);
+  });
+
+  it('moves rank when an award is reversed (golden)', async () => {
+    const scope = await seedScope();
+    const other = await addMembership(scope.teamId);
+    await insertLedger(
+      scope.teamId,
+      scope.membershipId,
+      10,
+      '2026-03-01T10:00:00.000Z',
+    );
+    await insertLedger(scope.teamId, other, 6, '2026-03-01T10:00:00.000Z');
+    const before = await leaderboard.teamLeaderboard(
+      scope.teamId,
+      leaderboardQuery(),
+    );
+    expect(rankFor(before.items, scope.membershipId)).toBe(1);
+    expect(rankFor(before.items, other)).toBe(2);
+
+    await insertLedger(
+      scope.teamId,
+      scope.membershipId,
+      -10,
+      '2026-03-02T10:00:00.000Z',
+    );
+    const after = await leaderboard.teamLeaderboard(
+      scope.teamId,
+      leaderboardQuery(),
+    );
+    expect(rankFor(after.items, other)).toBe(1);
+    expect(rankFor(after.items, scope.membershipId)).toBe(2);
   });
 });

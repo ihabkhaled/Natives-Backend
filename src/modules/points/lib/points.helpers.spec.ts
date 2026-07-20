@@ -9,7 +9,6 @@ import {
   buildAdjustmentKey,
   buildAwardKey,
   buildReversalKey,
-  computeRank,
   parseEnumValue,
   resolvePointsPage,
   toDate,
@@ -75,10 +74,5 @@ describe('keys, dates, and rank', () => {
 
   it('formats the ISO date-only prefix', () => {
     expect(toIsoDate(new Date('2026-03-04T18:00:00.000Z'))).toBe('2026-03-04');
-  });
-
-  it('computes a 1-based positional rank within a page', () => {
-    expect(computeRank(0, 0)).toBe(1);
-    expect(computeRank(20, 3)).toBe(24);
   });
 });
