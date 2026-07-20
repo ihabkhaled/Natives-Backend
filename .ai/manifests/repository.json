@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-20T17:05:56.633Z",
-  "treeHash": "sha256:0ce16b7a048492245124c2ba9c034548590a5750f9f08571fa37e82a2000255b",
+  "generatedAt": "2026-07-20T17:55:20.706Z",
+  "treeHash": "sha256:5453bd69c08aa62e8d1071ad45258d8291f7e271d320ad77195e5e88c105d3a2",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -3669,8 +3669,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:032b82b9ad39265a545c7572d76d56f3e5510418ad87c885ced9bf12ccafc503",
-      "sizeBytes": 905
+      "hash": "sha256:97900ab76757b61a7c4c66e1a55c0efc5fdb1fbf1642b2c04a7e770e78279806",
+      "sizeBytes": 1279
     },
     {
       "path": "src/database/seeds/seed-registry.ts",
@@ -3686,8 +3686,8 @@
       "hasSpec": true,
       "specPath": "src/database/seeds/seed-registry.spec.ts",
       "kind": "source",
-      "hash": "sha256:b2764a48354e49e5976b775eb65b582885f595db1add0307dafde2d0c20782bf",
-      "sizeBytes": 661
+      "hash": "sha256:76937313c4d5b26f4e1ae13607265e5436d3e47bf7f5b80fcc33bd94344fa62f",
+      "sizeBytes": 1009
     },
     {
       "path": "src/database/seeds/seed-runner.spec.ts",
@@ -3714,6 +3714,117 @@
       "sizeBytes": 2748
     },
     {
+      "path": "src/database/seeds/seed-team.constants.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "TEAM_SLUG"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_PRIMARY_COLOR"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_NAME_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ADMIN_ROLE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ADMIN_USER_MISSING_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ADMIN_ROLE_MISSING_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_INSERT_FAILED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_INSERT_FAILED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_INSERT_FAILED_MESSAGE"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:853e27c2c36ae45e35991346b54859430d0d231dbde274a7c9db5e3bd0be6b34",
+      "sizeBytes": 2296
+    },
+    {
+      "path": "src/database/seeds/seed-team.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:419b5b1c5d9d294c58ae878d8ace648de34ad1417d0bf2c400237603127902ba",
+      "sizeBytes": 8467
+    },
+    {
+      "path": "src/database/seeds/seed-team.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "createSeedTeamSeeder"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/seeds/seed-team.spec.ts",
+      "kind": "source",
+      "hash": "sha256:04e42b7d90f1cb0c6eca3140023b7eb15dcb0c7caeeba1dc1311f830339afd88",
+      "sizeBytes": 8253
+    },
+    {
+      "path": "src/database/seeds/seed-team.types.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "SeedTeamResult"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:717dbd97a5a562a5b270d5e96056d58b55e8292a843530096569a43b8f8830f1",
+      "sizeBytes": 244
+    },
+    {
       "path": "src/database/seeds/seed.constants.ts",
       "root": "app",
       "module": "app",
@@ -3738,6 +3849,10 @@
         {
           "kind": "const",
           "name": "SEED_ADMIN_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_TEAM_KEY"
         },
         {
           "kind": "const",
@@ -3769,6 +3884,10 @@
         },
         {
           "kind": "const",
+          "name": "TEAM_SEED_DEFINITION"
+        },
+        {
+          "kind": "const",
           "name": "SEED_HISTORY_LOOKUP_SQL"
         },
         {
@@ -3779,8 +3898,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b02e17d9b07b002b629f1e3933fc2d2daa08f4df00406b95139d777414080798",
-      "sizeBytes": 1758
+      "hash": "sha256:540afebdbc1a628acec149831ebd739b2c99361944b52a6ae86721a6a3d41290",
+      "sizeBytes": 2566
     },
     {
       "path": "src/database/seeds/seed.types.ts",
@@ -39599,8 +39718,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:7ee01d467de0d6f06f7f53bdcae18cdebd83a55200225e1388d172f2c62ea0c4",
-      "sizeBytes": 46
+      "hash": "sha256:79375cfd0944e0dd13a70250945ca630c094dfd6307da9dc40e7094b73249554",
+      "sizeBytes": 98
     },
     {
       "path": "src/modules/teams/infrastructure/catalog.repository.spec.ts",

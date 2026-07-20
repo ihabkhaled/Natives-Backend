@@ -11,6 +11,9 @@ export const SEED_CHANGED: SeedApplication = 'changed';
 // Stable identity of the default-administrator seeder recorded in seed_history.
 export const SEED_ADMIN_KEY = 'admin';
 
+// Stable identity of the real-team seeder (Ultimate Natives) in seed_history.
+export const SEED_TEAM_KEY = 'team-ultimate-natives';
+
 // `applied_by` provenance values distinguishing the boot lifecycle from the CLI.
 export const SEED_APPLIED_BY_BOOT = 'boot';
 export const SEED_APPLIED_BY_CLI = 'cli';
@@ -30,6 +33,20 @@ export const ADMIN_SEED_DEFINITION =
   'insert-or-update-admin-user;' +
   'upsert-password-credential;' +
   'ensure-global-team-admin-role-assignment';
+
+// Content-derived fingerprint source for the Ultimate Natives team seeder. Like
+// the admin definition it names the seeder's ordered effects, never runtime
+// inputs (the administrator email it links, or the year the season is derived
+// from), so the same definition stays stable across databases and calendar
+// years. Bump the trailing version when the seeder's behaviour changes.
+export const TEAM_SEED_DEFINITION =
+  'team-seeder:v1:' +
+  'insert-ultimate-natives-team;' +
+  'insert-current-year-season;' +
+  'insert-active-admin-membership;' +
+  'append-membership-status-event;' +
+  'ensure-team-scoped-team-admin-role-assignment;' +
+  'bump-rbac-policy-version';
 
 export const SEED_HISTORY_LOOKUP_SQL = `SELECT "checksum" FROM "${SEED_HISTORY_TABLE}" WHERE "seed_key" = $1`;
 export const SEED_HISTORY_INSERT_SQL = `INSERT INTO "${SEED_HISTORY_TABLE}" ("seed_key", "checksum", "applied_by") VALUES ($1, $2, $3)`;

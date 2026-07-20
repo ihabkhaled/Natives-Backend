@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { SEED_ADMIN_KEY } from './seed.constants';
+import { SEED_ADMIN_KEY, SEED_TEAM_KEY } from './seed.constants';
 import type { SeedContext } from './seed.types';
 import { buildSeeders } from './seed-registry';
 
@@ -16,11 +16,24 @@ function buildContext(): SeedContext {
 }
 
 describe('buildSeeders', () => {
-  it('registers the admin seeder', () => {
+  it('registers the admin seeder before the team seeder', () => {
     const seeders = buildSeeders(buildContext());
 
-    expect(seeders).toHaveLength(1);
-    expect(seeders[0]?.key).toBe(SEED_ADMIN_KEY);
+    expect(seeders.map(seeder => seeder.key)).toEqual([
+      SEED_ADMIN_KEY,
+      SEED_TEAM_KEY,
+    ]);
+  });
+
+  it('gives every seeder a distinct key and checksum', () => {
+    const seeders = buildSeeders(buildContext());
+
+    expect(new Set(seeders.map(seeder => seeder.key)).size).toBe(
+      seeders.length,
+    );
+    expect(new Set(seeders.map(seeder => seeder.checksum)).size).toBe(
+      seeders.length,
+    );
   });
 
   it('does not resolve the runtime admin config until a seeder runs', () => {

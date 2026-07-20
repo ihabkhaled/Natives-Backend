@@ -56,6 +56,7 @@ export default defineConfig({
         'src/database/seeds/seed-policy.ts',
         'src/database/seeds/seed-registry.ts',
         'src/database/seeds/seed-runner.ts',
+        'src/database/seeds/seed-team.ts',
         'src/database/snake-case-naming.strategy.ts',
         'src/database/test-database.helpers.ts',
         'src/database/typeorm-database-readiness.adapter.ts',

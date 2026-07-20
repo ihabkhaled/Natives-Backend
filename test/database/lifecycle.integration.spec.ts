@@ -54,6 +54,8 @@ const ALL_MIGRATIONS = [
   SeedHistorySchema1722600000000,
 ];
 const MIGRATION_COUNT = ALL_MIGRATIONS.length;
+// Every registered seeder writes exactly one seed_history row on a fresh boot.
+const SEEDER_COUNT = 2;
 
 const HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const PORT = Number(process.env['TEST_DB_PORT'] ?? '55432');
@@ -193,9 +195,12 @@ describeIfDb(suiteTitle, () => {
     );
     expect(migrations[0].count).toBe(MIGRATION_COUNT);
     const seedRows = await dataSource.query(
-      'SELECT "seed_key", "applied_by" FROM "seed_history"',
+      'SELECT "seed_key", "applied_by" FROM "seed_history" ORDER BY "seed_key"',
     );
-    expect(seedRows).toEqual([{ seed_key: 'admin', applied_by: 'boot' }]);
+    expect(seedRows).toEqual([
+      { seed_key: 'admin', applied_by: 'boot' },
+      { seed_key: 'team-ultimate-natives', applied_by: 'boot' },
+    ]);
     const users = await dataSource.query(
       `SELECT COUNT(*)::int AS count FROM "users" WHERE lower("email") = lower($1)`,
       [ADMIN_CONFIG.email],
@@ -255,7 +260,11 @@ describeIfDb(suiteTitle, () => {
     const seedRows = await first.query(
       'SELECT COUNT(*)::int AS count FROM "seed_history"',
     );
-    expect(seedRows[0].count).toBe(1);
+    expect(seedRows[0].count).toBe(SEEDER_COUNT);
+    const teams = await first.query(
+      'SELECT COUNT(*)::int AS count FROM "teams"',
+    );
+    expect(teams[0].count).toBe(1);
     const migratedLoggers = [firstLogger, secondLogger].filter(logger =>
       logger.info.mock.calls.some(call => call[0] === MIGRATIONS_COMPLETED_LOG),
     );

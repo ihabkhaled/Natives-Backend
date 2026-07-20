@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T17:05:56.633Z",
+  "generatedAt": "2026-07-20T17:55:20.706Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -1413,6 +1413,11 @@
     },
     {
       "from": "src/database/seeds/seed-registry.ts",
+      "to": "src/database/seeds/seed-team.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-registry.ts",
       "to": "src/database/seeds/seed.types.ts",
       "type": "internal"
     },
@@ -1433,6 +1438,46 @@
     },
     {
       "from": "src/database/seeds/seed-runner.ts",
+      "to": "src/database/seeds/seed.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-team.constants.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-team.constants.ts",
+      "to": "src/modules/teams/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-team.constants.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-team.ts",
+      "to": "src/database/seeds/seed-checksum.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-team.ts",
+      "to": "src/database/seeds/seed-team.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-team.ts",
+      "to": "src/database/seeds/seed-team.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-team.ts",
+      "to": "src/database/seeds/seed.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-team.ts",
       "to": "src/database/seeds/seed.types.ts",
       "type": "internal"
     },
@@ -28719,6 +28764,11 @@
     {
       "from": "src/modules/teams/errors/venue-not-found.error.ts",
       "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/index.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
       "type": "internal"
     },
     {

@@ -140,6 +140,61 @@ The existing admin seed is folded into this framework: `npm run seed:admin` runs
 through the same once-only registry, so re-running it after the first application
 is a clean no-op.
 
+### Registered seeders
+
+The registry (`src/database/seeds/seed-registry.ts`) is **ordered**; the runner
+applies each seeder that has no `seed_history` row, in registration order.
+
+| `seed_key`              | Owner file      | What it provisions                                                                                         |
+| ----------------------- | --------------- | ---------------------------------------------------------------------------------------------------------- |
+| `admin`                 | `seed-admin.ts` | The default administrator account, its password credential, and a global TEAM_ADMIN assignment.            |
+| `team-ultimate-natives` | `seed-team.ts`  | The real team, its current season, and the administrator's membership + team-scoped TEAM_ADMIN assignment. |
+
+**`team-ultimate-natives`** (added after `admin`, because it links the account
+that seeder provisions — it receives only that seeder's email, never its
+password) writes, in one transaction with its ledger row:
+
+- **`teams`** — name `Ultimate Natives`, slug `un`, `primary_color` `#000000`
+  (black). The teams module's canonical slug form is lowercase kebab-case
+  (`SLUG_PATTERN`) and `ux_teams_slug` is a unique index on `lower("slug")`, so
+  the requested `UN` is stored as `un`. `locale`, `timezone`, and `status` are
+  omitted from the insert so the schema defaults (`en`, `Africa/Cairo`,
+  `active`) apply verbatim.
+- **`seasons`** — one **active** season covering the calendar year the database
+  is first seeded in (slug `2026`, name `Season 2026`, `2026-01-01` →
+  `2026-12-31`). A season **is** required: `POST /squads` and
+  `POST /competitions` both take a mandatory `seasonId`, so those screens cannot
+  function on a team with no season. Slug and dates are derived from the database
+  clock in SQL (`to_char(now(), 'YYYY')`, `date_trunc('year', now())`), so the
+  seeder definition — and therefore its checksum — never encodes a year.
+- **`memberships`** — the administrator's **active**, season-independent
+  (`season_id IS NULL`) membership, plus its opening `membership_status_events`
+  row (`null → active`), so member history renders correctly. A team-wide
+  membership lets the members read model resolve whichever season currently
+  covers "now" for display, instead of pinning the admin to one season.
+- **`user_role_assignments`** — a **team-scoped** `TEAM_ADMIN` assignment
+  (`team_id` = the team, `season_id` null), followed by the
+  `rbac_policy_version` bump every assignment write owes resolver caches.
+
+This is what makes `GET /auth/me` return a real membership (with its live
+`team_admin` role slug) and unblocks the team-scoped UI. Each step is a
+find-then-write against the same natural key the owning module's unique index
+uses, so the body is idempotent on its own, on top of the framework's once-only
+guarantee: a fresh database gets exactly one team, one season, one membership,
+and one assignment; a second boot is a no-op. Writes go through the seeder's
+query runner (not the modules' use cases) because the framework hands seeders a
+query runner precisely so a seed and its ledger row commit or roll back
+together — a use case would open its own transaction. Column choices mirror each
+module's own repository writes, so no invariant is bypassed. `security_events`
+is intentionally **not** written: a system seed is not a principal's
+security-relevant action, and `seed_history` is its ledger.
+
+Proven in `test/database/team-seed.integration.spec.ts` (fresh database → every
+row + the ledger entry; second run → identical counts and an unchanged
+`applied_at`; a drifted checksum warns instead of re-running) and in
+`test/team-seed.e2e-spec.ts` (the seeded administrator logs in over HTTP and
+`GET /auth/me` returns the `un` membership with the `team_admin` role).
+
 ## Local vs test safety
 
 - **Local dev:** `docker compose up -d` (`docker-compose.yml`) — Postgres 16,
