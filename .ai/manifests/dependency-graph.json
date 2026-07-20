@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T20:42:53.866Z",
+  "generatedAt": "2026-07-20T23:37:24.707Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -59,6 +59,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/identity/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/matches/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -12145,6 +12150,1936 @@
       "from": "src/modules/identity/model/identity.types.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/create-match-ruleset.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/create-match-ruleset.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/create-match-ruleset.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/create-match.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/create-match.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/create-match.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/finalize-match.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/finalize-match.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/finalize-match.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/list-match-events.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/list-match-events.response.dto.ts",
+      "to": "src/modules/matches/api/dto/match-event-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/list-match-revisions.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/list-match-revisions.response.dto.ts",
+      "to": "src/modules/matches/api/dto/match-revision-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/list-match-rulesets.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/list-match-rulesets.response.dto.ts",
+      "to": "src/modules/matches/api/dto/match-ruleset-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/list-matches.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/list-matches.response.dto.ts",
+      "to": "src/modules/matches/api/dto/match-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-event-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-event-response.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-list.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-list.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-list.query.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-list.query.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-operation.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-operation.response.dto.ts",
+      "to": "src/modules/matches/api/dto/match-event-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-operation.response.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-page.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-page.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-page.query.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-response.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-revision-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-revision-response.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-ruleset-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-ruleset-response.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-scoreboard.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-scoreboard.response.dto.ts",
+      "to": "src/modules/matches/api/dto/match-timeout-state.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-scoreboard.response.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-timeout-state.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/record-match-point.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/record-match-point.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/record-match-point.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/record-match-point.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/record-match-timeout.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/record-match-timeout.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/record-match-timeout.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/record-match-timeout.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/reopen-match.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/reopen-match.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/reopen-match.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/transition-match.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/transition-match.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/transition-match.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/transition-match.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/void-match-event.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/void-match-event.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/void-match-event.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/api/dto/list-match-events.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/api/dto/match-operation.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/api/dto/match-page.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/api/dto/record-match-point.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/api/dto/record-match-timeout.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/api/dto/void-match-event.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/application/match-event-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/application/record-match-point.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/application/void-match-event.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/lib/matches-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-events.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/modules/matches/api/dto/create-match-ruleset.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/modules/matches/api/dto/list-match-rulesets.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/modules/matches/api/dto/match-list.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/modules/matches/api/dto/match-ruleset-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/modules/matches/application/create-match-ruleset.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/modules/matches/application/match-ruleset-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/modules/matches/lib/matches-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/api/dto/create-match.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/api/dto/finalize-match.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/api/dto/list-match-revisions.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/api/dto/list-matches.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/api/dto/match-list.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/api/dto/match-page.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/api/dto/match-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/api/dto/match-scoreboard.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/api/dto/reopen-match.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/api/dto/transition-match.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/application/create-match.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/application/finalize-match.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/application/match-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/application/match-revision-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/application/match-scoreboard.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/application/reopen-match.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/application/transition-match.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/lib/matches-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/matches.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/create-match-ruleset.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/create-match-ruleset.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/create-match-ruleset.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/create-match-ruleset.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/create-match-ruleset.use-case.ts",
+      "to": "src/modules/matches/application/match-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/create-match-ruleset.use-case.ts",
+      "to": "src/modules/matches/infrastructure/match-ruleset.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/create-match-ruleset.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/create-match-ruleset.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/create-match-ruleset.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/modules/matches/application/match-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/modules/matches/errors/match-ruleset-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/modules/matches/infrastructure/match-ruleset.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/modules/matches/infrastructure/match.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/create-match.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/matches/domain/match-correction.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/matches/domain/match.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/matches/errors/match-finalized.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/matches/errors/match-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/matches/errors/match-operation-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/matches/errors/match-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/matches/infrastructure/match-revision.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/matches/infrastructure/match.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/finalize-match.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/application/match-event-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-event-query.service.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-event-query.service.ts",
+      "to": "src/modules/matches/infrastructure/match-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-event-query.service.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-lookup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-lookup.service.ts",
+      "to": "src/modules/matches/errors/match-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-lookup.service.ts",
+      "to": "src/modules/matches/errors/match-ruleset-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-lookup.service.ts",
+      "to": "src/modules/matches/infrastructure/match-ruleset.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-lookup.service.ts",
+      "to": "src/modules/matches/infrastructure/match.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-lookup.service.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-query.service.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-query.service.ts",
+      "to": "src/modules/matches/infrastructure/match.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-query.service.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-revision-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-revision-query.service.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-revision-query.service.ts",
+      "to": "src/modules/matches/infrastructure/match-revision.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-revision-query.service.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-ruleset-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-ruleset-query.service.ts",
+      "to": "src/modules/matches/infrastructure/match-ruleset.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-ruleset-query.service.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-scope.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-scope.service.ts",
+      "to": "src/modules/matches/errors/match-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-scope.service.ts",
+      "to": "src/modules/matches/infrastructure/match-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-scope.service.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-scoreboard.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-scoreboard.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-scoreboard.service.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-scoreboard.service.ts",
+      "to": "src/modules/matches/infrastructure/match-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-scoreboard.service.ts",
+      "to": "src/modules/matches/lib/match-scoreboard.factory.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-scoreboard.service.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-stream.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-stream.service.ts",
+      "to": "src/modules/matches/domain/match-operation.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-stream.service.ts",
+      "to": "src/modules/matches/domain/match.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-stream.service.ts",
+      "to": "src/modules/matches/errors/match-finalized.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-stream.service.ts",
+      "to": "src/modules/matches/errors/match-not-scoring.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-stream.service.ts",
+      "to": "src/modules/matches/errors/match-operation-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-stream.service.ts",
+      "to": "src/modules/matches/errors/match-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-stream.service.ts",
+      "to": "src/modules/matches/infrastructure/match-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-stream.service.ts",
+      "to": "src/modules/matches/infrastructure/match.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-stream.service.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-stream.service.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-stream.service.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/modules/matches/application/match-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/modules/matches/application/match-stream.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/modules/matches/domain/match-score.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/modules/matches/lib/match-operation.hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/modules/matches/lib/match-scoreboard.factory.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-point.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/modules/matches/application/match-stream.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/modules/matches/domain/match-timeout.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/modules/matches/errors/match-timeouts-exhausted.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/modules/matches/infrastructure/match-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/modules/matches/lib/match-operation.hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/modules/matches/domain/match-correction.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/modules/matches/errors/match-reopen-not-allowed.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/modules/matches/errors/match-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/modules/matches/infrastructure/match-revision.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/modules/matches/infrastructure/match.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/reopen-match.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/modules/matches/domain/match.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/modules/matches/errors/match-finalized.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/modules/matches/errors/match-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/modules/matches/errors/match-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/modules/matches/errors/match-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/modules/matches/infrastructure/match.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/transition-match.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/modules/matches/application/match-stream.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/modules/matches/domain/match-score.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/modules/matches/errors/match-event-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/modules/matches/errors/match-operation-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/modules/matches/lib/match-operation.hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/modules/matches/lib/match-scoreboard.factory.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/void-match-event.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/domain/match-correction.policy.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-correction.policy.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-operation.policy.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-operation.policy.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-score.policy.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-score.policy.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-score.policy.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-timeout.policy.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-timeout.policy.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match.state-machine.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-event-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-event-not-found.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-finalized.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-finalized.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-invalid-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-invalid-transition.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-not-found.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-not-scoring.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-not-scoring.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-operation-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-operation-conflict.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-reopen-not-allowed.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-reopen-not-allowed.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-ruleset-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-ruleset-not-found.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-scope-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-scope-not-found.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-timeouts-exhausted.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-timeouts-exhausted.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-validation.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-validation.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-version-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-version-conflict.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/index.ts",
+      "to": "src/modules/matches/matches.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-event.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-event.repository.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-event.repository.ts",
+      "to": "src/modules/matches/lib/matches.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-event.repository.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-event.repository.ts",
+      "to": "src/modules/matches/model/matches.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-event.repository.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-revision.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-revision.repository.ts",
+      "to": "src/modules/matches/lib/matches.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-revision.repository.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-revision.repository.ts",
+      "to": "src/modules/matches/model/matches.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-revision.repository.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-ruleset.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-ruleset.repository.ts",
+      "to": "src/modules/matches/lib/matches.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-ruleset.repository.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-ruleset.repository.ts",
+      "to": "src/modules/matches/model/matches.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-ruleset.repository.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-scope.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-scope.repository.ts",
+      "to": "src/modules/matches/lib/matches.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-scope.repository.ts",
+      "to": "src/modules/matches/model/matches.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-scope.repository.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match.repository.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match.repository.ts",
+      "to": "src/modules/matches/lib/matches.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match.repository.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match.repository.ts",
+      "to": "src/modules/matches/model/matches.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match.repository.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/match-operation.hash.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/match-operation.hash.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/match-operation.hash.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/match-scoreboard.factory.ts",
+      "to": "src/modules/matches/domain/match-score.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/match-scoreboard.factory.ts",
+      "to": "src/modules/matches/domain/match-timeout.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/match-scoreboard.factory.ts",
+      "to": "src/modules/matches/domain/match.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/match-scoreboard.factory.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/match-scoreboard.factory.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches-command.mapper.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches-command.mapper.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches-command.mapper.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.builders.ts",
+      "to": "src/modules/matches/domain/match-score.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.builders.ts",
+      "to": "src/modules/matches/domain/match.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.builders.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.builders.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.builders.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.builders.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.helpers.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.helpers.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.mapper.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.mapper.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.mapper.ts",
+      "to": "src/modules/matches/model/matches.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches.mapper.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/api/match-events.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/api/match-rulesets.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/api/matches.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/create-match-ruleset.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/create-match.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/finalize-match.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/match-event-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/match-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/match-revision-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/match-ruleset-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/match-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/match-scoreboard.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/match-stream.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/record-match-point.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/record-match-timeout.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/reopen-match.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/transition-match.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/void-match-event.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/infrastructure/match-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/infrastructure/match-revision.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/infrastructure/match-ruleset.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/infrastructure/match-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/infrastructure/match.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/model/matches.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/model/matches.types.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/measurements/api/dto/attempt-input.dto.ts",

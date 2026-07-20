@@ -10,6 +10,7 @@ import { CompetitionsModule } from '@modules/competitions';
 import { DashboardModule } from '@modules/dashboard';
 import { DevelopmentModule } from '@modules/development';
 import { IdentityModule } from '@modules/identity';
+import { MatchesModule } from '@modules/matches';
 import { MeasurementsModule } from '@modules/measurements';
 import { MembersModule } from '@modules/members';
 import { PlatformModule } from '@modules/platform';
@@ -50,6 +51,7 @@ import { Module } from '@nestjs/common';
     CompetitionsModule,
     SquadsModule,
     RostersModule,
+    MatchesModule,
     DashboardModule,
     ArticlesModule,
   ],

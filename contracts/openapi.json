@@ -2692,6 +2692,33 @@
         ],
         "type": "object"
       },
+      "CreateMatchDto": {
+        "properties": {
+          "fixtureId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "notes": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "rosterId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "rulesetId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "fixtureId"
+        ],
+        "type": "object"
+      },
       "CreateMatchRosterDto": {
         "properties": {
           "division": {
@@ -2748,6 +2775,95 @@
         "required": [
           "fixtureId",
           "name"
+        ],
+        "type": "object"
+      },
+      "CreateMatchRulesetDto": {
+        "properties": {
+          "gameTo": {
+            "maximum": 99,
+            "minimum": 1,
+            "type": "number"
+          },
+          "halftimeAt": {
+            "maximum": 199,
+            "minimum": 1,
+            "nullable": true,
+            "type": "object"
+          },
+          "hardCap": {
+            "maximum": 199,
+            "minimum": 1,
+            "nullable": true,
+            "type": "object"
+          },
+          "name": {
+            "maxLength": 160,
+            "minLength": 2,
+            "type": "string"
+          },
+          "notes": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "periods": {
+            "default": 1,
+            "maximum": 8,
+            "minimum": 1,
+            "type": "object"
+          },
+          "rulesetKey": {
+            "maxLength": 64,
+            "minLength": 2,
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "softCapMinutes": {
+            "maximum": 600,
+            "minimum": 1,
+            "nullable": true,
+            "type": "object"
+          },
+          "softCapPlus": {
+            "maximum": 199,
+            "minimum": 1,
+            "nullable": true,
+            "type": "object"
+          },
+          "timeCapMinutes": {
+            "maximum": 600,
+            "minimum": 1,
+            "nullable": true,
+            "type": "object"
+          },
+          "timeoutsPerPeriod": {
+            "maximum": 10,
+            "minimum": 0,
+            "nullable": true,
+            "type": "object"
+          },
+          "timeoutsPerTeam": {
+            "default": 0,
+            "maximum": 10,
+            "minimum": 0,
+            "type": "object"
+          },
+          "winBy": {
+            "default": 1,
+            "maximum": 5,
+            "minimum": 1,
+            "type": "object"
+          }
+        },
+        "required": [
+          "rulesetKey",
+          "name",
+          "gameTo"
         ],
         "type": "object"
       },
@@ -4604,6 +4720,28 @@
         ],
         "type": "object"
       },
+      "FinalizeMatchDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "opponentScore": {
+            "minimum": 0,
+            "nullable": true,
+            "type": "object"
+          },
+          "ourScore": {
+            "minimum": 0,
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "FixtureResponseDto": {
         "properties": {
           "cancellationReason": {
@@ -5536,6 +5674,110 @@
         ],
         "type": "object"
       },
+      "ListMatchesResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MatchResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListMatchEventsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MatchEventResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListMatchRevisionsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MatchRevisionResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListMatchRulesetsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MatchRulesetResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListMembersResponseDto": {
         "properties": {
           "items": {
@@ -6379,6 +6621,698 @@
         },
         "required": [
           "status"
+        ],
+        "type": "object"
+      },
+      "MatchEventResponseDto": {
+        "properties": {
+          "assistMembershipId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "eventId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "eventType": {
+            "enum": [
+              "point",
+              "timeout",
+              "period_start",
+              "period_end",
+              "cap_applied",
+              "void"
+            ],
+            "type": "string"
+          },
+          "matchId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "occurredAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "operationId": {
+            "type": "string"
+          },
+          "opponentScoreAfter": {
+            "type": "number"
+          },
+          "ourScoreAfter": {
+            "type": "number"
+          },
+          "period": {
+            "type": "number"
+          },
+          "points": {
+            "nullable": true,
+            "type": "number"
+          },
+          "recordedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "recordedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "scorerMembershipId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "scoringSide": {
+            "enum": [
+              "us",
+              "them"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "sequence": {
+            "type": "number"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "voided": {
+            "type": "boolean"
+          },
+          "voidReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "voidsEventId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "eventId",
+          "matchId",
+          "teamId",
+          "sequence",
+          "operationId",
+          "eventType",
+          "scoringSide",
+          "points",
+          "ourScoreAfter",
+          "opponentScoreAfter",
+          "period",
+          "scorerMembershipId",
+          "assistMembershipId",
+          "voidsEventId",
+          "voided",
+          "voidReason",
+          "recordedBy",
+          "occurredAt",
+          "recordedAt"
+        ],
+        "type": "object"
+      },
+      "MatchOperationResponseDto": {
+        "properties": {
+          "event": {
+            "$ref": "#/components/schemas/MatchEventResponseDto"
+          },
+          "opponentScore": {
+            "type": "number"
+          },
+          "ourScore": {
+            "type": "number"
+          },
+          "outcome": {
+            "enum": [
+              "applied",
+              "replayed",
+              "conflict"
+            ],
+            "type": "string"
+          },
+          "streamVersion": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "outcome",
+          "event",
+          "streamVersion",
+          "ourScore",
+          "opponentScore"
+        ],
+        "type": "object"
+      },
+      "MatchResponseDto": {
+        "properties": {
+          "abandonedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "abandonReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "capApplied": {
+            "enum": [
+              "none",
+              "soft",
+              "hard",
+              "time"
+            ],
+            "type": "string"
+          },
+          "competitionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "completedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "engineVersion": {
+            "type": "string"
+          },
+          "finalizedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "finalizedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "fixtureId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "halftimeAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "homeAway": {
+            "type": "string"
+          },
+          "matchId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "notes": {
+            "nullable": true,
+            "type": "string"
+          },
+          "opponentScore": {
+            "type": "number"
+          },
+          "ourScore": {
+            "type": "number"
+          },
+          "pausedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "period": {
+            "type": "number"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "reopenedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "reopenedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "reopenReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "result": {
+            "enum": [
+              "win",
+              "loss",
+              "draw",
+              "undecided"
+            ],
+            "type": "string"
+          },
+          "resumedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "rosterId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "rulesetId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "startedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "scheduled",
+              "ready",
+              "live",
+              "paused",
+              "halftime",
+              "completed",
+              "finalized",
+              "abandoned"
+            ],
+            "type": "string"
+          },
+          "streamVersion": {
+            "type": "number"
+          },
+          "supersedesMatchId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "matchId",
+          "teamId",
+          "seasonId",
+          "competitionId",
+          "fixtureId",
+          "rosterId",
+          "rulesetId",
+          "status",
+          "homeAway",
+          "ourScore",
+          "opponentScore",
+          "period",
+          "streamVersion",
+          "recordVersion",
+          "revision",
+          "result",
+          "capApplied",
+          "engineVersion",
+          "supersedesMatchId",
+          "reopenReason",
+          "reopenedBy",
+          "reopenedAt",
+          "createdBy",
+          "startedAt",
+          "pausedAt",
+          "resumedAt",
+          "halftimeAt",
+          "completedAt",
+          "finalizedBy",
+          "finalizedAt",
+          "abandonedAt",
+          "abandonReason",
+          "notes",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "MatchRevisionResponseDto": {
+        "properties": {
+          "action": {
+            "enum": [
+              "finalized",
+              "reopened",
+              "corrected"
+            ],
+            "type": "string"
+          },
+          "actorUserId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "fromStatus": {
+            "enum": [
+              "scheduled",
+              "ready",
+              "live",
+              "paused",
+              "halftime",
+              "completed",
+              "finalized",
+              "abandoned"
+            ],
+            "type": "string"
+          },
+          "matchId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "opponentScoreAfter": {
+            "type": "number"
+          },
+          "opponentScoreBefore": {
+            "type": "number"
+          },
+          "ourScoreAfter": {
+            "type": "number"
+          },
+          "ourScoreBefore": {
+            "type": "number"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "revisionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "sequence": {
+            "type": "number"
+          },
+          "streamVersion": {
+            "type": "number"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "toStatus": {
+            "enum": [
+              "scheduled",
+              "ready",
+              "live",
+              "paused",
+              "halftime",
+              "completed",
+              "finalized",
+              "abandoned"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "revisionId",
+          "matchId",
+          "teamId",
+          "sequence",
+          "revision",
+          "action",
+          "reason",
+          "fromStatus",
+          "toStatus",
+          "ourScoreBefore",
+          "opponentScoreBefore",
+          "ourScoreAfter",
+          "opponentScoreAfter",
+          "streamVersion",
+          "actorUserId",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "MatchRulesetResponseDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "gameTo": {
+            "type": "number"
+          },
+          "halftimeAt": {
+            "nullable": true,
+            "type": "number"
+          },
+          "hardCap": {
+            "nullable": true,
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "notes": {
+            "nullable": true,
+            "type": "string"
+          },
+          "periods": {
+            "type": "number"
+          },
+          "rulesetId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "rulesetKey": {
+            "type": "string"
+          },
+          "rulesetVersion": {
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "softCapMinutes": {
+            "nullable": true,
+            "type": "number"
+          },
+          "softCapPlus": {
+            "nullable": true,
+            "type": "number"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "active",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "timeCapMinutes": {
+            "nullable": true,
+            "type": "number"
+          },
+          "timeoutsPerPeriod": {
+            "nullable": true,
+            "type": "number"
+          },
+          "timeoutsPerTeam": {
+            "type": "number"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "winBy": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "rulesetId",
+          "teamId",
+          "seasonId",
+          "rulesetKey",
+          "rulesetVersion",
+          "name",
+          "gameTo",
+          "winBy",
+          "hardCap",
+          "softCapMinutes",
+          "softCapPlus",
+          "timeCapMinutes",
+          "halftimeAt",
+          "timeoutsPerTeam",
+          "timeoutsPerPeriod",
+          "periods",
+          "status",
+          "notes",
+          "createdBy",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "MatchScoreboardResponseDto": {
+        "properties": {
+          "capApplied": {
+            "enum": [
+              "none",
+              "soft",
+              "hard",
+              "time"
+            ],
+            "type": "string"
+          },
+          "complete": {
+            "type": "boolean"
+          },
+          "engineVersion": {
+            "type": "string"
+          },
+          "halftimeReached": {
+            "type": "boolean"
+          },
+          "matchId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "opponentScore": {
+            "type": "number"
+          },
+          "ourScore": {
+            "type": "number"
+          },
+          "period": {
+            "type": "number"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "result": {
+            "enum": [
+              "win",
+              "loss",
+              "draw",
+              "undecided"
+            ],
+            "type": "string"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "rulesetKey": {
+            "type": "string"
+          },
+          "rulesetVersion": {
+            "type": "number"
+          },
+          "scoringOpen": {
+            "type": "boolean"
+          },
+          "status": {
+            "enum": [
+              "scheduled",
+              "ready",
+              "live",
+              "paused",
+              "halftime",
+              "completed",
+              "finalized",
+              "abandoned"
+            ],
+            "type": "string"
+          },
+          "streamVersion": {
+            "type": "number"
+          },
+          "target": {
+            "type": "number"
+          },
+          "timeouts": {
+            "$ref": "#/components/schemas/MatchTimeoutStateDto"
+          }
+        },
+        "required": [
+          "matchId",
+          "status",
+          "ourScore",
+          "opponentScore",
+          "period",
+          "streamVersion",
+          "recordVersion",
+          "revision",
+          "result",
+          "rulesetKey",
+          "rulesetVersion",
+          "engineVersion",
+          "target",
+          "capApplied",
+          "complete",
+          "halftimeReached",
+          "timeouts",
+          "scoringOpen"
+        ],
+        "type": "object"
+      },
+      "MatchTimeoutStateDto": {
+        "properties": {
+          "allowance": {
+            "type": "number"
+          },
+          "remainingForThem": {
+            "type": "number"
+          },
+          "remainingForUs": {
+            "type": "number"
+          },
+          "usedByThem": {
+            "type": "number"
+          },
+          "usedByUs": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "allowance",
+          "usedByUs",
+          "usedByThem",
+          "remainingForUs",
+          "remainingForThem"
         ],
         "type": "object"
       },
@@ -8729,6 +9663,79 @@
         ],
         "type": "object"
       },
+      "RecordMatchPointDto": {
+        "properties": {
+          "assistMembershipId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "expectedStreamVersion": {
+            "minimum": 0,
+            "nullable": true,
+            "type": "object"
+          },
+          "occurredAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "object"
+          },
+          "operationId": {
+            "maxLength": 128,
+            "minLength": 8,
+            "type": "string"
+          },
+          "points": {
+            "default": 1,
+            "maximum": 3,
+            "minimum": 1,
+            "type": "object"
+          },
+          "scorerMembershipId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "scoringSide": {
+            "enum": [
+              "us",
+              "them"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "operationId",
+          "scoringSide"
+        ],
+        "type": "object"
+      },
+      "RecordMatchTimeoutDto": {
+        "properties": {
+          "occurredAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "object"
+          },
+          "operationId": {
+            "maxLength": 128,
+            "minLength": 8,
+            "type": "string"
+          },
+          "scoringSide": {
+            "enum": [
+              "us",
+              "them"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "operationId",
+          "scoringSide"
+        ],
+        "type": "object"
+      },
       "RecordMeasurementDto": {
         "properties": {
           "attempts": {
@@ -8905,6 +9912,24 @@
             "type": "object"
           }
         },
+        "type": "object"
+      },
+      "ReopenMatchDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 5,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reason",
+          "expectedRecordVersion"
+        ],
         "type": "object"
       },
       "ReorderBlocksDto": {
@@ -12402,6 +13427,37 @@
         ],
         "type": "object"
       },
+      "TransitionMatchDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 5,
+            "nullable": true,
+            "type": "object"
+          },
+          "transition": {
+            "enum": [
+              "ready",
+              "start",
+              "pause",
+              "resume",
+              "halftime",
+              "complete",
+              "abandon"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "transition",
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "TransitionRosterDto": {
         "properties": {
           "expectedRecordVersion": {
@@ -13316,6 +14372,30 @@
           "createdAt",
           "updatedAt",
           "version"
+        ],
+        "type": "object"
+      },
+      "VoidMatchEventDto": {
+        "properties": {
+          "eventId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "operationId": {
+            "maxLength": 128,
+            "minLength": 8,
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 5,
+            "type": "string"
+          }
+        },
+        "required": [
+          "operationId",
+          "eventId",
+          "reason"
         ],
         "type": "object"
       }
@@ -18366,6 +19446,836 @@
         "summary": "Archive a catalog drill (retire; never deletes)",
         "tags": [
           "practices"
+        ]
+      }
+    },
+    "/teams/{teamId}/match-rulesets": {
+      "get": {
+        "operationId": "MatchRulesets.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "competitionId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "fixtureId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "enum": [
+                "scheduled",
+                "ready",
+                "live",
+                "paused",
+                "halftime",
+                "completed",
+                "finalized",
+                "abandoned"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListMatchRulesetsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List every published scoring rule set version",
+        "tags": [
+          "matches"
+        ]
+      },
+      "post": {
+        "operationId": "MatchRulesets.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMatchRulesetDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchRulesetResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Publish a new version of a scoring rule set",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches": {
+      "get": {
+        "operationId": "Matches.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "competitionId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "fixtureId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "schema": {
+              "enum": [
+                "scheduled",
+                "ready",
+                "live",
+                "paused",
+                "halftime",
+                "completed",
+                "finalized",
+                "abandoned"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListMatchesResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s matches",
+        "tags": [
+          "matches"
+        ]
+      },
+      "post": {
+        "operationId": "Matches.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMatchDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create the match record for a fixture",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}": {
+      "get": {
+        "operationId": "Matches.get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Get one match",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/events": {
+      "get": {
+        "operationId": "MatchEvents.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 200,
+              "maximum": 500,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListMatchEventsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List the append-only stream of a match",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/events/point": {
+      "post": {
+        "operationId": "MatchEvents.point",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecordMatchPointDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchOperationResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Operation or stream version conflict"
+          }
+        },
+        "summary": "Record one point (idempotent on the operation id)",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/events/timeout": {
+      "post": {
+        "operationId": "MatchEvents.timeout",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecordMatchTimeoutDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchOperationResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "No timeouts remain in this period"
+          }
+        },
+        "summary": "Record a timeout against the ruleset allowance",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/events/void": {
+      "post": {
+        "operationId": "MatchEvents.voidFact",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VoidMatchEventDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchOperationResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Already voided or match not live"
+          }
+        },
+        "summary": "Undo a recorded fact by appending a void",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/finalization": {
+      "post": {
+        "operationId": "Matches.finalize",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinalizeMatchDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Conflicting or already published score"
+          }
+        },
+        "summary": "Publish the authoritative result of a match",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/reopening": {
+      "post": {
+        "operationId": "Matches.reopen",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReopenMatchDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "The match is not finalized"
+          }
+        },
+        "summary": "Reopen a finalized match for an audited correction",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/revisions": {
+      "get": {
+        "operationId": "Matches.listRevisions",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 200,
+              "maximum": 500,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListMatchRevisionsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List the immutable correction trail of a match",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/scoreboard": {
+      "get": {
+        "operationId": "Matches.scoreboardFor",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchScoreboardResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Project the live scoreboard, caps, and timeouts",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/transition": {
+      "post": {
+        "operationId": "Matches.transition",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransitionMatchDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Invalid transition or stale version"
+          }
+        },
+        "summary": "Ready, start, pause, resume, halftime, complete, or abandon",
+        "tags": [
+          "matches"
         ]
       }
     },

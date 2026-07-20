@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T20:42:53.866Z",
+  "generatedAt": "2026-07-20T23:37:24.707Z",
   "modules": [
     {
       "name": "activities",
@@ -634,6 +634,108 @@
       "fileCount": 71,
       "specCount": 44,
       "publicSurface": "src/modules/identity/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "matches",
+      "path": "src/modules/matches",
+      "layers": {
+        "api-dto": [
+          "src/modules/matches/api/dto/create-match-ruleset.dto.ts",
+          "src/modules/matches/api/dto/create-match.dto.ts",
+          "src/modules/matches/api/dto/finalize-match.dto.ts",
+          "src/modules/matches/api/dto/list-match-events.response.dto.ts",
+          "src/modules/matches/api/dto/list-match-revisions.response.dto.ts",
+          "src/modules/matches/api/dto/list-match-rulesets.response.dto.ts",
+          "src/modules/matches/api/dto/list-matches.response.dto.ts",
+          "src/modules/matches/api/dto/match-event-response.dto.ts",
+          "src/modules/matches/api/dto/match-list.query.dto.ts",
+          "src/modules/matches/api/dto/match-operation.response.dto.ts",
+          "src/modules/matches/api/dto/match-page.query.dto.ts",
+          "src/modules/matches/api/dto/match-response.dto.ts",
+          "src/modules/matches/api/dto/match-revision-response.dto.ts",
+          "src/modules/matches/api/dto/match-ruleset-response.dto.ts",
+          "src/modules/matches/api/dto/match-scoreboard.response.dto.ts",
+          "src/modules/matches/api/dto/match-timeout-state.dto.ts",
+          "src/modules/matches/api/dto/record-match-point.dto.ts",
+          "src/modules/matches/api/dto/record-match-timeout.dto.ts",
+          "src/modules/matches/api/dto/reopen-match.dto.ts",
+          "src/modules/matches/api/dto/transition-match.dto.ts",
+          "src/modules/matches/api/dto/void-match-event.dto.ts"
+        ],
+        "controller": [
+          "src/modules/matches/api/match-events.controller.ts",
+          "src/modules/matches/api/match-rulesets.controller.ts",
+          "src/modules/matches/api/matches.controller.ts"
+        ],
+        "use-case": [
+          "src/modules/matches/application/create-match-ruleset.use-case.ts",
+          "src/modules/matches/application/create-match.use-case.ts",
+          "src/modules/matches/application/finalize-match.use-case.ts",
+          "src/modules/matches/application/record-match-point.use-case.ts",
+          "src/modules/matches/application/record-match-timeout.use-case.ts",
+          "src/modules/matches/application/reopen-match.use-case.ts",
+          "src/modules/matches/application/transition-match.use-case.ts",
+          "src/modules/matches/application/void-match-event.use-case.ts"
+        ],
+        "service": [
+          "src/modules/matches/application/match-event-query.service.ts",
+          "src/modules/matches/application/match-lookup.service.ts",
+          "src/modules/matches/application/match-query.service.ts",
+          "src/modules/matches/application/match-revision-query.service.ts",
+          "src/modules/matches/application/match-ruleset-query.service.ts",
+          "src/modules/matches/application/match-scope.service.ts",
+          "src/modules/matches/application/match-scoreboard.service.ts",
+          "src/modules/matches/application/match-stream.service.ts"
+        ],
+        "domain": [
+          "src/modules/matches/domain/match-correction.policy.ts",
+          "src/modules/matches/domain/match-operation.policy.ts",
+          "src/modules/matches/domain/match-score.policy.ts",
+          "src/modules/matches/domain/match-timeout.policy.ts",
+          "src/modules/matches/domain/match.state-machine.ts"
+        ],
+        "other": [
+          "src/modules/matches/errors/match-event-not-found.error.ts",
+          "src/modules/matches/errors/match-finalized.error.ts",
+          "src/modules/matches/errors/match-invalid-transition.error.ts",
+          "src/modules/matches/errors/match-not-found.error.ts",
+          "src/modules/matches/errors/match-not-scoring.error.ts",
+          "src/modules/matches/errors/match-operation-conflict.error.ts",
+          "src/modules/matches/errors/match-reopen-not-allowed.error.ts",
+          "src/modules/matches/errors/match-ruleset-not-found.error.ts",
+          "src/modules/matches/errors/match-scope-not-found.error.ts",
+          "src/modules/matches/errors/match-timeouts-exhausted.error.ts",
+          "src/modules/matches/errors/match-validation.error.ts",
+          "src/modules/matches/errors/match-version-conflict.error.ts",
+          "src/modules/matches/index.ts",
+          "src/modules/matches/matches.module.ts"
+        ],
+        "repository": [
+          "src/modules/matches/infrastructure/match-event.repository.ts",
+          "src/modules/matches/infrastructure/match-revision.repository.ts",
+          "src/modules/matches/infrastructure/match-ruleset.repository.ts",
+          "src/modules/matches/infrastructure/match-scope.repository.ts",
+          "src/modules/matches/infrastructure/match.repository.ts"
+        ],
+        "lib": [
+          "src/modules/matches/lib/match-operation.hash.ts",
+          "src/modules/matches/lib/match-scoreboard.factory.ts",
+          "src/modules/matches/lib/matches-command.mapper.ts",
+          "src/modules/matches/lib/matches.builders.ts",
+          "src/modules/matches/lib/matches.helpers.ts",
+          "src/modules/matches/lib/matches.mapper.ts"
+        ],
+        "model": [
+          "src/modules/matches/model/matches.constants.ts",
+          "src/modules/matches/model/matches.enums.ts",
+          "src/modules/matches/model/matches.rows.ts",
+          "src/modules/matches/model/matches.types.ts"
+        ]
+      },
+      "fileCount": 74,
+      "specCount": 32,
+      "publicSurface": "src/modules/matches/index.ts",
       "hasEvents": false
     },
     {
