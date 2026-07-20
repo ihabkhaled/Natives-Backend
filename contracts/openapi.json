@@ -998,6 +998,75 @@
         ],
         "type": "object"
       },
+      "AvailabilityResponseDto": {
+        "properties": {
+          "availability": {
+            "enum": [
+              "available",
+              "unavailable",
+              "tentative"
+            ],
+            "type": "string"
+          },
+          "availabilityId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "declaredBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "reason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "source": {
+            "enum": [
+              "self",
+              "coach"
+            ],
+            "type": "string"
+          },
+          "squadId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "availabilityId",
+          "squadId",
+          "teamId",
+          "membershipId",
+          "availability",
+          "reason",
+          "source",
+          "declaredBy",
+          "recordVersion",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
       "AvatarAccessResponseDto": {
         "properties": {
           "expiresAt": {
@@ -3136,6 +3205,45 @@
         ],
         "type": "object"
       },
+      "CreateSquadDto": {
+        "properties": {
+          "attendanceThresholdPct": {
+            "maximum": 100,
+            "minimum": 0,
+            "nullable": true,
+            "type": "object"
+          },
+          "competitionId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "name": {
+            "maxLength": 160,
+            "minLength": 2,
+            "type": "string"
+          },
+          "notes": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "selectionDeadline": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "name",
+          "seasonId"
+        ],
+        "type": "object"
+      },
       "CreateStageDto": {
         "properties": {
           "name": {
@@ -3374,6 +3482,28 @@
         },
         "required": [
           "name"
+        ],
+        "type": "object"
+      },
+      "DeclareAvailabilityDto": {
+        "properties": {
+          "availability": {
+            "enum": [
+              "available",
+              "unavailable",
+              "tentative"
+            ],
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 3,
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "availability"
         ],
         "type": "object"
       },
@@ -3722,6 +3852,79 @@
           "settingKey",
           "effectiveFrom",
           "value"
+        ],
+        "type": "object"
+      },
+      "EligibilityReportResponseDto": {
+        "properties": {
+          "attendanceThresholdPct": {
+            "type": "number"
+          },
+          "candidates": {
+            "items": {
+              "$ref": "#/components/schemas/MemberEligibilityDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "policyVersion": {
+            "type": "string"
+          },
+          "selectedGenderRatio": {
+            "$ref": "#/components/schemas/GenderRatioDto"
+          },
+          "squadId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "squadId",
+          "policyVersion",
+          "attendanceThresholdPct",
+          "candidates",
+          "selectedGenderRatio",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "EligibilitySignalDto": {
+        "properties": {
+          "code": {
+            "enum": [
+              "active_status",
+              "registration",
+              "attendance",
+              "availability",
+              "injury",
+              "jersey"
+            ],
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "passed",
+              "warning",
+              "failed",
+              "unknown",
+              "overridden"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "status"
         ],
         "type": "object"
       },
@@ -4112,6 +4315,37 @@
         },
         "required": [
           "email"
+        ],
+        "type": "object"
+      },
+      "GenderRatioDto": {
+        "properties": {
+          "balanced": {
+            "type": "boolean"
+          },
+          "men": {
+            "type": "number"
+          },
+          "mixed": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "unknown": {
+            "type": "number"
+          },
+          "women": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "men",
+          "women",
+          "mixed",
+          "unknown",
+          "total",
+          "balanced"
         ],
         "type": "object"
       },
@@ -4578,6 +4812,32 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/AuditEntryDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListAvailabilityResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/AvailabilityResponseDto"
             },
             "type": "array"
           },
@@ -5223,6 +5483,32 @@
         ],
         "type": "object"
       },
+      "ListSelectionsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/SelectionResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListSessionsResponseDto": {
         "properties": {
           "items": {
@@ -5280,6 +5566,32 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/SharedFeedbackResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListSquadsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/SquadResponseDto"
             },
             "type": "array"
           },
@@ -5698,6 +6010,68 @@
           "jerseyNumber",
           "positions",
           "hasAvatar"
+        ],
+        "type": "object"
+      },
+      "MemberEligibilityDto": {
+        "properties": {
+          "attendancePct": {
+            "nullable": true,
+            "type": "number"
+          },
+          "availability": {
+            "enum": [
+              "available",
+              "unavailable",
+              "tentative"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "flagged": {
+            "type": "boolean"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "jerseyNumber": {
+            "nullable": true,
+            "type": "number"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "overall": {
+            "enum": [
+              "passed",
+              "warning",
+              "failed",
+              "unknown",
+              "overridden"
+            ],
+            "type": "string"
+          },
+          "selected": {
+            "type": "boolean"
+          },
+          "signals": {
+            "items": {
+              "$ref": "#/components/schemas/EligibilitySignalDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "membershipId",
+          "fullName",
+          "jerseyNumber",
+          "attendancePct",
+          "availability",
+          "selected",
+          "signals",
+          "overall",
+          "flagged"
         ],
         "type": "object"
       },
@@ -6427,6 +6801,39 @@
         "required": [
           "status",
           "reason"
+        ],
+        "type": "object"
+      },
+      "OverrideSelectPlayerDto": {
+        "properties": {
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "overrideReason": {
+            "maxLength": 500,
+            "minLength": 5,
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 3,
+            "nullable": true,
+            "type": "object"
+          },
+          "selectionRole": {
+            "default": "player",
+            "enum": [
+              "player",
+              "captain",
+              "vice_captain"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "membershipId",
+          "overrideReason"
         ],
         "type": "object"
       },
@@ -7830,6 +8237,17 @@
         "required": [
           "enqueued"
         ],
+        "type": "object"
+      },
+      "RemoveSelectionDto": {
+        "properties": {
+          "reason": {
+            "maxLength": 500,
+            "minLength": 3,
+            "nullable": true,
+            "type": "object"
+          }
+        },
         "type": "object"
       },
       "ReorderBlocksDto": {
@@ -9470,6 +9888,133 @@
         ],
         "type": "object"
       },
+      "SelectionResponseDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "eligibilityOverridden": {
+            "type": "boolean"
+          },
+          "eligibilitySnapshot": {
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "overriddenBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "overrideReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "reason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "removedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "removedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "selectedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "selectionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "selectionRole": {
+            "enum": [
+              "player",
+              "captain",
+              "vice_captain"
+            ],
+            "type": "string"
+          },
+          "squadId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "selected",
+              "removed"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selectionId",
+          "squadId",
+          "teamId",
+          "membershipId",
+          "selectionRole",
+          "status",
+          "reason",
+          "eligibilityOverridden",
+          "overrideReason",
+          "overriddenBy",
+          "eligibilitySnapshot",
+          "selectedBy",
+          "removedBy",
+          "removedAt",
+          "recordVersion",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "SelectPlayerDto": {
+        "properties": {
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 3,
+            "nullable": true,
+            "type": "object"
+          },
+          "selectionRole": {
+            "default": "player",
+            "enum": [
+              "player",
+              "captain",
+              "vice_captain"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "membershipId"
+        ],
+        "type": "object"
+      },
       "SelfCheckInDto": {
         "properties": {
           "note": {
@@ -9798,6 +10343,115 @@
           "draft",
           "published",
           "delta"
+        ],
+        "type": "object"
+      },
+      "SquadResponseDto": {
+        "properties": {
+          "archivedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "attendanceThresholdPct": {
+            "type": "number"
+          },
+          "competitionId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "lockedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "notes": {
+            "nullable": true,
+            "type": "string"
+          },
+          "policyVersion": {
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "publishedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "selectionDeadline": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "squadId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "published",
+              "locked",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "squadId",
+          "teamId",
+          "seasonId",
+          "competitionId",
+          "name",
+          "status",
+          "attendanceThresholdPct",
+          "policyVersion",
+          "selectionDeadline",
+          "notes",
+          "revision",
+          "recordVersion",
+          "createdBy",
+          "publishedBy",
+          "publishedAt",
+          "lockedAt",
+          "archivedAt",
+          "createdAt",
+          "updatedAt"
         ],
         "type": "object"
       },
@@ -10467,6 +11121,28 @@
             "enum": [
               "conduct",
               "cancel"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "transition",
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
+      "TransitionSquadDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "transition": {
+            "enum": [
+              "publish",
+              "lock",
+              "revise",
+              "archive"
             ],
             "type": "string"
           }
@@ -22237,6 +22913,622 @@
         "summary": "Add an effective-dated setting version",
         "tags": [
           "teams"
+        ]
+      }
+    },
+    "/teams/{teamId}/squads": {
+      "get": {
+        "operationId": "Squads.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "seasonId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListSquadsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s squads",
+        "tags": [
+          "squads"
+        ]
+      },
+      "post": {
+        "operationId": "Squads.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSquadDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SquadResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a draft squad",
+        "tags": [
+          "squads"
+        ]
+      }
+    },
+    "/teams/{teamId}/squads/{squadId}": {
+      "get": {
+        "operationId": "Squads.get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "squadId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SquadResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Get one squad",
+        "tags": [
+          "squads"
+        ]
+      }
+    },
+    "/teams/{teamId}/squads/{squadId}/availability": {
+      "get": {
+        "operationId": "SquadAvailability.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "squadId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListAvailabilityResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a squad’s availability declarations",
+        "tags": [
+          "squads"
+        ]
+      },
+      "post": {
+        "operationId": "SquadAvailability.declare",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "squadId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeclareAvailabilityDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Declare your own availability for the squad",
+        "tags": [
+          "squads"
+        ]
+      }
+    },
+    "/teams/{teamId}/squads/{squadId}/eligibility": {
+      "get": {
+        "operationId": "Squads.eligibility",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "squadId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 200,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EligibilityReportResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Advisory eligibility signals for the candidate pool",
+        "tags": [
+          "squads"
+        ]
+      }
+    },
+    "/teams/{teamId}/squads/{squadId}/selections": {
+      "get": {
+        "operationId": "SquadSelections.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "squadId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListSelectionsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a squad’s selections",
+        "tags": [
+          "squads"
+        ]
+      },
+      "post": {
+        "operationId": "SquadSelections.select",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "squadId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SelectPlayerDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelectionResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Select a clear candidate into the squad",
+        "tags": [
+          "squads"
+        ]
+      }
+    },
+    "/teams/{teamId}/squads/{squadId}/selections/{membershipId}/removal": {
+      "post": {
+        "operationId": "SquadSelections.remove",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "squadId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "membershipId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveSelectionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelectionResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Remove a player from the squad, keeping history",
+        "tags": [
+          "squads"
+        ]
+      }
+    },
+    "/teams/{teamId}/squads/{squadId}/selections/override": {
+      "post": {
+        "operationId": "SquadSelections.override",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "squadId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OverrideSelectPlayerDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelectionResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Select a flagged candidate with an explicit override",
+        "tags": [
+          "squads"
+        ]
+      }
+    },
+    "/teams/{teamId}/squads/{squadId}/transition": {
+      "post": {
+        "operationId": "Squads.transition",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "squadId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransitionSquadDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SquadResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Publish, lock, revise, or archive a squad",
+        "tags": [
+          "squads"
         ]
       }
     },

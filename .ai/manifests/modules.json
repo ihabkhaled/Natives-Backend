@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T11:31:00.558Z",
+  "generatedAt": "2026-07-20T14:56:14.190Z",
   "modules": [
     {
       "name": "activities",
@@ -1318,6 +1318,94 @@
       "fileCount": 57,
       "specCount": 23,
       "publicSurface": "src/modules/scoring/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "squads",
+      "path": "src/modules/squads",
+      "layers": {
+        "api-dto": [
+          "src/modules/squads/api/dto/availability-response.dto.ts",
+          "src/modules/squads/api/dto/create-squad.dto.ts",
+          "src/modules/squads/api/dto/declare-availability.dto.ts",
+          "src/modules/squads/api/dto/eligibility-report.response.dto.ts",
+          "src/modules/squads/api/dto/eligibility.query.dto.ts",
+          "src/modules/squads/api/dto/list-availability.response.dto.ts",
+          "src/modules/squads/api/dto/list-selections.response.dto.ts",
+          "src/modules/squads/api/dto/list-squads.query.dto.ts",
+          "src/modules/squads/api/dto/list-squads.response.dto.ts",
+          "src/modules/squads/api/dto/list.query.dto.ts",
+          "src/modules/squads/api/dto/override-select-player.dto.ts",
+          "src/modules/squads/api/dto/remove-selection.dto.ts",
+          "src/modules/squads/api/dto/select-player.dto.ts",
+          "src/modules/squads/api/dto/selection-response.dto.ts",
+          "src/modules/squads/api/dto/squad-response.dto.ts",
+          "src/modules/squads/api/dto/transition-squad.dto.ts"
+        ],
+        "controller": [
+          "src/modules/squads/api/squad-availability.controller.ts",
+          "src/modules/squads/api/squad-selections.controller.ts",
+          "src/modules/squads/api/squads.controller.ts"
+        ],
+        "service": [
+          "src/modules/squads/application/availability-query.service.ts",
+          "src/modules/squads/application/eligibility-report.service.ts",
+          "src/modules/squads/application/selection-query.service.ts",
+          "src/modules/squads/application/squad-lookup.service.ts",
+          "src/modules/squads/application/squad-query.service.ts",
+          "src/modules/squads/application/squad-scope.service.ts"
+        ],
+        "use-case": [
+          "src/modules/squads/application/create-squad.use-case.ts",
+          "src/modules/squads/application/declare-availability.use-case.ts",
+          "src/modules/squads/application/remove-selection.use-case.ts",
+          "src/modules/squads/application/select-player.use-case.ts",
+          "src/modules/squads/application/transition-squad.use-case.ts"
+        ],
+        "domain": [
+          "src/modules/squads/domain/eligibility-signal.policy.ts",
+          "src/modules/squads/domain/gender-ratio.policy.ts",
+          "src/modules/squads/domain/selection-override.policy.ts",
+          "src/modules/squads/domain/squad-content.policy.ts",
+          "src/modules/squads/domain/squad.state-machine.ts"
+        ],
+        "other": [
+          "src/modules/squads/errors/availability-membership-not-found.error.ts",
+          "src/modules/squads/errors/candidate-not-found.error.ts",
+          "src/modules/squads/errors/eligibility-override-required.error.ts",
+          "src/modules/squads/errors/selection-not-found.error.ts",
+          "src/modules/squads/errors/squad-invalid-transition.error.ts",
+          "src/modules/squads/errors/squad-locked.error.ts",
+          "src/modules/squads/errors/squad-not-found.error.ts",
+          "src/modules/squads/errors/squad-scope-not-found.error.ts",
+          "src/modules/squads/errors/squad-validation.error.ts",
+          "src/modules/squads/errors/squad-version-conflict.error.ts",
+          "src/modules/squads/index.ts",
+          "src/modules/squads/squads.module.ts"
+        ],
+        "repository": [
+          "src/modules/squads/infrastructure/squad-availability.repository.ts",
+          "src/modules/squads/infrastructure/squad-eligibility.repository.ts",
+          "src/modules/squads/infrastructure/squad-scope.repository.ts",
+          "src/modules/squads/infrastructure/squad-selection.repository.ts",
+          "src/modules/squads/infrastructure/squad.repository.ts"
+        ],
+        "lib": [
+          "src/modules/squads/lib/squads-command.mapper.ts",
+          "src/modules/squads/lib/squads.builders.ts",
+          "src/modules/squads/lib/squads.helpers.ts",
+          "src/modules/squads/lib/squads.mapper.ts"
+        ],
+        "model": [
+          "src/modules/squads/model/squads.constants.ts",
+          "src/modules/squads/model/squads.enums.ts",
+          "src/modules/squads/model/squads.rows.ts",
+          "src/modules/squads/model/squads.types.ts"
+        ]
+      },
+      "fileCount": 60,
+      "specCount": 25,
+      "publicSurface": "src/modules/squads/index.ts",
       "hasEvents": false
     },
     {

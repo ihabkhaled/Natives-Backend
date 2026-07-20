@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-20T11:31:00.558Z",
-  "treeHash": "sha256:3aad5bc24fd2e33dd031cefd00a7f71caaaf3d299384fdb5f46f24218b138bbc",
+  "generatedAt": "2026-07-20T14:56:14.190Z",
+  "treeHash": "sha256:81bb91e325ef839a50117be6e121fc699e9b675dbadce43d2b07df13151b0e3f",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:04779bdb2de43424972a216732daae7892c2c3fe6972e63e9781c55962b8e779",
-      "sizeBytes": 1769
+      "hash": "sha256:6384df674db5db1337038a4a45fa4c8ec22e96761ea9f28fd56079e6dff87157",
+      "sizeBytes": 1835
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -3306,6 +3306,23 @@
       "sizeBytes": 11837
     },
     {
+      "path": "src/database/migrations/1723400000000-squads-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadsSchema1723400000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:75162c9ec6dd8654db3d4743a1279dd5f2bcdd4b2f074faddebf72fc8b4bd45d",
+      "sizeBytes": 9393
+    },
+    {
       "path": "src/database/migrations/activities-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3448,6 +3465,18 @@
       "kind": "spec",
       "hash": "sha256:b5ecac97411181cd61c681b17747c6ab583095ccbe1b6f364059158e60679687",
       "sizeBytes": 1401
+    },
+    {
+      "path": "src/database/migrations/squads-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9e8766a705972a0d68173dc298fe32db628cdb1d8aeb9391d77c094f49970f3d",
+      "sizeBytes": 3342
     },
     {
       "path": "src/database/naming.helpers.spec.ts",
@@ -34429,6 +34458,2025 @@
       "kind": "source",
       "hash": "sha256:25df5869c69696aa8f78f2777a5241048e8ae993fc107459aec2cbf11397bd9d",
       "sizeBytes": 2895
+    },
+    {
+      "path": "src/modules/squads/api/dto/availability-response.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AvailabilityResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ace811f07c4aeb047267486edc1c673bc1db01ee32f6bfb4376efb277eae1e34",
+      "sizeBytes": 1189
+    },
+    {
+      "path": "src/modules/squads/api/dto/create-squad.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateSquadDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:07f41c2e17f011462c43cb6f87971a5f5d6558cd115f0e8f23d225851cd8069a",
+      "sizeBytes": 1655
+    },
+    {
+      "path": "src/modules/squads/api/dto/declare-availability.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DeclareAvailabilityDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f977a1f51376c1a12ba1214bd883ff8a68b07364524ae1981bfce95d2205f693",
+      "sizeBytes": 920
+    },
+    {
+      "path": "src/modules/squads/api/dto/eligibility-report.response.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EligibilitySignalDto"
+        },
+        {
+          "kind": "class",
+          "name": "MemberEligibilityDto"
+        },
+        {
+          "kind": "class",
+          "name": "GenderRatioDto"
+        },
+        {
+          "kind": "class",
+          "name": "EligibilityReportResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cea81d003d1b95aee50735efcac1d39430e6be51cfa33473bc538d2ed4f4848c",
+      "sizeBytes": 2563
+    },
+    {
+      "path": "src/modules/squads/api/dto/eligibility.query.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EligibilityQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ea4797e1a901184bf639b927d5e99803629c8626ad8af2cc676bf4dcc51a7c38",
+      "sizeBytes": 753
+    },
+    {
+      "path": "src/modules/squads/api/dto/list-availability.response.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListAvailabilityResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dff0583067aed201b4972174b4bdb14fda0d30f7c7b7f2c855ccb6cb666ade1b",
+      "sizeBytes": 492
+    },
+    {
+      "path": "src/modules/squads/api/dto/list-selections.response.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSelectionsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1cddf2dc4797955a629c2206d23ddc92867aaf278d05940768120b84745faf7d",
+      "sizeBytes": 497
+    },
+    {
+      "path": "src/modules/squads/api/dto/list-squads.query.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSquadsQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2544cab31d9e6b425e8ecfe5caf7a6e14a67fd24e2af53c6af5fef7698f1e5c7",
+      "sizeBytes": 390
+    },
+    {
+      "path": "src/modules/squads/api/dto/list-squads.response.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSquadsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f90c31ba946273241c1c5b49ad023d82316f90e9e163ed0baa7b3a08560a6766",
+      "sizeBytes": 433
+    },
+    {
+      "path": "src/modules/squads/api/dto/list.query.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6147aff78cfdb9298414d8371cf3d23495fdda06d5876bf4f9ddd4f9ba22fab0",
+      "sizeBytes": 711
+    },
+    {
+      "path": "src/modules/squads/api/dto/override-select-player.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OverrideSelectPlayerDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b5af2759473c7502bbc3b6987a313397db502e3a7e64a23dcad628079fdc9eb8",
+      "sizeBytes": 920
+    },
+    {
+      "path": "src/modules/squads/api/dto/remove-selection.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RemoveSelectionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:91d8d6dd14bf7c51facc6be37144b8bc0d58eb07d72242c1adbb1eb3c03da014",
+      "sizeBytes": 585
+    },
+    {
+      "path": "src/modules/squads/api/dto/select-player.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SelectPlayerDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c639ce7a0f445cfc909de9d60f65e57fa946229edf6aa740e193ca82f8e23eb5",
+      "sizeBytes": 1109
+    },
+    {
+      "path": "src/modules/squads/api/dto/selection-response.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SelectionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:65d33b5f9601083386d0c6f423871279d16d65d964065bc8c5329f5442fc50f0",
+      "sizeBytes": 1866
+    },
+    {
+      "path": "src/modules/squads/api/dto/squad-response.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:317f818457f42f9c86b3ebc05a5faaf3b5c0efb988d202e4d3b368640e35cf6a",
+      "sizeBytes": 1868
+    },
+    {
+      "path": "src/modules/squads/api/dto/transition-squad.dto.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionSquadDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dfdedd733df7c5e16ea096c805b769858c26187d6909f3f298f6b0e4c9feeaa7",
+      "sizeBytes": 749
+    },
+    {
+      "path": "src/modules/squads/api/squad-availability.controller.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadAvailabilityController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:721032375f5f80633703df57014c74d58264b203fff7084c2b8e1146f848a856",
+      "sizeBytes": 2929
+    },
+    {
+      "path": "src/modules/squads/api/squad-selections.controller.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadSelectionsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cee23270d48bcbfa304362320137a0a2acb339271da12d4da410f5533fddf3dc",
+      "sizeBytes": 5054
+    },
+    {
+      "path": "src/modules/squads/api/squads.controller.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ef856788bcf4b8d39924f0570308b240a10779ac87a8afad8a17f7c3722fb056",
+      "sizeBytes": 5194
+    },
+    {
+      "path": "src/modules/squads/application/availability-query.service.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:55e19c913053aa95f4f88bb3080e5ee565b82365965f68b0444fa987495d15a6",
+      "sizeBytes": 2414
+    },
+    {
+      "path": "src/modules/squads/application/availability-query.service.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AvailabilityQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/application/availability-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:25d10a8a949852be6875eab7ac18827fb9516c40aee6a76675b7f0de22ced858",
+      "sizeBytes": 1522
+    },
+    {
+      "path": "src/modules/squads/application/create-squad.use-case.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c71a31a98b89d1aadd2570dbc55e40685ddd7978eb403eb37aabe4a6957cfeee",
+      "sizeBytes": 3449
+    },
+    {
+      "path": "src/modules/squads/application/create-squad.use-case.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateSquadUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/application/create-squad.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:fabee09e4f59e714bc2d350ed0cadf8986ad87bab7376594c09f24863c9c0831",
+      "sizeBytes": 2951
+    },
+    {
+      "path": "src/modules/squads/application/declare-availability.use-case.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:37b2baef475be1c07a6651e8c095d2b61b2f5b049c83058f4df76984e23ef574",
+      "sizeBytes": 3902
+    },
+    {
+      "path": "src/modules/squads/application/declare-availability.use-case.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DeclareAvailabilityUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/application/declare-availability.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bf73c95dd0df9f38fb0ab0fa6d4f7e5e82e2132153dab391ddd485a652cf8451",
+      "sizeBytes": 3138
+    },
+    {
+      "path": "src/modules/squads/application/eligibility-report.service.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:48c6cd138bd916ef9fcbb966f38d14724d67a0ab199273a3b426e3c515d3115f",
+      "sizeBytes": 2908
+    },
+    {
+      "path": "src/modules/squads/application/eligibility-report.service.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EligibilityReportService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/application/eligibility-report.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:dfc8a7955a1cb38d81f07274ff31566405ca0a2579cc95ea207af2b72b8afc6d",
+      "sizeBytes": 2976
+    },
+    {
+      "path": "src/modules/squads/application/remove-selection.use-case.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:06051b1cd848b173aab17065d0376fea9a7adeb6d28d9cfa5e79bb4c07b11d40",
+      "sizeBytes": 4161
+    },
+    {
+      "path": "src/modules/squads/application/remove-selection.use-case.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RemoveSelectionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/application/remove-selection.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b7de456fbbf621e614f0e1260329361afb235b67c732f4dbe8444effb71f2256",
+      "sizeBytes": 3653
+    },
+    {
+      "path": "src/modules/squads/application/select-player.use-case.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:485d83f5871b1a3f1155494ce994607576978582db237523e388d8e0f64ce04a",
+      "sizeBytes": 6323
+    },
+    {
+      "path": "src/modules/squads/application/select-player.use-case.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SelectPlayerUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/application/select-player.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a92a49e8aa90fd5790c9b0ab7d4a6ed0dddcdf7788d672aef627579b2bb771f2",
+      "sizeBytes": 5756
+    },
+    {
+      "path": "src/modules/squads/application/selection-query.service.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:60bfb14423070b9d279556317c7b81ed9bfa89654c2481000574dfa0714dd7e4",
+      "sizeBytes": 2528
+    },
+    {
+      "path": "src/modules/squads/application/selection-query.service.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SelectionQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/application/selection-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2bee14fb1b55f367e3b7f88f62d57d7f4be13fa1c85fde2a606d6e5bd13e9ee5",
+      "sizeBytes": 1531
+    },
+    {
+      "path": "src/modules/squads/application/squad-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:47a27a13d3ab2f75fad9b0aa6b6bb0df4d52b641b4182b64266159a786ccb689",
+      "sizeBytes": 1766
+    },
+    {
+      "path": "src/modules/squads/application/squad-lookup.service.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/application/squad-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3b5dd44fd005651dd478fb6915960fc29beb06f77585014e7fbc7f4575829e26",
+      "sizeBytes": 934
+    },
+    {
+      "path": "src/modules/squads/application/squad-query.service.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1b2ba4e3fa39e4ca7c0edb09ef5320d6a264600acc79cd70144e72ab5a7e2547",
+      "sizeBytes": 2125
+    },
+    {
+      "path": "src/modules/squads/application/squad-query.service.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/application/squad-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:dce11833d28f378e120f609e0aff45b1ce9eb4f00cb8e65552de71105d220d9e",
+      "sizeBytes": 1661
+    },
+    {
+      "path": "src/modules/squads/application/squad-scope.service.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b00d60053c1b14f66fc14a5089f4c7e65fee9f9fc370e99ab1b41fdb7be197a9",
+      "sizeBytes": 2152
+    },
+    {
+      "path": "src/modules/squads/application/squad-scope.service.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadScopeService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/application/squad-scope.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:97eb5b6e52dcde00b6b749f23ae2bf7281e2e708962debeb23fc68f12af0ca0b",
+      "sizeBytes": 1620
+    },
+    {
+      "path": "src/modules/squads/application/transition-squad.use-case.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1ed7f540554419471f22801f12cb456fd208cab09220fc9faea44901f86846d2",
+      "sizeBytes": 4964
+    },
+    {
+      "path": "src/modules/squads/application/transition-squad.use-case.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionSquadUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/application/transition-squad.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1ec9a9d60ceec02b1f6da62c5c36fb3d5642d68248fd1d32548194063f5c720b",
+      "sizeBytes": 4258
+    },
+    {
+      "path": "src/modules/squads/domain/eligibility-signal.policy.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e81d4096daf30841f8d8038e5c9872f95b1208dbb0b94180fc5e92fcf621a664",
+      "sizeBytes": 7737
+    },
+    {
+      "path": "src/modules/squads/domain/eligibility-signal.policy.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "computeAttendancePercent"
+        },
+        {
+          "kind": "function",
+          "name": "evaluateActiveStatusSignal"
+        },
+        {
+          "kind": "function",
+          "name": "evaluateRegistrationSignal"
+        },
+        {
+          "kind": "function",
+          "name": "evaluateAttendanceSignal"
+        },
+        {
+          "kind": "function",
+          "name": "evaluateAvailabilitySignal"
+        },
+        {
+          "kind": "function",
+          "name": "evaluateInjurySignal"
+        },
+        {
+          "kind": "function",
+          "name": "evaluateJerseySignal"
+        },
+        {
+          "kind": "function",
+          "name": "overallSignalStatus"
+        },
+        {
+          "kind": "function",
+          "name": "isFlaggedOverall"
+        },
+        {
+          "kind": "function",
+          "name": "computeMemberEligibility"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/domain/eligibility-signal.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:595269257bed33c5ca5131eeb3ade00b32caf2d720901a2f2fa22b2257c6c51e",
+      "sizeBytes": 6489
+    },
+    {
+      "path": "src/modules/squads/domain/gender-ratio.policy.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d87c5954414383485bbaa10658fac332a762bc47801caddc174dad0646d2be7a",
+      "sizeBytes": 1955
+    },
+    {
+      "path": "src/modules/squads/domain/gender-ratio.policy.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "bucketGender"
+        },
+        {
+          "kind": "function",
+          "name": "summarizeGenderRatio"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/domain/gender-ratio.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:6231bb64a40b138f1ced7b4fc4e9f91b76706dc88cd2008209d18af256e62cc2",
+      "sizeBytes": 1953
+    },
+    {
+      "path": "src/modules/squads/domain/selection-override.policy.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8172ef2caf5380a10e09e34886a4ec1e88b2d69bd414fc3cd58451dff337c7e0",
+      "sizeBytes": 2039
+    },
+    {
+      "path": "src/modules/squads/domain/selection-override.policy.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "requiresOverride"
+        },
+        {
+          "kind": "function",
+          "name": "isOverrideMissing"
+        },
+        {
+          "kind": "function",
+          "name": "resolvedSelectionOutcome"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/domain/selection-override.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e01e33dd66d02c0f02f60b2376fabc625ca37a3463a536d4d03fdbecbb7f8c23",
+      "sizeBytes": 1561
+    },
+    {
+      "path": "src/modules/squads/domain/squad-content.policy.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:364549b244217e6d96e944fe027fb0cc703a00cecb433adf6e768bba27cc53c5",
+      "sizeBytes": 1033
+    },
+    {
+      "path": "src/modules/squads/domain/squad-content.policy.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assertSquadContent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/domain/squad-content.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0a3fff4df8ad2fef761b95e20f8504ea7651191841784a55ab66595c0785f3de",
+      "sizeBytes": 798
+    },
+    {
+      "path": "src/modules/squads/domain/squad.state-machine.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:13d87a88a98304ce3036ee139cff5b876e004cf94ed08e497ef710be550ce53f",
+      "sizeBytes": 3152
+    },
+    {
+      "path": "src/modules/squads/domain/squad.state-machine.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedSquadTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransitionSquad"
+        },
+        {
+          "kind": "function",
+          "name": "resolveSquadTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isPublishTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isLockTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isArchiveTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isReviseTransition"
+        },
+        {
+          "kind": "function",
+          "name": "isSelectionFrozen"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/domain/squad.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d28e072a9b5f6816e16bbcbcb57da9d09e4a1c5f54a2f8e7d0da6261cadebdf0",
+      "sizeBytes": 2545
+    },
+    {
+      "path": "src/modules/squads/errors/availability-membership-not-found.error.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AvailabilityMembershipNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b998a57dcef810d66f3b0507821d277e24f184914b7be550eaf3d6117a712f64",
+      "sizeBytes": 659
+    },
+    {
+      "path": "src/modules/squads/errors/candidate-not-found.error.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CandidateNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7de75347b36ac2be57255ad748ed24b64455d372c99995722aea57941190fc5d",
+      "sizeBytes": 332
+    },
+    {
+      "path": "src/modules/squads/errors/eligibility-override-required.error.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EligibilityOverrideRequiredError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:293e2945cc75af8b6e8878b1a5dc65f3fbeee311d2468c420bc229ee39b67df1",
+      "sizeBytes": 652
+    },
+    {
+      "path": "src/modules/squads/errors/selection-not-found.error.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SelectionNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:02407b1e3af91741a2b102cb1a3814770c0d84eb0608fd67261530e7eaa044ba",
+      "sizeBytes": 332
+    },
+    {
+      "path": "src/modules/squads/errors/squad-invalid-transition.error.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadInvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6154fe6ad6c83378f658184ae83662c09b4bce37cb8b3f642011b803836e6ffe",
+      "sizeBytes": 375
+    },
+    {
+      "path": "src/modules/squads/errors/squad-locked.error.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadLockedError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0f21900cc20c9da0227b62d1cc3f54cd6821781c28001776835b6a5a9645ebda",
+      "sizeBytes": 297
+    },
+    {
+      "path": "src/modules/squads/errors/squad-not-found.error.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6d2a19c150a9de23dd885632244e465118e50337cccd58717007f680d9a3536e",
+      "sizeBytes": 312
+    },
+    {
+      "path": "src/modules/squads/errors/squad-scope-not-found.error.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadScopeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:71f0e8fee24628f6bb706c5c3a62221d0642381eef29552b98bb47581e7db6ee",
+      "sizeBytes": 341
+    },
+    {
+      "path": "src/modules/squads/errors/squad-validation.error.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadValidationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fe88da1f58c8527a0002b57ef31403105d3c68b02fe966049bf20fbdaf9550d4",
+      "sizeBytes": 323
+    },
+    {
+      "path": "src/modules/squads/errors/squad-version-conflict.error.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadVersionConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6a596506ccc848d0c6ff0474c2c033a2efbd0743058a3fd180d825774190b35c",
+      "sizeBytes": 346
+    },
+    {
+      "path": "src/modules/squads/errors/squads-errors.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:37a0bf105549022bd73df8b96953e30e1916f9b2ae02ca453e5acbca6d92dd93",
+      "sizeBytes": 2675
+    },
+    {
+      "path": "src/modules/squads/index.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9d62fc2a0f61b22b26691654d0b9c8e0282b1bfdd82328e960c555d5f521126a",
+      "sizeBytes": 48
+    },
+    {
+      "path": "src/modules/squads/infrastructure/squad-availability.repository.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:dc744763af51de98e5de09102758f2555329640c2e1c55e31d9142fa96908110",
+      "sizeBytes": 2670
+    },
+    {
+      "path": "src/modules/squads/infrastructure/squad-availability.repository.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadAvailabilityRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/infrastructure/squad-availability.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1342eb688e781faa447a516abc13e45cbd879745c0c8149c3914fba603c6923a",
+      "sizeBytes": 2853
+    },
+    {
+      "path": "src/modules/squads/infrastructure/squad-eligibility.repository.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:36d98463aad8468f7a339332416bbe283275831e1d89ba3b87026cf4e9694138",
+      "sizeBytes": 2909
+    },
+    {
+      "path": "src/modules/squads/infrastructure/squad-eligibility.repository.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadEligibilityRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/infrastructure/squad-eligibility.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:07c8d5ac6f07ac76ff1b7137214d8c1f3db74c91c8186e9432d3e1c0d483ab07",
+      "sizeBytes": 3781
+    },
+    {
+      "path": "src/modules/squads/infrastructure/squad-scope.repository.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ad70f511b0faba33a51386737cc595a526eea41da350a4ac88a49758de29e948",
+      "sizeBytes": 1157
+    },
+    {
+      "path": "src/modules/squads/infrastructure/squad-scope.repository.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadScopeRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/infrastructure/squad-scope.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3fc9f17c9e0ad7706905e3442a22ba742db11ab9330ae8a5595e21d57cc9c9dc",
+      "sizeBytes": 1535
+    },
+    {
+      "path": "src/modules/squads/infrastructure/squad-selection.repository.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:efd3696d9e98562018571f838703bcee7084c34ee15d91947fc10860533ac4f1",
+      "sizeBytes": 4364
+    },
+    {
+      "path": "src/modules/squads/infrastructure/squad-selection.repository.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadSelectionRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/infrastructure/squad-selection.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5adc67b4be14db2b15f349b2a217d44f7b8baca17e38f33e29a876e43dabbc56",
+      "sizeBytes": 5743
+    },
+    {
+      "path": "src/modules/squads/infrastructure/squad.repository.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e6b62f79867f797af65d1e153105a8c7cfe73a0968c4beedf6abce663e94addb",
+      "sizeBytes": 4141
+    },
+    {
+      "path": "src/modules/squads/infrastructure/squad.repository.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/infrastructure/squad.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:19beb75bdb5d29569ed43222ef8ed75b54a18d7da340765cbb0aaca710a15e59",
+      "sizeBytes": 4472
+    },
+    {
+      "path": "src/modules/squads/lib/squads-command.mapper.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f894beee00a5ecef342202d5d3c13f3be8a9723a93ac1e39ddc6a176c4faf992",
+      "sizeBytes": 1679
+    },
+    {
+      "path": "src/modules/squads/lib/squads-command.mapper.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toSquadContent"
+        },
+        {
+          "kind": "function",
+          "name": "toSelectionContent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/lib/squads-command.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:85f42a853626dd99874e703a71ed69da952df1c13f97b802f5cc9639a57a7f66",
+      "sizeBytes": 1205
+    },
+    {
+      "path": "src/modules/squads/lib/squads.builders.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c239b277b7e9c544cf66ded77ba9364134a14bec354ddba3bf6ba1574cb7f7ac",
+      "sizeBytes": 7244
+    },
+    {
+      "path": "src/modules/squads/lib/squads.builders.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewSquad"
+        },
+        {
+          "kind": "function",
+          "name": "buildSquadStatusChange"
+        },
+        {
+          "kind": "function",
+          "name": "buildSelectionWrite"
+        },
+        {
+          "kind": "function",
+          "name": "buildSelectionRemoval"
+        },
+        {
+          "kind": "function",
+          "name": "buildSelectionEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildAvailabilityUpsert"
+        },
+        {
+          "kind": "function",
+          "name": "buildSquadAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildSelectionAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildAvailabilityAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildSquadCreatedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildSquadPublishedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildSquadLockedEvent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/lib/squads.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:12770d99e20dee45ac8023fe6fc2c0a52d9dd7e142fc4714c02846d1eb71e7d8",
+      "sizeBytes": 6818
+    },
+    {
+      "path": "src/modules/squads/lib/squads.helpers.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ecfb12e411a1037c96809c3d048e70509e8a03026455d14f2d91ae7c0054de33",
+      "sizeBytes": 2657
+    },
+    {
+      "path": "src/modules/squads/lib/squads.helpers.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveSquadsPage"
+        },
+        {
+          "kind": "function",
+          "name": "resolveEligibilityPage"
+        },
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNumber"
+        },
+        {
+          "kind": "function",
+          "name": "parseEnumValue"
+        },
+        {
+          "kind": "function",
+          "name": "parseNullableEnumValue"
+        },
+        {
+          "kind": "function",
+          "name": "summarizeEligibilitySnapshot"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/lib/squads.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:885a49d8589231b3d7226ea1f739280c82d8bfc880452d880daa2cb73cc3e660",
+      "sizeBytes": 2642
+    },
+    {
+      "path": "src/modules/squads/lib/squads.mapper.spec.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8be4207c640008f1d292315e35902c9310c3ff3d9575fecb03a552e44b5a0046",
+      "sizeBytes": 4368
+    },
+    {
+      "path": "src/modules/squads/lib/squads.mapper.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toSquad"
+        },
+        {
+          "kind": "function",
+          "name": "toSelection"
+        },
+        {
+          "kind": "function",
+          "name": "toAvailability"
+        },
+        {
+          "kind": "function",
+          "name": "toEligibilityInputs"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/squads/lib/squads.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d2fae1f15766a02a40cb9cb6857d4deb4b262f17d92c85b50de6c0f1f0ff2307",
+      "sizeBytes": 3853
+    },
+    {
+      "path": "src/modules/squads/model/squads.constants.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SQUADS_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "SQUADS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_SELECTIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_AVAILABILITY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_ITEM_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_TRANSITION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_ELIGIBILITY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SELECTION_OVERRIDE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SELECTION_REMOVE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "ELIGIBILITY_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "ELIGIBILITY_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NOTES_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REASON_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OVERRIDE_REASON_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OVERRIDE_REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RECORD_VERSION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_THRESHOLD_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_THRESHOLD_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_ATTENDANCE_THRESHOLD_PCT"
+        },
+        {
+          "kind": "const",
+          "name": "ELIGIBILITY_POLICY_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "PERCENT_SCALE"
+        },
+        {
+          "kind": "const",
+          "name": "GENDER_TOKEN_MAN"
+        },
+        {
+          "kind": "const",
+          "name": "GENDER_TOKEN_WOMAN"
+        },
+        {
+          "kind": "const",
+          "name": "GENDER_TOKEN_NONBINARY"
+        },
+        {
+          "kind": "const",
+          "name": "NO_COMPETITION_SENTINEL"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_SCOPE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_SCOPE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_VALIDATION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_VALIDATION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_LOCKED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_LOCKED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ELIGIBILITY_OVERRIDE_REQUIRED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ELIGIBILITY_OVERRIDE_REQUIRED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "CANDIDATE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "CANDIDATE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SELECTION_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SELECTION_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "AVAILABILITY_MEMBERSHIP_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "AVAILABILITY_MEMBERSHIP_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "SELECTION_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "AVAILABILITY_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_TRANSITIONED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SELECTION_RECORDED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SELECTION_OVERRIDDEN_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SELECTION_REMOVED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "AVAILABILITY_DECLARED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "SQUADS_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_CREATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_PUBLISHED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_LOCKED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "SELECTION_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "AVAILABILITY_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "CANDIDATE_SELECT"
+        },
+        {
+          "kind": "const",
+          "name": "EXCLUDED_CANDIDATE_STATES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cb23e1ebaaf1a1fcc8a60b6158dc0e6997c4fd15005ccedf2c901b314c8ad813",
+      "sizeBytes": 8444
+    },
+    {
+      "path": "src/modules/squads/model/squads.enums.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "SquadStatus"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SquadTransition"
+        },
+        {
+          "kind": "const",
+          "name": "SQUAD_TRANSITION_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SelectionRole"
+        },
+        {
+          "kind": "const",
+          "name": "SELECTION_ROLE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SelectionStatus"
+        },
+        {
+          "kind": "const",
+          "name": "SELECTION_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SelectionEventType"
+        },
+        {
+          "kind": "const",
+          "name": "SELECTION_EVENT_TYPE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AvailabilityStatus"
+        },
+        {
+          "kind": "const",
+          "name": "AVAILABILITY_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AvailabilitySource"
+        },
+        {
+          "kind": "const",
+          "name": "AVAILABILITY_SOURCE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SignalStatus"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNAL_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SignalCode"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNAL_CODE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "CandidateStatus"
+        },
+        {
+          "kind": "const",
+          "name": "CANDIDATE_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "GenderBucket"
+        },
+        {
+          "kind": "const",
+          "name": "GENDER_BUCKET_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dc9525d1f202ab5882d7fc358311f8ac1ed0b4fda1d512d489a9c36f5c8aa240",
+      "sizeBytes": 4999
+    },
+    {
+      "path": "src/modules/squads/model/squads.rows.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "SquadRow"
+        },
+        {
+          "kind": "interface",
+          "name": "SelectionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AvailabilityRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CandidateRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "GenderCountRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9f7a7426200e895dc09f3effdad28d710074a87fe3e60a4bd94b9548e6085da4",
+      "sizeBytes": 3054
+    },
+    {
+      "path": "src/modules/squads/model/squads.types.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "PagedResult"
+        },
+        {
+          "kind": "interface",
+          "name": "Squad"
+        },
+        {
+          "kind": "interface",
+          "name": "SquadContent"
+        },
+        {
+          "kind": "interface",
+          "name": "NewSquad"
+        },
+        {
+          "kind": "interface",
+          "name": "SquadStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateSquadCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "TransitionSquadCommand"
+        },
+        {
+          "kind": "type",
+          "name": "SquadPage"
+        },
+        {
+          "kind": "interface",
+          "name": "SquadSelection"
+        },
+        {
+          "kind": "interface",
+          "name": "SelectionWrite"
+        },
+        {
+          "kind": "interface",
+          "name": "SelectionRemoval"
+        },
+        {
+          "kind": "interface",
+          "name": "NewSelectionEvent"
+        },
+        {
+          "kind": "interface",
+          "name": "SelectionContent"
+        },
+        {
+          "kind": "interface",
+          "name": "SelectPlayerCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "SelectionOverride"
+        },
+        {
+          "kind": "interface",
+          "name": "RemoveSelectionCommand"
+        },
+        {
+          "kind": "type",
+          "name": "SelectionPage"
+        },
+        {
+          "kind": "interface",
+          "name": "Availability"
+        },
+        {
+          "kind": "interface",
+          "name": "AvailabilityUpsert"
+        },
+        {
+          "kind": "interface",
+          "name": "DeclareAvailabilityCommand"
+        },
+        {
+          "kind": "type",
+          "name": "AvailabilityPage"
+        },
+        {
+          "kind": "interface",
+          "name": "EligibilityInputs"
+        },
+        {
+          "kind": "interface",
+          "name": "EligibilitySignal"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberEligibility"
+        },
+        {
+          "kind": "interface",
+          "name": "GenderRatio"
+        },
+        {
+          "kind": "interface",
+          "name": "EligibilityReport"
+        },
+        {
+          "kind": "interface",
+          "name": "SquadContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "SelectionContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "GenderCount"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:51af5e92e15304be20497189b69154d888d07c7382ab5e1091ba547c0573620a",
+      "sizeBytes": 9209
+    },
+    {
+      "path": "src/modules/squads/squads.module.ts",
+      "root": "modules",
+      "module": "squads",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SquadsModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0671785336c4a7204bba172a8be3d88eaea918e46668678346d85773a3f7321e",
+      "sizeBytes": 2941
     },
     {
       "path": "src/modules/teams/api/catalogs.controller.ts",

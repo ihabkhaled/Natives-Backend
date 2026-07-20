@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T11:31:00.558Z",
+  "generatedAt": "2026-07-20T14:56:14.190Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -89,6 +89,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/scoring/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/squads/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -24579,6 +24584,1411 @@
     {
       "from": "src/modules/scoring/scoring.module.ts",
       "to": "src/modules/scoring/infrastructure/scoring-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/availability-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/availability-response.dto.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/create-squad.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/create-squad.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/create-squad.dto.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/declare-availability.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/declare-availability.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/declare-availability.dto.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/declare-availability.dto.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/eligibility-report.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/eligibility-report.response.dto.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/eligibility.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/eligibility.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/eligibility.query.dto.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/list-availability.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/list-availability.response.dto.ts",
+      "to": "src/modules/squads/api/dto/availability-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/list-selections.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/list-selections.response.dto.ts",
+      "to": "src/modules/squads/api/dto/selection-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/list-squads.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/list-squads.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/list-squads.query.dto.ts",
+      "to": "src/modules/squads/api/dto/list.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/list-squads.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/list-squads.response.dto.ts",
+      "to": "src/modules/squads/api/dto/squad-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/list.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/list.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/list.query.dto.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/override-select-player.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/override-select-player.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/override-select-player.dto.ts",
+      "to": "src/modules/squads/api/dto/select-player.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/override-select-player.dto.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/remove-selection.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/remove-selection.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/remove-selection.dto.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/select-player.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/select-player.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/select-player.dto.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/select-player.dto.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/selection-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/selection-response.dto.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/squad-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/squad-response.dto.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/transition-squad.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/transition-squad.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/dto/transition-squad.dto.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/dto/transition-squad.dto.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-availability.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/squad-availability.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/squad-availability.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/squad-availability.controller.ts",
+      "to": "src/modules/squads/api/dto/availability-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-availability.controller.ts",
+      "to": "src/modules/squads/api/dto/declare-availability.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-availability.controller.ts",
+      "to": "src/modules/squads/api/dto/list-availability.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-availability.controller.ts",
+      "to": "src/modules/squads/api/dto/list.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-availability.controller.ts",
+      "to": "src/modules/squads/application/availability-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-availability.controller.ts",
+      "to": "src/modules/squads/application/declare-availability.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-availability.controller.ts",
+      "to": "src/modules/squads/lib/squads.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-availability.controller.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-availability.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/modules/squads/api/dto/list-selections.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/modules/squads/api/dto/list.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/modules/squads/api/dto/override-select-player.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/modules/squads/api/dto/remove-selection.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/modules/squads/api/dto/select-player.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/modules/squads/api/dto/selection-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/modules/squads/application/remove-selection.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/modules/squads/application/select-player.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/modules/squads/application/selection-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/modules/squads/lib/squads-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/modules/squads/lib/squads.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squad-selections.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/api/dto/create-squad.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/api/dto/eligibility-report.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/api/dto/eligibility.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/api/dto/list-squads.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/api/dto/list-squads.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/api/dto/squad-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/api/dto/transition-squad.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/application/create-squad.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/application/eligibility-report.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/application/squad-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/application/transition-squad.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/lib/squads-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/lib/squads.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/api/squads.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/availability-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/availability-query.service.ts",
+      "to": "src/modules/squads/application/squad-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/availability-query.service.ts",
+      "to": "src/modules/squads/infrastructure/squad-availability.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/availability-query.service.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/create-squad.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/create-squad.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/create-squad.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/create-squad.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/create-squad.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/squads/application/create-squad.use-case.ts",
+      "to": "src/modules/squads/application/squad-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/create-squad.use-case.ts",
+      "to": "src/modules/squads/domain/squad-content.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/create-squad.use-case.ts",
+      "to": "src/modules/squads/infrastructure/squad.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/create-squad.use-case.ts",
+      "to": "src/modules/squads/lib/squads.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/create-squad.use-case.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/create-squad.use-case.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/declare-availability.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/declare-availability.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/declare-availability.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/declare-availability.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/declare-availability.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/squads/application/declare-availability.use-case.ts",
+      "to": "src/modules/squads/application/squad-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/declare-availability.use-case.ts",
+      "to": "src/modules/squads/errors/availability-membership-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/declare-availability.use-case.ts",
+      "to": "src/modules/squads/infrastructure/squad-availability.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/declare-availability.use-case.ts",
+      "to": "src/modules/squads/infrastructure/squad-eligibility.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/declare-availability.use-case.ts",
+      "to": "src/modules/squads/lib/squads.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/declare-availability.use-case.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/declare-availability.use-case.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/eligibility-report.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/eligibility-report.service.ts",
+      "to": "src/modules/squads/application/squad-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/eligibility-report.service.ts",
+      "to": "src/modules/squads/domain/eligibility-signal.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/eligibility-report.service.ts",
+      "to": "src/modules/squads/domain/gender-ratio.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/eligibility-report.service.ts",
+      "to": "src/modules/squads/infrastructure/squad-eligibility.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/eligibility-report.service.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/modules/squads/application/squad-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/modules/squads/domain/squad.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/modules/squads/errors/selection-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/modules/squads/errors/squad-locked.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/modules/squads/infrastructure/squad-selection.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/modules/squads/lib/squads.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/remove-selection.use-case.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/application/squad-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/domain/eligibility-signal.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/domain/selection-override.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/domain/squad.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/errors/candidate-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/errors/eligibility-override-required.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/errors/squad-locked.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/infrastructure/squad-eligibility.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/infrastructure/squad-selection.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/lib/squads.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/lib/squads.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/select-player.use-case.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/selection-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/selection-query.service.ts",
+      "to": "src/modules/squads/application/squad-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/selection-query.service.ts",
+      "to": "src/modules/squads/infrastructure/squad-selection.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/selection-query.service.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/squad-lookup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/squad-lookup.service.ts",
+      "to": "src/modules/squads/errors/squad-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/squad-lookup.service.ts",
+      "to": "src/modules/squads/infrastructure/squad.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/squad-lookup.service.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/squad-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/squad-query.service.ts",
+      "to": "src/modules/squads/application/squad-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/squad-query.service.ts",
+      "to": "src/modules/squads/infrastructure/squad.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/squad-query.service.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/squad-scope.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/squad-scope.service.ts",
+      "to": "src/modules/squads/errors/squad-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/squad-scope.service.ts",
+      "to": "src/modules/squads/infrastructure/squad-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/modules/squads/application/squad-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/modules/squads/domain/squad.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/modules/squads/errors/squad-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/modules/squads/errors/squad-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/modules/squads/infrastructure/squad-selection.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/modules/squads/infrastructure/squad.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/modules/squads/lib/squads.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/application/transition-squad.use-case.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/domain/eligibility-signal.policy.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/domain/eligibility-signal.policy.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/domain/eligibility-signal.policy.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/domain/gender-ratio.policy.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/domain/gender-ratio.policy.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/domain/gender-ratio.policy.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/domain/selection-override.policy.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/domain/selection-override.policy.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/domain/squad-content.policy.ts",
+      "to": "src/modules/squads/errors/squad-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/domain/squad-content.policy.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/domain/squad-content.policy.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/domain/squad.state-machine.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/errors/availability-membership-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/errors/availability-membership-not-found.error.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/errors/candidate-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/errors/candidate-not-found.error.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/errors/eligibility-override-required.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/errors/eligibility-override-required.error.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/errors/selection-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/errors/selection-not-found.error.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/errors/squad-invalid-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/errors/squad-invalid-transition.error.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/errors/squad-locked.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/errors/squad-locked.error.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/errors/squad-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/errors/squad-not-found.error.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/errors/squad-scope-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/errors/squad-scope-not-found.error.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/errors/squad-validation.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/errors/squad-validation.error.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/errors/squad-version-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/errors/squad-version-conflict.error.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/index.ts",
+      "to": "src/modules/squads/squads.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-availability.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-availability.repository.ts",
+      "to": "src/modules/squads/lib/squads.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-availability.repository.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-availability.repository.ts",
+      "to": "src/modules/squads/model/squads.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-availability.repository.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-eligibility.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-eligibility.repository.ts",
+      "to": "src/modules/squads/lib/squads.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-eligibility.repository.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-eligibility.repository.ts",
+      "to": "src/modules/squads/model/squads.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-eligibility.repository.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-scope.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-scope.repository.ts",
+      "to": "src/modules/squads/model/squads.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-selection.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-selection.repository.ts",
+      "to": "src/modules/squads/lib/squads.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-selection.repository.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-selection.repository.ts",
+      "to": "src/modules/squads/model/squads.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad-selection.repository.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad.repository.ts",
+      "to": "src/modules/squads/lib/squads.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad.repository.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad.repository.ts",
+      "to": "src/modules/squads/model/squads.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/infrastructure/squad.repository.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads-command.mapper.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads-command.mapper.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads-command.mapper.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.builders.ts",
+      "to": "src/modules/squads/domain/squad.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.builders.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.builders.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.builders.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.helpers.ts",
+      "to": "src/modules/squads/model/squads.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.helpers.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.helpers.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.mapper.ts",
+      "to": "src/modules/squads/lib/squads.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.mapper.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.mapper.ts",
+      "to": "src/modules/squads/model/squads.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/lib/squads.mapper.ts",
+      "to": "src/modules/squads/model/squads.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/model/squads.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/model/squads.types.ts",
+      "to": "src/modules/squads/model/squads.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/api/squad-availability.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/api/squad-selections.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/api/squads.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/application/availability-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/application/create-squad.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/application/declare-availability.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/application/eligibility-report.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/application/remove-selection.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/application/select-player.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/application/selection-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/application/squad-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/application/squad-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/application/squad-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/application/transition-squad.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/infrastructure/squad-availability.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/infrastructure/squad-eligibility.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/infrastructure/squad-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/infrastructure/squad-selection.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/squads/squads.module.ts",
+      "to": "src/modules/squads/infrastructure/squad.repository.ts",
       "type": "internal"
     },
     {

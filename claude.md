@@ -104,6 +104,47 @@ Before writing code, run the IronNest Simple Code Ladder ([`rules/20-simple-read
 
 > **The best backend code is the code the next developer understands immediately.** Minimal code means minimum safe code. The complete readability/refactor/declaration/agent canon is [`rules/20`](rules/20-simple-readable-code.md)–[`rules/30`](rules/30-declaration-ownership.md), routed by [`context/simple-code-map.md`](context/simple-code-map.md), [`context/refactor-navigation.md`](context/refactor-navigation.md), and [`context/declaration-ownership-map.md`](context/declaration-ownership-map.md). Layer signatures do not hide anonymous contracts; DTOs use declarations rather than definite-assignment assertions; broad refactors are tests-first and responsibility-sliced.
 
+## Claude Code Subagents (Delegation Policy)
+
+This repository ships 14 runnable Claude Code subagents under [`.claude/agents/`](.claude/agents/README.md)
+(auto-discovered by Claude Code; not just documentation). They implement the same canon as the
+narrative role docs in [`agents/`](agents/README.md). Claude Code may select one automatically by
+matching the request against each subagent's `description:`, or be told explicitly to use one by
+name. Prefer delegating to the named subagent below over improvising the same work inline — each one
+reads the exact rules/context/skills files its job requires and is scoped to avoid overlapping another
+agent's responsibility.
+
+| Situation                                                                                                                 | Delegate to                    |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| A new feature, endpoint, or cross-module change needs scoping before code is touched                                      | `backend-planner`              |
+| Deciding where new code belongs, splitting a god-file, Service-vs-Use-case, wrapping a new vendor                         | `backend-architect`            |
+| Writing new NestJS application code for an already-scoped slice                                                           | `backend-implementer`          |
+| Restructuring existing code with **no** behavior change (god-file split, layer move, extraction)                          | `backend-refactor-agent`       |
+| Writing/extending Vitest tests, or closing a coverage gap                                                                 | `backend-test-engineer`        |
+| A test fails, a bug is reported, or behavior is unexpected — root-cause before fixing                                     | `backend-debugger`             |
+| Final correctness/architecture/style verdict before a change is declared done                                             | `backend-code-reviewer`        |
+| Any diff touching auth, sessions, tokens, permissions, resource ids, secrets, or user input reaching a query/regex/upload | `backend-security-reviewer`    |
+| List/pagination endpoints, N+1 risk, caching, hot paths, loops with awaits                                                | `backend-performance-reviewer` |
+| Any new query, repository method, migration, or entity index                                                              | `database-reviewer`            |
+| Logging, redaction, background jobs, integrations, error diagnosis                                                        | `observability-reviewer`       |
+| State mutations, external calls, migrations, startup/shutdown                                                             | `reliability-engineer`         |
+| Immediately before commit/push/merge/release — the final GO/NO-GO                                                         | `backend-release-gatekeeper`   |
+| Module docs, OpenAPI/contract docs, ADRs, memory files, runbooks, release notes need updating                             | `backend-documentation-writer` |
+
+Model policy: `backend-architect`, `backend-planner`, `backend-debugger`, `backend-code-reviewer`,
+`backend-security-reviewer`, `backend-performance-reviewer`, `database-reviewer`,
+`observability-reviewer`, `reliability-engineer`, and `backend-release-gatekeeper` run on **opus**
+(architecture, planning, debugging, and every review/gate agent). `backend-implementer`,
+`backend-refactor-agent`, `backend-test-engineer`, and `backend-documentation-writer` run on
+**sonnet** (implementation, testing, and documentation). No subagent in this repository uses Fable.
+
+Review/gate subagents are read-only by tool grant (`Read, Grep, Glob, Bash` — no `Edit`/`Write`): they
+report itemized findings and a verdict, they do not silently fix what they find. Design/build/fix
+subagents (`backend-planner`, `backend-architect`, `backend-implementer`, `backend-refactor-agent`,
+`backend-test-engineer`, `backend-debugger`, `backend-documentation-writer`) carry `Edit`/`Write` and
+produce the actual change. See [`.claude/agents/README.md`](.claude/agents/README.md) for the full
+roster and the non-overlap rationale.
+
 ## Standing Instruction To Claude Or Any AI Coding Agent
 
 You are operating inside a strict enterprise SDLC. This workflow is mandatory and must never be skipped, compressed away, ignored, or bypassed, even for small changes. Depth may scale by request size, but every phase and gate must still exist.
