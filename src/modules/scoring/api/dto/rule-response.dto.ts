@@ -4,7 +4,7 @@ import { CalculationRuleStatus } from '../../model/scoring.enums';
 import { RuleComponentResponseDto } from './rule-component-response.dto';
 
 /** A calculation-rule version with its weighted components. */
-export class RuleResponseDto {
+export class ScoringRuleResponseDto {
   @ApiProperty({ format: 'uuid' })
   declare readonly ruleId: string;
 

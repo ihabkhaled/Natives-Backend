@@ -15,7 +15,7 @@ import {
 } from '../../model/measurements.constants';
 
 /** Request body for scheduling a measurement session. */
-export class CreateSessionDto {
+export class CreateMeasurementSessionDto {
   @ApiProperty({
     minLength: SESSION_TITLE_MIN_LENGTH,
     maxLength: SESSION_TITLE_MAX_LENGTH,

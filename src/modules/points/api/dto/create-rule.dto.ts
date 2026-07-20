@@ -29,7 +29,7 @@ import { PointEntryDto } from './point-entry.dto';
  * activity category to a candidate value with optional cap/cooldown. A new rule is
  * never effective — an administrator must approve then publish it.
  */
-export class CreateRuleDto {
+export class CreatePointsRuleDto {
   @ApiProperty({
     minLength: RULE_KEY_MIN_LENGTH,
     maxLength: RULE_KEY_MAX_LENGTH,

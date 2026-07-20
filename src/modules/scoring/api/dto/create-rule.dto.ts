@@ -36,7 +36,7 @@ import { RuleComponentDto } from './rule-component.dto';
  * components bounds default to the legacy 0–5 configuration when omitted. Domain
  * rules further enforce unique categories and a valid effective window.
  */
-export class CreateRuleDto {
+export class CreateScoringRuleDto {
   @ApiProperty({
     minLength: RULE_KEY_MIN_LENGTH,
     maxLength: RULE_KEY_MAX_LENGTH,

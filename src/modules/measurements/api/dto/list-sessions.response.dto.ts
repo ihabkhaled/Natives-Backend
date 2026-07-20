@@ -1,11 +1,11 @@
 import { ApiProperty } from '@core/openapi';
 
-import { SessionResponseDto } from './session-response.dto';
+import { MeasurementSessionResponseDto } from './session-response.dto';
 
 /** A bounded page of measurement sessions. */
 export class ListSessionsResponseDto {
-  @ApiProperty({ type: [SessionResponseDto] })
-  declare readonly items: readonly SessionResponseDto[];
+  @ApiProperty({ type: [MeasurementSessionResponseDto] })
+  declare readonly items: readonly MeasurementSessionResponseDto[];
 
   @ApiProperty()
   declare readonly total: number;

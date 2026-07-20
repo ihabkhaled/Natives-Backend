@@ -42,13 +42,13 @@ import {
   SESSION_TRANSITION_ROUTE,
   TEAM_ID_PARAM,
 } from '../model/measurements.constants';
-import { CreateSessionDto } from './dto/create-session.dto';
+import { CreateMeasurementSessionDto } from './dto/create-session.dto';
 import { ListMeasurementsQueryDto } from './dto/list-measurements.query.dto';
 import { ListSessionsResponseDto } from './dto/list-sessions.response.dto';
 import { RecordMeasurementDto } from './dto/record-measurement.dto';
 import { RecordedMeasurementResponseDto } from './dto/recorded-measurement.response.dto';
 import { SessionDetailResponseDto } from './dto/session-detail-response.dto';
-import { SessionResponseDto } from './dto/session-response.dto';
+import { MeasurementSessionResponseDto } from './dto/session-response.dto';
 import { TransitionSessionDto } from './dto/transition-session.dto';
 
 /**
@@ -97,14 +97,14 @@ export class MeasurementSessionController {
   @RequirePermissions(Permission.MeasurementRecord)
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Schedule a measurement session' })
-  @ApiCreatedResponse({ type: SessionResponseDto })
+  @ApiCreatedResponse({ type: MeasurementSessionResponseDto })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   create(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
-    @Body() dto: CreateSessionDto,
+    @Body() dto: CreateMeasurementSessionDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<SessionResponseDto> {
+  ): Promise<MeasurementSessionResponseDto> {
     return this.createSession.execute(actor, teamId, {
       content: toSessionContent(dto),
     });
@@ -114,7 +114,7 @@ export class MeasurementSessionController {
   @RequirePermissions(Permission.MeasurementRecord)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Conduct or cancel a measurement session' })
-  @ApiOkResponse({ type: SessionResponseDto })
+  @ApiOkResponse({ type: MeasurementSessionResponseDto })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   transition(
@@ -122,7 +122,7 @@ export class MeasurementSessionController {
     @Param(SESSION_ID_PARAM, UuidValidationPipe) sessionId: string,
     @Body() dto: TransitionSessionDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<SessionResponseDto> {
+  ): Promise<MeasurementSessionResponseDto> {
     return this.transitionSession.execute(actor, teamId, sessionId, {
       transition: dto.transition,
       expectedRecordVersion: dto.expectedRecordVersion,

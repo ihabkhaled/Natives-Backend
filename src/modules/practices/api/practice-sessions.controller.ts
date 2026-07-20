@@ -45,12 +45,12 @@ import {
   TEAM_ID_PARAM,
 } from '../model/practices.constants';
 import { SessionStatus } from '../model/practices.enums';
-import { CreateSessionDto } from './dto/create-session.dto';
+import { CreatePracticeSessionDto } from './dto/create-session.dto';
 import { ListSessionsQueryDto } from './dto/list-sessions.query.dto';
 import { ListSessionsResponseDto } from './dto/list-sessions-response.dto';
 import { RescheduleSessionDto } from './dto/reschedule-session.dto';
 import { SessionHistoryResponseDto } from './dto/session-history-response.dto';
-import { SessionResponseDto } from './dto/session-response.dto';
+import { PracticeSessionResponseDto } from './dto/session-response.dto';
 import { SessionStatusDto } from './dto/session-status.dto';
 import { UpdateSessionDto } from './dto/update-session.dto';
 
@@ -71,15 +71,15 @@ export class PracticeSessionsController {
   @ApiOperation({ summary: 'Create a one-off practice session' })
   @ApiCreatedResponse({
     description: 'Session created',
-    type: SessionResponseDto,
+    type: PracticeSessionResponseDto,
   })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   create(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
-    @Body() dto: CreateSessionDto,
+    @Body() dto: CreatePracticeSessionDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<SessionResponseDto> {
+  ): Promise<PracticeSessionResponseDto> {
     return this.createSession.execute(actor, teamId, {
       seasonId: dto.seasonId ?? null,
       sessionType: dto.sessionType,
@@ -112,12 +112,12 @@ export class PracticeSessionsController {
   @Get(SESSION_BY_ID_ROUTE)
   @RequirePermissions(Permission.PracticeRead)
   @ApiOperation({ summary: 'Get a practice session' })
-  @ApiOkResponse({ description: 'Session', type: SessionResponseDto })
+  @ApiOkResponse({ description: 'Session', type: PracticeSessionResponseDto })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   get(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(SESSION_ID_PARAM, UuidValidationPipe) sessionId: string,
-  ): Promise<SessionResponseDto> {
+  ): Promise<PracticeSessionResponseDto> {
     return this.sessionQuery.getSession(teamId, sessionId);
   }
 
@@ -136,7 +136,10 @@ export class PracticeSessionsController {
   @Patch(SESSION_BY_ID_ROUTE)
   @RequirePermissions(Permission.PracticeManage)
   @ApiOperation({ summary: 'Update session details' })
-  @ApiOkResponse({ description: 'Session updated', type: SessionResponseDto })
+  @ApiOkResponse({
+    description: 'Session updated',
+    type: PracticeSessionResponseDto,
+  })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   update(
@@ -144,7 +147,7 @@ export class PracticeSessionsController {
     @Param(SESSION_ID_PARAM, UuidValidationPipe) sessionId: string,
     @Body() dto: UpdateSessionDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<SessionResponseDto> {
+  ): Promise<PracticeSessionResponseDto> {
     return this.updateSession.execute(actor, teamId, sessionId, {
       venueId: dto.venueId ?? null,
       field: dto.field ?? null,
@@ -158,7 +161,10 @@ export class PracticeSessionsController {
   @Post(SESSION_PUBLISH_ROUTE)
   @RequirePermissions(Permission.PracticeManage)
   @ApiOperation({ summary: 'Publish a session' })
-  @ApiOkResponse({ description: 'Session published', type: SessionResponseDto })
+  @ApiOkResponse({
+    description: 'Session published',
+    type: PracticeSessionResponseDto,
+  })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   publish(
@@ -166,7 +172,7 @@ export class PracticeSessionsController {
     @Param(SESSION_ID_PARAM, UuidValidationPipe) sessionId: string,
     @Body() dto: SessionStatusDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<SessionResponseDto> {
+  ): Promise<PracticeSessionResponseDto> {
     return this.transitionSession.execute(
       actor,
       teamId,
@@ -181,7 +187,7 @@ export class PracticeSessionsController {
   @ApiOperation({ summary: 'Reschedule a session' })
   @ApiOkResponse({
     description: 'Session rescheduled',
-    type: SessionResponseDto,
+    type: PracticeSessionResponseDto,
   })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
@@ -190,7 +196,7 @@ export class PracticeSessionsController {
     @Param(SESSION_ID_PARAM, UuidValidationPipe) sessionId: string,
     @Body() dto: RescheduleSessionDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<SessionResponseDto> {
+  ): Promise<PracticeSessionResponseDto> {
     return this.rescheduleSession.execute(actor, teamId, sessionId, {
       startsAt: dto.startsAt,
       endsAt: dto.endsAt,
@@ -206,7 +212,10 @@ export class PracticeSessionsController {
   @Post(SESSION_CANCEL_ROUTE)
   @RequirePermissions(Permission.PracticeManage)
   @ApiOperation({ summary: 'Cancel a session (keeps RSVP/attendance history)' })
-  @ApiOkResponse({ description: 'Session cancelled', type: SessionResponseDto })
+  @ApiOkResponse({
+    description: 'Session cancelled',
+    type: PracticeSessionResponseDto,
+  })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   cancel(
@@ -214,7 +223,7 @@ export class PracticeSessionsController {
     @Param(SESSION_ID_PARAM, UuidValidationPipe) sessionId: string,
     @Body() dto: SessionStatusDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<SessionResponseDto> {
+  ): Promise<PracticeSessionResponseDto> {
     return this.transitionSession.execute(
       actor,
       teamId,
@@ -227,7 +236,10 @@ export class PracticeSessionsController {
   @Post(SESSION_REOPEN_ROUTE)
   @RequirePermissions(Permission.PracticeManage)
   @ApiOperation({ summary: 'Re-open a cancelled session' })
-  @ApiOkResponse({ description: 'Session re-opened', type: SessionResponseDto })
+  @ApiOkResponse({
+    description: 'Session re-opened',
+    type: PracticeSessionResponseDto,
+  })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   reopen(
@@ -235,7 +247,7 @@ export class PracticeSessionsController {
     @Param(SESSION_ID_PARAM, UuidValidationPipe) sessionId: string,
     @Body() dto: SessionStatusDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<SessionResponseDto> {
+  ): Promise<PracticeSessionResponseDto> {
     return this.transitionSession.execute(
       actor,
       teamId,

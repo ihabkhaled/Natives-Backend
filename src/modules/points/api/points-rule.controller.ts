@@ -36,10 +36,10 @@ import {
   RULE_TRANSITION_ROUTE,
   TEAM_ID_PARAM,
 } from '../model/points.constants';
-import { CreateRuleDto } from './dto/create-rule.dto';
+import { CreatePointsRuleDto } from './dto/create-rule.dto';
 import { ListPointsQueryDto } from './dto/list-points.query.dto';
 import { ListRulesResponseDto } from './dto/list-rules.response.dto';
-import { RuleResponseDto } from './dto/rule-response.dto';
+import { PointsRuleResponseDto } from './dto/rule-response.dto';
 import { TransitionRuleDto } from './dto/transition-rule.dto';
 
 /**
@@ -76,14 +76,14 @@ export class PointsRuleController {
   @RequirePermissions(Permission.PointsRulesManage)
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create a draft points rule' })
-  @ApiCreatedResponse({ type: RuleResponseDto })
+  @ApiCreatedResponse({ type: PointsRuleResponseDto })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   create(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
-    @Body() dto: CreateRuleDto,
+    @Body() dto: CreatePointsRuleDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<RuleResponseDto> {
+  ): Promise<PointsRuleResponseDto> {
     return this.createRule.execute(actor, teamId, {
       content: toRuleContent(dto),
     });
@@ -93,7 +93,7 @@ export class PointsRuleController {
   @RequirePermissions(Permission.PointsRulesManage)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Approve, publish, revert, or retire a rule' })
-  @ApiOkResponse({ type: RuleResponseDto })
+  @ApiOkResponse({ type: PointsRuleResponseDto })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   transition(
@@ -101,7 +101,7 @@ export class PointsRuleController {
     @Param(RULE_ID_PARAM, UuidValidationPipe) ruleId: string,
     @Body() dto: TransitionRuleDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<RuleResponseDto> {
+  ): Promise<PointsRuleResponseDto> {
     return this.transitionRule.execute(actor, teamId, ruleId, {
       transition: dto.transition,
       expectedRecordVersion: dto.expectedRecordVersion,

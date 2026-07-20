@@ -2454,6 +2454,44 @@
         ],
         "type": "object"
       },
+      "CreateMeasurementSessionDto": {
+        "properties": {
+          "conditions": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "location": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "notes": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "scheduledAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 2,
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "scheduledAt"
+        ],
+        "type": "object"
+      },
       "CreateMetricDto": {
         "properties": {
           "applicability": {
@@ -2620,6 +2658,120 @@
         ],
         "type": "object"
       },
+      "CreatePointsRuleDto": {
+        "properties": {
+          "description": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "effectiveFrom": {
+            "nullable": true,
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "type": "object"
+          },
+          "effectiveTo": {
+            "nullable": true,
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "type": "object"
+          },
+          "name": {
+            "maxLength": 200,
+            "minLength": 2,
+            "type": "string"
+          },
+          "pointEntries": {
+            "items": {
+              "$ref": "#/components/schemas/PointEntryDto"
+            },
+            "type": "array"
+          },
+          "ruleKey": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "ruleKey",
+          "name",
+          "pointEntries"
+        ],
+        "type": "object"
+      },
+      "CreatePracticeSessionDto": {
+        "properties": {
+          "capacity": {
+            "maximum": 10000,
+            "minimum": 0,
+            "type": "number"
+          },
+          "endsAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "field": {
+            "maxLength": 120,
+            "type": "string"
+          },
+          "meetAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "notes": {
+            "maxLength": 2000,
+            "type": "string"
+          },
+          "organizerUserId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "rsvpCutoffAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "sessionType": {
+            "maxLength": 64,
+            "minLength": 1,
+            "type": "string"
+          },
+          "startsAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "timezone": {
+            "maxLength": 64,
+            "type": "string"
+          },
+          "venueId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "visibility": {
+            "enum": [
+              "team",
+              "coaches",
+              "public"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "sessionType",
+          "startsAt",
+          "endsAt"
+        ],
+        "type": "object"
+      },
       "CreateProtocolDto": {
         "properties": {
           "description": {
@@ -2737,52 +2889,6 @@
         ],
         "type": "object"
       },
-      "CreateRuleDto": {
-        "properties": {
-          "description": {
-            "maxLength": 2000,
-            "nullable": true,
-            "type": "object"
-          },
-          "effectiveFrom": {
-            "nullable": true,
-            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-            "type": "object"
-          },
-          "effectiveTo": {
-            "nullable": true,
-            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-            "type": "object"
-          },
-          "name": {
-            "maxLength": 200,
-            "minLength": 2,
-            "type": "string"
-          },
-          "pointEntries": {
-            "items": {
-              "$ref": "#/components/schemas/PointEntryDto"
-            },
-            "type": "array"
-          },
-          "ruleKey": {
-            "maxLength": 100,
-            "minLength": 2,
-            "type": "string"
-          },
-          "seasonId": {
-            "format": "uuid",
-            "nullable": true,
-            "type": "object"
-          }
-        },
-        "required": [
-          "ruleKey",
-          "name",
-          "pointEntries"
-        ],
-        "type": "object"
-      },
       "CreateScheduleDto": {
         "properties": {
           "defaultCapacity": {
@@ -2897,6 +3003,66 @@
         ],
         "type": "object"
       },
+      "CreateScoringRuleDto": {
+        "properties": {
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/RuleComponentDto"
+            },
+            "type": "array"
+          },
+          "description": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "effectiveFrom": {
+            "nullable": true,
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "type": "object"
+          },
+          "effectiveTo": {
+            "nullable": true,
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "type": "object"
+          },
+          "minComponents": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "name": {
+            "maxLength": 200,
+            "minLength": 2,
+            "type": "string"
+          },
+          "ruleKey": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "scaleMax": {
+            "maximum": 1000,
+            "minimum": 0,
+            "type": "number"
+          },
+          "scaleMin": {
+            "maximum": 1000,
+            "minimum": 0,
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "ruleKey",
+          "name",
+          "components"
+        ],
+        "type": "object"
+      },
       "CreateSeasonDto": {
         "properties": {
           "endsOn": {
@@ -2933,44 +3099,6 @@
           "name",
           "startsOn",
           "endsOn"
-        ],
-        "type": "object"
-      },
-      "CreateSessionDto": {
-        "properties": {
-          "conditions": {
-            "maxLength": 2000,
-            "nullable": true,
-            "type": "object"
-          },
-          "location": {
-            "maxLength": 2000,
-            "nullable": true,
-            "type": "object"
-          },
-          "notes": {
-            "maxLength": 2000,
-            "nullable": true,
-            "type": "object"
-          },
-          "scheduledAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "seasonId": {
-            "format": "uuid",
-            "nullable": true,
-            "type": "object"
-          },
-          "title": {
-            "maxLength": 200,
-            "minLength": 2,
-            "type": "string"
-          }
-        },
-        "required": [
-          "title",
-          "scheduledAt"
         ],
         "type": "object"
       },
@@ -3995,7 +4123,7 @@
           },
           "sessions": {
             "items": {
-              "$ref": "#/components/schemas/SessionResponseDto"
+              "$ref": "#/components/schemas/PracticeSessionResponseDto"
             },
             "type": "array"
           },
@@ -4969,7 +5097,7 @@
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/RuleResponseDto"
+              "$ref": "#/components/schemas/PointsRuleResponseDto"
             },
             "type": "array"
           },
@@ -5099,7 +5227,7 @@
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/SessionResponseDto"
+              "$ref": "#/components/schemas/MeasurementSessionResponseDto"
             },
             "type": "array"
           },
@@ -5380,6 +5508,88 @@
         },
         "required": [
           "status"
+        ],
+        "type": "object"
+      },
+      "MeasurementSessionResponseDto": {
+        "properties": {
+          "conditions": {
+            "nullable": true,
+            "type": "string"
+          },
+          "conductedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "location": {
+            "nullable": true,
+            "type": "string"
+          },
+          "notes": {
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "scheduledAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "scheduled",
+              "conducted",
+              "cancelled"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "teamId",
+          "seasonId",
+          "title",
+          "status",
+          "scheduledAt",
+          "conductedAt",
+          "location",
+          "conditions",
+          "notes",
+          "recordVersion",
+          "createdBy",
+          "createdAt",
+          "updatedAt"
         ],
         "type": "object"
       },
@@ -6894,6 +7104,114 @@
         ],
         "type": "object"
       },
+      "PointsRuleResponseDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "effectiveFrom": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "effectiveTo": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "pointEntries": {
+            "items": {
+              "$ref": "#/components/schemas/PointEntryResponseDto"
+            },
+            "type": "array"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "publishedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "retiredAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "ruleId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "ruleKey": {
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "approved",
+              "published",
+              "retired"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "ruleId",
+          "teamId",
+          "seasonId",
+          "ruleKey",
+          "version",
+          "name",
+          "description",
+          "status",
+          "pointEntries",
+          "effectiveFrom",
+          "effectiveTo",
+          "recordVersion",
+          "createdBy",
+          "publishedBy",
+          "publishedAt",
+          "retiredAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
       "PointsSummaryResponseDto": {
         "properties": {
           "badges": {
@@ -6921,6 +7239,141 @@
           "total",
           "entries",
           "badges"
+        ],
+        "type": "object"
+      },
+      "PracticeSessionResponseDto": {
+        "properties": {
+          "cancellationReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "capacity": {
+            "nullable": true,
+            "type": "number"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "nullable": true,
+            "type": "string"
+          },
+          "endsAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "field": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "meetAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "notes": {
+            "nullable": true,
+            "type": "string"
+          },
+          "occurrenceDate": {
+            "nullable": true,
+            "type": "string"
+          },
+          "organizerUserId": {
+            "nullable": true,
+            "type": "string"
+          },
+          "rsvpCutoffAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "scheduleId": {
+            "nullable": true,
+            "type": "string"
+          },
+          "seasonId": {
+            "nullable": true,
+            "type": "string"
+          },
+          "sessionType": {
+            "type": "string"
+          },
+          "startsAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "published",
+              "rescheduled",
+              "cancelled",
+              "completed",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedBy": {
+            "nullable": true,
+            "type": "string"
+          },
+          "venueId": {
+            "nullable": true,
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          },
+          "visibility": {
+            "enum": [
+              "team",
+              "coaches",
+              "public"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "teamId",
+          "seasonId",
+          "scheduleId",
+          "occurrenceDate",
+          "sessionType",
+          "timezone",
+          "venueId",
+          "field",
+          "capacity",
+          "meetAt",
+          "startsAt",
+          "endsAt",
+          "rsvpCutoffAt",
+          "visibility",
+          "organizerUserId",
+          "notes",
+          "status",
+          "cancellationReason",
+          "createdBy",
+          "updatedBy",
+          "createdAt",
+          "updatedAt",
+          "version"
         ],
         "type": "object"
       },
@@ -8340,114 +8793,6 @@
         ],
         "type": "object"
       },
-      "RuleResponseDto": {
-        "properties": {
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "createdBy": {
-            "format": "uuid",
-            "nullable": true,
-            "type": "string"
-          },
-          "description": {
-            "nullable": true,
-            "type": "string"
-          },
-          "effectiveFrom": {
-            "format": "date",
-            "nullable": true,
-            "type": "string"
-          },
-          "effectiveTo": {
-            "format": "date",
-            "nullable": true,
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "pointEntries": {
-            "items": {
-              "$ref": "#/components/schemas/PointEntryResponseDto"
-            },
-            "type": "array"
-          },
-          "publishedAt": {
-            "format": "date-time",
-            "nullable": true,
-            "type": "string"
-          },
-          "publishedBy": {
-            "format": "uuid",
-            "nullable": true,
-            "type": "string"
-          },
-          "recordVersion": {
-            "type": "number"
-          },
-          "retiredAt": {
-            "format": "date-time",
-            "nullable": true,
-            "type": "string"
-          },
-          "ruleId": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "ruleKey": {
-            "type": "string"
-          },
-          "seasonId": {
-            "format": "uuid",
-            "nullable": true,
-            "type": "string"
-          },
-          "status": {
-            "enum": [
-              "draft",
-              "approved",
-              "published",
-              "retired"
-            ],
-            "type": "string"
-          },
-          "teamId": {
-            "format": "uuid",
-            "nullable": true,
-            "type": "string"
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "version": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "ruleId",
-          "teamId",
-          "seasonId",
-          "ruleKey",
-          "version",
-          "name",
-          "description",
-          "status",
-          "pointEntries",
-          "effectiveFrom",
-          "effectiveTo",
-          "recordVersion",
-          "createdBy",
-          "publishedBy",
-          "publishedAt",
-          "retiredAt",
-          "createdAt",
-          "updatedAt"
-        ],
-        "type": "object"
-      },
       "ScaleResponseDto": {
         "properties": {
           "categoricalOptions": {
@@ -8937,6 +9282,126 @@
         ],
         "type": "object"
       },
+      "ScoringRuleResponseDto": {
+        "properties": {
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/RuleComponentResponseDto"
+            },
+            "type": "array"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "effectiveFrom": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "effectiveTo": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "minComponents": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "publishedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "retiredAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "ruleId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "ruleKey": {
+            "type": "string"
+          },
+          "scaleMax": {
+            "type": "number"
+          },
+          "scaleMin": {
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "approved",
+              "published",
+              "retired"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "ruleId",
+          "teamId",
+          "seasonId",
+          "ruleKey",
+          "version",
+          "name",
+          "description",
+          "status",
+          "scaleMin",
+          "scaleMax",
+          "minComponents",
+          "components",
+          "effectiveFrom",
+          "effectiveTo",
+          "recordVersion",
+          "createdBy",
+          "publishedBy",
+          "publishedAt",
+          "retiredAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
       "SeasonResponseDto": {
         "properties": {
           "createdAt": {
@@ -9023,7 +9488,7 @@
             "type": "array"
           },
           "session": {
-            "$ref": "#/components/schemas/SessionResponseDto"
+            "$ref": "#/components/schemas/MeasurementSessionResponseDto"
           }
         },
         "required": [
@@ -9069,88 +9534,6 @@
           "total",
           "limit",
           "offset"
-        ],
-        "type": "object"
-      },
-      "SessionResponseDto": {
-        "properties": {
-          "conditions": {
-            "nullable": true,
-            "type": "string"
-          },
-          "conductedAt": {
-            "format": "date-time",
-            "nullable": true,
-            "type": "string"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "createdBy": {
-            "format": "uuid",
-            "nullable": true,
-            "type": "string"
-          },
-          "id": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "location": {
-            "nullable": true,
-            "type": "string"
-          },
-          "notes": {
-            "nullable": true,
-            "type": "string"
-          },
-          "recordVersion": {
-            "type": "number"
-          },
-          "scheduledAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "seasonId": {
-            "format": "uuid",
-            "nullable": true,
-            "type": "string"
-          },
-          "status": {
-            "enum": [
-              "scheduled",
-              "conducted",
-              "cancelled"
-            ],
-            "type": "string"
-          },
-          "teamId": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "teamId",
-          "seasonId",
-          "title",
-          "status",
-          "scheduledAt",
-          "conductedAt",
-          "location",
-          "conditions",
-          "notes",
-          "recordVersion",
-          "createdBy",
-          "createdAt",
-          "updatedAt"
         ],
         "type": "object"
       },
@@ -13919,7 +14302,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateRuleDto"
+                "$ref": "#/components/schemas/CreateScoringRuleDto"
               }
             }
           },
@@ -13930,7 +14313,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RuleResponseDto"
+                  "$ref": "#/components/schemas/ScoringRuleResponseDto"
                 }
               }
             },
@@ -13975,7 +14358,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RuleResponseDto"
+                  "$ref": "#/components/schemas/ScoringRuleResponseDto"
                 }
               }
             },
@@ -14025,7 +14408,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RuleResponseDto"
+                  "$ref": "#/components/schemas/ScoringRuleResponseDto"
                 }
               }
             },
@@ -14135,7 +14518,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RuleResponseDto"
+                  "$ref": "#/components/schemas/ScoringRuleResponseDto"
                 }
               }
             },
@@ -16193,7 +16576,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateSessionDto"
+                "$ref": "#/components/schemas/CreateMeasurementSessionDto"
               }
             }
           },
@@ -16204,7 +16587,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SessionResponseDto"
+                  "$ref": "#/components/schemas/MeasurementSessionResponseDto"
                 }
               }
             },
@@ -16356,7 +16739,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SessionResponseDto"
+                  "$ref": "#/components/schemas/MeasurementSessionResponseDto"
                 }
               }
             },
@@ -18596,7 +18979,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateRuleDto"
+                "$ref": "#/components/schemas/CreatePointsRuleDto"
               }
             }
           },
@@ -18607,7 +18990,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RuleResponseDto"
+                  "$ref": "#/components/schemas/PointsRuleResponseDto"
                 }
               }
             },
@@ -18662,7 +19045,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RuleResponseDto"
+                  "$ref": "#/components/schemas/PointsRuleResponseDto"
                 }
               }
             },
@@ -19275,7 +19658,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateSessionDto"
+                "$ref": "#/components/schemas/CreatePracticeSessionDto"
               }
             }
           },
@@ -19286,7 +19669,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SessionResponseDto"
+                  "$ref": "#/components/schemas/PracticeSessionResponseDto"
                 }
               }
             },
@@ -19331,7 +19714,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SessionResponseDto"
+                  "$ref": "#/components/schemas/PracticeSessionResponseDto"
                 }
               }
             },
@@ -19381,7 +19764,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SessionResponseDto"
+                  "$ref": "#/components/schemas/PracticeSessionResponseDto"
                 }
               }
             },
@@ -20812,7 +21195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SessionResponseDto"
+                  "$ref": "#/components/schemas/PracticeSessionResponseDto"
                 }
               }
             },
@@ -20909,7 +21292,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SessionResponseDto"
+                  "$ref": "#/components/schemas/PracticeSessionResponseDto"
                 }
               }
             },
@@ -21090,7 +21473,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SessionResponseDto"
+                  "$ref": "#/components/schemas/PracticeSessionResponseDto"
                 }
               }
             },
@@ -21145,7 +21528,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SessionResponseDto"
+                  "$ref": "#/components/schemas/PracticeSessionResponseDto"
                 }
               }
             },

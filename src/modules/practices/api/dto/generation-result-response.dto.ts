@@ -1,6 +1,6 @@
 import { ApiProperty } from '@core/openapi';
 
-import { SessionResponseDto } from './session-response.dto';
+import { PracticeSessionResponseDto } from './session-response.dto';
 
 export class GenerationResultResponseDto {
   @ApiProperty({ description: 'Sessions newly created by this run' })
@@ -11,6 +11,6 @@ export class GenerationResultResponseDto {
   })
   declare readonly skipped: number;
 
-  @ApiProperty({ type: [SessionResponseDto] })
-  declare readonly sessions: readonly SessionResponseDto[];
+  @ApiProperty({ type: [PracticeSessionResponseDto] })
+  declare readonly sessions: readonly PracticeSessionResponseDto[];
 }

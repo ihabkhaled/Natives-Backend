@@ -23,7 +23,7 @@ import {
 } from '../../model/practices.constants';
 import { SessionVisibility } from '../../model/practices.enums';
 
-export class CreateSessionDto {
+export class CreatePracticeSessionDto {
   @ApiPropertyOptional({ format: 'uuid' })
   @IsOptional()
   @IsUUID()

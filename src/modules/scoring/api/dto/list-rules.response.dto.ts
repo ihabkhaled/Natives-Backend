@@ -1,11 +1,11 @@
 import { ApiProperty } from '@core/openapi';
 
-import { RuleResponseDto } from './rule-response.dto';
+import { ScoringRuleResponseDto } from './rule-response.dto';
 
 /** A bounded page of calculation rules. */
 export class ListRulesResponseDto {
-  @ApiProperty({ type: [RuleResponseDto] })
-  declare readonly items: readonly RuleResponseDto[];
+  @ApiProperty({ type: [ScoringRuleResponseDto] })
+  declare readonly items: readonly ScoringRuleResponseDto[];
 
   @ApiProperty()
   declare readonly total: number;

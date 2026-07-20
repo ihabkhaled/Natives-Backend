@@ -1,10 +1,10 @@
 import { ApiProperty } from '@core/openapi';
 
-import { SessionResponseDto } from './session-response.dto';
+import { PracticeSessionResponseDto } from './session-response.dto';
 
 export class ListSessionsResponseDto {
-  @ApiProperty({ type: [SessionResponseDto] })
-  declare readonly items: readonly SessionResponseDto[];
+  @ApiProperty({ type: [PracticeSessionResponseDto] })
+  declare readonly items: readonly PracticeSessionResponseDto[];
 
   @ApiProperty()
   declare readonly total: number;

@@ -3,7 +3,7 @@ import { ApiProperty } from '@core/openapi';
 import { SessionStatus } from '../../model/measurements.enums';
 
 /** A measurement session with its lifecycle state and scheduling metadata. */
-export class SessionResponseDto {
+export class MeasurementSessionResponseDto {
   @ApiProperty({ format: 'uuid' })
   declare readonly id: string;
 

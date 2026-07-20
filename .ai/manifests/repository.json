@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-20T10:53:08.217Z",
-  "treeHash": "sha256:95bbfc8237a4bc567031b08a658bc1a1631afb74df83f598feee63df80f4280e",
+  "generatedAt": "2026-07-20T11:31:00.558Z",
+  "treeHash": "sha256:3aad5bc24fd2e33dd031cefd00a7f71caaaf3d299384fdb5f46f24218b138bbc",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -2264,8 +2264,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1377bf5933ecd1d3c905f1ec3098f553a91158ed68c81b002c6b9df2fe930599",
-      "sizeBytes": 909
+      "hash": "sha256:2ea587d58860e4e59f4c42d5a75f376c32181486fe94b380070dbd4dcd8dc764",
+      "sizeBytes": 1434
     },
     {
       "path": "src/core/logger/logger.port.ts",
@@ -16547,14 +16547,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "CreateSessionDto"
+          "name": "CreateMeasurementSessionDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:35a432533a3ea6bedf3d562362f6f0ce15ce14684002f03151ae8bfc21b6baef",
-      "sizeBytes": 1419
+      "hash": "sha256:1c6dde7833eb976ba93c94267670cca55bc262a13f421000440c31c883fbae42",
+      "sizeBytes": 1430
     },
     {
       "path": "src/modules/measurements/api/dto/history-response.dto.ts",
@@ -16621,8 +16621,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:2a70226b91ab94276adcbfe31ea04a4ee7043ab95393fcc978d17fd021bae15b",
-      "sizeBytes": 457
+      "hash": "sha256:8b49f7e30fb9cd265a21032e4e4695e8ebeaa2eb2362e7ff2832e4b5d406afb8",
+      "sizeBytes": 490
     },
     {
       "path": "src/modules/measurements/api/dto/protocol-history-entry.response.dto.ts",
@@ -16723,8 +16723,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:f4756185d493d6cc3d96863c383d2fbd2094977eb1b5412ac9db2f42efd04e40",
-      "sizeBytes": 488
+      "hash": "sha256:519b0534f1a4d2487673e993c08819ef1dbdd6d53a41bf69acabde451f84e33e",
+      "sizeBytes": 521
     },
     {
       "path": "src/modules/measurements/api/dto/session-response.dto.ts",
@@ -16734,14 +16734,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "SessionResponseDto"
+          "name": "MeasurementSessionResponseDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b1ea9942dd678ce3e8704792d3fcf00e4fb10eec318649a3928de5a10d31002a",
-      "sizeBytes": 1451
+      "hash": "sha256:6f6f5dc0ab1f2e41ce6360e600aecac102f9b23118afc0aedce11738d0eb2455",
+      "sizeBytes": 1462
     },
     {
       "path": "src/modules/measurements/api/dto/transition-session.dto.ts",
@@ -16825,8 +16825,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ff33e12a0d31a528aefb45eb7a231f4d85cef3e7caa8e1dfe28ec565f96be2dc",
-      "sizeBytes": 5689
+      "hash": "sha256:3b60bf4833c9b0771f7461c228a581a117fe4a30d6a345c600fc2c8b8ff302d3",
+      "sizeBytes": 5766
     },
     {
       "path": "src/modules/measurements/application/create-measurement-protocol.use-case.spec.ts",
@@ -22533,14 +22533,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "CreateRuleDto"
+          "name": "CreatePointsRuleDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:76c5e763475e5227399e3c8bf0dacba34d415bfb92bee5e4a8b28d3d2ce8d642",
-      "sizeBytes": 2138
+      "hash": "sha256:93dc48f87dd9c58f83a99d53c94f57f43947ded93f6378f3db9bd128abe6f11a",
+      "sizeBytes": 2144
     },
     {
       "path": "src/modules/points/api/dto/leaderboard-row-response.dto.ts",
@@ -22641,8 +22641,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6f397d9d3bd5a7752b76bea65943ec633ce54976731c3944574630e485adff90",
-      "sizeBytes": 457
+      "hash": "sha256:e4efc97d8fd68a089e8cac8b78ceb4ac7cd50689519769acf01996b09b18b5c4",
+      "sizeBytes": 475
     },
     {
       "path": "src/modules/points/api/dto/player-badge-response.dto.ts",
@@ -22720,14 +22720,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "RuleResponseDto"
+          "name": "PointsRuleResponseDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:429a2753c220c2c245ae0126a54a98cfb9a0ec9dad382da43cde3a2285048e6c",
-      "sizeBytes": 1946
+      "hash": "sha256:b37d100a09ba933834a755be11d6a1d6eeccc7ed70f13573d09d5f023b9572ad",
+      "sizeBytes": 1952
     },
     {
       "path": "src/modules/points/api/dto/transition-rule.dto.ts",
@@ -22760,8 +22760,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6a173724a933cc31b03ba38948bcc8de51615a373e3ae602d7c2ddc15122b216",
-      "sizeBytes": 3782
+      "hash": "sha256:f7f371d9b649bb7a5f9057da8955efd0321fbb92f53077c05dec4ff9f0457111",
+      "sizeBytes": 3824
     },
     {
       "path": "src/modules/points/api/points-self.controller.ts",
@@ -25380,14 +25380,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "CreateSessionDto"
+          "name": "CreatePracticeSessionDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:5ff6a20b78cec13ee3e7ab6cbba83deda58581320ea03f1664d39083a3eb058a",
-      "sizeBytes": 2314
+      "hash": "sha256:2bb1d7f4f48589f629593bf422a1abe8b9898d8735a11514d52e883d2397b4d9",
+      "sizeBytes": 2322
     },
     {
       "path": "src/modules/practices/api/dto/create-station.dto.ts",
@@ -25471,8 +25471,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d4605cfcbc8e70c3ccac7c350741cce1902ba01e2d8a6510d346b6376fc5d948",
-      "sizeBytes": 493
+      "hash": "sha256:ddfa540d825b4f0287e7bf34a2ee8d62f7fa2f418ebdfb5905eaac5f60f5bcea",
+      "sizeBytes": 517
     },
     {
       "path": "src/modules/practices/api/dto/group-member-response.dto.ts",
@@ -25641,8 +25641,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:2dcaf7187731ec2c79353dc5ccf86e18b2f3f9b759f9d05efdafda22f182d1e1",
-      "sizeBytes": 410
+      "hash": "sha256:9231b5b7cf7bf17650949999b190b1de33bb620f973edb3dae6df0ac89dfd46f",
+      "sizeBytes": 434
     },
     {
       "path": "src/modules/practices/api/dto/list-sessions.query.dto.ts",
@@ -25949,14 +25949,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "SessionResponseDto"
+          "name": "PracticeSessionResponseDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:dfdd493c52f1aeaf7b872d6304e7a933fd000fdd89124d79495dbd7aa8796891",
-      "sizeBytes": 2251
+      "hash": "sha256:6d13b097d0f18f8efe0c2709341fb2b4ee393a8de7b0915040beb0a0e29e8068",
+      "sizeBytes": 2259
     },
     {
       "path": "src/modules/practices/api/dto/session-status.dto.ts",
@@ -26193,8 +26193,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d7dcbc3e250ba686caba0ac1762f496cef9995520cd0234bf744ebc88be94ea6",
-      "sizeBytes": 9244
+      "hash": "sha256:9d0c474caa33e9d478579667ab7ced4abe73d0800895bcd399cb77c37acc2731",
+      "sizeBytes": 9424
     },
     {
       "path": "src/modules/practices/api/public-practice-calendar.controller.ts",
@@ -32480,8 +32480,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b0b6a8c6aaa4b15f944c2378926966fb565b3349ab0f2d2ab06f37adbcf641c0",
-      "sizeBytes": 6267
+      "hash": "sha256:90e99b62cc0f3da4018df2888829448bfa5b8c4c5ca7de6afb5f4ac44a8c1154",
+      "sizeBytes": 6344
     },
     {
       "path": "src/modules/scoring/api/dto/create-rule.dto.ts",
@@ -32491,14 +32491,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "CreateRuleDto"
+          "name": "CreateScoringRuleDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:903cbde680220071f9705c5e646027b3f0faa450e60005c0f628b09cd3080f71",
-      "sizeBytes": 2799
+      "hash": "sha256:9f4f78a00023f6932f8943fdcbcaba6065cddf0eb556664bcaf34e262f407417",
+      "sizeBytes": 2806
     },
     {
       "path": "src/modules/scoring/api/dto/list-rules.response.dto.ts",
@@ -32514,8 +32514,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:180d47ea9d247f70f8b7cde501cbdd01848c223ab2182644f4901b29e44121c4",
-      "sizeBytes": 439
+      "hash": "sha256:b941945f252d943fc217f40b2b25cb5827facb34fd364a01be9b817dc423dd44",
+      "sizeBytes": 460
     },
     {
       "path": "src/modules/scoring/api/dto/list-scores.response.dto.ts",
@@ -32627,14 +32627,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "RuleResponseDto"
+          "name": "ScoringRuleResponseDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1d32fcd728a72e1c2acb805de69e5886214cc221e8eb815d3e88cfc488d2ea33",
-      "sizeBytes": 2144
+      "hash": "sha256:4e9ce566d1d0d040422968bae136aac35cd440ddc6530ab1cd558d435159d00e",
+      "sizeBytes": 2151
     },
     {
       "path": "src/modules/scoring/api/dto/score-component.response.dto.ts",
@@ -32786,8 +32786,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:302e9b657bb6f0aac480d832c915955b4087f95dd68d65bb3da9983325d686f5",
-      "sizeBytes": 566
+      "hash": "sha256:a64c216c2bef6ae282bfcbdb48021650bc98b1e53dc5c65769673c6520ba9cf7",
+      "sizeBytes": 580
     },
     {
       "path": "src/modules/scoring/api/score-self.controller.ts",

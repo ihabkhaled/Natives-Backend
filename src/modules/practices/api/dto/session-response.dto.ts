@@ -2,7 +2,7 @@ import { ApiProperty } from '@core/openapi';
 
 import { SessionStatus, SessionVisibility } from '../../model/practices.enums';
 
-export class SessionResponseDto {
+export class PracticeSessionResponseDto {
   @ApiProperty()
   declare readonly id: string;
 

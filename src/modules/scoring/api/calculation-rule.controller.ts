@@ -41,10 +41,10 @@ import {
   SCORING_API_TAG,
   TEAM_ID_PARAM,
 } from '../model/scoring.constants';
-import { CreateRuleDto } from './dto/create-rule.dto';
+import { CreateScoringRuleDto } from './dto/create-rule.dto';
 import { ListRulesResponseDto } from './dto/list-rules.response.dto';
 import { ListScoringQueryDto } from './dto/list-scoring.query.dto';
-import { RuleResponseDto } from './dto/rule-response.dto';
+import { ScoringRuleResponseDto } from './dto/rule-response.dto';
 import { SimulateRuleDto } from './dto/simulate-rule.dto';
 import { SimulationResponseDto } from './dto/simulation-response.dto';
 import { TransitionRuleDto } from './dto/transition-rule.dto';
@@ -85,12 +85,12 @@ export class CalculationRuleController {
   @Get(RULE_DETAIL_ROUTE)
   @RequirePermissions(Permission.PointsRulesManage)
   @ApiOperation({ summary: 'Read one calculation rule with its components' })
-  @ApiOkResponse({ type: RuleResponseDto })
+  @ApiOkResponse({ type: ScoringRuleResponseDto })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   detail(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(RULE_ID_PARAM, UuidValidationPipe) ruleId: string,
-  ): Promise<RuleResponseDto> {
+  ): Promise<ScoringRuleResponseDto> {
     return this.query.getDetail(teamId, ruleId);
   }
 
@@ -98,14 +98,14 @@ export class CalculationRuleController {
   @RequirePermissions(Permission.PointsRulesManage)
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create a draft calculation rule' })
-  @ApiCreatedResponse({ type: RuleResponseDto })
+  @ApiCreatedResponse({ type: ScoringRuleResponseDto })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   create(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
-    @Body() dto: CreateRuleDto,
+    @Body() dto: CreateScoringRuleDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<RuleResponseDto> {
+  ): Promise<ScoringRuleResponseDto> {
     return this.createRule.execute(actor, teamId, {
       content: toRuleContent(dto),
     });
@@ -115,7 +115,7 @@ export class CalculationRuleController {
   @RequirePermissions(Permission.PointsRulesManage)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Edit a draft calculation rule' })
-  @ApiOkResponse({ type: RuleResponseDto })
+  @ApiOkResponse({ type: ScoringRuleResponseDto })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   update(
@@ -123,7 +123,7 @@ export class CalculationRuleController {
     @Param(RULE_ID_PARAM, UuidValidationPipe) ruleId: string,
     @Body() dto: UpdateRuleDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<RuleResponseDto> {
+  ): Promise<ScoringRuleResponseDto> {
     return this.updateRule.execute(actor, teamId, ruleId, {
       expectedRecordVersion: dto.expectedRecordVersion,
       content: toRuleContent(dto),
@@ -134,7 +134,7 @@ export class CalculationRuleController {
   @RequirePermissions(Permission.PointsRulesManage)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Approve, publish, revert, or retire a rule' })
-  @ApiOkResponse({ type: RuleResponseDto })
+  @ApiOkResponse({ type: ScoringRuleResponseDto })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   transition(
@@ -142,7 +142,7 @@ export class CalculationRuleController {
     @Param(RULE_ID_PARAM, UuidValidationPipe) ruleId: string,
     @Body() dto: TransitionRuleDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<RuleResponseDto> {
+  ): Promise<ScoringRuleResponseDto> {
     return this.transitionRule.execute(actor, teamId, ruleId, {
       transition: dto.transition,
       expectedRecordVersion: dto.expectedRecordVersion,

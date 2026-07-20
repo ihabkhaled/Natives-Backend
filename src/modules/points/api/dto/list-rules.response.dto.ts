@@ -1,11 +1,11 @@
 import { ApiProperty } from '@core/openapi';
 
-import { RuleResponseDto } from './rule-response.dto';
+import { PointsRuleResponseDto } from './rule-response.dto';
 
 /** A bounded page of points-rule versions and candidates. */
 export class ListRulesResponseDto {
-  @ApiProperty({ type: [RuleResponseDto] })
-  declare readonly items: readonly RuleResponseDto[];
+  @ApiProperty({ type: [PointsRuleResponseDto] })
+  declare readonly items: readonly PointsRuleResponseDto[];
 
   @ApiProperty()
   declare readonly total: number;

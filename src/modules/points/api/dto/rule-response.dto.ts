@@ -4,7 +4,7 @@ import { PointsRuleStatus } from '../../model/points.enums';
 import { PointEntryResponseDto } from './point-entry-response.dto';
 
 /** A points-rule version with its per-category value set. */
-export class RuleResponseDto {
+export class PointsRuleResponseDto {
   @ApiProperty({ format: 'uuid' })
   declare readonly ruleId: string;
 
