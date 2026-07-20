@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { RBAC_ROLE_CATALOG_MAX } from '../model/rbac.constants';
 import { GrantEffect } from '../model/rbac.enums';
 import type { RoleAssignmentRow } from '../model/rbac.rows';
 import type { NewRoleAssignment } from '../model/rbac.types';
@@ -230,5 +231,46 @@ describe('RbacRepository', () => {
     expect(scope.run.mock.calls[0]?.[1]?.[3]).toBe(
       JSON.stringify({ targetUserId: 'user-1', teamId: null }),
     );
+  });
+
+  it('reads the flattened role catalog under an explicit bound', async () => {
+    scope.run.mockResolvedValue([
+      { role_key: 'MEMBER', permission_key: 'team.read' },
+    ]);
+
+    const rows = await repository.listRoleCatalog(scope as never);
+
+    expect(rows).toEqual([{ role_key: 'MEMBER', permission_key: 'team.read' }]);
+    expect(scope.run.mock.calls[0]?.[0]).toContain('LIMIT $1');
+    expect(scope.run.mock.calls[0]?.[1]).toEqual([RBAC_ROLE_CATALOG_MAX]);
+  });
+
+  it('lists only the unrevoked assignments bound to one team', async () => {
+    scope.run.mockResolvedValue([
+      {
+        id: 'a1',
+        user_id: 'user-1',
+        role_id: 'role-1',
+        role_key: 'COACH',
+        team_id: 'team-1',
+        season_id: null,
+        effective_from: NOW,
+        effective_to: null,
+        granted_by: null,
+        revoked_at: null,
+        created_at: NOW,
+        version: 1,
+      },
+    ]);
+
+    const rows = await repository.listActiveTeamAssignments(
+      scope as never,
+      'user-1',
+      'team-1',
+    );
+
+    expect(rows[0]?.roleKey).toBe('COACH');
+    expect(scope.run.mock.calls[0]?.[0]).toContain('"revoked_at" IS NULL');
+    expect(scope.run.mock.calls[0]?.[1]).toEqual(['user-1', 'team-1']);
   });
 });

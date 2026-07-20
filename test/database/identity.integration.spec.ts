@@ -16,6 +16,7 @@ import { AcceptInvitationUseCase } from '@modules/identity/application/accept-in
 import { CreateInvitationUseCase } from '@modules/identity/application/create-invitation.use-case';
 import { LoginUseCase } from '@modules/identity/application/login.use-case';
 import { LogoutAllUseCase } from '@modules/identity/application/logout-all.use-case';
+import type { PrincipalMembershipsService } from '@modules/identity/application/principal-memberships.service';
 import { RefreshSessionUseCase } from '@modules/identity/application/refresh-session.use-case';
 import { RequestPasswordResetUseCase } from '@modules/identity/application/request-password-reset.use-case';
 import { ResetPasswordUseCase } from '@modules/identity/application/reset-password.use-case';
@@ -108,6 +109,11 @@ function buildWiring(dataSource: DataSource, secureRandom: SecureRandomPort) {
     resolve: () => Promise.resolve(new Set(['practice.read', 'team.read'])),
   };
   const config = { identity: IDENTITY_CONFIG } as unknown as AppConfigService;
+  // The principal projection is exercised end-to-end in test/members.e2e-spec.ts;
+  // this suite drives the identity repositories, so it stubs the members surface.
+  const principalMemberships = {
+    resolve: () => Promise.resolve([]),
+  } as unknown as PrincipalMembershipsService;
 
   const users = new UserRepository();
   const credentials = new PasswordCredentialRepository();
@@ -159,6 +165,7 @@ function buildWiring(dataSource: DataSource, secureRandom: SecureRandomPort) {
       failedLogins,
       audit,
       sessionIssuer,
+      principalMemberships,
     ),
     refresh: new RefreshSessionUseCase(
       unitOfWork,

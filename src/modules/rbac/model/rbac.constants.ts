@@ -38,3 +38,8 @@ export const RBAC_ESCALATION_DENIED_MESSAGE =
   'Cannot grant permissions beyond your own within this scope';
 export const RBAC_ESCALATION_DENIED_MESSAGE_KEY: ErrorMessageKey =
   'errors.rbac.escalationDenied';
+
+// --- Bounded read limits -----------------------------------------------------
+// The seeded catalog is five bundles over ~90 permissions. The bound keeps the
+// flattened catalog read explicitly capped rather than trusting table size.
+export const RBAC_ROLE_CATALOG_MAX = 5000;

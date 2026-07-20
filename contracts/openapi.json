@@ -390,6 +390,22 @@
         ],
         "type": "object"
       },
+      "AssignMemberRolesDto": {
+        "properties": {
+          "roles": {
+            "description": "Role slugs, lower-snake (member, coach, team_admin, …)",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 16,
+            "type": "array"
+          }
+        },
+        "required": [
+          "roles"
+        ],
+        "type": "object"
+      },
       "AssignRoleDto": {
         "properties": {
           "effectiveTo": {
@@ -892,10 +908,38 @@
       },
       "AuthMembershipDto": {
         "properties": {
+          "membershipId": {
+            "type": "string"
+          },
+          "roles": {
+            "description": "Lower-snake role slugs live in this team scope",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
           "seasonId": {
+            "nullable": true,
             "type": "string"
           },
           "seasonName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "seasonSlug": {
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "invited",
+              "active",
+              "inactive",
+              "suspended",
+              "left",
+              "archived",
+              "anonymized"
+            ],
             "type": "string"
           },
           "teamId": {
@@ -903,13 +947,21 @@
           },
           "teamName": {
             "type": "string"
+          },
+          "teamSlug": {
+            "type": "string"
           }
         },
         "required": [
+          "membershipId",
           "teamId",
+          "teamSlug",
           "teamName",
           "seasonId",
-          "seasonName"
+          "seasonSlug",
+          "seasonName",
+          "status",
+          "roles"
         ],
         "type": "object"
       },
@@ -3485,6 +3537,199 @@
         ],
         "type": "object"
       },
+      "DashboardBreakdownRowDto": {
+        "properties": {
+          "displayValue": {
+            "nullable": true,
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "labelKey": {
+            "description": "i18n key; raw server copy is never rendered",
+            "type": "string"
+          },
+          "value": {
+            "nullable": true,
+            "type": "number"
+          }
+        },
+        "required": [
+          "key",
+          "labelKey",
+          "value",
+          "displayValue"
+        ],
+        "type": "object"
+      },
+      "DashboardMetricDto": {
+        "properties": {
+          "displayValue": {
+            "nullable": true,
+            "type": "string"
+          },
+          "tone": {
+            "enum": [
+              "positive",
+              "neutral",
+              "attention",
+              "critical"
+            ],
+            "type": "string"
+          },
+          "unit": {
+            "enum": [
+              "percent",
+              "points",
+              "rank"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "value": {
+            "nullable": true,
+            "type": "number"
+          }
+        },
+        "required": [
+          "value",
+          "displayValue",
+          "unit",
+          "tone"
+        ],
+        "type": "object"
+      },
+      "DashboardSummaryResponseDto": {
+        "properties": {
+          "generatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "persona": {
+            "enum": [
+              "member",
+              "coach",
+              "administrator"
+            ],
+            "type": "string"
+          },
+          "widgets": {
+            "items": {
+              "$ref": "#/components/schemas/DashboardWidgetDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "persona",
+          "generatedAt",
+          "widgets"
+        ],
+        "type": "object"
+      },
+      "DashboardTaskDto": {
+        "properties": {
+          "count": {
+            "nullable": true,
+            "type": "number"
+          },
+          "id": {
+            "type": "string"
+          },
+          "labelKey": {
+            "description": "i18n key; raw server copy is never rendered",
+            "type": "string"
+          },
+          "occurredAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "tone": {
+            "enum": [
+              "positive",
+              "neutral",
+              "attention",
+              "critical"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "labelKey",
+          "count",
+          "tone",
+          "occurredAt"
+        ],
+        "type": "object"
+      },
+      "DashboardWidgetDto": {
+        "properties": {
+          "asOf": {
+            "description": "Per-widget freshness instant reported by its own source",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "member-schedule",
+              "member-attendance",
+              "member-standing",
+              "member-activity",
+              "member-feedback",
+              "member-profile",
+              "coach-sessions",
+              "coach-attention",
+              "coach-assessments",
+              "coach-roster",
+              "admin-lifecycle"
+            ],
+            "type": "string"
+          },
+          "metric": {
+            "$ref": "#/components/schemas/DashboardMetricDto"
+          },
+          "presentation": {
+            "enum": [
+              "metric",
+              "breakdown",
+              "tasks"
+            ],
+            "type": "string"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/DashboardBreakdownRowDto"
+            },
+            "type": "array"
+          },
+          "status": {
+            "enum": [
+              "ready",
+              "empty",
+              "partial",
+              "unavailable"
+            ],
+            "type": "string"
+          },
+          "tasks": {
+            "items": {
+              "$ref": "#/components/schemas/DashboardTaskDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "kind",
+          "presentation",
+          "status",
+          "asOf"
+        ],
+        "type": "object"
+      },
       "DeclareAvailabilityDto": {
         "properties": {
           "availability": {
@@ -5513,7 +5758,7 @@
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/MeasurementSessionResponseDto"
+              "$ref": "#/components/schemas/PracticeSessionResponseDto"
             },
             "type": "array"
           },
@@ -6086,6 +6331,34 @@
         },
         "required": [
           "items"
+        ],
+        "type": "object"
+      },
+      "MemberRolesResponseDto": {
+        "properties": {
+          "assignableRoles": {
+            "description": "Role slugs the acting principal may set here — their privilege ceiling",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "membershipId": {
+            "description": "The membership these roles belong to",
+            "type": "string"
+          },
+          "roles": {
+            "description": "Role slugs the member currently holds in this team, sorted, lower-snake (for example team_admin)",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "membershipId",
+          "roles",
+          "assignableRoles"
         ],
         "type": "object"
       },
@@ -12586,6 +12859,44 @@
         ]
       }
     },
+    "/dashboard/summary": {
+      "get": {
+        "operationId": "Dashboard.read",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "teamId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardSummaryResponseDto"
+                }
+              }
+            },
+            "description": "Summary projection"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden, or not a member of the team"
+          }
+        },
+        "summary": "Permission-aware dashboard summary for the calling principal",
+        "tags": [
+          "dashboard"
+        ]
+      }
+    },
     "/health": {
       "get": {
         "operationId": "Health.check",
@@ -18219,6 +18530,113 @@
         "summary": "Update a member profile",
         "tags": [
           "members"
+        ]
+      }
+    },
+    "/teams/{teamId}/members/{membershipId}/roles": {
+      "get": {
+        "operationId": "MemberRoles.read",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "membershipId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MemberRolesResponseDto"
+                }
+              }
+            },
+            "description": "Member roles"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Member not found in this team"
+          }
+        },
+        "summary": "Read the roles a member holds in this team plus the actor ceiling",
+        "tags": [
+          "member-roles"
+        ]
+      },
+      "put": {
+        "operationId": "MemberRoles.assign",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "membershipId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignMemberRolesDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MemberRolesResponseDto"
+                }
+              }
+            },
+            "description": "Reconciled member roles"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden or privilege ceiling exceeded"
+          },
+          "404": {
+            "description": "Member or role not found"
+          },
+          "409": {
+            "description": "Member has no linked account"
+          }
+        },
+        "summary": "Replace the roles a member holds in this team",
+        "tags": [
+          "member-roles"
         ]
       }
     },

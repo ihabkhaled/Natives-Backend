@@ -411,3 +411,61 @@ export interface JerseyReservation {
   readonly membershipId: string;
   readonly jerseyNumber: number;
 }
+
+/**
+ * One membership of the calling principal, enriched with the team and season
+ * labels a client needs to choose an active team context. Season fields are
+ * null when the team has no resolvable (non-archived) season — never a blank
+ * placeholder. Read-only projection: it is never persisted in this shape.
+ */
+export interface MembershipContext {
+  readonly membershipId: string;
+  readonly teamId: string;
+  readonly teamSlug: string;
+  readonly teamName: string;
+  readonly seasonId: string | null;
+  readonly seasonSlug: string | null;
+  readonly seasonName: string | null;
+  readonly status: MembershipStatus;
+  readonly joinedAt: Date | null;
+}
+
+/**
+ * Membership-scoped role projection: the role slugs this member holds inside the
+ * team, plus the slugs the acting principal may set (their privilege ceiling).
+ * Roles themselves are owned by the RBAC module; this is only the membership
+ * addressing of them.
+ */
+export interface MemberRolesView {
+  readonly membershipId: string;
+  readonly roles: readonly string[];
+  readonly assignableRoles: readonly string[];
+}
+
+/** A bounded roster count with the instant that makes it fresh, or nulls. */
+export interface MemberCountSignal {
+  readonly count: number | null;
+  readonly asOf: Date | null;
+}
+
+/**
+ * Read-only members signals published for cross-module dashboards. Completeness
+ * is a percentage projected from the profile on read — never stored — and every
+ * value is null when nothing has been measured, never a zero.
+ */
+export interface MemberDashboardSignals {
+  readonly profileCompletenessPercent: number | null;
+  readonly profileAsOf: Date | null;
+  readonly invitedMembers: MemberCountSignal;
+}
+
+export interface MemberSignalScope {
+  readonly teamId: string;
+  readonly membershipId: string | null;
+}
+
+/** The profile-completeness half of the members dashboard signals. */
+export interface MemberProfileSignal {
+  readonly profileCompletenessPercent: number | null;
+  readonly profileAsOf: Date | null;
+}

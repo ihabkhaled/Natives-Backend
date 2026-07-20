@@ -7,6 +7,7 @@ import { ArticlesModule } from '@modules/articles';
 import { AssessmentsModule } from '@modules/assessments';
 import { AuthModule } from '@modules/auth';
 import { CompetitionsModule } from '@modules/competitions';
+import { DashboardModule } from '@modules/dashboard';
 import { DevelopmentModule } from '@modules/development';
 import { IdentityModule } from '@modules/identity';
 import { MeasurementsModule } from '@modules/measurements';
@@ -47,6 +48,7 @@ import { Module } from '@nestjs/common';
     PointsModule,
     CompetitionsModule,
     SquadsModule,
+    DashboardModule,
     ArticlesModule,
   ],
 })

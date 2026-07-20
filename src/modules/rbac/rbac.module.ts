@@ -9,7 +9,10 @@ import { GetEffectivePermissionsUseCase } from './application/get-effective-perm
 import { ListUserAssignmentsUseCase } from './application/list-user-assignments.use-case';
 import { PrivilegeCeilingService } from './application/privilege-ceiling.service';
 import { RbacPermissionResolverService } from './application/rbac-permission-resolver.service';
+import { ReplaceTeamRolesUseCase } from './application/replace-team-roles.use-case';
 import { RevokeRoleAssignmentUseCase } from './application/revoke-role-assignment.use-case';
+import { RoleAssignmentQueryService } from './application/role-assignment-query.service';
+import { TeamRoleQueryService } from './application/team-role-query.service';
 import { RbacRepository } from './infrastructure/rbac.repository';
 
 /**
@@ -26,8 +29,11 @@ import { RbacRepository } from './infrastructure/rbac.repository';
   providers: [
     RbacRepository,
     PrivilegeCeilingService,
+    RoleAssignmentQueryService,
+    TeamRoleQueryService,
     AssignRoleUseCase,
     RevokeRoleAssignmentUseCase,
+    ReplaceTeamRolesUseCase,
     ListUserAssignmentsUseCase,
     GetEffectivePermissionsUseCase,
     RbacPermissionResolverService,
@@ -36,6 +42,11 @@ import { RbacRepository } from './infrastructure/rbac.repository';
       useExisting: RbacPermissionResolverService,
     },
   ],
-  exports: [EFFECTIVE_PERMISSION_RESOLVER_PORT],
+  exports: [
+    EFFECTIVE_PERMISSION_RESOLVER_PORT,
+    RoleAssignmentQueryService,
+    TeamRoleQueryService,
+    ReplaceTeamRolesUseCase,
+  ],
 })
 export class RbacModule {}

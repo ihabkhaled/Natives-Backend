@@ -46,7 +46,12 @@ export class PrivilegeCeilingService {
     }
   }
 
-  private async resolveActorPermissions(
+  /**
+   * The actor's authoritative permission set for `target` (baseline ∪ scoped
+   * assignments, read fresh, never the resolver cache). Public so the roles
+   * projection can render the same ceiling the write path enforces.
+   */
+  async resolveActorPermissions(
     scope: TransactionScope,
     actor: AuthUserIdentity,
     target: PermissionScope,

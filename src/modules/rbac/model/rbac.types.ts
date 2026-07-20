@@ -88,3 +88,28 @@ export interface EffectivePermissionsView {
   readonly seasonId: string | null;
   readonly permissions: readonly string[];
 }
+
+/** One role of the catalog with the permission keys its bundle grants. */
+export interface RoleBundleRecord {
+  readonly roleKey: string;
+  readonly permissions: readonly string[];
+}
+
+/** The roles a membership holds in a team plus the roles the actor may set. */
+export interface TeamRolesView {
+  readonly roles: readonly string[];
+  readonly assignableRoles: readonly string[];
+}
+
+/** Replace-the-set command for a user's team-scoped role assignments. */
+export interface ReplaceTeamRolesCommand {
+  readonly userId: string;
+  readonly teamId: string;
+  readonly roleKeys: readonly string[];
+}
+
+/** The grants to add and the assignments to revoke to reach a requested set. */
+export interface RoleSetDiff {
+  readonly toGrant: readonly string[];
+  readonly toRevoke: readonly RoleAssignment[];
+}

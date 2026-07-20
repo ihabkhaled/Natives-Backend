@@ -6,6 +6,7 @@ import {
 } from '../model/identity.constants';
 import { AccountState, UserStatus } from '../model/identity.enums';
 import type {
+  AuthMembershipPayload,
   AuthUserPayload,
   DeviceSessionList,
   Invitation,
@@ -47,6 +48,7 @@ export function toPrincipal(user: User): Principal {
 export function buildAuthUserPayload(
   user: User,
   permissions: readonly string[],
+  memberships: readonly AuthMembershipPayload[],
 ): AuthUserPayload {
   return {
     id: user.id,
@@ -55,7 +57,7 @@ export function buildAuthUserPayload(
     permissions,
     accountState: toAccountState(user.status),
     onboardingComplete: true,
-    memberships: [],
+    memberships,
   };
 }
 
@@ -72,20 +74,21 @@ export function toAccountState(status: UserStatus): AccountState {
 
 /**
  * Assemble the login response the frontend contract expects: the token pair plus
- * the enriched principal (display name, resolved permission keys, account state).
- * Memberships are empty until the members context feeds team/season names in.
+ * the enriched principal (display name, resolved permission keys, account state,
+ * and the real team/season memberships resolved from the members module).
  */
 export function buildLoginResponse(
   session: IssuedSession,
   user: User,
   permissions: readonly string[],
+  memberships: readonly AuthMembershipPayload[],
 ): LoginResponse {
   return {
     tokens: {
       accessToken: session.accessToken,
       refreshToken: session.refreshToken,
     },
-    user: buildAuthUserPayload(user, permissions),
+    user: buildAuthUserPayload(user, permissions, memberships),
   };
 }
 

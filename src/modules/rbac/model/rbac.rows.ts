@@ -43,3 +43,9 @@ export interface RoleAssignmentRow {
 export interface AffectedRow {
   readonly id: string;
 }
+
+/** One (role, permission) pair of the seeded catalog, flattened for grouping. */
+export interface RoleCatalogRow {
+  readonly role_key: string;
+  readonly permission_key: string;
+}

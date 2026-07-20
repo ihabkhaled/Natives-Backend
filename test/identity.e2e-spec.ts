@@ -17,6 +17,8 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { BaselineSchema1721200000000 } from '../src/database/migrations/1721200000000-baseline-schema';
 import { IdentitySchema1721300000000 } from '../src/database/migrations/1721300000000-identity-schema';
 import { RbacSchema1721400000000 } from '../src/database/migrations/1721400000000-rbac-schema';
+import { TeamsSchema1721500000000 } from '../src/database/migrations/1721500000000-teams-schema';
+import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -62,6 +64,8 @@ async function migrateAndSeed(): Promise<SeededFixture | null> {
         BaselineSchema1721200000000,
         IdentitySchema1721300000000,
         RbacSchema1721400000000,
+        TeamsSchema1721500000000,
+        MembersSchema1721600000000,
       ],
     });
     await dataSource.initialize();
@@ -128,6 +132,8 @@ describeIfDb(suiteTitle, () => {
   afterAll(async () => {
     await app.close();
     if (seededDataSource) {
+      await seededDataSource.undoLastMigration();
+      await seededDataSource.undoLastMigration();
       await seededDataSource.undoLastMigration();
       await seededDataSource.undoLastMigration();
       await seededDataSource.undoLastMigration();
@@ -212,6 +218,7 @@ describeIfDb(suiteTitle, () => {
     expect(response.body.email).toBe(MEMBER_EMAIL);
     expect(response.body.accountState).toBe('active');
     expect(response.body.permissions).toBeInstanceOf(Array);
+    // A principal with no membership row gets an empty list, never a placeholder.
     expect(response.body.memberships).toEqual([]);
   });
 

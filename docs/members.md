@@ -135,7 +135,22 @@ Allowed vs `403 permissionDenied` (forbidden role, suspended account, wrong team
 alias conflict / media-not-scanned. Every protected op checks auth + permission + team
 scope + ownership/lifecycle + field shaping.
 
-## 8. Deferred (documented)
+## 8. Public surface (what other modules may consume)
+
+The members module exports exactly two services through its barrel; everything else stays
+private, and no other module imports its internals.
+
+| Export                          | Purpose                                                                                                                                                                                                                                                    |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `MembershipContextService`      | The **calling principal's own** memberships joined to their team and resolved season labels. Self-scoped: the caller passes the user id taken from a verified token. Consumed by identity to populate `GET /auth/me` — see [`identity.md`](./identity.md). |
+| `MemberDashboardSignalsService` | Bounded roster/profile projections for the dashboard summary — see [`dashboard.md`](./dashboard.md).                                                                                                                                                       |
+
+Member **role assignment** is addressed here but owned by RBAC: the membership-scoped
+route `…/members/{membershipId}/roles` delegates entirely to the RBAC public surface and
+models no roles of its own. See [`member-roles.md`](./member-roles.md) for the
+canonical-placement decision and the contract.
+
+## 9. Deferred (documented)
 
 - **Season-scoped rostering.** `season_id` is an optional forward-looking tag on a
   membership; season/team consistency checks and per-season jersey scope are owned by the

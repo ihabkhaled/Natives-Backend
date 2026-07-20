@@ -9,6 +9,7 @@ import { AssessmentTemplateController } from './api/assessment-template.controll
 import { PlayerAssessmentController } from './api/player-assessment.controller';
 import { PlayerAssessmentSelfController } from './api/player-assessment-self.controller';
 import { ArchiveMetricUseCase } from './application/archive-metric.use-case';
+import { AssessmentDashboardSignalsService } from './application/assessment-dashboard-signals.service';
 import { AssessmentQueryService } from './application/assessment-query.service';
 import { AssessmentScopeService } from './application/assessment-scope.service';
 import { CorrectPlayerAssessmentUseCase } from './application/correct-player-assessment.use-case';
@@ -26,6 +27,7 @@ import { ReviewPlayerAssessmentUseCase } from './application/review-player-asses
 import { SubmitPlayerAssessmentUseCase } from './application/submit-player-assessment.use-case';
 import { UpdatePlayerAssessmentUseCase } from './application/update-player-assessment.use-case';
 import { AssessmentCatalogRepository } from './infrastructure/assessment-catalog.repository';
+import { AssessmentDashboardRepository } from './infrastructure/assessment-dashboard.repository';
 import { AssessmentScopeRepository } from './infrastructure/assessment-scope.repository';
 import { PlayerAssessmentRepository } from './infrastructure/player-assessment.repository';
 
@@ -48,6 +50,8 @@ import { PlayerAssessmentRepository } from './infrastructure/player-assessment.r
     PlayerAssessmentSelfController,
   ],
   providers: [
+    AssessmentDashboardRepository,
+    AssessmentDashboardSignalsService,
     AssessmentCatalogRepository,
     AssessmentScopeRepository,
     PlayerAssessmentRepository,
@@ -69,5 +73,6 @@ import { PlayerAssessmentRepository } from './infrastructure/player-assessment.r
     PublishPlayerAssessmentUseCase,
     CorrectPlayerAssessmentUseCase,
   ],
+  exports: [AssessmentDashboardSignalsService],
 })
 export class AssessmentsModule {}

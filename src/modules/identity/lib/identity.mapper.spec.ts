@@ -95,7 +95,7 @@ describe('toAccountState', () => {
 describe('buildLoginResponse', () => {
   it('builds the exact nested login contract', () => {
     expect(
-      buildLoginResponse(SESSION, USER, ['practice.read', 'team.read']),
+      buildLoginResponse(SESSION, USER, ['practice.read', 'team.read'], []),
     ).toEqual({
       tokens: {
         accessToken: 'access-token',
@@ -118,6 +118,7 @@ describe('buildLoginResponse', () => {
       SESSION,
       { ...USER, displayName: null },
       [],
+      [],
     );
 
     expect(response.user.displayName).toBe(USER.email);
@@ -126,7 +127,7 @@ describe('buildLoginResponse', () => {
 
 describe('buildAuthUserPayload', () => {
   it('builds the frontend auth-user contract without tokens', () => {
-    expect(buildAuthUserPayload(USER, ['practice.read'])).toEqual({
+    expect(buildAuthUserPayload(USER, ['practice.read'], [])).toEqual({
       id: USER.id,
       email: USER.email,
       displayName: 'Coach',
@@ -139,7 +140,7 @@ describe('buildAuthUserPayload', () => {
 
   it('uses the email when the user has no display name', () => {
     expect(
-      buildAuthUserPayload({ ...USER, displayName: null }, []).displayName,
+      buildAuthUserPayload({ ...USER, displayName: null }, [], []).displayName,
     ).toBe(USER.email);
   });
 });

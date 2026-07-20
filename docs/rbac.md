@@ -174,7 +174,21 @@ UUID PKs, `timestamptz` UTC, snake_case, soft-revoke via `revoked_at`, optimisti
 the app/domain layers are vendor-free and use the `UnitOfWorkPort` + `TransactionScope`
 with parameterized SQL and static column lists.
 
-## 7. Deferred (documented)
+## 7. Public surface (what other modules may consume)
+
+| Export                               | Purpose                                                                                         |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `EFFECTIVE_PERMISSION_RESOLVER_PORT` | The core resolver binding the global `PermissionsGuard` uses.                                   |
+| `RoleAssignmentQueryService`         | A user's unrevoked assignments, and the subset **live** at the current clock reading.           |
+| `TeamRoleQueryService`               | The role slugs a user holds inside one team, plus the actor's assignable ceiling.               |
+| `ReplaceTeamRolesUseCase`            | Reconcile a user's team role set in one transaction — ceiling-checked, version-bumped, audited. |
+| `toRoleSlug` / `toRoleKey`           | The only translator between stored keys (`TEAM_ADMIN`) and client slugs (`team_admin`).         |
+
+These back the membership-scoped roles route documented in
+[`member-roles.md`](./member-roles.md) and the `memberships[].roles` field of the
+principal payload ([`identity.md`](./identity.md)).
+
+## 8. Deferred (documented)
 
 - **Per-user grant/deny overrides table.** The resolution algorithm already supports
   `deny` grants (deny wins), and the deny path is unit-tested, but the DB overrides
@@ -182,7 +196,7 @@ with parameterized SQL and static column lists.
 - **Team/season foreign keys.** `team_id` / `season_id` are currently plain nullable
   UUID scope columns; membership linkage (FKs to teams/seasons) is refined in prompt 104.
 
-## 8. Testing
+## 9. Testing
 
 - **Unit** — catalog completeness, bundle composition, effective-permission resolution
   (union, scope filtering, effective-date windows, deny precedence, determinism), cache

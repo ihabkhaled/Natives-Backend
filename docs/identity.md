@@ -172,15 +172,53 @@ for web/mobile clients:
     "permissions": ["practice.read", "team.read"],
     "accountState": "active",
     "onboardingComplete": true,
-    "memberships": []
+    "memberships": [
+      {
+        "membershipId": "<uuid>",
+        "teamId": "<uuid>",
+        "teamSlug": "ultimate-natives",
+        "teamName": "Ultimate Natives",
+        "seasonId": "<uuid|null>",
+        "seasonSlug": "2026",
+        "seasonName": "Season 2026",
+        "status": "active",
+        "roles": ["coach", "member"]
+      }
+    ]
   }
 }
 ```
 
 Internal `active` maps to client `active`, `invited` maps to `pending`, and all
 other non-authenticating lifecycle states map to `suspended`. Permission keys are
-sorted for deterministic clients. `memberships` remains empty until the members
-bounded context exposes the required team/season-name projection.
+sorted for deterministic clients.
+
+### `memberships` — the principal's team contexts
+
+`GET /api/v1/auth/me` returns the same `user` payload, and both routes populate
+`memberships` from real data. This is what lets a client establish a team context
+instead of guessing.
+
+- **Self-scoped by construction.** The user id comes from the verified token and is
+  passed to the members public surface (`MembershipContextService`), so a principal can
+  only ever see their own memberships. Soft-deleted rows are excluded; the read is
+  bounded (`MEMBERSHIP_CONTEXT_MAX`).
+- **Two bounded queries, never one per membership.** One join over
+  `memberships → teams → seasons`, plus one read of the caller's live role assignments
+  through the RBAC public surface. The projection itself is pure
+  (`lib/membership-payload.mapper.ts`).
+- **Season context is resolved, not invented.** A membership bound to a season reports it.
+  A team-level membership reports the team's season covering today, falling back to the
+  latest non-archived season. A team with no season at all reports
+  `seasonId`/`seasonSlug`/`seasonName` as `null` — never a blank placeholder.
+- **Status is the real lifecycle state** (`invited`, `active`, `inactive`, `suspended`,
+  `left`, `archived`, `anonymized`), so a client can render a suspended membership
+  honestly instead of hiding it.
+- **`roles` is informational.** It carries the lower-snake role slugs live in that
+  team/season scope (see [`member-roles.md`](./member-roles.md)) so navigation can be
+  shaped without a second round trip. Authorization is always decided from
+  `permissions`, never from these slugs.
+- A principal with no memberships gets `[]`.
 
 ## Explicit local administrator bootstrap
 

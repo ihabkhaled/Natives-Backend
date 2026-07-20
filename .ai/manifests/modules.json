@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T14:56:14.190Z",
+  "generatedAt": "2026-07-20T17:05:56.633Z",
   "modules": [
     {
       "name": "activities",
@@ -208,6 +208,7 @@
           "src/modules/assessments/application/update-player-assessment.use-case.ts"
         ],
         "service": [
+          "src/modules/assessments/application/assessment-dashboard-signals.service.ts",
           "src/modules/assessments/application/assessment-query.service.ts",
           "src/modules/assessments/application/assessment-scope.service.ts",
           "src/modules/assessments/application/player-assessment-lookup.service.ts",
@@ -236,13 +237,15 @@
         ],
         "repository": [
           "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+          "src/modules/assessments/infrastructure/assessment-dashboard.repository.ts",
           "src/modules/assessments/infrastructure/assessment-scope.repository.ts",
           "src/modules/assessments/infrastructure/player-assessment.repository.ts"
         ],
         "lib": [
           "src/modules/assessments/lib/assessments.helpers.ts",
           "src/modules/assessments/lib/player-assessments.builders.ts",
-          "src/modules/assessments/lib/player-assessments.mapper.ts"
+          "src/modules/assessments/lib/player-assessments.mapper.ts",
+          "src/modules/assessments/lib/signals.mapper.ts"
         ],
         "model": [
           "src/modules/assessments/model/assessments.constants.ts",
@@ -252,11 +255,14 @@
           "src/modules/assessments/model/player-assessments.constants.ts",
           "src/modules/assessments/model/player-assessments.enums.ts",
           "src/modules/assessments/model/player-assessments.rows.ts",
-          "src/modules/assessments/model/player-assessments.types.ts"
+          "src/modules/assessments/model/player-assessments.types.ts",
+          "src/modules/assessments/model/signals.constants.ts",
+          "src/modules/assessments/model/signals.rows.ts",
+          "src/modules/assessments/model/signals.types.ts"
         ]
       },
-      "fileCount": 85,
-      "specCount": 25,
+      "fileCount": 91,
+      "specCount": 28,
       "publicSurface": "src/modules/assessments/index.ts",
       "hasEvents": false
     },
@@ -377,6 +383,49 @@
       "fileCount": 69,
       "specCount": 29,
       "publicSurface": "src/modules/competitions/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "dashboard",
+      "path": "src/modules/dashboard",
+      "layers": {
+        "controller": [
+          "src/modules/dashboard/api/dashboard.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/dashboard/api/dto/dashboard-summary-response.dto.ts",
+          "src/modules/dashboard/api/dto/dashboard-summary.query.dto.ts"
+        ],
+        "service": [
+          "src/modules/dashboard/application/dashboard-scope.service.ts",
+          "src/modules/dashboard/application/dashboard-signals.service.ts",
+          "src/modules/dashboard/application/dashboard-summary.service.ts"
+        ],
+        "other": [
+          "src/modules/dashboard/dashboard.module.ts",
+          "src/modules/dashboard/errors/dashboard-team-forbidden.error.ts",
+          "src/modules/dashboard/index.ts"
+        ],
+        "domain": [
+          "src/modules/dashboard/domain/dashboard-persona.policy.ts",
+          "src/modules/dashboard/domain/dashboard-tone.policy.ts",
+          "src/modules/dashboard/domain/widget-visibility.policy.ts"
+        ],
+        "lib": [
+          "src/modules/dashboard/lib/dashboard-summary.assembler.ts",
+          "src/modules/dashboard/lib/dashboard-value.formatters.ts",
+          "src/modules/dashboard/lib/dashboard-widget.builders.ts",
+          "src/modules/dashboard/lib/member-widgets.builder.ts"
+        ],
+        "model": [
+          "src/modules/dashboard/model/dashboard.constants.ts",
+          "src/modules/dashboard/model/dashboard.enums.ts",
+          "src/modules/dashboard/model/dashboard.types.ts"
+        ]
+      },
+      "fileCount": 19,
+      "specCount": 11,
+      "publicSurface": "src/modules/dashboard/index.ts",
       "hasEvents": false
     },
     {
@@ -537,6 +586,7 @@
           "src/modules/identity/application/revoke-session.use-case.ts"
         ],
         "service": [
+          "src/modules/identity/application/principal-memberships.service.ts",
           "src/modules/identity/application/security-audit.service.ts",
           "src/modules/identity/application/session-issuer.service.ts"
         ],
@@ -571,6 +621,7 @@
         "lib": [
           "src/modules/identity/lib/identity.helpers.ts",
           "src/modules/identity/lib/identity.mapper.ts",
+          "src/modules/identity/lib/membership-payload.mapper.ts",
           "src/modules/identity/lib/token-hash.ts"
         ],
         "model": [
@@ -580,8 +631,8 @@
           "src/modules/identity/model/identity.types.ts"
         ]
       },
-      "fileCount": 69,
-      "specCount": 42,
+      "fileCount": 71,
+      "specCount": 44,
       "publicSurface": "src/modules/identity/index.ts",
       "hasEvents": false
     },
@@ -678,12 +729,14 @@
         "api-dto": [
           "src/modules/members/api/dto/add-alias.dto.ts",
           "src/modules/members/api/dto/alias-response.dto.ts",
+          "src/modules/members/api/dto/assign-member-roles.dto.ts",
           "src/modules/members/api/dto/avatar-response.dto.ts",
           "src/modules/members/api/dto/invite-member.dto.ts",
           "src/modules/members/api/dto/list-members.query.dto.ts",
           "src/modules/members/api/dto/media-asset-response.dto.ts",
           "src/modules/members/api/dto/member-directory-response.dto.ts",
           "src/modules/members/api/dto/member-history-response.dto.ts",
+          "src/modules/members/api/dto/member-roles-response.dto.ts",
           "src/modules/members/api/dto/member-view-response.dto.ts",
           "src/modules/members/api/dto/membership-response.dto.ts",
           "src/modules/members/api/dto/player-profile.dto.ts",
@@ -694,6 +747,7 @@
         ],
         "controller": [
           "src/modules/members/api/member-media.controller.ts",
+          "src/modules/members/api/member-roles.controller.ts",
           "src/modules/members/api/members.controller.ts"
         ],
         "use-case": [
@@ -702,6 +756,7 @@
           "src/modules/members/application/invite-member.use-case.ts",
           "src/modules/members/application/record-media-scan.use-case.ts",
           "src/modules/members/application/remove-member-alias.use-case.ts",
+          "src/modules/members/application/replace-member-roles.use-case.ts",
           "src/modules/members/application/request-avatar-upload.use-case.ts",
           "src/modules/members/application/set-member-avatar.use-case.ts",
           "src/modules/members/application/transition-member.use-case.ts",
@@ -711,10 +766,13 @@
           "src/modules/members/application/get-avatar.service.ts",
           "src/modules/members/application/member-access.service.ts",
           "src/modules/members/application/member-alias-query.service.ts",
+          "src/modules/members/application/member-dashboard-signals.service.ts",
           "src/modules/members/application/member-directory.service.ts",
           "src/modules/members/application/member-history.service.ts",
           "src/modules/members/application/member-lookup.service.ts",
-          "src/modules/members/application/member-view.service.ts"
+          "src/modules/members/application/member-roles.service.ts",
+          "src/modules/members/application/member-view.service.ts",
+          "src/modules/members/application/membership-context.service.ts"
         ],
         "domain": [
           "src/modules/members/domain/alias-normalization.policy.ts",
@@ -722,7 +780,8 @@
           "src/modules/members/domain/media-validation.policy.ts",
           "src/modules/members/domain/member-age.policy.ts",
           "src/modules/members/domain/member-privacy.policy.ts",
-          "src/modules/members/domain/membership-lifecycle.state-machine.ts"
+          "src/modules/members/domain/membership-lifecycle.state-machine.ts",
+          "src/modules/members/domain/profile-completeness.policy.ts"
         ],
         "other": [
           "src/modules/members/errors/alias-conflict.error.ts",
@@ -732,6 +791,7 @@
           "src/modules/members/errors/media-not-found.error.ts",
           "src/modules/members/errors/media-not-scanned.error.ts",
           "src/modules/members/errors/media-validation.error.ts",
+          "src/modules/members/errors/member-account-required.error.ts",
           "src/modules/members/errors/membership-conflict.error.ts",
           "src/modules/members/errors/membership-not-found.error.ts",
           "src/modules/members/errors/optimistic-conflict.error.ts",
@@ -744,14 +804,18 @@
           "src/modules/members/infrastructure/media-asset.repository.ts",
           "src/modules/members/infrastructure/member-alias.repository.ts",
           "src/modules/members/infrastructure/member-audit.repository.ts",
+          "src/modules/members/infrastructure/member-dashboard.repository.ts",
           "src/modules/members/infrastructure/member-profile.repository.ts",
+          "src/modules/members/infrastructure/membership-context.repository.ts",
           "src/modules/members/infrastructure/membership.repository.ts",
           "src/modules/members/infrastructure/status-event.repository.ts",
           "src/modules/members/infrastructure/team-scope.repository.ts"
         ],
         "lib": [
+          "src/modules/members/lib/member-signals.mapper.ts",
           "src/modules/members/lib/member.mapper.ts",
           "src/modules/members/lib/members.helpers.ts",
+          "src/modules/members/lib/membership-context.mapper.ts",
           "src/modules/members/lib/profile-input.mapper.ts"
         ],
         "model": [
@@ -761,8 +825,8 @@
           "src/modules/members/model/members.types.ts"
         ]
       },
-      "fileCount": 68,
-      "specCount": 33,
+      "fileCount": 81,
+      "specCount": 43,
       "publicSurface": "src/modules/members/index.ts",
       "hasEvents": false
     },
@@ -878,6 +942,7 @@
           "src/modules/points/application/badge-sync.service.ts",
           "src/modules/points/application/leaderboard-data.service.ts",
           "src/modules/points/application/leaderboard-query.service.ts",
+          "src/modules/points/application/points-dashboard-signals.service.ts",
           "src/modules/points/application/points-query.service.ts",
           "src/modules/points/application/points-scope.service.ts",
           "src/modules/points/application/points-summary.service.ts",
@@ -910,6 +975,7 @@
         "repository": [
           "src/modules/points/infrastructure/badge.repository.ts",
           "src/modules/points/infrastructure/leaderboard.repository.ts",
+          "src/modules/points/infrastructure/points-dashboard.repository.ts",
           "src/modules/points/infrastructure/points-ledger.repository.ts",
           "src/modules/points/infrastructure/points-rule.repository.ts",
           "src/modules/points/infrastructure/points-scope.repository.ts"
@@ -921,7 +987,8 @@
           "src/modules/points/lib/points-command.mapper.ts",
           "src/modules/points/lib/points.builders.ts",
           "src/modules/points/lib/points.helpers.ts",
-          "src/modules/points/lib/points.mapper.ts"
+          "src/modules/points/lib/points.mapper.ts",
+          "src/modules/points/lib/signals.mapper.ts"
         ],
         "model": [
           "src/modules/points/model/leaderboard.constants.ts",
@@ -930,11 +997,13 @@
           "src/modules/points/model/points.constants.ts",
           "src/modules/points/model/points.enums.ts",
           "src/modules/points/model/points.rows.ts",
-          "src/modules/points/model/points.types.ts"
+          "src/modules/points/model/points.types.ts",
+          "src/modules/points/model/signals.rows.ts",
+          "src/modules/points/model/signals.types.ts"
         ]
       },
-      "fileCount": 63,
-      "specCount": 30,
+      "fileCount": 68,
+      "specCount": 33,
       "publicSurface": "src/modules/points/index.ts",
       "hasEvents": false
     },
@@ -1042,6 +1111,7 @@
           "src/modules/practices/application/drill-catalog.service.ts",
           "src/modules/practices/application/drill-query.service.ts",
           "src/modules/practices/application/participation-query.service.ts",
+          "src/modules/practices/application/practice-dashboard-signals.service.ts",
           "src/modules/practices/application/practice-lookup.service.ts",
           "src/modules/practices/application/practice-reminder-admin.service.ts",
           "src/modules/practices/application/rsvp-query.service.ts",
@@ -1129,6 +1199,7 @@
           "src/modules/practices/infrastructure/calendar-feed-token.repository.ts",
           "src/modules/practices/infrastructure/drill.repository.ts",
           "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+          "src/modules/practices/infrastructure/practice-dashboard.repository.ts",
           "src/modules/practices/infrastructure/practice-reminder.repository.ts",
           "src/modules/practices/infrastructure/practice-rsvp-revision.repository.ts",
           "src/modules/practices/infrastructure/practice-rsvp.repository.ts",
@@ -1151,7 +1222,8 @@
           "src/modules/practices/lib/practices.helpers.ts",
           "src/modules/practices/lib/rsvp.builders.ts",
           "src/modules/practices/lib/rsvp.helpers.ts",
-          "src/modules/practices/lib/rsvp.mapper.ts"
+          "src/modules/practices/lib/rsvp.mapper.ts",
+          "src/modules/practices/lib/signals.mapper.ts"
         ],
         "model": [
           "src/modules/practices/model/agendas.constants.ts",
@@ -1173,11 +1245,14 @@
           "src/modules/practices/model/rsvp.constants.ts",
           "src/modules/practices/model/rsvp.enums.ts",
           "src/modules/practices/model/rsvp.rows.ts",
-          "src/modules/practices/model/rsvp.types.ts"
+          "src/modules/practices/model/rsvp.types.ts",
+          "src/modules/practices/model/signals.constants.ts",
+          "src/modules/practices/model/signals.rows.ts",
+          "src/modules/practices/model/signals.types.ts"
         ]
       },
-      "fileCount": 213,
-      "specCount": 63,
+      "fileCount": 219,
+      "specCount": 66,
       "publicSurface": "src/modules/practices/index.ts",
       "hasEvents": false
     },
@@ -1199,16 +1274,21 @@
           "src/modules/rbac/application/assign-role.use-case.ts",
           "src/modules/rbac/application/get-effective-permissions.use-case.ts",
           "src/modules/rbac/application/list-user-assignments.use-case.ts",
+          "src/modules/rbac/application/replace-team-roles.use-case.ts",
           "src/modules/rbac/application/revoke-role-assignment.use-case.ts"
         ],
         "service": [
           "src/modules/rbac/application/privilege-ceiling.service.ts",
-          "src/modules/rbac/application/rbac-permission-resolver.service.ts"
+          "src/modules/rbac/application/rbac-permission-resolver.service.ts",
+          "src/modules/rbac/application/role-assignment-query.service.ts",
+          "src/modules/rbac/application/team-role-query.service.ts"
         ],
         "domain": [
+          "src/modules/rbac/domain/assignment-window.policy.ts",
           "src/modules/rbac/domain/effective-permissions.policy.ts",
           "src/modules/rbac/domain/permission-scope.policy.ts",
-          "src/modules/rbac/domain/privilege-ceiling.policy.ts"
+          "src/modules/rbac/domain/privilege-ceiling.policy.ts",
+          "src/modules/rbac/domain/role-set-diff.policy.ts"
         ],
         "other": [
           "src/modules/rbac/errors/assignment-not-found.error.ts",
@@ -1221,7 +1301,9 @@
           "src/modules/rbac/infrastructure/rbac.repository.ts"
         ],
         "lib": [
-          "src/modules/rbac/lib/rbac.helpers.ts"
+          "src/modules/rbac/lib/rbac.helpers.ts",
+          "src/modules/rbac/lib/role-catalog.mapper.ts",
+          "src/modules/rbac/lib/role-slug.mapper.ts"
         ],
         "model": [
           "src/modules/rbac/model/rbac.constants.ts",
@@ -1230,8 +1312,8 @@
           "src/modules/rbac/model/rbac.types.ts"
         ]
       },
-      "fileCount": 26,
-      "specCount": 14,
+      "fileCount": 33,
+      "specCount": 21,
       "publicSurface": "src/modules/rbac/index.ts",
       "hasEvents": false
     },

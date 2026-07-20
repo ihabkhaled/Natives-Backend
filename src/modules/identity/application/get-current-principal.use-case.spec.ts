@@ -31,13 +31,16 @@ function build() {
     resolve: vi.fn().mockResolvedValue(new Set(['team.read', 'practice.read'])),
   };
 
+  const memberships = { resolve: vi.fn().mockResolvedValue([]) };
+
   const useCase = new GetCurrentPrincipalUseCase(
     unitOfWork as never,
     permissionResolver,
     users as never,
+    memberships as never,
   );
 
-  return { permissionResolver, useCase, users };
+  return { memberships, permissionResolver, useCase, users };
 }
 
 describe('GetCurrentPrincipalUseCase', () => {

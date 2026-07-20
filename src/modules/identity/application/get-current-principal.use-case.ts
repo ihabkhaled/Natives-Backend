@@ -17,11 +17,14 @@ import {
   toAuthUserIdentity,
 } from '../lib/identity.mapper';
 import type { AuthUserPayload, User } from '../model/identity.types';
+import { PrincipalMembershipsService } from './principal-memberships.service';
 
 /**
  * Resolves the current principal for GET /me. Re-checks live user state on every
  * call so a token belonging to a user who was deactivated, suspended, or deleted
- * mid-session is rejected with a generic error.
+ * mid-session is rejected with a generic error, then attaches the principal's own
+ * team memberships (with their live role slugs) so the client can establish a
+ * team context without guessing.
  */
 @Injectable()
 export class GetCurrentPrincipalUseCase {
@@ -30,6 +33,7 @@ export class GetCurrentPrincipalUseCase {
     @Inject(EFFECTIVE_PERMISSION_RESOLVER_PORT)
     private readonly permissionResolver: EffectivePermissionResolverPort,
     private readonly users: UserRepository,
+    private readonly memberships: PrincipalMembershipsService,
   ) {}
 
   async execute(userId: string): Promise<AuthUserPayload> {
@@ -40,7 +44,8 @@ export class GetCurrentPrincipalUseCase {
       toAuthUserIdentity(user),
       {},
     );
-    return buildAuthUserPayload(user, [...granted].sort());
+    const memberships = await this.memberships.resolve(user.id);
+    return buildAuthUserPayload(user, [...granted].sort(), memberships);
   }
 
   private async run(scope: TransactionScope, userId: string): Promise<User> {

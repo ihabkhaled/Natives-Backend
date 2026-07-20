@@ -444,4 +444,85 @@ describeIfDb(suiteTitle, () => {
     expect(attach.status).toBe(409);
     expect(attach.body.messageKey).toBe('errors.members.mediaNotScanned');
   });
+  it('returns the real memberships of the principal from GET /auth/me', async () => {
+    const token = await tokenFor(fixture.memberUserId, [Role.User]);
+
+    const response = await api()
+      .get('/api/v1/auth/me')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.memberships).toHaveLength(1);
+    const membership = response.body.memberships[0];
+    expect(membership.membershipId).toBe(memberMembershipId);
+    expect(membership.teamId).toBe(teamId);
+    expect(membership.teamName).toBe('Natives');
+    expect(typeof membership.teamSlug).toBe('string');
+    expect(membership.status).toBe('active');
+    expect(membership.seasonId).toBeNull();
+    expect(membership.seasonName).toBeNull();
+    expect(membership.roles).toEqual([]);
+  });
+
+  it('carries the scoped role slugs on the membership they apply to', async () => {
+    const admin = await tokenFor(fixture.adminId, [Role.Admin]);
+    const invited = await invite(admin, {
+      userId: fixture.teamAdminUserId,
+      profile: profileBody(),
+    });
+    await api()
+      .post(`/api/v1/teams/${teamId}/members/${invited.body.id}/activate`)
+      .set('Authorization', `Bearer ${admin}`)
+      .send({});
+
+    const token = await tokenFor(fixture.teamAdminUserId, [Role.User]);
+    const response = await api()
+      .get('/api/v1/auth/me')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.memberships[0].roles).toEqual(['team_admin']);
+  });
+
+  it('represents a suspended membership with its real status', async () => {
+    const admin = await tokenFor(fixture.adminId, [Role.Admin]);
+    const suspendedUserId = await seedUser(
+      fixture.dataSource,
+      'active',
+      Role.User,
+    );
+    const invited = await invite(admin, {
+      userId: suspendedUserId,
+      profile: profileBody(),
+    });
+    await api()
+      .post(`/api/v1/teams/${teamId}/members/${invited.body.id}/activate`)
+      .set('Authorization', `Bearer ${admin}`)
+      .send({});
+    await api()
+      .post(`/api/v1/teams/${teamId}/members/${invited.body.id}/suspend`)
+      .set('Authorization', `Bearer ${admin}`)
+      .send({ reason: 'disciplinary review' });
+
+    const token = await tokenFor(suspendedUserId, [Role.User]);
+    const response = await api()
+      .get('/api/v1/auth/me')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.memberships).toHaveLength(1);
+    expect(response.body.memberships[0].status).toBe('suspended');
+  });
+
+  it('returns an empty membership list for a principal with no team', async () => {
+    const orphanId = await seedUser(fixture.dataSource, 'active', Role.User);
+    const token = await tokenFor(orphanId, [Role.User]);
+
+    const response = await api()
+      .get('/api/v1/auth/me')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.memberships).toEqual([]);
+  });
 });

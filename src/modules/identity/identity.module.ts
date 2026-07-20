@@ -1,6 +1,7 @@
 import { ClockModule } from '@core/clock/clock.module';
 import { IdGeneratorModule } from '@core/id-generator/id-generator.module';
 import { AuthModule } from '@modules/auth';
+import { MembersModule } from '@modules/members';
 import { RbacModule } from '@modules/rbac';
 import { Module } from '@nestjs/common';
 
@@ -17,6 +18,7 @@ import { ListSessionsUseCase } from './application/list-sessions.use-case';
 import { LoginUseCase } from './application/login.use-case';
 import { LogoutUseCase } from './application/logout.use-case';
 import { LogoutAllUseCase } from './application/logout-all.use-case';
+import { PrincipalMembershipsService } from './application/principal-memberships.service';
 import { RefreshSessionUseCase } from './application/refresh-session.use-case';
 import { RequestPasswordResetUseCase } from './application/request-password-reset.use-case';
 import { ResendInvitationUseCase } from './application/resend-invitation.use-case';
@@ -40,11 +42,19 @@ import { SECURE_RANDOM_PORT } from './model/identity.constants';
  * session lifecycle, and recovery. Owns its persistence (raw SQL via the
  * UnitOfWorkPort), domain policies, and use cases. Depends on AuthModule for the
  * JWT and bcrypt ports, and on the clock/id-generator ports for determinism.
- * RbacModule supplies the core effective-permission resolver used to enrich a
- * successful login without importing RBAC internals.
+ * RbacModule supplies the core effective-permission resolver and the live role
+ * assignments used to enrich a successful login; MembersModule supplies the
+ * principal's own team/season memberships. Both arrive through their public
+ * surfaces — no RBAC or members internals are imported here.
  */
 @Module({
-  imports: [AuthModule, RbacModule, ClockModule, IdGeneratorModule],
+  imports: [
+    AuthModule,
+    RbacModule,
+    MembersModule,
+    ClockModule,
+    IdGeneratorModule,
+  ],
   controllers: [
     AuthController,
     InvitationsController,
@@ -60,6 +70,7 @@ import { SECURE_RANDOM_PORT } from './model/identity.constants';
     FailedLoginStateRepository,
     SecurityEventRepository,
     SecurityAuditService,
+    PrincipalMembershipsService,
     SessionIssuerService,
     CreateInvitationUseCase,
     ResendInvitationUseCase,

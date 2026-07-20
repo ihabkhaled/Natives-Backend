@@ -28,6 +28,13 @@ export const MEMBER_ALIAS_BY_ID_ROUTE = ':membershipId/aliases/:aliasId';
 export const MEMBER_AVATAR_ROUTE = ':membershipId/avatar';
 export const MEMBER_AVATAR_ATTACH_ROUTE = ':membershipId/avatar/:mediaId';
 export const MEMBER_MEDIA_SCAN_ROUTE = ':membershipId/media/:mediaId/scan';
+export const MEMBER_ROLES_ROUTE = ':membershipId/roles';
+export const MEMBER_ROLES_API_TAG = 'member-roles';
+
+// Upper bound on the role slugs a single assignment request may carry. The
+// seeded catalog has five bundles; the cap keeps the request payload bounded.
+export const MEMBER_ROLES_MAX_COUNT = 16;
+export const MEMBER_ROLE_SLUG_MAX_LENGTH = 64;
 
 // --- Route param names -------------------------------------------------------
 export const TEAM_ID_PARAM = 'teamId';
@@ -96,6 +103,16 @@ export const LIST_DEFAULT_OFFSET = 0;
 // Upper bound on active jersey rows scanned when resolving a jersey collision.
 // Roster cardinality per team/season is small; this keeps the scan bounded.
 export const JERSEY_SCAN_LIMIT = 1000;
+// The optional profile fields the completeness projection scores. Mandatory
+// fields are excluded so the percentage measures what a member can still do.
+export const PROFILE_COMPLETENESS_FIELD_COUNT = 8;
+
+// Membership lifecycle state that still needs an activation decision.
+export const MEMBERSHIP_INVITED_STATE = 'invited';
+
+// Upper bound on the memberships resolved for one principal. A person belongs
+// to a handful of team/season scopes, so this keeps the principal read bounded.
+export const MEMBERSHIP_CONTEXT_MAX = 50;
 export const ALIAS_LIST_MAX = 200;
 export const HISTORY_LIST_MAX = 200;
 
@@ -204,6 +221,11 @@ export const PROFILE_INVALID_DATE_MESSAGE =
   'The date of birth is not a valid calendar date';
 export const PROFILE_INVALID_DATE_MESSAGE_KEY: ErrorMessageKey =
   'errors.members.invalidDate';
+
+export const MEMBER_ACCOUNT_REQUIRED_MESSAGE =
+  'This member has no linked account yet, so roles cannot be assigned';
+export const MEMBER_ACCOUNT_REQUIRED_MESSAGE_KEY: ErrorMessageKey =
+  'errors.members.accountRequired';
 
 export const ALIAS_INVALID_MESSAGE =
   'The alias is empty after normalization and cannot be used for matching';

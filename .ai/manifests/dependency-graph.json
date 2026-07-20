@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T14:56:14.190Z",
+  "generatedAt": "2026-07-20T17:05:56.633Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -44,6 +44,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/competitions/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/dashboard/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -4802,6 +4807,26 @@
       "type": "cross-module"
     },
     {
+      "from": "src/modules/assessments/application/assessment-dashboard-signals.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/application/assessment-dashboard-signals.service.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-dashboard.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/assessment-dashboard-signals.service.ts",
+      "to": "src/modules/assessments/lib/signals.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/application/assessment-dashboard-signals.service.ts",
+      "to": "src/modules/assessments/model/signals.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/assessments/application/assessment-query.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -5663,6 +5688,11 @@
     },
     {
       "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/application/assessment-dashboard-signals.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
       "to": "src/modules/assessments/application/assessment-query.service.ts",
       "type": "internal"
     },
@@ -5744,6 +5774,11 @@
     {
       "from": "src/modules/assessments/assessments.module.ts",
       "to": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/assessments.module.ts",
+      "to": "src/modules/assessments/infrastructure/assessment-dashboard.repository.ts",
       "type": "internal"
     },
     {
@@ -5923,7 +5958,17 @@
     },
     {
       "from": "src/modules/assessments/index.ts",
+      "to": "src/modules/assessments/application/assessment-dashboard-signals.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/index.ts",
       "to": "src/modules/assessments/assessments.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/index.ts",
+      "to": "src/modules/assessments/model/signals.types.ts",
       "type": "internal"
     },
     {
@@ -5949,6 +5994,21 @@
     {
       "from": "src/modules/assessments/infrastructure/assessment-catalog.repository.ts",
       "to": "src/modules/assessments/model/assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/assessment-dashboard.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/assessment-dashboard.repository.ts",
+      "to": "src/modules/assessments/model/signals.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/infrastructure/assessment-dashboard.repository.ts",
+      "to": "src/modules/assessments/model/signals.rows.ts",
       "type": "internal"
     },
     {
@@ -6079,6 +6139,16 @@
     {
       "from": "src/modules/assessments/lib/player-assessments.mapper.ts",
       "to": "src/modules/assessments/model/player-assessments.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/signals.mapper.ts",
+      "to": "src/modules/assessments/model/signals.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/assessments/lib/signals.mapper.ts",
+      "to": "src/modules/assessments/model/signals.types.ts",
       "type": "internal"
     },
     {
@@ -7890,6 +7960,361 @@
       "from": "src/modules/competitions/model/competitions.types.ts",
       "to": "src/modules/competitions/model/competitions.enums.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/api/dashboard.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/api/dashboard.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/api/dashboard.controller.ts",
+      "to": "src/modules/dashboard/api/dto/dashboard-summary-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/api/dashboard.controller.ts",
+      "to": "src/modules/dashboard/api/dto/dashboard-summary.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/api/dashboard.controller.ts",
+      "to": "src/modules/dashboard/application/dashboard-summary.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/api/dashboard.controller.ts",
+      "to": "src/modules/dashboard/model/dashboard.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/api/dashboard.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/api/dto/dashboard-summary-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/api/dto/dashboard-summary-response.dto.ts",
+      "to": "src/modules/dashboard/model/dashboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/api/dto/dashboard-summary.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/api/dto/dashboard-summary.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-scope.service.ts",
+      "to": "src/modules/dashboard/errors/dashboard-team-forbidden.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-scope.service.ts",
+      "to": "src/modules/dashboard/model/dashboard.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-scope.service.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-signals.service.ts",
+      "to": "src/modules/assessments/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-signals.service.ts",
+      "to": "src/modules/dashboard/model/dashboard.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-signals.service.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-signals.service.ts",
+      "to": "src/modules/points/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-signals.service.ts",
+      "to": "src/modules/practices/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-summary.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-summary.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-summary.service.ts",
+      "to": "src/modules/dashboard/application/dashboard-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-summary.service.ts",
+      "to": "src/modules/dashboard/application/dashboard-signals.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-summary.service.ts",
+      "to": "src/modules/dashboard/domain/dashboard-persona.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-summary.service.ts",
+      "to": "src/modules/dashboard/lib/dashboard-summary.assembler.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/application/dashboard-summary.service.ts",
+      "to": "src/modules/dashboard/model/dashboard.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/dashboard.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/dashboard.module.ts",
+      "to": "src/modules/assessments/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/dashboard.module.ts",
+      "to": "src/modules/dashboard/api/dashboard.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/dashboard.module.ts",
+      "to": "src/modules/dashboard/application/dashboard-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/dashboard.module.ts",
+      "to": "src/modules/dashboard/application/dashboard-signals.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/dashboard.module.ts",
+      "to": "src/modules/dashboard/application/dashboard-summary.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/dashboard.module.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/dashboard.module.ts",
+      "to": "src/modules/points/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/dashboard.module.ts",
+      "to": "src/modules/practices/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/dashboard.module.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/domain/dashboard-persona.policy.ts",
+      "to": "src/modules/dashboard/model/dashboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/domain/dashboard-persona.policy.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/domain/dashboard-tone.policy.ts",
+      "to": "src/modules/dashboard/model/dashboard.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/domain/dashboard-tone.policy.ts",
+      "to": "src/modules/dashboard/model/dashboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/domain/widget-visibility.policy.ts",
+      "to": "src/modules/dashboard/model/dashboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/domain/widget-visibility.policy.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/errors/dashboard-team-forbidden.error.ts",
+      "to": "src/core/errors/forbidden.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/errors/dashboard-team-forbidden.error.ts",
+      "to": "src/modules/dashboard/model/dashboard.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/index.ts",
+      "to": "src/modules/dashboard/dashboard.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/index.ts",
+      "to": "src/modules/dashboard/model/dashboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/index.ts",
+      "to": "src/modules/dashboard/model/dashboard.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/dashboard-summary.assembler.ts",
+      "to": "src/modules/dashboard/domain/widget-visibility.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/dashboard-summary.assembler.ts",
+      "to": "src/modules/dashboard/lib/member-widgets.builder.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/dashboard-summary.assembler.ts",
+      "to": "src/modules/dashboard/model/dashboard.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/dashboard-summary.assembler.ts",
+      "to": "src/modules/dashboard/model/dashboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/dashboard-summary.assembler.ts",
+      "to": "src/modules/dashboard/model/dashboard.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/dashboard-value.formatters.ts",
+      "to": "src/modules/dashboard/model/dashboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/dashboard-widget.builders.ts",
+      "to": "src/modules/dashboard/model/dashboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/dashboard-widget.builders.ts",
+      "to": "src/modules/dashboard/model/dashboard.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/member-widgets.builder.ts",
+      "to": "src/modules/assessments/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/lib/member-widgets.builder.ts",
+      "to": "src/modules/dashboard/domain/dashboard-tone.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/member-widgets.builder.ts",
+      "to": "src/modules/dashboard/lib/dashboard-value.formatters.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/member-widgets.builder.ts",
+      "to": "src/modules/dashboard/lib/dashboard-widget.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/member-widgets.builder.ts",
+      "to": "src/modules/dashboard/model/dashboard.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/member-widgets.builder.ts",
+      "to": "src/modules/dashboard/model/dashboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/member-widgets.builder.ts",
+      "to": "src/modules/dashboard/model/dashboard.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/lib/member-widgets.builder.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/lib/member-widgets.builder.ts",
+      "to": "src/modules/points/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/lib/member-widgets.builder.ts",
+      "to": "src/modules/practices/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/model/dashboard.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/dashboard/model/dashboard.types.ts",
+      "to": "src/modules/assessments/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/model/dashboard.types.ts",
+      "to": "src/modules/dashboard/model/dashboard.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/dashboard/model/dashboard.types.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/model/dashboard.types.ts",
+      "to": "src/modules/points/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/dashboard/model/dashboard.types.ts",
+      "to": "src/modules/practices/index.ts",
+      "type": "cross-module"
     },
     {
       "from": "src/modules/development/api/coach-feedback-self.controller.ts",
@@ -10042,6 +10467,11 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/api/dto/login-response.dto.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/identity/api/dto/login.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -10423,6 +10853,11 @@
     },
     {
       "from": "src/modules/identity/application/get-current-principal.use-case.ts",
+      "to": "src/modules/identity/application/principal-memberships.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/get-current-principal.use-case.ts",
       "to": "src/modules/identity/domain/user-status.policy.ts",
       "type": "internal"
     },
@@ -10535,6 +10970,11 @@
       "from": "src/modules/identity/application/login.use-case.ts",
       "to": "src/modules/auth/index.ts",
       "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/application/login.use-case.ts",
+      "to": "src/modules/identity/application/principal-memberships.service.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/identity/application/login.use-case.ts",
@@ -10670,6 +11110,26 @@
       "from": "src/modules/identity/application/logout.use-case.ts",
       "to": "src/modules/identity/model/identity.types.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/principal-memberships.service.ts",
+      "to": "src/modules/identity/lib/membership-payload.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/principal-memberships.service.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/principal-memberships.service.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/application/principal-memberships.service.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
     },
     {
       "from": "src/modules/identity/application/refresh-session.use-case.ts",
@@ -11328,6 +11788,11 @@
     },
     {
       "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/principal-memberships.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/application/refresh-session.use-case.ts",
       "type": "internal"
     },
@@ -11410,6 +11875,11 @@
       "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/model/identity.constants.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-module"
     },
     {
       "from": "src/modules/identity/identity.module.ts",
@@ -11587,6 +12057,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/lib/membership-payload.mapper.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/lib/membership-payload.mapper.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/lib/membership-payload.mapper.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/identity/lib/token-hash.ts",
       "to": "src/modules/identity/model/identity.constants.ts",
       "type": "internal"
@@ -11600,6 +12085,11 @@
       "from": "src/modules/identity/model/identity.types.ts",
       "to": "src/modules/identity/model/identity.enums.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/model/identity.types.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-module"
     },
     {
       "from": "src/modules/identity/model/identity.types.ts",
@@ -12902,6 +13392,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/members/api/dto/assign-member-roles.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/assign-member-roles.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/dto/assign-member-roles.dto.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/members/api/dto/avatar-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -12965,6 +13470,11 @@
       "from": "src/modules/members/api/dto/member-history-response.dto.ts",
       "to": "src/modules/members/model/members.enums.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/dto/member-roles-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/members/api/dto/member-view-response.dto.ts",
@@ -13158,6 +13668,51 @@
     },
     {
       "from": "src/modules/members/api/member-media.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/member-roles.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/member-roles.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/member-roles.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/api/member-roles.controller.ts",
+      "to": "src/modules/members/api/dto/assign-member-roles.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-roles.controller.ts",
+      "to": "src/modules/members/api/dto/member-roles-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-roles.controller.ts",
+      "to": "src/modules/members/application/member-roles.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-roles.controller.ts",
+      "to": "src/modules/members/application/replace-member-roles.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-roles.controller.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/api/member-roles.controller.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
     },
@@ -13602,6 +14157,26 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/members/application/member-dashboard-signals.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-dashboard-signals.service.ts",
+      "to": "src/modules/members/infrastructure/member-dashboard.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-dashboard-signals.service.ts",
+      "to": "src/modules/members/lib/member-signals.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-dashboard-signals.service.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/members/application/member-directory.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -13667,6 +14242,31 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/members/application/member-roles.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-roles.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/member-roles.service.ts",
+      "to": "src/modules/members/application/member-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-roles.service.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/member-roles.service.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/members/application/member-view.service.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -13703,6 +14303,26 @@
     },
     {
       "from": "src/modules/members/application/member-view.service.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/membership-context.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/membership-context.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/membership-context.service.ts",
+      "to": "src/modules/members/infrastructure/membership-context.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/membership-context.service.ts",
       "to": "src/modules/members/model/members.types.ts",
       "type": "internal"
     },
@@ -13810,6 +14430,31 @@
       "from": "src/modules/members/application/remove-member-alias.use-case.ts",
       "to": "src/modules/members/model/members.types.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/replace-member-roles.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/replace-member-roles.use-case.ts",
+      "to": "src/modules/members/application/member-roles.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/replace-member-roles.use-case.ts",
+      "to": "src/modules/members/errors/member-account-required.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/replace-member-roles.use-case.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/replace-member-roles.use-case.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
     },
     {
       "from": "src/modules/members/application/request-avatar-upload.use-case.ts",
@@ -14177,6 +14822,16 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/members/domain/profile-completeness.policy.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/domain/profile-completeness.policy.ts",
+      "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/members/errors/alias-conflict.error.ts",
       "to": "src/core/errors/conflict.error.ts",
       "type": "cross-cutting"
@@ -14247,6 +14902,16 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/members/errors/member-account-required.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/errors/member-account-required.error.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/members/errors/membership-conflict.error.ts",
       "to": "src/core/errors/conflict.error.ts",
       "type": "cross-cutting"
@@ -14298,10 +14963,30 @@
     },
     {
       "from": "src/modules/members/index.ts",
+      "to": "src/modules/members/application/member-dashboard-signals.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/index.ts",
+      "to": "src/modules/members/application/membership-context.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/index.ts",
       "to": "src/modules/members/members.module.ts",
       "type": "internal"
     },
     {
+      "from": "src/modules/members/index.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/index.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/members/infrastructure/media-asset.repository.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -14367,6 +15052,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/members/infrastructure/member-dashboard.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-dashboard.repository.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/member-dashboard.repository.ts",
+      "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/members/infrastructure/member-profile.repository.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -14388,6 +15088,31 @@
     },
     {
       "from": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/membership-context.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/infrastructure/membership-context.repository.ts",
+      "to": "src/modules/members/lib/membership-context.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/membership-context.repository.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/membership-context.repository.ts",
+      "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/infrastructure/membership-context.repository.ts",
       "to": "src/modules/members/model/members.types.ts",
       "type": "internal"
     },
@@ -14454,6 +15179,26 @@
     {
       "from": "src/modules/members/infrastructure/team-scope.repository.ts",
       "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/member-signals.mapper.ts",
+      "to": "src/modules/members/domain/profile-completeness.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/member-signals.mapper.ts",
+      "to": "src/modules/members/lib/members.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/member-signals.mapper.ts",
+      "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/member-signals.mapper.ts",
+      "to": "src/modules/members/model/members.types.ts",
       "type": "internal"
     },
     {
@@ -14487,6 +15232,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/members/lib/membership-context.mapper.ts",
+      "to": "src/modules/members/lib/members.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/membership-context.mapper.ts",
+      "to": "src/modules/members/model/members.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/lib/membership-context.mapper.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/members/lib/profile-input.mapper.ts",
       "to": "src/modules/members/api/dto/player-profile.dto.ts",
       "type": "internal"
@@ -14514,6 +15274,11 @@
     {
       "from": "src/modules/members/members.module.ts",
       "to": "src/modules/members/api/member-media.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/api/member-roles.controller.ts",
       "type": "internal"
     },
     {
@@ -14553,6 +15318,11 @@
     },
     {
       "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/member-dashboard-signals.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
       "to": "src/modules/members/application/member-directory.service.ts",
       "type": "internal"
     },
@@ -14568,7 +15338,17 @@
     },
     {
       "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/member-roles.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
       "to": "src/modules/members/application/member-view.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/membership-context.service.ts",
       "type": "internal"
     },
     {
@@ -14579,6 +15359,11 @@
     {
       "from": "src/modules/members/members.module.ts",
       "to": "src/modules/members/application/remove-member-alias.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/replace-member-roles.use-case.ts",
       "type": "internal"
     },
     {
@@ -14618,7 +15403,17 @@
     },
     {
       "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/infrastructure/member-dashboard.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
       "to": "src/modules/members/infrastructure/member-profile.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/infrastructure/membership-context.repository.ts",
       "type": "internal"
     },
     {
@@ -16492,6 +17287,26 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/points/application/points-dashboard-signals.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/application/points-dashboard-signals.service.ts",
+      "to": "src/modules/points/infrastructure/points-dashboard.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/points-dashboard-signals.service.ts",
+      "to": "src/modules/points/lib/signals.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/application/points-dashboard-signals.service.ts",
+      "to": "src/modules/points/model/signals.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/points/application/points-query.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -16808,12 +17623,22 @@
     },
     {
       "from": "src/modules/points/index.ts",
+      "to": "src/modules/points/application/points-dashboard-signals.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/index.ts",
       "to": "src/modules/points/application/reverse-activity-points.service.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/points/index.ts",
       "to": "src/modules/points/model/points.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/index.ts",
+      "to": "src/modules/points/model/signals.types.ts",
       "type": "internal"
     },
     {
@@ -16879,6 +17704,16 @@
     {
       "from": "src/modules/points/infrastructure/leaderboard.repository.ts",
       "to": "src/modules/points/model/points.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-dashboard.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/points/infrastructure/points-dashboard.repository.ts",
+      "to": "src/modules/points/model/signals.rows.ts",
       "type": "internal"
     },
     {
@@ -17077,6 +17912,16 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/points/lib/signals.mapper.ts",
+      "to": "src/modules/points/model/signals.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/lib/signals.mapper.ts",
+      "to": "src/modules/points/model/signals.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/points/model/leaderboard.constants.ts",
       "to": "src/modules/points/model/leaderboard.enums.ts",
       "type": "internal"
@@ -17158,6 +18003,11 @@
     },
     {
       "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/application/points-dashboard-signals.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
       "to": "src/modules/points/application/points-query.service.ts",
       "type": "internal"
     },
@@ -17199,6 +18049,11 @@
     {
       "from": "src/modules/points/points.module.ts",
       "to": "src/modules/points/infrastructure/leaderboard.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/points/points.module.ts",
+      "to": "src/modules/points/infrastructure/points-dashboard.repository.ts",
       "type": "internal"
     },
     {
@@ -20397,6 +21252,36 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/application/practice-dashboard-signals.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/practice-dashboard-signals.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/practice-dashboard-signals.service.ts",
+      "to": "src/modules/practices/infrastructure/practice-dashboard.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/practice-dashboard-signals.service.ts",
+      "to": "src/modules/practices/lib/signals.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/practice-dashboard-signals.service.ts",
+      "to": "src/modules/practices/model/signals.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/practice-dashboard-signals.service.ts",
+      "to": "src/modules/practices/model/signals.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/application/practice-lookup.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -21673,6 +22558,16 @@
     },
     {
       "from": "src/modules/practices/index.ts",
+      "to": "src/modules/practices/application/practice-dashboard-signals.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/index.ts",
+      "to": "src/modules/practices/model/signals.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/index.ts",
       "to": "src/modules/practices/practices.module.ts",
       "type": "internal"
     },
@@ -21964,6 +22859,21 @@
     {
       "from": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
       "to": "src/modules/practices/model/agendas.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-dashboard.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-dashboard.repository.ts",
+      "to": "src/modules/practices/model/signals.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/practice-dashboard.repository.ts",
+      "to": "src/modules/practices/model/signals.rows.ts",
       "type": "internal"
     },
     {
@@ -22387,6 +23297,16 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/lib/signals.mapper.ts",
+      "to": "src/modules/practices/model/signals.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/lib/signals.mapper.ts",
+      "to": "src/modules/practices/model/signals.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/model/agendas.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
@@ -22648,6 +23568,11 @@
     },
     {
       "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/practice-dashboard-signals.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/practice-lookup.service.ts",
       "type": "internal"
     },
@@ -22779,6 +23704,11 @@
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/infrastructure/practice-agenda.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/infrastructure/practice-dashboard.repository.ts",
       "type": "internal"
     },
     {
@@ -23013,12 +23943,7 @@
     },
     {
       "from": "src/modules/rbac/application/list-user-assignments.use-case.ts",
-      "to": "src/core/persistence/unit-of-work.port.ts",
-      "type": "cross-cutting"
-    },
-    {
-      "from": "src/modules/rbac/application/list-user-assignments.use-case.ts",
-      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "to": "src/modules/rbac/application/role-assignment-query.service.ts",
       "type": "internal"
     },
     {
@@ -23112,6 +24037,66 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/modules/rbac/domain/role-set-diff.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/modules/rbac/errors/role-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/modules/rbac/lib/rbac.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/modules/rbac/lib/role-slug.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -23162,6 +24147,81 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/rbac/application/role-assignment-query.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/role-assignment-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/role-assignment-query.service.ts",
+      "to": "src/modules/rbac/domain/assignment-window.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/role-assignment-query.service.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/role-assignment-query.service.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/team-role-query.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/team-role-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/team-role-query.service.ts",
+      "to": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/team-role-query.service.ts",
+      "to": "src/modules/rbac/domain/privilege-ceiling.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/team-role-query.service.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/team-role-query.service.ts",
+      "to": "src/modules/rbac/lib/rbac.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/team-role-query.service.ts",
+      "to": "src/modules/rbac/lib/role-catalog.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/team-role-query.service.ts",
+      "to": "src/modules/rbac/lib/role-slug.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/team-role-query.service.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/domain/assignment-window.policy.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/rbac/domain/effective-permissions.policy.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -23188,6 +24248,16 @@
     },
     {
       "from": "src/modules/rbac/domain/permission-scope.policy.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/domain/privilege-ceiling.policy.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/domain/role-set-diff.policy.ts",
       "to": "src/modules/rbac/model/rbac.types.ts",
       "type": "internal"
     },
@@ -23219,6 +24289,36 @@
     {
       "from": "src/modules/rbac/errors/role-not-found.error.ts",
       "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/index.ts",
+      "to": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/index.ts",
+      "to": "src/modules/rbac/application/role-assignment-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/index.ts",
+      "to": "src/modules/rbac/application/team-role-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/index.ts",
+      "to": "src/modules/rbac/domain/assignment-window.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/index.ts",
+      "to": "src/modules/rbac/lib/role-slug.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/index.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
       "type": "internal"
     },
     {
@@ -23259,6 +24359,21 @@
     {
       "from": "src/modules/rbac/lib/rbac.helpers.ts",
       "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/lib/role-catalog.mapper.ts",
+      "to": "src/modules/rbac/model/rbac.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/lib/role-catalog.mapper.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/lib/role-slug.mapper.ts",
+      "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -23318,7 +24433,22 @@
     },
     {
       "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
       "to": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/role-assignment-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/team-role-query.service.ts",
       "type": "internal"
     },
     {

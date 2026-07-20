@@ -12,6 +12,7 @@ import { CreateAdjustmentUseCase } from './application/create-adjustment.use-cas
 import { CreatePointsRuleUseCase } from './application/create-points-rule.use-case';
 import { LeaderboardDataService } from './application/leaderboard-data.service';
 import { LeaderboardQueryService } from './application/leaderboard-query.service';
+import { PointsDashboardSignalsService } from './application/points-dashboard-signals.service';
 import { PointsQueryService } from './application/points-query.service';
 import { PointsScopeService } from './application/points-scope.service';
 import { PointsSummaryService } from './application/points-summary.service';
@@ -21,6 +22,7 @@ import { RuleQueryService } from './application/rule-query.service';
 import { TransitionPointsRuleUseCase } from './application/transition-points-rule.use-case';
 import { BadgeRepository } from './infrastructure/badge.repository';
 import { LeaderboardRepository } from './infrastructure/leaderboard.repository';
+import { PointsDashboardRepository } from './infrastructure/points-dashboard.repository';
 import { PointsLedgerRepository } from './infrastructure/points-ledger.repository';
 import { PointsRuleRepository } from './infrastructure/points-rule.repository';
 import { PointsScopeRepository } from './infrastructure/points-scope.repository';
@@ -40,6 +42,8 @@ import { PointsScopeRepository } from './infrastructure/points-scope.repository'
   imports: [ClockModule, IdGeneratorModule, PlatformModule],
   controllers: [PointsController, PointsSelfController, PointsRuleController],
   providers: [
+    PointsDashboardRepository,
+    PointsDashboardSignalsService,
     PointsScopeRepository,
     PointsRuleRepository,
     PointsLedgerRepository,
@@ -59,6 +63,10 @@ import { PointsScopeRepository } from './infrastructure/points-scope.repository'
     CreatePointsRuleUseCase,
     TransitionPointsRuleUseCase,
   ],
-  exports: [AwardActivityPointsService, ReverseActivityPointsService],
+  exports: [
+    AwardActivityPointsService,
+    ReverseActivityPointsService,
+    PointsDashboardSignalsService,
+  ],
 })
 export class PointsModule {}

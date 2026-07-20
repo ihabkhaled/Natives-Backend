@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-20T14:56:14.190Z",
-  "treeHash": "sha256:81bb91e325ef839a50117be6e121fc699e9b675dbadce43d2b07df13151b0e3f",
+  "generatedAt": "2026-07-20T17:05:56.633Z",
+  "treeHash": "sha256:0ce16b7a048492245124c2ba9c034548590a5750f9f08571fa37e82a2000255b",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6384df674db5db1337038a4a45fa4c8ec22e96761ea9f28fd56079e6dff87157",
-      "sizeBytes": 1835
+      "hash": "sha256:4abed166b956c29044615bc16388d04d404356239446f243b2b5cc2175bb8c5b",
+      "sizeBytes": 1910
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -7593,6 +7593,35 @@
       "sizeBytes": 3231
     },
     {
+      "path": "src/modules/assessments/application/assessment-dashboard-signals.service.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8b499efdf2b1ddb1bc3143ed6cf7fb40ddf16eb47c16902ae1f0d19a425de850",
+      "sizeBytes": 1646
+    },
+    {
+      "path": "src/modules/assessments/application/assessment-dashboard-signals.service.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentDashboardSignalsService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/application/assessment-dashboard-signals.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8fce7bb33712fd36a79a7391b336d2da3535d6a6d0741cb72479fca70ae71742",
+      "sizeBytes": 1913
+    },
+    {
       "path": "src/modules/assessments/application/assessment-query.service.spec.ts",
       "root": "modules",
       "module": "assessments",
@@ -8070,8 +8099,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:bdf0853d7d57b1fe9edf73153adaeff5586d5ac2b72e54f4f43c936a88463984",
-      "sizeBytes": 3931
+      "hash": "sha256:46ef6acd256d65ab75afe110b7b0386ad357a235003ecc52dd906a5cf5f235d6",
+      "sizeBytes": 4255
     },
     {
       "path": "src/modules/assessments/domain/assessment-catalog.policy.spec.ts",
@@ -8417,8 +8446,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:16d75c96bbf3522110fbcefe9f47e221848515356ae946779856462a3a998774",
-      "sizeBytes": 58
+      "hash": "sha256:408a3a08c5b4aa6d282ea7e944c4cadbbf2d9cdbf4db689528673ad8302df614",
+      "sizeBytes": 288
     },
     {
       "path": "src/modules/assessments/infrastructure/assessment-catalog.repository.spec.ts",
@@ -8448,6 +8477,35 @@
       "kind": "source",
       "hash": "sha256:761a7d1562c486a027d8740cc607a87ca233b676af9f865d6e0bfa1087acf937",
       "sizeBytes": 17203
+    },
+    {
+      "path": "src/modules/assessments/infrastructure/assessment-dashboard.repository.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:19008b8c6b84e76c0a17e2d081f6a1401dc6366370767e1ad4aa9228379735af",
+      "sizeBytes": 1231
+    },
+    {
+      "path": "src/modules/assessments/infrastructure/assessment-dashboard.repository.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssessmentDashboardRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/infrastructure/assessment-dashboard.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7a766928bae98138ab442e953f299298f9afe6182c57436131ff5de37035da24",
+      "sizeBytes": 1580
     },
     {
       "path": "src/modules/assessments/infrastructure/assessment-scope.repository.spec.ts",
@@ -8661,6 +8719,35 @@
       "kind": "source",
       "hash": "sha256:a4ac1cc9284d291e9f614cd86d6c182b2c54fc4bd381f545f99aa4a19087efae",
       "sizeBytes": 4424
+    },
+    {
+      "path": "src/modules/assessments/lib/signals.mapper.spec.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b6d1c13a90f125ff5776f42f0c807833d53c454232088f21e06d3a146ec1890a",
+      "sizeBytes": 1195
+    },
+    {
+      "path": "src/modules/assessments/lib/signals.mapper.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toAssessmentCountSignal"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/assessments/lib/signals.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b4738ba0fd42ecc023dc48198cd21302f1d9b45cf9e089012cfbc3cce9ea3d63",
+      "sizeBytes": 829
     },
     {
       "path": "src/modules/assessments/model/assessments.constants.ts",
@@ -9529,6 +9616,69 @@
       "kind": "source",
       "hash": "sha256:86d4af4f249399973b9a240f53b19b18039d8c7861518001affd5d3a2c6b120e",
       "sizeBytes": 7092
+    },
+    {
+      "path": "src/modules/assessments/model/signals.constants.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_PUBLISHED_STATE"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SUBMITTED_STATE"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:010c5cd433d478a02e0c871e0872563050ac20bc8eec8de8e424c70bdebfe1e1",
+      "sizeBytes": 273
+    },
+    {
+      "path": "src/modules/assessments/model/signals.rows.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "AssessmentSignalCountRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:16e3ce4f857a2204f24df43fed0085db77df7672c5eadfe1892dafe55f6b834f",
+      "sizeBytes": 193
+    },
+    {
+      "path": "src/modules/assessments/model/signals.types.ts",
+      "root": "modules",
+      "module": "assessments",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "AssessmentCountSignal"
+        },
+        {
+          "kind": "interface",
+          "name": "AssessmentDashboardSignals"
+        },
+        {
+          "kind": "interface",
+          "name": "AssessmentSignalScope"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:67f39911434250d2e5fad70886d245f3bd8f9ae7120cda28e3209cb59c1882c5",
+      "sizeBytes": 750
     },
     {
       "path": "src/modules/auth/adapters/jwt-token.adapter.spec.ts",
@@ -11954,6 +12104,668 @@
       "kind": "source",
       "hash": "sha256:72f43761066d9f23b604fcb24309869cf04eaa45abadf41ba338bb9ee429486e",
       "sizeBytes": 9678
+    },
+    {
+      "path": "src/modules/dashboard/api/dashboard.controller.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DashboardController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dc85f205fb5892c04f4672c1bfd9f9ac3980e57dd592fb15521ea82bf680195f",
+      "sizeBytes": 1484
+    },
+    {
+      "path": "src/modules/dashboard/api/dto/dashboard-summary-response.dto.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DashboardMetricDto"
+        },
+        {
+          "kind": "class",
+          "name": "DashboardBreakdownRowDto"
+        },
+        {
+          "kind": "class",
+          "name": "DashboardTaskDto"
+        },
+        {
+          "kind": "class",
+          "name": "DashboardWidgetDto"
+        },
+        {
+          "kind": "class",
+          "name": "DashboardSummaryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3379e0602f672cb60ba2866cd3d978082d4297b1d2f0377eaaafcc986bcfba9c",
+      "sizeBytes": 2986
+    },
+    {
+      "path": "src/modules/dashboard/api/dto/dashboard-summary.query.dto.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DashboardSummaryQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:65bf482fcaac86e71a81194647c3c4853cd1099e23c408cdb5903bdd952296c7",
+      "sizeBytes": 486
+    },
+    {
+      "path": "src/modules/dashboard/application/dashboard-scope.service.spec.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:fee79d81dfde5a31f951d64f4519a6138071e35fa08d1866a77d9322f7dabbdf",
+      "sizeBytes": 2581
+    },
+    {
+      "path": "src/modules/dashboard/application/dashboard-scope.service.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DashboardScopeService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/dashboard/application/dashboard-scope.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e1da1242c2f190ea7602325ad1ab60cb3cdcd4486d5f98830d02500c10273567",
+      "sizeBytes": 1771
+    },
+    {
+      "path": "src/modules/dashboard/application/dashboard-signals.service.spec.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e832660a546dabccc94b36533c5453b881e01503f2dd055bbe9c366d57d3adfc",
+      "sizeBytes": 1281
+    },
+    {
+      "path": "src/modules/dashboard/application/dashboard-signals.service.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DashboardSignalsService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/dashboard/application/dashboard-signals.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ca46098e70ebcec504f91232208d810b43c12159d5905ca32f9550843d2e63e0",
+      "sizeBytes": 1440
+    },
+    {
+      "path": "src/modules/dashboard/application/dashboard-summary.service.spec.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:96745b75f59a703861b2ba5e29bae834691655a4829157cb6882123e7cc68942",
+      "sizeBytes": 3466
+    },
+    {
+      "path": "src/modules/dashboard/application/dashboard-summary.service.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DashboardSummaryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/dashboard/application/dashboard-summary.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e8c5e86217c19d4179d5e6ccd36cf1ddecca2fe93b4f93d4d64e61834da417f1",
+      "sizeBytes": 2300
+    },
+    {
+      "path": "src/modules/dashboard/dashboard.module.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DashboardModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6858ae3f1f152118e46e3af17320d3e8619cafb633c8fc81a60627a0742d77cf",
+      "sizeBytes": 1406
+    },
+    {
+      "path": "src/modules/dashboard/domain/dashboard-persona.policy.spec.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:cc889596885e08f6b878d9f5cf008b4677fcbbe486d474ad9c99aa7c6bed8f6f",
+      "sizeBytes": 1639
+    },
+    {
+      "path": "src/modules/dashboard/domain/dashboard-persona.policy.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "classifyPersona"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/dashboard/domain/dashboard-persona.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c65809117fb07319710835ac5fe2ee208421fed9ded34a465ae5233e3bda6ddd",
+      "sizeBytes": 856
+    },
+    {
+      "path": "src/modules/dashboard/domain/dashboard-tone.policy.spec.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:730f117211977289981447b7959c33f5bc4017acdd864f5d82273f1b9b463e30",
+      "sizeBytes": 1291
+    },
+    {
+      "path": "src/modules/dashboard/domain/dashboard-tone.policy.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toneForBacklog"
+        },
+        {
+          "kind": "function",
+          "name": "toneForCompleteness"
+        },
+        {
+          "kind": "function",
+          "name": "toneForStanding"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/dashboard/domain/dashboard-tone.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9665eacdce044a04deac1e9a46de17182a960392c8339d01eb263c7206072965",
+      "sizeBytes": 1619
+    },
+    {
+      "path": "src/modules/dashboard/domain/widget-visibility.policy.spec.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5e2db9c1aba838d4b8a539cce1bfe70f45e2101f45eb3d07eb41537c9837dfc0",
+      "sizeBytes": 1394
+    },
+    {
+      "path": "src/modules/dashboard/domain/widget-visibility.policy.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "canSeeWidget"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/dashboard/domain/widget-visibility.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b50913b0b2fbbc7d2e0923342aebf69b1cdd5c772bf4f2c48f83284dd52c66a4",
+      "sizeBytes": 1714
+    },
+    {
+      "path": "src/modules/dashboard/errors/dashboard-team-forbidden.error.spec.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bf67ed31555360870045ea95e073af33d6a9a8149cd7a483b32dc71923104c42",
+      "sizeBytes": 662
+    },
+    {
+      "path": "src/modules/dashboard/errors/dashboard-team-forbidden.error.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DashboardTeamForbiddenError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/dashboard/errors/dashboard-team-forbidden.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bd5c5dcc71416a87486f120d88784af84534e73f0434948d166d2be1e07cadfc",
+      "sizeBytes": 676
+    },
+    {
+      "path": "src/modules/dashboard/index.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7661e3f29f8e0dd81d77991a9fc37b7f1c436da82341b8d13a47785db8a39577",
+      "sizeBytes": 294
+    },
+    {
+      "path": "src/modules/dashboard/lib/dashboard-summary.assembler.spec.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:22348179d65c7664b0fc83bbfee95dd8215b19044f586616819809726bd214b5",
+      "sizeBytes": 3336
+    },
+    {
+      "path": "src/modules/dashboard/lib/dashboard-summary.assembler.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assembleSummary"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/dashboard/lib/dashboard-summary.assembler.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b4622e0c416b8562e72c2f2d295baa3fb09a9ddcaefd0b08638cec29530f5945",
+      "sizeBytes": 2900
+    },
+    {
+      "path": "src/modules/dashboard/lib/dashboard-value.formatters.spec.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7167d933718feb577af28c352cc4a3645314fd1f1edaf7a01b75884607f68385",
+      "sizeBytes": 1659
+    },
+    {
+      "path": "src/modules/dashboard/lib/dashboard-value.formatters.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "formatCount"
+        },
+        {
+          "kind": "function",
+          "name": "formatPercent"
+        },
+        {
+          "kind": "function",
+          "name": "formatPoints"
+        },
+        {
+          "kind": "function",
+          "name": "formatRank"
+        },
+        {
+          "kind": "function",
+          "name": "unitFor"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/dashboard/lib/dashboard-value.formatters.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c9fc526b0cd6c40f16dbb2d2ada6b104c3ffb977684c99d6729505990ec0b2d9",
+      "sizeBytes": 1152
+    },
+    {
+      "path": "src/modules/dashboard/lib/dashboard-widget.builders.spec.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bf5747a718d2d0a5906ade85f1fb51a287f6c50d60f1ea22b88f7d7ea3a7a706",
+      "sizeBytes": 2938
+    },
+    {
+      "path": "src/modules/dashboard/lib/dashboard-widget.builders.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "metricWidget"
+        },
+        {
+          "kind": "function",
+          "name": "breakdownWidget"
+        },
+        {
+          "kind": "function",
+          "name": "tasksWidget"
+        },
+        {
+          "kind": "function",
+          "name": "emptyMetric"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/dashboard/lib/dashboard-widget.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b649a5f26d9632b00e4a704a3d44428fb43da1a4b8cd2712759f18faade92478",
+      "sizeBytes": 1964
+    },
+    {
+      "path": "src/modules/dashboard/lib/member-widgets.builder.spec.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:11a584794c88f8c5ce4b7495cba479c6b9ccc5da7df0dfc38732fdf560161c96",
+      "sizeBytes": 7509
+    },
+    {
+      "path": "src/modules/dashboard/lib/member-widgets.builder.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "memberScheduleWidget"
+        },
+        {
+          "kind": "function",
+          "name": "memberAttendanceWidget"
+        },
+        {
+          "kind": "function",
+          "name": "memberStandingWidget"
+        },
+        {
+          "kind": "function",
+          "name": "memberActivityWidget"
+        },
+        {
+          "kind": "function",
+          "name": "memberFeedbackWidget"
+        },
+        {
+          "kind": "function",
+          "name": "memberProfileWidget"
+        },
+        {
+          "kind": "function",
+          "name": "backlogWidget"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/dashboard/lib/member-widgets.builder.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0223cbf7356aeeb372d8d85f41f8a1bffc1bc19c2dd58076cd4ea59473c17245",
+      "sizeBytes": 4851
+    },
+    {
+      "path": "src/modules/dashboard/model/dashboard.constants.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "DASHBOARD_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "DASHBOARD_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "DASHBOARD_SUMMARY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "DASHBOARD_LABEL_KEYS"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_BREAKDOWN_KEYS"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_LABEL_KEY_BY_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "DASHBOARD_TASK_IDS"
+        },
+        {
+          "kind": "const",
+          "name": "COMPLETENESS_POSITIVE_MIN_PERCENT"
+        },
+        {
+          "kind": "const",
+          "name": "COMPLETENESS_ATTENTION_MIN_PERCENT"
+        },
+        {
+          "kind": "const",
+          "name": "BACKLOG_CRITICAL_MIN_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "BACKLOG_ATTENTION_MIN_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "STANDING_PODIUM_MAX_RANK"
+        },
+        {
+          "kind": "const",
+          "name": "DASHBOARD_TEAM_FORBIDDEN_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "DASHBOARD_TEAM_FORBIDDEN_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:931d70c46bb03b3e5bd74a925b6b09a8e6a490a3692d691fbcf89808ddb8058d",
+      "sizeBytes": 2889
+    },
+    {
+      "path": "src/modules/dashboard/model/dashboard.enums.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "DashboardPersona"
+        },
+        {
+          "kind": "const",
+          "name": "DASHBOARD_PERSONA_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "DashboardPresentation"
+        },
+        {
+          "kind": "const",
+          "name": "DASHBOARD_PRESENTATION_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "DashboardWidgetStatus"
+        },
+        {
+          "kind": "const",
+          "name": "DASHBOARD_WIDGET_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "DashboardTone"
+        },
+        {
+          "kind": "const",
+          "name": "DASHBOARD_TONE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "DashboardMetricUnit"
+        },
+        {
+          "kind": "const",
+          "name": "DASHBOARD_METRIC_UNIT_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "DashboardWidgetKind"
+        },
+        {
+          "kind": "const",
+          "name": "DASHBOARD_WIDGET_KIND_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2bc9e56255f1328ab365e43665823e1f84c6e7719148b0127c37b9f5352a8797",
+      "sizeBytes": 2614
+    },
+    {
+      "path": "src/modules/dashboard/model/dashboard.types.ts",
+      "root": "modules",
+      "module": "dashboard",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "DashboardMetric"
+        },
+        {
+          "kind": "interface",
+          "name": "DashboardBreakdownRow"
+        },
+        {
+          "kind": "interface",
+          "name": "DashboardTask"
+        },
+        {
+          "kind": "interface",
+          "name": "DashboardMetricWidget"
+        },
+        {
+          "kind": "interface",
+          "name": "DashboardBreakdownWidget"
+        },
+        {
+          "kind": "interface",
+          "name": "DashboardTasksWidget"
+        },
+        {
+          "kind": "type",
+          "name": "DashboardWidget"
+        },
+        {
+          "kind": "interface",
+          "name": "DashboardSummary"
+        },
+        {
+          "kind": "interface",
+          "name": "DashboardScope"
+        },
+        {
+          "kind": "interface",
+          "name": "DashboardInputs"
+        },
+        {
+          "kind": "interface",
+          "name": "DashboardSignalBundle"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7f01d7c2356049c5f75f16f634664aa31cf7365226cf13d079b666f6f53355da",
+      "sizeBytes": 3413
     },
     {
       "path": "src/modules/development/api/coach-feedback-self.controller.ts",
@@ -14504,8 +15316,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b670f665045696365331228a528a63e5470205383e92dbad3989eedc28481eeb",
-      "sizeBytes": 1239
+      "hash": "sha256:e1d0da61c0150af0e87b5eb2870b4ee058d6b65ca1ee06579d40fa69c17536eb",
+      "sizeBytes": 2101
     },
     {
       "path": "src/modules/identity/api/dto/login.dto.ts",
@@ -14807,8 +15619,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:3029e67c418f23ffed5dab44ed8c41d645cdb0c764b577fa47edea4e3ec69818",
-      "sizeBytes": 2476
+      "hash": "sha256:2354a3b275fafef5e399a76f8882188db4a5730b454f29cfcc97fb570f192d29",
+      "sizeBytes": 2582
     },
     {
       "path": "src/modules/identity/application/get-current-principal.use-case.ts",
@@ -14824,8 +15636,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/get-current-principal.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:2a6514fae9ace7f3a50e1dc9184ef691185cd8b5636ef8ec96e9df580286ade3",
-      "sizeBytes": 1794
+      "hash": "sha256:ecac8880f44c79df684e1b5d593a9785d37dec4da218e44a25b9556d54124a73",
+      "sizeBytes": 2161
     },
     {
       "path": "src/modules/identity/application/get-invitation-details.use-case.spec.ts",
@@ -14894,8 +15706,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:5f9200eb6a6ac4473d9a95dae5d1a9053d12206ab2e7ba9987178b4b41a2cc4f",
-      "sizeBytes": 9003
+      "hash": "sha256:62016c82bc3615d64c8954c45ec872bf21c5a47c18f70e235481147470843f73",
+      "sizeBytes": 9096
     },
     {
       "path": "src/modules/identity/application/login.use-case.ts",
@@ -14911,8 +15723,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/login.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:3a1004abf6e52d4504a993b81521a445e988d215d0395450a319857c554b5497",
-      "sizeBytes": 6157
+      "hash": "sha256:369b1b7419d78db5616c7790ed2afa5e5523574235967c908eca245e1652f8f3",
+      "sizeBytes": 6416
     },
     {
       "path": "src/modules/identity/application/logout-all.use-case.spec.ts",
@@ -14971,6 +15783,35 @@
       "kind": "source",
       "hash": "sha256:2ae5b596f9fc20a85857bafd565fae04e3b3155e9cd810edb280f499ad9c56fc",
       "sizeBytes": 1957
+    },
+    {
+      "path": "src/modules/identity/application/principal-memberships.service.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:85f3f67cad868a6097cd2a6f664ab3cb83566f74294fe40ba5729f638a02c857",
+      "sizeBytes": 1932
+    },
+    {
+      "path": "src/modules/identity/application/principal-memberships.service.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PrincipalMembershipsService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/principal-memberships.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b26152f873646fffa5ea6c7b3cd81cbfe0ec340c962185b9ef4395c2650255ae",
+      "sizeBytes": 1408
     },
     {
       "path": "src/modules/identity/application/refresh-session.use-case.spec.ts",
@@ -15652,8 +16493,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:f405b8ea63babedde6683d55e1f5dcbf85c6c259117e0dee92036221da9aad2d",
-      "sizeBytes": 4138
+      "hash": "sha256:d1a5b03169c11fd17f53ccd8e9ca3f5afb854d69ae352fff171664fec6621688",
+      "sizeBytes": 4517
     },
     {
       "path": "src/modules/identity/index.ts",
@@ -15932,8 +16773,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:4f83c5e0dc623503705a6505547c4ff1cb91b10bae37d8e27f270792c5bfe8d8",
-      "sizeBytes": 4040
+      "hash": "sha256:2ae0401aebfdf409498ef071652f7e9348243f10b1cd97ef79df90cacc1171ee",
+      "sizeBytes": 4062
     },
     {
       "path": "src/modules/identity/lib/identity.mapper.ts",
@@ -15973,8 +16814,37 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/lib/identity.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:a8dc0f537d768ffec7aa9925463be12e1306e0d73f3b1d9db45382c9175de265",
-      "sizeBytes": 3178
+      "hash": "sha256:11b2142e84a010f02c78b9f1b84769bc3d96dda7c111cec9275841ed068e5d6e",
+      "sizeBytes": 3305
+    },
+    {
+      "path": "src/modules/identity/lib/membership-payload.mapper.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2b519b1ae9a2014e2f13b395ee1d18dd0301637d688c696bcac0c104900ac805",
+      "sizeBytes": 3357
+    },
+    {
+      "path": "src/modules/identity/lib/membership-payload.mapper.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toAuthMembershipPayloads"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/lib/membership-payload.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e39f91d2724d19d28ec741dc1d110f8b0462ff9452cef42c8e2fcb8ddc6efb22",
+      "sizeBytes": 1502
     },
     {
       "path": "src/modules/identity/lib/token-hash.spec.ts",
@@ -16514,8 +17384,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:22ecb505de9aae94d58a13d8f7136cfd6590cf990968f08893cb8fa2e0ea3e94",
-      "sizeBytes": 6947
+      "hash": "sha256:eb47e6028ac01973874e5ed358a931b28c813c725a75b62c1c5abec338edd4f4",
+      "sizeBytes": 7595
     },
     {
       "path": "src/modules/measurements/api/dto/attempt-input.dto.ts",
@@ -18327,6 +19197,23 @@
       "sizeBytes": 718
     },
     {
+      "path": "src/modules/members/api/dto/assign-member-roles.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssignMemberRolesDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f1a8031a9f39eb5369168027350fada499de84d35ced6b10f300188e3a2849da",
+      "sizeBytes": 913
+    },
+    {
       "path": "src/modules/members/api/dto/avatar-response.dto.ts",
       "root": "modules",
       "module": "members",
@@ -18439,6 +19326,23 @@
       "kind": "source",
       "hash": "sha256:bf71ddd2aefb2b2ef74c697a2eba73ad305f62cc300803663dd1404dff9cc1f8",
       "sizeBytes": 1125
+    },
+    {
+      "path": "src/modules/members/api/dto/member-roles-response.dto.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberRolesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ed34e01021e8d581a26761897d691886f7b4d9a98a06b3c6e934b59bbb9e9c1b",
+      "sizeBytes": 607
     },
     {
       "path": "src/modules/members/api/dto/member-view-response.dto.ts",
@@ -18575,6 +19479,23 @@
       "kind": "source",
       "hash": "sha256:9f8d2cfb11626026dfebd308d922b626d83d3f01d1328c5722efbbaa7cae6a8b",
       "sizeBytes": 7000
+    },
+    {
+      "path": "src/modules/members/api/member-roles.controller.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberRolesController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fe6b809a749c499613f78252aaf3d7378b1184fb7257c6fd0ffa94d04ae2ff73",
+      "sizeBytes": 2785
     },
     {
       "path": "src/modules/members/api/members.controller.ts",
@@ -18768,6 +19689,35 @@
       "sizeBytes": 1582
     },
     {
+      "path": "src/modules/members/application/member-dashboard-signals.service.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:637ebe53a7fe6798eeb1377564f311679c33c455dd8d96245be674bc141eb473",
+      "sizeBytes": 2452
+    },
+    {
+      "path": "src/modules/members/application/member-dashboard-signals.service.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberDashboardSignalsService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/member-dashboard-signals.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:22d13b4fd664165b1814a9222d589f61561771005cd72a31b7c144a91b4ff040",
+      "sizeBytes": 1909
+    },
+    {
       "path": "src/modules/members/application/member-directory.service.spec.ts",
       "root": "modules",
       "module": "members",
@@ -18855,6 +19805,35 @@
       "sizeBytes": 1662
     },
     {
+      "path": "src/modules/members/application/member-roles.service.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7e1a55685c39bdf2d3af6be9e72cc8e127171fdd86570bbf509eb360492d2fd8",
+      "sizeBytes": 2403
+    },
+    {
+      "path": "src/modules/members/application/member-roles.service.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberRolesService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/member-roles.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:903b81ac02d57eb780581074ffd8e699af0fa51bcfafd5910d112cf3513bec4b",
+      "sizeBytes": 1723
+    },
+    {
       "path": "src/modules/members/application/member-view.service.spec.ts",
       "root": "modules",
       "module": "members",
@@ -18882,6 +19861,35 @@
       "kind": "source",
       "hash": "sha256:973ff497c996016ea10ab8187f57b20e6ccdf7c1e9fffa65d2a4034de730ed56",
       "sizeBytes": 1780
+    },
+    {
+      "path": "src/modules/members/application/membership-context.service.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:af6b52966b9d28f1adc30463b02d3514d5d6e40da44064d896faeeb2f5bf26d7",
+      "sizeBytes": 896
+    },
+    {
+      "path": "src/modules/members/application/membership-context.service.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MembershipContextService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/membership-context.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e86a5f700b82805f549b2907a14acdf1c89dc36767a1b1048a34dbdf3b1724ec",
+      "sizeBytes": 1210
     },
     {
       "path": "src/modules/members/application/record-media-scan.use-case.spec.ts",
@@ -18940,6 +19948,35 @@
       "kind": "source",
       "hash": "sha256:ae1cf673b4b4967ee962b40e240760c3e7b25c6fdf050d1e7bc1bc26566cd64f",
       "sizeBytes": 2802
+    },
+    {
+      "path": "src/modules/members/application/replace-member-roles.use-case.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5f78caeed8353c838d5eb339ef3ff9fd50bb4cf6c88769f102259017aecdd4dc",
+      "sizeBytes": 1781
+    },
+    {
+      "path": "src/modules/members/application/replace-member-roles.use-case.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReplaceMemberRolesUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/replace-member-roles.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4b96874ce20954741585073eed5d9bb5d95beb4dd10b63264a4f970a964c3427",
+      "sizeBytes": 1421
     },
     {
       "path": "src/modules/members/application/request-avatar-upload.use-case.spec.ts",
@@ -19280,6 +20317,35 @@
       "sizeBytes": 3106
     },
     {
+      "path": "src/modules/members/domain/profile-completeness.policy.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:80a30519b26d1bfc4c2bab0cdec88004be5e49fe34478ceafa2a203421cda104",
+      "sizeBytes": 1453
+    },
+    {
+      "path": "src/modules/members/domain/profile-completeness.policy.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "scoreProfileCompleteness"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/domain/profile-completeness.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f0d2fc712032c6270cfcc6b70c3a63378353ce79b10e190753f23c8f13e834ed",
+      "sizeBytes": 918
+    },
+    {
       "path": "src/modules/members/errors/alias-conflict.error.ts",
       "root": "modules",
       "module": "members",
@@ -19399,6 +20465,35 @@
       "sizeBytes": 401
     },
     {
+      "path": "src/modules/members/errors/member-account-required.error.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:caf4b246d1e4b1ba0cefb05f8e2dca1a944a6edf31898a3549375519dda12b3f",
+      "sizeBytes": 649
+    },
+    {
+      "path": "src/modules/members/errors/member-account-required.error.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberAccountRequiredError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/errors/member-account-required.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c5d20e039c0809e1731e1b6a4a47ebd34a73d6f0fb5629ac4637cbeb58bd1567",
+      "sizeBytes": 564
+    },
+    {
       "path": "src/modules/members/errors/membership-conflict.error.ts",
       "root": "modules",
       "module": "members",
@@ -19492,8 +20587,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:cc08b8793e6390cc829e117fdc9ad843b31e67bb3906b7203fcbef5fd85836ab",
-      "sizeBytes": 50
+      "hash": "sha256:cb01c7e559f2f2f23bb8a896e4308458126a9c119934aa25783692683634aa60",
+      "sizeBytes": 424
     },
     {
       "path": "src/modules/members/infrastructure/media-asset.repository.spec.ts",
@@ -19583,6 +20678,35 @@
       "sizeBytes": 1023
     },
     {
+      "path": "src/modules/members/infrastructure/member-dashboard.repository.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7aca450513c49cb3d620ffc7bc29ca76fc1063b3f5381288fc4e9a6d8112d148",
+      "sizeBytes": 1168
+    },
+    {
+      "path": "src/modules/members/infrastructure/member-dashboard.repository.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberDashboardRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/infrastructure/member-dashboard.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b417b78c87e99d0889b485cfcfd85a5fb94465b55a26c5c8e601794700b3b07d",
+      "sizeBytes": 1614
+    },
+    {
       "path": "src/modules/members/infrastructure/member-profile.repository.spec.ts",
       "root": "modules",
       "module": "members",
@@ -19610,6 +20734,35 @@
       "kind": "source",
       "hash": "sha256:ee35c4f6341192ac4a93ca592dd717bd22cb28ddf10a5fb69cc78d4982be75b4",
       "sizeBytes": 6223
+    },
+    {
+      "path": "src/modules/members/infrastructure/membership-context.repository.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9d4903384e097621e079487e000045d776543593afd026cd80d9723ca5836693",
+      "sizeBytes": 1974
+    },
+    {
+      "path": "src/modules/members/infrastructure/membership-context.repository.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MembershipContextRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/infrastructure/membership-context.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:80a6364ddf91a4d2909f30eae81f04aef1142d72738cf07f88099dab84215a80",
+      "sizeBytes": 2272
     },
     {
       "path": "src/modules/members/infrastructure/membership.repository.spec.ts",
@@ -19697,6 +20850,43 @@
       "kind": "source",
       "hash": "sha256:638f17cdaec14cb1fa80484d43ed5b6d4ee8e739a412fca87ba15701a6cbb798",
       "sizeBytes": 809
+    },
+    {
+      "path": "src/modules/members/lib/member-signals.mapper.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:529154dbe48abaffa239ee208cdcdf32d0d2e4abe8c6f78e3cc3cec55de52be2",
+      "sizeBytes": 1769
+    },
+    {
+      "path": "src/modules/members/lib/member-signals.mapper.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "UNSCORED_PROFILE_SIGNAL"
+        },
+        {
+          "kind": "function",
+          "name": "toProfileSignal"
+        },
+        {
+          "kind": "function",
+          "name": "toMemberCountSignal"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/lib/member-signals.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f30afea7b11d27a5540e36da9d5b704fbf15347a44d5e28cd5ee0dff8e18f846",
+      "sizeBytes": 1455
     },
     {
       "path": "src/modules/members/lib/member.mapper.spec.ts",
@@ -19821,6 +21011,35 @@
       "sizeBytes": 6245
     },
     {
+      "path": "src/modules/members/lib/membership-context.mapper.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:873c457e88b76b58f6a3b332b620409db7825f395d444a895cca2c370739c937",
+      "sizeBytes": 1682
+    },
+    {
+      "path": "src/modules/members/lib/membership-context.mapper.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toMembershipContext"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/lib/membership-context.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:603ae104f91a08a0b8255f681a42b3436014f82de575199e38ee8dd7684f44fc",
+      "sizeBytes": 831
+    },
+    {
       "path": "src/modules/members/lib/profile-input.mapper.spec.ts",
       "root": "modules",
       "module": "members",
@@ -19863,8 +21082,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a155f750930267ed5b0946fc04a3cb0aa97a20ac1fa19d5f6bba3b5ac79dbb76",
-      "sizeBytes": 3707
+      "hash": "sha256:9c1525e2c168cea5451afa238bff7b8cb00fbcd2cd79e36bd9961a62065ff066",
+      "sizeBytes": 4811
     },
     {
       "path": "src/modules/members/model/members.constants.ts",
@@ -19943,6 +21162,22 @@
         {
           "kind": "const",
           "name": "MEMBER_MEDIA_SCAN_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ROLES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ROLES_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ROLES_MAX_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ROLE_SLUG_MAX_LENGTH"
         },
         {
           "kind": "const",
@@ -20130,6 +21365,18 @@
         },
         {
           "kind": "const",
+          "name": "PROFILE_COMPLETENESS_FIELD_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_INVITED_STATE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_CONTEXT_MAX"
+        },
+        {
+          "kind": "const",
           "name": "ALIAS_LIST_MAX"
         },
         {
@@ -20306,6 +21553,14 @@
         },
         {
           "kind": "const",
+          "name": "MEMBER_ACCOUNT_REQUIRED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ACCOUNT_REQUIRED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
           "name": "ALIAS_INVALID_MESSAGE"
         },
         {
@@ -20316,8 +21571,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fd09d295682269602c48318031e3bf7d84fe7dffcf8561af156195b678f3c102",
-      "sizeBytes": 9772
+      "hash": "sha256:68f2be8f150218921bd351e1ccac53f8b4946ffa20167f725d0e3487c1e37cf4",
+      "sizeBytes": 10882
     },
     {
       "path": "src/modules/members/model/members.enums.ts",
@@ -20425,13 +21680,25 @@
         {
           "kind": "interface",
           "name": "IdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MembershipContextRow"
+        },
+        {
+          "kind": "interface",
+          "name": "ProfileCompletenessRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberSignalCountRow"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:14ee6901c57c0965ad1cc347db6446327eea8675175424e2b3db8afc648ba817",
-      "sizeBytes": 3449
+      "hash": "sha256:8150d65f3f0857b0d6958e4fea0844e73151f373fb0a3264f9c0f92574cddad1",
+      "sizeBytes": 4677
     },
     {
       "path": "src/modules/members/model/members.types.ts",
@@ -20598,13 +21865,37 @@
         {
           "kind": "interface",
           "name": "JerseyReservation"
+        },
+        {
+          "kind": "interface",
+          "name": "MembershipContext"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberRolesView"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberCountSignal"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberDashboardSignals"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberSignalScope"
+        },
+        {
+          "kind": "interface",
+          "name": "MemberProfileSignal"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0e1c73d904ff9ee51577c145a6b1eb4252f24316ee475dedc97efd0df1db0bb2",
-      "sizeBytes": 12001
+      "hash": "sha256:a2cbb15fd3e8294a5f3277d3f211a8ffbed9f3862552d80922920cc570b0f6d6",
+      "sizeBytes": 13997
     },
     {
       "path": "src/modules/platform/adapters/in-app-notification.adapter.spec.ts",
@@ -23001,6 +24292,35 @@
       "sizeBytes": 3185
     },
     {
+      "path": "src/modules/points/application/points-dashboard-signals.service.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a622fab95b3b2b4321aa72dc16a58e3e3673ee41a8c1d5d5e946d602b285393c",
+      "sizeBytes": 1669
+    },
+    {
+      "path": "src/modules/points/application/points-dashboard-signals.service.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsDashboardSignalsService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/application/points-dashboard-signals.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c33318fd7118a062f58ec76f4c6eccd9090861a0cbc6bd21ccdd387fcb34f108",
+      "sizeBytes": 1357
+    },
+    {
       "path": "src/modules/points/application/points-query.service.spec.ts",
       "root": "modules",
       "module": "points",
@@ -23503,8 +24823,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:bcd9cfa266fb84e981d73f30f9f3bbb30a9e9af7b388f0e077be94b78fe2e01e",
-      "sizeBytes": 328
+      "hash": "sha256:5a4e2a1506c0d2bae5bb6dd8cc237c34f9d700d870a106f734e95d69e70218ea",
+      "sizeBytes": 515
     },
     {
       "path": "src/modules/points/infrastructure/badge.repository.spec.ts",
@@ -23563,6 +24883,35 @@
       "kind": "source",
       "hash": "sha256:d3326888ff738d5124e9215937fbf69327095ed1da44eafdc6a777274dcde990",
       "sizeBytes": 4285
+    },
+    {
+      "path": "src/modules/points/infrastructure/points-dashboard.repository.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5d8bf13b9d715012c14395adde1b5e7c31f56a2e98f68cac9762e190b92a52ec",
+      "sizeBytes": 1186
+    },
+    {
+      "path": "src/modules/points/infrastructure/points-dashboard.repository.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PointsDashboardRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/infrastructure/points-dashboard.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:81df7d4e2b4414394d75e6f098c0987b5e9f427107364452062d636f68abfe81",
+      "sizeBytes": 1718
     },
     {
       "path": "src/modules/points/infrastructure/points-ledger.repository.spec.ts",
@@ -24025,6 +25374,39 @@
       "kind": "source",
       "hash": "sha256:47dbc04f3b4fc00bcb1fbb49b1e587229bfb24387c3443f1de8e3b7049c8592b",
       "sizeBytes": 4599
+    },
+    {
+      "path": "src/modules/points/lib/signals.mapper.spec.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e5416d9fc4aa523249fbb7d687f7887080e4a68934a5774488a54db95d5af288",
+      "sizeBytes": 1280
+    },
+    {
+      "path": "src/modules/points/lib/signals.mapper.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "EMPTY_POINTS_STANDING"
+        },
+        {
+          "kind": "function",
+          "name": "toPointsStanding"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/points/lib/signals.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:919a917d7586cdf84e67d0d5298027f3a517e70b5cf4e8b7eb671a7ed84aab2e",
+      "sizeBytes": 1066
     },
     {
       "path": "src/modules/points/model/leaderboard.constants.ts",
@@ -24842,6 +26224,44 @@
       "sizeBytes": 9849
     },
     {
+      "path": "src/modules/points/model/signals.rows.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PointsStandingRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:938b80d35fc68b4d9ca912d0816c569dbd1a156c9c0b066cf229dc7fa72b1b05",
+      "sizeBytes": 244
+    },
+    {
+      "path": "src/modules/points/model/signals.types.ts",
+      "root": "modules",
+      "module": "points",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PointsStandingSignal"
+        },
+        {
+          "kind": "interface",
+          "name": "PointsSignalScope"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5a40269b1da12265924d7645265abcec2ab74f26f5343ae6285e00e04a23f3df",
+      "sizeBytes": 901
+    },
+    {
       "path": "src/modules/points/points.module.ts",
       "root": "modules",
       "module": "points",
@@ -24855,8 +26275,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:08409da4553f6ef500b01d8010a78b681464b8b7eed7c6f5416dd27162257fa3",
-      "sizeBytes": 3379
+      "hash": "sha256:8803569b381a8b852334a8ab55f0a61bd8515764204b39ccbb0ccb319408d26f",
+      "sizeBytes": 3679
     },
     {
       "path": "src/modules/practices/adapters/calendar-token.adapter.spec.ts",
@@ -26881,6 +28301,35 @@
       "sizeBytes": 4462
     },
     {
+      "path": "src/modules/practices/application/practice-dashboard-signals.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:71f2bb0b6264a26b774d1feae4d004d04cbc5f4fc7dd010d6205b8e005a96b0f",
+      "sizeBytes": 2583
+    },
+    {
+      "path": "src/modules/practices/application/practice-dashboard-signals.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeDashboardSignalsService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/practice-dashboard-signals.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9e8460145aefa097f196625e12ba1fe0acc8f1d07bbe63b9431dd2e361daf4b2",
+      "sizeBytes": 3176
+    },
+    {
       "path": "src/modules/practices/application/practice-lookup.service.spec.ts",
       "root": "modules",
       "module": "practices",
@@ -28278,8 +29727,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:76732f10e446b43928c645e29eff9bd9f42f1f662aec94e398548aa2cb444319",
-      "sizeBytes": 54
+      "hash": "sha256:4bc18fc2c60037b6a91101343e68327fa983fe55267ffdf399c12b6add24e7ff",
+      "sizeBytes": 324
     },
     {
       "path": "src/modules/practices/infrastructure/agenda-block.repository.ts",
@@ -28479,6 +29928,35 @@
       "kind": "source",
       "hash": "sha256:3f408b5653b57b290646aec1b3f88e9ee3c835a46fee4a20298147bdb3f7d65c",
       "sizeBytes": 4677
+    },
+    {
+      "path": "src/modules/practices/infrastructure/practice-dashboard.repository.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1c380217a1a7012fb372bc79945c3b496a42df1f3ec8f010e642672870826f26",
+      "sizeBytes": 2399
+    },
+    {
+      "path": "src/modules/practices/infrastructure/practice-dashboard.repository.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PracticeDashboardRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/infrastructure/practice-dashboard.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9f58fab138739c62ca3419a369f6c21ba4938bba113a22bd0e414786202f46ad",
+      "sizeBytes": 3129
     },
     {
       "path": "src/modules/practices/infrastructure/practice-reminder.repository.spec.ts",
@@ -29372,6 +30850,47 @@
       "kind": "source",
       "hash": "sha256:606fd1ba191ae5bca4e8c1cf769976863802c75a57693bf9bd5f2e10d9d7661b",
       "sizeBytes": 1883
+    },
+    {
+      "path": "src/modules/practices/lib/signals.mapper.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4cfbb30f41abe1ea9a50df4272260a5988d682a9c500c7c2d2b07f9313fe57ee",
+      "sizeBytes": 2779
+    },
+    {
+      "path": "src/modules/practices/lib/signals.mapper.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toUpcomingSession"
+        },
+        {
+          "kind": "function",
+          "name": "toAttendanceStatusCount"
+        },
+        {
+          "kind": "function",
+          "name": "toCountSignal"
+        },
+        {
+          "kind": "function",
+          "name": "latestAttendanceInstant"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/lib/signals.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0125be190265df02e9e4668b4a256f5af19a29dee9cc5204e9f0e20564eebe32",
+      "sizeBytes": 1766
     },
     {
       "path": "src/modules/practices/model/agendas.constants.ts",
@@ -31734,6 +33253,97 @@
       "sizeBytes": 7518
     },
     {
+      "path": "src/modules/practices/model/signals.constants.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "UPCOMING_SESSIONS_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_STATUS_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_PUBLISHED_STATE"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_DRAFT_STATE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_SHEET_OPEN_STATE"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2fd5066353ef99cf795c7b27787c6ebe64e2b86bfe3e64ba8e9d8cfb2af5f6eb",
+      "sizeBytes": 607
+    },
+    {
+      "path": "src/modules/practices/model/signals.rows.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "UpcomingSessionSignalRow"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceStatusCountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "SignalCountRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c1013cee056e1f65267032249617539ad63ec352a97b76979eb11d78433dd385",
+      "sizeBytes": 467
+    },
+    {
+      "path": "src/modules/practices/model/signals.types.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "UpcomingSessionSignal"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceStatusCount"
+        },
+        {
+          "kind": "interface",
+          "name": "PracticeCountSignal"
+        },
+        {
+          "kind": "interface",
+          "name": "PracticeDashboardSignals"
+        },
+        {
+          "kind": "interface",
+          "name": "PracticeSignalScope"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:befa080c36ee75105ed157f6dc64c5bbed733e0f771d117a10f841595882040f",
+      "sizeBytes": 1436
+    },
+    {
       "path": "src/modules/practices/practices.module.ts",
       "root": "modules",
       "module": "practices",
@@ -31747,8 +33357,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:8082c8410385ef5efc5d436160bac11fc643574e4a49a43fba5ccef8beac78f1",
-      "sizeBytes": 8950
+      "hash": "sha256:bd4cd1c617c0a4084210beb90b4fd6ee01be5219183f95cdbf4154b06b8866a3",
+      "sizeBytes": 9260
     },
     {
       "path": "src/modules/rbac/api/dto/assign-role.dto.ts",
@@ -31919,8 +33529,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:3e23a0c037d3f47c55f1531d35618ed592f13efffa358cbc85ac47b33b327fad",
-      "sizeBytes": 908
+      "hash": "sha256:4b7d0f3613c36b92b982b214f6ff328d015e7bc8a7650cdbfc708140240c3dc0",
+      "sizeBytes": 629
     },
     {
       "path": "src/modules/rbac/application/list-user-assignments.use-case.ts",
@@ -31936,8 +33546,8 @@
       "hasSpec": true,
       "specPath": "src/modules/rbac/application/list-user-assignments.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:f63c51f721956e9b04ef0f97829acb15e7291288b9220f86a219760fc25fbefb",
-      "sizeBytes": 903
+      "hash": "sha256:3c44d4352cfce2443539d410781cebb2c16e7f0d620abb424fb99389f94027c4",
+      "sizeBytes": 694
     },
     {
       "path": "src/modules/rbac/application/privilege-ceiling.service.spec.ts",
@@ -31965,8 +33575,8 @@
       "hasSpec": true,
       "specPath": "src/modules/rbac/application/privilege-ceiling.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:158eb2ed09332129f67f44267e3b623fc5971a68c09f6867d43fd1b69d6a98f9",
-      "sizeBytes": 2172
+      "hash": "sha256:12522b88882a2d6a198d581fd5ec882d28dd30e7a8792aeaca269325206f6826",
+      "sizeBytes": 2402
     },
     {
       "path": "src/modules/rbac/application/rbac-permission-resolver.service.spec.ts",
@@ -31998,6 +33608,35 @@
       "sizeBytes": 3981
     },
     {
+      "path": "src/modules/rbac/application/replace-team-roles.use-case.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d59158014270926dff06843b9fd18b2db4a70c3796f02ecec2e125f207e438a8",
+      "sizeBytes": 5383
+    },
+    {
+      "path": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReplaceTeamRolesUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/replace-team-roles.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:fead87fff8cf9299bf3d8d533d7aca5b9a3c84ba136198f0636d817252821d8a",
+      "sizeBytes": 5204
+    },
+    {
       "path": "src/modules/rbac/application/revoke-role-assignment.use-case.spec.ts",
       "root": "modules",
       "module": "rbac",
@@ -32025,6 +33664,97 @@
       "kind": "source",
       "hash": "sha256:7a4bb8c6203c9ccb40ef273f4c9e7a7f35c8d1658b130ec49c660255a8eed8bb",
       "sizeBytes": 3077
+    },
+    {
+      "path": "src/modules/rbac/application/role-assignment-query.service.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:def0023000acf7c3e08d9c999b76a6fa90bc464fcebd8e6305be6d9ead1d23ef",
+      "sizeBytes": 2549
+    },
+    {
+      "path": "src/modules/rbac/application/role-assignment-query.service.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RoleAssignmentQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/role-assignment-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4bca7e5ea3515a161302e524a2203c7894726e68b2523276588892842d17c592",
+      "sizeBytes": 1488
+    },
+    {
+      "path": "src/modules/rbac/application/team-role-query.service.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:89be3c7d4d183c5a3ac3859dd0ec59c75c37b043465c3d270ba12036f3883f12",
+      "sizeBytes": 2712
+    },
+    {
+      "path": "src/modules/rbac/application/team-role-query.service.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamRoleQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/team-role-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:923ab2d6d5c3375bebcda1e857db16b2cfc027e2110c95edaf9d454a6bad5ede",
+      "sizeBytes": 2616
+    },
+    {
+      "path": "src/modules/rbac/domain/assignment-window.policy.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bf5c3f3e15521bd1431804d0c2b116feb91cbf0d0d55158eb874d20716e70716",
+      "sizeBytes": 2790
+    },
+    {
+      "path": "src/modules/rbac/domain/assignment-window.policy.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assignmentIsLive"
+        },
+        {
+          "kind": "function",
+          "name": "assignmentAppliesToScope"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/domain/assignment-window.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a27f9d99d466a657de54e759c626d15cc9fdacc000665b43685b2e6328566109",
+      "sizeBytes": 1290
     },
     {
       "path": "src/modules/rbac/domain/effective-permissions.policy.spec.ts",
@@ -32097,8 +33827,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:30ccdd6c42a371cee620ea2dacfc71bc9c21e559a613027474e4e5879cc0e66d",
-      "sizeBytes": 806
+      "hash": "sha256:7f1252834965b1c92c04f9e7b01d126476b3ca7a868febf258de5ab8b463b41e",
+      "sizeBytes": 1617
     },
     {
       "path": "src/modules/rbac/domain/privilege-ceiling.policy.ts",
@@ -32109,13 +33839,46 @@
         {
           "kind": "function",
           "name": "isWithinPrivilegeCeiling"
+        },
+        {
+          "kind": "function",
+          "name": "selectAssignableRoles"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/rbac/domain/privilege-ceiling.policy.spec.ts",
       "kind": "source",
-      "hash": "sha256:48141b5da7aa22b2c244c1c41a00369d061f199b19fb208a183ed67018a1ee0a",
-      "sizeBytes": 551
+      "hash": "sha256:ac4f25d5738fbceab27e9b7001567714a7b1f1a977f7c49710c243ddb206ee32",
+      "sizeBytes": 1223
+    },
+    {
+      "path": "src/modules/rbac/domain/role-set-diff.policy.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3e9eb8861a8f99eb0cd6441e157a82b7f96b48f24282715da24a5973c1fa0680",
+      "sizeBytes": 1644
+    },
+    {
+      "path": "src/modules/rbac/domain/role-set-diff.policy.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "diffTeamRoles"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/domain/role-set-diff.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c22b7fedc8aeb025c5b6fe7f1f816d083deca31065dcc2dc1946691b77a3a20e",
+      "sizeBytes": 858
     },
     {
       "path": "src/modules/rbac/errors/assignment-not-found.error.spec.ts",
@@ -32213,8 +33976,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:88bf42b3529ee1df5fe8fd27f9382fa95531b7e952d19ccc221a6faaaca25bb9",
-      "sizeBytes": 44
+      "hash": "sha256:328f19d70d7d9b13415864f66214795cd1817c4b61216b6a54a617315242eee1",
+      "sizeBytes": 567
     },
     {
       "path": "src/modules/rbac/infrastructure/rbac.repository.spec.ts",
@@ -32225,8 +33988,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:8800606c94c47a7878220f273ecb19b15f63256eda59474bdec913bcd143ef8a",
-      "sizeBytes": 6802
+      "hash": "sha256:eeaca09f20ef0ddf83194f52442c7bbb501df9ef6133f5e9f282ed4ca6c80e62",
+      "sizeBytes": 8107
     },
     {
       "path": "src/modules/rbac/infrastructure/rbac.repository.ts",
@@ -32242,8 +34005,8 @@
       "hasSpec": true,
       "specPath": "src/modules/rbac/infrastructure/rbac.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:c47c34441c219c08461423461702f46d3017b2bd34c0a3256d7610c37f6704cf",
-      "sizeBytes": 7543
+      "hash": "sha256:84b31d2726a6ceaaf0f5b697bab22dbb33d6774244a0d93f0ee7946d211cd1a4",
+      "sizeBytes": 8794
     },
     {
       "path": "src/modules/rbac/lib/rbac.helpers.spec.ts",
@@ -32285,6 +34048,68 @@
       "kind": "source",
       "hash": "sha256:88c783345761588688c6bdc92251c4fe98ba4f496e174281ba3a52380a2367eb",
       "sizeBytes": 1002
+    },
+    {
+      "path": "src/modules/rbac/lib/role-catalog.mapper.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d123a90d36ff4a41187f97ce84f72eda302f1b16de5b69c9e58972246979c96c",
+      "sizeBytes": 824
+    },
+    {
+      "path": "src/modules/rbac/lib/role-catalog.mapper.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toRoleBundles"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/lib/role-catalog.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a58fbe61222869ac07693ffbcbfc35235f9b4cd2192451296340dc9dbc557f69",
+      "sizeBytes": 752
+    },
+    {
+      "path": "src/modules/rbac/lib/role-slug.mapper.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0cd22ef92abe8e58e92cbcf3c8fe60fc9fd1264c67a65500b07482f665b15f0b",
+      "sizeBytes": 1048
+    },
+    {
+      "path": "src/modules/rbac/lib/role-slug.mapper.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toRoleSlug"
+        },
+        {
+          "kind": "function",
+          "name": "toRoleKey"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/lib/role-slug.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7cbe79965b1fedb61575f38f8f200bf3be6b56b69700e0754f985aec19af5e5c",
+      "sizeBytes": 855
     },
     {
       "path": "src/modules/rbac/model/rbac.constants.ts",
@@ -32363,13 +34188,17 @@
         {
           "kind": "const",
           "name": "RBAC_ESCALATION_DENIED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ROLE_CATALOG_MAX"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:cfbc95d3d3ee5f801182e82640bdb7d17ad4a6e86f05fe3a783d9d9246b1de66",
-      "sizeBytes": 1996
+      "hash": "sha256:149d112d6fd50fba30bb17804559e69ae30456c48a2f650d6382bd8d6e963af1",
+      "sizeBytes": 2278
     },
     {
       "path": "src/modules/rbac/model/rbac.enums.ts",
@@ -32421,13 +34250,17 @@
         {
           "kind": "interface",
           "name": "AffectedRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RoleCatalogRow"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fa15391229d243a61d5918e64b2890e357e844a3458177f9360d47d1b6cca1aa",
-      "sizeBytes": 1155
+      "hash": "sha256:20fcf7fb8d77829f879cd6af14d890ecd3457b939f2f2033231928c69b6863f9",
+      "sizeBytes": 1338
     },
     {
       "path": "src/modules/rbac/model/rbac.types.ts",
@@ -32470,13 +34303,29 @@
         {
           "kind": "interface",
           "name": "EffectivePermissionsView"
+        },
+        {
+          "kind": "interface",
+          "name": "RoleBundleRecord"
+        },
+        {
+          "kind": "interface",
+          "name": "TeamRolesView"
+        },
+        {
+          "kind": "interface",
+          "name": "ReplaceTeamRolesCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "RoleSetDiff"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:e2f93730793463d037e53b5733ec224cc00783000e31ba13bfadcb7ded802252",
-      "sizeBytes": 2721
+      "hash": "sha256:bf21350ea8b0428aa432cedd16e996a217da644014e8e2e0232e26eabe81bf21",
+      "sizeBytes": 3522
     },
     {
       "path": "src/modules/rbac/rbac.module.ts",
@@ -32492,8 +34341,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d0e46f4a050ed096b9d747a37b50073bbcfd814fa6f539286753456c31ea8ec9",
-      "sizeBytes": 1861
+      "hash": "sha256:c92e02482b63a608022bd9285f6359dcfb8dbc3563e322eb98533b6677360244",
+      "sizeBytes": 2297
     },
     {
       "path": "src/modules/scoring/api/calculation-rule.controller.ts",

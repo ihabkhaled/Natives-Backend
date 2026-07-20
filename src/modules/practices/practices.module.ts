@@ -38,6 +38,7 @@ import { FinalizeAttendanceUseCase } from './application/finalize-attendance.use
 import { GenerateSessionsUseCase } from './application/generate-sessions.use-case';
 import { OverrideRsvpUseCase } from './application/override-rsvp.use-case';
 import { ParticipationQueryService } from './application/participation-query.service';
+import { PracticeDashboardSignalsService } from './application/practice-dashboard-signals.service';
 import { PracticeLookupService } from './application/practice-lookup.service';
 import { PracticeReminderAdminService } from './application/practice-reminder-admin.service';
 import { PublishAgendaUseCase } from './application/publish-agenda.use-case';
@@ -65,6 +66,7 @@ import { AttendanceSheetRepository } from './infrastructure/attendance-sheet.rep
 import { CalendarFeedTokenRepository } from './infrastructure/calendar-feed-token.repository';
 import { DrillRepository } from './infrastructure/drill.repository';
 import { PracticeAgendaRepository } from './infrastructure/practice-agenda.repository';
+import { PracticeDashboardRepository } from './infrastructure/practice-dashboard.repository';
 import { PracticeReminderRepository } from './infrastructure/practice-reminder.repository';
 import { PracticeRsvpRepository } from './infrastructure/practice-rsvp.repository';
 import { PracticeRsvpRevisionRepository } from './infrastructure/practice-rsvp-revision.repository';
@@ -101,6 +103,8 @@ import { CALENDAR_TOKEN_PORT } from './model/calendar.constants';
     AgendaGroupController,
   ],
   providers: [
+    PracticeDashboardRepository,
+    PracticeDashboardSignalsService,
     PracticeScheduleRepository,
     PracticeSessionRepository,
     SessionStatusEventRepository,
@@ -160,5 +164,6 @@ import { CALENDAR_TOKEN_PORT } from './model/calendar.constants';
     PracticeReminderAdminService,
     { provide: CALENDAR_TOKEN_PORT, useClass: CalendarTokenAdapter },
   ],
+  exports: [PracticeDashboardSignalsService],
 })
 export class PracticesModule {}

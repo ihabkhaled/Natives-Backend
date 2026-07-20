@@ -112,3 +112,39 @@ export interface CountRow {
 export interface IdRow {
   readonly id: string;
 }
+
+/**
+ * One membership of the calling user joined to its team and (when resolvable)
+ * season labels. Season columns are nullable: a team-level membership in a team
+ * with no season carries no season context.
+ */
+export interface MembershipContextRow {
+  readonly membership_id: string;
+  readonly team_id: string;
+  readonly team_slug: string;
+  readonly team_name: string;
+  readonly season_id: string | null;
+  readonly season_slug: string | null;
+  readonly season_name: string | null;
+  readonly status: string;
+  readonly joined_at: string | Date | null;
+}
+
+/** The profile fields the completeness projection scores, plus its freshness. */
+export interface ProfileCompletenessRow {
+  readonly preferred_name: string | null;
+  readonly email: string | null;
+  readonly phone: string | null;
+  readonly gender: string | null;
+  readonly date_of_birth: string | null;
+  readonly jersey_number: number | null;
+  readonly positions: readonly string[];
+  readonly avatar_media_id: string | null;
+  readonly updated_at: string | Date;
+}
+
+/** A bounded roster aggregate: how many rows, and the boundary instant. */
+export interface MemberSignalCountRow {
+  readonly count: number;
+  readonly boundary_at: string | Date | null;
+}

@@ -2,7 +2,10 @@ import type { TransactionScope } from '@core/persistence/unit-of-work.port';
 import { Injectable } from '@nestjs/common';
 
 import { toDate, toNullableDate } from '../lib/rbac.helpers';
-import { RBAC_ACTIVE_USER_STATUS } from '../model/rbac.constants';
+import {
+  RBAC_ACTIVE_USER_STATUS,
+  RBAC_ROLE_CATALOG_MAX,
+} from '../model/rbac.constants';
 import { GrantEffect } from '../model/rbac.enums';
 import type {
   AffectedRow,
@@ -10,6 +13,7 @@ import type {
   PermissionKeyRow,
   PolicyVersionRow,
   RoleAssignmentRow,
+  RoleCatalogRow,
   RoleRow,
 } from '../model/rbac.rows';
 import type {
@@ -98,6 +102,38 @@ export class RbacRepository {
       [roleId],
     );
     return rows.map(row => row.key);
+  }
+
+  async listRoleCatalog(
+    scope: TransactionScope,
+  ): Promise<readonly RoleCatalogRow[]> {
+    return scope.run<RoleCatalogRow>(
+      `SELECT r."key" AS "role_key", p."key" AS "permission_key"
+         FROM "roles" r
+         JOIN "role_permissions" rp ON rp."role_id" = r."id"
+         JOIN "permissions" p ON p."id" = rp."permission_id"
+        ORDER BY r."key" ASC, p."key" ASC
+        LIMIT $1`,
+      [RBAC_ROLE_CATALOG_MAX],
+    );
+  }
+
+  async listActiveTeamAssignments(
+    scope: TransactionScope,
+    userId: string,
+    teamId: string,
+  ): Promise<readonly RoleAssignment[]> {
+    const rows = await scope.run<RoleAssignmentRow>(
+      `SELECT a."id", a."user_id", a."role_id", r."key" AS "role_key",
+              a."team_id", a."season_id", a."effective_from", a."effective_to",
+              a."granted_by", a."revoked_at", a."created_at", a."version"
+         FROM "user_role_assignments" a
+         JOIN "roles" r ON r."id" = a."role_id"
+        WHERE a."user_id" = $1 AND a."team_id" = $2 AND a."revoked_at" IS NULL
+        ORDER BY r."key" ASC, a."created_at" ASC, a."id" ASC`,
+      [userId, teamId],
+    );
+    return rows.map(row => this.toAssignment(row, row.role_key));
   }
 
   async insertAssignment(

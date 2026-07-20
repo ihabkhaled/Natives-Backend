@@ -68,6 +68,8 @@ function build() {
   const audit = { record: vi.fn() };
   const sessionIssuer = { issue: vi.fn().mockResolvedValue(ISSUED) };
 
+  const memberships = { resolve: vi.fn().mockResolvedValue([]) };
+
   const useCase = new LoginUseCase(
     unitOfWork as never,
     clock,
@@ -79,6 +81,7 @@ function build() {
     failedLogins,
     audit as never,
     sessionIssuer as never,
+    memberships as never,
   );
 
   return {

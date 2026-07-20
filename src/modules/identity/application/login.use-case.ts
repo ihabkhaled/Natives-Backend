@@ -36,6 +36,7 @@ import type {
   User,
   UserWithCredential,
 } from '../model/identity.types';
+import { PrincipalMembershipsService } from './principal-memberships.service';
 import { SecurityAuditService } from './security-audit.service';
 import { SessionIssuerService } from './session-issuer.service';
 
@@ -60,6 +61,7 @@ export class LoginUseCase {
     private readonly failedLogins: FailedLoginStateRepository,
     private readonly audit: SecurityAuditService,
     private readonly sessionIssuer: SessionIssuerService,
+    private readonly memberships: PrincipalMembershipsService,
   ) {}
 
   async execute(command: LoginCommand): Promise<LoginResponse> {
@@ -71,7 +73,13 @@ export class LoginUseCase {
       throw new InvalidCredentialsError();
     }
     const permissions = await this.resolvePermissions(outcome.user);
-    return buildLoginResponse(outcome.session, outcome.user, permissions);
+    const memberships = await this.memberships.resolve(outcome.user.id);
+    return buildLoginResponse(
+      outcome.session,
+      outcome.user,
+      permissions,
+      memberships,
+    );
   }
 
   private async resolvePermissions(user: User): Promise<readonly string[]> {

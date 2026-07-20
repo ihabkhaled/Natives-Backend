@@ -1,3 +1,4 @@
+import type { MembershipStatus } from '@modules/members';
 import type { Role } from '@shared/enums';
 
 import type {
@@ -210,11 +211,23 @@ export interface AuthTokensPayload {
   readonly refreshToken: string;
 }
 
+/**
+ * One team context the principal personally belongs to. `seasonId`/`seasonName`
+ * are null when the team has no resolvable season — the client renders "no
+ * season" rather than an invented one. `roles` carries the lower-snake role
+ * slugs held in that team so the client can shape navigation without a second
+ * round trip; authorization still comes from `permissions`, never from these.
+ */
 export interface AuthMembershipPayload {
+  readonly membershipId: string;
   readonly teamId: string;
+  readonly teamSlug: string;
   readonly teamName: string;
-  readonly seasonId: string;
-  readonly seasonName: string;
+  readonly seasonId: string | null;
+  readonly seasonSlug: string | null;
+  readonly seasonName: string | null;
+  readonly status: MembershipStatus;
+  readonly roles: readonly string[];
 }
 
 export interface AuthUserPayload {
