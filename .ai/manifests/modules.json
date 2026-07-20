@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T17:55:20.706Z",
+  "generatedAt": "2026-07-20T20:42:53.866Z",
   "modules": [
     {
       "name": "activities",
@@ -1315,6 +1315,112 @@
       "fileCount": 33,
       "specCount": 21,
       "publicSurface": "src/modules/rbac/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "rosters",
+      "path": "src/modules/rosters",
+      "layers": {
+        "api-dto": [
+          "src/modules/rosters/api/dto/add-roster-entry.dto.ts",
+          "src/modules/rosters/api/dto/create-competition-roster.dto.ts",
+          "src/modules/rosters/api/dto/create-match-roster.dto.ts",
+          "src/modules/rosters/api/dto/declare-roster-availability.dto.ts",
+          "src/modules/rosters/api/dto/list-roster-availability.response.dto.ts",
+          "src/modules/rosters/api/dto/list-roster-entries.response.dto.ts",
+          "src/modules/rosters/api/dto/list-roster-snapshots.response.dto.ts",
+          "src/modules/rosters/api/dto/list-rosters.response.dto.ts",
+          "src/modules/rosters/api/dto/lock-roster.dto.ts",
+          "src/modules/rosters/api/dto/override-roster-entry.dto.ts",
+          "src/modules/rosters/api/dto/remove-roster-entry.dto.ts",
+          "src/modules/rosters/api/dto/revise-roster.dto.ts",
+          "src/modules/rosters/api/dto/roster-availability-response.dto.ts",
+          "src/modules/rosters/api/dto/roster-entry-response.dto.ts",
+          "src/modules/rosters/api/dto/roster-list.query.dto.ts",
+          "src/modules/rosters/api/dto/roster-page.query.dto.ts",
+          "src/modules/rosters/api/dto/roster-response.dto.ts",
+          "src/modules/rosters/api/dto/roster-snapshot-entry.dto.ts",
+          "src/modules/rosters/api/dto/roster-snapshot-response.dto.ts",
+          "src/modules/rosters/api/dto/roster-validation.response.dto.ts",
+          "src/modules/rosters/api/dto/transition-roster.dto.ts"
+        ],
+        "controller": [
+          "src/modules/rosters/api/roster-availability.controller.ts",
+          "src/modules/rosters/api/roster-entries.controller.ts",
+          "src/modules/rosters/api/roster-snapshots.controller.ts",
+          "src/modules/rosters/api/rosters.controller.ts"
+        ],
+        "use-case": [
+          "src/modules/rosters/application/add-roster-entry.use-case.ts",
+          "src/modules/rosters/application/create-competition-roster.use-case.ts",
+          "src/modules/rosters/application/create-match-roster.use-case.ts",
+          "src/modules/rosters/application/declare-roster-availability.use-case.ts",
+          "src/modules/rosters/application/lock-roster.use-case.ts",
+          "src/modules/rosters/application/remove-roster-entry.use-case.ts",
+          "src/modules/rosters/application/revise-roster.use-case.ts",
+          "src/modules/rosters/application/transition-roster.use-case.ts"
+        ],
+        "service": [
+          "src/modules/rosters/application/roster-availability-query.service.ts",
+          "src/modules/rosters/application/roster-entry-query.service.ts",
+          "src/modules/rosters/application/roster-lookup.service.ts",
+          "src/modules/rosters/application/roster-query.service.ts",
+          "src/modules/rosters/application/roster-scope.service.ts",
+          "src/modules/rosters/application/roster-snapshot-query.service.ts",
+          "src/modules/rosters/application/roster-snapshot-recorder.service.ts",
+          "src/modules/rosters/application/roster-validation.service.ts"
+        ],
+        "domain": [
+          "src/modules/rosters/domain/roster-availability.policy.ts",
+          "src/modules/rosters/domain/roster-composition.policy.ts",
+          "src/modules/rosters/domain/roster-content.policy.ts",
+          "src/modules/rosters/domain/roster-entry-eligibility.policy.ts",
+          "src/modules/rosters/domain/roster-notification.policy.ts",
+          "src/modules/rosters/domain/roster-snapshot.policy.ts",
+          "src/modules/rosters/domain/roster.state-machine.ts"
+        ],
+        "other": [
+          "src/modules/rosters/errors/roster-availability-membership-not-found.error.ts",
+          "src/modules/rosters/errors/roster-candidate-not-found.error.ts",
+          "src/modules/rosters/errors/roster-constraint.error.ts",
+          "src/modules/rosters/errors/roster-entry-not-found.error.ts",
+          "src/modules/rosters/errors/roster-invalid-transition.error.ts",
+          "src/modules/rosters/errors/roster-jersey-conflict.error.ts",
+          "src/modules/rosters/errors/roster-locked.error.ts",
+          "src/modules/rosters/errors/roster-not-found.error.ts",
+          "src/modules/rosters/errors/roster-override-required.error.ts",
+          "src/modules/rosters/errors/roster-scope-not-found.error.ts",
+          "src/modules/rosters/errors/roster-snapshot-immutable.error.ts",
+          "src/modules/rosters/errors/roster-validation.error.ts",
+          "src/modules/rosters/errors/roster-version-conflict.error.ts",
+          "src/modules/rosters/index.ts",
+          "src/modules/rosters/rosters.module.ts"
+        ],
+        "repository": [
+          "src/modules/rosters/infrastructure/roster-availability.repository.ts",
+          "src/modules/rosters/infrastructure/roster-entry.repository.ts",
+          "src/modules/rosters/infrastructure/roster-scope.repository.ts",
+          "src/modules/rosters/infrastructure/roster-snapshot.repository.ts",
+          "src/modules/rosters/infrastructure/roster-source.repository.ts",
+          "src/modules/rosters/infrastructure/roster.repository.ts"
+        ],
+        "lib": [
+          "src/modules/rosters/lib/roster-snapshot.factory.ts",
+          "src/modules/rosters/lib/rosters-command.mapper.ts",
+          "src/modules/rosters/lib/rosters.builders.ts",
+          "src/modules/rosters/lib/rosters.helpers.ts",
+          "src/modules/rosters/lib/rosters.mapper.ts"
+        ],
+        "model": [
+          "src/modules/rosters/model/rosters.constants.ts",
+          "src/modules/rosters/model/rosters.enums.ts",
+          "src/modules/rosters/model/rosters.rows.ts",
+          "src/modules/rosters/model/rosters.types.ts"
+        ]
+      },
+      "fileCount": 78,
+      "specCount": 34,
+      "publicSurface": "src/modules/rosters/index.ts",
       "hasEvents": false
     },
     {

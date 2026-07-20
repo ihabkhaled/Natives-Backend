@@ -137,6 +137,59 @@
         ],
         "type": "object"
       },
+      "AddRosterEntryDto": {
+        "properties": {
+          "entryRole": {
+            "default": "player",
+            "enum": [
+              "player",
+              "captain",
+              "spirit_captain",
+              "coach"
+            ],
+            "type": "string"
+          },
+          "fieldPosition": {
+            "default": "unspecified",
+            "enum": [
+              "handler",
+              "cutter",
+              "hybrid",
+              "unspecified"
+            ],
+            "type": "string"
+          },
+          "jerseyNumber": {
+            "maximum": 999,
+            "minimum": 0,
+            "nullable": true,
+            "type": "object"
+          },
+          "lineAssignment": {
+            "default": "any",
+            "enum": [
+              "offense",
+              "defense",
+              "any"
+            ],
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "selectionReason": {
+            "maxLength": 500,
+            "minLength": 3,
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "membershipId"
+        ],
+        "type": "object"
+      },
       "AgendaResponseDto": {
         "properties": {
           "agendaId": {
@@ -2306,6 +2359,70 @@
         ],
         "type": "object"
       },
+      "CreateCompetitionRosterDto": {
+        "properties": {
+          "competitionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "division": {
+            "enum": [
+              "open",
+              "women",
+              "mixed",
+              "unspecified"
+            ],
+            "type": "string"
+          },
+          "maxSize": {
+            "default": 30,
+            "maximum": 60,
+            "minimum": 1,
+            "type": "number"
+          },
+          "minSize": {
+            "default": 7,
+            "maximum": 60,
+            "minimum": 1,
+            "type": "number"
+          },
+          "minWomen": {
+            "maximum": 60,
+            "minimum": 0,
+            "nullable": true,
+            "type": "object"
+          },
+          "name": {
+            "maxLength": 160,
+            "minLength": 2,
+            "type": "string"
+          },
+          "notes": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "requireCaptain": {
+            "default": true,
+            "type": "boolean"
+          },
+          "selectionDeadline": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "object"
+          },
+          "squadId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "competitionId",
+          "name"
+        ],
+        "type": "object"
+      },
       "CreateDrillDto": {
         "properties": {
           "category": {
@@ -2572,6 +2689,65 @@
         },
         "required": [
           "email"
+        ],
+        "type": "object"
+      },
+      "CreateMatchRosterDto": {
+        "properties": {
+          "division": {
+            "enum": [
+              "open",
+              "women",
+              "mixed",
+              "unspecified"
+            ],
+            "type": "string"
+          },
+          "fixtureId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "maxSize": {
+            "default": 30,
+            "maximum": 60,
+            "minimum": 1,
+            "type": "number"
+          },
+          "minSize": {
+            "default": 7,
+            "maximum": 60,
+            "minimum": 1,
+            "type": "number"
+          },
+          "minWomen": {
+            "maximum": 60,
+            "minimum": 0,
+            "nullable": true,
+            "type": "object"
+          },
+          "name": {
+            "maxLength": 160,
+            "minLength": 2,
+            "type": "string"
+          },
+          "notes": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "requireCaptain": {
+            "default": true,
+            "type": "boolean"
+          },
+          "sourceRosterId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "fixtureId",
+          "name"
         ],
         "type": "object"
       },
@@ -3731,6 +3907,28 @@
         "type": "object"
       },
       "DeclareAvailabilityDto": {
+        "properties": {
+          "availability": {
+            "enum": [
+              "available",
+              "unavailable",
+              "tentative"
+            ],
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 3,
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "availability"
+        ],
+        "type": "object"
+      },
+      "DeclareRosterAvailabilityDto": {
         "properties": {
           "availability": {
             "enum": [
@@ -5572,6 +5770,110 @@
         ],
         "type": "object"
       },
+      "ListRosterAvailabilityResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RosterAvailabilityResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListRosterEntriesResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RosterEntryResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListRosterSnapshotsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RosterSnapshotResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListRostersResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RosterResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListRsvpsResponseDto": {
         "properties": {
           "items": {
@@ -5959,6 +6261,18 @@
           "total",
           "limit",
           "offset"
+        ],
+        "type": "object"
+      },
+      "LockRosterDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          }
+        },
+        "required": [
+          "expectedRecordVersion"
         ],
         "type": "object"
       },
@@ -7026,6 +7340,65 @@
           "includedCount",
           "excludedCount",
           "sufficient"
+        ],
+        "type": "object"
+      },
+      "OverrideRosterEntryDto": {
+        "properties": {
+          "entryRole": {
+            "default": "player",
+            "enum": [
+              "player",
+              "captain",
+              "spirit_captain",
+              "coach"
+            ],
+            "type": "string"
+          },
+          "fieldPosition": {
+            "default": "unspecified",
+            "enum": [
+              "handler",
+              "cutter",
+              "hybrid",
+              "unspecified"
+            ],
+            "type": "string"
+          },
+          "jerseyNumber": {
+            "maximum": 999,
+            "minimum": 0,
+            "nullable": true,
+            "type": "object"
+          },
+          "lineAssignment": {
+            "default": "any",
+            "enum": [
+              "offense",
+              "defense",
+              "any"
+            ],
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "overrideReason": {
+            "maxLength": 500,
+            "minLength": 5,
+            "type": "string"
+          },
+          "selectionReason": {
+            "maxLength": 500,
+            "minLength": 3,
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "membershipId",
+          "overrideReason"
         ],
         "type": "object"
       },
@@ -8512,6 +8885,17 @@
         ],
         "type": "object"
       },
+      "RemoveRosterEntryDto": {
+        "properties": {
+          "reason": {
+            "maxLength": 500,
+            "minLength": 3,
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
       "RemoveSelectionDto": {
         "properties": {
           "reason": {
@@ -8965,6 +9349,24 @@
         ],
         "type": "object"
       },
+      "ReviseRosterDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reason",
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "RevisionsResponseDto": {
         "properties": {
           "items": {
@@ -9052,74 +9454,712 @@
         ],
         "type": "object"
       },
-      "RosterEntryResponseDto": {
+      "RosterAvailabilityResponseDto": {
         "properties": {
-          "checkInAt": {
-            "format": "date-time",
-            "nullable": true,
-            "type": "string"
-          },
-          "excuseCategory": {
+          "availability": {
             "enum": [
-              "injury",
-              "illness",
-              "work",
-              "travel",
-              "personal",
-              "other"
+              "available",
+              "unavailable",
+              "tentative"
             ],
-            "nullable": true,
             "type": "string"
           },
-          "latenessMinutes": {
+          "availabilityId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "declaredBy": {
+            "format": "uuid",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "reason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "rosterId": {
+            "format": "uuid",
             "type": "string"
           },
           "source": {
             "enum": [
               "self",
-              "coach",
-              "admin",
-              "import",
-              "system"
+              "coach"
             ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "availabilityId",
+          "rosterId",
+          "teamId",
+          "membershipId",
+          "availability",
+          "reason",
+          "source",
+          "declaredBy",
+          "recordVersion",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "RosterCompositionDto": {
+        "properties": {
+          "captains": {
+            "type": "number"
+          },
+          "defense": {
+            "type": "number"
+          },
+          "duplicateJerseys": {
+            "type": "number"
+          },
+          "flexible": {
+            "type": "number"
+          },
+          "men": {
+            "type": "number"
+          },
+          "missingJersey": {
+            "type": "number"
+          },
+          "mixed": {
+            "type": "number"
+          },
+          "offense": {
+            "type": "number"
+          },
+          "selected": {
+            "type": "number"
+          },
+          "spiritCaptains": {
+            "type": "number"
+          },
+          "unavailableSelected": {
+            "type": "number"
+          },
+          "unknownGender": {
+            "type": "number"
+          },
+          "women": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "selected",
+          "women",
+          "men",
+          "mixed",
+          "unknownGender",
+          "offense",
+          "defense",
+          "flexible",
+          "captains",
+          "spiritCaptains",
+          "missingJersey",
+          "duplicateJerseys",
+          "unavailableSelected"
+        ],
+        "type": "object"
+      },
+      "RosterConstraintViolationDto": {
+        "properties": {
+          "code": {
+            "enum": [
+              "min_size",
+              "max_size",
+              "missing_captain",
+              "jersey_collision",
+              "missing_jersey",
+              "gender_ratio",
+              "line_balance",
+              "unavailable_selected"
+            ],
+            "type": "string"
+          },
+          "count": {
+            "nullable": true,
+            "type": "number"
+          },
+          "severity": {
+            "enum": [
+              "error",
+              "warning"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "severity",
+          "count"
+        ],
+        "type": "object"
+      },
+      "RosterEntryResponseDto": {
+        "properties": {
+          "availability": {
+            "enum": [
+              "available",
+              "unavailable",
+              "tentative"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "constraintOverridden": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "entryId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "entryRole": {
+            "enum": [
+              "player",
+              "captain",
+              "spirit_captain",
+              "coach"
+            ],
+            "type": "string"
+          },
+          "fieldPosition": {
+            "enum": [
+              "handler",
+              "cutter",
+              "hybrid",
+              "unspecified"
+            ],
+            "type": "string"
+          },
+          "genderBucket": {
+            "enum": [
+              "men",
+              "women",
+              "mixed",
+              "unknown"
+            ],
+            "type": "string"
+          },
+          "jerseyNumber": {
+            "nullable": true,
+            "type": "number"
+          },
+          "lineAssignment": {
+            "enum": [
+              "offense",
+              "defense",
+              "any"
+            ],
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "overriddenBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "overrideReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "removalReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "removedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "removedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "rosterId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "selectedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "selectionReason": {
             "nullable": true,
             "type": "string"
           },
           "status": {
             "enum": [
-              "present_on_time",
-              "present_late",
-              "excused",
-              "injured",
-              "absent",
-              "remote_approved",
-              "other_approved"
+              "selected",
+              "withdrawn"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "entryId",
+          "rosterId",
+          "teamId",
+          "membershipId",
+          "jerseyNumber",
+          "entryRole",
+          "lineAssignment",
+          "fieldPosition",
+          "genderBucket",
+          "status",
+          "availability",
+          "selectionReason",
+          "constraintOverridden",
+          "overrideReason",
+          "overriddenBy",
+          "selectedBy",
+          "removedBy",
+          "removedAt",
+          "removalReason",
+          "recordVersion",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "RosterResponseDto": {
+        "properties": {
+          "archivedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "competitionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "currentSnapshotId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "division": {
+            "enum": [
+              "open",
+              "women",
+              "mixed",
+              "unspecified"
+            ],
+            "type": "string"
+          },
+          "fixtureId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "lockedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "lockedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "maxSize": {
+            "type": "number"
+          },
+          "minSize": {
+            "type": "number"
+          },
+          "minWomen": {
+            "nullable": true,
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "notes": {
+            "nullable": true,
+            "type": "string"
+          },
+          "policyVersion": {
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "publishedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "requireCaptain": {
+            "type": "boolean"
+          },
+          "revisedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "revisedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "revisionReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "rosterId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "rosterKind": {
+            "enum": [
+              "competition",
+              "match"
+            ],
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "selectionDeadline": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "sourceRosterId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "squadId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "published",
+              "locked",
+              "revised",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "supersedesRosterId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "rosterId",
+          "teamId",
+          "seasonId",
+          "competitionId",
+          "fixtureId",
+          "squadId",
+          "sourceRosterId",
+          "supersedesRosterId",
+          "currentSnapshotId",
+          "rosterKind",
+          "name",
+          "status",
+          "division",
+          "minSize",
+          "maxSize",
+          "minWomen",
+          "requireCaptain",
+          "policyVersion",
+          "selectionDeadline",
+          "notes",
+          "revision",
+          "recordVersion",
+          "createdBy",
+          "publishedBy",
+          "publishedAt",
+          "lockedBy",
+          "lockedAt",
+          "revisedBy",
+          "revisedAt",
+          "revisionReason",
+          "archivedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "RosterSnapshotEntryDto": {
+        "properties": {
+          "availability": {
+            "enum": [
+              "available",
+              "unavailable",
+              "tentative"
             ],
             "nullable": true,
             "type": "string"
           },
-          "userId": {
-            "nullable": true,
+          "constraintOverridden": {
+            "type": "boolean"
+          },
+          "entryRole": {
+            "enum": [
+              "player",
+              "captain",
+              "spirit_captain",
+              "coach"
+            ],
             "type": "string"
           },
-          "version": {
+          "fieldPosition": {
+            "enum": [
+              "handler",
+              "cutter",
+              "hybrid",
+              "unspecified"
+            ],
+            "type": "string"
+          },
+          "genderBucket": {
+            "enum": [
+              "men",
+              "women",
+              "mixed",
+              "unknown"
+            ],
+            "type": "string"
+          },
+          "jerseyNumber": {
             "nullable": true,
             "type": "number"
+          },
+          "lineAssignment": {
+            "enum": [
+              "offense",
+              "defense",
+              "any"
+            ],
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
           }
         },
         "required": [
           "membershipId",
-          "userId",
+          "jerseyNumber",
+          "entryRole",
+          "lineAssignment",
+          "fieldPosition",
+          "genderBucket",
+          "availability",
+          "constraintOverridden"
+        ],
+        "type": "object"
+      },
+      "RosterSnapshotResponseDto": {
+        "properties": {
+          "checksum": {
+            "type": "string"
+          },
+          "competitionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "entries": {
+            "items": {
+              "$ref": "#/components/schemas/RosterSnapshotEntryDto"
+            },
+            "type": "array"
+          },
+          "entryCount": {
+            "type": "number"
+          },
+          "fixtureId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "reason": {
+            "enum": [
+              "published",
+              "locked",
+              "revised"
+            ],
+            "type": "string"
+          },
+          "revision": {
+            "type": "number"
+          },
+          "rosterId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "rosterKind": {
+            "enum": [
+              "competition",
+              "match"
+            ],
+            "type": "string"
+          },
+          "rosterStatus": {
+            "enum": [
+              "draft",
+              "published",
+              "locked",
+              "revised",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "snapshotId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "takenAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "takenBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "snapshotId",
+          "rosterId",
+          "teamId",
+          "seasonId",
+          "competitionId",
+          "fixtureId",
+          "rosterKind",
+          "revision",
+          "reason",
+          "rosterStatus",
+          "entryCount",
+          "checksum",
+          "entries",
+          "takenBy",
+          "takenAt"
+        ],
+        "type": "object"
+      },
+      "RosterValidationResponseDto": {
+        "properties": {
+          "composition": {
+            "$ref": "#/components/schemas/RosterCompositionDto"
+          },
+          "policyVersion": {
+            "type": "string"
+          },
+          "publishable": {
+            "type": "boolean"
+          },
+          "rosterId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "published",
+              "locked",
+              "revised",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "violations": {
+            "items": {
+              "$ref": "#/components/schemas/RosterConstraintViolationDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "rosterId",
+          "policyVersion",
           "status",
-          "checkInAt",
-          "latenessMinutes",
-          "excuseCategory",
-          "source",
-          "version"
+          "composition",
+          "violations",
+          "publishable"
         ],
         "type": "object"
       },
@@ -11352,6 +12392,26 @@
               "miss",
               "cancel",
               "reopen"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "transition",
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
+      "TransitionRosterDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "transition": {
+            "enum": [
+              "publish",
+              "archive"
             ],
             "type": "string"
           }
@@ -22971,6 +24031,842 @@
         "summary": "Privacy-safe RSVP planning summary for a session",
         "tags": [
           "practices"
+        ]
+      }
+    },
+    "/teams/{teamId}/rosters": {
+      "get": {
+        "operationId": "Rosters.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "competitionId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "fixtureId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "rosterKind",
+            "required": false,
+            "schema": {
+              "enum": [
+                "competition",
+                "match"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListRostersResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s competition and match rosters",
+        "tags": [
+          "rosters"
+        ]
+      },
+      "post": {
+        "operationId": "Rosters.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCompetitionRosterDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RosterResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a draft competition roster",
+        "tags": [
+          "rosters"
+        ]
+      }
+    },
+    "/teams/{teamId}/rosters/{rosterId}": {
+      "get": {
+        "operationId": "Rosters.get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rosterId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RosterResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Get one roster",
+        "tags": [
+          "rosters"
+        ]
+      }
+    },
+    "/teams/{teamId}/rosters/{rosterId}/availability": {
+      "get": {
+        "operationId": "RosterAvailability.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rosterId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 200,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListRosterAvailabilityResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a roster’s availability declarations",
+        "tags": [
+          "rosters"
+        ]
+      },
+      "post": {
+        "operationId": "RosterAvailability.declare",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rosterId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeclareRosterAvailabilityDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RosterAvailabilityResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Declare your own availability for a roster",
+        "tags": [
+          "rosters"
+        ]
+      }
+    },
+    "/teams/{teamId}/rosters/{rosterId}/entries": {
+      "get": {
+        "operationId": "RosterEntries.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rosterId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 200,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListRosterEntriesResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List every roster entry, active and withdrawn",
+        "tags": [
+          "rosters"
+        ]
+      },
+      "post": {
+        "operationId": "RosterEntries.add",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rosterId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddRosterEntryDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RosterEntryResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Add an unflagged player to the roster",
+        "tags": [
+          "rosters"
+        ]
+      }
+    },
+    "/teams/{teamId}/rosters/{rosterId}/entries/{membershipId}/removal": {
+      "post": {
+        "operationId": "RosterEntries.remove",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rosterId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "membershipId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RemoveRosterEntryDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RosterEntryResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Withdraw a player, keeping the entry as history",
+        "tags": [
+          "rosters"
+        ]
+      }
+    },
+    "/teams/{teamId}/rosters/{rosterId}/entries/override": {
+      "post": {
+        "operationId": "RosterEntries.override",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rosterId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OverrideRosterEntryDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RosterEntryResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Add a flagged player with an explicit override",
+        "tags": [
+          "rosters"
+        ]
+      }
+    },
+    "/teams/{teamId}/rosters/{rosterId}/lock": {
+      "post": {
+        "operationId": "Rosters.lock",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rosterId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LockRosterDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RosterResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Freeze a published roster and snapshot it",
+        "tags": [
+          "rosters"
+        ]
+      }
+    },
+    "/teams/{teamId}/rosters/{rosterId}/revision": {
+      "post": {
+        "operationId": "Rosters.revise",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rosterId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviseRosterDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RosterResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Supersede a published or locked roster with a new revision",
+        "tags": [
+          "rosters"
+        ]
+      }
+    },
+    "/teams/{teamId}/rosters/{rosterId}/snapshots": {
+      "get": {
+        "operationId": "RosterSnapshots.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rosterId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "maximum": 200,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListRosterSnapshotsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a roster’s immutable snapshots",
+        "tags": [
+          "rosters"
+        ]
+      }
+    },
+    "/teams/{teamId}/rosters/{rosterId}/transition": {
+      "post": {
+        "operationId": "Rosters.transition",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rosterId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransitionRosterDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RosterResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Publish or archive a roster",
+        "tags": [
+          "rosters"
+        ]
+      }
+    },
+    "/teams/{teamId}/rosters/{rosterId}/validation": {
+      "get": {
+        "operationId": "Rosters.validate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "rosterId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RosterValidationResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Preview the server-side composition validation",
+        "tags": [
+          "rosters"
+        ]
+      }
+    },
+    "/teams/{teamId}/rosters/match": {
+      "post": {
+        "operationId": "Rosters.createMatch",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMatchRosterDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RosterResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a draft match roster for a fixture",
+        "tags": [
+          "rosters"
         ]
       }
     },

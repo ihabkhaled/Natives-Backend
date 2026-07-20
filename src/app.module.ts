@@ -16,6 +16,7 @@ import { PlatformModule } from '@modules/platform';
 import { PointsModule } from '@modules/points';
 import { PracticesModule } from '@modules/practices';
 import { RbacModule } from '@modules/rbac';
+import { RostersModule } from '@modules/rosters';
 import { ScoringModule } from '@modules/scoring';
 import { SquadsModule } from '@modules/squads';
 import { TeamsModule } from '@modules/teams';
@@ -48,6 +49,7 @@ import { Module } from '@nestjs/common';
     PointsModule,
     CompetitionsModule,
     SquadsModule,
+    RostersModule,
     DashboardModule,
     ArticlesModule,
   ],

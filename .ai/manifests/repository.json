@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-20T17:55:20.706Z",
-  "treeHash": "sha256:5453bd69c08aa62e8d1071ad45258d8291f7e271d320ad77195e5e88c105d3a2",
+  "generatedAt": "2026-07-20T20:42:53.866Z",
+  "treeHash": "sha256:c8364806fc69e019c683d0e7fe1ba786cb5c3053dac69feddb83642af26907d7",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4abed166b956c29044615bc16388d04d404356239446f243b2b5cc2175bb8c5b",
-      "sizeBytes": 1910
+      "hash": "sha256:cc034af648a5b0999c6ace707e38eb665e934edc43e9f8bf46dd445de09f4283",
+      "sizeBytes": 1979
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -3323,6 +3323,23 @@
       "sizeBytes": 9393
     },
     {
+      "path": "src/database/migrations/1723500000000-rosters-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RostersSchema1723500000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dee5a3cc0df462194dbca2d2e648382edd3733506717d0a5ff7ee6ce395f17d6",
+      "sizeBytes": 14312
+    },
+    {
       "path": "src/database/migrations/activities-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3441,6 +3458,18 @@
       "kind": "spec",
       "hash": "sha256:2ac6cd2bde65de60827353e3bd0143ae8d97b6b792c2f2669ead7467acd18cf9",
       "sizeBytes": 1521
+    },
+    {
+      "path": "src/database/migrations/rosters-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7a28ae2f3198c5e2cae7e43799a3f9c0c4097d4e8b466c5f275a97e980d721f5",
+      "sizeBytes": 5887
     },
     {
       "path": "src/database/migrations/scoring-schema.spec.ts",
@@ -34462,6 +34491,2735 @@
       "kind": "source",
       "hash": "sha256:c92e02482b63a608022bd9285f6359dcfb8dbc3563e322eb98533b6677360244",
       "sizeBytes": 2297
+    },
+    {
+      "path": "src/modules/rosters/api/dto/add-roster-entry.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AddRosterEntryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d40c2e9a60dc7eaf37b154c61fe32b918ba1cb73bdc92b9736cffb49d25baf90",
+      "sizeBytes": 1792
+    },
+    {
+      "path": "src/modules/rosters/api/dto/create-competition-roster.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateCompetitionRosterDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1de8fb1fb45ff299f44a9df37fd4c14e1bb8341890a500e7e17d31ff9539bdd4",
+      "sizeBytes": 2462
+    },
+    {
+      "path": "src/modules/rosters/api/dto/create-match-roster.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateMatchRosterDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a3432640b900b1fd91ceeffe9477d256539af003e3a2bf55ee09f92eacdfbe6a",
+      "sizeBytes": 2213
+    },
+    {
+      "path": "src/modules/rosters/api/dto/declare-roster-availability.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DeclareRosterAvailabilityDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f9bc5cd684dfb1dcbc7036258ffaf749f4c350d9e117cabd1abfdd20f735d785",
+      "sizeBytes": 923
+    },
+    {
+      "path": "src/modules/rosters/api/dto/list-roster-availability.response.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListRosterAvailabilityResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fbbc77d67c9e4450f7409e7b1fe310d6484126fcf588c6b2ed623c97976d123f",
+      "sizeBytes": 524
+    },
+    {
+      "path": "src/modules/rosters/api/dto/list-roster-entries.response.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListRosterEntriesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7f64f3fca7c077622cb010a681df2ea19d0151b3ca626ccec0d5fbf1f1982ccf",
+      "sizeBytes": 587
+    },
+    {
+      "path": "src/modules/rosters/api/dto/list-roster-snapshots.response.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListRosterSnapshotsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:658d55e61f925a97a8d11c9f6bcd590ee2d982a1b799a9e377451c577bbeb165",
+      "sizeBytes": 517
+    },
+    {
+      "path": "src/modules/rosters/api/dto/list-rosters.response.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListRostersResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0c90c58d9d2e810a60fe62753b4e024f14432c6fbce86082c39368546bb19333",
+      "sizeBytes": 461
+    },
+    {
+      "path": "src/modules/rosters/api/dto/lock-roster.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LockRosterDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:18ce2618b9e2d2af99b68e552be19b1c661877cc6e1303f534bf3f2aa801e4a2",
+      "sizeBytes": 492
+    },
+    {
+      "path": "src/modules/rosters/api/dto/override-roster-entry.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OverrideRosterEntryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d3730f3d449693539756ec82ba7189044674287298a3597603c57805ee83e13d",
+      "sizeBytes": 804
+    },
+    {
+      "path": "src/modules/rosters/api/dto/remove-roster-entry.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RemoveRosterEntryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5b63aace6b6409ba7eeb4939f0a1c63f12f5333b990cfc768a3ba866156437e7",
+      "sizeBytes": 650
+    },
+    {
+      "path": "src/modules/rosters/api/dto/revise-roster.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReviseRosterDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:df76b6a90e3a29c8ff152183589bc896c726194b00adae19a0f1d4922051f385",
+      "sizeBytes": 850
+    },
+    {
+      "path": "src/modules/rosters/api/dto/roster-availability-response.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterAvailabilityResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fc1dc54046ce493815cdca50e2717cd112e0b1311aa848550873c533f0a9d800",
+      "sizeBytes": 1222
+    },
+    {
+      "path": "src/modules/rosters/api/dto/roster-entry-response.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterEntryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5a7ceecd66c528ebe64604cbc21c38b4235ad48d5e772f5576f4293ec8ec1dec",
+      "sizeBytes": 2548
+    },
+    {
+      "path": "src/modules/rosters/api/dto/roster-list.query.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterListQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0a28c11973669378867081968ac5e1d14f1a4cb34d84578ad175ca396bfa9344",
+      "sizeBytes": 1137
+    },
+    {
+      "path": "src/modules/rosters/api/dto/roster-page.query.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterPageQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f33ce1c4ab283f9f2a2e00660a55a07597d6faf8bd4ce32bebe62f513ba4964e",
+      "sizeBytes": 726
+    },
+    {
+      "path": "src/modules/rosters/api/dto/roster-response.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1cab4ddbf3ae44befc483cc257ce44805fdb5e264c3c492d9de3a1d48c10ef73",
+      "sizeBytes": 3426
+    },
+    {
+      "path": "src/modules/rosters/api/dto/roster-snapshot-entry.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterSnapshotEntryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:05714f832c69af711f849c755721d71e58618085d6a8b9a108a306d1b5eda0f6",
+      "sizeBytes": 1210
+    },
+    {
+      "path": "src/modules/rosters/api/dto/roster-snapshot-response.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterSnapshotResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a8811168a0574191b00e8ac67c587e51990e90e00b33a922d2169052530b5803",
+      "sizeBytes": 1750
+    },
+    {
+      "path": "src/modules/rosters/api/dto/roster-validation.response.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterConstraintViolationDto"
+        },
+        {
+          "kind": "class",
+          "name": "RosterCompositionDto"
+        },
+        {
+          "kind": "class",
+          "name": "RosterValidationResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:89f2c315bdd90f63764a083ff189f806bd58446da0183ff9ae216fc06115fb1c",
+      "sizeBytes": 2083
+    },
+    {
+      "path": "src/modules/rosters/api/dto/transition-roster.dto.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionRosterDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:28f143ba9cc1138059a9bca75d81d5f65a4ef45482f34fa7a971b5c773c11388",
+      "sizeBytes": 771
+    },
+    {
+      "path": "src/modules/rosters/api/roster-availability.controller.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterAvailabilityController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3cb09902f398af57394737cbfbd1dcaa563f528bcda925eb957fb3aee3b2cf38",
+      "sizeBytes": 3011
+    },
+    {
+      "path": "src/modules/rosters/api/roster-entries.controller.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterEntriesController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6a1c1c6f3d00ce978629bdf275e6c3ba1a5d223baf0c5ac481424bd5766154c0",
+      "sizeBytes": 5179
+    },
+    {
+      "path": "src/modules/rosters/api/roster-snapshots.controller.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterSnapshotsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7e8f7f4ac310e90f513188a9aada9e386bd621113ba91f72c26661fcab16d616",
+      "sizeBytes": 1770
+    },
+    {
+      "path": "src/modules/rosters/api/rosters.controller.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RostersController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:56e633c705abcb99ee694fb1c131596c32cc9541aa50e7ca875f6da9155b7d08",
+      "sizeBytes": 8143
+    },
+    {
+      "path": "src/modules/rosters/application/add-roster-entry.use-case.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b3e386abca771e55babc10f5924407c39506cb0d11598d6a04125223138f333c",
+      "sizeBytes": 9639
+    },
+    {
+      "path": "src/modules/rosters/application/add-roster-entry.use-case.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AddRosterEntryUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/add-roster-entry.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:66983282ec6c9fc163038ed4c663e3cda02cbe1b42f4821062ce013430af1386",
+      "sizeBytes": 5774
+    },
+    {
+      "path": "src/modules/rosters/application/create-competition-roster.use-case.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4dae7e034fd11c033315353141ac69bcd05efc689c40e8f99582f3e8014b271a",
+      "sizeBytes": 6971
+    },
+    {
+      "path": "src/modules/rosters/application/create-competition-roster.use-case.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateCompetitionRosterUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/create-competition-roster.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:247788048583aef54d8a345005fdb8a2175fcfb17fde92f2e73194c48bdf85e1",
+      "sizeBytes": 5108
+    },
+    {
+      "path": "src/modules/rosters/application/create-match-roster.use-case.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d7992885d5e15adadd683515ee3631edf5f64abff5eb7268ddb0ad1e1fcbfb32",
+      "sizeBytes": 6797
+    },
+    {
+      "path": "src/modules/rosters/application/create-match-roster.use-case.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateMatchRosterUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/create-match-roster.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9a621fd9e7b3e58c6d2ae3fa27fd84d2eb455c63104525319b5332cf604728fc",
+      "sizeBytes": 4915
+    },
+    {
+      "path": "src/modules/rosters/application/declare-roster-availability.use-case.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e3e930197537eea222ac72680d54dcf57bb4abea5b31146721136dce57154c96",
+      "sizeBytes": 6172
+    },
+    {
+      "path": "src/modules/rosters/application/declare-roster-availability.use-case.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DeclareRosterAvailabilityUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/declare-roster-availability.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f64c4b05154d3a51a687e3a225780b26c68538c4fa33e56a6f86ca790fa39414",
+      "sizeBytes": 4258
+    },
+    {
+      "path": "src/modules/rosters/application/lock-roster.use-case.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:667a1673340d60d986b65ae16cb27c7adbe263413b2244f9c7b91a8a2e80adaa",
+      "sizeBytes": 6960
+    },
+    {
+      "path": "src/modules/rosters/application/lock-roster.use-case.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LockRosterUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/lock-roster.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d494100593e5d46ddd4f75101ff89d760d31b12ebbe91d31753670fd5437e56c",
+      "sizeBytes": 3945
+    },
+    {
+      "path": "src/modules/rosters/application/remove-roster-entry.use-case.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8f2a5e9d620a835bb9173dc652d4de757f511f9b69d53abf61631250d0df46bc",
+      "sizeBytes": 5153
+    },
+    {
+      "path": "src/modules/rosters/application/remove-roster-entry.use-case.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RemoveRosterEntryUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/remove-roster-entry.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0d296f337850c79f17d9073b2097f5dc0e6204d5177cb53ea837151044287211",
+      "sizeBytes": 3046
+    },
+    {
+      "path": "src/modules/rosters/application/revise-roster.use-case.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f129ce24f4b44318900fff26b2ae55e48bde5604932c54771af04e6e10434ba5",
+      "sizeBytes": 8715
+    },
+    {
+      "path": "src/modules/rosters/application/revise-roster.use-case.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReviseRosterUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/revise-roster.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bbe5e92ed4c127f593ff345c8f065f74d2631b7d6c5e90febd467063ffce36b4",
+      "sizeBytes": 5678
+    },
+    {
+      "path": "src/modules/rosters/application/roster-availability-query.service.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9e568b339fc0c251c710716852e22a8bbbf7fa2c38875f3465bd1362ee4e737f",
+      "sizeBytes": 1797
+    },
+    {
+      "path": "src/modules/rosters/application/roster-availability-query.service.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterAvailabilityQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/roster-availability-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5c1ed6fee276d6938b832de7b6436e67accc6e7d3ab2e27a4ecdbdd3c983949e",
+      "sizeBytes": 1646
+    },
+    {
+      "path": "src/modules/rosters/application/roster-entry-query.service.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5eb2245799a1f5fbcc4fdd692fcfe63c2c9fa5014901b00d96fc17130bd9801e",
+      "sizeBytes": 1941
+    },
+    {
+      "path": "src/modules/rosters/application/roster-entry-query.service.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterEntryQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/roster-entry-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:286575b8b1bc9f66111b580abbe8d36e2d9c487399efa0cd2d974b2869e2625e",
+      "sizeBytes": 1629
+    },
+    {
+      "path": "src/modules/rosters/application/roster-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f4fb9824a7f0f609d8f13afe7d9b17ea286ed3adbfdb6cb3d7c440cd9dd8eb98",
+      "sizeBytes": 1380
+    },
+    {
+      "path": "src/modules/rosters/application/roster-lookup.service.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/roster-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2eb7a63f0e39ecd011482edcd4b9400855d283530d1abfb7bee4571c23250ff1",
+      "sizeBytes": 951
+    },
+    {
+      "path": "src/modules/rosters/application/roster-query.service.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1f2246ec1d0c367024f836afa4c29968e24db9994b428c947909bac6f94d1fb7",
+      "sizeBytes": 1993
+    },
+    {
+      "path": "src/modules/rosters/application/roster-query.service.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/roster-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4a6e66c851666cb4f375f03dc647d2ed89d99d66d554a1aa19277b306a68e297",
+      "sizeBytes": 1689
+    },
+    {
+      "path": "src/modules/rosters/application/roster-scope.service.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e1afedac137b5138f3f27387d5dcdc7cb1e0d2ebe744ecf4c7fd0b28b5fcfa30",
+      "sizeBytes": 2961
+    },
+    {
+      "path": "src/modules/rosters/application/roster-scope.service.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterScopeService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/roster-scope.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:40475b3f34f8e3131330241a59e2c326f0709b8882bd028292e8ae53119f18e5",
+      "sizeBytes": 2608
+    },
+    {
+      "path": "src/modules/rosters/application/roster-snapshot-query.service.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:57444bcc268553a6e7c478000fa9f10723cca5cb500dcdccce718c036dbbc952",
+      "sizeBytes": 1941
+    },
+    {
+      "path": "src/modules/rosters/application/roster-snapshot-query.service.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterSnapshotQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/roster-snapshot-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0daa2d3698cf238ca2abeab04eefecd5f057d2a6370344658190697c266032db",
+      "sizeBytes": 1606
+    },
+    {
+      "path": "src/modules/rosters/application/roster-snapshot-recorder.service.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0208a48512da9ce26da3c6e512e77a871d9bc5d91a0e1fbd8b25f3a1310c5f37",
+      "sizeBytes": 5516
+    },
+    {
+      "path": "src/modules/rosters/application/roster-snapshot-recorder.service.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterSnapshotRecorderService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/roster-snapshot-recorder.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:657691922ae7d86893277db02803a6d91dd62895e0eee28be9f40341ef6cfa9a",
+      "sizeBytes": 3302
+    },
+    {
+      "path": "src/modules/rosters/application/roster-validation.service.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a08bcee05939d0cc5751adc4a9cca4291068972692d7966961c11225b02be6e6",
+      "sizeBytes": 4957
+    },
+    {
+      "path": "src/modules/rosters/application/roster-validation.service.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterValidationService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/roster-validation.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a0c892e56c38db8b8e75f8d6e93915135d49078b282bd22768c283f85e839af9",
+      "sizeBytes": 2609
+    },
+    {
+      "path": "src/modules/rosters/application/transition-roster.use-case.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6f7ec3985702ccaaf8d6f79fe2b02302bdac917b98ee704d5ca7e21983820ed7",
+      "sizeBytes": 8811
+    },
+    {
+      "path": "src/modules/rosters/application/transition-roster.use-case.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionRosterUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/application/transition-roster.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:855dc69d958372758a5ea489d1b2791a32a39c48e2b6b225124685b0338e62ae",
+      "sizeBytes": 5008
+    },
+    {
+      "path": "src/modules/rosters/domain/roster-availability.policy.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:40fea6b4d72d99ae54525098527277d36fa745bfec127432e11ce22fc913de8e",
+      "sizeBytes": 2369
+    },
+    {
+      "path": "src/modules/rosters/domain/roster-availability.policy.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isDeclarationOpen"
+        },
+        {
+          "kind": "function",
+          "name": "isDeadlinePassed"
+        },
+        {
+          "kind": "function",
+          "name": "canDeclareAvailability"
+        },
+        {
+          "kind": "function",
+          "name": "resolveEntryAvailability"
+        },
+        {
+          "kind": "function",
+          "name": "contradictsSelection"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/domain/roster-availability.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4a5ced06bd46ec33f0df084d0fa8153f7517691d37e05037e38500873bc14cae",
+      "sizeBytes": 1856
+    },
+    {
+      "path": "src/modules/rosters/domain/roster-composition.policy.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b6f37f30067d6788d9662187e7eb37e4b0abd8dfaa19256157720e9c0d10310e",
+      "sizeBytes": 8789
+    },
+    {
+      "path": "src/modules/rosters/domain/roster-composition.policy.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "bucketGender"
+        },
+        {
+          "kind": "function",
+          "name": "deduplicateJerseys"
+        },
+        {
+          "kind": "function",
+          "name": "activeEntries"
+        },
+        {
+          "kind": "function",
+          "name": "summarizeComposition"
+        },
+        {
+          "kind": "function",
+          "name": "evaluateConstraints"
+        },
+        {
+          "kind": "function",
+          "name": "isPublishable"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/domain/roster-composition.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e247bec7ce9e3dd998c30e97179d399085822be12a142b6e8fe9af2bc214f293",
+      "sizeBytes": 7306
+    },
+    {
+      "path": "src/modules/rosters/domain/roster-content.policy.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6c75b4d9aba236bb028b82d57e0656c508d4a3454185df3eb122578cc9c00dc9",
+      "sizeBytes": 2053
+    },
+    {
+      "path": "src/modules/rosters/domain/roster-content.policy.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assertRosterConstraints"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/domain/roster-content.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:62977f45c5b97d0cff458ea1e11173d47731724776a589d312e840f2cbfea6c6",
+      "sizeBytes": 1332
+    },
+    {
+      "path": "src/modules/rosters/domain/roster-entry-eligibility.policy.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b09607373a15dc9b35bb40acbf3e01bff18da999f9675368338cb92752ba424f",
+      "sizeBytes": 4115
+    },
+    {
+      "path": "src/modules/rosters/domain/roster-entry-eligibility.policy.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "evaluateEntryFlags"
+        },
+        {
+          "kind": "function",
+          "name": "isEntryFlagged"
+        },
+        {
+          "kind": "function",
+          "name": "isEntryOverrideMissing"
+        },
+        {
+          "kind": "function",
+          "name": "isOverrideExercised"
+        },
+        {
+          "kind": "function",
+          "name": "summarizeEntryFlags"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/domain/roster-entry-eligibility.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7c89d335b7e39eb478ed3c2f1000d01a0dabbab1f9307292ffb85c939c39f86e",
+      "sizeBytes": 2853
+    },
+    {
+      "path": "src/modules/rosters/domain/roster-notification.policy.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b2d1b5e47d623f25629092ab2121d7945bec71bdf76b915cfb7ea7415b29fe77",
+      "sizeBytes": 1689
+    },
+    {
+      "path": "src/modules/rosters/domain/roster-notification.policy.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolvePublishAudience"
+        },
+        {
+          "kind": "function",
+          "name": "notifiesSelected"
+        },
+        {
+          "kind": "function",
+          "name": "notifiesNotSelected"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/domain/roster-notification.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:60078083861ec454f6e5c64c7972ae0e3adebac975a9f3040c38a30a7634c240",
+      "sizeBytes": 1811
+    },
+    {
+      "path": "src/modules/rosters/domain/roster-snapshot.policy.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a0be537ab1bffc18d7a7e1480924c9384cbf1f6034001f538f03c1bffd44808c",
+      "sizeBytes": 3463
+    },
+    {
+      "path": "src/modules/rosters/domain/roster-snapshot.policy.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "requiresSnapshot"
+        },
+        {
+          "kind": "function",
+          "name": "resolveSnapshotReason"
+        },
+        {
+          "kind": "function",
+          "name": "assertSnapshotWritable"
+        },
+        {
+          "kind": "function",
+          "name": "isSnapshotSuperseded"
+        },
+        {
+          "kind": "function",
+          "name": "nextRevision"
+        },
+        {
+          "kind": "function",
+          "name": "carryForwardEntries"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/domain/roster-snapshot.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:69dcfb067c626ba991aa2bcaeac54054063542da6be115fb49c2cef2da9b99f6",
+      "sizeBytes": 2756
+    },
+    {
+      "path": "src/modules/rosters/domain/roster.state-machine.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8a62f6b22be8a1a751b736946f66f8c854a042eee3092021de6e1dfe0c6b93e4",
+      "sizeBytes": 4559
+    },
+    {
+      "path": "src/modules/rosters/domain/roster.state-machine.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedRosterTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransitionRoster"
+        },
+        {
+          "kind": "function",
+          "name": "resolveRosterTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isPublishTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isLockTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isArchiveTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isReviseTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isRosterFrozen"
+        },
+        {
+          "kind": "function",
+          "name": "isRevisable"
+        },
+        {
+          "kind": "function",
+          "name": "enforcesConstraints"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/domain/roster.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d238f533bf4046117fd63a4fc86ae253de0c7636b394278e933d0044dbbad34e",
+      "sizeBytes": 3186
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-availability-membership-not-found.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterAvailabilityMembershipNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e8d18dd33c41f2c6d557f86b84999152186ebbe1d34350aded1c80de4a595ea6",
+      "sizeBytes": 455
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-candidate-not-found.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterCandidateNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:31350e358f1a1458b568259060ca9df1df08ab4480060994b122c30b1a6e097c",
+      "sizeBytes": 386
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-constraint.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterConstraintError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2ebf07f51efd2d165b38efa1b63f0828d8c90679b85b5ee438824c0b3202882c",
+      "sizeBytes": 323
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-entry-not-found.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterEntryNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7969361fd8a45d04340c171fe60be70a819ad28bad10f65813b0251f0835a855",
+      "sizeBytes": 347
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-invalid-transition.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterInvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2f5e377d85fdfa980377ddd5f8a6b37b5261983aecaebee04981e77335c0058f",
+      "sizeBytes": 381
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-jersey-conflict.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterJerseyConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a3682962ca0147b788e5dc8fd640689454c2ca14e11443affdcaecf9376fe2c6",
+      "sizeBytes": 347
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-locked.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterLockedError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ded58c32e62e4410d0dbc659823fce30a81168f4bdcc6970b4928b7d2a096b43",
+      "sizeBytes": 303
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-not-found.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3ec3ee7237e60b7f62c8da5ee25c9bc58025ed7d1de4432eea5b5a121d96302f",
+      "sizeBytes": 318
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-override-required.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterOverrideRequiredError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d9d2322610e62a3b5c4d5783cfe66dc65c002f2b1c97bc0de65d31454109b6c1",
+      "sizeBytes": 376
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-scope-not-found.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterScopeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9a4fb53ab896f331358fefd407ee3d6f92cdc0c8556cd72e4e002c5e3ccab35b",
+      "sizeBytes": 347
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-snapshot-immutable.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterSnapshotImmutableError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4716790b3fd99a76671e457f6406bd67fc43c528ee6c2296b22bbdf79c895a62",
+      "sizeBytes": 381
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-validation.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterValidationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:438620391ba9fd12ce50131efcb901165f9a05d0574931402ad7b666aa49eb1b",
+      "sizeBytes": 329
+    },
+    {
+      "path": "src/modules/rosters/errors/roster-version-conflict.error.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterVersionConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c3cf619bcbf4e04dcf9676530fd4310c8122459f72036595636c69d5c54c2080",
+      "sizeBytes": 352
+    },
+    {
+      "path": "src/modules/rosters/errors/rosters-errors.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1c3e04cdc97ae40ce393deb4b0bcde345e4ee8df640c00c01a0fe2584aac12a6",
+      "sizeBytes": 3796
+    },
+    {
+      "path": "src/modules/rosters/index.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:846753f64ecf559d2c28c54fc3a398bf68eefab3f8d1a5e428269e4e53af1d5f",
+      "sizeBytes": 50
+    },
+    {
+      "path": "src/modules/rosters/infrastructure/roster-availability.repository.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8048e2d238009d3dec563ff7a8e59c6e598ef7e08346b9886e6fe7b8a324d168",
+      "sizeBytes": 3041
+    },
+    {
+      "path": "src/modules/rosters/infrastructure/roster-availability.repository.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterAvailabilityRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/infrastructure/roster-availability.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a6436d133c3a9b21d2224c62928cb55afcc82b704d8cdd1a58d12f77b7865392",
+      "sizeBytes": 2981
+    },
+    {
+      "path": "src/modules/rosters/infrastructure/roster-entry.repository.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ac20f51ce8371577598148894bbfb079bce8559139b7089eb14119ca261f8a52",
+      "sizeBytes": 6165
+    },
+    {
+      "path": "src/modules/rosters/infrastructure/roster-entry.repository.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterEntryRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/infrastructure/roster-entry.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:16f207c292d0cd76b9f0bddb20df10f8a6b562aeac6f378d058acc94cdfbeb97",
+      "sizeBytes": 6377
+    },
+    {
+      "path": "src/modules/rosters/infrastructure/roster-scope.repository.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8bcbccd3114d36c503d2ca6e9d8fc51b005805820b55aa5a7623c91a221f59d0",
+      "sizeBytes": 2703
+    },
+    {
+      "path": "src/modules/rosters/infrastructure/roster-scope.repository.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterScopeRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/infrastructure/roster-scope.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5ce134881a3f1309633c3ac9571803015c0fb4a845d8f8752dc800fbcdee8d16",
+      "sizeBytes": 2750
+    },
+    {
+      "path": "src/modules/rosters/infrastructure/roster-snapshot.repository.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9c3ef93597d9c2da5cb1a9dbb75b23ce281cb42673196c093e57012d5f772cda",
+      "sizeBytes": 5466
+    },
+    {
+      "path": "src/modules/rosters/infrastructure/roster-snapshot.repository.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterSnapshotRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/infrastructure/roster-snapshot.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:cc88f1b34bbfdaf4022e42ccf613760039cf882ab5d2e1615e112ebe34dc312c",
+      "sizeBytes": 4068
+    },
+    {
+      "path": "src/modules/rosters/infrastructure/roster-source.repository.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1c52d97692dd2133367ffe2465520809853c8b9b2eeba2bef474b4df2db87096",
+      "sizeBytes": 4220
+    },
+    {
+      "path": "src/modules/rosters/infrastructure/roster-source.repository.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterSourceRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/infrastructure/roster-source.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:bdd1db36e1122bb1303df4304352b060d4bb0c3930b25677358eeb2e9049295b",
+      "sizeBytes": 4124
+    },
+    {
+      "path": "src/modules/rosters/infrastructure/roster.repository.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:682fa772e9897c32479cb4edd8448cc8634a6eab4d3ac9e3fc5b0b8aea6d76b7",
+      "sizeBytes": 6211
+    },
+    {
+      "path": "src/modules/rosters/infrastructure/roster.repository.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/infrastructure/roster.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:afb5d824d5b7c9a3964db28aa7608b0556e57bf9689364f6b5681aca2ef546fb",
+      "sizeBytes": 5846
+    },
+    {
+      "path": "src/modules/rosters/lib/roster-snapshot.factory.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5c3c0ef42077fb3330e0d28151cdba43973a6e0db67ef4b0b678d5608ff4d1b7",
+      "sizeBytes": 4934
+    },
+    {
+      "path": "src/modules/rosters/lib/roster-snapshot.factory.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toSnapshotEntries"
+        },
+        {
+          "kind": "function",
+          "name": "snapshotChecksum"
+        },
+        {
+          "kind": "function",
+          "name": "buildRosterSnapshot"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/lib/roster-snapshot.factory.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8c9943415f9b6a4a7612ba2bcd14f01ba4b9206b0e786cc8be7ce5a50885dff2",
+      "sizeBytes": 2302
+    },
+    {
+      "path": "src/modules/rosters/lib/rosters-command.mapper.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ee722815db0c71a64d403602ef1d6cfc3a49dfd1af1f873d4961617223f29ddb",
+      "sizeBytes": 5068
+    },
+    {
+      "path": "src/modules/rosters/lib/rosters-command.mapper.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toCompetitionRosterContent"
+        },
+        {
+          "kind": "function",
+          "name": "toMatchRosterContent"
+        },
+        {
+          "kind": "function",
+          "name": "toRosterEntryContent"
+        },
+        {
+          "kind": "function",
+          "name": "toRosterListFilter"
+        },
+        {
+          "kind": "function",
+          "name": "toRosterConstraints"
+        },
+        {
+          "kind": "function",
+          "name": "toStoredConstraints"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/lib/rosters-command.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0da5a7c15fc7490d7feb5e0f502a31a6d871b13b34cfaff9387a444d4711f812",
+      "sizeBytes": 3512
+    },
+    {
+      "path": "src/modules/rosters/lib/rosters.builders.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:abbddbf21c9de04a29a8c7ca32a135826ea85b938125ebbdbee51e9fddcda7e8",
+      "sizeBytes": 14197
+    },
+    {
+      "path": "src/modules/rosters/lib/rosters.builders.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewCompetitionRoster"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewMatchRoster"
+        },
+        {
+          "kind": "function",
+          "name": "buildSuccessorRoster"
+        },
+        {
+          "kind": "function",
+          "name": "buildRosterStatusChange"
+        },
+        {
+          "kind": "function",
+          "name": "buildRosterEntryWrite"
+        },
+        {
+          "kind": "function",
+          "name": "buildGeneratedEntryWrite"
+        },
+        {
+          "kind": "function",
+          "name": "buildCarriedEntryWrite"
+        },
+        {
+          "kind": "function",
+          "name": "buildEntryRemoval"
+        },
+        {
+          "kind": "function",
+          "name": "buildAvailabilityUpsert"
+        },
+        {
+          "kind": "function",
+          "name": "buildRosterAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildEntryAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildAvailabilityAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildSnapshotAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildRosterCreatedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildRosterPublishedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildRosterLockedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildRosterRevisedEvent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/lib/rosters.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c18f86a74ff9a5393b80f2fcb85c95401761f45d7cb14d16e857d62b0bf7349b",
+      "sizeBytes": 13657
+    },
+    {
+      "path": "src/modules/rosters/lib/rosters.helpers.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9d502e9c5769f178270af743b972c41b553b22bfb9f495c9d1f891e18c09bdbb",
+      "sizeBytes": 3417
+    },
+    {
+      "path": "src/modules/rosters/lib/rosters.helpers.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveRostersPage"
+        },
+        {
+          "kind": "function",
+          "name": "resolveEntriesPage"
+        },
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNumber"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableNumber"
+        },
+        {
+          "kind": "function",
+          "name": "parseEnumValue"
+        },
+        {
+          "kind": "function",
+          "name": "parseNullableEnumValue"
+        },
+        {
+          "kind": "function",
+          "name": "readString"
+        },
+        {
+          "kind": "function",
+          "name": "readNullableNumber"
+        },
+        {
+          "kind": "function",
+          "name": "readNullableString"
+        },
+        {
+          "kind": "function",
+          "name": "readBoolean"
+        },
+        {
+          "kind": "function",
+          "name": "asFields"
+        },
+        {
+          "kind": "function",
+          "name": "asArray"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/lib/rosters.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:66500f7f05e04e4dfccbcc4fe5778bc93345fc8f224c176fd3a6cc6685bcfbe9",
+      "sizeBytes": 3809
+    },
+    {
+      "path": "src/modules/rosters/lib/rosters.mapper.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:277ab53d17ab02023bdc3b9111d47dd37f5ea048f38a76535017972fec596ad5",
+      "sizeBytes": 7286
+    },
+    {
+      "path": "src/modules/rosters/lib/rosters.mapper.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toRoster"
+        },
+        {
+          "kind": "function",
+          "name": "toRosterEntry"
+        },
+        {
+          "kind": "function",
+          "name": "toRosterAvailability"
+        },
+        {
+          "kind": "function",
+          "name": "toRosterSnapshot"
+        },
+        {
+          "kind": "function",
+          "name": "toSnapshotEntry"
+        },
+        {
+          "kind": "function",
+          "name": "toRosterCandidate"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/lib/rosters.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f633f4ec84bbcac3a6e56c55b684072e27e914b15190636f25ad130a2a6e3b82",
+      "sizeBytes": 7053
+    },
+    {
+      "path": "src/modules/rosters/model/rosters.constants.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ROSTERS_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTERS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_ENTRIES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_AVAILABILITY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_SNAPSHOTS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_ROSTER_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_ITEM_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_TRANSITION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_LOCK_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_REVISION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_VALIDATION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ENTRY_OVERRIDE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ENTRY_REMOVE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "ENTRY_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "ENTRY_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "GENERATE_MAX_ENTRIES"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NOTES_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REASON_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OVERRIDE_REASON_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "OVERRIDE_REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RECORD_VERSION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_SIZE_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_SIZE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_MIN_SIZE"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_MAX_SIZE"
+        },
+        {
+          "kind": "const",
+          "name": "JERSEY_NUMBER_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "JERSEY_NUMBER_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "MIN_WOMEN_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_POLICY_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "FIRST_REVISION"
+        },
+        {
+          "kind": "const",
+          "name": "GENDER_TOKEN_MAN"
+        },
+        {
+          "kind": "const",
+          "name": "GENDER_TOKEN_WOMAN"
+        },
+        {
+          "kind": "const",
+          "name": "GENDER_TOKEN_NONBINARY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_SCOPE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_SCOPE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_VALIDATION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_VALIDATION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_LOCKED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_LOCKED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_CONSTRAINT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_CONSTRAINT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_ENTRY_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_ENTRY_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_CANDIDATE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_CANDIDATE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_OVERRIDE_REQUIRED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_OVERRIDE_REQUIRED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_JERSEY_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_JERSEY_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_AVAILABILITY_MEMBERSHIP_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_AVAILABILITY_MEMBERSHIP_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_SNAPSHOT_IMMUTABLE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_SNAPSHOT_IMMUTABLE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_ENTRY_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_AVAILABILITY_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_SNAPSHOT_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_TRANSITIONED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_LOCKED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_REVISED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_ENTRY_ADDED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_ENTRY_OVERRIDDEN_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_ENTRY_REMOVED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_AVAILABILITY_DECLARED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_SNAPSHOT_TAKEN_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTERS_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_CREATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_PUBLISHED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_LOCKED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_REVISED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "ENTRY_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "AVAILABILITY_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "SNAPSHOT_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "CANDIDATE_SELECT"
+        },
+        {
+          "kind": "const",
+          "name": "EXCLUDED_CANDIDATE_STATES"
+        },
+        {
+          "kind": "const",
+          "name": "LIVE_ROSTER_STATES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1ec37956791de3f365adaba20f7957694de224e791e4421cc16bd69175987a79",
+      "sizeBytes": 9431
+    },
+    {
+      "path": "src/modules/rosters/model/rosters.enums.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "RosterKind"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_KIND_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RosterStatus"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RosterTransition"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_TRANSITION_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RosterEntryRole"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_ENTRY_ROLE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RosterEntryStatus"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_ENTRY_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RosterLine"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_LINE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RosterPosition"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_POSITION_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RosterDivision"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_DIVISION_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RosterGenderBucket"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_GENDER_BUCKET_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RosterAvailabilityStatus"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_AVAILABILITY_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RosterAvailabilitySource"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_AVAILABILITY_SOURCE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SnapshotReason"
+        },
+        {
+          "kind": "const",
+          "name": "SNAPSHOT_REASON_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ConstraintCode"
+        },
+        {
+          "kind": "const",
+          "name": "CONSTRAINT_CODE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "ConstraintSeverity"
+        },
+        {
+          "kind": "const",
+          "name": "CONSTRAINT_SEVERITY_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "EntryFlagCode"
+        },
+        {
+          "kind": "const",
+          "name": "ENTRY_FLAG_CODE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RosterMemberStatus"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_MEMBER_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "RosterAudience"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_AUDIENCE_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:81455eb1e500eb6bf154de9ce83af9b93bb8ad0af658f88f4a426e6fc60fb980",
+      "sizeBytes": 6682
+    },
+    {
+      "path": "src/modules/rosters/model/rosters.rows.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "RosterRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterEntryRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterAvailabilityRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterSnapshotRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterCandidateRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "ScopeRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:97f584c604226b6b639c9a130a3d6c5c18f9fcd20817f214097f84ab5eb7ed02",
+      "sizeBytes": 4186
+    },
+    {
+      "path": "src/modules/rosters/model/rosters.types.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "PagedResult"
+        },
+        {
+          "kind": "interface",
+          "name": "Roster"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterConstraints"
+        },
+        {
+          "kind": "interface",
+          "name": "CompetitionRosterContent"
+        },
+        {
+          "kind": "interface",
+          "name": "MatchRosterContent"
+        },
+        {
+          "kind": "interface",
+          "name": "NewRoster"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateCompetitionRosterCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateMatchRosterCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "TransitionRosterCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "LockRosterCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviseRosterCommand"
+        },
+        {
+          "kind": "type",
+          "name": "RosterPage"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterListFilter"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterListFilterInput"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterEntryWrite"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterEntryRemoval"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterEntryContent"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterOverride"
+        },
+        {
+          "kind": "interface",
+          "name": "AddRosterEntryCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "RemoveRosterEntryCommand"
+        },
+        {
+          "kind": "type",
+          "name": "RosterEntryPage"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterAvailabilityRecord"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterAvailabilityUpsert"
+        },
+        {
+          "kind": "interface",
+          "name": "DeclareRosterAvailabilityCommand"
+        },
+        {
+          "kind": "type",
+          "name": "RosterAvailabilityPage"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterSnapshotEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterSnapshot"
+        },
+        {
+          "kind": "interface",
+          "name": "NewRosterSnapshot"
+        },
+        {
+          "kind": "type",
+          "name": "RosterSnapshotPage"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterCandidate"
+        },
+        {
+          "kind": "interface",
+          "name": "EntryFlag"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterComposition"
+        },
+        {
+          "kind": "interface",
+          "name": "ConstraintViolation"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterValidationReport"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterAudiencePlan"
+        },
+        {
+          "kind": "interface",
+          "name": "CompetitionRosterContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "MatchRosterContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterEntryContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterScope"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0a584157c5e760db66701180dde834ae30bef99d0ce0922334e8a5ae6ae33abe",
+      "sizeBytes": 14905
+    },
+    {
+      "path": "src/modules/rosters/rosters.module.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RostersModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:15487df847c6859d4719793e7640992d48f8b081cbba0c8f85a3c2cafa154dbd",
+      "sizeBytes": 3941
     },
     {
       "path": "src/modules/scoring/api/calculation-rule.controller.ts",
