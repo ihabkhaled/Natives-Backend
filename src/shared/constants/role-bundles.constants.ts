@@ -57,6 +57,7 @@ const COACH_BUNDLE: readonly Permission[] = uniquePermissions([
   Permission.ActivityReview,
   Permission.EvidenceReadReview,
   Permission.PointsReadTeam,
+  Permission.CompetitionManage,
   Permission.SquadManage,
   Permission.RosterManage,
   Permission.MatchManage,

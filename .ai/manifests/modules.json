@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T10:00:23.996Z",
+  "generatedAt": "2026-07-20T10:53:08.217Z",
   "modules": [
     {
       "name": "activities",
@@ -280,6 +280,103 @@
       "fileCount": 6,
       "specCount": 2,
       "publicSurface": "src/modules/auth/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "competitions",
+      "path": "src/modules/competitions",
+      "layers": {
+        "controller": [
+          "src/modules/competitions/api/competition-structure.controller.ts",
+          "src/modules/competitions/api/competitions.controller.ts",
+          "src/modules/competitions/api/fixtures.controller.ts",
+          "src/modules/competitions/api/opponents.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/competitions/api/dto/competition-response.dto.ts",
+          "src/modules/competitions/api/dto/create-competition.dto.ts",
+          "src/modules/competitions/api/dto/create-fixture.dto.ts",
+          "src/modules/competitions/api/dto/create-opponent.dto.ts",
+          "src/modules/competitions/api/dto/create-round.dto.ts",
+          "src/modules/competitions/api/dto/create-stage.dto.ts",
+          "src/modules/competitions/api/dto/fixture-response.dto.ts",
+          "src/modules/competitions/api/dto/list-competitions.query.dto.ts",
+          "src/modules/competitions/api/dto/list-competitions.response.dto.ts",
+          "src/modules/competitions/api/dto/list-fixtures.response.dto.ts",
+          "src/modules/competitions/api/dto/list-opponents.response.dto.ts",
+          "src/modules/competitions/api/dto/list.query.dto.ts",
+          "src/modules/competitions/api/dto/opponent-response.dto.ts",
+          "src/modules/competitions/api/dto/reschedule-fixture.dto.ts",
+          "src/modules/competitions/api/dto/round-response.dto.ts",
+          "src/modules/competitions/api/dto/stage-response.dto.ts",
+          "src/modules/competitions/api/dto/structure-response.dto.ts",
+          "src/modules/competitions/api/dto/transition-competition.dto.ts",
+          "src/modules/competitions/api/dto/transition-fixture.dto.ts"
+        ],
+        "service": [
+          "src/modules/competitions/application/competition-lookup.service.ts",
+          "src/modules/competitions/application/competition-query.service.ts",
+          "src/modules/competitions/application/competition-scope.service.ts",
+          "src/modules/competitions/application/fixture-linkage.service.ts",
+          "src/modules/competitions/application/fixture-lookup.service.ts",
+          "src/modules/competitions/application/fixture-query.service.ts",
+          "src/modules/competitions/application/opponent-query.service.ts",
+          "src/modules/competitions/application/structure-query.service.ts"
+        ],
+        "use-case": [
+          "src/modules/competitions/application/create-competition.use-case.ts",
+          "src/modules/competitions/application/create-fixture.use-case.ts",
+          "src/modules/competitions/application/create-opponent.use-case.ts",
+          "src/modules/competitions/application/create-round.use-case.ts",
+          "src/modules/competitions/application/create-stage.use-case.ts",
+          "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+          "src/modules/competitions/application/transition-competition.use-case.ts",
+          "src/modules/competitions/application/transition-fixture.use-case.ts"
+        ],
+        "other": [
+          "src/modules/competitions/competitions.module.ts",
+          "src/modules/competitions/errors/competition-invalid-transition.error.ts",
+          "src/modules/competitions/errors/competition-not-found.error.ts",
+          "src/modules/competitions/errors/competition-scope-not-found.error.ts",
+          "src/modules/competitions/errors/competition-validation.error.ts",
+          "src/modules/competitions/errors/competition-version-conflict.error.ts",
+          "src/modules/competitions/errors/fixture-invalid-transition.error.ts",
+          "src/modules/competitions/errors/fixture-not-found.error.ts",
+          "src/modules/competitions/errors/fixture-schedule.error.ts",
+          "src/modules/competitions/errors/fixture-version-conflict.error.ts",
+          "src/modules/competitions/errors/opponent-conflict.error.ts",
+          "src/modules/competitions/errors/opponent-not-found.error.ts",
+          "src/modules/competitions/index.ts"
+        ],
+        "domain": [
+          "src/modules/competitions/domain/competition.policy.ts",
+          "src/modules/competitions/domain/competition.state-machine.ts",
+          "src/modules/competitions/domain/fixture-scheduling.policy.ts",
+          "src/modules/competitions/domain/fixture.state-machine.ts"
+        ],
+        "repository": [
+          "src/modules/competitions/infrastructure/competition-scope.repository.ts",
+          "src/modules/competitions/infrastructure/competition.repository.ts",
+          "src/modules/competitions/infrastructure/fixture.repository.ts",
+          "src/modules/competitions/infrastructure/opponent.repository.ts",
+          "src/modules/competitions/infrastructure/stage.repository.ts"
+        ],
+        "lib": [
+          "src/modules/competitions/lib/competitions-command.mapper.ts",
+          "src/modules/competitions/lib/competitions.builders.ts",
+          "src/modules/competitions/lib/competitions.helpers.ts",
+          "src/modules/competitions/lib/competitions.mapper.ts"
+        ],
+        "model": [
+          "src/modules/competitions/model/competitions.constants.ts",
+          "src/modules/competitions/model/competitions.enums.ts",
+          "src/modules/competitions/model/competitions.rows.ts",
+          "src/modules/competitions/model/competitions.types.ts"
+        ]
+      },
+      "fileCount": 69,
+      "specCount": 29,
+      "publicSurface": "src/modules/competitions/index.ts",
       "hasEvents": false
     },
     {

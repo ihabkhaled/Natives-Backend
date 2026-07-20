@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T10:00:23.996Z",
+  "generatedAt": "2026-07-20T10:53:08.217Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -39,6 +39,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/competitions/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -6180,6 +6185,1706 @@
       "from": "src/modules/auth/model/auth.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/modules/competitions/api/dto/create-round.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/modules/competitions/api/dto/create-stage.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/modules/competitions/api/dto/round-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/modules/competitions/api/dto/stage-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/modules/competitions/api/dto/structure-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/modules/competitions/application/create-round.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/modules/competitions/application/create-stage.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/modules/competitions/application/structure-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competition-structure.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/modules/competitions/api/dto/competition-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/modules/competitions/api/dto/create-competition.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/modules/competitions/api/dto/list-competitions.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/modules/competitions/api/dto/list-competitions.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/modules/competitions/api/dto/transition-competition.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/modules/competitions/application/competition-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/modules/competitions/application/create-competition.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/modules/competitions/lib/competitions-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/modules/competitions/lib/competitions.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/competitions.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/competition-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/competition-response.dto.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-competition.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-competition.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-competition.dto.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-competition.dto.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-fixture.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-fixture.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-fixture.dto.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-opponent.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-opponent.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-opponent.dto.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-round.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-round.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-round.dto.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-stage.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-stage.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-stage.dto.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/create-stage.dto.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/fixture-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/fixture-response.dto.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/list-competitions.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/list-competitions.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/list-competitions.query.dto.ts",
+      "to": "src/modules/competitions/api/dto/list.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/list-competitions.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/list-competitions.response.dto.ts",
+      "to": "src/modules/competitions/api/dto/competition-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/list-fixtures.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/list-fixtures.response.dto.ts",
+      "to": "src/modules/competitions/api/dto/fixture-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/list-opponents.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/list-opponents.response.dto.ts",
+      "to": "src/modules/competitions/api/dto/opponent-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/list.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/list.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/list.query.dto.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/opponent-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/opponent-response.dto.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/reschedule-fixture.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/reschedule-fixture.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/reschedule-fixture.dto.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/round-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/stage-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/stage-response.dto.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/structure-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/structure-response.dto.ts",
+      "to": "src/modules/competitions/api/dto/round-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/structure-response.dto.ts",
+      "to": "src/modules/competitions/api/dto/stage-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/transition-competition.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/transition-competition.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/transition-competition.dto.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/transition-competition.dto.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/transition-fixture.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/transition-fixture.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/transition-fixture.dto.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/dto/transition-fixture.dto.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/api/dto/create-fixture.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/api/dto/fixture-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/api/dto/list-fixtures.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/api/dto/list.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/api/dto/reschedule-fixture.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/api/dto/transition-fixture.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/application/fixture-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/lib/competitions-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/lib/competitions.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/fixtures.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/modules/competitions/api/dto/create-opponent.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/modules/competitions/api/dto/list-opponents.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/modules/competitions/api/dto/list.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/modules/competitions/api/dto/opponent-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/modules/competitions/application/opponent-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/modules/competitions/lib/competitions-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/modules/competitions/lib/competitions.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/api/opponents.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/competition-lookup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/competition-lookup.service.ts",
+      "to": "src/modules/competitions/errors/competition-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/competition-lookup.service.ts",
+      "to": "src/modules/competitions/infrastructure/competition.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/competition-lookup.service.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/competition-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/competition-query.service.ts",
+      "to": "src/modules/competitions/application/competition-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/competition-query.service.ts",
+      "to": "src/modules/competitions/infrastructure/competition.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/competition-query.service.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/competition-scope.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/competition-scope.service.ts",
+      "to": "src/modules/competitions/errors/competition-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/competition-scope.service.ts",
+      "to": "src/modules/competitions/infrastructure/competition-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-competition.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-competition.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-competition.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-competition.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-competition.use-case.ts",
+      "to": "src/modules/competitions/application/competition-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-competition.use-case.ts",
+      "to": "src/modules/competitions/domain/competition.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-competition.use-case.ts",
+      "to": "src/modules/competitions/infrastructure/competition.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-competition.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-competition.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-competition.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-competition.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/modules/competitions/application/competition-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/modules/competitions/application/competition-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/modules/competitions/application/fixture-linkage.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/modules/competitions/domain/fixture-scheduling.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/modules/competitions/infrastructure/fixture.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "to": "src/modules/competitions/application/competition-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "to": "src/modules/competitions/errors/opponent-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "to": "src/modules/competitions/infrastructure/opponent.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/competitions/application/create-round.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-round.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-round.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-round.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-round.use-case.ts",
+      "to": "src/modules/competitions/application/competition-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-round.use-case.ts",
+      "to": "src/modules/competitions/errors/competition-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-round.use-case.ts",
+      "to": "src/modules/competitions/infrastructure/stage.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-round.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-round.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-round.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/competitions/application/create-stage.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-stage.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-stage.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-stage.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/create-stage.use-case.ts",
+      "to": "src/modules/competitions/application/competition-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-stage.use-case.ts",
+      "to": "src/modules/competitions/infrastructure/stage.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-stage.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-stage.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/create-stage.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-linkage.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-linkage.service.ts",
+      "to": "src/modules/competitions/errors/competition-scope-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-linkage.service.ts",
+      "to": "src/modules/competitions/errors/opponent-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-linkage.service.ts",
+      "to": "src/modules/competitions/infrastructure/opponent.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-linkage.service.ts",
+      "to": "src/modules/competitions/infrastructure/stage.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-linkage.service.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-lookup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-lookup.service.ts",
+      "to": "src/modules/competitions/errors/fixture-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-lookup.service.ts",
+      "to": "src/modules/competitions/infrastructure/fixture.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-lookup.service.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-query.service.ts",
+      "to": "src/modules/competitions/application/competition-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-query.service.ts",
+      "to": "src/modules/competitions/infrastructure/fixture.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-query.service.ts",
+      "to": "src/modules/competitions/lib/competitions.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/fixture-query.service.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/opponent-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/opponent-query.service.ts",
+      "to": "src/modules/competitions/infrastructure/opponent.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/opponent-query.service.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/application/competition-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/application/competition-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/application/fixture-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/domain/fixture-scheduling.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/domain/fixture.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/errors/fixture-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/errors/fixture-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/infrastructure/fixture.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/competitions/application/structure-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/structure-query.service.ts",
+      "to": "src/modules/competitions/application/competition-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/structure-query.service.ts",
+      "to": "src/modules/competitions/infrastructure/stage.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/structure-query.service.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/modules/competitions/application/competition-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/modules/competitions/domain/competition.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/modules/competitions/errors/competition-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/modules/competitions/errors/competition-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/modules/competitions/errors/competition-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/modules/competitions/infrastructure/competition.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/competitions/application/competition-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/competitions/application/fixture-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/competitions/domain/fixture.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/competitions/errors/fixture-invalid-transition.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/competitions/errors/fixture-schedule.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/competitions/errors/fixture-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/competitions/infrastructure/fixture.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/competitions/lib/competitions.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/core/id-generator/id-generator.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/api/competition-structure.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/api/competitions.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/api/fixtures.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/api/opponents.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/competition-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/competition-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/competition-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/create-competition.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/create-round.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/create-stage.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/fixture-linkage.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/fixture-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/fixture-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/opponent-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/structure-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/infrastructure/competition-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/infrastructure/competition.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/infrastructure/fixture.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/infrastructure/opponent.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/competitions/infrastructure/stage.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/competitions.module.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/competitions/domain/competition.policy.ts",
+      "to": "src/modules/competitions/errors/competition-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/domain/competition.policy.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/domain/competition.state-machine.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/domain/fixture-scheduling.policy.ts",
+      "to": "src/modules/competitions/errors/fixture-schedule.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/domain/fixture.state-machine.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/errors/competition-invalid-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/errors/competition-invalid-transition.error.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/errors/competition-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/errors/competition-not-found.error.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/errors/competition-scope-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/errors/competition-scope-not-found.error.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/errors/competition-validation.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/errors/competition-validation.error.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/errors/competition-version-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/errors/competition-version-conflict.error.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/errors/fixture-invalid-transition.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/errors/fixture-invalid-transition.error.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/errors/fixture-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/errors/fixture-not-found.error.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/errors/fixture-schedule.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/errors/fixture-schedule.error.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/errors/fixture-version-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/errors/fixture-version-conflict.error.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/errors/opponent-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/errors/opponent-conflict.error.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/errors/opponent-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/errors/opponent-not-found.error.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/index.ts",
+      "to": "src/modules/competitions/competitions.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/competition-scope.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/competition-scope.repository.ts",
+      "to": "src/modules/competitions/model/competitions.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/competition.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/competition.repository.ts",
+      "to": "src/modules/competitions/lib/competitions.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/competition.repository.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/competition.repository.ts",
+      "to": "src/modules/competitions/model/competitions.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/competition.repository.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/fixture.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/fixture.repository.ts",
+      "to": "src/modules/competitions/lib/competitions.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/fixture.repository.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/fixture.repository.ts",
+      "to": "src/modules/competitions/model/competitions.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/fixture.repository.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/opponent.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/opponent.repository.ts",
+      "to": "src/modules/competitions/lib/competitions.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/opponent.repository.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/opponent.repository.ts",
+      "to": "src/modules/competitions/model/competitions.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/opponent.repository.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/stage.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/stage.repository.ts",
+      "to": "src/modules/competitions/lib/competitions.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/stage.repository.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/stage.repository.ts",
+      "to": "src/modules/competitions/model/competitions.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/infrastructure/stage.repository.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions-command.mapper.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.builders.ts",
+      "to": "src/modules/competitions/domain/competition.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.builders.ts",
+      "to": "src/modules/competitions/domain/fixture.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.builders.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.builders.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.builders.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.builders.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.helpers.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.helpers.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.mapper.ts",
+      "to": "src/modules/competitions/lib/competitions.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.mapper.ts",
+      "to": "src/modules/competitions/model/competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.mapper.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.mapper.ts",
+      "to": "src/modules/competitions/model/competitions.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/lib/competitions.mapper.ts",
+      "to": "src/modules/competitions/model/competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/competitions/model/competitions.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/competitions/model/competitions.types.ts",
+      "to": "src/modules/competitions/model/competitions.enums.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/development/api/coach-feedback-self.controller.ts",

@@ -6,6 +6,7 @@ import { ActivitiesModule } from '@modules/activities';
 import { ArticlesModule } from '@modules/articles';
 import { AssessmentsModule } from '@modules/assessments';
 import { AuthModule } from '@modules/auth';
+import { CompetitionsModule } from '@modules/competitions';
 import { DevelopmentModule } from '@modules/development';
 import { IdentityModule } from '@modules/identity';
 import { MeasurementsModule } from '@modules/measurements';
@@ -43,6 +44,7 @@ import { Module } from '@nestjs/common';
     MeasurementsModule,
     ActivitiesModule,
     PointsModule,
+    CompetitionsModule,
     ArticlesModule,
   ],
 })

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-20T10:00:23.996Z",
-  "treeHash": "sha256:5ef860111ef8054849fddbba7b9f78379b42812613c90081b35ac6f24cdac2b6",
+  "generatedAt": "2026-07-20T10:53:08.217Z",
+  "treeHash": "sha256:95bbfc8237a4bc567031b08a658bc1a1631afb74df83f598feee63df80f4280e",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9bcc6dec2c9e2256a29d507ddf7737eeb4d351a778de4aef4f99aa753e3e1340",
-      "sizeBytes": 1685
+      "hash": "sha256:04779bdb2de43424972a216732daae7892c2c3fe6972e63e9781c55962b8e779",
+      "sizeBytes": 1769
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -3289,6 +3289,23 @@
       "sizeBytes": 1299
     },
     {
+      "path": "src/database/migrations/1723300000000-competitions-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionsSchema1723300000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5774a85fe9dd92866ebc4b2b67bb0e78c4a78053697c42fa1c6cc6bf204ebf19",
+      "sizeBytes": 11837
+    },
+    {
       "path": "src/database/migrations/activities-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3323,6 +3340,18 @@
       "kind": "spec",
       "hash": "sha256:0f6c3bf81874acafc5f342e970f39831e90b091abf3b8ffbdc18aeb8794dc027",
       "sizeBytes": 3116
+    },
+    {
+      "path": "src/database/migrations/competitions-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4ed2b6528ae5ed834e6261fb2934718915675051cb75875118848551ad235e7e",
+      "sizeBytes": 4481
     },
     {
       "path": "src/database/migrations/development-schema.spec.ts",
@@ -9612,6 +9641,2290 @@
       "kind": "source",
       "hash": "sha256:d8058b17dffe8203de7742f24c56ec72cd1e9673cdccb14644cde72f11408f9a",
       "sizeBytes": 317
+    },
+    {
+      "path": "src/modules/competitions/api/competition-structure.controller.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionStructureController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:064f76d5512f6782460ebaf3661be036ab09e922441478659ea492ef3ea7ab44",
+      "sizeBytes": 3758
+    },
+    {
+      "path": "src/modules/competitions/api/competitions.controller.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3495ce4112d2ba1674c97d1f3c664459dfba92ebafcf77c741a2394e448fa9a8",
+      "sizeBytes": 4619
+    },
+    {
+      "path": "src/modules/competitions/api/dto/competition-response.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:59dd2db7ef71232820700d49d448921e87c967b9bb0d765cc6a718acf3441394",
+      "sizeBytes": 2470
+    },
+    {
+      "path": "src/modules/competitions/api/dto/create-competition.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateCompetitionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:42d969065b63a3d41897e73e4b2dc36bcb2a59a39f325df1ff7353447ef3291f",
+      "sizeBytes": 2226
+    },
+    {
+      "path": "src/modules/competitions/api/dto/create-fixture.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateFixtureDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0a0998120df957c410f2d99d2edcd15a080ea7905a65ffd769e57732f33fa5f6",
+      "sizeBytes": 1151
+    },
+    {
+      "path": "src/modules/competitions/api/dto/create-opponent.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateOpponentDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6b5d059922705e5b6e50bc554c26f5fdb65eeb87ae5bb00bdc9a92ec8b2908ad",
+      "sizeBytes": 1631
+    },
+    {
+      "path": "src/modules/competitions/api/dto/create-round.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateRoundDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2c6f8ad2b9493a16fdee8dbbdce06a17aa54d9451550b34f59e41a3df8b31a6b",
+      "sizeBytes": 610
+    },
+    {
+      "path": "src/modules/competitions/api/dto/create-stage.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateStageDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2c6d1dfd01f839a1b4efccfb79e7dcb96c30120505ad24082e73372ecf20abd3",
+      "sizeBytes": 684
+    },
+    {
+      "path": "src/modules/competitions/api/dto/fixture-response.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FixtureResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f059fc861713d041805a54bf8879a09c5bbca5bd4f9e269f59418b1fdf18020e",
+      "sizeBytes": 2593
+    },
+    {
+      "path": "src/modules/competitions/api/dto/list-competitions.query.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListCompetitionsQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:599ca1c1477ffe038e447480cc573fbeb41a71707f9ce8e11329a2f8b06a22de",
+      "sizeBytes": 402
+    },
+    {
+      "path": "src/modules/competitions/api/dto/list-competitions.response.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListCompetitionsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c7a2f163514c338709615c3f73c16af24b1ae665f223535d1e2fbd72b3b6f7a4",
+      "sizeBytes": 469
+    },
+    {
+      "path": "src/modules/competitions/api/dto/list-fixtures.response.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListFixturesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b61b0880ea44f54166e0826b959fade54875f09225d658da8fda209bd1c0c275",
+      "sizeBytes": 493
+    },
+    {
+      "path": "src/modules/competitions/api/dto/list-opponents.response.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListOpponentsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e2ea73c1f4f71984bc81901750428f39babd0e02c51531cd55b5feeab425a801",
+      "sizeBytes": 462
+    },
+    {
+      "path": "src/modules/competitions/api/dto/list.query.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:574fba3917150f5783a06a5be2958133752e5f872b940d5279183e97cf8496ad",
+      "sizeBytes": 724
+    },
+    {
+      "path": "src/modules/competitions/api/dto/opponent-response.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OpponentResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f73979a1bd62c2f920c46fcaf84d140c24940d5b9a2d5b9be65fcc3607767e0d",
+      "sizeBytes": 1326
+    },
+    {
+      "path": "src/modules/competitions/api/dto/reschedule-fixture.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RescheduleFixtureDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:acd3adca665fae18fbbc29a7d78825b5e7310b659bb2741f70ad39b935bd6764",
+      "sizeBytes": 1136
+    },
+    {
+      "path": "src/modules/competitions/api/dto/round-response.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RoundResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:21250e9f52a20e52278bbfb900ec81ffe78ac2f601657529dd7746356c295495",
+      "sizeBytes": 636
+    },
+    {
+      "path": "src/modules/competitions/api/dto/stage-response.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StageResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9b211eda9f968e6e6145995b4cdff1a03af752552330c24f64479cca704e6b6e",
+      "sizeBytes": 696
+    },
+    {
+      "path": "src/modules/competitions/api/dto/structure-response.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StructureResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:346d45de20f96f285acd064699102cb90a4e27a6ab4cc8153e703897747405cb",
+      "sizeBytes": 461
+    },
+    {
+      "path": "src/modules/competitions/api/dto/transition-competition.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionCompetitionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d88d9e4de09081a185f131bbbb79e886936058e5360c1125cd8abb6af2b2a394",
+      "sizeBytes": 1105
+    },
+    {
+      "path": "src/modules/competitions/api/dto/transition-fixture.dto.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionFixtureDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d3b6e2d76b20c503ca5e88ad8593fb1f5f37982aabecf388eb1493c013510f6e",
+      "sizeBytes": 1081
+    },
+    {
+      "path": "src/modules/competitions/api/fixtures.controller.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FixturesController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:933a5b677b860a0d814ad9dfb4221ddd68f848c1b0cba20f315a2bdc229bb78c",
+      "sizeBytes": 5485
+    },
+    {
+      "path": "src/modules/competitions/api/opponents.controller.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OpponentsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3cc5cd5e9b9df3f6c1657ff9ad0eff115b6e625778d7d7d4a2e9c80669041afc",
+      "sizeBytes": 2751
+    },
+    {
+      "path": "src/modules/competitions/application/competition-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e69ae187df20d65924ff69302ac54e7f8737be01ba8c26228a42c3db5c83299c",
+      "sizeBytes": 983
+    },
+    {
+      "path": "src/modules/competitions/application/competition-lookup.service.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/competition-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:99291b9e42a667f64410e0c89cdf1c93f4924d9c7e53de2fdf04e07e17fdac26",
+      "sizeBytes": 1061
+    },
+    {
+      "path": "src/modules/competitions/application/competition-query.service.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f89a2a452f69e2c59bc349386b161f6212196307fffccb55faa1534fc6034b31",
+      "sizeBytes": 1487
+    },
+    {
+      "path": "src/modules/competitions/application/competition-query.service.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/competition-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7d7a75c4d55707877ed3f9ecca2251ae9f559d80b37d0a85f38802127806870c",
+      "sizeBytes": 1782
+    },
+    {
+      "path": "src/modules/competitions/application/competition-scope.service.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5e992f078c78c073656ebdc3a84cf4967b14dbd889e57f5e805e675708c11e94",
+      "sizeBytes": 2395
+    },
+    {
+      "path": "src/modules/competitions/application/competition-scope.service.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionScopeService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/competition-scope.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:78c45d5eba13a6da4ef2b4429253807e33c0e9508c2dfd1de5982a0ecb93bc8f",
+      "sizeBytes": 1644
+    },
+    {
+      "path": "src/modules/competitions/application/create-competition.use-case.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:eb2d1ce5314e3d9e6c41e5de776325e9d5e796db2efb85133bc4f055152670e3",
+      "sizeBytes": 2851
+    },
+    {
+      "path": "src/modules/competitions/application/create-competition.use-case.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateCompetitionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/create-competition.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:08ce0b2cf7b9ee70fa79601cc61779cb728abe1cfbc095eb1ab73bd7d91b31fd",
+      "sizeBytes": 3053
+    },
+    {
+      "path": "src/modules/competitions/application/create-fixture.use-case.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9314d5974ec69d4c830c3f46da2dc0fc966e6ed5cac0f3ef6a1e144da1a1d41e",
+      "sizeBytes": 4549
+    },
+    {
+      "path": "src/modules/competitions/application/create-fixture.use-case.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateFixtureUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/create-fixture.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:29f472ad67275adfabcef571e857741bbf5571c82067cc435335cbe3e4e6c869",
+      "sizeBytes": 4252
+    },
+    {
+      "path": "src/modules/competitions/application/create-opponent.use-case.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:607ba44a3cf060e32dabf42c11cf7e5604a7b31888d36ec3f7335903ffef67a4",
+      "sizeBytes": 2077
+    },
+    {
+      "path": "src/modules/competitions/application/create-opponent.use-case.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateOpponentUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/create-opponent.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8819a90bc605a71fad06f668e214576b45d4db1b238172fbff0b6eb48060bc1d",
+      "sizeBytes": 2389
+    },
+    {
+      "path": "src/modules/competitions/application/create-round.use-case.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b0b563660b15ab356e62bf21ad8860d010ab529631df7697910c2dea97ab4735",
+      "sizeBytes": 2103
+    },
+    {
+      "path": "src/modules/competitions/application/create-round.use-case.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateRoundUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/create-round.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:dbaf7eb43cf612dcad8c6dd5239a848e0adb17446b35fefc101af2254f00c017",
+      "sizeBytes": 2889
+    },
+    {
+      "path": "src/modules/competitions/application/create-stage.use-case.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6c089df4af16c73a8cc6e622f5a5e25b4db4e016df377809a5b1331901fd9113",
+      "sizeBytes": 1767
+    },
+    {
+      "path": "src/modules/competitions/application/create-stage.use-case.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateStageUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/create-stage.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f0b1e087075ee7a3500a48c487cf6f0c4a7067762add94a8b837437a77db29d0",
+      "sizeBytes": 2413
+    },
+    {
+      "path": "src/modules/competitions/application/fixture-linkage.service.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:540f1bcc58093ccf9c86a42314320f1a9d342dab5bd394f72100891bd85c0a5b",
+      "sizeBytes": 3257
+    },
+    {
+      "path": "src/modules/competitions/application/fixture-linkage.service.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FixtureLinkageService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/fixture-linkage.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:43a7b23c21ecb92c953139d6fe291eb54aaa38056efc5b5d84832ae40a769c10",
+      "sizeBytes": 2625
+    },
+    {
+      "path": "src/modules/competitions/application/fixture-lookup.service.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:647724a7e7cd0bae6f457678948e00947ae3684340cd48b99d3b413758ff0de0",
+      "sizeBytes": 960
+    },
+    {
+      "path": "src/modules/competitions/application/fixture-lookup.service.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FixtureLookupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/fixture-lookup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5ec3a3110ba10b50be84ff6337c7373b972e175b062206f8502271cfdf90b511",
+      "sizeBytes": 1023
+    },
+    {
+      "path": "src/modules/competitions/application/fixture-query.service.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d57c6e0c25d9c71ad0582ad41aef32128bbef072a6b47955fe4cb37567daeea4",
+      "sizeBytes": 1835
+    },
+    {
+      "path": "src/modules/competitions/application/fixture-query.service.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FixtureQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/fixture-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:27be1213210fde10e70fceb3ae8774373250a74225cba4bd477d28c78cb9c050",
+      "sizeBytes": 1772
+    },
+    {
+      "path": "src/modules/competitions/application/opponent-query.service.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ed679740dc981c4e9668bc434540748b982e0aeeafafc2e7ad55e89afa5ddc01",
+      "sizeBytes": 808
+    },
+    {
+      "path": "src/modules/competitions/application/opponent-query.service.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OpponentQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/opponent-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3364828afb0f4ef1b0cd76ad483545e3e08c1ad2d297df9e8c78b782a0cbaaa2",
+      "sizeBytes": 1193
+    },
+    {
+      "path": "src/modules/competitions/application/reschedule-fixture.use-case.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9817cba31a28e2f9e80f34faea989702785c8d5acc8cd5b74a4b70107c63e708",
+      "sizeBytes": 5150
+    },
+    {
+      "path": "src/modules/competitions/application/reschedule-fixture.use-case.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RescheduleFixtureUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/reschedule-fixture.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:482381efeec7cb62e1ecced4937e31d201ef83887f4d8f4902ee187a6b4b38f7",
+      "sizeBytes": 4945
+    },
+    {
+      "path": "src/modules/competitions/application/structure-query.service.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1d03dac1de556c3345faafda39ebbfcc7e49ac6e0b6c5ccf6047f63b34bdfb0f",
+      "sizeBytes": 1084
+    },
+    {
+      "path": "src/modules/competitions/application/structure-query.service.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StructureQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/structure-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:be0e7b88bc30fb809fa30e7e750ecf7551e721a538c2bede22e607e5dd8990ce",
+      "sizeBytes": 1459
+    },
+    {
+      "path": "src/modules/competitions/application/transition-competition.use-case.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4e817552dd003276fcc73dde87daebcf00c58857882bf52e7af37577b091d9ff",
+      "sizeBytes": 4998
+    },
+    {
+      "path": "src/modules/competitions/application/transition-competition.use-case.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionCompetitionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/transition-competition.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:48c3c0f965fa4720f06d845397bae1e7bd26906c9e75505d93573fbeb92d0511",
+      "sizeBytes": 4537
+    },
+    {
+      "path": "src/modules/competitions/application/transition-fixture.use-case.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ef0239c06a28b264498fbd8850d47a68ae60bbdb9fb3441454a36a3a8cd81873",
+      "sizeBytes": 4605
+    },
+    {
+      "path": "src/modules/competitions/application/transition-fixture.use-case.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionFixtureUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/application/transition-fixture.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:73de93937b1ffa708710d17b33b455959a58e29225b0d9b1b933a796a1fdf52d",
+      "sizeBytes": 4225
+    },
+    {
+      "path": "src/modules/competitions/competitions.module.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionsModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0ed8c75805301ee277f67a36f1767cd70fef9a546aa660d03e65d8d925b0e5e7",
+      "sizeBytes": 3515
+    },
+    {
+      "path": "src/modules/competitions/domain/competition.policy.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:549e86309ecd4fa52684f1ecaae9fd9942d09d2be17b7266fb8a75d25bcc3fad",
+      "sizeBytes": 1522
+    },
+    {
+      "path": "src/modules/competitions/domain/competition.policy.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assertCompetitionContent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/domain/competition.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:cadb57baed87bccc579fb61a13d4c2c68c97ad0638cb797c54896435dc1aa49c",
+      "sizeBytes": 896
+    },
+    {
+      "path": "src/modules/competitions/domain/competition.state-machine.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c7b18717805aafa7752c023b8096ef08725fcac2480165ae3588c35458d3cbae",
+      "sizeBytes": 3427
+    },
+    {
+      "path": "src/modules/competitions/domain/competition.state-machine.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedCompetitionTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransitionCompetition"
+        },
+        {
+          "kind": "function",
+          "name": "resolveCompetitionTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isPublishTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isActivateTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isCompleteTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isCancelTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isArchiveTarget"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/domain/competition.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7967b37ee2d96b62613ef2bb3c31582737c72877b72eebe86d7328962823dc89",
+      "sizeBytes": 2987
+    },
+    {
+      "path": "src/modules/competitions/domain/fixture-scheduling.policy.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a5027080d28ead874cce24be5e30970880afd07e764f0636b1eb05e3cb3574b4",
+      "sizeBytes": 1719
+    },
+    {
+      "path": "src/modules/competitions/domain/fixture-scheduling.policy.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isWithinWindow"
+        },
+        {
+          "kind": "function",
+          "name": "assertFixtureWithinWindow"
+        },
+        {
+          "kind": "function",
+          "name": "assertRescheduleMovesFixture"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/domain/fixture-scheduling.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e25c2997c11ea1fc052d9397007219afee15096e58492406d3d194acd915d737",
+      "sizeBytes": 1570
+    },
+    {
+      "path": "src/modules/competitions/domain/fixture.state-machine.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:645a45e532f1fc9e1568545649bbfe9d32ebde50dff09f0b9f4795b37184df7f",
+      "sizeBytes": 3148
+    },
+    {
+      "path": "src/modules/competitions/domain/fixture.state-machine.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "allowedFixtureTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canTransitionFixture"
+        },
+        {
+          "kind": "function",
+          "name": "canReschedule"
+        },
+        {
+          "kind": "function",
+          "name": "resolveFixtureTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isFinalizeTarget"
+        },
+        {
+          "kind": "function",
+          "name": "isFixtureCancelTarget"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/domain/fixture.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:22305986d8be927260bc93d11f72602035d6f2c562f2d4c7c8194338f6c74d41",
+      "sizeBytes": 2861
+    },
+    {
+      "path": "src/modules/competitions/errors/competition-invalid-transition.error.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionInvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:99ee96966d6ec82a4973d8e56aa8700b85c99a15a4da48bda7fb1faa377a65ab",
+      "sizeBytes": 411
+    },
+    {
+      "path": "src/modules/competitions/errors/competition-not-found.error.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:29966208e08bd20a01bb8e70f7ee0c5b1484278bd9101b202c47bff73d98edf2",
+      "sizeBytes": 348
+    },
+    {
+      "path": "src/modules/competitions/errors/competition-scope-not-found.error.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionScopeNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ea7cee563d285d0e52d798d31d8829968871c4cebe2c1f8d2033e111226a5937",
+      "sizeBytes": 329
+    },
+    {
+      "path": "src/modules/competitions/errors/competition-validation.error.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionValidationError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5a3a48073304a474a796191302d43873af15605d051cb3aef90780c07b3789cd",
+      "sizeBytes": 359
+    },
+    {
+      "path": "src/modules/competitions/errors/competition-version-conflict.error.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionVersionConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3ebddeb05149da3bd652cae7de5b26fb7238a663c99d98c8622d39ce15bd4d17",
+      "sizeBytes": 401
+    },
+    {
+      "path": "src/modules/competitions/errors/competitions-errors.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:90298e55ca87be5d8ec860e39e2affcdf9eb3dade46ef3730e51ab716a0c68e6",
+      "sizeBytes": 2830
+    },
+    {
+      "path": "src/modules/competitions/errors/fixture-invalid-transition.error.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FixtureInvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e041e1d5e22c3b71e509453ad5c35bf8b5f9ae702def0802a0d41587d2f78325",
+      "sizeBytes": 391
+    },
+    {
+      "path": "src/modules/competitions/errors/fixture-not-found.error.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FixtureNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3c77ab3a06d779f21da1c63aca016a5ad699dd06d65032ef556675f2b062a285",
+      "sizeBytes": 328
+    },
+    {
+      "path": "src/modules/competitions/errors/fixture-schedule.error.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FixtureScheduleError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0c4506f037445ec3a33991de4b8ad34ff1db262eb77e227267c15ef71c2058a1",
+      "sizeBytes": 329
+    },
+    {
+      "path": "src/modules/competitions/errors/fixture-version-conflict.error.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FixtureVersionConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:06907fb251f6822230721d97ce5b0c3443f248ea847ccfe503707c5ba8b475c1",
+      "sizeBytes": 381
+    },
+    {
+      "path": "src/modules/competitions/errors/opponent-conflict.error.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OpponentConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:48e6141167cb657de56d24626dffcbe9e31c90e4a1395dc06b3a2b44c18856d9",
+      "sizeBytes": 328
+    },
+    {
+      "path": "src/modules/competitions/errors/opponent-not-found.error.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OpponentNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ab13f9dc4abfc3dd1513435a71a2fdb18ea2c7c9d8c01cb58166386343fcd40a",
+      "sizeBytes": 333
+    },
+    {
+      "path": "src/modules/competitions/index.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6b18ef44e8a9ff96224b35e6c8358dddc0e217c4c7b2b7156db97db93365a1d2",
+      "sizeBytes": 60
+    },
+    {
+      "path": "src/modules/competitions/infrastructure/competition-scope.repository.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2d2a3d9432e52d27151367bb9a2b2e18ab074c05835df340298ecf7b6db955c0",
+      "sizeBytes": 1348
+    },
+    {
+      "path": "src/modules/competitions/infrastructure/competition-scope.repository.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionScopeRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/infrastructure/competition-scope.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ddfc46d83bc993240e145d85f985c1615d444533dcc8efe537382dad3b58ff22",
+      "sizeBytes": 1414
+    },
+    {
+      "path": "src/modules/competitions/infrastructure/competition.repository.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1f91cca40fe3a105694f10ba231bb3b9537290fd0a060eb1c130189154b2244e",
+      "sizeBytes": 4442
+    },
+    {
+      "path": "src/modules/competitions/infrastructure/competition.repository.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompetitionRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/infrastructure/competition.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:fe0a90c7304f381b2f1f4cc139e95e25276403d2ed0db6281b28bcea7bf3be93",
+      "sizeBytes": 5052
+    },
+    {
+      "path": "src/modules/competitions/infrastructure/fixture.repository.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8eb8a315577756c1ef4048557fbe5329c7e4a6f67ce8861ffd0f7d137470d516",
+      "sizeBytes": 4333
+    },
+    {
+      "path": "src/modules/competitions/infrastructure/fixture.repository.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FixtureRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/infrastructure/fixture.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:dd5b9e8c3ce2655aa31a0bb0fe837e193284bad2dd65485837c422e5a033c28c",
+      "sizeBytes": 5713
+    },
+    {
+      "path": "src/modules/competitions/infrastructure/opponent.repository.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e7e653aa7a3a85dad978c27213266e207edc53cf56599d1b704cafc3218cd863",
+      "sizeBytes": 2348
+    },
+    {
+      "path": "src/modules/competitions/infrastructure/opponent.repository.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OpponentRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/infrastructure/opponent.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:949357d35feaca2af9c2b40c1c5cd931533fbb2abc4d7c500a6a3f3789688574",
+      "sizeBytes": 2876
+    },
+    {
+      "path": "src/modules/competitions/infrastructure/stage.repository.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:35c7a13b85b86fb3dffb32770335f27e28213b7e7a23d30939b830452f03bef1",
+      "sizeBytes": 4009
+    },
+    {
+      "path": "src/modules/competitions/infrastructure/stage.repository.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StageRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/infrastructure/stage.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:fbf44b759a4930b36f359402a9e6b1a32102734aff963bd859966c1e22ba4bad",
+      "sizeBytes": 4501
+    },
+    {
+      "path": "src/modules/competitions/lib/competitions-command.mapper.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4cad21920e81f28df4f1e622df8e95bf19bbb45742c609ee824aa90e87bbac78",
+      "sizeBytes": 1873
+    },
+    {
+      "path": "src/modules/competitions/lib/competitions-command.mapper.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toCompetitionContent"
+        },
+        {
+          "kind": "function",
+          "name": "toOpponentContent"
+        },
+        {
+          "kind": "function",
+          "name": "toFixtureContent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/lib/competitions-command.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f956f66b6f01a4d4f375f962fc006caea9b4717bf7721287730cb63a57e571f8",
+      "sizeBytes": 1524
+    },
+    {
+      "path": "src/modules/competitions/lib/competitions.builders.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:cf872f69add84d838fe9842e99b17114ca44d80f1d219cf469cc23020b5ef204",
+      "sizeBytes": 6195
+    },
+    {
+      "path": "src/modules/competitions/lib/competitions.builders.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "buildNewCompetition"
+        },
+        {
+          "kind": "function",
+          "name": "buildCompetitionStatusChange"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewStage"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewRound"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewOpponent"
+        },
+        {
+          "kind": "function",
+          "name": "buildNewFixture"
+        },
+        {
+          "kind": "function",
+          "name": "buildFixtureReschedule"
+        },
+        {
+          "kind": "function",
+          "name": "buildFixtureStatusChange"
+        },
+        {
+          "kind": "function",
+          "name": "buildCompetitionAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildStageAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildRoundAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildOpponentAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildFixtureAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildCompetitionCreatedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildCompetitionPublishedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildCompetitionCancelledEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildFixtureScheduledEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildFixtureRescheduledEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildFixtureCancelledEvent"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/lib/competitions.builders.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f00f3a83ff699795e4798eaddbba18e07a485d2af819c72aa1d77d50f4280d02",
+      "sizeBytes": 10163
+    },
+    {
+      "path": "src/modules/competitions/lib/competitions.helpers.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:633befe7df404cf1d1dd4872285892616d159e04588c1150a98295ffb8296539",
+      "sizeBytes": 1985
+    },
+    {
+      "path": "src/modules/competitions/lib/competitions.helpers.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveCompetitionsPage"
+        },
+        {
+          "kind": "function",
+          "name": "toDate"
+        },
+        {
+          "kind": "function",
+          "name": "toNullableDate"
+        },
+        {
+          "kind": "function",
+          "name": "parseEnumValue"
+        },
+        {
+          "kind": "function",
+          "name": "toCairoDateOnly"
+        },
+        {
+          "kind": "function",
+          "name": "toCairoWallClock"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/lib/competitions.helpers.spec.ts",
+      "kind": "source",
+      "hash": "sha256:c1e82361f38aab0dc3d908443b7a91bd9f65a8e4a3420fd465d112f8a0c1c68b",
+      "sizeBytes": 2342
+    },
+    {
+      "path": "src/modules/competitions/lib/competitions.mapper.spec.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:cd62ead83620b74afe2f8222c710e9df9086fe5b0156beaf9a2ace66cd30acbe",
+      "sizeBytes": 4144
+    },
+    {
+      "path": "src/modules/competitions/lib/competitions.mapper.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toCompetition"
+        },
+        {
+          "kind": "function",
+          "name": "toStage"
+        },
+        {
+          "kind": "function",
+          "name": "toRound"
+        },
+        {
+          "kind": "function",
+          "name": "toOpponent"
+        },
+        {
+          "kind": "function",
+          "name": "toFixture"
+        },
+        {
+          "kind": "function",
+          "name": "toFixtureView"
+        },
+        {
+          "kind": "function",
+          "name": "toFixtureViewPage"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/competitions/lib/competitions.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f0022c90f59473b2bdc3f4afb226e7d3bc268a7676a9ef6afd537490c65a632a",
+      "sizeBytes": 4567
+    },
+    {
+      "path": "src/modules/competitions/model/competitions.constants.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "COMPETITIONS_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "OPPONENTS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_CHILD_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURES_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_ITEM_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_TRANSITION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "STAGES_SUBROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "ROUNDS_SUBROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "STRUCTURE_SUBROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_RESCHEDULE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_TRANSITION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_MIN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "LIST_DEFAULT_OFFSET"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SHORT_NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "DESCRIPTION_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ORGANIZER_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "EXTERNAL_REF_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "GENDER_DIVISION_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "LOGO_REF_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CONTACT_NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CONTACT_INFO_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "NOTES_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REASON_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "STAGE_NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "ROUND_NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RECORD_VERSION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "FIRST_ORDINAL"
+        },
+        {
+          "kind": "const",
+          "name": "ISO_DATE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "ISO_DATE_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CAIRO_TIMEZONE"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_VALIDATION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_VALIDATION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SCOPE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SCOPE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "OPPONENT_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "OPPONENT_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "OPPONENT_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "OPPONENT_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_VERSION_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_SCHEDULE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_SCHEDULE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "STAGE_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "ROUND_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "OPPONENT_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_AGGREGATE"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_TRANSITIONED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "STAGE_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "ROUND_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "OPPONENT_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_CREATED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_RESCHEDULED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_TRANSITIONED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITIONS_EVENT_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_CREATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_PUBLISHED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_CANCELLED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_SCHEDULED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_RESCHEDULED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_CANCELLED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "STAGE_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "ROUND_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "OPPONENT_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_COLUMNS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e6ff48eeb0ef425ba8fd982e5ef7754a94c8a7c27880bf9a63197850195da074",
+      "sizeBytes": 7540
+    },
+    {
+      "path": "src/modules/competitions/model/competitions.enums.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "CompetitionType"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_TYPE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "CompetitionStatus"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "CompetitionTransition"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_TRANSITION_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "StageFormat"
+        },
+        {
+          "kind": "const",
+          "name": "STAGE_FORMAT_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "OpponentStatus"
+        },
+        {
+          "kind": "const",
+          "name": "OPPONENT_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "MatchSide"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_SIDE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "FixtureStatus"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "FixtureTransition"
+        },
+        {
+          "kind": "const",
+          "name": "FIXTURE_TRANSITION_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:454e3831fa04dd3bce9d38035593307dff1ffc76fcdb39f9d307b98253f9fd96",
+      "sizeBytes": 3681
+    },
+    {
+      "path": "src/modules/competitions/model/competitions.rows.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "CompetitionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "StageRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RoundRow"
+        },
+        {
+          "kind": "interface",
+          "name": "OpponentRow"
+        },
+        {
+          "kind": "interface",
+          "name": "FixtureRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "OrdinalRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d14bea474840d55695f715aaf548d3645b3dff482809a2d95b5d420ea8bc9859",
+      "sizeBytes": 3247
+    },
+    {
+      "path": "src/modules/competitions/model/competitions.types.ts",
+      "root": "modules",
+      "module": "competitions",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PageRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "PagedResult"
+        },
+        {
+          "kind": "interface",
+          "name": "Competition"
+        },
+        {
+          "kind": "interface",
+          "name": "CompetitionContent"
+        },
+        {
+          "kind": "interface",
+          "name": "NewCompetition"
+        },
+        {
+          "kind": "interface",
+          "name": "CompetitionStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateCompetitionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "TransitionCompetitionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "Stage"
+        },
+        {
+          "kind": "interface",
+          "name": "NewStage"
+        },
+        {
+          "kind": "interface",
+          "name": "StageContent"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateStageCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "Round"
+        },
+        {
+          "kind": "interface",
+          "name": "NewRound"
+        },
+        {
+          "kind": "interface",
+          "name": "RoundContent"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateRoundCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CompetitionStructure"
+        },
+        {
+          "kind": "interface",
+          "name": "Opponent"
+        },
+        {
+          "kind": "interface",
+          "name": "OpponentContent"
+        },
+        {
+          "kind": "interface",
+          "name": "NewOpponent"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateOpponentCommand"
+        },
+        {
+          "kind": "type",
+          "name": "OpponentPage"
+        },
+        {
+          "kind": "interface",
+          "name": "Fixture"
+        },
+        {
+          "kind": "interface",
+          "name": "FixtureContent"
+        },
+        {
+          "kind": "interface",
+          "name": "NewFixture"
+        },
+        {
+          "kind": "interface",
+          "name": "FixtureReschedule"
+        },
+        {
+          "kind": "interface",
+          "name": "FixtureStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateFixtureCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "RescheduleFixtureCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "TransitionFixtureCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "FixtureView"
+        },
+        {
+          "kind": "type",
+          "name": "CompetitionPage"
+        },
+        {
+          "kind": "type",
+          "name": "FixturePage"
+        },
+        {
+          "kind": "interface",
+          "name": "CompetitionContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "OpponentContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "FixtureContentInput"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:72f43761066d9f23b604fcb24309869cf04eaa45abadf41ba338bb9ee429486e",
+      "sizeBytes": 9678
     },
     {
       "path": "src/modules/development/api/coach-feedback-self.controller.ts",
@@ -34292,8 +36605,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:64abbb12efea2944a194ffa81dde719930ef00dd5b5c78834bc7f6b3d23a15fd",
-      "sizeBytes": 4991
+      "hash": "sha256:47114a2d409c58057c31f184df6b7e65dd69f3d1362f4b242a7bf36f6321925b",
+      "sizeBytes": 5023
     },
     {
       "path": "src/shared/constants/role-bundles.spec.ts",

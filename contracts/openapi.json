@@ -1655,6 +1655,148 @@
         ],
         "type": "object"
       },
+      "CompetitionResponseDto": {
+        "properties": {
+          "activatedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "archivedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "cancellationReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "cancelledAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "competitionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "competitionType": {
+            "enum": [
+              "league",
+              "championship",
+              "tournament",
+              "friendly",
+              "custom"
+            ],
+            "type": "string"
+          },
+          "completedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "endsOn": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "externalRef": {
+            "nullable": true,
+            "type": "string"
+          },
+          "genderDivision": {
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "organizerName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "publishedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "publishedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "startsOn": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "published",
+              "active",
+              "completed",
+              "cancelled",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "competitionId",
+          "teamId",
+          "seasonId",
+          "name",
+          "competitionType",
+          "status",
+          "genderDivision",
+          "organizerName",
+          "externalRef",
+          "startsOn",
+          "endsOn",
+          "description",
+          "cancellationReason",
+          "recordVersion",
+          "createdBy",
+          "publishedBy",
+          "publishedAt",
+          "activatedAt",
+          "completedAt",
+          "cancelledAt",
+          "archivedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
       "CompleteBlockDto": {
         "properties": {
           "completionStatus": {
@@ -1984,6 +2126,65 @@
         ],
         "type": "object"
       },
+      "CreateCompetitionDto": {
+        "properties": {
+          "competitionType": {
+            "enum": [
+              "league",
+              "championship",
+              "tournament",
+              "friendly",
+              "custom"
+            ],
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "endsOn": {
+            "nullable": true,
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "type": "object"
+          },
+          "externalRef": {
+            "maxLength": 500,
+            "nullable": true,
+            "type": "object"
+          },
+          "genderDivision": {
+            "maxLength": 80,
+            "nullable": true,
+            "type": "object"
+          },
+          "name": {
+            "maxLength": 160,
+            "minLength": 2,
+            "type": "string"
+          },
+          "organizerName": {
+            "maxLength": 200,
+            "nullable": true,
+            "type": "object"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "startsOn": {
+            "nullable": true,
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "type": "object"
+          }
+        },
+        "required": [
+          "name",
+          "competitionType",
+          "seasonId"
+        ],
+        "type": "object"
+      },
       "CreateDrillDto": {
         "properties": {
           "category": {
@@ -2078,6 +2279,47 @@
         },
         "required": [
           "membershipId"
+        ],
+        "type": "object"
+      },
+      "CreateFixtureDto": {
+        "properties": {
+          "homeAway": {
+            "enum": [
+              "home",
+              "away",
+              "neutral"
+            ],
+            "type": "string"
+          },
+          "opponentId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "roundId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "scheduledAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "stageId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "venueId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "opponentId",
+          "homeAway",
+          "scheduledAt"
         ],
         "type": "object"
       },
@@ -2274,6 +2516,44 @@
         ],
         "type": "object"
       },
+      "CreateOpponentDto": {
+        "properties": {
+          "contactInfo": {
+            "maxLength": 200,
+            "nullable": true,
+            "type": "object"
+          },
+          "contactName": {
+            "maxLength": 160,
+            "nullable": true,
+            "type": "object"
+          },
+          "logoRef": {
+            "maxLength": 500,
+            "nullable": true,
+            "type": "object"
+          },
+          "name": {
+            "maxLength": 160,
+            "minLength": 2,
+            "type": "string"
+          },
+          "notes": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "shortName": {
+            "maxLength": 40,
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      },
       "CreatePeriodDto": {
         "properties": {
           "cohort": {
@@ -2436,6 +2716,24 @@
           "unit",
           "direction",
           "resultPolicy"
+        ],
+        "type": "object"
+      },
+      "CreateRoundDto": {
+        "properties": {
+          "name": {
+            "maxLength": 120,
+            "minLength": 2,
+            "type": "string"
+          },
+          "stageId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "stageId",
+          "name"
         ],
         "type": "object"
       },
@@ -2707,6 +3005,30 @@
           "settingKey",
           "effectiveFrom",
           "value"
+        ],
+        "type": "object"
+      },
+      "CreateStageDto": {
+        "properties": {
+          "name": {
+            "maxLength": 120,
+            "minLength": 2,
+            "type": "string"
+          },
+          "stageFormat": {
+            "enum": [
+              "group",
+              "pool",
+              "bracket",
+              "knockout",
+              "round_robin"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "stageFormat"
         ],
         "type": "object"
       },
@@ -3508,6 +3830,151 @@
         ],
         "type": "object"
       },
+      "FixtureResponseDto": {
+        "properties": {
+          "cancellationReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "cancelledAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "competitionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "finalizedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "fixtureId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "homeAway": {
+            "enum": [
+              "home",
+              "away",
+              "neutral"
+            ],
+            "type": "string"
+          },
+          "opponentId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "previousScheduledAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "rescheduleCount": {
+            "type": "number"
+          },
+          "rescheduledAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "rescheduleReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "roundId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "scheduledAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "scheduledAtCairo": {
+            "description": "Scheduled instant in Africa/Cairo wall-clock time",
+            "type": "string"
+          },
+          "seasonId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "stageId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "scheduled",
+              "rescheduled",
+              "ready",
+              "live",
+              "final",
+              "abandoned",
+              "cancelled"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "venueId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "fixtureId",
+          "competitionId",
+          "teamId",
+          "seasonId",
+          "stageId",
+          "roundId",
+          "opponentId",
+          "venueId",
+          "homeAway",
+          "scheduledAt",
+          "scheduledAtCairo",
+          "timezone",
+          "status",
+          "rescheduleCount",
+          "previousScheduledAt",
+          "rescheduleReason",
+          "cancellationReason",
+          "recordVersion",
+          "createdBy",
+          "rescheduledAt",
+          "finalizedAt",
+          "cancelledAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
       "ForgotPasswordDto": {
         "properties": {
           "email": {
@@ -4108,6 +4575,32 @@
         ],
         "type": "object"
       },
+      "ListCompetitionsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CompetitionResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListDevelopmentGoalsResponseDto": {
         "properties": {
           "items": {
@@ -4186,6 +4679,32 @@
         ],
         "type": "object"
       },
+      "ListFixturesResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/FixtureResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListMembersResponseDto": {
         "properties": {
           "items": {
@@ -4243,6 +4762,32 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/NotificationViewDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "ListOpponentsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/OpponentResponseDto"
             },
             "type": "array"
           },
@@ -5478,6 +6023,80 @@
           "params",
           "readAt",
           "createdAt"
+        ],
+        "type": "object"
+      },
+      "OpponentResponseDto": {
+        "properties": {
+          "contactInfo": {
+            "nullable": true,
+            "type": "string"
+          },
+          "contactName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "logoRef": {
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "notes": {
+            "nullable": true,
+            "type": "string"
+          },
+          "opponentId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "shortName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "opponentId",
+          "teamId",
+          "name",
+          "shortName",
+          "logoRef",
+          "contactName",
+          "contactInfo",
+          "notes",
+          "status",
+          "recordVersion",
+          "createdBy",
+          "createdAt",
+          "updatedAt"
         ],
         "type": "object"
       },
@@ -6823,6 +7442,34 @@
         ],
         "type": "object"
       },
+      "RescheduleFixtureDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 3,
+            "nullable": true,
+            "type": "object"
+          },
+          "scheduledAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "venueId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "scheduledAt",
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "RescheduleSessionDto": {
         "properties": {
           "endsAt": {
@@ -7329,6 +7976,46 @@
           "excuseCategory",
           "source",
           "version"
+        ],
+        "type": "object"
+      },
+      "RoundResponseDto": {
+        "properties": {
+          "competitionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "ordinal": {
+            "type": "number"
+          },
+          "roundId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "stageId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "roundId",
+          "stageId",
+          "competitionId",
+          "name",
+          "ordinal",
+          "createdAt",
+          "updatedAt"
         ],
         "type": "object"
       },
@@ -8731,6 +9418,52 @@
         ],
         "type": "object"
       },
+      "StageResponseDto": {
+        "properties": {
+          "competitionId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "ordinal": {
+            "type": "number"
+          },
+          "stageFormat": {
+            "enum": [
+              "group",
+              "pool",
+              "bracket",
+              "knockout",
+              "round_robin"
+            ],
+            "type": "string"
+          },
+          "stageId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "stageId",
+          "competitionId",
+          "name",
+          "stageFormat",
+          "ordinal",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
       "StationResponseDto": {
         "properties": {
           "blockId": {
@@ -8845,6 +9578,27 @@
           "reason",
           "actorUserId",
           "occurredAt"
+        ],
+        "type": "object"
+      },
+      "StructureResponseDto": {
+        "properties": {
+          "rounds": {
+            "items": {
+              "$ref": "#/components/schemas/RoundResponseDto"
+            },
+            "type": "array"
+          },
+          "stages": {
+            "items": {
+              "$ref": "#/components/schemas/StageResponseDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "stages",
+          "rounds"
         ],
         "type": "object"
       },
@@ -9204,6 +9958,35 @@
         ],
         "type": "object"
       },
+      "TransitionCompetitionDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 3,
+            "nullable": true,
+            "type": "object"
+          },
+          "transition": {
+            "enum": [
+              "publish",
+              "activate",
+              "complete",
+              "cancel",
+              "archive"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "transition",
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "TransitionDto": {
         "properties": {
           "effectiveAt": {
@@ -9215,6 +9998,35 @@
             "type": "string"
           }
         },
+        "type": "object"
+      },
+      "TransitionFixtureDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 3,
+            "nullable": true,
+            "type": "object"
+          },
+          "transition": {
+            "enum": [
+              "ready",
+              "start",
+              "finalize",
+              "abandon",
+              "cancel"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "transition",
+          "expectedRecordVersion"
+        ],
         "type": "object"
       },
       "TransitionGoalDto": {
@@ -13904,6 +14716,606 @@
         ]
       }
     },
+    "/teams/{teamId}/competitions": {
+      "get": {
+        "operationId": "Competitions.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "seasonId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListCompetitionsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s competitions",
+        "tags": [
+          "competitions"
+        ]
+      },
+      "post": {
+        "operationId": "Competitions.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCompetitionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompetitionResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Create a draft competition",
+        "tags": [
+          "competitions"
+        ]
+      }
+    },
+    "/teams/{teamId}/competitions/{competitionId}": {
+      "get": {
+        "operationId": "Competitions.get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "competitionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompetitionResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Get one competition",
+        "tags": [
+          "competitions"
+        ]
+      }
+    },
+    "/teams/{teamId}/competitions/{competitionId}/fixtures": {
+      "get": {
+        "operationId": "Fixtures.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "competitionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListFixturesResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a competition’s fixtures",
+        "tags": [
+          "competitions"
+        ]
+      },
+      "post": {
+        "operationId": "Fixtures.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "competitionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFixtureDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FixtureResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Book a fixture against an opponent",
+        "tags": [
+          "competitions"
+        ]
+      }
+    },
+    "/teams/{teamId}/competitions/{competitionId}/fixtures/{fixtureId}/reschedule": {
+      "post": {
+        "operationId": "Fixtures.reschedule",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "competitionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "fixtureId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RescheduleFixtureDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FixtureResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Reschedule a fixture",
+        "tags": [
+          "competitions"
+        ]
+      }
+    },
+    "/teams/{teamId}/competitions/{competitionId}/fixtures/{fixtureId}/transition": {
+      "post": {
+        "operationId": "Fixtures.transition",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "competitionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "fixtureId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransitionFixtureDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FixtureResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Ready, start, finalize, abandon, or cancel",
+        "tags": [
+          "competitions"
+        ]
+      }
+    },
+    "/teams/{teamId}/competitions/{competitionId}/rounds": {
+      "post": {
+        "operationId": "CompetitionStructure.addRound",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "competitionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRoundDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoundResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Append a round to a stage",
+        "tags": [
+          "competitions"
+        ]
+      }
+    },
+    "/teams/{teamId}/competitions/{competitionId}/stages": {
+      "post": {
+        "operationId": "CompetitionStructure.addStage",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "competitionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateStageDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StageResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Append a stage to a competition",
+        "tags": [
+          "competitions"
+        ]
+      }
+    },
+    "/teams/{teamId}/competitions/{competitionId}/structure": {
+      "get": {
+        "operationId": "CompetitionStructure.get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "competitionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StructureResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Get a competition’s stages and rounds",
+        "tags": [
+          "competitions"
+        ]
+      }
+    },
+    "/teams/{teamId}/competitions/{competitionId}/transition": {
+      "post": {
+        "operationId": "Competitions.transition",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "competitionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransitionCompetitionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompetitionResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Publish, activate, complete, cancel, or archive",
+        "tags": [
+          "competitions"
+        ]
+      }
+    },
     "/teams/{teamId}/development-goals": {
       "get": {
         "operationId": "DevelopmentGoal.list",
@@ -16303,6 +17715,106 @@
         "summary": "Read my own points summary",
         "tags": [
           "points"
+        ]
+      }
+    },
+    "/teams/{teamId}/opponents": {
+      "get": {
+        "operationId": "Opponents.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOpponentsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s opponent catalogue",
+        "tags": [
+          "competitions"
+        ]
+      },
+      "post": {
+        "operationId": "Opponents.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOpponentDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpponentResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Catalogue a new opponent",
+        "tags": [
+          "competitions"
         ]
       }
     },
