@@ -44,6 +44,7 @@ function build() {
   const seasons = {
     existsBySlug: vi.fn().mockResolvedValue(false),
     listActiveRanges: vi.fn().mockResolvedValue([]),
+    hasOtherActive: vi.fn().mockResolvedValue(false),
     insert: vi.fn().mockResolvedValue(SEASON),
   };
   const audit = { append: vi.fn() };

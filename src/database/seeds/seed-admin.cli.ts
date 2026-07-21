@@ -1,4 +1,5 @@
 import { loadSeedAdminConfig } from '@config/seed-admin.config';
+import { loadSeedPersonasConfig } from '@config/seed-personas.config';
 import { AppLogger } from '@core/logger';
 import type { PasswordHashPort } from '@modules/auth';
 import { PASSWORD_HASH_PORT } from '@modules/auth';
@@ -43,6 +44,7 @@ async function main(): Promise<void> {
     const seeders = buildSeeders({
       passwordHash,
       loadAdminConfig: loadSeedAdminConfig,
+      loadPersonasConfig: loadSeedPersonasConfig,
     });
     const outcomes = await runSeeders(
       dataSource,

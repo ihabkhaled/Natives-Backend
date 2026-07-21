@@ -35,6 +35,7 @@ import { AssessmentCatalogSchema1722300000000 } from '../../src/database/migrati
 import { PlayerAssessmentSchema1722400000000 } from '../../src/database/migrations/1722400000000-player-assessment-schema';
 import { DevelopmentSchema1722500000000 } from '../../src/database/migrations/1722500000000-development-schema';
 import { SeedHistorySchema1722600000000 } from '../../src/database/migrations/1722600000000-seed-history-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const ALL_MIGRATIONS = [
   BaselineSchema1721200000000,
@@ -52,10 +53,13 @@ const ALL_MIGRATIONS = [
   PlayerAssessmentSchema1722400000000,
   DevelopmentSchema1722500000000,
   SeedHistorySchema1722600000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 const MIGRATION_COUNT = ALL_MIGRATIONS.length;
 // Every registered seeder writes exactly one seed_history row on a fresh boot.
-const SEEDER_COUNT = 2;
+const SEEDER_COUNT = 3;
+// The admin plus the twelve demonstration personas the persona seeder provisions.
+const SEEDED_USER_COUNT = 13;
 
 const HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const PORT = Number(process.env['TEST_DB_PORT'] ?? '55432');
@@ -103,6 +107,7 @@ function seeders() {
       hash: (value: string) => Promise.resolve(`hashed:${value}`),
     },
     loadAdminConfig: () => ADMIN_CONFIG,
+    loadPersonasConfig: () => ({ password: 'runtime-only-persona-password' }),
   });
 }
 
@@ -199,6 +204,7 @@ describeIfDb(suiteTitle, () => {
     );
     expect(seedRows).toEqual([
       { seed_key: 'admin', applied_by: 'boot' },
+      { seed_key: 'personas', applied_by: 'boot' },
       { seed_key: 'team-ultimate-natives', applied_by: 'boot' },
     ]);
     const users = await dataSource.query(
@@ -232,7 +238,7 @@ describeIfDb(suiteTitle, () => {
     const users = await dataSource.query(
       'SELECT COUNT(*)::int AS count FROM "users"',
     );
-    expect(users[0].count).toBe(1);
+    expect(users[0].count).toBe(SEEDED_USER_COUNT);
     expect(secondLogger.info).toHaveBeenCalledWith(MIGRATIONS_UP_TO_DATE_LOG);
   });
 
@@ -256,7 +262,7 @@ describeIfDb(suiteTitle, () => {
     const admins = await first.query(
       'SELECT COUNT(*)::int AS count FROM "users"',
     );
-    expect(admins[0].count).toBe(1);
+    expect(admins[0].count).toBe(SEEDED_USER_COUNT);
     const seedRows = await first.query(
       'SELECT COUNT(*)::int AS count FROM "seed_history"',
     );

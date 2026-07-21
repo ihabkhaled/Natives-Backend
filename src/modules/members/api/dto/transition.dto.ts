@@ -13,7 +13,7 @@ import { REASON_MAX_LENGTH } from '../../model/members.constants';
  * leave/archive/anonymize). Both fields are optional: an omitted effective time
  * defaults to now (UTC). The actor is taken from the token.
  */
-export class TransitionDto {
+export class MemberTransitionDto {
   @ApiPropertyOptional({ maxLength: REASON_MAX_LENGTH })
   @IsOptional()
   @IsString()

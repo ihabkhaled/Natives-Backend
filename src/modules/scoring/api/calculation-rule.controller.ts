@@ -42,12 +42,12 @@ import {
   TEAM_ID_PARAM,
 } from '../model/scoring.constants';
 import { CreateScoringRuleDto } from './dto/create-rule.dto';
-import { ListRulesResponseDto } from './dto/list-rules.response.dto';
+import { ScoringListRulesResponseDto } from './dto/list-rules.response.dto';
 import { ListScoringQueryDto } from './dto/list-scoring.query.dto';
 import { ScoringRuleResponseDto } from './dto/rule-response.dto';
 import { SimulateRuleDto } from './dto/simulate-rule.dto';
 import { SimulationResponseDto } from './dto/simulation-response.dto';
-import { TransitionRuleDto } from './dto/transition-rule.dto';
+import { ScoringTransitionRuleDto } from './dto/transition-rule.dto';
 import { UpdateRuleDto } from './dto/update-rule.dto';
 
 /**
@@ -70,12 +70,12 @@ export class CalculationRuleController {
   @Get()
   @RequirePermissions(Permission.PointsRulesManage)
   @ApiOperation({ summary: 'List a team’s calculation rules and candidates' })
-  @ApiOkResponse({ type: ListRulesResponseDto })
+  @ApiOkResponse({ type: ScoringListRulesResponseDto })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   list(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Query() query: ListScoringQueryDto,
-  ): Promise<ListRulesResponseDto> {
+  ): Promise<ScoringListRulesResponseDto> {
     return this.query.listForTeam(
       teamId,
       resolveScoringPage(query.limit, query.offset),
@@ -140,7 +140,7 @@ export class CalculationRuleController {
   transition(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(RULE_ID_PARAM, UuidValidationPipe) ruleId: string,
-    @Body() dto: TransitionRuleDto,
+    @Body() dto: ScoringTransitionRuleDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<ScoringRuleResponseDto> {
     return this.transitionRule.execute(actor, teamId, ruleId, {

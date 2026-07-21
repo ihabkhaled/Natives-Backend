@@ -1,6 +1,11 @@
 import { buildDataSourceOptions } from '@app/database/data-source.factory';
-import { SEED_TEAM_KEY } from '@app/database/seeds/seed.constants';
+import {
+  SEED_ADMIN_KEY,
+  SEED_PERSONAS_KEY,
+  SEED_TEAM_KEY,
+} from '@app/database/seeds/seed.constants';
 import type { Seeder } from '@app/database/seeds/seed.types';
+import { PERSONA_DEFINITIONS } from '@app/database/seeds/seed-personas.constants';
 import { buildSeeders } from '@app/database/seeds/seed-registry';
 import { runSeeders } from '@app/database/seeds/seed-runner';
 import type { DatabaseConfig } from '@config/config.types';
@@ -15,6 +20,7 @@ import { RbacSchema1721400000000 } from '../../src/database/migrations/172140000
 import { TeamsSchema1721500000000 } from '../../src/database/migrations/1721500000000-teams-schema';
 import { MembersSchema1721600000000 } from '../../src/database/migrations/1721600000000-members-schema';
 import { SeedHistorySchema1722600000000 } from '../../src/database/migrations/1722600000000-seed-history-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 // The team seeder only touches identity, RBAC, teams, members, and the seed
 // ledger, so the fixture applies exactly those schemas onto a disposable
@@ -26,6 +32,7 @@ const SEED_MIGRATIONS = [
   TeamsSchema1721500000000,
   MembersSchema1721600000000,
   SeedHistorySchema1722600000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 const HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
@@ -58,12 +65,16 @@ const ADMIN_CONFIG = {
   displayName: 'Team Seed Admin',
 };
 
+const PERSONAS_CONFIG = { password: 'runtime-only-persona-password' };
+
 const COUNTED_TABLES = [
   'teams',
   'seasons',
   'memberships',
   'membership_status_events',
   'user_role_assignments',
+  'reference_catalog_entries',
+  'venues',
   'seed_history',
 ];
 
@@ -83,6 +94,7 @@ function seeders(): readonly Seeder[] {
       hash: (value: string) => Promise.resolve(`hashed:${value}`),
     },
     loadAdminConfig: () => ADMIN_CONFIG,
+    loadPersonasConfig: () => PERSONAS_CONFIG,
   });
 }
 
@@ -196,7 +208,8 @@ describeIfDb(suiteTitle, () => {
          FROM "memberships" "m"
          JOIN "teams" "t" ON "t"."id" = "m"."team_id"
          JOIN "users" "u" ON "u"."id" = "m"."user_id"
-        WHERE "m"."deleted_at" IS NULL`,
+        WHERE "m"."deleted_at" IS NULL AND lower("u"."email") = lower($1)`,
+      [ADMIN_CONFIG.email],
     );
 
     expect(memberships).toHaveLength(1);
@@ -209,50 +222,113 @@ describeIfDb(suiteTitle, () => {
     expect(memberships[0].joined_at).not.toBeNull();
   });
 
-  it('opens the membership lifecycle history with an active event', async () => {
+  it('opens every membership lifecycle history with an active event', async () => {
     const events = await dataSource.query(
-      `SELECT "from_status", "to_status" FROM "membership_status_events"`,
+      `SELECT DISTINCT "from_status", "to_status"
+         FROM "membership_status_events"`,
     );
 
     expect(events).toEqual([{ from_status: null, to_status: 'active' }]);
   });
 
-  it('grants a team-scoped TEAM_ADMIN assignment and bumps the policy version', async () => {
+  it('grants the administrator a team-scoped TEAM_ADMIN assignment', async () => {
     const assignments = await dataSource.query(
-      `SELECT "r"."key", "a"."team_id" IS NOT NULL AS scoped, "a"."season_id",
-              "a"."revoked_at"
+      `SELECT "r"."key", "a"."season_id", "a"."revoked_at"
          FROM "user_role_assignments" "a"
          JOIN "roles" "r" ON "r"."id" = "a"."role_id"
-        WHERE "a"."team_id" IS NOT NULL`,
+         JOIN "users" "u" ON "u"."id" = "a"."user_id"
+        WHERE "a"."team_id" IS NOT NULL AND lower("u"."email") = lower($1)`,
+      [ADMIN_CONFIG.email],
     );
+
+    expect(assignments).toEqual([
+      { key: 'TEAM_ADMIN', season_id: null, revoked_at: null },
+    ]);
+  });
+
+  it('bumps the RBAC policy version once per assignment-writing seeder', async () => {
     const version = await dataSource.query(
       `SELECT "version" FROM "rbac_policy_version" WHERE "singleton" = true`,
     );
 
-    expect(assignments).toEqual([
-      {
-        key: 'TEAM_ADMIN',
-        scoped: true,
-        season_id: null,
-        revoked_at: null,
-      },
-    ]);
-    expect(version[0].version).toBe(2);
+    // Baseline 1, plus one bump each from the team and persona seeders.
+    expect(version[0].version).toBe(3);
   });
 
-  it('writes the seed_history row for the team seed key', async () => {
+  it('seeds every persona with a credential, membership and scoped role', async () => {
+    const personas = await dataSource.query(
+      `SELECT lower("u"."email") AS email, "u"."role" AS account_role,
+              "r"."key" AS role_key, "a"."team_id" IS NULL AS platform_scoped,
+              "c"."user_id" IS NOT NULL AS has_credential,
+              "m"."status" AS membership_status
+         FROM "users" "u"
+         JOIN "user_role_assignments" "a" ON "a"."user_id" = "u"."id"
+         JOIN "roles" "r" ON "r"."id" = "a"."role_id"
+         LEFT JOIN "password_credentials" "c" ON "c"."user_id" = "u"."id"
+         LEFT JOIN "memberships" "m" ON "m"."user_id" = "u"."id"
+        WHERE "u"."email" LIKE '%@ultimatenatives.local'
+        ORDER BY lower("u"."email")`,
+    );
+
+    expect(personas).toHaveLength(PERSONA_DEFINITIONS.length);
+    for (const persona of personas) {
+      expect(persona.has_credential).toBe(true);
+      expect(persona.membership_status).toBe('active');
+    }
+
+    const superAdmin = personas.find(
+      (row: { email: string }) =>
+        row.email === 'superadmin@ultimatenatives.local',
+    );
+    expect(superAdmin).toMatchObject({
+      account_role: 'admin',
+      role_key: 'SUPER_ADMIN',
+      platform_scoped: true,
+    });
+
+    const teamAdmin = personas.find(
+      (row: { email: string }) =>
+        row.email === 'teamadmin@ultimatenatives.local',
+    );
+    expect(teamAdmin).toMatchObject({
+      account_role: 'user',
+      role_key: 'TEAM_ADMIN',
+      platform_scoped: false,
+    });
+  });
+
+  it('seeds reference catalog entries and venues so pickers are never empty', async () => {
+    const catalogs = await dataSource.query(
+      `SELECT DISTINCT "catalog" FROM "reference_catalog_entries"
+        ORDER BY "catalog"`,
+    );
+    const venues = await dataSource.query(
+      `SELECT COUNT(*)::int AS count FROM "venues"`,
+    );
+
+    expect(catalogs.map((row: { catalog: string }) => row.catalog)).toEqual([
+      'division',
+      'gender_format',
+      'position',
+    ]);
+    expect(venues[0].count).toBeGreaterThan(0);
+  });
+
+  it('writes one seed_history row per seeder', async () => {
     const history = await dataSource.query(
       `SELECT "seed_key", "applied_by", "checksum" FROM "seed_history"
         ORDER BY "seed_key"`,
     );
 
     expect(history.map((row: { seed_key: string }) => row.seed_key)).toEqual([
-      'admin',
+      SEED_ADMIN_KEY,
+      SEED_PERSONAS_KEY,
       SEED_TEAM_KEY,
     ]);
-    const teamRow = history[1];
-    expect(teamRow.applied_by).toBe('boot');
-    expect(teamRow.checksum).toEqual(expect.any(String));
+    for (const row of history) {
+      expect(row.applied_by).toBe('boot');
+      expect(row.checksum).toEqual(expect.any(String));
+    }
   });
 
   it('changes nothing on a second run and never re-seeds', async () => {
@@ -269,8 +345,9 @@ describeIfDb(suiteTitle, () => {
     );
 
     expect(outcomes).toEqual([
-      { key: 'admin', application: 'skipped' },
+      { key: SEED_ADMIN_KEY, application: 'skipped' },
       { key: SEED_TEAM_KEY, application: 'skipped' },
+      { key: SEED_PERSONAS_KEY, application: 'skipped' },
     ]);
     expect(await countRows()).toEqual(before);
     const appliedAtAfter = await dataSource.query(

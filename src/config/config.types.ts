@@ -61,6 +61,15 @@ export interface SeedAdminConfig {
   readonly displayName: string;
 }
 
+/**
+ * Runtime-only credential for the demonstration-persona seed. One shared
+ * password provisions the whole persona cast; it is resolved lazily and only on
+ * a fresh database, never logged, and never part of a seeder checksum.
+ */
+export interface SeedPersonasConfig {
+  readonly password: string;
+}
+
 export interface RootConfig {
   readonly app: AppConfig;
   readonly security: SecurityConfig;

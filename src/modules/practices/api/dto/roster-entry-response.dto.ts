@@ -11,7 +11,7 @@ import {
  * with a null status (null-not-zero) so every rostered participant is present for
  * prefill and zero-contribution completeness. Notes and reasons are never included.
  */
-export class RosterEntryResponseDto {
+export class PracticeRosterEntryResponseDto {
   @ApiProperty()
   declare readonly membershipId: string;
 

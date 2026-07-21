@@ -2,6 +2,7 @@ import { ValidationError } from '@core/errors/validation.error';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { OptimisticConflictError } from '../errors/optimistic-conflict.error';
+import { SeasonAlreadyActiveError } from '../errors/season-already-active.error';
 import { SeasonNotFoundError } from '../errors/season-not-found.error';
 import { SeasonOverlapError } from '../errors/season-overlap.error';
 import { SlugConflictError } from '../errors/slug-conflict.error';
@@ -50,6 +51,7 @@ function build() {
     findByIdInTeam: vi.fn(),
     existsBySlug: vi.fn().mockResolvedValue(false),
     listActiveRanges: vi.fn().mockResolvedValue([]),
+    hasOtherActive: vi.fn().mockResolvedValue(false),
     update: vi.fn(),
   };
   const audit = { append: vi.fn() };
@@ -137,5 +139,19 @@ describe('UpdateSeasonUseCase', () => {
     harness.seasons.findByIdInTeam.mockResolvedValue(season());
     harness.seasons.update.mockResolvedValue(null);
     await expect(run(harness)).rejects.toBeInstanceOf(OptimisticConflictError);
+  });
+
+  it('refuses to make a second season the team current season', async () => {
+    harness.seasons.findByIdInTeam.mockResolvedValue(season());
+    harness.seasons.hasOtherActive.mockResolvedValue(true);
+
+    await expect(
+      run(harness, { ...COMMAND, status: SeasonStatus.Active }),
+    ).rejects.toBeInstanceOf(SeasonAlreadyActiveError);
+    expect(harness.seasons.hasOtherActive).toHaveBeenCalledWith(
+      SCOPE,
+      'team-1',
+      'season-1',
+    );
   });
 });

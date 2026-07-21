@@ -14,6 +14,9 @@ export const SEED_ADMIN_KEY = 'admin';
 // Stable identity of the real-team seeder (Ultimate Natives) in seed_history.
 export const SEED_TEAM_KEY = 'team-ultimate-natives';
 
+// Stable identity of the demonstration-persona seeder in seed_history.
+export const SEED_PERSONAS_KEY = 'personas';
+
 // `applied_by` provenance values distinguishing the boot lifecycle from the CLI.
 export const SEED_APPLIED_BY_BOOT = 'boot';
 export const SEED_APPLIED_BY_CLI = 'cli';
@@ -46,6 +49,22 @@ export const TEAM_SEED_DEFINITION =
   'insert-active-admin-membership;' +
   'append-membership-status-event;' +
   'ensure-team-scoped-team-admin-role-assignment;' +
+  'bump-rbac-policy-version';
+
+// Content-derived fingerprint source for the demonstration-persona seeder. It
+// names the seeder's ordered effects only — never the runtime password it
+// provisions the cast with, nor the number of personas' identities — so rotating
+// the credential never looks like a definition change. Bump the trailing version
+// when the seeder's behaviour changes.
+export const PERSONAS_SEED_DEFINITION =
+  'personas-seeder:v1:' +
+  'insert-persona-users;' +
+  'upsert-persona-password-credentials;' +
+  'insert-active-team-memberships;' +
+  'append-membership-status-events;' +
+  'ensure-scoped-role-assignments;' +
+  'insert-reference-catalog-entries;' +
+  'insert-venues;' +
   'bump-rbac-policy-version';
 
 export const SEED_HISTORY_LOOKUP_SQL = `SELECT "checksum" FROM "${SEED_HISTORY_TABLE}" WHERE "seed_key" = $1`;

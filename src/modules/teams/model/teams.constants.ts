@@ -4,9 +4,21 @@ import type { ErrorMessageKey } from '@core/errors/error.types';
 export const TEAMS_ROUTE = 'teams';
 export const TEAMS_API_TAG = 'teams';
 
+// Declared before the `:teamId` routes so `mine` is never matched as a team id.
+export const MY_TEAMS_ROUTE = 'mine';
 export const TEAM_BY_ID_ROUTE = ':teamId';
+export const TEAM_ACTIVATE_ROUTE = ':teamId/activate';
+export const TEAM_DEACTIVATE_ROUTE = ':teamId/deactivate';
+export const TEAM_ARCHIVE_ROUTE = ':teamId/archive';
+export const TEAM_REMOVE_ROUTE = ':teamId/remove';
 export const SEASONS_ROUTE = ':teamId/seasons';
+// Declared before the parameterised season routes so `current` is never matched
+// as a season id.
+export const CURRENT_SEASON_ROUTE = ':teamId/seasons/current';
 export const SEASON_BY_ID_ROUTE = ':teamId/seasons/:seasonId';
+export const SEASON_ACTIVATE_ROUTE = ':teamId/seasons/:seasonId/activate';
+export const SEASON_CLOSE_ROUTE = ':teamId/seasons/:seasonId/close';
+export const SEASON_ARCHIVE_ROUTE = ':teamId/seasons/:seasonId/archive';
 export const VENUES_ROUTE = ':teamId/venues';
 export const VENUE_BY_ID_ROUTE = ':teamId/venues/:venueId';
 export const CATALOG_ENTRIES_ROUTE = ':teamId/catalog-entries';
@@ -70,9 +82,12 @@ export const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/u;
 export const TEAM_CREATED_EVENT = 'team.created';
 export const TEAM_UPDATED_EVENT = 'team.updated';
 export const TEAM_ARCHIVED_EVENT = 'team.archived';
+export const TEAM_TRANSITIONED_EVENT = 'team.transitioned';
+export const TEAM_REMOVED_EVENT = 'team.removed';
 export const SEASON_CREATED_EVENT = 'team.seasonCreated';
 export const SEASON_UPDATED_EVENT = 'team.seasonUpdated';
 export const SEASON_ARCHIVED_EVENT = 'team.seasonArchived';
+export const SEASON_TRANSITIONED_EVENT = 'team.seasonTransitioned';
 export const VENUE_CREATED_EVENT = 'team.venueCreated';
 export const VENUE_UPDATED_EVENT = 'team.venueUpdated';
 export const VENUE_ARCHIVED_EVENT = 'team.venueArchived';
@@ -122,6 +137,26 @@ export const CATALOG_ENTRY_IN_USE_MESSAGE =
   'The catalog entry is referenced and cannot be archived';
 export const CATALOG_ENTRY_IN_USE_MESSAGE_KEY: ErrorMessageKey =
   'errors.teams.catalogEntryInUse';
+
+export const TEAM_INVALID_TRANSITION_MESSAGE =
+  'The team cannot move to that state from its current state';
+export const TEAM_INVALID_TRANSITION_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.teamInvalidTransition';
+
+export const SEASON_INVALID_TRANSITION_MESSAGE =
+  'The season cannot move to that state from its current state';
+export const SEASON_INVALID_TRANSITION_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.seasonInvalidTransition';
+
+export const SEASON_ALREADY_ACTIVE_MESSAGE =
+  'This team already has an active season; close or archive it first';
+export const SEASON_ALREADY_ACTIVE_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.seasonAlreadyActive';
+
+export const CURRENT_SEASON_NOT_FOUND_MESSAGE =
+  'This team has no active season';
+export const CURRENT_SEASON_NOT_FOUND_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.currentSeasonNotFound';
 
 export const SETTING_VERSION_CONFLICT_MESSAGE =
   'A setting version already exists at this effective instant';

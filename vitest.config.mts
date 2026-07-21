@@ -36,6 +36,7 @@ export default defineConfig({
       // bootstrap, config, logger setup) is proven by the e2e boot test, and
       // declarative files (dto/enums/types/constants) carry no branches.
       include: [
+        'src/bootstrap/openapi-schema-names.ts',
         'src/config/app.config.ts',
         'src/config/config-validation.helpers.ts',
         'src/config/config.utils.ts',
@@ -44,6 +45,7 @@ export default defineConfig({
         'src/config/identity.config.ts',
         'src/config/security.config.ts',
         'src/config/seed-admin.config.ts',
+        'src/config/seed-personas.config.ts',
         'src/database/advisory-lock.ts',
         'src/database/data-source.factory.ts',
         'src/database/database-error.mapper.ts',
@@ -53,6 +55,7 @@ export default defineConfig({
         'src/database/naming.helpers.ts',
         'src/database/seeds/seed-admin.ts',
         'src/database/seeds/seed-checksum.ts',
+        'src/database/seeds/seed-personas.ts',
         'src/database/seeds/seed-policy.ts',
         'src/database/seeds/seed-registry.ts',
         'src/database/seeds/seed-runner.ts',

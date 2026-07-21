@@ -49,3 +49,18 @@ export interface RoleCatalogRow {
   readonly role_key: string;
   readonly permission_key: string;
 }
+
+/** One seeded permission of the catalog, as the matrix read model returns it. */
+export interface PermissionCatalogRow {
+  readonly key: string;
+  readonly area: string;
+  readonly description: string;
+}
+
+/** One seeded role bundle header, without its permissions. */
+export interface RoleDefinitionRow {
+  readonly key: string;
+  readonly display_name: string;
+  readonly description: string;
+  readonly is_system: boolean;
+}

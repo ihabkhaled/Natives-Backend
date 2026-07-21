@@ -22,6 +22,7 @@ import { AttendanceSchema1722000000000 } from '../../src/database/migrations/172
 import { PracticeAgendasSchema1722100000000 } from '../../src/database/migrations/1722100000000-practice-agendas-schema';
 import { PracticeRemindersCalendarSchema1722200000000 } from '../../src/database/migrations/1722200000000-practice-reminders-calendar-schema';
 import { AssessmentCatalogSchema1722300000000 } from '../../src/database/migrations/1722300000000-assessment-catalog-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -52,6 +53,7 @@ const MIGRATIONS = [
   PracticeAgendasSchema1722100000000,
   PracticeRemindersCalendarSchema1722200000000,
   AssessmentCatalogSchema1722300000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 function buildDataSource(): DataSource {
@@ -168,6 +170,9 @@ describeIfDb(suiteTitle, () => {
     );
     expect(present[0].relation).not.toBeNull();
 
+    // Two steps back: the trailing platform-lifecycle migration (a pure ALTER
+    // on teams/seasons) first, then this schema, which drops its own tables.
+    await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     const dropped = await activeDataSource.query(
       `SELECT to_regclass('public.assessment_templates') AS relation`,

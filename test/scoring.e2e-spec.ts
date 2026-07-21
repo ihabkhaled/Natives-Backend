@@ -29,6 +29,7 @@ import { PlayerAssessmentSchema1722400000000 } from '../src/database/migrations/
 import { DevelopmentSchema1722500000000 } from '../src/database/migrations/1722500000000-development-schema';
 import { SeedHistorySchema1722600000000 } from '../src/database/migrations/1722600000000-seed-history-schema';
 import { ScoringSchema1722700000000 } from '../src/database/migrations/1722700000000-scoring-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -73,6 +74,7 @@ const MIGRATIONS = [
   DevelopmentSchema1722500000000,
   SeedHistorySchema1722600000000,
   ScoringSchema1722700000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 interface Fixture {

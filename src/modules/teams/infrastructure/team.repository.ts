@@ -1,13 +1,15 @@
 import type { TransactionScope } from '@core/persistence/unit-of-work.port';
 import { Injectable } from '@nestjs/common';
 
-import { parseResourceStatus, toDate } from '../lib/teams.helpers';
+import { parseTeamStatus, toDate, toNullableDate } from '../lib/teams.helpers';
 import type { CountRow, IdRow, TeamRow } from '../model/teams.rows';
 import type {
   ListTeamsResult,
   NewTeam,
   PageRequest,
   Team,
+  TeamRemoval,
+  TeamStatusChange,
   TeamUpdate,
 } from '../model/teams.types';
 
@@ -16,15 +18,18 @@ import type {
  * through the caller's transaction scope, mapping snake_case rows into the
  * vendor-free Team type. Static column lists, bounded/paginated reads,
  * deterministic ordering, optimistic-version guarded writes. No interpolation.
+ *
+ * Soft-removed teams (`deleted_at` set) are filtered out of every read; the rows
+ * themselves are never deleted, so every historical reference stays valid.
  */
 @Injectable()
 export class TeamRepository {
   async findById(scope: TransactionScope, id: string): Promise<Team | null> {
     const rows = await scope.run<TeamRow>(
       `SELECT "id", "slug", "name", "locale", "timezone", "primary_color",
-              "logo_media_key", "status", "created_by", "updated_by",
-              "created_at", "updated_at", "version"
-         FROM "teams" WHERE "id" = $1`,
+              "logo_media_key", "status", "deleted_at", "created_by",
+              "updated_by", "created_at", "updated_at", "version"
+         FROM "teams" WHERE "id" = $1 AND "deleted_at" IS NULL`,
       [id],
     );
     const row = rows[0];
@@ -46,8 +51,8 @@ export class TeamRepository {
               "updated_at")
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $9)
        RETURNING "id", "slug", "name", "locale", "timezone", "primary_color",
-              "logo_media_key", "status", "created_by", "updated_by",
-              "created_at", "updated_at", "version"`,
+              "logo_media_key", "status", "deleted_at", "created_by",
+              "updated_by", "created_at", "updated_at", "version"`,
       [
         team.id,
         team.slug,
@@ -73,9 +78,10 @@ export class TeamRepository {
               "logo_media_key" = $6, "updated_by" = $7, "updated_at" = $8,
               "version" = "version" + 1
         WHERE "id" = $1 AND "version" = $9 AND "status" = 'active'
+          AND "deleted_at" IS NULL
        RETURNING "id", "slug", "name", "locale", "timezone", "primary_color",
-              "logo_media_key", "status", "created_by", "updated_by",
-              "created_at", "updated_at", "version"`,
+              "logo_media_key", "status", "deleted_at", "created_by",
+              "updated_by", "created_at", "updated_at", "version"`,
       [
         update.id,
         update.name,
@@ -92,21 +98,58 @@ export class TeamRepository {
     return row === undefined ? null : this.toTeam(row);
   }
 
-  async archive(
+  /**
+   * Applies a lifecycle state change under optimistic concurrency. Which target
+   * state is legal is decided by the pure state machine before this is called.
+   */
+  async applyStatusChange(
     scope: TransactionScope,
-    id: string,
-    actorId: string | null,
-    now: Date,
+    change: TeamStatusChange,
   ): Promise<Team | null> {
     const rows = await scope.run<TeamRow>(
       `UPDATE "teams"
-          SET "status" = 'archived', "updated_by" = $2, "updated_at" = $3,
+          SET "status" = $2, "updated_by" = $3, "updated_at" = $4,
               "version" = "version" + 1
-        WHERE "id" = $1 AND "status" = 'active'
+        WHERE "id" = $1 AND ($5::int IS NULL OR "version" = $5::int)
+          AND "deleted_at" IS NULL
        RETURNING "id", "slug", "name", "locale", "timezone", "primary_color",
-              "logo_media_key", "status", "created_by", "updated_by",
-              "created_at", "updated_at", "version"`,
-      [id, actorId, now.toISOString()],
+              "logo_media_key", "status", "deleted_at", "created_by",
+              "updated_by", "created_at", "updated_at", "version"`,
+      [
+        change.id,
+        change.status,
+        change.updatedBy,
+        change.now.toISOString(),
+        change.expectedVersion,
+      ],
+    );
+    const row = rows[0];
+    return row === undefined ? null : this.toTeam(row);
+  }
+
+  /**
+   * Soft removal: stamps `deleted_at`. The row and every record referencing it
+   * survive — no team is ever hard-deleted.
+   */
+  async softRemove(
+    scope: TransactionScope,
+    removal: TeamRemoval,
+  ): Promise<Team | null> {
+    const rows = await scope.run<TeamRow>(
+      `UPDATE "teams"
+          SET "deleted_at" = $3, "updated_by" = $2, "updated_at" = $3,
+              "version" = "version" + 1
+        WHERE "id" = $1 AND ($4::int IS NULL OR "version" = $4::int)
+          AND "deleted_at" IS NULL
+       RETURNING "id", "slug", "name", "locale", "timezone", "primary_color",
+              "logo_media_key", "status", "deleted_at", "created_by",
+              "updated_by", "created_at", "updated_at", "version"`,
+      [
+        removal.id,
+        removal.updatedBy,
+        removal.now.toISOString(),
+        removal.expectedVersion,
+      ],
     );
     const row = rows[0];
     return row === undefined ? null : this.toTeam(row);
@@ -118,15 +161,60 @@ export class TeamRepository {
   ): Promise<ListTeamsResult> {
     const rows = await scope.run<TeamRow>(
       `SELECT "id", "slug", "name", "locale", "timezone", "primary_color",
-              "logo_media_key", "status", "created_by", "updated_by",
-              "created_at", "updated_at", "version"
+              "logo_media_key", "status", "deleted_at", "created_by",
+              "updated_by", "created_at", "updated_at", "version"
          FROM "teams"
+        WHERE "deleted_at" IS NULL
         ORDER BY "created_at" ASC, "id" ASC
         LIMIT $1 OFFSET $2`,
       [page.limit, page.offset],
     );
     const counts = await scope.run<CountRow>(
-      `SELECT COUNT(*)::int AS "count" FROM "teams"`,
+      `SELECT COUNT(*)::int AS "count" FROM "teams" WHERE "deleted_at" IS NULL`,
+    );
+    return {
+      items: rows.map(row => this.toTeam(row)),
+      total: counts[0]?.count ?? 0,
+      limit: page.limit,
+      offset: page.offset,
+    };
+  }
+
+  /**
+   * Bounded page of only the teams a principal holds a live role assignment in.
+   * Backs the team-scoped directory so a team administrator never sees the whole
+   * platform, which only a platform-scoped grant unlocks.
+   */
+  async listForUser(
+    scope: TransactionScope,
+    userId: string,
+    page: PageRequest,
+  ): Promise<ListTeamsResult> {
+    const rows = await scope.run<TeamRow>(
+      `SELECT t."id", t."slug", t."name", t."locale", t."timezone",
+              t."primary_color", t."logo_media_key", t."status", t."deleted_at",
+              t."created_by", t."updated_by", t."created_at", t."updated_at",
+              t."version"
+         FROM "teams" t
+        WHERE t."deleted_at" IS NULL
+          AND EXISTS (
+            SELECT 1 FROM "user_role_assignments" a
+             WHERE a."user_id" = $1 AND a."team_id" = t."id"
+               AND a."revoked_at" IS NULL
+          )
+        ORDER BY t."created_at" ASC, t."id" ASC
+        LIMIT $2 OFFSET $3`,
+      [userId, page.limit, page.offset],
+    );
+    const counts = await scope.run<CountRow>(
+      `SELECT COUNT(*)::int AS "count" FROM "teams" t
+        WHERE t."deleted_at" IS NULL
+          AND EXISTS (
+            SELECT 1 FROM "user_role_assignments" a
+             WHERE a."user_id" = $1 AND a."team_id" = t."id"
+               AND a."revoked_at" IS NULL
+          )`,
+      [userId],
     );
     return {
       items: rows.map(row => this.toTeam(row)),
@@ -153,7 +241,8 @@ export class TeamRepository {
       timezone: row.timezone,
       primaryColor: row.primary_color,
       logoMediaKey: row.logo_media_key,
-      status: parseResourceStatus(row.status),
+      status: parseTeamStatus(row.status),
+      deletedAt: toNullableDate(row.deleted_at),
       createdBy: row.created_by,
       updatedBy: row.updated_by,
       createdAt: toDate(row.created_at),

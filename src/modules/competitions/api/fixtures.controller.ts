@@ -41,7 +41,7 @@ import {
 } from '../model/competitions.constants';
 import { CreateFixtureDto } from './dto/create-fixture.dto';
 import { FixtureResponseDto } from './dto/fixture-response.dto';
-import { ListQueryDto } from './dto/list.query.dto';
+import { CompetitionListQueryDto } from './dto/list.query.dto';
 import { ListFixturesResponseDto } from './dto/list-fixtures.response.dto';
 import { RescheduleFixtureDto } from './dto/reschedule-fixture.dto';
 import { TransitionFixtureDto } from './dto/transition-fixture.dto';
@@ -71,7 +71,7 @@ export class FixturesController {
   list(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(COMPETITION_ID_PARAM, UuidValidationPipe) competitionId: string,
-    @Query() query: ListQueryDto,
+    @Query() query: CompetitionListQueryDto,
   ): Promise<ListFixturesResponseDto> {
     return this.query.listForCompetition(
       teamId,

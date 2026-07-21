@@ -42,6 +42,18 @@
         },
         "type": "object"
       },
+      "ActivityOptimisticVersionDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          }
+        },
+        "required": [
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "ActivityTypeResponseDto": {
         "properties": {
           "catalogVersion": {
@@ -395,6 +407,18 @@
         ],
         "type": "object"
       },
+      "AssessmentOptimisticVersionDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          }
+        },
+        "required": [
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "AssessmentValueDto": {
         "properties": {
           "confidence": {
@@ -467,6 +491,7 @@
           },
           "roleKey": {
             "enum": [
+              "SUPER_ADMIN",
               "MEMBER",
               "COACH",
               "TEAM_ADMIN",
@@ -822,7 +847,7 @@
           },
           "items": {
             "items": {
-              "$ref": "#/components/schemas/RosterEntryResponseDto"
+              "$ref": "#/components/schemas/PracticeRosterEntryResponseDto"
             },
             "type": "array"
           },
@@ -1966,6 +1991,152 @@
           "completedAt",
           "cancelledAt",
           "archivedAt",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "CompetitionRosterEntryResponseDto": {
+        "properties": {
+          "availability": {
+            "enum": [
+              "available",
+              "unavailable",
+              "tentative"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "constraintOverridden": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "entryId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "entryRole": {
+            "enum": [
+              "player",
+              "captain",
+              "spirit_captain",
+              "coach"
+            ],
+            "type": "string"
+          },
+          "fieldPosition": {
+            "enum": [
+              "handler",
+              "cutter",
+              "hybrid",
+              "unspecified"
+            ],
+            "type": "string"
+          },
+          "genderBucket": {
+            "enum": [
+              "men",
+              "women",
+              "mixed",
+              "unknown"
+            ],
+            "type": "string"
+          },
+          "jerseyNumber": {
+            "nullable": true,
+            "type": "number"
+          },
+          "lineAssignment": {
+            "enum": [
+              "offense",
+              "defense",
+              "any"
+            ],
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "overriddenBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "overrideReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "recordVersion": {
+            "type": "number"
+          },
+          "removalReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "removedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "removedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "rosterId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "selectedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "selectionReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "selected",
+              "withdrawn"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "entryId",
+          "rosterId",
+          "teamId",
+          "membershipId",
+          "jerseyNumber",
+          "entryRole",
+          "lineAssignment",
+          "fieldPosition",
+          "genderBucket",
+          "status",
+          "availability",
+          "selectionReason",
+          "constraintOverridden",
+          "overrideReason",
+          "overriddenBy",
+          "selectedBy",
+          "removedBy",
+          "removedAt",
+          "removalReason",
+          "recordVersion",
           "createdAt",
           "updatedAt"
         ],
@@ -3567,6 +3738,7 @@
             "enum": [
               "draft",
               "active",
+              "closed",
               "archived"
             ],
             "type": "string"
@@ -3818,6 +3990,7 @@
           "evaluatorRoles": {
             "items": {
               "enum": [
+                "SUPER_ADMIN",
                 "MEMBER",
                 "COACH",
                 "TEAM_ADMIN",
@@ -4294,6 +4467,18 @@
         ],
         "type": "object"
       },
+      "DevelopmentOptimisticVersionDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          }
+        },
+        "required": [
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "DeviceSessionResponseDto": {
         "properties": {
           "approxLocation": {
@@ -4424,6 +4609,9 @@
           "permissions": {
             "items": {
               "enum": [
+                "platform.admin",
+                "team.create",
+                "team.browse.all",
                 "team.read",
                 "team.settings.read",
                 "team.settings.manage",
@@ -6273,7 +6461,7 @@
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/RosterEntryResponseDto"
+              "$ref": "#/components/schemas/CompetitionRosterEntryResponseDto"
             },
             "type": "array"
           },
@@ -6352,32 +6540,6 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/RsvpParticipantResponseDto"
-            },
-            "type": "array"
-          },
-          "limit": {
-            "type": "number"
-          },
-          "offset": {
-            "type": "number"
-          },
-          "total": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "items",
-          "total",
-          "limit",
-          "offset"
-        ],
-        "type": "object"
-      },
-      "ListRulesResponseDto": {
-        "properties": {
-          "items": {
-            "items": {
-              "$ref": "#/components/schemas/PointsRuleResponseDto"
             },
             "type": "array"
           },
@@ -6508,32 +6670,6 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/SelectionResponseDto"
-            },
-            "type": "array"
-          },
-          "limit": {
-            "type": "number"
-          },
-          "offset": {
-            "type": "number"
-          },
-          "total": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "items",
-          "total",
-          "limit",
-          "offset"
-        ],
-        "type": "object"
-      },
-      "ListSessionsResponseDto": {
-        "properties": {
-          "items": {
-            "items": {
-              "$ref": "#/components/schemas/PracticeSessionResponseDto"
             },
             "type": "array"
           },
@@ -7821,6 +7957,32 @@
         ],
         "type": "object"
       },
+      "MeasurementListSessionsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MeasurementSessionResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "MeasurementSessionResponseDto": {
         "properties": {
           "conditions": {
@@ -8273,6 +8435,19 @@
         ],
         "type": "object"
       },
+      "MemberTransitionDto": {
+        "properties": {
+          "effectiveAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 512,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "MemberViewResponseDto": {
         "properties": {
           "ageClassification": {
@@ -8710,18 +8885,6 @@
         ],
         "type": "object"
       },
-      "OptimisticVersionDto": {
-        "properties": {
-          "expectedRecordVersion": {
-            "minimum": 1,
-            "type": "number"
-          }
-        },
-        "required": [
-          "expectedRecordVersion"
-        ],
-        "type": "object"
-      },
       "OutboxMetricsResponseDto": {
         "properties": {
           "completed": {
@@ -9088,6 +9251,28 @@
           "recordVersion",
           "createdBy",
           "createdAt"
+        ],
+        "type": "object"
+      },
+      "PermissionCatalogEntryResponseDto": {
+        "properties": {
+          "area": {
+            "description": "Catalog area the permission is grouped under",
+            "type": "string"
+          },
+          "description": {
+            "description": "Short human description of the permission",
+            "type": "string"
+          },
+          "key": {
+            "description": "Canonical dot-delimited permission key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "area",
+          "description"
         ],
         "type": "object"
       },
@@ -9668,6 +9853,32 @@
         ],
         "type": "object"
       },
+      "PointsListRulesResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/PointsRuleResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "PointsRuleResponseDto": {
         "properties": {
           "createdAt": {
@@ -9803,6 +10014,125 @@
           "total",
           "entries",
           "badges"
+        ],
+        "type": "object"
+      },
+      "PointsTransitionRuleDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "transition": {
+            "enum": [
+              "approve",
+              "publish",
+              "retire",
+              "revert"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "transition",
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
+      "PracticeListSessionsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/PracticeSessionResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "PracticeRosterEntryResponseDto": {
+        "properties": {
+          "checkInAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "excuseCategory": {
+            "enum": [
+              "injury",
+              "illness",
+              "work",
+              "travel",
+              "personal",
+              "other"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "latenessMinutes": {
+            "nullable": true,
+            "type": "number"
+          },
+          "membershipId": {
+            "type": "string"
+          },
+          "source": {
+            "enum": [
+              "self",
+              "coach",
+              "admin",
+              "import",
+              "system"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "present_on_time",
+              "present_late",
+              "excused",
+              "injured",
+              "absent",
+              "remote_approved",
+              "other_approved"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "userId": {
+            "nullable": true,
+            "type": "string"
+          },
+          "version": {
+            "nullable": true,
+            "type": "number"
+          }
+        },
+        "required": [
+          "membershipId",
+          "userId",
+          "status",
+          "checkInAt",
+          "latenessMinutes",
+          "excuseCategory",
+          "source",
+          "version"
         ],
         "type": "object"
       },
@@ -11087,6 +11417,7 @@
           },
           "roleKey": {
             "enum": [
+              "SUPER_ADMIN",
               "MEMBER",
               "COACH",
               "TEAM_ADMIN",
@@ -11121,6 +11452,64 @@
           "grantedBy",
           "revokedAt",
           "version"
+        ],
+        "type": "object"
+      },
+      "RoleBundleResponseDto": {
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "isSystem": {
+            "description": "True for the system-seeded default bundles",
+            "type": "boolean"
+          },
+          "key": {
+            "description": "Stable role key stored in the roles table",
+            "type": "string"
+          },
+          "permissions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "key",
+          "displayName",
+          "description",
+          "isSystem",
+          "permissions"
+        ],
+        "type": "object"
+      },
+      "RoleMatrixResponseDto": {
+        "properties": {
+          "permissions": {
+            "items": {
+              "$ref": "#/components/schemas/PermissionCatalogEntryResponseDto"
+            },
+            "type": "array"
+          },
+          "policyVersion": {
+            "description": "RBAC policy version this matrix was read at; changes whenever a role assignment or bundle changes",
+            "type": "number"
+          },
+          "roles": {
+            "items": {
+              "$ref": "#/components/schemas/RoleBundleResponseDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "policyVersion",
+          "permissions",
+          "roles"
         ],
         "type": "object"
       },
@@ -11283,152 +11672,6 @@
           "code",
           "severity",
           "count"
-        ],
-        "type": "object"
-      },
-      "RosterEntryResponseDto": {
-        "properties": {
-          "availability": {
-            "enum": [
-              "available",
-              "unavailable",
-              "tentative"
-            ],
-            "nullable": true,
-            "type": "string"
-          },
-          "constraintOverridden": {
-            "type": "boolean"
-          },
-          "createdAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "entryId": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "entryRole": {
-            "enum": [
-              "player",
-              "captain",
-              "spirit_captain",
-              "coach"
-            ],
-            "type": "string"
-          },
-          "fieldPosition": {
-            "enum": [
-              "handler",
-              "cutter",
-              "hybrid",
-              "unspecified"
-            ],
-            "type": "string"
-          },
-          "genderBucket": {
-            "enum": [
-              "men",
-              "women",
-              "mixed",
-              "unknown"
-            ],
-            "type": "string"
-          },
-          "jerseyNumber": {
-            "nullable": true,
-            "type": "number"
-          },
-          "lineAssignment": {
-            "enum": [
-              "offense",
-              "defense",
-              "any"
-            ],
-            "type": "string"
-          },
-          "membershipId": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "overriddenBy": {
-            "format": "uuid",
-            "nullable": true,
-            "type": "string"
-          },
-          "overrideReason": {
-            "nullable": true,
-            "type": "string"
-          },
-          "recordVersion": {
-            "type": "number"
-          },
-          "removalReason": {
-            "nullable": true,
-            "type": "string"
-          },
-          "removedAt": {
-            "format": "date-time",
-            "nullable": true,
-            "type": "string"
-          },
-          "removedBy": {
-            "format": "uuid",
-            "nullable": true,
-            "type": "string"
-          },
-          "rosterId": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "selectedBy": {
-            "format": "uuid",
-            "nullable": true,
-            "type": "string"
-          },
-          "selectionReason": {
-            "nullable": true,
-            "type": "string"
-          },
-          "status": {
-            "enum": [
-              "selected",
-              "withdrawn"
-            ],
-            "type": "string"
-          },
-          "teamId": {
-            "format": "uuid",
-            "type": "string"
-          },
-          "updatedAt": {
-            "format": "date-time",
-            "type": "string"
-          }
-        },
-        "required": [
-          "entryId",
-          "rosterId",
-          "teamId",
-          "membershipId",
-          "jerseyNumber",
-          "entryRole",
-          "lineAssignment",
-          "fieldPosition",
-          "genderBucket",
-          "status",
-          "availability",
-          "selectionReason",
-          "constraintOverridden",
-          "overrideReason",
-          "overriddenBy",
-          "selectedBy",
-          "removedBy",
-          "removedAt",
-          "removalReason",
-          "recordVersion",
-          "createdAt",
-          "updatedAt"
         ],
         "type": "object"
       },
@@ -12683,6 +12926,32 @@
         ],
         "type": "object"
       },
+      "ScoringListRulesResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ScoringRuleResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ScoringRuleResponseDto": {
         "properties": {
           "components": {
@@ -12803,6 +13072,28 @@
         ],
         "type": "object"
       },
+      "ScoringTransitionRuleDto": {
+        "properties": {
+          "expectedRecordVersion": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "transition": {
+            "enum": [
+              "approve",
+              "publish",
+              "retire",
+              "revert"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "transition",
+          "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
       "SeasonResponseDto": {
         "properties": {
           "createdAt": {
@@ -12836,6 +13127,7 @@
             "enum": [
               "draft",
               "active",
+              "closed",
               "archived"
             ],
             "type": "string"
@@ -13892,6 +14184,12 @@
             "nullable": true,
             "type": "string"
           },
+          "deletedAt": {
+            "description": "Soft-removal instant; null while the team is present",
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
           "id": {
             "type": "string"
           },
@@ -13915,6 +14213,7 @@
           "status": {
             "enum": [
               "active",
+              "disabled",
               "archived"
             ],
             "type": "string"
@@ -13943,12 +14242,22 @@
           "primaryColor",
           "logoMediaKey",
           "status",
+          "deletedAt",
           "createdBy",
           "updatedBy",
           "createdAt",
           "updatedAt",
           "version"
         ],
+        "type": "object"
+      },
+      "TeamTransitionDto": {
+        "properties": {
+          "expectedVersion": {
+            "minimum": 1,
+            "type": "number"
+          }
+        },
         "type": "object"
       },
       "TemplateMetricDto": {
@@ -13997,6 +14306,7 @@
           "evaluatorRoles": {
             "items": {
               "enum": [
+                "SUPER_ADMIN",
                 "MEMBER",
                 "COACH",
                 "TEAM_ADMIN",
@@ -14115,19 +14425,6 @@
         ],
         "type": "object"
       },
-      "TransitionDto": {
-        "properties": {
-          "effectiveAt": {
-            "format": "date-time",
-            "type": "string"
-          },
-          "reason": {
-            "maxLength": 512,
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "TransitionFixtureDto": {
         "properties": {
           "expectedRecordVersion": {
@@ -14221,28 +14518,6 @@
             "enum": [
               "publish",
               "archive"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "transition",
-          "expectedRecordVersion"
-        ],
-        "type": "object"
-      },
-      "TransitionRuleDto": {
-        "properties": {
-          "expectedRecordVersion": {
-            "minimum": 1,
-            "type": "number"
-          },
-          "transition": {
-            "enum": [
-              "approve",
-              "publish",
-              "retire",
-              "revert"
             ],
             "type": "string"
           }
@@ -14859,6 +15134,7 @@
             "enum": [
               "draft",
               "active",
+              "closed",
               "archived"
             ],
             "type": "string"
@@ -16297,6 +16573,34 @@
         ]
       }
     },
+    "/rbac/role-bundles": {
+      "get": {
+        "operationId": "Rbac.roleBundles",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleMatrixResponseDto"
+                }
+              }
+            },
+            "description": "Role bundles and the permission catalog they draw from"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Get the full role x permission matrix from the seeded catalog",
+        "tags": [
+          "rbac"
+        ]
+      }
+    },
     "/rbac/users/{userId}/assignments": {
       "get": {
         "operationId": "Rbac.list",
@@ -16370,9 +16674,12 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
           }
         },
-        "summary": "List teams",
+        "summary": "Browse every team (platform-scoped: super administrators only)",
         "tags": [
           "teams"
         ]
@@ -16408,7 +16715,7 @@
             "description": "Forbidden"
           }
         },
-        "summary": "Create a team",
+        "summary": "Create a team (platform-scoped: super administrators only)",
         "tags": [
           "teams"
         ]
@@ -16443,9 +16750,12 @@
           },
           "403": {
             "description": "Forbidden"
+          },
+          "409": {
+            "description": "Invalid transition"
           }
         },
-        "summary": "Archive a team",
+        "summary": "Archive a team (soft; alias of POST /archive)",
         "tags": [
           "teams"
         ]
@@ -16520,9 +16830,62 @@
           },
           "403": {
             "description": "Forbidden"
+          },
+          "409": {
+            "description": "Version conflict"
           }
         },
-        "summary": "Update a team",
+        "summary": "Rename or rebrand a team",
+        "tags": [
+          "teams"
+        ]
+      }
+    },
+    "/teams/{teamId}/activate": {
+      "post": {
+        "operationId": "Teams.activate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamTransitionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeamResponseDto"
+                }
+              }
+            },
+            "description": "Team activated"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Invalid transition or version conflict"
+          }
+        },
+        "summary": "Enable (activate) a disabled or archived team",
         "tags": [
           "teams"
         ]
@@ -16737,7 +17100,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OptimisticVersionDto"
+                "$ref": "#/components/schemas/ActivityOptimisticVersionDto"
               }
             }
           },
@@ -17192,7 +17555,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OptimisticVersionDto"
+                "$ref": "#/components/schemas/ActivityOptimisticVersionDto"
               }
             }
           },
@@ -17247,7 +17610,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OptimisticVersionDto"
+                "$ref": "#/components/schemas/ActivityOptimisticVersionDto"
               }
             }
           },
@@ -17327,6 +17690,56 @@
         "summary": "List the active external-training activity types",
         "tags": [
           "activities"
+        ]
+      }
+    },
+    "/teams/{teamId}/archive": {
+      "post": {
+        "operationId": "Teams.archiveTransition",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamTransitionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeamResponseDto"
+                }
+              }
+            },
+            "description": "Team archived"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Invalid transition or version conflict"
+          }
+        },
+        "summary": "Archive a team (history preserved)",
+        "tags": [
+          "teams"
         ]
       }
     },
@@ -18151,7 +18564,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListRulesResponseDto"
+                  "$ref": "#/components/schemas/ScoringListRulesResponseDto"
                 }
               }
             },
@@ -18387,7 +18800,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TransitionRuleDto"
+                "$ref": "#/components/schemas/ScoringTransitionRuleDto"
               }
             }
           },
@@ -18852,7 +19265,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OptimisticVersionDto"
+                "$ref": "#/components/schemas/DevelopmentOptimisticVersionDto"
               }
             }
           },
@@ -18949,7 +19362,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OptimisticVersionDto"
+                "$ref": "#/components/schemas/DevelopmentOptimisticVersionDto"
               }
             }
           },
@@ -19576,6 +19989,56 @@
         "summary": "Publish, activate, complete, cancel, or archive",
         "tags": [
           "competitions"
+        ]
+      }
+    },
+    "/teams/{teamId}/deactivate": {
+      "post": {
+        "operationId": "Teams.deactivate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamTransitionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeamResponseDto"
+                }
+              }
+            },
+            "description": "Team disabled"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Invalid transition or version conflict"
+          }
+        },
+        "summary": "Disable (deactivate) an active team",
+        "tags": [
+          "teams"
         ]
       }
     },
@@ -21644,7 +22107,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListSessionsResponseDto"
+                  "$ref": "#/components/schemas/MeasurementListSessionsResponseDto"
                 }
               }
             },
@@ -21979,7 +22442,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TransitionDto"
+                "$ref": "#/components/schemas/MemberTransitionDto"
               }
             }
           },
@@ -22163,7 +22626,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TransitionDto"
+                "$ref": "#/components/schemas/MemberTransitionDto"
               }
             }
           },
@@ -22215,7 +22678,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TransitionDto"
+                "$ref": "#/components/schemas/MemberTransitionDto"
               }
             }
           },
@@ -22409,7 +22872,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TransitionDto"
+                "$ref": "#/components/schemas/MemberTransitionDto"
               }
             }
           },
@@ -22503,7 +22966,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TransitionDto"
+                "$ref": "#/components/schemas/MemberTransitionDto"
               }
             }
           },
@@ -22777,7 +23240,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TransitionDto"
+                "$ref": "#/components/schemas/MemberTransitionDto"
               }
             }
           },
@@ -23763,7 +24226,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OptimisticVersionDto"
+                "$ref": "#/components/schemas/AssessmentOptimisticVersionDto"
               }
             }
           },
@@ -23915,7 +24378,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OptimisticVersionDto"
+                "$ref": "#/components/schemas/AssessmentOptimisticVersionDto"
               }
             }
           },
@@ -24154,7 +24617,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListRulesResponseDto"
+                  "$ref": "#/components/schemas/PointsListRulesResponseDto"
                 }
               }
             },
@@ -24240,7 +24703,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TransitionRuleDto"
+                "$ref": "#/components/schemas/PointsTransitionRuleDto"
               }
             }
           },
@@ -24833,7 +25296,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListSessionsResponseDto"
+                  "$ref": "#/components/schemas/PracticeListSessionsResponseDto"
                 }
               }
             },
@@ -27086,6 +27549,56 @@
         ]
       }
     },
+    "/teams/{teamId}/remove": {
+      "post": {
+        "operationId": "Teams.remove",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamTransitionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeamResponseDto"
+                }
+              }
+            },
+            "description": "Team soft-removed"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Invalid transition or version conflict"
+          }
+        },
+        "summary": "Soft-remove an archived team (platform-scoped; never a hard delete)",
+        "tags": [
+          "teams"
+        ]
+      }
+    },
     "/teams/{teamId}/rosters": {
       "get": {
         "operationId": "Rosters.list",
@@ -27468,7 +27981,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RosterEntryResponseDto"
+                  "$ref": "#/components/schemas/CompetitionRosterEntryResponseDto"
                 }
               }
             },
@@ -27531,7 +28044,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RosterEntryResponseDto"
+                  "$ref": "#/components/schemas/CompetitionRosterEntryResponseDto"
                 }
               }
             },
@@ -27586,7 +28099,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RosterEntryResponseDto"
+                  "$ref": "#/components/schemas/CompetitionRosterEntryResponseDto"
                 }
               }
             },
@@ -28014,6 +28527,9 @@
           },
           "403": {
             "description": "Forbidden"
+          },
+          "409": {
+            "description": "Overlap, slug or active-season conflict"
           }
         },
         "summary": "Create a season within a team",
@@ -28059,9 +28575,12 @@
           },
           "403": {
             "description": "Forbidden"
+          },
+          "409": {
+            "description": "Invalid transition"
           }
         },
-        "summary": "Archive a season",
+        "summary": "Archive a season (soft; alias of POST /archive)",
         "tags": [
           "teams"
         ]
@@ -28112,9 +28631,223 @@
           },
           "403": {
             "description": "Forbidden"
+          },
+          "409": {
+            "description": "Overlap, slug or version conflict"
           }
         },
         "summary": "Update a season",
+        "tags": [
+          "teams"
+        ]
+      }
+    },
+    "/teams/{teamId}/seasons/{seasonId}/activate": {
+      "post": {
+        "operationId": "Seasons.activate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "seasonId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamTransitionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeasonResponseDto"
+                }
+              }
+            },
+            "description": "Season activated"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Invalid transition, version conflict or season already active"
+          }
+        },
+        "summary": "Activate a season as the team single current season",
+        "tags": [
+          "teams"
+        ]
+      }
+    },
+    "/teams/{teamId}/seasons/{seasonId}/archive": {
+      "post": {
+        "operationId": "Seasons.archiveTransition",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "seasonId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamTransitionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeasonResponseDto"
+                }
+              }
+            },
+            "description": "Season archived"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Invalid transition or version conflict"
+          }
+        },
+        "summary": "Archive a season (history preserved)",
+        "tags": [
+          "teams"
+        ]
+      }
+    },
+    "/teams/{teamId}/seasons/{seasonId}/close": {
+      "post": {
+        "operationId": "Seasons.close",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "seasonId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TeamTransitionDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeasonResponseDto"
+                }
+              }
+            },
+            "description": "Season closed"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Invalid transition or version conflict"
+          }
+        },
+        "summary": "Close an active season",
+        "tags": [
+          "teams"
+        ]
+      }
+    },
+    "/teams/{teamId}/seasons/current": {
+      "get": {
+        "operationId": "Seasons.current",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SeasonResponseDto"
+                }
+              }
+            },
+            "description": "Current season"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "The team has no active season"
+          }
+        },
+        "summary": "Resolve the team single current (active) season",
         "tags": [
           "teams"
         ]
@@ -29091,6 +29824,53 @@
           }
         },
         "summary": "Update a venue",
+        "tags": [
+          "teams"
+        ]
+      }
+    },
+    "/teams/mine": {
+      "get": {
+        "operationId": "Teams.listMine",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListTeamsResponseDto"
+                }
+              }
+            },
+            "description": "Teams"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List the teams the caller belongs to",
         "tags": [
           "teams"
         ]

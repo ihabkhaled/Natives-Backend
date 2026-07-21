@@ -4,16 +4,20 @@ import { Injectable } from '@nestjs/common';
 import { toDate, toNullableDate } from '../lib/rbac.helpers';
 import {
   RBAC_ACTIVE_USER_STATUS,
+  RBAC_PERMISSION_CATALOG_MAX,
   RBAC_ROLE_CATALOG_MAX,
+  RBAC_ROLE_DEFINITION_MAX,
 } from '../model/rbac.constants';
 import { GrantEffect } from '../model/rbac.enums';
 import type {
   AffectedRow,
+  PermissionCatalogRow,
   PermissionGrantRow,
   PermissionKeyRow,
   PolicyVersionRow,
   RoleAssignmentRow,
   RoleCatalogRow,
+  RoleDefinitionRow,
   RoleRow,
 } from '../model/rbac.rows';
 import type {
@@ -115,6 +119,28 @@ export class RbacRepository {
         ORDER BY r."key" ASC, p."key" ASC
         LIMIT $1`,
       [RBAC_ROLE_CATALOG_MAX],
+    );
+  }
+
+  async listPermissionCatalog(
+    scope: TransactionScope,
+  ): Promise<readonly PermissionCatalogRow[]> {
+    return scope.run<PermissionCatalogRow>(
+      `SELECT "key", "area", "description" FROM "permissions"
+        ORDER BY "area" ASC, "key" ASC
+        LIMIT $1`,
+      [RBAC_PERMISSION_CATALOG_MAX],
+    );
+  }
+
+  async listRoleDefinitions(
+    scope: TransactionScope,
+  ): Promise<readonly RoleDefinitionRow[]> {
+    return scope.run<RoleDefinitionRow>(
+      `SELECT "key", "display_name", "description", "is_system" FROM "roles"
+        ORDER BY "key" ASC
+        LIMIT $1`,
+      [RBAC_ROLE_DEFINITION_MAX],
     );
   }
 

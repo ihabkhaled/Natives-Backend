@@ -38,7 +38,7 @@ import {
   SQUADS_API_TAG,
   TEAM_ID_PARAM,
 } from '../model/squads.constants';
-import { ListQueryDto } from './dto/list.query.dto';
+import { SquadListQueryDto } from './dto/list.query.dto';
 import { ListSelectionsResponseDto } from './dto/list-selections.response.dto';
 import { OverrideSelectPlayerDto } from './dto/override-select-player.dto';
 import { RemoveSelectionDto } from './dto/remove-selection.dto';
@@ -69,7 +69,7 @@ export class SquadSelectionsController {
   list(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(SQUAD_ID_PARAM, UuidValidationPipe) squadId: string,
-    @Query() query: ListQueryDto,
+    @Query() query: SquadListQueryDto,
   ): Promise<ListSelectionsResponseDto> {
     return this.query.listForSquad(
       teamId,

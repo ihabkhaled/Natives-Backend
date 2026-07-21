@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { TeamNotFoundError } from '../errors/team-not-found.error';
-import { ResourceStatus } from '../model/teams.enums';
+import { TeamStatus } from '../model/teams.enums';
 import type { Team } from '../model/teams.types';
 import { TeamQueryService } from './team-query.service';
 
@@ -16,7 +16,8 @@ const TEAM: Team = {
   timezone: 'Africa/Cairo',
   primaryColor: null,
   logoMediaKey: null,
-  status: ResourceStatus.Active,
+  status: TeamStatus.Active,
+  deletedAt: null,
   createdBy: null,
   updatedBy: null,
   createdAt: NOW,
@@ -28,7 +29,7 @@ function build() {
   const unitOfWork = {
     runInTransaction: vi.fn((op: (scope: never) => unknown) => op(SCOPE)),
   };
-  const teams = { findById: vi.fn(), list: vi.fn() };
+  const teams = { findById: vi.fn(), list: vi.fn(), listForUser: vi.fn() };
   const service = new TeamQueryService(unitOfWork as never, teams as never);
   return { service, teams };
 }
@@ -58,5 +59,20 @@ describe('TeamQueryService', () => {
     harness.teams.list.mockResolvedValue(result);
     await expect(harness.service.listTeams(page)).resolves.toBe(result);
     expect(harness.teams.list).toHaveBeenCalledWith(SCOPE, page);
+  });
+
+  it('lists only the caller own teams through the scoped repository read', async () => {
+    const page = { limit: 20, offset: 0 };
+    const result = { items: [TEAM], total: 1, limit: 20, offset: 0 };
+    harness.teams.listForUser.mockResolvedValue(result);
+
+    await expect(harness.service.listMyTeams('user-1', page)).resolves.toBe(
+      result,
+    );
+    expect(harness.teams.listForUser).toHaveBeenCalledWith(
+      SCOPE,
+      'user-1',
+      page,
+    );
   });
 });

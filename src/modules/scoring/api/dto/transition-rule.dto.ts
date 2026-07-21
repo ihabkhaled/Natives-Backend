@@ -5,7 +5,7 @@ import { RECORD_VERSION_MIN } from '../../model/scoring.constants';
 import { CalculationRuleTransition } from '../../model/scoring.enums';
 
 /** Request body to move a calculation rule through its lifecycle. */
-export class TransitionRuleDto {
+export class ScoringTransitionRuleDto {
   @ApiProperty({ enum: CalculationRuleTransition })
   @IsEnum(CalculationRuleTransition)
   declare readonly transition: CalculationRuleTransition;

@@ -11,6 +11,10 @@
  * compiling and are granted via the account-role baseline, never a seeded bundle.
  */
 export enum Permission {
+  // --- platform (only ever satisfied by a global, teamId IS NULL grant) -------
+  PlatformAdmin = 'platform.admin',
+  TeamCreate = 'team.create',
+  TeamBrowseAll = 'team.browse.all',
   // --- team ------------------------------------------------------------------
   TeamRead = 'team.read',
   TeamSettingsRead = 'team.settings.read',

@@ -19,10 +19,11 @@ from-empty in `test/database/teams.integration.spec.ts`):
 - `teams` — one primary team now, team scope preserved for future
   mixed/open/women/academy structures. UUID PK, `slug` (unique, lower-cased), name,
   locale, timezone (default `Africa/Cairo`), branding (`primary_color`,
-  `logo_media_key`), `status` (`active|archived`), actor audit
+  `logo_media_key`), `status` (`active|disabled|archived`), `deleted_at` (soft
+  removal), actor audit
   (`created_by`/`updated_by`), `created_at`/`updated_at`, optimistic `version`.
 - `seasons` — team-scoped; `starts_on`/`ends_on` are **date-only** columns, a
-  `CHECK (ends_on >= starts_on)`, `status` (`draft|active|archived`), unique
+  `CHECK (ends_on >= starts_on)`, `status` (`draft|active|closed|archived`), unique
   `(team_id, lower(slug))`. Overlap is enforced in the application layer.
 - `venues` — team-scoped; optional address and `numeric(9,6)` coordinates
   (**null-not-zero**: an absent coordinate stays null), unique `(team_id, lower(name))`.
@@ -83,19 +84,57 @@ in every snapshot automatically (null until a version is written).
   `security_events` log in the same transaction as the change
   (`infrastructure/team-audit.repository.ts`).
 
-## 5. Permissions
+## 5. Permissions — platform scope vs team scope
 
-Reads use `team.read` (broadly granted). Writes use `team.settings.manage` (teams,
-catalogs, settings), `season.manage` (seasons), `venue.manage` (venues); settings reads
-use `team.settings.read`. Creating a team has no prior scope, so only a system admin
-(who holds `team.settings.manage` globally via the account-role baseline) passes.
+Reads use `team.read` (broadly granted). Team-scoped writes use
+`team.settings.manage` (teams, catalogs, settings), `season.manage` (seasons),
+`venue.manage` (venues); settings reads use `team.settings.read`.
 
-## 6. Endpoints
+Three routes are **platform-scoped** and carry no `:teamId`, so only a _global_
+(`team_id IS NULL`) grant can satisfy them — which no team-scoped bundle carries:
+
+| Route                        | Permission        |
+| ---------------------------- | ----------------- |
+| `POST /teams`                | `team.create`     |
+| `GET /teams` (browse all)    | `team.browse.all` |
+| `POST /teams/:teamId/remove` | `platform.admin`  |
+
+Only the `SUPER_ADMIN` bundle (and the `admin` account-role baseline) holds them,
+so a `TEAM_ADMIN` scoped to one team gets `403 errors.auth.permissionDenied` on
+all three. Team administrators find their own teams through `GET /teams/mine`.
+
+## 6. Lifecycle
+
+**Teams** (`domain/team-lifecycle.state-machine.ts`): `active ⇄ disabled`,
+`active|disabled → archived`, `archived → active`. Soft removal (`deleted_at`) is
+a separate, terminal step permitted **only** from `archived`, so an operating
+team can never be removed by one call. Nothing is ever hard-deleted: removed
+teams disappear from every read while every historical row stays referentially
+valid. An invalid move is `409 errors.teams.teamInvalidTransition`; a stale
+`expectedVersion` is `409 errors.teams.versionConflict`.
+
+**Seasons** (`domain/season-lifecycle.state-machine.ts`): `draft → active`,
+`active → closed`, `closed → active`, anything → `archived`, `archived → draft`.
+At most one season per team may be `active` — enforced by the partial unique
+index `ux_seasons_one_active_per_team` and pre-checked so callers get a typed
+`409 errors.teams.seasonAlreadyActive` instead of a driver error. That invariant
+is what makes `GET /teams/:teamId/seasons/current` deterministic (and
+`404 errors.teams.currentSeasonNotFound` when there is none — never a guess),
+which the leaderboard's `period=season` depends on.
+
+Every transition is state-machine gated, optimistic-version guarded (when an
+`expectedVersion` is supplied) and audited in the same transaction.
+
+## 7. Endpoints
 
 Base `/api/v1/teams` (controllers under `api/`, one delegation per route):
 
-- Teams: `POST /`, `GET /`, `GET /:teamId`, `PATCH /:teamId`, `DELETE /:teamId`.
-- Seasons: `POST|GET /:teamId/seasons`, `PATCH|DELETE /:teamId/seasons/:seasonId`.
+- Teams: `POST /`, `GET /`, `GET /mine`, `GET /:teamId`, `PATCH /:teamId`,
+  `POST /:teamId/activate`, `POST /:teamId/deactivate`, `POST /:teamId/archive`,
+  `POST /:teamId/remove`, `DELETE /:teamId` (archive alias).
+- Seasons: `POST|GET /:teamId/seasons`, `GET /:teamId/seasons/current`,
+  `PATCH|DELETE /:teamId/seasons/:seasonId`,
+  `POST /:teamId/seasons/:seasonId/{activate,close,archive}`.
 - Venues: `POST|GET /:teamId/venues`, `PATCH|DELETE /:teamId/venues/:venueId`.
 - Catalogs: `POST|GET /:teamId/catalog-entries` (list filters by `?catalog=`),
   `DELETE /:teamId/catalog-entries/:entryId`.
@@ -104,7 +143,7 @@ Base `/api/v1/teams` (controllers under `api/`, one delegation per route):
 
 All lists are bounded, paginated (`?limit`/`?offset`), and deterministically ordered.
 
-## 7. Deferred (documented)
+## 8. Deferred (documented)
 
 - Database-level `EXCLUDE` constraint for season-date overlap (needs `btree_gist`);
   overlap is enforced and tested in the application layer.

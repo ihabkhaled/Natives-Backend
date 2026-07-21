@@ -24,6 +24,12 @@ export interface Seeder {
 export interface SeedContext {
   readonly passwordHash: SeedPasswordHashPort;
   readonly loadAdminConfig: () => SeedAdminRuntimeConfig;
+  readonly loadPersonasConfig: () => SeedPersonasRuntimeConfig;
+}
+
+/** Runtime-only persona credential resolved lazily, only when the seed runs. */
+export interface SeedPersonasRuntimeConfig {
+  readonly password: string;
 }
 
 /** Minimal password-hashing surface the admin seeder depends on. */

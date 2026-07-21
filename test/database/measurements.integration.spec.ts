@@ -38,6 +38,7 @@ import { DevelopmentSchema1722500000000 } from '../../src/database/migrations/17
 import { SeedHistorySchema1722600000000 } from '../../src/database/migrations/1722600000000-seed-history-schema';
 import { ScoringSchema1722700000000 } from '../../src/database/migrations/1722700000000-scoring-schema';
 import { MeasurementsSchema1722800000000 } from '../../src/database/migrations/1722800000000-measurements-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -73,6 +74,7 @@ const MIGRATIONS = [
   SeedHistorySchema1722600000000,
   ScoringSchema1722700000000,
   MeasurementsSchema1722800000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 function buildDataSource(): DataSource {

@@ -14,7 +14,7 @@ import {
  * availability known at selection (null when nothing was declared — never zero or
  * "unavailable"), and the override evidence when a flagged player was accepted.
  */
-export class RosterEntryResponseDto {
+export class CompetitionRosterEntryResponseDto {
   @ApiProperty({ format: 'uuid' })
   declare readonly entryId: string;
 

@@ -8,7 +8,7 @@ import {
   LIST_MIN_LIMIT,
 } from '../../model/practices.constants';
 
-export class ListQueryDto {
+export class PracticeListQueryDto {
   @ApiPropertyOptional({
     default: LIST_DEFAULT_LIMIT,
     maximum: LIST_MAX_LIMIT,

@@ -52,7 +52,7 @@ import { CorrectPlayerAssessmentDto } from './dto/correct-player-assessment.dto'
 import { CreatePlayerAssessmentDto } from './dto/create-player-assessment.dto';
 import { ListCatalogQueryDto } from './dto/list-catalog.query.dto';
 import { ListPlayerAssessmentsResponseDto } from './dto/list-player-assessments.response.dto';
-import { OptimisticVersionDto } from './dto/optimistic-version.dto';
+import { AssessmentOptimisticVersionDto } from './dto/optimistic-version.dto';
 import { PlayerAssessmentResponseDto } from './dto/player-assessment-response.dto';
 import { ReviewPlayerAssessmentDto } from './dto/review-player-assessment.dto';
 import { RevisionsResponseDto } from './dto/revisions-response.dto';
@@ -176,7 +176,7 @@ export class PlayerAssessmentController {
   submit(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(ASSESSMENT_ID_PARAM, UuidValidationPipe) assessmentId: string,
-    @Body() dto: OptimisticVersionDto,
+    @Body() dto: AssessmentOptimisticVersionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<PlayerAssessmentResponseDto> {
     return this.submitAssessment.execute(actor, teamId, assessmentId, {
@@ -214,7 +214,7 @@ export class PlayerAssessmentController {
   publish(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(ASSESSMENT_ID_PARAM, UuidValidationPipe) assessmentId: string,
-    @Body() dto: OptimisticVersionDto,
+    @Body() dto: AssessmentOptimisticVersionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<PlayerAssessmentResponseDto> {
     return this.publishAssessment.execute(actor, teamId, assessmentId, {

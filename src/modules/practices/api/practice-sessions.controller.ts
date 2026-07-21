@@ -47,7 +47,7 @@ import {
 import { SessionStatus } from '../model/practices.enums';
 import { CreatePracticeSessionDto } from './dto/create-session.dto';
 import { ListSessionsQueryDto } from './dto/list-sessions.query.dto';
-import { ListSessionsResponseDto } from './dto/list-sessions-response.dto';
+import { PracticeListSessionsResponseDto } from './dto/list-sessions-response.dto';
 import { RescheduleSessionDto } from './dto/reschedule-session.dto';
 import { SessionHistoryResponseDto } from './dto/session-history-response.dto';
 import { PracticeSessionResponseDto } from './dto/session-response.dto';
@@ -100,12 +100,15 @@ export class PracticeSessionsController {
   @Get(SESSIONS_ROUTE)
   @RequirePermissions(Permission.PracticeRead)
   @ApiOperation({ summary: 'List/calendar practice sessions for a team' })
-  @ApiOkResponse({ description: 'Sessions', type: ListSessionsResponseDto })
+  @ApiOkResponse({
+    description: 'Sessions',
+    type: PracticeListSessionsResponseDto,
+  })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   list(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Query() query: ListSessionsQueryDto,
-  ): Promise<ListSessionsResponseDto> {
+  ): Promise<PracticeListSessionsResponseDto> {
     return this.sessionQuery.listSessions(teamId, resolveSessionFilter(query));
   }
 

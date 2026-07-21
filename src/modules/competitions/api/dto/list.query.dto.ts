@@ -8,7 +8,7 @@ import {
 } from '../../model/competitions.constants';
 
 /** Bounded pagination query shared by the competitions list endpoints. */
-export class ListQueryDto {
+export class CompetitionListQueryDto {
   @ApiPropertyOptional({
     minimum: LIST_MIN_LIMIT,
     maximum: LIST_MAX_LIMIT,

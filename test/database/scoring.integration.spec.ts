@@ -41,6 +41,7 @@ import { PlayerAssessmentSchema1722400000000 } from '../../src/database/migratio
 import { DevelopmentSchema1722500000000 } from '../../src/database/migrations/1722500000000-development-schema';
 import { SeedHistorySchema1722600000000 } from '../../src/database/migrations/1722600000000-seed-history-schema';
 import { ScoringSchema1722700000000 } from '../../src/database/migrations/1722700000000-scoring-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -75,6 +76,7 @@ const MIGRATIONS = [
   DevelopmentSchema1722500000000,
   SeedHistorySchema1722600000000,
   ScoringSchema1722700000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 function buildDataSource(): DataSource {

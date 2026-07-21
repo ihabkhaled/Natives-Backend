@@ -10,8 +10,13 @@ import {
   PERMISSION_CATALOG_KEYS,
 } from './permission-catalog.constants';
 
-// The canonical catalog from 11-SCHEMAS/rbac.permissions.yaml (88 permissions).
+// The canonical catalog from 11-SCHEMAS/rbac.permissions.yaml (88 permissions)
+// plus the three platform-scoped permissions that separate a web-app super
+// admin from a team administrator (91 total).
 const EXPECTED_KEYS: readonly string[] = [
+  'platform.admin',
+  'team.create',
+  'team.browse.all',
   'team.read',
   'team.settings.read',
   'team.settings.manage',
@@ -109,8 +114,8 @@ describe('PERMISSION_CATALOG', () => {
     );
   });
 
-  it('has 88 entries', () => {
-    expect(PERMISSION_CATALOG).toHaveLength(88);
+  it('has 91 entries', () => {
+    expect(PERMISSION_CATALOG).toHaveLength(91);
   });
 
   it('has no duplicate keys', () => {

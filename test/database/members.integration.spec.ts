@@ -25,6 +25,7 @@ import { IdentitySchema1721300000000 } from '../../src/database/migrations/17213
 import { RbacSchema1721400000000 } from '../../src/database/migrations/1721400000000-rbac-schema';
 import { TeamsSchema1721500000000 } from '../../src/database/migrations/1721500000000-teams-schema';
 import { MembersSchema1721600000000 } from '../../src/database/migrations/1721600000000-members-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -48,6 +49,7 @@ const MIGRATIONS = [
   RbacSchema1721400000000,
   TeamsSchema1721500000000,
   MembersSchema1721600000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 function buildDataSource(): DataSource {
@@ -88,6 +90,7 @@ describeIfDb(suiteTitle, () => {
   const teamScope = new TeamScopeRepository();
 
   afterAll(async () => {
+    await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
@@ -170,6 +173,9 @@ describeIfDb(suiteTitle, () => {
     );
     expect(present[0].relation).not.toBeNull();
 
+    // Two steps back: the trailing platform-lifecycle migration (a pure ALTER
+    // on teams/seasons) first, then this schema, which drops its own tables.
+    await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     const dropped = await activeDataSource.query(
       `SELECT to_regclass('public.memberships') AS relation`,

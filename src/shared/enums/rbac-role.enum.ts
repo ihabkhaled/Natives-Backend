@@ -6,6 +6,7 @@
  * bundles may exist in the database; these are the guaranteed system defaults.
  */
 export enum RbacRole {
+  SuperAdmin = 'SUPER_ADMIN',
   Member = 'MEMBER',
   Coach = 'COACH',
   TeamAdmin = 'TEAM_ADMIN',

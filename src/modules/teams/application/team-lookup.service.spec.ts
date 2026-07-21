@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { TeamNotFoundError } from '../errors/team-not-found.error';
-import { ResourceStatus } from '../model/teams.enums';
+import { TeamStatus } from '../model/teams.enums';
 import type { Team } from '../model/teams.types';
 import { TeamLookupService } from './team-lookup.service';
 
@@ -17,7 +17,8 @@ function team(overrides: Partial<Team> = {}): Team {
     timezone: 'Africa/Cairo',
     primaryColor: null,
     logoMediaKey: null,
-    status: ResourceStatus.Active,
+    status: TeamStatus.Active,
+    deletedAt: null,
     createdBy: null,
     updatedBy: null,
     createdAt: NOW,
@@ -55,9 +56,25 @@ describe('TeamLookupService', () => {
     ).rejects.toBeInstanceOf(TeamNotFoundError);
   });
 
+  it('throws for a disabled team, which takes no new work', async () => {
+    harness.teams.findById.mockResolvedValue(
+      team({ status: TeamStatus.Disabled }),
+    );
+    await expect(
+      harness.service.requireActive(SCOPE, 'team-1'),
+    ).rejects.toBeInstanceOf(TeamNotFoundError);
+  });
+
+  it('throws for a soft-removed team', async () => {
+    harness.teams.findById.mockResolvedValue(team({ deletedAt: NOW }));
+    await expect(
+      harness.service.requireActive(SCOPE, 'team-1'),
+    ).rejects.toBeInstanceOf(TeamNotFoundError);
+  });
+
   it('throws for an archived team', async () => {
     harness.teams.findById.mockResolvedValue(
-      team({ status: ResourceStatus.Archived }),
+      team({ status: TeamStatus.Archived }),
     );
     await expect(
       harness.service.requireActive(SCOPE, 'team-1'),

@@ -1,8 +1,13 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { ResourceStatus } from '../model/teams.enums';
+import { TeamStatus } from '../model/teams.enums';
 import type { TeamRow } from '../model/teams.rows';
-import type { NewTeam, TeamUpdate } from '../model/teams.types';
+import type {
+  NewTeam,
+  TeamRemoval,
+  TeamStatusChange,
+  TeamUpdate,
+} from '../model/teams.types';
 import { TeamRepository } from './team.repository';
 
 const NOW = new Date('2026-06-01T12:00:00.000Z');
@@ -21,6 +26,7 @@ function teamRow(overrides: Partial<TeamRow> = {}): TeamRow {
     primary_color: null,
     logo_media_key: null,
     status: 'active',
+    deleted_at: null,
     created_by: 'admin-1',
     updated_by: null,
     created_at: '2026-01-01T00:00:00.000Z',
@@ -54,6 +60,21 @@ const TEAM_UPDATE: TeamUpdate = {
   now: NOW,
 };
 
+const STATUS_CHANGE: TeamStatusChange = {
+  id: 'team-1',
+  status: TeamStatus.Archived,
+  updatedBy: 'admin-1',
+  expectedVersion: 1,
+  now: NOW,
+};
+
+const REMOVAL: TeamRemoval = {
+  id: 'team-1',
+  updatedBy: 'admin-1',
+  expectedVersion: 1,
+  now: NOW,
+};
+
 describe('TeamRepository', () => {
   let repository: TeamRepository;
   let scope: ReturnType<typeof buildScope>;
@@ -69,7 +90,7 @@ describe('TeamRepository', () => {
       repository.findById(scope as never, 'team-1'),
     ).resolves.toMatchObject({
       id: 'team-1',
-      status: ResourceStatus.Active,
+      status: TeamStatus.Active,
       primaryColor: '#fff',
       createdAt: new Date('2026-01-01T00:00:00.000Z'),
     });
@@ -118,16 +139,69 @@ describe('TeamRepository', () => {
     ).resolves.toBeNull();
   });
 
-  it('archives a team or returns null when already archived', async () => {
+  it('applies a lifecycle status change or returns null on a version miss', async () => {
     scope.run.mockResolvedValueOnce([teamRow({ status: 'archived' })]);
     await expect(
-      repository.archive(scope as never, 'team-1', 'admin-1', NOW),
-    ).resolves.toMatchObject({ status: ResourceStatus.Archived });
+      repository.applyStatusChange(scope as never, STATUS_CHANGE),
+    ).resolves.toMatchObject({ status: TeamStatus.Archived });
+    expect(scope.run.mock.calls[0]?.[0]).toContain('"deleted_at" IS NULL');
 
     scope.run.mockResolvedValueOnce([]);
     await expect(
-      repository.archive(scope as never, 'team-1', 'admin-1', NOW),
+      repository.applyStatusChange(scope as never, STATUS_CHANGE),
     ).resolves.toBeNull();
+  });
+
+  it('skips the optimistic guard when no expected version is supplied', async () => {
+    scope.run.mockResolvedValueOnce([teamRow({ status: 'archived' })]);
+
+    await repository.applyStatusChange(scope as never, {
+      ...STATUS_CHANGE,
+      expectedVersion: null,
+    });
+
+    expect(scope.run.mock.calls[0]?.[0]).toContain('$5::int IS NULL');
+    expect(scope.run.mock.calls[0]?.[1]?.[4]).toBeNull();
+  });
+
+  it('soft-removes a team by stamping deleted_at, never deleting the row', async () => {
+    scope.run.mockResolvedValueOnce([
+      teamRow({ status: 'archived', deleted_at: NOW }),
+    ]);
+
+    const removed = await repository.softRemove(scope as never, REMOVAL);
+
+    expect(removed?.deletedAt).toEqual(NOW);
+    expect(scope.run.mock.calls[0]?.[0]).toContain('UPDATE "teams"');
+    expect(scope.run.mock.calls[0]?.[0]).not.toContain('DELETE');
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.softRemove(scope as never, REMOVAL),
+    ).resolves.toBeNull();
+  });
+
+  it('lists only the teams the principal holds a live assignment in', async () => {
+    scope.run.mockResolvedValueOnce([teamRow()]);
+    scope.run.mockResolvedValueOnce([{ count: 1 }]);
+
+    const page = await repository.listForUser(scope as never, 'user-1', {
+      limit: 20,
+      offset: 0,
+    });
+
+    expect(page.total).toBe(1);
+    expect(scope.run.mock.calls[0]?.[0]).toContain('user_role_assignments');
+    expect(scope.run.mock.calls[0]?.[1]?.[0]).toBe('user-1');
+
+    scope.run.mockResolvedValueOnce([teamRow()]);
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.listForUser(scope as never, 'user-1', {
+        limit: 20,
+        offset: 0,
+      }),
+    ).resolves.toMatchObject({ total: 0 });
   });
 
   it('lists teams with a total, defaulting the count to zero', async () => {

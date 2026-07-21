@@ -9,14 +9,16 @@ import type {
   ResourceStatus,
   SeasonStatus,
   SettingKey,
+  TeamStatus,
 } from '../model/teams.enums';
 import {
   CATALOG_NAME_VALUES,
   RESOURCE_STATUS_VALUES,
   SEASON_STATUS_VALUES,
   SETTING_KEY_VALUES,
+  TEAM_STATUS_VALUES,
 } from '../model/teams.enums';
-import type { PageRequest } from '../model/teams.types';
+import type { PageRequest, TransitionCommand } from '../model/teams.types';
 
 /** Convert a non-null timestamptz value to a Date. */
 export function toDate(value: string | Date): Date {
@@ -68,6 +70,18 @@ export function resolvePage(
   };
 }
 
+/**
+ * Normalise the optional `expectedVersion` of a transition body into the
+ * command's explicit `number | null`. Absent means "no optimistic check", never
+ * zero — a lifecycle move without a supplied version is still state-machine
+ * gated, it just does not assert which version it moved from.
+ */
+export function toTransitionCommand(
+  expectedVersion: number | undefined,
+): TransitionCommand {
+  return { expectedVersion: expectedVersion ?? null };
+}
+
 function parseEnum<TValue extends string>(
   values: readonly TValue[],
   raw: string,
@@ -82,6 +96,10 @@ function parseEnum<TValue extends string>(
 
 export function parseResourceStatus(raw: string): ResourceStatus {
   return parseEnum(RESOURCE_STATUS_VALUES, raw, 'resource status');
+}
+
+export function parseTeamStatus(raw: string): TeamStatus {
+  return parseEnum(TEAM_STATUS_VALUES, raw, 'team status');
 }
 
 export function parseSeasonStatus(raw: string): SeasonStatus {

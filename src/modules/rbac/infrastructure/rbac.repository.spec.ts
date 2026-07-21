@@ -1,6 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { RBAC_ROLE_CATALOG_MAX } from '../model/rbac.constants';
+import {
+  RBAC_PERMISSION_CATALOG_MAX,
+  RBAC_ROLE_CATALOG_MAX,
+  RBAC_ROLE_DEFINITION_MAX,
+} from '../model/rbac.constants';
 import { GrantEffect } from '../model/rbac.enums';
 import type { RoleAssignmentRow } from '../model/rbac.rows';
 import type { NewRoleAssignment } from '../model/rbac.types';
@@ -243,6 +247,37 @@ describe('RbacRepository', () => {
     expect(rows).toEqual([{ role_key: 'MEMBER', permission_key: 'team.read' }]);
     expect(scope.run.mock.calls[0]?.[0]).toContain('LIMIT $1');
     expect(scope.run.mock.calls[0]?.[1]).toEqual([RBAC_ROLE_CATALOG_MAX]);
+  });
+
+  it('reads the permission catalog ordered by area then key, bounded', async () => {
+    const rows = [
+      { key: 'team.read', area: 'team', description: 'View a team' },
+    ];
+    scope.run.mockResolvedValue(rows);
+
+    expect(await repository.listPermissionCatalog(scope as never)).toEqual(
+      rows,
+    );
+    expect(scope.run.mock.calls[0]?.[0]).toContain(
+      'ORDER BY "area" ASC, "key" ASC',
+    );
+    expect(scope.run.mock.calls[0]?.[1]).toEqual([RBAC_PERMISSION_CATALOG_MAX]);
+  });
+
+  it('reads the role definitions ordered by key, bounded', async () => {
+    const rows = [
+      {
+        key: 'MEMBER',
+        display_name: 'Member',
+        description: 'Baseline member',
+        is_system: true,
+      },
+    ];
+    scope.run.mockResolvedValue(rows);
+
+    expect(await repository.listRoleDefinitions(scope as never)).toEqual(rows);
+    expect(scope.run.mock.calls[0]?.[0]).toContain('ORDER BY "key" ASC');
+    expect(scope.run.mock.calls[0]?.[1]).toEqual([RBAC_ROLE_DEFINITION_MAX]);
   });
 
   it('lists only the unrevoked assignments bound to one team', async () => {

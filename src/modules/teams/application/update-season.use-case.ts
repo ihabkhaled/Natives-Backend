@@ -12,11 +12,13 @@ import {
 } from '@core/persistence/unit-of-work.port';
 import { Inject, Injectable } from '@nestjs/common';
 
+import { claimsCurrentSeasonSlot } from '../domain/season-lifecycle.state-machine';
 import {
   findOverlappingSeason,
   isValidSeasonRange,
 } from '../domain/season-schedule.policy';
 import { OptimisticConflictError } from '../errors/optimistic-conflict.error';
+import { SeasonAlreadyActiveError } from '../errors/season-already-active.error';
 import { SeasonNotFoundError } from '../errors/season-not-found.error';
 import { SeasonOverlapError } from '../errors/season-overlap.error';
 import { SlugConflictError } from '../errors/slug-conflict.error';
@@ -107,6 +109,12 @@ export class UpdateSeasonUseCase {
       (await this.seasons.existsBySlug(scope, teamId, command.slug))
     ) {
       throw new SlugConflictError();
+    }
+    if (
+      claimsCurrentSeasonSlot(command.status) &&
+      (await this.seasons.hasOtherActive(scope, teamId, seasonId))
+    ) {
+      throw new SeasonAlreadyActiveError();
     }
     if (command.status === SeasonStatus.Archived) {
       return;

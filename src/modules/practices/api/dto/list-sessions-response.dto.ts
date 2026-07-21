@@ -2,7 +2,7 @@ import { ApiProperty } from '@core/openapi';
 
 import { PracticeSessionResponseDto } from './session-response.dto';
 
-export class ListSessionsResponseDto {
+export class PracticeListSessionsResponseDto {
   @ApiProperty({ type: [PracticeSessionResponseDto] })
   declare readonly items: readonly PracticeSessionResponseDto[];
 

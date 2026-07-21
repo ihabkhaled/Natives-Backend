@@ -57,7 +57,7 @@ import { ListMembersResponseDto } from './dto/member-directory-response.dto';
 import { MemberHistoryResponseDto } from './dto/member-history-response.dto';
 import { MemberViewResponseDto } from './dto/member-view-response.dto';
 import { MembershipResponseDto } from './dto/membership-response.dto';
-import { TransitionDto } from './dto/transition.dto';
+import { MemberTransitionDto } from './dto/transition.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 
 @ApiTags(MEMBERS_API_TAG)
@@ -159,7 +159,7 @@ export class MembersController {
   activate(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(MEMBERSHIP_ID_PARAM, UuidValidationPipe) membershipId: string,
-    @Body() dto: TransitionDto,
+    @Body() dto: MemberTransitionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<MembershipResponseDto> {
     return this.transitionMember.execute(
@@ -183,7 +183,7 @@ export class MembersController {
   deactivate(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(MEMBERSHIP_ID_PARAM, UuidValidationPipe) membershipId: string,
-    @Body() dto: TransitionDto,
+    @Body() dto: MemberTransitionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<MembershipResponseDto> {
     return this.transitionMember.execute(
@@ -207,7 +207,7 @@ export class MembersController {
   suspend(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(MEMBERSHIP_ID_PARAM, UuidValidationPipe) membershipId: string,
-    @Body() dto: TransitionDto,
+    @Body() dto: MemberTransitionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<MembershipResponseDto> {
     return this.transitionMember.execute(
@@ -228,7 +228,7 @@ export class MembersController {
   leave(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(MEMBERSHIP_ID_PARAM, UuidValidationPipe) membershipId: string,
-    @Body() dto: TransitionDto,
+    @Body() dto: MemberTransitionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<MembershipResponseDto> {
     return this.transitionMember.execute(
@@ -252,7 +252,7 @@ export class MembersController {
   archive(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(MEMBERSHIP_ID_PARAM, UuidValidationPipe) membershipId: string,
-    @Body() dto: TransitionDto,
+    @Body() dto: MemberTransitionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<MembershipResponseDto> {
     return this.transitionMember.execute(
@@ -276,7 +276,7 @@ export class MembersController {
   anonymize(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(MEMBERSHIP_ID_PARAM, UuidValidationPipe) membershipId: string,
-    @Body() dto: TransitionDto,
+    @Body() dto: MemberTransitionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<MembershipResponseDto> {
     return this.anonymizeMember.execute(actor, teamId, membershipId, {

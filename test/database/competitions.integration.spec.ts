@@ -53,6 +53,7 @@ import { ActivityReviewSchema1723000000000 } from '../../src/database/migrations
 import { PointsSchema1723100000000 } from '../../src/database/migrations/1723100000000-points-schema';
 import { LeaderboardIndexes1723200000000 } from '../../src/database/migrations/1723200000000-leaderboard-indexes';
 import { CompetitionsSchema1723300000000 } from '../../src/database/migrations/1723300000000-competitions-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -96,6 +97,7 @@ const MIGRATIONS = [
   PointsSchema1723100000000,
   LeaderboardIndexes1723200000000,
   CompetitionsSchema1723300000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 function buildDataSource(): DataSource {

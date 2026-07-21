@@ -1,6 +1,6 @@
 import { ApiProperty } from '@core/openapi';
 
-import { ResourceStatus } from '../../model/teams.enums';
+import { TeamStatus } from '../../model/teams.enums';
 
 export class TeamResponseDto {
   @ApiProperty()
@@ -24,8 +24,16 @@ export class TeamResponseDto {
   @ApiProperty({ type: String, nullable: true })
   declare readonly logoMediaKey: string | null;
 
-  @ApiProperty({ enum: ResourceStatus })
-  declare readonly status: ResourceStatus;
+  @ApiProperty({ enum: TeamStatus })
+  declare readonly status: TeamStatus;
+
+  @ApiProperty({
+    type: String,
+    format: 'date-time',
+    nullable: true,
+    description: 'Soft-removal instant; null while the team is present',
+  })
+  declare readonly deletedAt: Date | null;
 
   @ApiProperty({ type: String, nullable: true })
   declare readonly createdBy: string | null;

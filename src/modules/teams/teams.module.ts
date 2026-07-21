@@ -8,8 +8,6 @@ import { SettingsController } from './api/settings.controller';
 import { TeamsController } from './api/teams.controller';
 import { VenuesController } from './api/venues.controller';
 import { ArchiveCatalogEntryUseCase } from './application/archive-catalog-entry.use-case';
-import { ArchiveSeasonUseCase } from './application/archive-season.use-case';
-import { ArchiveTeamUseCase } from './application/archive-team.use-case';
 import { ArchiveVenueUseCase } from './application/archive-venue.use-case';
 import { CatalogQueryService } from './application/catalog-query.service';
 import { CreateCatalogEntryUseCase } from './application/create-catalog-entry.use-case';
@@ -17,10 +15,13 @@ import { CreateSeasonUseCase } from './application/create-season.use-case';
 import { CreateSettingVersionUseCase } from './application/create-setting-version.use-case';
 import { CreateTeamUseCase } from './application/create-team.use-case';
 import { CreateVenueUseCase } from './application/create-venue.use-case';
+import { RemoveTeamUseCase } from './application/remove-team.use-case';
 import { SeasonQueryService } from './application/season-query.service';
 import { SettingsQueryService } from './application/settings-query.service';
 import { TeamLookupService } from './application/team-lookup.service';
 import { TeamQueryService } from './application/team-query.service';
+import { TransitionSeasonUseCase } from './application/transition-season.use-case';
+import { TransitionTeamUseCase } from './application/transition-team.use-case';
 import { UpdateSeasonUseCase } from './application/update-season.use-case';
 import { UpdateTeamUseCase } from './application/update-team.use-case';
 import { UpdateVenueUseCase } from './application/update-venue.use-case';
@@ -64,10 +65,11 @@ import { VenueRepository } from './infrastructure/venue.repository';
     SettingsQueryService,
     CreateTeamUseCase,
     UpdateTeamUseCase,
-    ArchiveTeamUseCase,
+    TransitionTeamUseCase,
+    RemoveTeamUseCase,
     CreateSeasonUseCase,
     UpdateSeasonUseCase,
-    ArchiveSeasonUseCase,
+    TransitionSeasonUseCase,
     CreateVenueUseCase,
     UpdateVenueUseCase,
     ArchiveVenueUseCase,

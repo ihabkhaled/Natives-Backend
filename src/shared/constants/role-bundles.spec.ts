@@ -9,11 +9,41 @@ function bundle(role: RbacRole): ReadonlySet<string> {
 }
 
 describe('ROLE_BUNDLES', () => {
-  it('defines all five default bundles with metadata', () => {
-    expect(ROLE_BUNDLES.size).toBe(5);
+  it('defines all six default bundles with metadata', () => {
+    expect(ROLE_BUNDLES.size).toBe(6);
     for (const role of RBAC_ROLE_VALUES) {
       expect(ROLE_BUNDLES.has(role)).toBe(true);
       expect(ROLE_BUNDLE_METADATA.has(role)).toBe(true);
+    }
+  });
+
+  it('grants SUPER_ADMIN the entire catalog including the platform scope', () => {
+    const superAdmin = bundle(RbacRole.SuperAdmin);
+
+    expect(superAdmin.size).toBe(PERMISSION_CATALOG_KEYS.length);
+    expect(superAdmin.has(Permission.PlatformAdmin)).toBe(true);
+    expect(superAdmin.has(Permission.TeamCreate)).toBe(true);
+    expect(superAdmin.has(Permission.TeamBrowseAll)).toBe(true);
+  });
+
+  it('withholds every platform permission from the team-scoped bundles', () => {
+    const platformScoped: readonly Permission[] = [
+      Permission.PlatformAdmin,
+      Permission.TeamCreate,
+      Permission.TeamBrowseAll,
+    ];
+    const teamScoped: readonly RbacRole[] = [
+      RbacRole.Member,
+      RbacRole.Coach,
+      RbacRole.TeamAdmin,
+      RbacRole.Scorekeeper,
+      RbacRole.Analyst,
+    ];
+
+    for (const role of teamScoped) {
+      for (const permission of platformScoped) {
+        expect(bundle(role).has(permission)).toBe(false);
+      }
     }
   });
 

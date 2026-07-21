@@ -3,7 +3,7 @@ import { ApiProperty } from '@core/openapi';
 import { ScoringRuleResponseDto } from './rule-response.dto';
 
 /** A bounded page of calculation rules. */
-export class ListRulesResponseDto {
+export class ScoringListRulesResponseDto {
   @ApiProperty({ type: [ScoringRuleResponseDto] })
   declare readonly items: readonly ScoringRuleResponseDto[];
 

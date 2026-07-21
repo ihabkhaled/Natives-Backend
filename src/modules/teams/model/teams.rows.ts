@@ -16,6 +16,7 @@ export interface TeamRow {
   readonly primary_color: string | null;
   readonly logo_media_key: string | null;
   readonly status: string;
+  readonly deleted_at: string | Date | null;
   readonly created_by: string | null;
   readonly updated_by: string | null;
   readonly created_at: string | Date;

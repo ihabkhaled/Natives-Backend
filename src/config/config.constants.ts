@@ -34,6 +34,19 @@ export const SEED_ADMIN_EMAIL_INVALID_MESSAGE =
 export const SEED_ADMIN_DISPLAY_NAME_INVALID_MESSAGE =
   'SEED_ADMIN_DISPLAY_NAME must not be blank';
 
+// Defaults for the demonstration-persona seed. Unlike the administrator, the
+// personas are a DEVELOPMENT convenience (one shared, well-known credential for
+// a whole cast of logins), so a synthetic default is allowed outside production
+// and refused inside it — production must supply SEED_PERSONA_PASSWORD or the
+// seed fails fast rather than provisioning a guessable account on a real host.
+export const DEFAULT_SEED_PERSONA_PASSWORD = 'NativesDev!Persona2026';
+export const SEED_PERSONA_PASSWORD_MIN_LENGTH = 12;
+export const SEED_PERSONA_PASSWORD_MAX_BYTES = 72;
+export const SEED_PERSONA_PASSWORD_REQUIRED_MESSAGE =
+  'SEED_PERSONA_PASSWORD must be provided in production and contain at least 12 characters';
+export const SEED_PERSONA_PASSWORD_TOO_LONG_MESSAGE =
+  'SEED_PERSONA_PASSWORD must not exceed 72 UTF-8 bytes';
+
 export const DEFAULT_PORT = 3000;
 export const MIN_PORT = 1;
 export const MAX_PORT = 65535;

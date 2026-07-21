@@ -22,6 +22,7 @@ import { PlatformSchema1721700000000 } from '../src/database/migrations/17217000
 import { PracticesSchema1721800000000 } from '../src/database/migrations/1721800000000-practices-schema';
 import { PracticeRsvpSchema1721900000000 } from '../src/database/migrations/1721900000000-practice-rsvp-schema';
 import { AttendanceSchema1722000000000 } from '../src/database/migrations/1722000000000-attendance-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -59,6 +60,7 @@ const MIGRATIONS = [
   PracticesSchema1721800000000,
   PracticeRsvpSchema1721900000000,
   AttendanceSchema1722000000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 interface Fixture {

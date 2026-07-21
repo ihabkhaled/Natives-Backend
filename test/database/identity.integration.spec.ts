@@ -14,8 +14,8 @@ import type {
   EmailMessage,
   EmailSenderPort,
 } from '@core/email/email-sender.port';
-import type { AppLogger } from '@core/logger';
 import type { IdGeneratorPort } from '@core/id-generator/id-generator.port';
+import type { AppLogger } from '@core/logger';
 import { PasswordHashAdapter } from '@modules/auth/adapters/password-hash.adapter';
 import { AcceptInvitationUseCase } from '@modules/identity/application/accept-invitation.use-case';
 import { CreateInvitationUseCase } from '@modules/identity/application/create-invitation.use-case';
@@ -38,7 +38,7 @@ import { UserRepository } from '@modules/identity/infrastructure/user.repository
 import type { SecureRandomPort } from '@modules/identity/model/identity.types';
 import { NodeEnv, Role } from '@shared/enums';
 import { DataSource } from 'typeorm';
-import { afterAll, describe, expect, it } from 'vitest';
+import { afterAll, describe, expect, it, vi } from 'vitest';
 
 import { BaselineSchema1721200000000 } from '../../src/database/migrations/1721200000000-baseline-schema';
 import { IdentitySchema1721300000000 } from '../../src/database/migrations/1721300000000-identity-schema';
@@ -77,11 +77,11 @@ const EMAIL_CONFIG = {
 
 /** The email path is asserted through `sentEmails`, not through log output. */
 const SILENT_LOGGER = {
-  setContext: () => {},
-  debug: () => {},
-  info: () => {},
-  warn: () => {},
-  error: () => {},
+  setContext: vi.fn(),
+  debug: vi.fn(),
+  info: vi.fn(),
+  warn: vi.fn(),
+  error: vi.fn(),
 } as unknown as AppLogger;
 
 const NOW = new Date('2026-06-01T12:00:00.000Z');

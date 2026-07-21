@@ -38,9 +38,9 @@ import {
 } from '../model/points.constants';
 import { CreatePointsRuleDto } from './dto/create-rule.dto';
 import { ListPointsQueryDto } from './dto/list-points.query.dto';
-import { ListRulesResponseDto } from './dto/list-rules.response.dto';
+import { PointsListRulesResponseDto } from './dto/list-rules.response.dto';
 import { PointsRuleResponseDto } from './dto/rule-response.dto';
-import { TransitionRuleDto } from './dto/transition-rule.dto';
+import { PointsTransitionRuleDto } from './dto/transition-rule.dto';
 
 /**
  * Admin surface for versioned points rules (points.rules.manage): draft creation,
@@ -60,12 +60,12 @@ export class PointsRuleController {
   @Get()
   @RequirePermissions(Permission.PointsRulesManage)
   @ApiOperation({ summary: 'List a team’s points rules and candidates' })
-  @ApiOkResponse({ type: ListRulesResponseDto })
+  @ApiOkResponse({ type: PointsListRulesResponseDto })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   list(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Query() query: ListPointsQueryDto,
-  ): Promise<ListRulesResponseDto> {
+  ): Promise<PointsListRulesResponseDto> {
     return this.query.listForTeam(
       teamId,
       resolvePointsPage(query.limit, query.offset),
@@ -99,7 +99,7 @@ export class PointsRuleController {
   transition(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(RULE_ID_PARAM, UuidValidationPipe) ruleId: string,
-    @Body() dto: TransitionRuleDto,
+    @Body() dto: PointsTransitionRuleDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<PointsRuleResponseDto> {
     return this.transitionRule.execute(actor, teamId, ruleId, {

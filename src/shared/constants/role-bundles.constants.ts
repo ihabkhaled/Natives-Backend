@@ -1,3 +1,4 @@
+import { PERMISSION_CATALOG_KEYS } from '@shared/constants/permission-catalog.constants';
 import { Permission, RbacRole } from '@shared/enums';
 
 /**
@@ -129,8 +130,20 @@ const ANALYST_BUNDLE: readonly Permission[] = uniquePermissions([
   Permission.ReportRead,
 ]);
 
+/**
+ * The platform bundle. SUPER_ADMIN is the ONLY bundle that carries the platform
+ * permissions (create a team, browse every team, administer the platform), and
+ * it is meant to be assigned globally (teamId IS NULL). A team-scoped assignment
+ * of any other bundle can therefore never satisfy a platform-scoped route, which
+ * is what separates the web-app super admin from a team administrator.
+ */
+const SUPER_ADMIN_BUNDLE: readonly Permission[] = uniquePermissions([
+  ...PERMISSION_CATALOG_KEYS,
+]);
+
 export const ROLE_BUNDLES: ReadonlyMap<RbacRole, readonly Permission[]> =
   new Map([
+    [RbacRole.SuperAdmin, SUPER_ADMIN_BUNDLE],
     [RbacRole.Member, MEMBER_BUNDLE],
     [RbacRole.Coach, COACH_BUNDLE],
     [RbacRole.TeamAdmin, TEAM_ADMIN_BUNDLE],
@@ -143,6 +156,13 @@ export const ROLE_BUNDLE_METADATA: ReadonlyMap<
   RbacRole,
   { readonly displayName: string; readonly description: string }
 > = new Map([
+  [
+    RbacRole.SuperAdmin,
+    {
+      displayName: 'Super administrator',
+      description: 'Platform-wide administrator across every team',
+    },
+  ],
   [
     RbacRole.Member,
     { displayName: 'Member', description: 'Baseline participating member' },

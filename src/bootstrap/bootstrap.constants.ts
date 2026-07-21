@@ -14,6 +14,44 @@ export const CORS_ALLOWED_METHODS: readonly string[] = [
   'DELETE',
 ];
 
+// Response headers a browser is allowed to READ across an origin. Without an
+// explicit Access-Control-Expose-Headers a cross-origin client only ever sees
+// the seven CORS-safelisted headers, so anything the SPA actually reads must be
+// listed here or it silently reads `null`:
+//   - x-request-id      the correlation id every response carries, which the
+//                       client attaches to error reports and support tickets;
+//   - content-disposition  the filename of the public ICS calendar feed and of
+//                       every future report/export download;
+//   - retry-after       emitted by the throttler on 429 so the client can back
+//                       off for the right interval instead of guessing.
+export const CORS_EXPOSED_HEADERS: readonly string[] = [
+  'x-request-id',
+  'content-disposition',
+  'retry-after',
+];
+
+// Request headers the browser may send. @fastify/cors would otherwise reflect
+// whatever the preflight asked for; naming them keeps the contract explicit and
+// still covers everything this API consumes (bearer auth, JSON bodies, the
+// client-supplied correlation id, and the idempotency key on retryable writes).
+export const CORS_ALLOWED_HEADERS: readonly string[] = [
+  'accept',
+  'accept-language',
+  'authorization',
+  'content-type',
+  'idempotency-key',
+  'x-request-id',
+];
+
+// Preflight cache lifetime (seconds). Browsers cap this themselves; 10 minutes
+// removes an OPTIONS round-trip per request burst without pinning stale policy.
+export const CORS_MAX_AGE_SECONDS = 600;
+
+// Correlation header echoed on every response. Same name the client may send in
+// (see CORS_ALLOWED_HEADERS), so a request id chosen by the SPA survives the
+// round trip and stitches browser, API and job logs together.
+export const REQUEST_ID_HEADER = 'x-request-id';
+
 // 1 MiB request body cap — reject oversized payloads at the transport edge.
 export const BODY_LIMIT_BYTES = 1_048_576;
 

@@ -75,6 +75,7 @@ import { LeaderboardIndexes1723200000000 } from '../../src/database/migrations/1
 import { CompetitionsSchema1723300000000 } from '../../src/database/migrations/1723300000000-competitions-schema';
 import { SquadsSchema1723400000000 } from '../../src/database/migrations/1723400000000-squads-schema';
 import { RostersSchema1723500000000 } from '../../src/database/migrations/1723500000000-rosters-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -121,6 +122,7 @@ const MIGRATIONS = [
   CompetitionsSchema1723300000000,
   SquadsSchema1723400000000,
   RostersSchema1723500000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 function buildDataSource(): DataSource {

@@ -7,6 +7,7 @@ export const RBAC_ASSIGNMENTS_ROUTE = 'assignments';
 export const RBAC_ASSIGNMENT_BY_ID_ROUTE = 'assignments/:assignmentId';
 export const RBAC_USER_ASSIGNMENTS_ROUTE = 'users/:userId/assignments';
 export const RBAC_ME_PERMISSIONS_ROUTE = 'me/permissions';
+export const RBAC_ROLE_BUNDLES_ROUTE = 'role-bundles';
 export const RBAC_ASSIGNMENT_ID_PARAM = 'assignmentId';
 export const RBAC_USER_ID_PARAM = 'userId';
 
@@ -43,3 +44,9 @@ export const RBAC_ESCALATION_DENIED_MESSAGE_KEY: ErrorMessageKey =
 // The seeded catalog is five bundles over ~90 permissions. The bound keeps the
 // flattened catalog read explicitly capped rather than trusting table size.
 export const RBAC_ROLE_CATALOG_MAX = 5000;
+
+// Bounds for the role x permission matrix read. The seeded catalog is 91
+// permissions over 6 bundles; both reads stay explicitly capped rather than
+// trusting table size, and both are ordered deterministically.
+export const RBAC_PERMISSION_CATALOG_MAX = 1000;
+export const RBAC_ROLE_DEFINITION_MAX = 200;

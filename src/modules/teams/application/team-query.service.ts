@@ -33,6 +33,17 @@ export class TeamQueryService {
     );
   }
 
+  /**
+   * The teams the principal actually belongs to. This is the read a team-scoped
+   * administrator uses; browsing the whole platform needs `team.browse.all`,
+   * which no team-scoped bundle carries.
+   */
+  listMyTeams(userId: string, page: PageRequest): Promise<ListTeamsResult> {
+    return this.unitOfWork.runInTransaction(scope =>
+      this.teams.listForUser(scope, userId, page),
+    );
+  }
+
   private async loadTeam(
     scope: TransactionScope,
     teamId: string,

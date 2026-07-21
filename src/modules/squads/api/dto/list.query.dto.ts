@@ -8,7 +8,7 @@ import {
 } from '../../model/squads.constants';
 
 /** Bounded pagination query shared by the squad list endpoints. */
-export class ListQueryDto {
+export class SquadListQueryDto {
   @ApiPropertyOptional({
     minimum: LIST_MIN_LIMIT,
     maximum: LIST_MAX_LIMIT,

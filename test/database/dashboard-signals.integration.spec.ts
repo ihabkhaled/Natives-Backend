@@ -34,6 +34,7 @@ import { ActivitiesSchema1722900000000 } from '../../src/database/migrations/172
 import { ActivityReviewSchema1723000000000 } from '../../src/database/migrations/1723000000000-activity-review-schema';
 import { PointsSchema1723100000000 } from '../../src/database/migrations/1723100000000-points-schema';
 import { LeaderboardIndexes1723200000000 } from '../../src/database/migrations/1723200000000-leaderboard-indexes';
+import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -73,6 +74,7 @@ const MIGRATIONS = [
   ActivityReviewSchema1723000000000,
   PointsSchema1723100000000,
   LeaderboardIndexes1723200000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 function buildDataSource(): DataSource {
@@ -140,17 +142,21 @@ describeIfDb(suiteTitle, () => {
     return id;
   }
 
+  // At most one season per team may be 'active' (ux_seasons_one_active_per_team),
+  // so an additional, older season is seeded as 'closed' — still non-archived,
+  // so it still participates in the fallback the repository performs.
   async function seedSeason(
     teamId: string,
     startsOn: string,
     endsOn: string,
+    status = 'active',
   ): Promise<string> {
     const id = randomUUID();
     await activeDataSource.query(
       `INSERT INTO "seasons" ("id", "team_id", "slug", "name", "starts_on",
                              "ends_on", "status")
-       VALUES ($1, $2, $3, 'Season', $4, $5, 'active')`,
-      [id, teamId, `s-${id.slice(0, 8)}`, startsOn, endsOn],
+       VALUES ($1, $2, $3, 'Season', $4, $5, $6)`,
+      [id, teamId, `s-${id.slice(0, 8)}`, startsOn, endsOn, status],
     );
     return id;
   }
@@ -225,7 +231,7 @@ describeIfDb(suiteTitle, () => {
   it('falls back to the team current season for a season-less membership', async () => {
     const userId = await seedUser();
     const teamId = await seedTeam();
-    await seedSeason(teamId, '2025-01-01', '2025-12-31');
+    await seedSeason(teamId, '2025-01-01', '2025-12-31', 'closed');
     const current = await seedSeason(teamId, '2026-01-01', '2026-12-31');
     await seedMembership(teamId, userId, null, MembershipStatus.Active);
 

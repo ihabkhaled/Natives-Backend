@@ -1,6 +1,7 @@
 import { buildSeeders, DatabaseLifecycleService } from '@app/database';
 import { AppConfigService } from '@config/app-config.service';
 import { loadSeedAdminConfig } from '@config/seed-admin.config';
+import { loadSeedPersonasConfig } from '@config/seed-personas.config';
 import { PASSWORD_HASH_PORT, type PasswordHashPort } from '@modules/auth';
 import type { NestFastifyApplication } from '@nestjs/platform-fastify';
 
@@ -42,6 +43,7 @@ async function runBootDatabaseLifecycle(
   const seeders = buildSeeders({
     passwordHash,
     loadAdminConfig: loadSeedAdminConfig,
+    loadPersonasConfig: loadSeedPersonasConfig,
   });
   await app.get(DatabaseLifecycleService).run(seeders);
 }

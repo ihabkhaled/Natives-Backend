@@ -43,6 +43,7 @@ const TEST_DB_CONFIG: DatabaseConfig = {
   seedOnStart: false,
 };
 
+const MEMBER_ROLE_KEY: string = RbacRole.Member;
 const TEAM_A = randomUUID();
 const TEAM_B = randomUUID();
 
@@ -267,6 +268,84 @@ describeIfDb(suiteTitle, () => {
       .set('Authorization', `Bearer ${memberToken}`);
     expect(others.status).toBe(403);
     expect(others.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('serves the whole role x permission matrix from the seeded tables', async () => {
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+
+    const response = await request(app.getHttpServer())
+      .get('/api/v1/rbac/role-bundles')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.policyVersion).toBeGreaterThan(0);
+
+    const permissionKeys = response.body.permissions.map(
+      (entry: { key: string }) => entry.key,
+    );
+    expect(permissionKeys).toContain('team.read');
+    // Deterministic ordering: area first, then key within the area.
+    const ordering = response.body.permissions.map(
+      (entry: { area: string; key: string }) => `${entry.area} ${entry.key}`,
+    );
+    expect(ordering).toEqual([...ordering].sort());
+
+    const roleKeys = response.body.roles.map(
+      (role: { key: string }) => role.key,
+    );
+    expect(roleKeys).toEqual([...roleKeys].sort());
+    for (const key of [
+      RbacRole.Member,
+      RbacRole.Coach,
+      RbacRole.TeamAdmin,
+      RbacRole.Scorekeeper,
+      RbacRole.Analyst,
+    ]) {
+      expect(roleKeys).toContain(key);
+    }
+
+    const member = response.body.roles.find(
+      (role: { key: string }) => role.key === MEMBER_ROLE_KEY,
+    );
+    expect(member.isSystem).toBe(true);
+    expect(member.permissions).toContain('team.read');
+    expect(member.permissions).not.toContain('member.roles.manage');
+  });
+
+  it('denies the matrix to a principal without member.roles.manage (403)', async () => {
+    const token = await tokenFor(fixture.memberId, [Role.User]);
+
+    const response = await request(app.getHttpServer())
+      .get('/api/v1/rbac/role-bundles')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(403);
+    expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('rejects an unauthenticated matrix read (401)', async () => {
+    const response = await request(app.getHttpServer()).get(
+      '/api/v1/rbac/role-bundles',
+    );
+
+    expect(response.status).toBe(401);
+    expect(response.body.messageKey).toBe('errors.auth.tokenRequired');
+  });
+
+  it('lets a team-scoped admin read the matrix within their team scope only', async () => {
+    const token = await tokenFor(fixture.teamAdminUserId, [Role.User]);
+
+    const scoped = await request(app.getHttpServer())
+      .get(`/api/v1/rbac/role-bundles?teamId=${TEAM_A}`)
+      .set('Authorization', `Bearer ${token}`);
+    expect(scoped.status).toBe(200);
+    expect(scoped.body.roles.length).toBeGreaterThan(0);
+
+    const unscoped = await request(app.getHttpServer())
+      .get('/api/v1/rbac/role-bundles')
+      .set('Authorization', `Bearer ${token}`);
+    expect(unscoped.status).toBe(403);
+    expect(unscoped.body.messageKey).toBe('errors.auth.permissionDenied');
   });
 
   it('invalidates a stale cache after an assignment change', async () => {

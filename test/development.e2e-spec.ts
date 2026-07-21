@@ -27,6 +27,7 @@ import { PracticeRemindersCalendarSchema1722200000000 } from '../src/database/mi
 import { AssessmentCatalogSchema1722300000000 } from '../src/database/migrations/1722300000000-assessment-catalog-schema';
 import { PlayerAssessmentSchema1722400000000 } from '../src/database/migrations/1722400000000-player-assessment-schema';
 import { DevelopmentSchema1722500000000 } from '../src/database/migrations/1722500000000-development-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -69,6 +70,7 @@ const MIGRATIONS = [
   AssessmentCatalogSchema1722300000000,
   PlayerAssessmentSchema1722400000000,
   DevelopmentSchema1722500000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 const SECRET_NOTE = 'PRIVATE-COACH-NOTE-never-leak';

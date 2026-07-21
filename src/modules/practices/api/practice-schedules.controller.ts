@@ -43,7 +43,7 @@ import {
 } from '../model/practices.constants';
 import { CreateScheduleDto } from './dto/create-schedule.dto';
 import { GenerationResultResponseDto } from './dto/generation-result-response.dto';
-import { ListQueryDto } from './dto/list-query.dto';
+import { PracticeListQueryDto } from './dto/list-query.dto';
 import { ListSchedulesResponseDto } from './dto/list-schedules-response.dto';
 import { ScheduleResponseDto } from './dto/schedule-response.dto';
 import { UpdateScheduleDto } from './dto/update-schedule.dto';
@@ -105,7 +105,7 @@ export class PracticeSchedulesController {
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   list(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
-    @Query() query: ListQueryDto,
+    @Query() query: PracticeListQueryDto,
   ): Promise<ListSchedulesResponseDto> {
     return this.scheduleQuery.listSchedules(
       teamId,

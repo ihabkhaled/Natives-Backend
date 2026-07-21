@@ -12,10 +12,12 @@ import {
 } from '@core/persistence/unit-of-work.port';
 import { Inject, Injectable } from '@nestjs/common';
 
+import { claimsCurrentSeasonSlot } from '../domain/season-lifecycle.state-machine';
 import {
   findOverlappingSeason,
   isValidSeasonRange,
 } from '../domain/season-schedule.policy';
+import { SeasonAlreadyActiveError } from '../errors/season-already-active.error';
 import { SeasonOverlapError } from '../errors/season-overlap.error';
 import { SlugConflictError } from '../errors/slug-conflict.error';
 import { SeasonRepository } from '../infrastructure/season.repository';
@@ -80,6 +82,7 @@ export class CreateSeasonUseCase {
     }
     const status = command.status ?? SeasonStatus.Draft;
     await this.assertNoOverlap(scope, teamId, command, status);
+    await this.assertCurrentSlotFree(scope, teamId, status);
     const now = this.clock.now();
     const season = await this.seasons.insert(
       scope,
@@ -116,6 +119,23 @@ export class CreateSeasonUseCase {
       null
     ) {
       throw new SeasonOverlapError();
+    }
+  }
+
+  /**
+   * A team has exactly one current season. Creating a second active one is a
+   * typed conflict here; `ux_seasons_one_active_per_team` is the backstop.
+   */
+  private async assertCurrentSlotFree(
+    scope: TransactionScope,
+    teamId: string,
+    status: SeasonStatus,
+  ): Promise<void> {
+    if (!claimsCurrentSeasonSlot(status)) {
+      return;
+    }
+    if (await this.seasons.hasOtherActive(scope, teamId, null)) {
+      throw new SeasonAlreadyActiveError();
     }
   }
 

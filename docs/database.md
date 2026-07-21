@@ -127,8 +127,8 @@ directly); the lifecycle is invoked only by the real long-running entrypoint.
    the row and **skips** — nothing is ever re-seeded. If a seeder's
    content-derived `checksum` differs from the recorded one, the framework logs
    an auditable warning and does **not** re-run it (no hidden mutation). The
-   runtime admin credential (`SEED_ADMIN_PASSWORD`) is read lazily, only when a
-   seeder actually runs — i.e. only on a fresh database.
+   runtime credentials (`SEED_ADMIN_PASSWORD`, `SEED_PERSONA_PASSWORD`) are read
+   lazily, only when a seeder actually runs — i.e. only on a fresh database.
 
 `seed_history` columns: `id` (uuid), `seed_key` (unique), `checksum`,
 `applied_at` (timestamptz UTC), `applied_by` (`boot` or `cli`). The framework is
@@ -145,10 +145,11 @@ is a clean no-op.
 The registry (`src/database/seeds/seed-registry.ts`) is **ordered**; the runner
 applies each seeder that has no `seed_history` row, in registration order.
 
-| `seed_key`              | Owner file      | What it provisions                                                                                         |
-| ----------------------- | --------------- | ---------------------------------------------------------------------------------------------------------- |
-| `admin`                 | `seed-admin.ts` | The default administrator account, its password credential, and a global TEAM_ADMIN assignment.            |
-| `team-ultimate-natives` | `seed-team.ts`  | The real team, its current season, and the administrator's membership + team-scoped TEAM_ADMIN assignment. |
+| `seed_key`              | Owner file         | What it provisions                                                                                                                                             |
+| ----------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `admin`                 | `seed-admin.ts`    | The default administrator account, its password credential, and a global TEAM_ADMIN assignment.                                                                |
+| `team-ultimate-natives` | `seed-team.ts`     | The real team, its current season, and the administrator's membership + team-scoped TEAM_ADMIN assignment.                                                     |
+| `personas`              | `seed-personas.ts` | The full demonstration persona cast, their credentials, memberships and scoped roles, plus reference catalogs and venues. See [docs/seeding.md](./seeding.md). |
 
 **`team-ultimate-natives`** (added after `admin`, because it links the account
 that seeder provisions — it receives only that seeder's email, never its

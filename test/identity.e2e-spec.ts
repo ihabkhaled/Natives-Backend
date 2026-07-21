@@ -19,6 +19,7 @@ import { IdentitySchema1721300000000 } from '../src/database/migrations/17213000
 import { RbacSchema1721400000000 } from '../src/database/migrations/1721400000000-rbac-schema';
 import { TeamsSchema1721500000000 } from '../src/database/migrations/1721500000000-teams-schema';
 import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -66,6 +67,7 @@ async function migrateAndSeed(): Promise<SeededFixture | null> {
         RbacSchema1721400000000,
         TeamsSchema1721500000000,
         MembersSchema1721600000000,
+        PlatformLifecycleSchema1723800000000,
       ],
     });
     await dataSource.initialize();
@@ -132,6 +134,7 @@ describeIfDb(suiteTitle, () => {
   afterAll(async () => {
     await app.close();
     if (seededDataSource) {
+      await seededDataSource.undoLastMigration();
       await seededDataSource.undoLastMigration();
       await seededDataSource.undoLastMigration();
       await seededDataSource.undoLastMigration();

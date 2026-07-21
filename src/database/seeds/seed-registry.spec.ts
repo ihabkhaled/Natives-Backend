@@ -1,6 +1,10 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import { SEED_ADMIN_KEY, SEED_TEAM_KEY } from './seed.constants';
+import {
+  SEED_ADMIN_KEY,
+  SEED_PERSONAS_KEY,
+  SEED_TEAM_KEY,
+} from './seed.constants';
 import type { SeedContext } from './seed.types';
 import { buildSeeders } from './seed-registry';
 
@@ -12,16 +16,18 @@ function buildContext(): SeedContext {
       password: 'runtime-only-password',
       displayName: 'Admin',
     })),
+    loadPersonasConfig: vi.fn(() => ({ password: 'persona-only-password' })),
   };
 }
 
 describe('buildSeeders', () => {
-  it('registers the admin seeder before the team seeder', () => {
+  it('registers admin, then team, then personas', () => {
     const seeders = buildSeeders(buildContext());
 
     expect(seeders.map(seeder => seeder.key)).toEqual([
       SEED_ADMIN_KEY,
       SEED_TEAM_KEY,
+      SEED_PERSONAS_KEY,
     ]);
   });
 
@@ -42,5 +48,6 @@ describe('buildSeeders', () => {
     buildSeeders(context);
 
     expect(context.loadAdminConfig).not.toHaveBeenCalled();
+    expect(context.loadPersonasConfig).not.toHaveBeenCalled();
   });
 });

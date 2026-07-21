@@ -92,6 +92,75 @@ describe('App (e2e)', () => {
     }
   });
 
+  it('CORS preflight allows every request header the client sends', async () => {
+    const response = await request(app.getHttpServer())
+      .options('/api/v1/teams')
+      .set('Origin', ALLOWED_ORIGIN)
+      .set('Access-Control-Request-Method', 'POST')
+      .set(
+        'Access-Control-Request-Headers',
+        'authorization,content-type,idempotency-key,x-request-id',
+      );
+
+    expect(response.status).toBe(204);
+    const allowedHeaders =
+      response.headers['access-control-allow-headers'] ?? '';
+    for (const header of [
+      'authorization',
+      'content-type',
+      'idempotency-key',
+      'x-request-id',
+    ]) {
+      expect(allowedHeaders.toLowerCase()).toContain(header);
+    }
+    expect(response.headers['access-control-max-age']).toBe('600');
+    expect(response.headers['access-control-allow-credentials']).toBe('true');
+  });
+
+  it('exposes the headers a browser client actually reads', async () => {
+    // Without Access-Control-Expose-Headers a cross-origin client only sees the
+    // seven safelisted response headers, so the correlation id, the calendar
+    // feed filename and the throttler back-off read as null in the browser.
+    const response = await request(app.getHttpServer())
+      .get('/api/v1/health')
+      .set('Origin', ALLOWED_ORIGIN);
+
+    expect(response.status).toBe(200);
+    const exposed = (
+      response.headers['access-control-expose-headers'] ?? ''
+    ).toLowerCase();
+    for (const header of [
+      'x-request-id',
+      'content-disposition',
+      'retry-after',
+    ]) {
+      expect(exposed).toContain(header);
+    }
+  });
+
+  it('echoes a correlation id on every response, including errors', async () => {
+    const ok = await request(app.getHttpServer()).get('/api/v1/health');
+    expect(ok.headers['x-request-id']).toMatch(/^[0-9a-f-]{36}$/u);
+
+    const denied = await request(app.getHttpServer()).get('/api/v1/teams');
+    expect(denied.status).toBe(401);
+    expect(denied.headers['x-request-id']).toMatch(/^[0-9a-f-]{36}$/u);
+  });
+
+  it('serves the public calendar feed under the global prefix', async () => {
+    // The ICS feed is @Public but still mounted inside /api/v1, so the same
+    // CORS policy (and the exposed Content-Disposition) applies to it.
+    const response = await request(app.getHttpServer())
+      .get('/api/v1/calendar/feeds/not-a-real-token.ics')
+      .set('Origin', ALLOWED_ORIGIN);
+
+    expect(response.status).not.toBe(401);
+    expect(response.status).not.toBe(403);
+    expect(
+      (response.headers['access-control-expose-headers'] ?? '').toLowerCase(),
+    ).toContain('content-disposition');
+  });
+
   it('GET /api/v1/health returns ok with security headers', async () => {
     const response = await request(app.getHttpServer()).get('/api/v1/health');
 

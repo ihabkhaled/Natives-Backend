@@ -34,7 +34,7 @@ import {
 } from '../model/squads.constants';
 import { AvailabilityResponseDto } from './dto/availability-response.dto';
 import { DeclareAvailabilityDto } from './dto/declare-availability.dto';
-import { ListQueryDto } from './dto/list.query.dto';
+import { SquadListQueryDto } from './dto/list.query.dto';
 import { ListAvailabilityResponseDto } from './dto/list-availability.response.dto';
 
 /**
@@ -59,7 +59,7 @@ export class SquadAvailabilityController {
   list(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(SQUAD_ID_PARAM, UuidValidationPipe) squadId: string,
-    @Query() query: ListQueryDto,
+    @Query() query: SquadListQueryDto,
   ): Promise<ListAvailabilityResponseDto> {
     return this.query.listForSquad(
       teamId,

@@ -24,6 +24,7 @@ import { MembersSchema1721600000000 } from '../../src/database/migrations/172160
 import { PlatformSchema1721700000000 } from '../../src/database/migrations/1721700000000-platform-schema';
 import { PracticesSchema1721800000000 } from '../../src/database/migrations/1721800000000-practices-schema';
 import { PracticeRsvpSchema1721900000000 } from '../../src/database/migrations/1721900000000-practice-rsvp-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -50,6 +51,7 @@ const MIGRATIONS = [
   PlatformSchema1721700000000,
   PracticesSchema1721800000000,
   PracticeRsvpSchema1721900000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 function buildDataSource(): DataSource {
@@ -178,6 +180,9 @@ describeIfDb(suiteTitle, () => {
     );
     expect(present[0].relation).not.toBeNull();
 
+    // Two steps back: the trailing platform-lifecycle migration (a pure ALTER
+    // on teams/seasons) first, then this schema, which drops its own tables.
+    await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     const dropped = await activeDataSource.query(
       `SELECT to_regclass('public.practice_rsvps') AS relation`,

@@ -51,7 +51,7 @@ import { CreateFeedbackDto } from './dto/create-feedback.dto';
 import { FeedbackRevisionsResponseDto } from './dto/feedback-revisions.response.dto';
 import { ListCoachFeedbackResponseDto } from './dto/list-coach-feedback.response.dto';
 import { ListDevelopmentQueryDto } from './dto/list-development.query.dto';
-import { OptimisticVersionDto } from './dto/optimistic-version.dto';
+import { DevelopmentOptimisticVersionDto } from './dto/optimistic-version.dto';
 import { UpdateFeedbackDto } from './dto/update-feedback.dto';
 
 /**
@@ -160,7 +160,7 @@ export class CoachFeedbackController {
   submit(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(FEEDBACK_ID_PARAM, UuidValidationPipe) feedbackId: string,
-    @Body() dto: OptimisticVersionDto,
+    @Body() dto: DevelopmentOptimisticVersionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<CoachFeedbackResponseDto> {
     return this.submitFeedback.execute(actor, teamId, feedbackId, {
@@ -178,7 +178,7 @@ export class CoachFeedbackController {
   publish(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(FEEDBACK_ID_PARAM, UuidValidationPipe) feedbackId: string,
-    @Body() dto: OptimisticVersionDto,
+    @Body() dto: DevelopmentOptimisticVersionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<CoachFeedbackResponseDto> {
     return this.publishFeedback.execute(actor, teamId, feedbackId, {

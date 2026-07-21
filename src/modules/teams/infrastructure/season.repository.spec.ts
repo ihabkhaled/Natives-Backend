@@ -2,7 +2,11 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { SeasonStatus } from '../model/teams.enums';
 import type { SeasonRow } from '../model/teams.rows';
-import type { NewSeason, SeasonUpdate } from '../model/teams.types';
+import type {
+  NewSeason,
+  SeasonStatusChange,
+  SeasonUpdate,
+} from '../model/teams.types';
 import { SeasonRepository } from './season.repository';
 
 const NOW = new Date('2026-06-01T12:00:00.000Z');
@@ -49,6 +53,15 @@ const SEASON_UPDATE: SeasonUpdate = {
   startsOn: '2026-01-01',
   endsOn: '2026-07-31',
   status: SeasonStatus.Active,
+  updatedBy: 'admin-1',
+  expectedVersion: 1,
+  now: NOW,
+};
+
+const STATUS_CHANGE: SeasonStatusChange = {
+  id: 'season-1',
+  teamId: 'team-1',
+  status: SeasonStatus.Closed,
   updatedBy: 'admin-1',
   expectedVersion: 1,
   now: NOW,
@@ -129,16 +142,48 @@ describe('SeasonRepository', () => {
     ).resolves.toBeNull();
   });
 
-  it('archives a season or returns null when already archived', async () => {
-    scope.run.mockResolvedValueOnce([seasonRow({ status: 'archived' })]);
+  it('resolves the single active season as the current one, or null', async () => {
+    scope.run.mockResolvedValueOnce([seasonRow({ status: 'active' })]);
     await expect(
-      repository.archive(scope as never, 'team-1', 'season-1', 'admin-1', NOW),
-    ).resolves.toMatchObject({ status: SeasonStatus.Archived });
+      repository.findCurrent(scope as never, 'team-1'),
+    ).resolves.toMatchObject({ status: SeasonStatus.Active });
+    expect(scope.run.mock.calls[0]?.[0]).toContain(`"status" = 'active'`);
 
     scope.run.mockResolvedValueOnce([]);
     await expect(
-      repository.archive(scope as never, 'team-1', 'season-1', 'admin-1', NOW),
+      repository.findCurrent(scope as never, 'team-1'),
     ).resolves.toBeNull();
+  });
+
+  it('detects another active season, excluding the one being changed', async () => {
+    scope.run.mockResolvedValueOnce([{ id: 'other' }]);
+    await expect(
+      repository.hasOtherActive(scope as never, 'team-1', 'season-1'),
+    ).resolves.toBe(true);
+    expect(scope.run.mock.calls[0]?.[1]).toEqual(['team-1', 'season-1']);
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.hasOtherActive(scope as never, 'team-1', null),
+    ).resolves.toBe(false);
+  });
+
+  it('applies a season status change or returns null on a version miss', async () => {
+    scope.run.mockResolvedValueOnce([
+      seasonRow({ status: 'closed', version: 2 }),
+    ]);
+    await expect(
+      repository.applyStatusChange(scope as never, STATUS_CHANGE),
+    ).resolves.toMatchObject({ status: SeasonStatus.Closed, version: 2 });
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.applyStatusChange(scope as never, {
+        ...STATUS_CHANGE,
+        expectedVersion: null,
+      }),
+    ).resolves.toBeNull();
+    expect(scope.run.mock.calls[1]?.[0]).toContain('$6::int IS NULL');
   });
 
   it('lists seasons with a total, defaulting the count to zero', async () => {

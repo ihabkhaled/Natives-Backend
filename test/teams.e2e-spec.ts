@@ -17,6 +17,7 @@ import { BaselineSchema1721200000000 } from '../src/database/migrations/17212000
 import { IdentitySchema1721300000000 } from '../src/database/migrations/1721300000000-identity-schema';
 import { RbacSchema1721400000000 } from '../src/database/migrations/1721400000000-rbac-schema';
 import { TeamsSchema1721500000000 } from '../src/database/migrations/1721500000000-teams-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -49,6 +50,7 @@ interface Fixture {
   readonly adminId: string;
   readonly memberId: string;
   readonly teamAdminUserId: string;
+  readonly superAdminUserId: string;
   readonly suspendedAdminId: string;
 }
 
@@ -74,6 +76,7 @@ async function migrateAndSeed(): Promise<Fixture | null> {
         IdentitySchema1721300000000,
         RbacSchema1721400000000,
         TeamsSchema1721500000000,
+        PlatformLifecycleSchema1723800000000,
       ],
     });
     await dataSource.initialize();
@@ -81,12 +84,20 @@ async function migrateAndSeed(): Promise<Fixture | null> {
     const adminId = await seedUser(dataSource, 'active', Role.Admin);
     const memberId = await seedUser(dataSource, 'active', Role.User);
     const teamAdminUserId = await seedUser(dataSource, 'active', Role.User);
+    const superAdminUserId = await seedUser(dataSource, 'active', Role.User);
     const suspendedAdminId = await seedUser(
       dataSource,
       'suspended',
       Role.Admin,
     );
-    return { dataSource, adminId, memberId, teamAdminUserId, suspendedAdminId };
+    return {
+      dataSource,
+      adminId,
+      memberId,
+      teamAdminUserId,
+      superAdminUserId,
+      suspendedAdminId,
+    };
   } catch {
     return null;
   }
@@ -116,13 +127,14 @@ describeIfDb(suiteTitle, () => {
     return tokenPort.sign({ userId, email: 'e@example.test', roles });
   }
 
-  async function assignTeamAdmin(
+  async function assignRole(
     userId: string,
-    scopeTeam: string,
+    roleKey: RbacRole,
+    scopeTeam: string | null,
   ): Promise<void> {
     const role = await fixture.dataSource.query(
       `SELECT "id" FROM "roles" WHERE "key" = $1`,
-      [RbacRole.TeamAdmin],
+      [roleKey],
     );
     await fixture.dataSource.query(
       `INSERT INTO "user_role_assignments" ("id", "user_id", "role_id", "team_id")
@@ -132,6 +144,13 @@ describeIfDb(suiteTitle, () => {
     await fixture.dataSource.query(
       `UPDATE "rbac_policy_version" SET "version" = "version" + 1 WHERE "singleton" = true`,
     );
+  }
+
+  async function assignTeamAdmin(
+    userId: string,
+    scopeTeam: string,
+  ): Promise<void> {
+    await assignRole(userId, RbacRole.TeamAdmin, scopeTeam);
   }
 
   beforeAll(async () => {
@@ -150,11 +169,15 @@ describeIfDb(suiteTitle, () => {
       .send({ slug: `natives-${randomUUID().slice(0, 8)}`, name: 'Natives' });
     teamId = created.body.id;
     await assignTeamAdmin(fixture.teamAdminUserId, teamId);
+    // A platform super admin is an ORDINARY account whose SUPER_ADMIN bundle is
+    // assigned globally (team_id IS NULL) — no elevated `users.role` needed.
+    await assignRole(fixture.superAdminUserId, RbacRole.SuperAdmin, null);
   });
 
   afterAll(async () => {
     await app.close();
     if (seededDataSource) {
+      await seededDataSource.undoLastMigration();
       await seededDataSource.undoLastMigration();
       await seededDataSource.undoLastMigration();
       await seededDataSource.undoLastMigration();
@@ -335,12 +358,240 @@ describeIfDb(suiteTitle, () => {
     expect(badge.value).toEqual({ tiers: [100, 200, 450] });
   });
 
-  it('lets any authenticated member list teams (team.read)', async () => {
-    const token = await tokenFor(fixture.memberId, [Role.User]);
+  it('lets a globally assigned super admin create a team', async () => {
+    const token = await tokenFor(fixture.superAdminUserId, [Role.User]);
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/teams')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ slug: `sa-${randomUUID().slice(0, 8)}`, name: 'Super Created' });
+    expect(response.status).toBe(201);
+  });
+
+  it('denies a team admin the platform-only create-team route (403)', async () => {
+    const token = await tokenFor(fixture.teamAdminUserId, [Role.User]);
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/teams')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ slug: `ta-${randomUUID().slice(0, 8)}`, name: 'Nope' });
+    expect(response.status).toBe(403);
+    expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('denies a team admin and a plain member the browse-all-teams route (403)', async () => {
+    for (const userId of [fixture.teamAdminUserId, fixture.memberId]) {
+      const token = await tokenFor(userId, [Role.User]);
+      const response = await request(app.getHttpServer())
+        .get('/api/v1/teams')
+        .set('Authorization', `Bearer ${token}`);
+      expect(response.status).toBe(403);
+      expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+    }
+  });
+
+  it('lets a super admin browse every team', async () => {
+    const token = await tokenFor(fixture.superAdminUserId, [Role.User]);
     const response = await request(app.getHttpServer())
       .get('/api/v1/teams')
       .set('Authorization', `Bearer ${token}`);
     expect(response.status).toBe(200);
-    expect(Array.isArray(response.body.items)).toBe(true);
+    expect(response.body.total).toBeGreaterThan(0);
+  });
+
+  it('scopes GET /teams/mine to the caller own teams', async () => {
+    const teamAdmin = await tokenFor(fixture.teamAdminUserId, [Role.User]);
+    const mine = await request(app.getHttpServer())
+      .get('/api/v1/teams/mine')
+      .set('Authorization', `Bearer ${teamAdmin}`);
+    expect(mine.status).toBe(200);
+    expect(mine.body.items.map((team: { id: string }) => team.id)).toEqual([
+      teamId,
+    ]);
+
+    const member = await tokenFor(fixture.memberId, [Role.User]);
+    const none = await request(app.getHttpServer())
+      .get('/api/v1/teams/mine')
+      .set('Authorization', `Bearer ${member}`);
+    expect(none.status).toBe(200);
+    expect(none.body.items).toEqual([]);
+  });
+
+  it('denies a team admin the platform-only soft removal (403)', async () => {
+    const token = await tokenFor(fixture.teamAdminUserId, [Role.User]);
+    const response = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/remove`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({});
+    expect(response.status).toBe(403);
+    expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('walks a team through disable, enable, archive and soft removal', async () => {
+    const superAdmin = await tokenFor(fixture.superAdminUserId, [Role.User]);
+    const created = await request(app.getHttpServer())
+      .post('/api/v1/teams')
+      .set('Authorization', `Bearer ${superAdmin}`)
+      .send({ slug: `life-${randomUUID().slice(0, 8)}`, name: 'Lifecycle' });
+    expect(created.status).toBe(201);
+    const target = created.body.id;
+
+    const disabled = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${target}/deactivate`)
+      .set('Authorization', `Bearer ${superAdmin}`)
+      .send({ expectedVersion: created.body.version });
+    expect(disabled.status).toBe(200);
+    expect(disabled.body.status).toBe('disabled');
+
+    const enabled = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${target}/activate`)
+      .set('Authorization', `Bearer ${superAdmin}`)
+      .send({ expectedVersion: disabled.body.version });
+    expect(enabled.status).toBe(200);
+    expect(enabled.body.status).toBe('active');
+
+    const tooSoon = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${target}/remove`)
+      .set('Authorization', `Bearer ${superAdmin}`)
+      .send({});
+    expect(tooSoon.status).toBe(409);
+    expect(tooSoon.body.messageKey).toBe('errors.teams.teamInvalidTransition');
+
+    const archived = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${target}/archive`)
+      .set('Authorization', `Bearer ${superAdmin}`)
+      .send({ expectedVersion: enabled.body.version });
+    expect(archived.status).toBe(200);
+    expect(archived.body.status).toBe('archived');
+
+    const removed = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${target}/remove`)
+      .set('Authorization', `Bearer ${superAdmin}`)
+      .send({ expectedVersion: archived.body.version });
+    expect(removed.status).toBe(200);
+    expect(removed.body.deletedAt).not.toBeNull();
+
+    const gone = await request(app.getHttpServer())
+      .get(`/api/v1/teams/${target}`)
+      .set('Authorization', `Bearer ${superAdmin}`);
+    expect(gone.status).toBe(404);
+    expect(gone.body.messageKey).toBe('errors.teams.teamNotFound');
+
+    const rows = await fixture.dataSource.query(
+      `SELECT "deleted_at" FROM "teams" WHERE "id" = $1`,
+      [target],
+    );
+    expect(rows).toHaveLength(1);
+    expect(rows[0].deleted_at).not.toBeNull();
+  });
+
+  it('reports a stale version on a lifecycle transition (409)', async () => {
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+    const response = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/deactivate`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({ expectedVersion: 999 });
+    expect(response.status).toBe(409);
+    expect(response.body.messageKey).toBe('errors.teams.versionConflict');
+  });
+
+  it('denies a team admin every lifecycle move on another team (403)', async () => {
+    const token = await tokenFor(fixture.teamAdminUserId, [Role.User]);
+    const response = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${otherTeamId}/archive`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({});
+    expect(response.status).toBe(403);
+    expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('runs a season through activate, close and re-activate', async () => {
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+    const created = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/seasons`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        slug: `life-${randomUUID().slice(0, 8)}`,
+        name: 'Lifecycle season',
+        startsOn: '2031-01-01',
+        endsOn: '2031-06-30',
+      });
+    expect(created.status).toBe(201);
+    expect(created.body.status).toBe('draft');
+
+    const activated = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/seasons/${created.body.id}/activate`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({ expectedVersion: created.body.version });
+    expect(activated.status).toBe(200);
+    expect(activated.body.status).toBe('active');
+
+    const current = await request(app.getHttpServer())
+      .get(`/api/v1/teams/${teamId}/seasons/current`)
+      .set('Authorization', `Bearer ${token}`);
+    expect(current.status).toBe(200);
+    expect(current.body.id).toBe(created.body.id);
+
+    const closed = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/seasons/${created.body.id}/close`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({ expectedVersion: activated.body.version });
+    expect(closed.status).toBe(200);
+    expect(closed.body.status).toBe('closed');
+
+    const missing = await request(app.getHttpServer())
+      .get(`/api/v1/teams/${teamId}/seasons/current`)
+      .set('Authorization', `Bearer ${token}`);
+    expect(missing.status).toBe(404);
+    expect(missing.body.messageKey).toBe('errors.teams.currentSeasonNotFound');
+  });
+
+  it('rejects an invalid season transition (409)', async () => {
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+    const created = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/seasons`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        slug: `bad-${randomUUID().slice(0, 8)}`,
+        name: 'Bad transition',
+        startsOn: '2032-01-01',
+        endsOn: '2032-06-30',
+      });
+    expect(created.status).toBe(201);
+
+    const response = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/seasons/${created.body.id}/close`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({});
+    expect(response.status).toBe(409);
+    expect(response.body.messageKey).toBe(
+      'errors.teams.seasonInvalidTransition',
+    );
+  });
+
+  it('refuses a second current season for the same team (409)', async () => {
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+    const first = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/seasons`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        slug: `one-${randomUUID().slice(0, 8)}`,
+        name: 'Current one',
+        startsOn: '2033-01-01',
+        endsOn: '2033-06-30',
+        status: 'active',
+      });
+    expect(first.status).toBe(201);
+
+    const second = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/seasons`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        slug: `two-${randomUUID().slice(0, 8)}`,
+        name: 'Current two',
+        startsOn: '2034-01-01',
+        endsOn: '2034-06-30',
+        status: 'active',
+      });
+    expect(second.status).toBe(409);
+    expect(second.body.messageKey).toBe('errors.teams.seasonAlreadyActive');
   });
 });

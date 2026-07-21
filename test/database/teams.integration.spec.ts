@@ -19,6 +19,7 @@ import { BaselineSchema1721200000000 } from '../../src/database/migrations/17212
 import { IdentitySchema1721300000000 } from '../../src/database/migrations/1721300000000-identity-schema';
 import { RbacSchema1721400000000 } from '../../src/database/migrations/1721400000000-rbac-schema';
 import { TeamsSchema1721500000000 } from '../../src/database/migrations/1721500000000-teams-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -46,6 +47,7 @@ function buildDataSource(): DataSource {
       IdentitySchema1721300000000,
       RbacSchema1721400000000,
       TeamsSchema1721500000000,
+      PlatformLifecycleSchema1723800000000,
     ],
   });
 }
@@ -79,6 +81,7 @@ describeIfDb(suiteTitle, () => {
   const settings = new SettingVersionRepository();
 
   afterAll(async () => {
+    await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
@@ -120,6 +123,9 @@ describeIfDb(suiteTitle, () => {
     );
     expect(present[0].relation).not.toBeNull();
 
+    // Two steps back: the platform-lifecycle migration first (it only alters
+    // teams/seasons), then the teams schema itself, which drops the table.
+    await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     const dropped = await activeDataSource.query(
       `SELECT to_regclass('public.teams') AS relation`,
@@ -127,6 +133,70 @@ describeIfDb(suiteTitle, () => {
     expect(dropped[0].relation).toBeNull();
 
     await activeDataSource.runMigrations();
+  });
+
+  it('constrains the team lifecycle and adds the soft-removal column', async () => {
+    await activeDataSource.runMigrations();
+
+    const columns = await activeDataSource.query(
+      `SELECT "column_name" FROM information_schema.columns
+        WHERE "table_name" = 'teams' AND "column_name" = 'deleted_at'`,
+    );
+    expect(columns).toHaveLength(1);
+
+    const actorId = await seedUser();
+    const teamId = await createTeam(actorId, `lifecycle-${randomUUID()}`);
+    await expect(
+      activeDataSource.query(
+        `UPDATE "teams" SET "status" = 'bogus' WHERE "id" = $1`,
+        [teamId],
+      ),
+    ).rejects.toThrow(/ck_teams_status/u);
+  });
+
+  it('permits at most one active season per team', async () => {
+    await activeDataSource.runMigrations();
+
+    const actorId = await seedUser();
+    const teamId = await createTeam(actorId, `seasons-${randomUUID()}`);
+    await activeDataSource.query(
+      `INSERT INTO "seasons" ("team_id", "slug", "name", "starts_on", "ends_on", "status")
+       VALUES ($1, 'a', 'A', '2030-01-01', '2030-06-30', 'active')`,
+      [teamId],
+    );
+
+    await expect(
+      activeDataSource.query(
+        `INSERT INTO "seasons" ("team_id", "slug", "name", "starts_on", "ends_on", "status")
+         VALUES ($1, 'b', 'B', '2030-07-01', '2030-12-31', 'active')`,
+        [teamId],
+      ),
+    ).rejects.toThrow(/ux_seasons_one_active_per_team/u);
+  });
+
+  it('seeds the platform permissions and the SUPER_ADMIN bundle', async () => {
+    await activeDataSource.runMigrations();
+
+    const permissions = await activeDataSource.query(
+      `SELECT "key" FROM "permissions"
+        WHERE "key" IN ('platform.admin', 'team.create', 'team.browse.all')
+        ORDER BY "key"`,
+    );
+    expect(permissions.map((row: { key: string }) => row.key)).toEqual([
+      'platform.admin',
+      'team.browse.all',
+      'team.create',
+    ]);
+
+    const bundle = await activeDataSource.query(
+      `SELECT COUNT(*)::int AS "count" FROM "role_permissions" rp
+         JOIN "roles" r ON r."id" = rp."role_id"
+        WHERE r."key" = 'SUPER_ADMIN'`,
+    );
+    const total = await activeDataSource.query(
+      `SELECT COUNT(*)::int AS "count" FROM "permissions"`,
+    );
+    expect(bundle[0].count).toBe(total[0].count);
   });
 
   it('persists a team and enforces optimistic concurrency', async () => {

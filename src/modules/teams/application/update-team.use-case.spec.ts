@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { OptimisticConflictError } from '../errors/optimistic-conflict.error';
 import { TeamNotFoundError } from '../errors/team-not-found.error';
-import { ResourceStatus } from '../model/teams.enums';
+import { TeamStatus } from '../model/teams.enums';
 import type { Team } from '../model/teams.types';
 import { UpdateTeamUseCase } from './update-team.use-case';
 
@@ -28,7 +28,8 @@ function team(overrides: Partial<Team> = {}): Team {
     timezone: 'Africa/Cairo',
     primaryColor: null,
     logoMediaKey: null,
-    status: ResourceStatus.Active,
+    status: TeamStatus.Active,
+    deletedAt: null,
     createdBy: 'admin-1',
     updatedBy: null,
     createdAt: NOW,
@@ -84,7 +85,7 @@ describe('UpdateTeamUseCase', () => {
 
   it('reports not-found for an archived team', async () => {
     harness.teams.findById.mockResolvedValue(
-      team({ status: ResourceStatus.Archived }),
+      team({ status: TeamStatus.Archived }),
     );
     await expect(
       harness.useCase.execute(ACTOR, 'team-1', COMMAND),

@@ -95,6 +95,42 @@ export interface RoleBundleRecord {
   readonly permissions: readonly string[];
 }
 
+/** One catalog permission as the role-matrix read model exposes it. */
+export interface PermissionCatalogRecord {
+  readonly key: string;
+  readonly area: string;
+  readonly description: string;
+}
+
+/** One role bundle header (no permissions) as stored in the `roles` table. */
+export interface RoleDefinitionRecord {
+  readonly key: string;
+  readonly displayName: string;
+  readonly description: string;
+  readonly isSystem: boolean;
+}
+
+/** A role bundle joined with the catalog permission keys it grants. */
+export interface RoleMatrixRole {
+  readonly key: string;
+  readonly displayName: string;
+  readonly description: string;
+  readonly isSystem: boolean;
+  readonly permissions: readonly string[];
+}
+
+/**
+ * The full role x permission matrix, read from the seeded database tables
+ * (`roles`, `permissions`, `role_permissions`) — the source of truth — rather
+ * than the compiled catalog constant. `policyVersion` lets a client cache the
+ * matrix and revalidate it after any assignment or bundle change.
+ */
+export interface RoleMatrixView {
+  readonly policyVersion: number;
+  readonly permissions: readonly PermissionCatalogRecord[];
+  readonly roles: readonly RoleMatrixRole[];
+}
+
 /** The roles a membership holds in a team plus the roles the actor may set. */
 export interface TeamRolesView {
   readonly roles: readonly string[];

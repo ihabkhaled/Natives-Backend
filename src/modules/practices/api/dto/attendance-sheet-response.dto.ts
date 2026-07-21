@@ -1,7 +1,7 @@
 import { ApiProperty } from '@core/openapi';
 
 import { AttendanceState } from '../../model/attendance.enums';
-import { RosterEntryResponseDto } from './roster-entry-response.dto';
+import { PracticeRosterEntryResponseDto } from './roster-entry-response.dto';
 
 /**
  * The attendance roster + sheet finalization state for a session (the prefill /
@@ -21,8 +21,8 @@ export class AttendanceSheetResponseDto {
   @ApiProperty({ type: Number, nullable: true })
   declare readonly version: number | null;
 
-  @ApiProperty({ type: [RosterEntryResponseDto] })
-  declare readonly items: readonly RosterEntryResponseDto[];
+  @ApiProperty({ type: [PracticeRosterEntryResponseDto] })
+  declare readonly items: readonly PracticeRosterEntryResponseDto[];
 
   @ApiProperty()
   declare readonly total: number;

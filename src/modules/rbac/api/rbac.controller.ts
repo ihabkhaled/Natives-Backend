@@ -29,6 +29,7 @@ import { AssignRoleUseCase } from '../application/assign-role.use-case';
 import { GetEffectivePermissionsUseCase } from '../application/get-effective-permissions.use-case';
 import { ListUserAssignmentsUseCase } from '../application/list-user-assignments.use-case';
 import { RevokeRoleAssignmentUseCase } from '../application/revoke-role-assignment.use-case';
+import { RoleMatrixQueryService } from '../application/role-matrix-query.service';
 import { toPermissionScope } from '../lib/rbac.helpers';
 import {
   RBAC_API_TAG,
@@ -36,6 +37,7 @@ import {
   RBAC_ASSIGNMENT_ID_PARAM,
   RBAC_ASSIGNMENTS_ROUTE,
   RBAC_ME_PERMISSIONS_ROUTE,
+  RBAC_ROLE_BUNDLES_ROUTE,
   RBAC_ROUTE,
   RBAC_USER_ASSIGNMENTS_ROUTE,
   RBAC_USER_ID_PARAM,
@@ -43,6 +45,7 @@ import {
 import { AssignRoleDto } from './dto/assign-role.dto';
 import { EffectivePermissionsResponseDto } from './dto/effective-permissions-response.dto';
 import { RoleAssignmentResponseDto } from './dto/role-assignment-response.dto';
+import { RoleMatrixResponseDto } from './dto/role-matrix-response.dto';
 import { ScopeQueryDto } from './dto/scope-query.dto';
 import { UserAssignmentsResponseDto } from './dto/user-assignments-response.dto';
 
@@ -54,6 +57,7 @@ export class RbacController {
     private readonly revokeAssignment: RevokeRoleAssignmentUseCase,
     private readonly listUserAssignments: ListUserAssignmentsUseCase,
     private readonly getEffectivePermissions: GetEffectivePermissionsUseCase,
+    private readonly roleMatrixQuery: RoleMatrixQueryService,
   ) {}
 
   @Post(RBAC_ASSIGNMENTS_ROUTE)
@@ -114,6 +118,21 @@ export class RbacController {
     @Param(RBAC_USER_ID_PARAM, UuidValidationPipe) userId: string,
   ): Promise<UserAssignmentsResponseDto> {
     return this.listUserAssignments.execute(userId);
+  }
+
+  @Get(RBAC_ROLE_BUNDLES_ROUTE)
+  @RequirePermissions(Permission.MemberRolesManage)
+  @ApiOperation({
+    summary: 'Get the full role x permission matrix from the seeded catalog',
+  })
+  @ApiOkResponse({
+    description: 'Role bundles and the permission catalog they draw from',
+    type: RoleMatrixResponseDto,
+  })
+  @ApiForbiddenResponse({ description: 'Forbidden' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  roleBundles(): Promise<RoleMatrixResponseDto> {
+    return this.roleMatrixQuery.execute();
   }
 
   @Get(RBAC_ME_PERMISSIONS_ROUTE)

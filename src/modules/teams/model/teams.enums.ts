@@ -4,7 +4,7 @@
  * re-listing literals. Values are the stable strings persisted in the database.
  */
 
-/** Soft-archive lifecycle shared by teams, venues, and catalog entries. */
+/** Soft-archive lifecycle shared by venues and catalog entries. */
 export enum ResourceStatus {
   Active = 'active',
   Archived = 'archived',
@@ -13,10 +13,31 @@ export enum ResourceStatus {
 export const RESOURCE_STATUS_VALUES: readonly ResourceStatus[] =
   Object.values(ResourceStatus);
 
-/** Season lifecycle. Only non-archived seasons participate in overlap checks. */
+/**
+ * Team lifecycle. `Disabled` is the reversible "switched off" state (the team
+ * stays visible and its history intact, but it takes no new work); `Archived` is
+ * the end-of-life state a team must reach before it can be soft-removed. A team
+ * is NEVER hard-deleted — removal only stamps `deleted_at`.
+ */
+export enum TeamStatus {
+  Active = 'active',
+  Disabled = 'disabled',
+  Archived = 'archived',
+}
+
+export const TEAM_STATUS_VALUES: readonly TeamStatus[] =
+  Object.values(TeamStatus);
+
+/**
+ * Season lifecycle. Only non-archived seasons participate in overlap checks, and
+ * at most one season per team may be `Active` at a time (enforced by the partial
+ * unique index `ux_seasons_one_active_per_team`), which is what makes "the
+ * current season" a deterministic, resolvable value.
+ */
 export enum SeasonStatus {
   Draft = 'draft',
   Active = 'active',
+  Closed = 'closed',
   Archived = 'archived',
 }
 

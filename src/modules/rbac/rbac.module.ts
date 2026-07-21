@@ -12,6 +12,7 @@ import { RbacPermissionResolverService } from './application/rbac-permission-res
 import { ReplaceTeamRolesUseCase } from './application/replace-team-roles.use-case';
 import { RevokeRoleAssignmentUseCase } from './application/revoke-role-assignment.use-case';
 import { RoleAssignmentQueryService } from './application/role-assignment-query.service';
+import { RoleMatrixQueryService } from './application/role-matrix-query.service';
 import { TeamRoleQueryService } from './application/team-role-query.service';
 import { RbacRepository } from './infrastructure/rbac.repository';
 
@@ -30,6 +31,7 @@ import { RbacRepository } from './infrastructure/rbac.repository';
     RbacRepository,
     PrivilegeCeilingService,
     RoleAssignmentQueryService,
+    RoleMatrixQueryService,
     TeamRoleQueryService,
     AssignRoleUseCase,
     RevokeRoleAssignmentUseCase,

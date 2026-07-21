@@ -42,7 +42,7 @@ import { AddRosterEntryDto } from './dto/add-roster-entry.dto';
 import { ListRosterEntriesResponseDto } from './dto/list-roster-entries.response.dto';
 import { OverrideRosterEntryDto } from './dto/override-roster-entry.dto';
 import { RemoveRosterEntryDto } from './dto/remove-roster-entry.dto';
-import { RosterEntryResponseDto } from './dto/roster-entry-response.dto';
+import { CompetitionRosterEntryResponseDto } from './dto/roster-entry-response.dto';
 import { RosterPageQueryDto } from './dto/roster-page.query.dto';
 
 /**
@@ -83,7 +83,7 @@ export class RosterEntriesController {
   @RequirePermissions(Permission.RosterManage)
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Add an unflagged player to the roster' })
-  @ApiCreatedResponse({ type: RosterEntryResponseDto })
+  @ApiCreatedResponse({ type: CompetitionRosterEntryResponseDto })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   add(
@@ -91,7 +91,7 @@ export class RosterEntriesController {
     @Param(ROSTER_ID_PARAM, UuidValidationPipe) rosterId: string,
     @Body() dto: AddRosterEntryDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<RosterEntryResponseDto> {
+  ): Promise<CompetitionRosterEntryResponseDto> {
     return this.addEntry.execute(actor, teamId, rosterId, {
       content: toRosterEntryContent(dto),
       override: null,
@@ -105,7 +105,7 @@ export class RosterEntriesController {
   )
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Add a flagged player with an explicit override' })
-  @ApiCreatedResponse({ type: RosterEntryResponseDto })
+  @ApiCreatedResponse({ type: CompetitionRosterEntryResponseDto })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   override(
@@ -113,7 +113,7 @@ export class RosterEntriesController {
     @Param(ROSTER_ID_PARAM, UuidValidationPipe) rosterId: string,
     @Body() dto: OverrideRosterEntryDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<RosterEntryResponseDto> {
+  ): Promise<CompetitionRosterEntryResponseDto> {
     return this.addEntry.execute(actor, teamId, rosterId, {
       content: toRosterEntryContent(dto),
       override: { overrideReason: dto.overrideReason },
@@ -124,7 +124,7 @@ export class RosterEntriesController {
   @RequirePermissions(Permission.RosterManage)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Withdraw a player, keeping the entry as history' })
-  @ApiOkResponse({ type: RosterEntryResponseDto })
+  @ApiOkResponse({ type: CompetitionRosterEntryResponseDto })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   remove(
@@ -133,7 +133,7 @@ export class RosterEntriesController {
     @Param(MEMBERSHIP_ID_PARAM, UuidValidationPipe) membershipId: string,
     @Body() dto: RemoveRosterEntryDto,
     @CurrentUser() actor: AuthUserIdentity,
-  ): Promise<RosterEntryResponseDto> {
+  ): Promise<CompetitionRosterEntryResponseDto> {
     return this.removeEntry.execute(actor, teamId, rosterId, {
       membershipId,
       reason: dto.reason ?? null,

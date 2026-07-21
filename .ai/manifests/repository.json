@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-21T12:47:13.827Z",
-  "treeHash": "sha256:1b02daf40137ab08058cd78e8c8b5f8d09d8fc311b48f36f4cbf290814cd15db",
+  "generatedAt": "2026-07-21T14:36:11.250Z",
+  "treeHash": "sha256:e0c53990b526b43217e48499bef8e89c78c009f1e0f51e75c32aeb5290a29c38",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -39,6 +39,22 @@
         },
         {
           "kind": "const",
+          "name": "CORS_EXPOSED_HEADERS"
+        },
+        {
+          "kind": "const",
+          "name": "CORS_ALLOWED_HEADERS"
+        },
+        {
+          "kind": "const",
+          "name": "CORS_MAX_AGE_SECONDS"
+        },
+        {
+          "kind": "const",
+          "name": "REQUEST_ID_HEADER"
+        },
+        {
+          "kind": "const",
           "name": "BODY_LIMIT_BYTES"
         },
         {
@@ -73,8 +89,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:864dab2b2ed855cf0e1883ce5c206112fbb8b9dbcf79826704809e4812b23eda",
-      "sizeBytes": 959
+      "hash": "sha256:9174bcd5cbd739e6eb94034eb078db80cb8292af933273fc08458f5bd734ef46",
+      "sizeBytes": 2776
     },
     {
       "path": "src/bootstrap/bootstrap.ts",
@@ -85,8 +101,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d02005432aa9b6db9c985523f7872db6b51fa5ddc51c64e4bc63844656566b26",
-      "sizeBytes": 2537
+      "hash": "sha256:a7e2aea68d31a154ed92fbcee9c0751df1bff782d081a255a91d2d0cb310316f",
+      "sizeBytes": 2656
     },
     {
       "path": "src/bootstrap/configure-lifecycle.ts",
@@ -114,8 +130,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6e0b73a8550dcdded9452ec5b08f8ac227a29d7f6fea5c5ef091f9b5cb3aea48",
-      "sizeBytes": 1164
+      "hash": "sha256:769dc208b80b2e1ac920be4e1acabee8fb10412aec067fb8682e75c457db3e2f",
+      "sizeBytes": 2138
     },
     {
       "path": "src/bootstrap/configure-swagger.ts",
@@ -397,6 +413,77 @@
       "sizeBytes": 247
     },
     {
+      "path": "src/bootstrap/openapi-schema-names.spec.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "FirstDto"
+        },
+        {
+          "kind": "class",
+          "name": "SecondDto"
+        },
+        {
+          "kind": "function",
+          "name": "notAClass"
+        },
+        {
+          "kind": "const",
+          "name": "A"
+        }
+      ],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9cbacf4fa176e54b7cf2e66645a69005e91e08c6252206cc0488d1e5c82ef353",
+      "sizeBytes": 2734
+    },
+    {
+      "path": "src/bootstrap/openapi-schema-names.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "findDuplicateNames"
+        },
+        {
+          "kind": "function",
+          "name": "extractExportedClassNames"
+        },
+        {
+          "kind": "function",
+          "name": "collectSchemaReferences"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/bootstrap/openapi-schema-names.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4830aaebec5932a4019055a2341cc195638dc264317e9c039f35577f8f72e129",
+      "sizeBytes": 2252
+    },
+    {
+      "path": "src/bootstrap/register-correlation-header.ts",
+      "root": "bootstrap",
+      "module": "bootstrap",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "registerCorrelationHeader"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a502ea5552e7b62ef5e05f186cbc929ea8a50388af35d1be1cb9811c2f362e43",
+      "sizeBytes": 954
+    },
+    {
       "path": "src/config/app-config.service.ts",
       "root": "config",
       "module": "config",
@@ -560,6 +647,26 @@
         {
           "kind": "const",
           "name": "SEED_ADMIN_DISPLAY_NAME_INVALID_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SEED_PERSONA_PASSWORD"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_PERSONA_PASSWORD_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_PERSONA_PASSWORD_MAX_BYTES"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_PERSONA_PASSWORD_REQUIRED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_PERSONA_PASSWORD_TOO_LONG_MESSAGE"
         },
         {
           "kind": "const",
@@ -837,8 +944,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:98b287fd3c9e4dd6d772c4f7af8e9ee0e08e1b2637c57ec73194d7dd8490ad4b",
-      "sizeBytes": 6767
+      "hash": "sha256:21f63c908a3f8a8f7cc4d5d1dca3545ca647b416c0f99ea469b37a0c550ca027",
+      "sizeBytes": 7602
     },
     {
       "path": "src/config/config.module.ts",
@@ -889,14 +996,18 @@
         },
         {
           "kind": "interface",
+          "name": "SeedPersonasConfig"
+        },
+        {
+          "kind": "interface",
           "name": "RootConfig"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b2613fcfa00c8de58d5cc0ad087561e5e85d0fd4ba01a69d23e57aea6fb9e008",
-      "sizeBytes": 2016
+      "hash": "sha256:6bcfdba873e24e6f4b5f3d51f625f8453602cbb686c648e0cc7755a37a0e3e30",
+      "sizeBytes": 2321
     },
     {
       "path": "src/config/config.utils.spec.ts",
@@ -1133,6 +1244,35 @@
       "kind": "source",
       "hash": "sha256:e34d0f3c663a10a9ff26f628a7436a7f9b48e3b510172aa6781f880474643fa4",
       "sizeBytes": 1992
+    },
+    {
+      "path": "src/config/seed-personas.config.spec.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4988b2c42b306aac26e6ecdca3128e86cdb1fccced18af542cf57ba750e0d514",
+      "sizeBytes": 2414
+    },
+    {
+      "path": "src/config/seed-personas.config.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "loadSeedPersonasConfig"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/config/seed-personas.config.spec.ts",
+      "kind": "source",
+      "hash": "sha256:20aac8c571853bab22434c582f9d8680ca377264a7fc6b6cb66a692b4592819a",
+      "sizeBytes": 1610
     },
     {
       "path": "src/core/auth/auth-identity.validator.spec.ts",
@@ -3551,6 +3691,23 @@
       "sizeBytes": 10830
     },
     {
+      "path": "src/database/migrations/1723800000000-platform-lifecycle-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlatformLifecycleSchema1723800000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a5b819bd5ac11c5b91b427646fcef472ce92ad3e7352df513ef9c6d9873927ad",
+      "sizeBytes": 7108
+    },
+    {
       "path": "src/database/migrations/activities-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3657,6 +3814,18 @@
       "kind": "spec",
       "hash": "sha256:83d5592fa3c5bf706b9e6acd7cf794c9729999fa8210d0f952c5b23d9ec45fd4",
       "sizeBytes": 2357
+    },
+    {
+      "path": "src/database/migrations/platform-lifecycle-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a12ef5e0bdc343415c7e571530b5a9b228379245b6173aae80464b7114ae354e",
+      "sizeBytes": 3786
     },
     {
       "path": "src/database/migrations/player-assessment-schema.spec.ts",
@@ -3780,8 +3949,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:86a0b0812f24cd86b2fec7e6445478e02cee1d216958061290aeeb0e293def04",
-      "sizeBytes": 2228
+      "hash": "sha256:0347aaf9ddfed18d17409965200fffd7328e5e424b32a662f49907b48e7cfa4b",
+      "sizeBytes": 2349
     },
     {
       "path": "src/database/seeds/seed-admin.constants.ts",
@@ -3896,6 +4065,117 @@
       "sizeBytes": 505
     },
     {
+      "path": "src/database/seeds/seed-personas.constants.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "PERSONA_DEFINITIONS"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_DEFINITIONS"
+        },
+        {
+          "kind": "const",
+          "name": "VENUE_DEFINITIONS"
+        },
+        {
+          "kind": "const",
+          "name": "PERSONA_MEMBERSHIP_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "PERSONA_TEAM_MISSING_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "PERSONA_ROLE_MISSING_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "PERSONA_USER_INSERT_FAILED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "PERSONA_MEMBERSHIP_INSERT_FAILED_MESSAGE"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3a25de9434333800edba982ce3babd1c529dcdc8832594853cfc4e7a7acbda0f",
+      "sizeBytes": 5004
+    },
+    {
+      "path": "src/database/seeds/seed-personas.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:af4693af349fa1e24d1d49a72d4549ea3b0506897f148a9696b4142b4f9999f5",
+      "sizeBytes": 7447
+    },
+    {
+      "path": "src/database/seeds/seed-personas.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "createSeedPersonasSeeder"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/seeds/seed-personas.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f19e65d2a866493445566f0fd8bab3d3b2c45ebaf41b32609566f66e9ca42d81",
+      "sizeBytes": 9306
+    },
+    {
+      "path": "src/database/seeds/seed-personas.types.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "PersonaScope"
+        },
+        {
+          "kind": "const",
+          "name": "PERSONA_SCOPE_VALUES"
+        },
+        {
+          "kind": "interface",
+          "name": "PersonaDefinition"
+        },
+        {
+          "kind": "interface",
+          "name": "VenueDefinition"
+        },
+        {
+          "kind": "interface",
+          "name": "IdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "SeedPersonasResult"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:96226c394efcc6293da46f7c29e44dd6f60cff24b7e4d53f56157c19628ce8a9",
+      "sizeBytes": 961
+    },
+    {
       "path": "src/database/seeds/seed-policy.spec.ts",
       "root": "app",
       "module": "app",
@@ -3933,8 +4213,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:97900ab76757b61a7c4c66e1a55c0efc5fdb1fbf1642b2c04a7e770e78279806",
-      "sizeBytes": 1279
+      "hash": "sha256:690cc7a6c2791f2e14db371f8c8df9b3e9875b727bd4892f19ac6cb9ff0fbdfc",
+      "sizeBytes": 1463
     },
     {
       "path": "src/database/seeds/seed-registry.ts",
@@ -3950,8 +4230,8 @@
       "hasSpec": true,
       "specPath": "src/database/seeds/seed-registry.spec.ts",
       "kind": "source",
-      "hash": "sha256:76937313c4d5b26f4e1ae13607265e5436d3e47bf7f5b80fcc33bd94344fa62f",
-      "sizeBytes": 1009
+      "hash": "sha256:745044c8928e2eb956fe5eff9194f7d1dbb59a5a7b8af85187fb38a0e7f1771a",
+      "sizeBytes": 1317
     },
     {
       "path": "src/database/seeds/seed-runner.spec.ts",
@@ -4120,6 +4400,10 @@
         },
         {
           "kind": "const",
+          "name": "SEED_PERSONAS_KEY"
+        },
+        {
+          "kind": "const",
           "name": "SEED_APPLIED_BY_BOOT"
         },
         {
@@ -4152,6 +4436,10 @@
         },
         {
           "kind": "const",
+          "name": "PERSONAS_SEED_DEFINITION"
+        },
+        {
+          "kind": "const",
           "name": "SEED_HISTORY_LOOKUP_SQL"
         },
         {
@@ -4162,8 +4450,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:540afebdbc1a628acec149831ebd739b2c99361944b52a6ae86721a6a3d41290",
-      "sizeBytes": 2566
+      "hash": "sha256:26b70133d7aba7ffb28169e79641dc49843dd67b92b6fe0da8f1331558f2aaad",
+      "sizeBytes": 3390
     },
     {
       "path": "src/database/seeds/seed.types.ts",
@@ -4182,6 +4470,10 @@
         {
           "kind": "interface",
           "name": "SeedContext"
+        },
+        {
+          "kind": "interface",
+          "name": "SeedPersonasRuntimeConfig"
         },
         {
           "kind": "interface",
@@ -4207,8 +4499,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a34de63bb6733e9391d4f3185b91d7c04f8fd84eca115c9fd9d64c1f800bc714",
-      "sizeBytes": 1726
+      "hash": "sha256:3de48885e06dafba7fb9b865dec90cd72a085a5ed01d10a8629ca06b4dee2fea",
+      "sizeBytes": 1948
     },
     {
       "path": "src/database/snake-case-naming.strategy.spec.ts",
@@ -4436,8 +4728,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d5eb3057ab3ce8aa9f9c6c15ded256afa592eea7ab9a5d2514ef8fd339e8a37e",
-      "sizeBytes": 7367
+      "hash": "sha256:361a81d8986b1d2e5a8880f790e7c6b0ce47f1515c5b39a2bf5d57448b5fd561",
+      "sizeBytes": 7383
     },
     {
       "path": "src/modules/activities/api/activity-submission.controller.ts",
@@ -4453,8 +4745,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:44eb0820bb62d35fdeb51bdba916e0b0217244982d3e912dcfbb8d633d92f3d5",
-      "sizeBytes": 6784
+      "hash": "sha256:ee9a21261ff2783d83326b39e5c495241ae208e92c63bbfeaa5520b8389b52a7",
+      "sizeBytes": 6808
     },
     {
       "path": "src/modules/activities/api/activity-type.controller.ts",
@@ -4685,14 +4977,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "OptimisticVersionDto"
+          "name": "ActivityOptimisticVersionDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:172965df6d1af615c4b5890b54c0ff108bffcd66da8d5f54c4709232b9e91532",
-      "sizeBytes": 415
+      "hash": "sha256:2db30e753a73a0c013e0451b2844e13bb822211afbdcb9f03e0d3248446e9a91",
+      "sizeBytes": 423
     },
     {
       "path": "src/modules/activities/api/dto/review-decision.dto.ts",
@@ -7678,14 +7970,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "OptimisticVersionDto"
+          "name": "AssessmentOptimisticVersionDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:47a8a1cf868863864d2b977b77ae383e42423a7b1af0cc43e39b01b9e959d79e",
-      "sizeBytes": 468
+      "hash": "sha256:2d65885875cd991e9e9093c65a71bbd457cdd3b2d5c4c41ec82e682623fbf691",
+      "sizeBytes": 478
     },
     {
       "path": "src/modules/assessments/api/dto/period-response.dto.ts",
@@ -7943,8 +8235,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4e4cd1990ff9c4af009c898edd6184eae3d92a8bf0337d83860ee4832359bc37",
-      "sizeBytes": 10241
+      "hash": "sha256:3419eb113cd698f2b6a3f46a1fade777b295b69893dabf1f2dcb53431b074f6a",
+      "sizeBytes": 10271
     },
     {
       "path": "src/modules/assessments/application/archive-metric.use-case.spec.ts",
@@ -10371,8 +10663,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:599ca1c1477ffe038e447480cc573fbeb41a71707f9ce8e11329a2f8b06a22de",
-      "sizeBytes": 402
+      "hash": "sha256:ccea553f9647c361c09a220a385a0c013ed28e5f2a9e3a2a9867d088411b2ee7",
+      "sizeBytes": 424
     },
     {
       "path": "src/modules/competitions/api/dto/list-competitions.response.dto.ts",
@@ -10433,14 +10725,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "ListQueryDto"
+          "name": "CompetitionListQueryDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:574fba3917150f5783a06a5be2958133752e5f872b940d5279183e97cf8496ad",
-      "sizeBytes": 724
+      "hash": "sha256:b3366fa15b0b6fa7efe11d768832d6a047d7682a9a3597ce9507c6f119a382a4",
+      "sizeBytes": 735
     },
     {
       "path": "src/modules/competitions/api/dto/opponent-response.dto.ts",
@@ -10575,8 +10867,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:933a5b677b860a0d814ad9dfb4221ddd68f848c1b0cba20f315a2bdc229bb78c",
-      "sizeBytes": 5485
+      "hash": "sha256:207df608a75262bac86de9ec36f7589e1f69f99b2ebb599ade61b8c048f85b73",
+      "sizeBytes": 5507
     },
     {
       "path": "src/modules/competitions/api/opponents.controller.ts",
@@ -10592,8 +10884,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:3cc5cd5e9b9df3f6c1657ff9ad0eff115b6e625778d7d7d4a2e9c80669041afc",
-      "sizeBytes": 2751
+      "hash": "sha256:49e645a21430500de18668c3c607ecaf9f4ce7b41722e8d713e3f19a8252a0cd",
+      "sizeBytes": 2773
     },
     {
       "path": "src/modules/competitions/application/competition-lookup.service.spec.ts",
@@ -13181,8 +13473,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:7e9134343d6a15776bc3702954c623527b1f4fb333694498261af0452ccfd250",
-      "sizeBytes": 8058
+      "hash": "sha256:a6955af52126f6006755adbe7814d1dab97765b4d0ce6509a3988256f7b7a521",
+      "sizeBytes": 8091
     },
     {
       "path": "src/modules/development/api/development-goal-self.controller.ts",
@@ -13549,14 +13841,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "OptimisticVersionDto"
+          "name": "DevelopmentOptimisticVersionDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:2961cf77c3527e92867d79b393fb2c542a8c835e7a8b88a4ebaf97808bad8bc2",
-      "sizeBytes": 408
+      "hash": "sha256:5630652aa49a502ab6b5a74b3c8a16f6f8fca7d83e972901d35e9fd63b2dc575",
+      "sizeBytes": 419
     },
     {
       "path": "src/modules/development/api/dto/reminders-response.dto.ts",
@@ -21903,14 +22195,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "ListSessionsResponseDto"
+          "name": "MeasurementListSessionsResponseDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:8b49f7e30fb9cd265a21032e4e4695e8ebeaa2eb2362e7ff2832e4b5d406afb8",
-      "sizeBytes": 490
+      "hash": "sha256:b71da3a482ae2d8b305033a20f222e2d4ea96cd2957d3a3605de84c46c918572",
+      "sizeBytes": 501
     },
     {
       "path": "src/modules/measurements/api/dto/protocol-history-entry.response.dto.ts",
@@ -22113,8 +22405,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:3b60bf4833c9b0771f7461c228a581a117fe4a30d6a345c600fc2c8b8ff302d3",
-      "sizeBytes": 5766
+      "hash": "sha256:66a6585254357598b478d947d7f7eee07686528e100729fc9ce39ea8e8f7623a",
+      "sizeBytes": 5799
     },
     {
       "path": "src/modules/measurements/application/create-measurement-protocol.use-case.spec.ts",
@@ -23826,14 +24118,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "TransitionDto"
+          "name": "MemberTransitionDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fb280cab0354be1cb2046eea4a7726d1028e9a7cfb4b29312b882f884e179860",
-      "sizeBytes": 753
+      "hash": "sha256:e1601032b6789cd7e8d2a862fc7c87cf1ac227f6793f8b5ef62bc4a9f19fe505",
+      "sizeBytes": 759
     },
     {
       "path": "src/modules/members/api/dto/update-profile.dto.ts",
@@ -23900,8 +24192,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:27218fbd7d5f9d86173eacf52ce6782836d0439e64aa3de633ac71d7b7c4cd3f",
-      "sizeBytes": 10535
+      "hash": "sha256:b6135b5be13e93d982866c6064647cabfc3cb71d38eda6367f0c7ef9d3fbe08b",
+      "sizeBytes": 10577
     },
     {
       "path": "src/modules/members/application/add-member-alias.use-case.spec.ts",
@@ -28344,14 +28636,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "ListRulesResponseDto"
+          "name": "PointsListRulesResponseDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:e4efc97d8fd68a089e8cac8b78ceb4ac7cd50689519769acf01996b09b18b5c4",
-      "sizeBytes": 475
+      "hash": "sha256:ac04a66cc8c693e3415632523d2d00f732a28b81be64a7aaaf9219fac65a9033",
+      "sizeBytes": 481
     },
     {
       "path": "src/modules/points/api/dto/player-badge-response.dto.ts",
@@ -28446,14 +28738,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "TransitionRuleDto"
+          "name": "PointsTransitionRuleDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ab9e49f9afd79686c32cb2185b81cb88332728079f58f80110e40e98e4b0a462",
-      "sizeBytes": 603
+      "hash": "sha256:d899e9b6e7ebd81dee505bcad5ad3b7d1c7530c21caa674093f3f301d4158290",
+      "sizeBytes": 609
     },
     {
       "path": "src/modules/points/api/points-rule.controller.ts",
@@ -28469,8 +28761,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:f7f371d9b649bb7a5f9057da8955efd0321fbb92f53077c05dec4ff9f0457111",
-      "sizeBytes": 3824
+      "hash": "sha256:a7b26156adc1b86ba13cb4e4e8051f583bdd853d488d9f88faca386d92daa1fb",
+      "sizeBytes": 3854
     },
     {
       "path": "src/modules/points/api/points-self.controller.ts",
@@ -30931,8 +31223,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:dca98f946389efef275ccb8131752a46e031fc485de0d8c2bb193e39a689475f",
-      "sizeBytes": 1055
+      "hash": "sha256:0b160f15eb4242d878068d306e4d26a237e8ca5dfebf2a71c2cb8ffc01b09aae",
+      "sizeBytes": 1079
     },
     {
       "path": "src/modules/practices/api/dto/attendance-status-response.dto.ts",
@@ -31360,8 +31652,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:188504dd8c3cbae04f9a5031ca20abd8df20062ae77fd9645c436f22862f3f34",
-      "sizeBytes": 323
+      "hash": "sha256:9a94c4bc380c4217119cba0ef4d73e758ae4d2b921a276cffa5eb599d1493cd8",
+      "sizeBytes": 339
     },
     {
       "path": "src/modules/practices/api/dto/list-drills-response.dto.ts",
@@ -31394,8 +31686,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:52406e4840c2b8b34f8f4ebd0ffa69d1e0c4254916d27e5525a5f3b45878afc4",
-      "sizeBytes": 945
+      "hash": "sha256:f2233a798410c24fa02ae8a83df42641f5b09011c917d09b0060d88886c68716",
+      "sizeBytes": 961
     },
     {
       "path": "src/modules/practices/api/dto/list-query.dto.ts",
@@ -31405,14 +31697,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "ListQueryDto"
+          "name": "PracticeListQueryDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:5df8e2e15c4fe0509afed470a49c17ef7bb65d1da1c59ef304cf50dd65d03680",
-      "sizeBytes": 734
+      "hash": "sha256:86aa363a5a8c4825a3ae4f0c74fbda3c913a4764d0623109a87d11f6c8cfa6de",
+      "sizeBytes": 742
     },
     {
       "path": "src/modules/practices/api/dto/list-rsvps-response.dto.ts",
@@ -31445,8 +31737,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:232577fa405c9fa77c01bac4a33401067c5f8b47b6a9dfa8c7554ba6cd619033",
-      "sizeBytes": 509
+      "hash": "sha256:cb4236de7e8230a29418eeb8496084e3db3fa4d71b7113dec038eef2b4c3f1c7",
+      "sizeBytes": 525
     },
     {
       "path": "src/modules/practices/api/dto/list-schedules-response.dto.ts",
@@ -31473,14 +31765,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "ListSessionsResponseDto"
+          "name": "PracticeListSessionsResponseDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9231b5b7cf7bf17650949999b190b1de33bb620f973edb3dae6df0ac89dfd46f",
-      "sizeBytes": 434
+      "hash": "sha256:b2e1092610e1618f7c52ec98105fc18d25cf30a8375558168e315946e62c42b5",
+      "sizeBytes": 442
     },
     {
       "path": "src/modules/practices/api/dto/list-sessions.query.dto.ts",
@@ -31496,8 +31788,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6ed1d0f0962cd8d9cd89621959ed97a9d04c3b9cfe12534b87381571ab484173",
-      "sizeBytes": 1241
+      "hash": "sha256:3235169bce2c2a15a3fc1ef694f68ed333be2bab93a794d869388850176b9ca7",
+      "sizeBytes": 1257
     },
     {
       "path": "src/modules/practices/api/dto/mark-attendance.dto.ts",
@@ -31634,14 +31926,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "RosterEntryResponseDto"
+          "name": "PracticeRosterEntryResponseDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a0cf1642d450bb17550f9a735e6a5e749c81cc10d126560d5fe788cd415a1c9a",
-      "sizeBytes": 1279
+      "hash": "sha256:aefd84f37f03b501ef87ac671ca0f1cc13b95093f85f7f7d13218a4aabf6cfa0",
+      "sizeBytes": 1287
     },
     {
       "path": "src/modules/practices/api/dto/rsvp-history-response.dto.ts",
@@ -32014,8 +32306,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9176c3a7a9565bbb0df0ad977d145d883db5e3dd8840130c9bc1692fa6578ec5",
-      "sizeBytes": 7552
+      "hash": "sha256:210f1469343af5f45078c1474f8d27957801c403e280b5c3926d5100f6e7b579",
+      "sizeBytes": 7568
     },
     {
       "path": "src/modules/practices/api/practice-sessions.controller.ts",
@@ -32031,8 +32323,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9d0c474caa33e9d478579667ab7ced4abe73d0800895bcd399cb77c37acc2731",
-      "sizeBytes": 9424
+      "hash": "sha256:637bca5c9ba5e7ee9c995290d871d836b665c40457a7b57a438675aebeb43666",
+      "sizeBytes": 9459
     },
     {
       "path": "src/modules/practices/api/public-practice-calendar.controller.ts",
@@ -37784,6 +38076,23 @@
       "sizeBytes": 892
     },
     {
+      "path": "src/modules/rbac/api/dto/permission-catalog-entry-response.dto.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PermissionCatalogEntryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9e659edbe31718732888882d22ee84cb57edb167baa53d19cc0d00c4008b0a3c",
+      "sizeBytes": 490
+    },
+    {
       "path": "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
       "root": "modules",
       "module": "rbac",
@@ -37799,6 +38108,40 @@
       "kind": "source",
       "hash": "sha256:ec90b80f5cf7238dc34f8b43cc74ab560431e48ad9e27653f6a3cb73c692a8b9",
       "sizeBytes": 964
+    },
+    {
+      "path": "src/modules/rbac/api/dto/role-bundle-response.dto.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RoleBundleResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1a436366223f77cfd11afc7e1742cc94a3569eb26f367cc52f9352f13b28c6b6",
+      "sizeBytes": 587
+    },
+    {
+      "path": "src/modules/rbac/api/dto/role-matrix-response.dto.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RoleMatrixResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:41530029339377d0341484dea46ab613a69fc474a7a3fee6d0d46367e34ab3d2",
+      "sizeBytes": 920
     },
     {
       "path": "src/modules/rbac/api/dto/scope-query.dto.ts",
@@ -37848,8 +38191,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:e43bd7cc9000c811b2e48d70be5c4643aa8b361df083cf040b85456265984cd0",
-      "sizeBytes": 4432
+      "hash": "sha256:5e78af549e3a3d3c82ded1a4db46c9c4fa4dd9148b52952a842df479693b27a8",
+      "sizeBytes": 5205
     },
     {
       "path": "src/modules/rbac/application/assign-role.use-case.spec.ts",
@@ -38082,6 +38425,35 @@
       "kind": "source",
       "hash": "sha256:4bca7e5ea3515a161302e524a2203c7894726e68b2523276588892842d17c592",
       "sizeBytes": 1488
+    },
+    {
+      "path": "src/modules/rbac/application/role-matrix-query.service.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:be62e9df5de893ca6964316d447341226296f634209c964f502c7869bfc7c0c6",
+      "sizeBytes": 2065
+    },
+    {
+      "path": "src/modules/rbac/application/role-matrix-query.service.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RoleMatrixQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/role-matrix-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:2c6b9fdbe0a87772ffaa979b59be68d4f2b3f5f06b75c3015d4f7fb5b86eed1a",
+      "sizeBytes": 1673
     },
     {
       "path": "src/modules/rbac/application/team-role-query.service.spec.ts",
@@ -38377,8 +38749,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:eeaca09f20ef0ddf83194f52442c7bbb501df9ef6133f5e9f282ed4ca6c80e62",
-      "sizeBytes": 8107
+      "hash": "sha256:9888c604fb3863ac6ce636de5b6c25f767df3def9074474bbca70924976f26f4",
+      "sizeBytes": 9187
     },
     {
       "path": "src/modules/rbac/infrastructure/rbac.repository.ts",
@@ -38394,8 +38766,8 @@
       "hasSpec": true,
       "specPath": "src/modules/rbac/infrastructure/rbac.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:84b31d2726a6ceaaf0f5b697bab22dbb33d6774244a0d93f0ee7946d211cd1a4",
-      "sizeBytes": 8794
+      "hash": "sha256:104efea244c0ab0d86be87696cd28337abe2c20be4646187fa8c1ffe2732a169",
+      "sizeBytes": 9532
     },
     {
       "path": "src/modules/rbac/lib/rbac.helpers.spec.ts",
@@ -38468,6 +38840,43 @@
       "sizeBytes": 752
     },
     {
+      "path": "src/modules/rbac/lib/role-matrix.mapper.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:85eed52b082e8e24b78acdd50a0ce5d3c9714e111147c08394105a75f3b1f0ad",
+      "sizeBytes": 2903
+    },
+    {
+      "path": "src/modules/rbac/lib/role-matrix.mapper.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toPermissionCatalogRecord"
+        },
+        {
+          "kind": "function",
+          "name": "toRoleMatrixRole"
+        },
+        {
+          "kind": "function",
+          "name": "toRoleMatrixView"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/lib/role-matrix.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:673475c9b097cd4877f5a43429fed56843dfaef5f2dc8a956130bd8167ee98b3",
+      "sizeBytes": 2273
+    },
+    {
       "path": "src/modules/rbac/lib/role-slug.mapper.spec.ts",
       "root": "modules",
       "module": "rbac",
@@ -38532,6 +38941,10 @@
         },
         {
           "kind": "const",
+          "name": "RBAC_ROLE_BUNDLES_ROUTE"
+        },
+        {
+          "kind": "const",
           "name": "RBAC_ASSIGNMENT_ID_PARAM"
         },
         {
@@ -38581,13 +38994,21 @@
         {
           "kind": "const",
           "name": "RBAC_ROLE_CATALOG_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_PERMISSION_CATALOG_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_ROLE_DEFINITION_MAX"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:149d112d6fd50fba30bb17804559e69ae30456c48a2f650d6382bd8d6e963af1",
-      "sizeBytes": 2278
+      "hash": "sha256:eabe36953f1a6a1ee42a111634eea280078933d325bb633ec8856186face6e4d",
+      "sizeBytes": 2643
     },
     {
       "path": "src/modules/rbac/model/rbac.enums.ts",
@@ -38643,13 +39064,21 @@
         {
           "kind": "interface",
           "name": "RoleCatalogRow"
+        },
+        {
+          "kind": "interface",
+          "name": "PermissionCatalogRow"
+        },
+        {
+          "kind": "interface",
+          "name": "RoleDefinitionRow"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:20fcf7fb8d77829f879cd6af14d890ecd3457b939f2f2033231928c69b6863f9",
-      "sizeBytes": 1338
+      "hash": "sha256:ff0d8623d108b4f5df4be061cc3acc5d734dad469e580ee1eebb5aff7325489a",
+      "sizeBytes": 1767
     },
     {
       "path": "src/modules/rbac/model/rbac.types.ts",
@@ -38699,6 +39128,22 @@
         },
         {
           "kind": "interface",
+          "name": "PermissionCatalogRecord"
+        },
+        {
+          "kind": "interface",
+          "name": "RoleDefinitionRecord"
+        },
+        {
+          "kind": "interface",
+          "name": "RoleMatrixRole"
+        },
+        {
+          "kind": "interface",
+          "name": "RoleMatrixView"
+        },
+        {
+          "kind": "interface",
           "name": "TeamRolesView"
         },
         {
@@ -38713,8 +39158,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:bf21350ea8b0428aa432cedd16e996a217da644014e8e2e0232e26eabe81bf21",
-      "sizeBytes": 3522
+      "hash": "sha256:1c9e94392550cd4713dd2502b0fdfbe75f8a6982dc961f112ecba05d3f85ff25",
+      "sizeBytes": 4719
     },
     {
       "path": "src/modules/rbac/rbac.module.ts",
@@ -38730,8 +39175,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:c92e02482b63a608022bd9285f6359dcfb8dbc3563e322eb98533b6677360244",
-      "sizeBytes": 2297
+      "hash": "sha256:0f7a6644d646d88b0fe13120772ed7cce4d81796159c9cd3174d72ccc859efab",
+      "sizeBytes": 2407
     },
     {
       "path": "src/modules/rosters/api/dto/add-roster-entry.dto.ts",
@@ -38832,8 +39277,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:7f64f3fca7c077622cb010a681df2ea19d0151b3ca626ccec0d5fbf1f1982ccf",
-      "sizeBytes": 587
+      "hash": "sha256:70a1450c67c0c17400b704c395f57e0655e6eca83751bc176103f9706b0aa527",
+      "sizeBytes": 620
     },
     {
       "path": "src/modules/rosters/api/dto/list-roster-snapshots.response.dto.ts",
@@ -38962,14 +39407,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "RosterEntryResponseDto"
+          "name": "CompetitionRosterEntryResponseDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:5a7ceecd66c528ebe64604cbc21c38b4235ad48d5e772f5576f4293ec8ec1dec",
-      "sizeBytes": 2548
+      "hash": "sha256:8deff92c16c2a1d29a46484bd689f46b5e356250ae6e12fe2a1f66bab9a14ad2",
+      "sizeBytes": 2559
     },
     {
       "path": "src/modules/rosters/api/dto/roster-list.query.dto.ts",
@@ -39129,8 +39574,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6a1c1c6f3d00ce978629bdf275e6c3ba1a5d223baf0c5ac481424bd5766154c0",
-      "sizeBytes": 5179
+      "hash": "sha256:b4c0a3fb25bd05c8b700fe3b2007160f225b3b703e53278346cd473f0c036ac4",
+      "sizeBytes": 5256
     },
     {
       "path": "src/modules/rosters/api/roster-snapshots.controller.ts",
@@ -41476,8 +41921,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:90e99b62cc0f3da4018df2888829448bfa5b8c4c5ca7de6afb5f4ac44a8c1154",
-      "sizeBytes": 6344
+      "hash": "sha256:6051d4a2ed8bd4e227a3ce8a39e6007796dfe45d5c43ec6aab642760f56f24dd",
+      "sizeBytes": 6379
     },
     {
       "path": "src/modules/scoring/api/dto/create-rule.dto.ts",
@@ -41504,14 +41949,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "ListRulesResponseDto"
+          "name": "ScoringListRulesResponseDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b941945f252d943fc217f40b2b25cb5827facb34fd364a01be9b817dc423dd44",
-      "sizeBytes": 460
+      "hash": "sha256:d8536a353ce571ce5588e298d20d5eb2a106188051946dfa6297060e4acb564f",
+      "sizeBytes": 467
     },
     {
       "path": "src/modules/scoring/api/dto/list-scores.response.dto.ts",
@@ -41759,14 +42204,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "TransitionRuleDto"
+          "name": "ScoringTransitionRuleDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a8cc38c7c514e342d820d0f22aaaa96dad3f95a112d32aaace6805608db59c6d",
-      "sizeBytes": 630
+      "hash": "sha256:c618aad3258aaeed734b952ea0f477520628aa22634ab434efb745294a6a3f4b",
+      "sizeBytes": 637
     },
     {
       "path": "src/modules/scoring/api/dto/update-rule.dto.ts",
@@ -43571,8 +44016,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:2544cab31d9e6b425e8ecfe5caf7a6e14a67fd24e2af53c6af5fef7698f1e5c7",
-      "sizeBytes": 390
+      "hash": "sha256:f2bb9d48ec628880d18be4608c1d0db32eeb7695ec841088a096dac08ff3a6d0",
+      "sizeBytes": 400
     },
     {
       "path": "src/modules/squads/api/dto/list-squads.response.dto.ts",
@@ -43599,14 +44044,14 @@
       "symbols": [
         {
           "kind": "class",
-          "name": "ListQueryDto"
+          "name": "SquadListQueryDto"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6147aff78cfdb9298414d8371cf3d23495fdda06d5876bf4f9ddd4f9ba22fab0",
-      "sizeBytes": 711
+      "hash": "sha256:2f9bc3dd6e5ad71a2698149ca9505e2d1187bced4d9e651df27b9d80e7999a9d",
+      "sizeBytes": 716
     },
     {
       "path": "src/modules/squads/api/dto/override-select-player.dto.ts",
@@ -43724,8 +44169,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:721032375f5f80633703df57014c74d58264b203fff7084c2b8e1146f848a856",
-      "sizeBytes": 2929
+      "hash": "sha256:32179bffe02912d2bd24d7b671864b24983c079b89350ef3a3de353db3dd3cc5",
+      "sizeBytes": 2939
     },
     {
       "path": "src/modules/squads/api/squad-selections.controller.ts",
@@ -43741,8 +44186,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:cee23270d48bcbfa304362320137a0a2acb339271da12d4da410f5533fddf3dc",
-      "sizeBytes": 5054
+      "hash": "sha256:3c12a4b66e8fff1c18a47c7cf095cb14d655db7bae5f4cf339655dcfc3a9acca",
+      "sizeBytes": 5064
     },
     {
       "path": "src/modules/squads/api/squads.controller.ts",
@@ -45799,8 +46244,25 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:f7c293c03d35e0cc62e9bbf11e8982ecee47189775f56cbe8e4f6ef534faf8d4",
-      "sizeBytes": 1103
+      "hash": "sha256:c369c1bc780952ca54e7cdc3fb95351b603bf6f3bd6a32d578bfc83be6c00504",
+      "sizeBytes": 1293
+    },
+    {
+      "path": "src/modules/teams/api/dto/transition.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamTransitionDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cd27107b2458cb0ae02b10e96fce10ffb9549f7af04a6045717c7c01eb7b250b",
+      "sizeBytes": 496
     },
     {
       "path": "src/modules/teams/api/dto/update-season.dto.ts",
@@ -45884,8 +46346,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ceacfe7241d58f04d10dad713a0a3ac0e9b883614f526a5e53f61ca302da4af9",
-      "sizeBytes": 4317
+      "hash": "sha256:fcba92e9dfb89b7b0a02ac89b13f2d06f4af423ef34514f644d0e718bb388c26",
+      "sizeBytes": 8175
     },
     {
       "path": "src/modules/teams/api/settings.controller.ts",
@@ -45918,8 +46380,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9abcef1a1a9363f6359317939489c0e9d3c61b3b5122df83e9084206dd51d4a1",
-      "sizeBytes": 4340
+      "hash": "sha256:e0c2890c34266354d7ca7d004d7b72db1b0bb0cdb28b5542177afba2c5f8e8c2",
+      "sizeBytes": 8871
     },
     {
       "path": "src/modules/teams/api/venues.controller.ts",
@@ -45966,64 +46428,6 @@
       "kind": "source",
       "hash": "sha256:6c6862044d5c8e2a22b44c935e81b3914a903ccbb455c628d588ae5df4a62993",
       "sizeBytes": 2941
-    },
-    {
-      "path": "src/modules/teams/application/archive-season.use-case.spec.ts",
-      "root": "modules",
-      "module": "teams",
-      "layer": "use-case",
-      "symbols": [],
-      "hasSpec": null,
-      "specPath": null,
-      "kind": "spec",
-      "hash": "sha256:4303ea6781011bf0fe88ec83fec767d2e156b86ad6b9301ff00184a748ba7eec",
-      "sizeBytes": 1979
-    },
-    {
-      "path": "src/modules/teams/application/archive-season.use-case.ts",
-      "root": "modules",
-      "module": "teams",
-      "layer": "use-case",
-      "symbols": [
-        {
-          "kind": "class",
-          "name": "ArchiveSeasonUseCase"
-        }
-      ],
-      "hasSpec": true,
-      "specPath": "src/modules/teams/application/archive-season.use-case.spec.ts",
-      "kind": "source",
-      "hash": "sha256:197d8b96f6e055a2af8a0b90aab93eb046b182766a5acae47cdf60aab528ccf3",
-      "sizeBytes": 2373
-    },
-    {
-      "path": "src/modules/teams/application/archive-team.use-case.spec.ts",
-      "root": "modules",
-      "module": "teams",
-      "layer": "use-case",
-      "symbols": [],
-      "hasSpec": null,
-      "specPath": null,
-      "kind": "spec",
-      "hash": "sha256:072d7171f6880cfead056b7b9d17a3f5b312b3cb58b6811657b59f2e5e403bb4",
-      "sizeBytes": 2662
-    },
-    {
-      "path": "src/modules/teams/application/archive-team.use-case.ts",
-      "root": "modules",
-      "module": "teams",
-      "layer": "use-case",
-      "symbols": [
-        {
-          "kind": "class",
-          "name": "ArchiveTeamUseCase"
-        }
-      ],
-      "hasSpec": true,
-      "specPath": "src/modules/teams/application/archive-team.use-case.spec.ts",
-      "kind": "source",
-      "hash": "sha256:33612d7c58d853aeb2447a164222183dbb17bac9c62b964ee5f07e02b62d3072",
-      "sizeBytes": 2465
     },
     {
       "path": "src/modules/teams/application/archive-venue.use-case.spec.ts",
@@ -46121,8 +46525,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:8acc8eaaa8679d49440c130854f1b13786a714c14757ca8a26dba037e179a5cf",
-      "sizeBytes": 3408
+      "hash": "sha256:c0edcef091a8543310023974d136fb6e1ea1e237970f953ef2210610e70e08a7",
+      "sizeBytes": 3462
     },
     {
       "path": "src/modules/teams/application/create-season.use-case.ts",
@@ -46138,8 +46542,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/application/create-season.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:2481b9289c9bc95965a933e85cd53d0d13afcf94d86ec563c79008e56fcbfbe2",
-      "sizeBytes": 4544
+      "hash": "sha256:d866495659333c0ee173f95068bf72e605ecb5ab06d03284cb4eb0724b37f300",
+      "sizeBytes": 5257
     },
     {
       "path": "src/modules/teams/application/create-setting-version.use-case.spec.ts",
@@ -46229,6 +46633,35 @@
       "sizeBytes": 3028
     },
     {
+      "path": "src/modules/teams/application/remove-team.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c6a9171b3a3364eee0a075ad9c8cd8ae256ce0c410c494f699284c3e9eebbe55",
+      "sizeBytes": 3253
+    },
+    {
+      "path": "src/modules/teams/application/remove-team.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RemoveTeamUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/remove-team.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:13bf3c017a0b74d35adf40b7dbdf55d9e187b163ab14fc1dd1cb7624cbe90771",
+      "sizeBytes": 3532
+    },
+    {
       "path": "src/modules/teams/application/season-query.service.spec.ts",
       "root": "modules",
       "module": "teams",
@@ -46237,8 +46670,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:a32d0c254e2cecd3ed6e957579e3ca62a8f515cc0c56d2509042e629680aefb3",
-      "sizeBytes": 727
+      "hash": "sha256:fbcb18574d3b59b67f55e9eb770925f76f604d319021cab19d434fb64207ad1e",
+      "sizeBytes": 2008
     },
     {
       "path": "src/modules/teams/application/season-query.service.ts",
@@ -46254,8 +46687,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/application/season-query.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:7f8a79bb357c5999cc4934b99c9d57fc713f8b9c58cf388618c2f700d9e27cfd",
-      "sizeBytes": 914
+      "hash": "sha256:13c2d6cb853d4fc8214e3d67ebad655649a3bfa4cb8be0d4e191115243863086",
+      "sizeBytes": 1760
     },
     {
       "path": "src/modules/teams/application/settings-query.service.spec.ts",
@@ -46295,8 +46728,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:bd69d6a3e1ca9e3974f317c4f4ce89e2c272fcbd975a07d705551d785e27b398",
-      "sizeBytes": 1786
+      "hash": "sha256:20ccf1ceba6672f4e2facda7c268757f7343f2193feca4e4031dedcc3bb29ad4",
+      "sizeBytes": 2348
     },
     {
       "path": "src/modules/teams/application/team-lookup.service.ts",
@@ -46312,8 +46745,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/application/team-lookup.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:385dbe5f8837f15ec8e79c1d174d789854fd8b16dad84d37193545bbc6c33327",
-      "sizeBytes": 994
+      "hash": "sha256:292543684ca2ae8b3e530e04f646f8ebc3bece7e2d9f6fae1ae940ded8952671",
+      "sizeBytes": 1090
     },
     {
       "path": "src/modules/teams/application/team-query.service.spec.ts",
@@ -46324,8 +46757,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:4d3ade15d39cb987771ef438be1f3d869131cde019becdb9f5b8c594c9d49919",
-      "sizeBytes": 1854
+      "hash": "sha256:c2198a08e62f67f968e3ff620ab01364341adbd3bc12652ed3cd4fa3f7358569",
+      "sizeBytes": 2360
     },
     {
       "path": "src/modules/teams/application/team-query.service.ts",
@@ -46341,8 +46774,66 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/application/team-query.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:40109e2838798f0b6b61b0d3dbc2872b93cd800cfb53cd30ebeda4103637ac57",
-      "sizeBytes": 1378
+      "hash": "sha256:afe2ff9e45c77a924958513eb339f129da3698ee9a5ff4f381631ba9dc4f3b45",
+      "sizeBytes": 1784
+    },
+    {
+      "path": "src/modules/teams/application/transition-season.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:efa1a1d4e69efa749997fda9866e0f6cb35c734442b1ffe70efed2ca77f602bf",
+      "sizeBytes": 4268
+    },
+    {
+      "path": "src/modules/teams/application/transition-season.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionSeasonUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/transition-season.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0bd653045e3cf5b990634de95438b4e9262d48e699d1246f38d2951c2b49c930",
+      "sizeBytes": 4543
+    },
+    {
+      "path": "src/modules/teams/application/transition-team.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8b9bebc79dde49fa78beef9b6137c42bb4a4004c2b9f99830914b72025c49a02",
+      "sizeBytes": 3786
+    },
+    {
+      "path": "src/modules/teams/application/transition-team.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TransitionTeamUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/transition-team.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:91163a33d3746d2b05736b04055c4b931619ba9aa0f4dfa7505dd22f09b62580",
+      "sizeBytes": 3692
     },
     {
       "path": "src/modules/teams/application/update-season.use-case.spec.ts",
@@ -46353,8 +46844,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:4760ae041998284975585a619854cad0f0672578c29827cf1b8fd03615d11aee",
-      "sizeBytes": 4787
+      "hash": "sha256:f0a8e7582413d424e5f93042e659fe507b103d6ae7ae5de81b4f425ae5aae4ca",
+      "sizeBytes": 5391
     },
     {
       "path": "src/modules/teams/application/update-season.use-case.ts",
@@ -46370,8 +46861,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/application/update-season.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:238782f2278ccb868b2649bec4f87eea102b031061cfd424545f250d14a2ad3c",
-      "sizeBytes": 5399
+      "hash": "sha256:b5572a7dc227d1e7c3a07ff8142921002022f729ede6e0fd1731cf32047aea04",
+      "sizeBytes": 5748
     },
     {
       "path": "src/modules/teams/application/update-team.use-case.spec.ts",
@@ -46382,8 +46873,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:ddbd90dc5564fe19f3c714c4a19ec4452ea4cc8d92cb2f93e356d6eb5a11c07d",
-      "sizeBytes": 3010
+      "hash": "sha256:195e7ec8891953e1276138534a7378400725b328b29ade49820e4e6a241f8663",
+      "sizeBytes": 3019
     },
     {
       "path": "src/modules/teams/application/update-team.use-case.ts",
@@ -46399,8 +46890,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/application/update-team.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:1bd8870ac25f15a448763728e7e720ce955a264cbacdcdfafa0eed67948b688d",
-      "sizeBytes": 3264
+      "hash": "sha256:8dd4591595c7fcccc0374713ebd547a9f67fbbb42f7e4a9b8d04a635372a1ae2",
+      "sizeBytes": 3315
     },
     {
       "path": "src/modules/teams/application/update-venue.use-case.spec.ts",
@@ -46519,6 +47010,43 @@
       "sizeBytes": 1224
     },
     {
+      "path": "src/modules/teams/domain/season-lifecycle.state-machine.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:525ce904d9a2dcc90255e1736b3bfbbadaec75854725a71f753da09ef809e8c8",
+      "sizeBytes": 2962
+    },
+    {
+      "path": "src/modules/teams/domain/season-lifecycle.state-machine.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "canTransitionSeason"
+        },
+        {
+          "kind": "function",
+          "name": "allowedSeasonTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "claimsCurrentSeasonSlot"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/domain/season-lifecycle.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3a485e62520f0a6c11dbeb81611113ed6096c7447a40cfa1d0060eae23815604",
+      "sizeBytes": 1777
+    },
+    {
       "path": "src/modules/teams/domain/season-schedule.policy.spec.ts",
       "root": "modules",
       "module": "teams",
@@ -46556,6 +47084,47 @@
       "sizeBytes": 1600
     },
     {
+      "path": "src/modules/teams/domain/team-lifecycle.state-machine.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ca72e380d9bc46134ae8f330c9513fa3a06b84e0ee73ebf560dfafe4b7d6bc21",
+      "sizeBytes": 2653
+    },
+    {
+      "path": "src/modules/teams/domain/team-lifecycle.state-machine.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "canTransitionTeam"
+        },
+        {
+          "kind": "function",
+          "name": "allowedTeamTransitions"
+        },
+        {
+          "kind": "function",
+          "name": "canRemoveTeam"
+        },
+        {
+          "kind": "function",
+          "name": "canAcceptTeamWork"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/domain/team-lifecycle.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:6717337472afbc1a69bb9fa6422c7b8558e483404683be88f0b71f6c40fe73ea",
+      "sizeBytes": 1919
+    },
+    {
       "path": "src/modules/teams/errors/catalog-entry-in-use.error.ts",
       "root": "modules",
       "module": "teams",
@@ -46590,6 +47159,23 @@
       "sizeBytes": 433
     },
     {
+      "path": "src/modules/teams/errors/current-season-not-found.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CurrentSeasonNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ff9703747ebe8da2e2b646396c3a493708366e7993eab23ce30ea759e9f8f090",
+      "sizeBytes": 455
+    },
+    {
       "path": "src/modules/teams/errors/optimistic-conflict.error.ts",
       "root": "modules",
       "module": "teams",
@@ -46605,6 +47191,40 @@
       "kind": "source",
       "hash": "sha256:af7b02eafae111b721cb6ca5f9964a35e28fdd3aabcee13c164ab89d7f2a5e10",
       "sizeBytes": 484
+    },
+    {
+      "path": "src/modules/teams/errors/season-already-active.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SeasonAlreadyActiveError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dc5145aedded2d29460fcd49ee9c60cb930c1f00207809bb318a71e92e8941d4",
+      "sizeBytes": 569
+    },
+    {
+      "path": "src/modules/teams/errors/season-invalid-transition.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SeasonInvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:de1b8eb91171a6cb48ce05f700823f99496252f943be4ae7514d3feb9b0b23b1",
+      "sizeBytes": 535
     },
     {
       "path": "src/modules/teams/errors/season-not-found.error.ts",
@@ -46675,6 +47295,23 @@
       "sizeBytes": 438
     },
     {
+      "path": "src/modules/teams/errors/team-invalid-transition.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamInvalidTransitionError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3bbc41bdee49d0c257269bcab898086fa75d383f4a2affd489be199622b61ca1",
+      "sizeBytes": 511
+    },
+    {
       "path": "src/modules/teams/errors/team-not-found.error.ts",
       "root": "modules",
       "module": "teams",
@@ -46717,8 +47354,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:79375cfd0944e0dd13a70250945ca630c094dfd6307da9dc40e7094b73249554",
-      "sizeBytes": 98
+      "hash": "sha256:0b5413d1c026eb0247b08a66c193bce0f842ad632f42fc62aa5c294d9f4c7f60",
+      "sizeBytes": 123
     },
     {
       "path": "src/modules/teams/infrastructure/catalog.repository.spec.ts",
@@ -46758,8 +47395,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:9eaa7919712b590ed7db17ad710773f44602c57d9a7faee717f87ff866a001b2",
-      "sizeBytes": 4819
+      "hash": "sha256:025e467fd62db9510c6b3fb8c323ece2c5ed38b2f91ce5d74fe8b0ca57a13a7e",
+      "sizeBytes": 6170
     },
     {
       "path": "src/modules/teams/infrastructure/season.repository.ts",
@@ -46775,8 +47412,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/infrastructure/season.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:8f852567506942ee102896d2f5d099f9cf96741cec8c5ad88b9836b20fba9ec1",
-      "sizeBytes": 6707
+      "hash": "sha256:65e5c0f7b0cdd36fbc14299a471f32b8ed94c667e6272547b509d34b161c5fe7",
+      "sizeBytes": 8608
     },
     {
       "path": "src/modules/teams/infrastructure/setting-version.repository.spec.ts",
@@ -46845,8 +47482,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:5e2350f9c2aaaab4d58ce88bfe08650d3aa8e538d00c1889be99c11d6a500dec",
-      "sizeBytes": 4367
+      "hash": "sha256:582c367ecfda9d8fb530b1643656fb05182bb8fa173f7c56d4ce755e834b97bf",
+      "sizeBytes": 6517
     },
     {
       "path": "src/modules/teams/infrastructure/team.repository.ts",
@@ -46862,8 +47499,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/infrastructure/team.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:67cecb64f35e1df2499a06f9d9267915b0b6239ac302e79c77d015758fab72e1",
-      "sizeBytes": 5377
+      "hash": "sha256:f1414b2c45cc52ee1c399a98b09bbabce8ee56d2d9efb694343344db3c79af2f",
+      "sizeBytes": 8642
     },
     {
       "path": "src/modules/teams/infrastructure/venue.repository.spec.ts",
@@ -46934,7 +47571,15 @@
         },
         {
           "kind": "function",
+          "name": "toTransitionCommand"
+        },
+        {
+          "kind": "function",
           "name": "parseResourceStatus"
+        },
+        {
+          "kind": "function",
+          "name": "parseTeamStatus"
         },
         {
           "kind": "function",
@@ -46952,8 +47597,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/lib/teams.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:0b9de080a47ac482fa4f086237153dc71fe7065ef0d0db3dda05adf4b8e5d6f0",
-      "sizeBytes": 2857
+      "hash": "sha256:63c7a68808eb791d1a8b470417f837fcd4be690b3e03118afd9ff5efa0d6e120",
+      "sizeBytes": 3496
     },
     {
       "path": "src/modules/teams/model/teams.constants.ts",
@@ -46971,7 +47616,27 @@
         },
         {
           "kind": "const",
+          "name": "MY_TEAMS_ROUTE"
+        },
+        {
+          "kind": "const",
           "name": "TEAM_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ACTIVATE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_DEACTIVATE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ARCHIVE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_REMOVE_ROUTE"
         },
         {
           "kind": "const",
@@ -46979,7 +47644,23 @@
         },
         {
           "kind": "const",
+          "name": "CURRENT_SEASON_ROUTE"
+        },
+        {
+          "kind": "const",
           "name": "SEASON_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_ACTIVATE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_CLOSE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_ARCHIVE_ROUTE"
         },
         {
           "kind": "const",
@@ -47155,6 +47836,14 @@
         },
         {
           "kind": "const",
+          "name": "TEAM_TRANSITIONED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_REMOVED_EVENT"
+        },
+        {
+          "kind": "const",
           "name": "SEASON_CREATED_EVENT"
         },
         {
@@ -47164,6 +47853,10 @@
         {
           "kind": "const",
           "name": "SEASON_ARCHIVED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_TRANSITIONED_EVENT"
         },
         {
           "kind": "const",
@@ -47263,6 +47956,38 @@
         },
         {
           "kind": "const",
+          "name": "TEAM_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_INVALID_TRANSITION_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_INVALID_TRANSITION_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_ALREADY_ACTIVE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SEASON_ALREADY_ACTIVE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "CURRENT_SEASON_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "CURRENT_SEASON_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
           "name": "SETTING_VERSION_CONFLICT_MESSAGE"
         },
         {
@@ -47273,8 +47998,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:f5a198cb15b958e86734f944c78167a2072ff633c290e628a0742b5aa8ca0e87",
-      "sizeBytes": 5768
+      "hash": "sha256:1c881227a74a40c86b6ae643400931ec31bc432307b79afe575103d39df92123",
+      "sizeBytes": 7524
     },
     {
       "path": "src/modules/teams/model/teams.enums.ts",
@@ -47289,6 +48014,14 @@
         {
           "kind": "const",
           "name": "RESOURCE_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "TeamStatus"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_STATUS_VALUES"
         },
         {
           "kind": "enum",
@@ -47318,8 +48051,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fdc60d5528ba56e75b31043a2ae3d4313581c419972519a3ac828564985748c6",
-      "sizeBytes": 1767
+      "hash": "sha256:08c5b0510f7d3552bf25a2de59add0559171c731c1ada11cfc17241c57a41df8",
+      "sizeBytes": 2499
     },
     {
       "path": "src/modules/teams/model/teams.rows.ts",
@@ -47363,8 +48096,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:c5fa96faa99d25e5abcc5d2f216a216094f6db7a27ac556d877c8f412328fc81",
-      "sizeBytes": 2666
+      "hash": "sha256:0e994af8d503552abbbf817f02d1a4ed5e97f167f01404054771871e82ec2961",
+      "sizeBytes": 2711
     },
     {
       "path": "src/modules/teams/model/teams.types.ts",
@@ -47502,6 +48235,22 @@
         },
         {
           "kind": "interface",
+          "name": "TransitionCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "TeamStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "SeasonStatusChange"
+        },
+        {
+          "kind": "interface",
+          "name": "TeamRemoval"
+        },
+        {
+          "kind": "interface",
           "name": "NewAuditEvent"
         },
         {
@@ -47512,8 +48261,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:7967e22726de11a829277f03c8bb730d3fb6e271be12fa6f7998372db26a2582",
-      "sizeBytes": 8858
+      "hash": "sha256:24f48a67c1adc47239f7a2e3caae398efc6e38957ab4e89f230beb32656d1286",
+      "sizeBytes": 10070
     },
     {
       "path": "src/modules/teams/teams.module.ts",
@@ -47529,8 +48278,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:24b47520d9d52145a209f68c968f314fb6988c7779d3d878874056d740624f3f",
-      "sizeBytes": 3576
+      "hash": "sha256:c369017af23e477b670fd4865b9cf1337afa79dba6efc5909e08f6001062e40e",
+      "sizeBytes": 3689
     },
     {
       "path": "src/shared/constants/http-status.constants.ts",
@@ -47587,8 +48336,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:05cc802e607e49907b9e6a37a2f773719343ce9f1b826e976e8e5046bc1bd716",
-      "sizeBytes": 11994
+      "hash": "sha256:4ba088fae8a9198bbf1d13d881c1de362bd3807103606aa83eba6f90f9c2009e",
+      "sizeBytes": 12539
     },
     {
       "path": "src/shared/constants/permission-catalog.spec.ts",
@@ -47599,8 +48348,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:13828d6af2fa72d2daf4217e28cc57ad63c5e987eba4f0954db974a7a2a02ae1",
-      "sizeBytes": 3522
+      "hash": "sha256:c8b891f97b865a10401b23b22f11ed03ac771726121ee30d73f53b05dbf01e9e",
+      "sizeBytes": 3702
     },
     {
       "path": "src/shared/constants/role-bundles.constants.ts",
@@ -47620,8 +48369,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:47114a2d409c58057c31f184df6b7e65dd69f3d1362f4b242a7bf36f6321925b",
-      "sizeBytes": 5023
+      "hash": "sha256:b6af8ba58f204e77af3a2be8e7c61ea460be1cd4711123099b02670fa70f0e44",
+      "sizeBytes": 5827
     },
     {
       "path": "src/shared/constants/role-bundles.spec.ts",
@@ -47632,8 +48381,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:34cd73ec316ea6614c8f921ebe93da5f678457cb8990ce70768be9cdc40fef75",
-      "sizeBytes": 1926
+      "hash": "sha256:753a57a9cab6c361cfd21e6819e27214719dde38fbf3b2740fe226b989a03dbc",
+      "sizeBytes": 2901
     },
     {
       "path": "src/shared/constants/role-permissions.constants.ts",
@@ -47745,8 +48494,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:21109a374345e85c5aad078f1ff9b1b221c77da6662cfb32820bda911fc46296",
-      "sizeBytes": 610
+      "hash": "sha256:0266e58ac9835c5667bd8a61a676ecade1f533ad6e9e270cfb26338b2f8ec57c",
+      "sizeBytes": 635
     },
     {
       "path": "src/shared/enums/permission.enum.ts",
@@ -47766,8 +48515,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fb0781d0d8e70b40711e51c35699712aa4eac98f5e9959bdd2c76a90a1aa9137",
-      "sizeBytes": 5414
+      "hash": "sha256:42de5d8c69472dd7b74ef96cb0c48c7c49ec5b07f64136977f86d43114ac97d2",
+      "sizeBytes": 5599
     },
     {
       "path": "src/shared/enums/rbac-role.enum.ts",
@@ -47787,8 +48536,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:38c4d01faa18ec6b363ac76d125514c1666e8d5b683b649b73a69c81ed4fe8c9",
-      "sizeBytes": 628
+      "hash": "sha256:1e67db3a509cb688db836b4d0d1419f98f22f5a06db750dd534391ae445bb030",
+      "sizeBytes": 658
     },
     {
       "path": "src/shared/enums/role.enum.ts",

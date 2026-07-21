@@ -14,6 +14,7 @@ import type {
   PageRequest,
   Season,
   SeasonDateRange,
+  SeasonStatusChange,
   SeasonUpdate,
 } from '../model/teams.types';
 
@@ -77,6 +78,84 @@ export class SeasonRepository {
     }));
   }
 
+  /**
+   * The team's single current season: the one holding the `active` slot that the
+   * partial unique index `ux_seasons_one_active_per_team` guarantees is unique.
+   * Returns null (never a guess) when the team has no active season, so callers
+   * distinguish "no current season" from "some season".
+   */
+  async findCurrent(
+    scope: TransactionScope,
+    teamId: string,
+  ): Promise<Season | null> {
+    const rows = await scope.run<SeasonRow>(
+      `SELECT "id", "team_id", "slug", "name",
+              to_char("starts_on", 'YYYY-MM-DD') AS "starts_on",
+              to_char("ends_on", 'YYYY-MM-DD') AS "ends_on",
+              "status", "created_by", "updated_by", "created_at", "updated_at",
+              "version"
+         FROM "seasons"
+        WHERE "team_id" = $1 AND "status" = 'active'
+        ORDER BY "starts_on" DESC, "id" DESC
+        LIMIT 1`,
+      [teamId],
+    );
+    const row = rows[0];
+    return row === undefined ? null : this.toSeason(row);
+  }
+
+  /**
+   * True when the team already has an `active` season other than `excludeId`.
+   * Pre-checked so activation returns a typed conflict rather than surfacing the
+   * unique-index violation from the driver.
+   */
+  async hasOtherActive(
+    scope: TransactionScope,
+    teamId: string,
+    excludeId: string | null,
+  ): Promise<boolean> {
+    const rows = await scope.run<IdRow>(
+      `SELECT "id" FROM "seasons"
+        WHERE "team_id" = $1 AND "status" = 'active'
+          AND ($2::uuid IS NULL OR "id" <> $2::uuid)
+        LIMIT 1`,
+      [teamId, excludeId],
+    );
+    return rows.length > 0;
+  }
+
+  /**
+   * Applies a lifecycle state change under optimistic concurrency. Which target
+   * state is legal is decided by the pure state machine before this is called.
+   */
+  async applyStatusChange(
+    scope: TransactionScope,
+    change: SeasonStatusChange,
+  ): Promise<Season | null> {
+    const rows = await scope.run<SeasonRow>(
+      `UPDATE "seasons"
+          SET "status" = $3, "updated_by" = $4, "updated_at" = $5,
+              "version" = "version" + 1
+        WHERE "id" = $1 AND "team_id" = $2
+          AND ($6::int IS NULL OR "version" = $6::int)
+       RETURNING "id", "team_id", "slug", "name",
+              to_char("starts_on", 'YYYY-MM-DD') AS "starts_on",
+              to_char("ends_on", 'YYYY-MM-DD') AS "ends_on",
+              "status", "created_by", "updated_by", "created_at", "updated_at",
+              "version"`,
+      [
+        change.id,
+        change.teamId,
+        change.status,
+        change.updatedBy,
+        change.now.toISOString(),
+        change.expectedVersion,
+      ],
+    );
+    const row = rows[0];
+    return row === undefined ? null : this.toSeason(row);
+  }
+
   async insert(scope: TransactionScope, season: NewSeason): Promise<Season> {
     const rows = await scope.run<SeasonRow>(
       `INSERT INTO "seasons" ("id", "team_id", "slug", "name", "starts_on",
@@ -129,29 +208,6 @@ export class SeasonRepository {
         update.now.toISOString(),
         update.expectedVersion,
       ],
-    );
-    const row = rows[0];
-    return row === undefined ? null : this.toSeason(row);
-  }
-
-  async archive(
-    scope: TransactionScope,
-    teamId: string,
-    id: string,
-    actorId: string | null,
-    now: Date,
-  ): Promise<Season | null> {
-    const rows = await scope.run<SeasonRow>(
-      `UPDATE "seasons"
-          SET "status" = 'archived', "updated_by" = $3, "updated_at" = $4,
-              "version" = "version" + 1
-        WHERE "id" = $1 AND "team_id" = $2 AND "status" <> 'archived'
-       RETURNING "id", "team_id", "slug", "name",
-              to_char("starts_on", 'YYYY-MM-DD') AS "starts_on",
-              to_char("ends_on", 'YYYY-MM-DD') AS "ends_on",
-              "status", "created_by", "updated_by", "created_at", "updated_at",
-              "version"`,
-      [id, teamId, actorId, now.toISOString()],
     );
     const row = rows[0];
     return row === undefined ? null : this.toSeason(row);

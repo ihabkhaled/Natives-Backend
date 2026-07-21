@@ -20,8 +20,10 @@ Prompt: `102-permission-based-rbac-and-team-season-scoping`. Builds on prompt 10
   `src/shared/constants/permission-catalog.constants.ts` (`PERMISSION_CATALOG`,
   `PERMISSION_CATALOG_KEYS`). It is the single source seeded into the `permissions`
   table by the RBAC migration.
-- The canonical set is 88 permissions from
-  `11-SCHEMAS/rbac.permissions.yaml`. The enum additionally retains two
+- The canonical set is 91 permissions: the 88 from
+  `11-SCHEMAS/rbac.permissions.yaml` plus three **platform-scope** permissions
+  (`platform.admin`, `team.create`, `team.browse.all`, area `platform`) that
+  separate a web-app super administrator from a team administrator. The enum additionally retains two
   template-only `article:*` permissions used by the reference module; these are NOT
   part of the catalog or any seeded bundle.
 
@@ -38,20 +40,22 @@ Prompt: `102-permission-based-rbac-and-team-season-scoping`. Builds on prompt 10
 
 The catalog/bundle unit tests (`permission-catalog.spec.ts`, `role-bundles.spec.ts`)
 assert completeness and bundle composition; the RBAC integration test asserts the
-seed matches (88 permissions, 5 roles).
+seed matches (88 permissions and 5 roles at the RBAC migration; 91 and 6 once
+1723800000000-platform-lifecycle-schema has run).
 
 ## 2. Roles are bundles (data, not conditionals)
 
 Default system bundles live in `src/shared/constants/role-bundles.constants.ts`
 (`ROLE_BUNDLES`, keyed by `RbacRole`) and compose by extension:
 
-| Bundle        | Composition                                                                                |
-| ------------- | ------------------------------------------------------------------------------------------ |
-| `MEMBER`      | baseline participating member (read-own, RSVP, leaderboards)                               |
-| `COACH`       | extends `MEMBER` + practice/attendance/assessment/roster/match management                  |
-| `TEAM_ADMIN`  | extends `COACH` + settings/season/member-lifecycle/roles/finalize/governance/imports/audit |
-| `SCOREKEEPER` | standalone: read + `match.score`                                                           |
-| `ANALYST`     | standalone: read + team analytics + reports                                                |
+| Bundle        | Composition                                                                                 |
+| ------------- | ------------------------------------------------------------------------------------------- |
+| `SUPER_ADMIN` | the ENTIRE catalog, including the three platform permissions; meant to be assigned globally |
+| `MEMBER`      | baseline participating member (read-own, RSVP, leaderboards)                                |
+| `COACH`       | extends `MEMBER` + practice/attendance/assessment/roster/match management                   |
+| `TEAM_ADMIN`  | extends `COACH` + settings/season/member-lifecycle/roles/finalize/governance/imports/audit  |
+| `SCOREKEEPER` | standalone: read + `match.score`                                                            |
+| `ANALYST`     | standalone: read + team analytics + reports                                                 |
 
 Bundles are seeded into `roles` + `role_permissions`. `match.score` is granted only by
 `SCOREKEEPER` — `TEAM_ADMIN` does not hold it, which is what makes the anti-escalation
@@ -136,6 +140,23 @@ Controller: `src/modules/rbac/api/rbac.controller.ts` (base `rbac`), all under t
 | DELETE | `rbac/assignments/:assignmentId`      | `member.roles.manage` | Revoke an assignment (soft-revoke)                 |
 | GET    | `rbac/users/:userId/assignments`      | `member.roles.manage` | List a user's active assignments                   |
 | GET    | `rbac/me/permissions?teamId&seasonId` | authenticated         | The caller's own effective permissions (self-only) |
+| GET    | `rbac/role-bundles?teamId&seasonId`   | `member.roles.manage` | The full role x permission matrix (see below)      |
+
+### The role x permission matrix
+
+`GET /rbac/role-bundles` serves the whole catalog **from the database** — `roles`,
+`permissions` and `role_permissions`, the seeded source of truth — never from the
+compiled `PERMISSION_CATALOG` constant, so what an administrator sees on the
+matrix screen is exactly what the resolver enforces. The response is
+`{ policyVersion, permissions[], roles[] }`: `policyVersion` lets a client cache
+the matrix and revalidate after any assignment or bundle change; both collections
+are bounded (`RBAC_PERMISSION_CATALOG_MAX`, `RBAC_ROLE_DEFINITION_MAX`) and
+deterministically ordered (permissions by area then key, roles by key), so the
+same database always renders the same matrix. A role with no bundled permissions
+still appears, with an empty `permissions` array — the matrix always has one
+column per role. Pass `?teamId=` so a team-scoped administrator's
+`member.roles.manage` grant covers the request; a platform-scoped principal may
+omit it.
 
 The assignment scope is taken from the **query** (so the guard resolves the manage
 permission within that team/season); the body carries only the target user, role key,

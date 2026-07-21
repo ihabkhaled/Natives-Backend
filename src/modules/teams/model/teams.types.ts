@@ -3,6 +3,7 @@ import type {
   ResourceStatus,
   SeasonStatus,
   SettingKey,
+  TeamStatus,
 } from './teams.enums';
 
 /** A JSON document persisted in a jsonb column (settings value, catalog metadata). */
@@ -18,7 +19,9 @@ export interface Team {
   readonly timezone: string;
   readonly primaryColor: string | null;
   readonly logoMediaKey: string | null;
-  readonly status: ResourceStatus;
+  readonly status: TeamStatus;
+  /** Soft-removal instant; null while the team is present. Never hard-deleted. */
+  readonly deletedAt: Date | null;
   readonly createdBy: string | null;
   readonly updatedBy: string | null;
   readonly createdAt: Date;
@@ -321,6 +324,42 @@ export interface NewSettingVersion {
   readonly value: JsonObject;
   readonly note: string | null;
   readonly createdBy: string | null;
+  readonly now: Date;
+}
+
+/**
+ * A lifecycle move requested against a team or season aggregate. A null
+ * `expectedVersion` means the caller did not supply one (the DELETE shortcut),
+ * so no optimistic check is applied; the state machine still gates the move.
+ */
+export interface TransitionCommand {
+  readonly expectedVersion: number | null;
+}
+
+/** The write applied by a team lifecycle transition. */
+export interface TeamStatusChange {
+  readonly id: string;
+  readonly status: TeamStatus;
+  readonly updatedBy: string | null;
+  readonly expectedVersion: number | null;
+  readonly now: Date;
+}
+
+/** The write applied by a season lifecycle transition. */
+export interface SeasonStatusChange {
+  readonly id: string;
+  readonly teamId: string;
+  readonly status: SeasonStatus;
+  readonly updatedBy: string | null;
+  readonly expectedVersion: number | null;
+  readonly now: Date;
+}
+
+/** The write applied by a soft removal (never a hard delete). */
+export interface TeamRemoval {
+  readonly id: string;
+  readonly updatedBy: string | null;
+  readonly expectedVersion: number | null;
   readonly now: Date;
 }
 

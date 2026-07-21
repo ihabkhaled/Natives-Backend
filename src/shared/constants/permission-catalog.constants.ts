@@ -15,6 +15,23 @@ export interface PermissionCatalogEntry {
 }
 
 export const PERMISSION_CATALOG: readonly PermissionCatalogEntry[] = [
+  // platform — never bundled into a team-scoped role, so a team-scoped grant can
+  // never satisfy them; only a global (teamId IS NULL) assignment does.
+  {
+    key: Permission.PlatformAdmin,
+    area: PermissionArea.Platform,
+    description: 'Administer the platform across every team',
+  },
+  {
+    key: Permission.TeamCreate,
+    area: PermissionArea.Platform,
+    description: 'Create a new team',
+  },
+  {
+    key: Permission.TeamBrowseAll,
+    area: PermissionArea.Platform,
+    description: 'Browse every team on the platform',
+  },
   // team
   {
     key: Permission.TeamRead,

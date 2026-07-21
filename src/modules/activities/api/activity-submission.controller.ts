@@ -48,7 +48,7 @@ import {
 import { CreateSubmissionDto } from './dto/create-submission.dto';
 import { ListActivitiesQueryDto } from './dto/list-activities.query.dto';
 import { ListSubmissionsResponseDto } from './dto/list-submissions.response.dto';
-import { OptimisticVersionDto } from './dto/optimistic-version.dto';
+import { ActivityOptimisticVersionDto } from './dto/optimistic-version.dto';
 import { SubmissionDetailResponseDto } from './dto/submission-detail-response.dto';
 import { UpdateSubmissionDto } from './dto/update-submission.dto';
 
@@ -149,7 +149,7 @@ export class ActivitySubmissionController {
   submit(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(SUBMISSION_ID_PARAM, UuidValidationPipe) submissionId: string,
-    @Body() dto: OptimisticVersionDto,
+    @Body() dto: ActivityOptimisticVersionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<SubmissionDetailResponseDto> {
     return this.submitSubmission.execute(actor, teamId, submissionId, {
@@ -167,7 +167,7 @@ export class ActivitySubmissionController {
   withdraw(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(SUBMISSION_ID_PARAM, UuidValidationPipe) submissionId: string,
-    @Body() dto: OptimisticVersionDto,
+    @Body() dto: ActivityOptimisticVersionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<SubmissionDetailResponseDto> {
     return this.withdrawSubmission.execute(actor, teamId, submissionId, {

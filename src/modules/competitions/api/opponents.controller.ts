@@ -34,7 +34,7 @@ import {
   TEAM_ID_PARAM,
 } from '../model/competitions.constants';
 import { CreateOpponentDto } from './dto/create-opponent.dto';
-import { ListQueryDto } from './dto/list.query.dto';
+import { CompetitionListQueryDto } from './dto/list.query.dto';
 import { ListOpponentsResponseDto } from './dto/list-opponents.response.dto';
 import { OpponentResponseDto } from './dto/opponent-response.dto';
 
@@ -59,7 +59,7 @@ export class OpponentsController {
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   list(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
-    @Query() query: ListQueryDto,
+    @Query() query: CompetitionListQueryDto,
   ): Promise<ListOpponentsResponseDto> {
     return this.query.listForTeam(
       teamId,

@@ -11,6 +11,7 @@ import {
 } from '@core/persistence/unit-of-work.port';
 import { Inject, Injectable } from '@nestjs/common';
 
+import { canAcceptTeamWork } from '../domain/team-lifecycle.state-machine';
 import { OptimisticConflictError } from '../errors/optimistic-conflict.error';
 import { TeamNotFoundError } from '../errors/team-not-found.error';
 import { TeamRepository } from '../infrastructure/team.repository';
@@ -20,7 +21,6 @@ import {
   DEFAULT_TIMEZONE,
   TEAM_UPDATED_EVENT,
 } from '../model/teams.constants';
-import { ResourceStatus } from '../model/teams.enums';
 import type {
   NewAuditEvent,
   Team,
@@ -60,7 +60,10 @@ export class UpdateTeamUseCase {
     command: UpdateTeamCommand,
   ): Promise<Team> {
     const existing = await this.teams.findById(scope, teamId);
-    if (existing === null || existing.status === ResourceStatus.Archived) {
+    if (
+      existing === null ||
+      !canAcceptTeamWork(existing.status, existing.deletedAt)
+    ) {
       throw new TeamNotFoundError();
     }
     const now = this.clock.now();

@@ -19,6 +19,7 @@ import { RbacSchema1721400000000 } from '../src/database/migrations/172140000000
 import { TeamsSchema1721500000000 } from '../src/database/migrations/1721500000000-teams-schema';
 import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
 import { PlatformSchema1721700000000 } from '../src/database/migrations/1721700000000-platform-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -53,6 +54,7 @@ const MIGRATIONS = [
   TeamsSchema1721500000000,
   MembersSchema1721600000000,
   PlatformSchema1721700000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 interface Fixture {
@@ -200,6 +202,7 @@ describeIfDb(suiteTitle, () => {
   afterAll(async () => {
     await app.close();
     if (seededDataSource) {
+      await seededDataSource.undoLastMigration();
       await seededDataSource.undoLastMigration();
       await seededDataSource.undoLastMigration();
       await seededDataSource.undoLastMigration();

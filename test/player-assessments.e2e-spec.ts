@@ -26,6 +26,7 @@ import { PracticeAgendasSchema1722100000000 } from '../src/database/migrations/1
 import { PracticeRemindersCalendarSchema1722200000000 } from '../src/database/migrations/1722200000000-practice-reminders-calendar-schema';
 import { AssessmentCatalogSchema1722300000000 } from '../src/database/migrations/1722300000000-assessment-catalog-schema';
 import { PlayerAssessmentSchema1722400000000 } from '../src/database/migrations/1722400000000-player-assessment-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -67,6 +68,7 @@ const MIGRATIONS = [
   PracticeRemindersCalendarSchema1722200000000,
   AssessmentCatalogSchema1722300000000,
   PlayerAssessmentSchema1722400000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 interface Fixture {

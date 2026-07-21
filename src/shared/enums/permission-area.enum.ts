@@ -4,6 +4,7 @@
  * `11-SCHEMAS/rbac.permissions.yaml` and drive catalog navigation and docs.
  */
 export enum PermissionArea {
+  Platform = 'platform',
   Team = 'team',
   Members = 'members',
   Practices = 'practices',

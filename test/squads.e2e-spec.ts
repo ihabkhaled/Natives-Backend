@@ -36,6 +36,7 @@ import { PointsSchema1723100000000 } from '../src/database/migrations/1723100000
 import { LeaderboardIndexes1723200000000 } from '../src/database/migrations/1723200000000-leaderboard-indexes';
 import { CompetitionsSchema1723300000000 } from '../src/database/migrations/1723300000000-competitions-schema';
 import { SquadsSchema1723400000000 } from '../src/database/migrations/1723400000000-squads-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -87,6 +88,7 @@ const MIGRATIONS = [
   LeaderboardIndexes1723200000000,
   CompetitionsSchema1723300000000,
   SquadsSchema1723400000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 interface Fixture {

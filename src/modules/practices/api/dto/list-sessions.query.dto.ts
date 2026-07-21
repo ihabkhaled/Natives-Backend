@@ -10,14 +10,14 @@ import {
 
 import { SESSION_TYPE_MAX_LENGTH } from '../../model/practices.constants';
 import { SessionStatus } from '../../model/practices.enums';
-import { ListQueryDto } from './list-query.dto';
+import { PracticeListQueryDto } from './list-query.dto';
 
 /**
  * Calendar/list filter for practice sessions. All dimensions are optional and
  * allowlisted; the window bounds filter on the start instant. Absent dimensions
  * are unfiltered. Pagination is inherited and clamped.
  */
-export class ListSessionsQueryDto extends ListQueryDto {
+export class ListSessionsQueryDto extends PracticeListQueryDto {
   @ApiPropertyOptional({ format: 'date-time' })
   @IsOptional()
   @IsDateString()

@@ -49,7 +49,7 @@ import { ReviewDecision } from '../model/activity.enums';
 import { CorrectSubmissionDto } from './dto/correct-submission.dto';
 import { ListReviewQueueQueryDto } from './dto/list-review-queue.query.dto';
 import { ListReviewQueueResponseDto } from './dto/list-review-queue.response.dto';
-import { OptimisticVersionDto } from './dto/optimistic-version.dto';
+import { ActivityOptimisticVersionDto } from './dto/optimistic-version.dto';
 import { ReviewDecisionDto } from './dto/review-decision.dto';
 import { ReviewDetailResponseDto } from './dto/review-detail-response.dto';
 
@@ -111,7 +111,7 @@ export class ActivityReviewController {
   claim(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(SUBMISSION_ID_PARAM, UuidValidationPipe) submissionId: string,
-    @Body() dto: OptimisticVersionDto,
+    @Body() dto: ActivityOptimisticVersionDto,
     @CurrentUser() actor: AuthUserIdentity,
   ): Promise<ReviewDetailResponseDto> {
     return this.claimReview.execute(actor, teamId, submissionId, dto);

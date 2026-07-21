@@ -20,6 +20,7 @@ import { RbacSchema1721400000000 } from '../src/database/migrations/172140000000
 import { TeamsSchema1721500000000 } from '../src/database/migrations/1721500000000-teams-schema';
 import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
 import { SeedHistorySchema1722600000000 } from '../src/database/migrations/1722600000000-seed-history-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 
 // Proves the seeded principal contract over real HTTP on a disposable database
 // of its own: the once-only seeders are the ONLY writes, so `/auth/me` here is
@@ -31,6 +32,7 @@ const SEED_MIGRATIONS = [
   TeamsSchema1721500000000,
   MembersSchema1721600000000,
   SeedHistorySchema1722600000000,
+  PlatformLifecycleSchema1723800000000,
 ];
 
 const HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
@@ -60,6 +62,8 @@ const SEED_DB_CONFIG: DatabaseConfig = {
 
 const ADMIN_EMAIL = 'seeded-admin@example.test';
 const ADMIN_PASSWORD = 'correct-horse-battery-staple';
+const PERSONA_PASSWORD = 'persona-horse-battery-staple';
+const COACH_EMAIL = 'headcoach@ultimatenatives.local';
 const ADMIN_DISPLAY_NAME = 'Seeded Administrator';
 
 function buildLogger(): AppLogger {
@@ -107,6 +111,7 @@ async function provision(client: Client): Promise<DataSource> {
         password: ADMIN_PASSWORD,
         displayName: ADMIN_DISPLAY_NAME,
       }),
+      loadPersonasConfig: () => ({ password: PERSONA_PASSWORD }),
     }),
     buildLogger(),
     'boot',
@@ -277,5 +282,47 @@ describeIfDb(suiteTitle, () => {
 
     expect(response.status).toBe(409);
     expect(response.body.messageKey).toBe('errors.members.accountRequired');
+  });
+
+  it('lets a seeded persona log in with the shared development credential', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/auth/login')
+      .send({ email: COACH_EMAIL, password: PERSONA_PASSWORD });
+
+    expect(response.status).toBe(200);
+    expect(response.body.user.memberships).toEqual([
+      expect.objectContaining({ teamSlug: 'un', status: 'active' }),
+    ]);
+  });
+
+  it('lets the seeded super admin browse teams while a coach cannot', async () => {
+    const superAdmin = await request(app.getHttpServer())
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'superadmin@ultimatenatives.local',
+        password: PERSONA_PASSWORD,
+      });
+    expect(superAdmin.status).toBe(200);
+
+    const browsed = await request(app.getHttpServer())
+      .get('/api/v1/teams')
+      .set(
+        'Authorization',
+        `Bearer ${superAdmin.body.tokens.accessToken as string}`,
+      );
+    expect(browsed.status).toBe(200);
+    expect(browsed.body.total).toBeGreaterThan(0);
+
+    const coach = await request(app.getHttpServer())
+      .post('/api/v1/auth/login')
+      .send({ email: COACH_EMAIL, password: PERSONA_PASSWORD });
+    const denied = await request(app.getHttpServer())
+      .get('/api/v1/teams')
+      .set(
+        'Authorization',
+        `Bearer ${coach.body.tokens.accessToken as string}`,
+      );
+    expect(denied.status).toBe(403);
+    expect(denied.body.messageKey).toBe('errors.auth.permissionDenied');
   });
 });

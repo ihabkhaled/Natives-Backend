@@ -44,7 +44,7 @@ import {
 } from '../model/measurements.constants';
 import { CreateMeasurementSessionDto } from './dto/create-session.dto';
 import { ListMeasurementsQueryDto } from './dto/list-measurements.query.dto';
-import { ListSessionsResponseDto } from './dto/list-sessions.response.dto';
+import { MeasurementListSessionsResponseDto } from './dto/list-sessions.response.dto';
 import { RecordMeasurementDto } from './dto/record-measurement.dto';
 import { RecordedMeasurementResponseDto } from './dto/recorded-measurement.response.dto';
 import { SessionDetailResponseDto } from './dto/session-detail-response.dto';
@@ -69,12 +69,12 @@ export class MeasurementSessionController {
   @Get()
   @RequirePermissions(Permission.AnalyticsReadTeam)
   @ApiOperation({ summary: 'List a team’s measurement sessions' })
-  @ApiOkResponse({ type: ListSessionsResponseDto })
+  @ApiOkResponse({ type: MeasurementListSessionsResponseDto })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   list(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Query() query: ListMeasurementsQueryDto,
-  ): Promise<ListSessionsResponseDto> {
+  ): Promise<MeasurementListSessionsResponseDto> {
     return this.query.listForTeam(
       teamId,
       resolveMeasurementsPage(query.limit, query.offset),
