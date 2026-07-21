@@ -100,6 +100,8 @@ Do not proceed when any of the following is true:
 - docs are stale for changed behavior
 - touched-module coverage is below threshold without waiver
 - lint, static analysis, type, build, test, or security checks are failing
+- **any CI gate is red — formatting, lint, typecheck, unit, coverage, e2e, build, knowledge build/validation, OpenAPI contract, security, or the aggregate `all-gates-green` check. Every gate must be green BEFORE you commit and BEFORE you push (rule 52, `rules/31-ci-gates-before-commit-and-push.md`). Fix the root cause — never weaken a rule/threshold, add an undocumented suppression, delete or skip a test, exclude a logic file from coverage, or mark a required check optional.**
+- **`src/**` or the corpus changed without running `npm run knowledge:build` and committing the regenerated `.ai/**` — `knowledge:check` then fails on stale routing data**
 - architecture impact is undocumented
 - rollback is undefined
 - observability, monitoring, or alerts are undefined for material risk

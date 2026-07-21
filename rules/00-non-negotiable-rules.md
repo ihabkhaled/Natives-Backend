@@ -81,6 +81,14 @@ Layer-specific detail lives in the numbered rule files ([README](./README.md)); 
 51. **Execute with focus.** Communicate concisely, avoid unrelated detours and speculative work,
     make reasonable in-scope decisions promptly, and continue through verification. Focus never
     bypasses analysis, architecture, security, testing, documentation, approval, or release gates.
+52. **Every CI gate is green before you commit and before you push.** Formatting, lint, typecheck,
+    unit, coverage, e2e, build, **knowledge build/validation**, OpenAPI contract, security, and the
+    aggregate **all-gates-green** check. A red gate is fixed at its root cause — never by weakening a
+    rule/threshold, adding an undocumented suppression, deleting or skipping a test, excluding a logic
+    file from coverage, or marking a required check optional/`continue-on-error`. After ANY change
+    under `src/**` or the corpus, run `npm run knowledge:build` and commit the regenerated `.ai/**` in
+    the same commit, or `knowledge:check` fails on stale routing data. A gate that cannot run in this
+    environment is reported UNVERIFIED with the exact reason — never claimed as passing. (rules/31)
 
 ---
 
@@ -105,4 +113,6 @@ Layer-specific detail lives in the numbered rule files ([README](./README.md)); 
 - [ ] Agent/mirror guidance still routes to canonical owners without duplicated policy (rule 50)
 - [ ] Work stayed concise and in scope without skipping any mandatory phase or gate (rule 51)
 - [ ] Tests written/updated first; docs updated (rule 42)
+- [ ] **Every CI gate green before commit AND before push — including knowledge build/validation and all-gates-green (rule 52)**
+- [ ] `.ai/**` rebuilt (`npm run knowledge:build`) and committed whenever `src/**` or the corpus changed (rule 52)
 - [ ] `npm run lint` / `typecheck` / `test` / `test:coverage` / `build` green

@@ -34,3 +34,9 @@ jobs:
 
       - name: Run Knowledge Staleness Gate
         run: npm run knowledge:check
+
+      # Contradiction gate: required governance files exist, every routed path
+      # resolves, and no suppression (eslint-disable / @ts-ignore) sits in src.
+      # knowledge:check alone only proves the manifests are not stale.
+      - name: Run Knowledge Contradiction Gate
+        run: npm run knowledge:verify

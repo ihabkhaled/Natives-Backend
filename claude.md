@@ -1335,6 +1335,9 @@ Do not perform extraction mindlessly. Extract to improve clarity and ownership, 
 - commit-message validation must be automated when the repository enforces message format
 - generated files, lockfiles, manifests, schemas, or derived artifacts that belong in version control must be verified as current before commit
 - local gates must use the same authoritative commands or script entrypoints as CI wherever practical
+- every CI gate must be green **before commit and before push**, including formatting, lint, static analysis, type/compile, unit, coverage, end-to-end, build, generated-knowledge build and validation, published-contract drift, security scanning, and the aggregate all-gates-green check; a red gate is never pushed on the assumption that CI will report it, because CI reporting it is the failure
+- the aggregate all-gates-green check is green only when every individual gate is green; it must never be marked optional, allowed to continue-on-error, or dismissed as flake without investigating the specific failing job
+- when generated knowledge, routing, or manifest artifacts derive from source or governance documents, regenerating and committing them belongs in the same commit as the change; a staleness gate failure is a real defect because it means the routing data a contributor or agent reads no longer matches the repository
 - a local gate failure must be fixed at the root cause, not hidden by disable comments, skipped assertions, weakened thresholds, or silent retries
 - never bypass pre-commit or pre-push gates using `--no-verify` or equivalent unless an emergency exception is approved in writing
 - any emergency bypass must record:

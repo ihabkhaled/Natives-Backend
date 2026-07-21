@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T14:36:11.250Z",
+  "generatedAt": "2026-07-21T14:59:26.094Z",
   "documents": [
     {
       "path": "agents/backend-architect.md",
@@ -1461,7 +1461,7 @@
         "./testing-strategy.md",
         "./ai-context-map.md"
       ],
-      "hash": "sha256:8732369e609cac7c25f26a6f1e45e95f049ade90af50fc8b79e3b39a5ea27727"
+      "hash": "sha256:aea05be24712ad94c81e1cc6df8aada78c0e897fb2053240153e85078ab31bc8"
     },
     {
       "path": "memory/library-boundaries.md",
@@ -2295,7 +2295,7 @@
         "wins"
       ],
       "relatedPaths": [],
-      "hash": "sha256:ab33175c880c73bdb1efe9c040a8ac1a981dfc87839fbc895ca5330b8b8ae277"
+      "hash": "sha256:7115e2c2f5953223029c8c8b42c4623f94acde62957b0237139956a33e0479ce"
     },
     {
       "path": "rules/01-architecture-and-module-boundaries.md",
@@ -4195,6 +4195,21 @@
       "hash": "sha256:5a2bb6a969e5502c51e7473188d04a8a5db98b495651f92a97834355eb1304f2"
     },
     {
+      "path": "rules/31-ci-gates-before-commit-and-push.md",
+      "root": "rules",
+      "title": "CI gates before commit and push",
+      "ruleNumber": 31,
+      "implementsRule": [],
+      "keywords": [
+        "before",
+        "commit",
+        "gates",
+        "push"
+      ],
+      "relatedPaths": [],
+      "hash": "sha256:6fdfab2384e619e6878ff167b077024e4adc4390eaedbcf5ce5b9c85af915e15"
+    },
+    {
       "path": "rules/README.md",
       "root": "rules",
       "title": "Engineering Rules — Index",
@@ -4251,7 +4266,7 @@
         "you"
       ],
       "relatedPaths": [],
-      "hash": "sha256:fca0a0612bcb974ad4677ca4260f46148cf455005e442231108819feaef51af5"
+      "hash": "sha256:6a1e575868823a036dfb66044228c4a25073afe05cc8192d15b327d43c8c39ca"
     },
     {
       "path": "skills/add-config-value.md",

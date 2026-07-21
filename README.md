@@ -107,6 +107,14 @@ Then hit it:
 
 Keep every gate green: `npm run validate && npm run security:audit && npm run security:scan`.
 
+**Every CI gate must be green before you commit and before you push** — formatting, lint, typecheck,
+unit, coverage, e2e, build, knowledge build/validation, OpenAPI contract, security, and the aggregate
+`all-gates-green` check. After any change under `src/**` or the governance corpus, run
+`npm run knowledge:build` and commit the regenerated `.ai/**` in the same commit, or the knowledge
+staleness gate fails. Fix a red gate at its root cause — never weaken a rule or threshold, add an
+undocumented suppression, delete or skip a test, exclude a logic file from coverage, or mark a required
+check optional. See [`rules/31-ci-gates-before-commit-and-push.md`](./rules/31-ci-gates-before-commit-and-push.md).
+
 ### GitHub merge gates
 
 Pull requests and pushes to `main` run seven independent checks: `lint`, `typecheck`, `test:unit`, `test:e2e`, `test:coverage`, `build`, and `security:scan`. The E2E gate uses Nest/Fastify/Supertest; this backend has no Playwright dependency. Workflow ownership and required-check setup are documented in [`.github/README.md`](./.github/README.md) and [`runbooks/github-required-checks.md`](./runbooks/github-required-checks.md).

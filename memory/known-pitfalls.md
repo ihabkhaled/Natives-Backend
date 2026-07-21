@@ -242,6 +242,12 @@ See [04-repositories-and-persistence.md](../rules/04-repositories-and-persistenc
 - **Cause:** lockfile dependency/peer metadata only influences resolution; it cannot restore missing runtime APIs or make an unsupported package compatible.
 - **Fix:** restore generated lockfile metadata and use the vendor-supported migration or compatibility package. Never use an `.npmrc` legacy-peer bypass, `--force`, or `--legacy-peer-deps`. Prove the real toolchain with clean `npm ci --dry-run`, lint, typecheck, and build runs.
 
+### I5. Pushing with a red CI gate (especially knowledge staleness)
+
+- **Symptom:** CI reports `Gate - Knowledge` (or `all-gates-green`) failing seconds after a push, even though the local unit tests passed.
+- **Cause:** `knowledge:check` compares a SHA of every `src/**/*.ts` and corpus document against the recorded manifest hashes. Changing source or a rule/skill/context/memory/agent/testing doc without running `npm run knowledge:build` leaves `.ai/**` stale, so the routing data an agent reads no longer matches the repository. The aggregate `all-gates-green` job then fails too, because it is green only when every gate is green.
+- **Fix:** run `npm run knowledge:build` and commit the regenerated `.ai/**` in the **same** commit as the source change, then re-run `knowledge:check` + `knowledge:verify` before pushing. Every gate must be green before commit and before push — never mark a required check optional or `continue-on-error` to get past it. See [31-ci-gates-before-commit-and-push.md](../rules/31-ci-gates-before-commit-and-push.md).
+
 ---
 
 ## J. Simplicity & over-production traps
@@ -322,5 +328,7 @@ See [04-repositories-and-persistence.md](../rules/04-repositories-and-persistenc
 - [ ] Simple Code Ladder run: owner reused, no speculative abstraction, boring direct version, no safety cut (J1–J5)
 - [ ] No anonymous layer contracts/DTO assertions; owner scope precedes pagination; vendors/config examples have one real owner (J6–J10)
 - [ ] `lint` / `typecheck` / `test` / `test:coverage` / `build` green — never `--no-verify` (I1)
+- [ ] EVERY CI gate green before commit AND push, incl. knowledge build/validation + `all-gates-green` (I5, rule 52)
+- [ ] `.ai/**` rebuilt via `npm run knowledge:build` and committed whenever `src/**` or the corpus changed (I5)
 
 **Related:** [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) · [reliability-patterns.md](./reliability-patterns.md) · [performance-decisions.md](./performance-decisions.md) · [security-decisions.md](./security-decisions.md) · [code-simplicity-decisions.md](./code-simplicity-decisions.md) · [testing-strategy.md](./testing-strategy.md) · [ai-context-map.md](./ai-context-map.md)

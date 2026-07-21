@@ -1,0 +1,42 @@
+name: CI
+
+# Aggregate release signal. Every individual gate workflow runs on its own and
+# reports its own status; this job exists so one required check can gate a merge
+# or a release, and so a skipped/cancelled job can never be mistaken for a pass.
+#
+# Rule 52 (rules/31-ci-gates-before-commit-and-push.md): every gate must be green
+# before commit and before push. Never mark a required check optional and never
+# add continue-on-error to make this job pass.
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: all-gates-green-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  all-gates-green:
+    name: all-gates-green
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Wait for every gate workflow
+        uses: lewagon/wait-on-check-action@v1.4.0
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          running-workflow-name: all-gates-green
+          wait-interval: 15
+          allowed-conclusions: success
+
+      - name: Report
+        run: echo "All required gates reported success."

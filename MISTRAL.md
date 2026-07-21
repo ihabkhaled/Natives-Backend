@@ -23,3 +23,5 @@ Required route:
 Keep controllers thin, services focused, use cases transactional/orchestrating, domain pure, repositories persistence-only/bounded/scoped, and vendors behind app-owned adapters. Use typed config, logger adapter, DTO validation, typed `AppError` message keys, auth + permissions + ownership, strict TypeScript/ESLint, and tests/docs in the same change.
 
 Run repository scripts; never use `--no-verify`, `eslint-disable`, `@ts-ignore`, `any`, or assertions to force a gate.
+
+Every CI gate must be green **before you commit and before you push** — formatting, lint, typecheck, unit, coverage, e2e, build, knowledge build/validation, OpenAPI contract, security, and the aggregate `all-gates-green` check (rule 52, `rules/31-ci-gates-before-commit-and-push.md`). After any `src/**` or corpus change, run `npm run knowledge:build` and commit the regenerated `.ai/**` in the same commit. Fix a red gate at its root cause; never mark a required check optional or `continue-on-error`.
