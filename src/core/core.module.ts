@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { APP_FILTER } from '@nestjs/core';
 
 import { ClockModule } from './clock/clock.module';
+import { EmailModule } from './email/email.module';
 import { AppExceptionFilter } from './errors/app-exception.filter';
 import { HealthModule } from './health/health.module';
 import { IdGeneratorModule } from './id-generator/id-generator.module';
@@ -13,7 +14,13 @@ import { RateLimitModule } from './rate-limit/rate-limit.module';
  * clock/id-generator ports used by the application layer.
  */
 @Module({
-  imports: [ClockModule, IdGeneratorModule, HealthModule, RateLimitModule],
+  imports: [
+    ClockModule,
+    IdGeneratorModule,
+    HealthModule,
+    RateLimitModule,
+    EmailModule,
+  ],
   providers: [{ provide: APP_FILTER, useClass: AppExceptionFilter }],
 })
 export class CoreModule {}

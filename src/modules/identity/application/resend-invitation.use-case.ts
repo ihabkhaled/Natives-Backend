@@ -23,11 +23,15 @@ import type {
   SecureRandomPort,
 } from '../model/identity.types';
 import { SecurityAuditService } from './security-audit.service';
+import { SendInvitationEmailService } from './send-invitation-email.service';
 
 /**
  * Re-issues a pending invitation with a fresh token and expiry. The previous
  * token hash is overwritten, invalidating any earlier link. Non-pending
  * invitations cannot be resent.
+ *
+ * "Resend" means what it says: the new link is emailed automatically once the
+ * rotation commits, with the same best-effort semantics as create.
  */
 @Injectable()
 export class ResendInvitationUseCase {
@@ -39,15 +43,18 @@ export class ResendInvitationUseCase {
     private readonly config: AppConfigService,
     private readonly invitations: InvitationRepository,
     private readonly audit: SecurityAuditService,
+    private readonly invitationEmail: SendInvitationEmailService,
   ) {}
 
-  execute(
+  async execute(
     invitationId: string,
     actorUserId: string,
   ): Promise<InvitationDelivery> {
-    return this.unitOfWork.runInTransaction(scope =>
+    const delivery = await this.unitOfWork.runInTransaction(scope =>
       this.run(scope, invitationId, actorUserId),
     );
+    await this.invitationEmail.send(delivery);
+    return delivery;
   }
 
   private async run(

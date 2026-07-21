@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T11:59:42.849Z",
+  "generatedAt": "2026-07-21T12:47:13.827Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -353,6 +353,11 @@
     },
     {
       "from": "src/config/config.module.ts",
+      "to": "src/config/email.config.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/config.module.ts",
       "to": "src/config/env.validation.ts",
       "type": "internal"
     },
@@ -395,6 +400,21 @@
       "from": "src/config/database.config.ts",
       "to": "src/config/config.utils.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/config/email.config.ts",
+      "to": "src/config/config.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/email.config.ts",
+      "to": "src/config/config.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/email.config.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/config/env.validation.ts",
@@ -693,6 +713,11 @@
     },
     {
       "from": "src/core/core.module.ts",
+      "to": "src/core/email/email.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/core.module.ts",
       "to": "src/core/errors/app-exception.filter.ts",
       "type": "cross-cutting"
     },
@@ -710,6 +735,66 @@
       "from": "src/core/core.module.ts",
       "to": "src/core/rate-limit/rate-limit.module.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/email/console-email-sender.service.ts",
+      "to": "src/core/email/email-sender.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/console-email-sender.service.ts",
+      "to": "src/core/email/email.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/console-email-sender.service.ts",
+      "to": "src/core/logger/app-logger.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/email/email.module.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/email/email.module.ts",
+      "to": "src/core/email/console-email-sender.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/email.module.ts",
+      "to": "src/core/email/email-sender.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/email.module.ts",
+      "to": "src/core/email/email-sender.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/email.module.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/email/index.ts",
+      "to": "src/core/email/console-email-sender.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/index.ts",
+      "to": "src/core/email/email-sender.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/index.ts",
+      "to": "src/core/email/email-sender.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/index.ts",
+      "to": "src/core/email/email.module.ts",
+      "type": "internal"
     },
     {
       "from": "src/core/errors/app-error.ts",
@@ -10858,6 +10943,11 @@
     },
     {
       "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/modules/identity/application/send-invitation-email.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
       "to": "src/modules/identity/errors/invitation-conflict.error.ts",
       "type": "internal"
     },
@@ -11353,6 +11443,11 @@
     },
     {
       "from": "src/modules/identity/application/resend-invitation.use-case.ts",
+      "to": "src/modules/identity/application/send-invitation-email.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/resend-invitation.use-case.ts",
       "to": "src/modules/identity/domain/invitation.policy.ts",
       "type": "internal"
     },
@@ -11612,6 +11707,36 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/application/send-invitation-email.service.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/send-invitation-email.service.ts",
+      "to": "src/core/email/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/send-invitation-email.service.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/send-invitation-email.service.ts",
+      "to": "src/modules/identity/domain/invitation-email.template.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/send-invitation-email.service.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/send-invitation-email.service.ts",
+      "to": "src/modules/identity/model/invitation-email.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/identity/application/session-issuer.service.ts",
       "to": "src/config/app-config.service.ts",
       "type": "cross-cutting"
@@ -11669,6 +11794,16 @@
     {
       "from": "src/modules/identity/domain/failed-login.policy.ts",
       "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/domain/invitation-email.template.ts",
+      "to": "src/core/email/email-sender.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/domain/invitation-email.template.ts",
+      "to": "src/modules/identity/model/invitation-email.constants.ts",
       "type": "internal"
     },
     {
@@ -11784,6 +11919,11 @@
     {
       "from": "src/modules/identity/identity.module.ts",
       "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/core/email/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -11904,6 +12044,11 @@
     {
       "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/send-invitation-email.service.ts",
       "type": "internal"
     },
     {
@@ -26792,6 +26937,11 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/rbac/api/dto/effective-permissions-response.dto.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -34145,6 +34295,11 @@
       "from": "src/shared/constants/role-permissions.constants.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/shared/enums/index.ts",
+      "to": "src/shared/enums/email-provider.enum.ts",
+      "type": "internal"
     },
     {
       "from": "src/shared/enums/index.ts",

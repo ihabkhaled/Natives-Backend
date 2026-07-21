@@ -45,6 +45,7 @@ function build() {
     rotateToken: vi.fn(),
   };
   const audit = { record: vi.fn() };
+  const invitationEmail = { send: vi.fn().mockResolvedValue(undefined) };
 
   const useCase = new ResendInvitationUseCase(
     unitOfWork as never,
@@ -53,9 +54,10 @@ function build() {
     config as never,
     invitations as never,
     audit as never,
+    invitationEmail as never,
   );
 
-  return { useCase, invitations, audit };
+  return { useCase, invitations, audit, invitationEmail };
 }
 
 describe('ResendInvitationUseCase', () => {
@@ -81,6 +83,30 @@ describe('ResendInvitationUseCase', () => {
     expect(result.expiresAt).toEqual(new Date(NOW.getTime() + 1000 * 1000));
     expect(result.status).toBe(InvitationStatus.Pending);
     expect(result.token).toBe('rawtoken');
+  });
+
+  it('emails the rotated link automatically, with the fresh token', async () => {
+    harness.invitations.findById.mockResolvedValue(PENDING_INVITATION);
+
+    const result = await harness.useCase.execute('inv-1', 'admin-1');
+
+    expect(harness.invitationEmail.send).toHaveBeenCalledTimes(1);
+    expect(harness.invitationEmail.send).toHaveBeenCalledWith(result);
+    expect(harness.invitationEmail.send).toHaveBeenCalledWith(
+      expect.objectContaining({
+        email: PENDING_INVITATION.email,
+        token: 'rawtoken',
+      }),
+    );
+  });
+
+  it('never emails an invitation it refused to rotate', async () => {
+    harness.invitations.findById.mockResolvedValue(null);
+
+    await expect(
+      harness.useCase.execute('inv-1', 'admin-1'),
+    ).rejects.toBeInstanceOf(InvitationNotFoundError);
+    expect(harness.invitationEmail.send).not.toHaveBeenCalled();
   });
 
   it('throws not-found when the invitation is missing', async () => {

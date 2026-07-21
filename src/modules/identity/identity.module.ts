@@ -1,4 +1,5 @@
 import { ClockModule } from '@core/clock/clock.module';
+import { EmailModule } from '@core/email';
 import { IdGeneratorModule } from '@core/id-generator/id-generator.module';
 import { AuthModule } from '@modules/auth';
 import { MembersModule } from '@modules/members';
@@ -27,6 +28,7 @@ import { RevokeInvitationUseCase } from './application/revoke-invitation.use-cas
 import { RevokeOtherSessionsUseCase } from './application/revoke-other-sessions.use-case';
 import { RevokeSessionUseCase } from './application/revoke-session.use-case';
 import { SecurityAuditService } from './application/security-audit.service';
+import { SendInvitationEmailService } from './application/send-invitation-email.service';
 import { SessionIssuerService } from './application/session-issuer.service';
 import { FailedLoginStateRepository } from './infrastructure/failed-login-state.repository';
 import { InvitationRepository } from './infrastructure/invitation.repository';
@@ -54,6 +56,7 @@ import { SECURE_RANDOM_PORT } from './model/identity.constants';
     MembersModule,
     ClockModule,
     IdGeneratorModule,
+    EmailModule,
   ],
   controllers: [
     AuthController,
@@ -74,6 +77,7 @@ import { SECURE_RANDOM_PORT } from './model/identity.constants';
     SessionIssuerService,
     CreateInvitationUseCase,
     ResendInvitationUseCase,
+    SendInvitationEmailService,
     RevokeInvitationUseCase,
     ExpireInvitationsUseCase,
     AcceptInvitationUseCase,

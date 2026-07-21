@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T11:59:42.849Z",
+  "generatedAt": "2026-07-21T12:47:13.827Z",
   "modules": [
     {
       "name": "activities",
@@ -589,10 +589,12 @@
         "service": [
           "src/modules/identity/application/principal-memberships.service.ts",
           "src/modules/identity/application/security-audit.service.ts",
+          "src/modules/identity/application/send-invitation-email.service.ts",
           "src/modules/identity/application/session-issuer.service.ts"
         ],
         "domain": [
           "src/modules/identity/domain/failed-login.policy.ts",
+          "src/modules/identity/domain/invitation-email.template.ts",
           "src/modules/identity/domain/invitation.policy.ts",
           "src/modules/identity/domain/password-reset.policy.ts",
           "src/modules/identity/domain/refresh-session.policy.ts",
@@ -629,11 +631,12 @@
           "src/modules/identity/model/identity.constants.ts",
           "src/modules/identity/model/identity.enums.ts",
           "src/modules/identity/model/identity.rows.ts",
-          "src/modules/identity/model/identity.types.ts"
+          "src/modules/identity/model/identity.types.ts",
+          "src/modules/identity/model/invitation-email.constants.ts"
         ]
       },
-      "fileCount": 72,
-      "specCount": 44,
+      "fileCount": 75,
+      "specCount": 46,
       "publicSurface": "src/modules/identity/index.ts",
       "hasEvents": false
     },
@@ -1850,6 +1853,7 @@
       "submodules": [
         "auth",
         "clock",
+        "email",
         "errors",
         "health",
         "http",

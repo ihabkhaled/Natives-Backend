@@ -10,6 +10,11 @@ import type {
   EffectivePermissionResolverPort,
 } from '@core/auth';
 import type { ClockPort } from '@core/clock/clock.port';
+import type {
+  EmailMessage,
+  EmailSenderPort,
+} from '@core/email/email-sender.port';
+import type { AppLogger } from '@core/logger';
 import type { IdGeneratorPort } from '@core/id-generator/id-generator.port';
 import { PasswordHashAdapter } from '@modules/auth/adapters/password-hash.adapter';
 import { AcceptInvitationUseCase } from '@modules/identity/application/accept-invitation.use-case';
@@ -21,6 +26,7 @@ import { RefreshSessionUseCase } from '@modules/identity/application/refresh-ses
 import { RequestPasswordResetUseCase } from '@modules/identity/application/request-password-reset.use-case';
 import { ResetPasswordUseCase } from '@modules/identity/application/reset-password.use-case';
 import { SecurityAuditService } from '@modules/identity/application/security-audit.service';
+import { SendInvitationEmailService } from '@modules/identity/application/send-invitation-email.service';
 import { SessionIssuerService } from '@modules/identity/application/session-issuer.service';
 import { FailedLoginStateRepository } from '@modules/identity/infrastructure/failed-login-state.repository';
 import { InvitationRepository } from '@modules/identity/infrastructure/invitation.repository';
@@ -62,6 +68,21 @@ const IDENTITY_CONFIG = {
   failedLoginWindowSeconds: 900,
   accountLockoutSeconds: 900,
 };
+
+const EMAIL_CONFIG = {
+  provider: 'console',
+  fromAddress: 'no-reply@ultimatenatives.local',
+  webBaseUrl: 'http://localhost:5173',
+};
+
+/** The email path is asserted through `sentEmails`, not through log output. */
+const SILENT_LOGGER = {
+  setContext: () => {},
+  debug: () => {},
+  info: () => {},
+  warn: () => {},
+  error: () => {},
+} as unknown as AppLogger;
 
 const NOW = new Date('2026-06-01T12:00:00.000Z');
 const STRONG_PASSWORD = 'correct-horse-battery-staple';
@@ -108,7 +129,24 @@ function buildWiring(dataSource: DataSource, secureRandom: SecureRandomPort) {
   const permissionResolver: EffectivePermissionResolverPort = {
     resolve: () => Promise.resolve(new Set(['practice.read', 'team.read'])),
   };
-  const config = { identity: IDENTITY_CONFIG } as unknown as AppConfigService;
+  const config = {
+    identity: IDENTITY_CONFIG,
+    email: EMAIL_CONFIG,
+  } as unknown as AppConfigService;
+  // Records what the invitation flow hands the transport, so the integration
+  // suite proves the email is sent rather than stubbing the send away.
+  const sentEmails: EmailMessage[] = [];
+  const emailSender: EmailSenderPort = {
+    send: message => {
+      sentEmails.push(message);
+      return Promise.resolve();
+    },
+  };
+  const invitationEmail = new SendInvitationEmailService(
+    emailSender,
+    config,
+    SILENT_LOGGER,
+  );
   // The principal projection is exercised end-to-end in test/members.e2e-spec.ts;
   // this suite drives the identity repositories, so it stubs the members surface.
   const principalMemberships = {
@@ -142,7 +180,9 @@ function buildWiring(dataSource: DataSource, secureRandom: SecureRandomPort) {
       users,
       invitations,
       audit,
+      invitationEmail,
     ),
+    sentEmails,
     acceptInvitation: new AcceptInvitationUseCase(
       unitOfWork,
       clock,
@@ -274,6 +314,14 @@ describeIfDb(suiteTitle, () => {
       invitedBy,
     });
     const inviteToken = secureRandom.last;
+
+    // Creating the invitation sends it: one message, to the invitee, carrying
+    // the accept link the invitee is about to use below.
+    expect(wiring.sentEmails).toHaveLength(1);
+    expect(wiring.sentEmails[0]?.to).toBe(email);
+    expect(wiring.sentEmails[0]?.actionUrl).toBe(
+      `http://localhost:5173/accept-invitation?token=${inviteToken}`,
+    );
 
     const accepted = await wiring.acceptInvitation.execute({
       token: inviteToken,

@@ -28,12 +28,16 @@ import type {
   SecureRandomPort,
 } from '../model/identity.types';
 import { SecurityAuditService } from './security-audit.service';
+import { SendInvitationEmailService } from './send-invitation-email.service';
 
 /**
  * Creates a pending invitation for a privileged actor. Generates a CSPRNG token,
- * persists only its sha-256 hash, and audits the action — all atomically. The
- * plaintext token is delivered out-of-band (future notification port) and is
- * never returned by the API.
+ * persists only its sha-256 hash, and audits the action — all atomically.
+ *
+ * The invitation email is sent automatically once that transaction commits, so
+ * inviting somebody is a single step. Sending is best-effort and deliberately
+ * outside the transaction; the response still carries the one-time link so an
+ * admin can hand it over manually (see OD-002).
  */
 @Injectable()
 export class CreateInvitationUseCase {
@@ -47,13 +51,16 @@ export class CreateInvitationUseCase {
     private readonly users: UserRepository,
     private readonly invitations: InvitationRepository,
     private readonly audit: SecurityAuditService,
+    private readonly invitationEmail: SendInvitationEmailService,
   ) {}
 
-  execute(command: CreateInvitationCommand): Promise<InvitationDelivery> {
+  async execute(command: CreateInvitationCommand): Promise<InvitationDelivery> {
     const email = normalizeEmail(command.email);
-    return this.unitOfWork.runInTransaction(scope =>
+    const delivery = await this.unitOfWork.runInTransaction(scope =>
       this.run(scope, command, email),
     );
+    await this.invitationEmail.send(delivery);
+    return delivery;
   }
 
   private async run(

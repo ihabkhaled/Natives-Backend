@@ -1,10 +1,20 @@
-import { LogLevel } from '@shared/enums';
+import { EmailProvider, LogLevel } from '@shared/enums';
 
 export const APP_CONFIG_NAMESPACE = 'app';
 export const SECURITY_CONFIG_NAMESPACE = 'security';
 export const DATABASE_CONFIG_NAMESPACE = 'database';
 export const IDENTITY_CONFIG_NAMESPACE = 'identity';
+export const EMAIL_CONFIG_NAMESPACE = 'email';
 export const NODE_ENV_CONFIG_NAME = 'NODE_ENV';
+
+// --- Outbound email ---------------------------------------------------------
+// The transport defaults to the console adapter so a fresh checkout sends
+// invitations without any provider credential (OD-002). `webBaseUrl` is the
+// origin the accept-invitation link is built against — the address a recipient
+// opens, which is the web app, not this API.
+export const DEFAULT_EMAIL_PROVIDER = EmailProvider.Console;
+export const DEFAULT_WEB_BASE_URL = 'http://localhost:5173';
+export const EMAIL_FROM_ADDRESS_DEFAULT = 'no-reply@ultimatenatives.local';
 
 // --- Bootstrap / seeding ----------------------------------------------------
 // Defaults for the idempotent default-admin seed. The password has no default:

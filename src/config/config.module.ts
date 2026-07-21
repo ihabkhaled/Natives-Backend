@@ -4,6 +4,7 @@ import { ConfigModule as NestConfigModule } from '@nestjs/config';
 import { appConfig } from './app.config';
 import { AppConfigService } from './app-config.service';
 import { databaseConfig } from './database.config';
+import { emailConfig } from './email.config';
 import { validateEnv } from './env.validation';
 import { identityConfig } from './identity.config';
 import { securityConfig } from './security.config';
@@ -18,7 +19,13 @@ import { securityConfig } from './security.config';
     NestConfigModule.forRoot({
       isGlobal: true,
       cache: true,
-      load: [appConfig, securityConfig, databaseConfig, identityConfig],
+      load: [
+        appConfig,
+        securityConfig,
+        databaseConfig,
+        identityConfig,
+        emailConfig,
+      ],
       validate: validateEnv,
     }),
   ],

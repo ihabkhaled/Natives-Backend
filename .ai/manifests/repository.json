@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-21T11:59:42.849Z",
-  "treeHash": "sha256:16da66f6bd6d5f3d59d53bee91aee36dee2374aa886c39382bbfa0acbd62af0d",
+  "generatedAt": "2026-07-21T12:47:13.827Z",
+  "treeHash": "sha256:1b02daf40137ab08058cd78e8c8b5f8d09d8fc311b48f36f4cbf290814cd15db",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -410,8 +410,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:14abf619b7d00e3d0fe38ed079fa275b65fa8b7a19ee1f77a3ddc08b3638fc42",
-      "sizeBytes": 1212
+      "hash": "sha256:fc86feafa07eebd13edef0390943f8ef22b34e2531ffeb3b676059373cf52533",
+      "sizeBytes": 1366
     },
     {
       "path": "src/config/app.config.spec.ts",
@@ -507,7 +507,23 @@
         },
         {
           "kind": "const",
+          "name": "EMAIL_CONFIG_NAMESPACE"
+        },
+        {
+          "kind": "const",
           "name": "NODE_ENV_CONFIG_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_EMAIL_PROVIDER"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_WEB_BASE_URL"
+        },
+        {
+          "kind": "const",
+          "name": "EMAIL_FROM_ADDRESS_DEFAULT"
         },
         {
           "kind": "const",
@@ -821,8 +837,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0dddfc64c8421f11892f130a11e59adfe5110bd1c8b600e1933337cec517d3d8",
-      "sizeBytes": 6146
+      "hash": "sha256:98b287fd3c9e4dd6d772c4f7af8e9ee0e08e1b2637c57ec73194d7dd8490ad4b",
+      "sizeBytes": 6767
     },
     {
       "path": "src/config/config.module.ts",
@@ -838,8 +854,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d55975d6e939a61c2778c58bccf8237c6c778c14018bbe404815c67bf9e460d6",
-      "sizeBytes": 902
+      "hash": "sha256:3e623bbb160c912b74e6e50d365289bd2b8531d2132e4ee9df4a243acf344666",
+      "sizeBytes": 1010
     },
     {
       "path": "src/config/config.types.ts",
@@ -865,6 +881,10 @@
         },
         {
           "kind": "interface",
+          "name": "EmailConfig"
+        },
+        {
+          "kind": "interface",
           "name": "SeedAdminConfig"
         },
         {
@@ -875,8 +895,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:784dae4d44329317f40c0df8f67514130c27cd3a824c4234ac47adc0905c30d8",
-      "sizeBytes": 1555
+      "hash": "sha256:b2613fcfa00c8de58d5cc0ad087561e5e85d0fd4ba01a69d23e57aea6fb9e008",
+      "sizeBytes": 2016
     },
     {
       "path": "src/config/config.utils.spec.ts",
@@ -951,6 +971,35 @@
       "kind": "source",
       "hash": "sha256:cb587a4844e4b8b9a39bbb6cf7eadcf631ef82d6607c797ef52bd21d60ccda25",
       "sizeBytes": 2064
+    },
+    {
+      "path": "src/config/email.config.spec.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8af90144587203010e579ba1518dd60f6587369a9b09261bcc043e1484a5e2b8",
+      "sizeBytes": 1859
+    },
+    {
+      "path": "src/config/email.config.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "emailConfig"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/config/email.config.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1282329c0557f90fbdbd2264ec3efb54908e53befe5ccc033c26d4c71c2687ac",
+      "sizeBytes": 1674
     },
     {
       "path": "src/config/env.validation.spec.ts",
@@ -1530,8 +1579,132 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1eb2f709f75e947ec60d11559f1f6e7a3e1251ea5f338b9b0c185a87793cd0a4",
-      "sizeBytes": 807
+      "hash": "sha256:cc687477a6e192d6a9a4ef7eb233c38cd6f3a56610d252f3a25e6ed3ebdc2bfb",
+      "sizeBytes": 897
+    },
+    {
+      "path": "src/core/email/console-email-sender.service.spec.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e6b3a936db1e77915cc14945433792f95bff74c4211e58e7e65dc9a8151581fe",
+      "sizeBytes": 2012
+    },
+    {
+      "path": "src/core/email/console-email-sender.service.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ConsoleEmailSenderService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/email/console-email-sender.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:60b36c0ccc561ff82128e2c255c585b49546dcd847848197c6091f9e8e571460",
+      "sizeBytes": 1629
+    },
+    {
+      "path": "src/core/email/email-sender.port.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "EmailMessage"
+        },
+        {
+          "kind": "interface",
+          "name": "EmailSenderPort"
+        },
+        {
+          "kind": "const",
+          "name": "EMAIL_SENDER_PORT"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:698782e687203d872f93ecb2066852c73a6eeb350b5c93e3acb56ae41bd97b08",
+      "sizeBytes": 1262
+    },
+    {
+      "path": "src/core/email/email.constants.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "CONSOLE_EMAIL_LOGGER_CONTEXT"
+        },
+        {
+          "kind": "const",
+          "name": "CONSOLE_EMAIL_SENT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "CONSOLE_TRANSPORT_NOTICE"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c4924496332601f308ffed9ae7921c01f1daa5b664e40f350068c5294c84ac92",
+      "sizeBytes": 621
+    },
+    {
+      "path": "src/core/email/email.module.spec.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:10331e76b7bc3bc2426aff3e258087b17ca6565fe0eda5beb36ded78f36935b9",
+      "sizeBytes": 851
+    },
+    {
+      "path": "src/core/email/email.module.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EmailModule"
+        },
+        {
+          "kind": "function",
+          "name": "selectSender"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/email/email.module.spec.ts",
+      "kind": "source",
+      "hash": "sha256:cd5c015814b0938c69f67b5ad48bf017ded7098ad0a0e7171f01a8e00cdb93b9",
+      "sizeBytes": 1584
+    },
+    {
+      "path": "src/core/email/index.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:41713eab159ad32444de037ca7cf0ce113aff5541f82c307c59604586a5751b9",
+      "sizeBytes": 253
     },
     {
       "path": "src/core/errors/app-error.ts",
@@ -15788,8 +15961,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:d567b1e25459d7917b3faa10ac5aed4d63124a35e6612a00165236c3d0a728df",
-      "sizeBytes": 3871
+      "hash": "sha256:fb32679598bd6ec516097251b29f280ef1236fffb21be9a2f1ebc36c097632a7",
+      "sizeBytes": 4788
     },
     {
       "path": "src/modules/identity/application/create-invitation.use-case.ts",
@@ -15805,8 +15978,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/create-invitation.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:9496bde71cb51f5d8b065c182dd77c6b6c48e218bd1d7639ec16cd9883e2f052",
-      "sizeBytes": 3474
+      "hash": "sha256:6b3dea54d671c0f7c0d19880be8f23a626c8b3af1d3eba5770d3ea788c2ee624",
+      "sizeBytes": 3886
     },
     {
       "path": "src/modules/identity/application/expire-invitations.use-case.spec.ts",
@@ -16107,8 +16280,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:9cd61f7f1083a942662bf8152a8cd9c656ce27273ae3e7d13285de4634c6988e",
-      "sizeBytes": 3316
+      "hash": "sha256:f97079f87837c32a2208293181ce75a7b1636a903eb6e4957ee61d54d3ce6f86",
+      "sizeBytes": 4313
     },
     {
       "path": "src/modules/identity/application/resend-invitation.use-case.ts",
@@ -16124,8 +16297,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/resend-invitation.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:c038a6caf3965c1214a253a0c8dc3f1d424f48f4c0ddc49aff7c7f074f93fb26",
-      "sizeBytes": 2905
+      "hash": "sha256:2eac10ea7712ea9e6cd8c4ce020cc73472804746fdfda96e7c55dbd3cb12e648",
+      "sizeBytes": 3289
     },
     {
       "path": "src/modules/identity/application/reset-password.use-case.spec.ts",
@@ -16273,6 +16446,35 @@
       "sizeBytes": 1330
     },
     {
+      "path": "src/modules/identity/application/send-invitation-email.service.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b8f7f1986257a3ff370c28e0f9b760ff1ce9c475fee2245530793aa59a99eab0",
+      "sizeBytes": 2462
+    },
+    {
+      "path": "src/modules/identity/application/send-invitation-email.service.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SendInvitationEmailService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/send-invitation-email.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:db8075df019ff0dc39455983968e2544a8bf2c9cc4320e335be02eebf247e2e8",
+      "sizeBytes": 1838
+    },
+    {
       "path": "src/modules/identity/application/session-issuer.service.spec.ts",
       "root": "modules",
       "module": "identity",
@@ -16341,6 +16543,43 @@
       "kind": "source",
       "hash": "sha256:95a6b20c64ec19d171e9bf1817fec343c1770e0e9d6ca98053a1b640fe7b0814",
       "sizeBytes": 1758
+    },
+    {
+      "path": "src/modules/identity/domain/invitation-email.template.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:b65dd248573de50f59635efac3a7fe17862abda29d2146044eb0a17b905d4327",
+      "sizeBytes": 2014
+    },
+    {
+      "path": "src/modules/identity/domain/invitation-email.template.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "InvitationEmailInput"
+        },
+        {
+          "kind": "function",
+          "name": "buildAcceptInvitationUrl"
+        },
+        {
+          "kind": "function",
+          "name": "renderInvitationEmail"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/domain/invitation-email.template.spec.ts",
+      "kind": "source",
+      "hash": "sha256:345f1b9c94ec9b0c109df8b15a14abbb344e074b45f4bb6c387272d798ab41c3",
+      "sizeBytes": 1782
     },
     {
       "path": "src/modules/identity/domain/invitation.policy.spec.ts",
@@ -16720,8 +16959,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d1a5b03169c11fd17f53ccd8e9ca3f5afb854d69ae352fff171664fec6621688",
-      "sizeBytes": 4517
+      "hash": "sha256:a01faf8ef32a19eb70d12ce406046ae251872c4cfdf087cefd3b4ebc4ca140d9",
+      "sizeBytes": 4699
     },
     {
       "path": "src/modules/identity/index.ts",
@@ -17621,6 +17860,39 @@
       "kind": "source",
       "hash": "sha256:bda3967ea30520862ce3b2379249985aa6811cc942d7fca4f33ff04903e9ba88",
       "sizeBytes": 8113
+    },
+    {
+      "path": "src/modules/identity/model/invitation-email.constants.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "INVITATION_ACCEPT_PATH"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_TOKEN_QUERY_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_EMAIL_SUBJECT"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_EMAIL_LOGGER_CONTEXT"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_EMAIL_FAILED_MESSAGE"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d92ad131be666ecde1afa0c77916ee3e50a5721b56e197956bd52b0d0dbacbaa",
+      "sizeBytes": 621
     },
     {
       "path": "src/modules/matches/api/dto/complete-match-point.dto.ts",
@@ -37508,8 +37780,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:250a3ff37a6efb30629845447f18201276d6db3b7b453ca59ced9187a774bea8",
-      "sizeBytes": 420
+      "hash": "sha256:62511d9ee47d32377739a65f2fe301938f29f34d285bbab3bd0312c55653a193",
+      "sizeBytes": 892
     },
     {
       "path": "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
@@ -47381,6 +47653,27 @@
       "sizeBytes": 1198
     },
     {
+      "path": "src/shared/enums/email-provider.enum.ts",
+      "root": "shared",
+      "module": "enums",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "EmailProvider"
+        },
+        {
+          "kind": "const",
+          "name": "EMAIL_PROVIDER_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a73119f68b87d4c30d68ccd32e9be86f93f8131405a5ba3f548934d5f410ba90",
+      "sizeBytes": 784
+    },
+    {
       "path": "src/shared/enums/index.ts",
       "root": "shared",
       "module": "enums",
@@ -47389,8 +47682,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:385ae31d52d95242fedacbbc01ce7668a2fdbb3beda7bfc465b667e4989b148f",
-      "sizeBytes": 205
+      "hash": "sha256:49e39c784b568774a135dad5c925e0c0938963873f827116469d24f32e16db7d",
+      "sizeBytes": 244
     },
     {
       "path": "src/shared/enums/log-level.enum.ts",

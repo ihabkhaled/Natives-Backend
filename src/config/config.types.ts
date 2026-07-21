@@ -1,4 +1,4 @@
-import type { LogLevel, NodeEnv } from '@shared/enums';
+import type { EmailProvider, LogLevel, NodeEnv } from '@shared/enums';
 
 export interface AppConfig {
   readonly nodeEnv: NodeEnv;
@@ -43,6 +43,18 @@ export interface IdentityConfig {
   readonly accountLockoutSeconds: number;
 }
 
+/**
+ * Outbound email. `provider` selects which adapter the `EmailSenderPort` token
+ * resolves to; `webBaseUrl` is the origin recipient-facing links are built
+ * against. Swapping to a real transport is a change to these values plus one
+ * new adapter — no use case changes.
+ */
+export interface EmailConfig {
+  readonly provider: EmailProvider;
+  readonly fromAddress: string;
+  readonly webBaseUrl: string;
+}
+
 export interface SeedAdminConfig {
   readonly email: string;
   readonly password: string;
@@ -54,4 +66,5 @@ export interface RootConfig {
   readonly security: SecurityConfig;
   readonly database: DatabaseConfig;
   readonly identity: IdentityConfig;
+  readonly email: EmailConfig;
 }

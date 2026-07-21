@@ -62,6 +62,7 @@ function build() {
     insert: vi.fn().mockResolvedValue(INSERTED_INVITATION),
   };
   const audit = { record: vi.fn() };
+  const invitationEmail = { send: vi.fn().mockResolvedValue(undefined) };
 
   const useCase = new CreateInvitationUseCase(
     unitOfWork as never,
@@ -72,9 +73,10 @@ function build() {
     users as never,
     invitations as never,
     audit as never,
+    invitationEmail as never,
   );
 
-  return { useCase, users, invitations, audit };
+  return { useCase, users, invitations, audit, invitationEmail };
 }
 
 const COMMAND = {
@@ -109,6 +111,28 @@ describe('CreateInvitationUseCase', () => {
       COMMAND.invitedBy,
       { invitationId: INSERTED_INVITATION.id },
     );
+  });
+
+  it('emails the invitation automatically, with the token it returned', async () => {
+    const result = await harness.useCase.execute(COMMAND);
+
+    expect(harness.invitationEmail.send).toHaveBeenCalledTimes(1);
+    expect(harness.invitationEmail.send).toHaveBeenCalledWith(result);
+    expect(harness.invitationEmail.send).toHaveBeenCalledWith(
+      expect.objectContaining({
+        email: INSERTED_INVITATION.email,
+        token: 'rawtoken',
+      }),
+    );
+  });
+
+  it('never emails an invitation it refused to create', async () => {
+    harness.users.findActiveByEmail.mockResolvedValue(ACTIVE_USER);
+
+    await expect(harness.useCase.execute(COMMAND)).rejects.toBeInstanceOf(
+      InvitationConflictError,
+    );
+    expect(harness.invitationEmail.send).not.toHaveBeenCalled();
   });
 
   it('throws a conflict when an active user already exists', async () => {
