@@ -20,6 +20,14 @@ export const MATCH_POINT_ROUTE = 'point';
 export const MATCH_TIMEOUT_ROUTE = 'timeout';
 export const MATCH_VOID_ROUTE = 'void';
 
+export const MATCH_POINTS_ROUTE = 'teams/:teamId/matches/:matchId/points';
+export const MATCH_STATISTICS_ROUTE =
+  'teams/:teamId/matches/:matchId/statistics';
+export const POINT_COMPLETION_ROUTE = 'completion';
+export const POINT_PLAYS_ROUTE = 'plays';
+export const POINT_CORRECTIONS_ROUTE = 'corrections';
+export const STATISTICS_REBUILD_ROUTE = 'rebuild';
+
 // --- Pagination --------------------------------------------------------------
 
 export const LIST_DEFAULT_LIMIT = 20;
@@ -73,6 +81,87 @@ export const INITIAL_STREAM_VERSION = 0;
 
 /** A plain point is worth exactly one; the ruleset never scales it silently. */
 export const DEFAULT_POINT_VALUE = 1;
+
+// --- Point lineups, possession events, statistics (UN-504) -------------------
+
+/** The named, versioned derivation the statistics projection cites. */
+export const MATCH_STATS_ENGINE_VERSION = 'match-statistics-v1';
+
+export const LINE_SIZE_MIN = 1;
+export const LINE_SIZE_MAX = 12;
+export const POINT_DURATION_MIN = 0;
+export const POINT_DURATION_MAX = 7200;
+export const FIRST_POINT_NUMBER = 1;
+export const PLAY_MAX_LIMIT = 500;
+export const PLAY_DEFAULT_LIMIT = 200;
+
+/** The whole point stream and roster of one match are read in bounded pages. */
+export const STATS_PLAY_MAX = 2000;
+export const STATS_LINEUP_MAX = 4000;
+export const STATS_ROSTER_MAX = 200;
+
+/** Every counter starts at a MEASURED zero once its source data exists. */
+export const ZERO_COUNT = 0;
+
+export const MATCH_POINT_NOT_OPEN_MESSAGE =
+  'No point is currently open on this match, so the fact cannot be attached to one';
+export const MATCH_POINT_NOT_OPEN_MESSAGE_KEY: ErrorMessageKey =
+  'errors.matches.pointNotOpen';
+export const MATCH_POINT_ALREADY_OPEN_MESSAGE =
+  'A point is already open on this match; complete it before starting another';
+export const MATCH_POINT_ALREADY_OPEN_MESSAGE_KEY: ErrorMessageKey =
+  'errors.matches.pointAlreadyOpen';
+export const MATCH_PLAY_NOT_FOUND_MESSAGE =
+  'The requested play was not found on this match';
+export const MATCH_PLAY_NOT_FOUND_MESSAGE_KEY: ErrorMessageKey =
+  'errors.matches.playNotFound';
+export const MATCH_LINEUP_INVALID_MESSAGE =
+  'The point lineup failed a configured constraint';
+export const MATCH_LINEUP_INVALID_MESSAGE_KEY: ErrorMessageKey =
+  'errors.matches.lineupInvalid';
+
+export const MATCH_PLAY_RESOURCE_TYPE = 'match_play';
+export const MATCH_STATISTICS_RESOURCE_TYPE = 'match_statistics';
+
+export const MATCH_POINT_STARTED_ACTION = 'match.point.started';
+export const MATCH_POINT_COMPLETED_ACTION = 'match.point.completed';
+export const MATCH_PLAY_RECORDED_ACTION = 'match.play.recorded';
+export const MATCH_PLAY_CORRECTED_ACTION = 'match.play.corrected';
+export const MATCH_STATS_REBUILT_ACTION = 'match.stats.rebuilt';
+
+export const POINT_STARTED_EVENT = 'match.point_started.v1';
+export const POINT_COMPLETED_EVENT = 'match.point_completed.v1';
+export const MATCH_EVENT_ACCEPTED_EVENT = 'match.event_accepted.v1';
+export const MATCH_EVENT_CORRECTED_EVENT = 'match.event_corrected.v1';
+export const MATCH_STATS_PROJECTED_EVENT = 'match.stats_projected.v1';
+
+/** The physical point-stream columns. `retracted` is derived, never stored. */
+export const MATCH_PLAY_COLUMNS = `"id", "match_id", "team_id", "sequence",
+  "operation_id", "request_hash", "play_type", "point_number", "period",
+  "starting_line", "scoring_side", "primary_membership_id",
+  "secondary_membership_id", "assist_state", "callahan", "duration_seconds",
+  "corrects_play_id", "correction_reason", "notes", "recorded_by",
+  "occurred_at", "recorded_at"`;
+
+/** The same columns qualified for the aliased read that derives `retracted`. */
+export const MATCH_PLAY_SELECT_COLUMNS = `p."id", p."match_id", p."team_id",
+  p."sequence", p."operation_id", p."request_hash", p."play_type",
+  p."point_number", p."period", p."starting_line", p."scoring_side",
+  p."primary_membership_id", p."secondary_membership_id", p."assist_state",
+  p."callahan", p."duration_seconds", p."corrects_play_id",
+  p."correction_reason", p."notes", p."recorded_by", p."occurred_at",
+  p."recorded_at"`;
+
+/** A fact is retracted exactly when a later correction points back at it. */
+export const MATCH_PLAY_RETRACTED_EXPRESSION = `EXISTS (
+    SELECT 1 FROM "match_play_events" c WHERE c."corrects_play_id" = p."id"
+  ) AS "retracted"`;
+
+/** A freshly appended fact can never already be retracted. */
+export const MATCH_PLAY_NOT_RETRACTED = `false AS "retracted"`;
+
+export const MATCH_POINT_LINEUP_COLUMNS = `"id", "match_id", "play_id",
+  "point_number", "membership_id", "roster_entry_id", "puller"`;
 
 // --- Error messages ----------------------------------------------------------
 
@@ -194,8 +283,9 @@ export const MATCH_EVENT_NOT_VOIDED = `false AS "voided"`;
 export const MATCH_RULESET_COLUMNS = `"id", "team_id", "season_id",
   "ruleset_key", "ruleset_version", "name", "game_to", "win_by", "hard_cap",
   "soft_cap_minutes", "soft_cap_plus", "time_cap_minutes", "halftime_at",
-  "timeouts_per_team", "timeouts_per_period", "periods", "status", "notes",
-  "created_by", "created_at", "updated_at"`;
+  "timeouts_per_team", "timeouts_per_period", "periods",
+  "opponent_error_attribution", "status", "notes", "created_by", "created_at",
+  "updated_at"`;
 
 export const MATCH_REVISION_COLUMNS = `"id", "match_id", "team_id", "sequence", "revision",
   "action", "reason", "from_status", "to_status", "our_score_before",

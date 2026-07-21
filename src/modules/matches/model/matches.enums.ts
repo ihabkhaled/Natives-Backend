@@ -145,3 +145,77 @@ export enum OperationOutcome {
 
 export const OPERATION_OUTCOME_VALUES: readonly OperationOutcome[] =
   Object.values(OperationOutcome);
+
+/**
+ * Which line a point was started on. This is the ONLY input that decides whether
+ * winning the point is a hold or a break, so it is recorded as a fact when the
+ * line takes the field rather than inferred afterwards from the score.
+ */
+export enum PointStartingLine {
+  Offense = 'offense',
+  Defense = 'defense',
+}
+
+export const POINT_STARTING_LINE_VALUES: readonly PointStartingLine[] =
+  Object.values(PointStartingLine);
+
+/**
+ * How a completed point is classified. Winning a point started on offense is a
+ * `hold`; winning one started on defense is a `break`. The mirror pair records
+ * the same fact from the opponent's side, so a scoreboard and a break count can
+ * never disagree.
+ */
+export enum PointOutcome {
+  Hold = 'hold',
+  Break = 'break',
+  OpponentHold = 'opponent_hold',
+  OpponentBreak = 'opponent_break',
+}
+
+export const POINT_OUTCOME_VALUES: readonly PointOutcome[] =
+  Object.values(PointOutcome);
+
+/**
+ * The grammar of the point/possession stream (UN-504). `point_started` opens a
+ * point and carries the line that took the field; `point_completed` closes it and
+ * names the scoring side; everything between them is a possession fact.
+ * `correction` is the compensating retraction — a recorded fact is never deleted
+ * or rewritten, so a corrected stream still replays to the same statistics as a
+ * clean one.
+ */
+export enum MatchPlayType {
+  PointStarted = 'point_started',
+  PointCompleted = 'point_completed',
+  Pull = 'pull',
+  Throw = 'throw',
+  Completion = 'completion',
+  Goal = 'goal',
+  Drop = 'drop',
+  Throwaway = 'throwaway',
+  Block = 'block',
+  Stall = 'stall',
+  Call = 'call',
+  Turnover = 'turnover',
+  Substitution = 'substitution',
+  OpponentDrop = 'opponent_drop',
+  OpponentThrowaway = 'opponent_throwaway',
+  Correction = 'correction',
+}
+
+export const MATCH_PLAY_TYPE_VALUES: readonly MatchPlayType[] =
+  Object.values(MatchPlayType);
+
+/**
+ * Whether a goal's assist is a recorded fact, a deliberate "there was none"
+ * (a Callahan or an unassisted goal), or simply not known. This is the
+ * null-not-zero distinction at event level: `none` is a MEASURED absence that
+ * counts as an explained goal, `unknown` is missing data that is never inferred.
+ */
+export enum AssistState {
+  Recorded = 'recorded',
+  None = 'none',
+  Unknown = 'unknown',
+}
+
+export const ASSIST_STATE_VALUES: readonly AssistState[] =
+  Object.values(AssistState);

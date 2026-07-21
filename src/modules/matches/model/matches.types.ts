@@ -1,11 +1,15 @@
 import type {
+  AssistState,
   CapKind,
   MatchEventType,
+  MatchPlayType,
   MatchResult,
   MatchRevisionAction,
   MatchStatus,
   MatchTransition,
   OperationOutcome,
+  PointOutcome,
+  PointStartingLine,
   RulesetStatus,
   ScoringSide,
 } from './matches.enums';
@@ -49,6 +53,13 @@ export interface MatchRuleset {
   readonly timeoutsPerTeam: number;
   readonly timeoutsPerPeriod: number | null;
   readonly periods: number;
+  /**
+   * Whether this competition's rules APPROVE crediting a forced opponent error
+   * (their drop or throwaway) to one of our players. When it is false the
+   * statistics projection reports the per-player figure as `null` — "not
+   * evaluated under these rules" — rather than a misleading zero.
+   */
+  readonly opponentErrorAttribution: boolean;
   readonly status: RulesetStatus;
   readonly notes: string | null;
   readonly createdBy: string | null;
@@ -71,6 +82,7 @@ export interface MatchRulesetContent {
   readonly timeoutsPerTeam: number;
   readonly timeoutsPerPeriod: number | null;
   readonly periods: number;
+  readonly opponentErrorAttribution: boolean;
   readonly notes: string | null;
 }
 
@@ -495,6 +507,7 @@ export interface MatchRulesetContentInput {
   readonly timeoutsPerTeam?: number | null;
   readonly timeoutsPerPeriod?: number | null;
   readonly periods?: number | null;
+  readonly opponentErrorAttribution?: boolean | null;
   readonly notes?: string | null;
 }
 
@@ -512,4 +525,295 @@ export interface TimeoutContentInput {
   readonly operationId: string;
   readonly scoringSide: ScoringSide;
   readonly occurredAt?: string | null;
+}
+
+// --- Point lineups and possession events (UN-504) ----------------------------
+
+/**
+ * Anything already stored under a client operation id that can be compared by
+ * payload fingerprint. Both append-only streams of this module classify a replay
+ * through the same pure rule, so an offline device gets the same guarantee
+ * whichever stream it is retrying against.
+ */
+export interface RequestHashCarrier {
+  readonly requestHash: string;
+}
+
+/**
+ * One immutable fact on a match's point/possession stream. `retracted` is
+ * DERIVED from the existence of a later compensating `correction` pointing back
+ * at this row — a recorded fact is never rewritten, so the statistics stay a
+ * replayable projection rather than an edited total.
+ */
+export interface MatchPlayEvent {
+  readonly playId: string;
+  readonly matchId: string;
+  readonly teamId: string;
+  readonly sequence: number;
+  readonly operationId: string;
+  readonly requestHash: string;
+  readonly playType: MatchPlayType;
+  readonly pointNumber: number;
+  readonly period: number;
+  readonly startingLine: PointStartingLine | null;
+  readonly scoringSide: ScoringSide | null;
+  readonly primaryMembershipId: string | null;
+  readonly secondaryMembershipId: string | null;
+  readonly assistState: AssistState | null;
+  readonly callahan: boolean;
+  readonly durationSeconds: number | null;
+  readonly correctsPlayId: string | null;
+  readonly correctionReason: string | null;
+  readonly retracted: boolean;
+  readonly notes: string | null;
+  readonly recordedBy: string | null;
+  readonly occurredAt: Date | null;
+  readonly recordedAt: Date;
+}
+
+/** A fully-resolved play row ready for its single, append-only insert. */
+export interface NewMatchPlayEvent {
+  readonly id: string;
+  readonly matchId: string;
+  readonly teamId: string;
+  readonly sequence: number;
+  readonly operationId: string;
+  readonly requestHash: string;
+  readonly playType: MatchPlayType;
+  readonly pointNumber: number;
+  readonly period: number;
+  readonly startingLine: PointStartingLine | null;
+  readonly scoringSide: ScoringSide | null;
+  readonly primaryMembershipId: string | null;
+  readonly secondaryMembershipId: string | null;
+  readonly assistState: AssistState | null;
+  readonly callahan: boolean;
+  readonly durationSeconds: number | null;
+  readonly correctsPlayId: string | null;
+  readonly correctionReason: string | null;
+  readonly notes: string | null;
+  readonly recordedBy: string;
+  readonly occurredAt: Date | null;
+  readonly now: Date;
+}
+
+/** One player recorded as being on the line for a point. */
+export interface MatchPointLineupEntry {
+  readonly lineupId: string;
+  readonly matchId: string;
+  readonly playId: string;
+  readonly pointNumber: number;
+  readonly membershipId: string;
+  readonly rosterEntryId: string | null;
+  readonly puller: boolean;
+}
+
+/** A fully-resolved lineup row ready for insertion alongside its point. */
+export interface NewMatchPointLineupEntry {
+  readonly id: string;
+  readonly matchId: string;
+  readonly teamId: string;
+  readonly playId: string;
+  readonly pointNumber: number;
+  readonly membershipId: string;
+  readonly rosterEntryId: string | null;
+  readonly puller: boolean;
+  readonly now: Date;
+}
+
+/** The point currently open on the stream: started and not yet completed. */
+export interface OpenMatchPoint {
+  readonly playId: string;
+  readonly pointNumber: number;
+  readonly period: number;
+  readonly startingLine: PointStartingLine;
+}
+
+/** Author-supplied content of a point-start (lineup) operation. */
+export interface StartPointContent {
+  readonly operationId: string;
+  readonly startingLine: PointStartingLine;
+  readonly lineMembershipIds: readonly string[];
+  readonly pullerMembershipId: string | null;
+  readonly occurredAt: string | null;
+  readonly notes: string | null;
+}
+
+/** Author-supplied content of a point-completion operation. */
+export interface CompletePointContent {
+  readonly operationId: string;
+  readonly scoringSide: ScoringSide;
+  readonly durationSeconds: number | null;
+  readonly occurredAt: string | null;
+  readonly notes: string | null;
+}
+
+/** Author-supplied content of one possession fact inside an open point. */
+export interface PlayContent {
+  readonly operationId: string;
+  readonly playType: MatchPlayType;
+  readonly primaryMembershipId: string | null;
+  readonly secondaryMembershipId: string | null;
+  readonly assistState: AssistState;
+  readonly callahan: boolean;
+  readonly occurredAt: string | null;
+  readonly notes: string | null;
+}
+
+/** Author-supplied content of a compensating retraction. */
+export interface CorrectionContent {
+  readonly operationId: string;
+  readonly playId: string;
+  readonly reason: string;
+}
+
+export interface StartPointCommand {
+  readonly content: StartPointContent;
+}
+
+export interface CompletePointCommand {
+  readonly content: CompletePointContent;
+}
+
+export interface RecordPlayCommand {
+  readonly content: PlayContent;
+}
+
+export interface CorrectPlayCommand {
+  readonly content: CorrectionContent;
+}
+
+/** The result of an idempotent point-stream write. */
+export interface MatchPlayResult {
+  readonly outcome: OperationOutcome;
+  readonly play: MatchPlayEvent;
+  readonly pointNumber: number;
+  readonly lineup: readonly MatchPointLineupEntry[];
+}
+
+export type MatchPlayPage = PagedResult<MatchPlayEvent>;
+
+export interface StartPointContentInput {
+  readonly operationId: string;
+  readonly startingLine: PointStartingLine;
+  readonly lineMembershipIds: readonly string[];
+  readonly pullerMembershipId?: string | null;
+  readonly occurredAt?: string | null;
+  readonly notes?: string | null;
+}
+
+export interface CompletePointContentInput {
+  readonly operationId: string;
+  readonly scoringSide: ScoringSide;
+  readonly durationSeconds?: number | null;
+  readonly occurredAt?: string | null;
+  readonly notes?: string | null;
+}
+
+export interface PlayContentInput {
+  readonly operationId: string;
+  readonly playType: MatchPlayType;
+  readonly primaryMembershipId?: string | null;
+  readonly secondaryMembershipId?: string | null;
+  readonly assistState?: AssistState | null;
+  readonly callahan?: boolean | null;
+  readonly occurredAt?: string | null;
+  readonly notes?: string | null;
+}
+
+export interface CorrectionContentInput {
+  readonly operationId: string;
+  readonly playId: string;
+  readonly reason: string;
+}
+
+// --- Derived match statistics (projections, never stored totals) -------------
+
+/** One rostered player of the match, present even with nothing recorded. */
+export interface MatchRosterMember {
+  readonly membershipId: string;
+  readonly rosterEntryId: string | null;
+}
+
+/**
+ * The complete, ordered input the pure derivation engine folds into statistics.
+ * Everything here comes from source records: the append-only stream, the lineup
+ * rows attached to it, the match roster, and the VERSIONED ruleset.
+ */
+export interface MatchStatisticsSource {
+  readonly matchId: string;
+  readonly teamId: string;
+  readonly rulesetKey: string;
+  readonly rulesetVersion: number;
+  readonly opponentErrorAttribution: boolean;
+  readonly plays: readonly MatchPlayEvent[];
+  readonly lineups: readonly MatchPointLineupEntry[];
+  readonly roster: readonly MatchRosterMember[];
+}
+
+/**
+ * Per-player derived statistics. EVERY field is nullable on purpose: `null`
+ * means the figure was NOT MEASURED for this match (no lineups recorded, no
+ * possession facts recorded, or opponent-error attribution not approved by the
+ * ruleset), while `0` is a measured zero for a rostered player who was present
+ * in the data and simply did not register that action.
+ */
+export interface PlayerMatchStatistics {
+  readonly membershipId: string;
+  readonly rosterEntryId: string | null;
+  readonly rostered: boolean;
+  readonly pointsPlayed: number | null;
+  readonly offencePointsPlayed: number | null;
+  readonly defencePointsPlayed: number | null;
+  readonly goals: number | null;
+  readonly assists: number | null;
+  readonly callahans: number | null;
+  readonly drops: number | null;
+  readonly throwaways: number | null;
+  readonly blocks: number | null;
+  readonly opponentErrorsForced: number | null;
+}
+
+/** Team-level derived statistics for the match. */
+export interface TeamMatchStatistics {
+  readonly pointsStarted: number;
+  readonly pointsCompleted: number;
+  readonly holds: number;
+  readonly breaks: number;
+  readonly opponentHolds: number;
+  readonly opponentBreaks: number;
+  readonly goalsFor: number;
+  readonly goalsAgainst: number;
+  readonly drops: number | null;
+  readonly throwaways: number | null;
+  readonly blocks: number | null;
+  readonly turnovers: number | null;
+  readonly opponentErrors: number | null;
+}
+
+/**
+ * The whole statistics projection. It cites the ruleset key/version and the
+ * named engine version it was derived under, so any displayed number can be
+ * explained and re-derived rather than merely trusted.
+ */
+export interface MatchStatistics {
+  readonly matchId: string;
+  readonly teamId: string;
+  readonly rulesetKey: string;
+  readonly rulesetVersion: number;
+  readonly statsEngineVersion: string;
+  readonly lineupsRecorded: boolean;
+  readonly playsRecorded: boolean;
+  readonly opponentErrorAttribution: boolean;
+  readonly team: TeamMatchStatistics;
+  readonly players: readonly PlayerMatchStatistics[];
+}
+
+/** One completed point reduced to the facts hold/break classification needs. */
+export interface ResolvedMatchPoint {
+  readonly pointNumber: number;
+  readonly startingLine: PointStartingLine;
+  readonly scoringSide: ScoringSide;
+  readonly outcome: PointOutcome;
+  readonly playId: string;
 }

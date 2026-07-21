@@ -1,5 +1,5 @@
 import { OperationOutcome } from '../model/matches.enums';
-import type { MatchEvent } from '../model/matches.types';
+import type { RequestHashCarrier } from '../model/matches.types';
 
 /**
  * Pure idempotency rules for a client operation id. This is the contract an
@@ -13,7 +13,7 @@ import type { MatchEvent } from '../model/matches.types';
 
 /** Classify an incoming operation against any event already stored under its id. */
 export function classifyOperation(
-  existing: MatchEvent | null,
+  existing: RequestHashCarrier | null,
   requestHash: string,
 ): OperationOutcome {
   if (existing === null) {

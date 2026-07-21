@@ -79,6 +79,7 @@ export interface MatchRulesetRow {
   readonly timeouts_per_team: number | string;
   readonly timeouts_per_period: number | string | null;
   readonly periods: number | string;
+  readonly opponent_error_attribution: boolean;
   readonly status: string;
   readonly notes: string | null;
   readonly created_by: string | null;
@@ -132,4 +133,56 @@ export interface MatchScopeRow {
   readonly competition_id: string;
   readonly season_id: string;
   readonly home_away: string;
+}
+
+/** Raw `match_play_events` row (the append-only point/possession stream). */
+export interface MatchPlayEventRow {
+  readonly id: string;
+  readonly match_id: string;
+  readonly team_id: string;
+  readonly sequence: number | string;
+  readonly operation_id: string;
+  readonly request_hash: string;
+  readonly play_type: string;
+  readonly point_number: number | string;
+  readonly period: number | string;
+  readonly starting_line: string | null;
+  readonly scoring_side: string | null;
+  readonly primary_membership_id: string | null;
+  readonly secondary_membership_id: string | null;
+  readonly assist_state: string | null;
+  readonly callahan: boolean;
+  readonly duration_seconds: number | string | null;
+  readonly corrects_play_id: string | null;
+  readonly correction_reason: string | null;
+  readonly retracted: boolean;
+  readonly notes: string | null;
+  readonly recorded_by: string | null;
+  readonly occurred_at: string | Date | null;
+  readonly recorded_at: string | Date;
+}
+
+/** Raw `match_point_lineups` row (who was on the line for a point). */
+export interface MatchPointLineupRow {
+  readonly id: string;
+  readonly match_id: string;
+  readonly play_id: string;
+  readonly point_number: number | string;
+  readonly membership_id: string;
+  readonly roster_entry_id: string | null;
+  readonly puller: boolean;
+}
+
+/** One rostered member of the match roster, for zero-contribution completeness. */
+export interface MatchRosterMemberRow {
+  readonly membership_id: string;
+  readonly roster_entry_id: string | null;
+}
+
+/** The point currently open on a match's stream. */
+export interface OpenMatchPointRow {
+  readonly id: string;
+  readonly point_number: number | string;
+  readonly period: number | string;
+  readonly starting_line: string | null;
 }
