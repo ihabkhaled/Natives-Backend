@@ -1,6 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run build && node scripts/deploy/bootstrap-db.mjs",
-  "outputDirectory": "dist",
-  "rewrites": [{ "source": "/(.*)", "destination": "/src/main.js" }]
+  "buildCommand": "npm run build && node scripts/deploy/bootstrap-db.mjs"
 }
