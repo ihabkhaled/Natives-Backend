@@ -20,9 +20,12 @@ describe('App (e2e)', () => {
   let otherUserToken: string;
   let noPermissionToken: string;
   const originalDatabaseUrl = process.env['DATABASE_URL'];
+  const originalCorsOrigin = process.env['CORS_ORIGIN'];
+  const ALLOWED_ORIGIN = 'http://localhost:5173';
 
   beforeAll(async () => {
     process.env['DATABASE_URL'] = UNREACHABLE_DATABASE_URL;
+    process.env['CORS_ORIGIN'] = ALLOWED_ORIGIN;
     app = await createApp();
     await configureSecurity(app);
     await configureValidation(app);
@@ -59,6 +62,33 @@ describe('App (e2e)', () => {
       delete process.env['DATABASE_URL'];
     } else {
       process.env['DATABASE_URL'] = originalDatabaseUrl;
+    }
+    if (originalCorsOrigin === undefined) {
+      delete process.env['CORS_ORIGIN'];
+    } else {
+      process.env['CORS_ORIGIN'] = originalCorsOrigin;
+    }
+  });
+
+  it('CORS preflight allows every mutating verb the API exposes', async () => {
+    // Regression: enableCors() without an explicit `methods` list reflected
+    // only GET/HEAD/POST on the preflight response, so a browser silently
+    // blocked every PUT/PATCH/DELETE request (e.g. member role updates) as a
+    // CORS failure even though the server would have accepted it.
+    const response = await request(app.getHttpServer())
+      .options('/api/v1/members/00000000-0000-0000-0000-000000000000/roles')
+      .set('Origin', ALLOWED_ORIGIN)
+      .set('Access-Control-Request-Method', 'PUT')
+      .set('Access-Control-Request-Headers', 'authorization,content-type');
+
+    expect(response.status).toBe(204);
+    expect(response.headers['access-control-allow-origin']).toBe(
+      ALLOWED_ORIGIN,
+    );
+    const allowedMethods =
+      response.headers['access-control-allow-methods'] ?? '';
+    for (const method of ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']) {
+      expect(allowedMethods).toContain(method);
     }
   });
 

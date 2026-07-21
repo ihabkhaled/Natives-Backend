@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T11:25:24.135Z",
+  "generatedAt": "2026-07-21T11:59:42.849Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -175,6 +175,11 @@
       "from": "src/bootstrap/configure-lifecycle.ts",
       "to": "src/config/app-config.service.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/bootstrap/configure-security.ts",
+      "to": "src/bootstrap/bootstrap.constants.ts",
+      "type": "internal"
     },
     {
       "from": "src/bootstrap/configure-security.ts",

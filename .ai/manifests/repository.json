@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-21T11:25:24.135Z",
-  "treeHash": "sha256:0a909eb9af09c2339064e782e9614a603736dde33d267e0ce1c73045e08e16b2",
+  "generatedAt": "2026-07-21T11:59:42.849Z",
+  "treeHash": "sha256:16da66f6bd6d5f3d59d53bee91aee36dee2374aa886c39382bbfa0acbd62af0d",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -32,6 +32,10 @@
         {
           "kind": "const",
           "name": "TRUST_PROXY"
+        },
+        {
+          "kind": "const",
+          "name": "CORS_ALLOWED_METHODS"
         },
         {
           "kind": "const",
@@ -69,8 +73,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:5f0a3c4ef76f944b41388f8aee8acbcbdaf8a0904f07f16014e11f917528cec5",
-      "sizeBytes": 522
+      "hash": "sha256:864dab2b2ed855cf0e1883ce5c206112fbb8b9dbcf79826704809e4812b23eda",
+      "sizeBytes": 959
     },
     {
       "path": "src/bootstrap/bootstrap.ts",
@@ -110,8 +114,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4288963211936fff040c55ca2ece001c83d05862c45577fb70d0a1dac778351b",
-      "sizeBytes": 751
+      "hash": "sha256:6e0b73a8550dcdded9452ec5b08f8ac227a29d7f6fea5c5ef091f9b5cb3aea48",
+      "sizeBytes": 1164
     },
     {
       "path": "src/bootstrap/configure-swagger.ts",
