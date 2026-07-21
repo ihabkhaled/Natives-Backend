@@ -1,25 +1,36 @@
 import {
+  ASSIST_STATE_VALUES,
   CAP_KIND_VALUES,
   MATCH_EVENT_TYPE_VALUES,
+  MATCH_PLAY_TYPE_VALUES,
   MATCH_RESULT_VALUES,
   MATCH_REVISION_ACTION_VALUES,
   MATCH_STATUS_VALUES,
+  POINT_STARTING_LINE_VALUES,
   RULESET_STATUS_VALUES,
   SCORING_SIDE_VALUES,
 } from '../model/matches.enums';
 import type {
   MatchEventRow,
+  MatchPlayEventRow,
+  MatchPointLineupRow,
   MatchRevisionRow,
+  MatchRosterMemberRow,
   MatchRow,
   MatchRulesetRow,
   MatchScopeRow,
+  OpenMatchPointRow,
 } from '../model/matches.rows';
 import type {
   Match,
   MatchEvent,
+  MatchPlayEvent,
+  MatchPointLineupEntry,
   MatchRevision,
+  MatchRosterMember,
   MatchRuleset,
   MatchScope,
+  OpenMatchPoint,
 } from '../model/matches.types';
 import {
   parseEnumValue,
@@ -126,6 +137,7 @@ export function toMatchRuleset(row: MatchRulesetRow): MatchRuleset {
     timeoutsPerTeam: toNumber(row.timeouts_per_team),
     timeoutsPerPeriod: toNullableNumber(row.timeouts_per_period),
     periods: toNumber(row.periods),
+    opponentErrorAttribution: row.opponent_error_attribution,
     status: parseEnumValue(RULESET_STATUS_VALUES, row.status, 'ruleset status'),
     notes: row.notes,
     createdBy: row.created_by,
@@ -172,5 +184,91 @@ export function toMatchScope(row: MatchScopeRow): MatchScope {
     competitionId: row.competition_id,
     seasonId: row.season_id,
     homeAway: row.home_away,
+  };
+}
+
+/**
+ * Map one fact of the point/possession stream. `retracted` arrives derived from
+ * the existence of a compensating correction — it is never a stored flag, so the
+ * recorded history stays exactly as it was written.
+ */
+export function toMatchPlayEvent(row: MatchPlayEventRow): MatchPlayEvent {
+  return {
+    playId: row.id,
+    matchId: row.match_id,
+    teamId: row.team_id,
+    sequence: toNumber(row.sequence),
+    operationId: row.operation_id,
+    requestHash: row.request_hash,
+    playType: parseEnumValue(
+      MATCH_PLAY_TYPE_VALUES,
+      row.play_type,
+      'play type',
+    ),
+    pointNumber: toNumber(row.point_number),
+    period: toNumber(row.period),
+    startingLine: parseNullableEnumValue(
+      POINT_STARTING_LINE_VALUES,
+      row.starting_line,
+      'starting line',
+    ),
+    scoringSide: parseNullableEnumValue(
+      SCORING_SIDE_VALUES,
+      row.scoring_side,
+      'scoring side',
+    ),
+    primaryMembershipId: row.primary_membership_id,
+    secondaryMembershipId: row.secondary_membership_id,
+    assistState: parseNullableEnumValue(
+      ASSIST_STATE_VALUES,
+      row.assist_state,
+      'assist state',
+    ),
+    callahan: row.callahan,
+    durationSeconds: toNullableNumber(row.duration_seconds),
+    correctsPlayId: row.corrects_play_id,
+    correctionReason: row.correction_reason,
+    retracted: row.retracted,
+    notes: row.notes,
+    recordedBy: row.recorded_by,
+    occurredAt: toNullableDate(row.occurred_at),
+    recordedAt: toDate(row.recorded_at),
+  };
+}
+
+export function toMatchPointLineupEntry(
+  row: MatchPointLineupRow,
+): MatchPointLineupEntry {
+  return {
+    lineupId: row.id,
+    matchId: row.match_id,
+    playId: row.play_id,
+    pointNumber: toNumber(row.point_number),
+    membershipId: row.membership_id,
+    rosterEntryId: row.roster_entry_id,
+    puller: row.puller,
+  };
+}
+
+/** One rostered member of the match roster, present even with no statistics. */
+export function toMatchRosterMember(
+  row: MatchRosterMemberRow,
+): MatchRosterMember {
+  return {
+    membershipId: row.membership_id,
+    rosterEntryId: row.roster_entry_id,
+  };
+}
+
+export function toOpenMatchPoint(row: OpenMatchPointRow): OpenMatchPoint {
+  return {
+    playId: row.id,
+    pointNumber: toNumber(row.point_number),
+    period: toNumber(row.period),
+    startingLine: parseEnumValue(
+      POINT_STARTING_LINE_VALUES,
+      row.starting_line ?? '',
+      'starting line',
+    ),
   };
 }

@@ -5,15 +5,24 @@ import {
   TIMEOUTS_MIN,
   WIN_BY_MIN,
 } from '../model/matches.constants';
+import { AssistState } from '../model/matches.enums';
 import type {
+  CompletePointContent,
+  CompletePointContentInput,
+  CorrectionContent,
+  CorrectionContentInput,
   MatchContent,
   MatchContentInput,
   MatchListFilter,
   MatchListFilterInput,
   MatchRulesetContent,
   MatchRulesetContentInput,
+  PlayContent,
+  PlayContentInput,
   PointContent,
   PointContentInput,
+  StartPointContent,
+  StartPointContentInput,
   TimeoutContent,
   TimeoutContentInput,
 } from '../model/matches.types';
@@ -52,6 +61,7 @@ export function toMatchRulesetContent(
     timeoutsPerTeam: orDefault(input.timeoutsPerTeam, TIMEOUTS_MIN),
     timeoutsPerPeriod: orNull(input.timeoutsPerPeriod),
     periods: orDefault(input.periods, PERIODS_MIN),
+    opponentErrorAttribution: orDefault(input.opponentErrorAttribution, false),
     notes: orNull(input.notes),
   };
 }
@@ -83,6 +93,63 @@ export function toMatchListFilter(
     competitionId: orNull(input.competitionId),
     fixtureId: orNull(input.fixtureId),
     status: orNull(input.status),
+  };
+}
+
+export function toStartPointContent(
+  input: StartPointContentInput,
+): StartPointContent {
+  return {
+    operationId: input.operationId,
+    startingLine: input.startingLine,
+    lineMembershipIds: input.lineMembershipIds,
+    pullerMembershipId: orNull(input.pullerMembershipId),
+    occurredAt: orNull(input.occurredAt),
+    notes: orNull(input.notes),
+  };
+}
+
+/**
+ * A point completion. `durationSeconds` collapses onto NULL when it was not
+ * supplied — an unmeasured point length is never recorded as zero seconds.
+ */
+export function toCompletePointContent(
+  input: CompletePointContentInput,
+): CompletePointContent {
+  return {
+    operationId: input.operationId,
+    scoringSide: input.scoringSide,
+    durationSeconds: orNull(input.durationSeconds),
+    occurredAt: orNull(input.occurredAt),
+    notes: orNull(input.notes),
+  };
+}
+
+/**
+ * One possession fact. An unspecified assist is `unknown` — missing data that is
+ * never inferred — while `none` is the deliberate, MEASURED "there was no
+ * assist" a Callahan or an unassisted goal carries.
+ */
+export function toPlayContent(input: PlayContentInput): PlayContent {
+  return {
+    operationId: input.operationId,
+    playType: input.playType,
+    primaryMembershipId: orNull(input.primaryMembershipId),
+    secondaryMembershipId: orNull(input.secondaryMembershipId),
+    assistState: orDefault(input.assistState, AssistState.Unknown),
+    callahan: orDefault(input.callahan, false),
+    occurredAt: orNull(input.occurredAt),
+    notes: orNull(input.notes),
+  };
+}
+
+export function toCorrectionContent(
+  input: CorrectionContentInput,
+): CorrectionContent {
+  return {
+    operationId: input.operationId,
+    playId: input.playId,
+    reason: input.reason,
   };
 }
 

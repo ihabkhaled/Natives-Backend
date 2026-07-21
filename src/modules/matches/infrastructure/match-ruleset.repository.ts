@@ -36,10 +36,10 @@ export class MatchRulesetRepository {
         ("id", "team_id", "season_id", "ruleset_key", "ruleset_version", "name",
          "game_to", "win_by", "hard_cap", "soft_cap_minutes", "soft_cap_plus",
          "time_cap_minutes", "halftime_at", "timeouts_per_team",
-         "timeouts_per_period", "periods", "status", "notes", "created_by",
-         "created_at", "updated_at")
+         "timeouts_per_period", "periods", "opponent_error_attribution",
+         "status", "notes", "created_by", "created_at", "updated_at")
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15,
-               $16, 'active', $17, $18, $19, $19)
+               $16, $17, 'active', $18, $19, $20, $20)
        RETURNING ${MATCH_RULESET_COLUMNS}`,
       this.insertParameters(ruleset),
     );
@@ -164,6 +164,7 @@ export class MatchRulesetRepository {
       ruleset.timeoutsPerTeam,
       ruleset.timeoutsPerPeriod,
       ruleset.periods,
+      ruleset.opponentErrorAttribution,
       ruleset.notes,
       ruleset.createdBy,
       ruleset.now.toISOString(),

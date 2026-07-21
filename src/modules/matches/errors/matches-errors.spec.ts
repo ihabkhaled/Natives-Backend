@@ -4,9 +4,13 @@ import { describe, expect, it } from 'vitest';
 import { MatchEventNotFoundError } from './match-event-not-found.error';
 import { MatchFinalizedError } from './match-finalized.error';
 import { MatchInvalidTransitionError } from './match-invalid-transition.error';
+import { MatchLineupInvalidError } from './match-lineup-invalid.error';
 import { MatchNotFoundError } from './match-not-found.error';
 import { MatchNotScoringError } from './match-not-scoring.error';
 import { MatchOperationConflictError } from './match-operation-conflict.error';
+import { MatchPlayNotFoundError } from './match-play-not-found.error';
+import { MatchPointAlreadyOpenError } from './match-point-already-open.error';
+import { MatchPointNotOpenError } from './match-point-not-open.error';
 import { MatchReopenNotAllowedError } from './match-reopen-not-allowed.error';
 import { MatchRulesetNotFoundError } from './match-ruleset-not-found.error';
 import { MatchScopeNotFoundError } from './match-scope-not-found.error';
@@ -76,6 +80,26 @@ describe('matches errors', () => {
         error: new MatchReopenNotAllowedError(),
         status: HttpStatus.CONFLICT,
         key: 'errors.matches.reopenNotAllowed',
+      },
+      {
+        error: new MatchPointNotOpenError(),
+        status: HttpStatus.CONFLICT,
+        key: 'errors.matches.pointNotOpen',
+      },
+      {
+        error: new MatchPointAlreadyOpenError(),
+        status: HttpStatus.CONFLICT,
+        key: 'errors.matches.pointAlreadyOpen',
+      },
+      {
+        error: new MatchPlayNotFoundError(),
+        status: HttpStatus.NOT_FOUND,
+        key: 'errors.matches.playNotFound',
+      },
+      {
+        error: new MatchLineupInvalidError(),
+        status: HttpStatus.BAD_REQUEST,
+        key: 'errors.matches.lineupInvalid',
       },
     ];
     for (const { error, status, key } of cases) {

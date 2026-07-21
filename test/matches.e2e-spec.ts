@@ -38,6 +38,7 @@ import { CompetitionsSchema1723300000000 } from '../src/database/migrations/1723
 import { SquadsSchema1723400000000 } from '../src/database/migrations/1723400000000-squads-schema';
 import { RostersSchema1723500000000 } from '../src/database/migrations/1723500000000-rosters-schema';
 import { MatchesSchema1723600000000 } from '../src/database/migrations/1723600000000-matches-schema';
+import { MatchLineupsSchema1723700000000 } from '../src/database/migrations/1723700000000-match-lineups-schema';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -91,6 +92,7 @@ const MIGRATIONS = [
   SquadsSchema1723400000000,
   RostersSchema1723500000000,
   MatchesSchema1723600000000,
+  MatchLineupsSchema1723700000000,
 ];
 
 interface Fixture {

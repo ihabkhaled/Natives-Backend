@@ -55,6 +55,14 @@ export class MatchRulesetResponseDto {
   @ApiProperty()
   declare readonly periods: number;
 
+  /**
+   * Whether these rules APPROVE crediting a forced opponent error to one of our
+   * players. When false the statistics report that figure as `null` rather than
+   * a misleading zero.
+   */
+  @ApiProperty()
+  declare readonly opponentErrorAttribution: boolean;
+
   @ApiProperty({ enum: RulesetStatus })
   declare readonly status: RulesetStatus;
 

@@ -1,5 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@core/openapi';
 import {
+  IsBoolean,
   IsInt,
   IsOptional,
   IsString,
@@ -149,6 +150,11 @@ export class CreateMatchRulesetDto {
   @Min(PERIODS_MIN)
   @Max(PERIODS_MAX)
   readonly periods?: number | null;
+
+  @ApiPropertyOptional({ default: false })
+  @IsOptional()
+  @IsBoolean()
+  readonly opponentErrorAttribution?: boolean | null;
 
   @ApiPropertyOptional({ maxLength: NOTES_MAX_LENGTH, nullable: true })
   @IsOptional()

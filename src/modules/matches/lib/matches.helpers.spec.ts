@@ -8,6 +8,7 @@ import {
   parseNullableEnumValue,
   resolveEventsPage,
   resolveMatchesPage,
+  resolvePlaysPage,
   toDate,
   toInstant,
   toNullableDate,
@@ -80,5 +81,13 @@ describe('matches helpers', () => {
     expect(orDefault(undefined, 1)).toBe(1);
     expect(orDefault(null, 1)).toBe(1);
     expect(orDefault(0, 1)).toBe(0);
+  });
+  it('clamps the point feed to its own bounded window', () => {
+    expect(resolvePlaysPage(undefined, undefined)).toEqual({
+      limit: 200,
+      offset: 0,
+    });
+    expect(resolvePlaysPage(9000, 40)).toEqual({ limit: 500, offset: 40 });
+    expect(resolvePlaysPage(10, 0)).toEqual({ limit: 10, offset: 0 });
   });
 });

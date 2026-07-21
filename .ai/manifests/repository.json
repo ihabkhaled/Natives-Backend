@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-20T23:37:24.707Z",
-  "treeHash": "sha256:cbc44d64e01faa43efb1e7e3b16960c0909ff2f94742daf91fb165182d365a83",
+  "generatedAt": "2026-07-21T08:44:29.749Z",
+  "treeHash": "sha256:b0225a26def6e6258a28dab6952e9618a05c6d2c2b3779f5b17c0ed4499563de",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -3357,6 +3357,23 @@
       "sizeBytes": 17798
     },
     {
+      "path": "src/database/migrations/1723700000000-match-lineups-schema.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchLineupsSchema1723700000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:751dde53a3f4d4646ced7aeffd006f2f1cee4eaa274f678c7770557c603636bd",
+      "sizeBytes": 10830
+    },
+    {
       "path": "src/database/migrations/activities-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3427,6 +3444,18 @@
       "kind": "spec",
       "hash": "sha256:179a686573b07088fb32672427f59b3430a782e6d212ac4f5f84b0aea8a02c87",
       "sizeBytes": 1233
+    },
+    {
+      "path": "src/database/migrations/match-lineups-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7edcc7712f535fcf922ef9310b4d12addb3e3f564db336ca431c74dd01e00c2a",
+      "sizeBytes": 6404
     },
     {
       "path": "src/database/migrations/matches-schema.spec.ts",
@@ -17565,6 +17594,40 @@
       "sizeBytes": 7595
     },
     {
+      "path": "src/modules/matches/api/dto/complete-match-point.dto.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompleteMatchPointDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dee0ad3fd25647532677bf2473095e30be9cba4586394727acab1a9a1c72cfd2",
+      "sizeBytes": 1669
+    },
+    {
+      "path": "src/modules/matches/api/dto/correct-match-play.dto.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CorrectMatchPlayDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9a70b6e31f4714a9da95d2a941cdbf760f48d9c6f67f1171617c059af652863e",
+      "sizeBytes": 1090
+    },
+    {
       "path": "src/modules/matches/api/dto/create-match-ruleset.dto.ts",
       "root": "modules",
       "module": "matches",
@@ -17578,8 +17641,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:966c3a9744e8f6d996705e1a2dc4977116bb6f2958999bb4a1608b708c4b54ed",
-      "sizeBytes": 3436
+      "hash": "sha256:7193e01dce2bf140025009a6befeb42144e2ed2b78dc6efbde0364cfccecdb8a",
+      "sizeBytes": 3578
     },
     {
       "path": "src/modules/matches/api/dto/create-match.dto.ts",
@@ -17631,6 +17694,23 @@
       "kind": "source",
       "hash": "sha256:8e7b2525eb653a71190564a772d5435ed4f59e0f0cb20678fc3985154c4e3421",
       "sizeBytes": 500
+    },
+    {
+      "path": "src/modules/matches/api/dto/list-match-plays.response.dto.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListMatchPlaysResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:86dfe8483b8fac01dc3a0d1417d8be33750c8ef3bee68cac64e96bfdf8dc456d",
+      "sizeBytes": 495
     },
     {
       "path": "src/modules/matches/api/dto/list-match-revisions.response.dto.ts",
@@ -17752,6 +17832,74 @@
       "sizeBytes": 731
     },
     {
+      "path": "src/modules/matches/api/dto/match-play-operation.response.dto.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchPlayOperationResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d7134d3101543d4eaf9bfc5dd696d4b0822df506f6a18123440d0f5bb4104cb3",
+      "sizeBytes": 1021
+    },
+    {
+      "path": "src/modules/matches/api/dto/match-play-page.query.dto.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchPlayPageQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:005bb0c7b80da983812a076f646b91a99a2e4730f5998cd04535775c82c11223",
+      "sizeBytes": 722
+    },
+    {
+      "path": "src/modules/matches/api/dto/match-play-response.dto.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchPlayResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bfff5e9764667fd4e78760cea6ae8e9fcf70286bd7bc84765bab6a3290a4045a",
+      "sizeBytes": 2450
+    },
+    {
+      "path": "src/modules/matches/api/dto/match-point-lineup.dto.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchPointLineupDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:07a1c03cf3a66475d9fc91d1df260aab6191c52718df13152d88bfbbddf847f4",
+      "sizeBytes": 663
+    },
+    {
       "path": "src/modules/matches/api/dto/match-response.dto.ts",
       "root": "modules",
       "module": "matches",
@@ -17799,8 +17947,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4b2609f35f05f3dcbadb057a12f224d40c9f7a29a62931b357f1a4cce6a15b75",
-      "sizeBytes": 2019
+      "hash": "sha256:1cc00c1cca794bfb18bc32ffa9fb192391a3d6a5d5bc68c750be865a990a3587",
+      "sizeBytes": 2289
     },
     {
       "path": "src/modules/matches/api/dto/match-scoreboard.response.dto.ts",
@@ -17820,6 +17968,23 @@
       "sizeBytes": 1787
     },
     {
+      "path": "src/modules/matches/api/dto/match-statistics.response.dto.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchStatisticsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:41014b7008e7d88313bf450cc2cd65a0a0b71f98408cf703bddd1bce4eed6290",
+      "sizeBytes": 1531
+    },
+    {
       "path": "src/modules/matches/api/dto/match-timeout-state.dto.ts",
       "root": "modules",
       "module": "matches",
@@ -17835,6 +18000,40 @@
       "kind": "source",
       "hash": "sha256:5e4e71df8d5a59e36286685f637691dbf498d2688c60b6db799903238aba0fa2",
       "sizeBytes": 540
+    },
+    {
+      "path": "src/modules/matches/api/dto/player-match-statistics.dto.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlayerMatchStatisticsDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6cc5df5770b6ba60e68924db85325b0df9cfc38114b49d329c4707f95ebcbd26",
+      "sizeBytes": 1735
+    },
+    {
+      "path": "src/modules/matches/api/dto/record-match-play.dto.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RecordMatchPlayDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e76cc86c1d2505aaf6a83b2b3188cbedeaf5d8c14e77a93e523bc26c00b46017",
+      "sizeBytes": 1933
     },
     {
       "path": "src/modules/matches/api/dto/record-match-point.dto.ts",
@@ -17888,6 +18087,40 @@
       "sizeBytes": 878
     },
     {
+      "path": "src/modules/matches/api/dto/start-match-point.dto.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StartMatchPointDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3af4e61ab23994dd4e5397a5cb84479d53a85d5379b99f1f1af2b58e9544f95a",
+      "sizeBytes": 1983
+    },
+    {
+      "path": "src/modules/matches/api/dto/team-match-statistics.dto.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamMatchStatisticsDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d771a614999ecd7e2ac9c41c49f5ef7792e03d715f74de9452adc80bebcaac9f",
+      "sizeBytes": 1313
+    },
+    {
       "path": "src/modules/matches/api/dto/transition-match.dto.ts",
       "root": "modules",
       "module": "matches",
@@ -17939,6 +18172,23 @@
       "sizeBytes": 5473
     },
     {
+      "path": "src/modules/matches/api/match-points.controller.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchPointsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f28c2acb867585162bf1535098fca4ae9767b4de103b00f50fe168249a84f718",
+      "sizeBytes": 6640
+    },
+    {
       "path": "src/modules/matches/api/match-rulesets.controller.ts",
       "root": "modules",
       "module": "matches",
@@ -17956,6 +18206,23 @@
       "sizeBytes": 2937
     },
     {
+      "path": "src/modules/matches/api/match-statistics.controller.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchStatisticsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c3a9fdbee025eff4d5d9844c9d15532930e7e428329f562c9cced893fb440566",
+      "sizeBytes": 2862
+    },
+    {
       "path": "src/modules/matches/api/matches.controller.ts",
       "root": "modules",
       "module": "matches",
@@ -17971,6 +18238,64 @@
       "kind": "source",
       "hash": "sha256:4c4fd00b61e4588067b09a8a4910596d07f7c612f0324a1722503d007f485c1f",
       "sizeBytes": 8494
+    },
+    {
+      "path": "src/modules/matches/application/complete-match-point.use-case.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:11da132112738ab01baef2b8aae3168b553af74b3a1f270bf7f1eb9c01425517",
+      "sizeBytes": 7230
+    },
+    {
+      "path": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CompleteMatchPointUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/application/complete-match-point.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:44a3f607c5cec7da86f062c8a408c6c33809ba1f438b6705037c1c09a04774cb",
+      "sizeBytes": 4333
+    },
+    {
+      "path": "src/modules/matches/application/correct-match-play.use-case.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7c6fccd1edc70fcfd9e88c7561d548ed34ac897eaacd4fb95a2058ebb0bbe04c",
+      "sizeBytes": 7203
+    },
+    {
+      "path": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CorrectMatchPlayUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/application/correct-match-play.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:26634508922fe8d8354464b91f21e0190b8af993ec0b64f83a8fc5819da07cc9",
+      "sizeBytes": 4472
     },
     {
       "path": "src/modules/matches/application/create-match-ruleset.use-case.spec.ts",
@@ -18089,6 +18414,35 @@
       "sizeBytes": 1549
     },
     {
+      "path": "src/modules/matches/application/match-lineup.service.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:38ed81adc1821a0f3d602d677aeebf199818c0b88373e196a172221f10a8620a",
+      "sizeBytes": 6150
+    },
+    {
+      "path": "src/modules/matches/application/match-lineup.service.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchLineupService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/application/match-lineup.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f6aae25729b8e1f265c14ed67eff84e211cb751dbcf2b838f73c2203fc906b58",
+      "sizeBytes": 3509
+    },
+    {
       "path": "src/modules/matches/application/match-lookup.service.spec.ts",
       "root": "modules",
       "module": "matches",
@@ -18116,6 +18470,64 @@
       "kind": "source",
       "hash": "sha256:3ce01aafbc97b000dd847ab8699aa4552ff1325397adb399a2515ad16f797412",
       "sizeBytes": 1533
+    },
+    {
+      "path": "src/modules/matches/application/match-play-query.service.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:89c2d82c4bc712bdf1cc41df2d2f7f0a50c98939ec4ac9806ef6bff525438960",
+      "sizeBytes": 2793
+    },
+    {
+      "path": "src/modules/matches/application/match-play-query.service.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchPlayQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/application/match-play-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:29c9799bd6a04d0293d40ee17b71836338f4f6666f001e1a7eb10bcf93379173",
+      "sizeBytes": 1593
+    },
+    {
+      "path": "src/modules/matches/application/match-play-stream.service.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:aff79482a20329661f89d6ff7e1479d9e928fd050d82a5383e35611bf9accd24",
+      "sizeBytes": 7440
+    },
+    {
+      "path": "src/modules/matches/application/match-play-stream.service.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchPlayStreamService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/application/match-play-stream.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:380019ff9a7779ac80572290a95bc755743511c6a6bbc2a0d9d233710faa6002",
+      "sizeBytes": 3765
     },
     {
       "path": "src/modules/matches/application/match-query.service.spec.ts",
@@ -18263,6 +18675,35 @@
       "sizeBytes": 2361
     },
     {
+      "path": "src/modules/matches/application/match-statistics.service.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:76461b6bcfb33292d73d95731db859b66aa00d60baa0f352abd053dd2b72580f",
+      "sizeBytes": 6745
+    },
+    {
+      "path": "src/modules/matches/application/match-statistics.service.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchStatisticsService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/application/match-statistics.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1ff63ece0eeb554130b9323290f48f6edb107a21037dd6d1ad962b1dc4c281db",
+      "sizeBytes": 2819
+    },
+    {
       "path": "src/modules/matches/application/match-stream.service.spec.ts",
       "root": "modules",
       "module": "matches",
@@ -18290,6 +18731,64 @@
       "kind": "source",
       "hash": "sha256:19955afdcb2863c20a4cab0141112c4c892c00b98f86b576e8d156a24720416e",
       "sizeBytes": 3908
+    },
+    {
+      "path": "src/modules/matches/application/rebuild-match-statistics.use-case.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0b462c11de64bd5764173804c7b798e4016dd567e479d8fc8c7f6059f7b924a9",
+      "sizeBytes": 5868
+    },
+    {
+      "path": "src/modules/matches/application/rebuild-match-statistics.use-case.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RebuildMatchStatisticsUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/application/rebuild-match-statistics.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0a47bbb2189e3bfc946e2dbb05eff9612560f1c57fdf1ff4573f996dd1c75178",
+      "sizeBytes": 2505
+    },
+    {
+      "path": "src/modules/matches/application/record-match-play.use-case.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3ef2463e20b5e01d17a1ada5208092525d24dcebbd86f3a98cc15154a0c9f916",
+      "sizeBytes": 8726
+    },
+    {
+      "path": "src/modules/matches/application/record-match-play.use-case.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RecordMatchPlayUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/application/record-match-play.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:10a52d60122b5ba79f18357060d763caeb6fe7488b013c571493786bae3d01f7",
+      "sizeBytes": 5373
     },
     {
       "path": "src/modules/matches/application/record-match-point.use-case.spec.ts",
@@ -18377,6 +18876,35 @@
       "kind": "source",
       "hash": "sha256:2aac867c1ba93298b67fb814902ef3d37791308433a3f85ccf4bb1f217f1118d",
       "sizeBytes": 4527
+    },
+    {
+      "path": "src/modules/matches/application/start-match-point.use-case.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d20908d14cfd124c86d727e583616acc3e254b909849f9928b8253cee4d63986",
+      "sizeBytes": 8651
+    },
+    {
+      "path": "src/modules/matches/application/start-match-point.use-case.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StartMatchPointUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/application/start-match-point.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:03bbcb8b6457d42ca5d91750d47cf15e23575585332ec7c94ec8ee483791c8a5",
+      "sizeBytes": 5354
     },
     {
       "path": "src/modules/matches/application/transition-match.use-case.spec.ts",
@@ -18490,6 +19018,47 @@
       "sizeBytes": 2377
     },
     {
+      "path": "src/modules/matches/domain/match-lineup.policy.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:98878e9cf39136e7ff2a97462e4b064283a0b98b5f72f3fab638b1d16d909b4b",
+      "sizeBytes": 1604
+    },
+    {
+      "path": "src/modules/matches/domain/match-lineup.policy.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isLineSizeValid"
+        },
+        {
+          "kind": "function",
+          "name": "hasUniqueMembers"
+        },
+        {
+          "kind": "function",
+          "name": "isPullerOnLine"
+        },
+        {
+          "kind": "function",
+          "name": "isLineupValid"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/domain/match-lineup.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:556924f23e49c50addeba9d5c7f0b410af171dbac0f5dddc39f17b2ee2f90019",
+      "sizeBytes": 1424
+    },
+    {
       "path": "src/modules/matches/domain/match-operation.policy.spec.ts",
       "root": "modules",
       "module": "matches",
@@ -18531,8 +19100,69 @@
       "hasSpec": true,
       "specPath": "src/modules/matches/domain/match-operation.policy.spec.ts",
       "kind": "source",
-      "hash": "sha256:decf7aae68b4fb427c2925655a0c4ec5ded0af5d677718724949cb27d05d9fc6",
-      "sizeBytes": 1964
+      "hash": "sha256:52fb8db50e0a55eab6c28c2705c5cce09cb0609ae663787727a38af2e11b620a",
+      "sizeBytes": 1980
+    },
+    {
+      "path": "src/modules/matches/domain/match-point.state-machine.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c9aa1c2595f0be3f2947d16670c9b21a5ff2b864f83e76f1f415a85a15ac7e20",
+      "sizeBytes": 4207
+    },
+    {
+      "path": "src/modules/matches/domain/match-point.state-machine.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isPossessionPlay"
+        },
+        {
+          "kind": "function",
+          "name": "isOpponentErrorPlay"
+        },
+        {
+          "kind": "function",
+          "name": "isTurnoverPlay"
+        },
+        {
+          "kind": "function",
+          "name": "canStartPoint"
+        },
+        {
+          "kind": "function",
+          "name": "requiresOpenPoint"
+        },
+        {
+          "kind": "function",
+          "name": "nextPointNumber"
+        },
+        {
+          "kind": "function",
+          "name": "isEffectivePlay"
+        },
+        {
+          "kind": "function",
+          "name": "classifyPoint"
+        },
+        {
+          "kind": "function",
+          "name": "isPointWon"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/domain/match-point.state-machine.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d25eecaa9a3d00022a83cccc7653f5c24cfc334d468df13ccf5b496a0944e118",
+      "sizeBytes": 3334
     },
     {
       "path": "src/modules/matches/domain/match-score.policy.spec.ts",
@@ -18614,6 +19244,43 @@
       "kind": "source",
       "hash": "sha256:7e3a0846f9e802263e6aabcaac0970f0234c9d4e7fe1a63d02da1e922050f000",
       "sizeBytes": 6559
+    },
+    {
+      "path": "src/modules/matches/domain/match-statistics.policy.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:aed6b9e796fa03d1d455e211c5dca6614576ff03adebdce9a1e4dde9cd9badf3",
+      "sizeBytes": 21223
+    },
+    {
+      "path": "src/modules/matches/domain/match-statistics.policy.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "deriveMatchStatistics"
+        },
+        {
+          "kind": "function",
+          "name": "orderPlays"
+        },
+        {
+          "kind": "function",
+          "name": "resolveCompletedPoints"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/domain/match-statistics.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9e2d6d4f2d5287090469c71347fd8608a0f2b23fb4d3a86cc4a3899f2056f31c",
+      "sizeBytes": 12903
     },
     {
       "path": "src/modules/matches/domain/match-timeout.policy.spec.ts",
@@ -18777,6 +19444,23 @@
       "sizeBytes": 376
     },
     {
+      "path": "src/modules/matches/errors/match-lineup-invalid.error.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchLineupInvalidError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:08dc4c2784430fca6e3e3b9d221c56ad913c7ab07e8f6e3c089ebbdd758fda5c",
+      "sizeBytes": 343
+    },
+    {
       "path": "src/modules/matches/errors/match-not-found.error.ts",
       "root": "modules",
       "module": "matches",
@@ -18826,6 +19510,57 @@
       "kind": "source",
       "hash": "sha256:327e109c21afc2780308cd02bb5f7a124ea4317449e982ab11eee1e9fbdc99f4",
       "sizeBytes": 376
+    },
+    {
+      "path": "src/modules/matches/errors/match-play-not-found.error.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchPlayNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3a789ceca907fc225cc13f394aab3a36720a3a0a9054911c8d87dbf17fae4d72",
+      "sizeBytes": 337
+    },
+    {
+      "path": "src/modules/matches/errors/match-point-already-open.error.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchPointAlreadyOpenError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2d9d287ea19532b3a219380e3694378b916b6a77d792d2f54892cea806644ce1",
+      "sizeBytes": 375
+    },
+    {
+      "path": "src/modules/matches/errors/match-point-not-open.error.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchPointNotOpenError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b2d3a29905dcccd6f67c5f172c3593ccb69db0284339c46269790103e4c25ffc",
+      "sizeBytes": 336
     },
     {
       "path": "src/modules/matches/errors/match-reopen-not-allowed.error.ts",
@@ -18938,8 +19673,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:f36ecb85fb44591e6fb3b6d47e75752952a97d7e4412158b2b01994e9a900f47",
-      "sizeBytes": 3484
+      "hash": "sha256:645c8430988207db2e69f9ef782fadff713b354284de935bbe67e7a658a92ed2",
+      "sizeBytes": 4363
     },
     {
       "path": "src/modules/matches/index.ts",
@@ -18983,6 +19718,64 @@
       "sizeBytes": 5817
     },
     {
+      "path": "src/modules/matches/infrastructure/match-play-event.repository.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ae23840e75fd994775b65d53e390092f6ec77b49fa128d954a34e7a74d3feb15",
+      "sizeBytes": 7711
+    },
+    {
+      "path": "src/modules/matches/infrastructure/match-play-event.repository.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchPlayEventRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/infrastructure/match-play-event.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:58b783e4a2d6f6b6a12a57ed7ab3ce97b844d51d45f0457e48f8db5e83e26423",
+      "sizeBytes": 7901
+    },
+    {
+      "path": "src/modules/matches/infrastructure/match-point-lineup.repository.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f2a83e034605763f03f5bd5bae2ecc950e9424e40c86bc675625edfa64e19a03",
+      "sizeBytes": 3000
+    },
+    {
+      "path": "src/modules/matches/infrastructure/match-point-lineup.repository.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchPointLineupRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/infrastructure/match-point-lineup.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4ac1c2eeda081c67cda1450d7ed091bd0f961296c9769cde5c7463d5a515e883",
+      "sizeBytes": 2897
+    },
+    {
       "path": "src/modules/matches/infrastructure/match-revision.repository.spec.ts",
       "root": "modules",
       "module": "matches",
@@ -19012,6 +19805,35 @@
       "sizeBytes": 3704
     },
     {
+      "path": "src/modules/matches/infrastructure/match-roster.repository.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4e4f8ebf407f3209bcd1dbc077eaace340b011792d859817255e864e40fec3e2",
+      "sizeBytes": 2241
+    },
+    {
+      "path": "src/modules/matches/infrastructure/match-roster.repository.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MatchRosterRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/matches/infrastructure/match-roster.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1a1a0578ecf5c5d7ec8fdd26b2d1d620028afa1875aa7c79c31eb8713caed212",
+      "sizeBytes": 2506
+    },
+    {
       "path": "src/modules/matches/infrastructure/match-ruleset.repository.spec.ts",
       "root": "modules",
       "module": "matches",
@@ -19020,8 +19842,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:3ae00603d1a740fd39281dab75887c68c633a984350f5bad21224ac0b03ff6e2",
-      "sizeBytes": 6206
+      "hash": "sha256:c08db23f68b7fdc0e9acdfbca09cc1ee3e065b5948383ab50d92217feea49e99",
+      "sizeBytes": 6293
     },
     {
       "path": "src/modules/matches/infrastructure/match-ruleset.repository.ts",
@@ -19037,8 +19859,8 @@
       "hasSpec": true,
       "specPath": "src/modules/matches/infrastructure/match-ruleset.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:194baff86a0ff57957caa5ac0513269658c2bd1d82a6643d20e51dd330356959",
-      "sizeBytes": 5721
+      "hash": "sha256:822e52fc0bdbafbfa3aa1a028f09cf498bd9891a209b0a1cebb9bbafc3ab9f3a",
+      "sizeBytes": 5796
     },
     {
       "path": "src/modules/matches/infrastructure/match-scope.repository.spec.ts",
@@ -19107,8 +19929,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:8886dcb29835a9253ad4c467c1a7854912d29ca15ae138f99d6359a24b69e94e",
-      "sizeBytes": 3534
+      "hash": "sha256:5a47f7be2505dedb6179c0a71bacfe23d5a7b27fcdb13ff75b8fc7b6a404ff82",
+      "sizeBytes": 6688
     },
     {
       "path": "src/modules/matches/lib/match-operation.hash.ts",
@@ -19131,13 +19953,29 @@
         {
           "kind": "function",
           "name": "hashLifecycleOperation"
+        },
+        {
+          "kind": "function",
+          "name": "hashStartPointOperation"
+        },
+        {
+          "kind": "function",
+          "name": "hashCompletePointOperation"
+        },
+        {
+          "kind": "function",
+          "name": "hashPlayOperation"
+        },
+        {
+          "kind": "function",
+          "name": "hashCorrectionOperation"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/matches/lib/match-operation.hash.spec.ts",
       "kind": "source",
-      "hash": "sha256:09b15e85d70f3ad02ea77c27844e3d52fb555aa1033539a278ec321d63cf8271",
-      "sizeBytes": 1958
+      "hash": "sha256:f785fdc0b1147967bb52bcd1c3ad8c757aba8ee7f85c426c6d80da215b94fe61",
+      "sizeBytes": 3384
     },
     {
       "path": "src/modules/matches/lib/match-scoreboard.factory.spec.ts",
@@ -19181,8 +20019,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:a3bc88befec312d3cf09773a2bcb35e3995ef24f7c35ced585bc1c4975326736",
-      "sizeBytes": 4405
+      "hash": "sha256:7e0df291c1aceef3622ce5b967912bc3554b5ccdef60e7d55305bd26fb8ce44e",
+      "sizeBytes": 7470
     },
     {
       "path": "src/modules/matches/lib/matches-command.mapper.ts",
@@ -19212,14 +20050,42 @@
         },
         {
           "kind": "function",
+          "name": "toStartPointContent"
+        },
+        {
+          "kind": "function",
+          "name": "toCompletePointContent"
+        },
+        {
+          "kind": "function",
+          "name": "toPlayContent"
+        },
+        {
+          "kind": "function",
+          "name": "toCorrectionContent"
+        },
+        {
+          "kind": "function",
           "name": "toExpectedRecordVersion"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/matches/lib/matches-command.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:f3b0621ed518bc991f20bb3f002fcc918af5ed9c692a37d591a465fb411ef78d",
-      "sizeBytes": 2793
+      "hash": "sha256:6c7081b46a448794a5afe8789da30afae710dc0ee31805b1d6c2e2b3a82312cd",
+      "sizeBytes": 4848
+    },
+    {
+      "path": "src/modules/matches/lib/matches-points.builders.spec.ts",
+      "root": "modules",
+      "module": "matches",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0b53b96fe34ce1443051b8ca5b9fa71777da5bbc674f1a7e67905e5030006c97",
+      "sizeBytes": 10537
     },
     {
       "path": "src/modules/matches/lib/matches.builders.spec.ts",
@@ -19285,6 +20151,26 @@
         },
         {
           "kind": "function",
+          "name": "buildPointStartedPlay"
+        },
+        {
+          "kind": "function",
+          "name": "buildPointCompletedPlay"
+        },
+        {
+          "kind": "function",
+          "name": "buildPossessionPlay"
+        },
+        {
+          "kind": "function",
+          "name": "buildCorrectionPlay"
+        },
+        {
+          "kind": "function",
+          "name": "buildLineupEntry"
+        },
+        {
+          "kind": "function",
           "name": "buildMatchAudit"
         },
         {
@@ -19301,6 +20187,14 @@
         },
         {
           "kind": "function",
+          "name": "buildPlayAudit"
+        },
+        {
+          "kind": "function",
+          "name": "buildStatisticsAudit"
+        },
+        {
+          "kind": "function",
           "name": "buildMatchStartedEvent"
         },
         {
@@ -19314,13 +20208,33 @@
         {
           "kind": "function",
           "name": "buildMatchReopenedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildPointStartedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildPointCompletedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildPlayAcceptedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildPlayCorrectedEvent"
+        },
+        {
+          "kind": "function",
+          "name": "buildStatsProjectedEvent"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/matches/lib/matches.builders.spec.ts",
       "kind": "source",
-      "hash": "sha256:649cadf27afc2273f5c03da44055f6db0cddf9ad5fc6c9f31db277575fac494e",
-      "sizeBytes": 14443
+      "hash": "sha256:25528c545bfcdb717ea5711aa32aad304c72d2ce843d1c1385c32aa93057de1b",
+      "sizeBytes": 24040
     },
     {
       "path": "src/modules/matches/lib/matches.helpers.spec.ts",
@@ -19331,8 +20245,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:d9e9f4ed7b231051961ee1c5f0c1320b48f82918e4d43a41ed3edb39c3b68b1b",
-      "sizeBytes": 2693
+      "hash": "sha256:735ec0361b2105f746a893e08e67a863d47d36cd0a4cbdf03219f39a5da90261",
+      "sizeBytes": 3034
     },
     {
       "path": "src/modules/matches/lib/matches.helpers.ts",
@@ -19347,6 +20261,10 @@
         {
           "kind": "function",
           "name": "resolveEventsPage"
+        },
+        {
+          "kind": "function",
+          "name": "resolvePlaysPage"
         },
         {
           "kind": "function",
@@ -19392,8 +20310,8 @@
       "hasSpec": true,
       "specPath": "src/modules/matches/lib/matches.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:f53b6c47dab292832fbf98549ab6056bdb8ce219c9c077bd2e82e2ea8c5bb9a4",
-      "sizeBytes": 2819
+      "hash": "sha256:afd826930f3cadf91dbcd5431aa33cf83873e5427498988d53d1ca6803cd86e9",
+      "sizeBytes": 3176
     },
     {
       "path": "src/modules/matches/lib/matches.mapper.spec.ts",
@@ -19404,8 +20322,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:a64152c4c3bf4ead63b47f881f24d691cba2e37e2fcbce4a07174ff7b3d6a80c",
-      "sizeBytes": 6686
+      "hash": "sha256:dfab353c90969f098404ec969ff2896262b6779fa848b6199ea8e70105c73b72",
+      "sizeBytes": 10374
     },
     {
       "path": "src/modules/matches/lib/matches.mapper.ts",
@@ -19432,13 +20350,29 @@
         {
           "kind": "function",
           "name": "toMatchScope"
+        },
+        {
+          "kind": "function",
+          "name": "toMatchPlayEvent"
+        },
+        {
+          "kind": "function",
+          "name": "toMatchPointLineupEntry"
+        },
+        {
+          "kind": "function",
+          "name": "toMatchRosterMember"
+        },
+        {
+          "kind": "function",
+          "name": "toOpenMatchPoint"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/matches/lib/matches.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:6bbe7d520c5fe23574c1e45f6c6a274c45714163651dcb3f45b6be735b9165e6",
-      "sizeBytes": 5479
+      "hash": "sha256:d692c8bece23996df57028f6263b5498a45c8d32332646b01bd96279eeb9a744",
+      "sizeBytes": 8232
     },
     {
       "path": "src/modules/matches/matches.module.ts",
@@ -19454,8 +20388,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:17d9e3163357925662411842363521ef46f7ec752cc5302ec58c8ede83528201",
-      "sizeBytes": 3707
+      "hash": "sha256:216dbd0613fd249c8e8581b5bd0673988523e0218b4aed0131dad276aee74c9e",
+      "sizeBytes": 5765
     },
     {
       "path": "src/modules/matches/model/matches.constants.ts",
@@ -19522,6 +20456,30 @@
         {
           "kind": "const",
           "name": "MATCH_VOID_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_POINTS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_STATISTICS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "POINT_COMPLETION_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "POINT_PLAYS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "POINT_CORRECTIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "STATISTICS_REBUILD_ROUTE"
         },
         {
           "kind": "const",
@@ -19678,6 +20636,154 @@
         {
           "kind": "const",
           "name": "DEFAULT_POINT_VALUE"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_STATS_ENGINE_VERSION"
+        },
+        {
+          "kind": "const",
+          "name": "LINE_SIZE_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "LINE_SIZE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "POINT_DURATION_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "POINT_DURATION_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "FIRST_POINT_NUMBER"
+        },
+        {
+          "kind": "const",
+          "name": "PLAY_MAX_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "PLAY_DEFAULT_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "STATS_PLAY_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "STATS_LINEUP_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "STATS_ROSTER_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "ZERO_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_POINT_NOT_OPEN_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_POINT_NOT_OPEN_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_POINT_ALREADY_OPEN_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_POINT_ALREADY_OPEN_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_PLAY_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_PLAY_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_LINEUP_INVALID_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_LINEUP_INVALID_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_PLAY_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_STATISTICS_RESOURCE_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_POINT_STARTED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_POINT_COMPLETED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_PLAY_RECORDED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_PLAY_CORRECTED_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_STATS_REBUILT_ACTION"
+        },
+        {
+          "kind": "const",
+          "name": "POINT_STARTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "POINT_COMPLETED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_EVENT_ACCEPTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_EVENT_CORRECTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_STATS_PROJECTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_PLAY_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_PLAY_SELECT_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_PLAY_RETRACTED_EXPRESSION"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_PLAY_NOT_RETRACTED"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_POINT_LINEUP_COLUMNS"
         },
         {
           "kind": "const",
@@ -19887,8 +20993,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:2bed9b80b623b9c0da3b3b63389f6c8fc857a6dcb1577214236328fe322051f8",
-      "sizeBytes": 9506
+      "hash": "sha256:ca490082e108fb85d9e8ec21d58d006284e878c27437de50d463516437d83621",
+      "sizeBytes": 13801
     },
     {
       "path": "src/modules/matches/model/matches.enums.ts",
@@ -19967,13 +21073,45 @@
         {
           "kind": "const",
           "name": "OPERATION_OUTCOME_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "PointStartingLine"
+        },
+        {
+          "kind": "const",
+          "name": "POINT_STARTING_LINE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "PointOutcome"
+        },
+        {
+          "kind": "const",
+          "name": "POINT_OUTCOME_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "MatchPlayType"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_PLAY_TYPE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "AssistState"
+        },
+        {
+          "kind": "const",
+          "name": "ASSIST_STATE_VALUES"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d8ac951efcc0c31963a61ddf73346731a5f7afd3cae9d15749014333c1ca8367",
-      "sizeBytes": 4850
+      "hash": "sha256:0845f9771a4a2225e19669ca34b10f34994c4f983ecaca928958605ec9f421cb",
+      "sizeBytes": 7250
     },
     {
       "path": "src/modules/matches/model/matches.rows.ts",
@@ -20016,13 +21154,29 @@
         {
           "kind": "interface",
           "name": "MatchScopeRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MatchPlayEventRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MatchPointLineupRow"
+        },
+        {
+          "kind": "interface",
+          "name": "MatchRosterMemberRow"
+        },
+        {
+          "kind": "interface",
+          "name": "OpenMatchPointRow"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:19f82ddc7e76994c7a6c4755c0cc3f9b6ca0eba9817571b3bf5e56ede5b2de45",
-      "sizeBytes": 4600
+      "hash": "sha256:ce07b01a9a4c25d8cb5664f6dfff453fd0b5ccd8a5bb541bda344682931b59ff",
+      "sizeBytes": 6419
     },
     {
       "path": "src/modules/matches/model/matches.types.ts",
@@ -20205,13 +21359,121 @@
         {
           "kind": "interface",
           "name": "TimeoutContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "RequestHashCarrier"
+        },
+        {
+          "kind": "interface",
+          "name": "MatchPlayEvent"
+        },
+        {
+          "kind": "interface",
+          "name": "NewMatchPlayEvent"
+        },
+        {
+          "kind": "interface",
+          "name": "MatchPointLineupEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "NewMatchPointLineupEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "OpenMatchPoint"
+        },
+        {
+          "kind": "interface",
+          "name": "StartPointContent"
+        },
+        {
+          "kind": "interface",
+          "name": "CompletePointContent"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayContent"
+        },
+        {
+          "kind": "interface",
+          "name": "CorrectionContent"
+        },
+        {
+          "kind": "interface",
+          "name": "StartPointCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CompletePointCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "RecordPlayCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "CorrectPlayCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "MatchPlayResult"
+        },
+        {
+          "kind": "type",
+          "name": "MatchPlayPage"
+        },
+        {
+          "kind": "interface",
+          "name": "StartPointContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "CompletePointContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "CorrectionContentInput"
+        },
+        {
+          "kind": "interface",
+          "name": "MatchRosterMember"
+        },
+        {
+          "kind": "interface",
+          "name": "MatchStatisticsSource"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayerMatchStatistics"
+        },
+        {
+          "kind": "interface",
+          "name": "TeamMatchStatistics"
+        },
+        {
+          "kind": "interface",
+          "name": "MatchStatistics"
+        },
+        {
+          "kind": "interface",
+          "name": "PlayerCounters"
+        },
+        {
+          "kind": "interface",
+          "name": "ResolvedMatchPoint"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1c8663a550916fe9be9caa3ace0f1e222b1d758fefaa2e0f0cd6031f58431fce",
-      "sizeBytes": 15925
+      "hash": "sha256:74d0f367c56dc1e707d126e5f7dd06ca9cf6c6383664b2f252a01fa3b29ec683",
+      "sizeBytes": 26624
     },
     {
       "path": "src/modules/measurements/api/dto/attempt-input.dto.ts",

@@ -1991,6 +1991,43 @@
         ],
         "type": "object"
       },
+      "CompleteMatchPointDto": {
+        "properties": {
+          "durationSeconds": {
+            "maximum": 7200,
+            "minimum": 0,
+            "nullable": true,
+            "type": "object"
+          },
+          "notes": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "occurredAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "object"
+          },
+          "operationId": {
+            "maxLength": 128,
+            "minLength": 8,
+            "type": "string"
+          },
+          "scoringSide": {
+            "enum": [
+              "us",
+              "them"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "operationId",
+          "scoringSide"
+        ],
+        "type": "object"
+      },
       "CopyAgendaDto": {
         "properties": {
           "sourceSessionId": {
@@ -2077,6 +2114,30 @@
           }
         },
         "required": [
+          "reason"
+        ],
+        "type": "object"
+      },
+      "CorrectMatchPlayDto": {
+        "properties": {
+          "operationId": {
+            "maxLength": 128,
+            "minLength": 8,
+            "type": "string"
+          },
+          "playId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 500,
+            "minLength": 5,
+            "type": "string"
+          }
+        },
+        "required": [
+          "operationId",
+          "playId",
           "reason"
         ],
         "type": "object"
@@ -2805,6 +2866,10 @@
           "notes": {
             "maxLength": 2000,
             "nullable": true,
+            "type": "object"
+          },
+          "opponentErrorAttribution": {
+            "default": false,
             "type": "object"
           },
           "periods": {
@@ -5726,6 +5791,32 @@
         ],
         "type": "object"
       },
+      "ListMatchPlaysResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MatchPlayResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListMatchRevisionsResponseDto": {
         "properties": {
           "items": {
@@ -6768,6 +6859,224 @@
         ],
         "type": "object"
       },
+      "MatchPlayOperationResponseDto": {
+        "properties": {
+          "lineup": {
+            "items": {
+              "$ref": "#/components/schemas/MatchPointLineupDto"
+            },
+            "type": "array"
+          },
+          "outcome": {
+            "enum": [
+              "applied",
+              "replayed",
+              "conflict"
+            ],
+            "type": "string"
+          },
+          "play": {
+            "$ref": "#/components/schemas/MatchPlayResponseDto"
+          },
+          "pointNumber": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "outcome",
+          "play",
+          "pointNumber",
+          "lineup"
+        ],
+        "type": "object"
+      },
+      "MatchPlayResponseDto": {
+        "properties": {
+          "assistState": {
+            "enum": [
+              "recorded",
+              "none",
+              "unknown"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "callahan": {
+            "type": "boolean"
+          },
+          "correctionReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "correctsPlayId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "durationSeconds": {
+            "nullable": true,
+            "type": "number"
+          },
+          "matchId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "notes": {
+            "nullable": true,
+            "type": "string"
+          },
+          "occurredAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "operationId": {
+            "type": "string"
+          },
+          "period": {
+            "type": "number"
+          },
+          "playId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "playType": {
+            "enum": [
+              "point_started",
+              "point_completed",
+              "pull",
+              "throw",
+              "completion",
+              "goal",
+              "drop",
+              "throwaway",
+              "block",
+              "stall",
+              "call",
+              "turnover",
+              "substitution",
+              "opponent_drop",
+              "opponent_throwaway",
+              "correction"
+            ],
+            "type": "string"
+          },
+          "pointNumber": {
+            "type": "number"
+          },
+          "primaryMembershipId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "recordedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "recordedBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "retracted": {
+            "type": "boolean"
+          },
+          "scoringSide": {
+            "enum": [
+              "us",
+              "them"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "secondaryMembershipId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "sequence": {
+            "type": "number"
+          },
+          "startingLine": {
+            "enum": [
+              "offense",
+              "defense"
+            ],
+            "nullable": true,
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "playId",
+          "matchId",
+          "teamId",
+          "sequence",
+          "operationId",
+          "playType",
+          "pointNumber",
+          "period",
+          "startingLine",
+          "scoringSide",
+          "primaryMembershipId",
+          "secondaryMembershipId",
+          "assistState",
+          "callahan",
+          "durationSeconds",
+          "correctsPlayId",
+          "correctionReason",
+          "retracted",
+          "notes",
+          "recordedBy",
+          "occurredAt",
+          "recordedAt"
+        ],
+        "type": "object"
+      },
+      "MatchPointLineupDto": {
+        "properties": {
+          "lineupId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "matchId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "playId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "pointNumber": {
+            "type": "number"
+          },
+          "puller": {
+            "type": "boolean"
+          },
+          "rosterEntryId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "lineupId",
+          "matchId",
+          "playId",
+          "pointNumber",
+          "membershipId",
+          "rosterEntryId",
+          "puller"
+        ],
+        "type": "object"
+      },
       "MatchResponseDto": {
         "properties": {
           "abandonedAt": {
@@ -7105,6 +7414,9 @@
             "nullable": true,
             "type": "string"
           },
+          "opponentErrorAttribution": {
+            "type": "boolean"
+          },
           "periods": {
             "type": "number"
           },
@@ -7179,6 +7491,7 @@
           "timeoutsPerTeam",
           "timeoutsPerPeriod",
           "periods",
+          "opponentErrorAttribution",
           "status",
           "notes",
           "createdBy",
@@ -7286,6 +7599,58 @@
           "halftimeReached",
           "timeouts",
           "scoringOpen"
+        ],
+        "type": "object"
+      },
+      "MatchStatisticsResponseDto": {
+        "properties": {
+          "lineupsRecorded": {
+            "type": "boolean"
+          },
+          "matchId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "opponentErrorAttribution": {
+            "type": "boolean"
+          },
+          "players": {
+            "items": {
+              "$ref": "#/components/schemas/PlayerMatchStatisticsDto"
+            },
+            "type": "array"
+          },
+          "playsRecorded": {
+            "type": "boolean"
+          },
+          "rulesetKey": {
+            "type": "string"
+          },
+          "rulesetVersion": {
+            "type": "number"
+          },
+          "statsEngineVersion": {
+            "type": "string"
+          },
+          "team": {
+            "$ref": "#/components/schemas/TeamMatchStatisticsDto"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "matchId",
+          "teamId",
+          "rulesetKey",
+          "rulesetVersion",
+          "statsEngineVersion",
+          "lineupsRecorded",
+          "playsRecorded",
+          "opponentErrorAttribution",
+          "team",
+          "players"
         ],
         "type": "object"
       },
@@ -8870,6 +9235,78 @@
         ],
         "type": "object"
       },
+      "PlayerMatchStatisticsDto": {
+        "properties": {
+          "assists": {
+            "nullable": true,
+            "type": "number"
+          },
+          "blocks": {
+            "nullable": true,
+            "type": "number"
+          },
+          "callahans": {
+            "nullable": true,
+            "type": "number"
+          },
+          "defencePointsPlayed": {
+            "nullable": true,
+            "type": "number"
+          },
+          "drops": {
+            "nullable": true,
+            "type": "number"
+          },
+          "goals": {
+            "nullable": true,
+            "type": "number"
+          },
+          "membershipId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "offencePointsPlayed": {
+            "nullable": true,
+            "type": "number"
+          },
+          "opponentErrorsForced": {
+            "nullable": true,
+            "type": "number"
+          },
+          "pointsPlayed": {
+            "nullable": true,
+            "type": "number"
+          },
+          "rostered": {
+            "type": "boolean"
+          },
+          "rosterEntryId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "throwaways": {
+            "nullable": true,
+            "type": "number"
+          }
+        },
+        "required": [
+          "membershipId",
+          "rosterEntryId",
+          "rostered",
+          "pointsPlayed",
+          "offencePointsPlayed",
+          "defencePointsPlayed",
+          "goals",
+          "assists",
+          "callahans",
+          "drops",
+          "throwaways",
+          "blocks",
+          "opponentErrorsForced"
+        ],
+        "type": "object"
+      },
       "PlayerProfileDto": {
         "properties": {
           "dateOfBirth": {
@@ -9660,6 +10097,74 @@
           "protocol",
           "attempts",
           "result"
+        ],
+        "type": "object"
+      },
+      "RecordMatchPlayDto": {
+        "properties": {
+          "assistState": {
+            "default": "unknown",
+            "enum": [
+              "recorded",
+              "none",
+              "unknown"
+            ],
+            "type": "string"
+          },
+          "callahan": {
+            "default": false,
+            "type": "object"
+          },
+          "notes": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "occurredAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "object"
+          },
+          "operationId": {
+            "maxLength": 128,
+            "minLength": 8,
+            "type": "string"
+          },
+          "playType": {
+            "enum": [
+              "point_started",
+              "point_completed",
+              "pull",
+              "throw",
+              "completion",
+              "goal",
+              "drop",
+              "throwaway",
+              "block",
+              "stall",
+              "call",
+              "turnover",
+              "substitution",
+              "opponent_drop",
+              "opponent_throwaway",
+              "correction"
+            ],
+            "type": "string"
+          },
+          "primaryMembershipId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "secondaryMembershipId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "operationId",
+          "playType"
         ],
         "type": "object"
       },
@@ -12839,6 +13344,50 @@
         ],
         "type": "object"
       },
+      "StartMatchPointDto": {
+        "properties": {
+          "lineMembershipIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "notes": {
+            "maxLength": 2000,
+            "nullable": true,
+            "type": "object"
+          },
+          "occurredAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "object"
+          },
+          "operationId": {
+            "maxLength": 128,
+            "minLength": 8,
+            "type": "string"
+          },
+          "pullerMembershipId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "startingLine": {
+            "enum": [
+              "offense",
+              "defense"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "operationId",
+          "startingLine",
+          "lineMembershipIds"
+        ],
+        "type": "object"
+      },
       "StationResponseDto": {
         "properties": {
           "blockId": {
@@ -13126,6 +13675,70 @@
           "withdrawnAt",
           "createdAt",
           "updatedAt"
+        ],
+        "type": "object"
+      },
+      "TeamMatchStatisticsDto": {
+        "properties": {
+          "blocks": {
+            "nullable": true,
+            "type": "number"
+          },
+          "breaks": {
+            "type": "number"
+          },
+          "drops": {
+            "nullable": true,
+            "type": "number"
+          },
+          "goalsAgainst": {
+            "type": "number"
+          },
+          "goalsFor": {
+            "type": "number"
+          },
+          "holds": {
+            "type": "number"
+          },
+          "opponentBreaks": {
+            "type": "number"
+          },
+          "opponentErrors": {
+            "nullable": true,
+            "type": "number"
+          },
+          "opponentHolds": {
+            "type": "number"
+          },
+          "pointsCompleted": {
+            "type": "number"
+          },
+          "pointsStarted": {
+            "type": "number"
+          },
+          "throwaways": {
+            "nullable": true,
+            "type": "number"
+          },
+          "turnovers": {
+            "nullable": true,
+            "type": "number"
+          }
+        },
+        "required": [
+          "pointsStarted",
+          "pointsCompleted",
+          "holds",
+          "breaks",
+          "opponentHolds",
+          "opponentBreaks",
+          "goalsFor",
+          "goalsAgainst",
+          "drops",
+          "throwaways",
+          "blocks",
+          "turnovers",
+          "opponentErrors"
         ],
         "type": "object"
       },
@@ -20058,6 +20671,299 @@
         ]
       }
     },
+    "/teams/{teamId}/matches/{matchId}/points": {
+      "get": {
+        "operationId": "MatchPoints.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 200,
+              "maximum": 500,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListMatchPlaysResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List the append-only point stream of a match",
+        "tags": [
+          "matches"
+        ]
+      },
+      "post": {
+        "operationId": "MatchPoints.start",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartMatchPointDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchPlayOperationResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "A point is already open, or a conflict"
+          }
+        },
+        "summary": "Open a point by recording the line on the field",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/points/completion": {
+      "post": {
+        "operationId": "MatchPoints.complete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompleteMatchPointDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchPlayOperationResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "No point is open, or a conflict"
+          }
+        },
+        "summary": "Close the open point with the scoring side",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/points/corrections": {
+      "post": {
+        "operationId": "MatchPoints.correct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CorrectMatchPlayDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchPlayOperationResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Already retracted, or match not live"
+          }
+        },
+        "summary": "Retract a recorded fact with a correction",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/points/plays": {
+      "post": {
+        "operationId": "MatchPoints.play",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecordMatchPlayDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchPlayOperationResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "No point is open, or a conflict"
+          }
+        },
+        "summary": "Record one possession fact inside the open point",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
     "/teams/{teamId}/matches/{matchId}/reopening": {
       "post": {
         "operationId": "Matches.reopen",
@@ -20216,6 +21122,102 @@
           }
         },
         "summary": "Project the live scoreboard, caps, and timeouts",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/statistics": {
+      "get": {
+        "operationId": "MatchStatistics.get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchStatisticsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Match not found"
+          }
+        },
+        "summary": "Derive the match statistics from the stream",
+        "tags": [
+          "matches"
+        ]
+      }
+    },
+    "/teams/{teamId}/matches/{matchId}/statistics/rebuild": {
+      "post": {
+        "operationId": "MatchStatistics.rebuildStatistics",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "matchId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchStatisticsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Match not found"
+          }
+        },
+        "summary": "Rebuild the projection and publish the event",
         "tags": [
           "matches"
         ]

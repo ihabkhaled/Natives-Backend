@@ -4,6 +4,8 @@ import {
   LIST_DEFAULT_LIMIT,
   LIST_DEFAULT_OFFSET,
   LIST_MAX_LIMIT,
+  PLAY_DEFAULT_LIMIT,
+  PLAY_MAX_LIMIT,
 } from '../model/matches.constants';
 import type { PageRequest } from '../model/matches.types';
 
@@ -25,6 +27,17 @@ export function resolveEventsPage(
 ): PageRequest {
   return {
     limit: Math.min(limit ?? EVENT_DEFAULT_LIMIT, EVENT_MAX_LIMIT),
+    offset: offset ?? LIST_DEFAULT_OFFSET,
+  };
+}
+
+/** Clamp paging for the point/possession feed, which allows a larger page. */
+export function resolvePlaysPage(
+  limit: number | undefined,
+  offset: number | undefined,
+): PageRequest {
+  return {
+    limit: Math.min(limit ?? PLAY_DEFAULT_LIMIT, PLAY_MAX_LIMIT),
     offset: offset ?? LIST_DEFAULT_OFFSET,
   };
 }

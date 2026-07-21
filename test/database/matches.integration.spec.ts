@@ -70,6 +70,7 @@ import { CompetitionsSchema1723300000000 } from '../../src/database/migrations/1
 import { SquadsSchema1723400000000 } from '../../src/database/migrations/1723400000000-squads-schema';
 import { RostersSchema1723500000000 } from '../../src/database/migrations/1723500000000-rosters-schema';
 import { MatchesSchema1723600000000 } from '../../src/database/migrations/1723600000000-matches-schema';
+import { MatchLineupsSchema1723700000000 } from '../../src/database/migrations/1723700000000-match-lineups-schema';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -117,6 +118,7 @@ const MIGRATIONS = [
   SquadsSchema1723400000000,
   RostersSchema1723500000000,
   MatchesSchema1723600000000,
+  MatchLineupsSchema1723700000000,
 ];
 
 function buildDataSource(): DataSource {
@@ -341,6 +343,7 @@ describeIfDb(suiteTitle, () => {
       timeoutsPerTeam: 2,
       timeoutsPerPeriod: 1,
       periods: 2,
+      opponentErrorAttribution: false,
       notes: null,
       ...overrides,
     };

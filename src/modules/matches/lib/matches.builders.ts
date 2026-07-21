@@ -7,8 +7,11 @@ import {
   FIRST_REVISION,
   MATCH_AGGREGATE,
   MATCH_ENGINE_VERSION,
+  MATCH_EVENT_ACCEPTED_EVENT,
+  MATCH_EVENT_CORRECTED_EVENT,
   MATCH_EVENT_RESOURCE_TYPE,
   MATCH_FINALIZED_EVENT,
+  MATCH_PLAY_RESOURCE_TYPE,
   MATCH_REOPENED_EVENT,
   MATCH_RESOURCE_TYPE,
   MATCH_REVISION_RESOURCE_TYPE,
@@ -16,31 +19,45 @@ import {
   MATCH_RULESET_RESOURCE_TYPE,
   MATCH_STARTED_EVENT,
   MATCH_STATE_CHANGED_EVENT,
+  MATCH_STATISTICS_RESOURCE_TYPE,
+  MATCH_STATS_PROJECTED_EVENT,
   MATCHES_EVENT_VERSION,
+  POINT_COMPLETED_EVENT,
+  POINT_STARTED_EVENT,
 } from '../model/matches.constants';
 import type { CapKind, MatchRevisionAction } from '../model/matches.enums';
 import {
+  AssistState,
   MatchEventType,
+  MatchPlayType,
   MatchResult,
   MatchStatus,
 } from '../model/matches.enums';
 import type {
+  CompletePointContent,
+  CorrectionContent,
   Match,
   MatchEvent,
   MatchFinalization,
+  MatchPlayEvent,
   MatchReopening,
   MatchRevision,
   MatchRuleset,
   MatchRulesetContent,
   MatchScope,
   MatchScoreUpdate,
+  MatchStatistics,
   MatchStatusChange,
   NewMatch,
   NewMatchEvent,
+  NewMatchPlayEvent,
+  NewMatchPointLineupEntry,
   NewMatchRevision,
   NewMatchRuleset,
+  PlayContent,
   PointContent,
   ScorePair,
+  StartPointContent,
   TimeoutContent,
   VoidContent,
 } from '../model/matches.types';
@@ -314,6 +331,227 @@ export function toScore(match: Match): ScorePair {
   return { ourScore: match.ourScore, opponentScore: match.opponentScore };
 }
 
+// --- Point stream builders (UN-504) ------------------------------------------
+
+/** The fact that a line took the field to start a point. */
+export function buildPointStartedPlay(
+  id: string,
+  match: Match,
+  content: StartPointContent,
+  requestHash: string,
+  sequence: number,
+  pointNumber: number,
+  occurredAt: Date | null,
+  actorUserId: string,
+  now: Date,
+): NewMatchPlayEvent {
+  return {
+    ...playBase(
+      id,
+      match,
+      content.operationId,
+      requestHash,
+      sequence,
+      pointNumber,
+    ),
+    playType: MatchPlayType.PointStarted,
+    startingLine: content.startingLine,
+    scoringSide: null,
+    primaryMembershipId: content.pullerMembershipId,
+    secondaryMembershipId: null,
+    assistState: null,
+    callahan: false,
+    durationSeconds: null,
+    correctsPlayId: null,
+    correctionReason: null,
+    notes: content.notes,
+    recordedBy: actorUserId,
+    occurredAt,
+    now,
+  };
+}
+
+/**
+ * The fact that closes a point. `durationSeconds` stays NULL when it was not
+ * measured — it is never written as a zero that would read as an instant point.
+ */
+export function buildPointCompletedPlay(
+  id: string,
+  match: Match,
+  content: CompletePointContent,
+  requestHash: string,
+  sequence: number,
+  pointNumber: number,
+  occurredAt: Date | null,
+  actorUserId: string,
+  now: Date,
+): NewMatchPlayEvent {
+  return {
+    ...playBase(
+      id,
+      match,
+      content.operationId,
+      requestHash,
+      sequence,
+      pointNumber,
+    ),
+    playType: MatchPlayType.PointCompleted,
+    startingLine: null,
+    scoringSide: content.scoringSide,
+    primaryMembershipId: null,
+    secondaryMembershipId: null,
+    assistState: null,
+    callahan: false,
+    durationSeconds: content.durationSeconds,
+    correctsPlayId: null,
+    correctionReason: null,
+    notes: content.notes,
+    recordedBy: actorUserId,
+    occurredAt,
+    now,
+  };
+}
+
+/** One possession fact inside an open point. */
+export function buildPossessionPlay(
+  id: string,
+  match: Match,
+  content: PlayContent,
+  requestHash: string,
+  sequence: number,
+  pointNumber: number,
+  occurredAt: Date | null,
+  actorUserId: string,
+  now: Date,
+): NewMatchPlayEvent {
+  return {
+    ...playBase(
+      id,
+      match,
+      content.operationId,
+      requestHash,
+      sequence,
+      pointNumber,
+    ),
+    playType: content.playType,
+    startingLine: null,
+    scoringSide: null,
+    primaryMembershipId: content.primaryMembershipId,
+    secondaryMembershipId: resolveAssistTarget(content),
+    assistState: content.assistState,
+    callahan: content.callahan,
+    durationSeconds: null,
+    correctsPlayId: null,
+    correctionReason: null,
+    notes: content.notes,
+    recordedBy: actorUserId,
+    occurredAt,
+    now,
+  };
+}
+
+/**
+ * A compensating retraction. The original fact stays on the stream untouched and
+ * this new fact records that it no longer counts, so the statistics remain a
+ * projection of a complete, replayable history.
+ */
+export function buildCorrectionPlay(
+  id: string,
+  match: Match,
+  content: CorrectionContent,
+  requestHash: string,
+  sequence: number,
+  target: MatchPlayEvent,
+  actorUserId: string,
+  now: Date,
+): NewMatchPlayEvent {
+  return {
+    ...playBase(
+      id,
+      match,
+      content.operationId,
+      requestHash,
+      sequence,
+      target.pointNumber,
+    ),
+    playType: MatchPlayType.Correction,
+    startingLine: null,
+    scoringSide: null,
+    primaryMembershipId: null,
+    secondaryMembershipId: null,
+    assistState: null,
+    callahan: false,
+    durationSeconds: null,
+    correctsPlayId: content.playId,
+    correctionReason: content.reason,
+    notes: null,
+    recordedBy: actorUserId,
+    occurredAt: null,
+    now,
+  };
+}
+
+/** One player of the line that took the field, tied to its point-start fact. */
+export function buildLineupEntry(
+  id: string,
+  match: Match,
+  playId: string,
+  pointNumber: number,
+  membershipId: string,
+  rosterEntryId: string | null,
+  puller: boolean,
+  now: Date,
+): NewMatchPointLineupEntry {
+  return {
+    id,
+    matchId: match.matchId,
+    teamId: match.teamId,
+    playId,
+    pointNumber,
+    membershipId,
+    rosterEntryId,
+    puller,
+    now,
+  };
+}
+
+/** An assist target is only carried when the stream actually RECORDED one. */
+function resolveAssistTarget(content: PlayContent): string | null {
+  return content.assistState === AssistState.Recorded
+    ? content.secondaryMembershipId
+    : null;
+}
+
+function playBase(
+  id: string,
+  match: Match,
+  operationId: string,
+  requestHash: string,
+  sequence: number,
+  pointNumber: number,
+): Pick<
+  NewMatchPlayEvent,
+  | 'id'
+  | 'matchId'
+  | 'teamId'
+  | 'sequence'
+  | 'operationId'
+  | 'requestHash'
+  | 'pointNumber'
+  | 'period'
+> {
+  return {
+    id,
+    matchId: match.matchId,
+    teamId: match.teamId,
+    sequence,
+    operationId,
+    requestHash,
+    pointNumber,
+    period: match.period,
+  };
+}
+
 // --- Audit -------------------------------------------------------------------
 
 export function buildMatchAudit(
@@ -421,6 +659,63 @@ export function buildRulesetAudit(
   };
 }
 
+/**
+ * Audit a point-stream append. The diff carries the operation id, the play type,
+ * and the point it belongs to — never a player name or any other personal
+ * detail, so an offline replay stays traceable without leaking anyone.
+ */
+export function buildPlayAudit(
+  action: string,
+  actorUserId: string,
+  match: Match,
+  play: MatchPlayEvent,
+): AuditInput {
+  return {
+    actorUserId,
+    action,
+    resourceType: MATCH_PLAY_RESOURCE_TYPE,
+    resourceId: play.playId,
+    teamId: match.teamId,
+    seasonId: match.seasonId,
+    correlationId: null,
+    outcome: AuditOutcome.Success,
+    diff: {
+      matchId: match.matchId,
+      operationId: play.operationId,
+      playType: play.playType,
+      pointNumber: play.pointNumber,
+      sequence: play.sequence,
+      correctsPlayId: play.correctsPlayId,
+    },
+  };
+}
+
+/** Audit a statistics rebuild. Nothing is stored — the figures are re-derived. */
+export function buildStatisticsAudit(
+  action: string,
+  actorUserId: string,
+  statistics: MatchStatistics,
+): AuditInput {
+  return {
+    actorUserId,
+    action,
+    resourceType: MATCH_STATISTICS_RESOURCE_TYPE,
+    resourceId: statistics.matchId,
+    teamId: statistics.teamId,
+    seasonId: null,
+    correlationId: null,
+    outcome: AuditOutcome.Success,
+    diff: {
+      statsEngineVersion: statistics.statsEngineVersion,
+      rulesetKey: statistics.rulesetKey,
+      rulesetVersion: statistics.rulesetVersion,
+      pointsCompleted: statistics.team.pointsCompleted,
+      playerCount: statistics.players.length,
+      lineupsRecorded: statistics.lineupsRecorded,
+    },
+  };
+}
+
 // --- Domain events (past-tense, versioned, privacy-safe payloads) ------------
 
 export function buildMatchStartedEvent(
@@ -481,6 +776,102 @@ export function buildMatchReopenedEvent(
       previousOurScore: previousScore.ourScore,
       previousOpponentScore: previousScore.opponentScore,
       revision: match.revision,
+    },
+  };
+}
+
+/** `match.point_started` — a line took the field. Sizes, never identities. */
+export function buildPointStartedEvent(
+  match: Match,
+  play: MatchPlayEvent,
+  lineSize: number,
+  actorUserId: string,
+): DomainEventInput {
+  return {
+    ...matchEvent(POINT_STARTED_EVENT, match, actorUserId),
+    payload: {
+      ...scopePayload(match),
+      pointNumber: play.pointNumber,
+      startingLine: play.startingLine,
+      lineSize,
+      period: play.period,
+    },
+  };
+}
+
+/** `match.point_completed` — the point closed and is now classifiable. */
+export function buildPointCompletedEvent(
+  match: Match,
+  play: MatchPlayEvent,
+  actorUserId: string,
+): DomainEventInput {
+  return {
+    ...matchEvent(POINT_COMPLETED_EVENT, match, actorUserId),
+    payload: {
+      ...scopePayload(match),
+      pointNumber: play.pointNumber,
+      scoringSide: play.scoringSide,
+      durationSeconds: play.durationSeconds,
+      period: play.period,
+    },
+  };
+}
+
+/** `match.event_accepted` — one possession fact joined the stream. */
+export function buildPlayAcceptedEvent(
+  match: Match,
+  play: MatchPlayEvent,
+  actorUserId: string,
+): DomainEventInput {
+  return {
+    ...matchEvent(MATCH_EVENT_ACCEPTED_EVENT, match, actorUserId),
+    payload: {
+      ...scopePayload(match),
+      playType: play.playType,
+      pointNumber: play.pointNumber,
+      sequence: play.sequence,
+    },
+  };
+}
+
+/** `match.event_corrected` — a recorded fact was retracted, never deleted. */
+export function buildPlayCorrectedEvent(
+  match: Match,
+  play: MatchPlayEvent,
+  targetPlayType: MatchPlayType,
+  actorUserId: string,
+): DomainEventInput {
+  return {
+    ...matchEvent(MATCH_EVENT_CORRECTED_EVENT, match, actorUserId),
+    payload: {
+      ...scopePayload(match),
+      correctsPlayId: play.correctsPlayId,
+      correctedPlayType: targetPlayType,
+      pointNumber: play.pointNumber,
+      sequence: play.sequence,
+    },
+  };
+}
+
+/**
+ * `match.stats_projected` — the statistics were re-derived from the stream. The
+ * payload cites the engine and ruleset version so a downstream consumer can
+ * prove which rules produced the figures it received.
+ */
+export function buildStatsProjectedEvent(
+  match: Match,
+  statistics: MatchStatistics,
+  actorUserId: string,
+): DomainEventInput {
+  return {
+    ...matchEvent(MATCH_STATS_PROJECTED_EVENT, match, actorUserId),
+    payload: {
+      ...scopePayload(match),
+      statsEngineVersion: statistics.statsEngineVersion,
+      rulesetKey: statistics.rulesetKey,
+      rulesetVersion: statistics.rulesetVersion,
+      pointsCompleted: statistics.team.pointsCompleted,
+      playerCount: statistics.players.length,
     },
   };
 }

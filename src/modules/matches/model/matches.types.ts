@@ -809,6 +809,25 @@ export interface MatchStatistics {
   readonly players: readonly PlayerMatchStatistics[];
 }
 
+/**
+ * The mutable per-player accumulator the pure derivation engine folds the stream
+ * into. It is deliberately the ONLY mutable shape in this module and never
+ * leaves the engine: what callers see is the immutable `PlayerMatchStatistics`
+ * projection built from it, so there is no editable stored total anywhere.
+ */
+export interface PlayerCounters {
+  pointsPlayed: number;
+  offencePointsPlayed: number;
+  defencePointsPlayed: number;
+  goals: number;
+  assists: number;
+  callahans: number;
+  drops: number;
+  throwaways: number;
+  blocks: number;
+  opponentErrorsForced: number;
+}
+
 /** One completed point reduced to the facts hold/break classification needs. */
 export interface ResolvedMatchPoint {
   readonly pointNumber: number;

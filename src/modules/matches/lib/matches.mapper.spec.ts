@@ -1,11 +1,14 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  AssistState,
   CapKind,
   MatchEventType,
+  MatchPlayType,
   MatchResult,
   MatchRevisionAction,
   MatchStatus,
+  PointStartingLine,
   RulesetStatus,
   ScoringSide,
 } from '../model/matches.enums';
@@ -18,9 +21,13 @@ import type {
 import {
   toMatch,
   toMatchEvent,
+  toMatchPlayEvent,
+  toMatchPointLineupEntry,
   toMatchRevision,
+  toMatchRosterMember,
   toMatchRuleset,
   toMatchScope,
+  toOpenMatchPoint,
 } from './matches.mapper';
 
 const NOW = new Date('2026-03-01T10:00:00.000Z');
@@ -110,6 +117,7 @@ function rulesetRow(overrides: Partial<MatchRulesetRow> = {}): MatchRulesetRow {
     timeouts_per_team: '2',
     timeouts_per_period: null,
     periods: '2',
+    opponent_error_attribution: true,
     status: 'active',
     notes: null,
     created_by: null,
@@ -204,6 +212,7 @@ describe('matches mapper', () => {
       winBy: 2,
       timeoutsPerTeam: 2,
       periods: 2,
+      opponentErrorAttribution: true,
       status: RulesetStatus.Active,
     });
     expect(ruleset.hardCap).toBeNull();
@@ -262,5 +271,138 @@ describe('matches mapper', () => {
       seasonId: 'season-1',
       homeAway: 'away',
     });
+  });
+  it('maps a point-stream fact with its derived retracted flag', () => {
+    const mapped = toMatchPlayEvent({
+      id: 'play-1',
+      match_id: 'match-1',
+      team_id: 'team-1',
+      sequence: '3',
+      operation_id: 'op-1',
+      request_hash: 'hash-1',
+      play_type: 'goal',
+      point_number: '2',
+      period: '1',
+      starting_line: null,
+      scoring_side: null,
+      primary_membership_id: 'ana',
+      secondary_membership_id: 'bo',
+      assist_state: 'recorded',
+      callahan: false,
+      duration_seconds: null,
+      corrects_play_id: null,
+      correction_reason: null,
+      retracted: true,
+      notes: null,
+      recorded_by: 'keeper-1',
+      occurred_at: null,
+      recorded_at: NOW,
+    });
+    expect(mapped).toMatchObject({
+      playId: 'play-1',
+      sequence: 3,
+      pointNumber: 2,
+      playType: MatchPlayType.Goal,
+      assistState: AssistState.Recorded,
+      startingLine: null,
+      scoringSide: null,
+      durationSeconds: null,
+      retracted: true,
+    });
+  });
+
+  it('maps a point envelope fact preserving its line and side', () => {
+    const mapped = toMatchPlayEvent({
+      id: 'start-1',
+      match_id: 'match-1',
+      team_id: 'team-1',
+      sequence: 1,
+      operation_id: 'op-1',
+      request_hash: 'hash-1',
+      play_type: 'point_started',
+      point_number: 1,
+      period: 1,
+      starting_line: 'defense',
+      scoring_side: 'them',
+      primary_membership_id: null,
+      secondary_membership_id: null,
+      assist_state: null,
+      callahan: true,
+      duration_seconds: '90',
+      corrects_play_id: 'other-1',
+      correction_reason: 'wrong line',
+      retracted: false,
+      notes: 'note',
+      recorded_by: null,
+      occurred_at: NOW,
+      recorded_at: NOW,
+    });
+    expect(mapped).toMatchObject({
+      playType: MatchPlayType.PointStarted,
+      startingLine: PointStartingLine.Defense,
+      scoringSide: ScoringSide.Them,
+      durationSeconds: 90,
+      callahan: true,
+      correctsPlayId: 'other-1',
+      occurredAt: NOW,
+    });
+  });
+
+  it('maps a lineup row, preserving an unrecorded roster entry as null', () => {
+    expect(
+      toMatchPointLineupEntry({
+        id: 'line-1',
+        match_id: 'match-1',
+        play_id: 'start-1',
+        point_number: '4',
+        membership_id: 'ana',
+        roster_entry_id: null,
+        puller: true,
+      }),
+    ).toEqual({
+      lineupId: 'line-1',
+      matchId: 'match-1',
+      playId: 'start-1',
+      pointNumber: 4,
+      membershipId: 'ana',
+      rosterEntryId: null,
+      puller: true,
+    });
+  });
+
+  it('maps a rostered member of the match roster', () => {
+    expect(
+      toMatchRosterMember({
+        membership_id: 'ana',
+        roster_entry_id: 'entry-1',
+      }),
+    ).toEqual({ membershipId: 'ana', rosterEntryId: 'entry-1' });
+  });
+
+  it('maps the open point with the line it started on', () => {
+    expect(
+      toOpenMatchPoint({
+        id: 'start-1',
+        point_number: '5',
+        period: '2',
+        starting_line: 'offense',
+      }),
+    ).toEqual({
+      playId: 'start-1',
+      pointNumber: 5,
+      period: 2,
+      startingLine: PointStartingLine.Offense,
+    });
+  });
+
+  it('refuses an open point with no recorded line rather than guessing', () => {
+    expect(() =>
+      toOpenMatchPoint({
+        id: 'start-1',
+        point_number: 5,
+        period: 2,
+        starting_line: null,
+      }),
+    ).toThrow('Unrecognized starting line');
   });
 });

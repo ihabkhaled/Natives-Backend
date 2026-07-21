@@ -1,6 +1,10 @@
 import { FIRST_POINT_NUMBER } from '../model/matches.constants';
-import { MatchPlayType, PointStartingLine, ScoringSide } from '../model/matches.enums';
-import { PointOutcome } from '../model/matches.enums';
+import {
+  MatchPlayType,
+  PointOutcome,
+  PointStartingLine,
+  ScoringSide,
+} from '../model/matches.enums';
 import type { MatchPlayEvent, OpenMatchPoint } from '../model/matches.types';
 
 /**

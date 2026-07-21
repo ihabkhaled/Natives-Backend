@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T23:37:24.707Z",
+  "generatedAt": "2026-07-21T08:44:29.749Z",
   "modules": [
     {
       "name": "activities",
@@ -641,10 +641,13 @@
       "path": "src/modules/matches",
       "layers": {
         "api-dto": [
+          "src/modules/matches/api/dto/complete-match-point.dto.ts",
+          "src/modules/matches/api/dto/correct-match-play.dto.ts",
           "src/modules/matches/api/dto/create-match-ruleset.dto.ts",
           "src/modules/matches/api/dto/create-match.dto.ts",
           "src/modules/matches/api/dto/finalize-match.dto.ts",
           "src/modules/matches/api/dto/list-match-events.response.dto.ts",
+          "src/modules/matches/api/dto/list-match-plays.response.dto.ts",
           "src/modules/matches/api/dto/list-match-revisions.response.dto.ts",
           "src/modules/matches/api/dto/list-match-rulesets.response.dto.ts",
           "src/modules/matches/api/dto/list-matches.response.dto.ts",
@@ -652,46 +655,69 @@
           "src/modules/matches/api/dto/match-list.query.dto.ts",
           "src/modules/matches/api/dto/match-operation.response.dto.ts",
           "src/modules/matches/api/dto/match-page.query.dto.ts",
+          "src/modules/matches/api/dto/match-play-operation.response.dto.ts",
+          "src/modules/matches/api/dto/match-play-page.query.dto.ts",
+          "src/modules/matches/api/dto/match-play-response.dto.ts",
+          "src/modules/matches/api/dto/match-point-lineup.dto.ts",
           "src/modules/matches/api/dto/match-response.dto.ts",
           "src/modules/matches/api/dto/match-revision-response.dto.ts",
           "src/modules/matches/api/dto/match-ruleset-response.dto.ts",
           "src/modules/matches/api/dto/match-scoreboard.response.dto.ts",
+          "src/modules/matches/api/dto/match-statistics.response.dto.ts",
           "src/modules/matches/api/dto/match-timeout-state.dto.ts",
+          "src/modules/matches/api/dto/player-match-statistics.dto.ts",
+          "src/modules/matches/api/dto/record-match-play.dto.ts",
           "src/modules/matches/api/dto/record-match-point.dto.ts",
           "src/modules/matches/api/dto/record-match-timeout.dto.ts",
           "src/modules/matches/api/dto/reopen-match.dto.ts",
+          "src/modules/matches/api/dto/start-match-point.dto.ts",
+          "src/modules/matches/api/dto/team-match-statistics.dto.ts",
           "src/modules/matches/api/dto/transition-match.dto.ts",
           "src/modules/matches/api/dto/void-match-event.dto.ts"
         ],
         "controller": [
           "src/modules/matches/api/match-events.controller.ts",
+          "src/modules/matches/api/match-points.controller.ts",
           "src/modules/matches/api/match-rulesets.controller.ts",
+          "src/modules/matches/api/match-statistics.controller.ts",
           "src/modules/matches/api/matches.controller.ts"
         ],
         "use-case": [
+          "src/modules/matches/application/complete-match-point.use-case.ts",
+          "src/modules/matches/application/correct-match-play.use-case.ts",
           "src/modules/matches/application/create-match-ruleset.use-case.ts",
           "src/modules/matches/application/create-match.use-case.ts",
           "src/modules/matches/application/finalize-match.use-case.ts",
+          "src/modules/matches/application/rebuild-match-statistics.use-case.ts",
+          "src/modules/matches/application/record-match-play.use-case.ts",
           "src/modules/matches/application/record-match-point.use-case.ts",
           "src/modules/matches/application/record-match-timeout.use-case.ts",
           "src/modules/matches/application/reopen-match.use-case.ts",
+          "src/modules/matches/application/start-match-point.use-case.ts",
           "src/modules/matches/application/transition-match.use-case.ts",
           "src/modules/matches/application/void-match-event.use-case.ts"
         ],
         "service": [
           "src/modules/matches/application/match-event-query.service.ts",
+          "src/modules/matches/application/match-lineup.service.ts",
           "src/modules/matches/application/match-lookup.service.ts",
+          "src/modules/matches/application/match-play-query.service.ts",
+          "src/modules/matches/application/match-play-stream.service.ts",
           "src/modules/matches/application/match-query.service.ts",
           "src/modules/matches/application/match-revision-query.service.ts",
           "src/modules/matches/application/match-ruleset-query.service.ts",
           "src/modules/matches/application/match-scope.service.ts",
           "src/modules/matches/application/match-scoreboard.service.ts",
+          "src/modules/matches/application/match-statistics.service.ts",
           "src/modules/matches/application/match-stream.service.ts"
         ],
         "domain": [
           "src/modules/matches/domain/match-correction.policy.ts",
+          "src/modules/matches/domain/match-lineup.policy.ts",
           "src/modules/matches/domain/match-operation.policy.ts",
+          "src/modules/matches/domain/match-point.state-machine.ts",
           "src/modules/matches/domain/match-score.policy.ts",
+          "src/modules/matches/domain/match-statistics.policy.ts",
           "src/modules/matches/domain/match-timeout.policy.ts",
           "src/modules/matches/domain/match.state-machine.ts"
         ],
@@ -699,9 +725,13 @@
           "src/modules/matches/errors/match-event-not-found.error.ts",
           "src/modules/matches/errors/match-finalized.error.ts",
           "src/modules/matches/errors/match-invalid-transition.error.ts",
+          "src/modules/matches/errors/match-lineup-invalid.error.ts",
           "src/modules/matches/errors/match-not-found.error.ts",
           "src/modules/matches/errors/match-not-scoring.error.ts",
           "src/modules/matches/errors/match-operation-conflict.error.ts",
+          "src/modules/matches/errors/match-play-not-found.error.ts",
+          "src/modules/matches/errors/match-point-already-open.error.ts",
+          "src/modules/matches/errors/match-point-not-open.error.ts",
           "src/modules/matches/errors/match-reopen-not-allowed.error.ts",
           "src/modules/matches/errors/match-ruleset-not-found.error.ts",
           "src/modules/matches/errors/match-scope-not-found.error.ts",
@@ -713,7 +743,10 @@
         ],
         "repository": [
           "src/modules/matches/infrastructure/match-event.repository.ts",
+          "src/modules/matches/infrastructure/match-play-event.repository.ts",
+          "src/modules/matches/infrastructure/match-point-lineup.repository.ts",
           "src/modules/matches/infrastructure/match-revision.repository.ts",
+          "src/modules/matches/infrastructure/match-roster.repository.ts",
           "src/modules/matches/infrastructure/match-ruleset.repository.ts",
           "src/modules/matches/infrastructure/match-scope.repository.ts",
           "src/modules/matches/infrastructure/match.repository.ts"
@@ -733,8 +766,8 @@
           "src/modules/matches/model/matches.types.ts"
         ]
       },
-      "fileCount": 74,
-      "specCount": 32,
+      "fileCount": 107,
+      "specCount": 47,
       "publicSurface": "src/modules/matches/index.ts",
       "hasEvents": false
     },

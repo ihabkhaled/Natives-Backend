@@ -1,12 +1,22 @@
 import { describe, expect, it } from 'vitest';
 
-import { MatchStatus, ScoringSide } from '../model/matches.enums';
 import {
+  AssistState,
+  MatchPlayType,
+  MatchStatus,
+  PointStartingLine,
+  ScoringSide,
+} from '../model/matches.enums';
+import {
+  toCompletePointContent,
+  toCorrectionContent,
   toExpectedRecordVersion,
   toMatchContent,
   toMatchListFilter,
   toMatchRulesetContent,
+  toPlayContent,
   toPointContent,
+  toStartPointContent,
   toTimeoutContent,
 } from './matches-command.mapper';
 
@@ -164,5 +174,112 @@ describe('matches command mapper', () => {
   it('defaults the expected record version to the first', () => {
     expect(toExpectedRecordVersion(undefined)).toBe(1);
     expect(toExpectedRecordVersion(7)).toBe(7);
+  });
+  it('collapses an absent puller, instant, and note onto explicit nulls', () => {
+    expect(
+      toStartPointContent({
+        operationId: 'op-1',
+        startingLine: PointStartingLine.Defense,
+        lineMembershipIds: ['ana'],
+      }),
+    ).toEqual({
+      operationId: 'op-1',
+      startingLine: PointStartingLine.Defense,
+      lineMembershipIds: ['ana'],
+      pullerMembershipId: null,
+      occurredAt: null,
+      notes: null,
+    });
+  });
+
+  it('carries a supplied puller, instant, and note through unchanged', () => {
+    expect(
+      toStartPointContent({
+        operationId: 'op-1',
+        startingLine: PointStartingLine.Offense,
+        lineMembershipIds: ['ana', 'bo'],
+        pullerMembershipId: 'bo',
+        occurredAt: '2026-05-01T10:00:00.000Z',
+        notes: 'wind at our backs',
+      }),
+    ).toMatchObject({
+      pullerMembershipId: 'bo',
+      occurredAt: '2026-05-01T10:00:00.000Z',
+      notes: 'wind at our backs',
+    });
+  });
+
+  it('keeps an unmeasured point length NULL, never zero seconds', () => {
+    expect(
+      toCompletePointContent({
+        operationId: 'op-1',
+        scoringSide: ScoringSide.Us,
+      }).durationSeconds,
+    ).toBeNull();
+    expect(
+      toCompletePointContent({
+        operationId: 'op-1',
+        scoringSide: ScoringSide.Us,
+        durationSeconds: 0,
+        occurredAt: '2026-05-01T10:00:00.000Z',
+        notes: 'quick point',
+      }),
+    ).toMatchObject({
+      durationSeconds: 0,
+      occurredAt: '2026-05-01T10:00:00.000Z',
+      notes: 'quick point',
+    });
+  });
+
+  it('defaults an unstated assist to UNKNOWN rather than to none', () => {
+    expect(
+      toPlayContent({
+        operationId: 'op-1',
+        playType: MatchPlayType.Goal,
+      }),
+    ).toEqual({
+      operationId: 'op-1',
+      playType: MatchPlayType.Goal,
+      primaryMembershipId: null,
+      secondaryMembershipId: null,
+      assistState: AssistState.Unknown,
+      callahan: false,
+      occurredAt: null,
+      notes: null,
+    });
+  });
+
+  it('preserves a deliberate no-assist and a Callahan flag', () => {
+    expect(
+      toPlayContent({
+        operationId: 'op-1',
+        playType: MatchPlayType.Goal,
+        primaryMembershipId: 'ana',
+        secondaryMembershipId: 'bo',
+        assistState: AssistState.None,
+        callahan: true,
+        occurredAt: '2026-05-01T10:00:00.000Z',
+        notes: 'clean layout',
+      }),
+    ).toMatchObject({
+      primaryMembershipId: 'ana',
+      secondaryMembershipId: 'bo',
+      assistState: AssistState.None,
+      callahan: true,
+    });
+  });
+
+  it('maps a retraction to its target and reason', () => {
+    expect(
+      toCorrectionContent({
+        operationId: 'op-1',
+        playId: 'play-1',
+        reason: 'credited to the wrong player',
+      }),
+    ).toEqual({
+      operationId: 'op-1',
+      playId: 'play-1',
+      reason: 'credited to the wrong player',
+    });
   });
 });

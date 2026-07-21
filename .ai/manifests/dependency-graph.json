@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20T23:37:24.707Z",
+  "generatedAt": "2026-07-21T08:44:29.749Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -12152,6 +12152,41 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/matches/api/dto/complete-match-point.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/complete-match-point.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/complete-match-point.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/complete-match-point.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/correct-match-play.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/correct-match-play.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/correct-match-play.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/matches/api/dto/create-match-ruleset.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -12204,6 +12239,16 @@
     {
       "from": "src/modules/matches/api/dto/list-match-events.response.dto.ts",
       "to": "src/modules/matches/api/dto/match-event-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/list-match-plays.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/list-match-plays.response.dto.ts",
+      "to": "src/modules/matches/api/dto/match-play-response.dto.ts",
       "type": "internal"
     },
     {
@@ -12297,6 +12342,56 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/matches/api/dto/match-play-operation.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-play-operation.response.dto.ts",
+      "to": "src/modules/matches/api/dto/match-play-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-play-operation.response.dto.ts",
+      "to": "src/modules/matches/api/dto/match-point-lineup.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-play-operation.response.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-play-page.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-play-page.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-play-page.query.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-play-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-play-response.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-point-lineup.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/matches/api/dto/match-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -12342,11 +12437,51 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/matches/api/dto/match-statistics.response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-statistics.response.dto.ts",
+      "to": "src/modules/matches/api/dto/player-match-statistics.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/match-statistics.response.dto.ts",
+      "to": "src/modules/matches/api/dto/team-match-statistics.dto.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/matches/api/dto/match-timeout-state.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/matches/api/dto/player-match-statistics.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/record-match-play.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/record-match-play.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/record-match-play.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/record-match-play.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/matches/api/dto/record-match-point.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -12400,6 +12535,31 @@
       "from": "src/modules/matches/api/dto/reopen-match.dto.ts",
       "to": "src/modules/matches/model/matches.constants.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/start-match-point.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/start-match-point.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/dto/start-match-point.dto.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/start-match-point.dto.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/dto/team-match-statistics.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/matches/api/dto/transition-match.dto.ts",
@@ -12522,6 +12682,101 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/api/dto/complete-match-point.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/api/dto/correct-match-play.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/api/dto/list-match-plays.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/api/dto/match-play-operation.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/api/dto/match-play-page.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/api/dto/record-match-play.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/api/dto/start-match-point.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/application/match-play-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/application/record-match-play.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/application/start-match-point.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/lib/matches-command.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-points.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/matches/api/match-rulesets.controller.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -12583,6 +12838,46 @@
     },
     {
       "from": "src/modules/matches/api/match-rulesets.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-statistics.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-statistics.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-statistics.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/api/match-statistics.controller.ts",
+      "to": "src/modules/matches/api/dto/match-statistics.response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-statistics.controller.ts",
+      "to": "src/modules/matches/application/match-statistics.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-statistics.controller.ts",
+      "to": "src/modules/matches/application/rebuild-match-statistics.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-statistics.controller.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/api/match-statistics.controller.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
     },
@@ -12705,6 +13000,131 @@
       "from": "src/modules/matches/api/matches.controller.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/modules/matches/application/match-play-stream.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/modules/matches/lib/match-operation.hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "to": "src/modules/matches/application/match-play-stream.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "to": "src/modules/matches/lib/match-operation.hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/correct-match-play.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
     },
     {
       "from": "src/modules/matches/application/create-match-ruleset.use-case.ts",
@@ -12922,6 +13342,51 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/matches/application/match-lineup.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-lineup.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-lineup.service.ts",
+      "to": "src/modules/matches/application/match-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-lineup.service.ts",
+      "to": "src/modules/matches/domain/match-lineup.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-lineup.service.ts",
+      "to": "src/modules/matches/errors/match-lineup-invalid.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-lineup.service.ts",
+      "to": "src/modules/matches/infrastructure/match-point-lineup.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-lineup.service.ts",
+      "to": "src/modules/matches/infrastructure/match-roster.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-lineup.service.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-lineup.service.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/matches/application/match-lookup.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -12948,6 +13413,81 @@
     },
     {
       "from": "src/modules/matches/application/match-lookup.service.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-query.service.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-query.service.ts",
+      "to": "src/modules/matches/infrastructure/match-play-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-query.service.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-stream.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-stream.service.ts",
+      "to": "src/modules/matches/domain/match-operation.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-stream.service.ts",
+      "to": "src/modules/matches/domain/match-point.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-stream.service.ts",
+      "to": "src/modules/matches/domain/match.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-stream.service.ts",
+      "to": "src/modules/matches/errors/match-finalized.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-stream.service.ts",
+      "to": "src/modules/matches/errors/match-not-scoring.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-stream.service.ts",
+      "to": "src/modules/matches/errors/match-operation-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-stream.service.ts",
+      "to": "src/modules/matches/errors/match-play-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-stream.service.ts",
+      "to": "src/modules/matches/errors/match-point-not-open.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-stream.service.ts",
+      "to": "src/modules/matches/infrastructure/match-play-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-play-stream.service.ts",
       "to": "src/modules/matches/model/matches.types.ts",
       "type": "internal"
     },
@@ -13057,6 +13597,41 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/matches/application/match-statistics.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/match-statistics.service.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-statistics.service.ts",
+      "to": "src/modules/matches/domain/match-statistics.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-statistics.service.ts",
+      "to": "src/modules/matches/infrastructure/match-play-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-statistics.service.ts",
+      "to": "src/modules/matches/infrastructure/match-point-lineup.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-statistics.service.ts",
+      "to": "src/modules/matches/infrastructure/match-roster.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/match-statistics.service.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/matches/application/match-stream.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -13115,6 +13690,126 @@
       "from": "src/modules/matches/application/match-stream.service.ts",
       "to": "src/modules/matches/model/matches.types.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/rebuild-match-statistics.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/rebuild-match-statistics.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/rebuild-match-statistics.use-case.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/rebuild-match-statistics.use-case.ts",
+      "to": "src/modules/matches/application/match-statistics.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/rebuild-match-statistics.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/rebuild-match-statistics.use-case.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/rebuild-match-statistics.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/rebuild-match-statistics.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/modules/matches/application/match-play-stream.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/modules/matches/application/match-scope.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/modules/matches/domain/match-point.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/modules/matches/errors/match-validation.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/modules/matches/lib/match-operation.hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/record-match-play.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
     },
     {
       "from": "src/modules/matches/application/record-match-point.use-case.ts",
@@ -13352,6 +14047,86 @@
       "type": "cross-module"
     },
     {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/modules/matches/application/match-lineup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/modules/matches/application/match-play-stream.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/modules/matches/domain/match-point.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/modules/matches/errors/match-point-already-open.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/modules/matches/lib/match-operation.hash.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/modules/matches/lib/matches.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/application/start-match-point.use-case.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/matches/application/transition-match.use-case.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -13517,12 +14292,32 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/matches/domain/match-lineup.policy.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/matches/domain/match-operation.policy.ts",
       "to": "src/modules/matches/model/matches.enums.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/matches/domain/match-operation.policy.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-point.state-machine.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-point.state-machine.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-point.state-machine.ts",
       "to": "src/modules/matches/model/matches.types.ts",
       "type": "internal"
     },
@@ -13538,6 +14333,26 @@
     },
     {
       "from": "src/modules/matches/domain/match-score.policy.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-statistics.policy.ts",
+      "to": "src/modules/matches/domain/match-point.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-statistics.policy.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-statistics.policy.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/domain/match-statistics.policy.ts",
       "to": "src/modules/matches/model/matches.types.ts",
       "type": "internal"
     },
@@ -13587,6 +14402,16 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/matches/errors/match-lineup-invalid.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-lineup-invalid.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/matches/errors/match-not-found.error.ts",
       "to": "src/core/errors/not-found.error.ts",
       "type": "cross-cutting"
@@ -13613,6 +14438,36 @@
     },
     {
       "from": "src/modules/matches/errors/match-operation-conflict.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-play-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-play-not-found.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-point-already-open.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-point-already-open.error.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/errors/match-point-not-open.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/errors/match-point-not-open.error.ts",
       "to": "src/modules/matches/model/matches.constants.ts",
       "type": "internal"
     },
@@ -13712,6 +14567,61 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/matches/infrastructure/match-play-event.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-play-event.repository.ts",
+      "to": "src/modules/matches/lib/matches.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-play-event.repository.ts",
+      "to": "src/modules/matches/lib/matches.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-play-event.repository.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-play-event.repository.ts",
+      "to": "src/modules/matches/model/matches.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-play-event.repository.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-point-lineup.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-point-lineup.repository.ts",
+      "to": "src/modules/matches/lib/matches.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-point-lineup.repository.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-point-lineup.repository.ts",
+      "to": "src/modules/matches/model/matches.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-point-lineup.repository.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/matches/infrastructure/match-revision.repository.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -13733,6 +14643,31 @@
     },
     {
       "from": "src/modules/matches/infrastructure/match-revision.repository.ts",
+      "to": "src/modules/matches/model/matches.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-roster.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-roster.repository.ts",
+      "to": "src/modules/matches/lib/matches.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-roster.repository.ts",
+      "to": "src/modules/matches/model/matches.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-roster.repository.ts",
+      "to": "src/modules/matches/model/matches.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/infrastructure/match-roster.repository.ts",
       "to": "src/modules/matches/model/matches.types.ts",
       "type": "internal"
     },
@@ -13863,6 +14798,11 @@
     },
     {
       "from": "src/modules/matches/lib/matches-command.mapper.ts",
+      "to": "src/modules/matches/model/matches.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/lib/matches-command.mapper.ts",
       "to": "src/modules/matches/model/matches.types.ts",
       "type": "internal"
     },
@@ -13953,12 +14893,32 @@
     },
     {
       "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/api/match-points.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
       "to": "src/modules/matches/api/match-rulesets.controller.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/api/match-statistics.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
       "to": "src/modules/matches/api/matches.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/complete-match-point.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/correct-match-play.use-case.ts",
       "type": "internal"
     },
     {
@@ -13983,7 +14943,22 @@
     },
     {
       "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/match-lineup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
       "to": "src/modules/matches/application/match-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/match-play-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/match-play-stream.service.ts",
       "type": "internal"
     },
     {
@@ -14013,7 +14988,22 @@
     },
     {
       "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/match-statistics.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
       "to": "src/modules/matches/application/match-stream.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/rebuild-match-statistics.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/record-match-play.use-case.ts",
       "type": "internal"
     },
     {
@@ -14033,6 +15023,11 @@
     },
     {
       "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/application/start-match-point.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
       "to": "src/modules/matches/application/transition-match.use-case.ts",
       "type": "internal"
     },
@@ -14048,7 +15043,22 @@
     },
     {
       "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/infrastructure/match-play-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/infrastructure/match-point-lineup.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
       "to": "src/modules/matches/infrastructure/match-revision.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/matches/matches.module.ts",
+      "to": "src/modules/matches/infrastructure/match-roster.repository.ts",
       "type": "internal"
     },
     {
