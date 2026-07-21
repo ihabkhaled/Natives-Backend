@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T08:44:29.749Z",
+  "generatedAt": "2026-07-21T11:25:24.135Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -10482,6 +10482,16 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/api/dto/invitation-delivery-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/invitation-delivery-response.dto.ts",
+      "to": "src/modules/identity/api/dto/invitation-response.dto.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/identity/api/dto/invitation-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -10674,6 +10684,11 @@
     {
       "from": "src/modules/identity/api/invitations.controller.ts",
       "to": "src/modules/identity/api/dto/create-invitation.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/invitations.controller.ts",
+      "to": "src/modules/identity/api/dto/invitation-delivery-response.dto.ts",
       "type": "internal"
     },
     {

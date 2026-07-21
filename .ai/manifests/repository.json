@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-21T08:44:29.749Z",
-  "treeHash": "sha256:b0225a26def6e6258a28dab6952e9618a05c6d2c2b3779f5b17c0ed4499563de",
+  "generatedAt": "2026-07-21T11:25:24.135Z",
+  "treeHash": "sha256:0a909eb9af09c2339064e782e9614a603736dde33d267e0ce1c73045e08e16b2",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -15463,6 +15463,23 @@
       "sizeBytes": 330
     },
     {
+      "path": "src/modules/identity/api/dto/invitation-delivery-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvitationDeliveryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:42322de929abd9c4f98ce3986fa6e5f0745c6a3b340b7b12398c9dd45351e444",
+      "sizeBytes": 800
+    },
+    {
       "path": "src/modules/identity/api/dto/invitation-response.dto.ts",
       "root": "modules",
       "module": "identity",
@@ -15709,8 +15726,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:974ea2e0f0ec30db2603331ac6ac771e85188b569165f5b7402cb038a8f26cd1",
-      "sizeBytes": 3845
+      "hash": "sha256:767e4d654f9605e7be5965fff084b2af293737edb3f2d62cd1d35030c385c1bd",
+      "sizeBytes": 4144
     },
     {
       "path": "src/modules/identity/api/public-invitations.controller.ts",
@@ -15767,8 +15784,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:98eeb40eb2f0136df4665b6282f009c4ae5e05ff7e97ba827ac5b4dfa9f444cd",
-      "sizeBytes": 3821
+      "hash": "sha256:d567b1e25459d7917b3faa10ac5aed4d63124a35e6612a00165236c3d0a728df",
+      "sizeBytes": 3871
     },
     {
       "path": "src/modules/identity/application/create-invitation.use-case.ts",
@@ -15784,8 +15801,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/create-invitation.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:814213968af57a0c2b281f75af050d716ee0107a702c1268d7fd30bccbb509e7",
-      "sizeBytes": 3462
+      "hash": "sha256:9496bde71cb51f5d8b065c182dd77c6b6c48e218bd1d7639ec16cd9883e2f052",
+      "sizeBytes": 3474
     },
     {
       "path": "src/modules/identity/application/expire-invitations.use-case.spec.ts",
@@ -16086,8 +16103,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:adab23673c9249b0e6e9bc888c07cf09d5c9d45531222ece49cdcc1e1d1631be",
-      "sizeBytes": 3273
+      "hash": "sha256:9cd61f7f1083a942662bf8152a8cd9c656ce27273ae3e7d13285de4634c6988e",
+      "sizeBytes": 3316
     },
     {
       "path": "src/modules/identity/application/resend-invitation.use-case.ts",
@@ -16103,8 +16120,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/resend-invitation.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:beaf0326245c26a7cc8352a775c9aeffe01d2e8d74a96fa23aaf3a24340d2ba9",
-      "sizeBytes": 2874
+      "hash": "sha256:c038a6caf3965c1214a253a0c8dc3f1d424f48f4c0ddc49aff7c7f074f93fb26",
+      "sizeBytes": 2905
     },
     {
       "path": "src/modules/identity/application/reset-password.use-case.spec.ts",
@@ -16979,8 +16996,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:2ae0401aebfdf409498ef071652f7e9348243f10b1cd97ef79df90cacc1171ee",
-      "sizeBytes": 4062
+      "hash": "sha256:c4a1629747abde1e94710c9230d91d5a9cb95b399c1359b7325c0fd778b38d95",
+      "sizeBytes": 4500
     },
     {
       "path": "src/modules/identity/lib/identity.mapper.ts",
@@ -17014,14 +17031,18 @@
         },
         {
           "kind": "function",
+          "name": "toInvitationDelivery"
+        },
+        {
+          "kind": "function",
           "name": "toDeviceSessionList"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/identity/lib/identity.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:11b2142e84a010f02c78b9f1b84769bc3d96dda7c111cec9275841ed068e5d6e",
-      "sizeBytes": 3305
+      "hash": "sha256:40dc61e1c9d1c82c52ffc8420282f9db7622646fe7df171240e2e78afcf1e747",
+      "sizeBytes": 3765
     },
     {
       "path": "src/modules/identity/lib/membership-payload.mapper.spec.ts",
@@ -17564,6 +17585,10 @@
         },
         {
           "kind": "interface",
+          "name": "InvitationDelivery"
+        },
+        {
+          "kind": "interface",
           "name": "SessionListQuery"
         },
         {
@@ -17590,8 +17615,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:eb47e6028ac01973874e5ed358a931b28c813c725a75b62c1c5abec338edd4f4",
-      "sizeBytes": 7595
+      "hash": "sha256:bda3967ea30520862ce3b2379249985aa6811cc942d7fca4f33ff04903e9ba88",
+      "sizeBytes": 8113
     },
     {
       "path": "src/modules/matches/api/dto/complete-match-point.dto.ts",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T08:44:29.749Z",
+  "generatedAt": "2026-07-21T11:25:24.135Z",
   "modules": [
     {
       "name": "activities",
@@ -553,6 +553,7 @@
           "src/modules/identity/api/dto/create-invitation.dto.ts",
           "src/modules/identity/api/dto/device-session-response.dto.ts",
           "src/modules/identity/api/dto/forgot-password.dto.ts",
+          "src/modules/identity/api/dto/invitation-delivery-response.dto.ts",
           "src/modules/identity/api/dto/invitation-response.dto.ts",
           "src/modules/identity/api/dto/invitation-token-params.dto.ts",
           "src/modules/identity/api/dto/login-response.dto.ts",
@@ -631,7 +632,7 @@
           "src/modules/identity/model/identity.types.ts"
         ]
       },
-      "fileCount": 71,
+      "fileCount": 72,
       "specCount": 44,
       "publicSurface": "src/modules/identity/index.ts",
       "hasEvents": false

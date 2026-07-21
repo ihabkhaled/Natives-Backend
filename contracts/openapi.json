@@ -5143,6 +5143,54 @@
         ],
         "type": "object"
       },
+      "InvitationDeliveryResponseDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "admin",
+              "user"
+            ],
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "accepted",
+              "revoked",
+              "expired"
+            ],
+            "type": "string"
+          },
+          "token": {
+            "description": "One-time plaintext invitation token for manual link delivery (OD-002). Shown once; store the hash only.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "role",
+          "status",
+          "expiresAt",
+          "createdAt",
+          "token"
+        ],
+        "type": "object"
+      },
       "InvitationResponseDto": {
         "properties": {
           "createdAt": {
@@ -15703,17 +15751,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/InvitationResponseDto"
+                  "$ref": "#/components/schemas/InvitationDeliveryResponseDto"
                 }
               }
             },
-            "description": "Invitation created"
+            "description": "Invitation created; response carries the one-time token for manual link delivery (OD-002)"
           },
           "401": {
             "description": "Unauthorized"
           }
         },
-        "summary": "Invite a new member",
+        "summary": "Invite a new member by email",
         "tags": [
           "invitations"
         ]
@@ -15737,11 +15785,11 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/InvitationResponseDto"
+                  "$ref": "#/components/schemas/InvitationDeliveryResponseDto"
                 }
               }
             },
-            "description": "Invitation resent"
+            "description": "Invitation resent with a fresh token for manual link delivery (OD-002); the previous link is invalidated"
           },
           "401": {
             "description": "Unauthorized"

@@ -37,6 +37,7 @@ import {
 import { AcceptInvitationDto } from './dto/accept-invitation.dto';
 import { AuthSessionResponseDto } from './dto/auth-session-response.dto';
 import { CreateInvitationDto } from './dto/create-invitation.dto';
+import { InvitationDeliveryResponseDto } from './dto/invitation-delivery-response.dto';
 import { InvitationResponseDto } from './dto/invitation-response.dto';
 
 @ApiTags(INVITATIONS_API_TAG)
@@ -52,16 +53,17 @@ export class InvitationsController {
   @Post()
   @RequirePermissions(Permission.MemberInvite)
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Invite a new member' })
+  @ApiOperation({ summary: 'Invite a new member by email' })
   @ApiCreatedResponse({
-    description: 'Invitation created',
-    type: InvitationResponseDto,
+    description:
+      'Invitation created; response carries the one-time token for manual link delivery (OD-002)',
+    type: InvitationDeliveryResponseDto,
   })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   create(
     @Body() dto: CreateInvitationDto,
     @CurrentUser() user: AuthUserIdentity,
-  ): Promise<InvitationResponseDto> {
+  ): Promise<InvitationDeliveryResponseDto> {
     return this.createInvitation.execute({
       email: dto.email,
       role: dto.role ?? Role.User,
@@ -74,14 +76,15 @@ export class InvitationsController {
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Resend a pending invitation' })
   @ApiOkResponse({
-    description: 'Invitation resent',
-    type: InvitationResponseDto,
+    description:
+      'Invitation resent with a fresh token for manual link delivery (OD-002); the previous link is invalidated',
+    type: InvitationDeliveryResponseDto,
   })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   resend(
     @Param(INVITATION_ID_PARAM, UuidValidationPipe) id: string,
     @CurrentUser() user: AuthUserIdentity,
-  ): Promise<InvitationResponseDto> {
+  ): Promise<InvitationDeliveryResponseDto> {
     return this.resendInvitation.execute(id, user.userId);
   }
 

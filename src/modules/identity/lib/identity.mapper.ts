@@ -10,6 +10,7 @@ import type {
   AuthUserPayload,
   DeviceSessionList,
   Invitation,
+  InvitationDelivery,
   InvitationSummary,
   IssuedSession,
   LoginResponse,
@@ -101,6 +102,19 @@ export function toInvitationSummary(invitation: Invitation): InvitationSummary {
     expiresAt: invitation.expiresAt,
     createdAt: invitation.createdAt,
   };
+}
+
+/**
+ * Attach the one-time plaintext token to an invitation summary for the response
+ * of a path that just minted it (create/resend). The token is never read back
+ * from storage — only the hash is persisted — so the caller must pass the
+ * plaintext it generated.
+ */
+export function toInvitationDelivery(
+  invitation: Invitation,
+  token: string,
+): InvitationDelivery {
+  return { ...toInvitationSummary(invitation), token };
 }
 
 export function toDeviceSessionList(

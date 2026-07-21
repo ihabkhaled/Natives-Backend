@@ -12,6 +12,7 @@ import {
   buildLoginResponse,
   toAccountState,
   toAuthUserIdentity,
+  toInvitationDelivery,
   toInvitationSummary,
   toPrincipal,
 } from './identity.mapper';
@@ -154,6 +155,20 @@ describe('toInvitationSummary', () => {
       status: InvitationStatus.Pending,
       expiresAt: NOW,
       createdAt: NOW,
+    });
+  });
+});
+
+describe('toInvitationDelivery', () => {
+  it('adds the one-time plaintext token to the summary for manual delivery', () => {
+    expect(toInvitationDelivery(INVITATION, 'plaintext-token')).toEqual({
+      id: 'inv-1',
+      email: 'invitee@example.test',
+      role: Role.User,
+      status: InvitationStatus.Pending,
+      expiresAt: NOW,
+      createdAt: NOW,
+      token: 'plaintext-token',
     });
   });
 });

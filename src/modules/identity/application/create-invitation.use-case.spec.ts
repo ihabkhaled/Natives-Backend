@@ -90,7 +90,7 @@ describe('CreateInvitationUseCase', () => {
     harness = build();
   });
 
-  it('inserts an invitation, audits, and returns a summary', async () => {
+  it('inserts an invitation, audits, and returns a delivery with its one-time token', async () => {
     const result = await harness.useCase.execute(COMMAND);
 
     expect(result).toEqual({
@@ -100,6 +100,7 @@ describe('CreateInvitationUseCase', () => {
       status: INSERTED_INVITATION.status,
       expiresAt: INSERTED_INVITATION.expiresAt,
       createdAt: INSERTED_INVITATION.createdAt,
+      token: 'rawtoken',
     });
     expect(harness.invitations.insert).toHaveBeenCalled();
     expect(harness.audit.record).toHaveBeenCalledWith(

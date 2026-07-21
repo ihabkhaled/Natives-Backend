@@ -265,6 +265,18 @@ export interface InvitationSummary {
   readonly createdAt: Date;
 }
 
+/**
+ * A freshly issued invitation plus the one-time plaintext token. Only the
+ * create and resend paths (which mint a token) return this; every read path
+ * returns the token-free `InvitationSummary`. The plaintext exists only in this
+ * response so a privileged admin can hand the invite link over manually while
+ * no email provider is configured (open decision OD-002). The database stores
+ * only the token's hash.
+ */
+export interface InvitationDelivery extends InvitationSummary {
+  readonly token: string;
+}
+
 export interface SessionListQuery {
   readonly limit: number;
   readonly offset: number;

@@ -375,7 +375,7 @@ describeIfDb(suiteTitle, () => {
     expect(response.body.messageKey).toBe('errors.identity.resetTokenInvalid');
   });
 
-  it('POST /invitations creates a pending invitation for a privileged actor', async () => {
+  it('POST /invitations creates a pending invitation and returns its one-time token', async () => {
     const response = await request(app.getHttpServer())
       .post('/api/v1/invitations')
       .set('Authorization', `Bearer ${adminToken}`)
@@ -384,6 +384,71 @@ describeIfDb(suiteTitle, () => {
     expect(response.status).toBe(201);
     expect(response.body.status).toBe('pending');
     expect(response.body.id).toBeDefined();
+    // OD-002: no email provider, so the admin must be handed the invite link.
+    expect(typeof response.body.token).toBe('string');
+    expect(response.body.token.length).toBeGreaterThanOrEqual(20);
+  });
+
+  it('never accepts an admin-chosen password when creating an invitation', async () => {
+    const email = `invitee-${randomUUID()}@example.test`;
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/invitations')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ email, password: 'admin-chosen-secret-123' });
+
+    // The invitation is email-first by contract: a password field is not part
+    // of the DTO, so the whitelist rejects it rather than silently setting a
+    // credential the invitee never chose.
+    expect(response.status).toBe(400);
+    expect(response.body.messageKey).toBe('errors.validation.failed');
+    expect(JSON.stringify(response.body)).not.toContain(
+      'admin-chosen-secret-123',
+    );
+  });
+
+  it('onboards email-first: the invitee sets their own password and gets a session', async () => {
+    const email = `invitee-${randomUUID()}@example.test`;
+    const created = await request(app.getHttpServer())
+      .post('/api/v1/invitations')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ email });
+    const inviteToken = created.body.token as string;
+
+    const inviteePassword = 'invitee-chosen-strong-passphrase';
+    const accepted = await request(app.getHttpServer())
+      .post('/api/v1/invitations/accept')
+      .send({ token: inviteToken, password: inviteePassword });
+
+    expect(accepted.status).toBe(201);
+    expect(accepted.body.accessToken).toEqual(expect.any(String));
+    expect(accepted.body.userId).toEqual(expect.any(String));
+
+    // The invitee can now log in with the password they chose.
+    const loggedIn = await request(app.getHttpServer())
+      .post('/api/v1/auth/login')
+      .send({ email, password: inviteePassword });
+    expect(loggedIn.status).toBe(200);
+
+    // The one-time token cannot be replayed once accepted.
+    const replay = await request(app.getHttpServer())
+      .post('/api/v1/invitations/accept')
+      .send({ token: inviteToken, password: inviteePassword });
+    expect(replay.status).toBe(400);
+    expect(replay.body.messageKey).toBe('errors.identity.invitationInvalid');
+  });
+
+  it('enforces the password policy when the invitee accepts', async () => {
+    const created = await request(app.getHttpServer())
+      .post('/api/v1/invitations')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ email: `invitee-${randomUUID()}@example.test` });
+
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/invitations/accept')
+      .send({ token: created.body.token as string, password: 'short' });
+
+    expect(response.status).toBe(400);
+    expect(response.body.messageKey).toBe('errors.validation.failed');
   });
 
   it('POST /invitations rejects an unprivileged caller', async () => {

@@ -80,6 +80,7 @@ describe('ResendInvitationUseCase', () => {
     expect(result.id).toBe(PENDING_INVITATION.id);
     expect(result.expiresAt).toEqual(new Date(NOW.getTime() + 1000 * 1000));
     expect(result.status).toBe(InvitationStatus.Pending);
+    expect(result.token).toBe('rawtoken');
   });
 
   it('throws not-found when the invitation is missing', async () => {

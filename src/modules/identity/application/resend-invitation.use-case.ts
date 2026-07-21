@@ -11,7 +11,7 @@ import { isInvitationMutable } from '../domain/invitation.policy';
 import { InvitationInvalidError } from '../errors/invitation-invalid.error';
 import { InvitationNotFoundError } from '../errors/invitation-not-found.error';
 import { InvitationRepository } from '../infrastructure/invitation.repository';
-import { toInvitationSummary } from '../lib/identity.mapper';
+import { toInvitationDelivery } from '../lib/identity.mapper';
 import { hashOpaqueToken } from '../lib/token-hash';
 import {
   MILLISECONDS_PER_SECOND,
@@ -19,7 +19,7 @@ import {
 } from '../model/identity.constants';
 import { SecurityEventType } from '../model/identity.enums';
 import type {
-  InvitationSummary,
+  InvitationDelivery,
   SecureRandomPort,
 } from '../model/identity.types';
 import { SecurityAuditService } from './security-audit.service';
@@ -44,7 +44,7 @@ export class ResendInvitationUseCase {
   execute(
     invitationId: string,
     actorUserId: string,
-  ): Promise<InvitationSummary> {
+  ): Promise<InvitationDelivery> {
     return this.unitOfWork.runInTransaction(scope =>
       this.run(scope, invitationId, actorUserId),
     );
@@ -54,7 +54,7 @@ export class ResendInvitationUseCase {
     scope: TransactionScope,
     invitationId: string,
     actorUserId: string,
-  ): Promise<InvitationSummary> {
+  ): Promise<InvitationDelivery> {
     const invitation = await this.invitations.findById(scope, invitationId);
     if (invitation === null) {
       throw new InvitationNotFoundError();
@@ -79,6 +79,9 @@ export class ResendInvitationUseCase {
       actorUserId,
       { invitationId: invitation.id },
     );
-    return toInvitationSummary({ ...invitation, expiresAt, updatedAt: now });
+    return toInvitationDelivery(
+      { ...invitation, expiresAt, updatedAt: now },
+      token,
+    );
   }
 }

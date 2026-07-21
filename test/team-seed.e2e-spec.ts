@@ -218,4 +218,64 @@ describeIfDb(suiteTitle, () => {
       ]),
     );
   });
+
+  async function seededTeamId(): Promise<string> {
+    const rows: { id: string }[] = await activeDataSource.query(
+      `SELECT "id" FROM "teams" WHERE lower("slug") = 'un'`,
+    );
+    return rows[0].id;
+  }
+
+  async function adminMembershipId(): Promise<string> {
+    const rows: { id: string }[] = await activeDataSource.query(
+      `SELECT m."id" FROM "memberships" m
+        JOIN "users" u ON u."id" = m."user_id"
+       WHERE lower(u."email") = lower($1)`,
+      [ADMIN_EMAIL],
+    );
+    return rows[0].id;
+  }
+
+  // BUG 1 regression: the seeded TEAM_ADMIN persona — exactly what a fresh
+  // deployment logs in as — must be able to assign roles to a member that has a
+  // linked account, and must get the SPECIFIC accountRequired reason (not a
+  // generic failure) for the accountless membership the owner hit.
+  it('lets the seeded admin persona assign a role to an account-backed member', async () => {
+    const loggedIn = await login();
+    const token = loggedIn.body.tokens.accessToken as string;
+    const teamId = await seededTeamId();
+    const membershipId = await adminMembershipId();
+
+    const response = await request(app.getHttpServer())
+      .put(`/api/v1/teams/${teamId}/members/${membershipId}/roles`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({ roles: ['team_admin', 'coach'] });
+
+    expect(response.status).toBe(200);
+    expect(response.body.membershipId).toBe(membershipId);
+    expect(response.body.roles).toEqual(['coach', 'team_admin']);
+  });
+
+  it('denies role assignment on an accountless membership with the real reason (409)', async () => {
+    const loggedIn = await login();
+    const token = loggedIn.body.tokens.accessToken as string;
+    const teamId = await seededTeamId();
+
+    const invited = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/members/invite`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        profile: { fullName: 'Historical Player', email: 'hist@example.test' },
+      });
+    expect(invited.status).toBe(201);
+    const accountlessMembershipId = invited.body.id as string;
+
+    const response = await request(app.getHttpServer())
+      .put(`/api/v1/teams/${teamId}/members/${accountlessMembershipId}/roles`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({ roles: ['coach'] });
+
+    expect(response.status).toBe(409);
+    expect(response.body.messageKey).toBe('errors.members.accountRequired');
+  });
 });

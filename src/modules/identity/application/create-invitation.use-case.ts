@@ -15,7 +15,7 @@ import { InvitationConflictError } from '../errors/invitation-conflict.error';
 import { InvitationRepository } from '../infrastructure/invitation.repository';
 import { UserRepository } from '../infrastructure/user.repository';
 import { normalizeEmail } from '../lib/identity.helpers';
-import { toInvitationSummary } from '../lib/identity.mapper';
+import { toInvitationDelivery } from '../lib/identity.mapper';
 import { hashOpaqueToken } from '../lib/token-hash';
 import {
   MILLISECONDS_PER_SECOND,
@@ -24,7 +24,7 @@ import {
 import { SecurityEventType } from '../model/identity.enums';
 import type {
   CreateInvitationCommand,
-  InvitationSummary,
+  InvitationDelivery,
   SecureRandomPort,
 } from '../model/identity.types';
 import { SecurityAuditService } from './security-audit.service';
@@ -49,7 +49,7 @@ export class CreateInvitationUseCase {
     private readonly audit: SecurityAuditService,
   ) {}
 
-  execute(command: CreateInvitationCommand): Promise<InvitationSummary> {
+  execute(command: CreateInvitationCommand): Promise<InvitationDelivery> {
     const email = normalizeEmail(command.email);
     return this.unitOfWork.runInTransaction(scope =>
       this.run(scope, command, email),
@@ -60,7 +60,7 @@ export class CreateInvitationUseCase {
     scope: TransactionScope,
     command: CreateInvitationCommand,
     email: string,
-  ): Promise<InvitationSummary> {
+  ): Promise<InvitationDelivery> {
     await this.assertAvailable(scope, email);
     const now = this.clock.now();
     const ttl = this.config.identity.invitationTtlSeconds;
@@ -80,7 +80,7 @@ export class CreateInvitationUseCase {
       command.invitedBy,
       { invitationId: invitation.id },
     );
-    return toInvitationSummary(invitation);
+    return toInvitationDelivery(invitation, token);
   }
 
   private async assertAvailable(
