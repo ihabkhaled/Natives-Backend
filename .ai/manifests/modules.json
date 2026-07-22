@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T14:59:26.094Z",
+  "generatedAt": "2026-07-22T02:49:24.452Z",
   "modules": [
     {
       "name": "activities",
@@ -104,6 +104,134 @@
       "fileCount": 77,
       "specCount": 34,
       "publicSurface": "src/modules/activities/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "analysis",
+      "path": "src/modules/analysis",
+      "layers": {
+        "adapter": [
+          "src/modules/analysis/adapters/signed-video-access.adapter.ts"
+        ],
+        "other": [
+          "src/modules/analysis/analysis.module.ts",
+          "src/modules/analysis/errors/analysis-scope-not-found.error.ts",
+          "src/modules/analysis/errors/analysis-validation.error.ts",
+          "src/modules/analysis/errors/clip-immutable.error.ts",
+          "src/modules/analysis/errors/clip-invalid-transition.error.ts",
+          "src/modules/analysis/errors/clip-not-visible.error.ts",
+          "src/modules/analysis/errors/clip-timestamp.error.ts",
+          "src/modules/analysis/errors/clip-version-conflict.error.ts",
+          "src/modules/analysis/errors/video-access-denied.error.ts",
+          "src/modules/analysis/errors/video-clip-not-found.error.ts",
+          "src/modules/analysis/errors/video-source-not-found.error.ts",
+          "src/modules/analysis/index.ts"
+        ],
+        "api-dto": [
+          "src/modules/analysis/api/dto/analysis.dto.ts"
+        ],
+        "controller": [
+          "src/modules/analysis/api/video-clips.controller.ts",
+          "src/modules/analysis/api/video-sources.controller.ts"
+        ],
+        "use-case": [
+          "src/modules/analysis/application/acknowledge-video-clip.use-case.ts",
+          "src/modules/analysis/application/create-video-clip.use-case.ts",
+          "src/modules/analysis/application/import-video-clips.use-case.ts",
+          "src/modules/analysis/application/register-video-source.use-case.ts",
+          "src/modules/analysis/application/revise-video-clip.use-case.ts",
+          "src/modules/analysis/application/transition-video-clip.use-case.ts"
+        ],
+        "service": [
+          "src/modules/analysis/application/analysis-authority.service.ts",
+          "src/modules/analysis/application/analysis-lookup.service.ts",
+          "src/modules/analysis/application/analysis-scope.service.ts",
+          "src/modules/analysis/application/clip-view.service.ts",
+          "src/modules/analysis/application/video-access.service.ts",
+          "src/modules/analysis/application/video-clip-query.service.ts",
+          "src/modules/analysis/application/video-source-query.service.ts"
+        ],
+        "domain": [
+          "src/modules/analysis/domain/clip-timestamp.policy.ts",
+          "src/modules/analysis/domain/clip-visibility.policy.ts",
+          "src/modules/analysis/domain/clip.state-machine.ts"
+        ],
+        "repository": [
+          "src/modules/analysis/infrastructure/analysis-scope.repository.ts",
+          "src/modules/analysis/infrastructure/clip-detail.repository.ts",
+          "src/modules/analysis/infrastructure/video-clip.repository.ts",
+          "src/modules/analysis/infrastructure/video-source.repository.ts"
+        ],
+        "lib": [
+          "src/modules/analysis/lib/analysis-command.mapper.ts",
+          "src/modules/analysis/lib/analysis.builders.ts",
+          "src/modules/analysis/lib/analysis.helpers.ts",
+          "src/modules/analysis/lib/analysis.mapper.ts",
+          "src/modules/analysis/lib/clip-import.reconciler.ts"
+        ],
+        "model": [
+          "src/modules/analysis/model/analysis.constants.ts",
+          "src/modules/analysis/model/analysis.enums.ts",
+          "src/modules/analysis/model/analysis.provider-urls.ts",
+          "src/modules/analysis/model/analysis.rows.ts",
+          "src/modules/analysis/model/analysis.types.ts"
+        ]
+      },
+      "fileCount": 46,
+      "specCount": 1,
+      "publicSurface": "src/modules/analysis/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "analytics",
+      "path": "src/modules/analytics",
+      "layers": {
+        "other": [
+          "src/modules/analytics/analytics.module.ts",
+          "src/modules/analytics/errors/analytics-scope-not-found.error.ts",
+          "src/modules/analytics/errors/analytics-validation.error.ts",
+          "src/modules/analytics/errors/cohort-too-small.error.ts",
+          "src/modules/analytics/index.ts"
+        ],
+        "controller": [
+          "src/modules/analytics/api/analytics.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/analytics/api/dto/analytics.dto.ts"
+        ],
+        "service": [
+          "src/modules/analytics/application/analytics-scope.service.ts",
+          "src/modules/analytics/application/analytics-series.service.ts",
+          "src/modules/analytics/application/cohort-comparison.service.ts"
+        ],
+        "use-case": [
+          "src/modules/analytics/application/rebuild-analytics.use-case.ts"
+        ],
+        "domain": [
+          "src/modules/analytics/domain/analytics-computation.policy.ts",
+          "src/modules/analytics/domain/analytics-privacy.policy.ts",
+          "src/modules/analytics/domain/analytics-series.policy.ts"
+        ],
+        "repository": [
+          "src/modules/analytics/infrastructure/analytics-fact.repository.ts",
+          "src/modules/analytics/infrastructure/projection.repository.ts"
+        ],
+        "lib": [
+          "src/modules/analytics/lib/analytics-command.mapper.ts",
+          "src/modules/analytics/lib/analytics.builders.ts",
+          "src/modules/analytics/lib/analytics.helpers.ts",
+          "src/modules/analytics/lib/analytics.mapper.ts"
+        ],
+        "model": [
+          "src/modules/analytics/model/analytics.constants.ts",
+          "src/modules/analytics/model/analytics.enums.ts",
+          "src/modules/analytics/model/analytics.rows.ts",
+          "src/modules/analytics/model/analytics.types.ts"
+        ]
+      },
+      "fileCount": 24,
+      "specCount": 0,
+      "publicSurface": "src/modules/analytics/index.ts",
       "hasEvents": false
     },
     {
@@ -429,6 +557,64 @@
       "hasEvents": false
     },
     {
+      "name": "dataquality",
+      "path": "src/modules/dataquality",
+      "layers": {
+        "controller": [
+          "src/modules/dataquality/api/data-quality.controller.ts",
+          "src/modules/dataquality/api/scan.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/dataquality/api/dto/dataquality.dto.ts"
+        ],
+        "service": [
+          "src/modules/dataquality/application/anomaly-query.service.ts",
+          "src/modules/dataquality/application/dataquality-lookup.service.ts"
+        ],
+        "use-case": [
+          "src/modules/dataquality/application/repair-anomaly.use-case.ts",
+          "src/modules/dataquality/application/scan.use-case.ts",
+          "src/modules/dataquality/application/transition-anomaly.use-case.ts"
+        ],
+        "other": [
+          "src/modules/dataquality/dataquality.module.ts",
+          "src/modules/dataquality/errors/anomaly-invalid-transition.error.ts",
+          "src/modules/dataquality/errors/anomaly-not-found.error.ts",
+          "src/modules/dataquality/errors/data-quality-scope-not-found.error.ts",
+          "src/modules/dataquality/errors/data-quality-validation.error.ts",
+          "src/modules/dataquality/errors/data-quality-version-conflict.error.ts",
+          "src/modules/dataquality/errors/repair-not-allowed.error.ts",
+          "src/modules/dataquality/index.ts"
+        ],
+        "domain": [
+          "src/modules/dataquality/domain/anomaly-alert.policy.ts",
+          "src/modules/dataquality/domain/anomaly.state-machine.ts",
+          "src/modules/dataquality/domain/repair.policy.ts"
+        ],
+        "repository": [
+          "src/modules/dataquality/infrastructure/anomaly.repository.ts",
+          "src/modules/dataquality/infrastructure/detection.repository.ts",
+          "src/modules/dataquality/infrastructure/repair.repository.ts"
+        ],
+        "lib": [
+          "src/modules/dataquality/lib/dataquality-command.mapper.ts",
+          "src/modules/dataquality/lib/dataquality.builders.ts",
+          "src/modules/dataquality/lib/dataquality.helpers.ts",
+          "src/modules/dataquality/lib/dataquality.mapper.ts"
+        ],
+        "model": [
+          "src/modules/dataquality/model/dataquality.constants.ts",
+          "src/modules/dataquality/model/dataquality.enums.ts",
+          "src/modules/dataquality/model/dataquality.rows.ts",
+          "src/modules/dataquality/model/dataquality.types.ts"
+        ]
+      },
+      "fileCount": 30,
+      "specCount": 0,
+      "publicSurface": "src/modules/dataquality/index.ts",
+      "hasEvents": false
+    },
+    {
       "name": "development",
       "path": "src/modules/development",
       "layers": {
@@ -536,6 +722,83 @@
       "hasEvents": false
     },
     {
+      "name": "governance",
+      "path": "src/modules/governance",
+      "layers": {
+        "controller": [
+          "src/modules/governance/api/discipline.controller.ts",
+          "src/modules/governance/api/meetings.controller.ts",
+          "src/modules/governance/api/positions.controller.ts",
+          "src/modules/governance/api/rules.controller.ts",
+          "src/modules/governance/api/tasks.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/governance/api/dto/governance.dto.ts"
+        ],
+        "use-case": [
+          "src/modules/governance/application/acknowledge-rule.use-case.ts",
+          "src/modules/governance/application/manage-directory.use-case.ts",
+          "src/modules/governance/application/manage-meeting.use-case.ts",
+          "src/modules/governance/application/manage-task.use-case.ts",
+          "src/modules/governance/application/open-discipline-case.use-case.ts",
+          "src/modules/governance/application/publish-rule.use-case.ts",
+          "src/modules/governance/application/transition-discipline-case.use-case.ts"
+        ],
+        "service": [
+          "src/modules/governance/application/directory-query.service.ts",
+          "src/modules/governance/application/discipline-query.service.ts",
+          "src/modules/governance/application/governance-authority.service.ts",
+          "src/modules/governance/application/governance-lookup.service.ts",
+          "src/modules/governance/application/meeting-query.service.ts",
+          "src/modules/governance/application/rule-query.service.ts",
+          "src/modules/governance/application/task-query.service.ts"
+        ],
+        "domain": [
+          "src/modules/governance/domain/governance-policy.ts",
+          "src/modules/governance/domain/governance.state-machine.ts"
+        ],
+        "other": [
+          "src/modules/governance/errors/case-not-found.error.ts",
+          "src/modules/governance/errors/discipline-forbidden.error.ts",
+          "src/modules/governance/errors/governance-invalid-transition.error.ts",
+          "src/modules/governance/errors/governance-scope-not-found.error.ts",
+          "src/modules/governance/errors/governance-validation.error.ts",
+          "src/modules/governance/errors/governance-version-conflict.error.ts",
+          "src/modules/governance/errors/meeting-not-found.error.ts",
+          "src/modules/governance/errors/position-not-found.error.ts",
+          "src/modules/governance/errors/rule-not-found.error.ts",
+          "src/modules/governance/errors/separation-of-duties.error.ts",
+          "src/modules/governance/errors/task-not-found.error.ts",
+          "src/modules/governance/governance.module.ts",
+          "src/modules/governance/index.ts"
+        ],
+        "repository": [
+          "src/modules/governance/infrastructure/discipline.repository.ts",
+          "src/modules/governance/infrastructure/governance-directory.repository.ts",
+          "src/modules/governance/infrastructure/governance-scope.repository.ts",
+          "src/modules/governance/infrastructure/meeting.repository.ts",
+          "src/modules/governance/infrastructure/rule.repository.ts",
+          "src/modules/governance/infrastructure/task.repository.ts"
+        ],
+        "lib": [
+          "src/modules/governance/lib/governance-command.mapper.ts",
+          "src/modules/governance/lib/governance.builders.ts",
+          "src/modules/governance/lib/governance.helpers.ts",
+          "src/modules/governance/lib/governance.mapper.ts"
+        ],
+        "model": [
+          "src/modules/governance/model/governance.constants.ts",
+          "src/modules/governance/model/governance.enums.ts",
+          "src/modules/governance/model/governance.rows.ts",
+          "src/modules/governance/model/governance.types.ts"
+        ]
+      },
+      "fileCount": 49,
+      "specCount": 0,
+      "publicSurface": "src/modules/governance/index.ts",
+      "hasEvents": false
+    },
+    {
       "name": "identity",
       "path": "src/modules/identity",
       "layers": {
@@ -638,6 +901,73 @@
       "fileCount": 75,
       "specCount": 46,
       "publicSurface": "src/modules/identity/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "jerseys",
+      "path": "src/modules/jerseys",
+      "layers": {
+        "api-dto": [
+          "src/modules/jerseys/api/dto/jerseys.dto.ts"
+        ],
+        "controller": [
+          "src/modules/jerseys/api/jersey-inventory.controller.ts",
+          "src/modules/jerseys/api/jersey-orders.controller.ts",
+          "src/modules/jerseys/api/jersey-products.controller.ts",
+          "src/modules/jerseys/api/number-reservations.controller.ts"
+        ],
+        "use-case": [
+          "src/modules/jerseys/application/create-product.use-case.ts",
+          "src/modules/jerseys/application/issue-stock.use-case.ts",
+          "src/modules/jerseys/application/manage-order.use-case.ts",
+          "src/modules/jerseys/application/manage-reservation.use-case.ts"
+        ],
+        "service": [
+          "src/modules/jerseys/application/jersey-lookup.service.ts",
+          "src/modules/jerseys/application/jersey-query.service.ts",
+          "src/modules/jerseys/application/supplier-export.service.ts"
+        ],
+        "domain": [
+          "src/modules/jerseys/domain/apparel-validation.policy.ts",
+          "src/modules/jerseys/domain/order.state-machine.ts"
+        ],
+        "other": [
+          "src/modules/jerseys/errors/insufficient-stock.error.ts",
+          "src/modules/jerseys/errors/jersey-scope-not-found.error.ts",
+          "src/modules/jerseys/errors/jersey-validation.error.ts",
+          "src/modules/jerseys/errors/jersey-version-conflict.error.ts",
+          "src/modules/jerseys/errors/number-collision.error.ts",
+          "src/modules/jerseys/errors/order-invalid-transition.error.ts",
+          "src/modules/jerseys/errors/order-locked.error.ts",
+          "src/modules/jerseys/errors/order-not-found.error.ts",
+          "src/modules/jerseys/errors/product-not-found.error.ts",
+          "src/modules/jerseys/errors/reservation-not-found.error.ts",
+          "src/modules/jerseys/index.ts",
+          "src/modules/jerseys/jerseys.module.ts"
+        ],
+        "repository": [
+          "src/modules/jerseys/infrastructure/jersey-inventory.repository.ts",
+          "src/modules/jerseys/infrastructure/jersey-order.repository.ts",
+          "src/modules/jerseys/infrastructure/jersey-product.repository.ts",
+          "src/modules/jerseys/infrastructure/jersey-scope.repository.ts",
+          "src/modules/jerseys/infrastructure/number-reservation.repository.ts"
+        ],
+        "lib": [
+          "src/modules/jerseys/lib/jerseys-command.mapper.ts",
+          "src/modules/jerseys/lib/jerseys.builders.ts",
+          "src/modules/jerseys/lib/jerseys.helpers.ts",
+          "src/modules/jerseys/lib/jerseys.mapper.ts"
+        ],
+        "model": [
+          "src/modules/jerseys/model/jerseys.constants.ts",
+          "src/modules/jerseys/model/jerseys.enums.ts",
+          "src/modules/jerseys/model/jerseys.rows.ts",
+          "src/modules/jerseys/model/jerseys.types.ts"
+        ]
+      },
+      "fileCount": 39,
+      "specCount": 0,
+      "publicSurface": "src/modules/jerseys/index.ts",
       "hasEvents": false
     },
     {
@@ -967,6 +1297,75 @@
       "fileCount": 81,
       "specCount": 43,
       "publicSurface": "src/modules/members/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "migration",
+      "path": "src/modules/migration",
+      "layers": {
+        "adapter": [
+          "src/modules/migration/adapters/xlsx-workbook-parser.adapter.ts"
+        ],
+        "controller": [
+          "src/modules/migration/api/alias-resolutions.controller.ts",
+          "src/modules/migration/api/formula-comparisons.controller.ts",
+          "src/modules/migration/api/imports.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/migration/api/dto/migration.dto.ts"
+        ],
+        "use-case": [
+          "src/modules/migration/application/commit-import.use-case.ts",
+          "src/modules/migration/application/compare-formula.use-case.ts",
+          "src/modules/migration/application/resolve-alias.use-case.ts",
+          "src/modules/migration/application/stage-import.use-case.ts"
+        ],
+        "service": [
+          "src/modules/migration/application/migration-lookup.service.ts",
+          "src/modules/migration/application/migration-query.service.ts",
+          "src/modules/migration/application/row-parser.service.ts"
+        ],
+        "domain": [
+          "src/modules/migration/domain/alias-matching.policy.ts",
+          "src/modules/migration/domain/discrepancy-classification.policy.ts",
+          "src/modules/migration/domain/import-job.state-machine.ts"
+        ],
+        "other": [
+          "src/modules/migration/errors/alias-collision.error.ts",
+          "src/modules/migration/errors/alias-resolution-not-found.error.ts",
+          "src/modules/migration/errors/comparison-not-found.error.ts",
+          "src/modules/migration/errors/import-job-not-found.error.ts",
+          "src/modules/migration/errors/import-not-committable.error.ts",
+          "src/modules/migration/errors/import-not-reversible.error.ts",
+          "src/modules/migration/errors/migration-scope-not-found.error.ts",
+          "src/modules/migration/errors/migration-validation.error.ts",
+          "src/modules/migration/errors/migration-version-conflict.error.ts",
+          "src/modules/migration/index.ts",
+          "src/modules/migration/migration.module.ts"
+        ],
+        "repository": [
+          "src/modules/migration/infrastructure/alias-resolution.repository.ts",
+          "src/modules/migration/infrastructure/formula-comparison.repository.ts",
+          "src/modules/migration/infrastructure/import-job.repository.ts",
+          "src/modules/migration/infrastructure/migration-scope.repository.ts"
+        ],
+        "lib": [
+          "src/modules/migration/lib/import-reconciler.ts",
+          "src/modules/migration/lib/migration-command.mapper.ts",
+          "src/modules/migration/lib/migration.builders.ts",
+          "src/modules/migration/lib/migration.helpers.ts",
+          "src/modules/migration/lib/migration.mapper.ts"
+        ],
+        "model": [
+          "src/modules/migration/model/migration.constants.ts",
+          "src/modules/migration/model/migration.enums.ts",
+          "src/modules/migration/model/migration.rows.ts",
+          "src/modules/migration/model/migration.types.ts"
+        ]
+      },
+      "fileCount": 39,
+      "specCount": 1,
+      "publicSurface": "src/modules/migration/index.ts",
       "hasEvents": false
     },
     {
@@ -1462,6 +1861,67 @@
       "hasEvents": false
     },
     {
+      "name": "reports",
+      "path": "src/modules/reports",
+      "layers": {
+        "adapter": [
+          "src/modules/reports/adapters/csv-xlsx-pdf-document.adapter.ts",
+          "src/modules/reports/adapters/signed-report-download.adapter.ts"
+        ],
+        "api-dto": [
+          "src/modules/reports/api/dto/reports.dto.ts"
+        ],
+        "controller": [
+          "src/modules/reports/api/reports.controller.ts"
+        ],
+        "use-case": [
+          "src/modules/reports/application/generate-report.use-case.ts",
+          "src/modules/reports/application/retry-report.use-case.ts"
+        ],
+        "service": [
+          "src/modules/reports/application/report-dataset.service.ts",
+          "src/modules/reports/application/report-download.service.ts",
+          "src/modules/reports/application/report-query.service.ts"
+        ],
+        "domain": [
+          "src/modules/reports/domain/report-job.state-machine.ts",
+          "src/modules/reports/domain/report-safety.policy.ts"
+        ],
+        "other": [
+          "src/modules/reports/errors/report-expired.error.ts",
+          "src/modules/reports/errors/report-job-not-found.error.ts",
+          "src/modules/reports/errors/report-not-ready.error.ts",
+          "src/modules/reports/errors/report-retry-not-allowed.error.ts",
+          "src/modules/reports/errors/report-scope-not-found.error.ts",
+          "src/modules/reports/errors/report-validation.error.ts",
+          "src/modules/reports/errors/report-version-conflict.error.ts",
+          "src/modules/reports/index.ts",
+          "src/modules/reports/reports.module.ts"
+        ],
+        "repository": [
+          "src/modules/reports/infrastructure/report-data.repository.ts",
+          "src/modules/reports/infrastructure/report-job.repository.ts"
+        ],
+        "lib": [
+          "src/modules/reports/lib/reports-command.mapper.ts",
+          "src/modules/reports/lib/reports.builders.ts",
+          "src/modules/reports/lib/reports.helpers.ts",
+          "src/modules/reports/lib/reports.mapper.ts"
+        ],
+        "model": [
+          "src/modules/reports/model/reports.constants.ts",
+          "src/modules/reports/model/reports.data.constants.ts",
+          "src/modules/reports/model/reports.enums.ts",
+          "src/modules/reports/model/reports.rows.ts",
+          "src/modules/reports/model/reports.types.ts"
+        ]
+      },
+      "fileCount": 31,
+      "specCount": 0,
+      "publicSurface": "src/modules/reports/index.ts",
+      "hasEvents": false
+    },
+    {
       "name": "rosters",
       "path": "src/modules/rosters",
       "layers": {
@@ -1741,6 +2201,75 @@
       "hasEvents": false
     },
     {
+      "name": "standings",
+      "path": "src/modules/standings",
+      "layers": {
+        "controller": [
+          "src/modules/standings/api/achievements.controller.ts",
+          "src/modules/standings/api/standings-rules.controller.ts",
+          "src/modules/standings/api/standings.controller.ts",
+          "src/modules/standings/api/team-history.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/standings/api/dto/standings.dto.ts"
+        ],
+        "service": [
+          "src/modules/standings/application/achievement-query.service.ts",
+          "src/modules/standings/application/standings-query.service.ts",
+          "src/modules/standings/application/standings-rule.service.ts",
+          "src/modules/standings/application/standings-scope.service.ts"
+        ],
+        "use-case": [
+          "src/modules/standings/application/create-achievement.use-case.ts",
+          "src/modules/standings/application/create-standings-rule.use-case.ts",
+          "src/modules/standings/application/import-achievements.use-case.ts",
+          "src/modules/standings/application/recompute-standings.use-case.ts",
+          "src/modules/standings/application/record-manual-standing.use-case.ts",
+          "src/modules/standings/application/transition-achievement.use-case.ts"
+        ],
+        "domain": [
+          "src/modules/standings/domain/achievement.state-machine.ts",
+          "src/modules/standings/domain/standings-computation.policy.ts",
+          "src/modules/standings/domain/standings-tiebreak.policy.ts"
+        ],
+        "other": [
+          "src/modules/standings/errors/achievement-invalid-transition.error.ts",
+          "src/modules/standings/errors/achievement-not-found.error.ts",
+          "src/modules/standings/errors/standing-not-found.error.ts",
+          "src/modules/standings/errors/standings-provenance.error.ts",
+          "src/modules/standings/errors/standings-rule-not-found.error.ts",
+          "src/modules/standings/errors/standings-scope-not-found.error.ts",
+          "src/modules/standings/errors/standings-validation.error.ts",
+          "src/modules/standings/errors/standings-version-conflict.error.ts",
+          "src/modules/standings/index.ts",
+          "src/modules/standings/standings.module.ts"
+        ],
+        "repository": [
+          "src/modules/standings/infrastructure/achievement.repository.ts",
+          "src/modules/standings/infrastructure/standing.repository.ts",
+          "src/modules/standings/infrastructure/standings-rule.repository.ts",
+          "src/modules/standings/infrastructure/standings-scope.repository.ts"
+        ],
+        "lib": [
+          "src/modules/standings/lib/achievement-import.reconciler.ts",
+          "src/modules/standings/lib/standings-command.mapper.ts",
+          "src/modules/standings/lib/standings.builders.ts",
+          "src/modules/standings/lib/standings.helpers.ts",
+          "src/modules/standings/lib/standings.mapper.ts"
+        ],
+        "model": [
+          "src/modules/standings/model/standings.constants.ts",
+          "src/modules/standings/model/standings.enums.ts",
+          "src/modules/standings/model/standings.rows.ts",
+          "src/modules/standings/model/standings.types.ts"
+        ]
+      },
+      "fileCount": 41,
+      "specCount": 0,
+      "publicSurface": "src/modules/standings/index.ts",
+      "hasEvents": false
+    },
+    {
       "name": "teams",
       "path": "src/modules/teams",
       "layers": {
@@ -1846,6 +2375,77 @@
       "fileCount": 80,
       "specCount": 31,
       "publicSurface": "src/modules/teams/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "tryouts",
+      "path": "src/modules/tryouts",
+      "layers": {
+        "api-dto": [
+          "src/modules/tryouts/api/dto/tryouts.dto.ts"
+        ],
+        "controller": [
+          "src/modules/tryouts/api/tryout-candidates.controller.ts",
+          "src/modules/tryouts/api/tryout-events.controller.ts"
+        ],
+        "use-case": [
+          "src/modules/tryouts/application/convert-candidate.use-case.ts",
+          "src/modules/tryouts/application/manage-candidate.use-case.ts",
+          "src/modules/tryouts/application/manage-offer.use-case.ts",
+          "src/modules/tryouts/application/manage-tryout-event.use-case.ts",
+          "src/modules/tryouts/application/record-decision.use-case.ts",
+          "src/modules/tryouts/application/register-candidate.use-case.ts",
+          "src/modules/tryouts/application/submit-evaluation.use-case.ts"
+        ],
+        "service": [
+          "src/modules/tryouts/application/tryout-funnel.service.ts",
+          "src/modules/tryouts/application/tryout-lookup.service.ts",
+          "src/modules/tryouts/application/tryout-query.service.ts"
+        ],
+        "domain": [
+          "src/modules/tryouts/domain/candidate-privacy.policy.ts",
+          "src/modules/tryouts/domain/evaluation-aggregation.policy.ts",
+          "src/modules/tryouts/domain/tryout-registration.policy.ts",
+          "src/modules/tryouts/domain/tryout.state-machine.ts"
+        ],
+        "other": [
+          "src/modules/tryouts/errors/tryout-already-converted.error.ts",
+          "src/modules/tryouts/errors/tryout-candidate-not-found.error.ts",
+          "src/modules/tryouts/errors/tryout-consent.error.ts",
+          "src/modules/tryouts/errors/tryout-decision-required.error.ts",
+          "src/modules/tryouts/errors/tryout-duplicate.error.ts",
+          "src/modules/tryouts/errors/tryout-event-not-found.error.ts",
+          "src/modules/tryouts/errors/tryout-invalid-transition.error.ts",
+          "src/modules/tryouts/errors/tryout-offer-not-found.error.ts",
+          "src/modules/tryouts/errors/tryout-registration-refused.error.ts",
+          "src/modules/tryouts/errors/tryout-restricted.error.ts",
+          "src/modules/tryouts/errors/tryout-scope-not-found.error.ts",
+          "src/modules/tryouts/errors/tryout-validation.error.ts",
+          "src/modules/tryouts/errors/tryout-version-conflict.error.ts",
+          "src/modules/tryouts/index.ts",
+          "src/modules/tryouts/tryouts.module.ts"
+        ],
+        "repository": [
+          "src/modules/tryouts/infrastructure/tryout-candidate.repository.ts",
+          "src/modules/tryouts/infrastructure/tryout-event.repository.ts",
+          "src/modules/tryouts/infrastructure/tryout-selection.repository.ts"
+        ],
+        "lib": [
+          "src/modules/tryouts/lib/tryouts-command.mapper.ts",
+          "src/modules/tryouts/lib/tryouts.builders.ts",
+          "src/modules/tryouts/lib/tryouts.helpers.ts",
+          "src/modules/tryouts/lib/tryouts.mapper.ts"
+        ],
+        "model": [
+          "src/modules/tryouts/model/tryouts.constants.ts",
+          "src/modules/tryouts/model/tryouts.enums.ts",
+          "src/modules/tryouts/model/tryouts.rows.ts",
+          "src/modules/tryouts/model/tryouts.types.ts"
+        ]
+      },
+      "fileCount": 43,
+      "specCount": 0,
+      "publicSurface": "src/modules/tryouts/index.ts",
       "hasEvents": false
     }
   ],
