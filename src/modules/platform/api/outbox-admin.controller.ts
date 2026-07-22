@@ -17,18 +17,24 @@ import {
   HttpStatus,
   Param,
   Post,
+  Query,
 } from '@nestjs/common';
 import { Permission } from '@shared/enums';
 
+import { DeadLetterQueryService } from '../application/dead-letter-query.service';
 import { OutboxMetricsService } from '../application/outbox-metrics.service';
 import { ReplayDeadLetterUseCase } from '../application/replay-dead-letter.use-case';
+import { resolvePage } from '../lib/platform.helpers';
 import {
   EVENT_ID_PARAM,
   OUTBOX_ADMIN_API_TAG,
   OUTBOX_ADMIN_ROUTE,
+  OUTBOX_DEAD_LETTERS_ROUTE,
   OUTBOX_METRICS_ROUTE,
   OUTBOX_REPLAY_ROUTE,
 } from '../model/platform.constants';
+import { DeadLetterListResponseDto } from './dto/dead-letter-response.dto';
+import { ListDeadLettersQueryDto } from './dto/list-dead-letters.query.dto';
 import { OutboxMetricsResponseDto } from './dto/outbox-metrics-response.dto';
 import { ReplayResponseDto } from './dto/replay-response.dto';
 
@@ -37,8 +43,25 @@ import { ReplayResponseDto } from './dto/replay-response.dto';
 export class OutboxAdminController {
   constructor(
     private readonly metrics: OutboxMetricsService,
+    private readonly deadLetters: DeadLetterQueryService,
     private readonly replay: ReplayDeadLetterUseCase,
   ) {}
+
+  @Get(OUTBOX_DEAD_LETTERS_ROUTE)
+  @RequirePermissions(Permission.JobsManage)
+  @ApiOperation({
+    summary: 'List dead-lettered events (stable failure codes, no payloads)',
+  })
+  @ApiOkResponse({
+    description: 'Dead-lettered events, newest failure first',
+    type: DeadLetterListResponseDto,
+  })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  listDeadLetters(
+    @Query() query: ListDeadLettersQueryDto,
+  ): Promise<DeadLetterListResponseDto> {
+    return this.deadLetters.list(resolvePage(query.limit, query.offset));
+  }
 
   @Get(OUTBOX_METRICS_ROUTE)
   @RequirePermissions(Permission.JobsManage)

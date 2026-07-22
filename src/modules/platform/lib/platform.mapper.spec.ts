@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   AuditOutcome,
   IdempotencyStatus,
+  JobOutcome,
   NotificationCategory,
   NotificationChannel,
   OutboxStatus,
@@ -17,8 +18,11 @@ import type {
 } from '../model/platform.rows';
 import {
   toAuditEntry,
+  toDeadLetter,
   toEventEnvelope,
+  toFailureCode,
   toIdempotencyRecord,
+  toJobHeartbeat,
   toLeasedEvent,
   toNotification,
   toNotificationView,
@@ -147,6 +151,46 @@ describe('platform.mapper', () => {
       processing: 0,
       completed: 0,
       deadLettered: 2,
+    });
+  });
+
+  it('classifies a recorded error as handler_failed, absence as unknown', () => {
+    expect(toFailureCode('handler boom: stack trace')).toBe('handler_failed');
+    expect(toFailureCode(null)).toBe('unknown');
+  });
+
+  it('maps a dead-letter row without leaking the raw error text', () => {
+    const deadLetter = toDeadLetter({
+      id: 'ev-1',
+      event_type: 'member.invited',
+      attempts: 5,
+      dead_lettered_at: ISO,
+      last_error: 'secret stack trace',
+    });
+
+    expect(deadLetter).toEqual({
+      eventId: 'ev-1',
+      eventType: 'member.invited',
+      attempts: 5,
+      failedAt: DATE,
+      failureCode: 'handler_failed',
+    });
+    expect(JSON.stringify(deadLetter)).not.toContain('secret stack trace');
+  });
+
+  it('maps a job heartbeat row with a parsed outcome', () => {
+    expect(
+      toJobHeartbeat({
+        job_key: 'outbox.dispatcher',
+        last_run_at: ISO,
+        last_outcome: 'failed',
+        failure_count: 2,
+      }),
+    ).toEqual({
+      jobKey: 'outbox.dispatcher',
+      lastRunAt: DATE,
+      lastOutcome: JobOutcome.Failed,
+      failureCount: 2,
     });
   });
 });

@@ -82,3 +82,21 @@ export enum DeliveryStatus {
 
 export const DELIVERY_STATUS_VALUES: readonly DeliveryStatus[] =
   Object.values(DeliveryStatus);
+
+/** Outcome recorded on a scheduled-job heartbeat after each run. */
+export enum JobOutcome {
+  Succeeded = 'succeeded',
+  Failed = 'failed',
+}
+
+export const JOB_OUTCOME_VALUES: readonly JobOutcome[] =
+  Object.values(JobOutcome);
+
+/** Derived health status of a scheduled job, from recorded heartbeats only. */
+export enum JobStatus {
+  Healthy = 'healthy',
+  Degraded = 'degraded',
+  Failed = 'failed',
+}
+
+export const JOB_STATUS_VALUES: readonly JobStatus[] = Object.values(JobStatus);

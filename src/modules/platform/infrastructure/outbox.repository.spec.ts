@@ -82,6 +82,7 @@ describe('OutboxRepository', () => {
       'boom',
     ]);
     expect(scope.run.mock.calls[2]?.[0]).toContain("'dead_lettered'");
+    expect(scope.run.mock.calls[2]?.[0]).toContain('"dead_lettered_at" = $3');
   });
 
   it('finds an event by id or returns null', async () => {
@@ -91,9 +92,10 @@ describe('OutboxRepository', () => {
     expect(await repo.findById(scope as never, 'ghost')).toBeNull();
   });
 
-  it('reports whether a requeue affected a row', async () => {
+  it('reports whether a requeue affected a row and clears the dead mark', async () => {
     scope.run.mockResolvedValueOnce([{ id: 'ev-1' }]);
     expect(await repo.requeue(scope as never, 'ev-1', NOW)).toBe(true);
+    expect(scope.run.mock.calls[0]?.[0]).toContain('"dead_lettered_at" = NULL');
     scope.run.mockResolvedValueOnce([]);
     expect(await repo.requeue(scope as never, 'ghost', NOW)).toBe(false);
   });
@@ -102,5 +104,44 @@ describe('OutboxRepository', () => {
     scope.run.mockResolvedValueOnce([{ status: 'pending', count: 3 }]);
     const rows = await repo.metrics(scope as never);
     expect(rows[0]).toEqual({ status: 'pending', count: 3 });
+  });
+
+  it('lists a bounded dead-letter page, newest failure first, mapped', async () => {
+    scope.run.mockResolvedValueOnce([
+      {
+        id: 'ev-1',
+        event_type: 'member.invited',
+        attempts: 5,
+        dead_lettered_at: NOW,
+        last_error: 'handler boom',
+      },
+    ]);
+
+    const page = await repo.listDeadLetters(scope as never, {
+      limit: 20,
+      offset: 0,
+    });
+
+    expect(page).toEqual([
+      {
+        eventId: 'ev-1',
+        eventType: 'member.invited',
+        attempts: 5,
+        failedAt: NOW,
+        failureCode: 'handler_failed',
+      },
+    ]);
+    const [sql, params] = scope.run.mock.calls[0] as [string, unknown[]];
+    expect(sql).toContain(`WHERE "status" = 'dead_lettered'`);
+    expect(sql).toContain('COALESCE("dead_lettered_at", "occurred_at") DESC');
+    expect(sql).not.toContain('"payload"');
+    expect(params).toEqual([20, 0]);
+  });
+
+  it('counts dead-lettered rows, zero when none', async () => {
+    scope.run.mockResolvedValueOnce([{ count: 4 }]);
+    expect(await repo.countDeadLetters(scope as never)).toBe(4);
+    scope.run.mockResolvedValueOnce([]);
+    expect(await repo.countDeadLetters(scope as never)).toBe(0);
   });
 });

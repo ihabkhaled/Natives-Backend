@@ -7,10 +7,12 @@ import {
 } from './platform.enums';
 
 // --- Ports -------------------------------------------------------------------
-// Channel provider seam (in-app now; email/push later) and the outbox event
-// handler seam (the notification projector). Consumers depend on these symbols.
+// Channel provider seam (in-app now; email/push later), the outbox event
+// handler seam (the notification projector), and the scheduled-job seam other
+// modules register recurring work through. Consumers depend on these symbols.
 export const NOTIFICATION_SENDER_PORT = Symbol('NOTIFICATION_SENDER_PORT');
 export const OUTBOX_EVENT_HANDLER_PORT = Symbol('OUTBOX_EVENT_HANDLER_PORT');
+export const SCHEDULED_JOB_PORT = Symbol('SCHEDULED_JOB_PORT');
 
 // --- Routes & OpenAPI tags ---------------------------------------------------
 export const NOTIFICATIONS_ROUTE = 'notifications';
@@ -26,6 +28,11 @@ export const OUTBOX_ADMIN_ROUTE = 'admin/outbox';
 export const OUTBOX_ADMIN_API_TAG = 'outbox-admin';
 export const OUTBOX_METRICS_ROUTE = 'metrics';
 export const OUTBOX_REPLAY_ROUTE = ':eventId/replay';
+export const OUTBOX_DEAD_LETTERS_ROUTE = 'dead-letters';
+
+export const JOBS_ADMIN_ROUTE = 'admin/jobs';
+export const JOBS_ADMIN_API_TAG = 'jobs-admin';
+export const JOBS_HEALTH_ROUTE = 'health';
 
 // --- Route param names -------------------------------------------------------
 export const TEAM_ID_PARAM = 'teamId';
@@ -60,6 +67,19 @@ export const OUTBOX_LEASE_MS = 30_000;
 export const OUTBOX_MAX_ATTEMPTS = 5;
 export const OUTBOX_BACKOFF_BASE_MS = 1_000;
 export const OUTBOX_BACKOFF_CAP_MS = 300_000;
+
+// --- Scheduled jobs ----------------------------------------------------------
+// The platform-owned dispatcher job and the health policy bounds. A job whose
+// newest heartbeat is older than JOB_STALL_FACTOR x its interval is stalled.
+export const OUTBOX_DISPATCH_JOB_KEY = 'outbox.dispatcher';
+export const OUTBOX_DISPATCH_INTERVAL_MS = 10_000;
+export const JOB_STALL_FACTOR = 3;
+
+// --- Dead-letter failure classification --------------------------------------
+// The wire carries a STABLE classification, never the raw `last_error` text —
+// no payloads, no stack traces, no PII can leak through the operations centre.
+export const FAILURE_CODE_HANDLER_FAILED = 'handler_failed';
+export const FAILURE_CODE_UNKNOWN = 'unknown';
 
 // --- Redaction ---------------------------------------------------------------
 // Keys whose values must never enter an audit diff, event payload, or
@@ -301,6 +321,8 @@ export const NOTIFICATION_COLUMNS = `"id", "user_id", "team_id", "category",
 export const PREFERENCE_COLUMNS = `"user_id", "category", "channel", "enabled"`;
 export const QUIET_HOURS_COLUMNS = `"user_id", "timezone", "starts_local",
   "ends_local", "urgent_cancellation_override"`;
+export const JOB_HEARTBEAT_COLUMNS = `"job_key", "last_run_at", "last_outcome",
+  "failure_count"`;
 
 // --- Error messages & keys ---------------------------------------------------
 export const IDEMPOTENCY_CONFLICT_MESSAGE =
@@ -322,3 +344,5 @@ export const NOTIFICATION_QUIET_HOURS_MESSAGE_KEY: ErrorMessageKey =
 
 // --- Log messages ------------------------------------------------------------
 export const OUTBOX_HANDLER_FAILED_LOG = 'Outbox event handler failed';
+export const JOB_RUN_FAILED_LOG = 'Scheduled job run failed';
+export const JOB_HEARTBEAT_FAILED_LOG = 'Scheduled job heartbeat write failed';

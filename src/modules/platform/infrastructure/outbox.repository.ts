@@ -1,14 +1,25 @@
 import type { TransactionScope } from '@core/persistence/unit-of-work.port';
 import { Injectable } from '@nestjs/common';
 
-import { toEventEnvelope, toLeasedEvent } from '../lib/platform.mapper';
+import {
+  toDeadLetter,
+  toEventEnvelope,
+  toLeasedEvent,
+} from '../lib/platform.mapper';
 import { OUTBOX_COLUMNS, OUTBOX_WORKER_ID } from '../model/platform.constants';
 import type {
+  DeadLetterCountRow,
+  DeadLetterRow,
   IdRow,
   OutboxEventRow,
   StatusCountRow,
 } from '../model/platform.rows';
-import type { DomainEventEnvelope, LeasedEvent } from '../model/platform.types';
+import type {
+  DeadLetter,
+  DomainEventEnvelope,
+  LeasedEvent,
+  PageRequest,
+} from '../model/platform.types';
 
 /**
  * Persistence for the transactional outbox. `insert` runs inside the business
@@ -109,7 +120,8 @@ export class OutboxRepository {
     await scope.run(
       `UPDATE "outbox_events"
           SET "status" = 'dead_lettered', "last_error" = $2,
-              "completed_at" = $3, "leased_until" = NULL, "leased_by" = NULL
+              "completed_at" = $3, "dead_lettered_at" = $3,
+              "leased_until" = NULL, "leased_by" = NULL
         WHERE "id" = $1`,
       [id, lastError, now.toISOString()],
     );
@@ -136,6 +148,7 @@ export class OutboxRepository {
       `UPDATE "outbox_events"
           SET "status" = 'pending', "available_at" = $2, "attempts" = 0,
               "last_error" = NULL, "completed_at" = NULL,
+              "dead_lettered_at" = NULL,
               "leased_until" = NULL, "leased_by" = NULL
         WHERE "id" = $1
        RETURNING "id"`,
@@ -149,5 +162,37 @@ export class OutboxRepository {
       `SELECT "status", COUNT(*)::int AS "count"
          FROM "outbox_events" GROUP BY "status"`,
     );
+  }
+
+  /**
+   * Bounded page of dead-lettered events, newest failure first. Rows that were
+   * dead-lettered before the timestamp existed fall back to `occurred_at`, so
+   * `failedAt` is always a real recorded instant, never NULL and never
+   * invented. `last_error` stays inside this boundary — the mapper reduces it
+   * to a stable failure code.
+   */
+  async listDeadLetters(
+    scope: TransactionScope,
+    page: PageRequest,
+  ): Promise<readonly DeadLetter[]> {
+    const rows = await scope.run<DeadLetterRow>(
+      `SELECT "id", "event_type", "attempts",
+              COALESCE("dead_lettered_at", "occurred_at") AS "dead_lettered_at",
+              "last_error"
+         FROM "outbox_events"
+        WHERE "status" = 'dead_lettered'
+        ORDER BY COALESCE("dead_lettered_at", "occurred_at") DESC, "id" ASC
+        LIMIT $1 OFFSET $2`,
+      [page.limit, page.offset],
+    );
+    return rows.map(row => toDeadLetter(row));
+  }
+
+  async countDeadLetters(scope: TransactionScope): Promise<number> {
+    const rows = await scope.run<DeadLetterCountRow>(
+      `SELECT COUNT(*)::int AS "count" FROM "outbox_events"
+        WHERE "status" = 'dead_lettered'`,
+    );
+    return rows[0]?.count ?? 0;
   }
 }

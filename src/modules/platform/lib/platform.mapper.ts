@@ -1,7 +1,13 @@
+import {
+  FAILURE_CODE_HANDLER_FAILED,
+  FAILURE_CODE_UNKNOWN,
+} from '../model/platform.constants';
 import { OutboxStatus } from '../model/platform.enums';
 import type {
   AuditEntryRow,
+  DeadLetterRow,
   IdempotencyRow,
+  JobHeartbeatRow,
   NotificationRow,
   OutboxEventRow,
   PreferenceRow,
@@ -9,8 +15,10 @@ import type {
 } from '../model/platform.rows';
 import type {
   AuditEntry,
+  DeadLetter,
   DomainEventEnvelope,
   IdempotencyRecord,
+  JobHeartbeat,
   LeasedEvent,
   Notification,
   NotificationPreference,
@@ -20,6 +28,7 @@ import type {
 import {
   parseAuditOutcome,
   parseIdempotencyStatus,
+  parseJobOutcome,
   parseNotificationCategory,
   parseNotificationChannel,
   parseOutboxStatus,
@@ -107,6 +116,37 @@ export function toPreference(row: PreferenceRow): NotificationPreference {
     category: parseNotificationCategory(row.category),
     channel: parseNotificationChannel(row.channel),
     enabled: row.enabled,
+  };
+}
+
+/**
+ * Reduce a stored `last_error` to a STABLE failure classification. Today a
+ * single handler seam exists, so any recorded error is `handler_failed`; a row
+ * with no recorded error classifies as `unknown`. The raw text never crosses
+ * this boundary.
+ */
+export function toFailureCode(lastError: string | null): string {
+  return lastError === null
+    ? FAILURE_CODE_UNKNOWN
+    : FAILURE_CODE_HANDLER_FAILED;
+}
+
+export function toDeadLetter(row: DeadLetterRow): DeadLetter {
+  return {
+    eventId: row.id,
+    eventType: row.event_type,
+    attempts: row.attempts,
+    failedAt: toDate(row.dead_lettered_at),
+    failureCode: toFailureCode(row.last_error),
+  };
+}
+
+export function toJobHeartbeat(row: JobHeartbeatRow): JobHeartbeat {
+  return {
+    jobKey: row.job_key,
+    lastRunAt: toDate(row.last_run_at),
+    lastOutcome: parseJobOutcome(row.last_outcome),
+    failureCount: row.failure_count,
   };
 }
 

@@ -3,6 +3,8 @@ import type {
   DeliveryStatus,
   IdempotencyOutcome,
   IdempotencyStatus,
+  JobOutcome,
+  JobStatus,
   NotificationCategory,
   NotificationChannel,
   OutboxStatus,
@@ -111,6 +113,20 @@ export interface ReplayResult {
   readonly requeued: boolean;
 }
 
+/**
+ * One dead-lettered event as the operations centre renders it: identity, type,
+ * attempt count, when it dead-lettered, and a STABLE failure classification.
+ * Deliberately no payload and no raw error text — privacy is encoded in the
+ * shape itself.
+ */
+export interface DeadLetter {
+  readonly eventId: string;
+  readonly eventType: string;
+  readonly attempts: number;
+  readonly failedAt: Date;
+  readonly failureCode: string;
+}
+
 /** Outcome summary of one worker batch. */
 export interface OutboxBatchResult {
   readonly leased: number;
@@ -135,6 +151,58 @@ export interface OutboxEventHandlerPort {
     scope: TransactionScopeLike,
     event: DomainEventEnvelope,
   ): Promise<void>;
+}
+
+// --- Scheduled jobs ----------------------------------------------------------
+
+/**
+ * One recurring background job. Implementations wrap a use case and declare
+ * their own interval; the platform scheduler drives every registered job and
+ * records a heartbeat after each run. `run` must be safe to invoke repeatedly.
+ */
+export interface ScheduledJob {
+  readonly jobKey: string;
+  readonly intervalMs: number;
+  run(): Promise<void>;
+}
+
+/**
+ * Registration seam behind `SCHEDULED_JOB_PORT`. Modules register their jobs
+ * during Nest initialization (mirroring the outbox-handler seam, so platform
+ * never imports a consumer module); the scheduler and the health read both
+ * consume the same registry.
+ */
+export interface ScheduledJobRegistryPort {
+  register(job: ScheduledJob): void;
+  list(): readonly ScheduledJob[];
+}
+
+/** The recorded outcome trail of one job, upserted after every run. */
+export interface JobHeartbeat {
+  readonly jobKey: string;
+  readonly lastRunAt: Date;
+  readonly lastOutcome: JobOutcome;
+  readonly failureCount: number;
+}
+
+/** A heartbeat write: the run instant and its outcome. */
+export interface JobHeartbeatInput {
+  readonly jobKey: string;
+  readonly outcome: JobOutcome;
+  readonly now: Date;
+}
+
+/** One job's derived health as the operations centre renders it. */
+export interface JobHealth {
+  readonly jobKey: string;
+  readonly status: JobStatus;
+  readonly lastRunAt: Date | null;
+  readonly failureCount: number;
+}
+
+/** The jobs-health read model: one entry per registered job. */
+export interface JobHealthList {
+  readonly items: readonly JobHealth[];
 }
 
 // --- Idempotency -------------------------------------------------------------

@@ -7,6 +7,7 @@ import {
 import type {
   AuditOutcome,
   IdempotencyStatus,
+  JobOutcome,
   NotificationCategory,
   NotificationChannel,
   OutboxStatus,
@@ -14,6 +15,7 @@ import type {
 import {
   AUDIT_OUTCOME_VALUES,
   IDEMPOTENCY_STATUS_VALUES,
+  JOB_OUTCOME_VALUES,
   NOTIFICATION_CATEGORY_VALUES,
   NOTIFICATION_CHANNEL_VALUES,
   OUTBOX_STATUS_VALUES,
@@ -81,4 +83,8 @@ export function parseNotificationCategory(raw: string): NotificationCategory {
 
 export function parseNotificationChannel(raw: string): NotificationChannel {
   return parseEnum(NOTIFICATION_CHANNEL_VALUES, raw, 'notification channel');
+}
+
+export function parseJobOutcome(raw: string): JobOutcome {
+  return parseEnum(JOB_OUTCOME_VALUES, raw, 'job outcome');
 }

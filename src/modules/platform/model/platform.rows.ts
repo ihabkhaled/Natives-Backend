@@ -100,3 +100,28 @@ export interface StatusCountRow {
   readonly status: string;
   readonly count: number;
 }
+
+/**
+ * One dead-lettered outbox row, projected for the operations listing. The raw
+ * `last_error` never leaves the repository boundary as text — it is classified
+ * into a stable failure code by the mapper.
+ */
+export interface DeadLetterRow {
+  readonly id: string;
+  readonly event_type: string;
+  readonly attempts: number;
+  readonly dead_lettered_at: string | Date;
+  readonly last_error: string | null;
+}
+
+export interface DeadLetterCountRow {
+  readonly count: number;
+}
+
+/** One scheduled-job heartbeat row, upserted after every run. */
+export interface JobHeartbeatRow {
+  readonly job_key: string;
+  readonly last_run_at: string | Date;
+  readonly last_outcome: string;
+  readonly failure_count: number;
+}
