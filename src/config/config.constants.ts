@@ -5,7 +5,13 @@ export const SECURITY_CONFIG_NAMESPACE = 'security';
 export const DATABASE_CONFIG_NAMESPACE = 'database';
 export const IDENTITY_CONFIG_NAMESPACE = 'identity';
 export const EMAIL_CONFIG_NAMESPACE = 'email';
+export const JOBS_CONFIG_NAMESPACE = 'jobs';
 export const NODE_ENV_CONFIG_NAME = 'NODE_ENV';
+
+// --- Scheduled jobs ----------------------------------------------------------
+// The interval scheduler defaults on and is forced off under test so suites
+// never race a background dispatcher against their own fixtures.
+export const DEFAULT_JOBS_ENABLED = true;
 
 // --- Outbound email ---------------------------------------------------------
 // The transport defaults to the console adapter so a fresh checkout sends

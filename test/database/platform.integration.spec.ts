@@ -43,6 +43,8 @@ import { TeamsSchema1721500000000 } from '../../src/database/migrations/17215000
 import { MembersSchema1721600000000 } from '../../src/database/migrations/1721600000000-members-schema';
 import { PlatformSchema1721700000000 } from '../../src/database/migrations/1721700000000-platform-schema';
 import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
+import { JobHeartbeats1725200000000 } from '../../src/database/migrations/1725200000000-job-heartbeats';
+import { OutboxDeadLetterTimestamp1725300000000 } from '../../src/database/migrations/1725300000000-outbox-dead-letter-timestamp';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -68,6 +70,8 @@ const MIGRATIONS = [
   MembersSchema1721600000000,
   PlatformSchema1721700000000,
   PlatformLifecycleSchema1723800000000,
+  JobHeartbeats1725200000000,
+  OutboxDeadLetterTimestamp1725300000000,
 ];
 
 function buildDataSource(): DataSource {
@@ -121,13 +125,11 @@ describeIfDb(suiteTitle, () => {
   afterAll(async () => {
     // Revert every applied migration (baseline → platform) so the shared test
     // database is left empty for the next suite.
-    await activeDataSource.undoLastMigration();
-    await activeDataSource.undoLastMigration();
-    await activeDataSource.undoLastMigration();
-    await activeDataSource.undoLastMigration();
-    await activeDataSource.undoLastMigration();
-    await activeDataSource.undoLastMigration();
-    await activeDataSource.undoLastMigration();
+    let remaining = MIGRATIONS.length;
+    while (remaining > 0) {
+      await activeDataSource.undoLastMigration();
+      remaining -= 1;
+    }
     await activeDataSource.destroy();
   });
 
@@ -200,8 +202,10 @@ describeIfDb(suiteTitle, () => {
     );
     expect(present[0].relation).not.toBeNull();
 
-    // Two steps back: the trailing platform-lifecycle migration (a pure ALTER
-    // on teams/seasons) first, then this schema, which drops its own tables.
+    // Four steps back: the dead-letter timestamp, the job heartbeats table,
+    // the platform-lifecycle ALTERs, then this schema, which drops its tables.
+    await activeDataSource.undoLastMigration();
+    await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     const dropped = await activeDataSource.query(

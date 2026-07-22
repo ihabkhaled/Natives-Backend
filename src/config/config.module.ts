@@ -7,6 +7,7 @@ import { databaseConfig } from './database.config';
 import { emailConfig } from './email.config';
 import { validateEnv } from './env.validation';
 import { identityConfig } from './identity.config';
+import { jobsConfig } from './jobs.config';
 import { securityConfig } from './security.config';
 
 /**
@@ -25,6 +26,7 @@ import { securityConfig } from './security.config';
         databaseConfig,
         identityConfig,
         emailConfig,
+        jobsConfig,
       ],
       validate: validateEnv,
     }),

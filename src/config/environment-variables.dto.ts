@@ -69,6 +69,10 @@ export class EnvironmentVariablesDto {
   declare readonly ENABLE_SWAGGER?: string;
 
   @IsOptional()
+  @IsIn(BOOLEAN_FLAG_VALUES)
+  declare readonly JOBS_ENABLED?: string;
+
+  @IsOptional()
   @IsEnum(LogLevel)
   declare readonly LOG_LEVEL?: LogLevel;
 

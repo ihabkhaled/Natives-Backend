@@ -47,6 +47,12 @@ export const SESSION_LIST_DEFAULT_OFFSET = 0;
 export const UNKNOWN_DEVICE_LABEL = 'Unknown device';
 export const UNKNOWN_APPROXIMATE_LOCATION = '';
 
+// --- Scheduled maintenance ---------------------------------------------------
+// The invitation-expiry sweep registered with the platform job seam: hourly is
+// plenty for a TTL measured in days, and the sweep is idempotent and bounded.
+export const INVITATION_EXPIRY_JOB_KEY = 'invitations.expiry';
+export const INVITATION_EXPIRY_INTERVAL_MS = 3_600_000;
+
 // --- Token generation --------------------------------------------------------
 // 32 bytes of CSPRNG entropy, base64url-encoded, delivered out-of-band. Only the
 // sha-256 hash is ever persisted; the plaintext is never stored, logged, or

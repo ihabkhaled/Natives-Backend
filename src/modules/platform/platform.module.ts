@@ -3,12 +3,18 @@ import { IdGeneratorModule } from '@core/id-generator/id-generator.module';
 import { Module } from '@nestjs/common';
 
 import { InAppNotificationAdapter } from './adapters/in-app-notification.adapter';
+import { OutboxDispatchJob } from './adapters/outbox-dispatch.job';
 import { AuditController } from './api/audit.controller';
+import { JobsAdminController } from './api/jobs-admin.controller';
 import { NotificationsController } from './api/notifications.controller';
 import { OutboxAdminController } from './api/outbox-admin.controller';
 import { AuditQueryService } from './application/audit-query.service';
 import { AuditRecorderService } from './application/audit-recorder.service';
+import { DeadLetterQueryService } from './application/dead-letter-query.service';
 import { IdempotencyService } from './application/idempotency.service';
+import { JobRegistryService } from './application/job-registry.service';
+import { JobSchedulerService } from './application/job-scheduler.service';
+import { JobsHealthService } from './application/jobs-health.service';
 import { ListNotificationsService } from './application/list-notifications.service';
 import { MarkNotificationReadService } from './application/mark-notification-read.service';
 import { NotificationPreferencesService } from './application/notification-preferences.service';
@@ -20,6 +26,7 @@ import { RecordDomainEventService } from './application/record-domain-event.serv
 import { ReplayDeadLetterUseCase } from './application/replay-dead-letter.use-case';
 import { AuditLogRepository } from './infrastructure/audit-log.repository';
 import { IdempotencyRepository } from './infrastructure/idempotency.repository';
+import { JobHeartbeatRepository } from './infrastructure/job-heartbeat.repository';
 import { NotificationRepository } from './infrastructure/notification.repository';
 import { NotificationAudienceRepository } from './infrastructure/notification-audience.repository';
 import { NotificationDeliveryRepository } from './infrastructure/notification-delivery.repository';
@@ -29,6 +36,7 @@ import { OutboxRepository } from './infrastructure/outbox.repository';
 import {
   NOTIFICATION_SENDER_PORT,
   OUTBOX_EVENT_HANDLER_PORT,
+  SCHEDULED_JOB_PORT,
 } from './model/platform.constants';
 
 /**
@@ -46,11 +54,13 @@ import {
     NotificationsController,
     AuditController,
     OutboxAdminController,
+    JobsAdminController,
   ],
   providers: [
     AuditLogRepository,
     OutboxRepository,
     IdempotencyRepository,
+    JobHeartbeatRepository,
     NotificationRepository,
     NotificationPreferenceRepository,
     NotificationQuietHoursRepository,
@@ -61,17 +71,23 @@ import {
     IdempotencyService,
     AuditQueryService,
     OutboxMetricsService,
+    DeadLetterQueryService,
     ProcessOutboxBatchUseCase,
     ReplayDeadLetterUseCase,
     ListNotificationsService,
     MarkNotificationReadService,
     NotificationPreferencesService,
     NotificationQuietHoursService,
+    JobRegistryService,
+    JobSchedulerService,
+    JobsHealthService,
+    OutboxDispatchJob,
     { provide: NOTIFICATION_SENDER_PORT, useClass: InAppNotificationAdapter },
     {
       provide: OUTBOX_EVENT_HANDLER_PORT,
       useClass: NotificationProjectionService,
     },
+    { provide: SCHEDULED_JOB_PORT, useExisting: JobRegistryService },
   ],
   exports: [
     AuditRecorderService,
@@ -79,6 +95,7 @@ import {
     IdempotencyService,
     ProcessOutboxBatchUseCase,
     NotificationQuietHoursService,
+    SCHEDULED_JOB_PORT,
   ],
 })
 export class PlatformModule {}

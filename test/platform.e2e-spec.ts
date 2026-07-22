@@ -20,6 +20,8 @@ import { TeamsSchema1721500000000 } from '../src/database/migrations/17215000000
 import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
 import { PlatformSchema1721700000000 } from '../src/database/migrations/1721700000000-platform-schema';
 import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
+import { JobHeartbeats1725200000000 } from '../src/database/migrations/1725200000000-job-heartbeats';
+import { OutboxDeadLetterTimestamp1725300000000 } from '../src/database/migrations/1725300000000-outbox-dead-letter-timestamp';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -55,6 +57,8 @@ const MIGRATIONS = [
   MembersSchema1721600000000,
   PlatformSchema1721700000000,
   PlatformLifecycleSchema1723800000000,
+  JobHeartbeats1725200000000,
+  OutboxDeadLetterTimestamp1725300000000,
 ];
 
 interface Fixture {
@@ -202,13 +206,11 @@ describeIfDb(suiteTitle, () => {
   afterAll(async () => {
     await app.close();
     if (seededDataSource) {
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
+      let remaining = MIGRATIONS.length;
+      while (remaining > 0) {
+        await seededDataSource.undoLastMigration();
+        remaining -= 1;
+      }
       await seededDataSource.destroy();
     }
     if (ORIGINAL_DATABASE_URL === undefined) {
@@ -365,6 +367,57 @@ describeIfDb(suiteTitle, () => {
     expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
   });
 
+  it('lists dead letters with stable failure codes and no error text', async () => {
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+    const response = await api()
+      .get('/api/v1/admin/outbox/dead-letters')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.total).toBeGreaterThanOrEqual(1);
+    expect(response.body.limit).toBe(20);
+    expect(response.body.offset).toBe(0);
+    const entry = response.body.items.find(
+      (item: { eventId: string }) => item.eventId === deadEventId,
+    );
+    expect(entry).toMatchObject({
+      eventType: 'member.invited',
+      attempts: 5,
+      failureCode: 'unknown',
+    });
+    expect(typeof entry.failedAt).toBe('string');
+    // Privacy is the shape: no payload and no raw error text on the wire.
+    expect(entry).not.toHaveProperty('payload');
+    expect(entry).not.toHaveProperty('lastError');
+  });
+
+  it('honours the bounded pagination window on the dead-letter listing', async () => {
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+    const response = await api()
+      .get('/api/v1/admin/outbox/dead-letters?limit=1&offset=999')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.items).toEqual([]);
+    expect(response.body.limit).toBe(1);
+    expect(response.body.total).toBeGreaterThanOrEqual(1);
+  });
+
+  it('forbids a plain member from listing dead letters (403)', async () => {
+    const token = await tokenFor(fixture.memberUserId, [Role.User]);
+    const response = await api()
+      .get('/api/v1/admin/outbox/dead-letters')
+      .set('Authorization', `Bearer ${token}`);
+    expect(response.status).toBe(403);
+    expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('rejects an unauthenticated dead-letter read (401)', async () => {
+    const response = await api().get('/api/v1/admin/outbox/dead-letters');
+    expect(response.status).toBe(401);
+    expect(response.body.messageKey).toBe('errors.auth.tokenRequired');
+  });
+
   it('lets a system admin replay a dead-lettered event', async () => {
     const token = await tokenFor(fixture.adminId, [Role.Admin]);
     const response = await api()
@@ -395,5 +448,93 @@ describeIfDb(suiteTitle, () => {
       .send();
     expect(response.status).toBe(403);
     expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('clears a replayed event from the dead-letter listing', async () => {
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+    // The earlier replay test requeued the seeded dead event.
+    const response = await api()
+      .get('/api/v1/admin/outbox/dead-letters')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(
+      response.body.items.map((item: { eventId: string }) => item.eventId),
+    ).not.toContain(deadEventId);
+  });
+
+  // --- jobs health (jobs.manage) ----------------------------------------------
+
+  it('reports every registered job, honest degraded before any recorded run', async () => {
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+    const response = await api()
+      .get('/api/v1/admin/jobs/health')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.items).toEqual([
+      {
+        jobKey: 'invitations.expiry',
+        status: 'degraded',
+        lastRunAt: null,
+        failureCount: 0,
+      },
+      {
+        jobKey: 'outbox.dispatcher',
+        status: 'degraded',
+        lastRunAt: null,
+        failureCount: 0,
+      },
+    ]);
+  });
+
+  it('derives job status from recorded heartbeats', async () => {
+    await fixture.dataSource.query(
+      `INSERT INTO "job_heartbeats"
+         ("job_key", "last_run_at", "last_outcome", "failure_count")
+       VALUES ('outbox.dispatcher', now(), 'succeeded', 0),
+              ('invitations.expiry', now(), 'failed', 2)`,
+    );
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+
+    const response = await api()
+      .get('/api/v1/admin/jobs/health')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    const byKey = new Map(
+      (
+        response.body.items as {
+          jobKey: string;
+          status: string;
+          lastRunAt: string | null;
+          failureCount: number;
+        }[]
+      ).map(item => [item.jobKey, item]),
+    );
+    expect(byKey.get('outbox.dispatcher')).toMatchObject({
+      status: 'healthy',
+      failureCount: 0,
+    });
+    expect(byKey.get('outbox.dispatcher')?.lastRunAt).not.toBeNull();
+    expect(byKey.get('invitations.expiry')).toMatchObject({
+      status: 'failed',
+      failureCount: 2,
+    });
+  });
+
+  it('forbids a plain member from reading job health (403)', async () => {
+    const token = await tokenFor(fixture.memberUserId, [Role.User]);
+    const response = await api()
+      .get('/api/v1/admin/jobs/health')
+      .set('Authorization', `Bearer ${token}`);
+    expect(response.status).toBe(403);
+    expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('rejects an unauthenticated job-health read (401)', async () => {
+    const response = await api().get('/api/v1/admin/jobs/health');
+    expect(response.status).toBe(401);
+    expect(response.body.messageKey).toBe('errors.auth.tokenRequired');
   });
 });

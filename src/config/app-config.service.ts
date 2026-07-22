@@ -6,6 +6,7 @@ import {
   DATABASE_CONFIG_NAMESPACE,
   EMAIL_CONFIG_NAMESPACE,
   IDENTITY_CONFIG_NAMESPACE,
+  JOBS_CONFIG_NAMESPACE,
   SECURITY_CONFIG_NAMESPACE,
 } from './config.constants';
 import type {
@@ -13,6 +14,7 @@ import type {
   DatabaseConfig,
   EmailConfig,
   IdentityConfig,
+  JobsConfig,
   SecurityConfig,
 } from './config.types';
 
@@ -49,5 +51,9 @@ export class AppConfigService {
 
   get email(): EmailConfig {
     return this.configService.getOrThrow<EmailConfig>(EMAIL_CONFIG_NAMESPACE);
+  }
+
+  get jobs(): JobsConfig {
+    return this.configService.getOrThrow<JobsConfig>(JOBS_CONFIG_NAMESPACE);
   }
 }

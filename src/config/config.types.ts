@@ -55,6 +55,15 @@ export interface EmailConfig {
   readonly webBaseUrl: string;
 }
 
+/**
+ * Background-job scheduling. `enabled=false` keeps every registered job
+ * dormant (the health endpoint then reports them degraded/never-ran — the
+ * honest state); tests force it off so suites never race the scheduler.
+ */
+export interface JobsConfig {
+  readonly enabled: boolean;
+}
+
 export interface SeedAdminConfig {
   readonly email: string;
   readonly password: string;
@@ -76,4 +85,5 @@ export interface RootConfig {
   readonly database: DatabaseConfig;
   readonly identity: IdentityConfig;
   readonly email: EmailConfig;
+  readonly jobs: JobsConfig;
 }

@@ -3,10 +3,12 @@ import { EmailModule } from '@core/email';
 import { IdGeneratorModule } from '@core/id-generator/id-generator.module';
 import { AuthModule } from '@modules/auth';
 import { MembersModule } from '@modules/members';
+import { PlatformModule } from '@modules/platform';
 import { RbacModule } from '@modules/rbac';
 import { Module } from '@nestjs/common';
 
 import { CryptoSecureRandomAdapter } from './adapters/crypto-secure-random.adapter';
+import { InvitationExpiryJob } from './adapters/invitation-expiry.job';
 import { AuthController } from './api/auth.controller';
 import { InvitationsController } from './api/invitations.controller';
 import { PublicInvitationsController } from './api/public-invitations.controller';
@@ -55,6 +57,7 @@ import { SECURE_RANDOM_PORT } from './model/identity.constants';
     AuthModule,
     RbacModule,
     MembersModule,
+    PlatformModule,
     ClockModule,
     IdGeneratorModule,
     EmailModule,
@@ -67,6 +70,7 @@ import { SECURE_RANDOM_PORT } from './model/identity.constants';
   ],
   providers: [
     { provide: SECURE_RANDOM_PORT, useClass: CryptoSecureRandomAdapter },
+    InvitationExpiryJob,
     UserRepository,
     PasswordCredentialRepository,
     InvitationRepository,
