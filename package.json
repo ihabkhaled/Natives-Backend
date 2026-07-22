@@ -39,6 +39,7 @@
     "migration:show": "npm run typeorm -- migration:show -d src/database/cli-data-source.ts",
     "db:ensure": "node -r dotenv/config -r ts-node/register/transpile-only -r tsconfig-paths/register src/database/ensure-database.cli.ts",
     "seed:admin": "node -r dotenv/config -r ts-node/register/transpile-only -r tsconfig-paths/register src/database/seeds/seed-admin.cli.ts",
+    "backfill:member-roles": "node -r dotenv/config -r ts-node/register/transpile-only -r tsconfig-paths/register src/database/seeds/backfill-member-roles.cli.ts",
     "db:setup": "npm run db:ensure && npm run migration:run && npm run seed:admin",
     "contract:generate": "node -r dotenv/config -r ts-node/register/transpile-only -r tsconfig-paths/register tools/openapi/generate-openapi.ts",
     "contract:check": "npm run contract:generate -- --check",
