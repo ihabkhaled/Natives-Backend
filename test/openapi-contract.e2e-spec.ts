@@ -92,9 +92,46 @@ describe('canonical OpenAPI contract (e2e)', () => {
       'PracticeListSessionsResponseDto',
       'PracticeRosterEntryResponseDto',
       'CompetitionRosterEntryResponseDto',
+      'AssignableRolesResponseDto',
+      'SuperAdminEntryDto',
+      'SuperAdminListResponseDto',
+      'DeadLetterListResponseDto',
+      'JobHealthListResponseDto',
     ]) {
       expect(defined.has(name)).toBe(true);
     }
+  });
+
+  it('describes the P1 onboarding and operations surfaces', () => {
+    const document = createOpenApiDocument(app);
+
+    expect(
+      document.paths['/rbac/teams/{teamId}/assignable-roles']?.get?.responses,
+    ).toHaveProperty('200');
+    expect(
+      document.paths['/rbac/platform/super-admins']?.post?.responses,
+    ).toHaveProperty('201');
+    expect(
+      document.paths['/rbac/platform/super-admins']?.post?.responses,
+    ).toHaveProperty('409');
+    expect(
+      document.paths['/rbac/platform/super-admins/{userId}']?.delete?.responses,
+    ).toHaveProperty('409');
+    expect(
+      document.paths['/admin/outbox/dead-letters']?.get?.responses,
+    ).toHaveProperty('200');
+    expect(document.paths['/admin/jobs/health']?.get?.responses).toHaveProperty(
+      '200',
+    );
+    // Invite-with-role: the request field is optional with a slug example.
+    expect(document.components?.schemas?.['CreateTeamInvitationDto']).toEqual(
+      expect.objectContaining({
+        required: ['email'],
+        properties: expect.objectContaining({
+          teamRole: expect.objectContaining({ example: 'coach' }),
+        }),
+      }),
+    );
   });
 
   it('publishes unique operation IDs and representative schemas', () => {

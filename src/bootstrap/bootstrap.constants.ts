@@ -63,6 +63,12 @@ export const SWAGGER_DESCRIPTION = 'HTTP API for this NestJS service';
 // 1.1.0: additive P0-recovery contract changes — team-scoped invitations
 // (POST /teams/{teamId}/invitations), invitation payloads carry teamId, and the
 // team leaderboard read is gated by leaderboard.read.
-export const SWAGGER_VERSION = '1.1.0';
+// 1.2.0: additive P1 onboarding/ops surfaces — invitations carry an optional
+// teamRole request field and teamRole/teamId/teamName response fields; the
+// assignable-roles catalog (GET /rbac/teams/{teamId}/assignable-roles); platform
+// super-admin management (GET/POST/DELETE /rbac/platform/super-admins); the
+// dead-letter listing (GET /admin/outbox/dead-letters); and scheduled-job
+// health (GET /admin/jobs/health).
+export const SWAGGER_VERSION = '1.2.0';
 export const SWAGGER_BEARER_NAME = 'jwt';
 export const SWAGGER_PERSIST_AUTHORIZATION = false;

@@ -1127,6 +1127,46 @@
         ],
         "type": "object"
       },
+      "AssignableRoleEntryDto": {
+        "properties": {
+          "description": {
+            "description": "Privilege summary rendered as the invite-form hint",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Server-driven label fallback from the role catalog",
+            "type": "string"
+          },
+          "slug": {
+            "example": "coach",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "displayName",
+          "description"
+        ],
+        "type": "object"
+      },
+      "AssignableRolesResponseDto": {
+        "properties": {
+          "roles": {
+            "items": {
+              "$ref": "#/components/schemas/AssignableRoleEntryDto"
+            },
+            "type": "array"
+          },
+          "teamId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "teamId",
+          "roles"
+        ],
+        "type": "object"
+      },
       "AssignGroupMembersDto": {
         "properties": {
           "membershipIds": {
@@ -3905,6 +3945,12 @@
               "user"
             ],
             "type": "string"
+          },
+          "teamRole": {
+            "example": "coach",
+            "maxLength": 64,
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "type": "string"
           }
         },
         "required": [
@@ -5249,6 +5295,12 @@
           "email": {
             "maxLength": 320,
             "type": "string"
+          },
+          "teamRole": {
+            "example": "coach",
+            "maxLength": 64,
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "type": "string"
           }
         },
         "required": [
@@ -5612,6 +5664,62 @@
           "presentation",
           "status",
           "asOf"
+        ],
+        "type": "object"
+      },
+      "DeadLetterListResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/DeadLetterResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
+      "DeadLetterResponseDto": {
+        "properties": {
+          "attempts": {
+            "type": "number"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventType": {
+            "example": "member.invited",
+            "type": "string"
+          },
+          "failedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "failureCode": {
+            "example": "handler_failed",
+            "type": "string"
+          }
+        },
+        "required": [
+          "eventId",
+          "eventType",
+          "attempts",
+          "failedAt",
+          "failureCode"
         ],
         "type": "object"
       },
@@ -7697,6 +7805,11 @@
             "nullable": true,
             "type": "string"
           },
+          "teamRole": {
+            "description": "Team-role slug acceptance grants in the invited team",
+            "example": "coach",
+            "type": "string"
+          },
           "token": {
             "description": "One-time plaintext invitation token for manual link delivery (OD-002). Shown once; store the hash only.",
             "type": "string"
@@ -7707,6 +7820,7 @@
           "email",
           "role",
           "teamId",
+          "teamRole",
           "status",
           "expiresAt",
           "createdAt",
@@ -7750,6 +7864,11 @@
             "description": "Team the invitee is onboarded into at acceptance; null for a platform-scoped invitation",
             "nullable": true,
             "type": "string"
+          },
+          "teamRole": {
+            "description": "Team-role slug acceptance grants in the invited team",
+            "example": "coach",
+            "type": "string"
           }
         },
         "required": [
@@ -7757,6 +7876,7 @@
           "email",
           "role",
           "teamId",
+          "teamRole",
           "status",
           "expiresAt",
           "createdAt"
@@ -8150,6 +8270,52 @@
           "createdBy",
           "createdAt",
           "updatedAt"
+        ],
+        "type": "object"
+      },
+      "JobHealthListResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/JobHealthResponseDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "JobHealthResponseDto": {
+        "properties": {
+          "failureCount": {
+            "description": "Consecutive failures; reset on success",
+            "type": "number"
+          },
+          "jobKey": {
+            "example": "outbox.dispatcher",
+            "type": "string"
+          },
+          "lastRunAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "healthy",
+              "degraded",
+              "failed"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "jobKey",
+          "status",
+          "lastRunAt",
+          "failureCount"
         ],
         "type": "object"
       },
@@ -13678,6 +13844,25 @@
         ],
         "type": "object"
       },
+      "PromoteSuperAdminDto": {
+        "properties": {
+          "reason": {
+            "description": "Mandatory audited justification for the promotion",
+            "maxLength": 500,
+            "minLength": 8,
+            "type": "string"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId",
+          "reason"
+        ],
+        "type": "object"
+      },
       "ProtocolHistoryEntryResponseDto": {
         "properties": {
           "attempts": {
@@ -13852,12 +14037,29 @@
               "user"
             ],
             "type": "string"
+          },
+          "teamId": {
+            "nullable": true,
+            "type": "string"
+          },
+          "teamName": {
+            "description": "Invited team display name for accept-page confirmation",
+            "nullable": true,
+            "type": "string"
+          },
+          "teamRole": {
+            "description": "Team-role slug acceptance grants in the invited team",
+            "example": "coach",
+            "type": "string"
           }
         },
         "required": [
           "email",
           "role",
-          "expiresAt"
+          "expiresAt",
+          "teamRole",
+          "teamId",
+          "teamName"
         ],
         "type": "object"
       },
@@ -15617,6 +15819,20 @@
         },
         "required": [
           "revokedCount"
+        ],
+        "type": "object"
+      },
+      "RevokeSuperAdminDto": {
+        "properties": {
+          "reason": {
+            "description": "Mandatory audited justification for the revocation",
+            "maxLength": 500,
+            "minLength": 8,
+            "type": "string"
+          }
+        },
+        "required": [
+          "reason"
         ],
         "type": "object"
       },
@@ -18792,6 +19008,58 @@
         ],
         "type": "object"
       },
+      "SuperAdminEntryDto": {
+        "properties": {
+          "assignmentId": {
+            "type": "string"
+          },
+          "displayName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "effectiveFrom": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "grantedBy": {
+            "nullable": true,
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "assignmentId",
+          "userId",
+          "email",
+          "displayName",
+          "effectiveFrom",
+          "grantedBy"
+        ],
+        "type": "object"
+      },
+      "SuperAdminListResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/SuperAdminEntryDto"
+            },
+            "type": "array"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total"
+        ],
+        "type": "object"
+      },
       "SupplierExportLineDto": {
         "properties": {
           "kitType": {
@@ -21595,10 +21863,38 @@
     "contact": {},
     "description": "HTTP API for this NestJS service",
     "title": "Service API",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "openapi": "3.0.0",
   "paths": {
+    "/admin/jobs/health": {
+      "get": {
+        "operationId": "JobsAdmin.health",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobHealthListResponseDto"
+                }
+              }
+            },
+            "description": "Job health derived from recorded heartbeats"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Read the recorded health of every registered scheduled job",
+        "tags": [
+          "jobs-admin"
+        ]
+      }
+    },
     "/admin/outbox/{eventId}/replay": {
       "post": {
         "operationId": "OutboxAdmin.replayEvent",
@@ -21628,6 +21924,53 @@
           }
         },
         "summary": "Replay a dead-lettered outbox event",
+        "tags": [
+          "outbox-admin"
+        ]
+      }
+    },
+    "/admin/outbox/dead-letters": {
+      "get": {
+        "operationId": "OutboxAdmin.listDeadLetters",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeadLetterListResponseDto"
+                }
+              }
+            },
+            "description": "Dead-lettered events, newest failure first"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List dead-lettered events (stable failure codes, no payloads)",
         "tags": [
           "outbox-admin"
         ]
@@ -22727,6 +23070,123 @@
         ]
       }
     },
+    "/rbac/platform/super-admins": {
+      "get": {
+        "operationId": "PlatformAdmins.list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuperAdminListResponseDto"
+                }
+              }
+            },
+            "description": "Super administrators"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "List the current platform super administrators",
+        "tags": [
+          "platform-admins"
+        ]
+      },
+      "post": {
+        "operationId": "PlatformAdmins.promote",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PromoteSuperAdminDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuperAdminEntryDto"
+                }
+              }
+            },
+            "description": "Super administrator granted (idempotent)"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Target user missing or not active"
+          }
+        },
+        "summary": "Promote a user to super administrator with an audited reason",
+        "tags": [
+          "platform-admins"
+        ]
+      }
+    },
+    "/rbac/platform/super-admins/{userId}": {
+      "delete": {
+        "operationId": "PlatformAdmins.revoke",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeSuperAdminDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuperAdminEntryDto"
+                }
+              }
+            },
+            "description": "Super administrator revoked"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "The last super administrator cannot be removed"
+          }
+        },
+        "summary": "Revoke a super administrator with an audited reason",
+        "tags": [
+          "platform-admins"
+        ]
+      }
+    },
     "/rbac/role-bundles": {
       "get": {
         "operationId": "Rbac.roleBundles",
@@ -22750,6 +23210,43 @@
           }
         },
         "summary": "Get the full role x permission matrix from the seeded catalog",
+        "tags": [
+          "rbac"
+        ]
+      }
+    },
+    "/rbac/teams/{teamId}/assignable-roles": {
+      "get": {
+        "operationId": "Rbac.assignableRoles",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssignableRolesResponseDto"
+                }
+              }
+            },
+            "description": "Assignable roles under the actor ceiling"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden outside the team scope"
+          }
+        },
+        "summary": "List the roles the acting principal may grant in this team, with display metadata",
         "tags": [
           "rbac"
         ]

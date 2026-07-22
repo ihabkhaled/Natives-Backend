@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T16:25:06.391Z",
+  "generatedAt": "2026-07-22T18:37:05.142Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -433,6 +433,11 @@
     },
     {
       "from": "src/config/config.module.ts",
+      "to": "src/config/jobs.config.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/config.module.ts",
       "to": "src/config/security.config.ts",
       "type": "internal"
     },
@@ -530,6 +535,26 @@
       "from": "src/config/identity.config.ts",
       "to": "src/config/config.utils.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/config/jobs.config.ts",
+      "to": "src/config/config.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/jobs.config.ts",
+      "to": "src/config/config.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/jobs.config.ts",
+      "to": "src/config/config.utils.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/jobs.config.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/config/security.config.ts",
@@ -1474,6 +1499,46 @@
     {
       "from": "src/database/migration-runner.ts",
       "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/backfill-member-roles.cli.ts",
+      "to": "src/app.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/backfill-member-roles.cli.ts",
+      "to": "src/database/database-cli.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/backfill-member-roles.cli.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/backfill-member-roles.cli.ts",
+      "to": "src/database/seeds/backfill-member-roles.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/backfill-member-roles.cli.ts",
+      "to": "src/database/seeds/backfill-member-roles.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/backfill-member-roles.cli.ts",
+      "to": "src/database/seeds/backfill-member-roles.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/backfill-member-roles.ts",
+      "to": "src/database/seeds/backfill-member-roles.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/backfill-member-roles.ts",
+      "to": "src/database/seeds/backfill-member-roles.types.ts",
       "type": "internal"
     },
     {
@@ -14347,6 +14412,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/adapters/invitation-expiry.job.ts",
+      "to": "src/modules/identity/application/expire-invitations.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/adapters/invitation-expiry.job.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/adapters/invitation-expiry.job.ts",
+      "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/identity/api/auth.controller.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -14513,6 +14593,11 @@
     },
     {
       "from": "src/modules/identity/api/dto/create-invitation.dto.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/api/dto/create-invitation.dto.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
     },
@@ -14530,6 +14615,11 @@
       "from": "src/modules/identity/api/dto/create-team-invitation.dto.ts",
       "to": "src/modules/identity/model/identity.constants.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/create-team-invitation.dto.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
     },
     {
       "from": "src/modules/identity/api/dto/device-session-response.dto.ts",
@@ -14947,11 +15037,6 @@
       "type": "cross-module"
     },
     {
-      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
-      "to": "src/shared/enums/index.ts",
-      "type": "cross-cutting"
-    },
-    {
       "from": "src/modules/identity/application/create-invitation.use-case.ts",
       "to": "src/config/app-config.service.ts",
       "type": "cross-cutting"
@@ -15025,6 +15110,16 @@
       "from": "src/modules/identity/application/create-invitation.use-case.ts",
       "to": "src/modules/identity/model/identity.types.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/application/create-invitation.use-case.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/identity/application/expire-invitations.use-case.ts",
@@ -15115,6 +15210,11 @@
       "from": "src/modules/identity/application/get-invitation-details.use-case.ts",
       "to": "src/modules/identity/model/identity.types.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/get-invitation-details.use-case.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
     },
     {
       "from": "src/modules/identity/application/list-sessions.use-case.ts",
@@ -15978,6 +16078,11 @@
     },
     {
       "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/adapters/invitation-expiry.job.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/api/auth.controller.ts",
       "type": "internal"
     },
@@ -16139,6 +16244,11 @@
     {
       "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/members/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/platform/index.ts",
       "type": "cross-module"
     },
     {
@@ -16317,6 +16427,11 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/lib/identity.mapper.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
+    },
+    {
       "from": "src/modules/identity/lib/membership-payload.mapper.ts",
       "to": "src/modules/identity/model/identity.types.ts",
       "type": "internal"
@@ -16339,6 +16454,11 @@
     {
       "from": "src/modules/identity/model/identity.constants.ts",
       "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/model/identity.types.ts",
+      "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -24682,6 +24802,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/platform/adapters/outbox-dispatch.job.ts",
+      "to": "src/modules/platform/application/process-outbox-batch.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/adapters/outbox-dispatch.job.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/adapters/outbox-dispatch.job.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/platform/api/audit.controller.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -24754,6 +24889,36 @@
     {
       "from": "src/modules/platform/api/dto/audit-response.dto.ts",
       "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/dto/dead-letter-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/jobs-health-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/jobs-health-response.dto.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/dto/list-dead-letters.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/list-dead-letters.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/dto/list-dead-letters.query.dto.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
       "type": "internal"
     },
     {
@@ -24835,6 +25000,36 @@
       "from": "src/modules/platform/api/dto/update-preferences.dto.ts",
       "to": "src/modules/platform/model/platform.enums.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/jobs-admin.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/jobs-admin.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/api/jobs-admin.controller.ts",
+      "to": "src/modules/platform/api/dto/jobs-health-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/jobs-admin.controller.ts",
+      "to": "src/modules/platform/application/jobs-health.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/jobs-admin.controller.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/jobs-admin.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/platform/api/notifications.controller.ts",
@@ -24928,6 +25123,16 @@
     },
     {
       "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/modules/platform/api/dto/dead-letter-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/modules/platform/api/dto/list-dead-letters.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
       "to": "src/modules/platform/api/dto/outbox-metrics-response.dto.ts",
       "type": "internal"
     },
@@ -24938,12 +25143,22 @@
     },
     {
       "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/modules/platform/application/dead-letter-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
       "to": "src/modules/platform/application/outbox-metrics.service.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/platform/api/outbox-admin.controller.ts",
       "to": "src/modules/platform/application/replay-dead-letter.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/api/outbox-admin.controller.ts",
+      "to": "src/modules/platform/lib/platform.helpers.ts",
       "type": "internal"
     },
     {
@@ -25002,6 +25217,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/platform/application/dead-letter-query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/dead-letter-query.service.ts",
+      "to": "src/modules/platform/infrastructure/outbox.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/dead-letter-query.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/platform/application/idempotency.service.ts",
       "to": "src/core/id-generator/id-generator.port.ts",
       "type": "cross-cutting"
@@ -25033,6 +25263,81 @@
     },
     {
       "from": "src/modules/platform/application/idempotency.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/job-registry.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/job-scheduler.service.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/job-scheduler.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/job-scheduler.service.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/job-scheduler.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/job-scheduler.service.ts",
+      "to": "src/modules/platform/infrastructure/job-heartbeat.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/job-scheduler.service.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/job-scheduler.service.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/job-scheduler.service.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/jobs-health.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/jobs-health.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/application/jobs-health.service.ts",
+      "to": "src/modules/platform/domain/job-health.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/jobs-health.service.ts",
+      "to": "src/modules/platform/infrastructure/job-heartbeat.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/jobs-health.service.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/application/jobs-health.service.ts",
       "to": "src/modules/platform/model/platform.types.ts",
       "type": "internal"
     },
@@ -25357,6 +25662,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/platform/domain/job-health.policy.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/domain/job-health.policy.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/domain/job-health.policy.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/platform/domain/notification-quiet-hours.policy.ts",
       "to": "src/modules/platform/model/platform.types.ts",
       "type": "internal"
@@ -25458,6 +25778,11 @@
     },
     {
       "from": "src/modules/platform/index.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/index.ts",
       "to": "src/modules/platform/model/platform.enums.ts",
       "type": "internal"
     },
@@ -25518,6 +25843,36 @@
     },
     {
       "from": "src/modules/platform/infrastructure/idempotency.repository.ts",
+      "to": "src/modules/platform/model/platform.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/job-heartbeat.repository.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/job-heartbeat.repository.ts",
+      "to": "src/modules/platform/lib/platform.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/job-heartbeat.repository.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/job-heartbeat.repository.ts",
+      "to": "src/modules/platform/model/platform.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/job-heartbeat.repository.ts",
+      "to": "src/modules/platform/model/platform.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/infrastructure/job-heartbeat.repository.ts",
       "to": "src/modules/platform/model/platform.types.ts",
       "type": "internal"
     },
@@ -25668,6 +26023,11 @@
     },
     {
       "from": "src/modules/platform/lib/platform.mapper.ts",
+      "to": "src/modules/platform/model/platform.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/lib/platform.mapper.ts",
       "to": "src/modules/platform/model/platform.enums.ts",
       "type": "internal"
     },
@@ -25718,7 +26078,17 @@
     },
     {
       "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/adapters/outbox-dispatch.job.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
       "to": "src/modules/platform/api/audit.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/api/jobs-admin.controller.ts",
       "type": "internal"
     },
     {
@@ -25743,7 +26113,27 @@
     },
     {
       "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/dead-letter-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
       "to": "src/modules/platform/application/idempotency.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/job-registry.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/job-scheduler.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/application/jobs-health.service.ts",
       "type": "internal"
     },
     {
@@ -25799,6 +26189,11 @@
     {
       "from": "src/modules/platform/platform.module.ts",
       "to": "src/modules/platform/infrastructure/idempotency.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/platform/platform.module.ts",
+      "to": "src/modules/platform/infrastructure/job-heartbeat.repository.ts",
       "type": "internal"
     },
     {
@@ -32987,6 +33382,11 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/rbac/api/dto/assignable-roles-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/rbac/api/dto/effective-permissions-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -33000,6 +33400,36 @@
       "from": "src/modules/rbac/api/dto/permission-catalog-entry-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/promote-super-admin.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/promote-super-admin.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/promote-super-admin.dto.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/revoke-super-admin.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/revoke-super-admin.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/dto/revoke-super-admin.dto.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
@@ -33042,6 +33472,11 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/rbac/api/dto/super-admin-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/rbac/api/dto/user-assignments-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -33050,6 +33485,61 @@
       "from": "src/modules/rbac/api/dto/user-assignments-response.dto.ts",
       "to": "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/platform-admins.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/platform-admins.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/platform-admins.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/api/platform-admins.controller.ts",
+      "to": "src/modules/rbac/api/dto/promote-super-admin.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/platform-admins.controller.ts",
+      "to": "src/modules/rbac/api/dto/revoke-super-admin.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/platform-admins.controller.ts",
+      "to": "src/modules/rbac/api/dto/super-admin-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/platform-admins.controller.ts",
+      "to": "src/modules/rbac/application/list-super-admins.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/platform-admins.controller.ts",
+      "to": "src/modules/rbac/application/promote-super-admin.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/platform-admins.controller.ts",
+      "to": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/platform-admins.controller.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/platform-admins.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/rbac/api/rbac.controller.ts",
@@ -33069,6 +33559,11 @@
     {
       "from": "src/modules/rbac/api/rbac.controller.ts",
       "to": "src/modules/rbac/api/dto/assign-role.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/api/dto/assignable-roles-response.dto.ts",
       "type": "internal"
     },
     {
@@ -33123,6 +33618,11 @@
     },
     {
       "from": "src/modules/rbac/api/rbac.controller.ts",
+      "to": "src/modules/rbac/application/team-role-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/api/rbac.controller.ts",
       "to": "src/modules/rbac/lib/rbac.helpers.ts",
       "type": "internal"
     },
@@ -33163,6 +33663,16 @@
     },
     {
       "from": "src/modules/rbac/application/assign-role.use-case.ts",
+      "to": "src/modules/rbac/domain/role-protection.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/assign-role.use-case.ts",
+      "to": "src/modules/rbac/errors/protected-role.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/assign-role.use-case.ts",
       "to": "src/modules/rbac/errors/role-not-found.error.ts",
       "type": "internal"
     },
@@ -33188,6 +33698,11 @@
     },
     {
       "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
       "to": "src/core/id-generator/id-generator.port.ts",
       "type": "cross-cutting"
     },
@@ -33198,12 +33713,37 @@
     },
     {
       "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "to": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "to": "src/modules/rbac/domain/role-protection.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "to": "src/modules/rbac/errors/protected-role.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
       "to": "src/modules/rbac/errors/role-not-found.error.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
       "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "to": "src/modules/rbac/lib/rbac.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "to": "src/modules/rbac/lib/role-slug.mapper.ts",
       "type": "internal"
     },
     {
@@ -33225,6 +33765,31 @@
       "from": "src/modules/rbac/application/get-effective-permissions.use-case.ts",
       "to": "src/modules/rbac/model/rbac.types.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/list-super-admins.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/list-super-admins.use-case.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/list-super-admins.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/list-super-admins.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/list-super-admins.use-case.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/rbac/application/list-user-assignments.use-case.ts",
@@ -33275,6 +33840,56 @@
       "from": "src/modules/rbac/application/privilege-ceiling.service.ts",
       "to": "src/modules/rbac/lib/rbac.helpers.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/promote-super-admin.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/promote-super-admin.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/promote-super-admin.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/promote-super-admin.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/promote-super-admin.use-case.ts",
+      "to": "src/modules/rbac/errors/role-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/promote-super-admin.use-case.ts",
+      "to": "src/modules/rbac/errors/user-not-eligible.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/promote-super-admin.use-case.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/promote-super-admin.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/promote-super-admin.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/promote-super-admin.use-case.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/rbac/application/rbac-permission-resolver.service.ts",
@@ -33348,7 +33963,17 @@
     },
     {
       "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/modules/rbac/domain/role-protection.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
       "to": "src/modules/rbac/domain/role-set-diff.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/replace-team-roles.use-case.ts",
+      "to": "src/modules/rbac/errors/protected-role.error.ts",
       "type": "internal"
     },
     {
@@ -33432,6 +34057,56 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
+      "to": "src/modules/rbac/domain/super-admin-guard.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
+      "to": "src/modules/rbac/errors/assignment-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/rbac/application/role-assignment-query.service.ts",
       "to": "src/core/clock/clock.port.ts",
       "type": "cross-cutting"
@@ -33503,6 +34178,11 @@
     },
     {
       "from": "src/modules/rbac/application/team-role-query.service.ts",
+      "to": "src/modules/rbac/lib/assignable-roles.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/team-role-query.service.ts",
       "to": "src/modules/rbac/lib/rbac.helpers.ts",
       "type": "internal"
     },
@@ -33562,8 +34242,23 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/rbac/domain/role-protection.policy.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/domain/role-protection.policy.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/rbac/domain/role-set-diff.policy.ts",
       "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/domain/super-admin-guard.policy.ts",
+      "to": "src/modules/rbac/errors/last-super-admin.error.ts",
       "type": "internal"
     },
     {
@@ -33587,12 +34282,42 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/rbac/errors/last-super-admin.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/errors/last-super-admin.error.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/errors/protected-role.error.ts",
+      "to": "src/core/errors/forbidden.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/errors/protected-role.error.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/rbac/errors/role-not-found.error.ts",
       "to": "src/core/errors/not-found.error.ts",
       "type": "cross-cutting"
     },
     {
       "from": "src/modules/rbac/errors/role-not-found.error.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/errors/user-not-eligible.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/errors/user-not-eligible.error.ts",
       "to": "src/modules/rbac/model/rbac.constants.ts",
       "type": "internal"
     },
@@ -33623,7 +34348,27 @@
     },
     {
       "from": "src/modules/rbac/index.ts",
+      "to": "src/modules/rbac/errors/escalation-denied.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/index.ts",
+      "to": "src/modules/rbac/errors/protected-role.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/index.ts",
+      "to": "src/modules/rbac/errors/role-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/index.ts",
       "to": "src/modules/rbac/lib/role-slug.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/index.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
       "type": "internal"
     },
     {
@@ -33663,6 +34408,26 @@
     },
     {
       "from": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/lib/assignable-roles.mapper.ts",
+      "to": "src/modules/rbac/lib/role-slug.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/lib/assignable-roles.mapper.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/lib/assignable-roles.mapper.ts",
+      "to": "src/modules/rbac/model/rbac.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/lib/assignable-roles.mapper.ts",
       "to": "src/modules/rbac/model/rbac.types.ts",
       "type": "internal"
     },
@@ -33723,6 +34488,11 @@
     },
     {
       "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/api/platform-admins.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
       "to": "src/modules/rbac/api/rbac.controller.ts",
       "type": "internal"
     },
@@ -33743,12 +34513,22 @@
     },
     {
       "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/list-super-admins.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
       "to": "src/modules/rbac/application/list-user-assignments.use-case.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/rbac/rbac.module.ts",
       "to": "src/modules/rbac/application/privilege-ceiling.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/promote-super-admin.use-case.ts",
       "type": "internal"
     },
     {
@@ -33764,6 +34544,11 @@
     {
       "from": "src/modules/rbac/rbac.module.ts",
       "to": "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
       "type": "internal"
     },
     {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T16:25:06.391Z",
+  "generatedAt": "2026-07-22T18:37:05.142Z",
   "modules": [
     {
       "name": "activities",
@@ -805,6 +805,19 @@
         "adapter": [
           "src/modules/identity/adapters/crypto-secure-random.adapter.ts"
         ],
+        "other": [
+          "src/modules/identity/adapters/invitation-expiry.job.ts",
+          "src/modules/identity/errors/invalid-credentials.error.ts",
+          "src/modules/identity/errors/invalid-refresh-token.error.ts",
+          "src/modules/identity/errors/invitation-conflict.error.ts",
+          "src/modules/identity/errors/invitation-invalid.error.ts",
+          "src/modules/identity/errors/invitation-not-found.error.ts",
+          "src/modules/identity/errors/reset-token-invalid.error.ts",
+          "src/modules/identity/errors/session-context-required.error.ts",
+          "src/modules/identity/errors/session-not-found.error.ts",
+          "src/modules/identity/identity.module.ts",
+          "src/modules/identity/index.ts"
+        ],
         "controller": [
           "src/modules/identity/api/auth.controller.ts",
           "src/modules/identity/api/invitations.controller.ts",
@@ -865,18 +878,6 @@
           "src/modules/identity/domain/refresh-session.policy.ts",
           "src/modules/identity/domain/user-status.policy.ts"
         ],
-        "other": [
-          "src/modules/identity/errors/invalid-credentials.error.ts",
-          "src/modules/identity/errors/invalid-refresh-token.error.ts",
-          "src/modules/identity/errors/invitation-conflict.error.ts",
-          "src/modules/identity/errors/invitation-invalid.error.ts",
-          "src/modules/identity/errors/invitation-not-found.error.ts",
-          "src/modules/identity/errors/reset-token-invalid.error.ts",
-          "src/modules/identity/errors/session-context-required.error.ts",
-          "src/modules/identity/errors/session-not-found.error.ts",
-          "src/modules/identity/identity.module.ts",
-          "src/modules/identity/index.ts"
-        ],
         "repository": [
           "src/modules/identity/infrastructure/failed-login-state.repository.ts",
           "src/modules/identity/infrastructure/invitation.repository.ts",
@@ -900,8 +901,8 @@
           "src/modules/identity/model/invitation-email.constants.ts"
         ]
       },
-      "fileCount": 77,
-      "specCount": 46,
+      "fileCount": 78,
+      "specCount": 47,
       "publicSurface": "src/modules/identity/index.ts",
       "hasEvents": false
     },
@@ -1378,14 +1379,27 @@
         "adapter": [
           "src/modules/platform/adapters/in-app-notification.adapter.ts"
         ],
+        "other": [
+          "src/modules/platform/adapters/outbox-dispatch.job.ts",
+          "src/modules/platform/errors/idempotency-conflict.error.ts",
+          "src/modules/platform/errors/notification-not-found.error.ts",
+          "src/modules/platform/errors/notification-quiet-hours.error.ts",
+          "src/modules/platform/errors/outbox-event-not-found.error.ts",
+          "src/modules/platform/index.ts",
+          "src/modules/platform/platform.module.ts"
+        ],
         "controller": [
           "src/modules/platform/api/audit.controller.ts",
+          "src/modules/platform/api/jobs-admin.controller.ts",
           "src/modules/platform/api/notifications.controller.ts",
           "src/modules/platform/api/outbox-admin.controller.ts"
         ],
         "api-dto": [
           "src/modules/platform/api/dto/audit-query.dto.ts",
           "src/modules/platform/api/dto/audit-response.dto.ts",
+          "src/modules/platform/api/dto/dead-letter-response.dto.ts",
+          "src/modules/platform/api/dto/jobs-health-response.dto.ts",
+          "src/modules/platform/api/dto/list-dead-letters.query.dto.ts",
           "src/modules/platform/api/dto/list-notifications.query.dto.ts",
           "src/modules/platform/api/dto/notification-response.dto.ts",
           "src/modules/platform/api/dto/outbox-metrics-response.dto.ts",
@@ -1397,7 +1411,11 @@
         "service": [
           "src/modules/platform/application/audit-query.service.ts",
           "src/modules/platform/application/audit-recorder.service.ts",
+          "src/modules/platform/application/dead-letter-query.service.ts",
           "src/modules/platform/application/idempotency.service.ts",
+          "src/modules/platform/application/job-registry.service.ts",
+          "src/modules/platform/application/job-scheduler.service.ts",
+          "src/modules/platform/application/jobs-health.service.ts",
           "src/modules/platform/application/list-notifications.service.ts",
           "src/modules/platform/application/mark-notification-read.service.ts",
           "src/modules/platform/application/notification-preferences.service.ts",
@@ -1413,22 +1431,16 @@
         "domain": [
           "src/modules/platform/domain/event-envelope.factory.ts",
           "src/modules/platform/domain/idempotency.policy.ts",
+          "src/modules/platform/domain/job-health.policy.ts",
           "src/modules/platform/domain/notification-quiet-hours.policy.ts",
           "src/modules/platform/domain/notification-routing.policy.ts",
           "src/modules/platform/domain/outbox-backoff.policy.ts",
           "src/modules/platform/domain/redaction.policy.ts"
         ],
-        "other": [
-          "src/modules/platform/errors/idempotency-conflict.error.ts",
-          "src/modules/platform/errors/notification-not-found.error.ts",
-          "src/modules/platform/errors/notification-quiet-hours.error.ts",
-          "src/modules/platform/errors/outbox-event-not-found.error.ts",
-          "src/modules/platform/index.ts",
-          "src/modules/platform/platform.module.ts"
-        ],
         "repository": [
           "src/modules/platform/infrastructure/audit-log.repository.ts",
           "src/modules/platform/infrastructure/idempotency.repository.ts",
+          "src/modules/platform/infrastructure/job-heartbeat.repository.ts",
           "src/modules/platform/infrastructure/notification-audience.repository.ts",
           "src/modules/platform/infrastructure/notification-delivery.repository.ts",
           "src/modules/platform/infrastructure/notification-preference.repository.ts",
@@ -1447,8 +1459,8 @@
           "src/modules/platform/model/platform.types.ts"
         ]
       },
-      "fileCount": 51,
-      "specCount": 32,
+      "fileCount": 62,
+      "specCount": 39,
       "publicSurface": "src/modules/platform/index.ts",
       "hasEvents": false
     },
@@ -1803,23 +1815,31 @@
       "layers": {
         "api-dto": [
           "src/modules/rbac/api/dto/assign-role.dto.ts",
+          "src/modules/rbac/api/dto/assignable-roles-response.dto.ts",
           "src/modules/rbac/api/dto/effective-permissions-response.dto.ts",
           "src/modules/rbac/api/dto/permission-catalog-entry-response.dto.ts",
+          "src/modules/rbac/api/dto/promote-super-admin.dto.ts",
+          "src/modules/rbac/api/dto/revoke-super-admin.dto.ts",
           "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
           "src/modules/rbac/api/dto/role-bundle-response.dto.ts",
           "src/modules/rbac/api/dto/role-matrix-response.dto.ts",
           "src/modules/rbac/api/dto/scope-query.dto.ts",
+          "src/modules/rbac/api/dto/super-admin-response.dto.ts",
           "src/modules/rbac/api/dto/user-assignments-response.dto.ts"
         ],
         "controller": [
+          "src/modules/rbac/api/platform-admins.controller.ts",
           "src/modules/rbac/api/rbac.controller.ts"
         ],
         "use-case": [
           "src/modules/rbac/application/assign-role.use-case.ts",
           "src/modules/rbac/application/get-effective-permissions.use-case.ts",
+          "src/modules/rbac/application/list-super-admins.use-case.ts",
           "src/modules/rbac/application/list-user-assignments.use-case.ts",
+          "src/modules/rbac/application/promote-super-admin.use-case.ts",
           "src/modules/rbac/application/replace-team-roles.use-case.ts",
-          "src/modules/rbac/application/revoke-role-assignment.use-case.ts"
+          "src/modules/rbac/application/revoke-role-assignment.use-case.ts",
+          "src/modules/rbac/application/revoke-super-admin.use-case.ts"
         ],
         "service": [
           "src/modules/rbac/application/ensure-role-assignment.service.ts",
@@ -1834,12 +1854,17 @@
           "src/modules/rbac/domain/effective-permissions.policy.ts",
           "src/modules/rbac/domain/permission-scope.policy.ts",
           "src/modules/rbac/domain/privilege-ceiling.policy.ts",
-          "src/modules/rbac/domain/role-set-diff.policy.ts"
+          "src/modules/rbac/domain/role-protection.policy.ts",
+          "src/modules/rbac/domain/role-set-diff.policy.ts",
+          "src/modules/rbac/domain/super-admin-guard.policy.ts"
         ],
         "other": [
           "src/modules/rbac/errors/assignment-not-found.error.ts",
           "src/modules/rbac/errors/escalation-denied.error.ts",
+          "src/modules/rbac/errors/last-super-admin.error.ts",
+          "src/modules/rbac/errors/protected-role.error.ts",
           "src/modules/rbac/errors/role-not-found.error.ts",
+          "src/modules/rbac/errors/user-not-eligible.error.ts",
           "src/modules/rbac/index.ts",
           "src/modules/rbac/rbac.module.ts"
         ],
@@ -1847,6 +1872,7 @@
           "src/modules/rbac/infrastructure/rbac.repository.ts"
         ],
         "lib": [
+          "src/modules/rbac/lib/assignable-roles.mapper.ts",
           "src/modules/rbac/lib/rbac.helpers.ts",
           "src/modules/rbac/lib/role-catalog.mapper.ts",
           "src/modules/rbac/lib/role-matrix.mapper.ts",
@@ -1859,8 +1885,8 @@
           "src/modules/rbac/model/rbac.types.ts"
         ]
       },
-      "fileCount": 39,
-      "specCount": 24,
+      "fileCount": 53,
+      "specCount": 33,
       "publicSurface": "src/modules/rbac/index.ts",
       "hasEvents": false
     },

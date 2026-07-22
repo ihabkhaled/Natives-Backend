@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-22T16:25:06.391Z",
-  "treeHash": "sha256:e5a26b24cbb7b7efb4b7cf5b9ea8079d99405ebae8456fdc908d89a15eb20959",
+  "generatedAt": "2026-07-22T18:37:05.142Z",
+  "treeHash": "sha256:90d5ac828355cf5e20753823f61e36dd0df30a26877d2733dbe12e80aeff7c85",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -89,8 +89,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:5839bb1425704ba7c5cc5b8f7b09d3bb38c7ae8596fbd1815380f5261802cc7c",
-      "sizeBytes": 2988
+      "hash": "sha256:175bd874de04d5f2b4d7a4e84eefd969c28f9a306a938d0bd460532e01b05a8a",
+      "sizeBytes": 3414
     },
     {
       "path": "src/bootstrap/bootstrap.ts",
@@ -497,8 +497,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fc86feafa07eebd13edef0390943f8ef22b34e2531ffeb3b676059373cf52533",
-      "sizeBytes": 1366
+      "hash": "sha256:956f9f75b8efb14027b49eddd2a114e5c41549e98d4d0751e518c8dba6e02d77",
+      "sizeBytes": 1514
     },
     {
       "path": "src/config/app.config.spec.ts",
@@ -598,7 +598,15 @@
         },
         {
           "kind": "const",
+          "name": "JOBS_CONFIG_NAMESPACE"
+        },
+        {
+          "kind": "const",
           "name": "NODE_ENV_CONFIG_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_JOBS_ENABLED"
         },
         {
           "kind": "const",
@@ -944,8 +952,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:21f63c908a3f8a8f7cc4d5d1dca3545ca647b416c0f99ea469b37a0c550ca027",
-      "sizeBytes": 7602
+      "hash": "sha256:11171d9d87fe20bad60040a060d006b9da03b694935644782a73db7eb9614546",
+      "sizeBytes": 7914
     },
     {
       "path": "src/config/config.module.ts",
@@ -961,8 +969,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:3e623bbb160c912b74e6e50d365289bd2b8531d2132e4ee9df4a243acf344666",
-      "sizeBytes": 1010
+      "hash": "sha256:f69f07cf7709d7590273a23f96260e04ad53c84ba88f458dd4138f285de1593a",
+      "sizeBytes": 1074
     },
     {
       "path": "src/config/config.types.ts",
@@ -992,6 +1000,10 @@
         },
         {
           "kind": "interface",
+          "name": "JobsConfig"
+        },
+        {
+          "kind": "interface",
           "name": "SeedAdminConfig"
         },
         {
@@ -1006,8 +1018,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6bcfdba873e24e6f4b5f3d51f625f8453602cbb686c648e0cc7755a37a0e3e30",
-      "sizeBytes": 2321
+      "hash": "sha256:4a83044a51713c071b5e4cfd4f2d9a6033ef5376aeb3250fb4729eac8eeb9e29",
+      "sizeBytes": 2643
     },
     {
       "path": "src/config/config.utils.spec.ts",
@@ -1155,8 +1167,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:960de68368fb83277f12b6990eb90b18fe90b31527db99ee358e8f25af9cddf4",
-      "sizeBytes": 4885
+      "hash": "sha256:d75de386ebe5f43302b61b1873619ea4fb3f06ac80b48eec269d81cda3c8a0b6",
+      "sizeBytes": 4973
     },
     {
       "path": "src/config/identity.config.spec.ts",
@@ -1186,6 +1198,35 @@
       "kind": "source",
       "hash": "sha256:7c0cc2b1ad86f7fcfc53bec309085ba3039705d95c298ef4d3644d40e97e369f",
       "sizeBytes": 1747
+    },
+    {
+      "path": "src/config/jobs.config.spec.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2bcbc19ba1e05c9fe75d9cc48ebc0dd5067f0c096e6c1f901de0929ed2a7eba2",
+      "sizeBytes": 1010
+    },
+    {
+      "path": "src/config/jobs.config.ts",
+      "root": "config",
+      "module": "config",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "jobsConfig"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/config/jobs.config.spec.ts",
+      "kind": "source",
+      "hash": "sha256:434ca962b1ebd595e79dd60fc45dacf53cc624a5608de40535c0b6772515aa8d",
+      "sizeBytes": 945
     },
     {
       "path": "src/config/security.config.spec.ts",
@@ -3895,6 +3936,74 @@
       "sizeBytes": 2098
     },
     {
+      "path": "src/database/migrations/1725000000000-rbac-role-catalog-metadata.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RbacRoleCatalogMetadata1725000000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3ba94f64806814c7e94f6a24a71c41857ea735cd18b2336be45a214967b1b306",
+      "sizeBytes": 1607
+    },
+    {
+      "path": "src/database/migrations/1725100000000-invitation-team-role.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvitationTeamRole1725100000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e522d76adca1ff2742d90b15e88e4b19b3cbe9a2563d905ebe0279c819e26d90",
+      "sizeBytes": 1389
+    },
+    {
+      "path": "src/database/migrations/1725200000000-job-heartbeats.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "JobHeartbeats1725200000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:25262c4061cd53480c063e2eac9b06c341b0d36fa108e23390458ff0028da8fe",
+      "sizeBytes": 1258
+    },
+    {
+      "path": "src/database/migrations/1725300000000-outbox-dead-letter-timestamp.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OutboxDeadLetterTimestamp1725300000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:34aed7b4b004fb139bfda3b1818b8fa5c5c903f5587a1ba6974823ddccb684ca",
+      "sizeBytes": 1474
+    },
+    {
       "path": "src/database/migrations/activities-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3991,6 +4100,18 @@
       "sizeBytes": 2059
     },
     {
+      "path": "src/database/migrations/invitation-team-role-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:bc15a3186839a0bf5556d14eb54d3c5bf99673261ddac08341701cb18914e6a7",
+      "sizeBytes": 1762
+    },
+    {
       "path": "src/database/migrations/invitations-team-scope-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -4013,6 +4134,18 @@
       "kind": "spec",
       "hash": "sha256:43fbdd3557ef3b7a4d7f2117cc4a368e8dec189490720d42162586027993ccfc",
       "sizeBytes": 1989
+    },
+    {
+      "path": "src/database/migrations/job-heartbeats-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ca7aab2e4ad63a028c4521981975475ce23e6c002acb33c3497cf4c55b656c38",
+      "sizeBytes": 1339
     },
     {
       "path": "src/database/migrations/leaderboard-indexes-schema.spec.ts",
@@ -4075,6 +4208,18 @@
       "sizeBytes": 2066
     },
     {
+      "path": "src/database/migrations/outbox-dead-letter-timestamp-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:62c0a3d159ebe2a0d7ac270faef8ecd90729318b21880bbf813c4c389756c9b1",
+      "sizeBytes": 1470
+    },
+    {
       "path": "src/database/migrations/platform-lifecycle-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -4121,6 +4266,18 @@
       "kind": "spec",
       "hash": "sha256:2ac6cd2bde65de60827353e3bd0143ae8d97b6b792c2f2669ead7467acd18cf9",
       "sizeBytes": 1521
+    },
+    {
+      "path": "src/database/migrations/rbac-role-catalog-metadata-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0a2e6d166a3ea4f35c6d6e33311773de23f3c8cfbe9a4d3451278708738dc081",
+      "sizeBytes": 1963
     },
     {
       "path": "src/database/migrations/reports-schema.spec.ts",
@@ -4258,6 +4415,116 @@
       "kind": "source",
       "hash": "sha256:86c43670725147dcd95c84ad7e2dbe5565dcf3363b6838b24cf90e2571554fd4",
       "sizeBytes": 499
+    },
+    {
+      "path": "src/database/seeds/backfill-member-roles.cli.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fc1b2d9bcbdd793115076d88a2cc53591d723b2537f67e2cc6a2a4cf5ea15719",
+      "sizeBytes": 2227
+    },
+    {
+      "path": "src/database/seeds/backfill-member-roles.constants.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "BACKFILL_APPLY_FLAG"
+        },
+        {
+          "kind": "const",
+          "name": "BACKFILL_MEMBER_ROLE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "BACKFILL_AUDIT_EVENT_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "BACKFILL_DRY_RUN_HEADER"
+        },
+        {
+          "kind": "const",
+          "name": "BACKFILL_APPLY_HEADER"
+        },
+        {
+          "kind": "const",
+          "name": "BACKFILL_NOTHING_TO_DO_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "BACKFILL_ROLE_MISSING_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "BACKFILL_FAILED_PREFIX"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9519204ffdfc3bf3044ac4ee4d5a361c3a73e2291356c8cb2acbfbfff46fb67a",
+      "sizeBytes": 704
+    },
+    {
+      "path": "src/database/seeds/backfill-member-roles.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:81b6dc90960d0afa419578c969a8e5bbe8a6383aea11630b86d458a4cdda0005",
+      "sizeBytes": 3954
+    },
+    {
+      "path": "src/database/seeds/backfill-member-roles.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": true,
+      "specPath": "src/database/seeds/backfill-member-roles.spec.ts",
+      "kind": "source",
+      "hash": "sha256:89c10b717e3de2ccd076e9307031d6c9b300351aa414e568829c4d592b8c838e",
+      "sizeBytes": 3664
+    },
+    {
+      "path": "src/database/seeds/backfill-member-roles.types.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "BackfillCandidate"
+        },
+        {
+          "kind": "interface",
+          "name": "BackfillCandidateRow"
+        },
+        {
+          "kind": "interface",
+          "name": "BackfillResult"
+        },
+        {
+          "kind": "interface",
+          "name": "BackfillIdRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b507bdec436a13089e579d694d58fa61d27072d0ef6e114b9498671ad3a0eedd",
+      "sizeBytes": 682
     },
     {
       "path": "src/database/seeds/seed-admin.cli.ts",
@@ -21610,6 +21877,35 @@
       "sizeBytes": 681
     },
     {
+      "path": "src/modules/identity/adapters/invitation-expiry.job.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:85a1d745caacacde71a10caba956a6c64d7c1b056230b530ee806afdcb964375",
+      "sizeBytes": 1112
+    },
+    {
+      "path": "src/modules/identity/adapters/invitation-expiry.job.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvitationExpiryJob"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/adapters/invitation-expiry.job.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ba05e5fc5c2afc4f88a8cfc2c456df2ce87a236293eddb56cb861ad81e3f7965",
+      "sizeBytes": 1220
+    },
+    {
       "path": "src/modules/identity/api/auth.controller.ts",
       "root": "modules",
       "module": "identity",
@@ -21674,8 +21970,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0bb7c9f092fdd857b69d4b52b47c5ba22422f706b527418267dab521d253a1cd",
-      "sizeBytes": 515
+      "hash": "sha256:aa8ebb33586f6dc7a9890b63cb911eb3a1de17fa224c387a256a45c66038d012",
+      "sizeBytes": 1060
     },
     {
       "path": "src/modules/identity/api/dto/create-team-invitation.dto.ts",
@@ -21691,8 +21987,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:749e84c2f2ed7ff93d44864039c80a5e27823c384587cd40224781b49a0c6892",
-      "sizeBytes": 556
+      "hash": "sha256:376e70a66841d9ebedd7955d8ffc05ce3e06df4bedda6b51f64992a1cd14fde1",
+      "sizeBytes": 1143
     },
     {
       "path": "src/modules/identity/api/dto/device-session-response.dto.ts",
@@ -21759,8 +22055,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fb7767a098ef8389a8151a151ed959bf40fec89c9e4e2af56eb70736979fcc6b",
-      "sizeBytes": 838
+      "hash": "sha256:6bbe8cc94d5a1308a0cf1de479dd4d8b833d9d88dec2b51718586e3a3f1161f8",
+      "sizeBytes": 993
     },
     {
       "path": "src/modules/identity/api/dto/invitation-token-params.dto.ts",
@@ -21890,8 +22186,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ce97e03a52afdfdc49982c7f4a42da35c42c91ff5a1a0518b516eac0c14733a7",
-      "sizeBytes": 446
+      "hash": "sha256:0cdb6e6e0979831132102b59d29db3393c4d0f919210c804ff7dfcfb40e5d7df",
+      "sizeBytes": 873
     },
     {
       "path": "src/modules/identity/api/dto/refresh.dto.ts",
@@ -21992,8 +22288,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:7fc242e332a90530ea76fd89b5aba9a882cacdc80c74c273fbc0d74eda3bf369",
-      "sizeBytes": 4164
+      "hash": "sha256:2b6c9c4780ff435095ccba17c3b0380e236cb3375f4cd41ac72f9c438df3b985",
+      "sizeBytes": 4195
     },
     {
       "path": "src/modules/identity/api/public-invitations.controller.ts",
@@ -22026,8 +22322,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:445de95961a2f60ab867195dc9c07b954e91855e217bd14f240149576809cdda",
-      "sizeBytes": 2221
+      "hash": "sha256:7aef7c3e543c931cb1eecf3c3fad6bd72e15d14ea415b50c10324b285dcd3bbc",
+      "sizeBytes": 2277
     },
     {
       "path": "src/modules/identity/application/accept-invitation.use-case.spec.ts",
@@ -22038,8 +22334,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:edf7c77e97220f8b816be13ea891eef297c9ecb01e760bead90de62fe9ef238e",
-      "sizeBytes": 8031
+      "hash": "sha256:0f86eae558f5a088890d7e77fdc9eda6405e234418274f0f3aa0415806ca8637",
+      "sizeBytes": 9800
     },
     {
       "path": "src/modules/identity/application/accept-invitation.use-case.ts",
@@ -22055,8 +22351,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/accept-invitation.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:4d02863b29e0ba39d044e496d577d52b21da22e9f9e4c22b0f805f8c236490bc",
-      "sizeBytes": 5441
+      "hash": "sha256:c1e735a009fe74a6a806a2be819593843166410f4a1f23b8291da57ab2b63ab2",
+      "sizeBytes": 7195
     },
     {
       "path": "src/modules/identity/application/create-invitation.use-case.spec.ts",
@@ -22067,8 +22363,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:e8b001db8f9348b80bc5100d3ca286e5b4b887a9b23c1054c63801c4e65ce148",
-      "sizeBytes": 5327
+      "hash": "sha256:73d98bcc9f13faf1112ac9249bb3a900c556404859774930fcfe989029529d38",
+      "sizeBytes": 8731
     },
     {
       "path": "src/modules/identity/application/create-invitation.use-case.ts",
@@ -22084,8 +22380,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/create-invitation.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:49645e1171042db2b286f9cb41b25a55f1f789ccc41304f6f0e36e4ee8ce86af",
-      "sizeBytes": 3916
+      "hash": "sha256:88491c9ee1112fa6b5afb121c0f9a9b9415fb8bfd4a60b776e6c9bb8ca33e123",
+      "sizeBytes": 4960
     },
     {
       "path": "src/modules/identity/application/expire-invitations.use-case.spec.ts",
@@ -22154,8 +22450,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:e89b14632bb5fb807e7955a591c02d884c38bbf3201a427d266ca773efc282b2",
-      "sizeBytes": 2443
+      "hash": "sha256:03f62b6ccb30d21c8e6c11aa5cf9ef955c461a4197b44d0d2be5f8fe1fc4b5c3",
+      "sizeBytes": 3065
     },
     {
       "path": "src/modules/identity/application/get-invitation-details.use-case.ts",
@@ -22171,8 +22467,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/get-invitation-details.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:d193229c6db69bc5acb5625024e286c617a38c6a5b769fe161e366c96c778c0f",
-      "sizeBytes": 1565
+      "hash": "sha256:e0ceeb95ea42412445b76b6d3b32d950a174a362032f58062bc21b9293223258",
+      "sizeBytes": 1731
     },
     {
       "path": "src/modules/identity/application/list-sessions.use-case.spec.ts",
@@ -22386,8 +22682,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:a07129d0bdd181696f79067e693cd787223e6c0d1fc69c422fa2ba4d10a8aaaa",
-      "sizeBytes": 4329
+      "hash": "sha256:eda8c09c7a5f8a2e77968fa9aba9d32a29c04e8ccf07b531b70e08a2e2c10bac",
+      "sizeBytes": 4354
     },
     {
       "path": "src/modules/identity/application/resend-invitation.use-case.ts",
@@ -22444,8 +22740,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:01621c73b28cf5b9594f3409a8fd774f989305ce8cf936074783362ac42aef5d",
-      "sizeBytes": 2850
+      "hash": "sha256:42d203ee6c2e07399655975449ed318ebfed9f595731b25265bf7a4cccb5a9af",
+      "sizeBytes": 2875
     },
     {
       "path": "src/modules/identity/application/revoke-invitation.use-case.ts",
@@ -23065,8 +23361,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ee201563d82afaf5e790bc0f841312e1855fb21fc0853bb5bd2ff59bc3c6062e",
-      "sizeBytes": 4809
+      "hash": "sha256:e741f63aa0b74a2ea7677af3a49c520fd03a4d836ff55d863bcbe1d01884eef5",
+      "sizeBytes": 4978
     },
     {
       "path": "src/modules/identity/index.ts",
@@ -23118,8 +23414,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:771d97228f8ae50e453e3bc23e9f54a38a777e5705571533c243315d9a871436",
-      "sizeBytes": 10283
+      "hash": "sha256:ab0fa1a78b6efb8aa918895668c39acc128493783ba7d043e555f73ba1fa1a4b",
+      "sizeBytes": 10435
     },
     {
       "path": "src/modules/identity/infrastructure/invitation.repository.ts",
@@ -23135,8 +23431,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/infrastructure/invitation.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:68ee3e468c9e2e2ca1989e312c7438f992b0dd93b5adaa5bf4d08e48ee9f3f30",
-      "sizeBytes": 5628
+      "hash": "sha256:a4e6f5f400ff37c90100dd67e432ad7427ad0b6c55d95220c242cb9c7d04f653",
+      "sizeBytes": 5913
     },
     {
       "path": "src/modules/identity/infrastructure/password-credential.repository.spec.ts",
@@ -23345,8 +23641,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:7ea47c5c4981fadf957da466c7913977a349b13b97b50b5babc6318a81e278ac",
-      "sizeBytes": 4735
+      "hash": "sha256:734899335d5b64b839f29c660ed76bb3e6cd4b1fd333c2d92269a515ea6c3c15",
+      "sizeBytes": 4812
     },
     {
       "path": "src/modules/identity/lib/identity.mapper.ts",
@@ -23390,8 +23686,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/lib/identity.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:4d8708ef809b6db9d1dd5c578ac7e5aaf34cbf32d1a936ce0432cac9bab01796",
-      "sizeBytes": 3796
+      "hash": "sha256:182346a1102e1db6d0fbfd3f71a673685ee3acb72a5159469851356632e9bbce",
+      "sizeBytes": 3890
     },
     {
       "path": "src/modules/identity/lib/membership-payload.mapper.spec.ts",
@@ -23603,6 +23899,14 @@
         },
         {
           "kind": "const",
+          "name": "INVITATION_EXPIRY_JOB_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "INVITATION_EXPIRY_INTERVAL_MS"
+        },
+        {
+          "kind": "const",
           "name": "MILLISECONDS_PER_SECOND"
         },
         {
@@ -23709,8 +24013,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:5fafaca070d56e492b0b460fdd8996d387b60cdc3273cba745f1ee9d9ab39cc0",
-      "sizeBytes": 5077
+      "hash": "sha256:4f946bed405715b138afa3e097cc6bf5e54a23a62cd141c3416e60ef22eb00ae",
+      "sizeBytes": 5437
     },
     {
       "path": "src/modules/identity/model/identity.enums.ts",
@@ -23803,8 +24107,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:47bbadc330b8bda898ff40aacfd2285a92ab654313e52094f400f4f92ef85212",
-      "sizeBytes": 2067
+      "hash": "sha256:552f26fe0560ffbc5c3be14d911ae99e37f1a4b86daf8b5f081f0b95931d92a8",
+      "sizeBytes": 2138
     },
     {
       "path": "src/modules/identity/model/identity.types.ts",
@@ -23972,8 +24276,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1418a72216f2ec55d67d73367049c8e1dc657845345daa75b348cb0a38274c40",
-      "sizeBytes": 8419
+      "hash": "sha256:d18344750055059501044706d25de0559b61e3c4e56fcb2d669c6bc75fe162bd",
+      "sizeBytes": 9237
     },
     {
       "path": "src/modules/identity/model/invitation-email.constants.ts",
@@ -35483,6 +35787,35 @@
       "sizeBytes": 794
     },
     {
+      "path": "src/modules/platform/adapters/outbox-dispatch.job.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4b468dc5f8cf241264778d2ab946bfd7d5e0b4ad4ec08a5912cfcb7c82bb1ff9",
+      "sizeBytes": 1093
+    },
+    {
+      "path": "src/modules/platform/adapters/outbox-dispatch.job.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "OutboxDispatchJob"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/adapters/outbox-dispatch.job.spec.ts",
+      "kind": "source",
+      "hash": "sha256:04ce10fdbafae292bc44bc91f3015deb853702d2bfb1cecbfcd33a894a264832",
+      "sizeBytes": 1153
+    },
+    {
       "path": "src/modules/platform/api/audit.controller.ts",
       "root": "modules",
       "module": "platform",
@@ -35536,6 +35869,65 @@
       "kind": "source",
       "hash": "sha256:0fd015b9d77e9da6d8b27db56ee39ea1d283630c60092cbf981554eac121046b",
       "sizeBytes": 1481
+    },
+    {
+      "path": "src/modules/platform/api/dto/dead-letter-response.dto.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DeadLetterResponseDto"
+        },
+        {
+          "kind": "class",
+          "name": "DeadLetterListResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cd90bff6f1eaf217a2ca6e07470330d5a136f25155d33011da8d0834fd17af7c",
+      "sizeBytes": 1050
+    },
+    {
+      "path": "src/modules/platform/api/dto/jobs-health-response.dto.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "JobHealthResponseDto"
+        },
+        {
+          "kind": "class",
+          "name": "JobHealthListResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5d542642e91895c5e171e5d05de535f1f4a3517fe0cab268037467b226074192",
+      "sizeBytes": 837
+    },
+    {
+      "path": "src/modules/platform/api/dto/list-dead-letters.query.dto.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListDeadLettersQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a930baf131d81cdd8e918103dac4966607b2cfcbaf908008abb2feea677d984e",
+      "sizeBytes": 805
     },
     {
       "path": "src/modules/platform/api/dto/list-notifications.query.dto.ts",
@@ -35669,6 +36061,23 @@
       "sizeBytes": 640
     },
     {
+      "path": "src/modules/platform/api/jobs-admin.controller.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "JobsAdminController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:00c960475c6291ca546d99eeac9fcc400e6dd53812ec69bf38bbfe38590030af",
+      "sizeBytes": 1186
+    },
+    {
       "path": "src/modules/platform/api/notifications.controller.ts",
       "root": "modules",
       "module": "platform",
@@ -35699,8 +36108,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:e25c8d5824cabf5053d4b660062f79e6104b4d0923b42eece50da8ff8de1c4d0",
-      "sizeBytes": 1958
+      "hash": "sha256:ee64c82c19fe6a7acf0d0cace49ef284a637c849074da2a323f877f77a5402b3",
+      "sizeBytes": 2894
     },
     {
       "path": "src/modules/platform/application/audit-query.service.spec.ts",
@@ -35761,6 +36170,35 @@
       "sizeBytes": 1408
     },
     {
+      "path": "src/modules/platform/application/dead-letter-query.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e8cd07132a07f9294135ccbb66041ccb482fa506d14c0331bd6b86d0831e8746",
+      "sizeBytes": 1834
+    },
+    {
+      "path": "src/modules/platform/application/dead-letter-query.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "DeadLetterQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/dead-letter-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:da643718739f8b8d078613694c8095a85cc855fd001e42c24a7dd3fa2180b515",
+      "sizeBytes": 1305
+    },
+    {
       "path": "src/modules/platform/application/idempotency.service.spec.ts",
       "root": "modules",
       "module": "platform",
@@ -35788,6 +36226,93 @@
       "kind": "source",
       "hash": "sha256:dc49b9193babe995fe4b5088274ad8ca8e19f26c58e1683596ab1ac69a59c6e1",
       "sizeBytes": 2645
+    },
+    {
+      "path": "src/modules/platform/application/job-registry.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7a999dfc551f034528d394e6c9ecad078d2a3c511e1c26e1a3ab8854d453c499",
+      "sizeBytes": 1019
+    },
+    {
+      "path": "src/modules/platform/application/job-registry.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "JobRegistryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/job-registry.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:4ee5cb0fac1334bb685e55e297670dccbaf4cc90464de290d735616d2c41291b",
+      "sizeBytes": 1102
+    },
+    {
+      "path": "src/modules/platform/application/job-scheduler.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:c9b48ae333bbf5e76e861e6fdf61716a8ead1392e8e301dfe7399a9507412611",
+      "sizeBytes": 4228
+    },
+    {
+      "path": "src/modules/platform/application/job-scheduler.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "JobSchedulerService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/job-scheduler.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8d1a711609aa4ceee8964379574d4e9b1e359005418151a237d108be08f935ee",
+      "sizeBytes": 2992
+    },
+    {
+      "path": "src/modules/platform/application/jobs-health.service.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e3519b5fe1757e44ffded0a45627b46a5f7f221bf5cd5f884cd1c5d515d8a706",
+      "sizeBytes": 2895
+    },
+    {
+      "path": "src/modules/platform/application/jobs-health.service.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "JobsHealthService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/application/jobs-health.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:964399ec07b6e2372dac75e63c67a2ee0d9cab9fd8f6f87d0553368bad1bd694",
+      "sizeBytes": 2176
     },
     {
       "path": "src/modules/platform/application/list-notifications.service.spec.ts",
@@ -36109,6 +36634,35 @@
       "sizeBytes": 1080
     },
     {
+      "path": "src/modules/platform/domain/job-health.policy.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6b271665bd22e8110f9b35c54cf6026be3b06744d591816dd2ebf9e7bdbd98f9",
+      "sizeBytes": 1878
+    },
+    {
+      "path": "src/modules/platform/domain/job-health.policy.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "resolveJobStatus"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/domain/job-health.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8767272737241e9fb990dec1e9fec358d643c77cbef99f96d00c8290794929ff",
+      "sizeBytes": 1180
+    },
+    {
       "path": "src/modules/platform/domain/notification-quiet-hours.policy.spec.ts",
       "root": "modules",
       "module": "platform",
@@ -36361,8 +36915,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d627c0c90d0287a3d096e9b68ffdfe900dc51286cec88405680e95fd58fdb38d",
-      "sizeBytes": 741
+      "hash": "sha256:002e6b48294aa3a6cfe1a0ab2d6be248d4f1e2ba68668361c93031dbbb94cd44",
+      "sizeBytes": 850
     },
     {
       "path": "src/modules/platform/infrastructure/audit-log.repository.spec.ts",
@@ -36421,6 +36975,35 @@
       "kind": "source",
       "hash": "sha256:862458587e25dc5c460e07b25980086871f97378d893c31e32fc7e36cd99d2c9",
       "sizeBytes": 2373
+    },
+    {
+      "path": "src/modules/platform/infrastructure/job-heartbeat.repository.spec.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e8e36b8a8a36776a97a53dcc4404d4c92e04b5863c58577354bddf532694315f",
+      "sizeBytes": 2418
+    },
+    {
+      "path": "src/modules/platform/infrastructure/job-heartbeat.repository.ts",
+      "root": "modules",
+      "module": "platform",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "JobHeartbeatRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/platform/infrastructure/job-heartbeat.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:943b635dcb55a545a200d2e5fcbc67781d7f5ca96cbc6ce2d2b54dcef6cbdbf6",
+      "sizeBytes": 1813
     },
     {
       "path": "src/modules/platform/infrastructure/notification-audience.repository.spec.ts",
@@ -36576,8 +37159,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:5c3ce3d0c084c5c01841a503da66f87e06c52538c5d6ff527389ef5789940250",
-      "sizeBytes": 3539
+      "hash": "sha256:113fd5c6f4a48167fd2e687ef453089f0094c23a9435f64e7092e900fa978c21",
+      "sizeBytes": 4920
     },
     {
       "path": "src/modules/platform/infrastructure/outbox.repository.ts",
@@ -36593,8 +37176,8 @@
       "hasSpec": true,
       "specPath": "src/modules/platform/infrastructure/outbox.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:c1e12909826ebf85573f8ddb1d697b5b52a575ae7978c620dd566cb3132aed80",
-      "sizeBytes": 4754
+      "hash": "sha256:a5de3ac6a6ca2ceefa15743b52392b8231aacedc5073c322f5cc8566c2600f7f",
+      "sizeBytes": 6139
     },
     {
       "path": "src/modules/platform/lib/platform.helpers.spec.ts",
@@ -36645,13 +37228,17 @@
         {
           "kind": "function",
           "name": "parseNotificationChannel"
+        },
+        {
+          "kind": "function",
+          "name": "parseJobOutcome"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/platform/lib/platform.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:fcba460af08c0b00772e79af28f774b17690660310df1f3d87d37875996254c1",
-      "sizeBytes": 2433
+      "hash": "sha256:feb071ccdde8b4ba7945f27c0987eb8e56c9d752a538ee7b66c8e57af7b2ccb5",
+      "sizeBytes": 2591
     },
     {
       "path": "src/modules/platform/lib/platform.mapper.spec.ts",
@@ -36662,8 +37249,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:efa143873465defc07ea78d0ff169ab20fdee11d42ab897579cea101163eb8ab",
-      "sizeBytes": 4391
+      "hash": "sha256:8bdb4aca7eb9d7c031f00fcd0caca065d628f7c78df75130ef1c710b5041d5fe",
+      "sizeBytes": 5576
     },
     {
       "path": "src/modules/platform/lib/platform.mapper.ts",
@@ -36697,6 +37284,18 @@
         },
         {
           "kind": "function",
+          "name": "toFailureCode"
+        },
+        {
+          "kind": "function",
+          "name": "toDeadLetter"
+        },
+        {
+          "kind": "function",
+          "name": "toJobHeartbeat"
+        },
+        {
+          "kind": "function",
           "name": "toNotificationView"
         },
         {
@@ -36707,8 +37306,8 @@
       "hasSpec": true,
       "specPath": "src/modules/platform/lib/platform.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:528f82d4d21d88e31e7fdaa2415eb210d91ec23635fad1de04aacdfe05a395f7",
-      "sizeBytes": 4065
+      "hash": "sha256:4a7cf3d0cf52beabc01bbcd3d9393ae8c3d69e352c24dc757c74d1dc287d36c3",
+      "sizeBytes": 5167
     },
     {
       "path": "src/modules/platform/model/platform.constants.ts",
@@ -36723,6 +37322,10 @@
         {
           "kind": "const",
           "name": "OUTBOX_EVENT_HANDLER_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "SCHEDULED_JOB_PORT"
         },
         {
           "kind": "const",
@@ -36767,6 +37370,22 @@
         {
           "kind": "const",
           "name": "OUTBOX_REPLAY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_DEAD_LETTERS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "JOBS_ADMIN_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "JOBS_ADMIN_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "JOBS_HEALTH_ROUTE"
         },
         {
           "kind": "const",
@@ -36859,6 +37478,26 @@
         {
           "kind": "const",
           "name": "OUTBOX_BACKOFF_CAP_MS"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_DISPATCH_JOB_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "OUTBOX_DISPATCH_INTERVAL_MS"
+        },
+        {
+          "kind": "const",
+          "name": "JOB_STALL_FACTOR"
+        },
+        {
+          "kind": "const",
+          "name": "FAILURE_CODE_HANDLER_FAILED"
+        },
+        {
+          "kind": "const",
+          "name": "FAILURE_CODE_UNKNOWN"
         },
         {
           "kind": "const",
@@ -37046,6 +37685,10 @@
         },
         {
           "kind": "const",
+          "name": "JOB_HEARTBEAT_COLUMNS"
+        },
+        {
+          "kind": "const",
           "name": "IDEMPOTENCY_CONFLICT_MESSAGE"
         },
         {
@@ -37079,13 +37722,21 @@
         {
           "kind": "const",
           "name": "OUTBOX_HANDLER_FAILED_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "JOB_RUN_FAILED_LOG"
+        },
+        {
+          "kind": "const",
+          "name": "JOB_HEARTBEAT_FAILED_LOG"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:3b3163bbff5d3eb29885517ccad080c2e09a6f857c2a9a95f7f82d230fb0e038",
-      "sizeBytes": 12797
+      "hash": "sha256:37690a71f8a31a6987a83774ac9e4fa65f4cbe0bbdab507a391e01961f26dad5",
+      "sizeBytes": 14108
     },
     {
       "path": "src/modules/platform/model/platform.enums.ts",
@@ -37148,13 +37799,29 @@
         {
           "kind": "const",
           "name": "DELIVERY_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "JobOutcome"
+        },
+        {
+          "kind": "const",
+          "name": "JOB_OUTCOME_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "JobStatus"
+        },
+        {
+          "kind": "const",
+          "name": "JOB_STATUS_VALUES"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:41aa12affaef8f015b1ceeef38338f50611d01f40052a86351b730ed9dfa6058",
-      "sizeBytes": 2476
+      "hash": "sha256:0dbbfd3d79cc3ee190952ac5cf8a777a53479a65890bf8c611ef603fc3254709",
+      "sizeBytes": 2966
     },
     {
       "path": "src/modules/platform/model/platform.rows.ts",
@@ -37205,13 +37872,25 @@
         {
           "kind": "interface",
           "name": "StatusCountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "DeadLetterRow"
+        },
+        {
+          "kind": "interface",
+          "name": "DeadLetterCountRow"
+        },
+        {
+          "kind": "interface",
+          "name": "JobHeartbeatRow"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:026ebe2e3ec3aae08148ab8b6f58468c25e0c7dccf77513e5883c59c4275db22",
-      "sizeBytes": 2832
+      "hash": "sha256:9a77bcfd679a705163ccb0ea1dc5cdc4a6a98b4ce9165566929dad04a5b6dcd4",
+      "sizeBytes": 3552
     },
     {
       "path": "src/modules/platform/model/platform.types.ts",
@@ -37261,6 +37940,10 @@
         },
         {
           "kind": "interface",
+          "name": "DeadLetter"
+        },
+        {
+          "kind": "interface",
           "name": "OutboxBatchResult"
         },
         {
@@ -37270,6 +37953,30 @@
         {
           "kind": "interface",
           "name": "OutboxEventHandlerPort"
+        },
+        {
+          "kind": "interface",
+          "name": "ScheduledJob"
+        },
+        {
+          "kind": "interface",
+          "name": "ScheduledJobRegistryPort"
+        },
+        {
+          "kind": "interface",
+          "name": "JobHeartbeat"
+        },
+        {
+          "kind": "interface",
+          "name": "JobHeartbeatInput"
+        },
+        {
+          "kind": "interface",
+          "name": "JobHealth"
+        },
+        {
+          "kind": "interface",
+          "name": "JobHealthList"
         },
         {
           "kind": "interface",
@@ -37347,8 +38054,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:2a8dfae84ce07d71cb889bcec1425ddd4ed07ea536528760e4e7aad375b67dd8",
-      "sizeBytes": 9707
+      "hash": "sha256:f50f9ca55b63b21858d7cd1c86727694d4c4d16cd2889995478f1e64d896308a",
+      "sizeBytes": 11784
     },
     {
       "path": "src/modules/platform/platform.module.ts",
@@ -37364,8 +38071,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:59b744a7aba1725ee19ed2fe372122ce9d8a0002eedb0838fb5b2db21bbd0e20",
-      "sizeBytes": 3979
+      "hash": "sha256:2cbab62b7261974f0530177f64ecb9c9e662f5a3c2897e6169245b5182b05773",
+      "sizeBytes": 4791
     },
     {
       "path": "src/modules/points/api/dto/category-contribution-response.dto.ts",
@@ -46934,6 +47641,27 @@
       "sizeBytes": 554
     },
     {
+      "path": "src/modules/rbac/api/dto/assignable-roles-response.dto.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssignableRoleEntryDto"
+        },
+        {
+          "kind": "class",
+          "name": "AssignableRolesResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:569f83524ad462fd697c079f281a3cb2025689738dd6de5499ac11d42d61c8c0",
+      "sizeBytes": 796
+    },
+    {
       "path": "src/modules/rbac/api/dto/effective-permissions-response.dto.ts",
       "root": "modules",
       "module": "rbac",
@@ -46966,6 +47694,40 @@
       "kind": "source",
       "hash": "sha256:9e659edbe31718732888882d22ee84cb57edb167baa53d19cc0d00c4008b0a3c",
       "sizeBytes": 490
+    },
+    {
+      "path": "src/modules/rbac/api/dto/promote-super-admin.dto.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PromoteSuperAdminDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9a9a6092fdc9cf19db435c2a28df39a74f3e63b6b462b7aa24b16a4e3685e1c6",
+      "sizeBytes": 750
+    },
+    {
+      "path": "src/modules/rbac/api/dto/revoke-super-admin.dto.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RevokeSuperAdminDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:20d6d446057738f2be008d279ad1f530a39b13e711241a053a768a4a96b03238",
+      "sizeBytes": 613
     },
     {
       "path": "src/modules/rbac/api/dto/role-assignment-response.dto.ts",
@@ -47036,6 +47798,27 @@
       "sizeBytes": 395
     },
     {
+      "path": "src/modules/rbac/api/dto/super-admin-response.dto.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SuperAdminEntryDto"
+        },
+        {
+          "kind": "class",
+          "name": "SuperAdminListResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a4dbc4a345d8322176699fae66013f26fce493c553c288377b399df155b1e42f",
+      "sizeBytes": 880
+    },
+    {
       "path": "src/modules/rbac/api/dto/user-assignments-response.dto.ts",
       "root": "modules",
       "module": "rbac",
@@ -47053,6 +47836,23 @@
       "sizeBytes": 344
     },
     {
+      "path": "src/modules/rbac/api/platform-admins.controller.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PlatformAdminsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:95b59e8be389a372d0539711c7d1ce76fd335d8b07f944e95fb7dcb5e0d33610",
+      "sizeBytes": 3802
+    },
+    {
       "path": "src/modules/rbac/api/rbac.controller.ts",
       "root": "modules",
       "module": "rbac",
@@ -47066,8 +47866,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:5e78af549e3a3d3c82ded1a4db46c9c4fa4dd9148b52952a842df479693b27a8",
-      "sizeBytes": 5205
+      "hash": "sha256:6b798b58ac4769bff288c4e1a458f7ffcc2672fc762f61d81575d5b910b973a4",
+      "sizeBytes": 6183
     },
     {
       "path": "src/modules/rbac/application/assign-role.use-case.spec.ts",
@@ -47078,8 +47878,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:288bb399925f414e7c8058200dec58f6bfd7540d92e58b1a2d3109efaf86b81f",
-      "sizeBytes": 3250
+      "hash": "sha256:36972fb1e4c136f86dc8b2c309f1579561e78b1746ecd3a3bd1e789b9bae7c64",
+      "sizeBytes": 4456
     },
     {
       "path": "src/modules/rbac/application/assign-role.use-case.ts",
@@ -47095,8 +47895,8 @@
       "hasSpec": true,
       "specPath": "src/modules/rbac/application/assign-role.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:c9785c393576122c50763421eb8f343854efe9fca022beca41569151e9690417",
-      "sizeBytes": 3571
+      "hash": "sha256:72a9981bc900508d2b85e7405118b31481b7d38b78279bca88843a203d3fdd59",
+      "sizeBytes": 3959
     },
     {
       "path": "src/modules/rbac/application/ensure-role-assignment.service.spec.ts",
@@ -47107,8 +47907,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:1bb733f264f51ccdf717bd5e5b63252c601f9077e2505da080072bf4a26a0fd9",
-      "sizeBytes": 4139
+      "hash": "sha256:164dc1b61505ac32fe437891db1167a4530461d26344c570dd38ee3a20482a16",
+      "sizeBytes": 7608
     },
     {
       "path": "src/modules/rbac/application/ensure-role-assignment.service.ts",
@@ -47124,8 +47924,8 @@
       "hasSpec": true,
       "specPath": "src/modules/rbac/application/ensure-role-assignment.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:6b0fedf415e94270566e0906494447181cd1d9f91e82446b36c0a42fd421c4e2",
-      "sizeBytes": 3449
+      "hash": "sha256:7aa6958439532a98813134324873c443d2b72b877bbe409661595a6ef4284456",
+      "sizeBytes": 4703
     },
     {
       "path": "src/modules/rbac/application/get-effective-permissions.use-case.spec.ts",
@@ -47155,6 +47955,35 @@
       "kind": "source",
       "hash": "sha256:8a897a390130e808611aabfe765e76c90f2af870029388217d3bf774c57069d4",
       "sizeBytes": 1094
+    },
+    {
+      "path": "src/modules/rbac/application/list-super-admins.use-case.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5f83d5eb929da2fa32e5e9ece87e66d3f33b36e4d393c8fa556e4653151d1b4c",
+      "sizeBytes": 1942
+    },
+    {
+      "path": "src/modules/rbac/application/list-super-admins.use-case.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListSuperAdminsUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/list-super-admins.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:dca36dba7d5fb2a208c779399684527d0409c474748d63f80160594c8a0cb8bb",
+      "sizeBytes": 1368
     },
     {
       "path": "src/modules/rbac/application/list-user-assignments.use-case.spec.ts",
@@ -47215,6 +48044,35 @@
       "sizeBytes": 2402
     },
     {
+      "path": "src/modules/rbac/application/promote-super-admin.use-case.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5d0e6990533479f2a3f0f4f18e8a0cb09f2cf313d9e0c8d25519608a1ab3869e",
+      "sizeBytes": 4174
+    },
+    {
+      "path": "src/modules/rbac/application/promote-super-admin.use-case.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PromoteSuperAdminUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/promote-super-admin.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:34721b6f3e253b49345c3053db5273546b714a000f3561af62c595af57b86a6f",
+      "sizeBytes": 4297
+    },
+    {
       "path": "src/modules/rbac/application/rbac-permission-resolver.service.spec.ts",
       "root": "modules",
       "module": "rbac",
@@ -47252,8 +48110,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:d59158014270926dff06843b9fd18b2db4a70c3796f02ecec2e125f207e438a8",
-      "sizeBytes": 5383
+      "hash": "sha256:f9dd1a126dd69ffc38d16490eed0f1085db4e82116e2fe2b9c5ad0043ebb3938",
+      "sizeBytes": 6003
     },
     {
       "path": "src/modules/rbac/application/replace-team-roles.use-case.ts",
@@ -47269,8 +48127,8 @@
       "hasSpec": true,
       "specPath": "src/modules/rbac/application/replace-team-roles.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:fead87fff8cf9299bf3d8d533d7aca5b9a3c84ba136198f0636d817252821d8a",
-      "sizeBytes": 5204
+      "hash": "sha256:9ebf36412ff3bc1536dc2389b8ea389cdb8163e3b2214444f994021c2c963e08",
+      "sizeBytes": 5424
     },
     {
       "path": "src/modules/rbac/application/revoke-role-assignment.use-case.spec.ts",
@@ -47300,6 +48158,35 @@
       "kind": "source",
       "hash": "sha256:7a4bb8c6203c9ccb40ef273f4c9e7a7f35c8d1658b130ec49c660255a8eed8bb",
       "sizeBytes": 3077
+    },
+    {
+      "path": "src/modules/rbac/application/revoke-super-admin.use-case.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4e360286e152853462c0978ced28e3fd49ac39d47a2dade740ca464899bcba9d",
+      "sizeBytes": 3928
+    },
+    {
+      "path": "src/modules/rbac/application/revoke-super-admin.use-case.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RevokeSuperAdminUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/revoke-super-admin.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:347e14a6cb56c1120545e322f136e9fbc5b98762635a6c5612321b929e7b0af2",
+      "sizeBytes": 3271
     },
     {
       "path": "src/modules/rbac/application/role-assignment-query.service.spec.ts",
@@ -47368,8 +48255,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:89be3c7d4d183c5a3ac3859dd0ec59c75c37b043465c3d270ba12036f3883f12",
-      "sizeBytes": 2712
+      "hash": "sha256:3b11a2ca24e2ffe41381e55653a63afb90445ae0820036924751019bfe72ae9b",
+      "sizeBytes": 4642
     },
     {
       "path": "src/modules/rbac/application/team-role-query.service.ts",
@@ -47385,8 +48272,8 @@
       "hasSpec": true,
       "specPath": "src/modules/rbac/application/team-role-query.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:923ab2d6d5c3375bebcda1e857db16b2cfc027e2110c95edaf9d454a6bad5ede",
-      "sizeBytes": 2616
+      "hash": "sha256:8229d937405e74508cf480b1661adcf594686e7bd8427ba02cf1e02db70a3fdc",
+      "sizeBytes": 3465
     },
     {
       "path": "src/modules/rbac/domain/assignment-window.policy.spec.ts",
@@ -47517,6 +48404,35 @@
       "sizeBytes": 1223
     },
     {
+      "path": "src/modules/rbac/domain/role-protection.policy.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:683ff9b4d0ac24815d94c9ca2df98620dface25bad89f29ce401a57341861aba",
+      "sizeBytes": 1001
+    },
+    {
+      "path": "src/modules/rbac/domain/role-protection.policy.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isProtectedRole"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/domain/role-protection.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:485f8884165363c5d3e6ec9aaf5406e82c5d62c159f34262dfd5e9f775eb7c5c",
+      "sizeBytes": 680
+    },
+    {
       "path": "src/modules/rbac/domain/role-set-diff.policy.spec.ts",
       "root": "modules",
       "module": "rbac",
@@ -47544,6 +48460,35 @@
       "kind": "source",
       "hash": "sha256:c22b7fedc8aeb025c5b6fe7f1f816d083deca31065dcc2dc1946691b77a3a20e",
       "sizeBytes": 858
+    },
+    {
+      "path": "src/modules/rbac/domain/super-admin-guard.policy.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5e4c4df717c21f3eeac501fd116dc9dea110e209fea27e596f3ce94e810ab1bb",
+      "sizeBytes": 817
+    },
+    {
+      "path": "src/modules/rbac/domain/super-admin-guard.policy.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "assertNotLastSuperAdmin"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/domain/super-admin-guard.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:e5fb87629789629f663a5a411f1fda862450c2eba8988a541d7525bb764c3c36",
+      "sizeBytes": 608
     },
     {
       "path": "src/modules/rbac/errors/assignment-not-found.error.spec.ts",
@@ -47604,6 +48549,64 @@
       "sizeBytes": 585
     },
     {
+      "path": "src/modules/rbac/errors/last-super-admin.error.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:9d7fdabcc2f28796385c4c18d1ec7d5d8be83613154efa365c875152cf2db0aa",
+      "sizeBytes": 516
+    },
+    {
+      "path": "src/modules/rbac/errors/last-super-admin.error.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "LastSuperAdminError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/errors/last-super-admin.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:ff4644231e022c2ece53ecca31e180a3fbbbb326efc9b3fa68188ac4da7dc837",
+      "sizeBytes": 624
+    },
+    {
+      "path": "src/modules/rbac/errors/protected-role.error.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1e2c4764ab337c2b07761ebd55511bdd272292feda3924c68b8df0c0264f0e4e",
+      "sizeBytes": 506
+    },
+    {
+      "path": "src/modules/rbac/errors/protected-role.error.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ProtectedRoleError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/errors/protected-role.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:0651e98e4b72ac8695ac3f1143690aa1f9933e2d08551af2c8917a9fbe57cc5b",
+      "sizeBytes": 610
+    },
+    {
       "path": "src/modules/rbac/errors/role-not-found.error.spec.ts",
       "root": "modules",
       "module": "rbac",
@@ -47633,6 +48636,35 @@
       "sizeBytes": 401
     },
     {
+      "path": "src/modules/rbac/errors/user-not-eligible.error.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:949d888bd1926bc9e3dd0a21d0892b9819dabf52547943769a1559b7cc4ee3b0",
+      "sizeBytes": 523
+    },
+    {
+      "path": "src/modules/rbac/errors/user-not-eligible.error.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "UserNotEligibleError"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/errors/user-not-eligible.error.spec.ts",
+      "kind": "source",
+      "hash": "sha256:13aede2b1126bc21997d98d5f5e45ea6f0b8d4e425cbfe0c304a7fcf77084392",
+      "sizeBytes": 533
+    },
+    {
       "path": "src/modules/rbac/index.ts",
       "root": "modules",
       "module": "rbac",
@@ -47641,8 +48673,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:db8be4938012e2d6dade77a60013d7969dd6fb13911ff25f5690119b733ad034",
-      "sizeBytes": 684
+      "hash": "sha256:815744040f1912e50a6923e323e941a5aefcb114913732f257fe12316425f714",
+      "sizeBytes": 998
     },
     {
       "path": "src/modules/rbac/infrastructure/rbac.repository.spec.ts",
@@ -47653,8 +48685,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:a5291b1f02551fc07c1a8be45c49f2d90c0db0bddf9cda8e196326aa4e46a1d2",
-      "sizeBytes": 10037
+      "hash": "sha256:826b37d14175ac0a7cc7073bb5ff812a3c3625b3b62bfdddc9e2e9ac570743ff",
+      "sizeBytes": 13419
     },
     {
       "path": "src/modules/rbac/infrastructure/rbac.repository.ts",
@@ -47670,8 +48702,37 @@
       "hasSpec": true,
       "specPath": "src/modules/rbac/infrastructure/rbac.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:95ba65969b96106dc02767e902bbd84e46eb4a3a08505e2efdb812464c8bef14",
-      "sizeBytes": 10700
+      "hash": "sha256:c68a43f7a1df849d93bd53706fe35e2fc46f224fa84a08a711e72eb21f5a8715",
+      "sizeBytes": 14383
+    },
+    {
+      "path": "src/modules/rbac/lib/assignable-roles.mapper.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:26298d7b5b0aced76d5c744d6feed81e7e5b2e9a743a0b90f6f930adb65cd6ad",
+      "sizeBytes": 2068
+    },
+    {
+      "path": "src/modules/rbac/lib/assignable-roles.mapper.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toAssignableRoleEntries"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/lib/assignable-roles.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d632f03b00589d8477bb8a5d3bb736ed2edad1dd1a47e01e9abf88ab7bd78561",
+      "sizeBytes": 1182
     },
     {
       "path": "src/modules/rbac/lib/rbac.helpers.spec.ts",
@@ -47752,8 +48813,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:85eed52b082e8e24b78acdd50a0ce5d3c9714e111147c08394105a75f3b1f0ad",
-      "sizeBytes": 2903
+      "hash": "sha256:4785f6936f0e047f8c5ecb8c521c7af84108e60073d104eed0b0618e8d64bff5",
+      "sizeBytes": 2996
     },
     {
       "path": "src/modules/rbac/lib/role-matrix.mapper.ts",
@@ -47789,8 +48850,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:0cd22ef92abe8e58e92cbcf3c8fe60fc9fd1264c67a65500b07482f665b15f0b",
-      "sizeBytes": 1048
+      "hash": "sha256:c4ea05846bcaefc68d272e125008849f7ab6662ab02b408075595dee77c75d7c",
+      "sizeBytes": 1280
     },
     {
       "path": "src/modules/rbac/lib/role-slug.mapper.ts",
@@ -47805,13 +48866,17 @@
         {
           "kind": "function",
           "name": "toRoleKey"
+        },
+        {
+          "kind": "function",
+          "name": "toOpenRoleKey"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/rbac/lib/role-slug.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:7cbe79965b1fedb61575f38f8f200bf3be6b56b69700e0754f985aec19af5e5c",
-      "sizeBytes": 855
+      "hash": "sha256:c1a24688133e19f4c76c9d3601fccd34e54ec7660cb58fe88739c4c39c411d60",
+      "sizeBytes": 1243
     },
     {
       "path": "src/modules/rbac/model/rbac.constants.ts",
@@ -47849,11 +48914,39 @@
         },
         {
           "kind": "const",
+          "name": "RBAC_ASSIGNABLE_ROLES_ROUTE"
+        },
+        {
+          "kind": "const",
           "name": "RBAC_ASSIGNMENT_ID_PARAM"
         },
         {
           "kind": "const",
           "name": "RBAC_USER_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_TEAM_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_PLATFORM_ADMINS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_PLATFORM_ADMIN_BY_USER_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_PLATFORM_ADMINS_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "ROLE_SLUG_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "ROLE_SLUG_MAX_LENGTH"
         },
         {
           "kind": "const",
@@ -47870,6 +48963,34 @@
         {
           "kind": "const",
           "name": "RBAC_ROLE_REVOKED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_SUPER_ADMIN_PROMOTED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_SUPER_ADMIN_REVOKED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_TEAM_ROLE_SCOPE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_PLATFORM_ROLE_SCOPE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_REASON_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_REASON_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_SUPER_ADMIN_LIST_MAX"
         },
         {
           "kind": "const",
@@ -47897,6 +49018,30 @@
         },
         {
           "kind": "const",
+          "name": "RBAC_PROTECTED_ROLE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_PROTECTED_ROLE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_LAST_SUPER_ADMIN_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_LAST_SUPER_ADMIN_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_USER_NOT_ELIGIBLE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RBAC_USER_NOT_ELIGIBLE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
           "name": "RBAC_ROLE_CATALOG_MAX"
         },
         {
@@ -47911,8 +49056,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:eabe36953f1a6a1ee42a111634eea280078933d325bb633ec8856186face6e4d",
-      "sizeBytes": 2643
+      "hash": "sha256:86587172a43ca5402248e69e4a90fb017d811f95102795e52ceb3c516dbbce45",
+      "sizeBytes": 4989
     },
     {
       "path": "src/modules/rbac/model/rbac.enums.ts",
@@ -47967,6 +49112,10 @@
         },
         {
           "kind": "interface",
+          "name": "AssignmentCountRow"
+        },
+        {
+          "kind": "interface",
           "name": "RoleCatalogRow"
         },
         {
@@ -47976,13 +49125,17 @@
         {
           "kind": "interface",
           "name": "RoleDefinitionRow"
+        },
+        {
+          "kind": "interface",
+          "name": "SuperAdminAssignmentRow"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ff0d8623d108b4f5df4be061cc3acc5d734dad469e580ee1eebb5aff7325489a",
-      "sizeBytes": 1767
+      "hash": "sha256:6b0342fd4ba0db168b8d249b4013dc028c0b30a44222b4b34abb385d9add6eae",
+      "sizeBytes": 2320
     },
     {
       "path": "src/modules/rbac/model/rbac.types.ts",
@@ -48040,6 +49193,14 @@
         },
         {
           "kind": "interface",
+          "name": "AssignableRoleEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "AssignableRolesView"
+        },
+        {
+          "kind": "interface",
           "name": "RoleMatrixRole"
         },
         {
@@ -48061,13 +49222,25 @@
         {
           "kind": "interface",
           "name": "RoleSetDiff"
+        },
+        {
+          "kind": "interface",
+          "name": "SuperAdminEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "SuperAdminListView"
+        },
+        {
+          "kind": "interface",
+          "name": "PromoteSuperAdminCommand"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:34a9af4ea443be3de4c98bf32d6bf43f904a55713e0249eb37e88c6a1cda06f2",
-      "sizeBytes": 5217
+      "hash": "sha256:59d77d9884b5116d9ffe22be5c8cc1ec5d57d2157d69a644b87df92bc58ce1df",
+      "sizeBytes": 6570
     },
     {
       "path": "src/modules/rbac/rbac.module.ts",
@@ -48083,8 +49256,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6c76951c124d38c05a0af7589716a9d468a61d8da7ac7174094a5358ee20b1d1",
-      "sizeBytes": 2565
+      "hash": "sha256:a2440168dc52ecf603a2975d625ac738149fad66952d1e197e2fe0a6e22b2145",
+      "sizeBytes": 3010
     },
     {
       "path": "src/modules/reports/adapters/csv-xlsx-pdf-document.adapter.ts",
