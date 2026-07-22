@@ -56,12 +56,18 @@ export const TEAM_SEED_DEFINITION =
 // provisions the cast with, nor the number of personas' identities — so rotating
 // the credential never looks like a definition change. Bump the trailing version
 // when the seeder's behaviour changes.
+// v2: also inserts a member profile per persona membership so the member
+// directory (which lists profile data) is populated on a fresh database.
+// Already-seeded databases keep their v1 rows untouched (the framework logs the
+// definition change and never re-runs); the directory read model no longer
+// depends on profiles existing.
 export const PERSONAS_SEED_DEFINITION =
-  'personas-seeder:v1:' +
+  'personas-seeder:v2:' +
   'insert-persona-users;' +
   'upsert-persona-password-credentials;' +
   'insert-active-team-memberships;' +
   'append-membership-status-events;' +
+  'insert-member-profiles;' +
   'ensure-scoped-role-assignments;' +
   'insert-reference-catalog-entries;' +
   'insert-venues;' +

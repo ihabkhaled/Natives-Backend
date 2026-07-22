@@ -37,6 +37,7 @@ const INSERTED_INVITATION: Invitation = {
   email: 'coach@example.test',
   invitedBy: 'admin-1',
   role: 'admin' as Invitation['role'],
+  teamId: null,
   status: InvitationStatus.Pending,
   expiresAt: new Date(NOW.getTime() + 1000 * 1000),
   acceptedAt: null,
@@ -83,6 +84,7 @@ const COMMAND = {
   email: 'Coach@example.test',
   role: 'admin' as User['role'],
   invitedBy: 'admin-1',
+  teamId: null,
 };
 
 describe('CreateInvitationUseCase', () => {
@@ -99,6 +101,7 @@ describe('CreateInvitationUseCase', () => {
       id: INSERTED_INVITATION.id,
       email: INSERTED_INVITATION.email,
       role: INSERTED_INVITATION.role,
+      teamId: null,
       status: INSERTED_INVITATION.status,
       expiresAt: INSERTED_INVITATION.expiresAt,
       createdAt: INSERTED_INVITATION.createdAt,
@@ -111,6 +114,24 @@ describe('CreateInvitationUseCase', () => {
       COMMAND.invitedBy,
       { invitationId: INSERTED_INVITATION.id },
     );
+  });
+
+  it('persists the team scope a team-scoped command carries', async () => {
+    harness.invitations.insert.mockResolvedValue({
+      ...INSERTED_INVITATION,
+      teamId: 'team-1',
+    });
+
+    const result = await harness.useCase.execute({
+      ...COMMAND,
+      teamId: 'team-1',
+    });
+
+    expect(harness.invitations.insert).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ teamId: 'team-1' }),
+    );
+    expect(result.teamId).toBe('team-1');
   });
 
   it('emails the invitation automatically, with the token it returned', async () => {

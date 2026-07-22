@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T02:49:24.452Z",
+  "generatedAt": "2026-07-22T16:25:06.391Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -14517,6 +14517,21 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/identity/api/dto/create-team-invitation.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/create-team-invitation.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/create-team-invitation.dto.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/identity/api/dto/device-session-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -14812,6 +14827,46 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/api/team-invitations.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/team-invitations.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/team-invitations.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/team-invitations.controller.ts",
+      "to": "src/modules/identity/api/dto/create-team-invitation.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/team-invitations.controller.ts",
+      "to": "src/modules/identity/api/dto/invitation-delivery-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/team-invitations.controller.ts",
+      "to": "src/modules/identity/application/create-invitation.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/team-invitations.controller.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/team-invitations.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/identity/application/accept-invitation.use-case.ts",
       "to": "src/core/clock/clock.port.ts",
       "type": "cross-cutting"
@@ -14880,6 +14935,21 @@
       "from": "src/modules/identity/application/accept-invitation.use-case.ts",
       "to": "src/modules/identity/model/identity.types.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/modules/rbac/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/identity/application/create-invitation.use-case.ts",
@@ -15919,6 +15989,11 @@
     {
       "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/api/public-invitations.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/api/team-invitations.controller.ts",
       "type": "internal"
     },
     {
@@ -22107,6 +22182,51 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/members/application/claim-invited-memberships.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/claim-invited-memberships.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/members/application/claim-invited-memberships.service.ts",
+      "to": "src/modules/members/domain/membership-lifecycle.state-machine.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/claim-invited-memberships.service.ts",
+      "to": "src/modules/members/infrastructure/member-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/claim-invited-memberships.service.ts",
+      "to": "src/modules/members/infrastructure/membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/claim-invited-memberships.service.ts",
+      "to": "src/modules/members/infrastructure/status-event.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/claim-invited-memberships.service.ts",
+      "to": "src/modules/members/model/members.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/claim-invited-memberships.service.ts",
+      "to": "src/modules/members/model/members.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/application/claim-invited-memberships.service.ts",
+      "to": "src/modules/members/model/members.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/members/application/get-avatar.service.ts",
       "to": "src/core/clock/clock.port.ts",
       "type": "cross-cutting"
@@ -23088,6 +23208,11 @@
     },
     {
       "from": "src/modules/members/index.ts",
+      "to": "src/modules/members/application/claim-invited-memberships.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/index.ts",
       "to": "src/modules/members/application/member-dashboard-signals.service.ts",
       "type": "internal"
     },
@@ -23419,6 +23544,11 @@
     {
       "from": "src/modules/members/members.module.ts",
       "to": "src/modules/members/application/anonymize-member.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/members/members.module.ts",
+      "to": "src/modules/members/application/claim-invited-memberships.service.ts",
       "type": "internal"
     },
     {
@@ -33057,6 +33187,36 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "to": "src/modules/rbac/errors/role-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "to": "src/modules/rbac/infrastructure/rbac.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "to": "src/modules/rbac/model/rbac.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "to": "src/modules/rbac/model/rbac.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/rbac/application/get-effective-permissions.use-case.ts",
       "to": "src/core/auth/index.ts",
       "type": "cross-cutting"
@@ -33438,6 +33598,11 @@
     },
     {
       "from": "src/modules/rbac/index.ts",
+      "to": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/index.ts",
       "to": "src/modules/rbac/application/replace-team-roles.use-case.ts",
       "type": "internal"
     },
@@ -33564,6 +33729,11 @@
     {
       "from": "src/modules/rbac/rbac.module.ts",
       "to": "src/modules/rbac/application/assign-role.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/rbac/rbac.module.ts",
+      "to": "src/modules/rbac/application/ensure-role-assignment.service.ts",
       "type": "internal"
     },
     {

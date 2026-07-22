@@ -36,6 +36,7 @@ const INVITATION: Invitation = {
   email: 'invitee@example.test',
   invitedBy: 'admin-1',
   role: Role.User,
+  teamId: null,
   status: InvitationStatus.Pending,
   expiresAt: NOW,
   acceptedAt: null,
@@ -152,10 +153,17 @@ describe('toInvitationSummary', () => {
       id: 'inv-1',
       email: 'invitee@example.test',
       role: Role.User,
+      teamId: null,
       status: InvitationStatus.Pending,
       expiresAt: NOW,
       createdAt: NOW,
     });
+  });
+
+  it('carries the team scope of a team-scoped invitation', () => {
+    expect(
+      toInvitationSummary({ ...INVITATION, teamId: 'team-1' }).teamId,
+    ).toBe('team-1');
   });
 });
 
@@ -165,6 +173,7 @@ describe('toInvitationDelivery', () => {
       id: 'inv-1',
       email: 'invitee@example.test',
       role: Role.User,
+      teamId: null,
       status: InvitationStatus.Pending,
       expiresAt: NOW,
       createdAt: NOW,

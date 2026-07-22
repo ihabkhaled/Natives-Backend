@@ -98,6 +98,7 @@ export function toInvitationSummary(invitation: Invitation): InvitationSummary {
     id: invitation.id,
     email: invitation.email,
     role: invitation.role,
+    teamId: invitation.teamId,
     status: invitation.status,
     expiresAt: invitation.expiresAt,
     createdAt: invitation.createdAt,

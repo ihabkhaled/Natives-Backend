@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-22T02:49:24.452Z",
-  "treeHash": "sha256:7d7e30baf69a52e943151fb6486c5c025fcaa9f46a3ba2e6a6ea6ab41bb08b01",
+  "generatedAt": "2026-07-22T16:25:06.391Z",
+  "treeHash": "sha256:e5a26b24cbb7b7efb4b7cf5b9ea8079d99405ebae8456fdc908d89a15eb20959",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -89,8 +89,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9174bcd5cbd739e6eb94034eb078db80cb8292af933273fc08458f5bd734ef46",
-      "sizeBytes": 2776
+      "hash": "sha256:5839bb1425704ba7c5cc5b8f7b09d3bb38c7ae8596fbd1815380f5261802cc7c",
+      "sizeBytes": 2988
     },
     {
       "path": "src/bootstrap/bootstrap.ts",
@@ -3861,6 +3861,40 @@
       "sizeBytes": 5193
     },
     {
+      "path": "src/database/migrations/1724800000000-invitations-team-scope.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "InvitationsTeamScope1724800000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9669f3bee3a4b21944a4bcffb16c214c3c46ba661bf695041dc8233e86bc89e7",
+      "sizeBytes": 1435
+    },
+    {
+      "path": "src/database/migrations/1724900000000-team-admin-match-score.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamAdminMatchScore1724900000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:136ed055d821341bfff7d9645557555d08691997a2594905806f14a4be189fca",
+      "sizeBytes": 2098
+    },
+    {
       "path": "src/database/migrations/activities-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -3955,6 +3989,18 @@
       "kind": "spec",
       "hash": "sha256:d8e5792a9f22ebc4e8df374584fa15a41d3104b06b6b3b0aa65f011a8384ac7e",
       "sizeBytes": 2059
+    },
+    {
+      "path": "src/database/migrations/invitations-team-scope-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:4f678fac861fb91dfce2d44cbfe65b608f949e17cbc5316d650fd897dc389d36",
+      "sizeBytes": 1487
     },
     {
       "path": "src/database/migrations/jerseys-schema.spec.ts",
@@ -4147,6 +4193,18 @@
       "kind": "spec",
       "hash": "sha256:df056eca238716486786b4cc9d8e69bb676140900dcda20c5bc74d6e768259c8",
       "sizeBytes": 2287
+    },
+    {
+      "path": "src/database/migrations/team-admin-match-score-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:179d00538e7c667292a0163bcfa75a5391fe8e96f9117ca4eddd644c15fede85",
+      "sizeBytes": 1628
     },
     {
       "path": "src/database/migrations/tryouts-schema.spec.ts",
@@ -4379,8 +4437,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:af4693af349fa1e24d1d49a72d4549ea3b0506897f148a9696b4142b4f9999f5",
-      "sizeBytes": 7447
+      "hash": "sha256:67665fd7af32a2aec6d12a9c8f79f90b3e8df79c54a0aa1f5f9abda2f2929353",
+      "sizeBytes": 8864
     },
     {
       "path": "src/database/seeds/seed-personas.ts",
@@ -4396,8 +4454,8 @@
       "hasSpec": true,
       "specPath": "src/database/seeds/seed-personas.spec.ts",
       "kind": "source",
-      "hash": "sha256:f19e65d2a866493445566f0fd8bab3d3b2c45ebaf41b32609566f66e9ca42d81",
-      "sizeBytes": 9306
+      "hash": "sha256:19b8f678955a590fd7206f17ef81f122e18b8154ffecf86b17eb3703d7830cbc",
+      "sizeBytes": 10380
     },
     {
       "path": "src/database/seeds/seed-personas.types.ts",
@@ -4711,8 +4769,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:26b70133d7aba7ffb28169e79641dc49843dd67b92b6fe0da8f1331558f2aaad",
-      "sizeBytes": 3390
+      "hash": "sha256:0db2e2fc6440124fd048f8a81bbcf2a068281a551fa52cb18e1f9a49433cd433",
+      "sizeBytes": 3758
     },
     {
       "path": "src/database/seeds/seed.types.ts",
@@ -21620,6 +21678,23 @@
       "sizeBytes": 515
     },
     {
+      "path": "src/modules/identity/api/dto/create-team-invitation.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateTeamInvitationDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:749e84c2f2ed7ff93d44864039c80a5e27823c384587cd40224781b49a0c6892",
+      "sizeBytes": 556
+    },
+    {
       "path": "src/modules/identity/api/dto/device-session-response.dto.ts",
       "root": "modules",
       "module": "identity",
@@ -21684,8 +21759,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:57908556cad7078ab11c6575c2f988b5ac826b7390217872de8b10802e27534f",
-      "sizeBytes": 621
+      "hash": "sha256:fb7767a098ef8389a8151a151ed959bf40fec89c9e4e2af56eb70736979fcc6b",
+      "sizeBytes": 838
     },
     {
       "path": "src/modules/identity/api/dto/invitation-token-params.dto.ts",
@@ -21917,8 +21992,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:767e4d654f9605e7be5965fff084b2af293737edb3f2d62cd1d35030c385c1bd",
-      "sizeBytes": 4144
+      "hash": "sha256:7fc242e332a90530ea76fd89b5aba9a882cacdc80c74c273fbc0d74eda3bf369",
+      "sizeBytes": 4164
     },
     {
       "path": "src/modules/identity/api/public-invitations.controller.ts",
@@ -21938,6 +22013,23 @@
       "sizeBytes": 1124
     },
     {
+      "path": "src/modules/identity/api/team-invitations.controller.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamInvitationsController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:445de95961a2f60ab867195dc9c07b954e91855e217bd14f240149576809cdda",
+      "sizeBytes": 2221
+    },
+    {
       "path": "src/modules/identity/application/accept-invitation.use-case.spec.ts",
       "root": "modules",
       "module": "identity",
@@ -21946,8 +22038,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:088bc841fb370ef90cae161e3a543d7e761386873c17c2f9e5fd15b84146c5bb",
-      "sizeBytes": 5223
+      "hash": "sha256:edf7c77e97220f8b816be13ea891eef297c9ecb01e760bead90de62fe9ef238e",
+      "sizeBytes": 8031
     },
     {
       "path": "src/modules/identity/application/accept-invitation.use-case.ts",
@@ -21963,8 +22055,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/accept-invitation.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:ec406481b7ac93e27560ab0b3e5b6dabcc04e80b626dee6bb21f65b1a15eb035",
-      "sizeBytes": 3756
+      "hash": "sha256:4d02863b29e0ba39d044e496d577d52b21da22e9f9e4c22b0f805f8c236490bc",
+      "sizeBytes": 5441
     },
     {
       "path": "src/modules/identity/application/create-invitation.use-case.spec.ts",
@@ -21975,8 +22067,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:fb32679598bd6ec516097251b29f280ef1236fffb21be9a2f1ebc36c097632a7",
-      "sizeBytes": 4788
+      "hash": "sha256:e8b001db8f9348b80bc5100d3ca286e5b4b887a9b23c1054c63801c4e65ce148",
+      "sizeBytes": 5327
     },
     {
       "path": "src/modules/identity/application/create-invitation.use-case.ts",
@@ -21992,8 +22084,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/application/create-invitation.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:6b3dea54d671c0f7c0d19880be8f23a626c8b3af1d3eba5770d3ea788c2ee624",
-      "sizeBytes": 3886
+      "hash": "sha256:49645e1171042db2b286f9cb41b25a55f1f789ccc41304f6f0e36e4ee8ce86af",
+      "sizeBytes": 3916
     },
     {
       "path": "src/modules/identity/application/expire-invitations.use-case.spec.ts",
@@ -22062,8 +22154,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:aa32caea5c787a4f12b20fdc1b73808014c0d1a43bd72a378150431929f84f28",
-      "sizeBytes": 2427
+      "hash": "sha256:e89b14632bb5fb807e7955a591c02d884c38bbf3201a427d266ca773efc282b2",
+      "sizeBytes": 2443
     },
     {
       "path": "src/modules/identity/application/get-invitation-details.use-case.ts",
@@ -22294,8 +22386,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:f97079f87837c32a2208293181ce75a7b1636a903eb6e4957ee61d54d3ce6f86",
-      "sizeBytes": 4313
+      "hash": "sha256:a07129d0bdd181696f79067e693cd787223e6c0d1fc69c422fa2ba4d10a8aaaa",
+      "sizeBytes": 4329
     },
     {
       "path": "src/modules/identity/application/resend-invitation.use-case.ts",
@@ -22352,8 +22444,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:62008935e8a34cdc89a03aa7aa175159f396806dbd6983f321a33ae841484e49",
-      "sizeBytes": 2834
+      "hash": "sha256:01621c73b28cf5b9594f3409a8fd774f989305ce8cf936074783362ac42aef5d",
+      "sizeBytes": 2850
     },
     {
       "path": "src/modules/identity/application/revoke-invitation.use-case.ts",
@@ -22468,8 +22560,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:b8f7f1986257a3ff370c28e0f9b760ff1ce9c475fee2245530793aa59a99eab0",
-      "sizeBytes": 2462
+      "hash": "sha256:cd12357cf1d410a912122a420b76e25e555e04febb51b61e079b068598d48d3f",
+      "sizeBytes": 2478
     },
     {
       "path": "src/modules/identity/application/send-invitation-email.service.ts",
@@ -22604,8 +22696,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:6bc67d902c8cdcab6f1906453c75ed7eef9ffede1ebca0a1258650e057d9af14",
-      "sizeBytes": 3103
+      "hash": "sha256:02fdc32507a3d69b84aa13051bd9053ff7929a913740e2ac38a30d6b437633f6",
+      "sizeBytes": 3121
     },
     {
       "path": "src/modules/identity/domain/invitation.policy.ts",
@@ -22973,8 +23065,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a01faf8ef32a19eb70d12ce406046ae251872c4cfdf087cefd3b4ebc4ca140d9",
-      "sizeBytes": 4699
+      "hash": "sha256:ee201563d82afaf5e790bc0f841312e1855fb21fc0853bb5bd2ff59bc3c6062e",
+      "sizeBytes": 4809
     },
     {
       "path": "src/modules/identity/index.ts",
@@ -23026,8 +23118,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:7aec60cc2477a14f90ab3a07ae967d5ef93d3e4cfc133f214ae48282a7c1658c",
-      "sizeBytes": 9513
+      "hash": "sha256:771d97228f8ae50e453e3bc23e9f54a38a777e5705571533c243315d9a871436",
+      "sizeBytes": 10283
     },
     {
       "path": "src/modules/identity/infrastructure/invitation.repository.ts",
@@ -23043,8 +23135,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/infrastructure/invitation.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:5d1ad41ab7a46039673fa520204ad62ff742f66e473851307c1c9d47606ea9a7",
-      "sizeBytes": 5531
+      "hash": "sha256:68ee3e468c9e2e2ca1989e312c7438f992b0dd93b5adaa5bf4d08e48ee9f3f30",
+      "sizeBytes": 5628
     },
     {
       "path": "src/modules/identity/infrastructure/password-credential.repository.spec.ts",
@@ -23253,8 +23345,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:c4a1629747abde1e94710c9230d91d5a9cb95b399c1359b7325c0fd778b38d95",
-      "sizeBytes": 4500
+      "hash": "sha256:7ea47c5c4981fadf957da466c7913977a349b13b97b50b5babc6318a81e278ac",
+      "sizeBytes": 4735
     },
     {
       "path": "src/modules/identity/lib/identity.mapper.ts",
@@ -23298,8 +23390,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/lib/identity.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:40dc61e1c9d1c82c52ffc8420282f9db7622646fe7df171240e2e78afcf1e747",
-      "sizeBytes": 3765
+      "hash": "sha256:4d8708ef809b6db9d1dd5c578ac7e5aaf34cbf32d1a936ce0432cac9bab01796",
+      "sizeBytes": 3796
     },
     {
       "path": "src/modules/identity/lib/membership-payload.mapper.spec.ts",
@@ -23448,6 +23540,14 @@
         {
           "kind": "const",
           "name": "INVITATION_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_INVITATIONS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_ID_PARAM"
         },
         {
           "kind": "const",
@@ -23609,8 +23709,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0c42c1b28effd40aa11190918610c9bdb12effa370c321c75fea701166e48f9b",
-      "sizeBytes": 4738
+      "hash": "sha256:5fafaca070d56e492b0b460fdd8996d387b60cdc3273cba745f1ee9d9ab39cc0",
+      "sizeBytes": 5077
     },
     {
       "path": "src/modules/identity/model/identity.enums.ts",
@@ -23703,8 +23803,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4a9d51e9f702ab2971619386a881dbf579299ac09e0da2df83f621492b8fb1bc",
-      "sizeBytes": 2032
+      "hash": "sha256:47bbadc330b8bda898ff40aacfd2285a92ab654313e52094f400f4f92ef85212",
+      "sizeBytes": 2067
     },
     {
       "path": "src/modules/identity/model/identity.types.ts",
@@ -23872,8 +23972,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:bda3967ea30520862ce3b2379249985aa6811cc942d7fca4f33ff04903e9ba88",
-      "sizeBytes": 8113
+      "hash": "sha256:1418a72216f2ec55d67d73367049c8e1dc657845345daa75b348cb0a38274c40",
+      "sizeBytes": 8419
     },
     {
       "path": "src/modules/identity/model/invitation-email.constants.ts",
@@ -31558,6 +31658,35 @@
       "sizeBytes": 5329
     },
     {
+      "path": "src/modules/members/application/claim-invited-memberships.service.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:da8fcc2114049fc85ecb3a5e2d97adda86affab51b8e7808f6d6b40f55696a93",
+      "sizeBytes": 6393
+    },
+    {
+      "path": "src/modules/members/application/claim-invited-memberships.service.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ClaimInvitedMembershipsService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/members/application/claim-invited-memberships.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a597787f362679f51dde0c37be3f0e8cf5e1b1ca02116838d4969222b152ee26",
+      "sizeBytes": 5278
+    },
+    {
       "path": "src/modules/members/application/get-avatar.service.spec.ts",
       "root": "modules",
       "module": "members",
@@ -32572,8 +32701,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:cb01c7e559f2f2f23bb8a896e4308458126a9c119934aa25783692683634aa60",
-      "sizeBytes": 424
+      "hash": "sha256:5b4ec3ff7abc41e290cecf7cb2ba9aa7b24db94d18d5080dfb1271da056478fe",
+      "sizeBytes": 577
     },
     {
       "path": "src/modules/members/infrastructure/media-asset.repository.spec.ts",
@@ -32758,8 +32887,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:f7cb4d1d45b4ae92832844f5d7a8f20a11d80f24538286586bc8ba045537a447",
-      "sizeBytes": 5951
+      "hash": "sha256:0723e1dcb26c89c0d6166739fb94d0e870ffc5894eabc0e231c5265cf10a2ef1",
+      "sizeBytes": 8367
     },
     {
       "path": "src/modules/members/infrastructure/membership.repository.ts",
@@ -32775,8 +32904,8 @@
       "hasSpec": true,
       "specPath": "src/modules/members/infrastructure/membership.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:130f9ec84f41ee815be71f2ce5a011653034dfd9dc190c48f995be98834bdfab",
-      "sizeBytes": 6130
+      "hash": "sha256:d7ea17c468c037e3430a324ccb9ebdb9db713cf9e19fff7425f4bb9a7a142b14",
+      "sizeBytes": 9048
     },
     {
       "path": "src/modules/members/infrastructure/status-event.repository.spec.ts",
@@ -33067,8 +33196,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9c1525e2c168cea5451afa238bff7b8cb00fbcd2cd79e36bd9961a62065ff066",
-      "sizeBytes": 4811
+      "hash": "sha256:a999223e60188c473285d4ef8a9181186b204d41f87a45ba0ba32cd1c50984c3",
+      "sizeBytes": 4994
     },
     {
       "path": "src/modules/members/model/members.constants.ts",
@@ -33378,6 +33507,14 @@
         },
         {
           "kind": "const",
+          "name": "MEMBERSHIP_COLUMNS_QUALIFIED"
+        },
+        {
+          "kind": "const",
+          "name": "CLAIMABLE_MEMBERSHIPS_MAX"
+        },
+        {
+          "kind": "const",
           "name": "MEMBER_PROFILE_COLUMNS"
         },
         {
@@ -33395,6 +33532,10 @@
         {
           "kind": "const",
           "name": "MEMBER_INVITED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBER_ACCOUNT_LINKED_EVENT"
         },
         {
           "kind": "const",
@@ -33431,6 +33572,10 @@
         {
           "kind": "const",
           "name": "ANONYMIZED_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "DIRECTORY_FALLBACK_NAME"
         },
         {
           "kind": "const",
@@ -33556,8 +33701,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:68f2be8f150218921bd351e1ccac53f8b4946ffa20167f725d0e3487c1e37cf4",
-      "sizeBytes": 10882
+      "hash": "sha256:23fa5321fe11824aeb85e94c9148a9b87a4d2bdabd5cdbe06e8fa3374ad75cd5",
+      "sizeBytes": 11884
     },
     {
       "path": "src/modules/members/model/members.enums.ts",
@@ -33682,8 +33827,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:8150d65f3f0857b0d6958e4fea0844e73151f373fb0a3264f9c0f92574cddad1",
-      "sizeBytes": 4677
+      "hash": "sha256:2a2ebce6ea485fc140a593603e092d4433ab315df1ff630613eecfdd350fafac",
+      "sizeBytes": 4933
     },
     {
       "path": "src/modules/members/model/members.types.ts",
@@ -33821,6 +33966,10 @@
         },
         {
           "kind": "interface",
+          "name": "MembershipClaim"
+        },
+        {
+          "kind": "interface",
           "name": "NewMemberProfile"
         },
         {
@@ -33853,6 +34002,14 @@
         },
         {
           "kind": "interface",
+          "name": "ClaimInvitedMembershipsCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "ClaimedMembership"
+        },
+        {
+          "kind": "interface",
           "name": "MembershipContext"
         },
         {
@@ -33879,8 +34036,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a2cbb15fd3e8294a5f3277d3f211a8ffbed9f3862552d80922920cc570b0f6d6",
-      "sizeBytes": 13997
+      "hash": "sha256:5c66ce76ea91bb541a40be9b3d67f6ddaaf9cd1b064c4c79511e8b9274ede73e",
+      "sizeBytes": 15074
     },
     {
       "path": "src/modules/migration/adapters/xlsx-workbook-parser.adapter.spec.ts",
@@ -37513,8 +37670,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:01ca1120346908a9692cdef8d23cda9768647caaaece463fdad4319178f7c54d",
-      "sizeBytes": 3632
+      "hash": "sha256:3fbb39d00e1f16db28f45f19295cb61acda68ee29d3746f5b75d2e587eb466dc",
+      "sizeBytes": 3824
     },
     {
       "path": "src/modules/points/application/award-activity-points.service.spec.ts",
@@ -46942,6 +47099,35 @@
       "sizeBytes": 3571
     },
     {
+      "path": "src/modules/rbac/application/ensure-role-assignment.service.spec.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1bb733f264f51ccdf717bd5e5b63252c601f9077e2505da080072bf4a26a0fd9",
+      "sizeBytes": 4139
+    },
+    {
+      "path": "src/modules/rbac/application/ensure-role-assignment.service.ts",
+      "root": "modules",
+      "module": "rbac",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EnsureRoleAssignmentService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/rbac/application/ensure-role-assignment.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:6b0fedf415e94270566e0906494447181cd1d9f91e82446b36c0a42fd421c4e2",
+      "sizeBytes": 3449
+    },
+    {
       "path": "src/modules/rbac/application/get-effective-permissions.use-case.spec.ts",
       "root": "modules",
       "module": "rbac",
@@ -47306,8 +47492,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:7f1252834965b1c92c04f9e7b01d126476b3ca7a868febf258de5ab8b463b41e",
-      "sizeBytes": 1617
+      "hash": "sha256:c853a2c3629904023f621626590f54b0a4f052a9e483d297d9bcde122a784243",
+      "sizeBytes": 3377
     },
     {
       "path": "src/modules/rbac/domain/privilege-ceiling.policy.ts",
@@ -47455,8 +47641,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:328f19d70d7d9b13415864f66214795cd1817c4b61216b6a54a617315242eee1",
-      "sizeBytes": 567
+      "hash": "sha256:db8be4938012e2d6dade77a60013d7969dd6fb13911ff25f5690119b733ad034",
+      "sizeBytes": 684
     },
     {
       "path": "src/modules/rbac/infrastructure/rbac.repository.spec.ts",
@@ -47467,8 +47653,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:9888c604fb3863ac6ce636de5b6c25f767df3def9074474bbca70924976f26f4",
-      "sizeBytes": 9187
+      "hash": "sha256:a5291b1f02551fc07c1a8be45c49f2d90c0db0bddf9cda8e196326aa4e46a1d2",
+      "sizeBytes": 10037
     },
     {
       "path": "src/modules/rbac/infrastructure/rbac.repository.ts",
@@ -47484,8 +47670,8 @@
       "hasSpec": true,
       "specPath": "src/modules/rbac/infrastructure/rbac.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:104efea244c0ab0d86be87696cd28337abe2c20be4646187fa8c1ffe2732a169",
-      "sizeBytes": 9532
+      "hash": "sha256:95ba65969b96106dc02767e902bbd84e46eb4a3a08505e2efdb812464c8bef14",
+      "sizeBytes": 10700
     },
     {
       "path": "src/modules/rbac/lib/rbac.helpers.spec.ts",
@@ -47870,14 +48056,18 @@
         },
         {
           "kind": "interface",
+          "name": "EnsureTeamRoleCommand"
+        },
+        {
+          "kind": "interface",
           "name": "RoleSetDiff"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1c9e94392550cd4713dd2502b0fdfbe75f8a6982dc961f112ecba05d3f85ff25",
-      "sizeBytes": 4719
+      "hash": "sha256:34a9af4ea443be3de4c98bf32d6bf43f904a55713e0249eb37e88c6a1cda06f2",
+      "sizeBytes": 5217
     },
     {
       "path": "src/modules/rbac/rbac.module.ts",
@@ -47893,8 +48083,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0f7a6644d646d88b0fe13120772ed7cce4d81796159c9cd3174d72ccc859efab",
-      "sizeBytes": 2407
+      "hash": "sha256:6c76951c124d38c05a0af7589716a9d468a61d8da7ac7174094a5358ee20b1d1",
+      "sizeBytes": 2565
     },
     {
       "path": "src/modules/reports/adapters/csv-xlsx-pdf-document.adapter.ts",
@@ -61479,8 +61669,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b6af8ba58f204e77af3a2be8e7c61ea460be1cd4711123099b02670fa70f0e44",
-      "sizeBytes": 5827
+      "hash": "sha256:614a3f1fc28ea1c69899e1ff72d876244888cdfd9e9fe05fc2dc8a03ef3d0cdd",
+      "sizeBytes": 6091
     },
     {
       "path": "src/shared/constants/role-bundles.spec.ts",
@@ -61491,8 +61681,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:753a57a9cab6c361cfd21e6819e27214719dde38fbf3b2740fe226b989a03dbc",
-      "sizeBytes": 2901
+      "hash": "sha256:caf73639abd04bb633a8fe3920cff832485ddb3648b8cff3a042347568b80bad",
+      "sizeBytes": 3496
     },
     {
       "path": "src/shared/constants/role-permissions.constants.ts",

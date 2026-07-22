@@ -13,6 +13,7 @@ const INVITATION: PublicInvitationRecord = {
   invitedBy: 'user-1',
   inviterName: 'Coach One',
   role: Role.User,
+  teamId: null,
   status: InvitationStatus.Pending,
   expiresAt: new Date(NOW.getTime() + 60_000),
   acceptedAt: null,

@@ -42,6 +42,8 @@ export interface Invitation {
   readonly email: string;
   readonly invitedBy: string | null;
   readonly role: Role;
+  /** The team this invitation onboards into; null for platform-scoped invitations. */
+  readonly teamId: string | null;
   readonly status: InvitationStatus;
   readonly expiresAt: Date;
   readonly acceptedAt: Date | null;
@@ -98,6 +100,7 @@ export interface NewInvitation {
   readonly tokenHash: string;
   readonly invitedBy: string | null;
   readonly role: Role;
+  readonly teamId: string | null;
   readonly expiresAt: Date;
   readonly now: Date;
 }
@@ -162,6 +165,8 @@ export interface CreateInvitationCommand {
   readonly email: string;
   readonly role: Role;
   readonly invitedBy: string;
+  /** Team the invitee is onboarded into; null keeps the platform-scoped shape. */
+  readonly teamId: string | null;
 }
 
 export interface AcceptInvitationCommand {
@@ -260,6 +265,7 @@ export interface InvitationSummary {
   readonly id: string;
   readonly email: string;
   readonly role: Role;
+  readonly teamId: string | null;
   readonly status: InvitationStatus;
   readonly expiresAt: Date;
   readonly createdAt: Date;

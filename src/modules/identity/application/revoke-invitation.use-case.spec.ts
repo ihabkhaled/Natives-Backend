@@ -13,6 +13,7 @@ const PENDING_INVITATION: Invitation = {
   email: 'coach@example.test',
   invitedBy: 'admin-1',
   role: 'admin' as Invitation['role'],
+  teamId: null,
   status: InvitationStatus.Pending,
   expiresAt: new Date(NOW.getTime() + 60_000),
   acceptedAt: null,

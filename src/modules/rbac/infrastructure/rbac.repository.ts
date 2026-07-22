@@ -191,6 +191,34 @@ export class RbacRepository {
     return this.toAssignment(this.requireRow(rows), assignment.roleKey);
   }
 
+  /**
+   * The live (unrevoked) assignment for one user+role+scope natural key — the
+   * same key the partial unique index enforces — or null. Used by find-then-
+   * write grants so re-granting an already-held role stays a no-op.
+   */
+  async findActiveAssignmentByScope(
+    scope: TransactionScope,
+    userId: string,
+    roleId: string,
+    teamId: string | null,
+    seasonId: string | null,
+  ): Promise<RoleAssignment | null> {
+    const rows = await scope.run<RoleAssignmentRow>(
+      `SELECT a."id", a."user_id", a."role_id", r."key" AS "role_key",
+              a."team_id", a."season_id", a."effective_from", a."effective_to",
+              a."granted_by", a."revoked_at", a."created_at", a."version"
+         FROM "user_role_assignments" a
+         JOIN "roles" r ON r."id" = a."role_id"
+        WHERE a."user_id" = $1 AND a."role_id" = $2
+          AND a."team_id" IS NOT DISTINCT FROM $3::uuid
+          AND a."season_id" IS NOT DISTINCT FROM $4::uuid
+          AND a."revoked_at" IS NULL`,
+      [userId, roleId, teamId, seasonId],
+    );
+    const row = rows[0];
+    return row === undefined ? null : this.toAssignment(row, row.role_key);
+  }
+
   async findActiveAssignmentById(
     scope: TransactionScope,
     id: string,

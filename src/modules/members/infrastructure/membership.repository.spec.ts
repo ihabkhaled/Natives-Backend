@@ -198,4 +198,87 @@ describe('MembershipRepository', () => {
     });
     expect(fallback.total).toBe(0);
   });
+
+  it('left-joins the profile so account-only memberships appear with a fallback name', async () => {
+    scope.run.mockResolvedValueOnce([
+      directoryRow({ display_name: null, positions: null, has_avatar: false }),
+    ]);
+    scope.run.mockResolvedValueOnce([{ count: 1 }]);
+
+    const page = await repo.listDirectory(scope as never, 'team-1', {
+      limit: 20,
+      offset: 0,
+    });
+
+    expect(page.items[0]).toMatchObject({
+      displayName: 'Member',
+      positions: [],
+      hasAvatar: false,
+    });
+    const sql = String(scope.run.mock.calls[0]?.[0]);
+    expect(sql).toContain('LEFT JOIN "member_profiles"');
+    expect(sql).toContain('LEFT JOIN "users"');
+  });
+
+  it('lists invited unlinked memberships by profile email with an optional team filter', async () => {
+    scope.run.mockResolvedValueOnce([
+      membershipRow({ status: 'invited', user_id: null }),
+    ]);
+    const all = await repo.listInvitedUnlinkedByEmail(
+      scope as never,
+      'invitee@example.test',
+      null,
+    );
+    expect(all).toHaveLength(1);
+    expect(all[0]).toMatchObject({
+      status: MembershipStatus.Invited,
+      userId: null,
+    });
+    expect(scope.run.mock.calls[0]?.[1]).toEqual([
+      'invitee@example.test',
+      'invited',
+      null,
+      50,
+    ]);
+
+    scope.run.mockResolvedValueOnce([]);
+    const scoped = await repo.listInvitedUnlinkedByEmail(
+      scope as never,
+      'invitee@example.test',
+      'team-9',
+    );
+    expect(scoped).toEqual([]);
+    expect(scope.run.mock.calls[1]?.[1]?.[2]).toBe('team-9');
+  });
+
+  it('links and activates an invited membership, or returns null when it moved on', async () => {
+    scope.run.mockResolvedValueOnce([
+      membershipRow({ status: 'active', version: 2 }),
+    ]);
+    const claim = {
+      id: 'mem-1',
+      userId: 'user-9',
+      statusEffectiveAt: NOW,
+      expectedVersion: 1,
+      now: NOW,
+    };
+    await expect(
+      repo.linkUserAndActivate(scope as never, claim),
+    ).resolves.toMatchObject({ status: MembershipStatus.Active, version: 2 });
+    const params = scope.run.mock.calls[0]?.[1] ?? [];
+    expect(params).toEqual([
+      'mem-1',
+      'user-9',
+      'active',
+      NOW.toISOString(),
+      NOW.toISOString(),
+      1,
+      'invited',
+    ]);
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repo.linkUserAndActivate(scope as never, claim),
+    ).resolves.toBeNull();
+  });
 });

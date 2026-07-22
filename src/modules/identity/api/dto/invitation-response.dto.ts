@@ -13,6 +13,14 @@ export class InvitationResponseDto {
   @ApiProperty({ enum: Role })
   declare readonly role: Role;
 
+  @ApiProperty({
+    type: String,
+    nullable: true,
+    description:
+      'Team the invitee is onboarded into at acceptance; null for a platform-scoped invitation',
+  })
+  declare readonly teamId: string | null;
+
   @ApiProperty({ enum: InvitationStatus })
   declare readonly status: InvitationStatus;
 

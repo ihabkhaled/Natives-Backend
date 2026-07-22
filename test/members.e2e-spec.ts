@@ -240,6 +240,47 @@ describeIfDb(suiteTitle, () => {
     expect(denied.body.messageKey).toBe('errors.auth.permissionDenied');
   });
 
+  it('lists account-only members too, with items agreeing with total (read-model fix)', async () => {
+    // A membership with a linked account but NO player profile — exactly what
+    // the persona seeder used to produce. The audited defect returned
+    // items: [] with a non-zero total because items INNER JOINed profiles.
+    const accountOnlyUserId = randomUUID();
+    await fixture.dataSource.query(
+      `INSERT INTO "users" ("id", "email", "role", "status", "display_name")
+       VALUES ($1, $2, $3, 'active', 'Account Only')`,
+      [
+        accountOnlyUserId,
+        `account-only-${accountOnlyUserId}@example.test`,
+        Role.User,
+      ],
+    );
+    const accountOnlyMembershipId = randomUUID();
+    await fixture.dataSource.query(
+      `INSERT INTO "memberships" ("id", "team_id", "user_id", "status")
+       VALUES ($1, $2, $3, 'active')`,
+      [accountOnlyMembershipId, teamId, accountOnlyUserId],
+    );
+
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+    const response = await api()
+      .get(`/api/v1/teams/${teamId}/members?limit=100&offset=0`)
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    // Items and total read the same population: one page covers everything.
+    expect(response.body.items).toHaveLength(response.body.total);
+    const accountOnly = response.body.items.find(
+      (item: { membershipId: string }) =>
+        item.membershipId === accountOnlyMembershipId,
+    );
+    expect(accountOnly).toMatchObject({
+      displayName: 'Account Only',
+      status: 'active',
+      positions: [],
+      hasAvatar: false,
+    });
+  });
+
   it('returns an admin-shaped view exposing the raw date of birth', async () => {
     const token = await tokenFor(fixture.adminId, [Role.Admin]);
     const response = await api()

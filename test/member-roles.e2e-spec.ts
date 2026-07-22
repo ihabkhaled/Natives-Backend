@@ -19,6 +19,7 @@ import { RbacSchema1721400000000 } from '../src/database/migrations/172140000000
 import { TeamsSchema1721500000000 } from '../src/database/migrations/1721500000000-teams-schema';
 import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
 import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
+import { TeamAdminMatchScore1724900000000 } from '../src/database/migrations/1724900000000-team-admin-match-score';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -53,6 +54,7 @@ const MIGRATIONS = [
   TeamsSchema1721500000000,
   MembersSchema1721600000000,
   PlatformLifecycleSchema1723800000000,
+  TeamAdminMatchScore1724900000000,
 ];
 
 interface Fixture {
@@ -60,6 +62,7 @@ interface Fixture {
   readonly adminId: string;
   readonly memberUserId: string;
   readonly coachUserId: string;
+  readonly teamAdminUserId: string;
 }
 
 async function seedUser(dataSource: DataSource, role: Role): Promise<string> {
@@ -84,6 +87,7 @@ async function migrateAndSeed(): Promise<Fixture | null> {
       adminId: await seedUser(dataSource, Role.Admin),
       memberUserId: await seedUser(dataSource, Role.User),
       coachUserId: await seedUser(dataSource, Role.User),
+      teamAdminUserId: await seedUser(dataSource, Role.User),
     };
   } catch {
     return null;
@@ -172,6 +176,7 @@ describeIfDb(suiteTitle, () => {
     accountlessMembershipId = accountless.body.id;
 
     await assignRole(fixture.coachUserId, RbacRole.Coach);
+    await assignRole(fixture.teamAdminUserId, RbacRole.TeamAdmin);
   });
 
   afterAll(async () => {
@@ -255,6 +260,25 @@ describeIfDb(suiteTitle, () => {
 
     expect(response.status).toBe(403);
     expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('offers a scoped team admin every team bundle, including scorekeeper', async () => {
+    // Regression pin for the audited defect: SCOREKEEPER was missing from the
+    // Team Admin's assignable list because TEAM_ADMIN lacked match.score.
+    const token = await tokenFor(fixture.teamAdminUserId, [Role.User]);
+
+    const response = await api()
+      .get(rolesPath(memberMembershipId))
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.assignableRoles).toEqual([
+      'analyst',
+      'coach',
+      'member',
+      'scorekeeper',
+      'team_admin',
+    ]);
   });
 
   it('shows a scoped coach only the roles inside their own ceiling', async () => {

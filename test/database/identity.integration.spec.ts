@@ -36,12 +36,15 @@ import { RefreshSessionRepository } from '@modules/identity/infrastructure/refre
 import { SecurityEventRepository } from '@modules/identity/infrastructure/security-event.repository';
 import { UserRepository } from '@modules/identity/infrastructure/user.repository';
 import type { SecureRandomPort } from '@modules/identity/model/identity.types';
+import type { ClaimInvitedMembershipsService } from '@modules/members';
+import type { EnsureRoleAssignmentService } from '@modules/rbac';
 import { NodeEnv, Role } from '@shared/enums';
 import { DataSource } from 'typeorm';
 import { afterAll, describe, expect, it, vi } from 'vitest';
 
 import { BaselineSchema1721200000000 } from '../../src/database/migrations/1721200000000-baseline-schema';
 import { IdentitySchema1721300000000 } from '../../src/database/migrations/1721300000000-identity-schema';
+import { InvitationsTeamScope1724800000000 } from '../../src/database/migrations/1724800000000-invitations-team-scope';
 
 const TEST_DB_CONFIG: DatabaseConfig = {
   url: process.env['TEST_DATABASE_URL'],
@@ -103,7 +106,11 @@ function buildDataSource(): DataSource {
   assertTestDatabase(TEST_DB_CONFIG, NodeEnv.Test);
   return new DataSource({
     ...buildDataSourceOptions(TEST_DB_CONFIG),
-    migrations: [BaselineSchema1721200000000, IdentitySchema1721300000000],
+    migrations: [
+      BaselineSchema1721200000000,
+      IdentitySchema1721300000000,
+      InvitationsTeamScope1724800000000,
+    ],
   });
 }
 
@@ -152,6 +159,15 @@ function buildWiring(dataSource: DataSource, secureRandom: SecureRandomPort) {
   const principalMemberships = {
     resolve: () => Promise.resolve([]),
   } as unknown as PrincipalMembershipsService;
+  // Membership linking and the default MEMBER grant are exercised end-to-end in
+  // test/identity.e2e-spec.ts against the full schema; this suite runs only the
+  // identity migrations, so both cross-module surfaces are stubbed empty.
+  const membershipClaims = {
+    claim: () => Promise.resolve([]),
+  } as unknown as ClaimInvitedMembershipsService;
+  const roleAssignments = {
+    ensureTeamRole: () => Promise.resolve(),
+  } as unknown as EnsureRoleAssignmentService;
 
   const users = new UserRepository();
   const credentials = new PasswordCredentialRepository();
@@ -191,6 +207,8 @@ function buildWiring(dataSource: DataSource, secureRandom: SecureRandomPort) {
       users,
       credentials,
       invitations,
+      membershipClaims,
+      roleAssignments,
       audit,
       sessionIssuer,
     ),
@@ -269,6 +287,7 @@ describeIfDb(suiteTitle, () => {
   afterAll(async () => {
     await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
+    await activeDataSource.undoLastMigration();
     await activeDataSource.destroy();
   });
 
@@ -291,7 +310,14 @@ describeIfDb(suiteTitle, () => {
       ],
     );
     expect(tables).toHaveLength(7);
+    const teamScopeColumn = await activeDataSource.query(
+      `SELECT column_name FROM information_schema.columns
+        WHERE table_name = 'invitations' AND column_name = 'team_id'`,
+    );
+    expect(teamScopeColumn).toHaveLength(1);
 
+    // Two downs: the invitations team-scope column, then the identity schema.
+    await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     const afterDown = await activeDataSource.query(
       `SELECT to_regclass('public.users') AS relation`,

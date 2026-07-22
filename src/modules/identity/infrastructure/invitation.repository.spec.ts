@@ -18,6 +18,7 @@ const INVITATION_ROW: InvitationRow = {
   email: 'invitee@example.test',
   invited_by: 'user-1',
   role: 'admin',
+  team_id: null,
   status: 'pending',
   expires_at: '2026-01-10T00:00:00.000Z',
   accepted_at: null,
@@ -53,6 +54,7 @@ describe('InvitationRepository', () => {
         tokenHash: 'hash-1',
         invitedBy: 'user-1',
         role: Role.Admin,
+        teamId: null,
         expiresAt,
         now,
       },
@@ -63,6 +65,7 @@ describe('InvitationRepository', () => {
       email: 'invitee@example.test',
       invitedBy: 'user-1',
       role: Role.Admin,
+      teamId: null,
       status: InvitationStatus.Pending,
       expiresAt: new Date('2026-01-10T00:00:00.000Z'),
       acceptedAt: null,
@@ -78,10 +81,33 @@ describe('InvitationRepository', () => {
       'hash-1',
       'user-1',
       Role.Admin,
+      null,
       InvitationStatus.Pending,
       expiresAt.toISOString(),
       now.toISOString(),
     ]);
+  });
+
+  it('persists and maps a team-scoped invitation', async () => {
+    scope.run.mockResolvedValue([{ ...INVITATION_ROW, team_id: 'team-1' }]);
+
+    const invitation = await repository.insert(
+      scope as unknown as TransactionScope,
+      {
+        id: 'inv-1',
+        email: 'invitee@example.test',
+        tokenHash: 'hash-1',
+        invitedBy: 'user-1',
+        role: Role.User,
+        teamId: 'team-1',
+        expiresAt: new Date('2026-01-10T00:00:00.000Z'),
+        now: new Date('2026-01-01T00:00:00.000Z'),
+      },
+    );
+
+    expect(invitation.teamId).toBe('team-1');
+    const [, params] = scope.run.mock.calls[0] as [string, unknown[]];
+    expect(params[5]).toBe('team-1');
   });
 
   it('maps a found invitation by id', async () => {

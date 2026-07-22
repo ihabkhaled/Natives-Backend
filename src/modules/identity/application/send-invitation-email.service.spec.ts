@@ -10,6 +10,7 @@ const DELIVERY: InvitationDelivery = {
   id: 'inv-1',
   email: 'invitee@example.test',
   role: 'admin' as InvitationDelivery['role'],
+  teamId: null,
   status: InvitationStatus.Pending,
   expiresAt: new Date('2026-06-08T12:00:00.000Z'),
   createdAt: NOW,

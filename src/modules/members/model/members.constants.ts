@@ -127,6 +127,18 @@ export const MEMBERSHIP_COLUMNS = `"id", "team_id", "season_id", "user_id",
   "anonymized_at", "created_by", "updated_by", "created_at", "updated_at",
   "deleted_at", "version"`;
 
+// The same membership allow-list qualified with the "m" alias for joined reads.
+export const MEMBERSHIP_COLUMNS_QUALIFIED = `"m"."id", "m"."team_id",
+  "m"."season_id", "m"."user_id", "m"."status", "m"."status_reason",
+  "m"."status_effective_at", "m"."joined_at", "m"."left_at", "m"."anonymized_at",
+  "m"."created_by", "m"."updated_by", "m"."created_at", "m"."updated_at",
+  "m"."deleted_at", "m"."version"`;
+
+// Upper bound on invited memberships matched to one invitation email at accept.
+// A person is pre-invited into a handful of teams at most; the bound keeps the
+// claim read explicitly capped rather than trusting table size.
+export const CLAIMABLE_MEMBERSHIPS_MAX = 50;
+
 export const MEMBER_PROFILE_COLUMNS = `"id", "membership_id", "team_id",
   "full_name", "preferred_name", "full_name_ar", "nickname", "email", "phone",
   "gender", "division", "positions", "jersey_number", "jersey_size", "height_cm",
@@ -146,6 +158,7 @@ export const MEDIA_ASSET_COLUMNS = `"id", "team_id", "membership_id", "purpose",
 
 // --- Audit event types (append-only security_events) -------------------------
 export const MEMBER_INVITED_EVENT = 'member.invited';
+export const MEMBER_ACCOUNT_LINKED_EVENT = 'member.accountLinked';
 export const MEMBER_TRANSITIONED_EVENT = 'member.transitioned';
 export const MEMBER_ANONYMIZED_EVENT = 'member.anonymized';
 export const MEMBER_PROFILE_UPDATED_EVENT = 'member.profileUpdated';
@@ -157,6 +170,11 @@ export const MEMBER_MEDIA_SCANNED_EVENT = 'member.mediaScanned';
 
 // --- Redaction placeholder for anonymized profiles ---------------------------
 export const ANONYMIZED_NAME = 'Former member';
+
+// Last-resort directory label for a membership with neither a player profile
+// nor a linked account display name/email (data-repair edge; never invented
+// for a row that has any real name source).
+export const DIRECTORY_FALLBACK_NAME = 'Member';
 
 // --- Error messages & keys ---------------------------------------------------
 export const MEMBERSHIP_NOT_FOUND_MESSAGE =

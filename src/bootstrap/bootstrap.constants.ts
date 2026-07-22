@@ -60,6 +60,9 @@ export const DEFAULT_API_VERSION = '1';
 export const SWAGGER_PATH = 'docs';
 export const SWAGGER_TITLE = 'Service API';
 export const SWAGGER_DESCRIPTION = 'HTTP API for this NestJS service';
-export const SWAGGER_VERSION = '1.0.0';
+// 1.1.0: additive P0-recovery contract changes — team-scoped invitations
+// (POST /teams/{teamId}/invitations), invitation payloads carry teamId, and the
+// team leaderboard read is gated by leaderboard.read.
+export const SWAGGER_VERSION = '1.1.0';
 export const SWAGGER_BEARER_NAME = 'jwt';
 export const SWAGGER_PERSIST_AUTHORIZATION = false;

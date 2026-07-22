@@ -68,6 +68,7 @@ export class InvitationsController {
       email: dto.email,
       role: dto.role ?? Role.User,
       invitedBy: user.userId,
+      teamId: null,
     });
   }
 

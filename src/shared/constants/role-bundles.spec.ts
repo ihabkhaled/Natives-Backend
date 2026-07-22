@@ -81,4 +81,18 @@ describe('ROLE_BUNDLES', () => {
     expect(bundle(RbacRole.Analyst).has(Permission.ReportRead)).toBe(true);
     expect(bundle(RbacRole.Member).has(Permission.MemberInvite)).toBe(false);
   });
+
+  it('composes TEAM_ADMIN as a superset of SCOREKEEPER and ANALYST', () => {
+    // The privilege ceiling only lets an actor assign bundles fully contained
+    // in their own permissions; a team administrator must be able to assign
+    // every team-scoped bundle, including SCOREKEEPER (match.score).
+    const teamAdmin = bundle(RbacRole.TeamAdmin);
+
+    for (const permission of bundle(RbacRole.Scorekeeper)) {
+      expect(teamAdmin.has(permission)).toBe(true);
+    }
+    for (const permission of bundle(RbacRole.Analyst)) {
+      expect(teamAdmin.has(permission)).toBe(true);
+    }
+  });
 });

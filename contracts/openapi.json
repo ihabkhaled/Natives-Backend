@@ -5244,6 +5244,18 @@
         ],
         "type": "object"
       },
+      "CreateTeamInvitationDto": {
+        "properties": {
+          "email": {
+            "maxLength": 320,
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "type": "object"
+      },
       "CreateTemplateDto": {
         "properties": {
           "categoryWeights": {
@@ -7680,6 +7692,11 @@
             ],
             "type": "string"
           },
+          "teamId": {
+            "description": "Team the invitee is onboarded into at acceptance; null for a platform-scoped invitation",
+            "nullable": true,
+            "type": "string"
+          },
           "token": {
             "description": "One-time plaintext invitation token for manual link delivery (OD-002). Shown once; store the hash only.",
             "type": "string"
@@ -7689,6 +7706,7 @@
           "id",
           "email",
           "role",
+          "teamId",
           "status",
           "expiresAt",
           "createdAt",
@@ -7727,12 +7745,18 @@
               "expired"
             ],
             "type": "string"
+          },
+          "teamId": {
+            "description": "Team the invitee is onboarded into at acceptance; null for a platform-scoped invitation",
+            "nullable": true,
+            "type": "string"
           }
         },
         "required": [
           "id",
           "email",
           "role",
+          "teamId",
           "status",
           "expiresAt",
           "createdAt"
@@ -21571,7 +21595,7 @@
     "contact": {},
     "description": "HTTP API for this NestJS service",
     "title": "Service API",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -29592,6 +29616,53 @@
         "summary": "Reverse a committed import",
         "tags": [
           "migration"
+        ]
+      }
+    },
+    "/teams/{teamId}/invitations": {
+      "post": {
+        "operationId": "TeamInvitations.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTeamInvitationDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvitationDeliveryResponseDto"
+                }
+              }
+            },
+            "description": "Invitation created for this team; response carries the one-time token for manual link delivery (OD-002)"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden outside the team scope"
+          }
+        },
+        "summary": "Invite a new member into this team by email",
+        "tags": [
+          "invitations"
         ]
       }
     },

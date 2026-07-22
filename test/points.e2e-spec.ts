@@ -247,10 +247,19 @@ describeIfDb(suiteTitle, () => {
     expect(response.body.total).toBeGreaterThanOrEqual(1);
   });
 
-  it('forbids a member from reading the team leaderboard (403)', async () => {
+  it('lets a member read the team leaderboard their nav advertises (200, leaderboard.read)', async () => {
     const token = await tokenFor(fixture.memberId, [Role.User]);
     const response = await request(app.getHttpServer())
       .get(pointsBase(''))
+      .set('Authorization', `Bearer ${token}`);
+    expect(response.status).toBe(200);
+    expect(Array.isArray(response.body.items)).toBe(true);
+  });
+
+  it('still forbids a member from reading another member points summary (403, points.read.team)', async () => {
+    const token = await tokenFor(fixture.memberId, [Role.User]);
+    const response = await request(app.getHttpServer())
+      .get(pointsBase(`/${memberMembershipId}`))
       .set('Authorization', `Bearer ${token}`);
     expect(response.status).toBe(403);
     expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
@@ -358,7 +367,7 @@ describeIfDb(suiteTitle, () => {
   it('denies a coach scoped to a different team (403)', async () => {
     const token = await tokenFor(fixture.coachId, [Role.User]);
     const response = await request(app.getHttpServer())
-      .get(`/api/v1/teams/${otherTeamId}/points`)
+      .get(`/api/v1/teams/${otherTeamId}/points/${memberMembershipId}`)
       .set('Authorization', `Bearer ${token}`);
     expect(response.status).toBe(403);
     expect(response.body.messageKey).toBe('errors.auth.permissionDenied');

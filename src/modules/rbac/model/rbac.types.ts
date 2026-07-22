@@ -144,6 +144,20 @@ export interface ReplaceTeamRolesCommand {
   readonly roleKeys: readonly string[];
 }
 
+/**
+ * System-granted role request: ensure the user holds `roleKey` within the team
+ * scope, inside the caller's transaction. Used by invitation acceptance for the
+ * default MEMBER grant, so it is idempotent by the assignment natural key and
+ * carries the provenance of who caused the grant (`grantedBy`).
+ */
+export interface EnsureTeamRoleCommand {
+  readonly userId: string;
+  readonly roleKey: string;
+  readonly teamId: string;
+  readonly grantedBy: string | null;
+  readonly now: Date;
+}
+
 /** The grants to add and the assignments to revoke to reach a requested set. */
 export interface RoleSetDiff {
   readonly toGrant: readonly string[];

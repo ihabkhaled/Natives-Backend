@@ -18,6 +18,7 @@ function makeInvitation(overrides: Partial<Invitation> = {}): Invitation {
     email: 'invitee@example.test',
     invitedBy: 'admin-1',
     role: 'user' as Invitation['role'],
+    teamId: null,
     status: InvitationStatus.Pending,
     expiresAt: FUTURE,
     acceptedAt: null,

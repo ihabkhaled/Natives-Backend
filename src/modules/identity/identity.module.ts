@@ -10,6 +10,7 @@ import { CryptoSecureRandomAdapter } from './adapters/crypto-secure-random.adapt
 import { AuthController } from './api/auth.controller';
 import { InvitationsController } from './api/invitations.controller';
 import { PublicInvitationsController } from './api/public-invitations.controller';
+import { TeamInvitationsController } from './api/team-invitations.controller';
 import { AcceptInvitationUseCase } from './application/accept-invitation.use-case';
 import { CreateInvitationUseCase } from './application/create-invitation.use-case';
 import { ExpireInvitationsUseCase } from './application/expire-invitations.use-case';
@@ -61,6 +62,7 @@ import { SECURE_RANDOM_PORT } from './model/identity.constants';
   controllers: [
     AuthController,
     InvitationsController,
+    TeamInvitationsController,
     PublicInvitationsController,
   ],
   providers: [

@@ -25,6 +25,7 @@ export interface InvitationRow {
   readonly email: string;
   readonly invited_by: string | null;
   readonly role: string;
+  readonly team_id: string | null;
   readonly status: string;
   readonly expires_at: string | Date;
   readonly accepted_at: string | Date | null;

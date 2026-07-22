@@ -20,6 +20,7 @@ import { RbacSchema1721400000000 } from '../src/database/migrations/172140000000
 import { TeamsSchema1721500000000 } from '../src/database/migrations/1721500000000-teams-schema';
 import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
 import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
+import { InvitationsTeamScope1724800000000 } from '../src/database/migrations/1724800000000-invitations-team-scope';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -57,18 +58,21 @@ interface SeededFixture {
   readonly adminId: string;
 }
 
+const MIGRATIONS = [
+  BaselineSchema1721200000000,
+  IdentitySchema1721300000000,
+  RbacSchema1721400000000,
+  TeamsSchema1721500000000,
+  MembersSchema1721600000000,
+  PlatformLifecycleSchema1723800000000,
+  InvitationsTeamScope1724800000000,
+];
+
 async function migrateAndSeed(): Promise<SeededFixture | null> {
   try {
     const dataSource = new DataSource({
       ...buildDataSourceOptions(TEST_DB_CONFIG),
-      migrations: [
-        BaselineSchema1721200000000,
-        IdentitySchema1721300000000,
-        RbacSchema1721400000000,
-        TeamsSchema1721500000000,
-        MembersSchema1721600000000,
-        PlatformLifecycleSchema1723800000000,
-      ],
+      migrations: MIGRATIONS,
     });
     await dataSource.initialize();
     await dataSource.runMigrations();
@@ -134,12 +138,11 @@ describeIfDb(suiteTitle, () => {
   afterAll(async () => {
     await app.close();
     if (seededDataSource) {
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
+      let remaining = MIGRATIONS.length;
+      while (remaining > 0) {
+        await seededDataSource.undoLastMigration();
+        remaining -= 1;
+      }
       await seededDataSource.destroy();
     }
     if (ORIGINAL_DATABASE_URL === undefined) {
@@ -469,6 +472,149 @@ describeIfDb(suiteTitle, () => {
 
     expect(response.status).toBe(403);
     expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('onboards a team-scoped invitee end-to-end: invite → accept → team context → member grants', async () => {
+    // A real team, created through the platform surface.
+    const teamCreated = await request(app.getHttpServer())
+      .post('/api/v1/teams')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ slug: `onb-${randomUUID().slice(0, 8)}`, name: 'Onboarding FC' });
+    expect(teamCreated.status).toBe(201);
+    const teamId = teamCreated.body.id as string;
+
+    // A team administrator whose member.invite grant is TEAM-scoped only.
+    const teamAdminId = randomUUID();
+    await activeDataSource.query(
+      `INSERT INTO "users" ("id", "email", "role", "status")
+       VALUES ($1, $2, $3, 'active')`,
+      [teamAdminId, `teamadmin-${teamAdminId}@example.test`, Role.User],
+    );
+    const teamAdminRole = await activeDataSource.query(
+      `SELECT "id" FROM "roles" WHERE "key" = 'TEAM_ADMIN'`,
+    );
+    await activeDataSource.query(
+      `INSERT INTO "user_role_assignments" ("id", "user_id", "role_id", "team_id")
+       VALUES ($1, $2, $3, $4)`,
+      [randomUUID(), teamAdminId, teamAdminRole[0].id, teamId],
+    );
+    await activeDataSource.query(
+      `UPDATE "rbac_policy_version" SET "version" = "version" + 1
+        WHERE "singleton" = true`,
+    );
+    const tokenPort = app.get<AuthTokenPort>(AUTH_TOKEN_PORT);
+    const teamAdminToken = await tokenPort.sign({
+      userId: teamAdminId,
+      email: 'teamadmin@example.test',
+      roles: [Role.User],
+    });
+
+    // The membership pre-created by the members surface (profile email is the
+    // claim key), exactly as the product invite flow does.
+    const email = `invitee-${randomUUID()}@example.test`;
+    const membership = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/members/invite`)
+      .set('Authorization', `Bearer ${teamAdminToken}`)
+      .send({ profile: { fullName: 'Onboarded Member', email } });
+    expect(membership.status).toBe(201);
+    const membershipId = membership.body.id as string;
+
+    // P0-2: the team-scoped route lets a team-scoped holder invite (this very
+    // call returned 403 on the global-scope route the audit reproduced).
+    const invitation = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/invitations`)
+      .set('Authorization', `Bearer ${teamAdminToken}`)
+      .send({ email });
+    expect(invitation.status).toBe(201);
+    expect(invitation.body.teamId).toBe(teamId);
+    expect(typeof invitation.body.token).toBe('string');
+
+    // P0-1: acceptance links + activates the membership and grants MEMBER —
+    // one transaction.
+    const accepted = await request(app.getHttpServer())
+      .post('/api/v1/invitations/accept')
+      .send({
+        token: invitation.body.token as string,
+        password: 'invitee-chosen-strong-passphrase',
+        displayName: 'Onboarded Member',
+      });
+    expect(accepted.status).toBe(201);
+    const accessToken = accepted.body.accessToken as string;
+    const inviteeId = accepted.body.userId as string;
+
+    // /auth/me now carries the activated membership with the member role slug.
+    const me = await request(app.getHttpServer())
+      .get('/api/v1/auth/me')
+      .set('Authorization', `Bearer ${accessToken}`);
+    expect(me.status).toBe(200);
+    expect(me.body.memberships).toHaveLength(1);
+    expect(me.body.memberships[0]).toMatchObject({
+      teamId,
+      membershipId,
+      status: 'active',
+      roles: ['member'],
+    });
+
+    // The scoped permission read returns the member grants for that team.
+    const scoped = await request(app.getHttpServer())
+      .get(`/api/v1/rbac/me/permissions?teamId=${teamId}`)
+      .set('Authorization', `Bearer ${accessToken}`);
+    expect(scoped.status).toBe(200);
+    expect(scoped.body.permissions).toEqual(
+      expect.arrayContaining([
+        'team.read',
+        'practice.read',
+        'leaderboard.read',
+      ]),
+    );
+
+    // Database truth: linked + activated membership, MEMBER assignment,
+    // invited→active status history.
+    const membershipRows = await activeDataSource.query(
+      `SELECT "user_id", "status", "joined_at" FROM "memberships"
+        WHERE "id" = $1`,
+      [membershipId],
+    );
+    expect(membershipRows[0]).toMatchObject({
+      user_id: inviteeId,
+      status: 'active',
+    });
+    expect(membershipRows[0].joined_at).not.toBeNull();
+
+    const assignments = await activeDataSource.query(
+      `SELECT r."key" FROM "user_role_assignments" a
+         JOIN "roles" r ON r."id" = a."role_id"
+        WHERE a."user_id" = $1 AND a."team_id" = $2 AND a."revoked_at" IS NULL`,
+      [inviteeId, teamId],
+    );
+    expect(assignments).toEqual([{ key: 'MEMBER' }]);
+
+    const events = await activeDataSource.query(
+      `SELECT "from_status", "to_status" FROM "membership_status_events"
+        WHERE "membership_id" = $1 ORDER BY "occurred_at" ASC, "id" ASC`,
+      [membershipId],
+    );
+    expect(events).toEqual([
+      { from_status: null, to_status: 'invited' },
+      { from_status: 'invited', to_status: 'active' },
+    ]);
+
+    // The one-time token cannot be replayed (idempotent accept).
+    const replay = await request(app.getHttpServer())
+      .post('/api/v1/invitations/accept')
+      .send({
+        token: invitation.body.token as string,
+        password: 'invitee-chosen-strong-passphrase',
+      });
+    expect(replay.status).toBe(400);
+
+    // P0-2 negative: the same team admin cannot invite into another team.
+    const denied = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${randomUUID()}/invitations`)
+      .set('Authorization', `Bearer ${teamAdminToken}`)
+      .send({ email: `cross-${randomUUID()}@example.test` });
+    expect(denied.status).toBe(403);
+    expect(denied.body.messageKey).toBe('errors.auth.permissionDenied');
   });
 
   it('GET /auth/invitations/:token returns minimal pending details', async () => {

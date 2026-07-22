@@ -21,6 +21,7 @@ interface HarnessOptions {
   readonly teamMissing?: boolean;
   readonly userExists?: boolean;
   readonly membershipExists?: boolean;
+  readonly profileExists?: boolean;
   readonly assignmentExists?: boolean;
   readonly roleMissing?: boolean;
   readonly venueExists?: boolean;
@@ -43,6 +44,9 @@ function selectRows(
   }
   if (sql.includes('FROM "memberships"')) {
     return rowsFor(options.membershipExists, MEMBERSHIP_ID);
+  }
+  if (sql.includes('FROM "member_profiles"')) {
+    return rowsFor(options.profileExists, 'profile-1');
   }
   if (sql.includes('FROM "roles"')) {
     return options.roleMissing === true ? [] : [{ id: ROLE_ID }];
@@ -135,11 +139,32 @@ describe('seedPersonas', () => {
       sql.filter(s => s.includes('INSERT INTO "memberships"')),
     ).toHaveLength(PERSONA_DEFINITIONS.length);
     expect(
+      sql.filter(s => s.includes('INSERT INTO "member_profiles"')),
+    ).toHaveLength(PERSONA_DEFINITIONS.length);
+    expect(
       sql.filter(s => s.includes('INSERT INTO "user_role_assignments"')),
     ).toHaveLength(PERSONA_DEFINITIONS.length);
     expect(sql.some(s => s.includes('UPDATE "rbac_policy_version"'))).toBe(
       true,
     );
+  });
+
+  it('writes each persona profile with the display name and email of its persona', async () => {
+    const queryRunner = buildQueryRunner();
+
+    await seedPersonas(queryRunner, PASSWORD_HASH);
+
+    const profileInserts = queryRunner.query.mock.calls.filter(call =>
+      sqlOf(call).includes('INSERT INTO "member_profiles"'),
+    );
+    const firstPersona = PERSONA_DEFINITIONS[0];
+    expect(profileInserts[0]?.[1]).toEqual([
+      MEMBERSHIP_ID,
+      TEAM_ID,
+      firstPersona?.displayName,
+      firstPersona?.email,
+      USER_ID,
+    ]);
   });
 
   it('assigns the super admin globally and everyone else to the team', async () => {
@@ -179,6 +204,7 @@ describe('seedPersonas', () => {
     const queryRunner = buildQueryRunner({
       userExists: true,
       membershipExists: true,
+      profileExists: true,
       assignmentExists: true,
       venueExists: true,
     });
@@ -188,10 +214,29 @@ describe('seedPersonas', () => {
     const sql = statements(queryRunner);
     expect(sql.some(s => s.includes('INSERT INTO "users"'))).toBe(false);
     expect(sql.some(s => s.includes('INSERT INTO "memberships"'))).toBe(false);
+    expect(sql.some(s => s.includes('INSERT INTO "member_profiles"'))).toBe(
+      false,
+    );
     expect(
       sql.some(s => s.includes('INSERT INTO "user_role_assignments"')),
     ).toBe(false);
     expect(sql.some(s => s.includes('INSERT INTO "venues"'))).toBe(false);
+  });
+
+  it('backfills a missing profile for an existing membership', async () => {
+    const queryRunner = buildQueryRunner({
+      userExists: true,
+      membershipExists: true,
+      assignmentExists: true,
+      venueExists: true,
+    });
+
+    await seedPersonas(queryRunner, PASSWORD_HASH);
+
+    const sql = statements(queryRunner);
+    expect(
+      sql.filter(s => s.includes('INSERT INTO "member_profiles"')),
+    ).toHaveLength(PERSONA_DEFINITIONS.length);
   });
 
   it('fails loudly when the team seeder has not run', async () => {

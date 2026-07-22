@@ -184,6 +184,39 @@ describe('RbacRepository', () => {
     ).rejects.toThrow(/returned row/u);
   });
 
+  it('finds a live assignment by its natural scope key or returns null', async () => {
+    scope.run.mockResolvedValueOnce([assignmentRow({ team_id: 'team-1' })]);
+    await expect(
+      repository.findActiveAssignmentByScope(
+        scope as never,
+        'user-1',
+        'role-1',
+        'team-1',
+        null,
+      ),
+    ).resolves.toMatchObject({ id: 'assign-1', teamId: 'team-1' });
+    expect(scope.run.mock.calls[0]?.[1]).toEqual([
+      'user-1',
+      'role-1',
+      'team-1',
+      null,
+    ]);
+    expect(String(scope.run.mock.calls[0]?.[0])).toContain(
+      'IS NOT DISTINCT FROM',
+    );
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.findActiveAssignmentByScope(
+        scope as never,
+        'user-1',
+        'role-1',
+        null,
+        null,
+      ),
+    ).resolves.toBeNull();
+  });
+
   it('finds an active assignment by id or returns null', async () => {
     scope.run.mockResolvedValueOnce([assignmentRow()]);
     await expect(

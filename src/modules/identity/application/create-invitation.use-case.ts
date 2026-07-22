@@ -78,6 +78,7 @@ export class CreateInvitationUseCase {
       tokenHash: hashOpaqueToken(token),
       invitedBy: command.invitedBy,
       role: command.role,
+      teamId: command.teamId,
       expiresAt: new Date(now.getTime() + ttl * MILLISECONDS_PER_SECOND),
       now,
     });

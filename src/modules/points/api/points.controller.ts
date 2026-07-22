@@ -42,10 +42,13 @@ import { ListLeaderboardQueryDto } from './dto/list-leaderboard.query.dto';
 import { PointsSummaryResponseDto } from './dto/points-summary.response.dto';
 
 /**
- * Team-facing points reads (points.read.team) and the admin adjustment surface
- * (points.adjust). Totals are ledger projections — never stored counters — and
- * every list is bounded and deterministically ordered. Manual adjustments append
- * an audited, idempotent ledger entry; the actor comes from the token.
+ * Team-facing points reads and the admin adjustment surface (points.adjust).
+ * The leaderboard read is gated by leaderboard.read — the permission the member
+ * bundle carries and navigation advertises — while the per-member summary stays
+ * behind the staff-level points.read.team. Totals are ledger projections — never
+ * stored counters — and every list is bounded and deterministically ordered.
+ * Manual adjustments append an audited, idempotent ledger entry; the actor
+ * comes from the token.
  */
 @ApiTags(POINTS_API_TAG)
 @Controller(POINTS_ROUTE)
@@ -57,7 +60,7 @@ export class PointsController {
   ) {}
 
   @Get()
-  @RequirePermissions(Permission.PointsReadTeam)
+  @RequirePermissions(Permission.LeaderboardRead)
   @ApiOperation({ summary: 'Read the team points leaderboard' })
   @ApiOkResponse({ type: LeaderboardResponseDto })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })

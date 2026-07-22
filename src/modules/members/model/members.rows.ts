@@ -94,14 +94,19 @@ export interface JerseyRow {
   readonly jersey_number: number;
 }
 
+/**
+ * One coarse directory row. The profile join is a LEFT JOIN so account-only
+ * memberships (no player profile yet) still appear: profile fields are null and
+ * `display_name` falls back to the linked account's display name or email.
+ */
 export interface DirectoryRow {
   readonly membership_id: string;
   readonly team_id: string;
   readonly status: string;
-  readonly display_name: string;
+  readonly display_name: string | null;
   readonly nickname: string | null;
   readonly jersey_number: number | null;
-  readonly positions: readonly string[];
+  readonly positions: readonly string[] | null;
   readonly has_avatar: boolean;
 }
 

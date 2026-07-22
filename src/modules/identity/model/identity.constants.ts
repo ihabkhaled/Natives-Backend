@@ -26,6 +26,12 @@ export const INVITATIONS_RESEND_ROUTE = ':id/resend';
 export const INVITATIONS_REVOKE_ROUTE = ':id/revoke';
 export const INVITATION_ID_PARAM = 'id';
 
+// Team-scoped invitation route: the `:teamId` path param lets the permission
+// guard evaluate member.invite at TEAM scope, so a team administrator whose
+// grant is team-scoped can invite into their own team (and only their own).
+export const TEAM_INVITATIONS_ROUTE = 'teams/:teamId/invitations';
+export const TEAM_ID_PARAM = 'teamId';
+
 // --- Field bounds ------------------------------------------------------------
 export const EMAIL_MAX_LENGTH = 320;
 export const PASSWORD_MIN_LENGTH = 12;

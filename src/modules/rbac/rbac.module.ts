@@ -5,6 +5,7 @@ import { Module } from '@nestjs/common';
 
 import { RbacController } from './api/rbac.controller';
 import { AssignRoleUseCase } from './application/assign-role.use-case';
+import { EnsureRoleAssignmentService } from './application/ensure-role-assignment.service';
 import { GetEffectivePermissionsUseCase } from './application/get-effective-permissions.use-case';
 import { ListUserAssignmentsUseCase } from './application/list-user-assignments.use-case';
 import { PrivilegeCeilingService } from './application/privilege-ceiling.service';
@@ -30,6 +31,7 @@ import { RbacRepository } from './infrastructure/rbac.repository';
   providers: [
     RbacRepository,
     PrivilegeCeilingService,
+    EnsureRoleAssignmentService,
     RoleAssignmentQueryService,
     RoleMatrixQueryService,
     TeamRoleQueryService,
@@ -49,6 +51,7 @@ import { RbacRepository } from './infrastructure/rbac.repository';
     RoleAssignmentQueryService,
     TeamRoleQueryService,
     ReplaceTeamRolesUseCase,
+    EnsureRoleAssignmentService,
   ],
 })
 export class RbacModule {}

@@ -255,17 +255,19 @@ describeIfDb(suiteTitle, () => {
     expect(version[0].version).toBe(3);
   });
 
-  it('seeds every persona with a credential, membership and scoped role', async () => {
+  it('seeds every persona with a credential, membership, profile and scoped role', async () => {
     const personas = await dataSource.query(
       `SELECT lower("u"."email") AS email, "u"."role" AS account_role,
               "r"."key" AS role_key, "a"."team_id" IS NULL AS platform_scoped,
               "c"."user_id" IS NOT NULL AS has_credential,
-              "m"."status" AS membership_status
+              "m"."status" AS membership_status,
+              "p"."membership_id" IS NOT NULL AS has_profile
          FROM "users" "u"
          JOIN "user_role_assignments" "a" ON "a"."user_id" = "u"."id"
          JOIN "roles" "r" ON "r"."id" = "a"."role_id"
          LEFT JOIN "password_credentials" "c" ON "c"."user_id" = "u"."id"
          LEFT JOIN "memberships" "m" ON "m"."user_id" = "u"."id"
+         LEFT JOIN "member_profiles" "p" ON "p"."membership_id" = "m"."id"
         WHERE "u"."email" LIKE '%@ultimatenatives.local'
         ORDER BY lower("u"."email")`,
     );
@@ -274,6 +276,9 @@ describeIfDb(suiteTitle, () => {
     for (const persona of personas) {
       expect(persona.has_credential).toBe(true);
       expect(persona.membership_status).toBe('active');
+      // The persona seeder writes a member profile per membership so the
+      // member directory is populated on a fresh database (P0-4).
+      expect(persona.has_profile).toBe(true);
     }
 
     const superAdmin = personas.find(

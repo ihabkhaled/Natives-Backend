@@ -100,7 +100,8 @@ async function seedPersona(
 ): Promise<void> {
   const userId = await ensureUser(queryRunner, persona);
   await ensureCredential(queryRunner, userId, passwordHash);
-  await ensureMembership(queryRunner, teamId, userId);
+  const membershipId = await ensureMembership(queryRunner, teamId, userId);
+  await ensureProfile(queryRunner, teamId, membershipId, userId, persona);
   const roleId = await resolveRoleId(queryRunner, persona.roleKey);
   await ensureAssignment(
     queryRunner,
@@ -170,7 +171,7 @@ async function ensureMembership(
   queryRunner: QueryRunner,
   teamId: string,
   userId: string,
-): Promise<void> {
+): Promise<string> {
   const existing = await queryRows<IdRow>(
     queryRunner,
     `SELECT "id" FROM "memberships"
@@ -179,8 +180,9 @@ async function ensureMembership(
         AND "status" NOT IN ('archived', 'anonymized', 'left')`,
     [teamId, userId],
   );
-  if (existing.length > 0) {
-    return;
+  const found = existing[0];
+  if (found !== undefined) {
+    return found.id;
   }
   const rows = await queryRows<IdRow>(
     queryRunner,
@@ -199,6 +201,36 @@ async function ensureMembership(
             "to_status", "actor_user_id", "effective_at")
      VALUES ($1, NULL, $2, $3, now())`,
     [membershipId, PERSONA_MEMBERSHIP_STATUS, userId],
+  );
+  return membershipId;
+}
+
+/**
+ * Every persona membership gets a minimal player profile (name + email) so the
+ * member directory, roles picker, and every profile-joining surface is
+ * populated on a fresh database. Find-then-write on the 1:1 membership key,
+ * mirroring the members module's own repository columns.
+ */
+async function ensureProfile(
+  queryRunner: QueryRunner,
+  teamId: string,
+  membershipId: string,
+  userId: string,
+  persona: PersonaDefinition,
+): Promise<void> {
+  const existing = await queryRows<IdRow>(
+    queryRunner,
+    `SELECT "id" FROM "member_profiles" WHERE "membership_id" = $1`,
+    [membershipId],
+  );
+  if (existing.length > 0) {
+    return;
+  }
+  await queryRunner.query(
+    `INSERT INTO "member_profiles" ("membership_id", "team_id", "full_name",
+            "email", "created_by")
+     VALUES ($1, $2, $3, $4, $5)`,
+    [membershipId, teamId, persona.displayName, persona.email, userId],
   );
 }
 

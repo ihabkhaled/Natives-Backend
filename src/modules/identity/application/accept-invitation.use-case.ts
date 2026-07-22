@@ -9,7 +9,13 @@ import {
   type UnitOfWorkPort,
 } from '@core/persistence/unit-of-work.port';
 import { PASSWORD_HASH_PORT, type PasswordHashPort } from '@modules/auth';
+import {
+  type ClaimedMembership,
+  ClaimInvitedMembershipsService,
+} from '@modules/members';
+import { EnsureRoleAssignmentService } from '@modules/rbac';
 import { Inject, Injectable } from '@nestjs/common';
+import { RbacRole } from '@shared/enums';
 
 import { isInvitationAcceptable } from '../domain/invitation.policy';
 import { InvitationInvalidError } from '../errors/invitation-invalid.error';
@@ -29,9 +35,14 @@ import { SessionIssuerService } from './session-issuer.service';
 
 /**
  * Accepts an invitation atomically: verifies the single-use token (locked FOR
- * UPDATE), creates the user + password credential, activates the account, marks
- * the invitation consumed, audits it, and issues the first session — all in one
- * transaction so partial state can never persist.
+ * UPDATE), creates the user + password credential, activates the account, links
+ * and activates every invited membership pre-created for this email (scoped to
+ * the invitation's team when it carries one), grants the default MEMBER role in
+ * each linked team through the RBAC public surface, marks the invitation
+ * consumed, audits it, and issues the first session — all in one transaction so
+ * partial state can never persist. The invitee therefore lands with a working
+ * team context: `/auth/me` carries the membership and the scoped permission
+ * read returns the member grants.
  */
 @Injectable()
 export class AcceptInvitationUseCase {
@@ -44,6 +55,8 @@ export class AcceptInvitationUseCase {
     private readonly users: UserRepository,
     private readonly credentials: PasswordCredentialRepository,
     private readonly invitations: InvitationRepository,
+    private readonly membershipClaims: ClaimInvitedMembershipsService,
+    private readonly roleAssignments: EnsureRoleAssignmentService,
     private readonly audit: SecurityAuditService,
     private readonly sessionIssuer: SessionIssuerService,
   ) {}
@@ -65,12 +78,13 @@ export class AcceptInvitationUseCase {
       throw new InvitationInvalidError();
     }
     const user = await this.createAccount(scope, invitation, command, now);
+    const claimed = await this.linkMemberships(scope, invitation, user, now);
     await this.invitations.markAccepted(scope, invitation.id, now);
     await this.audit.record(
       scope,
       SecurityEventType.InvitationAccepted,
       user.id,
-      { invitationId: invitation.id },
+      { invitationId: invitation.id, linkedMemberships: claimed.length },
     );
     return this.sessionIssuer.issue(
       scope,
@@ -103,5 +117,34 @@ export class AcceptInvitationUseCase {
       now,
     );
     return user;
+  }
+
+  /**
+   * Link the invited membership(s) pre-created for this email to the new
+   * account and grant the default MEMBER role in each linked team. Sequential:
+   * the members surface guards duplicates within this same transaction.
+   */
+  private async linkMemberships(
+    scope: TransactionScope,
+    invitation: Invitation,
+    user: User,
+    now: Date,
+  ): Promise<readonly ClaimedMembership[]> {
+    const claimed = await this.membershipClaims.claim(scope, {
+      email: invitation.email,
+      teamId: invitation.teamId,
+      userId: user.id,
+      now,
+    });
+    for (const membership of claimed) {
+      await this.roleAssignments.ensureTeamRole(scope, {
+        userId: user.id,
+        roleKey: RbacRole.Member,
+        teamId: membership.teamId,
+        grantedBy: invitation.invitedBy,
+        now,
+      });
+    }
+    return claimed;
   }
 }

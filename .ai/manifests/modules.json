@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T02:49:24.452Z",
+  "generatedAt": "2026-07-22T16:25:06.391Z",
   "modules": [
     {
       "name": "activities",
@@ -808,12 +808,14 @@
         "controller": [
           "src/modules/identity/api/auth.controller.ts",
           "src/modules/identity/api/invitations.controller.ts",
-          "src/modules/identity/api/public-invitations.controller.ts"
+          "src/modules/identity/api/public-invitations.controller.ts",
+          "src/modules/identity/api/team-invitations.controller.ts"
         ],
         "api-dto": [
           "src/modules/identity/api/dto/accept-invitation.dto.ts",
           "src/modules/identity/api/dto/auth-session-response.dto.ts",
           "src/modules/identity/api/dto/create-invitation.dto.ts",
+          "src/modules/identity/api/dto/create-team-invitation.dto.ts",
           "src/modules/identity/api/dto/device-session-response.dto.ts",
           "src/modules/identity/api/dto/forgot-password.dto.ts",
           "src/modules/identity/api/dto/invitation-delivery-response.dto.ts",
@@ -898,7 +900,7 @@
           "src/modules/identity/model/invitation-email.constants.ts"
         ]
       },
-      "fileCount": 75,
+      "fileCount": 77,
       "specCount": 46,
       "publicSurface": "src/modules/identity/index.ts",
       "hasEvents": false
@@ -1232,6 +1234,7 @@
           "src/modules/members/application/update-member-profile.use-case.ts"
         ],
         "service": [
+          "src/modules/members/application/claim-invited-memberships.service.ts",
           "src/modules/members/application/get-avatar.service.ts",
           "src/modules/members/application/member-access.service.ts",
           "src/modules/members/application/member-alias-query.service.ts",
@@ -1294,8 +1297,8 @@
           "src/modules/members/model/members.types.ts"
         ]
       },
-      "fileCount": 81,
-      "specCount": 43,
+      "fileCount": 82,
+      "specCount": 44,
       "publicSurface": "src/modules/members/index.ts",
       "hasEvents": false
     },
@@ -1819,6 +1822,7 @@
           "src/modules/rbac/application/revoke-role-assignment.use-case.ts"
         ],
         "service": [
+          "src/modules/rbac/application/ensure-role-assignment.service.ts",
           "src/modules/rbac/application/privilege-ceiling.service.ts",
           "src/modules/rbac/application/rbac-permission-resolver.service.ts",
           "src/modules/rbac/application/role-assignment-query.service.ts",
@@ -1855,8 +1859,8 @@
           "src/modules/rbac/model/rbac.types.ts"
         ]
       },
-      "fileCount": 38,
-      "specCount": 23,
+      "fileCount": 39,
+      "specCount": 24,
       "publicSurface": "src/modules/rbac/index.ts",
       "hasEvents": false
     },

@@ -338,6 +338,20 @@ export interface MembershipStatusChange {
   readonly now: Date;
 }
 
+/**
+ * Link a pre-created invited membership to its freshly created account and
+ * activate it in one guarded write (invitation acceptance). The update only
+ * applies while the row is still `invited`, unlinked, and at the expected
+ * version, so a concurrent change can never be overwritten.
+ */
+export interface MembershipClaim {
+  readonly id: string;
+  readonly userId: string;
+  readonly statusEffectiveAt: Date;
+  readonly expectedVersion: number;
+  readonly now: Date;
+}
+
 export interface NewMemberProfile {
   readonly id: string;
   readonly membershipId: string;
@@ -410,6 +424,25 @@ export interface NewAuditEvent {
 export interface JerseyReservation {
   readonly membershipId: string;
   readonly jerseyNumber: number;
+}
+
+/**
+ * Claim request for invitation acceptance: link every invited, unlinked
+ * membership matching this email (optionally within one team) to the freshly
+ * created account. Runs inside the caller's acceptance transaction.
+ */
+export interface ClaimInvitedMembershipsCommand {
+  readonly email: string;
+  readonly teamId: string | null;
+  readonly userId: string;
+  readonly now: Date;
+}
+
+/** One membership linked and activated by an invitation acceptance. */
+export interface ClaimedMembership {
+  readonly membershipId: string;
+  readonly teamId: string;
+  readonly seasonId: string | null;
 }
 
 /**

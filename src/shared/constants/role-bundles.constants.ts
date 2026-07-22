@@ -68,8 +68,12 @@ const COACH_BUNDLE: readonly Permission[] = uniquePermissions([
   Permission.TryoutEvaluate,
 ]);
 
+// TEAM_ADMIN carries every SCOREKEEPER permission (notably match.score) so the
+// privilege ceiling lets a team administrator assign the SCOREKEEPER bundle:
+// the ceiling only offers roles fully contained in the actor's own permissions.
 const TEAM_ADMIN_BUNDLE: readonly Permission[] = uniquePermissions([
   ...COACH_BUNDLE,
+  Permission.MatchScore,
   Permission.TeamSettingsRead,
   Permission.TeamSettingsManage,
   Permission.SeasonManage,

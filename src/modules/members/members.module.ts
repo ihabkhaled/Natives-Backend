@@ -9,6 +9,7 @@ import { MemberRolesController } from './api/member-roles.controller';
 import { MembersController } from './api/members.controller';
 import { AddMemberAliasUseCase } from './application/add-member-alias.use-case';
 import { AnonymizeMemberUseCase } from './application/anonymize-member.use-case';
+import { ClaimInvitedMembershipsService } from './application/claim-invited-memberships.service';
 import { GetAvatarService } from './application/get-avatar.service';
 import { InviteMemberUseCase } from './application/invite-member.use-case';
 import { MemberAccessService } from './application/member-access.service';
@@ -70,6 +71,7 @@ import { MEDIA_STORAGE_PORT } from './model/members.constants';
     MemberLookupService,
     MemberAccessService,
     MembershipContextService,
+    ClaimInvitedMembershipsService,
     MemberDashboardSignalsService,
     MemberRolesService,
     ReplaceMemberRolesUseCase,
@@ -88,6 +90,10 @@ import { MEDIA_STORAGE_PORT } from './model/members.constants';
     RecordMediaScanUseCase,
     SetMemberAvatarUseCase,
   ],
-  exports: [MembershipContextService, MemberDashboardSignalsService],
+  exports: [
+    MembershipContextService,
+    MemberDashboardSignalsService,
+    ClaimInvitedMembershipsService,
+  ],
 })
 export class MembersModule {}
