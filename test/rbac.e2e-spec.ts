@@ -16,6 +16,9 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { BaselineSchema1721200000000 } from '../src/database/migrations/1721200000000-baseline-schema';
 import { IdentitySchema1721300000000 } from '../src/database/migrations/1721300000000-identity-schema';
 import { RbacSchema1721400000000 } from '../src/database/migrations/1721400000000-rbac-schema';
+import { TeamsSchema1721500000000 } from '../src/database/migrations/1721500000000-teams-schema';
+import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
+import { RbacRoleCatalogMetadata1725000000000 } from '../src/database/migrations/1725000000000-rbac-role-catalog-metadata';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -46,6 +49,15 @@ const TEST_DB_CONFIG: DatabaseConfig = {
 const MEMBER_ROLE_KEY: string = RbacRole.Member;
 const TEAM_A = randomUUID();
 const TEAM_B = randomUUID();
+
+const MIGRATIONS = [
+  BaselineSchema1721200000000,
+  IdentitySchema1721300000000,
+  RbacSchema1721400000000,
+  TeamsSchema1721500000000,
+  PlatformLifecycleSchema1723800000000,
+  RbacRoleCatalogMetadata1725000000000,
+];
 
 interface Fixture {
   readonly dataSource: DataSource;
@@ -92,11 +104,7 @@ async function migrateAndSeed(): Promise<Fixture | null> {
   try {
     const dataSource = new DataSource({
       ...buildDataSourceOptions(TEST_DB_CONFIG),
-      migrations: [
-        BaselineSchema1721200000000,
-        IdentitySchema1721300000000,
-        RbacSchema1721400000000,
-      ],
+      migrations: MIGRATIONS,
     });
     await dataSource.initialize();
     await dataSource.runMigrations();
@@ -160,9 +168,11 @@ describeIfDb(suiteTitle, () => {
   afterAll(async () => {
     await app.close();
     if (seededDataSource) {
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
-      await seededDataSource.undoLastMigration();
+      let remaining = MIGRATIONS.length;
+      while (remaining > 0) {
+        await seededDataSource.undoLastMigration();
+        remaining -= 1;
+      }
       await seededDataSource.destroy();
     }
     if (ORIGINAL_DATABASE_URL === undefined) {
@@ -371,5 +381,221 @@ describeIfDb(suiteTitle, () => {
       .set('Authorization', `Bearer ${promoteToken}`)
       .send({ userId: target, roleKey: RbacRole.Member });
     expect(after.status).toBe(201);
+  });
+
+  // --- assignable-roles catalog ----------------------------------------------
+
+  it('projects the team admin assignable catalog with display metadata', async () => {
+    const token = await tokenFor(fixture.teamAdminUserId, [Role.User]);
+
+    const response = await request(app.getHttpServer())
+      .get(`/api/v1/rbac/teams/${TEAM_A}/assignable-roles`)
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body.teamId).toBe(TEAM_A);
+    const slugs = response.body.roles.map(
+      (role: { slug: string }) => role.slug,
+    );
+    // The seeded SCOREKEEPER bundle carries match.score, which TEAM_ADMIN
+    // lacks, so it stays above the ceiling; SUPER_ADMIN is structurally
+    // excluded by the catalog metadata regardless of any ceiling.
+    expect(slugs).toEqual(['analyst', 'coach', 'member', 'team_admin']);
+    for (const role of response.body.roles as {
+      displayName: string;
+      description: string;
+    }[]) {
+      expect(role.displayName.length).toBeGreaterThan(0);
+      expect(role.description.length).toBeGreaterThan(0);
+    }
+  });
+
+  it('denies the assignable catalog to a coach who cannot invite (403)', async () => {
+    // The seeded COACH bundle carries no member.invite, so the route guard —
+    // not the ceiling — is what stops a coach from browsing the catalog.
+    const coachUserId = await newTarget();
+    const role = await fixture.dataSource.query(
+      `SELECT "id" FROM "roles" WHERE "key" = $1`,
+      [RbacRole.Coach],
+    );
+    await fixture.dataSource.query(
+      `INSERT INTO "user_role_assignments" ("id", "user_id", "role_id", "team_id")
+       VALUES ($1, $2, $3, $4)`,
+      [randomUUID(), coachUserId, role[0].id, TEAM_A],
+    );
+    await fixture.dataSource.query(
+      `UPDATE "rbac_policy_version" SET "version" = "version" + 1 WHERE "singleton" = true`,
+    );
+    const token = await tokenFor(coachUserId, [Role.User]);
+
+    const response = await request(app.getHttpServer())
+      .get(`/api/v1/rbac/teams/${TEAM_A}/assignable-roles`)
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(403);
+    expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('denies the assignable catalog outside the actor team scope (403)', async () => {
+    const token = await tokenFor(fixture.teamAdminUserId, [Role.User]);
+
+    const response = await request(app.getHttpServer())
+      .get(`/api/v1/rbac/teams/${TEAM_B}/assignable-roles`)
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(403);
+    expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('denies the assignable catalog to a member without member.invite (403)', async () => {
+    const token = await tokenFor(fixture.memberId, [Role.User]);
+
+    const response = await request(app.getHttpServer())
+      .get(`/api/v1/rbac/teams/${TEAM_A}/assignable-roles`)
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(response.status).toBe(403);
+    expect(response.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  // --- protected roles in team scope -----------------------------------------
+
+  it('refuses a team-scoped assignment of SUPER_ADMIN even to a system admin', async () => {
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+    const target = await newTarget();
+
+    const response = await request(app.getHttpServer())
+      .post(`/api/v1/rbac/assignments?teamId=${TEAM_A}`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({ userId: target, roleKey: RbacRole.SuperAdmin });
+
+    expect(response.status).toBe(403);
+    expect(response.body.messageKey).toBe('errors.rbac.protectedRole');
+  });
+
+  // --- platform super-admin management ---------------------------------------
+
+  it('promotes, lists, and revokes super admins with audit and last-admin guard', async () => {
+    const adminToken = await tokenFor(fixture.adminId, [Role.Admin]);
+    const first = await newTarget();
+    const second = await newTarget();
+    const reason = 'Founding operator handover';
+
+    const promoted = await request(app.getHttpServer())
+      .post('/api/v1/rbac/platform/super-admins')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ userId: first, reason });
+    expect(promoted.status).toBe(201);
+    expect(promoted.body).toMatchObject({
+      userId: first,
+      grantedBy: fixture.adminId,
+    });
+
+    // Idempotent: promoting the same user again returns the live assignment.
+    const again = await request(app.getHttpServer())
+      .post('/api/v1/rbac/platform/super-admins')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ userId: first, reason });
+    expect(again.status).toBe(201);
+    expect(again.body.assignmentId).toBe(promoted.body.assignmentId);
+
+    const secondPromoted = await request(app.getHttpServer())
+      .post('/api/v1/rbac/platform/super-admins')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ userId: second, reason });
+    expect(secondPromoted.status).toBe(201);
+
+    const listed = await request(app.getHttpServer())
+      .get('/api/v1/rbac/platform/super-admins')
+      .set('Authorization', `Bearer ${adminToken}`);
+    expect(listed.status).toBe(200);
+    expect(listed.body.total).toBe(2);
+    expect(
+      listed.body.items.map((entry: { userId: string }) => entry.userId),
+    ).toEqual(expect.arrayContaining([first, second]));
+
+    const revoked = await request(app.getHttpServer())
+      .delete(`/api/v1/rbac/platform/super-admins/${second}`)
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ reason: 'Left the organization' });
+    expect(revoked.status).toBe(200);
+    expect(revoked.body.userId).toBe(second);
+
+    // The last live super admin can never be removed — 409, not a lockout.
+    const lastRevoke = await request(app.getHttpServer())
+      .delete(`/api/v1/rbac/platform/super-admins/${first}`)
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ reason: 'Attempted lockout' });
+    expect(lastRevoke.status).toBe(409);
+    expect(lastRevoke.body.messageKey).toBe('errors.rbac.lastSuperAdmin');
+
+    // Both changes are audited with actor, target, and the mandatory reason.
+    const audits = await fixture.dataSource.query(
+      `SELECT "event_type", "actor_user_id", "context" FROM "security_events"
+        WHERE "event_type" IN ('rbac.superAdminPromoted', 'rbac.superAdminRevoked')
+        ORDER BY "occurred_at" ASC`,
+    );
+    expect(audits.length).toBeGreaterThanOrEqual(3);
+    const promotedAudit = audits.find(
+      (row: { context: { targetUserId: string } }) =>
+        row.context.targetUserId === first,
+    );
+    expect(promotedAudit.actor_user_id).toBe(fixture.adminId);
+    expect(promotedAudit.context.reason).toBe(reason);
+
+    // Cleanup: revoke the remaining super admin against a re-promoted second
+    // so later assertions never inherit surprise global grants.
+    await request(app.getHttpServer())
+      .post('/api/v1/rbac/platform/super-admins')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ userId: second, reason });
+    await request(app.getHttpServer())
+      .delete(`/api/v1/rbac/platform/super-admins/${first}`)
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ reason: 'cleanup rotation' });
+  });
+
+  it('rejects promoting an inactive user (409) and an unknown revoke (404)', async () => {
+    const adminToken = await tokenFor(fixture.adminId, [Role.Admin]);
+
+    const inactive = await request(app.getHttpServer())
+      .post('/api/v1/rbac/platform/super-admins')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ userId: fixture.inactiveAdminId, reason: 'Should never work' });
+    expect(inactive.status).toBe(409);
+    expect(inactive.body.messageKey).toBe('errors.rbac.userNotEligible');
+
+    const unknown = await request(app.getHttpServer())
+      .delete(`/api/v1/rbac/platform/super-admins/${randomUUID()}`)
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ reason: 'No such holder' });
+    expect(unknown.status).toBe(404);
+    expect(unknown.body.messageKey).toBe('errors.rbac.assignmentNotFound');
+  });
+
+  it('requires the audited reason on promotion (400)', async () => {
+    const adminToken = await tokenFor(fixture.adminId, [Role.Admin]);
+    const target = await newTarget();
+
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/rbac/platform/super-admins')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ userId: target });
+
+    expect(response.status).toBe(400);
+    expect(response.body.messageKey).toBe('errors.validation.failed');
+  });
+
+  it('denies the platform routes to holders of mere team authority (403)', async () => {
+    const teamAdminToken = await tokenFor(fixture.teamAdminUserId, [Role.User]);
+    const memberToken = await tokenFor(fixture.memberId, [Role.User]);
+
+    for (const token of [teamAdminToken, memberToken]) {
+      const listed = await request(app.getHttpServer())
+        .get('/api/v1/rbac/platform/super-admins')
+        .set('Authorization', `Bearer ${token}`);
+      expect(listed.status).toBe(403);
+      expect(listed.body.messageKey).toBe('errors.auth.permissionDenied');
+    }
   });
 });

@@ -3,15 +3,19 @@ import { ClockModule } from '@core/clock/clock.module';
 import { IdGeneratorModule } from '@core/id-generator/id-generator.module';
 import { Module } from '@nestjs/common';
 
+import { PlatformAdminsController } from './api/platform-admins.controller';
 import { RbacController } from './api/rbac.controller';
 import { AssignRoleUseCase } from './application/assign-role.use-case';
 import { EnsureRoleAssignmentService } from './application/ensure-role-assignment.service';
 import { GetEffectivePermissionsUseCase } from './application/get-effective-permissions.use-case';
+import { ListSuperAdminsUseCase } from './application/list-super-admins.use-case';
 import { ListUserAssignmentsUseCase } from './application/list-user-assignments.use-case';
 import { PrivilegeCeilingService } from './application/privilege-ceiling.service';
+import { PromoteSuperAdminUseCase } from './application/promote-super-admin.use-case';
 import { RbacPermissionResolverService } from './application/rbac-permission-resolver.service';
 import { ReplaceTeamRolesUseCase } from './application/replace-team-roles.use-case';
 import { RevokeRoleAssignmentUseCase } from './application/revoke-role-assignment.use-case';
+import { RevokeSuperAdminUseCase } from './application/revoke-super-admin.use-case';
 import { RoleAssignmentQueryService } from './application/role-assignment-query.service';
 import { RoleMatrixQueryService } from './application/role-matrix-query.service';
 import { TeamRoleQueryService } from './application/team-role-query.service';
@@ -27,7 +31,7 @@ import { RbacRepository } from './infrastructure/rbac.repository';
  */
 @Module({
   imports: [ClockModule, IdGeneratorModule],
-  controllers: [RbacController],
+  controllers: [RbacController, PlatformAdminsController],
   providers: [
     RbacRepository,
     PrivilegeCeilingService,
@@ -40,6 +44,9 @@ import { RbacRepository } from './infrastructure/rbac.repository';
     ReplaceTeamRolesUseCase,
     ListUserAssignmentsUseCase,
     GetEffectivePermissionsUseCase,
+    ListSuperAdminsUseCase,
+    PromoteSuperAdminUseCase,
+    RevokeSuperAdminUseCase,
     RbacPermissionResolverService,
     {
       provide: EFFECTIVE_PERMISSION_RESOLVER_PORT,
