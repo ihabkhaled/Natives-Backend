@@ -1,7 +1,7 @@
 import { RbacRole } from '@shared/enums';
 import { describe, expect, it } from 'vitest';
 
-import { toRoleKey, toRoleSlug } from './role-slug.mapper';
+import { toOpenRoleKey, toRoleKey, toRoleSlug } from './role-slug.mapper';
 
 describe('toRoleSlug', () => {
   it('lowercases a stored role key into the client slug', () => {
@@ -28,5 +28,12 @@ describe('toRoleKey', () => {
   it('rejects a value outside the catalog instead of widening the role set', () => {
     expect(toRoleKey('superuser')).toBeNull();
     expect(toRoleKey('')).toBeNull();
+  });
+});
+
+describe('toOpenRoleKey', () => {
+  it('uppercases a slug without gating on the compiled enum', () => {
+    expect(toOpenRoleKey('coach')).toBe('COACH');
+    expect(toOpenRoleKey('physio')).toBe('PHYSIO');
   });
 });

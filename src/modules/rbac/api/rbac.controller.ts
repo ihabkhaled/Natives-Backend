@@ -30,19 +30,23 @@ import { GetEffectivePermissionsUseCase } from '../application/get-effective-per
 import { ListUserAssignmentsUseCase } from '../application/list-user-assignments.use-case';
 import { RevokeRoleAssignmentUseCase } from '../application/revoke-role-assignment.use-case';
 import { RoleMatrixQueryService } from '../application/role-matrix-query.service';
+import { TeamRoleQueryService } from '../application/team-role-query.service';
 import { toPermissionScope } from '../lib/rbac.helpers';
 import {
   RBAC_API_TAG,
+  RBAC_ASSIGNABLE_ROLES_ROUTE,
   RBAC_ASSIGNMENT_BY_ID_ROUTE,
   RBAC_ASSIGNMENT_ID_PARAM,
   RBAC_ASSIGNMENTS_ROUTE,
   RBAC_ME_PERMISSIONS_ROUTE,
   RBAC_ROLE_BUNDLES_ROUTE,
   RBAC_ROUTE,
+  RBAC_TEAM_ID_PARAM,
   RBAC_USER_ASSIGNMENTS_ROUTE,
   RBAC_USER_ID_PARAM,
 } from '../model/rbac.constants';
 import { AssignRoleDto } from './dto/assign-role.dto';
+import { AssignableRolesResponseDto } from './dto/assignable-roles-response.dto';
 import { EffectivePermissionsResponseDto } from './dto/effective-permissions-response.dto';
 import { RoleAssignmentResponseDto } from './dto/role-assignment-response.dto';
 import { RoleMatrixResponseDto } from './dto/role-matrix-response.dto';
@@ -58,7 +62,27 @@ export class RbacController {
     private readonly listUserAssignments: ListUserAssignmentsUseCase,
     private readonly getEffectivePermissions: GetEffectivePermissionsUseCase,
     private readonly roleMatrixQuery: RoleMatrixQueryService,
+    private readonly teamRoleQuery: TeamRoleQueryService,
   ) {}
+
+  @Get(RBAC_ASSIGNABLE_ROLES_ROUTE)
+  @RequirePermissions(Permission.MemberInvite)
+  @ApiOperation({
+    summary:
+      'List the roles the acting principal may grant in this team, with display metadata',
+  })
+  @ApiOkResponse({
+    description: 'Assignable roles under the actor ceiling',
+    type: AssignableRolesResponseDto,
+  })
+  @ApiForbiddenResponse({ description: 'Forbidden outside the team scope' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  assignableRoles(
+    @Param(RBAC_TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
+    @CurrentUser() actor: AuthUserIdentity,
+  ): Promise<AssignableRolesResponseDto> {
+    return this.teamRoleQuery.catalogView(actor, teamId);
+  }
 
   @Post(RBAC_ASSIGNMENTS_ROUTE)
   @RequirePermissions(Permission.MemberRolesManage)

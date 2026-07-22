@@ -129,11 +129,19 @@ describe('RbacRepository', () => {
     expect(grants[1]?.teamId).toBe('team-1');
   });
 
-  it('finds a role by key or returns null', async () => {
-    scope.run.mockResolvedValueOnce([{ id: 'role-1', key: 'MEMBER' }]);
+  it('finds a role by key with its catalog metadata or returns null', async () => {
+    scope.run.mockResolvedValueOnce([
+      { id: 'role-1', key: 'MEMBER', scope: 'team', is_assignable: true },
+    ]);
     await expect(
       repository.findRoleByKey(scope as never, 'MEMBER'),
-    ).resolves.toEqual({ id: 'role-1', key: 'MEMBER' });
+    ).resolves.toEqual({
+      id: 'role-1',
+      key: 'MEMBER',
+      scope: 'team',
+      isAssignable: true,
+    });
+    expect(scope.run.mock.calls[0]?.[0]).toContain('"is_assignable"');
 
     scope.run.mockResolvedValueOnce([]);
     await expect(
@@ -297,20 +305,133 @@ describe('RbacRepository', () => {
     expect(scope.run.mock.calls[0]?.[1]).toEqual([RBAC_PERMISSION_CATALOG_MAX]);
   });
 
-  it('reads the role definitions ordered by key, bounded', async () => {
+  it('reads the role definitions with metadata, ordered by key, bounded', async () => {
     const rows = [
       {
         key: 'MEMBER',
         display_name: 'Member',
         description: 'Baseline member',
         is_system: true,
+        scope: 'team',
+        is_assignable: true,
       },
     ];
     scope.run.mockResolvedValue(rows);
 
     expect(await repository.listRoleDefinitions(scope as never)).toEqual(rows);
     expect(scope.run.mock.calls[0]?.[0]).toContain('ORDER BY "key" ASC');
+    expect(scope.run.mock.calls[0]?.[0]).toContain('"is_assignable"');
     expect(scope.run.mock.calls[0]?.[1]).toEqual([RBAC_ROLE_DEFINITION_MAX]);
+  });
+
+  it('counts live global assignments of a role', async () => {
+    scope.run.mockResolvedValue([{ count: 3 }]);
+
+    await expect(
+      repository.countActiveGlobalAssignments(scope as never, 'SUPER_ADMIN'),
+    ).resolves.toBe(3);
+    expect(scope.run.mock.calls[0]?.[0]).toContain('"team_id" IS NULL');
+    expect(scope.run.mock.calls[0]?.[0]).toContain('"revoked_at" IS NULL');
+    expect(scope.run.mock.calls[0]?.[1]).toEqual(['SUPER_ADMIN']);
+  });
+
+  it('returns zero when the global count read yields no row', async () => {
+    scope.run.mockResolvedValue([]);
+
+    await expect(
+      repository.countActiveGlobalAssignments(scope as never, 'SUPER_ADMIN'),
+    ).resolves.toBe(0);
+  });
+
+  it('finds one user live global assignment of a role or null', async () => {
+    scope.run.mockResolvedValueOnce([
+      assignmentRow({ team_id: null, role_key: 'SUPER_ADMIN' }),
+    ]);
+    const found = await repository.findActiveGlobalAssignment(
+      scope as never,
+      'user-1',
+      'SUPER_ADMIN',
+    );
+    expect(found?.roleKey).toBe('SUPER_ADMIN');
+    expect(found?.teamId).toBeNull();
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.findActiveGlobalAssignment(
+        scope as never,
+        'user-1',
+        'SUPER_ADMIN',
+      ),
+    ).resolves.toBeNull();
+  });
+
+  it('lists live global holders with identity, bounded and ordered', async () => {
+    scope.run.mockResolvedValue([
+      {
+        id: 'assign-1',
+        user_id: 'user-1',
+        email: 'root@example.test',
+        display_name: 'Root',
+        effective_from: NOW,
+        granted_by: null,
+      },
+    ]);
+
+    const entries = await repository.listActiveGlobalAssignments(
+      scope as never,
+      'SUPER_ADMIN',
+      200,
+    );
+
+    expect(entries).toEqual([
+      {
+        assignmentId: 'assign-1',
+        userId: 'user-1',
+        email: 'root@example.test',
+        displayName: 'Root',
+        effectiveFrom: NOW,
+        grantedBy: null,
+      },
+    ]);
+    expect(scope.run.mock.calls[0]?.[0]).toContain(
+      'ORDER BY a."effective_from" ASC',
+    );
+    expect(scope.run.mock.calls[0]?.[1]).toEqual(['SUPER_ADMIN', 200]);
+  });
+
+  it('finds one user live global holder entry or null', async () => {
+    scope.run.mockResolvedValueOnce([
+      {
+        id: 'assign-1',
+        user_id: 'user-1',
+        email: 'root@example.test',
+        display_name: null,
+        effective_from: NOW,
+        granted_by: 'admin-1',
+      },
+    ]);
+    const entry = await repository.findActiveGlobalAssignmentEntry(
+      scope as never,
+      'user-1',
+      'SUPER_ADMIN',
+    );
+    expect(entry).toEqual({
+      assignmentId: 'assign-1',
+      userId: 'user-1',
+      email: 'root@example.test',
+      displayName: null,
+      effectiveFrom: NOW,
+      grantedBy: 'admin-1',
+    });
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.findActiveGlobalAssignmentEntry(
+        scope as never,
+        'user-1',
+        'SUPER_ADMIN',
+      ),
+    ).resolves.toBeNull();
   });
 
   it('lists only the unrevoked assignments bound to one team', async () => {

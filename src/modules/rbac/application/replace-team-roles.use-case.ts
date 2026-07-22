@@ -11,7 +11,9 @@ import {
 } from '@core/persistence/unit-of-work.port';
 import { Inject, Injectable } from '@nestjs/common';
 
+import { isProtectedRole } from '../domain/role-protection.policy';
 import { diffTeamRoles } from '../domain/role-set-diff.policy';
+import { ProtectedRoleError } from '../errors/protected-role.error';
 import { RoleNotFoundError } from '../errors/role-not-found.error';
 import { RbacRepository } from '../infrastructure/rbac.repository';
 import { toPermissionScope } from '../lib/rbac.helpers';
@@ -92,6 +94,9 @@ export class ReplaceTeamRolesUseCase {
       const role = await this.repository.findRoleByKey(scope, roleKey);
       if (role === null) {
         throw new RoleNotFoundError();
+      }
+      if (isProtectedRole(role)) {
+        throw new ProtectedRoleError();
       }
       await this.assertCeiling(scope, actor, role.id, command.teamId);
       const assignment = await this.repository.insertAssignment(scope, {

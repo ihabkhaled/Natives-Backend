@@ -11,6 +11,8 @@ import {
 } from '@core/persistence/unit-of-work.port';
 import { Inject, Injectable } from '@nestjs/common';
 
+import { isProtectedRole } from '../domain/role-protection.policy';
+import { ProtectedRoleError } from '../errors/protected-role.error';
 import { RoleNotFoundError } from '../errors/role-not-found.error';
 import { RbacRepository } from '../infrastructure/rbac.repository';
 import { toPermissionScope } from '../lib/rbac.helpers';
@@ -57,6 +59,11 @@ export class AssignRoleUseCase {
     const role = await this.repository.findRoleByKey(scope, command.roleKey);
     if (role === null) {
       throw new RoleNotFoundError();
+    }
+    // A team-scoped assignment can never carry a platform-scoped/unassignable
+    // role; the platform promotion flow is the only path to those.
+    if (command.teamId !== null && isProtectedRole(role)) {
+      throw new ProtectedRoleError();
     }
     const target = toPermissionScope(command.teamId, command.seasonId);
     await this.ceiling.assertCanManageRole(scope, actor, role.id, target);

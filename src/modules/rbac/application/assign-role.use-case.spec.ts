@@ -3,6 +3,7 @@ import { Role } from '@shared/enums';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { EscalationDeniedError } from '../errors/escalation-denied.error';
+import { ProtectedRoleError } from '../errors/protected-role.error';
 import { RoleNotFoundError } from '../errors/role-not-found.error';
 import { RBAC_ROLE_ASSIGNED_EVENT } from '../model/rbac.constants';
 import type { AssignRoleCommand, RoleAssignment } from '../model/rbac.types';
@@ -49,7 +50,12 @@ function build() {
   const clock = { now: vi.fn().mockReturnValue(NOW), uptime: vi.fn() };
   const idGenerator = { generate: vi.fn().mockReturnValue('generated-id') };
   const repository = {
-    findRoleByKey: vi.fn().mockResolvedValue({ id: 'role-1', key: 'MEMBER' }),
+    findRoleByKey: vi.fn().mockResolvedValue({
+      id: 'role-1',
+      key: 'MEMBER',
+      scope: 'team',
+      isAssignable: true,
+    }),
     insertAssignment: vi.fn().mockResolvedValue(ASSIGNMENT),
     bumpPolicyVersion: vi.fn(),
     appendAuditEvent: vi.fn(),
@@ -102,5 +108,38 @@ describe('AssignRoleUseCase', () => {
     ).rejects.toBeInstanceOf(EscalationDeniedError);
     expect(harness.repository.insertAssignment).not.toHaveBeenCalled();
     expect(harness.repository.bumpPolicyVersion).not.toHaveBeenCalled();
+  });
+
+  it('refuses a team-scoped grant of a protected role before the ceiling', async () => {
+    harness.repository.findRoleByKey.mockResolvedValue({
+      id: 'role-sa',
+      key: 'SUPER_ADMIN',
+      scope: 'platform',
+      isAssignable: false,
+    });
+
+    await expect(
+      harness.useCase.execute(ACTOR, { ...COMMAND, roleKey: 'SUPER_ADMIN' }),
+    ).rejects.toBeInstanceOf(ProtectedRoleError);
+    expect(harness.ceiling.assertCanManageRole).not.toHaveBeenCalled();
+    expect(harness.repository.insertAssignment).not.toHaveBeenCalled();
+  });
+
+  it('still allows a GLOBAL grant of a platform-scoped role under the ceiling', async () => {
+    harness.repository.findRoleByKey.mockResolvedValue({
+      id: 'role-sa',
+      key: 'SUPER_ADMIN',
+      scope: 'platform',
+      isAssignable: false,
+    });
+
+    await harness.useCase.execute(ACTOR, {
+      ...COMMAND,
+      roleKey: 'SUPER_ADMIN',
+      teamId: null,
+    });
+
+    expect(harness.ceiling.assertCanManageRole).toHaveBeenCalled();
+    expect(harness.repository.insertAssignment).toHaveBeenCalled();
   });
 });

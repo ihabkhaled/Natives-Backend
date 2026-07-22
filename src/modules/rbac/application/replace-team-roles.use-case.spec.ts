@@ -2,6 +2,7 @@ import type { AuthUserIdentity } from '@core/auth';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { EscalationDeniedError } from '../errors/escalation-denied.error';
+import { ProtectedRoleError } from '../errors/protected-role.error';
 import { RoleNotFoundError } from '../errors/role-not-found.error';
 import {
   RBAC_ROLE_ASSIGNED_EVENT,
@@ -52,11 +53,14 @@ function build() {
   };
   const repository = {
     listActiveTeamAssignments: vi.fn().mockResolvedValue([]),
-    findRoleByKey: vi
-      .fn()
-      .mockImplementation((_scope: unknown, key: string) =>
-        Promise.resolve({ id: `role-${key}`, key }),
-      ),
+    findRoleByKey: vi.fn().mockImplementation((_scope: unknown, key: string) =>
+      Promise.resolve({
+        id: `role-${key}`,
+        key,
+        scope: key === 'SUPER_ADMIN' ? 'platform' : 'team',
+        isAssignable: key !== 'SUPER_ADMIN',
+      }),
+    ),
     insertAssignment: vi
       .fn()
       .mockImplementation((_scope: unknown, draft: RoleAssignment) =>
@@ -174,5 +178,14 @@ describe('ReplaceTeamRolesUseCase', () => {
     await expect(
       harness.useCase.execute(ACTOR, command(['coach'])),
     ).rejects.toBeInstanceOf(RoleNotFoundError);
+  });
+
+  it('refuses a protected role before the ceiling and writes nothing', async () => {
+    await expect(
+      harness.useCase.execute(ACTOR, command(['super_admin'])),
+    ).rejects.toBeInstanceOf(ProtectedRoleError);
+    expect(harness.ceiling.assertCanManageRole).not.toHaveBeenCalled();
+    expect(harness.repository.insertAssignment).not.toHaveBeenCalled();
+    expect(harness.repository.bumpPolicyVersion).not.toHaveBeenCalled();
   });
 });

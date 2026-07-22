@@ -19,6 +19,8 @@ export interface PermissionGrantRow {
 export interface RoleRow {
   readonly id: string;
   readonly key: string;
+  readonly scope: string;
+  readonly is_assignable: boolean;
 }
 
 export interface PermissionKeyRow {
@@ -44,6 +46,11 @@ export interface AffectedRow {
   readonly id: string;
 }
 
+/** A single COUNT(*) aggregate row. */
+export interface AssignmentCountRow {
+  readonly count: number;
+}
+
 /** One (role, permission) pair of the seeded catalog, flattened for grouping. */
 export interface RoleCatalogRow {
   readonly role_key: string;
@@ -63,4 +70,16 @@ export interface RoleDefinitionRow {
   readonly display_name: string;
   readonly description: string;
   readonly is_system: boolean;
+  readonly scope: string;
+  readonly is_assignable: boolean;
+}
+
+/** One live global SUPER_ADMIN assignment joined with its holder's identity. */
+export interface SuperAdminAssignmentRow {
+  readonly id: string;
+  readonly user_id: string;
+  readonly email: string;
+  readonly display_name: string | null;
+  readonly effective_from: string | Date;
+  readonly granted_by: string | null;
 }

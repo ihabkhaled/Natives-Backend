@@ -18,3 +18,13 @@ export function toRoleKey(slug: string): RbacRole | null {
   const upper = slug.toUpperCase();
   return ROLE_KEYS.has(upper) ? (upper as RbacRole) : null;
 }
+
+/**
+ * The OPEN slug→key translation: uppercase only, no enum gate. Used by flows
+ * that resolve the role against the live database catalog (which may carry
+ * tenant-defined bundles beyond the seeded six) — the repository lookup is the
+ * authority on existence there, not the compiled enum.
+ */
+export function toOpenRoleKey(slug: string): string {
+  return slug.toUpperCase();
+}

@@ -11,6 +11,7 @@ import {
 import { GrantEffect } from '../model/rbac.enums';
 import type {
   AffectedRow,
+  AssignmentCountRow,
   PermissionCatalogRow,
   PermissionGrantRow,
   PermissionKeyRow,
@@ -19,6 +20,7 @@ import type {
   RoleCatalogRow,
   RoleDefinitionRow,
   RoleRow,
+  SuperAdminAssignmentRow,
 } from '../model/rbac.rows';
 import type {
   NewRbacAuditEvent,
@@ -26,6 +28,7 @@ import type {
   PermissionGrant,
   RbacRoleRecord,
   RoleAssignment,
+  SuperAdminEntry,
 } from '../model/rbac.types';
 
 /**
@@ -88,11 +91,12 @@ export class RbacRepository {
     key: string,
   ): Promise<RbacRoleRecord | null> {
     const rows = await scope.run<RoleRow>(
-      `SELECT "id", "key" FROM "roles" WHERE "key" = $1`,
+      `SELECT "id", "key", "scope", "is_assignable" FROM "roles"
+        WHERE "key" = $1`,
       [key],
     );
     const row = rows[0];
-    return row === undefined ? null : { id: row.id, key: row.key };
+    return row === undefined ? null : this.toRoleRecord(row);
   }
 
   async loadRolePermissions(
@@ -137,7 +141,9 @@ export class RbacRepository {
     scope: TransactionScope,
   ): Promise<readonly RoleDefinitionRow[]> {
     return scope.run<RoleDefinitionRow>(
-      `SELECT "key", "display_name", "description", "is_system" FROM "roles"
+      `SELECT "key", "display_name", "description", "is_system",
+              "scope", "is_assignable"
+         FROM "roles"
         ORDER BY "key" ASC
         LIMIT $1`,
       [RBAC_ROLE_DEFINITION_MAX],
@@ -268,6 +274,85 @@ export class RbacRepository {
     return rows.map(row => this.toAssignment(row, row.role_key));
   }
 
+  /** The number of live, global (teamId/seasonId NULL) assignments of a role. */
+  async countActiveGlobalAssignments(
+    scope: TransactionScope,
+    roleKey: string,
+  ): Promise<number> {
+    const rows = await scope.run<AssignmentCountRow>(
+      `SELECT COUNT(*)::int AS "count"
+         FROM "user_role_assignments" a
+         JOIN "roles" r ON r."id" = a."role_id"
+        WHERE r."key" = $1 AND a."team_id" IS NULL AND a."season_id" IS NULL
+          AND a."revoked_at" IS NULL`,
+      [roleKey],
+    );
+    return rows[0]?.count ?? 0;
+  }
+
+  /** One user's live global assignment of a role, or null when none exists. */
+  async findActiveGlobalAssignment(
+    scope: TransactionScope,
+    userId: string,
+    roleKey: string,
+  ): Promise<RoleAssignment | null> {
+    const rows = await scope.run<RoleAssignmentRow>(
+      `SELECT a."id", a."user_id", a."role_id", r."key" AS "role_key",
+              a."team_id", a."season_id", a."effective_from", a."effective_to",
+              a."granted_by", a."revoked_at", a."created_at", a."version"
+         FROM "user_role_assignments" a
+         JOIN "roles" r ON r."id" = a."role_id"
+        WHERE a."user_id" = $1 AND r."key" = $2
+          AND a."team_id" IS NULL AND a."season_id" IS NULL
+          AND a."revoked_at" IS NULL`,
+      [userId, roleKey],
+    );
+    const row = rows[0];
+    return row === undefined ? null : this.toAssignment(row, row.role_key);
+  }
+
+  /** Bounded, ordered listing of live global holders of a role, with identity. */
+  async listActiveGlobalAssignments(
+    scope: TransactionScope,
+    roleKey: string,
+    limit: number,
+  ): Promise<readonly SuperAdminEntry[]> {
+    const rows = await scope.run<SuperAdminAssignmentRow>(
+      `SELECT a."id", a."user_id", u."email", u."display_name",
+              a."effective_from", a."granted_by"
+         FROM "user_role_assignments" a
+         JOIN "roles" r ON r."id" = a."role_id"
+         JOIN "users" u ON u."id" = a."user_id"
+        WHERE r."key" = $1 AND a."team_id" IS NULL AND a."season_id" IS NULL
+          AND a."revoked_at" IS NULL
+        ORDER BY a."effective_from" ASC, a."id" ASC
+        LIMIT $2`,
+      [roleKey, limit],
+    );
+    return rows.map(row => this.toSuperAdminEntry(row));
+  }
+
+  /** One user's live global holder entry (assignment + identity), or null. */
+  async findActiveGlobalAssignmentEntry(
+    scope: TransactionScope,
+    userId: string,
+    roleKey: string,
+  ): Promise<SuperAdminEntry | null> {
+    const rows = await scope.run<SuperAdminAssignmentRow>(
+      `SELECT a."id", a."user_id", u."email", u."display_name",
+              a."effective_from", a."granted_by"
+         FROM "user_role_assignments" a
+         JOIN "roles" r ON r."id" = a."role_id"
+         JOIN "users" u ON u."id" = a."user_id"
+        WHERE a."user_id" = $1 AND r."key" = $2
+          AND a."team_id" IS NULL AND a."season_id" IS NULL
+          AND a."revoked_at" IS NULL`,
+      [userId, roleKey],
+    );
+    const row = rows[0];
+    return row === undefined ? null : this.toSuperAdminEntry(row);
+  }
+
   async appendAuditEvent(
     scope: TransactionScope,
     event: NewRbacAuditEvent,
@@ -292,6 +377,26 @@ export class RbacRepository {
       throw new Error('Expected a returned row from the assignment write');
     }
     return row;
+  }
+
+  private toRoleRecord(row: RoleRow): RbacRoleRecord {
+    return {
+      id: row.id,
+      key: row.key,
+      scope: row.scope,
+      isAssignable: row.is_assignable,
+    };
+  }
+
+  private toSuperAdminEntry(row: SuperAdminAssignmentRow): SuperAdminEntry {
+    return {
+      assignmentId: row.id,
+      userId: row.user_id,
+      email: row.email,
+      displayName: row.display_name,
+      effectiveFrom: toDate(row.effective_from),
+      grantedBy: row.granted_by,
+    };
   }
 
   private toGrant(row: PermissionGrantRow): PermissionGrant {

@@ -20,6 +20,7 @@ import { TeamsSchema1721500000000 } from '../src/database/migrations/17215000000
 import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
 import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 import { TeamAdminMatchScore1724900000000 } from '../src/database/migrations/1724900000000-team-admin-match-score';
+import { RbacRoleCatalogMetadata1725000000000 } from '../src/database/migrations/1725000000000-rbac-role-catalog-metadata';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -55,6 +56,7 @@ const MIGRATIONS = [
   MembersSchema1721600000000,
   PlatformLifecycleSchema1723800000000,
   TeamAdminMatchScore1724900000000,
+  RbacRoleCatalogMetadata1725000000000,
 ];
 
 interface Fixture {
@@ -321,6 +323,18 @@ describeIfDb(suiteTitle, () => {
 
     expect(response.status).toBe(200);
     expect(response.body.roles).toEqual(['member']);
+  });
+
+  it('refuses to smuggle SUPER_ADMIN through the team roles surface (403)', async () => {
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+
+    const response = await api()
+      .put(rolesPath(memberMembershipId))
+      .set('Authorization', `Bearer ${token}`)
+      .send({ roles: ['member', 'super_admin'] });
+
+    expect(response.status).toBe(403);
+    expect(response.body.messageKey).toBe('errors.rbac.protectedRole');
   });
 
   it('rejects a role slug outside the seeded catalog (404)', async () => {

@@ -8,17 +8,20 @@ import { Inject, Injectable } from '@nestjs/common';
 
 import { selectAssignableRoles } from '../domain/privilege-ceiling.policy';
 import { RbacRepository } from '../infrastructure/rbac.repository';
+import { toAssignableRoleEntries } from '../lib/assignable-roles.mapper';
 import { toPermissionScope } from '../lib/rbac.helpers';
 import { toRoleBundles } from '../lib/role-catalog.mapper';
 import { toRoleSlug } from '../lib/role-slug.mapper';
-import type { TeamRolesView } from '../model/rbac.types';
+import type { AssignableRolesView, TeamRolesView } from '../model/rbac.types';
 import { PrivilegeCeilingService } from './privilege-ceiling.service';
 
 /**
  * Public RBAC read surface for team-scoped role management: the role slugs a
  * user holds inside one team, plus the slugs the acting principal may set there
  * under the privilege ceiling. Two bounded reads in one transaction — no N+1 and
- * no per-role round trip.
+ * no per-role round trip. `catalogView` additionally joins the ceiling
+ * projection with the catalog's display metadata (team-scoped, assignable roles
+ * only) so the invite form is fully server-driven.
  */
 @Injectable()
 export class TeamRoleQueryService {
@@ -36,6 +39,25 @@ export class TeamRoleQueryService {
     return this.unitOfWork.runInTransaction(scope =>
       this.read(scope, actor, userId, teamId),
     );
+  }
+
+  catalogView(
+    actor: AuthUserIdentity,
+    teamId: string,
+  ): Promise<AssignableRolesView> {
+    return this.unitOfWork.runInTransaction(scope =>
+      this.readCatalog(scope, actor, teamId),
+    );
+  }
+
+  private async readCatalog(
+    scope: TransactionScope,
+    actor: AuthUserIdentity,
+    teamId: string,
+  ): Promise<AssignableRolesView> {
+    const slugs = await this.assignableRoles(scope, actor, teamId);
+    const definitions = await this.repository.listRoleDefinitions(scope);
+    return { teamId, roles: toAssignableRoleEntries(slugs, definitions) };
   }
 
   private async read(

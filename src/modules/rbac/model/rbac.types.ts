@@ -21,6 +21,10 @@ export interface PermissionGrant {
 export interface RbacRoleRecord {
   readonly id: string;
   readonly key: string;
+  /** Catalog scope: `team` roles are grantable in team flows, `platform` never. */
+  readonly scope: string;
+  /** False marks a role no ordinary assignment flow may hand out. */
+  readonly isAssignable: boolean;
 }
 
 export interface RoleAssignment {
@@ -108,6 +112,21 @@ export interface RoleDefinitionRecord {
   readonly displayName: string;
   readonly description: string;
   readonly isSystem: boolean;
+  readonly scope: string;
+  readonly isAssignable: boolean;
+}
+
+/** One role of the assignable catalog, with its server-driven display copy. */
+export interface AssignableRoleEntry {
+  readonly slug: string;
+  readonly displayName: string;
+  readonly description: string;
+}
+
+/** The assignable-role catalog projected under one actor's ceiling in a team. */
+export interface AssignableRolesView {
+  readonly teamId: string;
+  readonly roles: readonly AssignableRoleEntry[];
 }
 
 /** A role bundle joined with the catalog permission keys it grants. */
@@ -162,4 +181,26 @@ export interface EnsureTeamRoleCommand {
 export interface RoleSetDiff {
   readonly toGrant: readonly string[];
   readonly toRevoke: readonly RoleAssignment[];
+}
+
+/** One platform super administrator: the live global assignment + holder. */
+export interface SuperAdminEntry {
+  readonly assignmentId: string;
+  readonly userId: string;
+  readonly email: string;
+  readonly displayName: string | null;
+  readonly effectiveFrom: Date;
+  readonly grantedBy: string | null;
+}
+
+/** Bounded listing of the current platform super administrators. */
+export interface SuperAdminListView {
+  readonly items: readonly SuperAdminEntry[];
+  readonly total: number;
+}
+
+/** Promote request: the target user and the mandatory audited reason. */
+export interface PromoteSuperAdminCommand {
+  readonly userId: string;
+  readonly reason: string;
 }

@@ -22,12 +22,16 @@ const ROLES: readonly RoleDefinitionRow[] = [
     display_name: 'Member',
     description: 'Baseline member',
     is_system: true,
+    scope: 'team',
+    is_assignable: true,
   },
   {
     key: 'SUPER_ADMIN',
     display_name: 'Super administrator',
     description: 'Platform-wide',
     is_system: true,
+    scope: 'platform',
+    is_assignable: false,
   },
 ];
 

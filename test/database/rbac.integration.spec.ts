@@ -16,6 +16,7 @@ import { afterAll, describe, expect, it } from 'vitest';
 import { BaselineSchema1721200000000 } from '../../src/database/migrations/1721200000000-baseline-schema';
 import { IdentitySchema1721300000000 } from '../../src/database/migrations/1721300000000-identity-schema';
 import { RbacSchema1721400000000 } from '../../src/database/migrations/1721400000000-rbac-schema';
+import { RbacRoleCatalogMetadata1725000000000 } from '../../src/database/migrations/1725000000000-rbac-role-catalog-metadata';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -44,6 +45,7 @@ function buildDataSource(): DataSource {
       BaselineSchema1721200000000,
       IdentitySchema1721300000000,
       RbacSchema1721400000000,
+      RbacRoleCatalogMetadata1725000000000,
     ],
   });
 }
@@ -111,6 +113,7 @@ describeIfDb(suiteTitle, () => {
     await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
+    await activeDataSource.undoLastMigration();
     await activeDataSource.destroy();
   });
 
@@ -167,6 +170,14 @@ describeIfDb(suiteTitle, () => {
     expect(rolePermissions[0].count).toBeGreaterThan(0);
     expect(policy[0].version).toBe(1);
 
+    // Every seeded role starts team-scoped and assignable (catalog metadata).
+    const metadata = await activeDataSource.query(
+      `SELECT COUNT(*)::int AS count FROM "roles"
+        WHERE "scope" = 'team' AND "is_assignable" = true`,
+    );
+    expect(metadata[0].count).toBe(5);
+
+    await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     const dropped = await activeDataSource.query(
       `SELECT to_regclass('public.permissions') AS relation`,

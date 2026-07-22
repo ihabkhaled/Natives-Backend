@@ -21,6 +21,7 @@ import { TeamsSchema1721500000000 } from '../src/database/migrations/17215000000
 import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
 import { SeedHistorySchema1722600000000 } from '../src/database/migrations/1722600000000-seed-history-schema';
 import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
+import { RbacRoleCatalogMetadata1725000000000 } from '../src/database/migrations/1725000000000-rbac-role-catalog-metadata';
 
 // Proves the seeded principal contract over real HTTP on a disposable database
 // of its own: the once-only seeders are the ONLY writes, so `/auth/me` here is
@@ -33,6 +34,7 @@ const SEED_MIGRATIONS = [
   MembersSchema1721600000000,
   SeedHistorySchema1722600000000,
   PlatformLifecycleSchema1723800000000,
+  RbacRoleCatalogMetadata1725000000000,
 ];
 
 const HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
