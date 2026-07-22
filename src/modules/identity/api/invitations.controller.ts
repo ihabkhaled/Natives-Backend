@@ -67,8 +67,9 @@ export class InvitationsController {
     return this.createInvitation.execute({
       email: dto.email,
       role: dto.role ?? Role.User,
-      invitedBy: user.userId,
+      actor: user,
       teamId: null,
+      teamRoleSlug: dto.teamRole ?? null,
     });
   }
 

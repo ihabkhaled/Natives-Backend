@@ -1,3 +1,8 @@
+import {
+  EscalationDeniedError,
+  ProtectedRoleError,
+  RoleNotFoundError,
+} from '@modules/rbac';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { InvitationConflictError } from '../errors/invitation-conflict.error';
@@ -38,12 +43,20 @@ const INSERTED_INVITATION: Invitation = {
   invitedBy: 'admin-1',
   role: 'admin' as Invitation['role'],
   teamId: null,
+  teamRoleKey: 'MEMBER',
   status: InvitationStatus.Pending,
   expiresAt: new Date(NOW.getTime() + 1000 * 1000),
   acceptedAt: null,
   revokedAt: null,
   createdAt: NOW,
   updatedAt: NOW,
+};
+
+const MEMBER_ROLE = {
+  id: 'role-member',
+  key: 'MEMBER',
+  scope: 'team',
+  isAssignable: true,
 };
 
 function build() {
@@ -62,6 +75,9 @@ function build() {
     findActivePendingByEmail: vi.fn().mockResolvedValue(null),
     insert: vi.fn().mockResolvedValue(INSERTED_INVITATION),
   };
+  const roleAssignments = {
+    assertGrantable: vi.fn().mockResolvedValue(MEMBER_ROLE),
+  };
   const audit = { record: vi.fn() };
   const invitationEmail = { send: vi.fn().mockResolvedValue(undefined) };
 
@@ -73,18 +89,33 @@ function build() {
     config as never,
     users as never,
     invitations as never,
+    roleAssignments as never,
     audit as never,
     invitationEmail as never,
   );
 
-  return { useCase, users, invitations, audit, invitationEmail };
+  return {
+    useCase,
+    users,
+    invitations,
+    roleAssignments,
+    audit,
+    invitationEmail,
+  };
 }
+
+const ACTOR = {
+  userId: 'admin-1',
+  email: 'admin@example.test',
+  roles: ['admin'],
+} as never;
 
 const COMMAND = {
   email: 'Coach@example.test',
   role: 'admin' as User['role'],
-  invitedBy: 'admin-1',
+  actor: ACTOR,
   teamId: null,
+  teamRoleSlug: null,
 };
 
 describe('CreateInvitationUseCase', () => {
@@ -102,6 +133,7 @@ describe('CreateInvitationUseCase', () => {
       email: INSERTED_INVITATION.email,
       role: INSERTED_INVITATION.role,
       teamId: null,
+      teamRole: 'member',
       status: INSERTED_INVITATION.status,
       expiresAt: INSERTED_INVITATION.expiresAt,
       createdAt: INSERTED_INVITATION.createdAt,
@@ -111,9 +143,100 @@ describe('CreateInvitationUseCase', () => {
     expect(harness.audit.record).toHaveBeenCalledWith(
       expect.anything(),
       SecurityEventType.InvitationCreated,
-      COMMAND.invitedBy,
-      { invitationId: INSERTED_INVITATION.id },
+      'admin-1',
+      { invitationId: INSERTED_INVITATION.id, teamRoleKey: 'MEMBER' },
     );
+  });
+
+  it('defaults the team role to member when the command carries none', async () => {
+    await harness.useCase.execute(COMMAND);
+
+    expect(harness.roleAssignments.assertGrantable).toHaveBeenCalledWith(
+      expect.anything(),
+      ACTOR,
+      'member',
+      null,
+    );
+    expect(harness.invitations.insert).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ teamRoleKey: 'MEMBER' }),
+    );
+  });
+
+  it('validates the requested slug in-transaction and persists the resolved key', async () => {
+    harness.roleAssignments.assertGrantable.mockResolvedValue({
+      id: 'role-coach',
+      key: 'COACH',
+      scope: 'team',
+      isAssignable: true,
+    });
+    harness.invitations.insert.mockResolvedValue({
+      ...INSERTED_INVITATION,
+      teamId: 'team-1',
+      teamRoleKey: 'COACH',
+    });
+
+    const result = await harness.useCase.execute({
+      ...COMMAND,
+      teamId: 'team-1',
+      teamRoleSlug: 'coach',
+    });
+
+    expect(harness.roleAssignments.assertGrantable).toHaveBeenCalledWith(
+      expect.anything(),
+      ACTOR,
+      'coach',
+      'team-1',
+    );
+    expect(harness.invitations.insert).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ teamId: 'team-1', teamRoleKey: 'COACH' }),
+    );
+    expect(result.teamRole).toBe('coach');
+    expect(harness.audit.record).toHaveBeenCalledWith(
+      expect.anything(),
+      SecurityEventType.InvitationCreated,
+      'admin-1',
+      {
+        invitationId: INSERTED_INVITATION.id,
+        teamRoleKey: 'COACH',
+        teamId: 'team-1',
+      },
+    );
+  });
+
+  it('propagates an unknown-role rejection and writes nothing', async () => {
+    harness.roleAssignments.assertGrantable.mockRejectedValue(
+      new RoleNotFoundError(),
+    );
+
+    await expect(
+      harness.useCase.execute({ ...COMMAND, teamRoleSlug: 'physio' }),
+    ).rejects.toBeInstanceOf(RoleNotFoundError);
+    expect(harness.invitations.insert).not.toHaveBeenCalled();
+    expect(harness.invitationEmail.send).not.toHaveBeenCalled();
+  });
+
+  it('propagates a protected-role rejection and writes nothing', async () => {
+    harness.roleAssignments.assertGrantable.mockRejectedValue(
+      new ProtectedRoleError(),
+    );
+
+    await expect(
+      harness.useCase.execute({ ...COMMAND, teamRoleSlug: 'super_admin' }),
+    ).rejects.toBeInstanceOf(ProtectedRoleError);
+    expect(harness.invitations.insert).not.toHaveBeenCalled();
+  });
+
+  it('propagates an above-ceiling rejection and writes nothing', async () => {
+    harness.roleAssignments.assertGrantable.mockRejectedValue(
+      new EscalationDeniedError(),
+    );
+
+    await expect(
+      harness.useCase.execute({ ...COMMAND, teamRoleSlug: 'team_admin' }),
+    ).rejects.toBeInstanceOf(EscalationDeniedError);
+    expect(harness.invitations.insert).not.toHaveBeenCalled();
   });
 
   it('persists the team scope a team-scoped command carries', async () => {

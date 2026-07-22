@@ -1,4 +1,5 @@
 import type { AuthUserIdentity } from '@core/auth';
+import { toRoleSlug } from '@modules/rbac';
 
 import {
   UNKNOWN_APPROXIMATE_LOCATION,
@@ -99,6 +100,7 @@ export function toInvitationSummary(invitation: Invitation): InvitationSummary {
     email: invitation.email,
     role: invitation.role,
     teamId: invitation.teamId,
+    teamRole: toRoleSlug(invitation.teamRoleKey),
     status: invitation.status,
     expiresAt: invitation.expiresAt,
     createdAt: invitation.createdAt,

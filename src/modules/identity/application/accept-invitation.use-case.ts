@@ -13,9 +13,12 @@ import {
   type ClaimedMembership,
   ClaimInvitedMembershipsService,
 } from '@modules/members';
-import { EnsureRoleAssignmentService } from '@modules/rbac';
+import {
+  EnsureRoleAssignmentService,
+  ProtectedRoleError,
+  RoleNotFoundError,
+} from '@modules/rbac';
 import { Inject, Injectable } from '@nestjs/common';
-import { RbacRole } from '@shared/enums';
 
 import { isInvitationAcceptable } from '../domain/invitation.policy';
 import { InvitationInvalidError } from '../errors/invitation-invalid.error';
@@ -37,12 +40,15 @@ import { SessionIssuerService } from './session-issuer.service';
  * Accepts an invitation atomically: verifies the single-use token (locked FOR
  * UPDATE), creates the user + password credential, activates the account, links
  * and activates every invited membership pre-created for this email (scoped to
- * the invitation's team when it carries one), grants the default MEMBER role in
- * each linked team through the RBAC public surface, marks the invitation
- * consumed, audits it, and issues the first session — all in one transaction so
- * partial state can never persist. The invitee therefore lands with a working
- * team context: `/auth/me` carries the membership and the scoped permission
- * read returns the member grants.
+ * the invitation's team when it carries one), grants the INVITED team role
+ * (`team_role_key`, ceiling-validated at invite time) in each linked team
+ * through the RBAC public surface, marks the invitation consumed, audits it,
+ * and issues the first session — all in one transaction so partial state can
+ * never persist. The role is re-validated at accept time: if it was removed or
+ * reclassified as protected between invite and accept, acceptance fails as an
+ * invalid invitation rather than silently granting something else. The invitee
+ * therefore lands with a working team context: `/auth/me` carries the
+ * membership and the scoped permission read returns the invited role's grants.
  */
 @Injectable()
 export class AcceptInvitationUseCase {
@@ -80,17 +86,45 @@ export class AcceptInvitationUseCase {
     const user = await this.createAccount(scope, invitation, command, now);
     const claimed = await this.linkMemberships(scope, invitation, user, now);
     await this.invitations.markAccepted(scope, invitation.id, now);
-    await this.audit.record(
-      scope,
-      SecurityEventType.InvitationAccepted,
-      user.id,
-      { invitationId: invitation.id, linkedMemberships: claimed.length },
-    );
+    await this.recordAudit(scope, invitation, user, claimed, now);
     return this.sessionIssuer.issue(
       scope,
       user,
       command.deviceLabel,
       this.idGenerator.generate(),
+    );
+  }
+
+  /**
+   * Audit the acceptance with everything prompt 100 requires recoverable:
+   * inviter, granted role, team, membership, and the effective instant. For a
+   * platform-scoped invitation that linked several memberships, the first
+   * linked membership/team is recorded alongside the total count.
+   */
+  private async recordAudit(
+    scope: TransactionScope,
+    invitation: Invitation,
+    user: User,
+    claimed: readonly ClaimedMembership[],
+    now: Date,
+  ): Promise<void> {
+    const first = claimed[0];
+    await this.audit.record(
+      scope,
+      SecurityEventType.InvitationAccepted,
+      user.id,
+      {
+        invitationId: invitation.id,
+        linkedMemberships: claimed.length,
+        roleKey: invitation.teamRoleKey,
+        effectiveFrom: now.toISOString(),
+        ...(invitation.invitedBy === null
+          ? {}
+          : { invitedBy: invitation.invitedBy }),
+        ...(first === undefined
+          ? {}
+          : { membershipId: first.membershipId, teamId: first.teamId }),
+      },
     );
   }
 
@@ -121,8 +155,11 @@ export class AcceptInvitationUseCase {
 
   /**
    * Link the invited membership(s) pre-created for this email to the new
-   * account and grant the default MEMBER role in each linked team. Sequential:
-   * the members surface guards duplicates within this same transaction.
+   * account and grant the INVITED team role in each linked team. Sequential:
+   * the members surface guards duplicates within this same transaction. An
+   * unknown or protected role at accept time invalidates the invitation — the
+   * promise it carried is no longer honorable, and granting less silently
+   * would be a lie.
    */
   private async linkMemberships(
     scope: TransactionScope,
@@ -136,15 +173,29 @@ export class AcceptInvitationUseCase {
       userId: user.id,
       now,
     });
-    for (const membership of claimed) {
-      await this.roleAssignments.ensureTeamRole(scope, {
-        userId: user.id,
-        roleKey: RbacRole.Member,
-        teamId: membership.teamId,
-        grantedBy: invitation.invitedBy,
-        now,
-      });
+    try {
+      for (const membership of claimed) {
+        await this.roleAssignments.ensureTeamRole(scope, {
+          userId: user.id,
+          roleKey: invitation.teamRoleKey,
+          teamId: membership.teamId,
+          grantedBy: invitation.invitedBy,
+          now,
+        });
+      }
+    } catch (error) {
+      throw this.toAcceptError(error);
     }
     return claimed;
+  }
+
+  private toAcceptError(error: unknown): Error {
+    if (
+      error instanceof RoleNotFoundError ||
+      error instanceof ProtectedRoleError
+    ) {
+      return new InvitationInvalidError();
+    }
+    return error instanceof Error ? error : new Error(String(error));
   }
 }

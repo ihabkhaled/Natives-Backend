@@ -26,6 +26,7 @@ export interface InvitationRow {
   readonly invited_by: string | null;
   readonly role: string;
   readonly team_id: string | null;
+  readonly team_role_key: string;
   readonly status: string;
   readonly expires_at: string | Date;
   readonly accepted_at: string | Date | null;
@@ -36,6 +37,7 @@ export interface InvitationRow {
 
 export interface PublicInvitationRow extends InvitationRow {
   readonly inviter_display_name: string | null;
+  readonly team_name: string | null;
 }
 
 export interface RefreshSessionRow {

@@ -14,6 +14,8 @@ const INVITATION: PublicInvitationRecord = {
   inviterName: 'Coach One',
   role: Role.User,
   teamId: null,
+  teamRoleKey: 'MEMBER',
+  teamName: null,
   status: InvitationStatus.Pending,
   expiresAt: new Date(NOW.getTime() + 60_000),
   acceptedAt: null,
@@ -57,10 +59,32 @@ describe('GetInvitationDetailsUseCase', () => {
       role: Role.User,
       inviterName: 'Coach One',
       expiresAt: INVITATION.expiresAt,
+      teamRole: 'member',
+      teamId: null,
+      teamName: null,
     });
     expect(harness.invitations.findPublicByTokenHash).toHaveBeenCalledWith(
       expect.anything(),
       expect.not.stringContaining('opaque-invitation-token'),
+    );
+  });
+
+  it('surfaces the invited team and role for accept-page confirmation', async () => {
+    harness.invitations.findPublicByTokenHash.mockResolvedValue({
+      ...INVITATION,
+      teamId: 'team-1',
+      teamName: 'Onboarding FC',
+      teamRoleKey: 'COACH',
+    });
+
+    await expect(
+      harness.useCase.execute('opaque-invitation-token'),
+    ).resolves.toEqual(
+      expect.objectContaining({
+        teamRole: 'coach',
+        teamId: 'team-1',
+        teamName: 'Onboarding FC',
+      }),
     );
   });
 

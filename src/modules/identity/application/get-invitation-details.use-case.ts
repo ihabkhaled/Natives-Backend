@@ -4,6 +4,7 @@ import {
   UNIT_OF_WORK_PORT,
   type UnitOfWorkPort,
 } from '@core/persistence/unit-of-work.port';
+import { toRoleSlug } from '@modules/rbac';
 import { Inject, Injectable } from '@nestjs/common';
 
 import { isInvitationAcceptable } from '../domain/invitation.policy';
@@ -43,6 +44,9 @@ export class GetInvitationDetailsUseCase {
       role: invitation.role,
       inviterName: invitation.inviterName,
       expiresAt: invitation.expiresAt,
+      teamRole: toRoleSlug(invitation.teamRoleKey),
+      teamId: invitation.teamId,
+      teamName: invitation.teamName,
     };
   }
 }

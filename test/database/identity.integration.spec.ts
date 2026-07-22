@@ -45,6 +45,7 @@ import { afterAll, describe, expect, it, vi } from 'vitest';
 import { BaselineSchema1721200000000 } from '../../src/database/migrations/1721200000000-baseline-schema';
 import { IdentitySchema1721300000000 } from '../../src/database/migrations/1721300000000-identity-schema';
 import { InvitationsTeamScope1724800000000 } from '../../src/database/migrations/1724800000000-invitations-team-scope';
+import { InvitationTeamRole1725100000000 } from '../../src/database/migrations/1725100000000-invitation-team-role';
 
 const TEST_DB_CONFIG: DatabaseConfig = {
   url: process.env['TEST_DATABASE_URL'],
@@ -110,6 +111,7 @@ function buildDataSource(): DataSource {
       BaselineSchema1721200000000,
       IdentitySchema1721300000000,
       InvitationsTeamScope1724800000000,
+      InvitationTeamRole1725100000000,
     ],
   });
 }
@@ -167,6 +169,13 @@ function buildWiring(dataSource: DataSource, secureRandom: SecureRandomPort) {
   } as unknown as ClaimInvitedMembershipsService;
   const roleAssignments = {
     ensureTeamRole: () => Promise.resolve(),
+    assertGrantable: () =>
+      Promise.resolve({
+        id: 'role-member',
+        key: 'MEMBER',
+        scope: 'team',
+        isAssignable: true,
+      }),
   } as unknown as EnsureRoleAssignmentService;
 
   const users = new UserRepository();
@@ -195,6 +204,7 @@ function buildWiring(dataSource: DataSource, secureRandom: SecureRandomPort) {
       config,
       users,
       invitations,
+      roleAssignments,
       audit,
       invitationEmail,
     ),
@@ -288,6 +298,7 @@ describeIfDb(suiteTitle, () => {
     await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
+    await activeDataSource.undoLastMigration();
     await activeDataSource.destroy();
   });
 
@@ -315,8 +326,16 @@ describeIfDb(suiteTitle, () => {
         WHERE table_name = 'invitations' AND column_name = 'team_id'`,
     );
     expect(teamScopeColumn).toHaveLength(1);
+    const teamRoleColumn = await activeDataSource.query(
+      `SELECT column_default FROM information_schema.columns
+        WHERE table_name = 'invitations' AND column_name = 'team_role_key'`,
+    );
+    expect(teamRoleColumn).toHaveLength(1);
+    expect(String(teamRoleColumn[0].column_default)).toContain('MEMBER');
 
-    // Two downs: the invitations team-scope column, then the identity schema.
+    // Three downs: the team-role column, the team-scope column, then the
+    // identity schema itself.
+    await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     await activeDataSource.undoLastMigration();
     const afterDown = await activeDataSource.query(
@@ -337,7 +356,9 @@ describeIfDb(suiteTitle, () => {
     await wiring.createInvitation.execute({
       email,
       role: Role.User,
-      invitedBy,
+      actor: { userId: invitedBy, email: 'admin@example.test', roles: [] },
+      teamId: null,
+      teamRoleSlug: null,
     });
     const inviteToken = secureRandom.last;
 
@@ -412,7 +433,9 @@ describeIfDb(suiteTitle, () => {
     await wiring.createInvitation.execute({
       email,
       role: Role.User,
-      invitedBy,
+      actor: { userId: invitedBy, email: 'admin@example.test', roles: [] },
+      teamId: null,
+      teamRoleSlug: null,
     });
     const inviteToken = secureRandom.last;
     await wiring.acceptInvitation.execute({
@@ -479,7 +502,9 @@ describeIfDb(suiteTitle, () => {
     await wiring.createInvitation.execute({
       email,
       role: Role.User,
-      invitedBy,
+      actor: { userId: invitedBy, email: 'admin@example.test', roles: [] },
+      teamId: null,
+      teamRoleSlug: null,
     });
     await wiring.acceptInvitation.execute({
       token: secureRandom.last,

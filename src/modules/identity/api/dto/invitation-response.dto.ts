@@ -21,6 +21,12 @@ export class InvitationResponseDto {
   })
   declare readonly teamId: string | null;
 
+  @ApiProperty({
+    example: 'coach',
+    description: 'Team-role slug acceptance grants in the invited team',
+  })
+  declare readonly teamRole: string;
+
   @ApiProperty({ enum: InvitationStatus })
   declare readonly status: InvitationStatus;
 

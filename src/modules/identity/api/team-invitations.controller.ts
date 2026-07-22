@@ -34,8 +34,9 @@ import { InvitationDeliveryResponseDto } from './dto/invitation-delivery-respons
  * Team-scoped invitations. The `:teamId` path param gives the permission guard
  * a team scope, so a Team Admin whose member.invite grant is team-scoped can
  * invite into their own team (a cross-team attempt fails the scoped check with
- * 403). The invitation records the team, and acceptance links the invited
- * membership in that team and grants the default MEMBER role there.
+ * 403). The invitation records the team and the ceiling-validated team role,
+ * and acceptance links the invited membership in that team and grants that
+ * role there.
  */
 @ApiTags(INVITATIONS_API_TAG)
 @Controller(TEAM_INVITATIONS_ROUTE)
@@ -61,8 +62,9 @@ export class TeamInvitationsController {
     return this.createInvitation.execute({
       email: dto.email,
       role: Role.User,
-      invitedBy: user.userId,
+      actor: user,
       teamId,
+      teamRoleSlug: dto.teamRole ?? null,
     });
   }
 }

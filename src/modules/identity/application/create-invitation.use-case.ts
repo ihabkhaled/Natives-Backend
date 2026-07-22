@@ -9,7 +9,9 @@ import {
   UNIT_OF_WORK_PORT,
   type UnitOfWorkPort,
 } from '@core/persistence/unit-of-work.port';
+import { EnsureRoleAssignmentService, toRoleSlug } from '@modules/rbac';
 import { Inject, Injectable } from '@nestjs/common';
+import { RbacRole } from '@shared/enums';
 
 import { InvitationConflictError } from '../errors/invitation-conflict.error';
 import { InvitationRepository } from '../infrastructure/invitation.repository';
@@ -32,7 +34,11 @@ import { SendInvitationEmailService } from './send-invitation-email.service';
 
 /**
  * Creates a pending invitation for a privileged actor. Generates a CSPRNG token,
- * persists only its sha-256 hash, and audits the action — all atomically.
+ * persists only its sha-256 hash, and audits the action — all atomically. The
+ * requested team role (default member) is validated INSIDE the transaction
+ * through the RBAC public surface: open catalog lookup, the protected-role
+ * rule, and the acting principal's privilege ceiling — so an invitation can
+ * never promise a role its inviter could not grant directly.
  *
  * The invitation email is sent automatically once that transaction commits, so
  * inviting somebody is a single step. Sending is best-effort and deliberately
@@ -50,6 +56,7 @@ export class CreateInvitationUseCase {
     private readonly config: AppConfigService,
     private readonly users: UserRepository,
     private readonly invitations: InvitationRepository,
+    private readonly roleAssignments: EnsureRoleAssignmentService,
     private readonly audit: SecurityAuditService,
     private readonly invitationEmail: SendInvitationEmailService,
   ) {}
@@ -69,6 +76,12 @@ export class CreateInvitationUseCase {
     email: string,
   ): Promise<InvitationDelivery> {
     await this.assertAvailable(scope, email);
+    const teamRole = await this.roleAssignments.assertGrantable(
+      scope,
+      command.actor,
+      command.teamRoleSlug ?? toRoleSlug(RbacRole.Member),
+      command.teamId,
+    );
     const now = this.clock.now();
     const ttl = this.config.identity.invitationTtlSeconds;
     const token = this.secureRandom.generateToken();
@@ -76,19 +89,33 @@ export class CreateInvitationUseCase {
       id: this.idGenerator.generate(),
       email,
       tokenHash: hashOpaqueToken(token),
-      invitedBy: command.invitedBy,
+      invitedBy: command.actor.userId,
       role: command.role,
       teamId: command.teamId,
+      teamRoleKey: teamRole.key,
       expiresAt: new Date(now.getTime() + ttl * MILLISECONDS_PER_SECOND),
       now,
     });
+    await this.recordAudit(scope, command, invitation.id, teamRole.key);
+    return toInvitationDelivery(invitation, token);
+  }
+
+  private async recordAudit(
+    scope: TransactionScope,
+    command: CreateInvitationCommand,
+    invitationId: string,
+    teamRoleKey: string,
+  ): Promise<void> {
     await this.audit.record(
       scope,
       SecurityEventType.InvitationCreated,
-      command.invitedBy,
-      { invitationId: invitation.id },
+      command.actor.userId,
+      {
+        invitationId,
+        teamRoleKey,
+        ...(command.teamId === null ? {} : { teamId: command.teamId }),
+      },
     );
-    return toInvitationDelivery(invitation, token);
   }
 
   private async assertAvailable(

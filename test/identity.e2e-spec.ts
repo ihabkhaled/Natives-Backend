@@ -21,6 +21,8 @@ import { TeamsSchema1721500000000 } from '../src/database/migrations/17215000000
 import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
 import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 import { InvitationsTeamScope1724800000000 } from '../src/database/migrations/1724800000000-invitations-team-scope';
+import { RbacRoleCatalogMetadata1725000000000 } from '../src/database/migrations/1725000000000-rbac-role-catalog-metadata';
+import { InvitationTeamRole1725100000000 } from '../src/database/migrations/1725100000000-invitation-team-role';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -66,6 +68,8 @@ const MIGRATIONS = [
   MembersSchema1721600000000,
   PlatformLifecycleSchema1723800000000,
   InvitationsTeamScope1724800000000,
+  RbacRoleCatalogMetadata1725000000000,
+  InvitationTeamRole1725100000000,
 ];
 
 async function migrateAndSeed(): Promise<SeededFixture | null> {
@@ -615,6 +619,138 @@ describeIfDb(suiteTitle, () => {
       .send({ email: `cross-${randomUUID()}@example.test` });
     expect(denied.status).toBe(403);
     expect(denied.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  it('honours the invited team role end-to-end within the inviter ceiling', async () => {
+    const teamCreated = await request(app.getHttpServer())
+      .post('/api/v1/teams')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({ slug: `rol-${randomUUID().slice(0, 8)}`, name: 'Roles FC' });
+    expect(teamCreated.status).toBe(201);
+    const teamId = teamCreated.body.id as string;
+
+    const teamAdminId = randomUUID();
+    await activeDataSource.query(
+      `INSERT INTO "users" ("id", "email", "role", "status")
+       VALUES ($1, $2, $3, 'active')`,
+      [teamAdminId, `teamadmin-${teamAdminId}@example.test`, Role.User],
+    );
+    const teamAdminRole = await activeDataSource.query(
+      `SELECT "id" FROM "roles" WHERE "key" = 'TEAM_ADMIN'`,
+    );
+    await activeDataSource.query(
+      `INSERT INTO "user_role_assignments" ("id", "user_id", "role_id", "team_id")
+       VALUES ($1, $2, $3, $4)`,
+      [randomUUID(), teamAdminId, teamAdminRole[0].id, teamId],
+    );
+    await activeDataSource.query(
+      `UPDATE "rbac_policy_version" SET "version" = "version" + 1
+        WHERE "singleton" = true`,
+    );
+    const tokenPort = app.get<AuthTokenPort>(AUTH_TOKEN_PORT);
+    const teamAdminToken = await tokenPort.sign({
+      userId: teamAdminId,
+      email: 'teamadmin-roles@example.test',
+      roles: [Role.User],
+    });
+
+    const email = `coach-${randomUUID()}@example.test`;
+    const membership = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/members/invite`)
+      .set('Authorization', `Bearer ${teamAdminToken}`)
+      .send({ profile: { fullName: 'Invited Coach', email } });
+    expect(membership.status).toBe(201);
+
+    // Within the ceiling: TEAM_ADMIN may hand out COACH.
+    const invitation = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/invitations`)
+      .set('Authorization', `Bearer ${teamAdminToken}`)
+      .send({ email, teamRole: 'coach' });
+    expect(invitation.status).toBe(201);
+    expect(invitation.body.teamRole).toBe('coach');
+    expect(invitation.body.teamId).toBe(teamId);
+
+    // The public accept page can confirm team and role before sign-up.
+    const publicDetails = await request(app.getHttpServer()).get(
+      `/api/v1/auth/invitations/${invitation.body.token as string}`,
+    );
+    expect(publicDetails.status).toBe(200);
+    expect(publicDetails.body).toMatchObject({
+      teamRole: 'coach',
+      teamId,
+      teamName: 'Roles FC',
+    });
+
+    // Acceptance grants the INVITED role, atomically with the membership link.
+    const accepted = await request(app.getHttpServer())
+      .post('/api/v1/invitations/accept')
+      .send({
+        token: invitation.body.token as string,
+        password: 'invitee-chosen-strong-passphrase',
+        displayName: 'Invited Coach',
+      });
+    expect(accepted.status).toBe(201);
+
+    const me = await request(app.getHttpServer())
+      .get('/api/v1/auth/me')
+      .set('Authorization', `Bearer ${accepted.body.accessToken as string}`);
+    expect(me.status).toBe(200);
+    expect(me.body.memberships[0]).toMatchObject({
+      teamId,
+      status: 'active',
+      roles: ['coach'],
+    });
+
+    const assignments = await activeDataSource.query(
+      `SELECT r."key" FROM "user_role_assignments" a
+         JOIN "roles" r ON r."id" = a."role_id"
+        WHERE a."user_id" = $1 AND a."team_id" = $2 AND a."revoked_at" IS NULL`,
+      [accepted.body.userId, teamId],
+    );
+    expect(assignments).toEqual([{ key: 'COACH' }]);
+
+    // Distinct, stable error keys per refusal — never a generic catch-all.
+    const aboveCeiling = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/invitations`)
+      .set('Authorization', `Bearer ${teamAdminToken}`)
+      .send({
+        email: `sk-${randomUUID()}@example.test`,
+        teamRole: 'scorekeeper',
+      });
+    expect(aboveCeiling.status).toBe(403);
+    expect(aboveCeiling.body.messageKey).toBe('errors.rbac.escalationDenied');
+
+    const protectedRole = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/invitations`)
+      .set('Authorization', `Bearer ${teamAdminToken}`)
+      .send({
+        email: `sa-${randomUUID()}@example.test`,
+        teamRole: 'super_admin',
+      });
+    expect(protectedRole.status).toBe(403);
+    expect(protectedRole.body.messageKey).toBe('errors.rbac.protectedRole');
+
+    const unknownRole = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/invitations`)
+      .set('Authorization', `Bearer ${teamAdminToken}`)
+      .send({ email: `ph-${randomUUID()}@example.test`, teamRole: 'physio' });
+    expect(unknownRole.status).toBe(404);
+    expect(unknownRole.body.messageKey).toBe('errors.rbac.roleNotFound');
+
+    const malformedSlug = await request(app.getHttpServer())
+      .post(`/api/v1/teams/${teamId}/invitations`)
+      .set('Authorization', `Bearer ${teamAdminToken}`)
+      .send({ email: `bad-${randomUUID()}@example.test`, teamRole: 'Coach!' });
+    expect(malformedSlug.status).toBe(400);
+    expect(malformedSlug.body.messageKey).toBe('errors.validation.failed');
+
+    // Nothing was persisted for any refused invitation.
+    const refused = await activeDataSource.query(
+      `SELECT COUNT(*)::int AS count FROM "invitations"
+        WHERE "team_id" = $1 AND "team_role_key" <> 'COACH'`,
+      [teamId],
+    );
+    expect(refused[0].count).toBe(0);
   });
 
   it('GET /auth/invitations/:token returns minimal pending details', async () => {

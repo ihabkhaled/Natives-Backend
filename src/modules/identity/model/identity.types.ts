@@ -1,3 +1,4 @@
+import type { AuthUserIdentity } from '@core/auth';
 import type { MembershipStatus } from '@modules/members';
 import type { Role } from '@shared/enums';
 
@@ -44,6 +45,8 @@ export interface Invitation {
   readonly role: Role;
   /** The team this invitation onboards into; null for platform-scoped invitations. */
   readonly teamId: string | null;
+  /** The stored team-role KEY acceptance grants (uppercase, open catalog). */
+  readonly teamRoleKey: string;
   readonly status: InvitationStatus;
   readonly expiresAt: Date;
   readonly acceptedAt: Date | null;
@@ -54,6 +57,8 @@ export interface Invitation {
 
 export interface PublicInvitationRecord extends Invitation {
   readonly inviterName: string | null;
+  /** The invited team's display name, for accept-page confirmation. */
+  readonly teamName: string | null;
 }
 
 export interface RefreshSession {
@@ -101,6 +106,7 @@ export interface NewInvitation {
   readonly invitedBy: string | null;
   readonly role: Role;
   readonly teamId: string | null;
+  readonly teamRoleKey: string;
   readonly expiresAt: Date;
   readonly now: Date;
 }
@@ -164,9 +170,12 @@ export interface NewSecurityEvent {
 export interface CreateInvitationCommand {
   readonly email: string;
   readonly role: Role;
-  readonly invitedBy: string;
+  /** The acting principal — provenance AND the ceiling the team role is checked against. */
+  readonly actor: AuthUserIdentity;
   /** Team the invitee is onboarded into; null keeps the platform-scoped shape. */
   readonly teamId: string | null;
+  /** Requested team-role slug (shape-validated at the edge); null → default member. */
+  readonly teamRoleSlug: string | null;
 }
 
 export interface AcceptInvitationCommand {
@@ -266,6 +275,8 @@ export interface InvitationSummary {
   readonly email: string;
   readonly role: Role;
   readonly teamId: string | null;
+  /** The team-role slug acceptance grants (lower-snake, open catalog). */
+  readonly teamRole: string;
   readonly status: InvitationStatus;
   readonly expiresAt: Date;
   readonly createdAt: Date;
@@ -317,4 +328,8 @@ export interface PublicInvitationDetails {
   readonly role: Role;
   readonly inviterName: string | null;
   readonly expiresAt: Date;
+  /** The team-role slug acceptance grants — accept-page confirmation copy. */
+  readonly teamRole: string;
+  readonly teamId: string | null;
+  readonly teamName: string | null;
 }

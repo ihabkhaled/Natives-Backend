@@ -1,3 +1,4 @@
+import { ProtectedRoleError, RoleNotFoundError } from '@modules/rbac';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { InvitationInvalidError } from '../errors/invitation-invalid.error';
@@ -29,6 +30,7 @@ const PENDING_INVITATION: Invitation = {
   invitedBy: 'admin-1',
   role: 'user' as Invitation['role'],
   teamId: 'team-1',
+  teamRoleKey: 'COACH',
   status: InvitationStatus.Pending,
   expiresAt: new Date(NOW.getTime() + 60_000),
   acceptedAt: null,
@@ -140,12 +142,20 @@ describe('AcceptInvitationUseCase', () => {
       expect.anything(),
       SecurityEventType.InvitationAccepted,
       ACTIVE_USER.id,
-      { invitationId: PENDING_INVITATION.id, linkedMemberships: 1 },
+      {
+        invitationId: PENDING_INVITATION.id,
+        linkedMemberships: 1,
+        roleKey: 'COACH',
+        effectiveFrom: NOW.toISOString(),
+        invitedBy: 'admin-1',
+        membershipId: 'mem-1',
+        teamId: 'team-1',
+      },
     );
     expect(harness.sessionIssuer.issue).toHaveBeenCalled();
   });
 
-  it('links the pre-created membership within the invitation team and grants MEMBER there', async () => {
+  it('links the pre-created membership and grants the INVITED role there', async () => {
     harness.invitations.findByTokenHashForUpdate.mockResolvedValue(
       PENDING_INVITATION,
     );
@@ -162,7 +172,7 @@ describe('AcceptInvitationUseCase', () => {
       harness.scope,
       {
         userId: ACTIVE_USER.id,
-        roleKey: 'MEMBER',
+        roleKey: 'COACH',
         teamId: 'team-1',
         grantedBy: 'admin-1',
         now: NOW,
@@ -170,7 +180,7 @@ describe('AcceptInvitationUseCase', () => {
     );
   });
 
-  it('claims across teams for a platform invitation and grants MEMBER per linked team', async () => {
+  it('claims across teams for a platform invitation and grants the invited role per linked team', async () => {
     harness.invitations.findByTokenHashForUpdate.mockResolvedValue({
       ...PENDING_INVITATION,
       teamId: null,
@@ -189,7 +199,7 @@ describe('AcceptInvitationUseCase', () => {
     expect(harness.roleAssignments.ensureTeamRole).toHaveBeenCalledTimes(2);
     expect(harness.roleAssignments.ensureTeamRole).toHaveBeenCalledWith(
       harness.scope,
-      expect.objectContaining({ teamId: 'team-2', roleKey: 'MEMBER' }),
+      expect.objectContaining({ teamId: 'team-2', roleKey: 'COACH' }),
     );
     expect(harness.audit.record).toHaveBeenCalledWith(
       expect.anything(),
@@ -197,6 +207,47 @@ describe('AcceptInvitationUseCase', () => {
       ACTIVE_USER.id,
       expect.objectContaining({ linkedMemberships: 2 }),
     );
+  });
+
+  it('invalidates the acceptance when the invited role no longer exists', async () => {
+    harness.invitations.findByTokenHashForUpdate.mockResolvedValue(
+      PENDING_INVITATION,
+    );
+    harness.roleAssignments.ensureTeamRole.mockRejectedValue(
+      new RoleNotFoundError(),
+    );
+
+    await expect(harness.useCase.execute(COMMAND)).rejects.toBeInstanceOf(
+      InvitationInvalidError,
+    );
+    expect(harness.invitations.markAccepted).not.toHaveBeenCalled();
+    expect(harness.audit.record).not.toHaveBeenCalled();
+    expect(harness.sessionIssuer.issue).not.toHaveBeenCalled();
+  });
+
+  it('invalidates the acceptance when the invited role became protected', async () => {
+    harness.invitations.findByTokenHashForUpdate.mockResolvedValue(
+      PENDING_INVITATION,
+    );
+    harness.roleAssignments.ensureTeamRole.mockRejectedValue(
+      new ProtectedRoleError(),
+    );
+
+    await expect(harness.useCase.execute(COMMAND)).rejects.toBeInstanceOf(
+      InvitationInvalidError,
+    );
+    expect(harness.invitations.markAccepted).not.toHaveBeenCalled();
+    expect(harness.sessionIssuer.issue).not.toHaveBeenCalled();
+  });
+
+  it('rethrows an unrelated grant failure unchanged', async () => {
+    harness.invitations.findByTokenHashForUpdate.mockResolvedValue(
+      PENDING_INVITATION,
+    );
+    const boom = new Error('connection lost');
+    harness.roleAssignments.ensureTeamRole.mockRejectedValue(boom);
+
+    await expect(harness.useCase.execute(COMMAND)).rejects.toBe(boom);
   });
 
   it('grants no role when no invited membership matched, and still succeeds', async () => {

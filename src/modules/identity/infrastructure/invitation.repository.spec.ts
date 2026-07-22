@@ -19,6 +19,7 @@ const INVITATION_ROW: InvitationRow = {
   invited_by: 'user-1',
   role: 'admin',
   team_id: null,
+  team_role_key: 'MEMBER',
   status: 'pending',
   expires_at: '2026-01-10T00:00:00.000Z',
   accepted_at: null,
@@ -30,6 +31,7 @@ const INVITATION_ROW: InvitationRow = {
 const PUBLIC_INVITATION_ROW: PublicInvitationRow = {
   ...INVITATION_ROW,
   inviter_display_name: 'Coach One',
+  team_name: null,
 };
 
 describe('InvitationRepository', () => {
@@ -55,6 +57,7 @@ describe('InvitationRepository', () => {
         invitedBy: 'user-1',
         role: Role.Admin,
         teamId: null,
+        teamRoleKey: 'MEMBER',
         expiresAt,
         now,
       },
@@ -66,6 +69,7 @@ describe('InvitationRepository', () => {
       invitedBy: 'user-1',
       role: Role.Admin,
       teamId: null,
+      teamRoleKey: 'MEMBER',
       status: InvitationStatus.Pending,
       expiresAt: new Date('2026-01-10T00:00:00.000Z'),
       acceptedAt: null,
@@ -82,6 +86,7 @@ describe('InvitationRepository', () => {
       'user-1',
       Role.Admin,
       null,
+      'MEMBER',
       InvitationStatus.Pending,
       expiresAt.toISOString(),
       now.toISOString(),
@@ -100,6 +105,7 @@ describe('InvitationRepository', () => {
         invitedBy: 'user-1',
         role: Role.User,
         teamId: 'team-1',
+        teamRoleKey: 'COACH',
         expiresAt: new Date('2026-01-10T00:00:00.000Z'),
         now: new Date('2026-01-01T00:00:00.000Z'),
       },

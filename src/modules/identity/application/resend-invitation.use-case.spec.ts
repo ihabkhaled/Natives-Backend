@@ -23,6 +23,7 @@ const PENDING_INVITATION: Invitation = {
   invitedBy: 'admin-1',
   role: 'admin' as Invitation['role'],
   teamId: null,
+  teamRoleKey: 'MEMBER',
   status: InvitationStatus.Pending,
   expiresAt: new Date(NOW.getTime() + 60_000),
   acceptedAt: null,
