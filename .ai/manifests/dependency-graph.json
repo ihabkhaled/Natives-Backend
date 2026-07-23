@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T03:54:14.305Z",
+  "generatedAt": "2026-07-23T06:03:17.502Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -5298,6 +5298,11 @@
     },
     {
       "from": "src/modules/analytics/analytics.module.ts",
+      "to": "src/modules/analytics/application/analytics-authority.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/analytics/analytics.module.ts",
       "to": "src/modules/analytics/application/analytics-scope.service.ts",
       "type": "internal"
     },
@@ -5329,6 +5334,11 @@
     {
       "from": "src/modules/analytics/analytics.module.ts",
       "to": "src/modules/platform/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/analytics/analytics.module.ts",
+      "to": "src/modules/rbac/index.ts",
       "type": "cross-module"
     },
     {
@@ -5412,6 +5422,21 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/analytics/application/analytics-authority.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/analytics/application/analytics-authority.service.ts",
+      "to": "src/modules/analytics/model/analytics.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/analytics/application/analytics-authority.service.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/analytics/application/analytics-scope.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -5428,8 +5453,18 @@
     },
     {
       "from": "src/modules/analytics/application/analytics-series.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/analytics/application/analytics-series.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/analytics/application/analytics-series.service.ts",
+      "to": "src/modules/analytics/application/analytics-authority.service.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/analytics/application/analytics-series.service.ts",
@@ -5439,6 +5474,11 @@
     {
       "from": "src/modules/analytics/application/analytics-series.service.ts",
       "to": "src/modules/analytics/domain/analytics-series.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/analytics/application/analytics-series.service.ts",
+      "to": "src/modules/analytics/errors/analytics-forbidden.error.ts",
       "type": "internal"
     },
     {
@@ -5589,6 +5629,16 @@
     {
       "from": "src/modules/analytics/domain/analytics-series.policy.ts",
       "to": "src/modules/analytics/model/analytics.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/analytics/errors/analytics-forbidden.error.ts",
+      "to": "src/core/errors/forbidden.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/analytics/errors/analytics-forbidden.error.ts",
+      "to": "src/modules/analytics/model/analytics.constants.ts",
       "type": "internal"
     },
     {
@@ -13328,6 +13378,11 @@
     },
     {
       "from": "src/modules/governance/application/acknowledge-rule.use-case.ts",
+      "to": "src/modules/governance/errors/rule-acknowledgement-forbidden.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/governance/application/acknowledge-rule.use-case.ts",
       "to": "src/modules/governance/infrastructure/rule.repository.ts",
       "type": "internal"
     },
@@ -13798,6 +13853,11 @@
     },
     {
       "from": "src/modules/governance/application/rule-query.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/governance/application/rule-query.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
     },
@@ -13808,7 +13868,17 @@
     },
     {
       "from": "src/modules/governance/application/rule-query.service.ts",
+      "to": "src/modules/governance/infrastructure/governance-scope.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/governance/application/rule-query.service.ts",
       "to": "src/modules/governance/infrastructure/rule.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/governance/application/rule-query.service.ts",
+      "to": "src/modules/governance/lib/governance.helpers.ts",
       "type": "internal"
     },
     {
@@ -13998,6 +14068,16 @@
     },
     {
       "from": "src/modules/governance/errors/position-not-found.error.ts",
+      "to": "src/modules/governance/model/governance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/governance/errors/rule-acknowledgement-forbidden.error.ts",
+      "to": "src/core/errors/forbidden.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/governance/errors/rule-acknowledgement-forbidden.error.ts",
       "to": "src/modules/governance/model/governance.constants.ts",
       "type": "internal"
     },
@@ -14238,7 +14318,17 @@
     },
     {
       "from": "src/modules/governance/infrastructure/governance-scope.repository.ts",
+      "to": "src/modules/governance/lib/governance.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/governance/infrastructure/governance-scope.repository.ts",
       "to": "src/modules/governance/model/governance.rows.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/governance/infrastructure/governance-scope.repository.ts",
+      "to": "src/modules/governance/model/governance.types.ts",
       "type": "internal"
     },
     {

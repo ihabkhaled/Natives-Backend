@@ -87,6 +87,27 @@ export const SWAGGER_DESCRIPTION = 'HTTP API for this NestJS service';
 // the existing record unchanged); roster entries carry displayName + rsvpStatus
 // (both nullable); participation reads document the 409
 // errors.practices.attendanceRuleMissing contract.
-export const SWAGGER_VERSION = '1.4.0';
+// 1.5.0: additive P4 pre-tasks for the product-UI waves.
+//   Grants (BE-1): MEMBER/COACH bundles gain rules.read + jersey.read;
+//   TEAM_ADMIN additionally gains governance.read (ANALYST unchanged —
+//   least privilege). Permission DOMAINS disambiguated (BE-6): rules.read /
+//   rules.manage are the GOVERNANCE team-rules grants; points.rules.manage is
+//   the points CALCULATION rules grant (already distinct keys — descriptions
+//   clarified).
+//   Governance (BE-2/BE-3): GET /teams/{teamId}/rules (+ item) items carry
+//   myAcknowledgedVersion/myAcknowledgedAt — the caller's own ack state per
+//   version row; new GET /teams/{teamId}/rules/{ruleId}/acknowledgements
+//   (rules.manage) pages one version's acknowledgements for compliance;
+//   POST .../acknowledgement is SELF-scoped — a membership not owned by the
+//   actor is 403 errors.governance.acknowledgementForbidden.
+//   Reports (B1): report list gains seasonId + requestedBy filters.
+//   Analytics (B3): GET players/{subjectId}/series is dual-gated in the
+//   application layer — analytics.read.team reads any player,
+//   analytics.read.self reads exactly the caller's own membership; otherwise
+//   403 errors.analytics.forbidden.
+//   Standings (B4/B5): achievement transition accepts an optional bounded
+//   reason persisted + returned as rejectionReason (reject only); standings
+//   rows carry a resolved opponentName (null for our-team rows).
+export const SWAGGER_VERSION = '1.5.0';
 export const SWAGGER_BEARER_NAME = 'jwt';
 export const SWAGGER_PERSIST_AUTHORIZATION = false;

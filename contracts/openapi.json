@@ -227,6 +227,11 @@
             "nullable": true,
             "type": "string"
           },
+          "rejectionReason": {
+            "description": "Why the claim was rejected — set by the reject transition.",
+            "nullable": true,
+            "type": "string"
+          },
           "seasonId": {
             "format": "uuid",
             "nullable": true,
@@ -285,6 +290,7 @@
           "status",
           "source",
           "importReference",
+          "rejectionReason",
           "recordVersion",
           "createdBy",
           "approvedBy",
@@ -10379,6 +10385,32 @@
         ],
         "type": "object"
       },
+      "ListRuleAcknowledgementsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/RuleAcknowledgementResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListScalesResponseDto": {
         "properties": {
           "items": {
@@ -10669,7 +10701,7 @@
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/TeamRuleResponseDto"
+              "$ref": "#/components/schemas/TeamRuleWithAckStateResponseDto"
             },
             "type": "array"
           },
@@ -19387,6 +19419,11 @@
             "nullable": true,
             "type": "string"
           },
+          "opponentName": {
+            "description": "Resolved opponent display name; null for our-team rows or when the opponent record has been deleted.",
+            "nullable": true,
+            "type": "string"
+          },
           "played": {
             "type": "number"
           },
@@ -19483,6 +19520,7 @@
           "poolLabel",
           "entrantKind",
           "opponentId",
+          "opponentName",
           "played",
           "wins",
           "losses",
@@ -20448,6 +20486,112 @@
         ],
         "type": "object"
       },
+      "TeamRuleWithAckStateResponseDto": {
+        "properties": {
+          "archivedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "audience": {
+            "enum": [
+              "team",
+              "players",
+              "staff",
+              "public"
+            ],
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "category": {
+            "enum": [
+              "conduct",
+              "attendance",
+              "safety",
+              "finance",
+              "spirit",
+              "general"
+            ],
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "effectiveFrom": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "myAcknowledgedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "myAcknowledgedVersion": {
+            "nullable": true,
+            "type": "number"
+          },
+          "ownerUserId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "requiresAcknowledgement": {
+            "type": "boolean"
+          },
+          "ruleId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "ruleKey": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "archived"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "ruleId",
+          "teamId",
+          "ruleKey",
+          "version",
+          "category",
+          "title",
+          "body",
+          "audience",
+          "requiresAcknowledgement",
+          "effectiveFrom",
+          "status",
+          "ownerUserId",
+          "createdBy",
+          "archivedAt",
+          "createdAt",
+          "myAcknowledgedVersion",
+          "myAcknowledgedAt"
+        ],
+        "type": "object"
+      },
       "TeamTransitionDto": {
         "properties": {
           "expectedVersion": {
@@ -20598,6 +20742,13 @@
           "expectedRecordVersion": {
             "minimum": 1,
             "type": "number"
+          },
+          "reason": {
+            "description": "Optional explanation. Persisted on the claim (and returned as rejectionReason) when the transition is reject; recorded nowhere else — reject is terminal, so the reason is the claim’s epitaph.",
+            "maxLength": 1000,
+            "minLength": 3,
+            "nullable": true,
+            "type": "object"
           },
           "transition": {
             "enum": [
@@ -22849,7 +23000,7 @@
     "contact": {},
     "description": "HTTP API for this NestJS service",
     "title": "Service API",
-    "version": "1.4.0"
+    "version": "1.5.0"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -25929,6 +26080,7 @@
     },
     "/teams/{teamId}/analytics/players/{subjectId}/series": {
       "get": {
+        "description": "Dual-gated in the application layer: analytics.read.team reads any player; analytics.read.self reads exactly the caller’s own membership series. Any other combination is a 403 with messageKey errors.analytics.forbidden.",
         "operationId": "Analytics.playerSeries",
         "parameters": [
           {
@@ -26023,6 +26175,9 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden — neither analytics.read.team nor an own-membership analytics.read.self read (errors.analytics.forbidden)"
           }
         },
         "summary": "Chart-ready series for a player dimension",
@@ -38975,6 +39130,26 @@
             }
           },
           {
+            "description": "Only jobs snapshotting this season.",
+            "in": "query",
+            "name": "seasonId",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Only jobs requested by this user (the \"my requests\" facet).",
+            "in": "query",
+            "name": "requestedBy",
+            "required": false,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
             "in": "query",
             "name": "limit",
             "required": false,
@@ -40032,6 +40207,7 @@
     },
     "/teams/{teamId}/rules": {
       "get": {
+        "description": "Each item carries myAcknowledgedVersion/myAcknowledgedAt — the caller’s own acknowledgement state of that version row, resolved from their active membership (null when they hold none).",
         "operationId": "Rules.list",
         "parameters": [
           {
@@ -40184,7 +40360,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TeamRuleResponseDto"
+                  "$ref": "#/components/schemas/TeamRuleWithAckStateResponseDto"
                 }
               }
             },
@@ -40194,7 +40370,7 @@
             "description": "Unauthorized"
           }
         },
-        "summary": "Get one rule version",
+        "summary": "Get one rule version with the caller’s acknowledgement state",
         "tags": [
           "governance"
         ]
@@ -40202,6 +40378,7 @@
     },
     "/teams/{teamId}/rules/{ruleId}/acknowledgement": {
       "post": {
+        "description": "Idempotent upsert of the caller’s own acknowledgement. The membership must belong to the acting user; a third-party membership is a 403 with messageKey errors.governance.acknowledgementForbidden.",
         "operationId": "Rules.acknowledge",
         "parameters": [
           {
@@ -40246,10 +40423,77 @@
             "description": "Unauthorized"
           },
           "403": {
+            "description": "Forbidden — the membership does not belong to the acting user (errors.governance.acknowledgementForbidden)"
+          }
+        },
+        "summary": "Acknowledge a rule version (self only)",
+        "tags": [
+          "governance"
+        ]
+      }
+    },
+    "/teams/{teamId}/rules/{ruleId}/acknowledgements": {
+      "get": {
+        "description": "Bounded page of the memberships that acknowledged this exact version, newest first — the admin compliance grid read.",
+        "operationId": "Rules.listAcknowledgements",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "ruleId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListRuleAcknowledgementsResponseDto"
+                }
+              }
+            },
+            "description": ""
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
             "description": "Forbidden"
           }
         },
-        "summary": "Acknowledge a rule version",
+        "summary": "List one rule version’s acknowledgements (compliance)",
         "tags": [
           "governance"
         ]

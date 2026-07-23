@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T03:54:14.305Z",
+  "generatedAt": "2026-07-23T06:03:17.502Z",
   "modules": [
     {
       "name": "activities",
@@ -188,6 +188,7 @@
       "layers": {
         "other": [
           "src/modules/analytics/analytics.module.ts",
+          "src/modules/analytics/errors/analytics-forbidden.error.ts",
           "src/modules/analytics/errors/analytics-scope-not-found.error.ts",
           "src/modules/analytics/errors/analytics-validation.error.ts",
           "src/modules/analytics/errors/cohort-too-small.error.ts",
@@ -200,6 +201,7 @@
           "src/modules/analytics/api/dto/analytics.dto.ts"
         ],
         "service": [
+          "src/modules/analytics/application/analytics-authority.service.ts",
           "src/modules/analytics/application/analytics-scope.service.ts",
           "src/modules/analytics/application/analytics-series.service.ts",
           "src/modules/analytics/application/cohort-comparison.service.ts"
@@ -229,7 +231,7 @@
           "src/modules/analytics/model/analytics.types.ts"
         ]
       },
-      "fileCount": 24,
+      "fileCount": 26,
       "specCount": 0,
       "publicSurface": "src/modules/analytics/index.ts",
       "hasEvents": false
@@ -766,6 +768,7 @@
           "src/modules/governance/errors/governance-version-conflict.error.ts",
           "src/modules/governance/errors/meeting-not-found.error.ts",
           "src/modules/governance/errors/position-not-found.error.ts",
+          "src/modules/governance/errors/rule-acknowledgement-forbidden.error.ts",
           "src/modules/governance/errors/rule-not-found.error.ts",
           "src/modules/governance/errors/separation-of-duties.error.ts",
           "src/modules/governance/errors/task-not-found.error.ts",
@@ -793,7 +796,7 @@
           "src/modules/governance/model/governance.types.ts"
         ]
       },
-      "fileCount": 49,
+      "fileCount": 50,
       "specCount": 0,
       "publicSurface": "src/modules/governance/index.ts",
       "hasEvents": false

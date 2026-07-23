@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-23T03:54:14.305Z",
-  "treeHash": "sha256:57d4c22ea8c697455494e6bc02908d3af2f69615aea79ea40309af9ee07fa3bf",
+  "generatedAt": "2026-07-23T06:03:17.502Z",
+  "treeHash": "sha256:f48554c537cf0d69b7e71d785648e838611d63d926ed9ec8e71f3265f8eee2a1",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -89,8 +89,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:759b37d523ec63946c20119450d4732c8930c1339da38646d3a3c520d3f506b9",
-      "sizeBytes": 4649
+      "hash": "sha256:9360b73562596d8b4ee3151cfd6f0546b8394fa7fc265ffe1baae800e7af14cd",
+      "sizeBytes": 6089
     },
     {
       "path": "src/bootstrap/bootstrap.ts",
@@ -4004,6 +4004,52 @@
       "sizeBytes": 1474
     },
     {
+      "path": "src/database/migrations/1725400000000-governance-jersey-read-grants.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "GovernanceJerseyReadGrants1725400000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c6b54f9351f982169f882119bf76788821b9837d93732f0a0ce6529ef76347bf",
+      "sizeBytes": 3977
+    },
+    {
+      "path": "src/database/migrations/1725500000000-achievement-rejection-reason.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AchievementRejectionReason1725500000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5796d2a783320f89af71c97b7a8bfc8575cb9a02b3048b369456f2260148c4db",
+      "sizeBytes": 1037
+    },
+    {
+      "path": "src/database/migrations/achievement-rejection-reason-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e20b4e96adf6fce5af22b7a93f2ccf1506412345924fbe898229a66434e436c5",
+      "sizeBytes": 1310
+    },
+    {
       "path": "src/database/migrations/activities-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -4086,6 +4132,18 @@
       "kind": "spec",
       "hash": "sha256:eecc455047bae3aa6ae2fc091bd419650d2372a381500288a9d1c6888784f583",
       "sizeBytes": 2551
+    },
+    {
+      "path": "src/database/migrations/governance-jersey-read-grants-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:646160e3df329d3593989d36aad0db130d473d876ff544177b5cf6d75f74bb46",
+      "sizeBytes": 3175
     },
     {
       "path": "src/database/migrations/governance-schema.spec.ts",
@@ -9476,8 +9534,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ec6489230ce9c57e8883154bf27354edc2ee6ae9aa286c0da53132ca2fc36cf7",
-      "sizeBytes": 1754
+      "hash": "sha256:989a2a111b2b74290bebd5158ffb309bb4547b110f25fe810933358a91bfb83c",
+      "sizeBytes": 1928
     },
     {
       "path": "src/modules/analytics/api/analytics.controller.ts",
@@ -9493,8 +9551,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9b79c370aba805c4aab62037a1db72e1d3feb371d439aab3d9d814a0a8e4e1b6",
-      "sizeBytes": 4470
+      "hash": "sha256:b1e11e2b5f24bd70994ccdb86e54a14a952fd0d9f6da3abe887d4f0e60474ea3",
+      "sizeBytes": 5076
     },
     {
       "path": "src/modules/analytics/api/dto/analytics.dto.ts",
@@ -9546,8 +9604,25 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:6840daf8f121d83a7d7274aae477a9b24f8d5aa3a163e12359a9da7ce9b2e0d4",
-      "sizeBytes": 7846
+      "hash": "sha256:e6f80e88861fc4ecf5fa9c02e477ea342fe6c00fb596fefb0152865e31ac4a21",
+      "sizeBytes": 9993
+    },
+    {
+      "path": "src/modules/analytics/application/analytics-authority.service.ts",
+      "root": "modules",
+      "module": "analytics",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AnalyticsAuthorityService"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d2a3ed775a8f5931c621253d06b5f8a31c47cee7b99c3c5d454866c8873d5cae",
+      "sizeBytes": 1168
     },
     {
       "path": "src/modules/analytics/application/analytics-scope.service.ts",
@@ -9563,8 +9638,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9ac6897916a8fdb165115ae3d62d0b663c994dbb3c3b8b21479d2fcdb9fa24da",
-      "sizeBytes": 1073
+      "hash": "sha256:5271bb661a0986f0936fd49bb927da0d13712ee3e23fe6bc06dd96490594b3b8",
+      "sizeBytes": 1404
     },
     {
       "path": "src/modules/analytics/application/analytics-series.service.ts",
@@ -9580,8 +9655,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ca0855863a422a175124945d5271474cf31295e2655f322c84d29deab17df8d7",
-      "sizeBytes": 3008
+      "hash": "sha256:fdfbd0b7160f04548c5c3b591144b028ff9083c90b6db02cd7930d271e9d10af",
+      "sizeBytes": 4593
     },
     {
       "path": "src/modules/analytics/application/cohort-comparison.service.ts",
@@ -9729,8 +9804,25 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:c9b33d4387600b8826caff02fcf0019de40d2952a6a2013258bad5823a264e25",
-      "sizeBytes": 1375
+      "hash": "sha256:380524aa6dd177f1b47199ab9f6d1825adb752cc58aee02f05031dc087442a0b",
+      "sizeBytes": 1590
+    },
+    {
+      "path": "src/modules/analytics/errors/analytics-forbidden.error.ts",
+      "root": "modules",
+      "module": "analytics",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AnalyticsForbiddenError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a672830cb976e97431e10fb6c906ead706a0c53685a40e85285a1c20749e87e9",
+      "sizeBytes": 560
     },
     {
       "path": "src/modules/analytics/errors/analytics-scope-not-found.error.ts",
@@ -9809,8 +9901,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4c10c1cada11fc5e80fc8fed0fc8994d58d8000b093f6487180fb0318c32c98a",
-      "sizeBytes": 3875
+      "hash": "sha256:fd0b1d522dc7e6117079b705445f2b50a6128b1d5bfba91682931edc20eb22e5",
+      "sizeBytes": 4373
     },
     {
       "path": "src/modules/analytics/infrastructure/analytics-infrastructure.spec.ts",
@@ -9821,8 +9913,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:389254ebff463fa74b80eef47f01de6ed9784a4200b17c0eb538643b566480ec",
-      "sizeBytes": 4564
+      "hash": "sha256:7c1808b1df64b560ae2950dfad0d0b1687fc6565bdb869cb1d3f84c0e717b6ac",
+      "sizeBytes": 5332
     },
     {
       "path": "src/modules/analytics/infrastructure/projection.repository.ts",
@@ -10081,6 +10173,14 @@
         },
         {
           "kind": "const",
+          "name": "ANALYTICS_FORBIDDEN_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ANALYTICS_FORBIDDEN_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
           "name": "PROJECTION_RESOURCE_TYPE"
         },
         {
@@ -10099,8 +10199,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:e06165fc0b212a14792fbe2e4a2e5dea4341bc0a0404dd2bc24398fcb5304d42",
-      "sizeBytes": 5485
+      "hash": "sha256:f52717fbf5e22779712628494accc0d79098a79cd934d936cf6c16c412c05398",
+      "sizeBytes": 5682
     },
     {
       "path": "src/modules/analytics/model/analytics.enums.ts",
@@ -10236,6 +10336,10 @@
         },
         {
           "kind": "interface",
+          "name": "AnalyticsReadTiers"
+        },
+        {
+          "kind": "interface",
           "name": "SeriesQueryInput"
         },
         {
@@ -10266,8 +10370,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:651a088237bb9c366ba183fcc00ba459a4519ae9bebeaa54f316de49dc37c5f5",
-      "sizeBytes": 5274
+      "hash": "sha256:3b88870000620cb0328304e0dcdefbdc81e22a84c0f613a7d952d759e4ab236d",
+      "sizeBytes": 5456
     },
     {
       "path": "src/modules/articles/api/articles.controller.ts",
@@ -19916,11 +20020,19 @@
         },
         {
           "kind": "class",
+          "name": "TeamRuleWithAckStateResponseDto"
+        },
+        {
+          "kind": "class",
           "name": "ListTeamRulesResponseDto"
         },
         {
           "kind": "class",
           "name": "RuleAcknowledgementResponseDto"
+        },
+        {
+          "kind": "class",
+          "name": "ListRuleAcknowledgementsResponseDto"
         },
         {
           "kind": "class",
@@ -20002,8 +20114,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:e68301e18766a090e55922cfd5dd3d29c7707ace1df19a967f5a897e198ea7f1",
-      "sizeBytes": 20755
+      "hash": "sha256:b68a00edb682493e420a4e1ffc0456709596833ff7a4fe95abc16ef189f29b23",
+      "sizeBytes": 21942
     },
     {
       "path": "src/modules/governance/api/meetings.controller.ts",
@@ -20053,8 +20165,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:048b40201fa3881dace9f0b7d4c00595edc91bf2a74471f5f5432b6c88f7ff58",
-      "sizeBytes": 3968
+      "hash": "sha256:c9b5ef41b6daf18c928a5c556bc41e8bc213f9a97415ba33e3b3c856b57cdf5f",
+      "sizeBytes": 5988
     },
     {
       "path": "src/modules/governance/api/tasks.controller.ts",
@@ -20087,8 +20199,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:7a200e9e3623d058ae39729481f95d6079481878c87698b449fdf9b24b5dcb0f",
-      "sizeBytes": 2547
+      "hash": "sha256:5a9e85e7f5d49f5ff7a33ef829ae55a19d59390f963d1c23a44f2809defc9b83",
+      "sizeBytes": 3339
     },
     {
       "path": "src/modules/governance/application/directory-query.service.ts",
@@ -20133,8 +20245,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:c178fa73ee339004265aad51f3996b20642661d744ce03e60f5bfee1b1072288",
-      "sizeBytes": 24329
+      "hash": "sha256:d291b2b23a0e238961d85e69800c9a7f5b588870cc7c4fcfd5e4717ebf53a107",
+      "sizeBytes": 28367
     },
     {
       "path": "src/modules/governance/application/governance-authority.service.ts",
@@ -20167,8 +20279,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a7cae2dd7b1fa84ad93e52ebcb127c7c4fb4d0111afb32a3903a94b4d391643d",
-      "sizeBytes": 3782
+      "hash": "sha256:e4d18b81d51a67feab47a95b13b0becb734e9f3d7e888c098169ae83cce0e15c",
+      "sizeBytes": 4256
     },
     {
       "path": "src/modules/governance/application/manage-directory.use-case.ts",
@@ -20286,8 +20398,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:036d46578eb8435f8aa408b2742006176284216005dac30449fa096632e32d3f",
-      "sizeBytes": 1537
+      "hash": "sha256:7cb2055d2d55a192d8a8d471e3de90ed0acad25aacfd2cc24e0d14ef34799881",
+      "sizeBytes": 4318
     },
     {
       "path": "src/modules/governance/application/task-query.service.ts",
@@ -20480,8 +20592,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:4f34364fbbe4c4bf8c214112ee86bb3f198787576299e757c1588437a9691519",
-      "sizeBytes": 3232
+      "hash": "sha256:631054e517720b709d58152f80dc00ec85dcd5d652b4c5449e895a1eb5b8f857",
+      "sizeBytes": 3494
     },
     {
       "path": "src/modules/governance/errors/governance-invalid-transition.error.ts",
@@ -20584,6 +20696,23 @@
       "kind": "source",
       "hash": "sha256:a89539015d4425df2a2c60a007c143a1f6ce066c9aaec89fe56e0614fd7bc9c4",
       "sizeBytes": 331
+    },
+    {
+      "path": "src/modules/governance/errors/rule-acknowledgement-forbidden.error.ts",
+      "root": "modules",
+      "module": "governance",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RuleAcknowledgementForbiddenError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9c6fc965aa94662cc8cc200eae080354f9c20ab0be522d9c5a19008a1d0a5709",
+      "sizeBytes": 565
     },
     {
       "path": "src/modules/governance/errors/rule-not-found.error.ts",
@@ -20708,8 +20837,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:680dffe24f7cfa5aa3b0d655f5d4193488f9c8b1a33e7646354c33bc0691e55b",
-      "sizeBytes": 15735
+      "hash": "sha256:ee2ad04f807710cc1e2673c3584868e3ca540eee5654be029d0a7f5b731b69a2",
+      "sizeBytes": 18164
     },
     {
       "path": "src/modules/governance/infrastructure/governance-scope.repository.ts",
@@ -20725,8 +20854,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b8e2c5a9c8c6e784b1acb88f0e70cbce1da620fe25250a1bfa284d1aedd89cab",
-      "sizeBytes": 1076
+      "hash": "sha256:1ca7304bad703269c1fa7d6815a5a326aaca3cce42b6138efdf1014902144e17",
+      "sizeBytes": 2293
     },
     {
       "path": "src/modules/governance/infrastructure/meeting.repository.ts",
@@ -20759,8 +20888,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:20fce988f0493130c73481199c527e829de456e3d0f8103b2d85d3fd91da1b96",
-      "sizeBytes": 4753
+      "hash": "sha256:3b25100e26b28b34bffa8d27874778b85bed7ff2eb67bedd1e14afcacc1f328a",
+      "sizeBytes": 6386
     },
     {
       "path": "src/modules/governance/infrastructure/task.repository.ts",
@@ -20845,8 +20974,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:b8634cc0aa2c83e4738f2aad1459a8a49e11ab1094bf7c3916062e950902c2b9",
-      "sizeBytes": 10057
+      "hash": "sha256:55567cce1cdf6241e972195b68f3f405a5c6f952d0ce9a1dd874cd4473a70514",
+      "sizeBytes": 11063
     },
     {
       "path": "src/modules/governance/lib/governance.builders.ts",
@@ -20949,6 +21078,14 @@
         },
         {
           "kind": "function",
+          "name": "mergeRuleAckState"
+        },
+        {
+          "kind": "function",
+          "name": "toRuleAckState"
+        },
+        {
+          "kind": "function",
           "name": "toDate"
         },
         {
@@ -20983,8 +21120,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:777b6ab879377f83f79fc4d0221264c292a3b42c053cdc427ebde18898763cfd",
-      "sizeBytes": 2481
+      "hash": "sha256:db67610f850e238207b26791d45c7bee5c4e4417cb96fdde8f490b0167103307",
+      "sizeBytes": 3422
     },
     {
       "path": "src/modules/governance/lib/governance.mapper.ts",
@@ -20992,6 +21129,10 @@
       "module": "governance",
       "layer": "lib",
       "symbols": [
+        {
+          "kind": "function",
+          "name": "toMembershipRef"
+        },
         {
           "kind": "function",
           "name": "toTeamRule"
@@ -21024,8 +21165,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:f198b95fe47c2158ce061ea7db46a434755ccbca29a8cf65684904e26e166166",
-      "sizeBytes": 5776
+      "hash": "sha256:34a6ad8c76a49bf286588e90702b1976f6e6669ef9b4db4e2354db7f0b4facc4",
+      "sizeBytes": 6037
     },
     {
       "path": "src/modules/governance/model/governance.constants.ts",
@@ -21088,6 +21229,10 @@
         {
           "kind": "const",
           "name": "RULE_ACK_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_ACK_LIST_ROUTE"
         },
         {
           "kind": "const",
@@ -21299,6 +21444,14 @@
         },
         {
           "kind": "const",
+          "name": "RULE_ACK_FORBIDDEN_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RULE_ACK_FORBIDDEN_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
           "name": "RULE_RESOURCE_TYPE"
         },
         {
@@ -21405,8 +21558,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:615f413bb599ce7f5f136e838e316d6221db15711b6e93ced8cdf55daaacee73",
-      "sizeBytes": 8307
+      "hash": "sha256:231f2dd48418f733aca5cef1bd9b22f1a140648186742ece0ce5c9b3a8a889eb",
+      "sizeBytes": 8584
     },
     {
       "path": "src/modules/governance/model/governance.enums.ts",
@@ -21597,14 +21750,18 @@
         },
         {
           "kind": "interface",
+          "name": "GovernanceMembershipRow"
+        },
+        {
+          "kind": "interface",
           "name": "GovernanceIdRow"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4abf3b52f92b351e61cfc5c7060fa007efcd989186e1dd4a740b9344dd258fb8",
-      "sizeBytes": 4193
+      "hash": "sha256:f6ed634fb25ca90a6b057ecbdd56691eeeb54193b492f7492edb311e132eebf7",
+      "sizeBytes": 4364
     },
     {
       "path": "src/modules/governance/model/governance.types.ts",
@@ -21651,6 +21808,26 @@
         {
           "kind": "type",
           "name": "TeamRulePage"
+        },
+        {
+          "kind": "interface",
+          "name": "RuleAckState"
+        },
+        {
+          "kind": "type",
+          "name": "TeamRuleWithAckState"
+        },
+        {
+          "kind": "type",
+          "name": "TeamRuleWithAckPage"
+        },
+        {
+          "kind": "type",
+          "name": "RuleAcknowledgementPage"
+        },
+        {
+          "kind": "interface",
+          "name": "GovernanceMembershipRef"
         },
         {
           "kind": "interface",
@@ -21844,8 +22021,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:8a077fedd0f93f303aea3f1c9fc5ec628f31afa5f2894ab8f8e5a87a0da78407",
-      "sizeBytes": 14419
+      "hash": "sha256:493f8c535fe9cb5a6ef325fff7217c5df275a0be57cea8f7c3571bd367175053",
+      "sizeBytes": 15163
     },
     {
       "path": "src/modules/identity/adapters/crypto-secure-random.adapter.spec.ts",
@@ -49573,8 +49750,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:dee8b9c85c14ddc69e329c5e390bf0ffe131df685ea5f477c15c52fc78679fde",
-      "sizeBytes": 4069
+      "hash": "sha256:f2f59aaaec3e991dbbc8d991ac30b41c68c76957f088a7e5e802152e4b9e5f5a",
+      "sizeBytes": 4426
     },
     {
       "path": "src/modules/reports/api/reports.controller.ts",
@@ -49670,8 +49847,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:960517d4a2331e4a3097f9629250ac6e7034f151164dc879cc17f409d5eade00",
-      "sizeBytes": 9940
+      "hash": "sha256:01698fff903afbbf535b5dc8b7dd329f41d107be82e36a57c6145d19381b43ee",
+      "sizeBytes": 9975
     },
     {
       "path": "src/modules/reports/application/retry-report.use-case.ts",
@@ -49934,8 +50111,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:b8c6e758f6cdf4ad01bc42733141d60d5aa56e722fe692d62547e211e60f209d",
-      "sizeBytes": 6409
+      "hash": "sha256:ccf9caa92b4dcbf89622c849a48754a0d08028ff0384199f6d769fc3ff8f9f98",
+      "sizeBytes": 6766
     },
     {
       "path": "src/modules/reports/infrastructure/reports-infrastructure.spec.ts",
@@ -49946,8 +50123,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:2520938eca7f455182fcf80d15370d4ba8c41d60763822ac41ee2c3624576c5a",
-      "sizeBytes": 5807
+      "hash": "sha256:19305c91c0e8ab2a590d4d8a4bcebd8ec878f978159ed6171c70497a657be7f7",
+      "sizeBytes": 6195
     },
     {
       "path": "src/modules/reports/lib/reports-command.mapper.ts",
@@ -49967,8 +50144,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fa004c3200a7c1123052821f3b5e0799e07878a623f2257f56ba40a9a8644037",
-      "sizeBytes": 671
+      "hash": "sha256:2f427a3f2f0496fc6cbe8aa2ef53ac72b6f11d66df15318496854af42efcc9d2",
+      "sizeBytes": 753
     },
     {
       "path": "src/modules/reports/lib/reports-lib.spec.ts",
@@ -49979,8 +50156,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:79fd7a17cd92e8977b9895dfe7085c6aaa54cf2bcbed23ac7226abfbf3ff3b73",
-      "sizeBytes": 4429
+      "hash": "sha256:17bc9bd7117cc9000b3bf1ffc93be6c6f5ab989ded679cb3e8a1a24162cfb768",
+      "sizeBytes": 4703
     },
     {
       "path": "src/modules/reports/lib/reports.builders.ts",
@@ -50491,8 +50668,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:f872da7627d2cdf8e3b33101b85bab144196a448c5bedf8cfeed1994ef79906f",
-      "sizeBytes": 4363
+      "hash": "sha256:a6ae81cb02177cd854b413da2d48d75867f07ac61d61af24404d24f334eca0b3",
+      "sizeBytes": 4515
     },
     {
       "path": "src/modules/reports/reports.module.ts",
@@ -57237,8 +57414,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:8d0da8550d5380af7afff8c60ecb98575327d3924a89e8be82d1c7b9dbe1f91e",
-      "sizeBytes": 5336
+      "hash": "sha256:e5f9c2698ba2830a07f839d5144dafd51b08134ba2775035833b2186c5275da9",
+      "sizeBytes": 5370
     },
     {
       "path": "src/modules/standings/api/dto/standings.dto.ts",
@@ -57334,8 +57511,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a395a3a440e308e751f0b2724d08e8113e693a518104fab600ff4ca9518d92f0",
-      "sizeBytes": 20595
+      "hash": "sha256:d3d2f04593e459be1560265fdff913cec9bad9b481217a8c29a956bad5a4a678",
+      "sizeBytes": 21519
     },
     {
       "path": "src/modules/standings/api/standings-rules.controller.ts",
@@ -57499,8 +57676,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:5b7389f6ee031a56e702b4106b3f81c16749c3df716133a7895178d9767e30c6",
-      "sizeBytes": 24061
+      "hash": "sha256:94515a611349eb2034edd79b9b9189090506eb2b960f514819069e2bc7d9792f",
+      "sizeBytes": 25057
     },
     {
       "path": "src/modules/standings/application/standings-query.service.ts",
@@ -57567,8 +57744,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:c812d3c1c2e23ebe4ef31b573b7061990c3979fccea2a925b293c82ca57fa3b0",
-      "sizeBytes": 3559
+      "hash": "sha256:eaf84efb78fd7771b34063552f184fd7ceaa2989163cac42e7d1464168332e29",
+      "sizeBytes": 3583
     },
     {
       "path": "src/modules/standings/domain/achievement.state-machine.ts",
@@ -57875,8 +58052,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1692db65f94fbc39318445d82997e502eae30044141ee649b18b44b75566e90f",
-      "sizeBytes": 5638
+      "hash": "sha256:5940866103e0d8255bf924763df53520389c5de65a6e9ed2d0ae94a9cad5788e",
+      "sizeBytes": 5696
     },
     {
       "path": "src/modules/standings/infrastructure/standing.repository.ts",
@@ -57892,8 +58069,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:8688d359eba9b071598f8114884ebd2b93f7c7855ac02495e7243acd8ee2d580",
-      "sizeBytes": 3915
+      "hash": "sha256:bc1832a5984745432f5246b82faf10bb32e5d9263e71cb9c649e78855aa0f87a",
+      "sizeBytes": 4786
     },
     {
       "path": "src/modules/standings/infrastructure/standings-infrastructure.spec.ts",
@@ -57904,8 +58081,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:f6ca54d6a1d8db3e8823ce755289cdb95d6b70f759ab8f014d13d97ee7cbfa41",
-      "sizeBytes": 12298
+      "hash": "sha256:26b73978cd61fb93c57a35532784cd46a98897879a7a49a0d28cefc6c06520f3",
+      "sizeBytes": 14217
     },
     {
       "path": "src/modules/standings/infrastructure/standings-rule.repository.ts",
@@ -58032,8 +58209,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:0f6dc86f758ae05d917ab7261aba889a365373321d897fc29049b810aa91232d",
-      "sizeBytes": 15125
+      "hash": "sha256:af744c7a37cb359e84bdb91020f92fac7df630aae1c108ba9756e906dca07ab0",
+      "sizeBytes": 15793
     },
     {
       "path": "src/modules/standings/lib/standings.builders.ts",
@@ -58101,8 +58278,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:5e9edc35f76aac36a69774c3bf499160ba0cab109214e46bcd8aae12bc8a6a9f",
-      "sizeBytes": 10493
+      "hash": "sha256:d8b400dc5d40712898c7ea359f9ac0bb00fd954dd6e81d862e5a0d171b06eaf5",
+      "sizeBytes": 10620
     },
     {
       "path": "src/modules/standings/lib/standings.helpers.ts",
@@ -58183,8 +58360,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:de8c7762ef94ed5d30cc3bef386c6883902b6941d305526df0d11acd69b88184",
-      "sizeBytes": 5017
+      "hash": "sha256:b7da0780e2cd686e894b3168338db777c2755e2f4287a430b374a969b00e2095",
+      "sizeBytes": 5097
     },
     {
       "path": "src/modules/standings/model/standings.constants.ts",
@@ -58502,6 +58679,14 @@
         },
         {
           "kind": "const",
+          "name": "STANDING_COLUMNS_JOINED"
+        },
+        {
+          "kind": "const",
+          "name": "STANDING_JOINED_SOURCE"
+        },
+        {
+          "kind": "const",
           "name": "ACHIEVEMENT_COLUMNS"
         },
         {
@@ -58512,8 +58697,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:c4d42ab0bb9bbb15176339762fd9219c2803acf3b92c43a47e163c5c74823bb6",
-      "sizeBytes": 8810
+      "hash": "sha256:be8aa190bb16e3384e3d653c1e68da3e71670221e2196c1de9f4966d8ba394ba",
+      "sizeBytes": 9761
     },
     {
       "path": "src/modules/standings/model/standings.enums.ts",
@@ -58639,6 +58824,14 @@
           "name": "StandingRow"
         },
         {
+          "kind": "type",
+          "name": "StandingWriteRow"
+        },
+        {
+          "kind": "interface",
+          "name": "OpponentNameRow"
+        },
+        {
           "kind": "interface",
           "name": "AchievementRow"
         },
@@ -58662,8 +58855,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0d8fd4dbd73e8b962c771d11d629714fd38a3b0787917cc2fecad1651f243907",
-      "sizeBytes": 3385
+      "hash": "sha256:65d8fd5d149bbb8d65e50a43ea6754dd2c6ac55bc99003e9d3bfaa662be39da3",
+      "sizeBytes": 3812
     },
     {
       "path": "src/modules/standings/model/standings.types.ts",
@@ -58827,8 +59020,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ec48877431a044c171d4a392ba7a60740c6966a357b46f11c5e235cd1b956772",
-      "sizeBytes": 13086
+      "hash": "sha256:a206e44722c9aeb2616e486903e90a66535d5d1fedaa68cd03be3675af178294",
+      "sizeBytes": 13393
     },
     {
       "path": "src/modules/standings/standings.module.ts",
@@ -63989,8 +64182,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4ba088fae8a9198bbf1d13d881c1de362bd3807103606aa83eba6f90f9c2009e",
-      "sizeBytes": 12539
+      "hash": "sha256:868ae733e4644fa7c2d3da3ab308b71de926810798cbf592a315d4cd6d53d1bc",
+      "sizeBytes": 12583
     },
     {
       "path": "src/shared/constants/permission-catalog.spec.ts",
@@ -64022,8 +64215,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:614a3f1fc28ea1c69899e1ff72d876244888cdfd9e9fe05fc2dc8a03ef3d0cdd",
-      "sizeBytes": 6091
+      "hash": "sha256:0794e857cf441f8a01f4e59a4981e99846a05311deec99edb2aa2610cb6bec6b",
+      "sizeBytes": 6491
     },
     {
       "path": "src/shared/constants/role-bundles.spec.ts",
@@ -64034,8 +64227,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:caf73639abd04bb633a8fe3920cff832485ddb3648b8cff3a042347568b80bad",
-      "sizeBytes": 3496
+      "hash": "sha256:6acc34031931140140768ba9e94c1758eb04f0901606b22f1054351e31f34b21",
+      "sizeBytes": 8149
     },
     {
       "path": "src/shared/constants/role-permissions.constants.ts",
