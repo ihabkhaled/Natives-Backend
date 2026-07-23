@@ -19,20 +19,34 @@ import { IdentitySchema1721300000000 } from '../src/database/migrations/17213000
 import { RbacSchema1721400000000 } from '../src/database/migrations/1721400000000-rbac-schema';
 import { TeamsSchema1721500000000 } from '../src/database/migrations/1721500000000-teams-schema';
 import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
+import { PracticesSchema1721800000000 } from '../src/database/migrations/1721800000000-practices-schema';
 import { SeedHistorySchema1722600000000 } from '../src/database/migrations/1722600000000-seed-history-schema';
+import { CompetitionsSchema1723300000000 } from '../src/database/migrations/1723300000000-competitions-schema';
+import { SquadsSchema1723400000000 } from '../src/database/migrations/1723400000000-squads-schema';
+import { RostersSchema1723500000000 } from '../src/database/migrations/1723500000000-rosters-schema';
+import { MatchesSchema1723600000000 } from '../src/database/migrations/1723600000000-matches-schema';
+import { MatchLineupsSchema1723700000000 } from '../src/database/migrations/1723700000000-match-lineups-schema';
 import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 import { RbacRoleCatalogMetadata1725000000000 } from '../src/database/migrations/1725000000000-rbac-role-catalog-metadata';
 
 // Proves the seeded principal contract over real HTTP on a disposable database
 // of its own: the once-only seeders are the ONLY writes, so `/auth/me` here is
-// exactly what a freshly provisioned deployment returns.
+// exactly what a freshly provisioned deployment returns. The persona seeder's
+// v3 demonstration set additionally needs the practices and competition/match
+// schemas (squads → rosters in FK dependency order for the matches FKs).
 const SEED_MIGRATIONS = [
   BaselineSchema1721200000000,
   IdentitySchema1721300000000,
   RbacSchema1721400000000,
   TeamsSchema1721500000000,
   MembersSchema1721600000000,
+  PracticesSchema1721800000000,
   SeedHistorySchema1722600000000,
+  CompetitionsSchema1723300000000,
+  SquadsSchema1723400000000,
+  RostersSchema1723500000000,
+  MatchesSchema1723600000000,
+  MatchLineupsSchema1723700000000,
   PlatformLifecycleSchema1723800000000,
   RbacRoleCatalogMetadata1725000000000,
 ];
@@ -326,5 +340,94 @@ describeIfDb(suiteTitle, () => {
       );
     expect(denied.status).toBe(403);
     expect(denied.body.messageKey).toBe('errors.auth.permissionDenied');
+  });
+
+  // The membership-less invariant (P7 §2.1): a platform role alone must not
+  // fabricate team membership. The seeded platform-only super admin logs in
+  // with platform authority and an EMPTY membership list.
+  it('lets the membership-less super admin log in with zero memberships', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'platformonly@ultimatenatives.local',
+        password: PERSONA_PASSWORD,
+      });
+
+    expect(response.status).toBe(200);
+    expect(response.body.user.memberships).toEqual([]);
+
+    const browsed = await request(app.getHttpServer())
+      .get('/api/v1/teams')
+      .set(
+        'Authorization',
+        `Bearer ${response.body.tokens.accessToken as string}`,
+      );
+    expect(browsed.status).toBe(200);
+    expect(browsed.body.total).toBeGreaterThan(0);
+  });
+
+  // The v3 demonstration practice program: a fresh database answers the coach
+  // with published sessions positioned relative to the seed instant, at least
+  // one of which is inside its P3-B1 self check-in window right now.
+  it('exposes the seeded practice program to the head coach', async () => {
+    const coach = await request(app.getHttpServer())
+      .post('/api/v1/auth/login')
+      .send({ email: COACH_EMAIL, password: PERSONA_PASSWORD });
+    const teamId = await seededTeamId();
+
+    const response = await request(app.getHttpServer())
+      .get(`/api/v1/teams/${teamId}/practice-sessions`)
+      .set(
+        'Authorization',
+        `Bearer ${coach.body.tokens.accessToken as string}`,
+      );
+
+    expect(response.status).toBe(200);
+    expect(response.body.total).toBe(5);
+    const items = response.body.items as readonly {
+      status: string;
+      venueId: string | null;
+      startsAt: string;
+      endsAt: string;
+    }[];
+    expect(items).toHaveLength(5);
+    for (const session of items) {
+      expect(session.status).toBe('published');
+      expect(session.venueId).not.toBeNull();
+    }
+    const now = Date.now();
+    const checkInAble = items.filter(
+      session =>
+        new Date(session.startsAt).getTime() - 60 * 60_000 <= now &&
+        new Date(session.endsAt).getTime() >= now,
+    );
+    expect(checkInAble.length).toBeGreaterThanOrEqual(1);
+  });
+
+  // The v3 scorekeeper queue: one scheduled match exists on a fresh database,
+  // so the scorekeeper journey has something to open without manual set-up.
+  it('exposes the seeded scheduled match to the scorekeeper', async () => {
+    const scorekeeper = await request(app.getHttpServer())
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'scorekeeper@ultimatenatives.local',
+        password: PERSONA_PASSWORD,
+      });
+    const teamId = await seededTeamId();
+
+    const response = await request(app.getHttpServer())
+      .get(`/api/v1/teams/${teamId}/matches`)
+      .set(
+        'Authorization',
+        `Bearer ${scorekeeper.body.tokens.accessToken as string}`,
+      );
+
+    expect(response.status).toBe(200);
+    expect(response.body.total).toBe(1);
+    expect(response.body.items[0]).toMatchObject({
+      status: 'scheduled',
+      ourScore: 0,
+      opponentScore: 0,
+    });
   });
 });

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-23T06:57:44.143Z",
-  "treeHash": "sha256:d693a87958f4d417db4cf945efbc0fbc1b5ce616f73f29d4f34bf445feb8e423",
+  "generatedAt": "2026-07-23T07:41:24.119Z",
+  "treeHash": "sha256:c540b5e9130639f9fbbdaae584a61f2f524cc87ca77f832f2790a0060d4384be",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -4728,6 +4728,90 @@
         },
         {
           "kind": "const",
+          "name": "PRACTICE_SESSION_DEFINITIONS"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_SESSION_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_SESSION_VISIBILITY"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_OPPONENT_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_OPPONENT_SHORT_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_COMPETITION_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_COMPETITION_TYPE"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_COMPETITION_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_RULESET_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_RULESET_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_RULESET_GAME_TO"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_RULESET_WIN_BY"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_RULESET_HALFTIME_AT"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_RULESET_TIMEOUTS_PER_TEAM"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_RULESET_PERIODS"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_FIXTURE_VENUE_NAME"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_FIXTURE_HOME_AWAY"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_FIXTURE_OFFSET_MINUTES"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_MATCH_COUNT"
+        },
+        {
+          "kind": "const",
+          "name": "PRACTICE_ORGANIZER_EMAIL"
+        },
+        {
+          "kind": "const",
+          "name": "DEMO_PROGRAM_ACTOR_EMAIL"
+        },
+        {
+          "kind": "const",
           "name": "PERSONA_MEMBERSHIP_STATUS"
         },
         {
@@ -4736,7 +4820,19 @@
         },
         {
           "kind": "const",
+          "name": "PERSONA_SEASON_MISSING_MESSAGE"
+        },
+        {
+          "kind": "const",
           "name": "PERSONA_ROLE_MISSING_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "PERSONA_VENUE_MISSING_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "PERSONA_ACTOR_MISSING_PREFIX"
         },
         {
           "kind": "const",
@@ -4745,13 +4841,21 @@
         {
           "kind": "const",
           "name": "PERSONA_MEMBERSHIP_INSERT_FAILED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "PERSONA_SESSION_INSERT_FAILED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "PERSONA_DEMO_INSERT_FAILED_PREFIX"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:3a25de9434333800edba982ce3babd1c529dcdc8832594853cfc4e7a7acbda0f",
-      "sizeBytes": 5004
+      "hash": "sha256:2ec852cae0b9a32d5fb898511c3d692d262251e4912339444f9615bba62bcad3",
+      "sizeBytes": 10547
     },
     {
       "path": "src/database/seeds/seed-personas.spec.ts",
@@ -4762,8 +4866,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:67665fd7af32a2aec6d12a9c8f79f90b3e8df79c54a0aa1f5f9abda2f2929353",
-      "sizeBytes": 8864
+      "hash": "sha256:e2576b238a583f67e55b330ed535a879b847d258ffa9f1a1b1d2e31196fd872f",
+      "sizeBytes": 16513
     },
     {
       "path": "src/database/seeds/seed-personas.ts",
@@ -4779,8 +4883,8 @@
       "hasSpec": true,
       "specPath": "src/database/seeds/seed-personas.spec.ts",
       "kind": "source",
-      "hash": "sha256:19b8f678955a590fd7206f17ef81f122e18b8154ffecf86b17eb3703d7830cbc",
-      "sizeBytes": 10380
+      "hash": "sha256:954fa3c52acdd8d6c2471d3bfa9eac576b8789a14971d0495d592747f68816ed",
+      "sizeBytes": 21722
     },
     {
       "path": "src/database/seeds/seed-personas.types.ts",
@@ -4806,6 +4910,14 @@
         },
         {
           "kind": "interface",
+          "name": "PracticeSessionDefinition"
+        },
+        {
+          "kind": "interface",
+          "name": "DemoSeedScope"
+        },
+        {
+          "kind": "interface",
           "name": "IdRow"
         },
         {
@@ -4816,8 +4928,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:96226c394efcc6293da46f7c29e44dd6f60cff24b7e4d53f56157c19628ce8a9",
-      "sizeBytes": 961
+      "hash": "sha256:816bc5d2a88d424b300f2f889aa229dcf09a3ff2a9b59d0e67bcefe764048eb5",
+      "sizeBytes": 2403
     },
     {
       "path": "src/database/seeds/seed-policy.spec.ts",
@@ -5094,8 +5206,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0db2e2fc6440124fd048f8a81bbcf2a068281a551fa52cb18e1f9a49433cd433",
-      "sizeBytes": 3758
+      "hash": "sha256:a699eacafcd653f79afac2ddd45700a7e3ad9b023166b672e3e881d68a9c0278",
+      "sizeBytes": 4639
     },
     {
       "path": "src/database/seeds/seed.types.ts",

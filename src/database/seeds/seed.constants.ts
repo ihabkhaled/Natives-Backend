@@ -58,19 +58,33 @@ export const TEAM_SEED_DEFINITION =
 // when the seeder's behaviour changes.
 // v2: also inserts a member profile per persona membership so the member
 // directory (which lists profile data) is populated on a fresh database.
-// Already-seeded databases keep their v1 rows untouched (the framework logs the
-// definition change and never re-runs); the directory read model no longer
-// depends on profiles existing.
+// v3: adds the membership-less platform-only super admin (zero membership rows,
+// zero member profiles — the "platform role alone must not fabricate team
+// membership" invariant is now journey-testable), the practice program seeded
+// RELATIVE to the database clock at seed time (past + upcoming published
+// sessions and one in progress whose P3-B1 self check-in window is OPEN at the
+// seed instant — impossible with static instants, and legitimate exactly
+// because the framework runs a seeder once per database), and the scorekeeper
+// queue (opponent, published competition, active ruleset, scheduled fixture and
+// its scheduled match). Already-seeded databases keep their earlier rows
+// untouched (the framework logs the definition change and never re-runs).
 export const PERSONAS_SEED_DEFINITION =
-  'personas-seeder:v2:' +
+  'personas-seeder:v3:' +
   'insert-persona-users;' +
   'upsert-persona-password-credentials;' +
-  'insert-active-team-memberships;' +
+  'insert-active-team-memberships-for-team-personas-only;' +
   'append-membership-status-events;' +
   'insert-member-profiles;' +
   'ensure-scoped-role-assignments;' +
   'insert-reference-catalog-entries;' +
   'insert-venues;' +
+  'insert-relative-time-practice-sessions;' +
+  'append-practice-session-status-events;' +
+  'insert-demo-opponent;' +
+  'insert-demo-published-competition;' +
+  'insert-demo-active-match-ruleset;' +
+  'insert-demo-scheduled-fixture;' +
+  'insert-demo-scheduled-match;' +
   'bump-rbac-policy-version';
 
 export const SEED_HISTORY_LOOKUP_SQL = `SELECT "checksum" FROM "${SEED_HISTORY_TABLE}" WHERE "seed_key" = $1`;
