@@ -134,6 +134,91 @@ describe('canonical OpenAPI contract (e2e)', () => {
     );
   });
 
+  it('describes the P2 typed-settings request union and read model', () => {
+    const document = createOpenApiDocument(app);
+    const schemas = document.components?.schemas ?? {};
+
+    // The request body is a discriminated oneOf on settingKey with 8 mappings.
+    const post = document.paths['/teams/{teamId}/settings/versions']?.post;
+    const requestBody = post?.requestBody as {
+      content: Record<
+        string,
+        {
+          schema: {
+            oneOf: readonly unknown[];
+            discriminator: {
+              propertyName: string;
+              mapping: Record<string, string>;
+            };
+          };
+        }
+      >;
+    };
+    const bodySchema = requestBody.content['application/json']?.schema;
+    expect(bodySchema?.oneOf).toHaveLength(8);
+    expect(bodySchema?.discriminator.propertyName).toBe('settingKey');
+    expect(Object.keys(bodySchema?.discriminator.mapping ?? {})).toEqual([
+      'attendance_statuses',
+      'session_types',
+      'attendance_weights',
+      'assessment_scale',
+      'badge_tiers',
+      'roster_limits',
+      'notification_rules',
+      'report_branding',
+    ]);
+
+    // Cancel endpoint (D7) and per-key value schemas carrying bounds.
+    expect(
+      document.paths['/teams/{teamId}/settings/versions/{versionId}']?.delete
+        ?.responses,
+    ).toHaveProperty('204');
+    expect(schemas['CreateBadgeTiersSettingVersionDto']).toEqual(
+      expect.objectContaining({
+        required: ['settingKey', 'effectiveFrom', 'value', 'note'],
+        properties: expect.objectContaining({
+          settingKey: expect.objectContaining({ enum: ['badge_tiers'] }),
+        }),
+      }),
+    );
+    expect(schemas['BadgeTierDto']).toEqual(
+      expect.objectContaining({
+        properties: expect.objectContaining({
+          threshold: expect.objectContaining({ minimum: 0, maximum: 100000 }),
+        }),
+      }),
+    );
+    expect(schemas['AttendanceWeightsValueDto']).toEqual(
+      expect.objectContaining({
+        properties: expect.objectContaining({
+          weights: expect.objectContaining({
+            additionalProperties: expect.objectContaining({
+              minimum: 0,
+              maximum: 1,
+            }),
+          }),
+        }),
+      }),
+    );
+
+    // Read model: version rows and effective settings carry valueState (D4).
+    expect(schemas['SettingVersionResponseDto']).toEqual(
+      expect.objectContaining({
+        properties: expect.objectContaining({
+          valueState: expect.objectContaining({ enum: ['valid', 'legacy'] }),
+        }),
+      }),
+    );
+    expect(schemas['EffectiveSettingResponseDto']).toEqual(
+      expect.objectContaining({
+        properties: expect.objectContaining({
+          valueState: expect.objectContaining({ nullable: true }),
+          issues: expect.objectContaining({ type: 'array' }),
+        }),
+      }),
+    );
+  });
+
   it('publishes unique operation IDs and representative schemas', () => {
     const document = createOpenApiDocument(app);
     const operationIds = Object.values(document.paths).flatMap(path =>

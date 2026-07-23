@@ -69,6 +69,14 @@ export const SWAGGER_DESCRIPTION = 'HTTP API for this NestJS service';
 // super-admin management (GET/POST/DELETE /rbac/platform/super-admins); the
 // dead-letter listing (GET /admin/outbox/dead-letters); and scheduled-job
 // health (GET /admin/jobs/health).
-export const SWAGGER_VERSION = '1.2.0';
+// 1.3.0: P2 typed team settings — POST /teams/{teamId}/settings/versions body
+// becomes a discriminated oneOf of 8 per-key request DTOs (discriminator
+// settingKey), note is required (min 5) and effectiveFrom must be strict UTC
+// (breaking for raw-JSON writers); optional expectedHeadVersionId concurrency
+// guard; version/effective-setting responses carry valueState (+ issues on the
+// snapshot) with typed per-key value schemas; new
+// DELETE /teams/{teamId}/settings/versions/{versionId} cancels a
+// future-effective version.
+export const SWAGGER_VERSION = '1.3.0';
 export const SWAGGER_BEARER_NAME = 'jwt';
 export const SWAGGER_PERSIST_AUTHORIZATION = false;

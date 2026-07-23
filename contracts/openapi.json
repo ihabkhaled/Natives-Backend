@@ -1095,6 +1095,39 @@
         ],
         "type": "object"
       },
+      "AssessmentScaleValueDto": {
+        "properties": {
+          "bands": {
+            "description": "Ascending, non-overlapping bands inside [min, max]; gaps are legal.",
+            "items": {
+              "$ref": "#/components/schemas/ScaleBandDto"
+            },
+            "maxItems": 10,
+            "type": "array"
+          },
+          "max": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number"
+          },
+          "min": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number"
+          },
+          "step": {
+            "description": "(max − min) must be divisible by step.",
+            "minimum": 1,
+            "type": "number"
+          }
+        },
+        "required": [
+          "min",
+          "max",
+          "step"
+        ],
+        "type": "object"
+      },
       "AssessmentValueDto": {
         "properties": {
           "confidence": {
@@ -1604,6 +1637,85 @@
         ],
         "type": "object"
       },
+      "AttendanceStatusEntryDto": {
+        "properties": {
+          "active": {
+            "description": "Archived-not-deleted flag.",
+            "type": "boolean"
+          },
+          "allowSelfCheckIn": {
+            "description": "Member self check-in permitted.",
+            "type": "boolean"
+          },
+          "code": {
+            "enum": [
+              "present_on_time",
+              "present_late",
+              "excused",
+              "injured",
+              "absent",
+              "remote_approved",
+              "other_approved"
+            ],
+            "type": "string"
+          },
+          "color": {
+            "enum": [
+              "primary",
+              "success",
+              "warning",
+              "danger",
+              "neutral",
+              "accent1",
+              "accent2",
+              "accent3",
+              "accent4"
+            ],
+            "type": "string"
+          },
+          "countsTowardMetrics": {
+            "description": "Participates in attendance math.",
+            "type": "boolean"
+          },
+          "labelAr": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          },
+          "labelEn": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "labelEn",
+          "labelAr",
+          "color",
+          "countsTowardMetrics",
+          "allowSelfCheckIn",
+          "active"
+        ],
+        "type": "object"
+      },
+      "AttendanceStatusesValueDto": {
+        "properties": {
+          "statuses": {
+            "description": "Ordered display list; must include active present_on_time and absent poles.",
+            "items": {
+              "$ref": "#/components/schemas/AttendanceStatusEntryDto"
+            },
+            "maxItems": 7,
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "statuses"
+        ],
+        "type": "object"
+      },
       "AttendanceStatusResponseDto": {
         "properties": {
           "finalizedAt": {
@@ -1635,6 +1747,23 @@
           "finalizedAt",
           "recordCount",
           "version"
+        ],
+        "type": "object"
+      },
+      "AttendanceWeightsValueDto": {
+        "properties": {
+          "weights": {
+            "additionalProperties": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "description": "Status code → weight in [0, 1], at most 3 decimal places.",
+            "type": "object"
+          }
+        },
+        "required": [
+          "weights"
         ],
         "type": "object"
       },
@@ -1952,6 +2081,68 @@
           "storageKey",
           "uploadUrl",
           "expiresAt"
+        ],
+        "type": "object"
+      },
+      "BadgeTierDto": {
+        "properties": {
+          "color": {
+            "enum": [
+              "primary",
+              "success",
+              "warning",
+              "danger",
+              "neutral",
+              "accent1",
+              "accent2",
+              "accent3",
+              "accent4"
+            ],
+            "type": "string"
+          },
+          "key": {
+            "pattern": "^[a-z][a-z0-9_]{1,31}$",
+            "type": "string"
+          },
+          "labelAr": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          },
+          "labelEn": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          },
+          "threshold": {
+            "description": "Strictly ascending in array order (array order = rank).",
+            "maximum": 100000,
+            "minimum": 0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "key",
+          "labelEn",
+          "labelAr",
+          "threshold",
+          "color"
+        ],
+        "type": "object"
+      },
+      "BadgeTiersValueDto": {
+        "properties": {
+          "tiers": {
+            "items": {
+              "$ref": "#/components/schemas/BadgeTierDto"
+            },
+            "maxItems": 10,
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "tiers"
         ],
         "type": "object"
       },
@@ -3440,6 +3631,158 @@
         ],
         "type": "object"
       },
+      "CreateAssessmentScaleSettingVersionDto": {
+        "properties": {
+          "effectiveFrom": {
+            "description": "Strict UTC ISO-8601 instant (must end in Z); never in the past (D5).",
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{1,3}Z$",
+            "type": "string"
+          },
+          "expectedHeadVersionId": {
+            "description": "Optimistic guard (D8): id of the newest version the client saw for this key, null for \"no versions\"; omit to skip the check.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "note": {
+            "description": "Mandatory change reason (D6).",
+            "maxLength": 512,
+            "minLength": 5,
+            "type": "string"
+          },
+          "settingKey": {
+            "enum": [
+              "assessment_scale"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "$ref": "#/components/schemas/AssessmentScaleValueDto"
+          }
+        },
+        "required": [
+          "settingKey",
+          "effectiveFrom",
+          "value",
+          "note"
+        ],
+        "type": "object"
+      },
+      "CreateAttendanceStatusesSettingVersionDto": {
+        "properties": {
+          "effectiveFrom": {
+            "description": "Strict UTC ISO-8601 instant (must end in Z); never in the past (D5).",
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{1,3}Z$",
+            "type": "string"
+          },
+          "expectedHeadVersionId": {
+            "description": "Optimistic guard (D8): id of the newest version the client saw for this key, null for \"no versions\"; omit to skip the check.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "note": {
+            "description": "Mandatory change reason (D6).",
+            "maxLength": 512,
+            "minLength": 5,
+            "type": "string"
+          },
+          "settingKey": {
+            "enum": [
+              "attendance_statuses"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "$ref": "#/components/schemas/AttendanceStatusesValueDto"
+          }
+        },
+        "required": [
+          "settingKey",
+          "effectiveFrom",
+          "value",
+          "note"
+        ],
+        "type": "object"
+      },
+      "CreateAttendanceWeightsSettingVersionDto": {
+        "properties": {
+          "effectiveFrom": {
+            "description": "Strict UTC ISO-8601 instant (must end in Z); never in the past (D5).",
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{1,3}Z$",
+            "type": "string"
+          },
+          "expectedHeadVersionId": {
+            "description": "Optimistic guard (D8): id of the newest version the client saw for this key, null for \"no versions\"; omit to skip the check.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "note": {
+            "description": "Mandatory change reason (D6).",
+            "maxLength": 512,
+            "minLength": 5,
+            "type": "string"
+          },
+          "settingKey": {
+            "enum": [
+              "attendance_weights"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "$ref": "#/components/schemas/AttendanceWeightsValueDto"
+          }
+        },
+        "required": [
+          "settingKey",
+          "effectiveFrom",
+          "value",
+          "note"
+        ],
+        "type": "object"
+      },
+      "CreateBadgeTiersSettingVersionDto": {
+        "properties": {
+          "effectiveFrom": {
+            "description": "Strict UTC ISO-8601 instant (must end in Z); never in the past (D5).",
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{1,3}Z$",
+            "type": "string"
+          },
+          "expectedHeadVersionId": {
+            "description": "Optimistic guard (D8): id of the newest version the client saw for this key, null for \"no versions\"; omit to skip the check.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "note": {
+            "description": "Mandatory change reason (D6).",
+            "maxLength": 512,
+            "minLength": 5,
+            "type": "string"
+          },
+          "settingKey": {
+            "enum": [
+              "badge_tiers"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "$ref": "#/components/schemas/BadgeTiersValueDto"
+          }
+        },
+        "required": [
+          "settingKey",
+          "effectiveFrom",
+          "value",
+          "note"
+        ],
+        "type": "object"
+      },
       "CreateBlockDto": {
         "properties": {
           "blockType": {
@@ -4362,6 +4705,44 @@
         ],
         "type": "object"
       },
+      "CreateNotificationRulesSettingVersionDto": {
+        "properties": {
+          "effectiveFrom": {
+            "description": "Strict UTC ISO-8601 instant (must end in Z); never in the past (D5).",
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{1,3}Z$",
+            "type": "string"
+          },
+          "expectedHeadVersionId": {
+            "description": "Optimistic guard (D8): id of the newest version the client saw for this key, null for \"no versions\"; omit to skip the check.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "note": {
+            "description": "Mandatory change reason (D6).",
+            "maxLength": 512,
+            "minLength": 5,
+            "type": "string"
+          },
+          "settingKey": {
+            "enum": [
+              "notification_rules"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "$ref": "#/components/schemas/NotificationRulesValueDto"
+          }
+        },
+        "required": [
+          "settingKey",
+          "effectiveFrom",
+          "value",
+          "note"
+        ],
+        "type": "object"
+      },
       "CreateOpponentDto": {
         "properties": {
           "contactInfo": {
@@ -4703,6 +5084,44 @@
         ],
         "type": "object"
       },
+      "CreateReportBrandingSettingVersionDto": {
+        "properties": {
+          "effectiveFrom": {
+            "description": "Strict UTC ISO-8601 instant (must end in Z); never in the past (D5).",
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{1,3}Z$",
+            "type": "string"
+          },
+          "expectedHeadVersionId": {
+            "description": "Optimistic guard (D8): id of the newest version the client saw for this key, null for \"no versions\"; omit to skip the check.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "note": {
+            "description": "Mandatory change reason (D6).",
+            "maxLength": 512,
+            "minLength": 5,
+            "type": "string"
+          },
+          "settingKey": {
+            "enum": [
+              "report_branding"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "$ref": "#/components/schemas/ReportBrandingValueDto"
+          }
+        },
+        "required": [
+          "settingKey",
+          "effectiveFrom",
+          "value",
+          "note"
+        ],
+        "type": "object"
+      },
       "CreateReservationDto": {
         "properties": {
           "division": {
@@ -4737,6 +5156,44 @@
           "number",
           "membershipId",
           "printedName"
+        ],
+        "type": "object"
+      },
+      "CreateRosterLimitsSettingVersionDto": {
+        "properties": {
+          "effectiveFrom": {
+            "description": "Strict UTC ISO-8601 instant (must end in Z); never in the past (D5).",
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{1,3}Z$",
+            "type": "string"
+          },
+          "expectedHeadVersionId": {
+            "description": "Optimistic guard (D8): id of the newest version the client saw for this key, null for \"no versions\"; omit to skip the check.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
+          "note": {
+            "description": "Mandatory change reason (D6).",
+            "maxLength": 512,
+            "minLength": 5,
+            "type": "string"
+          },
+          "settingKey": {
+            "enum": [
+              "roster_limits"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "$ref": "#/components/schemas/RosterLimitsValueDto"
+          }
+        },
+        "required": [
+          "settingKey",
+          "effectiveFrom",
+          "value",
+          "note"
         ],
         "type": "object"
       },
@@ -4972,37 +5429,41 @@
         ],
         "type": "object"
       },
-      "CreateSettingVersionDto": {
+      "CreateSessionTypesSettingVersionDto": {
         "properties": {
           "effectiveFrom": {
+            "description": "Strict UTC ISO-8601 instant (must end in Z); never in the past (D5).",
             "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{1,3}Z$",
             "type": "string"
           },
+          "expectedHeadVersionId": {
+            "description": "Optimistic guard (D8): id of the newest version the client saw for this key, null for \"no versions\"; omit to skip the check.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "object"
+          },
           "note": {
+            "description": "Mandatory change reason (D6).",
             "maxLength": 512,
+            "minLength": 5,
             "type": "string"
           },
           "settingKey": {
             "enum": [
-              "attendance_statuses",
-              "session_types",
-              "attendance_weights",
-              "assessment_scale",
-              "badge_tiers",
-              "roster_limits",
-              "notification_rules",
-              "report_branding"
+              "session_types"
             ],
             "type": "string"
           },
           "value": {
-            "type": "object"
+            "$ref": "#/components/schemas/SessionTypesValueDto"
           }
         },
         "required": [
           "settingKey",
           "effectiveFrom",
-          "value"
+          "value",
+          "note"
         ],
         "type": "object"
       },
@@ -6339,6 +6800,13 @@
             "nullable": true,
             "type": "string"
           },
+          "issues": {
+            "description": "Cross-setting issue codes (D3), e.g. weights_missing_status:<code>.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
           "settingKey": {
             "enum": [
               "attendance_statuses",
@@ -6353,14 +6821,51 @@
             "type": "string"
           },
           "value": {
+            "description": "Typed effective value; null when the key is not configured OR the in-effect row is legacy (D4 — never served unvalidated).",
             "nullable": true,
-            "type": "object"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AttendanceStatusesValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/SessionTypesValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/AttendanceWeightsValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/AssessmentScaleValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/BadgeTiersValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/RosterLimitsValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/NotificationRulesValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/ReportBrandingValueDto"
+              }
+            ]
+          },
+          "valueState": {
+            "description": "Null only when the key is not configured.",
+            "enum": [
+              "valid",
+              "legacy"
+            ],
+            "nullable": true,
+            "type": "string"
           }
         },
         "required": [
           "settingKey",
           "effectiveFrom",
-          "value"
+          "value",
+          "valueState",
+          "issues"
         ],
         "type": "object"
       },
@@ -12177,6 +12682,71 @@
         ],
         "type": "object"
       },
+      "NotificationRuleDto": {
+        "properties": {
+          "channels": {
+            "description": "An enabled rule needs at least one channel.",
+            "items": {
+              "enum": [
+                "push",
+                "email"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "event": {
+            "enum": [
+              "practice_reminder",
+              "practice_change",
+              "attendance_finalized",
+              "badge_awarded"
+            ],
+            "type": "string"
+          },
+          "leadHours": {
+            "description": "Required for practice_reminder, forbidden for every other event.",
+            "maximum": 168,
+            "minimum": 1,
+            "type": "number"
+          },
+          "recipients": {
+            "enum": [
+              "members",
+              "staff",
+              "all"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "event",
+          "enabled",
+          "channels",
+          "recipients"
+        ],
+        "type": "object"
+      },
+      "NotificationRulesValueDto": {
+        "properties": {
+          "quietHours": {
+            "$ref": "#/components/schemas/QuietHoursDto"
+          },
+          "rules": {
+            "items": {
+              "$ref": "#/components/schemas/NotificationRuleDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "rules"
+        ],
+        "type": "object"
+      },
       "NotificationViewDto": {
         "properties": {
           "bodyKey": {
@@ -13598,6 +14168,23 @@
         ],
         "type": "object"
       },
+      "PositionLimitDto": {
+        "properties": {
+          "max": {
+            "minimum": 1,
+            "type": "number"
+          },
+          "positionKey": {
+            "pattern": "^[a-z][a-z0-9_]{1,31}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "positionKey",
+          "max"
+        ],
+        "type": "object"
+      },
       "PracticeListSessionsResponseDto": {
         "properties": {
           "items": {
@@ -14126,6 +14713,27 @@
         },
         "required": [
           "expectedRecordVersion"
+        ],
+        "type": "object"
+      },
+      "QuietHoursDto": {
+        "properties": {
+          "end": {
+            "description": "Africa/Cairo wall time; an overnight window (start > end) is valid.",
+            "example": "07:00",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$",
+            "type": "string"
+          },
+          "start": {
+            "description": "Africa/Cairo wall time.",
+            "example": "22:00",
+            "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "start",
+          "end"
         ],
         "type": "object"
       },
@@ -15174,6 +15782,38 @@
         ],
         "type": "object"
       },
+      "ReportBrandingValueDto": {
+        "properties": {
+          "accentColor": {
+            "example": "#1B7F4D",
+            "pattern": "^#[0-9a-fA-F]{6}$",
+            "type": "string"
+          },
+          "contactEmail": {
+            "format": "email",
+            "maxLength": 254,
+            "type": "string"
+          },
+          "displayName": {
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "footerText": {
+            "maxLength": 200,
+            "type": "string"
+          },
+          "logoMediaKey": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "displayName"
+        ],
+        "type": "object"
+      },
       "ReportDownloadResponseDto": {
         "properties": {
           "checksum": {
@@ -16026,6 +16666,23 @@
         ],
         "type": "object"
       },
+      "RosterBoundDto": {
+        "properties": {
+          "max": {
+            "maximum": 100,
+            "minimum": 1,
+            "type": "number"
+          },
+          "min": {
+            "minimum": 1,
+            "type": "number"
+          }
+        },
+        "required": [
+          "max"
+        ],
+        "type": "object"
+      },
       "RosterCompositionDto": {
         "properties": {
           "captains": {
@@ -16116,6 +16773,31 @@
           "code",
           "severity",
           "count"
+        ],
+        "type": "object"
+      },
+      "RosterLimitsValueDto": {
+        "properties": {
+          "matchSquad": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RosterBoundDto"
+              }
+            ],
+            "description": "max must be ≥ 7 (a full line) and ≤ roster.max."
+          },
+          "perPosition": {
+            "items": {
+              "$ref": "#/components/schemas/PositionLimitDto"
+            },
+            "type": "array"
+          },
+          "roster": {
+            "$ref": "#/components/schemas/RosterBoundDto"
+          }
+        },
+        "required": [
+          "roster"
         ],
         "type": "object"
       },
@@ -16909,6 +17591,42 @@
           "categoryKey",
           "weight",
           "minSample"
+        ],
+        "type": "object"
+      },
+      "ScaleBandDto": {
+        "properties": {
+          "from": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number"
+          },
+          "key": {
+            "pattern": "^[a-z][a-z0-9_]{1,31}$",
+            "type": "string"
+          },
+          "labelAr": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          },
+          "labelEn": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          },
+          "to": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "key",
+          "labelEn",
+          "labelAr",
+          "from",
+          "to"
         ],
         "type": "object"
       },
@@ -17902,6 +18620,70 @@
         ],
         "type": "object"
       },
+      "SessionTypeEntryDto": {
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "code": {
+            "pattern": "^[a-z][a-z0-9_]{1,31}$",
+            "type": "string"
+          },
+          "color": {
+            "enum": [
+              "primary",
+              "success",
+              "warning",
+              "danger",
+              "neutral",
+              "accent1",
+              "accent2",
+              "accent3",
+              "accent4"
+            ],
+            "type": "string"
+          },
+          "defaultDurationMinutes": {
+            "maximum": 480,
+            "minimum": 15,
+            "type": "number"
+          },
+          "labelAr": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          },
+          "labelEn": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "labelEn",
+          "labelAr",
+          "color",
+          "active"
+        ],
+        "type": "object"
+      },
+      "SessionTypesValueDto": {
+        "properties": {
+          "types": {
+            "items": {
+              "$ref": "#/components/schemas/SessionTypeEntryDto"
+            },
+            "maxItems": 24,
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "types"
+        ],
+        "type": "object"
+      },
       "SetRsvpDto": {
         "properties": {
           "expectedVersion": {
@@ -18005,7 +18787,45 @@
             "type": "string"
           },
           "value": {
-            "type": "object"
+            "description": "The stored document. Typed per key when valueState is \"valid\"; the raw legacy document (visible for the replace flow) when \"legacy\".",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AttendanceStatusesValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/SessionTypesValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/AttendanceWeightsValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/AssessmentScaleValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/BadgeTiersValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/RosterLimitsValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/NotificationRulesValueDto"
+              },
+              {
+                "$ref": "#/components/schemas/ReportBrandingValueDto"
+              },
+              {
+                "additionalProperties": true,
+                "description": "Legacy stored document that predates the typed settings contract.",
+                "type": "object"
+              }
+            ]
+          },
+          "valueState": {
+            "enum": [
+              "valid",
+              "legacy"
+            ],
+            "type": "string"
           }
         },
         "required": [
@@ -18014,6 +18834,7 @@
           "settingKey",
           "effectiveFrom",
           "value",
+          "valueState",
           "note",
           "createdBy",
           "createdAt"
@@ -21863,7 +22684,7 @@
     "contact": {},
     "description": "HTTP API for this NestJS service",
     "title": "Service API",
-    "version": "1.2.0"
+    "version": "1.3.0"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -39739,7 +40560,45 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateSettingVersionDto"
+                "discriminator": {
+                  "mapping": {
+                    "assessment_scale": "#/components/schemas/CreateAssessmentScaleSettingVersionDto",
+                    "attendance_statuses": "#/components/schemas/CreateAttendanceStatusesSettingVersionDto",
+                    "attendance_weights": "#/components/schemas/CreateAttendanceWeightsSettingVersionDto",
+                    "badge_tiers": "#/components/schemas/CreateBadgeTiersSettingVersionDto",
+                    "notification_rules": "#/components/schemas/CreateNotificationRulesSettingVersionDto",
+                    "report_branding": "#/components/schemas/CreateReportBrandingSettingVersionDto",
+                    "roster_limits": "#/components/schemas/CreateRosterLimitsSettingVersionDto",
+                    "session_types": "#/components/schemas/CreateSessionTypesSettingVersionDto"
+                  },
+                  "propertyName": "settingKey"
+                },
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateAttendanceStatusesSettingVersionDto"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateSessionTypesSettingVersionDto"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateAttendanceWeightsSettingVersionDto"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateAssessmentScaleSettingVersionDto"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateBadgeTiersSettingVersionDto"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateRosterLimitsSettingVersionDto"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateNotificationRulesSettingVersionDto"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateReportBrandingSettingVersionDto"
+                  }
+                ]
               }
             }
           },
@@ -39761,9 +40620,56 @@
           },
           "403": {
             "description": "Forbidden"
+          },
+          "409": {
+            "description": "Duplicate effective instant or stale head guard"
           }
         },
         "summary": "Add an effective-dated setting version",
+        "tags": [
+          "teams"
+        ]
+      }
+    },
+    "/teams/{teamId}/settings/versions/{versionId}": {
+      "delete": {
+        "operationId": "Settings.cancelSettingVersion",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "versionId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Future setting version cancelled"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Version not found"
+          },
+          "409": {
+            "description": "Version already in effect"
+          }
+        },
+        "summary": "Cancel a future-effective setting version",
         "tags": [
           "teams"
         ]

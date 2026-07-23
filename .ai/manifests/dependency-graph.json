@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T18:37:05.142Z",
+  "generatedAt": "2026-07-23T03:08:44.038Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -41197,6 +41197,31 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/teams/api/dto/create-setting-version-request.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-setting-version-request.dto.ts",
+      "to": "src/modules/teams/api/dto/setting-values/index.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-setting-version-request.dto.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-setting-version-request.dto.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-setting-version-request.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/teams/api/dto/create-setting-version.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -41205,6 +41230,11 @@
       "from": "src/modules/teams/api/dto/create-setting-version.dto.ts",
       "to": "src/core/validation/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/create-setting-version.dto.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/teams/api/dto/create-setting-version.dto.ts",
@@ -41258,12 +41288,22 @@
     },
     {
       "from": "src/modules/teams/api/dto/effective-setting-response.dto.ts",
-      "to": "src/modules/teams/model/teams.enums.ts",
+      "to": "src/modules/teams/api/dto/setting-values/index.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/teams/api/dto/effective-setting-response.dto.ts",
-      "to": "src/modules/teams/model/teams.types.ts",
+      "to": "src/modules/teams/model/setting-values.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/effective-setting-response.dto.ts",
+      "to": "src/modules/teams/model/setting-values.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/effective-setting-response.dto.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
       "type": "internal"
     },
     {
@@ -41342,9 +41382,204 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/teams/api/dto/setting-values/assessment-scale-value.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/assessment-scale-value.dto.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/attendance-statuses-value.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/attendance-statuses-value.dto.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/attendance-statuses-value.dto.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/attendance-statuses-value.dto.ts",
+      "to": "src/modules/teams/model/setting-values.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/attendance-weights-value.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/attendance-weights-value.dto.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/badge-tiers-value.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/badge-tiers-value.dto.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/badge-tiers-value.dto.ts",
+      "to": "src/modules/teams/model/setting-values.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/assessment-scale-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/assessment-scale-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/attendance-statuses-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/attendance-statuses-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/attendance-weights-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/badge-tiers-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/badge-tiers-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/notification-rules-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/notification-rules-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/report-branding-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/roster-limits-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/roster-limits-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/session-types-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/index.ts",
+      "to": "src/modules/teams/api/dto/setting-values/session-types-value.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/notification-rules-value.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/notification-rules-value.dto.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/notification-rules-value.dto.ts",
+      "to": "src/modules/teams/model/setting-values.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/report-branding-value.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/report-branding-value.dto.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/roster-limits-value.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/roster-limits-value.dto.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/session-types-value.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/session-types-value.dto.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-values/session-types-value.dto.ts",
+      "to": "src/modules/teams/model/setting-values.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/teams/api/dto/setting-version-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-version-response.dto.ts",
+      "to": "src/modules/teams/api/dto/setting-values/index.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-version-response.dto.ts",
+      "to": "src/modules/teams/model/setting-values.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/dto/setting-version-response.dto.ts",
+      "to": "src/modules/teams/model/setting-values.types.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/teams/api/dto/setting-version-response.dto.ts",
@@ -41583,12 +41818,22 @@
     },
     {
       "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/api/dto/create-setting-version-request.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
       "to": "src/modules/teams/api/dto/create-setting-version.dto.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/teams/api/settings.controller.ts",
       "to": "src/modules/teams/api/dto/list-setting-versions-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/api/dto/setting-values/index.ts",
       "type": "internal"
     },
     {
@@ -41609,6 +41854,11 @@
     {
       "from": "src/modules/teams/api/settings.controller.ts",
       "to": "src/modules/teams/api/dto/snapshot-query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/api/settings.controller.ts",
+      "to": "src/modules/teams/application/cancel-setting-version.use-case.ts",
       "type": "internal"
     },
     {
@@ -41902,6 +42152,61 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/teams/application/cancel-setting-version.use-case.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/cancel-setting-version.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/cancel-setting-version.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/cancel-setting-version.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/application/cancel-setting-version.use-case.ts",
+      "to": "src/modules/teams/application/team-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/cancel-setting-version.use-case.ts",
+      "to": "src/modules/teams/errors/setting-version-not-cancellable.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/cancel-setting-version.use-case.ts",
+      "to": "src/modules/teams/errors/setting-version-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/cancel-setting-version.use-case.ts",
+      "to": "src/modules/teams/infrastructure/setting-version.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/cancel-setting-version.use-case.ts",
+      "to": "src/modules/teams/infrastructure/team-audit.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/cancel-setting-version.use-case.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/cancel-setting-version.use-case.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/teams/application/catalog-query.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
@@ -42083,7 +42388,42 @@
     },
     {
       "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/domain/setting-cross-references.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/domain/setting-value.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/errors/setting-effective-invalid.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/errors/setting-effective-past.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/errors/setting-value-invalid.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
       "to": "src/modules/teams/errors/setting-version-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/errors/setting-version-stale.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/infrastructure/catalog.repository.ts",
       "type": "internal"
     },
     {
@@ -42098,7 +42438,27 @@
     },
     {
       "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/model/setting-values.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/model/setting-values.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
       "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/create-setting-version.use-case.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
       "type": "internal"
     },
     {
@@ -42294,6 +42654,11 @@
     {
       "from": "src/modules/teams/application/settings-query.service.ts",
       "to": "src/modules/teams/domain/effective-settings.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/application/settings-query.service.ts",
+      "to": "src/modules/teams/domain/setting-value.policy.ts",
       "type": "internal"
     },
     {
@@ -42708,6 +43073,21 @@
     },
     {
       "from": "src/modules/teams/domain/effective-settings.policy.ts",
+      "to": "src/modules/teams/domain/setting-cross-references.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/effective-settings.policy.ts",
+      "to": "src/modules/teams/domain/setting-value.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/effective-settings.policy.ts",
+      "to": "src/modules/teams/model/setting-values.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/effective-settings.policy.ts",
       "to": "src/modules/teams/model/teams.enums.ts",
       "type": "internal"
     },
@@ -42723,6 +43103,61 @@
     },
     {
       "from": "src/modules/teams/domain/season-schedule.policy.ts",
+      "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/setting-cross-references.policy.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/domain/setting-cross-references.policy.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/teams/domain/setting-cross-references.policy.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/setting-cross-references.policy.ts",
+      "to": "src/modules/teams/model/setting-values.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/setting-value.policy.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/domain/setting-value.policy.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/teams/domain/setting-value.policy.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/setting-value.policy.ts",
+      "to": "src/modules/teams/model/setting-values.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/setting-value.policy.ts",
+      "to": "src/modules/teams/model/setting-values.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/setting-value.policy.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/domain/setting-value.policy.ts",
       "to": "src/modules/teams/model/teams.types.ts",
       "type": "internal"
     },
@@ -42812,12 +43247,77 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/teams/errors/setting-effective-invalid.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-effective-invalid.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-effective-past.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-effective-past.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-value-invalid.error.ts",
+      "to": "src/core/errors/validation.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-value-invalid.error.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-value-invalid.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/teams/errors/setting-version-conflict.error.ts",
       "to": "src/core/errors/conflict.error.ts",
       "type": "cross-cutting"
     },
     {
       "from": "src/modules/teams/errors/setting-version-conflict.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-version-not-cancellable.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-version-not-cancellable.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-version-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-version-not-found.error.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-version-stale.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/errors/setting-version-stale.error.ts",
       "to": "src/modules/teams/model/teams.constants.ts",
       "type": "internal"
     },
@@ -42883,6 +43383,11 @@
     },
     {
       "from": "src/modules/teams/infrastructure/catalog.repository.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/catalog.repository.ts",
       "to": "src/modules/teams/model/teams.rows.ts",
       "type": "internal"
     },
@@ -42983,6 +43488,11 @@
     },
     {
       "from": "src/modules/teams/lib/teams.helpers.ts",
+      "to": "src/modules/teams/model/setting-values.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/lib/teams.helpers.ts",
       "to": "src/modules/teams/model/teams.constants.ts",
       "type": "internal"
     },
@@ -43002,6 +43512,31 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/teams/model/setting-values.constants.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/teams/model/setting-values.types.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/model/setting-values.types.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/teams/model/setting-values.types.ts",
+      "to": "src/modules/teams/model/setting-values.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/model/setting-values.types.ts",
+      "to": "src/modules/teams/model/teams.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/teams/model/teams.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
@@ -43009,6 +43544,16 @@
     {
       "from": "src/modules/teams/model/teams.rows.ts",
       "to": "src/modules/teams/model/teams.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/model/teams.types.ts",
+      "to": "src/modules/teams/model/setting-values.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/model/teams.types.ts",
+      "to": "src/modules/teams/model/setting-values.types.ts",
       "type": "internal"
     },
     {
@@ -43059,6 +43604,11 @@
     {
       "from": "src/modules/teams/teams.module.ts",
       "to": "src/modules/teams/application/archive-venue.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/teams.module.ts",
+      "to": "src/modules/teams/application/cancel-setting-version.use-case.ts",
       "type": "internal"
     },
     {

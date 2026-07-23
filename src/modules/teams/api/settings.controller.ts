@@ -4,8 +4,13 @@ import {
   RequirePermissions,
 } from '@core/auth';
 import {
+  ApiBody,
+  ApiConflictResponse,
   ApiCreatedResponse,
+  ApiExtraModels,
   ApiForbiddenResponse,
+  ApiNoContentResponse,
+  ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
   ApiTags,
@@ -15,6 +20,7 @@ import { UuidValidationPipe } from '@core/validation';
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
@@ -24,10 +30,13 @@ import {
 } from '@nestjs/common';
 import { Permission } from '@shared/enums';
 
+import { CancelSettingVersionUseCase } from '../application/cancel-setting-version.use-case';
 import { CreateSettingVersionUseCase } from '../application/create-setting-version.use-case';
 import { SettingsQueryService } from '../application/settings-query.service';
 import { resolvePage } from '../lib/teams.helpers';
 import {
+  SETTING_VERSION_ID_PARAM,
+  SETTING_VERSION_ROUTE,
   SETTING_VERSIONS_ROUTE,
   SETTINGS_SNAPSHOT_ROUTE,
   TEAM_ID_PARAM,
@@ -35,17 +44,24 @@ import {
   TEAMS_ROUTE,
 } from '../model/teams.constants';
 import { CreateSettingVersionDto } from './dto/create-setting-version.dto';
+import {
+  CREATE_SETTING_VERSION_BODY_SCHEMA,
+  CREATE_SETTING_VERSION_REQUEST_DTOS,
+} from './dto/create-setting-version-request.dto';
 import { ListSettingVersionsResponseDto } from './dto/list-setting-versions-response.dto';
+import { SETTING_VALUE_DTOS } from './dto/setting-values';
 import { SettingVersionResponseDto } from './dto/setting-version-response.dto';
 import { SettingVersionsQueryDto } from './dto/setting-versions-query.dto';
 import { SettingsSnapshotResponseDto } from './dto/settings-snapshot-response.dto';
 import { SnapshotQueryDto } from './dto/snapshot-query.dto';
 
 @ApiTags(TEAMS_API_TAG)
+@ApiExtraModels(...CREATE_SETTING_VERSION_REQUEST_DTOS, ...SETTING_VALUE_DTOS)
 @Controller(TEAMS_ROUTE)
 export class SettingsController {
   constructor(
     private readonly createVersion: CreateSettingVersionUseCase,
+    private readonly cancelVersion: CancelSettingVersionUseCase,
     private readonly settingsQuery: SettingsQueryService,
   ) {}
 
@@ -53,9 +69,13 @@ export class SettingsController {
   @RequirePermissions(Permission.TeamSettingsManage)
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Add an effective-dated setting version' })
+  @ApiBody({ schema: CREATE_SETTING_VERSION_BODY_SCHEMA })
   @ApiCreatedResponse({
     description: 'Setting version created',
     type: SettingVersionResponseDto,
+  })
+  @ApiConflictResponse({
+    description: 'Duplicate effective instant or stale head guard',
   })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
@@ -68,8 +88,26 @@ export class SettingsController {
       settingKey: dto.settingKey,
       effectiveFrom: dto.effectiveFrom,
       value: dto.value,
-      note: dto.note ?? null,
+      note: dto.note,
+      expectedHeadVersionId: dto.expectedHeadVersionId,
     });
+  }
+
+  @Delete(SETTING_VERSION_ROUTE)
+  @RequirePermissions(Permission.TeamSettingsManage)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiOperation({ summary: 'Cancel a future-effective setting version' })
+  @ApiNoContentResponse({ description: 'Future setting version cancelled' })
+  @ApiConflictResponse({ description: 'Version already in effect' })
+  @ApiNotFoundResponse({ description: 'Version not found' })
+  @ApiForbiddenResponse({ description: 'Forbidden' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  cancelSettingVersion(
+    @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
+    @Param(SETTING_VERSION_ID_PARAM, UuidValidationPipe) versionId: string,
+    @CurrentUser() actor: AuthUserIdentity,
+  ): Promise<void> {
+    return this.cancelVersion.execute(actor, teamId, versionId);
   }
 
   @Get(SETTING_VERSIONS_ROUTE)

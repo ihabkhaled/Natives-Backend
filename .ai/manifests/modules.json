@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T18:37:05.142Z",
+  "generatedAt": "2026-07-23T03:08:44.038Z",
   "modules": [
     {
       "name": "activities",
@@ -2315,6 +2315,7 @@
           "src/modules/teams/api/dto/catalog-list-query.dto.ts",
           "src/modules/teams/api/dto/create-catalog-entry.dto.ts",
           "src/modules/teams/api/dto/create-season.dto.ts",
+          "src/modules/teams/api/dto/create-setting-version-request.dto.ts",
           "src/modules/teams/api/dto/create-setting-version.dto.ts",
           "src/modules/teams/api/dto/create-team.dto.ts",
           "src/modules/teams/api/dto/create-venue.dto.ts",
@@ -2326,6 +2327,15 @@
           "src/modules/teams/api/dto/list-teams-response.dto.ts",
           "src/modules/teams/api/dto/list-venues-response.dto.ts",
           "src/modules/teams/api/dto/season-response.dto.ts",
+          "src/modules/teams/api/dto/setting-values/assessment-scale-value.dto.ts",
+          "src/modules/teams/api/dto/setting-values/attendance-statuses-value.dto.ts",
+          "src/modules/teams/api/dto/setting-values/attendance-weights-value.dto.ts",
+          "src/modules/teams/api/dto/setting-values/badge-tiers-value.dto.ts",
+          "src/modules/teams/api/dto/setting-values/index.ts",
+          "src/modules/teams/api/dto/setting-values/notification-rules-value.dto.ts",
+          "src/modules/teams/api/dto/setting-values/report-branding-value.dto.ts",
+          "src/modules/teams/api/dto/setting-values/roster-limits-value.dto.ts",
+          "src/modules/teams/api/dto/setting-values/session-types-value.dto.ts",
           "src/modules/teams/api/dto/setting-version-response.dto.ts",
           "src/modules/teams/api/dto/setting-versions-query.dto.ts",
           "src/modules/teams/api/dto/settings-snapshot-response.dto.ts",
@@ -2340,6 +2350,7 @@
         "use-case": [
           "src/modules/teams/application/archive-catalog-entry.use-case.ts",
           "src/modules/teams/application/archive-venue.use-case.ts",
+          "src/modules/teams/application/cancel-setting-version.use-case.ts",
           "src/modules/teams/application/create-catalog-entry.use-case.ts",
           "src/modules/teams/application/create-season.use-case.ts",
           "src/modules/teams/application/create-setting-version.use-case.ts",
@@ -2365,6 +2376,8 @@
           "src/modules/teams/domain/effective-settings.policy.ts",
           "src/modules/teams/domain/season-lifecycle.state-machine.ts",
           "src/modules/teams/domain/season-schedule.policy.ts",
+          "src/modules/teams/domain/setting-cross-references.policy.ts",
+          "src/modules/teams/domain/setting-value.policy.ts",
           "src/modules/teams/domain/team-lifecycle.state-machine.ts"
         ],
         "other": [
@@ -2376,7 +2389,13 @@
           "src/modules/teams/errors/season-invalid-transition.error.ts",
           "src/modules/teams/errors/season-not-found.error.ts",
           "src/modules/teams/errors/season-overlap.error.ts",
+          "src/modules/teams/errors/setting-effective-invalid.error.ts",
+          "src/modules/teams/errors/setting-effective-past.error.ts",
+          "src/modules/teams/errors/setting-value-invalid.error.ts",
           "src/modules/teams/errors/setting-version-conflict.error.ts",
+          "src/modules/teams/errors/setting-version-not-cancellable.error.ts",
+          "src/modules/teams/errors/setting-version-not-found.error.ts",
+          "src/modules/teams/errors/setting-version-stale.error.ts",
           "src/modules/teams/errors/slug-conflict.error.ts",
           "src/modules/teams/errors/team-invalid-transition.error.ts",
           "src/modules/teams/errors/team-not-found.error.ts",
@@ -2396,14 +2415,17 @@
           "src/modules/teams/lib/teams.helpers.ts"
         ],
         "model": [
+          "src/modules/teams/model/setting-values.constants.ts",
+          "src/modules/teams/model/setting-values.enums.ts",
+          "src/modules/teams/model/setting-values.types.ts",
           "src/modules/teams/model/teams.constants.ts",
           "src/modules/teams/model/teams.enums.ts",
           "src/modules/teams/model/teams.rows.ts",
           "src/modules/teams/model/teams.types.ts"
         ]
       },
-      "fileCount": 80,
-      "specCount": 31,
+      "fileCount": 102,
+      "specCount": 35,
       "publicSurface": "src/modules/teams/index.ts",
       "hasEvents": false
     },

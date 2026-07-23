@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-22T18:37:05.142Z",
-  "treeHash": "sha256:90d5ac828355cf5e20753823f61e36dd0df30a26877d2733dbe12e80aeff7c85",
+  "generatedAt": "2026-07-23T03:08:44.038Z",
+  "treeHash": "sha256:59dbe453201990748d62f87d1bc55d02a7c45713dc161573e826682087406621",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -89,8 +89,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:175bd874de04d5f2b4d7a4e84eefd969c28f9a306a938d0bd460532e01b05a8a",
-      "sizeBytes": 3414
+      "hash": "sha256:d08fbf4d946ea77fa0cfa608785d5ed02d94cdb9720d7673d0bd9cf649855c84",
+      "sizeBytes": 3952
     },
     {
       "path": "src/bootstrap/bootstrap.ts",
@@ -2667,8 +2667,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:68055a9b3f9f34aea70c00bade0344b943fdb0298722f72f5df746264e681be1",
-      "sizeBytes": 531
+      "hash": "sha256:3b1dda240acb31913d1867f20fe46c11ea9ebddd0b21fbb96169059ff8ad62b0",
+      "sizeBytes": 577
     },
     {
       "path": "src/core/persistence/database-readiness.port.ts",
@@ -58695,6 +58695,75 @@
       "sizeBytes": 1209
     },
     {
+      "path": "src/modules/teams/api/dto/create-setting-version-request.dto.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3fdc523ffd97edb7edae89ea1660e0f6c4ab249783d0f2f4f6994df0f9967996",
+      "sizeBytes": 2220
+    },
+    {
+      "path": "src/modules/teams/api/dto/create-setting-version-request.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CreateAttendanceStatusesSettingVersionDto"
+        },
+        {
+          "kind": "class",
+          "name": "CreateSessionTypesSettingVersionDto"
+        },
+        {
+          "kind": "class",
+          "name": "CreateAttendanceWeightsSettingVersionDto"
+        },
+        {
+          "kind": "class",
+          "name": "CreateAssessmentScaleSettingVersionDto"
+        },
+        {
+          "kind": "class",
+          "name": "CreateBadgeTiersSettingVersionDto"
+        },
+        {
+          "kind": "class",
+          "name": "CreateRosterLimitsSettingVersionDto"
+        },
+        {
+          "kind": "class",
+          "name": "CreateNotificationRulesSettingVersionDto"
+        },
+        {
+          "kind": "class",
+          "name": "CreateReportBrandingSettingVersionDto"
+        },
+        {
+          "kind": "const",
+          "name": "CREATE_SETTING_VERSION_REQUEST_DTOS"
+        },
+        {
+          "kind": "const",
+          "name": "CREATE_SETTING_VERSION_DISCRIMINATOR_MAPPING"
+        },
+        {
+          "kind": "const",
+          "name": "CREATE_SETTING_VERSION_BODY_SCHEMA"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/api/dto/create-setting-version-request.dto.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7df80da0a2068db5f44400c00cb9f5731626109767e144a6e5f0b33f50efff66",
+      "sizeBytes": 9470
+    },
+    {
       "path": "src/modules/teams/api/dto/create-setting-version.dto.ts",
       "root": "modules",
       "module": "teams",
@@ -58708,8 +58777,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d32a01c56f5b4897ce8eca02cddcf35d15439b29a33aaa4f0f07a510d577532f",
-      "sizeBytes": 837
+      "hash": "sha256:71622894ab2f85733546941b1937d4b2b1ca6f835ce3953999b27803b15adef4",
+      "sizeBytes": 1980
     },
     {
       "path": "src/modules/teams/api/dto/create-team.dto.ts",
@@ -58759,8 +58828,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d9cd6eb14dd22f7f49ce659a0cb403a2c2ce82026cc76800a0d80168d5b34df3",
-      "sizeBytes": 498
+      "hash": "sha256:a36b2ae6d9a2e927090fa02f0a60a5c4c99724deed19dbad7698ab22c9efe1d7",
+      "sizeBytes": 1214
     },
     {
       "path": "src/modules/teams/api/dto/list-catalog-entries-response.dto.ts",
@@ -58882,6 +58951,199 @@
       "sizeBytes": 1038
     },
     {
+      "path": "src/modules/teams/api/dto/setting-values/assessment-scale-value.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ScaleBandDto"
+        },
+        {
+          "kind": "class",
+          "name": "AssessmentScaleValueDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:86bd60f06d2df87d9aa5ef67d9a3594055cd49091d7625a980dd0b3528068b7c",
+      "sizeBytes": 1823
+    },
+    {
+      "path": "src/modules/teams/api/dto/setting-values/attendance-statuses-value.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceStatusEntryDto"
+        },
+        {
+          "kind": "class",
+          "name": "AttendanceStatusesValueDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c004055482e6389fda2c06425f03eb9dd0fd11110a3c29c47cdf6af4bfb0234f",
+      "sizeBytes": 1751
+    },
+    {
+      "path": "src/modules/teams/api/dto/setting-values/attendance-weights-value.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceWeightsValueDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:93f3fe7040fc6070c92b5f1f83e6f7c5d4d93501161121b74670d41dcb23e2db",
+      "sizeBytes": 810
+    },
+    {
+      "path": "src/modules/teams/api/dto/setting-values/badge-tiers-value.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "BadgeTierDto"
+        },
+        {
+          "kind": "class",
+          "name": "BadgeTiersValueDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:795743f1c1b9d750d08e2c18ef374e6638a4f038b8a5f7bdb81adc3558d6be0d",
+      "sizeBytes": 1358
+    },
+    {
+      "path": "src/modules/teams/api/dto/setting-values/index.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SETTING_VALUE_DTOS"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VALUE_SCHEMA_REFS"
+        },
+        {
+          "kind": "const",
+          "name": "LEGACY_SETTING_VALUE_SCHEMA"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cd6ba22d480954176aa840ffd60ecd467bdee16182ce32df750ed5580c4a5d52",
+      "sizeBytes": 2298
+    },
+    {
+      "path": "src/modules/teams/api/dto/setting-values/notification-rules-value.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NotificationRuleDto"
+        },
+        {
+          "kind": "class",
+          "name": "QuietHoursDto"
+        },
+        {
+          "kind": "class",
+          "name": "NotificationRulesValueDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:eb933253c5d70a737c67a9239e10126e61be3e2713ffb9a79443a2a550ac9e4d",
+      "sizeBytes": 1831
+    },
+    {
+      "path": "src/modules/teams/api/dto/setting-values/report-branding-value.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ReportBrandingValueDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:627452ce68131939e8592e08a70341a23b3a5526b80a52069fed37143fd765e1",
+      "sizeBytes": 1242
+    },
+    {
+      "path": "src/modules/teams/api/dto/setting-values/roster-limits-value.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterBoundDto"
+        },
+        {
+          "kind": "class",
+          "name": "PositionLimitDto"
+        },
+        {
+          "kind": "class",
+          "name": "RosterLimitsValueDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b8b7d8f67b674f7e4f01dd8d7473865854c709fdcfd9e3538af3e458b671e64d",
+      "sizeBytes": 1260
+    },
+    {
+      "path": "src/modules/teams/api/dto/setting-values/session-types-value.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SessionTypeEntryDto"
+        },
+        {
+          "kind": "class",
+          "name": "SessionTypesValueDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6c13bb9fcc2640e4d3d1a3ee6b859df2c670613a2f7b4206dbfa0faa3188b2af",
+      "sizeBytes": 1449
+    },
+    {
       "path": "src/modules/teams/api/dto/setting-version-response.dto.ts",
       "root": "modules",
       "module": "teams",
@@ -58895,8 +59157,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ea53ce5441efc75182b70dc2a6ac8984f0c58d1256ee0641f9d8df0a3300cc91",
-      "sizeBytes": 828
+      "hash": "sha256:cc4ef6fe2927073cef67c4d06bd7aab985db62ebd7a937ac24f6c8308dfe2364",
+      "sizeBytes": 1404
     },
     {
       "path": "src/modules/teams/api/dto/setting-versions-query.dto.ts",
@@ -59082,8 +59344,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fe9e2d435e86bc88fdbf5b829a03a5c48f6b8f05ec73c05dd48f09c67ae87df3",
-      "sizeBytes": 3532
+      "hash": "sha256:3b819d4bfe77c9cf969fbf97191799314e8a405c8e808b3603a46ed33ff64a78",
+      "sizeBytes": 5146
     },
     {
       "path": "src/modules/teams/api/teams.controller.ts",
@@ -59176,6 +59438,35 @@
       "kind": "source",
       "hash": "sha256:4bce7d43e27fcb6f4a94038274642365927b25d0dd4325791f59b378c7418ceb",
       "sizeBytes": 2306
+    },
+    {
+      "path": "src/modules/teams/application/cancel-setting-version.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7cc8f2d6203468ff587a3e8bb89b451373504433cdaed245114fc87251fb53ee",
+      "sizeBytes": 3658
+    },
+    {
+      "path": "src/modules/teams/application/cancel-setting-version.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CancelSettingVersionUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/cancel-setting-version.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:93cd76ebd184f2337f48b6cb2a7d11ab05261f75670315a5facb3ac0d9120f93",
+      "sizeBytes": 3086
     },
     {
       "path": "src/modules/teams/application/catalog-query.service.spec.ts",
@@ -59273,8 +59564,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:0f2cf7d08c80ed9c5237970183b0d0840fdc4ca12167fc0612e4b048fda934fc",
-      "sizeBytes": 2489
+      "hash": "sha256:ce6fa6675437a38e10125601ed59cf0550572ca6e86afc48d1721b0d3eaf1893",
+      "sizeBytes": 9911
     },
     {
       "path": "src/modules/teams/application/create-setting-version.use-case.ts",
@@ -59290,8 +59581,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/application/create-setting-version.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:f51c6627c8de68913933986e295223bc4a0f01783a9f6c2cb190591e96643210",
-      "sizeBytes": 3537
+      "hash": "sha256:9e5f28df83f59c38ddecc80cf73eb1881bb82cd89899dc08aa793dedba7ca547",
+      "sizeBytes": 7809
     },
     {
       "path": "src/modules/teams/application/create-team.use-case.spec.ts",
@@ -59418,8 +59709,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:6f49d3d79d2572b12588b27265ae6df92de68ca68a983565366061688af673e7",
-      "sizeBytes": 2246
+      "hash": "sha256:ff84bf181faf4acda6350356e36df61e58a8015cc748f0bcd0ba170b61d3b78b",
+      "sizeBytes": 4138
     },
     {
       "path": "src/modules/teams/application/settings-query.service.ts",
@@ -59435,8 +59726,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/application/settings-query.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:43a8e6cf99b4cf3e1cb63861898dee5a0322268856674e02ca7e02203a2e498e",
-      "sizeBytes": 1896
+      "hash": "sha256:f581e55d43766eefc25c9eec755d15cf72b84d417d4f7247aab366de365d4177",
+      "sizeBytes": 2639
     },
     {
       "path": "src/modules/teams/application/team-lookup.service.spec.ts",
@@ -59708,8 +59999,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:13d5442596a8cd62037f15ed86c1df82ca2717a553c142051e015295ecfaeae4",
-      "sizeBytes": 1987
+      "hash": "sha256:53f2e31df893a654c2af5d0d8db1b1e326360cfbcc2cd38585bfd0fb8db95599",
+      "sizeBytes": 4817
     },
     {
       "path": "src/modules/teams/domain/effective-settings.policy.ts",
@@ -59725,8 +60016,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/domain/effective-settings.policy.spec.ts",
       "kind": "source",
-      "hash": "sha256:10aebb6efac8d3642041740e43fdcc6786f23ce778795675ac97f66df63db92f",
-      "sizeBytes": 1224
+      "hash": "sha256:8c886fa962d78fc466ee39612dda6f1c9372365553cd8d8e4b584b5bda96089e",
+      "sizeBytes": 2883
     },
     {
       "path": "src/modules/teams/domain/season-lifecycle.state-machine.spec.ts",
@@ -59801,6 +60092,136 @@
       "kind": "source",
       "hash": "sha256:64ee0cdb436310b233a4b22e823498e0e73ba0727e1fb05d3d43ef076cd011b7",
       "sizeBytes": 1600
+    },
+    {
+      "path": "src/modules/teams/domain/setting-cross-references.policy.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f17fb28a0c4379ac6b60c55400a2b5dae97e104c0641b1f84350d5754f21c051",
+      "sizeBytes": 6794
+    },
+    {
+      "path": "src/modules/teams/domain/setting-cross-references.policy.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "collectWeightsIssueCodes"
+        },
+        {
+          "kind": "function",
+          "name": "collectWeightsCrossReferenceIssues"
+        },
+        {
+          "kind": "function",
+          "name": "collectRosterCrossReferenceIssues"
+        },
+        {
+          "kind": "function",
+          "name": "collectSnapshotIssues"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/domain/setting-cross-references.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d1ab5bc74816b2933653faa3ad961834d840fdaa0fbbcecc86f26250283d13e7",
+      "sizeBytes": 4976
+    },
+    {
+      "path": "src/modules/teams/domain/setting-value.policy.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0c0b55d557305e85bbf88c8f01482cfe560da64a5a0a6ecd4dbea407360cb338",
+      "sizeBytes": 20707
+    },
+    {
+      "path": "src/modules/teams/domain/setting-value.policy.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "validateAttendanceStatusesValue"
+        },
+        {
+          "kind": "function",
+          "name": "validateSessionTypesValue"
+        },
+        {
+          "kind": "function",
+          "name": "validateAttendanceWeightsValue"
+        },
+        {
+          "kind": "function",
+          "name": "validateAssessmentScaleValue"
+        },
+        {
+          "kind": "function",
+          "name": "validateBadgeTiersValue"
+        },
+        {
+          "kind": "function",
+          "name": "validateRosterLimitsValue"
+        },
+        {
+          "kind": "function",
+          "name": "validateNotificationRulesValue"
+        },
+        {
+          "kind": "function",
+          "name": "validateReportBrandingValue"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VALUE_VALIDATORS"
+        },
+        {
+          "kind": "function",
+          "name": "validateSettingValue"
+        },
+        {
+          "kind": "function",
+          "name": "classifySettingValueState"
+        },
+        {
+          "kind": "function",
+          "name": "classifySettingVersion"
+        },
+        {
+          "kind": "function",
+          "name": "classifyEffectiveVersion"
+        },
+        {
+          "kind": "function",
+          "name": "isAttendanceStatusesValue"
+        },
+        {
+          "kind": "function",
+          "name": "isAttendanceWeightsValue"
+        },
+        {
+          "kind": "function",
+          "name": "isRosterLimitsValue"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/domain/setting-value.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:02fe149cb382b85e55b341eb956ccbee16d0b72d0b82a60c935c05a890e6d8bc",
+      "sizeBytes": 38572
     },
     {
       "path": "src/modules/teams/domain/team-lifecycle.state-machine.spec.ts",
@@ -59980,6 +60401,57 @@
       "sizeBytes": 389
     },
     {
+      "path": "src/modules/teams/errors/setting-effective-invalid.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingEffectiveInvalidError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9a68b9ffafa7088c00934594ee23d2bc571f6dcdebec1fff9602b7212f53a23b",
+      "sizeBytes": 636
+    },
+    {
+      "path": "src/modules/teams/errors/setting-effective-past.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingEffectiveInPastError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e6b8cfb3cd57e93dbed0d95999b99fd54ecaafb92725a7fcd6796d27d13b7bec",
+      "sizeBytes": 619
+    },
+    {
+      "path": "src/modules/teams/errors/setting-value-invalid.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingValueInvalidError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:45bc7cb39db9b886b33417321349eabee48b16a188355fb311df9eb72628ffaf",
+      "sizeBytes": 1125
+    },
+    {
       "path": "src/modules/teams/errors/setting-version-conflict.error.ts",
       "root": "modules",
       "module": "teams",
@@ -59995,6 +60467,57 @@
       "kind": "source",
       "hash": "sha256:fe7973ce652ed6e369b52eb764c0da6f9f8e8da6722e518b664bc9b233d1dbfb",
       "sizeBytes": 617
+    },
+    {
+      "path": "src/modules/teams/errors/setting-version-not-cancellable.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingVersionNotCancellableError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:5c965c79d3858d55416fa4a46b60b1bd64d7dfab231c5329e09732603fa1c636",
+      "sizeBytes": 618
+    },
+    {
+      "path": "src/modules/teams/errors/setting-version-not-found.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingVersionNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0358f13fefe724f6a72fa5d8528ec4550ed5527c35ebff3b0bee1a880b4f2322",
+      "sizeBytes": 454
+    },
+    {
+      "path": "src/modules/teams/errors/setting-version-stale.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SettingVersionStaleError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6bc4dcfd542b28ca72f6ff5261e38bceff01ec7eda9c81b6e6f16615f48aead7",
+      "sizeBytes": 567
     },
     {
       "path": "src/modules/teams/errors/slug-conflict.error.ts",
@@ -60085,8 +60608,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:6b5141bdb5aacc2469ff80ba77ea231be5784ca8043fd6169c18142a02df03e0",
-      "sizeBytes": 3920
+      "hash": "sha256:c84b0458268fc55986a1ccf4fb9b2e2d5a0a28ce99f6eda67726ba640bae4d1b",
+      "sizeBytes": 4509
     },
     {
       "path": "src/modules/teams/infrastructure/catalog.repository.ts",
@@ -60102,8 +60625,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/infrastructure/catalog.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:fc3ba59c907bf8f61451ad6603bc0f9da2ba63c43d4672ff2933266f295e3753",
-      "sizeBytes": 5118
+      "hash": "sha256:65a21f77218e92bab60dc4dd0ac4981e21d5077a673ff3073815aeec378dbe9f",
+      "sizeBytes": 5737
     },
     {
       "path": "src/modules/teams/infrastructure/season.repository.spec.ts",
@@ -60143,8 +60666,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:2174df654f5ada7c115b5f66a3b037e1ef6d14c132831aab85091d86c691c1b0",
-      "sizeBytes": 3469
+      "hash": "sha256:fd1d85d8601d000a798bdf70f0386313a7cd0bf81dbe97702edb9d323842dd9c",
+      "sizeBytes": 5399
     },
     {
       "path": "src/modules/teams/infrastructure/setting-version.repository.ts",
@@ -60160,8 +60683,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/infrastructure/setting-version.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:013baf9d1b8106c82443faca1f29c23e3ac4e5976ab5b8ac45abab79ccce7fe7",
-      "sizeBytes": 4045
+      "hash": "sha256:b2277ed562459b97b3dd0e62fb042eea89456ae8a59c091e6373b05536a364c0",
+      "sizeBytes": 6134
     },
     {
       "path": "src/modules/teams/infrastructure/team-audit.repository.spec.ts",
@@ -60282,6 +60805,10 @@
         },
         {
           "kind": "function",
+          "name": "parseStrictUtcInstant"
+        },
+        {
+          "kind": "function",
           "name": "isIsoCalendarDate"
         },
         {
@@ -60316,8 +60843,339 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/lib/teams.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:63c7a68808eb791d1a8b470417f837fcd4be690b3e03118afd9ff5efa0d6e120",
-      "sizeBytes": 3496
+      "hash": "sha256:bb25369e7b217a73660db7a0a2f3f617cb7abdc37e5dad8f0f75d9e976bbbf26",
+      "sizeBytes": 4298
+    },
+    {
+      "path": "src/modules/teams/model/setting-values.constants.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SETTING_CODE_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_LABEL_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_LABEL_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "UTC_INSTANT_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_STATUS_ENTRIES_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_STATUS_ENTRIES_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "REQUIRED_STATUS_POLES"
+        },
+        {
+          "kind": "const",
+          "name": "PRESENT_FAMILY_STATUS_CODES"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_TYPES_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_TYPES_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_DURATION_MIN_MINUTES"
+        },
+        {
+          "kind": "const",
+          "name": "SESSION_DURATION_MAX_MINUTES"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_WEIGHT_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_WEIGHT_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_WEIGHT_SCALE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_WEIGHT_EPSILON"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SCALE_FLOOR"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SCALE_CEILING"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_SCALE_STEP_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "ASSESSMENT_BANDS_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "BADGE_TIERS_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "BADGE_TIERS_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "BADGE_THRESHOLD_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "BADGE_THRESHOLD_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_SIZE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "MATCH_SQUAD_MIN_FLOOR"
+        },
+        {
+          "kind": "const",
+          "name": "LEAD_HOURS_MIN"
+        },
+        {
+          "kind": "const",
+          "name": "LEAD_HOURS_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "QUIET_HOURS_TIME_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "BRANDING_DISPLAY_NAME_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "BRANDING_DISPLAY_NAME_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "BRANDING_FOOTER_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "BRANDING_ACCENT_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "BRANDING_EMAIL_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "BRANDING_EMAIL_PATTERN"
+        },
+        {
+          "kind": "const",
+          "name": "BRANDING_LOGO_KEY_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "BRANDING_LOGO_KEY_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VALUE_CONSTRAINTS"
+        },
+        {
+          "kind": "const",
+          "name": "CONSTRAINT_SUBJECT_SEPARATOR"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cdf0d8fdf844d878a526cf0336829923003f4fb577ecf3adfa3850b95ecac8a3",
+      "sizeBytes": 6063
+    },
+    {
+      "path": "src/modules/teams/model/setting-values.enums.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "enum",
+          "name": "ColorToken"
+        },
+        {
+          "kind": "const",
+          "name": "COLOR_TOKEN_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "NotificationEvent"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_EVENT_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "NotificationChannel"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_CHANNEL_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "NotificationRecipients"
+        },
+        {
+          "kind": "const",
+          "name": "NOTIFICATION_RECIPIENTS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SettingValueState"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VALUE_STATE_VALUES"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ccdedb582bbc8068b006dba4a29e58438d3b4e23531705c948914b9834a2c0e2",
+      "sizeBytes": 2130
+    },
+    {
+      "path": "src/modules/teams/model/setting-values.types.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "AttendanceStatusEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceStatusesValue"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionTypeEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "SessionTypesValue"
+        },
+        {
+          "kind": "interface",
+          "name": "AttendanceWeightsValue"
+        },
+        {
+          "kind": "interface",
+          "name": "ScaleBand"
+        },
+        {
+          "kind": "interface",
+          "name": "AssessmentScaleValue"
+        },
+        {
+          "kind": "interface",
+          "name": "BadgeTier"
+        },
+        {
+          "kind": "interface",
+          "name": "BadgeTiersValue"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterBound"
+        },
+        {
+          "kind": "interface",
+          "name": "PositionLimit"
+        },
+        {
+          "kind": "interface",
+          "name": "RosterLimitsValue"
+        },
+        {
+          "kind": "interface",
+          "name": "NotificationRule"
+        },
+        {
+          "kind": "interface",
+          "name": "QuietHoursWindow"
+        },
+        {
+          "kind": "interface",
+          "name": "NotificationRulesValue"
+        },
+        {
+          "kind": "interface",
+          "name": "ReportBrandingValue"
+        },
+        {
+          "kind": "interface",
+          "name": "SettingValueByKey"
+        },
+        {
+          "kind": "type",
+          "name": "TypedSettingValue"
+        },
+        {
+          "kind": "interface",
+          "name": "SettingValueAccepted"
+        },
+        {
+          "kind": "interface",
+          "name": "SettingValueRejected"
+        },
+        {
+          "kind": "type",
+          "name": "SettingValueResultFor"
+        },
+        {
+          "kind": "type",
+          "name": "SettingValueResult"
+        },
+        {
+          "kind": "type",
+          "name": "SettingValueValidator"
+        },
+        {
+          "kind": "interface",
+          "name": "ClassifiedEffectiveVersion"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:b177fd3cd650d24b0708891aa81a0d966ff076178bfcfdc59f362d7f3211a39a",
+      "sizeBytes": 5744
     },
     {
       "path": "src/modules/teams/model/teams.constants.ts",
@@ -60403,6 +61261,10 @@
         },
         {
           "kind": "const",
+          "name": "SETTING_VERSION_ROUTE"
+        },
+        {
+          "kind": "const",
           "name": "SETTINGS_SNAPSHOT_ROUTE"
         },
         {
@@ -60420,6 +61282,10 @@
         {
           "kind": "const",
           "name": "CATALOG_ENTRY_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VERSION_ID_PARAM"
         },
         {
           "kind": "const",
@@ -60471,7 +61337,19 @@
         },
         {
           "kind": "const",
+          "name": "NOTE_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
           "name": "NOTE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_EFFECTIVE_GRACE_MS"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_KEYS_SCAN_LIMIT"
         },
         {
           "kind": "const",
@@ -60603,6 +61481,10 @@
         },
         {
           "kind": "const",
+          "name": "SETTING_VERSION_CANCELLED_EVENT"
+        },
+        {
+          "kind": "const",
           "name": "TEAM_NOT_FOUND_MESSAGE"
         },
         {
@@ -60712,13 +61594,61 @@
         {
           "kind": "const",
           "name": "SETTING_VERSION_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VALUE_INVALID_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VALUE_INVALID_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_EFFECTIVE_INVALID_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_EFFECTIVE_INVALID_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_EFFECTIVE_IN_PAST_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_EFFECTIVE_IN_PAST_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VERSION_STALE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VERSION_STALE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VERSION_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VERSION_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VERSION_NOT_CANCELLABLE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SETTING_VERSION_NOT_CANCELLABLE_MESSAGE_KEY"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1c881227a74a40c86b6ae643400931ec31bc432307b79afe575103d39df92123",
-      "sizeBytes": 7524
+      "hash": "sha256:e30e692675a6d5ad44b780130db75df27646b08882a3956c235351cb9a52782c",
+      "sizeBytes": 9631
     },
     {
       "path": "src/modules/teams/model/teams.enums.ts",
@@ -60810,13 +61740,17 @@
         {
           "kind": "interface",
           "name": "IdRow"
+        },
+        {
+          "kind": "interface",
+          "name": "CatalogKeyRow"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0e994af8d503552abbbf817f02d1a4ed5e97f167f01404054771871e82ec2961",
-      "sizeBytes": 2711
+      "hash": "sha256:2a40adc57820134d6b8478f3d67161a06b68c46ff714ae65399606578e6078d2",
+      "sizeBytes": 2771
     },
     {
       "path": "src/modules/teams/model/teams.types.ts",
@@ -60850,6 +61784,10 @@
         },
         {
           "kind": "interface",
+          "name": "ClassifiedSettingVersion"
+        },
+        {
+          "kind": "interface",
           "name": "EffectiveSetting"
         },
         {
@@ -60879,6 +61817,10 @@
         {
           "kind": "interface",
           "name": "ListSettingVersionsResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ListClassifiedSettingVersionsResult"
         },
         {
           "kind": "interface",
@@ -60980,8 +61922,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:24f48a67c1adc47239f7a2e3caae398efc6e38957ab4e89f230beb32656d1286",
-      "sizeBytes": 10070
+      "hash": "sha256:ba14e3bb22dad0cfe34f066713add5085829c9e20c4466a4c7da237c22f901b8",
+      "sizeBytes": 11439
     },
     {
       "path": "src/modules/teams/teams.module.ts",
@@ -60997,8 +61939,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:c369017af23e477b670fd4865b9cf1337afa79dba6efc5909e08f6001062e40e",
-      "sizeBytes": 3689
+      "hash": "sha256:ee5a31a599f219e1f4ed760eaf46994550508adceec6b4cdecc81a5b91c2c821",
+      "sizeBytes": 3815
     },
     {
       "path": "src/modules/tryouts/api/dto/tryouts.dto.ts",
