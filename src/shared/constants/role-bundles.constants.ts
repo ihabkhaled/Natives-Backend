@@ -34,6 +34,10 @@ const MEMBER_BUNDLE: readonly Permission[] = [
   Permission.MatchRead,
   Permission.MatchStatsRead,
   Permission.MatchAnalysisReadSelf,
+  // Members read the team rules they are asked to acknowledge and the jersey
+  // number board / catalogue (P4 BE-1: read grants for governed member surfaces).
+  Permission.RulesRead,
+  Permission.JerseyRead,
   Permission.NotificationReadSelf,
   Permission.NotificationPreferencesSelf,
 ];
@@ -95,6 +99,9 @@ const TEAM_ADMIN_BUNDLE: readonly Permission[] = uniquePermissions([
   Permission.TryoutReadinessRead,
   Permission.TryoutDecide,
   Permission.TryoutConvert,
+  // GovernanceRead accompanies GovernanceManage: the directory/meetings/tasks
+  // GET endpoints demand the read grant and manage never implies read (P4 BE-1).
+  Permission.GovernanceRead,
   Permission.GovernanceManage,
   Permission.RulesManage,
   Permission.DisciplineRead,

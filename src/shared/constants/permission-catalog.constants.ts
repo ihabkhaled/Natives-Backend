@@ -260,7 +260,7 @@ export const PERMISSION_CATALOG: readonly PermissionCatalogEntry[] = [
   {
     key: Permission.PointsRulesManage,
     area: PermissionArea.Training,
-    description: 'Manage points rules',
+    description: 'Manage points calculation rules',
   },
   // competition
   {
@@ -404,12 +404,12 @@ export const PERMISSION_CATALOG: readonly PermissionCatalogEntry[] = [
   {
     key: Permission.RulesRead,
     area: PermissionArea.Governance,
-    description: 'View rules',
+    description: 'View governance team rules',
   },
   {
     key: Permission.RulesManage,
     area: PermissionArea.Governance,
-    description: 'Manage rules',
+    description: 'Manage governance team rules',
   },
   {
     key: Permission.DisciplineRead,
