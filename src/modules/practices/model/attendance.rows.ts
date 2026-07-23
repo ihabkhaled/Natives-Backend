@@ -74,12 +74,27 @@ export interface AttendanceScoringRuleRow {
 export interface RosterEntryRow {
   readonly membership_id: string;
   readonly user_id: string | null;
+  readonly display_name: string | null;
+  readonly rsvp_status: string | null;
   readonly status: string | null;
   readonly check_in_at: string | Date | null;
   readonly lateness_minutes: number | null;
   readonly excuse_category: string | null;
   readonly source: string | null;
   readonly version: number | null;
+}
+
+export interface SelfHistoryEntryRow {
+  readonly session_id: string;
+  readonly starts_at: string | Date;
+  readonly ends_at: string | Date;
+  readonly session_type: string;
+  readonly status: string | null;
+  readonly lateness_minutes: number | null;
+  readonly excuse_category: string | null;
+  readonly source: string | null;
+  readonly recorded_at: string | Date | null;
+  readonly sheet_state: string | null;
 }
 
 export interface ParticipationFactRow {

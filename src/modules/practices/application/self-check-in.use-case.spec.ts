@@ -1,6 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { AttendanceLockedError } from '../errors/attendance-locked.error';
 import { AttendanceNotMemberError } from '../errors/attendance-not-member.error';
+import { CheckInWindowClosedError } from '../errors/check-in-window-closed.error';
 import {
   AttendanceSource,
   AttendanceState,
@@ -18,7 +20,7 @@ const NOW = new Date('2026-06-01T15:10:00.000Z');
 const SCOPE = {} as never;
 const ACTOR = { userId: 'user-1', email: 'm@example.test', roles: [] };
 
-function session(): PracticeSession {
+function session(overrides: Partial<PracticeSession> = {}): PracticeSession {
   return {
     id: 'ses-1',
     teamId: 'team-1',
@@ -44,6 +46,7 @@ function session(): PracticeSession {
     createdAt: NOW,
     updatedAt: NOW,
     version: 1,
+    ...overrides,
   };
 }
 
@@ -87,6 +90,16 @@ const RECORD: AttendanceRecord = {
   version: 1,
 };
 
+const COACH_RECORD: AttendanceRecord = {
+  ...RECORD,
+  id: 'rec-2',
+  status: AttendanceStatus.PresentOnTime,
+  latenessMinutes: null,
+  source: AttendanceSource.Coach,
+  recordedBy: 'coach-1',
+  version: 3,
+};
+
 function build() {
   const unitOfWork = {
     runInTransaction: vi.fn((op: (scope: never) => unknown) => op(SCOPE)),
@@ -99,6 +112,7 @@ function build() {
       .fn()
       .mockResolvedValue({ id: 'mem-1', userId: 'user-1' }),
   };
+  const records = { findBySessionMembership: vi.fn().mockResolvedValue(null) };
   const recorder = { record: vi.fn().mockResolvedValue(RECORD) };
   const useCase = new SelfCheckInUseCase(
     unitOfWork as never,
@@ -106,9 +120,14 @@ function build() {
     lookup as never,
     sheetService as never,
     memberships as never,
+    records as never,
     recorder as never,
   );
-  return { useCase, sheetService, memberships, recorder };
+  return { useCase, lookup, sheetService, memberships, records, recorder };
+}
+
+function run(harness: ReturnType<typeof build>, note: string | null = null) {
+  return harness.useCase.execute(ACTOR, 'team-1', 'ses-1', { note });
 }
 
 describe('SelfCheckInUseCase', () => {
@@ -119,9 +138,7 @@ describe('SelfCheckInUseCase', () => {
   });
 
   it('checks a member in with a clock-derived late status', async () => {
-    const view = await harness.useCase.execute(ACTOR, 'team-1', 'ses-1', {
-      note: 'here',
-    });
+    const view = await run(harness, 'here');
     expect(view.status).toBe(AttendanceStatus.PresentLate);
     const ctx = harness.recorder.record.mock.calls[0]?.[1] as {
       status: AttendanceStatus;
@@ -135,9 +152,63 @@ describe('SelfCheckInUseCase', () => {
 
   it('forbids a caller with no active membership before opening a sheet', async () => {
     harness.memberships.findActiveByUser.mockResolvedValue(null);
-    await expect(
-      harness.useCase.execute(ACTOR, 'team-1', 'ses-1', { note: null }),
-    ).rejects.toBeInstanceOf(AttendanceNotMemberError);
+    await expect(run(harness)).rejects.toBeInstanceOf(AttendanceNotMemberError);
     expect(harness.sheetService.ensureOpenSheet).not.toHaveBeenCalled();
+  });
+
+  it('is idempotent: an existing self record is returned without any write', async () => {
+    harness.records.findBySessionMembership.mockResolvedValue(RECORD);
+    const view = await run(harness);
+    expect(view.status).toBe(AttendanceStatus.PresentLate);
+    expect(view.version).toBe(RECORD.version);
+    expect(harness.recorder.record).not.toHaveBeenCalled();
+    expect(harness.sheetService.ensureOpenSheet).not.toHaveBeenCalled();
+  });
+
+  it('never rewrites a coach-recorded mark to present_late on repeat check-in', async () => {
+    harness.records.findBySessionMembership.mockResolvedValue(COACH_RECORD);
+    const view = await run(harness);
+    expect(view.status).toBe(AttendanceStatus.PresentOnTime);
+    expect(view.source).toBe(AttendanceSource.Coach);
+    expect(view.version).toBe(COACH_RECORD.version);
+    expect(harness.recorder.record).not.toHaveBeenCalled();
+  });
+
+  it('refuses a check-in before the window opens (409 window closed)', async () => {
+    harness.lookup.requireSession.mockResolvedValue(
+      session({
+        startsAt: new Date('2026-06-08T15:00:00.000Z'),
+        endsAt: new Date('2026-06-08T17:00:00.000Z'),
+      }),
+    );
+    await expect(run(harness)).rejects.toBeInstanceOf(CheckInWindowClosedError);
+    expect(harness.recorder.record).not.toHaveBeenCalled();
+  });
+
+  it('refuses a check-in after the session end', async () => {
+    harness.lookup.requireSession.mockResolvedValue(
+      session({
+        startsAt: new Date('2026-06-01T12:00:00.000Z'),
+        endsAt: new Date('2026-06-01T14:00:00.000Z'),
+      }),
+    );
+    await expect(run(harness)).rejects.toBeInstanceOf(CheckInWindowClosedError);
+    expect(harness.sheetService.ensureOpenSheet).not.toHaveBeenCalled();
+  });
+
+  it('refuses a check-in into a cancelled session regardless of time', async () => {
+    harness.lookup.requireSession.mockResolvedValue(
+      session({ status: SessionStatus.Cancelled }),
+    );
+    await expect(run(harness)).rejects.toBeInstanceOf(CheckInWindowClosedError);
+    expect(harness.recorder.record).not.toHaveBeenCalled();
+  });
+
+  it('still refuses a finalized sheet through ensureOpenSheet', async () => {
+    harness.sheetService.ensureOpenSheet.mockRejectedValue(
+      new AttendanceLockedError(),
+    );
+    await expect(run(harness)).rejects.toBeInstanceOf(AttendanceLockedError);
+    expect(harness.recorder.record).not.toHaveBeenCalled();
   });
 });

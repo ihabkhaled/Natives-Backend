@@ -5,6 +5,7 @@ import {
   AttendanceSource,
   AttendanceState,
   AttendanceStatus,
+  SelfCheckInState,
 } from '../model/attendance.enums';
 import type {
   AttendanceRecord,
@@ -18,6 +19,7 @@ import {
   toParticipationView,
   toSheetStatusView,
   toSheetView,
+  withSelfCheckIn,
 } from './attendance.mapper';
 
 const NOW = new Date('2026-06-01T12:00:00.000Z');
@@ -89,8 +91,23 @@ describe('toAttendanceView', () => {
       source: AttendanceSource.Coach,
       recordedAt: NOW,
       version: 2,
+      selfCheckIn: null,
     });
     expect(Object.keys(view)).not.toContain('note');
+  });
+});
+
+describe('withSelfCheckIn', () => {
+  it('attaches the eligibility block without touching the record fields', () => {
+    const eligibility = {
+      state: SelfCheckInState.Recorded,
+      opensAt: NOW,
+      closesAt: NOW,
+    };
+    const view = withSelfCheckIn(toAttendanceView(record()), eligibility);
+    expect(view.selfCheckIn).toEqual(eligibility);
+    expect(view.status).toBe(AttendanceStatus.PresentLate);
+    expect(view.version).toBe(2);
   });
 });
 
@@ -107,6 +124,7 @@ describe('notRecordedView', () => {
       source: null,
       recordedAt: null,
       version: null,
+      selfCheckIn: null,
     });
   });
 });
@@ -116,6 +134,8 @@ describe('toSheetView', () => {
     {
       membershipId: 'mem-1',
       userId: 'user-1',
+      displayName: null,
+      rsvpStatus: null,
       status: null,
       checkInAt: null,
       latenessMinutes: null,

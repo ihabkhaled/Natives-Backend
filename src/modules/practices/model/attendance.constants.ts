@@ -20,6 +20,7 @@ export const ATTENDANCE_HISTORY_ROUTE =
 export const PARTICIPATION_ROUTE =
   ':teamId/attendance/participation/:membershipId';
 export const PARTICIPATION_SELF_ROUTE = ':teamId/attendance/me/participation';
+export const ATTENDANCE_SELF_HISTORY_ROUTE = ':teamId/attendance/me/history';
 
 export const SEASON_ID_QUERY = 'seasonId';
 
@@ -36,6 +37,16 @@ export const BULK_MARKS_MAX_COUNT = 200;
 // --- Bounded read limits -----------------------------------------------------
 export const ATTENDANCE_HISTORY_SCAN_LIMIT = 500;
 export const PARTICIPATION_SCAN_LIMIT = 2000;
+
+// --- Self check-in window policy ----------------------------------------------
+// The explicit, deterministic UTC window (decision D2 of the P3 attendance spec):
+// check-in opens 60 minutes before the session start and closes at the session's
+// resolved end instant. Venue/geo/check-in-code policy is deliberately NONE
+// (time-window only). A future typed team setting may override these defaults;
+// that lives in the settings lane, never here.
+export const CHECK_IN_OPENS_BEFORE_START_MINUTES = 60;
+export const CHECK_IN_CLOSES_AFTER_END_MINUTES = 0;
+export const MS_PER_MINUTE = 60_000;
 
 // --- Scoring rule ------------------------------------------------------------
 // The single seeded legacy-candidate rule (see legacy-business-rules.yaml). It is
@@ -117,3 +128,9 @@ export const ATTENDANCE_RULE_MISSING_MESSAGE =
   'No default attendance scoring rule is configured';
 export const ATTENDANCE_RULE_MISSING_MESSAGE_KEY: ErrorMessageKey =
   'errors.practices.attendanceRuleMissing';
+
+export const ATTENDANCE_CHECK_IN_CLOSED_MESSAGE =
+  'Self check-in is only available from 60 minutes before the session start ' +
+  'until the session end, for a published session';
+export const ATTENDANCE_CHECK_IN_CLOSED_MESSAGE_KEY: ErrorMessageKey =
+  'errors.practices.checkInWindowClosed';

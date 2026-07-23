@@ -77,6 +77,16 @@ export const SWAGGER_DESCRIPTION = 'HTTP API for this NestJS service';
 // snapshot) with typed per-key value schemas; new
 // DELETE /teams/{teamId}/settings/versions/{versionId} cancels a
 // future-effective version.
-export const SWAGGER_VERSION = '1.3.0';
+// 1.4.0: additive P3 attendance self-service hardening — new
+// GET /teams/{teamId}/attendance/me/history (paginated own history, newest
+// first, null-status rows for unrecorded sessions); the own-attendance read
+// gains a nullable selfCheckIn eligibility block ({state, opensAt, closesAt});
+// self check-in enforces the explicit window (opens startsAt−60m, closes at
+// session end, published/rescheduled only ⇒ 409
+// errors.practices.checkInWindowClosed) and is idempotent (repeat POSTs return
+// the existing record unchanged); roster entries carry displayName + rsvpStatus
+// (both nullable); participation reads document the 409
+// errors.practices.attendanceRuleMissing contract.
+export const SWAGGER_VERSION = '1.4.0';
 export const SWAGGER_BEARER_NAME = 'jwt';
 export const SWAGGER_PERSIST_AUTHORIZATION = false;

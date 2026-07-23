@@ -89,3 +89,35 @@ export enum AttendanceRuleStatus {
 
 export const ATTENDANCE_RULE_STATUS_VALUES: readonly AttendanceRuleStatus[] =
   Object.values(AttendanceRuleStatus);
+
+/**
+ * The purely time/session-state-derived self check-in window state: not yet open
+ * (before `startsAt − 60 min`), open, or closed (after the session end, or the
+ * session is not in a check-in-able lifecycle state). Sheet/record concerns are
+ * layered on top as `SelfCheckInState`.
+ */
+export enum CheckInWindowState {
+  NotOpen = 'not_open',
+  Open = 'open',
+  Closed = 'closed',
+}
+
+export const CHECK_IN_WINDOW_STATE_VALUES: readonly CheckInWindowState[] =
+  Object.values(CheckInWindowState);
+
+/**
+ * The full self check-in eligibility the own-attendance read exposes so clients
+ * never re-implement the window rule: the three window states plus `locked` (the
+ * sheet is finalized/corrected) and `recorded` (a record already exists — repeat
+ * check-ins are no-ops returning it).
+ */
+export enum SelfCheckInState {
+  NotOpen = 'not_open',
+  Open = 'open',
+  Closed = 'closed',
+  Locked = 'locked',
+  Recorded = 'recorded',
+}
+
+export const SELF_CHECK_IN_STATE_VALUES: readonly SelfCheckInState[] =
+  Object.values(SelfCheckInState);

@@ -1,4 +1,5 @@
 import type { AuthUserIdentity } from '@core/auth';
+import { CLOCK_PORT, type ClockPort } from '@core/clock/clock.port';
 import {
   type TransactionScope,
   UNIT_OF_WORK_PORT,
@@ -6,6 +7,7 @@ import {
 } from '@core/persistence/unit-of-work.port';
 import { Inject, Injectable } from '@nestjs/common';
 
+import { deriveSelfCheckInEligibility } from '../domain/check-in-window.policy';
 import { AttendanceNotMemberError } from '../errors/attendance-not-member.error';
 import { AttendanceMembershipRepository } from '../infrastructure/attendance-membership.repository';
 import { AttendanceRecordRepository } from '../infrastructure/attendance-record.repository';
@@ -15,28 +17,36 @@ import {
   notRecordedView,
   toAttendanceView,
   toSheetView,
+  withSelfCheckIn,
 } from '../lib/attendance.mapper';
 import { ATTENDANCE_HISTORY_SCAN_LIMIT } from '../model/attendance.constants';
+import { AttendanceState } from '../model/attendance.enums';
 import type {
+  AttendanceRecord,
+  AttendanceSheet,
   AttendanceSheetView,
   AttendanceView,
   ListAttendanceRevisionsResult,
   MembershipRef,
+  SelfCheckInEligibility,
 } from '../model/attendance.types';
-import type { PageRequest } from '../model/practices.types';
+import type { PageRequest, PracticeSession } from '../model/practices.types';
 import { PracticeLookupService } from './practice-lookup.service';
 
 /**
  * Read side for attendance: the roster + sheet state (the prefill source — every
  * active member appears, unmarked ⇒ null status), a member's own record
- * (synthesized "not recorded" when absent), and one member's correction history.
- * Every read resolves the session within the caller's team scope first, so a
- * cross-team id is a clean not-found. Notes and reasons are never in the roster.
+ * (synthesized "not recorded" when absent, carrying the self check-in
+ * eligibility block so the client never re-implements the window rule), and one
+ * member's correction history. Every read resolves the session within the
+ * caller's team scope first, so a cross-team id is a clean not-found. Notes and
+ * reasons are never in the roster.
  */
 @Injectable()
 export class AttendanceQueryService {
   constructor(
     @Inject(UNIT_OF_WORK_PORT) private readonly unitOfWork: UnitOfWorkPort,
+    @Inject(CLOCK_PORT) private readonly clock: ClockPort,
     private readonly lookup: PracticeLookupService,
     private readonly memberships: AttendanceMembershipRepository,
     private readonly sheets: AttendanceSheetRepository,
@@ -100,28 +110,47 @@ export class AttendanceQueryService {
     sessionId: string,
     actor: AuthUserIdentity,
   ): Promise<AttendanceView> {
-    await this.lookup.requireSession(scope, teamId, sessionId);
+    const session = await this.lookup.requireSession(scope, teamId, sessionId);
     const membership = await this.requireOwnMembership(
       scope,
       teamId,
       actor.userId,
     );
-    return this.loadOwnView(scope, sessionId, membership);
+    return this.loadOwnView(scope, session, membership);
   }
 
   private async loadOwnView(
     scope: TransactionScope,
-    sessionId: string,
+    session: PracticeSession,
     membership: MembershipRef,
   ): Promise<AttendanceView> {
     const record = await this.records.findBySessionMembership(
       scope,
-      sessionId,
+      session.id,
       membership.id,
     );
-    return record === null
-      ? notRecordedView(sessionId, membership.id)
-      : toAttendanceView(record);
+    const sheet = await this.sheets.findBySession(scope, session.id);
+    const view =
+      record === null
+        ? notRecordedView(session.id, membership.id)
+        : toAttendanceView(record);
+    return withSelfCheckIn(
+      view,
+      this.resolveEligibility(session, sheet, record),
+    );
+  }
+
+  private resolveEligibility(
+    session: PracticeSession,
+    sheet: AttendanceSheet | null,
+    record: AttendanceRecord | null,
+  ): SelfCheckInEligibility {
+    return deriveSelfCheckInEligibility(
+      session,
+      sheet === null ? AttendanceState.Open : sheet.state,
+      record !== null,
+      this.clock.now(),
+    );
   }
 
   private async requireOwnMembership(

@@ -8,6 +8,7 @@ import type {
   ParticipationInputs,
   ParticipationView,
   RosterEntry,
+  SelfCheckInEligibility,
 } from '../model/attendance.types';
 import type { PageRequest } from '../model/practices.types';
 
@@ -33,7 +34,16 @@ export function toAttendanceView(record: AttendanceRecord): AttendanceView {
     source: record.source,
     recordedAt: record.recordedAt,
     version: record.version,
+    selfCheckIn: null,
   };
+}
+
+/** Attach the self check-in eligibility block to an own-attendance view. */
+export function withSelfCheckIn(
+  view: AttendanceView,
+  eligibility: SelfCheckInEligibility,
+): AttendanceView {
+  return { ...view, selfCheckIn: eligibility };
 }
 
 /**
@@ -55,6 +65,7 @@ export function notRecordedView(
     source: null,
     recordedAt: null,
     version: null,
+    selfCheckIn: null,
   };
 }
 

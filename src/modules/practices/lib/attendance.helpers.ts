@@ -2,7 +2,10 @@ import {
   allowsExcuseCategory,
   allowsLateness,
 } from '../domain/attendance-status.policy';
-import { LATENESS_MINUTES_MAX } from '../model/attendance.constants';
+import {
+  LATENESS_MINUTES_MAX,
+  MS_PER_MINUTE,
+} from '../model/attendance.constants';
 import {
   ATTENDANCE_EXCUSE_CATEGORY_VALUES,
   ATTENDANCE_RULE_STATUS_VALUES,
@@ -18,11 +21,11 @@ import {
 import type {
   AttendanceListQuery,
   SelfCheckInDerivation,
+  SelfHistoryQueryInput,
+  SelfHistoryRequest,
 } from '../model/attendance.types';
 import type { PageRequest } from '../model/practices.types';
 import { resolvePage } from './practices.helpers';
-
-const MS_PER_MINUTE = 60000;
 
 function parseEnum<TValue extends string>(
   values: readonly TValue[],
@@ -51,6 +54,13 @@ export function parseNullableAttendanceStatus(
 /** Map a persisted state string to the AttendanceState enum. */
 export function parseAttendanceState(raw: string): AttendanceState {
   return parseEnum(ATTENDANCE_STATE_VALUES, raw, 'attendance state');
+}
+
+/** Map a nullable persisted state string to AttendanceState or null. */
+export function parseNullableAttendanceState(
+  raw: string | null,
+): AttendanceState | null {
+  return raw === null ? null : parseAttendanceState(raw);
 }
 
 /** Map a persisted source string to the AttendanceSource enum. */
@@ -104,6 +114,16 @@ export function parseWeights(raw: unknown): Record<string, number> {
 /** Clamp a caller-supplied attendance list page to safe, bounded values. */
 export function resolveAttendancePage(query: AttendanceListQuery): PageRequest {
   return resolvePage(query.limit, query.offset);
+}
+
+/** Resolve the self-history query into a season filter + clamped page. */
+export function resolveSelfHistoryRequest(
+  query: SelfHistoryQueryInput,
+): SelfHistoryRequest {
+  return {
+    seasonId: query.seasonId ?? null,
+    page: resolvePage(query.limit, query.offset),
+  };
 }
 
 /**

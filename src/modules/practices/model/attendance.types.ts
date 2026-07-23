@@ -4,8 +4,11 @@ import type {
   AttendanceSource,
   AttendanceState,
   AttendanceStatus,
+  CheckInWindowState,
+  SelfCheckInState,
 } from './attendance.enums';
-import type { PracticeSession } from './practices.types';
+import type { PageRequest, PracticeSession } from './practices.types';
+import type { RsvpStatus } from './rsvp.enums';
 
 // --- Aggregates (domain view types) ------------------------------------------
 
@@ -170,6 +173,24 @@ export interface SelfCheckInDerivation {
   readonly latenessMinutes: number | null;
 }
 
+/** The resolved self check-in window for one session at one instant (pure). */
+export interface CheckInWindow {
+  readonly opensAt: Date;
+  readonly closesAt: Date;
+  readonly state: CheckInWindowState;
+}
+
+/**
+ * The self check-in eligibility block on the own-attendance read: the window
+ * bounds plus the full state (window state, or `locked`/`recorded`) so the client
+ * renders "opens at / closed / recorded / locked" without owning the rule.
+ */
+export interface SelfCheckInEligibility {
+  readonly state: SelfCheckInState;
+  readonly opensAt: Date;
+  readonly closesAt: Date;
+}
+
 /** A privileged correction of one participant's finalized attendance. */
 export interface CorrectAttendanceCommand {
   readonly status: AttendanceStatus;
@@ -220,10 +241,17 @@ export interface ParticipationQuery {
   readonly seasonId?: string;
 }
 
-/** One roster row: an active member and their attendance (null when unmarked). */
+/**
+ * One roster row: an active member and their attendance (null when unmarked).
+ * `displayName` resolves through the member-profile → user fallback chain (null
+ * when neither exists) and `rsvpStatus` carries the member's RSVP answer for the
+ * session (null when no RSVP row exists) — additive coach-capture context.
+ */
 export interface RosterEntry {
   readonly membershipId: string;
   readonly userId: string | null;
+  readonly displayName: string | null;
+  readonly rsvpStatus: RsvpStatus | null;
   readonly status: AttendanceStatus | null;
   readonly checkInAt: Date | null;
   readonly latenessMinutes: number | null;
@@ -260,7 +288,11 @@ export interface BulkRecordResult {
   readonly recorded: number;
 }
 
-/** A member's own attendance for a session (explicit "not recorded" when absent). */
+/**
+ * A member's own attendance for a session (explicit "not recorded" when absent).
+ * `selfCheckIn` is populated only by the own-attendance read (the eligibility
+ * block); every other producer of this view carries null there.
+ */
 export interface AttendanceView {
   readonly sessionId: string;
   readonly membershipId: string;
@@ -272,10 +304,58 @@ export interface AttendanceView {
   readonly source: AttendanceSource | null;
   readonly recordedAt: Date | null;
   readonly version: number | null;
+  readonly selfCheckIn: SelfCheckInEligibility | null;
 }
 
 export interface ListAttendanceRevisionsResult {
   readonly items: readonly AttendanceRevision[];
+}
+
+/**
+ * One row of a member's own attendance history: a past (started, not cancelled)
+ * session LEFT-JOINed with the caller's record. `status: null` means "not
+ * recorded" (null-not-zero) and `sheetState` lets the client say "not finalized
+ * yet" (null before any sheet exists).
+ */
+export interface SelfHistoryEntry {
+  readonly sessionId: string;
+  readonly startsAt: Date;
+  readonly endsAt: Date;
+  readonly sessionType: string;
+  readonly status: AttendanceStatus | null;
+  readonly latenessMinutes: number | null;
+  readonly excuseCategory: AttendanceExcuseCategory | null;
+  readonly source: AttendanceSource | null;
+  readonly recordedAt: Date | null;
+  readonly sheetState: AttendanceState | null;
+}
+
+/** The paginated own-attendance history envelope (newest first). */
+export interface SelfHistoryView {
+  readonly items: readonly SelfHistoryEntry[];
+  readonly total: number;
+  readonly limit: number;
+  readonly offset: number;
+}
+
+/** Raw self-history query values (as received from the query DTO). */
+export interface SelfHistoryQueryInput extends AttendanceListQuery {
+  readonly seasonId?: string;
+}
+
+/** The resolved season filter + clamped page for a self-history read. */
+export interface SelfHistoryRequest {
+  readonly seasonId: string | null;
+  readonly page: PageRequest;
+}
+
+/** The fully-resolved scan context the self-history SQL binds against. */
+export interface SelfHistoryScan {
+  readonly teamId: string;
+  readonly membershipId: string;
+  readonly seasonId: string | null;
+  readonly now: Date;
+  readonly page: PageRequest;
 }
 
 /**

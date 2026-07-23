@@ -25,6 +25,7 @@ import { AgendaStationService } from './application/agenda-station.service';
 import { ArchivePracticeScheduleUseCase } from './application/archive-practice-schedule.use-case';
 import { AttendanceQueryService } from './application/attendance-query.service';
 import { AttendanceRecorderService } from './application/attendance-recorder.service';
+import { AttendanceSelfHistoryQueryService } from './application/attendance-self-history.query.service';
 import { AttendanceSheetService } from './application/attendance-sheet.service';
 import { CalendarFeedService } from './application/calendar-feed.service';
 import { CompleteAgendaUseCase } from './application/complete-agenda.use-case';
@@ -147,6 +148,7 @@ import { CALENDAR_TOKEN_PORT } from './model/calendar.constants';
     FinalizeAttendanceUseCase,
     CorrectAttendanceUseCase,
     AttendanceQueryService,
+    AttendanceSelfHistoryQueryService,
     ParticipationQueryService,
     AgendaLookupService,
     DrillCatalogService,

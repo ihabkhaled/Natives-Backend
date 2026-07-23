@@ -5,11 +5,13 @@ import {
   AttendanceSource,
   AttendanceStatus,
 } from '../../model/attendance.enums';
+import { SelfCheckInEligibilityDto } from './self-check-in-eligibility.dto';
 
 /**
  * A member's attendance for a session. When nothing has been recorded, `status` is
  * null and the metadata fields are null (absence modelled explicitly, never coerced
- * to ABSENT or zero).
+ * to ABSENT or zero). `selfCheckIn` carries the check-in eligibility block on the
+ * own-attendance read and is null on every other producer of this shape.
  */
 export class AttendanceResponseDto {
   @ApiProperty()
@@ -41,4 +43,7 @@ export class AttendanceResponseDto {
 
   @ApiProperty({ type: Number, nullable: true })
   declare readonly version: number | null;
+
+  @ApiProperty({ type: SelfCheckInEligibilityDto, nullable: true })
+  declare readonly selfCheckIn: SelfCheckInEligibilityDto | null;
 }

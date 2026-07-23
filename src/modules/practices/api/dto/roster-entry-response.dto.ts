@@ -5,11 +5,15 @@ import {
   AttendanceSource,
   AttendanceStatus,
 } from '../../model/attendance.enums';
+import { RsvpStatus } from '../../model/rsvp.enums';
 
 /**
  * One roster row: an active member and their attendance. Unmarked members appear
  * with a null status (null-not-zero) so every rostered participant is present for
- * prefill and zero-contribution completeness. Notes and reasons are never included.
+ * prefill and zero-contribution completeness. `displayName` resolves through the
+ * member-profile → user fallback chain and `rsvpStatus` carries the member's
+ * RSVP answer for this session (both null when unavailable). Notes and reasons
+ * are never included.
  */
 export class PracticeRosterEntryResponseDto {
   @ApiProperty()
@@ -17,6 +21,12 @@ export class PracticeRosterEntryResponseDto {
 
   @ApiProperty({ type: String, nullable: true })
   declare readonly userId: string | null;
+
+  @ApiProperty({ type: String, nullable: true })
+  declare readonly displayName: string | null;
+
+  @ApiProperty({ enum: RsvpStatus, nullable: true })
+  declare readonly rsvpStatus: RsvpStatus | null;
 
   @ApiProperty({ enum: AttendanceStatus, nullable: true })
   declare readonly status: AttendanceStatus | null;

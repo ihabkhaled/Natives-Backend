@@ -165,20 +165,41 @@ describeIfDb(suiteTitle, () => {
 
   async function createPublishedSession(
     token: string,
+    window?: { startsAt: string; endsAt: string },
   ): Promise<{ id: string; version: number }> {
     const created = await request(app.getHttpServer())
       .post(`${base()}/practice-sessions`)
       .set('Authorization', `Bearer ${token}`)
       .send({
         sessionType: 'practice',
-        startsAt: '2026-09-15T15:00:00.000Z',
-        endsAt: '2026-09-15T17:00:00.000Z',
+        startsAt: window?.startsAt ?? '2026-09-15T15:00:00.000Z',
+        endsAt: window?.endsAt ?? '2026-09-15T17:00:00.000Z',
       });
     const published = await request(app.getHttpServer())
       .post(`${base()}/practice-sessions/${created.body.id}/publish`)
       .set('Authorization', `Bearer ${token}`)
       .send({ expectedVersion: created.body.version });
     return { id: published.body.id, version: published.body.version };
+  }
+
+  /** A published session whose check-in window is open right now. */
+  function createInWindowSession(
+    token: string,
+  ): Promise<{ id: string; version: number }> {
+    return createPublishedSession(token, {
+      startsAt: new Date(Date.now() + 30 * 60_000).toISOString(),
+      endsAt: new Date(Date.now() + 150 * 60_000).toISOString(),
+    });
+  }
+
+  /** A published session that already started and ended in the past. */
+  function createPastSession(
+    token: string,
+  ): Promise<{ id: string; version: number }> {
+    return createPublishedSession(token, {
+      startsAt: new Date(Date.now() - 180 * 60_000).toISOString(),
+      endsAt: new Date(Date.now() - 60 * 60_000).toISOString(),
+    });
   }
 
   beforeAll(async () => {
@@ -271,7 +292,7 @@ describeIfDb(suiteTitle, () => {
 
   it('lets an active member self check-in but denies a suspended member (403)', async () => {
     const admin = await tokenFor(fixture.adminId, [Role.Admin]);
-    const session = await createPublishedSession(admin);
+    const session = await createInWindowSession(admin);
 
     const member = await tokenFor(fixture.memberId, [Role.User]);
     const checkIn = await request(app.getHttpServer())
@@ -288,6 +309,168 @@ describeIfDb(suiteTitle, () => {
       .send({});
     expect(denied.status).toBe(403);
     expect(denied.body.messageKey).toBe('errors.practices.attendanceNotMember');
+  });
+
+  it('makes repeat check-ins no-ops and never rewrites the first mark', async () => {
+    const admin = await tokenFor(fixture.adminId, [Role.Admin]);
+    const member = await tokenFor(fixture.memberId, [Role.User]);
+    const session = await createInWindowSession(admin);
+
+    const first = await request(app.getHttpServer())
+      .post(`${base()}/practice-sessions/${session.id}/attendance/check-in`)
+      .set('Authorization', `Bearer ${member}`)
+      .send({});
+    expect(first.status).toBe(200);
+    expect(first.body.status).toBe('present_on_time');
+
+    const repeat = await request(app.getHttpServer())
+      .post(`${base()}/practice-sessions/${session.id}/attendance/check-in`)
+      .set('Authorization', `Bearer ${member}`)
+      .send({});
+    expect(repeat.status).toBe(200);
+    expect(repeat.body.status).toBe('present_on_time');
+    expect(repeat.body.version).toBe(first.body.version);
+    expect(repeat.body.recordedAt).toBe(first.body.recordedAt);
+
+    const me = await request(app.getHttpServer())
+      .get(`${base()}/practice-sessions/${session.id}/attendance/me`)
+      .set('Authorization', `Bearer ${member}`);
+    expect(me.body.selfCheckIn.state).toBe('recorded');
+  });
+
+  it('refuses a check-in outside the window (409 checkInWindowClosed)', async () => {
+    const admin = await tokenFor(fixture.adminId, [Role.Admin]);
+    const member = await tokenFor(fixture.memberId, [Role.User]);
+    const farFuture = await createPublishedSession(admin);
+
+    const early = await request(app.getHttpServer())
+      .post(`${base()}/practice-sessions/${farFuture.id}/attendance/check-in`)
+      .set('Authorization', `Bearer ${member}`)
+      .send({});
+    expect(early.status).toBe(409);
+    expect(early.body.messageKey).toBe('errors.practices.checkInWindowClosed');
+
+    const past = await createPastSession(admin);
+    const late = await request(app.getHttpServer())
+      .post(`${base()}/practice-sessions/${past.id}/attendance/check-in`)
+      .set('Authorization', `Bearer ${member}`)
+      .send({});
+    expect(late.status).toBe(409);
+    expect(late.body.messageKey).toBe('errors.practices.checkInWindowClosed');
+  });
+
+  it('refuses a check-in into a cancelled session regardless of time', async () => {
+    const admin = await tokenFor(fixture.adminId, [Role.Admin]);
+    const member = await tokenFor(fixture.memberId, [Role.User]);
+    const session = await createInWindowSession(admin);
+    const cancelled = await request(app.getHttpServer())
+      .post(`${base()}/practice-sessions/${session.id}/cancel`)
+      .set('Authorization', `Bearer ${admin}`)
+      .send({ expectedVersion: session.version });
+    expect(cancelled.status).toBe(201);
+
+    const denied = await request(app.getHttpServer())
+      .post(`${base()}/practice-sessions/${session.id}/attendance/check-in`)
+      .set('Authorization', `Bearer ${member}`)
+      .send({});
+    expect(denied.status).toBe(409);
+    expect(denied.body.messageKey).toBe('errors.practices.checkInWindowClosed');
+  });
+
+  it('serves the selfCheckIn eligibility block on the own-attendance read', async () => {
+    const admin = await tokenFor(fixture.adminId, [Role.Admin]);
+    const member = await tokenFor(fixture.memberId, [Role.User]);
+    const farFuture = await createPublishedSession(admin);
+
+    const me = await request(app.getHttpServer())
+      .get(`${base()}/practice-sessions/${farFuture.id}/attendance/me`)
+      .set('Authorization', `Bearer ${member}`);
+    expect(me.status).toBe(200);
+    expect(me.body.status).toBeNull();
+    expect(me.body.selfCheckIn.state).toBe('not_open');
+    expect(me.body.selfCheckIn.opensAt).toBe('2026-09-15T14:00:00.000Z');
+    expect(me.body.selfCheckIn.closesAt).toBe('2026-09-15T17:00:00.000Z');
+
+    const open = await createInWindowSession(admin);
+    const openMe = await request(app.getHttpServer())
+      .get(`${base()}/practice-sessions/${open.id}/attendance/me`)
+      .set('Authorization', `Bearer ${member}`);
+    expect(openMe.body.selfCheckIn.state).toBe('open');
+  });
+
+  it('lists my own attendance history newest first with null-status rows', async () => {
+    const admin = await tokenFor(fixture.adminId, [Role.Admin]);
+    const coach = await tokenFor(fixture.coachUserId, [Role.User]);
+    const member = await tokenFor(fixture.memberId, [Role.User]);
+    const past = await createPastSession(admin);
+
+    await request(app.getHttpServer())
+      .put(
+        `${base()}/practice-sessions/${past.id}/attendance/${memberMembershipId}`,
+      )
+      .set('Authorization', `Bearer ${coach}`)
+      .send({ status: 'present_on_time' });
+    const roster = await request(app.getHttpServer())
+      .get(`${base()}/practice-sessions/${past.id}/attendance`)
+      .set('Authorization', `Bearer ${coach}`);
+    await request(app.getHttpServer())
+      .post(`${base()}/practice-sessions/${past.id}/attendance/finalize`)
+      .set('Authorization', `Bearer ${coach}`)
+      .send({ expectedVersion: roster.body.version });
+
+    const history = await request(app.getHttpServer())
+      .get(`${base()}/attendance/me/history`)
+      .set('Authorization', `Bearer ${member}`);
+    expect(history.status).toBe(200);
+    expect(history.body.total).toBeGreaterThanOrEqual(1);
+    expect(history.body.limit).toBe(20);
+    const recordedRow = history.body.items.find(
+      (item: { sessionId: string }) => item.sessionId === past.id,
+    );
+    expect(recordedRow.status).toBe('present_on_time');
+    expect(recordedRow.sheetState).toBe('finalized');
+    const startTimes = history.body.items.map(
+      (item: { startsAt: string }) => item.startsAt,
+    );
+    expect([...startTimes].sort().reverse()).toEqual(startTimes);
+
+    const outsider = await tokenFor(fixture.outsiderId, [Role.User]);
+    const denied = await request(app.getHttpServer())
+      .get(`${base()}/attendance/me/history`)
+      .set('Authorization', `Bearer ${outsider}`);
+    expect(denied.status).toBe(403);
+    expect(denied.body.messageKey).toBe('errors.practices.attendanceNotMember');
+  });
+
+  it('serves roster rows with displayName and rsvpStatus context', async () => {
+    const admin = await tokenFor(fixture.adminId, [Role.Admin]);
+    const coach = await tokenFor(fixture.coachUserId, [Role.User]);
+    const member = await tokenFor(fixture.memberId, [Role.User]);
+    const silentUser = await seedUser(fixture.dataSource, 'active', Role.User);
+    const silentMembership = await seedMembership(silentUser, 'active');
+    const session = await createInWindowSession(admin);
+
+    await request(app.getHttpServer())
+      .put(`${base()}/practice-sessions/${session.id}/rsvp`)
+      .set('Authorization', `Bearer ${member}`)
+      .send({ status: 'going' });
+
+    const roster = await request(app.getHttpServer())
+      .get(`${base()}/practice-sessions/${session.id}/attendance`)
+      .set('Authorization', `Bearer ${coach}`);
+    expect(roster.status).toBe(200);
+    const row = roster.body.items.find(
+      (item: { membershipId: string }) =>
+        item.membershipId === memberMembershipId,
+    );
+    expect(row.displayName).toContain('@example.test');
+    expect(row.rsvpStatus).toBe('going');
+    const unresponsive = roster.body.items.find(
+      (item: { membershipId: string }) =>
+        item.membershipId === silentMembership,
+    );
+    expect(unresponsive.rsvpStatus).toBeNull();
+    expect(unresponsive.displayName).toContain('@example.test');
   });
 
   it('finalizes then corrects, locking the sheet and rejecting re-finalize', async () => {

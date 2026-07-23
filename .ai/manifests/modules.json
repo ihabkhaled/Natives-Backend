@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T03:08:44.038Z",
+  "generatedAt": "2026-07-23T03:54:14.305Z",
   "modules": [
     {
       "name": "activities",
@@ -1590,6 +1590,8 @@
           "src/modules/practices/api/dto/attendance-mark.dto.ts",
           "src/modules/practices/api/dto/attendance-response.dto.ts",
           "src/modules/practices/api/dto/attendance-revision-response.dto.ts",
+          "src/modules/practices/api/dto/attendance-self-history-response.dto.ts",
+          "src/modules/practices/api/dto/attendance-self-history.query.dto.ts",
           "src/modules/practices/api/dto/attendance-sheet-response.dto.ts",
           "src/modules/practices/api/dto/attendance-status-response.dto.ts",
           "src/modules/practices/api/dto/block-fields.dto.ts",
@@ -1638,6 +1640,7 @@
           "src/modules/practices/api/dto/rsvp-revision-response.dto.ts",
           "src/modules/practices/api/dto/rsvp-summary-response.dto.ts",
           "src/modules/practices/api/dto/schedule-response.dto.ts",
+          "src/modules/practices/api/dto/self-check-in-eligibility.dto.ts",
           "src/modules/practices/api/dto/self-check-in.dto.ts",
           "src/modules/practices/api/dto/session-history-response.dto.ts",
           "src/modules/practices/api/dto/session-response.dto.ts",
@@ -1659,6 +1662,7 @@
           "src/modules/practices/application/agenda-station.service.ts",
           "src/modules/practices/application/attendance-query.service.ts",
           "src/modules/practices/application/attendance-recorder.service.ts",
+          "src/modules/practices/application/attendance-self-history.query.service.ts",
           "src/modules/practices/application/attendance-sheet.service.ts",
           "src/modules/practices/application/calendar-feed.service.ts",
           "src/modules/practices/application/drill-catalog.service.ts",
@@ -1699,6 +1703,7 @@
           "src/modules/practices/domain/attendance-scoring.policy.ts",
           "src/modules/practices/domain/attendance-status.policy.ts",
           "src/modules/practices/domain/attendance.state-machine.ts",
+          "src/modules/practices/domain/check-in-window.policy.ts",
           "src/modules/practices/domain/practice-reminder.policy.ts",
           "src/modules/practices/domain/practice-session.state-machine.ts",
           "src/modules/practices/domain/recurrence.policy.ts",
@@ -1718,6 +1723,7 @@
           "src/modules/practices/errors/calendar-feed-limit.error.ts",
           "src/modules/practices/errors/calendar-feed-timezone.error.ts",
           "src/modules/practices/errors/calendar-feed-unavailable.error.ts",
+          "src/modules/practices/errors/check-in-window-closed.error.ts",
           "src/modules/practices/errors/drill-name-conflict.error.ts",
           "src/modules/practices/errors/drill-not-found.error.ts",
           "src/modules/practices/errors/invalid-agenda-transition.error.ts",
@@ -1804,8 +1810,8 @@
           "src/modules/practices/model/signals.types.ts"
         ]
       },
-      "fileCount": 219,
-      "specCount": 66,
+      "fileCount": 225,
+      "specCount": 69,
       "publicSurface": "src/modules/practices/index.ts",
       "hasEvents": false
     },

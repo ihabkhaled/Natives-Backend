@@ -31,6 +31,8 @@ import type {
   NewAttendanceRevision,
   NewAttendanceSheet,
   SelfCheckInDerivation,
+  SelfHistoryRequest,
+  SelfHistoryScan,
   SheetCorrection,
   SheetFinalize,
 } from '../model/attendance.types';
@@ -195,6 +197,22 @@ export function buildCheckInContext(
     expectedVersion: null,
     actorUserId,
     now,
+  };
+}
+
+/** Build the resolved self-history scan context from the caller's request. */
+export function buildSelfHistoryScan(
+  teamId: string,
+  membershipId: string,
+  request: SelfHistoryRequest,
+  now: Date,
+): SelfHistoryScan {
+  return {
+    teamId,
+    membershipId,
+    seasonId: request.seasonId,
+    now,
+    page: request.page,
   };
 }
 

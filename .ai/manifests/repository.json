@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-23T03:08:44.038Z",
-  "treeHash": "sha256:59dbe453201990748d62f87d1bc55d02a7c45713dc161573e826682087406621",
+  "generatedAt": "2026-07-23T03:54:14.305Z",
+  "treeHash": "sha256:57d4c22ea8c697455494e6bc02908d3af2f69615aea79ea40309af9ee07fa3bf",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -89,8 +89,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d08fbf4d946ea77fa0cfa608785d5ed02d94cdb9720d7673d0bd9cf649855c84",
-      "sizeBytes": 3952
+      "hash": "sha256:759b37d523ec63946c20119450d4732c8930c1339da38646d3a3c520d3f506b9",
+      "sizeBytes": 4649
     },
     {
       "path": "src/bootstrap/bootstrap.ts",
@@ -3274,8 +3274,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:c7e9c3dd15987a931b1edc5671f4c272d410f5082731981b051a720877df8f4a",
-      "sizeBytes": 3110
+      "hash": "sha256:4e7f76d8a8de02504668e044210bea564692cbcedafe22859c2fedd3033ddede",
+      "sizeBytes": 4798
     },
     {
       "path": "src/database/migration-runner.ts",
@@ -3286,8 +3286,8 @@
       "hasSpec": true,
       "specPath": "src/database/migration-runner.spec.ts",
       "kind": "source",
-      "hash": "sha256:340fe3679174b8fec2085505833b23978352ede69e00e550918350f22106a7ed",
-      "sizeBytes": 1846
+      "hash": "sha256:ec9f3d6be827131199f67115501a5e5b5398fd3243ccd15d891a82e771026b1b",
+      "sizeBytes": 3371
     },
     {
       "path": "src/database/migrations/1721200000000-baseline-schema.ts",
@@ -40618,8 +40618,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:797958e1196fa8c128888279a4d886dc7645ac4e774902f37bdd247c6e5b0a3c",
-      "sizeBytes": 2392
+      "hash": "sha256:86e5f894d8a26ed8b323a902cf42f3a133bc970db0e0ed55ba7597c2a7d9edd6",
+      "sizeBytes": 4855
     },
     {
       "path": "src/modules/practices/api/attendance.controller.ts",
@@ -40635,8 +40635,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9b1353501afc731d24908f850d9303e818a4930bfea45b30d157ab8e923f0c77",
-      "sizeBytes": 9558
+      "hash": "sha256:836ffaec0a5272ba7416600af89610c310ac8e5e27bb1258e7c2d51e76f47e6f",
+      "sizeBytes": 10480
     },
     {
       "path": "src/modules/practices/api/drills.controller.ts",
@@ -40771,8 +40771,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:e1be031c455bdba7169e492e3fa5c091fd8d3d4c4d513eb2c7ead7fea16c02eb",
-      "sizeBytes": 1414
+      "hash": "sha256:990b70102883b63228106ca2e13e8e00dc1ec843320486ec77c7168f1b621f2e",
+      "sizeBytes": 1760
     },
     {
       "path": "src/modules/practices/api/dto/attendance-revision-response.dto.ts",
@@ -40790,6 +40790,44 @@
       "kind": "source",
       "hash": "sha256:1ba9c83d3f73873f77157336dc7677ec953b02a9a708f9f426a24a3f93a46f0d",
       "sizeBytes": 1281
+    },
+    {
+      "path": "src/modules/practices/api/dto/attendance-self-history-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceSelfHistoryEntryResponseDto"
+        },
+        {
+          "kind": "class",
+          "name": "AttendanceSelfHistoryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e991c622e348490dfcdba852230a0d263be23e975c661849c796146150bc549e",
+      "sizeBytes": 1934
+    },
+    {
+      "path": "src/modules/practices/api/dto/attendance-self-history.query.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceSelfHistoryQueryDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d2137db1ae79b58eb93785d06d07a7b6bb28e6deff9b9b409a7cf2af4df67f05",
+      "sizeBytes": 523
     },
     {
       "path": "src/modules/practices/api/dto/attendance-sheet-response.dto.ts",
@@ -41514,8 +41552,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:aefd84f37f03b501ef87ac671ca0f1cc13b95093f85f7f7d13218a4aabf6cfa0",
-      "sizeBytes": 1287
+      "hash": "sha256:b93e137ec36795851dda84df7df6822da131ce544580f2465a11b5f436b55e1c",
+      "sizeBytes": 1721
     },
     {
       "path": "src/modules/practices/api/dto/rsvp-history-response.dto.ts",
@@ -41618,6 +41656,23 @@
       "kind": "source",
       "hash": "sha256:c90ec539785e5929e7f6aeaba5e0c57c66b51d85538e5ebd1e2bdd4df95c73b4",
       "sizeBytes": 2430
+    },
+    {
+      "path": "src/modules/practices/api/dto/self-check-in-eligibility.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SelfCheckInEligibilityDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1a74455dbd708a7869c14a136e3489743016cd6a6c87d09f1171b98e3752ff6d",
+      "sizeBytes": 819
     },
     {
       "path": "src/modules/practices/api/dto/self-check-in.dto.ts",
@@ -42137,8 +42192,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:21fd8ef4b5a3d1a35a4a1e028210d19f27a33a00d9c1c94223f116d9aef67fc3",
-      "sizeBytes": 3696
+      "hash": "sha256:5377286a2cbfedb26bea185c7ae3dae7b5d9c26190a39132e6723b68cc0ec004",
+      "sizeBytes": 6648
     },
     {
       "path": "src/modules/practices/application/attendance-query.service.ts",
@@ -42154,8 +42209,8 @@
       "hasSpec": true,
       "specPath": "src/modules/practices/application/attendance-query.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:f2379d1b638a59c4583f9cdb58e98498fd7da289e64bcf97308f46f062301c16",
-      "sizeBytes": 4594
+      "hash": "sha256:13476a14f0f6efb3cbed43ce0be512b374ef6ab6cd245abaae465fc1eb788a77",
+      "sizeBytes": 5614
     },
     {
       "path": "src/modules/practices/application/attendance-recorder.service.spec.ts",
@@ -42185,6 +42240,35 @@
       "kind": "source",
       "hash": "sha256:7198b360cc9db2d35f89391aae47c8ac45249bbed7538d65d4bf21e3302003ab",
       "sizeBytes": 3648
+    },
+    {
+      "path": "src/modules/practices/application/attendance-self-history.query.service.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e138c821e0722e615f5305962721d7d94bc5bf573d682460fc8c931c97b35504",
+      "sizeBytes": 3399
+    },
+    {
+      "path": "src/modules/practices/application/attendance-self-history.query.service.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AttendanceSelfHistoryQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/application/attendance-self-history.query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:87c717c8a943b6cad0bc097bcd05eedf031a770b88b321fa80c0a7239767c766",
+      "sizeBytes": 2958
     },
     {
       "path": "src/modules/practices/application/attendance-sheet.service.spec.ts",
@@ -42891,8 +42975,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:5f78eeb20d3365ff7162d8c77353d1c29f4556c88b47c46300b0b5d4585174b4",
-      "sizeBytes": 4018
+      "hash": "sha256:832e07edc4871ef68486a7ece7982bb2a577c84e3f67892335029381a73f619a",
+      "sizeBytes": 7002
     },
     {
       "path": "src/modules/practices/application/self-check-in.use-case.ts",
@@ -42908,8 +42992,8 @@
       "hasSpec": true,
       "specPath": "src/modules/practices/application/self-check-in.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:ad83e20ffda07dbcb3a52a8897511b30685de0d12eae25631ca7d2393160a358",
-      "sizeBytes": 3324
+      "hash": "sha256:0ed00316ea49e2671c746627ddb782ace7192428c3b557d050c89fb64dad2139",
+      "sizeBytes": 4858
     },
     {
       "path": "src/modules/practices/application/session-query.service.spec.ts",
@@ -43268,6 +43352,43 @@
       "kind": "source",
       "hash": "sha256:7e7d5e2f4bc04ad3ccc5b72582a27925d9e665247a77c93c8671322b7cf56bc1",
       "sizeBytes": 2101
+    },
+    {
+      "path": "src/modules/practices/domain/check-in-window.policy.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:03770643c4d5ccab0b2a9699b2755ec5278e1d76604418b34b1e5cb09bf3008b",
+      "sizeBytes": 4880
+    },
+    {
+      "path": "src/modules/practices/domain/check-in-window.policy.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isCheckInAbleStatus"
+        },
+        {
+          "kind": "function",
+          "name": "resolveCheckInWindow"
+        },
+        {
+          "kind": "function",
+          "name": "deriveSelfCheckInEligibility"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/practices/domain/check-in-window.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d3f671d83c86ba62d85c553382e40e20b3ddef3fcfa6c7be236803af2691661a",
+      "sizeBytes": 3295
     },
     {
       "path": "src/modules/practices/domain/practice-reminder.policy.spec.ts",
@@ -43657,6 +43778,23 @@
       "kind": "source",
       "hash": "sha256:ef620cab84cf1ba4d77dd7a836037496a832a9256309255e73ed3f3a243c66df",
       "sizeBytes": 467
+    },
+    {
+      "path": "src/modules/practices/errors/check-in-window-closed.error.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CheckInWindowClosedError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:bd75bdedf252abdfebacc7bff38be96ed437d575df4391d47ef0feb6b0f91f05",
+      "sizeBytes": 712
     },
     {
       "path": "src/modules/practices/errors/drill-name-conflict.error.ts",
@@ -44079,6 +44217,18 @@
       "sizeBytes": 3108
     },
     {
+      "path": "src/modules/practices/infrastructure/attendance-record.repository.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0c415078a3a141da92f9c7cb38270467da9a7261430ee797edd7128139e0c8f6",
+      "sizeBytes": 4974
+    },
+    {
       "path": "src/modules/practices/infrastructure/attendance-record.repository.ts",
       "root": "modules",
       "module": "practices",
@@ -44089,11 +44239,11 @@
           "name": "AttendanceRecordRepository"
         }
       ],
-      "hasSpec": false,
-      "specPath": null,
+      "hasSpec": true,
+      "specPath": "src/modules/practices/infrastructure/attendance-record.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:3d69accc8be6f02a66f8e0647e97606675582dbae9eba45940708ff76aae827d",
-      "sizeBytes": 8371
+      "hash": "sha256:01699ab82b71825ed638d9aa1ea8e0e044f2c465ab950788a46b3d9ad9d525b9",
+      "sizeBytes": 11541
     },
     {
       "path": "src/modules/practices/infrastructure/attendance-scoring-rule.repository.ts",
@@ -44624,6 +44774,10 @@
         },
         {
           "kind": "function",
+          "name": "buildSelfHistoryScan"
+        },
+        {
+          "kind": "function",
           "name": "buildCorrectionContext"
         },
         {
@@ -44658,8 +44812,8 @@
       "hasSpec": true,
       "specPath": "src/modules/practices/lib/attendance.builders.spec.ts",
       "kind": "source",
-      "hash": "sha256:11721a348d98be33b483756f61ad16c046c2db55ed5b4d56c7edbe888a72a193",
-      "sizeBytes": 9908
+      "hash": "sha256:e58cdf425ddc777480e545b8d90a92076cfe6441951d5b8c4e27f16c0d187088",
+      "sizeBytes": 10287
     },
     {
       "path": "src/modules/practices/lib/attendance.helpers.spec.ts",
@@ -44693,6 +44847,10 @@
         },
         {
           "kind": "function",
+          "name": "parseNullableAttendanceState"
+        },
+        {
+          "kind": "function",
           "name": "parseAttendanceSource"
         },
         {
@@ -44714,6 +44872,10 @@
         {
           "kind": "function",
           "name": "resolveAttendancePage"
+        },
+        {
+          "kind": "function",
+          "name": "resolveSelfHistoryRequest"
         },
         {
           "kind": "function",
@@ -44739,8 +44901,8 @@
       "hasSpec": true,
       "specPath": "src/modules/practices/lib/attendance.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:88fda238956d43ef24e0f1de523fe0d79ecfa0ef7ec81553448a5353e972b641",
-      "sizeBytes": 5406
+      "hash": "sha256:8ac11ec48ef1c0f01ef7329305b605534385af928c1299355a34c22e2654690f",
+      "sizeBytes": 5954
     },
     {
       "path": "src/modules/practices/lib/attendance.mapper.spec.ts",
@@ -44751,8 +44913,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:85a84a80f51a8eb35a661fe01a870386538e289b38bb336eb754afebe3fb2ea9",
-      "sizeBytes": 5293
+      "hash": "sha256:6d03c4f6bd91cc6a9954c13b48dd77c1709c27bec8abfba06d240c529ad96505",
+      "sizeBytes": 5894
     },
     {
       "path": "src/modules/practices/lib/attendance.mapper.ts",
@@ -44763,6 +44925,10 @@
         {
           "kind": "function",
           "name": "toAttendanceView"
+        },
+        {
+          "kind": "function",
+          "name": "withSelfCheckIn"
         },
         {
           "kind": "function",
@@ -44784,8 +44950,8 @@
       "hasSpec": true,
       "specPath": "src/modules/practices/lib/attendance.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:077683ce7c7da58e9cba3573a4a393d6636c66a15b56683f42a66328b1cc2891",
-      "sizeBytes": 3150
+      "hash": "sha256:0b004be6f8f0d7d62daa69ec3fd806566ee0f9e4013e7b3e366173184c4049fb",
+      "sizeBytes": 3466
     },
     {
       "path": "src/modules/practices/lib/cairo-time.spec.ts",
@@ -45931,6 +46097,10 @@
         },
         {
           "kind": "const",
+          "name": "ATTENDANCE_SELF_HISTORY_ROUTE"
+        },
+        {
+          "kind": "const",
           "name": "SEASON_ID_QUERY"
         },
         {
@@ -45972,6 +46142,18 @@
         {
           "kind": "const",
           "name": "PARTICIPATION_SCAN_LIMIT"
+        },
+        {
+          "kind": "const",
+          "name": "CHECK_IN_OPENS_BEFORE_START_MINUTES"
+        },
+        {
+          "kind": "const",
+          "name": "CHECK_IN_CLOSES_AFTER_END_MINUTES"
+        },
+        {
+          "kind": "const",
+          "name": "MS_PER_MINUTE"
         },
         {
           "kind": "const",
@@ -46096,13 +46278,21 @@
         {
           "kind": "const",
           "name": "ATTENDANCE_RULE_MISSING_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_CHECK_IN_CLOSED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "ATTENDANCE_CHECK_IN_CLOSED_MESSAGE_KEY"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:757633ced47d9144071cb90c4684b859d10de31e3c4950e223d91021a7ae7f50",
-      "sizeBytes": 6064
+      "hash": "sha256:356f35e8b2e429f8cf8fcd47ad4a495852c997923eb3badbd056726cf14b9b97",
+      "sizeBytes": 7035
     },
     {
       "path": "src/modules/practices/model/attendance.enums.ts",
@@ -46149,13 +46339,29 @@
         {
           "kind": "const",
           "name": "ATTENDANCE_RULE_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "CheckInWindowState"
+        },
+        {
+          "kind": "const",
+          "name": "CHECK_IN_WINDOW_STATE_VALUES"
+        },
+        {
+          "kind": "enum",
+          "name": "SelfCheckInState"
+        },
+        {
+          "kind": "const",
+          "name": "SELF_CHECK_IN_STATE_VALUES"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6dfa41941931ac78187fceadc7e2187d9c0b30a20d6892bfb1202b82485d7898",
-      "sizeBytes": 3306
+      "hash": "sha256:0aef1cf9709656b0ff35963ce08625595258195745bbf3d6eb5e2178ec31c960",
+      "sizeBytes": 4354
     },
     {
       "path": "src/modules/practices/model/attendance.rows.ts",
@@ -46185,6 +46391,10 @@
         },
         {
           "kind": "interface",
+          "name": "SelfHistoryEntryRow"
+        },
+        {
+          "kind": "interface",
           "name": "ParticipationFactRow"
         },
         {
@@ -46199,8 +46409,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:7483f0fb20e81eb9d2d7c6a6377871c07c7a6ef4c2ab1510b86e44bbf5ade857",
-      "sizeBytes": 3026
+      "hash": "sha256:9898879a41aa869897bf82bed270a97dcded8fb7684352fc77b4225eea646119",
+      "sizeBytes": 3523
     },
     {
       "path": "src/modules/practices/model/attendance.types.ts",
@@ -46258,6 +46468,14 @@
         },
         {
           "kind": "interface",
+          "name": "CheckInWindow"
+        },
+        {
+          "kind": "interface",
+          "name": "SelfCheckInEligibility"
+        },
+        {
+          "kind": "interface",
           "name": "CorrectAttendanceCommand"
         },
         {
@@ -46302,6 +46520,26 @@
         },
         {
           "kind": "interface",
+          "name": "SelfHistoryEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "SelfHistoryView"
+        },
+        {
+          "kind": "interface",
+          "name": "SelfHistoryQueryInput"
+        },
+        {
+          "kind": "interface",
+          "name": "SelfHistoryRequest"
+        },
+        {
+          "kind": "interface",
+          "name": "SelfHistoryScan"
+        },
+        {
+          "kind": "interface",
           "name": "ParticipationView"
         },
         {
@@ -46332,8 +46570,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:382cebc473de05e7e5c49b072dd3f2e0553fe691f1ad009816fd19b74484b1c9",
-      "sizeBytes": 12270
+      "hash": "sha256:0623d06512decae4f330173060c5d5d4c3926abf1c9103092c68a84ea86264b9",
+      "sizeBytes": 15050
     },
     {
       "path": "src/modules/practices/model/calendar.constants.ts",
@@ -47620,8 +47858,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:bd4cd1c617c0a4084210beb90b4fd6ee01be5219183f95cdbf4154b06b8866a3",
-      "sizeBytes": 9260
+      "hash": "sha256:c955d663f21ae766ded9de0d6774943ace13da48ec2586ab04b1aa899bce3b11",
+      "sizeBytes": 9404
     },
     {
       "path": "src/modules/rbac/api/dto/assign-role.dto.ts",

@@ -4,6 +4,7 @@ import {
   RequirePermissions,
 } from '@core/auth';
 import {
+  ApiConflictResponse,
   ApiForbiddenResponse,
   ApiOkResponse,
   ApiOperation,
@@ -107,8 +108,26 @@ export class AttendanceController {
   @Post(ATTENDANCE_CHECK_IN_ROUTE)
   @HttpCode(200)
   @RequirePermissions(Permission.AttendanceReadSelf)
-  @ApiOperation({ summary: 'Check myself in for a session (status derived)' })
+  @ApiOperation({
+    summary:
+      'Check myself in for a session (status derived; idempotent — a repeated ' +
+      'check-in returns the existing record unchanged)',
+    description:
+      'The status is derived from the server clock, never trusted from the ' +
+      'client. A new check-in must fall inside the explicit window: it opens ' +
+      '60 minutes before startsAt and closes at the session end, and only ' +
+      'published/rescheduled sessions accept check-ins — otherwise 409 with ' +
+      'messageKey errors.practices.checkInWindowClosed. Venue/geo/check-in-code ' +
+      'policy is explicitly none: the window is the whole rule. A finalized ' +
+      'sheet responds 409 errors.practices.attendanceLocked.',
+  })
   @ApiOkResponse({ description: 'Checked in', type: AttendanceResponseDto })
+  @ApiConflictResponse({
+    description:
+      'Outside the check-in window or session not check-in-able ' +
+      '(errors.practices.checkInWindowClosed), or the sheet is finalized ' +
+      '(errors.practices.attendanceLocked)',
+  })
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   checkIn(

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T03:08:44.038Z",
+  "generatedAt": "2026-07-23T03:54:14.305Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -27853,6 +27853,16 @@
     },
     {
       "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/modules/practices/api/dto/attendance-self-history-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/modules/practices/api/dto/attendance-self-history.query.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
       "to": "src/modules/practices/api/dto/participation-response.dto.ts",
       "type": "internal"
     },
@@ -27863,7 +27873,17 @@
     },
     {
       "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/modules/practices/application/attendance-self-history.query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
       "to": "src/modules/practices/application/participation-query.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/attendance-participation.controller.ts",
+      "to": "src/modules/practices/lib/attendance.helpers.ts",
       "type": "internal"
     },
     {
@@ -28178,6 +28198,11 @@
     },
     {
       "from": "src/modules/practices/api/dto/attendance-response.dto.ts",
+      "to": "src/modules/practices/api/dto/self-check-in-eligibility.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-response.dto.ts",
       "to": "src/modules/practices/model/attendance.enums.ts",
       "type": "internal"
     },
@@ -28189,6 +28214,31 @@
     {
       "from": "src/modules/practices/api/dto/attendance-revision-response.dto.ts",
       "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-self-history-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-self-history-response.dto.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-self-history.query.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-self-history.query.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/attendance-self-history.query.dto.ts",
+      "to": "src/modules/practices/api/dto/list-query.dto.ts",
       "type": "internal"
     },
     {
@@ -28782,6 +28832,11 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/dto/roster-entry-response.dto.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/api/dto/rsvp-history-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -28834,6 +28889,16 @@
     {
       "from": "src/modules/practices/api/dto/schedule-response.dto.ts",
       "to": "src/modules/practices/model/practices.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/dto/self-check-in-eligibility.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/api/dto/self-check-in-eligibility.dto.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
       "type": "internal"
     },
     {
@@ -29923,12 +29988,22 @@
     },
     {
       "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
       "to": "src/core/persistence/unit-of-work.port.ts",
       "type": "cross-cutting"
     },
     {
       "from": "src/modules/practices/application/attendance-query.service.ts",
       "to": "src/modules/practices/application/practice-lookup.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/modules/practices/domain/check-in-window.policy.ts",
       "type": "internal"
     },
     {
@@ -29964,6 +30039,11 @@
     {
       "from": "src/modules/practices/application/attendance-query.service.ts",
       "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-query.service.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
       "type": "internal"
     },
     {
@@ -30013,6 +30093,46 @@
     },
     {
       "from": "src/modules/practices/application/attendance-recorder.service.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-self-history.query.service.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-self-history.query.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-self-history.query.service.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-self-history.query.service.ts",
+      "to": "src/modules/practices/errors/attendance-not-member.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-self-history.query.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-self-history.query.service.ts",
+      "to": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-self-history.query.service.ts",
+      "to": "src/modules/practices/lib/attendance.builders.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/attendance-self-history.query.service.ts",
       "to": "src/modules/practices/model/attendance.types.ts",
       "type": "internal"
     },
@@ -31453,12 +31573,27 @@
     },
     {
       "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/domain/check-in-window.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
       "to": "src/modules/practices/errors/attendance-not-member.error.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/errors/check-in-window-closed.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
       "to": "src/modules/practices/infrastructure/attendance-membership.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/infrastructure/attendance-record.repository.ts",
       "type": "internal"
     },
     {
@@ -31478,7 +31613,17 @@
     },
     {
       "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
       "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/application/self-check-in.use-case.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
       "type": "internal"
     },
     {
@@ -31807,6 +31952,31 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/domain/check-in-window.policy.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/check-in-window.policy.ts",
+      "to": "src/modules/practices/model/attendance.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/check-in-window.policy.ts",
+      "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/check-in-window.policy.ts",
+      "to": "src/modules/practices/model/practices.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/domain/check-in-window.policy.ts",
+      "to": "src/modules/practices/model/practices.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/domain/practice-reminder.policy.ts",
       "to": "src/modules/practices/model/calendar.constants.ts",
       "type": "internal"
@@ -31974,6 +32144,16 @@
     {
       "from": "src/modules/practices/errors/calendar-feed-unavailable.error.ts",
       "to": "src/modules/practices/model/calendar.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/errors/check-in-window-closed.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/practices/errors/check-in-window-closed.error.ts",
+      "to": "src/modules/practices/model/attendance.constants.ts",
       "type": "internal"
     },
     {
@@ -32318,6 +32498,11 @@
     },
     {
       "from": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "to": "src/modules/practices/lib/rsvp.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record.repository.ts",
       "to": "src/modules/practices/model/attendance.constants.ts",
       "type": "internal"
     },
@@ -32329,6 +32514,11 @@
     {
       "from": "src/modules/practices/infrastructure/attendance-record.repository.ts",
       "to": "src/modules/practices/model/attendance.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/attendance-record.repository.ts",
+      "to": "src/modules/practices/model/practices.enums.ts",
       "type": "internal"
     },
     {
@@ -32942,6 +33132,11 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/model/attendance.types.ts",
+      "to": "src/modules/practices/model/rsvp.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/practices/model/calendar.constants.ts",
       "to": "src/core/errors/error.types.ts",
       "type": "cross-cutting"
@@ -33109,6 +33304,11 @@
     {
       "from": "src/modules/practices/practices.module.ts",
       "to": "src/modules/practices/application/attendance-recorder.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/practices.module.ts",
+      "to": "src/modules/practices/application/attendance-self-history.query.service.ts",
       "type": "internal"
     },
     {

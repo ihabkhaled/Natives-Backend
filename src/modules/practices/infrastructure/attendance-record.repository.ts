@@ -6,16 +6,19 @@ import {
   parseAttendanceStatus,
   parseExcuseCategory,
   parseNullableAttendanceSource,
+  parseNullableAttendanceState,
   parseNullableAttendanceStatus,
   toIsoOrNull,
 } from '../lib/attendance.helpers';
 import { toDate, toNullableDate } from '../lib/practices.helpers';
+import { parseNullableRsvpStatus } from '../lib/rsvp.helpers';
 import { ATTENDANCE_RECORD_COLUMNS } from '../model/attendance.constants';
 import type {
   AttendanceCountRow,
   AttendanceRecordRow,
   ParticipationFactRow,
   RosterEntryRow,
+  SelfHistoryEntryRow,
 } from '../model/attendance.rows';
 import type {
   AttendanceRecord,
@@ -23,7 +26,10 @@ import type {
   NewAttendanceRecord,
   ParticipationFact,
   RosterEntry,
+  SelfHistoryEntry,
+  SelfHistoryScan,
 } from '../model/attendance.types';
+import { SessionStatus } from '../model/practices.enums';
 import type { PageRequest } from '../model/practices.types';
 
 /**
@@ -132,10 +138,17 @@ export class AttendanceRecordRepository {
     page: PageRequest,
   ): Promise<readonly RosterEntry[]> {
     const rows = await scope.run<RosterEntryRow>(
-      `SELECT m."id" AS "membership_id", m."user_id", a."status",
+      `SELECT m."id" AS "membership_id", m."user_id",
+              COALESCE(p."preferred_name", p."full_name", u."display_name",
+                       u."email") AS "display_name",
+              r."status" AS "rsvp_status", a."status",
               a."check_in_at", a."lateness_minutes", a."excuse_category",
               a."source", a."version"
          FROM "memberships" m
+         LEFT JOIN "member_profiles" p ON p."membership_id" = m."id"
+         LEFT JOIN "users" u ON u."id" = m."user_id"
+         LEFT JOIN "practice_rsvps" r
+           ON r."session_id" = $2 AND r."membership_id" = m."id"
          LEFT JOIN "attendance_records" a
            ON a."session_id" = $2 AND a."membership_id" = m."id"
         WHERE m."team_id" = $1 AND m."deleted_at" IS NULL
@@ -145,6 +158,59 @@ export class AttendanceRecordRepository {
       [teamId, sessionId, page.limit, page.offset],
     );
     return rows.map(row => this.toRosterEntry(row));
+  }
+
+  /**
+   * A member's own attendance across the team's past (started, not cancelled)
+   * sessions, newest first: sessions LEFT-JOINed with the caller's record and
+   * the sheet state, so unrecorded sessions appear with null status.
+   */
+  async selfHistory(
+    scope: TransactionScope,
+    scan: SelfHistoryScan,
+  ): Promise<readonly SelfHistoryEntry[]> {
+    const rows = await scope.run<SelfHistoryEntryRow>(
+      `SELECT s."id" AS "session_id", s."starts_at", s."ends_at",
+              s."session_type", a."status", a."lateness_minutes",
+              a."excuse_category", a."source", a."recorded_at",
+              sh."state" AS "sheet_state"
+         FROM "practice_sessions" s
+         LEFT JOIN "attendance_records" a
+           ON a."session_id" = s."id" AND a."membership_id" = $2
+         LEFT JOIN "attendance_sheets" sh ON sh."session_id" = s."id"
+        WHERE s."team_id" = $1 AND s."starts_at" <= $3 AND s."status" <> $4
+          AND ($5::uuid IS NULL OR s."season_id" = $5)
+        ORDER BY s."starts_at" DESC, s."id" DESC
+        LIMIT $6 OFFSET $7`,
+      [
+        scan.teamId,
+        scan.membershipId,
+        scan.now.toISOString(),
+        SessionStatus.Cancelled,
+        scan.seasonId,
+        scan.page.limit,
+        scan.page.offset,
+      ],
+    );
+    return rows.map(row => this.toSelfHistoryEntry(row));
+  }
+
+  async countSelfHistory(
+    scope: TransactionScope,
+    scan: SelfHistoryScan,
+  ): Promise<number> {
+    const rows = await scope.run<AttendanceCountRow>(
+      `SELECT COUNT(*)::int AS "count" FROM "practice_sessions" s
+        WHERE s."team_id" = $1 AND s."starts_at" <= $2 AND s."status" <> $3
+          AND ($4::uuid IS NULL OR s."season_id" = $4)`,
+      [
+        scan.teamId,
+        scan.now.toISOString(),
+        SessionStatus.Cancelled,
+        scan.seasonId,
+      ],
+    );
+    return rows[0]?.count ?? 0;
   }
 
   async countRoster(scope: TransactionScope, teamId: string): Promise<number> {
@@ -203,12 +269,29 @@ export class AttendanceRecordRepository {
     return {
       membershipId: row.membership_id,
       userId: row.user_id,
+      displayName: row.display_name,
+      rsvpStatus: parseNullableRsvpStatus(row.rsvp_status),
       status: parseNullableAttendanceStatus(row.status),
       checkInAt: toNullableDate(row.check_in_at),
       latenessMinutes: row.lateness_minutes,
       excuseCategory: parseExcuseCategory(row.excuse_category),
       source: parseNullableAttendanceSource(row.source),
       version: row.version,
+    };
+  }
+
+  private toSelfHistoryEntry(row: SelfHistoryEntryRow): SelfHistoryEntry {
+    return {
+      sessionId: row.session_id,
+      startsAt: toDate(row.starts_at),
+      endsAt: toDate(row.ends_at),
+      sessionType: row.session_type,
+      status: parseNullableAttendanceStatus(row.status),
+      latenessMinutes: row.lateness_minutes,
+      excuseCategory: parseExcuseCategory(row.excuse_category),
+      source: parseNullableAttendanceSource(row.source),
+      recordedAt: toNullableDate(row.recorded_at),
+      sheetState: parseNullableAttendanceState(row.sheet_state),
     };
   }
 

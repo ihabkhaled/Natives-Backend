@@ -219,6 +219,81 @@ describe('canonical OpenAPI contract (e2e)', () => {
     );
   });
 
+  it('describes the P3 attendance self-service surfaces', () => {
+    const document = createOpenApiDocument(app);
+    const schemas = document.components?.schemas ?? {};
+
+    // A1 — the paginated own-history read.
+    expect(
+      document.paths['/teams/{teamId}/attendance/me/history']?.get?.responses,
+    ).toHaveProperty('200');
+    expect(schemas['AttendanceSelfHistoryResponseDto']).toEqual(
+      expect.objectContaining({
+        properties: expect.objectContaining({
+          items: expect.objectContaining({ type: 'array' }),
+          total: expect.anything(),
+        }),
+      }),
+    );
+    expect(schemas['AttendanceSelfHistoryEntryResponseDto']).toEqual(
+      expect.objectContaining({
+        properties: expect.objectContaining({
+          status: expect.objectContaining({ nullable: true }),
+          sheetState: expect.objectContaining({ nullable: true }),
+        }),
+      }),
+    );
+
+    // A2/A3 — the check-in operation documents the window + idempotency and a
+    // 409 window-closed contract.
+    const checkIn =
+      document.paths[
+        '/teams/{teamId}/practice-sessions/{sessionId}/attendance/check-in'
+      ]?.post;
+    expect(checkIn?.responses).toHaveProperty('409');
+    expect(checkIn?.summary).toContain('idempotent');
+    expect(checkIn?.description).toContain('checkInWindowClosed');
+
+    // A4 — the own-attendance read carries the nullable eligibility block.
+    expect(schemas['AttendanceResponseDto']).toEqual(
+      expect.objectContaining({
+        properties: expect.objectContaining({
+          selfCheckIn: expect.objectContaining({ nullable: true }),
+        }),
+      }),
+    );
+    expect(schemas['SelfCheckInEligibilityDto']).toEqual(
+      expect.objectContaining({
+        required: ['state', 'opensAt', 'closesAt'],
+        properties: expect.objectContaining({
+          state: expect.objectContaining({
+            enum: ['not_open', 'open', 'closed', 'locked', 'recorded'],
+          }),
+        }),
+      }),
+    );
+
+    // A5 — both participation reads pin the rule-missing 409 contract.
+    expect(
+      document.paths['/teams/{teamId}/attendance/me/participation']?.get
+        ?.responses,
+    ).toHaveProperty('409');
+    expect(
+      document.paths['/teams/{teamId}/attendance/participation/{membershipId}']
+        ?.get?.responses,
+    ).toHaveProperty('409');
+
+    // A6 — roster rows carry the additive identity/RSVP context.
+    expect(schemas['PracticeRosterEntryResponseDto']).toEqual(
+      expect.objectContaining({
+        properties: expect.objectContaining({
+          displayName: expect.objectContaining({ nullable: true }),
+          rsvpStatus: expect.objectContaining({ nullable: true }),
+        }),
+      }),
+    );
+  });
+
   it('publishes unique operation IDs and representative schemas', () => {
     const document = createOpenApiDocument(app);
     const operationIds = Object.values(document.paths).flatMap(path =>
