@@ -52,11 +52,12 @@ import {
 } from './dto/analytics.dto';
 
 /**
- * HTTP surface for governed analytics read models. Player and team series are
- * analytics.read.team (the application applies scope and the visibility of the
- * team read model); the cohort comparison is analytics.read.team and is
- * suppressed below the privacy threshold; the rebuild is analytics.read.team +
- * data_quality.manage.
+ * HTTP surface for governed analytics read models. The player series is
+ * dual-gated in the application layer (B3): analytics.read.team reads any
+ * player, analytics.read.self reads exactly the caller's own membership —
+ * anything else is a typed 403 (errors.analytics.forbidden). The team series
+ * and cohort comparison are analytics.read.team (cohorts suppressed below the
+ * privacy threshold); the rebuild is analytics.read.team + data_quality.manage.
  */
 @ApiTags(ANALYTICS_API_TAG)
 @Controller(ANALYTICS_ROUTE)
@@ -68,16 +69,29 @@ export class AnalyticsController {
   ) {}
 
   @Get(PLAYER_SERIES_ROUTE)
-  @RequirePermissions(Permission.AnalyticsReadTeam)
-  @ApiOperation({ summary: 'Chart-ready series for a player dimension' })
+  @ApiOperation({
+    summary: 'Chart-ready series for a player dimension',
+    description:
+      'Dual-gated in the application layer: analytics.read.team reads any ' +
+      'player; analytics.read.self reads exactly the caller’s own membership ' +
+      'series. Any other combination is a 403 with messageKey ' +
+      'errors.analytics.forbidden.',
+  })
   @ApiOkResponse({ type: AnalyticsSeriesResponseDto })
+  @ApiForbiddenResponse({
+    description:
+      'Forbidden — neither analytics.read.team nor an own-membership ' +
+      'analytics.read.self read (errors.analytics.forbidden)',
+  })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   playerSeries(
     @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
     @Param(SUBJECT_ID_PARAM, UuidValidationPipe) subjectId: string,
     @Query() query: AnalyticsSeriesQueryDto,
+    @CurrentUser() actor: AuthUserIdentity,
   ): Promise<AnalyticsSeriesResponseDto> {
     return this.series.playerSeries(
+      actor,
       teamId,
       subjectId,
       toSeriesQuery(query),

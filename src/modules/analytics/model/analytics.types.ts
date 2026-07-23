@@ -113,6 +113,12 @@ export interface SeriesQuery {
   readonly periodType: AnalyticsPeriodType;
 }
 
+/** The analytics read tiers the caller holds within a team scope (B3). */
+export interface AnalyticsReadTiers {
+  readonly canReadTeam: boolean;
+  readonly canReadSelf: boolean;
+}
+
 export interface SeriesQueryInput {
   readonly dimension?: AnalyticsDimension | null;
   readonly periodType?: AnalyticsPeriodType | null;

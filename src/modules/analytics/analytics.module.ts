@@ -1,9 +1,11 @@
 import { ClockModule } from '@core/clock/clock.module';
 import { IdGeneratorModule } from '@core/id-generator/id-generator.module';
 import { PlatformModule } from '@modules/platform';
+import { RbacModule } from '@modules/rbac';
 import { Module } from '@nestjs/common';
 
 import { AnalyticsController } from './api/analytics.controller';
+import { AnalyticsAuthorityService } from './application/analytics-authority.service';
 import { AnalyticsScopeService } from './application/analytics-scope.service';
 import { AnalyticsSeriesService } from './application/analytics-series.service';
 import { CohortComparisonService } from './application/cohort-comparison.service';
@@ -23,11 +25,12 @@ import { ProjectionRepository } from './infrastructure/projection.repository';
  * as descriptive statistics only, never framed as causation.
  */
 @Module({
-  imports: [ClockModule, IdGeneratorModule, PlatformModule],
+  imports: [ClockModule, IdGeneratorModule, PlatformModule, RbacModule],
   controllers: [AnalyticsController],
   providers: [
     ProjectionRepository,
     AnalyticsFactRepository,
+    AnalyticsAuthorityService,
     AnalyticsScopeService,
     AnalyticsSeriesService,
     CohortComparisonService,

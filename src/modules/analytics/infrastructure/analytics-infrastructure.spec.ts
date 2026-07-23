@@ -131,6 +131,35 @@ describe('AnalyticsFactRepository', () => {
     );
   });
 
+  it('probes membership ownership for the analytics self tier (B3)', async () => {
+    const own = scopeReturning([{ id: 'member-1' }]);
+    expect(
+      await repository.membershipBelongsToUser(
+        own.scope,
+        'team-1',
+        'member-1',
+        'user-1',
+      ),
+    ).toBe(true);
+    const sql = String(own.run.mock.calls[0]?.[0]);
+    expect(sql).toContain('"user_id" = $3');
+    expect(sql).toContain('"deleted_at" IS NULL');
+    expect(own.run.mock.calls[0]?.[1]).toEqual([
+      'member-1',
+      'team-1',
+      'user-1',
+    ]);
+    const foreign = scopeReturning([]);
+    expect(
+      await repository.membershipBelongsToUser(
+        foreign.scope,
+        'team-1',
+        'member-2',
+        'user-1',
+      ),
+    ).toBe(false);
+  });
+
   it('aggregates attendance and points facts into monthly buckets', async () => {
     const attendance = scopeReturning([
       {

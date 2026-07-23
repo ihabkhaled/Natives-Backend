@@ -44,6 +44,22 @@ export class AnalyticsFactRepository {
     return rows.length > 0;
   }
 
+  /** Whether the subject membership belongs to the acting user (self-scope). */
+  async membershipBelongsToUser(
+    scope: TransactionScope,
+    teamId: string,
+    membershipId: string,
+    userId: string,
+  ): Promise<boolean> {
+    const rows = await scope.run<AnalyticsIdRow>(
+      `SELECT "id" FROM "memberships"
+        WHERE "id" = $1 AND "team_id" = $2 AND "user_id" = $3
+          AND "deleted_at" IS NULL`,
+      [membershipId, teamId, userId],
+    );
+    return rows.length > 0;
+  }
+
   /** The active roster in scope — the complete set of subjects to project. */
   async listRoster(
     scope: TransactionScope,

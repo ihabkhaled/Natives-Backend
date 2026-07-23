@@ -8,6 +8,7 @@ import type {
 import type { AuditRecorderService } from '@modules/platform';
 import { describe, expect, it, vi } from 'vitest';
 
+import { AnalyticsForbiddenError } from '../errors/analytics-forbidden.error';
 import { AnalyticsScopeNotFoundError } from '../errors/analytics-scope-not-found.error';
 import type { AnalyticsFactRepository } from '../infrastructure/analytics-fact.repository';
 import type { ProjectionRepository } from '../infrastructure/projection.repository';
@@ -16,6 +17,7 @@ import {
   AnalyticsPeriodType,
 } from '../model/analytics.enums';
 import type { AnalyticsProjection } from '../model/analytics.types';
+import { AnalyticsAuthorityService } from './analytics-authority.service';
 import { AnalyticsScopeService } from './analytics-scope.service';
 import { AnalyticsSeriesService } from './analytics-series.service';
 import { CohortComparisonService } from './cohort-comparison.service';
@@ -68,6 +70,7 @@ function factRepo(
   return {
     activeTeamExists: vi.fn().mockResolvedValue(true),
     membershipExists: vi.fn().mockResolvedValue(true),
+    membershipBelongsToUser: vi.fn().mockResolvedValue(true),
     listRoster: vi.fn().mockResolvedValue(['member-1']),
     listAttendanceFacts: vi.fn().mockResolvedValue([
       {
@@ -121,12 +124,28 @@ describe('AnalyticsScopeService', () => {
   });
 });
 
+function authority(keys: string[]): AnalyticsAuthorityService {
+  return new AnalyticsAuthorityService({
+    resolve: vi.fn().mockResolvedValue(new Set(keys)),
+  });
+}
+
+const SERIES_QUERY = {
+  dimension: AnalyticsDimension.Attendance,
+  periodType: AnalyticsPeriodType.Monthly,
+};
+
 describe('AnalyticsSeriesService', () => {
-  function build(repo = projectionRepo()) {
+  function build(
+    repo = projectionRepo(),
+    tiers = authority(['analytics.read.team']),
+    facts = factRepo(),
+  ) {
     return new AnalyticsSeriesService(
       UOW,
       repo,
-      new AnalyticsScopeService(factRepo()),
+      new AnalyticsScopeService(facts),
+      tiers,
     );
   }
 
@@ -140,19 +159,67 @@ describe('AnalyticsSeriesService', () => {
             projection(null, { periodKey: '2025-02' }),
           ]),
       }),
-    ).playerSeries(
-      'team-1',
-      'member-1',
-      {
-        dimension: AnalyticsDimension.Attendance,
-        periodType: AnalyticsPeriodType.Monthly,
-      },
-      { limit: 30, offset: 0 },
-    );
+    ).playerSeries(ACTOR, 'team-1', 'member-1', SERIES_QUERY, {
+      limit: 30,
+      offset: 0,
+    });
     expect(series.seriesId).toContain('member-1');
     expect(series.points).toHaveLength(2);
     expect(series.points[1]?.value).toBeNull();
     expect(series.summary).toContain('evaluated');
+  });
+
+  it('lets a self-tier caller read exactly their own series (B3)', async () => {
+    const series = await build(
+      projectionRepo(),
+      authority(['analytics.read.self']),
+    ).playerSeries(ACTOR, 'team-1', 'member-1', SERIES_QUERY, {
+      limit: 30,
+      offset: 0,
+    });
+    expect(series.seriesId).toContain('member-1');
+  });
+
+  it('403s a self-tier caller reading a foreign membership series', async () => {
+    await expect(
+      build(
+        projectionRepo(),
+        authority(['analytics.read.self']),
+        factRepo({
+          membershipBelongsToUser: vi.fn().mockResolvedValue(false),
+        }),
+      ).playerSeries(ACTOR, 'team-1', 'member-2', SERIES_QUERY, {
+        limit: 30,
+        offset: 0,
+      }),
+    ).rejects.toBeInstanceOf(AnalyticsForbiddenError);
+  });
+
+  it('403s a caller with no analytics grant before any scope probe', async () => {
+    const facts = factRepo();
+    await expect(
+      build(projectionRepo(), authority([]), facts).playerSeries(
+        ACTOR,
+        'team-1',
+        'member-1',
+        SERIES_QUERY,
+        { limit: 30, offset: 0 },
+      ),
+    ).rejects.toBeInstanceOf(AnalyticsForbiddenError);
+    expect(facts.membershipExists).not.toHaveBeenCalled();
+  });
+
+  it('404s a team-tier read of an unknown membership', async () => {
+    await expect(
+      build(
+        projectionRepo(),
+        authority(['analytics.read.team']),
+        factRepo({ membershipExists: vi.fn().mockResolvedValue(false) }),
+      ).playerSeries(ACTOR, 'team-1', 'member-9', SERIES_QUERY, {
+        limit: 30,
+        offset: 0,
+      }),
+    ).rejects.toBeInstanceOf(AnalyticsScopeNotFoundError);
   });
 
   it('builds a team series', async () => {

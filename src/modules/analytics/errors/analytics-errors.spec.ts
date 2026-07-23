@@ -1,6 +1,7 @@
 import { HttpStatus } from '@nestjs/common';
 import { describe, expect, it } from 'vitest';
 
+import { AnalyticsForbiddenError } from './analytics-forbidden.error';
 import { AnalyticsScopeNotFoundError } from './analytics-scope-not-found.error';
 import { AnalyticsValidationError } from './analytics-validation.error';
 import { CohortTooSmallError } from './cohort-too-small.error';
@@ -22,6 +23,11 @@ describe('analytics errors', () => {
         error: new CohortTooSmallError(),
         status: HttpStatus.FORBIDDEN,
         key: 'errors.analytics.cohortTooSmall',
+      },
+      {
+        error: new AnalyticsForbiddenError(),
+        status: HttpStatus.FORBIDDEN,
+        key: 'errors.analytics.forbidden',
       },
     ];
     for (const { error, status, key } of cases) {

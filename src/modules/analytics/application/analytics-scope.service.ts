@@ -28,4 +28,19 @@ export class AnalyticsScopeService {
       throw new AnalyticsScopeNotFoundError();
     }
   }
+
+  /** Whether the subject membership belongs to the acting user (B3). */
+  isOwnMembership(
+    scope: TransactionScope,
+    teamId: string,
+    membershipId: string,
+    userId: string,
+  ): Promise<boolean> {
+    return this.facts.membershipBelongsToUser(
+      scope,
+      teamId,
+      membershipId,
+      userId,
+    );
+  }
 }

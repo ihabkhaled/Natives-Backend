@@ -89,6 +89,10 @@ export const COHORT_TOO_SMALL_MESSAGE =
   'The cohort is too small to compare without risking a sensitive inference';
 export const COHORT_TOO_SMALL_MESSAGE_KEY: ErrorMessageKey =
   'errors.analytics.cohortTooSmall';
+export const ANALYTICS_FORBIDDEN_MESSAGE =
+  'You are not permitted to read this analytics subject';
+export const ANALYTICS_FORBIDDEN_MESSAGE_KEY: ErrorMessageKey =
+  'errors.analytics.forbidden';
 
 // --- Audit / events ----------------------------------------------------------
 
