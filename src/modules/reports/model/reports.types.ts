@@ -99,11 +99,15 @@ export type ReportJobPage = PagedResult<ReportJob>;
 export interface ReportListFilter {
   readonly template: ReportTemplate | null;
   readonly status: ReportStatus | null;
+  readonly seasonId: string | null;
+  readonly requestedBy: string | null;
 }
 
 export interface ReportListFilterInput {
   readonly template?: ReportTemplate | null;
   readonly status?: ReportStatus | null;
+  readonly seasonId?: string | null;
+  readonly requestedBy?: string | null;
 }
 
 // --- Document generation (adapter contracts) ---------------------------------

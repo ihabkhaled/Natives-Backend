@@ -160,12 +160,16 @@ export class ReportJobRepository {
         WHERE "team_id" = $1
           AND ($2::text IS NULL OR "template" = $2)
           AND ($3::text IS NULL OR "status" = $3)
+          AND ($4::uuid IS NULL OR "season_id" = $4)
+          AND ($5::uuid IS NULL OR "requested_by" = $5)
         ORDER BY "created_at" DESC, "id" ASC
-        LIMIT $4 OFFSET $5`,
+        LIMIT $6 OFFSET $7`,
       [
         teamId,
         filter.template,
         filter.status,
+        filter.seasonId,
+        filter.requestedBy,
         Math.min(page.limit, LIST_MAX_LIMIT),
         page.offset,
       ],
@@ -182,8 +186,16 @@ export class ReportJobRepository {
       `SELECT COUNT(*)::int AS "count" FROM "report_jobs"
         WHERE "team_id" = $1
           AND ($2::text IS NULL OR "template" = $2)
-          AND ($3::text IS NULL OR "status" = $3)`,
-      [teamId, filter.template, filter.status],
+          AND ($3::text IS NULL OR "status" = $3)
+          AND ($4::uuid IS NULL OR "season_id" = $4)
+          AND ($5::uuid IS NULL OR "requested_by" = $5)`,
+      [
+        teamId,
+        filter.template,
+        filter.status,
+        filter.seasonId,
+        filter.requestedBy,
+      ],
     );
     return Number(rows[0]?.count ?? 0);
   }

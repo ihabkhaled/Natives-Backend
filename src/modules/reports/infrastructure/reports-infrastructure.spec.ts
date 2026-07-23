@@ -139,7 +139,12 @@ describe('ReportJobRepository', () => {
   });
 
   it('bounds the list, counts, and probes team activity', async () => {
-    const filter = { template: null, status: null };
+    const filter = {
+      template: null,
+      status: null,
+      seasonId: null,
+      requestedBy: null,
+    };
     const list = scopeReturning([ROW]);
     expect(
       await repository.listForScope(list.scope, 'team-1', filter, {
@@ -148,9 +153,15 @@ describe('ReportJobRepository', () => {
       }),
     ).toHaveLength(1);
     expect(list.run.mock.calls[0]?.[1]).toContain(100);
+    const listSql = String(list.run.mock.calls[0]?.[0]);
+    expect(listSql).toContain('($4::uuid IS NULL OR "season_id" = $4)');
+    expect(listSql).toContain('($5::uuid IS NULL OR "requested_by" = $5)');
     const count = scopeReturning([{ count: 2 }]);
     expect(await repository.countForScope(count.scope, 'team-1', filter)).toBe(
       2,
+    );
+    expect(String(count.run.mock.calls[0]?.[0])).toContain(
+      '($5::uuid IS NULL OR "requested_by" = $5)',
     );
     const team = scopeReturning([{ id: 'team-1' }]);
     expect(await repository.activeTeamExists(team.scope, 'team-1')).toBe(true);

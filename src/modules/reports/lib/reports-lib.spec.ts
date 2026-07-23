@@ -121,7 +121,20 @@ describe('reports command mapper', () => {
     const request = toReportRequest({ template: ReportTemplate.MatchSheet });
     expect(request.format).toBe(ReportFormat.Pdf);
     expect(request.parameters).toEqual({});
-    expect(toReportListFilter({})).toEqual({ template: null, status: null });
+    expect(toReportListFilter({})).toEqual({
+      template: null,
+      status: null,
+      seasonId: null,
+      requestedBy: null,
+    });
+    expect(
+      toReportListFilter({ seasonId: 'season-1', requestedBy: 'user-1' }),
+    ).toEqual({
+      template: null,
+      status: null,
+      seasonId: 'season-1',
+      requestedBy: 'user-1',
+    });
   });
 });
 

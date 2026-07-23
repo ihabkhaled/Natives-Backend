@@ -21,5 +21,7 @@ export function toReportListFilter(
   return {
     template: input.template ?? null,
     status: input.status ?? null,
+    seasonId: input.seasonId ?? null,
+    requestedBy: input.requestedBy ?? null,
   };
 }

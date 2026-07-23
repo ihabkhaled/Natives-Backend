@@ -133,7 +133,7 @@ describe('ReportQueryService', () => {
       (
         await service.listForScope(
           'team-1',
-          { template: null, status: null },
+          { template: null, status: null, seasonId: null, requestedBy: null },
           { limit: 20, offset: 0 },
         )
       ).total,

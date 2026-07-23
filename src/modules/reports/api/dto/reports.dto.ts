@@ -40,6 +40,22 @@ export class ReportListQueryDto {
   readonly status?: ReportStatus;
 
   @ApiPropertyOptional({
+    format: 'uuid',
+    description: 'Only jobs snapshotting this season.',
+  })
+  @IsOptional()
+  @IsUUID()
+  readonly seasonId?: string;
+
+  @ApiPropertyOptional({
+    format: 'uuid',
+    description: 'Only jobs requested by this user (the "my requests" facet).',
+  })
+  @IsOptional()
+  @IsUUID()
+  readonly requestedBy?: string;
+
+  @ApiPropertyOptional({
     minimum: LIST_MIN_LIMIT,
     maximum: LIST_MAX_LIMIT,
     default: LIST_DEFAULT_LIMIT,
