@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T06:03:17.502Z",
+  "generatedAt": "2026-07-23T06:57:44.143Z",
   "modules": [
     {
       "name": "activities",
@@ -1621,6 +1621,7 @@
           "src/modules/practices/api/dto/group-member-response.dto.ts",
           "src/modules/practices/api/dto/group-response.dto.ts",
           "src/modules/practices/api/dto/list-attendance.query.dto.ts",
+          "src/modules/practices/api/dto/list-calendar-feeds-response.dto.ts",
           "src/modules/practices/api/dto/list-drills-response.dto.ts",
           "src/modules/practices/api/dto/list-drills.query.dto.ts",
           "src/modules/practices/api/dto/list-query.dto.ts",
@@ -1813,8 +1814,8 @@
           "src/modules/practices/model/signals.types.ts"
         ]
       },
-      "fileCount": 225,
-      "specCount": 69,
+      "fileCount": 226,
+      "specCount": 70,
       "publicSurface": "src/modules/practices/index.ts",
       "hasEvents": false
     },

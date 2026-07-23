@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-23T06:03:17.502Z",
-  "treeHash": "sha256:f48554c537cf0d69b7e71d785648e838611d63d926ed9ec8e71f3265f8eee2a1",
+  "generatedAt": "2026-07-23T06:57:44.143Z",
+  "treeHash": "sha256:d693a87958f4d417db4cf945efbc0fbc1b5ce616f73f29d4f34bf445feb8e423",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -89,8 +89,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9360b73562596d8b4ee3151cfd6f0546b8394fa7fc265ffe1baae800e7af14cd",
-      "sizeBytes": 6089
+      "hash": "sha256:db2c60d183c35c9c066d6b435ebfb9daf36e21be0d05255f0079d563fbd24e43",
+      "sizeBytes": 7157
     },
     {
       "path": "src/bootstrap/bootstrap.ts",
@@ -41453,6 +41453,27 @@
       "sizeBytes": 339
     },
     {
+      "path": "src/modules/practices/api/dto/list-calendar-feeds-response.dto.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "CalendarFeedMetadataResponseDto"
+        },
+        {
+          "kind": "class",
+          "name": "ListCalendarFeedsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1121a8ac15600f0a56c5674961866534a671decc5425bac8c46e8fd0f3c19911",
+      "sizeBytes": 915
+    },
+    {
       "path": "src/modules/practices/api/dto/list-drills-response.dto.ts",
       "root": "modules",
       "module": "practices",
@@ -41585,8 +41606,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:3235169bce2c2a15a3fc1ef694f68ed333be2bab93a794d869388850176b9ca7",
-      "sizeBytes": 1257
+      "hash": "sha256:8042e55666a7247ee96b0b1a1e6f7278f96d10f009e47014b06af5a93414d0c2",
+      "sizeBytes": 1499
     },
     {
       "path": "src/modules/practices/api/dto/mark-attendance.dto.ts",
@@ -42069,8 +42090,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:8dcd611cd1e753c47e919d1b0e97cbd8411cbbaf6dcff10b3efc831aa111b4ca",
-      "sizeBytes": 2441
+      "hash": "sha256:a29f69428f69de248d6a26e9fad26141ceb76c074d35ee5742f9fb2c7970edd9",
+      "sizeBytes": 3086
     },
     {
       "path": "src/modules/practices/api/practice-reminder-admin.controller.ts",
@@ -42086,8 +42107,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:96dd1df08f1ff11ab86d921ca5fa16f039a46b27379b4280fdf167ac9d3b68c8",
-      "sizeBytes": 2823
+      "hash": "sha256:4c5f7788c0f99db1b0d16948464dfa90461979aadf2b6a94d57be459719af2b4",
+      "sizeBytes": 3527
     },
     {
       "path": "src/modules/practices/api/practice-rsvp.controller.ts",
@@ -42485,8 +42506,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:43f213734ca1aa286957edec43a6aedde2111a2b42554c542e8c8d580405edf8",
-      "sizeBytes": 7539
+      "hash": "sha256:c3d5d08b0811f1721f231806ed29714e5f7ee5362d163f2ff41b1cb3e0aa8593",
+      "sizeBytes": 8473
     },
     {
       "path": "src/modules/practices/application/calendar-feed.service.ts",
@@ -42502,8 +42523,8 @@
       "hasSpec": true,
       "specPath": "src/modules/practices/application/calendar-feed.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:c07fcccf3d66a41d17d29b296b99e039343c5e8c01e7161c4d2b8987afc2208d",
-      "sizeBytes": 8532
+      "hash": "sha256:66fdb5d1676c35f3657de4333e3a16dcad26a2687d5bdd4f5bd8816ff95957fa",
+      "sizeBytes": 9183
     },
     {
       "path": "src/modules/practices/application/complete-agenda.use-case.spec.ts",
@@ -42891,8 +42912,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:a1a02e99ed16e0711e39644d8d9f5b6f82fcd385125ff5749d07703e67df3045",
-      "sizeBytes": 3800
+      "hash": "sha256:eecda42a8a97c264b12b48abc95d35d791cc0a83264d94ce9347ea08995c5eda",
+      "sizeBytes": 4312
     },
     {
       "path": "src/modules/practices/application/practice-reminder-admin.service.ts",
@@ -42908,8 +42929,8 @@
       "hasSpec": true,
       "specPath": "src/modules/practices/application/practice-reminder-admin.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:7a64da52b0242ce9f9a42b2aac53ff3ddefe62befc2bb67ab5e30912272f9ac4",
-      "sizeBytes": 8612
+      "hash": "sha256:72d3293b7d9845b740a28987ac689280030ea862379258ad08edd78e533b18cb",
+      "sizeBytes": 9028
     },
     {
       "path": "src/modules/practices/application/publish-agenda.use-case.spec.ts",
@@ -43181,8 +43202,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:03bacf04d8ccc612b782fcdec6baa43ce4d0863571f824745bc64263b4ab2a76",
-      "sizeBytes": 1855
+      "hash": "sha256:ccb21aa2b160706eedf302f2a95ed345cfd403ee054f1acfd9894dc329b90515",
+      "sizeBytes": 1875
     },
     {
       "path": "src/modules/practices/application/session-query.service.ts",
@@ -43198,8 +43219,8 @@
       "hasSpec": true,
       "specPath": "src/modules/practices/application/session-query.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:7c7fc4df8551606096de5158dc47e70ecaf7fd5e8e5c6df8bbd3de87a3c64173",
-      "sizeBytes": 2040
+      "hash": "sha256:1581900593ffe042dbeab4102ebab9ce4140d8421e40fa040db14d7c2ceb4238",
+      "sizeBytes": 2049
     },
     {
       "path": "src/modules/practices/application/set-own-rsvp.use-case.spec.ts",
@@ -44465,8 +44486,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:7a9fa738f97b92b1ff20a48ab6bd7f069de9a5b81ebdeaed70034b2248e93c18",
-      "sizeBytes": 2989
+      "hash": "sha256:646299422818510567e82787730744c820a2659dfa0e78ae2f133759c6981c00",
+      "sizeBytes": 4226
     },
     {
       "path": "src/modules/practices/infrastructure/calendar-feed-token.repository.ts",
@@ -44482,8 +44503,8 @@
       "hasSpec": true,
       "specPath": "src/modules/practices/infrastructure/calendar-feed-token.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:bc4341725abca41844a91fc863355cfa37fa03a76d539d81d35fe4a953e0b5a2",
-      "sizeBytes": 3343
+      "hash": "sha256:389d69dce17dad4d11727d5363c7e22c8b1ac4d53f19951125c02ee0539c5dde",
+      "sizeBytes": 4445
     },
     {
       "path": "src/modules/practices/infrastructure/drill.repository.ts",
@@ -44646,6 +44667,18 @@
       "sizeBytes": 1430
     },
     {
+      "path": "src/modules/practices/infrastructure/practice-session.repository.spec.ts",
+      "root": "modules",
+      "module": "practices",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2146c0de9fed6ede928f98e0a0be749c45332c7b96fe0c8249675495785ff5cf",
+      "sizeBytes": 5873
+    },
+    {
       "path": "src/modules/practices/infrastructure/practice-session.repository.ts",
       "root": "modules",
       "module": "practices",
@@ -44656,11 +44689,11 @@
           "name": "PracticeSessionRepository"
         }
       ],
-      "hasSpec": false,
-      "specPath": null,
+      "hasSpec": true,
+      "specPath": "src/modules/practices/infrastructure/practice-session.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:854dcc2e20cfbb79f710e2e780b31885ffe89c0f4bfc577f8c710f42e0ccb927",
-      "sizeBytes": 11580
+      "hash": "sha256:300d72241d090ec76f2540efca3fb050114568ebabcfbf17c3b7800e28723cca",
+      "sizeBytes": 11693
     },
     {
       "path": "src/modules/practices/infrastructure/rsvp-membership.repository.ts",
@@ -45250,8 +45283,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:96a873e8cf61ac6c2b0132a9e57571c6267d37344cfb6ffddae76cd0584bf6c0",
-      "sizeBytes": 6886
+      "hash": "sha256:827ecfbb313e0fa888a9f934849b89f7618b6f92f8cc2f06107fc43b35a59290",
+      "sizeBytes": 7010
     },
     {
       "path": "src/modules/practices/lib/practices.helpers.ts",
@@ -45311,8 +45344,8 @@
       "hasSpec": true,
       "specPath": "src/modules/practices/lib/practices.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:b375e3883d9553bcf4918c7bb30f9ff66c58dbe84e3e0520208975b2481fdf80",
-      "sizeBytes": 5782
+      "hash": "sha256:8a8f75641579052138ffa99bbb890d50236ecd9f59625302e2e01f406f5403f7",
+      "sizeBytes": 5824
     },
     {
       "path": "src/modules/practices/lib/rsvp.builders.spec.ts",
@@ -46878,6 +46911,10 @@
         },
         {
           "kind": "const",
+          "name": "PRACTICE_REMINDER_STATUS_ROUTE"
+        },
+        {
+          "kind": "const",
           "name": "PRACTICE_REMINDER_PREVIEW_ROUTE"
         },
         {
@@ -46928,8 +46965,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:485f043b7476dff91725310cf1eadb63b7a4a098b80c7c34487aa08e5fb54fb5",
-      "sizeBytes": 2962
+      "hash": "sha256:c7ed06a8a263af11a4d0943286110ad9f3e3ca6080f501a85ee268ee248eb9e7",
+      "sizeBytes": 3067
     },
     {
       "path": "src/modules/practices/model/calendar.enums.ts",
@@ -46964,6 +47001,10 @@
         },
         {
           "kind": "interface",
+          "name": "CalendarFeedMetadataRow"
+        },
+        {
+          "kind": "interface",
           "name": "CalendarCountRow"
         },
         {
@@ -46978,8 +47019,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:820c9b59d274b694a6342112ebce428bd5d400514470d512a540710a1ed6717b",
-      "sizeBytes": 856
+      "hash": "sha256:b3bf271fc183db3a657f8305586a082467d5fedd4bfbe553e79053d074f1d915",
+      "sizeBytes": 1227
     },
     {
       "path": "src/modules/practices/model/calendar.types.ts",
@@ -47014,6 +47055,14 @@
         {
           "kind": "interface",
           "name": "CalendarFeedRevokeResult"
+        },
+        {
+          "kind": "interface",
+          "name": "CalendarFeedMetadataView"
+        },
+        {
+          "kind": "interface",
+          "name": "ListCalendarFeedsResult"
         },
         {
           "kind": "interface",
@@ -47059,8 +47108,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:89184af394600a5ec0e566b9d84c8a9af48680b33022a43e321182a5ff65cd69",
-      "sizeBytes": 2972
+      "hash": "sha256:ecfb26898f1e78ce6fefca615ae3d9bbf11b00a47625b1ffdd758dc9587b685e",
+      "sizeBytes": 3500
     },
     {
       "path": "src/modules/practices/model/practices.constants.ts",
@@ -47623,8 +47672,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:c6d5c0410af1ebd114bc6736c31a9e854163377b931fbc6e3b78814c86d7dc5a",
-      "sizeBytes": 12034
+      "hash": "sha256:aca586360bb77965904d775810f7a2414c84acc9ce3fe2dcd7617dbe0cab167c",
+      "sizeBytes": 12104
     },
     {
       "path": "src/modules/practices/model/rsvp.constants.ts",

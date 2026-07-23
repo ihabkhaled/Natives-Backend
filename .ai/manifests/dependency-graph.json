@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T06:03:17.502Z",
+  "generatedAt": "2026-07-23T06:57:44.143Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -28692,6 +28692,11 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/practices/api/dto/list-calendar-feeds-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/practices/api/dto/list-drills-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -29274,6 +29279,11 @@
     {
       "from": "src/modules/practices/api/practice-calendar.controller.ts",
       "to": "src/modules/practices/api/dto/create-calendar-feed.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/api/practice-calendar.controller.ts",
+      "to": "src/modules/practices/api/dto/list-calendar-feeds-response.dto.ts",
       "type": "internal"
     },
     {
@@ -32679,6 +32689,11 @@
     {
       "from": "src/modules/practices/infrastructure/calendar-feed-token.repository.ts",
       "to": "src/modules/practices/lib/practices.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/practices/infrastructure/calendar-feed-token.repository.ts",
+      "to": "src/modules/practices/model/calendar.constants.ts",
       "type": "internal"
     },
     {

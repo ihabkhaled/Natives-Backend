@@ -108,6 +108,22 @@ export const SWAGGER_DESCRIPTION = 'HTTP API for this NestJS service';
 //   Standings (B4/B5): achievement transition accepts an optional bounded
 //   reason persisted + returned as rejectionReason (reject only); standings
 //   rows carry a resolved opponentName (null for our-team rows).
-export const SWAGGER_VERSION = '1.5.0';
+// 1.6.0: additive P5 practice-completeness pre-tasks.
+//   Calendar feeds (PT-2): new GET /teams/{teamId}/practice-calendar-feeds
+//   (practice.read) — the caller's OWN active feeds as metadata only
+//   ({items: [{id, seasonId, timezone, expiresAt, createdAt}]}, bounded by the
+//   10-active-per-user/team limit, newest first). Tokens and digests are never
+//   readable after creation: the POST response remains the single place the
+//   token ever appears; revoke stays DELETE by feed id.
+//   Reminders (PT-3): new GET
+//   /teams/{teamId}/practice-sessions/{sessionId}/reminders/status
+//   (practice.manage) — coach-readable, read-only ReminderPreviewResponseDto
+//   projection (totalEligible/noResponse/upcoming/cutoff/kinds/
+//   urgentCancellationOverride). Dispatch/preview/test stay jobs.manage (ops).
+//   Sessions (PT-4): GET /teams/{teamId}/practice-sessions gains an optional
+//   scheduleId uuid filter (null-passthrough, applied to list AND total) so the
+//   schedule detail screen can page exactly one schedule's generated
+//   occurrences.
+export const SWAGGER_VERSION = '1.6.0';
 export const SWAGGER_BEARER_NAME = 'jwt';
 export const SWAGGER_PERSIST_AUTHORIZATION = false;
