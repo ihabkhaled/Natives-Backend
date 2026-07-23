@@ -149,10 +149,28 @@ export const STANDING_COLUMNS = `"id", "team_id", "season_id", "competition_id",
   "source_reference", "reconciliation_note", "record_version", "recorded_by",
   "computed_at", "created_at", "updated_at"`;
 
+/**
+ * The read-side column list, qualified for the opponent LEFT JOIN that
+ * resolves each row's display name (B5): our-team rows and deleted opponents
+ * resolve to a null `opponent_name`, never an invented label.
+ */
+export const STANDING_COLUMNS_JOINED = `s."id", s."team_id", s."season_id",
+  s."competition_id", s."stage_id", s."rule_version_id", s."pool_label",
+  s."entrant_kind", s."opponent_id", s."played", s."wins", s."losses",
+  s."ties", s."points_for", s."points_against", s."standing_points",
+  s."spirit_score", s."final_place", s."qualification", s."source",
+  s."source_reference", s."reconciliation_note", s."record_version",
+  s."recorded_by", s."computed_at", s."created_at", s."updated_at",
+  o."name" AS "opponent_name"`;
+
+/** The joined read source for `STANDING_COLUMNS_JOINED`. */
+export const STANDING_JOINED_SOURCE = `"competition_standings" s
+  LEFT JOIN "opponents" o ON o."id" = s."opponent_id"`;
+
 export const ACHIEVEMENT_COLUMNS = `"id", "team_id", "season_id",
   "competition_id", "membership_id", "category", "title", "description",
   "achieved_on", "evidence_reference", "visibility", "status", "source",
-  "import_reference", "record_version", "created_by", "approved_by",
+  "import_reference", "rejection_reason", "record_version", "created_by", "approved_by",
   "approved_at", "rejected_at", "archived_at", "created_at", "updated_at"`;
 
 /**

@@ -105,6 +105,8 @@ export interface CompetitionStanding {
   readonly poolLabel: string | null;
   readonly entrantKind: StandingEntrantKind;
   readonly opponentId: string | null;
+  /** Resolved opponent display name; null for our-team rows (B5). */
+  readonly opponentName: string | null;
   readonly played: number;
   readonly wins: number;
   readonly losses: number;
@@ -259,6 +261,7 @@ export interface Achievement {
   readonly status: AchievementStatus;
   readonly source: AchievementSource;
   readonly importReference: string | null;
+  readonly rejectionReason: string | null;
   readonly recordVersion: number;
   readonly createdBy: string | null;
   readonly approvedBy: string | null;
@@ -318,6 +321,8 @@ export interface CreateAchievementCommand {
 export interface TransitionAchievementCommand {
   readonly transition: AchievementTransition;
   readonly expectedRecordVersion: number;
+  /** Optional bounded explanation, persisted on the row for reject only. */
+  readonly reason: string | null;
 }
 
 /** An optimistic-version-guarded approval change of an achievement. */
@@ -329,6 +334,7 @@ export interface AchievementStatusChange {
   readonly approvedBy: string | null;
   readonly approvedAt: Date | null;
   readonly rejectedAt: Date | null;
+  readonly rejectionReason: string | null;
   readonly archivedAt: Date | null;
   readonly now: Date;
 }

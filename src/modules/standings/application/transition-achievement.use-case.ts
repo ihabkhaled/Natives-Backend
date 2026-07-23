@@ -80,6 +80,7 @@ export class TransitionAchievementUseCase {
         actor.userId,
         command.expectedRecordVersion,
         this.clock.now(),
+        command.reason,
       ),
     );
     return this.finish(tx, actor, changed);

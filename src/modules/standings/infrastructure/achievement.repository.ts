@@ -82,8 +82,8 @@ export class AchievementRepository {
     const rows = await scope.run<AchievementRow>(
       `UPDATE "team_achievements"
           SET "status" = $4, "approved_by" = $5, "approved_at" = $6,
-              "rejected_at" = $7, "archived_at" = $8, "updated_at" = $9,
-              "record_version" = "record_version" + 1
+              "rejected_at" = $7, "rejection_reason" = $8, "archived_at" = $9,
+              "updated_at" = $10, "record_version" = "record_version" + 1
         WHERE "id" = $1 AND "team_id" = $2 AND "record_version" = $3
        RETURNING ${ACHIEVEMENT_COLUMNS}`,
       [
@@ -94,6 +94,7 @@ export class AchievementRepository {
         change.approvedBy,
         this.instant(change.approvedAt),
         this.instant(change.rejectedAt),
+        change.rejectionReason,
         this.instant(change.archivedAt),
         change.now.toISOString(),
       ],

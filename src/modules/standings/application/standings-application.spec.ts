@@ -95,6 +95,7 @@ const STANDING: CompetitionStanding = {
   poolLabel: null,
   entrantKind: StandingEntrantKind.Team,
   opponentId: null,
+  opponentName: null,
   played: 1,
   wins: 1,
   losses: 0,
@@ -130,6 +131,7 @@ const ACHIEVEMENT: Achievement = {
   status: AchievementStatus.Draft,
   source: AchievementSource.Manual,
   importReference: null,
+  rejectionReason: null,
   recordVersion: 1,
   createdBy: 'user-1',
   approvedBy: null,
@@ -668,6 +670,7 @@ describe('TransitionAchievementUseCase', () => {
     await useCase.execute(ACTOR, 'team-1', 'ach-1', {
       transition: AchievementTransition.Submit,
       expectedRecordVersion: 1,
+      reason: null,
     });
     expect(events.enqueue).not.toHaveBeenCalled();
   });
@@ -686,8 +689,34 @@ describe('TransitionAchievementUseCase', () => {
     await useCase.execute(ACTOR, 'team-1', 'ach-1', {
       transition: AchievementTransition.Approve,
       expectedRecordVersion: 1,
+      reason: null,
     });
     expect(events.enqueue).toHaveBeenCalledTimes(1);
+  });
+
+  it('persists the rejection reason on a reject transition (B4)', async () => {
+    const applyStatusChange = vi.fn().mockResolvedValue({
+      ...ACHIEVEMENT,
+      status: AchievementStatus.Rejected,
+      rejectionReason: 'No evidence provided',
+    });
+    const { useCase } = build({
+      findForWrite: vi.fn().mockResolvedValue({
+        ...ACHIEVEMENT,
+        status: AchievementStatus.Submitted,
+      }),
+      applyStatusChange,
+    });
+    const rejected = await useCase.execute(ACTOR, 'team-1', 'ach-1', {
+      transition: AchievementTransition.Reject,
+      expectedRecordVersion: 1,
+      reason: 'No evidence provided',
+    });
+    expect(applyStatusChange).toHaveBeenCalledWith(
+      TX,
+      expect.objectContaining({ rejectionReason: 'No evidence provided' }),
+    );
+    expect(rejected.rejectionReason).toBe('No evidence provided');
   });
 
   it('refuses to approve a claim that was never submitted', async () => {
@@ -696,6 +725,7 @@ describe('TransitionAchievementUseCase', () => {
       useCase.execute(ACTOR, 'team-1', 'ach-1', {
         transition: AchievementTransition.Approve,
         expectedRecordVersion: 1,
+        reason: null,
       }),
     ).rejects.toBeInstanceOf(AchievementInvalidTransitionError);
   });
@@ -708,6 +738,7 @@ describe('TransitionAchievementUseCase', () => {
       useCase.execute(ACTOR, 'team-1', 'ach-1', {
         transition: AchievementTransition.Submit,
         expectedRecordVersion: 1,
+        reason: null,
       }),
     ).rejects.toBeInstanceOf(StandingsVersionConflictError);
   });

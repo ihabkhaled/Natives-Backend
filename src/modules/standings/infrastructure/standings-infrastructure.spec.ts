@@ -49,6 +49,7 @@ const STANDING_ROW: StandingRow = {
   pool_label: null,
   entrant_kind: 'team',
   opponent_id: null,
+  opponent_name: null,
   played: 1,
   wins: 1,
   losses: 0,
@@ -84,6 +85,7 @@ const ACHIEVEMENT_ROW: AchievementRow = {
   status: 'draft',
   source: 'manual',
   import_reference: null,
+  rejection_reason: null,
   record_version: 1,
   created_by: 'user-1',
   approved_by: null,
@@ -274,10 +276,28 @@ describe('StandingRepository', () => {
 
   it('upserts idempotently on the entrant key', async () => {
     const { scope, run } = scopeReturning([STANDING_ROW]);
-    expect((await repository.upsert(scope, upsert)).standingId).toBe(
-      'standing-1',
-    );
+    const written = await repository.upsert(scope, upsert);
+    expect(written.standingId).toBe('standing-1');
+    expect(written.opponentName).toBeNull();
     expect(String(run.mock.calls[0]?.[0])).toContain('ON CONFLICT');
+    // A team row carries no opponent, so no name probe is issued.
+    expect(run).toHaveBeenCalledTimes(1);
+  });
+
+  it('resolves the opponent display name after an opponent-row upsert (B5)', async () => {
+    const opponentRow = { ...STANDING_ROW, opponent_id: 'opp-1' };
+    const { scope, run } = scopeReturning(
+      [opponentRow],
+      [{ name: 'Thunder Disc Club' }],
+    );
+    const written = await repository.upsert(scope, {
+      ...upsert,
+      entrantKind: StandingEntrantKind.Opponent,
+      opponentId: 'opp-1',
+    });
+    expect(written.opponentName).toBe('Thunder Disc Club');
+    expect(String(run.mock.calls[1]?.[0])).toContain('FROM "opponents"');
+    expect(run.mock.calls[1]?.[1]).toEqual(['opp-1', 'team-1']);
   });
 
   it('throws when a standings write returns no row', async () => {
@@ -309,6 +329,9 @@ describe('StandingRepository', () => {
       }),
     ).toHaveLength(1);
     expect(list.run.mock.calls[0]?.[1]).toContain(200);
+    const listSql = String(list.run.mock.calls[0]?.[0]);
+    expect(listSql).toContain('LEFT JOIN "opponents" o');
+    expect(listSql).toContain('o."name" AS "opponent_name"');
     const count = scopeReturning([{ count: 4 }]);
     expect(await repository.countForScope(count.scope, 'team-1', filter)).toBe(
       4,
@@ -385,6 +408,7 @@ describe('AchievementRepository', () => {
       approvedBy: 'user-2',
       approvedAt: NOW,
       rejectedAt: null,
+      rejectionReason: null,
       archivedAt: null,
       now: NOW,
     };
@@ -394,8 +418,35 @@ describe('AchievementRepository', () => {
     expect(
       (await repository.applyStatusChange(applied.scope, change))?.status,
     ).toBe(AchievementStatus.Approved);
+    expect(String(applied.run.mock.calls[0]?.[0])).toContain(
+      '"rejection_reason" = $8',
+    );
     const stale = scopeReturning([]);
     expect(await repository.applyStatusChange(stale.scope, change)).toBeNull();
+  });
+
+  it('writes and returns the rejection reason on a reject change (B4)', async () => {
+    const rejected = scopeReturning([
+      {
+        ...ACHIEVEMENT_ROW,
+        status: 'rejected',
+        rejection_reason: 'No evidence provided',
+      },
+    ]);
+    const changed = await repository.applyStatusChange(rejected.scope, {
+      id: 'ach-1',
+      teamId: 'team-1',
+      expectedRecordVersion: 1,
+      toStatus: AchievementStatus.Rejected,
+      approvedBy: null,
+      approvedAt: null,
+      rejectedAt: NOW,
+      rejectionReason: 'No evidence provided',
+      archivedAt: null,
+      now: NOW,
+    });
+    expect(changed?.rejectionReason).toBe('No evidence provided');
+    expect(rejected.run.mock.calls[0]?.[1]).toContain('No evidence provided');
   });
 
   it('bounds the achievement list and counts with the same predicate', async () => {

@@ -26,6 +26,7 @@ export interface StandingRow {
   readonly pool_label: string | null;
   readonly entrant_kind: string;
   readonly opponent_id: string | null;
+  readonly opponent_name: string | null;
   readonly played: number | string;
   readonly wins: number | string;
   readonly losses: number | string;
@@ -46,6 +47,17 @@ export interface StandingRow {
   readonly updated_at: string | Date;
 }
 
+/**
+ * The upsert RETURNING row — the base standings columns without the joined
+ * opponent name (RETURNING cannot join; the repository resolves it after).
+ */
+export type StandingWriteRow = Omit<StandingRow, 'opponent_name'>;
+
+/** A single opponent display-name probe row. */
+export interface OpponentNameRow {
+  readonly name: string;
+}
+
 /** Raw `team_achievements` row. */
 export interface AchievementRow {
   readonly id: string;
@@ -62,6 +74,7 @@ export interface AchievementRow {
   readonly status: string;
   readonly source: string;
   readonly import_reference: string | null;
+  readonly rejection_reason: string | null;
   readonly record_version: number | string;
   readonly created_by: string | null;
   readonly approved_by: string | null;

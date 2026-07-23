@@ -218,8 +218,10 @@ export function buildAchievementStatusChange(
   actorUserId: string,
   expectedRecordVersion: number,
   now: Date,
+  reason: string | null,
 ): AchievementStatusChange {
   const approving = isApproveTarget(target);
+  const rejecting = isRejectTarget(target);
   return {
     id: achievement.achievementId,
     teamId: achievement.teamId,
@@ -227,7 +229,8 @@ export function buildAchievementStatusChange(
     toStatus: target,
     approvedBy: approving ? actorUserId : achievement.approvedBy,
     approvedAt: approving ? now : achievement.approvedAt,
-    rejectedAt: isRejectTarget(target) ? now : achievement.rejectedAt,
+    rejectedAt: rejecting ? now : achievement.rejectedAt,
+    rejectionReason: rejecting ? reason : achievement.rejectionReason,
     archivedAt: isArchiveTarget(target) ? now : achievement.archivedAt,
     now,
   };

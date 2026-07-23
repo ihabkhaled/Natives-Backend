@@ -391,6 +391,15 @@ export class StandingResponseDto {
   @ApiProperty({ type: String, format: 'uuid', nullable: true })
   declare readonly opponentId: string | null;
 
+  @ApiProperty({
+    type: String,
+    nullable: true,
+    description:
+      'Resolved opponent display name; null for our-team rows or when the ' +
+      'opponent record has been deleted.',
+  })
+  declare readonly opponentName: string | null;
+
   @ApiProperty()
   declare readonly played: number;
 
@@ -538,6 +547,21 @@ export class TransitionAchievementDto {
   @IsInt()
   @Min(RECORD_VERSION_MIN)
   declare readonly expectedRecordVersion: number;
+
+  @ApiPropertyOptional({
+    minLength: NOTE_MIN_LENGTH,
+    maxLength: NOTE_MAX_LENGTH,
+    nullable: true,
+    description:
+      'Optional explanation. Persisted on the claim (and returned as ' +
+      'rejectionReason) when the transition is reject; recorded nowhere ' +
+      'else — reject is terminal, so the reason is the claim’s epitaph.',
+  })
+  @IsOptional()
+  @IsString()
+  @MinLength(NOTE_MIN_LENGTH)
+  @MaxLength(NOTE_MAX_LENGTH)
+  readonly reason?: string | null;
 }
 
 /** One audited historical achievement row. */
@@ -682,6 +706,13 @@ export class AchievementResponseDto {
 
   @ApiProperty({ type: String, nullable: true })
   declare readonly importReference: string | null;
+
+  @ApiProperty({
+    type: String,
+    nullable: true,
+    description: 'Why the claim was rejected — set by the reject transition.',
+  })
+  declare readonly rejectionReason: string | null;
 
   @ApiProperty()
   declare readonly recordVersion: number;

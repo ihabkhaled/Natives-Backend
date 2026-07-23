@@ -130,6 +130,7 @@ export class AchievementsController {
     return this.transitionAchievement.execute(actor, teamId, achievementId, {
       transition: dto.transition,
       expectedRecordVersion: dto.expectedRecordVersion,
+      reason: dto.reason ?? null,
     });
   }
 

@@ -104,6 +104,7 @@ const STANDING_ROW: StandingRow = {
   pool_label: null,
   entrant_kind: 'team',
   opponent_id: null,
+  opponent_name: null,
   played: '3',
   wins: '2',
   losses: '1',
@@ -429,6 +430,7 @@ describe('standings builders', () => {
       'user-2',
       1,
       NOW,
+      null,
     );
     expect(approved.approvedAt).toBe(NOW);
     expect(approved.rejectedAt).toBeNull();
@@ -438,6 +440,7 @@ describe('standings builders', () => {
       'user-2',
       1,
       NOW,
+      null,
     );
     expect(rejected.rejectedAt).toBe(NOW);
     const archived = buildAchievementStatusChange(
@@ -446,8 +449,30 @@ describe('standings builders', () => {
       'user-2',
       1,
       NOW,
+      null,
     );
     expect(archived.archivedAt).toBe(NOW);
+  });
+
+  it('persists the reason on reject only, and only reject clears nothing else (B4)', () => {
+    const rejected = buildAchievementStatusChange(
+      ACHIEVEMENT,
+      AchievementStatus.Rejected,
+      'user-2',
+      1,
+      NOW,
+      'Duplicate of the 2023 claim',
+    );
+    expect(rejected.rejectionReason).toBe('Duplicate of the 2023 claim');
+    const approved = buildAchievementStatusChange(
+      ACHIEVEMENT,
+      AchievementStatus.Approved,
+      'user-2',
+      1,
+      NOW,
+      'ignored outside reject',
+    );
+    expect(approved.rejectionReason).toBe(ACHIEVEMENT.rejectionReason);
   });
 
   it('audits provenance and never the description', () => {
