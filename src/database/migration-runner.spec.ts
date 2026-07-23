@@ -19,6 +19,9 @@ function buildHarness(
   const queryRunner = {
     connect: vi.fn().mockResolvedValue(undefined),
     release: vi.fn().mockResolvedValue(undefined),
+    startTransaction: vi.fn().mockResolvedValue(undefined),
+    commitTransaction: vi.fn().mockResolvedValue(undefined),
+    rollbackTransaction: vi.fn().mockResolvedValue(undefined),
   };
   const dataSource = {
     createQueryRunner: vi.fn().mockReturnValue(queryRunner),
@@ -66,6 +69,7 @@ describe('runPendingMigrations', () => {
     expect(applied).toEqual([]);
     expect(harness.logger.info).toHaveBeenCalledWith(MIGRATIONS_UP_TO_DATE_LOG);
     expect(harness.executeMigration).not.toHaveBeenCalled();
+    expect(harness.queryRunner.startTransaction).not.toHaveBeenCalled();
     expect(harness.queryRunner.release).toHaveBeenCalledOnce();
   });
 
@@ -86,7 +90,25 @@ describe('runPendingMigrations', () => {
     expect(harness.queryRunner.release).toHaveBeenCalledOnce();
   });
 
-  it('propagates a migration failure and still releases the connection', async () => {
+  it('wraps every migration in its own transaction (statements + record atomically)', async () => {
+    const harness = buildHarness([{ name: 'A' }, { name: 'B' }]);
+
+    await run(harness);
+
+    expect(harness.queryRunner.startTransaction).toHaveBeenCalledTimes(2);
+    expect(harness.queryRunner.commitTransaction).toHaveBeenCalledTimes(2);
+    expect(harness.queryRunner.rollbackTransaction).not.toHaveBeenCalled();
+    const startOrder =
+      harness.queryRunner.startTransaction.mock.invocationCallOrder[0] ?? 0;
+    const executeOrder =
+      harness.executeMigration.mock.invocationCallOrder[0] ?? 0;
+    const commitOrder =
+      harness.queryRunner.commitTransaction.mock.invocationCallOrder[0] ?? 0;
+    expect(startOrder).toBeLessThan(executeOrder);
+    expect(executeOrder).toBeLessThan(commitOrder);
+  });
+
+  it('rolls back the failed migration, propagates, and still releases', async () => {
     const harness = buildHarness(
       [{ name: 'A' }],
       vi.fn().mockRejectedValue(new Error('migration boom')),
@@ -94,10 +116,26 @@ describe('runPendingMigrations', () => {
 
     await expect(run(harness)).rejects.toThrow('migration boom');
 
+    expect(harness.queryRunner.rollbackTransaction).toHaveBeenCalledOnce();
+    expect(harness.queryRunner.commitTransaction).not.toHaveBeenCalled();
     expect(harness.queryRunner.release).toHaveBeenCalledOnce();
     expect(harness.logger.info).not.toHaveBeenCalledWith(
       MIGRATIONS_COMPLETED_LOG,
       expect.anything(),
     );
+  });
+
+  it('propagates the original failure even when the rollback itself fails', async () => {
+    const harness = buildHarness(
+      [{ name: 'A' }],
+      vi.fn().mockRejectedValue(new Error('migration boom')),
+    );
+    harness.queryRunner.rollbackTransaction.mockRejectedValue(
+      new Error('rollback failed'),
+    );
+
+    await expect(run(harness)).rejects.toThrow('migration boom');
+
+    expect(harness.queryRunner.release).toHaveBeenCalledOnce();
   });
 });
