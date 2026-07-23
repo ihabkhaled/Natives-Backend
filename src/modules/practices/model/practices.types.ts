@@ -189,6 +189,7 @@ export interface SessionListFilter {
   readonly status: SessionStatus | null;
   readonly sessionType: string | null;
   readonly seasonId: string | null;
+  readonly scheduleId: string | null;
   readonly limit: number;
   readonly offset: number;
 }
@@ -206,6 +207,7 @@ export interface SessionListQuery {
   readonly status?: SessionStatus;
   readonly sessionType?: string;
   readonly seasonId?: string;
+  readonly scheduleId?: string;
   readonly limit?: number;
   readonly offset?: number;
 }

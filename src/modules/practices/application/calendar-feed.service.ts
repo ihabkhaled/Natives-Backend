@@ -39,12 +39,13 @@ import type {
   CalendarFeedToken,
   CalendarTokenPort,
   CreateCalendarFeedCommand,
+  ListCalendarFeedsResult,
   NewCalendarFeedToken,
 } from '../model/calendar.types';
 import type { PracticeSession } from '../model/practices.types';
 import { ScopeValidationService } from './scope-validation.service';
 
-/** Creates, revokes, and renders privacy-safe owner/team calendar feeds. */
+/** Creates, lists, revokes, and renders privacy-safe owner/team calendar feeds. */
 @Injectable()
 export class CalendarFeedService {
   constructor(
@@ -67,6 +68,26 @@ export class CalendarFeedService {
     return this.unitOfWork.runInTransaction(scope =>
       this.createInScope(scope, actor, teamId, command),
     );
+  }
+
+  /**
+   * The caller's own active feeds as metadata only (never the token or its
+   * digest — the raw token is shown exactly once, in the create response).
+   * Own-rows scoping is enforced in the query (user + team), so no membership
+   * or feed existence is ever disclosed for another user.
+   */
+  listOwn(
+    actor: AuthUserIdentity,
+    teamId: string,
+  ): Promise<ListCalendarFeedsResult> {
+    return this.unitOfWork.runInTransaction(async scope => ({
+      items: await this.tokens.listActiveByUser(
+        scope,
+        actor.userId,
+        teamId,
+        this.clock.now(),
+      ),
+    }));
   }
 
   revoke(

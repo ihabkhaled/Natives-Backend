@@ -16,6 +16,7 @@ import {
   Body,
   Controller,
   Delete,
+  Get,
   HttpCode,
   HttpStatus,
   Param,
@@ -39,6 +40,7 @@ import {
   CalendarFeedRevokeResponseDto,
 } from './dto/calendar-feed-response.dto';
 import { CreateCalendarFeedDto } from './dto/create-calendar-feed.dto';
+import { ListCalendarFeedsResponseDto } from './dto/list-calendar-feeds-response.dto';
 
 @ApiTags(PRACTICES_API_TAG)
 @Controller(PRACTICES_ROUTE)
@@ -62,6 +64,21 @@ export class PracticeCalendarController {
       timezone: dto.timezone ?? null,
       expiresInDays: dto.expiresInDays ?? null,
     });
+  }
+
+  @Get(CALENDAR_FEEDS_ROUTE)
+  @RequirePermissions(Permission.PracticeRead)
+  @ApiOperation({
+    summary: 'List my active practice calendar feeds (metadata only)',
+  })
+  @ApiOkResponse({ type: ListCalendarFeedsResponseDto })
+  @ApiForbiddenResponse({ description: 'Forbidden' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  list(
+    @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
+    @CurrentUser() actor: AuthUserIdentity,
+  ): Promise<ListCalendarFeedsResponseDto> {
+    return this.feeds.listOwn(actor, teamId);
   }
 
   @Delete(CALENDAR_FEED_BY_ID_ROUTE)

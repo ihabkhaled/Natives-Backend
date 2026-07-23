@@ -154,6 +154,7 @@ export function resolveSessionFilter(
     status: query.status ?? null,
     sessionType: query.sessionType ?? null,
     seasonId: query.seasonId ?? null,
+    scheduleId: query.scheduleId ?? null,
     limit: page.limit,
     offset: page.offset,
   };

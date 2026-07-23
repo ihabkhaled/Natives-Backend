@@ -283,6 +283,21 @@ describeIfDb(suiteTitle, () => {
       sessions.listOccurrenceDates(scope, scheduleId, 1000),
     );
     expect(occurrences).toEqual(['2026-01-05']);
+
+    const bySchedule = await unitOfWork.runInTransaction(scope =>
+      sessions.list(scope, teamId, {
+        from: null,
+        to: null,
+        status: null,
+        sessionType: null,
+        seasonId: null,
+        scheduleId,
+        limit: 20,
+        offset: 0,
+      }),
+    );
+    expect(bySchedule.total).toBe(1);
+    expect(bySchedule.items[0]?.scheduleId).toBe(scheduleId);
   });
 
   it('round-trips a session UTC instant and applies detail/status/reschedule writes', async () => {
@@ -395,6 +410,7 @@ describeIfDb(suiteTitle, () => {
         status: null,
         sessionType: null,
         seasonId: null,
+        scheduleId: null,
         limit: 20,
         offset: 0,
       }),
@@ -409,6 +425,7 @@ describeIfDb(suiteTitle, () => {
         status: SessionStatus.Published,
         sessionType: 'fitness',
         seasonId: null,
+        scheduleId: null,
         limit: 20,
         offset: 0,
       }),

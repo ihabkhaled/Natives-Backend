@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { PracticeSessionNotFoundError } from '../errors/practice-session-not-found.error';
+import { ReminderKind } from '../model/calendar.enums';
 import type { ReminderCandidate } from '../model/calendar.types';
 import { PracticeReminderAdminService } from './practice-reminder-admin.service';
 
@@ -69,6 +70,20 @@ describe('PracticeReminderAdminService', () => {
       cutoff: true,
       urgentCancellationOverride: true,
     });
+  });
+
+  it('serves the coach-readable status projection without enqueueing anything', async () => {
+    await expect(
+      harness.service.status(ACTOR, 'team-1', 'session-1'),
+    ).resolves.toMatchObject({
+      sessionId: 'session-1',
+      totalEligible: 1,
+      noResponse: 1,
+      upcoming: true,
+      cutoff: true,
+      kinds: expect.arrayContaining([ReminderKind.Upcoming]),
+    });
+    expect(harness.events.enqueue).not.toHaveBeenCalled();
   });
 
   it('enqueues deterministic per-version reminder facts for dedupe', async () => {

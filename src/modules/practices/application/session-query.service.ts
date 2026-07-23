@@ -17,9 +17,9 @@ import { PracticeLookupService } from './practice-lookup.service';
 
 /**
  * Read side for practice sessions: the bounded, deterministically ordered
- * calendar/list (filtered by window/status/type/season), a single session
- * resolved within team scope, and a session's append-only status history. Team
- * scope comes from the route param the guard enforces.
+ * calendar/list (filtered by window/status/type/season/schedule), a single
+ * session resolved within team scope, and a session's append-only status
+ * history. Team scope comes from the route param the guard enforces.
  */
 @Injectable()
 export class SessionQueryService {

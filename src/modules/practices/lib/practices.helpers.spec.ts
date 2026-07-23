@@ -168,6 +168,7 @@ describe('resolveSessionFilter', () => {
       status: SessionStatus.Published,
       sessionType: 'practice',
       seasonId: 'season-1',
+      scheduleId: 'schedule-1',
       limit: 10,
       offset: 5,
     });
@@ -176,6 +177,7 @@ describe('resolveSessionFilter', () => {
     expect(filter.status).toBe(SessionStatus.Published);
     expect(filter.sessionType).toBe('practice');
     expect(filter.seasonId).toBe('season-1');
+    expect(filter.scheduleId).toBe('schedule-1');
     expect(filter.limit).toBe(10);
     expect(filter.offset).toBe(5);
   });
@@ -187,6 +189,7 @@ describe('resolveSessionFilter', () => {
     expect(filter.status).toBeNull();
     expect(filter.sessionType).toBeNull();
     expect(filter.seasonId).toBeNull();
+    expect(filter.scheduleId).toBeNull();
     expect(filter.limit).toBe(20);
     expect(filter.offset).toBe(0);
   });

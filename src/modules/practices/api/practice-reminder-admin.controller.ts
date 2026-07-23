@@ -4,6 +4,7 @@ import {
   RequirePermissions,
 } from '@core/auth';
 import {
+  ApiForbiddenResponse,
   ApiOkResponse,
   ApiOperation,
   ApiTags,
@@ -24,6 +25,7 @@ import { PracticeReminderAdminService } from '../application/practice-reminder-a
 import {
   PRACTICE_REMINDER_DISPATCH_ROUTE,
   PRACTICE_REMINDER_PREVIEW_ROUTE,
+  PRACTICE_REMINDER_STATUS_ROUTE,
   PRACTICE_REMINDER_TEST_ROUTE,
 } from '../model/calendar.constants';
 import {
@@ -42,6 +44,22 @@ import {
 @Controller(PRACTICES_ROUTE)
 export class PracticeReminderAdminController {
   constructor(private readonly reminders: PracticeReminderAdminService) {}
+
+  @Get(PRACTICE_REMINDER_STATUS_ROUTE)
+  @RequirePermissions(Permission.PracticeManage)
+  @ApiOperation({
+    summary: 'Read reminder status for a session (coach, read-only)',
+  })
+  @ApiOkResponse({ type: ReminderPreviewResponseDto })
+  @ApiForbiddenResponse({ description: 'Forbidden' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  readStatus(
+    @Param(TEAM_ID_PARAM, UuidValidationPipe) teamId: string,
+    @Param(SESSION_ID_PARAM, UuidValidationPipe) sessionId: string,
+    @CurrentUser() actor: AuthUserIdentity,
+  ): Promise<ReminderPreviewResponseDto> {
+    return this.reminders.status(actor, teamId, sessionId);
+  }
 
   @Get(PRACTICE_REMINDER_PREVIEW_ROUTE)
   @RequirePermissions(Permission.JobsManage)

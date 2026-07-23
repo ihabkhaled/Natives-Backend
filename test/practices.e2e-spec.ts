@@ -68,6 +68,7 @@ interface Fixture {
   readonly adminId: string;
   readonly memberId: string;
   readonly teamAdminUserId: string;
+  readonly coachUserId: string;
   readonly suspendedAdminId: string;
 }
 
@@ -97,6 +98,7 @@ async function migrateAndSeed(): Promise<Fixture | null> {
       adminId: await seedUser(dataSource, 'active', Role.Admin),
       memberId: await seedUser(dataSource, 'active', Role.User),
       teamAdminUserId: await seedUser(dataSource, 'active', Role.User),
+      coachUserId: await seedUser(dataSource, 'active', Role.User),
       suspendedAdminId: await seedUser(dataSource, 'suspended', Role.Admin),
     };
   } catch {
@@ -155,13 +157,14 @@ describeIfDb(suiteTitle, () => {
     return tokenPort.sign({ userId, email: 'e@example.test', roles });
   }
 
-  async function assignTeamAdmin(
+  async function assignRole(
     userId: string,
+    roleKey: RbacRole,
     scopeTeam: string,
   ): Promise<void> {
     const role = await fixture.dataSource.query(
       `SELECT "id" FROM "roles" WHERE "key" = $1`,
-      [RbacRole.TeamAdmin],
+      [roleKey],
     );
     await fixture.dataSource.query(
       `INSERT INTO "user_role_assignments" ("id", "user_id", "role_id", "team_id")
@@ -195,7 +198,8 @@ describeIfDb(suiteTitle, () => {
       .set('Authorization', `Bearer ${adminToken}`)
       .send({ slug: `natives-${randomUUID().slice(0, 8)}`, name: 'Natives' });
     teamId = created.body.id;
-    await assignTeamAdmin(fixture.teamAdminUserId, teamId);
+    await assignRole(fixture.teamAdminUserId, RbacRole.TeamAdmin, teamId);
+    await assignRole(fixture.coachUserId, RbacRole.Coach, teamId);
     await fixture.dataSource.query(
       `INSERT INTO "memberships" ("id", "team_id", "user_id", "status")
        VALUES ($1, $2, $3, 'active')`,
@@ -298,6 +302,40 @@ describeIfDb(suiteTitle, () => {
     expect(second.status).toBe(201);
     expect(second.body.created).toBe(0);
     expect(second.body.skipped).toBe(first.body.created);
+  });
+
+  it("filters the session list to one schedule's generated occurrences", async () => {
+    const token = await tokenFor(fixture.adminId, [Role.Admin]);
+    const schedule = await post('/practice-schedules', token, scheduleBody({}));
+    const generated = await post(
+      `/practice-schedules/${schedule.body.id}/generate`,
+      token,
+      {},
+    );
+    expect(generated.body.created).toBeGreaterThan(0);
+
+    const filtered = await request(app.getHttpServer())
+      .get(
+        `/api/v1/teams/${teamId}/practice-sessions?scheduleId=${schedule.body.id}`,
+      )
+      .set('Authorization', `Bearer ${token}`);
+    expect(filtered.status).toBe(200);
+    expect(filtered.body.total).toBe(generated.body.created);
+    expect(
+      filtered.body.items.every(
+        (item: { scheduleId: string | null }) =>
+          item.scheduleId === schedule.body.id,
+      ),
+    ).toBe(true);
+
+    const unrelated = await request(app.getHttpServer())
+      .get(
+        `/api/v1/teams/${teamId}/practice-sessions?scheduleId=${randomUUID()}`,
+      )
+      .set('Authorization', `Bearer ${token}`);
+    expect(unrelated.status).toBe(200);
+    expect(unrelated.body.total).toBe(0);
+    expect(unrelated.body.items).toEqual([]);
   });
 
   it('drives a one-off session through publish, reschedule, cancel, and reopen', async () => {
@@ -468,6 +506,108 @@ describeIfDb(suiteTitle, () => {
     );
     expect(noMembership.status).toBe(404);
     expect(noMembership.body.message).toBe('The calendar feed is unavailable');
+  });
+
+  it('lists my active calendar feeds as metadata only, scoped to me', async () => {
+    const memberToken = await tokenFor(fixture.memberId, [Role.User]);
+    const coachToken = await tokenFor(fixture.coachUserId, [Role.User]);
+    const created = await post('/practice-calendar-feeds', memberToken, {
+      timezone: 'Africa/Cairo',
+      expiresInDays: 60,
+    });
+    expect(created.status).toBe(201);
+
+    const listed = await request(app.getHttpServer())
+      .get(`/api/v1/teams/${teamId}/practice-calendar-feeds`)
+      .set('Authorization', `Bearer ${memberToken}`);
+    expect(listed.status).toBe(200);
+    const mine = listed.body.items.find(
+      (item: { id: string }) => item.id === created.body.id,
+    );
+    expect(mine).toEqual({
+      id: created.body.id,
+      seasonId: null,
+      timezone: 'Africa/Cairo',
+      expiresAt: created.body.expiresAt,
+      createdAt: expect.any(String),
+    });
+    // Shown-once invariant: the token never reappears after creation.
+    expect(JSON.stringify(listed.body)).not.toContain(created.body.token);
+
+    const someoneElsesView = await request(app.getHttpServer())
+      .get(`/api/v1/teams/${teamId}/practice-calendar-feeds`)
+      .set('Authorization', `Bearer ${coachToken}`);
+    expect(someoneElsesView.status).toBe(200);
+    expect(
+      someoneElsesView.body.items.map((item: { id: string }) => item.id),
+    ).not.toContain(created.body.id);
+
+    const revoked = await request(app.getHttpServer())
+      .delete(
+        `/api/v1/teams/${teamId}/practice-calendar-feeds/${created.body.id}`,
+      )
+      .set('Authorization', `Bearer ${memberToken}`);
+    expect(revoked.status).toBe(200);
+
+    const afterRevoke = await request(app.getHttpServer())
+      .get(`/api/v1/teams/${teamId}/practice-calendar-feeds`)
+      .set('Authorization', `Bearer ${memberToken}`);
+    expect(
+      afterRevoke.body.items.map((item: { id: string }) => item.id),
+    ).not.toContain(created.body.id);
+  });
+
+  it('serves coach-readable reminder status without granting dispatch', async () => {
+    const adminToken = await tokenFor(fixture.adminId, [Role.Admin]);
+    const coachToken = await tokenFor(fixture.coachUserId, [Role.User]);
+    const memberToken = await tokenFor(fixture.memberId, [Role.User]);
+    const startsAt = new Date(Date.now() + 12 * 60 * 60 * 1000);
+    const endsAt = new Date(startsAt.getTime() + 2 * 60 * 60 * 1000);
+    const created = await post(
+      '/practice-sessions',
+      adminToken,
+      sessionBody({
+        startsAt: startsAt.toISOString(),
+        endsAt: endsAt.toISOString(),
+      }),
+    );
+    const published = await post(
+      `/practice-sessions/${created.body.id}/publish`,
+      adminToken,
+      { expectedVersion: created.body.version },
+    );
+    expect(published.status).toBe(201);
+    const reminderBase = `/api/v1/teams/${teamId}/practice-sessions/${published.body.id}/reminders`;
+
+    const status = await request(app.getHttpServer())
+      .get(`${reminderBase}/status`)
+      .set('Authorization', `Bearer ${coachToken}`);
+    expect(status.status).toBe(200);
+    expect(status.body).toEqual(
+      expect.objectContaining({
+        sessionId: published.body.id,
+        totalEligible: expect.any(Number),
+        noResponse: expect.any(Number),
+        upcoming: expect.any(Boolean),
+        cutoff: expect.any(Boolean),
+        kinds: expect.any(Array),
+      }),
+    );
+
+    // The coach bundle stops at read-only status: ops surfaces stay jobs.manage.
+    const coachPreview = await request(app.getHttpServer())
+      .get(`${reminderBase}/preview`)
+      .set('Authorization', `Bearer ${coachToken}`);
+    expect(coachPreview.status).toBe(403);
+    const coachDispatch = await request(app.getHttpServer())
+      .post(`${reminderBase}/dispatch`)
+      .set('Authorization', `Bearer ${coachToken}`);
+    expect(coachDispatch.status).toBe(403);
+
+    const memberStatus = await request(app.getHttpServer())
+      .get(`${reminderBase}/status`)
+      .set('Authorization', `Bearer ${memberToken}`);
+    expect(memberStatus.status).toBe(403);
   });
 
   it('previews and dispatches reminders through the admin HTTP contract', async () => {

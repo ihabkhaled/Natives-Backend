@@ -47,6 +47,19 @@ export class PracticeReminderAdminService {
     private readonly quietHours: NotificationQuietHoursService,
   ) {}
 
+  /**
+   * Coach-readable reminder status: the same eligibility/no-response/due-kind
+   * projection the ops preview computes, exposed read-only. It enqueues
+   * nothing — dispatch capability stays behind the ops (`jobs.manage`) routes.
+   */
+  status(
+    actor: AuthUserIdentity,
+    teamId: string,
+    sessionId: string,
+  ): Promise<ReminderPreview> {
+    return this.preview(actor, teamId, sessionId);
+  }
+
   async preview(
     actor: AuthUserIdentity,
     teamId: string,

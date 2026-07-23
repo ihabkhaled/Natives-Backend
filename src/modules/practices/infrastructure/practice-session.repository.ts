@@ -271,6 +271,12 @@ export class PracticeSessionRepository {
       filter.sessionType,
     );
     this.pushCondition(conditions, params, '"season_id" =', filter.seasonId);
+    this.pushCondition(
+      conditions,
+      params,
+      '"schedule_id" =',
+      filter.scheduleId,
+    );
     return { clause: conditions.join(' AND '), params };
   }
 

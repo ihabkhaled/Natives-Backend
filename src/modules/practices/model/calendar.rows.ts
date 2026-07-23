@@ -11,6 +11,18 @@ export interface CalendarFeedTokenRow {
   readonly created_at: string | Date;
 }
 
+/**
+ * Metadata-only projection of a feed credential row. Deliberately excludes
+ * `token_digest`: the listing read path never selects credential material.
+ */
+export interface CalendarFeedMetadataRow {
+  readonly id: string;
+  readonly season_id: string | null;
+  readonly timezone: string;
+  readonly expires_at: string | Date;
+  readonly created_at: string | Date;
+}
+
 export interface CalendarCountRow {
   readonly count: number;
 }

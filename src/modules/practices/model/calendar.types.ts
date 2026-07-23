@@ -48,6 +48,23 @@ export interface CalendarFeedRevokeResult {
   readonly revoked: boolean;
 }
 
+/**
+ * Owner-facing feed metadata. Never carries the raw token or its digest — the
+ * token is shown exactly once, in the POST response, by design.
+ */
+export interface CalendarFeedMetadataView {
+  readonly id: string;
+  readonly seasonId: string | null;
+  readonly timezone: string;
+  readonly expiresAt: Date;
+  readonly createdAt: Date;
+}
+
+/** The caller's own active feeds (bounded by the per-user/team active limit). */
+export interface ListCalendarFeedsResult {
+  readonly items: readonly CalendarFeedMetadataView[];
+}
+
 export interface CalendarFeedSessionPage {
   readonly items: readonly PracticeSession[];
   readonly nextStartsAt: Date | null;

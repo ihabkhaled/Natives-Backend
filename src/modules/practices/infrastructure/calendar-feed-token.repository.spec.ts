@@ -1,6 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import type { CalendarFeedTokenRow } from '../model/calendar.rows';
+import { CALENDAR_TOKEN_MAX_ACTIVE_PER_USER_TEAM } from '../model/calendar.constants';
+import type {
+  CalendarFeedMetadataRow,
+  CalendarFeedTokenRow,
+} from '../model/calendar.rows';
 import type { NewCalendarFeedToken } from '../model/calendar.types';
 import { CalendarFeedTokenRepository } from './calendar-feed-token.repository';
 
@@ -58,6 +62,45 @@ describe('CalendarFeedTokenRepository', () => {
         NOW,
       ),
     ).resolves.toBe(2);
+  });
+
+  it('lists own active feeds as bounded metadata without credential material', async () => {
+    const metadataRow: CalendarFeedMetadataRow = {
+      id: TOKEN.id,
+      season_id: null,
+      timezone: TOKEN.timezone,
+      expires_at: TOKEN.expiresAt,
+      created_at: TOKEN.createdAt,
+    };
+    transaction.run.mockResolvedValue([metadataRow]);
+    const items = await repository.listActiveByUser(
+      transaction as never,
+      TOKEN.userId,
+      TOKEN.teamId,
+      NOW,
+    );
+    const [sql, params] = transaction.run.mock.calls[0] as [
+      string,
+      readonly unknown[],
+    ];
+    expect(sql).not.toContain('token_digest');
+    expect(sql).toContain('"user_id" = $1 AND "team_id" = $2');
+    expect(sql).toContain('"revoked_at" IS NULL');
+    expect(params).toEqual([
+      TOKEN.userId,
+      TOKEN.teamId,
+      NOW.toISOString(),
+      CALENDAR_TOKEN_MAX_ACTIVE_PER_USER_TEAM,
+    ]);
+    expect(items).toEqual([
+      {
+        id: TOKEN.id,
+        seasonId: null,
+        timezone: TOKEN.timezone,
+        expiresAt: TOKEN.expiresAt,
+        createdAt: TOKEN.createdAt,
+      },
+    ]);
   });
 
   it('revokes only an owned team-scoped credential', async () => {

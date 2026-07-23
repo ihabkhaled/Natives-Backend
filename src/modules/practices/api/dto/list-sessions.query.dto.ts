@@ -14,8 +14,9 @@ import { PracticeListQueryDto } from './list-query.dto';
 
 /**
  * Calendar/list filter for practice sessions. All dimensions are optional and
- * allowlisted; the window bounds filter on the start instant. Absent dimensions
- * are unfiltered. Pagination is inherited and clamped.
+ * allowlisted; the window bounds filter on the start instant; `scheduleId`
+ * narrows to one schedule's generated occurrences. Absent dimensions are
+ * unfiltered. Pagination is inherited and clamped.
  */
 export class ListSessionsQueryDto extends PracticeListQueryDto {
   @ApiPropertyOptional({ format: 'date-time' })
@@ -43,4 +44,12 @@ export class ListSessionsQueryDto extends PracticeListQueryDto {
   @IsOptional()
   @IsUUID()
   readonly seasonId?: string;
+
+  @ApiPropertyOptional({
+    format: 'uuid',
+    description: 'Only occurrences generated from this schedule',
+  })
+  @IsOptional()
+  @IsUUID()
+  readonly scheduleId?: string;
 }

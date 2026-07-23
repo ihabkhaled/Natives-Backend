@@ -37,6 +37,8 @@ export const REMINDER_CANDIDATE_MAX_RECIPIENTS = 1000;
 export const REMINDER_CANDIDATE_MAX_PAGES =
   REMINDER_CANDIDATE_MAX_RECIPIENTS / REMINDER_CANDIDATE_PAGE_LIMIT;
 
+export const PRACTICE_REMINDER_STATUS_ROUTE =
+  ':teamId/practice-sessions/:sessionId/reminders/status';
 export const PRACTICE_REMINDER_PREVIEW_ROUTE =
   ':teamId/practice-sessions/:sessionId/reminders/preview';
 export const PRACTICE_REMINDER_DISPATCH_ROUTE =

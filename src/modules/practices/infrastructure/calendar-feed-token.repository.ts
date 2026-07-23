@@ -2,12 +2,15 @@ import type { TransactionScope } from '@core/persistence/unit-of-work.port';
 import { Injectable } from '@nestjs/common';
 
 import { toDate, toNullableDate } from '../lib/practices.helpers';
+import { CALENDAR_TOKEN_MAX_ACTIVE_PER_USER_TEAM } from '../model/calendar.constants';
 import type {
   CalendarCountRow,
+  CalendarFeedMetadataRow,
   CalendarFeedTokenRow,
   CalendarIdRow,
 } from '../model/calendar.rows';
 import type {
+  CalendarFeedMetadataView,
   CalendarFeedToken,
   NewCalendarFeedToken,
 } from '../model/calendar.types';
@@ -52,6 +55,29 @@ export class CalendarFeedTokenRepository {
     return rows[0]?.count ?? 0;
   }
 
+  async listActiveByUser(
+    scope: TransactionScope,
+    userId: string,
+    teamId: string,
+    now: Date,
+  ): Promise<readonly CalendarFeedMetadataView[]> {
+    const rows = await scope.run<CalendarFeedMetadataRow>(
+      `SELECT "id", "season_id", "timezone", "expires_at", "created_at"
+         FROM "practice_calendar_feed_tokens"
+        WHERE "user_id" = $1 AND "team_id" = $2 AND "revoked_at" IS NULL
+          AND "expires_at" > $3
+        ORDER BY "created_at" DESC, "id" ASC
+        LIMIT $4`,
+      [
+        userId,
+        teamId,
+        now.toISOString(),
+        CALENDAR_TOKEN_MAX_ACTIVE_PER_USER_TEAM,
+      ],
+    );
+    return rows.map(row => this.toMetadata(row));
+  }
+
   async revokeOwned(
     scope: TransactionScope,
     id: string,
@@ -89,6 +115,16 @@ export class CalendarFeedTokenRepository {
     );
     const row = rows[0];
     return row === undefined ? null : this.toToken(row);
+  }
+
+  private toMetadata(row: CalendarFeedMetadataRow): CalendarFeedMetadataView {
+    return {
+      id: row.id,
+      seasonId: row.season_id,
+      timezone: row.timezone,
+      expiresAt: toDate(row.expires_at),
+      createdAt: toDate(row.created_at),
+    };
   }
 
   private toToken(row: CalendarFeedTokenRow): CalendarFeedToken {

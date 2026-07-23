@@ -10,6 +10,7 @@ const FILTER: SessionListFilter = {
   status: null,
   sessionType: null,
   seasonId: null,
+  scheduleId: null,
   limit: 20,
   offset: 0,
 };

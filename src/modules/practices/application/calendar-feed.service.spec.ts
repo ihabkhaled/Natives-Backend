@@ -86,6 +86,15 @@ function build() {
   const tokens = {
     countActive: vi.fn().mockResolvedValue(0),
     insert: vi.fn().mockResolvedValue(undefined),
+    listActiveByUser: vi.fn().mockResolvedValue([
+      {
+        id: 'feed-1',
+        seasonId: null,
+        timezone: DEFAULT_TIMEZONE,
+        expiresAt: new Date('2027-01-14T10:00:00.000Z'),
+        createdAt: NOW,
+      },
+    ]),
     revokeOwned: vi.fn().mockResolvedValue(true),
     findUsableByDigest: vi.fn().mockResolvedValue(feedToken()),
   };
@@ -195,6 +204,27 @@ describe('CalendarFeedService', () => {
       }),
     ).rejects.toBeInstanceOf(CalendarFeedTimezoneError);
     expect(harness.tokens.insert).not.toHaveBeenCalled();
+  });
+
+  it('lists only my own feeds as metadata, never re-exposing a credential', async () => {
+    const result = await harness.service.listOwn(ACTOR, 'team-1');
+    expect(harness.tokens.listActiveByUser).toHaveBeenCalledWith(
+      SCOPE,
+      ACTOR.userId,
+      'team-1',
+      NOW,
+    );
+    expect(result.items).toHaveLength(1);
+    expect(result.items[0]).toEqual({
+      id: 'feed-1',
+      seasonId: null,
+      timezone: DEFAULT_TIMEZONE,
+      expiresAt: new Date('2027-01-14T10:00:00.000Z'),
+      createdAt: NOW,
+    });
+    const serialized = JSON.stringify(result);
+    expect(serialized).not.toContain(CREDENTIAL.raw);
+    expect(serialized).not.toContain(CREDENTIAL.digest);
   });
 
   it('revokes only an owned credential in the requested team scope', async () => {
