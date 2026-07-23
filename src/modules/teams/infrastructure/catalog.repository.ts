@@ -6,7 +6,13 @@ import {
   parseResourceStatus,
   toDate,
 } from '../lib/teams.helpers';
-import type { CatalogEntryRow, CountRow, IdRow } from '../model/teams.rows';
+import { CATALOG_KEYS_SCAN_LIMIT } from '../model/teams.constants';
+import type {
+  CatalogEntryRow,
+  CatalogKeyRow,
+  CountRow,
+  IdRow,
+} from '../model/teams.rows';
 import type {
   CatalogEntry,
   ListCatalogEntriesResult,
@@ -50,6 +56,22 @@ export class CatalogRepository {
       [teamId, catalog, key],
     );
     return rows.length > 0;
+  }
+
+  /** Active entry keys of one catalog, for cross-reference validation (P2). */
+  async listActiveKeys(
+    scope: TransactionScope,
+    teamId: string,
+    catalog: string,
+  ): Promise<readonly string[]> {
+    const rows = await scope.run<CatalogKeyRow>(
+      `SELECT "key" FROM "reference_catalog_entries"
+        WHERE "team_id" = $1 AND "catalog" = $2 AND "status" = 'active'
+        ORDER BY "key" ASC
+        LIMIT $3`,
+      [teamId, catalog, CATALOG_KEYS_SCAN_LIMIT],
+    );
+    return rows.map(row => row.key);
   }
 
   async insert(

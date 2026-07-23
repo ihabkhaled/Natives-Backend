@@ -24,6 +24,7 @@ export const VENUE_BY_ID_ROUTE = ':teamId/venues/:venueId';
 export const CATALOG_ENTRIES_ROUTE = ':teamId/catalog-entries';
 export const CATALOG_ENTRY_BY_ID_ROUTE = ':teamId/catalog-entries/:entryId';
 export const SETTING_VERSIONS_ROUTE = ':teamId/settings/versions';
+export const SETTING_VERSION_ROUTE = ':teamId/settings/versions/:versionId';
 export const SETTINGS_SNAPSHOT_ROUTE = ':teamId/settings/snapshot';
 
 // --- Route param names -------------------------------------------------------
@@ -31,6 +32,7 @@ export const TEAM_ID_PARAM = 'teamId';
 export const SEASON_ID_PARAM = 'seasonId';
 export const VENUE_ID_PARAM = 'venueId';
 export const CATALOG_ENTRY_ID_PARAM = 'entryId';
+export const SETTING_VERSION_ID_PARAM = 'versionId';
 
 // --- Field bounds ------------------------------------------------------------
 export const SLUG_MIN_LENGTH = 2;
@@ -45,7 +47,15 @@ export const ADDRESS_MAX_LENGTH = 512;
 export const CATALOG_KEY_MIN_LENGTH = 1;
 export const CATALOG_KEY_MAX_LENGTH = 64;
 export const LABEL_MAX_LENGTH = 120;
+// Setting-version reasons are mandatory and must say something (P2, D6);
+// mirrors the frontend's ADMIN_LIMITS.minimumReasonLength.
+export const NOTE_MIN_LENGTH = 5;
 export const NOTE_MAX_LENGTH = 512;
+// A new setting version may not be backdated; a small grace window absorbs
+// clock skew between the admin's browser and the server (P2, D5).
+export const SETTING_EFFECTIVE_GRACE_MS = 5 * 60_000;
+// Bounded scan of active `position` catalog keys for roster cross-references.
+export const CATALOG_KEYS_SCAN_LIMIT = 1000;
 export const SORT_ORDER_MIN = 0;
 export const SORT_ORDER_MAX = 100000;
 export const LATITUDE_MIN = -90;
@@ -94,6 +104,7 @@ export const VENUE_ARCHIVED_EVENT = 'team.venueArchived';
 export const CATALOG_ENTRY_CREATED_EVENT = 'team.catalogEntryCreated';
 export const CATALOG_ENTRY_ARCHIVED_EVENT = 'team.catalogEntryArchived';
 export const SETTING_VERSION_CREATED_EVENT = 'team.settingVersionCreated';
+export const SETTING_VERSION_CANCELLED_EVENT = 'team.settingVersionCancelled';
 
 // --- Error messages & keys ---------------------------------------------------
 export const TEAM_NOT_FOUND_MESSAGE = 'The team was not found';
@@ -162,3 +173,33 @@ export const SETTING_VERSION_CONFLICT_MESSAGE =
   'A setting version already exists at this effective instant';
 export const SETTING_VERSION_CONFLICT_MESSAGE_KEY: ErrorMessageKey =
   'errors.teams.settingVersionConflict';
+
+export const SETTING_VALUE_INVALID_MESSAGE =
+  'The setting value does not satisfy the contract for its key';
+export const SETTING_VALUE_INVALID_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.settingValueInvalid';
+
+export const SETTING_EFFECTIVE_INVALID_MESSAGE =
+  'The effective-from instant must be a strict UTC ISO-8601 date-time ending in Z';
+export const SETTING_EFFECTIVE_INVALID_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.settingEffectiveInvalid';
+
+export const SETTING_EFFECTIVE_IN_PAST_MESSAGE =
+  'The effective-from instant must not be in the past; history is never rewritten';
+export const SETTING_EFFECTIVE_IN_PAST_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.settingEffectiveInPast';
+
+export const SETTING_VERSION_STALE_MESSAGE =
+  'Another setting version was created since you loaded this key; reload and retry';
+export const SETTING_VERSION_STALE_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.settingVersionStale';
+
+export const SETTING_VERSION_NOT_FOUND_MESSAGE =
+  'The setting version was not found';
+export const SETTING_VERSION_NOT_FOUND_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.settingVersionNotFound';
+
+export const SETTING_VERSION_NOT_CANCELLABLE_MESSAGE =
+  'Only a future-effective setting version can be cancelled; past versions are history';
+export const SETTING_VERSION_NOT_CANCELLABLE_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.settingVersionNotCancellable';

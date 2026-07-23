@@ -7,10 +7,14 @@ import {
 import { Inject, Injectable } from '@nestjs/common';
 
 import { buildSettingsSnapshot } from '../domain/effective-settings.policy';
+import {
+  classifyEffectiveVersion,
+  classifySettingVersion,
+} from '../domain/setting-value.policy';
 import { SettingVersionRepository } from '../infrastructure/setting-version.repository';
 import type { SettingKey } from '../model/teams.enums';
 import type {
-  ListSettingVersionsResult,
+  ListClassifiedSettingVersionsResult,
   PageRequest,
   SettingsSnapshot,
 } from '../model/teams.types';
@@ -18,7 +22,9 @@ import type {
 /**
  * Read side for versioned team settings: the deterministic effective snapshot
  * as-of an instant (defaulting to now), and a bounded page of a key's version
- * history. The snapshot resolves one in-effect version per key server-side.
+ * history. Every value is classified on read (P2, D4): version rows carry
+ * `valueState` (raw document still visible for the legacy replace flow) and the
+ * snapshot never serves a legacy value as effective.
  */
 @Injectable()
 export class SettingsQueryService {
@@ -39,10 +45,28 @@ export class SettingsQueryService {
     teamId: string,
     settingKey: SettingKey,
     page: PageRequest,
-  ): Promise<ListSettingVersionsResult> {
+  ): Promise<ListClassifiedSettingVersionsResult> {
     return this.unitOfWork.runInTransaction(scope =>
-      this.settings.listForKey(scope, teamId, settingKey, page),
+      this.listClassified(scope, teamId, settingKey, page),
     );
+  }
+
+  private async listClassified(
+    scope: TransactionScope,
+    teamId: string,
+    settingKey: SettingKey,
+    page: PageRequest,
+  ): Promise<ListClassifiedSettingVersionsResult> {
+    const result = await this.settings.listForKey(
+      scope,
+      teamId,
+      settingKey,
+      page,
+    );
+    return {
+      ...result,
+      items: result.items.map(version => classifySettingVersion(version)),
+    };
   }
 
   private async buildSnapshot(
@@ -51,6 +75,10 @@ export class SettingsQueryService {
     asOf: Date,
   ): Promise<SettingsSnapshot> {
     const effective = await this.settings.loadEffective(scope, teamId, asOf);
-    return buildSettingsSnapshot(teamId, asOf, effective);
+    return buildSettingsSnapshot(
+      teamId,
+      asOf,
+      effective.map(version => classifyEffectiveVersion(version)),
+    );
   }
 }

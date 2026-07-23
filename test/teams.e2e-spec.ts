@@ -334,29 +334,8 @@ describeIfDb(suiteTitle, () => {
     expect(response.body.messageKey).toBe('errors.teams.catalogEntryInUse');
   });
 
-  it('resolves the effective settings snapshot as of a date', async () => {
-    const token = await tokenFor(fixture.adminId, [Role.Admin]);
-    const created = await request(app.getHttpServer())
-      .post(`/api/v1/teams/${teamId}/settings/versions`)
-      .set('Authorization', `Bearer ${token}`)
-      .send({
-        settingKey: 'badge_tiers',
-        effectiveFrom: '2026-01-01T00:00:00.000Z',
-        value: { tiers: [100, 200, 450] },
-      });
-    expect(created.status).toBe(201);
-
-    const snapshot = await request(app.getHttpServer())
-      .get(
-        `/api/v1/teams/${teamId}/settings/snapshot?asOf=2026-06-01T00:00:00.000Z`,
-      )
-      .set('Authorization', `Bearer ${token}`);
-    expect(snapshot.status).toBe(200);
-    const badge = snapshot.body.settings.find(
-      (s: { settingKey: string }) => s.settingKey === 'badge_tiers',
-    );
-    expect(badge.value).toEqual({ tiers: [100, 200, 450] });
-  });
+  // Settings scheduling/snapshot coverage moved to test/settings.e2e-spec.ts
+  // (P2 typed settings: per-key validation, strict-UTC scheduling, legacy rows).
 
   it('lets a globally assigned super admin create a team', async () => {
     const token = await tokenFor(fixture.superAdminUserId, [Role.User]);

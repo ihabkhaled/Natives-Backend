@@ -1,3 +1,4 @@
+import { UTC_INSTANT_PATTERN } from '../model/setting-values.constants';
 import {
   DATE_PATTERN,
   LIST_DEFAULT_LIMIT,
@@ -40,6 +41,25 @@ export function toNullableDate(value: string | Date | null): Date | null {
  */
 export function toNullableNumber(value: string | null): number | null {
   return value === null ? null : Number(value);
+}
+
+/**
+ * Parse a strict UTC ISO-8601 instant (`...Z`, optional 1–3 digit fraction)
+ * into a Date, or null when the string is offset-less, offset-based, malformed
+ * or an impossible calendar date (e.g. Feb 31, which `new Date` silently rolls
+ * over). The audit proved offset-less strings were interpreted server-locally —
+ * this is the P2 (D5) edge that makes that impossible.
+ */
+export function parseStrictUtcInstant(value: string): Date | null {
+  if (!UTC_INSTANT_PATTERN.test(value)) {
+    return null;
+  }
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) {
+    return null;
+  }
+  const canonical = parsed.toISOString();
+  return canonical.slice(0, 19) === value.slice(0, 19) ? parsed : null;
 }
 
 /**

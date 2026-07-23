@@ -98,6 +98,70 @@ describe('SettingVersionRepository', () => {
     expect(effective[0]?.value).toEqual({ practice: 3 });
   });
 
+  it('finds the effective version for one key at an instant', async () => {
+    scope.run.mockResolvedValueOnce([versionRow()]);
+    const found = await repository.findEffectiveForKey(
+      scope as never,
+      'team-1',
+      'attendance_statuses',
+      NOW,
+    );
+    expect(found?.id).toBe('sv-1');
+    expect(scope.run.mock.calls[0]?.[1]).toEqual([
+      'team-1',
+      'attendance_statuses',
+      NOW.toISOString(),
+    ]);
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.findEffectiveForKey(
+        scope as never,
+        'team-1',
+        'attendance_statuses',
+        NOW,
+      ),
+    ).resolves.toBeNull();
+  });
+
+  it('finds the head (newest) version for a key', async () => {
+    scope.run.mockResolvedValueOnce([versionRow()]);
+    const head = await repository.findHead(
+      scope as never,
+      'team-1',
+      'attendance_weights',
+    );
+    expect(head?.id).toBe('sv-1');
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.findHead(scope as never, 'team-1', 'attendance_weights'),
+    ).resolves.toBeNull();
+  });
+
+  it('finds a version by id within the team scope', async () => {
+    scope.run.mockResolvedValueOnce([versionRow()]);
+    const found = await repository.findById(scope as never, 'team-1', 'sv-1');
+    expect(found?.settingKey).toBe(SettingKey.AttendanceWeights);
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.findById(scope as never, 'team-1', 'missing'),
+    ).resolves.toBeNull();
+  });
+
+  it('deletes a version by id and reports whether a row was removed', async () => {
+    scope.run.mockResolvedValueOnce([{ id: 'sv-1' }]);
+    await expect(
+      repository.deleteById(scope as never, 'team-1', 'sv-1'),
+    ).resolves.toBe(true);
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.deleteById(scope as never, 'team-1', 'missing'),
+    ).resolves.toBe(false);
+  });
+
   it('lists versions for a key with a total, defaulting to zero', async () => {
     scope.run.mockResolvedValueOnce([versionRow()]);
     scope.run.mockResolvedValueOnce([{ count: 1 }]);

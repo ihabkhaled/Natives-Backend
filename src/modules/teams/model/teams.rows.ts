@@ -96,3 +96,7 @@ export interface CountRow {
 export interface IdRow {
   readonly id: string;
 }
+
+export interface CatalogKeyRow {
+  readonly key: string;
+}

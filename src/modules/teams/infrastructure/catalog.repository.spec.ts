@@ -80,6 +80,20 @@ describe('CatalogRepository', () => {
     ).resolves.toBe(false);
   });
 
+  it('lists active keys of a catalog with a bounded scan', async () => {
+    scope.run.mockResolvedValueOnce([{ key: 'cutter' }, { key: 'handler' }]);
+    await expect(
+      repository.listActiveKeys(scope as never, 'team-1', 'position'),
+    ).resolves.toEqual(['cutter', 'handler']);
+    expect(scope.run.mock.calls[0]?.[0]).toContain(`"status" = 'active'`);
+    expect(scope.run.mock.calls[0]?.[0]).toContain('LIMIT');
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.listActiveKeys(scope as never, 'team-1', 'position'),
+    ).resolves.toEqual([]);
+  });
+
   it('inserts an entry and serializes metadata as jsonb', async () => {
     scope.run.mockResolvedValue([entryRow()]);
     await repository.insert(scope as never, NEW_ENTRY);

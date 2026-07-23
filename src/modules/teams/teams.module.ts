@@ -9,6 +9,7 @@ import { TeamsController } from './api/teams.controller';
 import { VenuesController } from './api/venues.controller';
 import { ArchiveCatalogEntryUseCase } from './application/archive-catalog-entry.use-case';
 import { ArchiveVenueUseCase } from './application/archive-venue.use-case';
+import { CancelSettingVersionUseCase } from './application/cancel-setting-version.use-case';
 import { CatalogQueryService } from './application/catalog-query.service';
 import { CreateCatalogEntryUseCase } from './application/create-catalog-entry.use-case';
 import { CreateSeasonUseCase } from './application/create-season.use-case';
@@ -76,6 +77,7 @@ import { VenueRepository } from './infrastructure/venue.repository';
     CreateCatalogEntryUseCase,
     ArchiveCatalogEntryUseCase,
     CreateSettingVersionUseCase,
+    CancelSettingVersionUseCase,
   ],
 })
 export class TeamsModule {}

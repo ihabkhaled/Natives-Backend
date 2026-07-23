@@ -1,3 +1,5 @@
+import type { SettingValueState } from './setting-values.enums';
+import type { TypedSettingValue } from './setting-values.types';
 import type {
   CatalogName,
   ResourceStatus,
@@ -84,17 +86,30 @@ export interface SettingVersion {
   readonly teamId: string;
   readonly settingKey: SettingKey;
   readonly effectiveFrom: Date;
-  readonly value: JsonObject;
+  /** New writes persist normalized typed values; legacy rows keep raw jsonb. */
+  readonly value: TypedSettingValue | JsonObject;
   readonly note: string | null;
   readonly createdBy: string | null;
   readonly createdAt: Date;
 }
 
-/** One resolved setting in an effective snapshot; null value = not configured. */
+/** A stored version plus its read-time classification (P2, D4). */
+export interface ClassifiedSettingVersion extends SettingVersion {
+  readonly valueState: SettingValueState;
+}
+
+/**
+ * One resolved setting in an effective snapshot. `value` is null when the key
+ * is not configured OR when the in-effect row is legacy (D4 — the snapshot
+ * never serves an unvalidated document); `valueState` is null only for
+ * not-configured keys. `issues` surfaces cross-setting gaps (D3).
+ */
 export interface EffectiveSetting {
   readonly settingKey: SettingKey;
   readonly effectiveFrom: Date | null;
-  readonly value: JsonObject | null;
+  readonly value: TypedSettingValue | null;
+  readonly valueState: SettingValueState | null;
+  readonly issues: readonly string[];
 }
 
 export interface SettingsSnapshot {
@@ -140,6 +155,14 @@ export interface ListCatalogEntriesResult {
 
 export interface ListSettingVersionsResult {
   readonly items: readonly SettingVersion[];
+  readonly total: number;
+  readonly limit: number;
+  readonly offset: number;
+}
+
+/** The versions page served to clients: every row carries its `valueState`. */
+export interface ListClassifiedSettingVersionsResult {
+  readonly items: readonly ClassifiedSettingVersion[];
   readonly total: number;
   readonly limit: number;
   readonly offset: number;
@@ -212,7 +235,13 @@ export interface CreateSettingVersionCommand {
   readonly settingKey: SettingKey;
   readonly effectiveFrom: string;
   readonly value: JsonObject;
-  readonly note: string | null;
+  /** Mandatory change reason (P2, D6). */
+  readonly note: string;
+  /**
+   * Optimistic head guard (P2, D8): the id of the newest version the caller saw
+   * for this key, `null` for "no versions yet", `undefined` to skip the check.
+   */
+  readonly expectedHeadVersionId?: string | null | undefined;
 }
 
 export interface CatalogListQuery {
@@ -321,7 +350,8 @@ export interface NewSettingVersion {
   readonly teamId: string;
   readonly settingKey: SettingKey;
   readonly effectiveFrom: Date;
-  readonly value: JsonObject;
+  /** The policy's normalized typed output, never the raw request body (P2). */
+  readonly value: TypedSettingValue | JsonObject;
   readonly note: string | null;
   readonly createdBy: string | null;
   readonly now: Date;

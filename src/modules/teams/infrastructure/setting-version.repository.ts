@@ -72,6 +72,73 @@ export class SettingVersionRepository {
     return rows.map(row => this.toVersion(row));
   }
 
+  async findEffectiveForKey(
+    scope: TransactionScope,
+    teamId: string,
+    settingKey: string,
+    asOf: Date,
+  ): Promise<SettingVersion | null> {
+    const rows = await scope.run<SettingVersionRow>(
+      `SELECT "id", "team_id", "setting_key", "effective_from", "value",
+              "note", "created_by", "created_at"
+         FROM "team_setting_versions"
+        WHERE "team_id" = $1 AND "setting_key" = $2 AND "effective_from" <= $3
+        ORDER BY "effective_from" DESC, "id" DESC
+        LIMIT 1`,
+      [teamId, settingKey, asOf.toISOString()],
+    );
+    const row = rows[0];
+    return row === undefined ? null : this.toVersion(row);
+  }
+
+  async findHead(
+    scope: TransactionScope,
+    teamId: string,
+    settingKey: string,
+  ): Promise<SettingVersion | null> {
+    const rows = await scope.run<SettingVersionRow>(
+      `SELECT "id", "team_id", "setting_key", "effective_from", "value",
+              "note", "created_by", "created_at"
+         FROM "team_setting_versions"
+        WHERE "team_id" = $1 AND "setting_key" = $2
+        ORDER BY "effective_from" DESC, "id" DESC
+        LIMIT 1`,
+      [teamId, settingKey],
+    );
+    const row = rows[0];
+    return row === undefined ? null : this.toVersion(row);
+  }
+
+  async findById(
+    scope: TransactionScope,
+    teamId: string,
+    versionId: string,
+  ): Promise<SettingVersion | null> {
+    const rows = await scope.run<SettingVersionRow>(
+      `SELECT "id", "team_id", "setting_key", "effective_from", "value",
+              "note", "created_by", "created_at"
+         FROM "team_setting_versions"
+        WHERE "team_id" = $1 AND "id" = $2`,
+      [teamId, versionId],
+    );
+    const row = rows[0];
+    return row === undefined ? null : this.toVersion(row);
+  }
+
+  async deleteById(
+    scope: TransactionScope,
+    teamId: string,
+    versionId: string,
+  ): Promise<boolean> {
+    const rows = await scope.run<IdRow>(
+      `DELETE FROM "team_setting_versions"
+        WHERE "team_id" = $1 AND "id" = $2
+       RETURNING "id"`,
+      [teamId, versionId],
+    );
+    return rows.length > 0;
+  }
+
   async listForKey(
     scope: TransactionScope,
     teamId: string,
