@@ -18,6 +18,7 @@ export const TASK_ID_PARAM = 'taskId';
 
 export const RULE_ITEM_ROUTE = ':ruleId';
 export const RULE_ACK_ROUTE = ':ruleId/acknowledgement';
+export const RULE_ACK_LIST_ROUTE = ':ruleId/acknowledgements';
 export const CASE_ITEM_ROUTE = ':caseId';
 export const CASE_TRANSITION_ROUTE = ':caseId/transition';
 export const POSITION_ITEM_ROUTE = ':positionId';
@@ -118,6 +119,10 @@ export const DISCIPLINE_FORBIDDEN_MESSAGE =
   'You are not permitted to read this discipline case';
 export const DISCIPLINE_FORBIDDEN_MESSAGE_KEY: ErrorMessageKey =
   'errors.governance.disciplineForbidden';
+export const RULE_ACK_FORBIDDEN_MESSAGE =
+  'A rule can only be acknowledged for your own membership';
+export const RULE_ACK_FORBIDDEN_MESSAGE_KEY: ErrorMessageKey =
+  'errors.governance.acknowledgementForbidden';
 
 // --- Audit actions / resources ----------------------------------------------
 

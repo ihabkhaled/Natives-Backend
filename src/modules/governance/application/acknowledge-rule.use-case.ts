@@ -12,6 +12,7 @@ import {
 import { AuditRecorderService } from '@modules/platform';
 import { Inject, Injectable } from '@nestjs/common';
 
+import { RuleAcknowledgementForbiddenError } from '../errors/rule-acknowledgement-forbidden.error';
 import { RuleRepository } from '../infrastructure/rule.repository';
 import {
   buildAcknowledgement,
@@ -26,6 +27,10 @@ import { GovernanceLookupService } from './governance-lookup.service';
  * acknowledgement always cites the version accepted, so publishing a new version
  * legitimately leaves earlier acknowledgements stale — a member must accept the
  * current text again. Upserted, so a repeat is idempotent.
+ *
+ * Self-scope is enforced (BE-3): the membership must belong to the acting user.
+ * Acknowledging on another member's behalf is a typed 403
+ * (errors.governance.acknowledgementForbidden), never a silent proxy write.
  */
 @Injectable()
 export class AcknowledgeRuleUseCase {
@@ -57,7 +62,7 @@ export class AcknowledgeRuleUseCase {
     membershipId: string,
   ): Promise<RuleAcknowledgement> {
     const rule = await this.lookup.requireRule(tx, teamId, ruleId);
-    await this.lookup.requireMember(tx, teamId, membershipId);
+    await this.requireOwnMembership(tx, actor, teamId, membershipId);
     const ack = await this.rules.upsertAcknowledgement(
       tx,
       buildAcknowledgement(
@@ -77,5 +82,22 @@ export class AcknowledgeRuleUseCase {
       ),
     );
     return ack;
+  }
+
+  /** The membership must resolve to the acting user — never a third party. */
+  private async requireOwnMembership(
+    tx: TransactionScope,
+    actor: AuthUserIdentity,
+    teamId: string,
+    membershipId: string,
+  ): Promise<void> {
+    const membership = await this.lookup.requireMembershipRef(
+      tx,
+      teamId,
+      membershipId,
+    );
+    if (membership.userId !== actor.userId) {
+      throw new RuleAcknowledgementForbiddenError();
+    }
   }
 }

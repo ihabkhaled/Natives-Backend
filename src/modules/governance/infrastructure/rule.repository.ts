@@ -129,6 +129,55 @@ export class RuleRepository {
     return Number(rows[0]?.count ?? 0);
   }
 
+  /** The caller's acknowledgements of a page of rule version rows (BE-2). */
+  async listAcknowledgementsForMembership(
+    scope: TransactionScope,
+    teamId: string,
+    membershipId: string,
+    ruleIds: readonly string[],
+  ): Promise<readonly RuleAcknowledgement[]> {
+    if (ruleIds.length === 0) {
+      return [];
+    }
+    const rows = await scope.run<AckRow>(
+      `SELECT ${ACK_COLUMNS} FROM "rule_acknowledgements"
+        WHERE "team_id" = $1 AND "membership_id" = $2
+          AND "rule_id" = ANY($3::uuid[])`,
+      [teamId, membershipId, [...ruleIds]],
+    );
+    return rows.map(row => toAcknowledgement(row));
+  }
+
+  /** The bounded compliance page of one rule version's acknowledgements. */
+  async listAcknowledgementsForRule(
+    scope: TransactionScope,
+    teamId: string,
+    ruleId: string,
+    page: PageRequest,
+  ): Promise<readonly RuleAcknowledgement[]> {
+    const rows = await scope.run<AckRow>(
+      `SELECT ${ACK_COLUMNS} FROM "rule_acknowledgements"
+        WHERE "team_id" = $1 AND "rule_id" = $2
+        ORDER BY "acknowledged_at" DESC, "id" ASC
+        LIMIT $3 OFFSET $4`,
+      [teamId, ruleId, Math.min(page.limit, LIST_MAX_LIMIT), page.offset],
+    );
+    return rows.map(row => toAcknowledgement(row));
+  }
+
+  async countAcknowledgementsForRule(
+    scope: TransactionScope,
+    teamId: string,
+    ruleId: string,
+  ): Promise<number> {
+    const rows = await scope.run<GovernanceCountRow>(
+      `SELECT COUNT(*)::int AS "count" FROM "rule_acknowledgements"
+        WHERE "team_id" = $1 AND "rule_id" = $2`,
+      [teamId, ruleId],
+    );
+    return Number(rows[0]?.count ?? 0);
+  }
+
   async upsertAcknowledgement(
     scope: TransactionScope,
     ack: NewRuleAcknowledgement,

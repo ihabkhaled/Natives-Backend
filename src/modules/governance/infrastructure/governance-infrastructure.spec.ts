@@ -173,6 +173,34 @@ describe('GovernanceScopeRepository', () => {
       await repository.membershipExists(member.scope, 'team-1', 'member-9'),
     ).toBe(false);
   });
+
+  it('resolves a membership with its owning user for self-scope checks', async () => {
+    const found = scopeReturning([{ id: 'member-1', user_id: 'user-1' }]);
+    expect(
+      await repository.findMembership(found.scope, 'team-1', 'member-1'),
+    ).toEqual({ membershipId: 'member-1', userId: 'user-1' });
+    expect(String(found.run.mock.calls[0]?.[0])).toContain(
+      '"deleted_at" IS NULL',
+    );
+    const missing = scopeReturning([]);
+    expect(
+      await repository.findMembership(missing.scope, 'team-1', 'member-9'),
+    ).toBeNull();
+  });
+
+  it('resolves the caller’s single active membership by user', async () => {
+    const found = scopeReturning([{ id: 'member-1', user_id: 'user-1' }]);
+    expect(
+      await repository.findActiveMembershipByUser(
+        found.scope,
+        'team-1',
+        'user-1',
+      ),
+    ).toEqual({ membershipId: 'member-1', userId: 'user-1' });
+    const sql = String(found.run.mock.calls[0]?.[0]);
+    expect(sql).toContain(`"status" = 'active'`);
+    expect(sql).toContain('LIMIT 1');
+  });
 });
 
 describe('RuleRepository', () => {
@@ -250,6 +278,56 @@ describe('RuleRepository', () => {
       ).ruleVersion,
     ).toBe(1);
     expect(String(run.mock.calls[0]?.[0])).toContain('ON CONFLICT');
+  });
+
+  it('reads the caller’s acks for a set of rule ids without a query on empty input', async () => {
+    const { scope, run } = scopeReturning([ACK_ROW]);
+    expect(
+      await repository.listAcknowledgementsForMembership(
+        scope,
+        'team-1',
+        'member-1',
+        ['rule-1', 'rule-2'],
+      ),
+    ).toHaveLength(1);
+    expect(String(run.mock.calls[0]?.[0])).toContain('ANY($3::uuid[])');
+    const empty = scopeReturning([]);
+    expect(
+      await repository.listAcknowledgementsForMembership(
+        empty.scope,
+        'team-1',
+        'member-1',
+        [],
+      ),
+    ).toEqual([]);
+    expect(empty.run).not.toHaveBeenCalled();
+  });
+
+  it('bounds the compliance page of one rule version and counts it', async () => {
+    const list = scopeReturning([ACK_ROW]);
+    expect(
+      await repository.listAcknowledgementsForRule(
+        list.scope,
+        'team-1',
+        'rule-1',
+        {
+          limit: 900,
+          offset: 0,
+        },
+      ),
+    ).toHaveLength(1);
+    expect(list.run.mock.calls[0]?.[1]).toContain(100);
+    expect(String(list.run.mock.calls[0]?.[0])).toContain(
+      '"acknowledged_at" DESC',
+    );
+    const count = scopeReturning([{ count: 7 }]);
+    expect(
+      await repository.countAcknowledgementsForRule(
+        count.scope,
+        'team-1',
+        'rule-1',
+      ),
+    ).toBe(7);
   });
 });
 

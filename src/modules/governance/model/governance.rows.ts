@@ -129,6 +129,12 @@ export interface GovernanceCountRow {
   readonly count: number | string;
 }
 
+/** A membership ownership probe row (`memberships` id + owning user). */
+export interface GovernanceMembershipRow {
+  readonly id: string;
+  readonly user_id: string;
+}
+
 /** A single-column id probe row for existence checks. */
 export interface GovernanceIdRow {
   readonly id: string;

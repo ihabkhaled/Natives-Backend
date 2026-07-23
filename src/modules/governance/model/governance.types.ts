@@ -110,6 +110,28 @@ export interface NewRuleAcknowledgement {
 
 export type TeamRulePage = PagedResult<TeamRule>;
 
+/**
+ * The caller's own acknowledgement state of ONE rule version row (BE-2).
+ * `myAcknowledgedVersion` is non-null exactly when the caller's active
+ * membership acknowledged this version; it then equals the row's version.
+ */
+export interface RuleAckState {
+  readonly myAcknowledgedVersion: number | null;
+  readonly myAcknowledgedAt: Date | null;
+}
+
+export type TeamRuleWithAckState = TeamRule & RuleAckState;
+
+export type TeamRuleWithAckPage = PagedResult<TeamRuleWithAckState>;
+
+export type RuleAcknowledgementPage = PagedResult<RuleAcknowledgement>;
+
+/** A membership resolved with its owning user, for self-scope enforcement. */
+export interface GovernanceMembershipRef {
+  readonly membershipId: string;
+  readonly userId: string;
+}
+
 export interface RuleListFilter {
   readonly category: RuleCategory | null;
   readonly status: RuleStatus | null;

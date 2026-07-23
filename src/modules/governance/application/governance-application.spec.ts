@@ -16,6 +16,7 @@ import { GovernanceInvalidTransitionError } from '../errors/governance-invalid-t
 import { GovernanceScopeNotFoundError } from '../errors/governance-scope-not-found.error';
 import { GovernanceValidationError } from '../errors/governance-validation.error';
 import { GovernanceVersionConflictError } from '../errors/governance-version-conflict.error';
+import { RuleAcknowledgementForbiddenError } from '../errors/rule-acknowledgement-forbidden.error';
 import { RuleNotFoundError } from '../errors/rule-not-found.error';
 import { SeparationOfDutiesError } from '../errors/separation-of-duties.error';
 import type { DisciplineRepository } from '../infrastructure/discipline.repository';
@@ -44,6 +45,7 @@ import type {
   GovernanceMeeting,
   GovernancePosition,
   GovernanceTask,
+  RuleAcknowledgement,
   TeamRule,
 } from '../model/governance.types';
 import { AcknowledgeRuleUseCase } from './acknowledge-rule.use-case';
@@ -99,6 +101,15 @@ const RULE: TeamRule = {
   createdBy: 'user-1',
   archivedAt: null,
   createdAt: NOW,
+};
+
+const ACK: RuleAcknowledgement = {
+  acknowledgementId: 'ack-1',
+  teamId: 'team-1',
+  ruleId: 'rule-1',
+  membershipId: 'member-1',
+  ruleVersion: 1,
+  acknowledgedAt: NOW,
 };
 
 const CASE: DisciplineCase = {
@@ -197,6 +208,12 @@ function scopeRepo(
   return {
     activeTeamExists: vi.fn().mockResolvedValue(true),
     membershipExists: vi.fn().mockResolvedValue(true),
+    findMembership: vi
+      .fn()
+      .mockResolvedValue({ membershipId: 'member-1', userId: ACTOR.userId }),
+    findActiveMembershipByUser: vi
+      .fn()
+      .mockResolvedValue({ membershipId: 'member-1', userId: ACTOR.userId }),
     ...overrides,
   };
 }
@@ -208,6 +225,9 @@ function ruleRepo(overrides: Record<string, unknown> = {}): RuleRepository {
     findLatestByKey: vi.fn().mockResolvedValue(RULE),
     listForScope: vi.fn().mockResolvedValue([RULE]),
     countForScope: vi.fn().mockResolvedValue(1),
+    listAcknowledgementsForMembership: vi.fn().mockResolvedValue([ACK]),
+    listAcknowledgementsForRule: vi.fn().mockResolvedValue([ACK]),
+    countAcknowledgementsForRule: vi.fn().mockResolvedValue(1),
     upsertAcknowledgement: vi
       .fn()
       .mockResolvedValue({ acknowledgementId: 'ack-1', ruleVersion: 1 }),
@@ -347,16 +367,93 @@ describe('GovernanceAuthorityService', () => {
 });
 
 describe('RuleQueryService', () => {
-  it('returns a bounded page and resolves one rule', async () => {
-    const service = new RuleQueryService(UOW, ruleRepo(), lookup());
+  it('returns a bounded page with the caller’s own ack state merged in', async () => {
+    const service = new RuleQueryService(
+      UOW,
+      ruleRepo(),
+      scopeRepo(),
+      lookup(),
+    );
     expect(
       await service.listForScope(
         'team-1',
+        ACTOR,
         { category: null, status: null },
         { limit: 20, offset: 0 },
       ),
-    ).toEqual({ items: [RULE], total: 1, limit: 20, offset: 0 });
-    expect((await service.getById('team-1', 'rule-1')).ruleId).toBe('rule-1');
+    ).toEqual({
+      items: [{ ...RULE, myAcknowledgedVersion: 1, myAcknowledgedAt: NOW }],
+      total: 1,
+      limit: 20,
+      offset: 0,
+    });
+    const rule = await service.getById('team-1', ACTOR, 'rule-1');
+    expect(rule.ruleId).toBe('rule-1');
+    expect(rule.myAcknowledgedVersion).toBe(1);
+    expect(rule.myAcknowledgedAt).toEqual(NOW);
+  });
+
+  it('reports null ack state when the caller holds no active membership', async () => {
+    const service = new RuleQueryService(
+      UOW,
+      ruleRepo(),
+      scopeRepo({
+        findActiveMembershipByUser: vi.fn().mockResolvedValue(null),
+      }),
+      lookup(),
+    );
+    const page = await service.listForScope(
+      'team-1',
+      ACTOR,
+      { category: null, status: null },
+      { limit: 20, offset: 0 },
+    );
+    expect(page.items[0]?.myAcknowledgedVersion).toBeNull();
+    expect(page.items[0]?.myAcknowledgedAt).toBeNull();
+  });
+
+  it('reports null ack state for a version the caller never acknowledged', async () => {
+    const service = new RuleQueryService(
+      UOW,
+      ruleRepo({
+        listAcknowledgementsForMembership: vi.fn().mockResolvedValue([]),
+      }),
+      scopeRepo(),
+      lookup(),
+    );
+    const rule = await service.getById('team-1', ACTOR, 'rule-1');
+    expect(rule.myAcknowledgedVersion).toBeNull();
+  });
+
+  it('pages one rule version’s acknowledgements for compliance', async () => {
+    const service = new RuleQueryService(
+      UOW,
+      ruleRepo(),
+      scopeRepo(),
+      lookup(),
+    );
+    expect(
+      await service.listAcknowledgements('team-1', 'rule-1', {
+        limit: 20,
+        offset: 0,
+      }),
+    ).toEqual({ items: [ACK], total: 1, limit: 20, offset: 0 });
+  });
+
+  it('404s the compliance listing of a foreign rule', async () => {
+    const rules = ruleRepo({ findForWrite: vi.fn().mockResolvedValue(null) });
+    const service = new RuleQueryService(
+      UOW,
+      rules,
+      scopeRepo(),
+      lookup({ rules }),
+    );
+    await expect(
+      service.listAcknowledgements('team-1', 'rule-9', {
+        limit: 20,
+        offset: 0,
+      }),
+    ).rejects.toBeInstanceOf(RuleNotFoundError);
   });
 });
 
@@ -423,7 +520,7 @@ describe('PublishRuleUseCase', () => {
 });
 
 describe('AcknowledgeRuleUseCase', () => {
-  it('records the acknowledgement of the current version', async () => {
+  it('records the acknowledgement of the current version for the actor’s own membership', async () => {
     const rules = ruleRepo();
     const useCase = new AcknowledgeRuleUseCase(
       UOW,
@@ -437,6 +534,49 @@ describe('AcknowledgeRuleUseCase', () => {
       (await useCase.execute(ACTOR, 'team-1', 'rule-1', 'member-1'))
         .acknowledgementId,
     ).toBe('ack-1');
+  });
+
+  it('403s an acknowledgement on behalf of another member (BE-3)', async () => {
+    const rules = ruleRepo();
+    const useCase = new AcknowledgeRuleUseCase(
+      UOW,
+      CLOCK,
+      IDS,
+      lookup({
+        rules,
+        scopes: scopeRepo({
+          findMembership: vi
+            .fn()
+            .mockResolvedValue({ membershipId: 'member-2', userId: 'user-9' }),
+        }),
+      }),
+      rules,
+      auditStub(),
+    );
+    await expect(
+      useCase.execute(ACTOR, 'team-1', 'rule-1', 'member-2'),
+    ).rejects.toBeInstanceOf(RuleAcknowledgementForbiddenError);
+    expect(rules.upsertAcknowledgement).not.toHaveBeenCalled();
+  });
+
+  it('404s an acknowledgement for a membership outside the team', async () => {
+    const rules = ruleRepo();
+    const useCase = new AcknowledgeRuleUseCase(
+      UOW,
+      CLOCK,
+      IDS,
+      lookup({
+        rules,
+        scopes: scopeRepo({
+          findMembership: vi.fn().mockResolvedValue(null),
+        }),
+      }),
+      rules,
+      auditStub(),
+    );
+    await expect(
+      useCase.execute(ACTOR, 'team-1', 'rule-1', 'member-9'),
+    ).rejects.toBeInstanceOf(GovernanceScopeNotFoundError);
   });
 });
 

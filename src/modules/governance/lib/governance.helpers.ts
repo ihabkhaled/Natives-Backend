@@ -5,7 +5,13 @@ import {
   LIST_DEFAULT_OFFSET,
   LIST_MAX_LIMIT,
 } from '../model/governance.constants';
-import type { MeetingDecision, PageRequest } from '../model/governance.types';
+import type {
+  MeetingDecision,
+  PageRequest,
+  RuleAcknowledgement,
+  TeamRule,
+  TeamRuleWithAckState,
+} from '../model/governance.types';
 
 export function resolveGovernancePage(
   limit: number | undefined,
@@ -14,6 +20,31 @@ export function resolveGovernancePage(
   return {
     limit: Math.min(limit ?? LIST_DEFAULT_LIMIT, LIST_MAX_LIMIT),
     offset: offset ?? LIST_DEFAULT_OFFSET,
+  };
+}
+
+/**
+ * Merge the caller's own acknowledgements into a page of rule version rows
+ * (BE-2). An ack row cites one rule VERSION row, so a rule item carries a
+ * non-null `myAcknowledgedVersion` exactly when the caller acknowledged that
+ * version — acknowledging an older version never carries over.
+ */
+export function mergeRuleAckState(
+  rules: readonly TeamRule[],
+  acks: readonly RuleAcknowledgement[],
+): readonly TeamRuleWithAckState[] {
+  const byRuleId = new Map(acks.map(ack => [ack.ruleId, ack]));
+  return rules.map(rule => toRuleAckState(rule, byRuleId.get(rule.ruleId)));
+}
+
+export function toRuleAckState(
+  rule: TeamRule,
+  ack: RuleAcknowledgement | undefined,
+): TeamRuleWithAckState {
+  return {
+    ...rule,
+    myAcknowledgedVersion: ack === undefined ? null : ack.ruleVersion,
+    myAcknowledgedAt: ack === undefined ? null : ack.acknowledgedAt,
   };
 }
 

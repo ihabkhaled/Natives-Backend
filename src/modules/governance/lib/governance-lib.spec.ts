@@ -41,6 +41,7 @@ import {
   buildTaskStatusChange,
 } from './governance.builders';
 import {
+  mergeRuleAckState,
   parseEnumValue,
   resolveGovernancePage,
   toCalendarDay,
@@ -53,6 +54,7 @@ import {
 import {
   toDisciplineCase,
   toMeeting,
+  toMembershipRef,
   toTask,
   toTeamRule,
 } from './governance.mapper';
@@ -179,9 +181,38 @@ describe('governance helpers', () => {
     ).toEqual([{ ref: 'D1', text: 'ok' }]);
     expect(toDecisions('nope')).toEqual([]);
   });
+
+  it('merges the caller’s acks into rule rows without cross-version carry-over', () => {
+    const other: TeamRule = { ...RULE, ruleId: 'rule-9' };
+    const merged = mergeRuleAckState(
+      [RULE, other],
+      [
+        {
+          acknowledgementId: 'ack-1',
+          teamId: RULE.teamId,
+          ruleId: RULE.ruleId,
+          membershipId: 'member-1',
+          ruleVersion: RULE.version,
+          acknowledgedAt: NOW,
+        },
+      ],
+    );
+    expect(merged[0]?.myAcknowledgedVersion).toBe(RULE.version);
+    expect(merged[0]?.myAcknowledgedAt).toEqual(NOW);
+    expect(merged[1]?.myAcknowledgedVersion).toBeNull();
+    expect(merged[1]?.myAcknowledgedAt).toBeNull();
+  });
 });
 
 describe('governance mapper', () => {
+  it('maps a membership ownership probe row, and a miss to null', () => {
+    expect(toMembershipRef({ id: 'member-1', user_id: 'user-1' })).toEqual({
+      membershipId: 'member-1',
+      userId: 'user-1',
+    });
+    expect(toMembershipRef(undefined)).toBeNull();
+  });
+
   it('maps a rule version', () => {
     expect(RULE.version).toBe(2);
     expect(RULE.category).toBe(RuleCategory.Conduct);

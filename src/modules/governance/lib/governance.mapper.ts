@@ -17,6 +17,7 @@ import type {
   AckRow,
   AppointmentRow,
   DisciplineCaseRow,
+  GovernanceMembershipRow,
   MeetingRow,
   PositionRow,
   RuleRow,
@@ -26,6 +27,7 @@ import type {
   DisciplineCase,
   GovernanceAppointment,
   GovernanceMeeting,
+  GovernanceMembershipRef,
   GovernancePosition,
   GovernanceTask,
   RuleAcknowledgement,
@@ -40,6 +42,14 @@ import {
   toNullableDate,
   toNumber,
 } from './governance.helpers';
+
+export function toMembershipRef(
+  row: GovernanceMembershipRow | undefined,
+): GovernanceMembershipRef | null {
+  return row === undefined
+    ? null
+    : { membershipId: row.id, userId: row.user_id };
+}
 
 export function toTeamRule(row: RuleRow): TeamRule {
   return {

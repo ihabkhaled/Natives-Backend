@@ -9,6 +9,7 @@ import { GovernanceValidationError } from './governance-validation.error';
 import { GovernanceVersionConflictError } from './governance-version-conflict.error';
 import { MeetingNotFoundError } from './meeting-not-found.error';
 import { PositionNotFoundError } from './position-not-found.error';
+import { RuleAcknowledgementForbiddenError } from './rule-acknowledgement-forbidden.error';
 import { RuleNotFoundError } from './rule-not-found.error';
 import { SeparationOfDutiesError } from './separation-of-duties.error';
 import { TaskNotFoundError } from './task-not-found.error';
@@ -70,6 +71,11 @@ describe('governance errors', () => {
         error: new DisciplineForbiddenError(),
         status: HttpStatus.FORBIDDEN,
         key: 'errors.governance.disciplineForbidden',
+      },
+      {
+        error: new RuleAcknowledgementForbiddenError(),
+        status: HttpStatus.FORBIDDEN,
+        key: 'errors.governance.acknowledgementForbidden',
       },
     ];
     for (const { error, status, key } of cases) {

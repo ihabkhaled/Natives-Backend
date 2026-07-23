@@ -232,9 +232,24 @@ export class TeamRuleResponseDto {
   declare readonly createdAt: Date;
 }
 
+/**
+ * A rule version row enriched with the CALLER's own acknowledgement state
+ * (BE-2): `myAcknowledgedVersion` is non-null exactly when the caller's active
+ * membership acknowledged this version row (it then equals `version`), and
+ * `myAcknowledgedAt` cites when. Both are null when the caller holds no active
+ * membership in the team.
+ */
+export class TeamRuleWithAckStateResponseDto extends TeamRuleResponseDto {
+  @ApiProperty({ type: Number, nullable: true })
+  declare readonly myAcknowledgedVersion: number | null;
+
+  @ApiProperty({ type: String, format: 'date-time', nullable: true })
+  declare readonly myAcknowledgedAt: Date | null;
+}
+
 export class ListTeamRulesResponseDto {
-  @ApiProperty({ type: [TeamRuleResponseDto] })
-  declare readonly items: readonly TeamRuleResponseDto[];
+  @ApiProperty({ type: [TeamRuleWithAckStateResponseDto] })
+  declare readonly items: readonly TeamRuleWithAckStateResponseDto[];
 
   @ApiProperty()
   declare readonly total: number;
@@ -261,6 +276,25 @@ export class RuleAcknowledgementResponseDto {
 
   @ApiProperty({ type: String, format: 'date-time' })
   declare readonly acknowledgedAt: Date;
+}
+
+/**
+ * The bounded compliance page of one rule version's acknowledgements (BE-2):
+ * which memberships accepted this exact version, newest first. Gate:
+ * rules.manage.
+ */
+export class ListRuleAcknowledgementsResponseDto {
+  @ApiProperty({ type: [RuleAcknowledgementResponseDto] })
+  declare readonly items: readonly RuleAcknowledgementResponseDto[];
+
+  @ApiProperty()
+  declare readonly total: number;
+
+  @ApiProperty()
+  declare readonly limit: number;
+
+  @ApiProperty()
+  declare readonly offset: number;
 }
 
 // --- Discipline --------------------------------------------------------------

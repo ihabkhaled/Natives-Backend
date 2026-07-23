@@ -16,6 +16,7 @@ import { TaskRepository } from '../infrastructure/task.repository';
 import type {
   DisciplineCase,
   GovernanceMeeting,
+  GovernanceMembershipRef,
   GovernancePosition,
   GovernanceTask,
   TeamRule,
@@ -51,6 +52,23 @@ export class GovernanceLookupService {
     if (!(await this.scopes.membershipExists(scope, teamId, membershipId))) {
       throw new GovernanceScopeNotFoundError();
     }
+  }
+
+  /** The membership with its owning user — for actor self-scope checks. */
+  async requireMembershipRef(
+    scope: TransactionScope,
+    teamId: string,
+    membershipId: string,
+  ): Promise<GovernanceMembershipRef> {
+    const membership = await this.scopes.findMembership(
+      scope,
+      teamId,
+      membershipId,
+    );
+    if (membership === null) {
+      throw new GovernanceScopeNotFoundError();
+    }
+    return membership;
   }
 
   async requireRule(
