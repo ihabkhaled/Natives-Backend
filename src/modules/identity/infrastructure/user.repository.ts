@@ -69,6 +69,54 @@ export class UserRepository {
     return { user: this.toUser(row), passwordHash: row.password_hash };
   }
 
+  async findByIdForUpdate(
+    scope: TransactionScope,
+    id: string,
+  ): Promise<User | null> {
+    const rows = await scope.run<UserRow>(
+      `SELECT "id", "email", "role", "status", "display_name", "created_at",
+              "updated_at", "deleted_at", "version"
+         FROM "users"
+        WHERE "id" = $1 AND "deleted_at" IS NULL
+        FOR UPDATE`,
+      [id],
+    );
+    const row = rows[0];
+    return row === undefined ? null : this.toUser(row);
+  }
+
+  async listByStatus(
+    scope: TransactionScope,
+    status: string,
+  ): Promise<readonly User[]> {
+    const rows = await scope.run<UserRow>(
+      `SELECT "id", "email", "role", "status", "display_name", "created_at",
+              "updated_at", "deleted_at", "version"
+         FROM "users"
+        WHERE "status" = $1 AND "deleted_at" IS NULL
+        ORDER BY "created_at" ASC`,
+      [status],
+    );
+    return rows.map(row => this.toUser(row));
+  }
+
+  async markReviewed(
+    scope: TransactionScope,
+    id: string,
+    status: string,
+    reviewedBy: string,
+    now: Date,
+  ): Promise<void> {
+    await scope.run(
+      `UPDATE "users"
+          SET "status" = $2, "signup_reviewed_by" = $3,
+              "signup_reviewed_at" = $4, "updated_at" = $4,
+              "version" = "version" + 1
+        WHERE "id" = $1`,
+      [id, status, reviewedBy, now.toISOString()],
+    );
+  }
+
   async insert(scope: TransactionScope, user: NewUser): Promise<User> {
     const rows = await scope.run<UserRow>(
       `INSERT INTO "users" ("id", "email", "role", "status", "display_name",

@@ -18,6 +18,7 @@ import type {
   Principal,
   RefreshSessionPage,
   SessionListQuery,
+  SignupRequestSummary,
   User,
 } from '../model/identity.types';
 
@@ -68,7 +69,7 @@ export function toAccountState(status: UserStatus): AccountState {
   if (status === UserStatus.Active) {
     return AccountState.Active;
   }
-  if (status === UserStatus.Invited) {
+  if (status === UserStatus.Invited || status === UserStatus.Pending) {
     return AccountState.Pending;
   }
   return AccountState.Suspended;
@@ -118,6 +119,21 @@ export function toInvitationDelivery(
   token: string,
 ): InvitationDelivery {
   return { ...toInvitationSummary(invitation), token };
+}
+
+/**
+ * Project a user aggregate into the credential-free signup summary surfaced to
+ * the applicant and to admins. `state` collapses the internal status into the
+ * client-facing account-state contract.
+ */
+export function toSignupRequestSummary(user: User): SignupRequestSummary {
+  return {
+    id: user.id,
+    email: user.email,
+    displayName: user.displayName,
+    state: toAccountState(user.status),
+    requestedAt: user.createdAt,
+  };
 }
 
 export function toDeviceSessionList(

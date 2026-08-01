@@ -12,19 +12,24 @@ import { InvitationExpiryJob } from './adapters/invitation-expiry.job';
 import { AuthController } from './api/auth.controller';
 import { InvitationsController } from './api/invitations.controller';
 import { PublicInvitationsController } from './api/public-invitations.controller';
+import { SignupController } from './api/signup.controller';
 import { TeamInvitationsController } from './api/team-invitations.controller';
 import { AcceptInvitationUseCase } from './application/accept-invitation.use-case';
+import { ApproveSignupUseCase } from './application/approve-signup.use-case';
 import { CreateInvitationUseCase } from './application/create-invitation.use-case';
 import { ExpireInvitationsUseCase } from './application/expire-invitations.use-case';
 import { GetCurrentPrincipalUseCase } from './application/get-current-principal.use-case';
 import { GetInvitationDetailsUseCase } from './application/get-invitation-details.use-case';
+import { ListPendingSignupsUseCase } from './application/list-pending-signups.use-case';
 import { ListSessionsUseCase } from './application/list-sessions.use-case';
 import { LoginUseCase } from './application/login.use-case';
 import { LogoutUseCase } from './application/logout.use-case';
 import { LogoutAllUseCase } from './application/logout-all.use-case';
 import { PrincipalMembershipsService } from './application/principal-memberships.service';
 import { RefreshSessionUseCase } from './application/refresh-session.use-case';
+import { RejectSignupUseCase } from './application/reject-signup.use-case';
 import { RequestPasswordResetUseCase } from './application/request-password-reset.use-case';
+import { RequestSignupUseCase } from './application/request-signup.use-case';
 import { ResendInvitationUseCase } from './application/resend-invitation.use-case';
 import { ResetPasswordUseCase } from './application/reset-password.use-case';
 import { RevokeInvitationUseCase } from './application/revoke-invitation.use-case';
@@ -32,6 +37,7 @@ import { RevokeOtherSessionsUseCase } from './application/revoke-other-sessions.
 import { RevokeSessionUseCase } from './application/revoke-session.use-case';
 import { SecurityAuditService } from './application/security-audit.service';
 import { SendInvitationEmailService } from './application/send-invitation-email.service';
+import { SendSignupEmailService } from './application/send-signup-email.service';
 import { SessionIssuerService } from './application/session-issuer.service';
 import { FailedLoginStateRepository } from './infrastructure/failed-login-state.repository';
 import { InvitationRepository } from './infrastructure/invitation.repository';
@@ -67,6 +73,7 @@ import { SECURE_RANDOM_PORT } from './model/identity.constants';
     InvitationsController,
     TeamInvitationsController,
     PublicInvitationsController,
+    SignupController,
   ],
   providers: [
     { provide: SECURE_RANDOM_PORT, useClass: CryptoSecureRandomAdapter },
@@ -81,6 +88,11 @@ import { SECURE_RANDOM_PORT } from './model/identity.constants';
     SecurityAuditService,
     PrincipalMembershipsService,
     SessionIssuerService,
+    SendSignupEmailService,
+    RequestSignupUseCase,
+    ListPendingSignupsUseCase,
+    ApproveSignupUseCase,
+    RejectSignupUseCase,
     CreateInvitationUseCase,
     ResendInvitationUseCase,
     SendInvitationEmailService,

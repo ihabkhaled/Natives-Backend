@@ -1,8 +1,16 @@
 export enum UserStatus {
   Invited = 'invited',
+  /**
+   * A self-signed-up account awaiting admin approval. Inert: it holds no role or
+   * membership and cannot authenticate (see user-status.policy) until an admin
+   * approves it, which flips it to Active.
+   */
+  Pending = 'pending',
   Active = 'active',
   Inactive = 'inactive',
   Suspended = 'suspended',
+  /** A self-signup an admin declined. Terminal and inert — never authenticates. */
+  Rejected = 'rejected',
   Left = 'left',
 }
 
@@ -45,6 +53,9 @@ export enum SecurityEventType {
   InvitationResent = 'invitation.resent',
   InvitationRevoked = 'invitation.revoked',
   InvitationAccepted = 'invitation.accepted',
+  SignupRequested = 'signup.requested',
+  SignupApproved = 'signup.approved',
+  SignupRejected = 'signup.rejected',
   PasswordResetRequested = 'recovery.requested',
   PasswordResetCompleted = 'recovery.completed',
 }

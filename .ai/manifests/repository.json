@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-01T17:12:15.760Z",
-  "treeHash": "sha256:15dec210636ab154a3ab6e1a577129896eaf91fcb46116b06acb0d668a15427e",
+  "generatedAt": "2026-08-01T17:40:43.457Z",
+  "treeHash": "sha256:9817d5f7596bcc661cc3f3c86c9ee00f5b4ce9e3572059324648035852e5abb9",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -89,8 +89,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:db2c60d183c35c9c066d6b435ebfb9daf36e21be0d05255f0079d563fbd24e43",
-      "sizeBytes": 7157
+      "hash": "sha256:c917b6e4eeed9522d0dff083a0f7e8cf930b3ffe3060c112e6b9cd7f92737b5f",
+      "sizeBytes": 7966
     },
     {
       "path": "src/bootstrap/bootstrap.ts",
@@ -4193,6 +4193,23 @@
       "sizeBytes": 1037
     },
     {
+      "path": "src/database/migrations/1725600000000-signup-review.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SignupReview1725600000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0e65c8762ccf05c1e4c93808b71b5ddb571ef32037a870cc6f640d2af0370703",
+      "sizeBytes": 1459
+    },
+    {
       "path": "src/database/migrations/achievement-rejection-reason-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -4539,6 +4556,18 @@
       "kind": "spec",
       "hash": "sha256:b5ecac97411181cd61c681b17747c6ab583095ccbe1b6f364059158e60679687",
       "sizeBytes": 1401
+    },
+    {
+      "path": "src/database/migrations/signup-review-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:768ad79f9f990e0c719e5ebc0fef7c1d78f8090ddcc6e7a0b78e273514b2da8f",
+      "sizeBytes": 1313
     },
     {
       "path": "src/database/migrations/squads-schema.spec.ts",
@@ -22600,6 +22629,40 @@
       "sizeBytes": 135
     },
     {
+      "path": "src/modules/identity/api/dto/pending-signup-list-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PendingSignupListResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:89f00d7caa0b82cc828baea11d7d734ad84264d7c42f422a9702cef35f3800fa",
+      "sizeBytes": 359
+    },
+    {
+      "path": "src/modules/identity/api/dto/pending-signup-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PendingSignupResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c26a2ba7b4e29c355b528f5e3c40a952f6fe728e6462346eb579988034b603c6",
+      "sizeBytes": 670
+    },
+    {
       "path": "src/modules/identity/api/dto/principal-response.dto.ts",
       "root": "modules",
       "module": "identity",
@@ -22719,6 +22782,40 @@
       "sizeBytes": 437
     },
     {
+      "path": "src/modules/identity/api/dto/signup-acknowledgement-response.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SignupAcknowledgementResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fc81d5b96c06f7cb87473d3520f9e09f8752aa6a746301ea4874e754839c8720",
+      "sizeBytes": 594
+    },
+    {
+      "path": "src/modules/identity/api/dto/signup-request.dto.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SignupRequestDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:34c2338934e7cc4e38962232bc67bc715c2c97dbcb9a9bfa95983820b2e2712f",
+      "sizeBytes": 1213
+    },
+    {
       "path": "src/modules/identity/api/invitations.controller.ts",
       "root": "modules",
       "module": "identity",
@@ -22751,6 +22848,23 @@
       "kind": "source",
       "hash": "sha256:34b49dbbbcc9cbf98bccb813d3b9e3e2f59cf9ae1ed1fecc6d65b9ae54f2096a",
       "sizeBytes": 1124
+    },
+    {
+      "path": "src/modules/identity/api/signup.controller.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SignupController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:687fed8edf4cbab31d27c5af91c55387d9e7cbc7c478a2e85b4f9bc4c61e157f",
+      "sizeBytes": 3863
     },
     {
       "path": "src/modules/identity/api/team-invitations.controller.ts",
@@ -22797,6 +22911,35 @@
       "kind": "source",
       "hash": "sha256:c1e735a009fe74a6a806a2be819593843166410f4a1f23b8291da57ab2b63ab2",
       "sizeBytes": 7195
+    },
+    {
+      "path": "src/modules/identity/application/approve-signup.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0e4c0b86936f6206cbba6d9c66c7150350e698593f9535eaf7c4ed2a91a2cb3c",
+      "sizeBytes": 2868
+    },
+    {
+      "path": "src/modules/identity/application/approve-signup.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ApproveSignupUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/approve-signup.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a1d0bac2a62a4679c886c32818f5bfdb0c5c0d251ebfaa04f5f0777265ca348b",
+      "sizeBytes": 2547
     },
     {
       "path": "src/modules/identity/application/create-invitation.use-case.spec.ts",
@@ -22913,6 +23056,35 @@
       "kind": "source",
       "hash": "sha256:e0ceeb95ea42412445b76b6d3b32d950a174a362032f58062bc21b9293223258",
       "sizeBytes": 1731
+    },
+    {
+      "path": "src/modules/identity/application/list-pending-signups.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6b1485d913564dbd324b58718ed768f57849bf45a56acece856a48fd26744d48",
+      "sizeBytes": 1734
+    },
+    {
+      "path": "src/modules/identity/application/list-pending-signups.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListPendingSignupsUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/list-pending-signups.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:a6dba1c7394b7cfbb787736f4deee89884f5bf22f636fb18f0ff8f718de487f7",
+      "sizeBytes": 1064
     },
     {
       "path": "src/modules/identity/application/list-sessions.use-case.spec.ts",
@@ -23089,6 +23261,35 @@
       "sizeBytes": 3846
     },
     {
+      "path": "src/modules/identity/application/reject-signup.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:89acfbf7888638f7b09e043b700cf39597753068eea2da5429c2501bbc9b4bae",
+      "sizeBytes": 2560
+    },
+    {
+      "path": "src/modules/identity/application/reject-signup.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RejectSignupUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/reject-signup.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:418cd26bf78ff14c7a17ba4a3514cfe74367b8ba64271eaf02ec6418398f850d",
+      "sizeBytes": 2512
+    },
+    {
       "path": "src/modules/identity/application/request-password-reset.use-case.spec.ts",
       "root": "modules",
       "module": "identity",
@@ -23116,6 +23317,35 @@
       "kind": "source",
       "hash": "sha256:5f7cef207f09e7412f4f86ab45d3dc7c4b615922c6c492e5f3afc7a8939b0e47",
       "sizeBytes": 3029
+    },
+    {
+      "path": "src/modules/identity/application/request-signup.use-case.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f666b1ca6a436b769b73a53fc961010afccdee2bb9797ceb34c163f3c6667293",
+      "sizeBytes": 3792
+    },
+    {
+      "path": "src/modules/identity/application/request-signup.use-case.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RequestSignupUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/request-signup.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:999df6682379b2aab08a95dabcf01d40329c4aa512580bdc9f55f2f085e64226",
+      "sizeBytes": 4153
     },
     {
       "path": "src/modules/identity/application/resend-invitation.use-case.spec.ts",
@@ -23319,6 +23549,35 @@
       "kind": "source",
       "hash": "sha256:db8075df019ff0dc39455983968e2544a8bf2c9cc4320e335be02eebf247e2e8",
       "sizeBytes": 1838
+    },
+    {
+      "path": "src/modules/identity/application/send-signup-email.service.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f9bec2b5ef350019b662a4f6b809623c5410879c8b30344238689c467705d8b8",
+      "sizeBytes": 2355
+    },
+    {
+      "path": "src/modules/identity/application/send-signup-email.service.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SendSignupEmailService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/application/send-signup-email.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:b88e1c8168e0d79c17649ba952479c6b53535edd7af2b9ad4655d26f9ee5ef5a",
+      "sizeBytes": 2850
     },
     {
       "path": "src/modules/identity/application/session-issuer.service.spec.ts",
@@ -23525,6 +23784,84 @@
       "kind": "source",
       "hash": "sha256:2ce628f01b93d4c855cf80eaceaaf37b062e943216b78aa59742ec200388c2fe",
       "sizeBytes": 836
+    },
+    {
+      "path": "src/modules/identity/domain/signup-email.template.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:1d3cab047d9d0e4be951912e5737db725ba6619a8a51f609a9c59cf3cd8c06ab",
+      "sizeBytes": 1846
+    },
+    {
+      "path": "src/modules/identity/domain/signup-email.template.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "SignupEmailInput"
+        },
+        {
+          "kind": "interface",
+          "name": "SignupAdminEmailInput"
+        },
+        {
+          "kind": "function",
+          "name": "renderSignupPendingEmail"
+        },
+        {
+          "kind": "function",
+          "name": "renderSignupAdminNotificationEmail"
+        },
+        {
+          "kind": "function",
+          "name": "renderSignupApprovedEmail"
+        },
+        {
+          "kind": "function",
+          "name": "renderSignupRejectedEmail"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/domain/signup-email.template.spec.ts",
+      "kind": "source",
+      "hash": "sha256:3c5053147c150d08b80d662c3d51073e8fd898a3e8063811597c23bbc98557b0",
+      "sizeBytes": 3233
+    },
+    {
+      "path": "src/modules/identity/domain/signup.policy.spec.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:2859c608d2f9929b2205efc518c4250fb84f30e29733e64f3bfc5316ef1b7a35",
+      "sizeBytes": 1111
+    },
+    {
+      "path": "src/modules/identity/domain/signup.policy.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isReviewableSignup"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/identity/domain/signup.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:127de3c6d282b2be7b07ead21f2cb5bd1bf47922627ff29bf0a5569eeeb7624e",
+      "sizeBytes": 551
     },
     {
       "path": "src/modules/identity/domain/user-status.policy.spec.ts",
@@ -23792,6 +24129,40 @@
       "sizeBytes": 324
     },
     {
+      "path": "src/modules/identity/errors/signup-conflict.error.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SignupConflictError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:4371f0e4e0e544a9f181bed13423c86b2badc66d2b89e92d18674bc71e75e44f",
+      "sizeBytes": 451
+    },
+    {
+      "path": "src/modules/identity/errors/signup-not-found.error.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SignupNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:fc33f682a23690296ce20d94d267db41d5fe59d996fb7c954cb13b4fb0714f59",
+      "sizeBytes": 539
+    },
+    {
       "path": "src/modules/identity/identity.module.ts",
       "root": "modules",
       "module": "identity",
@@ -23805,8 +24176,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:e741f63aa0b74a2ea7677af3a49c520fd03a4d836ff55d863bcbe1d01884eef5",
-      "sizeBytes": 4978
+      "hash": "sha256:4ffb2b2a54e913242407efc2cf75eacf89fc8d3b66f248a1792b712ba7207ad0",
+      "sizeBytes": 5599
     },
     {
       "path": "src/modules/identity/index.ts",
@@ -24020,8 +24391,8 @@
       "hasSpec": true,
       "specPath": "src/modules/identity/infrastructure/user.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:e3fdbffe344101ab753681185fc8996aa5623a1c5b6601f9a316cefe7d044ba8",
-      "sizeBytes": 3333
+      "hash": "sha256:61937910858cd07d2e32ad7dab09f6f23a7b1ba3cf87edc56af4be4d6ca6d522",
+      "sizeBytes": 4697
     },
     {
       "path": "src/modules/identity/lib/identity.helpers.spec.ts",
@@ -24124,14 +24495,18 @@
         },
         {
           "kind": "function",
+          "name": "toSignupRequestSummary"
+        },
+        {
+          "kind": "function",
           "name": "toDeviceSessionList"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/identity/lib/identity.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:182346a1102e1db6d0fbfd3f71a673685ee3acb72a5159469851356632e9bbce",
-      "sizeBytes": 3890
+      "hash": "sha256:41d9e1dc6dc3e9b20c5a819b8d311836320b2285a8d33c6cd60e9b9131d1f3b0",
+      "sizeBytes": 4397
     },
     {
       "path": "src/modules/identity/lib/membership-payload.mapper.spec.ts",
@@ -24259,6 +24634,34 @@
         },
         {
           "kind": "const",
+          "name": "SIGNUPS_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_SIGNUP_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_SIGNUPS_PENDING_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_SIGNUP_APPROVE_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "AUTH_SIGNUP_REJECT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNUP_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNUP_PENDING_ACK_MESSAGE"
+        },
+        {
+          "kind": "const",
           "name": "INVITATIONS_ROUTE"
         },
         {
@@ -24300,6 +24703,10 @@
         {
           "kind": "const",
           "name": "PASSWORD_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "DISPLAY_NAME_MIN_LENGTH"
         },
         {
           "kind": "const",
@@ -24447,6 +24854,22 @@
         },
         {
           "kind": "const",
+          "name": "SIGNUP_CONFLICT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNUP_CONFLICT_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNUP_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNUP_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
           "name": "RESET_TOKEN_INVALID_MESSAGE"
         },
         {
@@ -24457,8 +24880,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4f946bed405715b138afa3e097cc6bf5e54a23a62cd141c3416e60ef22eb00ae",
-      "sizeBytes": 5437
+      "hash": "sha256:35f9ad1bd470f1f1dcd9ab9b35b9fa6bccb2f6e6ee833d445f5f5da7845ac3fb",
+      "sizeBytes": 6565
     },
     {
       "path": "src/modules/identity/model/identity.enums.ts",
@@ -24502,8 +24925,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:01e169d2d5a8a24e034cbe8141bc61adfa87f5e86f579cd1f750e85e1f4a852e",
-      "sizeBytes": 1569
+      "hash": "sha256:53f2a696e072def49b1e1952b81d2184a8af96c246a6d392d3d9c42d72a241cf",
+      "sizeBytes": 2037
     },
     {
       "path": "src/modules/identity/model/identity.rows.ts",
@@ -24638,6 +25061,26 @@
         },
         {
           "kind": "interface",
+          "name": "SignupCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "ReviewSignupCommand"
+        },
+        {
+          "kind": "interface",
+          "name": "SignupRequestSummary"
+        },
+        {
+          "kind": "interface",
+          "name": "SignupAcknowledgement"
+        },
+        {
+          "kind": "interface",
+          "name": "PendingSignupList"
+        },
+        {
+          "kind": "interface",
           "name": "LoginCommand"
         },
         {
@@ -24720,8 +25163,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d18344750055059501044706d25de0559b61e3c4e56fcb2d669c6bc75fe162bd",
-      "sizeBytes": 9237
+      "hash": "sha256:011577191cb2bc795b5d13c745f4b39cdbd9c232237b7a2343a94bbea4e3a35d",
+      "sizeBytes": 10397
     },
     {
       "path": "src/modules/identity/model/invitation-email.constants.ts",
@@ -24755,6 +25198,47 @@
       "kind": "source",
       "hash": "sha256:d92ad131be666ecde1afa0c77916ee3e50a5721b56e197956bd52b0d0dbacbaa",
       "sizeBytes": 621
+    },
+    {
+      "path": "src/modules/identity/model/signup-email.constants.ts",
+      "root": "modules",
+      "module": "identity",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SIGNUP_LOGIN_PATH"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNUP_APPLICANT_PENDING_SUBJECT"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNUP_ADMIN_NOTIFICATION_SUBJECT"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNUP_APPROVED_SUBJECT"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNUP_REJECTED_SUBJECT"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNUP_EMAIL_LOGGER_CONTEXT"
+        },
+        {
+          "kind": "const",
+          "name": "SIGNUP_EMAIL_FAILED_MESSAGE"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a5eb259986f13882304d95058fac20eaf56da05f22d26ce5efe3b9e302d4ed67",
+      "sizeBytes": 698
     },
     {
       "path": "src/modules/jerseys/api/dto/jerseys.dto.ts",

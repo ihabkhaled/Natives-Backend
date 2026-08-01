@@ -185,6 +185,43 @@ export interface AcceptInvitationCommand {
   readonly deviceLabel: string | null;
 }
 
+export interface SignupCommand {
+  readonly email: string;
+  readonly displayName: string;
+  readonly password: string;
+}
+
+/** An admin decision on a pending self-signup. `reviewerId` is the acting admin. */
+export interface ReviewSignupCommand {
+  readonly signupId: string;
+  readonly reviewerId: string;
+}
+
+/**
+ * A self-signup as surfaced to the applicant (the awaiting-approval ack) and to
+ * an admin (the pending list, and the approve/reject result). Carries no
+ * credential or role — an inert account until approved. `state` is the
+ * client-facing account state, never the internal lifecycle status.
+ */
+export interface SignupRequestSummary {
+  readonly id: string;
+  readonly email: string;
+  readonly displayName: string | null;
+  readonly state: AccountState;
+  readonly requestedAt: Date;
+}
+
+/** The awaiting-approval acknowledgement returned to a successful signup. */
+export interface SignupAcknowledgement {
+  readonly message: string;
+  readonly state: AccountState;
+}
+
+/** The admin review queue result: every signup still awaiting a decision. */
+export interface PendingSignupList {
+  readonly items: readonly SignupRequestSummary[];
+}
+
 export interface LoginCommand {
   readonly email: string;
   readonly password: string;

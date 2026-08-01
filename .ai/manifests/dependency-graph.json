@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T17:12:15.760Z",
+  "generatedAt": "2026-08-01T17:40:43.457Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -14922,6 +14922,26 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/modules/identity/api/dto/pending-signup-list-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/pending-signup-list-response.dto.ts",
+      "to": "src/modules/identity/api/dto/pending-signup-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/pending-signup-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/pending-signup-response.dto.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/identity/api/dto/principal-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -15004,6 +15024,31 @@
     {
       "from": "src/modules/identity/api/dto/session-list-response.dto.ts",
       "to": "src/modules/identity/api/dto/device-session-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/signup-acknowledgement-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/signup-acknowledgement-response.dto.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/dto/signup-request.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/signup-request.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/dto/signup-request.dto.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
       "type": "internal"
     },
     {
@@ -15105,6 +15150,71 @@
       "from": "src/modules/identity/api/public-invitations.controller.ts",
       "to": "src/modules/identity/model/identity.constants.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/modules/identity/api/dto/pending-signup-list-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/modules/identity/api/dto/pending-signup-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/modules/identity/api/dto/signup-acknowledgement-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/modules/identity/api/dto/signup-request.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/modules/identity/application/approve-signup.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/modules/identity/application/list-pending-signups.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/modules/identity/application/reject-signup.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/modules/identity/application/request-signup.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/api/signup.controller.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/identity/api/team-invitations.controller.ts",
@@ -15225,6 +15335,56 @@
       "from": "src/modules/identity/application/accept-invitation.use-case.ts",
       "to": "src/modules/rbac/index.ts",
       "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/application/approve-signup.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/approve-signup.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/approve-signup.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/approve-signup.use-case.ts",
+      "to": "src/modules/identity/application/send-signup-email.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/approve-signup.use-case.ts",
+      "to": "src/modules/identity/domain/signup.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/approve-signup.use-case.ts",
+      "to": "src/modules/identity/errors/signup-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/approve-signup.use-case.ts",
+      "to": "src/modules/identity/infrastructure/user.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/approve-signup.use-case.ts",
+      "to": "src/modules/identity/lib/identity.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/approve-signup.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/approve-signup.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/identity/application/create-invitation.use-case.ts",
@@ -15405,6 +15565,31 @@
       "from": "src/modules/identity/application/get-invitation-details.use-case.ts",
       "to": "src/modules/rbac/index.ts",
       "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/application/list-pending-signups.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/list-pending-signups.use-case.ts",
+      "to": "src/modules/identity/infrastructure/user.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/list-pending-signups.use-case.ts",
+      "to": "src/modules/identity/lib/identity.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/list-pending-signups.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/list-pending-signups.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/identity/application/list-sessions.use-case.ts",
@@ -15682,6 +15867,56 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/application/reject-signup.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/reject-signup.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/reject-signup.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reject-signup.use-case.ts",
+      "to": "src/modules/identity/application/send-signup-email.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reject-signup.use-case.ts",
+      "to": "src/modules/identity/domain/signup.policy.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reject-signup.use-case.ts",
+      "to": "src/modules/identity/errors/signup-not-found.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reject-signup.use-case.ts",
+      "to": "src/modules/identity/infrastructure/user.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reject-signup.use-case.ts",
+      "to": "src/modules/identity/lib/identity.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reject-signup.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/reject-signup.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/identity/application/request-password-reset.use-case.ts",
       "to": "src/config/app-config.service.ts",
       "type": "cross-cutting"
@@ -15745,6 +15980,86 @@
       "from": "src/modules/identity/application/request-password-reset.use-case.ts",
       "to": "src/modules/identity/model/identity.types.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/core/id-generator/id-generator.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/core/persistence/unit-of-work.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/modules/auth/index.ts",
+      "type": "cross-module"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/modules/identity/application/security-audit.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/modules/identity/application/send-signup-email.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/modules/identity/errors/signup-conflict.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/modules/identity/infrastructure/invitation.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/modules/identity/infrastructure/password-credential.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/modules/identity/infrastructure/user.repository.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/modules/identity/lib/identity.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/modules/identity/lib/identity.mapper.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/request-signup.use-case.ts",
+      "to": "src/shared/enums/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/identity/application/resend-invitation.use-case.ts",
@@ -16062,6 +16377,36 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/application/send-signup-email.service.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/send-signup-email.service.ts",
+      "to": "src/core/email/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/send-signup-email.service.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/application/send-signup-email.service.ts",
+      "to": "src/modules/identity/domain/signup-email.template.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/send-signup-email.service.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/application/send-signup-email.service.ts",
+      "to": "src/modules/identity/model/signup-email.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/identity/application/session-issuer.service.ts",
       "to": "src/config/app-config.service.ts",
       "type": "cross-cutting"
@@ -16148,6 +16493,26 @@
     },
     {
       "from": "src/modules/identity/domain/refresh-session.policy.ts",
+      "to": "src/modules/identity/model/identity.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/domain/signup-email.template.ts",
+      "to": "src/core/email/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/domain/signup-email.template.ts",
+      "to": "src/modules/identity/model/signup-email.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/domain/signup.policy.ts",
+      "to": "src/modules/identity/model/identity.enums.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/domain/signup.policy.ts",
       "to": "src/modules/identity/model/identity.types.ts",
       "type": "internal"
     },
@@ -16242,6 +16607,26 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/identity/errors/signup-conflict.error.ts",
+      "to": "src/core/errors/conflict.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/errors/signup-conflict.error.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/errors/signup-not-found.error.ts",
+      "to": "src/core/errors/not-found.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/identity/errors/signup-not-found.error.ts",
+      "to": "src/modules/identity/model/identity.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/modules/identity/identity.module.ts",
       "to": "src/core/clock/clock.module.ts",
       "type": "cross-cutting"
@@ -16288,12 +16673,22 @@
     },
     {
       "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/api/signup.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/api/team-invitations.controller.ts",
       "type": "internal"
     },
     {
       "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/application/accept-invitation.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/approve-signup.use-case.ts",
       "type": "internal"
     },
     {
@@ -16314,6 +16709,11 @@
     {
       "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/application/get-invitation-details.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/list-pending-signups.use-case.ts",
       "type": "internal"
     },
     {
@@ -16348,7 +16748,17 @@
     },
     {
       "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/reject-signup.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/application/request-password-reset.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/request-signup.use-case.ts",
       "type": "internal"
     },
     {
@@ -16384,6 +16794,11 @@
     {
       "from": "src/modules/identity/identity.module.ts",
       "to": "src/modules/identity/application/send-invitation-email.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/identity/identity.module.ts",
+      "to": "src/modules/identity/application/send-signup-email.service.ts",
       "type": "internal"
     },
     {

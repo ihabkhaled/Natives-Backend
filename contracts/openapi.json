@@ -13511,6 +13511,54 @@
         ],
         "type": "object"
       },
+      "PendingSignupListResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/PendingSignupResponseDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "PendingSignupResponseDto": {
+        "properties": {
+          "displayName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "requestedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "active",
+              "pending",
+              "suspended"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "displayName",
+          "state",
+          "requestedAt"
+        ],
+        "type": "object"
+      },
       "PeriodResponseDto": {
         "properties": {
           "cohort": {
@@ -19188,6 +19236,51 @@
         ],
         "type": "object"
       },
+      "SignupAcknowledgementResponseDto": {
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "state": {
+            "description": "Always \"pending\" immediately after signup",
+            "enum": [
+              "active",
+              "pending",
+              "suspended"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "message",
+          "state"
+        ],
+        "type": "object"
+      },
+      "SignupRequestDto": {
+        "properties": {
+          "displayName": {
+            "maxLength": 120,
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 320,
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 72,
+            "minLength": 12,
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "displayName",
+          "password"
+        ],
+        "type": "object"
+      },
       "SimulateRuleDto": {
         "properties": {
           "membershipId": {
@@ -23045,7 +23138,7 @@
     "contact": {},
     "description": "HTTP API for this NestJS service",
     "title": "Service API",
-    "version": "1.6.0"
+    "version": "1.7.0"
   },
   "openapi": "3.0.0",
   "paths": {
@@ -23667,6 +23760,134 @@
         "summary": "Revoke all refresh sessions except the current one",
         "tags": [
           "auth"
+        ]
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "operationId": "Signup.signup",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignupRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignupAcknowledgementResponseDto"
+                }
+              }
+            },
+            "description": "Signup received; the account is pending admin approval"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Request an account (self-signup, needs approval)",
+        "tags": [
+          "signups"
+        ]
+      }
+    },
+    "/auth/signups/{id}/approve": {
+      "post": {
+        "operationId": "Signup.approve",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingSignupResponseDto"
+                }
+              }
+            },
+            "description": "Signup approved; account activated"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Approve a pending signup and activate the account",
+        "tags": [
+          "signups"
+        ]
+      }
+    },
+    "/auth/signups/{id}/reject": {
+      "post": {
+        "operationId": "Signup.reject",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingSignupResponseDto"
+                }
+              }
+            },
+            "description": "Signup rejected"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "Reject a pending signup; the account stays inert",
+        "tags": [
+          "signups"
+        ]
+      }
+    },
+    "/auth/signups/pending": {
+      "get": {
+        "operationId": "Signup.listPending",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingSignupListResponseDto"
+                }
+              }
+            },
+            "description": "Pending signups, oldest first"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List self-signups awaiting approval",
+        "tags": [
+          "signups"
         ]
       }
     },

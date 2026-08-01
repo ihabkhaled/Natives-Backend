@@ -19,6 +19,20 @@ export const AUTH_FORGOT_PASSWORD_ROUTE = 'forgot-password';
 export const AUTH_RESET_PASSWORD_ROUTE = 'reset-password';
 export const AUTH_SESSION_ID_PARAM = 'id';
 
+// Self-signup: a public request lands in a PENDING account an admin must
+// approve before it can authenticate. Public create + admin review live on the
+// same `auth` base so the whole flow is one cohesive surface.
+export const SIGNUPS_API_TAG = 'signups';
+export const AUTH_SIGNUP_ROUTE = 'signup';
+export const AUTH_SIGNUPS_PENDING_ROUTE = 'signups/pending';
+export const AUTH_SIGNUP_APPROVE_ROUTE = 'signups/:id/approve';
+export const AUTH_SIGNUP_REJECT_ROUTE = 'signups/:id/reject';
+export const SIGNUP_ID_PARAM = 'id';
+
+export const SIGNUP_PENDING_ACK_MESSAGE =
+  'Thanks for signing up. An administrator will review your request and you ' +
+  'will be notified by email once it is approved.';
+
 export const INVITATIONS_ROUTE = 'invitations';
 export const INVITATIONS_API_TAG = 'invitations';
 export const INVITATIONS_ACCEPT_ROUTE = 'accept';
@@ -36,6 +50,7 @@ export const TEAM_ID_PARAM = 'teamId';
 export const EMAIL_MAX_LENGTH = 320;
 export const PASSWORD_MIN_LENGTH = 12;
 export const PASSWORD_MAX_LENGTH = 72;
+export const DISPLAY_NAME_MIN_LENGTH = 1;
 export const DISPLAY_NAME_MAX_LENGTH = 120;
 export const DEVICE_LABEL_MAX_LENGTH = 120;
 export const OPAQUE_TOKEN_MIN_LENGTH = 20;
@@ -104,6 +119,16 @@ export const INVITATION_CONFLICT_MESSAGE =
   'An active invitation or account already exists for this email';
 export const INVITATION_CONFLICT_MESSAGE_KEY: ErrorMessageKey =
   'errors.identity.invitationConflict';
+
+export const SIGNUP_CONFLICT_MESSAGE =
+  'An account or pending request already exists for this email';
+export const SIGNUP_CONFLICT_MESSAGE_KEY: ErrorMessageKey =
+  'errors.identity.signupConflict';
+
+export const SIGNUP_NOT_FOUND_MESSAGE =
+  'No pending signup was found for that id';
+export const SIGNUP_NOT_FOUND_MESSAGE_KEY: ErrorMessageKey =
+  'errors.identity.signupNotFound';
 
 export const RESET_TOKEN_INVALID_MESSAGE = 'The reset token is invalid';
 export const RESET_TOKEN_INVALID_MESSAGE_KEY: ErrorMessageKey =

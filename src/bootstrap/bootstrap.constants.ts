@@ -124,6 +124,17 @@ export const SWAGGER_DESCRIPTION = 'HTTP API for this NestJS service';
 //   scheduleId uuid filter (null-passthrough, applied to list AND total) so the
 //   schedule detail screen can page exactly one schedule's generated
 //   occurrences.
-export const SWAGGER_VERSION = '1.6.0';
+// 1.7.0: additive self-signup-with-approval (Stage-B).
+//   Signup (public): new POST /auth/signup (SignupRequestDto: email, displayName,
+//   password) creates a PENDING, inert account and returns
+//   SignupAcknowledgementResponseDto ({message, state:'pending'}) — never a token
+//   or session. 409 on a duplicate email/pending request; 400 on invalid body.
+//   Admin review (member.lifecycle.manage): GET /auth/signups/pending returns
+//   PendingSignupListResponseDto ({items: PendingSignupResponseDto[]}, oldest
+//   first); POST /auth/signups/{id}/approve activates the account and POST
+//   /auth/signups/{id}/reject makes it terminal — both return
+//   PendingSignupResponseDto and 404 for an id that is not pending. accountState
+//   'pending' now also covers a self-signup awaiting approval.
+export const SWAGGER_VERSION = '1.7.0';
 export const SWAGGER_BEARER_NAME = 'jwt';
 export const SWAGGER_PERSIST_AUTHORIZATION = false;

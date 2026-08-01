@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T17:12:15.760Z",
+  "generatedAt": "2026-08-01T17:40:43.457Z",
   "modules": [
     {
       "name": "activities",
@@ -818,6 +818,8 @@
           "src/modules/identity/errors/reset-token-invalid.error.ts",
           "src/modules/identity/errors/session-context-required.error.ts",
           "src/modules/identity/errors/session-not-found.error.ts",
+          "src/modules/identity/errors/signup-conflict.error.ts",
+          "src/modules/identity/errors/signup-not-found.error.ts",
           "src/modules/identity/identity.module.ts",
           "src/modules/identity/index.ts"
         ],
@@ -825,6 +827,7 @@
           "src/modules/identity/api/auth.controller.ts",
           "src/modules/identity/api/invitations.controller.ts",
           "src/modules/identity/api/public-invitations.controller.ts",
+          "src/modules/identity/api/signup.controller.ts",
           "src/modules/identity/api/team-invitations.controller.ts"
         ],
         "api-dto": [
@@ -841,26 +844,34 @@
           "src/modules/identity/api/dto/login.dto.ts",
           "src/modules/identity/api/dto/logout.dto.ts",
           "src/modules/identity/api/dto/message-response.dto.ts",
+          "src/modules/identity/api/dto/pending-signup-list-response.dto.ts",
+          "src/modules/identity/api/dto/pending-signup-response.dto.ts",
           "src/modules/identity/api/dto/principal-response.dto.ts",
           "src/modules/identity/api/dto/public-invitation-response.dto.ts",
           "src/modules/identity/api/dto/refresh.dto.ts",
           "src/modules/identity/api/dto/reset-password.dto.ts",
           "src/modules/identity/api/dto/revoke-other-sessions-response.dto.ts",
           "src/modules/identity/api/dto/session-list-query.dto.ts",
-          "src/modules/identity/api/dto/session-list-response.dto.ts"
+          "src/modules/identity/api/dto/session-list-response.dto.ts",
+          "src/modules/identity/api/dto/signup-acknowledgement-response.dto.ts",
+          "src/modules/identity/api/dto/signup-request.dto.ts"
         ],
         "use-case": [
           "src/modules/identity/application/accept-invitation.use-case.ts",
+          "src/modules/identity/application/approve-signup.use-case.ts",
           "src/modules/identity/application/create-invitation.use-case.ts",
           "src/modules/identity/application/expire-invitations.use-case.ts",
           "src/modules/identity/application/get-current-principal.use-case.ts",
           "src/modules/identity/application/get-invitation-details.use-case.ts",
+          "src/modules/identity/application/list-pending-signups.use-case.ts",
           "src/modules/identity/application/list-sessions.use-case.ts",
           "src/modules/identity/application/login.use-case.ts",
           "src/modules/identity/application/logout-all.use-case.ts",
           "src/modules/identity/application/logout.use-case.ts",
           "src/modules/identity/application/refresh-session.use-case.ts",
+          "src/modules/identity/application/reject-signup.use-case.ts",
           "src/modules/identity/application/request-password-reset.use-case.ts",
+          "src/modules/identity/application/request-signup.use-case.ts",
           "src/modules/identity/application/resend-invitation.use-case.ts",
           "src/modules/identity/application/reset-password.use-case.ts",
           "src/modules/identity/application/revoke-invitation.use-case.ts",
@@ -871,6 +882,7 @@
           "src/modules/identity/application/principal-memberships.service.ts",
           "src/modules/identity/application/security-audit.service.ts",
           "src/modules/identity/application/send-invitation-email.service.ts",
+          "src/modules/identity/application/send-signup-email.service.ts",
           "src/modules/identity/application/session-issuer.service.ts"
         ],
         "domain": [
@@ -879,6 +891,8 @@
           "src/modules/identity/domain/invitation.policy.ts",
           "src/modules/identity/domain/password-reset.policy.ts",
           "src/modules/identity/domain/refresh-session.policy.ts",
+          "src/modules/identity/domain/signup-email.template.ts",
+          "src/modules/identity/domain/signup.policy.ts",
           "src/modules/identity/domain/user-status.policy.ts"
         ],
         "repository": [
@@ -901,11 +915,12 @@
           "src/modules/identity/model/identity.enums.ts",
           "src/modules/identity/model/identity.rows.ts",
           "src/modules/identity/model/identity.types.ts",
-          "src/modules/identity/model/invitation-email.constants.ts"
+          "src/modules/identity/model/invitation-email.constants.ts",
+          "src/modules/identity/model/signup-email.constants.ts"
         ]
       },
-      "fileCount": 78,
-      "specCount": 47,
+      "fileCount": 93,
+      "specCount": 54,
       "publicSurface": "src/modules/identity/index.ts",
       "hasEvents": false
     },
