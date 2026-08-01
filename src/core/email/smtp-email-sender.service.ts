@@ -1,0 +1,68 @@
+import { AppConfigService } from '@config/app-config.service';
+import type { ClockPort } from '@core/clock/clock.port';
+import { AppLogger } from '@core/logger';
+import { Injectable } from '@nestjs/common';
+
+import { ConsoleEmailSenderService } from './console-email-sender.service';
+import {
+  SMTP_EMAIL_LOGGER_CONTEXT,
+  SMTP_THROTTLE_EXCEEDED_MESSAGE,
+} from './email.constants';
+import type { EmailMessage, EmailSenderPort } from './email-sender.port';
+import type { MailTransportPort } from './mail-transport.port';
+
+/**
+ * Delivers real mail through the SMTP transport. Bound to `EmailSenderPort` only
+ * when `EMAIL_PROVIDER=smtp && EMAIL_ENABLED=true`; otherwise the console
+ * stand-in is bound instead. When the master switch is off it delegates to the
+ * console sender so a resolved call still means "handled somewhere observable".
+ * A small in-process sliding-window throttle protects the provider from a flood.
+ */
+@Injectable()
+export class SmtpEmailSenderService implements EmailSenderPort {
+  private readonly sentAtMs: number[] = [];
+
+  constructor(
+    private readonly transport: MailTransportPort,
+    private readonly config: AppConfigService,
+    private readonly consoleSender: ConsoleEmailSenderService,
+    private readonly logger: AppLogger,
+    private readonly clock: ClockPort,
+  ) {
+    this.logger.setContext(SMTP_EMAIL_LOGGER_CONTEXT);
+  }
+
+  async send(message: EmailMessage): Promise<void> {
+    if (!this.config.email.enabled) {
+      await this.consoleSender.send(message);
+      return;
+    }
+    if (!this.acquireSlot()) {
+      this.logger.warn(SMTP_THROTTLE_EXCEEDED_MESSAGE, { to: message.to });
+      return;
+    }
+    await this.transport.sendMail({
+      from: this.config.email.fromAddress,
+      to: message.to,
+      subject: message.subject,
+      text: message.body,
+    });
+  }
+
+  private acquireSlot(): boolean {
+    const nowMs = this.clock.now().getTime();
+    const cutoff = nowMs - this.config.email.rateLimitWindowMs;
+    this.pruneBefore(cutoff);
+    if (this.sentAtMs.length >= this.config.email.rateLimitMax) {
+      return false;
+    }
+    this.sentAtMs.push(nowMs);
+    return true;
+  }
+
+  private pruneBefore(cutoff: number): void {
+    while (this.sentAtMs.length > 0 && (this.sentAtMs[0] ?? 0) <= cutoff) {
+      this.sentAtMs.shift();
+    }
+  }
+}

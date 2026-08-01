@@ -6,7 +6,10 @@ import {
   isDatabasePoolValid,
   isProductionDatabaseSslValid,
   isProductionJwtSecretValid,
+  isSmtpConfigValid,
 } from './config-validation.helpers';
+
+const SMTP_CREDS = { host: 'smtp.test', user: 'u', pass: 'p' };
 
 const STRONG_SECRET = 'aB3cD4eF5gH6iJ7kL8mN9pQ0rS1tU2vW3xY4zA5bC6dE';
 
@@ -85,5 +88,54 @@ describe('config validation helpers', () => {
     expect(isProductionDatabaseSslValid(NodeEnv.Production, undefined)).toBe(
       false,
     );
+  });
+
+  it('requires SMTP credentials only when smtp is selected and enabled', () => {
+    expect(
+      isSmtpConfigValid({
+        provider: 'smtp',
+        enabled: 'true',
+        ...SMTP_CREDS,
+      }),
+    ).toBe(true);
+    expect(
+      isSmtpConfigValid({
+        provider: 'SMTP',
+        enabled: 'true',
+        host: undefined,
+        user: 'u',
+        pass: 'p',
+      }),
+    ).toBe(false);
+    expect(
+      isSmtpConfigValid({
+        provider: 'smtp',
+        enabled: 'true',
+        host: 'smtp.test',
+        user: '  ',
+        pass: 'p',
+      }),
+    ).toBe(false);
+  });
+
+  it('does not require SMTP credentials for console or disabled email', () => {
+    expect(
+      isSmtpConfigValid({
+        provider: 'console',
+        enabled: 'true',
+        host: undefined,
+        user: undefined,
+        pass: undefined,
+      }),
+    ).toBe(true);
+    expect(
+      isSmtpConfigValid({
+        provider: 'smtp',
+        enabled: 'false',
+        host: undefined,
+        user: undefined,
+        pass: undefined,
+      }),
+    ).toBe(true);
   });
 });

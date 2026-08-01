@@ -6,12 +6,14 @@ import {
   INVALID_ENV_MESSAGE_PREFIX,
   INVALID_PRODUCTION_DB_SSL_MESSAGE,
   INVALID_PRODUCTION_JWT_SECRET_MESSAGE,
+  INVALID_SMTP_CONFIG_MESSAGE,
 } from './config.constants';
 import {
   areCorsOriginsValid,
   isDatabasePoolValid,
   isProductionDatabaseSslValid,
   isProductionJwtSecretValid,
+  isSmtpConfigValid,
 } from './config-validation.helpers';
 import { EnvironmentVariablesDto } from './environment-variables.dto';
 
@@ -46,6 +48,18 @@ export function validateEnv(
     !isProductionDatabaseSslValid(parsed.NODE_ENV, parsed.DB_SSL)
   ) {
     messages.push(INVALID_PRODUCTION_DB_SSL_MESSAGE);
+  }
+  if (
+    errors.length === 0 &&
+    !isSmtpConfigValid({
+      provider: parsed.EMAIL_PROVIDER,
+      enabled: parsed.EMAIL_ENABLED,
+      host: parsed.SMTP_HOST,
+      user: parsed.SMTP_USER,
+      pass: parsed.SMTP_PASS,
+    })
+  ) {
+    messages.push(INVALID_SMTP_CONFIG_MESSAGE);
   }
   if (messages.length > 0) {
     throw new Error(`${INVALID_ENV_MESSAGE_PREFIX}: ${messages.join('; ')}`);

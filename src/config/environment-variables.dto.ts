@@ -10,7 +10,7 @@ import {
   MinLength,
   Type,
 } from '@core/validation';
-import { LogLevel, NodeEnv } from '@shared/enums';
+import { EMAIL_PROVIDER_VALUES, LogLevel, NodeEnv } from '@shared/enums';
 
 import {
   BOOLEAN_FLAG_VALUES,
@@ -93,6 +93,57 @@ export class EnvironmentVariablesDto {
   @Min(MIN_RATE_LIMIT_MAX)
   @Max(MAX_RATE_LIMIT_MAX)
   declare readonly RATE_LIMIT_MAX?: number;
+
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(MIN_RATE_LIMIT_TTL_MS)
+  @Max(MAX_RATE_LIMIT_TTL_MS)
+  declare readonly RATE_LIMIT_WINDOW_MS?: number;
+
+  @IsOptional()
+  @IsIn(BOOLEAN_FLAG_VALUES)
+  declare readonly EMAIL_ENABLED?: string;
+
+  @IsOptional()
+  @IsIn(EMAIL_PROVIDER_VALUES)
+  declare readonly EMAIL_PROVIDER?: string;
+
+  @IsOptional()
+  @IsString()
+  @MinLength(MIN_CONFIG_TEXT_LENGTH)
+  declare readonly EMAIL_FROM?: string;
+
+  @IsOptional()
+  @IsString()
+  @MinLength(MIN_CONFIG_TEXT_LENGTH)
+  declare readonly EMAIL_TO?: string;
+
+  @IsOptional()
+  @IsString()
+  @MinLength(MIN_CONFIG_TEXT_LENGTH)
+  declare readonly SMTP_HOST?: string;
+
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(MIN_PORT)
+  @Max(MAX_PORT)
+  declare readonly SMTP_PORT?: number;
+
+  @IsOptional()
+  @IsIn(BOOLEAN_FLAG_VALUES)
+  declare readonly SMTP_SECURE?: string;
+
+  @IsOptional()
+  @IsString()
+  @MinLength(MIN_CONFIG_TEXT_LENGTH)
+  declare readonly SMTP_USER?: string;
+
+  @IsOptional()
+  @IsString()
+  @MinLength(MIN_CONFIG_TEXT_LENGTH)
+  declare readonly SMTP_PASS?: string;
 
   @IsString()
   @MinLength(JWT_SECRET_MIN_LENGTH)

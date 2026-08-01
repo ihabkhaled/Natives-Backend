@@ -119,4 +119,44 @@ describe('validateEnv', () => {
 
     expect(validateEnv(raw)).toBe(raw);
   });
+
+  it('requires SMTP credentials when smtp email is enabled', () => {
+    expect(() =>
+      validateEnv({
+        NODE_ENV: NodeEnv.Development,
+        JWT_SECRET: VALID_JWT_SECRET,
+        EMAIL_PROVIDER: 'smtp',
+        EMAIL_ENABLED: 'true',
+      }),
+    ).toThrow('Invalid environment configuration');
+  });
+
+  it('accepts smtp email once its credentials are present', () => {
+    const raw = {
+      NODE_ENV: NodeEnv.Development,
+      JWT_SECRET: VALID_JWT_SECRET,
+      EMAIL_PROVIDER: 'smtp',
+      EMAIL_ENABLED: 'true',
+      SMTP_HOST: 'smtp-relay.brevo.com',
+      SMTP_PORT: '587',
+      SMTP_SECURE: 'false',
+      SMTP_USER: 'user@smtp',
+      SMTP_PASS: 'secret',
+      EMAIL_FROM: 'no-reply@ultimatenatives.com',
+      EMAIL_TO: 'ops@ultimatenatives.com',
+    };
+
+    expect(validateEnv(raw)).toBe(raw);
+  });
+
+  it('does not require SMTP credentials when email stays on the console transport', () => {
+    const raw = {
+      NODE_ENV: NodeEnv.Development,
+      JWT_SECRET: VALID_JWT_SECRET,
+      EMAIL_PROVIDER: 'smtp',
+      EMAIL_ENABLED: 'false',
+    };
+
+    expect(validateEnv(raw)).toBe(raw);
+  });
 });

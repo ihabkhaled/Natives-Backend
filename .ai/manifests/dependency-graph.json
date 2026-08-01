@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T15:42:58.961Z",
+  "generatedAt": "2026-08-01T17:12:15.760Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -483,6 +483,11 @@
     },
     {
       "from": "src/config/email.config.ts",
+      "to": "src/config/config.utils.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/config/email.config.ts",
       "to": "src/shared/enums/index.ts",
       "type": "cross-cutting"
     },
@@ -857,8 +862,43 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/core/email/email-test.cli.ts",
+      "to": "src/app.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/email/email-test.cli.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/email/email-test.cli.ts",
+      "to": "src/core/email/email-sender.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/email-test.cli.ts",
+      "to": "src/core/email/email-sender.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/email-test.cli.ts",
+      "to": "src/core/email/email.constants.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/core/email/email.module.ts",
       "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/email/email.module.ts",
+      "to": "src/core/clock/clock.module.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/email/email.module.ts",
+      "to": "src/core/clock/clock.port.ts",
       "type": "cross-cutting"
     },
     {
@@ -875,6 +915,26 @@
       "from": "src/core/email/email.module.ts",
       "to": "src/core/email/email-sender.port.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/core/email/email.module.ts",
+      "to": "src/core/email/mail-transport.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/email.module.ts",
+      "to": "src/core/email/nodemailer.adapter.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/email.module.ts",
+      "to": "src/core/email/smtp-email-sender.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/email.module.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/core/email/email.module.ts",
@@ -900,6 +960,46 @@
       "from": "src/core/email/index.ts",
       "to": "src/core/email/email.module.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/core/email/nodemailer.adapter.ts",
+      "to": "src/core/email/mail-transport.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/smtp-email-sender.service.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/email/smtp-email-sender.service.ts",
+      "to": "src/core/clock/clock.port.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/email/smtp-email-sender.service.ts",
+      "to": "src/core/email/console-email-sender.service.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/smtp-email-sender.service.ts",
+      "to": "src/core/email/email-sender.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/smtp-email-sender.service.ts",
+      "to": "src/core/email/email.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/smtp-email-sender.service.ts",
+      "to": "src/core/email/mail-transport.port.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/smtp-email-sender.service.ts",
+      "to": "src/core/logger/index.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/core/errors/app-error.ts",

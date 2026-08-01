@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-01T15:42:58.961Z",
-  "treeHash": "sha256:c540b5e9130639f9fbbdaae584a61f2f524cc87ca77f832f2790a0060d4384be",
+  "generatedAt": "2026-08-01T17:12:15.760Z",
+  "treeHash": "sha256:15dec210636ab154a3ab6e1a577129896eaf91fcb46116b06acb0d668a15427e",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -538,8 +538,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:d11fe2ba24936ffc73c7582b4338fb0a1831c42bd262993a2133ddf1737836d8",
-      "sizeBytes": 2818
+      "hash": "sha256:f5953f18cccba8eadf4b593bb795e34ff556400d9929b0bd42827280cf11bdb9",
+      "sizeBytes": 3972
     },
     {
       "path": "src/config/config-validation.helpers.ts",
@@ -562,13 +562,17 @@
         {
           "kind": "function",
           "name": "isProductionDatabaseSslValid"
+        },
+        {
+          "kind": "function",
+          "name": "isSmtpConfigValid"
         }
       ],
       "hasSpec": true,
       "specPath": "src/config/config-validation.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:5bf97fcffabe15ba2357c8e6cbac4c2baece14d3e2a3b7aed17f3f0d0ec352de",
-      "sizeBytes": 1980
+      "hash": "sha256:ee29aa50f1ba77c543d0f94e8a6f5770b12132726f51440f318417e83374f2f5",
+      "sizeBytes": 2881
     },
     {
       "path": "src/config/config.constants.ts",
@@ -619,6 +623,30 @@
         {
           "kind": "const",
           "name": "EMAIL_FROM_ADDRESS_DEFAULT"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_EMAIL_ENABLED"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SMTP_PORT"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_SMTP_SECURE"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_EMAIL_RATE_LIMIT_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "DEFAULT_EMAIL_RATE_LIMIT_WINDOW_MS"
+        },
+        {
+          "kind": "const",
+          "name": "INVALID_SMTP_CONFIG_MESSAGE"
         },
         {
           "kind": "const",
@@ -952,8 +980,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:11171d9d87fe20bad60040a060d006b9da03b694935644782a73db7eb9614546",
-      "sizeBytes": 7914
+      "hash": "sha256:9413fa957f2ecc99040b867a4a5012bcd7c4b9d41e19af942a21d8a24eade700",
+      "sizeBytes": 8586
     },
     {
       "path": "src/config/config.module.ts",
@@ -996,6 +1024,10 @@
         },
         {
           "kind": "interface",
+          "name": "SmtpTransportConfig"
+        },
+        {
+          "kind": "interface",
           "name": "EmailConfig"
         },
         {
@@ -1018,8 +1050,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:4a83044a51713c071b5e4cfd4f2d9a6033ef5376aeb3250fb4729eac8eeb9e29",
-      "sizeBytes": 2643
+      "hash": "sha256:c5775acb0da1d7bee6a530602c9e971ede33692a90f413c3b0cf8a4b32112d9f",
+      "sizeBytes": 3568
     },
     {
       "path": "src/config/config.utils.spec.ts",
@@ -1104,8 +1136,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:8af90144587203010e579ba1518dd60f6587369a9b09261bcc043e1484a5e2b8",
-      "sizeBytes": 1859
+      "hash": "sha256:9f0d164d4552670a75eabb867884d07215ec3d0a71e4faf79b909d97de687792",
+      "sizeBytes": 3723
     },
     {
       "path": "src/config/email.config.ts",
@@ -1121,8 +1153,8 @@
       "hasSpec": true,
       "specPath": "src/config/email.config.spec.ts",
       "kind": "source",
-      "hash": "sha256:1282329c0557f90fbdbd2264ec3efb54908e53befe5ccc033c26d4c71c2687ac",
-      "sizeBytes": 1674
+      "hash": "sha256:9367c5fe3f0a3263e7ecce35afc85d492784aa9a8a4b66e157a6159bc870dc4f",
+      "sizeBytes": 2976
     },
     {
       "path": "src/config/env.validation.spec.ts",
@@ -1133,8 +1165,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:a74fabf5e690cfa263adbc039340c2df67022e9e6be53f685f76a09209d71679",
-      "sizeBytes": 3501
+      "hash": "sha256:92b0b2ee91d05945a58d89d86a9f6318f7862bc1fef5c81b93444c568f9497ad",
+      "sizeBytes": 4630
     },
     {
       "path": "src/config/env.validation.ts",
@@ -1150,8 +1182,8 @@
       "hasSpec": true,
       "specPath": "src/config/env.validation.spec.ts",
       "kind": "source",
-      "hash": "sha256:b7db7d02f68500b1e8eeaf1e9048c09df81c76c93599d409af0064fb65ddd6dc",
-      "sizeBytes": 1615
+      "hash": "sha256:576b8d970abc73ef2c8fe4237d04aeb3eebd9aed3a57680b55caf3485f682b68",
+      "sizeBytes": 1957
     },
     {
       "path": "src/config/environment-variables.dto.ts",
@@ -1167,8 +1199,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d75de386ebe5f43302b61b1873619ea4fb3f06ac80b48eec269d81cda3c8a0b6",
-      "sizeBytes": 4973
+      "hash": "sha256:49e9974321c96c797ddee70dd1e3d442c2d093eba8bbfdaeeaa3bf551bbc50f0",
+      "sizeBytes": 6082
     },
     {
       "path": "src/config/identity.config.spec.ts",
@@ -1818,6 +1850,18 @@
       "sizeBytes": 1262
     },
     {
+      "path": "src/core/email/email-test.cli.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1771aab7ab6a2102d27f6178b736e2014c5070c912dcf5bc7d076a76ae48da11",
+      "sizeBytes": 1831
+    },
+    {
       "path": "src/core/email/email.constants.ts",
       "root": "core",
       "module": "email",
@@ -1834,13 +1878,41 @@
         {
           "kind": "const",
           "name": "CONSOLE_TRANSPORT_NOTICE"
+        },
+        {
+          "kind": "const",
+          "name": "SMTP_EMAIL_LOGGER_CONTEXT"
+        },
+        {
+          "kind": "const",
+          "name": "SMTP_THROTTLE_EXCEEDED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "EMAIL_TEST_SUBJECT"
+        },
+        {
+          "kind": "const",
+          "name": "EMAIL_TEST_BODY"
+        },
+        {
+          "kind": "const",
+          "name": "EMAIL_TEST_MISSING_RECIPIENT_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "EMAIL_TEST_SENT_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "EMAIL_TEST_FAILED_PREFIX"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:c4924496332601f308ffed9ae7921c01f1daa5b664e40f350068c5294c84ac92",
-      "sizeBytes": 621
+      "hash": "sha256:84538617159c24fabca71fe327cbe400151af2ac3ccd56d4e2d1210e792aece6",
+      "sizeBytes": 1559
     },
     {
       "path": "src/core/email/email.module.spec.ts",
@@ -1851,8 +1923,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:10331e76b7bc3bc2426aff3e258087b17ca6565fe0eda5beb36ded78f36935b9",
-      "sizeBytes": 851
+      "hash": "sha256:1b1aef21c72ba5011161eed9341fc0a837524f77af31a4f5aca7de13f0c0126d",
+      "sizeBytes": 1903
     },
     {
       "path": "src/core/email/email.module.ts",
@@ -1872,8 +1944,8 @@
       "hasSpec": true,
       "specPath": "src/core/email/email.module.spec.ts",
       "kind": "source",
-      "hash": "sha256:cd5c015814b0938c69f67b5ad48bf017ded7098ad0a0e7171f01a8e00cdb93b9",
-      "sizeBytes": 1584
+      "hash": "sha256:e92da460cb2da5b2230700c8c6b89179aba1dbc873d7b542fb725b13fb7dceed",
+      "sizeBytes": 2619
     },
     {
       "path": "src/core/email/index.ts",
@@ -1886,6 +1958,89 @@
       "kind": "source",
       "hash": "sha256:41713eab159ad32444de037ca7cf0ce113aff5541f82c307c59604586a5751b9",
       "sizeBytes": 253
+    },
+    {
+      "path": "src/core/email/mail-transport.port.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "MailTransportOptions"
+        },
+        {
+          "kind": "interface",
+          "name": "MailSendInput"
+        },
+        {
+          "kind": "interface",
+          "name": "MailTransportPort"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a68cadc09a52a529cedc9db111fca20c968111d6a2b17a14194014a4984ec1aa",
+      "sizeBytes": 852
+    },
+    {
+      "path": "src/core/email/nodemailer.adapter.spec.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "adapter",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:3bd147d70251cbed4be11445de0a0ce9a3de6b5a9ec9547d454f79c9d0b2c146",
+      "sizeBytes": 1427
+    },
+    {
+      "path": "src/core/email/nodemailer.adapter.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "adapter",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "NodemailerTransportAdapter"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/email/nodemailer.adapter.spec.ts",
+      "kind": "source",
+      "hash": "sha256:9fbac1014444715eb2724d3c9c43812a57fcc6c8072037766abcad8d87c61454",
+      "sizeBytes": 1070
+    },
+    {
+      "path": "src/core/email/smtp-email-sender.service.spec.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:92a78e9fa997b1ee815e8357c4f505aedc508db65e591c1515fcedd5259e48f7",
+      "sizeBytes": 3619
+    },
+    {
+      "path": "src/core/email/smtp-email-sender.service.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SmtpEmailSenderService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/core/email/smtp-email-sender.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:87f6bb3cbcf1eead4efcb94d6ef73b964d6eb688238fc24b5d719831bf118d67",
+      "sizeBytes": 2315
     },
     {
       "path": "src/core/errors/app-error.ts",
@@ -64426,8 +64581,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a73119f68b87d4c30d68ccd32e9be86f93f8131405a5ba3f548934d5f410ba90",
-      "sizeBytes": 784
+      "hash": "sha256:d78c9e68fe15db6d9e8dca20bf6d6f08c19368f47dd123d2b9c01425cca1a732",
+      "sizeBytes": 824
     },
     {
       "path": "src/shared/enums/index.ts",

@@ -44,15 +44,37 @@ export interface IdentityConfig {
 }
 
 /**
+ * SMTP transport credentials, read only when a real provider is selected. Host,
+ * user, and pass are optional at the type level so a console/disabled checkout
+ * still boots; `env.validation` enforces their presence when
+ * `EMAIL_PROVIDER=smtp && EMAIL_ENABLED=true`.
+ */
+export interface SmtpTransportConfig {
+  readonly host: string | undefined;
+  readonly port: number;
+  readonly secure: boolean;
+  readonly user: string | undefined;
+  readonly pass: string | undefined;
+}
+
+/**
  * Outbound email. `provider` selects which adapter the `EmailSenderPort` token
- * resolves to; `webBaseUrl` is the origin recipient-facing links are built
- * against. Swapping to a real transport is a change to these values plus one
- * new adapter — no use case changes.
+ * resolves to and `enabled` is the master switch (false keeps the console
+ * stand-in bound regardless of provider); `webBaseUrl` is the origin
+ * recipient-facing links are built against. `toAddress` is the operator inbox
+ * that receives admin-facing notifications. `rateLimitMax`/`rateLimitWindowMs`
+ * bound a simple in-process send throttle. Swapping to a real transport is a
+ * change to these values plus one new adapter — no use case changes.
  */
 export interface EmailConfig {
   readonly provider: EmailProvider;
+  readonly enabled: boolean;
   readonly fromAddress: string;
+  readonly toAddress: string | undefined;
   readonly webBaseUrl: string;
+  readonly smtp: SmtpTransportConfig;
+  readonly rateLimitMax: number;
+  readonly rateLimitWindowMs: number;
 }
 
 /**

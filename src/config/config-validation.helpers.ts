@@ -1,4 +1,4 @@
-import { NodeEnv } from '@shared/enums';
+import { EmailProvider, NodeEnv } from '@shared/enums';
 
 import {
   DEFAULT_DB_POOL_MAX,
@@ -70,4 +70,30 @@ export function isProductionDatabaseSslValid(
     return true;
   }
   return ssl === FLAG_TRUE;
+}
+
+/**
+ * SMTP credentials are required only when a real transport is actually going to
+ * deliver — provider is smtp AND the master switch is on. Every other
+ * combination (console provider, or smtp-but-disabled) boots without them so a
+ * fresh checkout still runs.
+ */
+export function isSmtpConfigValid(inputs: {
+  readonly provider: string | undefined;
+  readonly enabled: string | undefined;
+  readonly host: string | undefined;
+  readonly user: string | undefined;
+  readonly pass: string | undefined;
+}): boolean {
+  const selectsSmtp =
+    inputs.provider?.trim().toLowerCase() === EmailProvider.Smtp &&
+    inputs.enabled === FLAG_TRUE;
+  if (!selectsSmtp) {
+    return true;
+  }
+  return hasText(inputs.host) && hasText(inputs.user) && hasText(inputs.pass);
+}
+
+function hasText(value: string | undefined): boolean {
+  return value !== undefined && value.trim().length > 0;
 }

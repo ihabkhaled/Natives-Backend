@@ -21,6 +21,17 @@ export const DEFAULT_JOBS_ENABLED = true;
 export const DEFAULT_EMAIL_PROVIDER = EmailProvider.Console;
 export const DEFAULT_WEB_BASE_URL = 'http://localhost:5173';
 export const EMAIL_FROM_ADDRESS_DEFAULT = 'no-reply@ultimatenatives.local';
+// The master switch defaults OFF so a fresh checkout never delivers real mail
+// by accident; the console stand-in stays bound until an operator opts in.
+export const DEFAULT_EMAIL_ENABLED = false;
+export const DEFAULT_SMTP_PORT = 587;
+export const DEFAULT_SMTP_SECURE = false;
+// A conservative in-process send throttle shared with the security namespace's
+// RATE_LIMIT_MAX and its own RATE_LIMIT_WINDOW_MS window.
+export const DEFAULT_EMAIL_RATE_LIMIT_MAX = 100;
+export const DEFAULT_EMAIL_RATE_LIMIT_WINDOW_MS = 3_600_000;
+export const INVALID_SMTP_CONFIG_MESSAGE =
+  'SMTP_HOST, SMTP_USER and SMTP_PASS are required when EMAIL_PROVIDER=smtp and EMAIL_ENABLED=true';
 
 // --- Bootstrap / seeding ----------------------------------------------------
 // Defaults for the idempotent default-admin seed. The password has no default:
