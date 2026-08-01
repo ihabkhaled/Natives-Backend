@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T07:41:24.119Z",
+  "generatedAt": "2026-08-01T15:42:58.961Z",
   "documents": [
     {
       "path": "agents/backend-architect.md",
@@ -1461,7 +1461,7 @@
         "./testing-strategy.md",
         "./ai-context-map.md"
       ],
-      "hash": "sha256:aea05be24712ad94c81e1cc6df8aada78c0e897fb2053240153e85078ab31bc8"
+      "hash": "sha256:0b22a59f666bd47fd4ed93cbb22545ba6aa4e221ae680f774096d0770ba1f114"
     },
     {
       "path": "memory/library-boundaries.md",
@@ -2295,7 +2295,7 @@
         "wins"
       ],
       "relatedPaths": [],
-      "hash": "sha256:7115e2c2f5953223029c8c8b42c4623f94acde62957b0237139956a33e0479ce"
+      "hash": "sha256:8635b6688e78425812ffb1b37106012f522eba23c06a36272f044dd21cac5444"
     },
     {
       "path": "rules/01-architecture-and-module-boundaries.md",
@@ -4210,6 +4210,21 @@
       "hash": "sha256:6fdfab2384e619e6878ff167b077024e4adc4390eaedbcf5ce5b9c85af915e15"
     },
     {
+      "path": "rules/32-incremental-commit-and-push.md",
+      "root": "rules",
+      "title": "Commit and push incrementally",
+      "ruleNumber": 32,
+      "implementsRule": [],
+      "keywords": [
+        "commit",
+        "incremental",
+        "incrementally",
+        "push"
+      ],
+      "relatedPaths": [],
+      "hash": "sha256:988fc916b2f7d15e0dcd9ed33f37f10eb3213f898b98ae868d98ec5077ca2dd0"
+    },
+    {
       "path": "rules/README.md",
       "root": "rules",
       "title": "Engineering Rules — Index",
@@ -4266,7 +4281,7 @@
         "you"
       ],
       "relatedPaths": [],
-      "hash": "sha256:6a1e575868823a036dfb66044228c4a25073afe05cc8192d15b327d43c8c39ca"
+      "hash": "sha256:d014c704cf282ae19455c260dafe2d7e80573adc8fea71a538ad73c207b2484b"
     },
     {
       "path": "skills/add-config-value.md",

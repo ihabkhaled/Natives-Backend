@@ -102,6 +102,7 @@ Do not proceed when any of the following is true:
 - lint, static analysis, type, build, test, or security checks are failing
 - **any CI gate is red — formatting, lint, typecheck, unit, coverage, e2e, build, knowledge build/validation, OpenAPI contract, security, or the aggregate `all-gates-green` check. Every gate must be green BEFORE you commit and BEFORE you push (rule 52, `rules/31-ci-gates-before-commit-and-push.md`). Fix the root cause — never weaken a rule/threshold, add an undocumented suppression, delete or skip a test, exclude a logic file from coverage, or mark a required check optional.**
 - **`src/**` or the corpus changed without running `npm run knowledge:build` and committing the regenerated `.ai/**` — `knowledge:check` then fails on stale routing data**
+- **work is being accumulated for one end-of-work mega-commit instead of committed and pushed incrementally — each coherent unit (module/feature/fix) is committed and pushed AS SOON AS it reaches green, bunch by bunch, one logical unit per commit+push (rule 53, `rules/32-incremental-commit-and-push.md`); batching to the end loses work on interruption and is neither reviewable nor bisectable, and small increments never license committing red or partial code**
 - architecture impact is undocumented
 - rollback is undefined
 - observability, monitoring, or alerts are undefined for material risk

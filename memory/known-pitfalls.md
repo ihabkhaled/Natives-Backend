@@ -248,6 +248,12 @@ See [04-repositories-and-persistence.md](../rules/04-repositories-and-persistenc
 - **Cause:** `knowledge:check` compares a SHA of every `src/**/*.ts` and corpus document against the recorded manifest hashes. Changing source or a rule/skill/context/memory/agent/testing doc without running `npm run knowledge:build` leaves `.ai/**` stale, so the routing data an agent reads no longer matches the repository. The aggregate `all-gates-green` job then fails too, because it is green only when every gate is green.
 - **Fix:** run `npm run knowledge:build` and commit the regenerated `.ai/**` in the **same** commit as the source change, then re-run `knowledge:check` + `knowledge:verify` before pushing. Every gate must be green before commit and before push — never mark a required check optional or `continue-on-error` to get past it. See [31-ci-gates-before-commit-and-push.md](../rules/31-ci-gates-before-commit-and-push.md).
 
+### I6. Batching every unit into one end-of-work mega-commit
+
+- **Symptom:** a session's worth of unrelated modules/features/fixes sits uncommitted in the working tree until the very end; then a single huge commit lands (or the work is lost when the session is interrupted, the machine sleeps, or a gate finally fails). Review is impossible, `git bisect` points at one giant commit, and any breakage is buried among unrelated changes.
+- **Cause:** treating commit-and-push as a final step instead of a continuous one. Each coherent unit was green hours earlier but was never committed, so there is nothing to recover to and no reviewable/bisectable history.
+- **Fix:** commit and push each coherent unit **as soon as it reaches green**, bunch by bunch — one logical unit per commit + push, unrelated units in their own. Run the full gate set green before each commit and push (composes with rule 52). Small and frequent never means red or partial: every increment is green and coherent. See [32-incremental-commit-and-push.md](../rules/32-incremental-commit-and-push.md).
+
 ---
 
 ## J. Simplicity & over-production traps
@@ -330,5 +336,6 @@ See [04-repositories-and-persistence.md](../rules/04-repositories-and-persistenc
 - [ ] `lint` / `typecheck` / `test` / `test:coverage` / `build` green — never `--no-verify` (I1)
 - [ ] EVERY CI gate green before commit AND push, incl. knowledge build/validation + `all-gates-green` (I5, rule 52)
 - [ ] `.ai/**` rebuilt via `npm run knowledge:build` and committed whenever `src/**` or the corpus changed (I5)
+- [ ] Each coherent unit committed and pushed green as it lands — not batched into one end-of-work mega-commit (I6, rule 53)
 
 **Related:** [/rules/00-non-negotiable-rules.md](../rules/00-non-negotiable-rules.md) · [reliability-patterns.md](./reliability-patterns.md) · [performance-decisions.md](./performance-decisions.md) · [security-decisions.md](./security-decisions.md) · [code-simplicity-decisions.md](./code-simplicity-decisions.md) · [testing-strategy.md](./testing-strategy.md) · [ai-context-map.md](./ai-context-map.md)

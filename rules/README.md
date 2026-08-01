@@ -47,6 +47,7 @@ These engineering rules sit **inside** the governance lifecycle defined by the r
 | 29  | [`29-agent-readiness-and-mirrors.md`](./29-agent-readiness-and-mirrors.md)                     | Canonical precedence, compact entrypoints, mirror synchronization                     |
 | 30  | [`30-declaration-ownership.md`](./30-declaration-ownership.md)                                 | Canonical homes for constants, types, interfaces, enums, DTOs, helpers, and maps      |
 | 31  | [`31-ci-gates-before-commit-and-push.md`](./31-ci-gates-before-commit-and-push.md)             | Every CI gate green before commit and push, incl. knowledge build and all-gates-green |
+| 32  | [`32-incremental-commit-and-push.md`](./32-incremental-commit-and-push.md)                     | Commit and push in small green increments — never batch every unit to the end         |
 
 ## Standard workflow (every task)
 

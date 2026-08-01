@@ -1310,6 +1310,8 @@ Do not perform extraction mindlessly. Extract to improve clarity and ownership, 
 - every branch should map to one request ID, one approved workstream, or one intentionally grouped slice of a larger roadmap
 - do not mix unrelated cleanup, opportunistic refactors, dependency churn, or formatting noise into a feature or bug-fix branch without stating it explicitly
 - commits must be logically grouped, reviewable, and traceable to meaningful steps in the change
+- commit and push incrementally — each coherent unit of work is committed and pushed **as soon as it reaches green**, bunch by bunch, never accumulated in the working tree for one final end-of-work mega-commit; a giant end-of-work batch loses work on interruption and is neither reviewable nor bisectable
+- one logical unit is one commit and one push; unrelated units get their own commit and push, and every increment independently passes the full gate set before it is committed and pushed (this composes with the all-gates-green rule — every push is green), which never licenses committing red, broken, or partial code
 - behavior-changing code must ship with its related tests and documentation updates in the same branch or pull request
 - commit messages must follow the repository convention; conventional commits are the default recommendation unless the company defines a stricter standard
 - commit subjects should describe the intent or behavior change, not vague labels such as `update`, `changes`, `misc`, or `fix stuff`

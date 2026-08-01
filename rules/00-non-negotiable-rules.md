@@ -89,6 +89,13 @@ Layer-specific detail lives in the numbered rule files ([README](./README.md)); 
     under `src/**` or the corpus, run `npm run knowledge:build` and commit the regenerated `.ai/**` in
     the same commit, or `knowledge:check` fails on stale routing data. A gate that cannot run in this
     environment is reported UNVERIFIED with the exact reason — never claimed as passing. (rules/31)
+53. **Commit and push incrementally — never batch to the end.** Commit and push each coherent unit of
+    work (module/feature/fix) **as soon as it reaches green**, bunch by bunch — never accumulate several
+    finished units in the working tree for one final mega-commit. One logical unit = one commit + push;
+    unrelated units get their own. Each increment must independently pass the full gate set before it is
+    committed and pushed (composes with rule 52 — every push is green). Batching to the end loses work on
+    interruption and is unreviewable and unbisectable. This never licenses committing red/partial code:
+    increments are green and coherent, just small and frequent. (rules/32)
 
 ---
 
@@ -115,4 +122,5 @@ Layer-specific detail lives in the numbered rule files ([README](./README.md)); 
 - [ ] Tests written/updated first; docs updated (rule 42)
 - [ ] **Every CI gate green before commit AND before push — including knowledge build/validation and all-gates-green (rule 52)**
 - [ ] `.ai/**` rebuilt (`npm run knowledge:build`) and committed whenever `src/**` or the corpus changed (rule 52)
+- [ ] **Committing and pushing incrementally — each coherent unit pushed green, not batched to the end (rule 53)**
 - [ ] `npm run lint` / `typecheck` / `test` / `test:coverage` / `build` green
