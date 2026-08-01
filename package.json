@@ -17,8 +17,11 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "prestart": "npm run db:ensure",
     "start": "nest start",
+    "prestart:dev": "npm run db:ensure",
     "start:dev": "nest start --watch",
+    "prestart:debug": "npm run db:ensure",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/src/main",
     "format": "prettier --write .",

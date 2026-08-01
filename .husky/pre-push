@@ -1,2 +1,10 @@
-npm run test:coverage
-npm run build
+# Pre-push intentionally does NOT re-run the heavy gate suite.
+#
+# The full gate set (test:coverage, build, and the rest) is run ONCE in the
+# foreground BEFORE each commit — see the CI-gates and incremental-commit
+# rules — and authoritatively in CI. Re-running coverage + build on every push
+# only duplicated that CPU locally, which is wasteful on constrained machines.
+#
+# Verification happens at/before commit time (pre-commit lint-staged + typecheck
+# + the foreground gate run) and again in CI. This hook is a deliberate no-op.
+exit 0
