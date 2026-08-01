@@ -14,6 +14,13 @@ export interface EmailMessage {
    * prose. Null when the message has no call to action.
    */
   readonly actionUrl: string | null;
+  /**
+   * Reply-To address, when the reply should go somewhere other than the
+   * configured sender — e.g. a contact-form submission whose `from` stays the
+   * verified sender while replies route to the visitor. Omitted for the common
+   * case where a reply to the sender is fine.
+   */
+  readonly replyTo?: string;
 }
 
 /**

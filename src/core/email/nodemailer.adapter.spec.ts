@@ -33,7 +33,7 @@ describe('NodemailerTransportAdapter', () => {
     });
   });
 
-  it('forwards a message to the vendor transporter', async () => {
+  it('forwards a message to the vendor transporter with hardening flags', async () => {
     const { factory, sendMail } = fakeFactory();
     const adapter = new NodemailerTransportAdapter(
       { host: 'smtp.test', port: 587, secure: false, auth: undefined },
@@ -52,6 +52,28 @@ describe('NodemailerTransportAdapter', () => {
       to: 'to@test',
       subject: 'hi',
       text: 'body',
+      disableFileAccess: true,
+      disableUrlAccess: true,
     });
+  });
+
+  it('passes a Reply-To through only when supplied', async () => {
+    const { factory, sendMail } = fakeFactory();
+    const adapter = new NodemailerTransportAdapter(
+      { host: 'smtp.test', port: 587, secure: false, auth: undefined },
+      factory,
+    );
+
+    await adapter.sendMail({
+      from: 'from@test',
+      to: 'to@test',
+      subject: 'hi',
+      text: 'body',
+      replyTo: 'visitor@test',
+    });
+
+    expect(sendMail).toHaveBeenCalledWith(
+      expect.objectContaining({ replyTo: 'visitor@test' }),
+    );
   });
 });

@@ -46,6 +46,7 @@ export class SmtpEmailSenderService implements EmailSenderPort {
       to: message.to,
       subject: message.subject,
       text: message.body,
+      ...(message.replyTo === undefined ? {} : { replyTo: message.replyTo }),
     });
   }
 

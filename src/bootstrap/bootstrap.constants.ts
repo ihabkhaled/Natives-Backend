@@ -135,6 +135,11 @@ export const SWAGGER_DESCRIPTION = 'HTTP API for this NestJS service';
 //   /auth/signups/{id}/reject makes it terminal — both return
 //   PendingSignupResponseDto and 404 for an id that is not pending. accountState
 //   'pending' now also covers a self-signup awaiting approval.
+//   Contact (public): new POST /contact (ContactRequestDto: email, subject,
+//   message) relays a stateless contact-form submission to the operator inbox by
+//   email (nothing persisted) and returns ContactResponseDto ({sent:true}) with
+//   201. 400 on an invalid body or unknown property; 503 when outbound email is
+//   disabled/unconfigured; 429 once the global rate limit is exceeded.
 export const SWAGGER_VERSION = '1.7.0';
 export const SWAGGER_BEARER_NAME = 'jwt';
 export const SWAGGER_PERSIST_AUTHORIZATION = false;

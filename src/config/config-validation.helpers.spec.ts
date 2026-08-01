@@ -9,7 +9,13 @@ import {
   isSmtpConfigValid,
 } from './config-validation.helpers';
 
-const SMTP_CREDS = { host: 'smtp.test', user: 'u', pass: 'p' };
+const SMTP_CREDS = {
+  from: 'no-reply@natives.test',
+  to: 'ops@natives.test',
+  host: 'smtp.test',
+  user: 'u',
+  pass: 'p',
+};
 
 const STRONG_SECRET = 'aB3cD4eF5gH6iJ7kL8mN9pQ0rS1tU2vW3xY4zA5bC6dE';
 
@@ -90,52 +96,60 @@ describe('config validation helpers', () => {
     );
   });
 
-  it('requires SMTP credentials only when smtp is selected and enabled', () => {
+  it('requires the full email config only when smtp is selected and enabled', () => {
     expect(
-      isSmtpConfigValid({
-        provider: 'smtp',
-        enabled: 'true',
-        ...SMTP_CREDS,
-      }),
+      isSmtpConfigValid({ provider: 'smtp', enabled: 'true', ...SMTP_CREDS }),
     ).toBe(true);
     expect(
       isSmtpConfigValid({
         provider: 'SMTP',
         enabled: 'true',
+        ...SMTP_CREDS,
         host: undefined,
-        user: 'u',
-        pass: 'p',
       }),
     ).toBe(false);
     expect(
       isSmtpConfigValid({
         provider: 'smtp',
         enabled: 'true',
-        host: 'smtp.test',
+        ...SMTP_CREDS,
         user: '  ',
-        pass: 'p',
       }),
     ).toBe(false);
   });
 
-  it('does not require SMTP credentials for console or disabled email', () => {
-    expect(
-      isSmtpConfigValid({
-        provider: 'console',
-        enabled: 'true',
-        host: undefined,
-        user: undefined,
-        pass: undefined,
-      }),
-    ).toBe(true);
+  it('also requires the from and to addresses for real delivery', () => {
     expect(
       isSmtpConfigValid({
         provider: 'smtp',
-        enabled: 'false',
-        host: undefined,
-        user: undefined,
-        pass: undefined,
+        enabled: 'true',
+        ...SMTP_CREDS,
+        from: undefined,
       }),
+    ).toBe(false);
+    expect(
+      isSmtpConfigValid({
+        provider: 'smtp',
+        enabled: 'true',
+        ...SMTP_CREDS,
+        to: undefined,
+      }),
+    ).toBe(false);
+  });
+
+  it('does not require the email config for console or disabled email', () => {
+    const empty = {
+      from: undefined,
+      to: undefined,
+      host: undefined,
+      user: undefined,
+      pass: undefined,
+    };
+    expect(
+      isSmtpConfigValid({ provider: 'console', enabled: 'true', ...empty }),
+    ).toBe(true);
+    expect(
+      isSmtpConfigValid({ provider: 'smtp', enabled: 'false', ...empty }),
     ).toBe(true);
   });
 });

@@ -3491,6 +3491,43 @@
         ],
         "type": "object"
       },
+      "ContactRequestDto": {
+        "properties": {
+          "email": {
+            "maxLength": 254,
+            "type": "string"
+          },
+          "message": {
+            "maxLength": 4000,
+            "minLength": 10,
+            "type": "string"
+          },
+          "subject": {
+            "maxLength": 160,
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "subject",
+          "message"
+        ],
+        "type": "object"
+      },
+      "ContactResponseDto": {
+        "properties": {
+          "sent": {
+            "description": "Always true on a 201",
+            "example": true,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "sent"
+        ],
+        "type": "object"
+      },
       "ConvertCandidateDto": {
         "properties": {
           "expectedRecordVersion": {
@@ -23925,6 +23962,41 @@
         "summary": "Render a scoped practice calendar subscription",
         "tags": [
           "practices"
+        ]
+      }
+    },
+    "/contact": {
+      "post": {
+        "operationId": "Contact.send",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactResponseDto"
+                }
+              }
+            },
+            "description": "Message accepted and handed to the email transport"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Send a message to the team via the contact form",
+        "tags": [
+          "contact"
         ]
       }
     },

@@ -73,14 +73,18 @@ export function isProductionDatabaseSslValid(
 }
 
 /**
- * SMTP credentials are required only when a real transport is actually going to
- * deliver — provider is smtp AND the master switch is on. Every other
- * combination (console provider, or smtp-but-disabled) boots without them so a
- * fresh checkout still runs.
+ * The full outbound-email config is required only when a real transport is
+ * actually going to deliver — provider is smtp AND the master switch is on. In
+ * that case FROM, TO, HOST, USER and PASS must all be present so a
+ * misconfiguration fails fast at boot rather than surfacing as a runtime 503 on
+ * the first send (e.g. the contact endpoint). Every other combination (console
+ * provider, or smtp-but-disabled) boots without them so a fresh checkout runs.
  */
 export function isSmtpConfigValid(inputs: {
   readonly provider: string | undefined;
   readonly enabled: string | undefined;
+  readonly from: string | undefined;
+  readonly to: string | undefined;
   readonly host: string | undefined;
   readonly user: string | undefined;
   readonly pass: string | undefined;
@@ -91,7 +95,13 @@ export function isSmtpConfigValid(inputs: {
   if (!selectsSmtp) {
     return true;
   }
-  return hasText(inputs.host) && hasText(inputs.user) && hasText(inputs.pass);
+  return (
+    hasText(inputs.from) &&
+    hasText(inputs.to) &&
+    hasText(inputs.host) &&
+    hasText(inputs.user) &&
+    hasText(inputs.pass)
+  );
 }
 
 function hasText(value: string | undefined): boolean {

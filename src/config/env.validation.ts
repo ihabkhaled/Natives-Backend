@@ -54,6 +54,8 @@ export function validateEnv(
     !isSmtpConfigValid({
       provider: parsed.EMAIL_PROVIDER,
       enabled: parsed.EMAIL_ENABLED,
+      from: parsed.EMAIL_FROM,
+      to: parsed.EMAIL_TO,
       host: parsed.SMTP_HOST,
       user: parsed.SMTP_USER,
       pass: parsed.SMTP_PASS,

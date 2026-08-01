@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-01T17:40:43.457Z",
-  "treeHash": "sha256:9817d5f7596bcc661cc3f3c86c9ee00f5b4ce9e3572059324648035852e5abb9",
+  "generatedAt": "2026-08-01T18:15:13.357Z",
+  "treeHash": "sha256:b9f44c4a6c7d5b011d3ff1d580ba56a6b4c1d4eb09b86f0fe6403a3a70140968",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -16,8 +16,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:38f8cbff84689285f4885cfcfbf594cf86b40593ab5f524133e5448022716963",
-      "sizeBytes": 2711
+      "hash": "sha256:290637d7544164db7296c3b2b813be9028a92ba2a273080eea74c1489560e04c",
+      "sizeBytes": 2780
     },
     {
       "path": "src/bootstrap/bootstrap.constants.ts",
@@ -89,8 +89,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:c917b6e4eeed9522d0dff083a0f7e8cf930b3ffe3060c112e6b9cd7f92737b5f",
-      "sizeBytes": 7966
+      "hash": "sha256:a59961664f2d64b3f7f3c9241e40ae03ccab4d7a68f16720f870d5b9b63f27f2",
+      "sizeBytes": 8359
     },
     {
       "path": "src/bootstrap/bootstrap.ts",
@@ -538,8 +538,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:f5953f18cccba8eadf4b593bb795e34ff556400d9929b0bd42827280cf11bdb9",
-      "sizeBytes": 3972
+      "hash": "sha256:f6ac0a8da465ba78de3814c75d3c04e23e6e1af4790e587063c7aec3575989ae",
+      "sizeBytes": 4349
     },
     {
       "path": "src/config/config-validation.helpers.ts",
@@ -571,8 +571,8 @@
       "hasSpec": true,
       "specPath": "src/config/config-validation.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:ee29aa50f1ba77c543d0f94e8a6f5770b12132726f51440f318417e83374f2f5",
-      "sizeBytes": 2881
+      "hash": "sha256:6bc4f0842a3031768b2c925574f6e7cdb397f87e44e94c35a63b12e8c50ba06e",
+      "sizeBytes": 3228
     },
     {
       "path": "src/config/config.constants.ts",
@@ -980,8 +980,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9413fa957f2ecc99040b867a4a5012bcd7c4b9d41e19af942a21d8a24eade700",
-      "sizeBytes": 8586
+      "hash": "sha256:61a72120d81f10d800fb23e850c3b335c98080d95f30390c3ee1823b8560f86d",
+      "sizeBytes": 8612
     },
     {
       "path": "src/config/config.module.ts",
@@ -1182,8 +1182,8 @@
       "hasSpec": true,
       "specPath": "src/config/env.validation.spec.ts",
       "kind": "source",
-      "hash": "sha256:576b8d970abc73ef2c8fe4237d04aeb3eebd9aed3a57680b55caf3485f682b68",
-      "sizeBytes": 1957
+      "hash": "sha256:eeb7d1d4713e1a8b8f9d3827c1ca7102f6ecd82504a78d98f18865341ea1c17d",
+      "sizeBytes": 2015
     },
     {
       "path": "src/config/environment-variables.dto.ts",
@@ -1846,8 +1846,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:698782e687203d872f93ecb2066852c73a6eeb350b5c93e3acb56ae41bd97b08",
-      "sizeBytes": 1262
+      "hash": "sha256:a348df1c7a04c6a52beea52435bac2c5c4ffa68928d3001c513b5926164134ab",
+      "sizeBytes": 1584
     },
     {
       "path": "src/core/email/email-test.cli.ts",
@@ -1981,8 +1981,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a68cadc09a52a529cedc9db111fca20c968111d6a2b17a14194014a4984ec1aa",
-      "sizeBytes": 852
+      "hash": "sha256:797f99daaef22bee822d37f69185f25937ea1762830741a252a51a2ac44a3167",
+      "sizeBytes": 950
     },
     {
       "path": "src/core/email/nodemailer.adapter.spec.ts",
@@ -1993,8 +1993,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:3bd147d70251cbed4be11445de0a0ce9a3de6b5a9ec9547d454f79c9d0b2c146",
-      "sizeBytes": 1427
+      "hash": "sha256:327fac96423aa8c7a5bfb6228eb4abad637b3a0297514e627eb1dc843235156a",
+      "sizeBytes": 2045
     },
     {
       "path": "src/core/email/nodemailer.adapter.ts",
@@ -2010,8 +2010,8 @@
       "hasSpec": true,
       "specPath": "src/core/email/nodemailer.adapter.spec.ts",
       "kind": "source",
-      "hash": "sha256:9fbac1014444715eb2724d3c9c43812a57fcc6c8072037766abcad8d87c61454",
-      "sizeBytes": 1070
+      "hash": "sha256:20e7ba5c21f6c950135ba54a23f642344c6eafbabde889c6a369672aa40a982b",
+      "sizeBytes": 1353
     },
     {
       "path": "src/core/email/smtp-email-sender.service.spec.ts",
@@ -2022,8 +2022,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:92a78e9fa997b1ee815e8357c4f505aedc508db65e591c1515fcedd5259e48f7",
-      "sizeBytes": 3619
+      "hash": "sha256:7ec5c8dc29de437fd4349224f0e56cb0c86ad1f356f333c035be0f79a47028b4",
+      "sizeBytes": 3949
     },
     {
       "path": "src/core/email/smtp-email-sender.service.ts",
@@ -2039,8 +2039,8 @@
       "hasSpec": true,
       "specPath": "src/core/email/smtp-email-sender.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:87f6bb3cbcf1eead4efcb94d6ef73b964d6eb688238fc24b5d719831bf118d67",
-      "sizeBytes": 2315
+      "hash": "sha256:d25ed71df365e86db127e9c3c1dd927885ba618731c8b25e8119378d94ecb4df",
+      "sizeBytes": 2393
     },
     {
       "path": "src/core/errors/app-error.ts",
@@ -16213,6 +16213,218 @@
       "kind": "source",
       "hash": "sha256:72f43761066d9f23b604fcb24309869cf04eaa45abadf41ba338bb9ee429486e",
       "sizeBytes": 9678
+    },
+    {
+      "path": "src/modules/contact/api/contact.controller.ts",
+      "root": "modules",
+      "module": "contact",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ContactController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8572e84329a6a800d25417b1cfd3c63da3637c074d727d73823ddd43ed5e5df0",
+      "sizeBytes": 1366
+    },
+    {
+      "path": "src/modules/contact/api/dto/contact-request.dto.spec.ts",
+      "root": "modules",
+      "module": "contact",
+      "layer": "api-dto",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:f1491a32ce1ba24ae31e3893c0ae0ab22c4af31b886a28b7ccc2c99e1f7764ab",
+      "sizeBytes": 1893
+    },
+    {
+      "path": "src/modules/contact/api/dto/contact-request.dto.ts",
+      "root": "modules",
+      "module": "contact",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ContactRequestDto"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/contact/api/dto/contact-request.dto.spec.ts",
+      "kind": "source",
+      "hash": "sha256:7ff4a04d0cc5f67cfefefeeab9beafa41ff69c511523a171707e748f24198a1d",
+      "sizeBytes": 1387
+    },
+    {
+      "path": "src/modules/contact/api/dto/contact-response.dto.ts",
+      "root": "modules",
+      "module": "contact",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ContactResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:8e70abf030f92b573c3597d6fc9070f4aa2a1731e87616f8a069cea0a7742ba1",
+      "sizeBytes": 268
+    },
+    {
+      "path": "src/modules/contact/application/send-contact.use-case.spec.ts",
+      "root": "modules",
+      "module": "contact",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:e49b56fefa63e6e4ecfecf9cd6c60106a8994a9c0bc88261ca1323e3560965a6",
+      "sizeBytes": 2286
+    },
+    {
+      "path": "src/modules/contact/application/send-contact.use-case.ts",
+      "root": "modules",
+      "module": "contact",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "SendContactUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/contact/application/send-contact.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:8ee1d45783c9d2055ebd207d8bc6a3c95eaf2736493411756988b31170ddbd0d",
+      "sizeBytes": 1646
+    },
+    {
+      "path": "src/modules/contact/contact.module.ts",
+      "root": "modules",
+      "module": "contact",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ContactModule"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:cfd70b35920fe0a5a21666266441215535c888b9679bd1f86758a737630852d1",
+      "sizeBytes": 603
+    },
+    {
+      "path": "src/modules/contact/errors/contact-unavailable.error.ts",
+      "root": "modules",
+      "module": "contact",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ContactUnavailableError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:a13e8ec1c31c4c0d7d3540878a38fdb8dc7f6299048df62c3df7db7914ef0d42",
+      "sizeBytes": 593
+    },
+    {
+      "path": "src/modules/contact/index.ts",
+      "root": "modules",
+      "module": "contact",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1338ad4c13b67a00e9e47fad24520a3ef8dcb7361750c26fdb92ba115342b625",
+      "sizeBytes": 50
+    },
+    {
+      "path": "src/modules/contact/model/contact.constants.ts",
+      "root": "modules",
+      "module": "contact",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "CONTACT_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "CONTACT_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "CONTACT_EMAIL_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CONTACT_SUBJECT_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CONTACT_SUBJECT_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CONTACT_MESSAGE_MIN_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CONTACT_MESSAGE_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "CONTACT_SUBJECT_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "CONTACT_UNAVAILABLE_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "CONTACT_UNAVAILABLE_MESSAGE_KEY"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:658abafc106ea26667036f8e8ba87f8b67c2be91d0fd944d32df5cfc266f5039",
+      "sizeBytes": 1195
+    },
+    {
+      "path": "src/modules/contact/model/contact.types.ts",
+      "root": "modules",
+      "module": "contact",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "ContactSubmission"
+        },
+        {
+          "kind": "interface",
+          "name": "ContactSendResult"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:093f60b116f5e90602cc3f914ca1a59dde36181b2ec98d470281c9633ace9aff",
+      "sizeBytes": 304
     },
     {
       "path": "src/modules/dashboard/api/dashboard.controller.ts",

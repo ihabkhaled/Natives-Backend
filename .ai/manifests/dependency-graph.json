@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T17:40:43.457Z",
+  "generatedAt": "2026-08-01T18:15:13.357Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -54,6 +54,11 @@
     {
       "from": "src/app.module.ts",
       "to": "src/modules/competitions/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/app.module.ts",
+      "to": "src/modules/contact/index.ts",
       "type": "cross-cutting"
     },
     {
@@ -10195,6 +10200,116 @@
       "from": "src/modules/competitions/model/competitions.types.ts",
       "to": "src/modules/competitions/model/competitions.enums.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/api/contact.controller.ts",
+      "to": "src/core/auth/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/contact/api/contact.controller.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/contact/api/contact.controller.ts",
+      "to": "src/modules/contact/api/dto/contact-request.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/api/contact.controller.ts",
+      "to": "src/modules/contact/api/dto/contact-response.dto.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/api/contact.controller.ts",
+      "to": "src/modules/contact/application/send-contact.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/api/contact.controller.ts",
+      "to": "src/modules/contact/model/contact.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/api/dto/contact-request.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/contact/api/dto/contact-request.dto.ts",
+      "to": "src/core/validation/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/contact/api/dto/contact-request.dto.ts",
+      "to": "src/modules/contact/model/contact.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/api/dto/contact-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/contact/application/send-contact.use-case.ts",
+      "to": "src/config/app-config.service.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/contact/application/send-contact.use-case.ts",
+      "to": "src/core/email/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/contact/application/send-contact.use-case.ts",
+      "to": "src/modules/contact/errors/contact-unavailable.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/application/send-contact.use-case.ts",
+      "to": "src/modules/contact/model/contact.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/application/send-contact.use-case.ts",
+      "to": "src/modules/contact/model/contact.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/contact.module.ts",
+      "to": "src/core/email/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/contact/contact.module.ts",
+      "to": "src/modules/contact/api/contact.controller.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/contact.module.ts",
+      "to": "src/modules/contact/application/send-contact.use-case.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/errors/contact-unavailable.error.ts",
+      "to": "src/core/errors/service-unavailable.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/contact/errors/contact-unavailable.error.ts",
+      "to": "src/modules/contact/model/contact.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/index.ts",
+      "to": "src/modules/contact/contact.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/contact/model/contact.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/modules/dashboard/api/dashboard.controller.ts",

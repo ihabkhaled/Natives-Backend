@@ -31,7 +31,7 @@ export const DEFAULT_SMTP_SECURE = false;
 export const DEFAULT_EMAIL_RATE_LIMIT_MAX = 100;
 export const DEFAULT_EMAIL_RATE_LIMIT_WINDOW_MS = 3_600_000;
 export const INVALID_SMTP_CONFIG_MESSAGE =
-  'SMTP_HOST, SMTP_USER and SMTP_PASS are required when EMAIL_PROVIDER=smtp and EMAIL_ENABLED=true';
+  'EMAIL_FROM, EMAIL_TO, SMTP_HOST, SMTP_USER and SMTP_PASS are all required when EMAIL_PROVIDER=smtp and EMAIL_ENABLED=true';
 
 // --- Bootstrap / seeding ----------------------------------------------------
 // Defaults for the idempotent default-admin seed. The password has no default:

@@ -33,6 +33,11 @@ export class NodemailerTransportAdapter implements MailTransportPort {
       to: input.to,
       subject: input.subject,
       text: input.text,
+      ...(input.replyTo === undefined ? {} : { replyTo: input.replyTo }),
+      // Harden against message-generation SSRF/file exfiltration: a plain-text
+      // body never needs to read local files or fetch remote URLs.
+      disableFileAccess: true,
+      disableUrlAccess: true,
     });
   }
 }

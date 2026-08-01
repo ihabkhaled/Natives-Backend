@@ -19,6 +19,8 @@ export interface MailSendInput {
   readonly to: string;
   readonly subject: string;
   readonly text: string;
+  /** Optional Reply-To; omitted when replies to `from` are fine. */
+  readonly replyTo?: string;
 }
 
 export interface MailTransportPort {

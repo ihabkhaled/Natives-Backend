@@ -9,6 +9,7 @@ import { ArticlesModule } from '@modules/articles';
 import { AssessmentsModule } from '@modules/assessments';
 import { AuthModule } from '@modules/auth';
 import { CompetitionsModule } from '@modules/competitions';
+import { ContactModule } from '@modules/contact';
 import { DashboardModule } from '@modules/dashboard';
 import { DataQualityModule } from '@modules/dataquality';
 import { DevelopmentModule } from '@modules/development';
@@ -72,6 +73,7 @@ import { Module } from '@nestjs/common';
     DataQualityModule,
     DashboardModule,
     ArticlesModule,
+    ContactModule,
   ],
 })
 export class AppModule {}

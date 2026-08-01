@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T17:40:43.457Z",
+  "generatedAt": "2026-08-01T18:15:13.357Z",
   "modules": [
     {
       "name": "activities",
@@ -513,6 +513,35 @@
       "fileCount": 69,
       "specCount": 29,
       "publicSurface": "src/modules/competitions/index.ts",
+      "hasEvents": false
+    },
+    {
+      "name": "contact",
+      "path": "src/modules/contact",
+      "layers": {
+        "controller": [
+          "src/modules/contact/api/contact.controller.ts"
+        ],
+        "api-dto": [
+          "src/modules/contact/api/dto/contact-request.dto.ts",
+          "src/modules/contact/api/dto/contact-response.dto.ts"
+        ],
+        "use-case": [
+          "src/modules/contact/application/send-contact.use-case.ts"
+        ],
+        "other": [
+          "src/modules/contact/contact.module.ts",
+          "src/modules/contact/errors/contact-unavailable.error.ts",
+          "src/modules/contact/index.ts"
+        ],
+        "model": [
+          "src/modules/contact/model/contact.constants.ts",
+          "src/modules/contact/model/contact.types.ts"
+        ]
+      },
+      "fileCount": 9,
+      "specCount": 2,
+      "publicSurface": "src/modules/contact/index.ts",
       "hasEvents": false
     },
     {

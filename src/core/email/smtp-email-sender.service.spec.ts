@@ -83,6 +83,16 @@ describe('SmtpEmailSenderService', () => {
         text: MESSAGE.body,
       });
     });
+
+    it('forwards a Reply-To when the message carries one', async () => {
+      await harness.service.send({
+        ...MESSAGE,
+        replyTo: 'visitor@example.test',
+      });
+      expect(harness.transport.sendMail).toHaveBeenCalledWith(
+        expect.objectContaining({ replyTo: 'visitor@example.test' }),
+      );
+    });
   });
 
   describe('throttling', () => {
