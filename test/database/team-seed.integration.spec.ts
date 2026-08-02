@@ -2,6 +2,7 @@ import { buildDataSourceOptions } from '@app/database/data-source.factory';
 import {
   SEED_ADMIN_KEY,
   SEED_PERSONAS_KEY,
+  SEED_ROSTER_KEY,
   SEED_TEAM_KEY,
 } from '@app/database/seeds/seed.constants';
 import type { Seeder } from '@app/database/seeds/seed.types';
@@ -34,12 +35,14 @@ import { RostersSchema1723500000000 } from '../../src/database/migrations/172350
 import { MatchesSchema1723600000000 } from '../../src/database/migrations/1723600000000-matches-schema';
 import { MatchLineupsSchema1723700000000 } from '../../src/database/migrations/1723700000000-match-lineups-schema';
 import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
+import { TeamStaffAssignments1725700000000 } from '../../src/database/migrations/1725700000000-team-staff-assignments';
+import { TeamPublicProfile1725900000000 } from '../../src/database/migrations/1725900000000-team-public-profile';
 
 // The seeders touch identity, RBAC, teams, members, the practice program, the
 // demonstration match queue (competitions → squads → rosters → matches, in FK
-// dependency order), and the seed ledger, so the fixture applies exactly those
-// schemas onto a disposable database of its own — the shared natives_test
-// database is never mutated.
+// dependency order), the team's public profile, its staff assignments, and the
+// seed ledger, so the fixture applies exactly those schemas onto a disposable
+// database of its own — the shared natives_test database is never mutated.
 const SEED_MIGRATIONS = [
   BaselineSchema1721200000000,
   IdentitySchema1721300000000,
@@ -54,6 +57,11 @@ const SEED_MIGRATIONS = [
   MatchesSchema1723600000000,
   MatchLineupsSchema1723700000000,
   PlatformLifecycleSchema1723800000000,
+  // The team seeder writes teams.location, founded_on and the social URLs;
+  // the roster seeder writes team_staff_assignments. Both columns and that
+  // table arrive here, so the seeders cannot run without them.
+  TeamStaffAssignments1725700000000,
+  TeamPublicProfile1725900000000,
 ];
 
 const HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
@@ -467,10 +475,13 @@ describeIfDb(suiteTitle, () => {
       `SELECT COUNT(*)::int AS count FROM "venues"`,
     );
 
+    // staff_title comes from the roster seeder, which has to create the titles
+    // before it can assign them.
     expect(catalogs.map((row: { catalog: string }) => row.catalog)).toEqual([
       'division',
       'gender_format',
       'position',
+      'staff_title',
     ]);
     expect(venues[0].count).toBeGreaterThan(0);
   });
@@ -481,9 +492,11 @@ describeIfDb(suiteTitle, () => {
         ORDER BY "seed_key"`,
     );
 
+    // Ordered by seed_key, not registry order.
     expect(history.map((row: { seed_key: string }) => row.seed_key)).toEqual([
       SEED_ADMIN_KEY,
       SEED_PERSONAS_KEY,
+      SEED_ROSTER_KEY,
       SEED_TEAM_KEY,
     ]);
     for (const row of history) {
@@ -509,6 +522,7 @@ describeIfDb(suiteTitle, () => {
       { key: SEED_ADMIN_KEY, application: 'skipped' },
       { key: SEED_TEAM_KEY, application: 'skipped' },
       { key: SEED_PERSONAS_KEY, application: 'skipped' },
+      { key: SEED_ROSTER_KEY, application: 'skipped' },
     ]);
     expect(await countRows()).toEqual(before);
     const appliedAtAfter = await dataSource.query(

@@ -193,6 +193,21 @@ describeIfDb(suiteTitle, () => {
 
   afterAll(async () => {
     await app.close();
+    // This suite is the only one that used to migrate the shared natives_test
+    // database and then walk away. The two migrations no other suite lists —
+    // team-staff-assignments and team-public-profile — stayed applied, so the
+    // next suite to revert by count hit a migration it could not name ("No
+    // migration TeamPublicProfile1725900000000 was found in the source code"),
+    // and rbac.integration counted the permissions the leftovers had seeded.
+    // Leave the database as it was found, like every sibling suite does.
+    if (seededDataSource) {
+      let remaining = MIGRATIONS.length;
+      while (remaining > 0) {
+        await seededDataSource.undoLastMigration();
+        remaining -= 1;
+      }
+      await seededDataSource.destroy();
+    }
     if (ORIGINAL_DATABASE_URL === undefined) {
       Reflect.deleteProperty(process.env, 'DATABASE_URL');
     } else {

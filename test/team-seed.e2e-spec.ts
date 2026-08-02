@@ -28,6 +28,8 @@ import { MatchesSchema1723600000000 } from '../src/database/migrations/172360000
 import { MatchLineupsSchema1723700000000 } from '../src/database/migrations/1723700000000-match-lineups-schema';
 import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 import { RbacRoleCatalogMetadata1725000000000 } from '../src/database/migrations/1725000000000-rbac-role-catalog-metadata';
+import { TeamStaffAssignments1725700000000 } from '../src/database/migrations/1725700000000-team-staff-assignments';
+import { TeamPublicProfile1725900000000 } from '../src/database/migrations/1725900000000-team-public-profile';
 
 // Proves the seeded principal contract over real HTTP on a disposable database
 // of its own: the once-only seeders are the ONLY writes, so `/auth/me` here is
@@ -49,6 +51,11 @@ const SEED_MIGRATIONS = [
   MatchLineupsSchema1723700000000,
   PlatformLifecycleSchema1723800000000,
   RbacRoleCatalogMetadata1725000000000,
+  // The team seeder writes teams.location, founded_on and the social URLs;
+  // the roster seeder writes team_staff_assignments. Both columns and that
+  // table arrive here, so the seeders cannot run without them.
+  TeamStaffAssignments1725700000000,
+  TeamPublicProfile1725900000000,
 ];
 
 const HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
