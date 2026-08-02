@@ -3,7 +3,7 @@
 // Vercel executes functions, not long-lived servers, so it needs a module that
 // EXPORTS a request handler. It must also stay plain JavaScript: when Vercel
 // compiles TypeScript itself it does not apply this repository's tsconfig path
-// aliases (@app/*, @core/*, ...), which is why compiling src/main.ts directly
+// aliases (@app/*, @core/*, ...), which is why compiling the Nest entrypoint directly
 // failed with "Cannot find module '@app/bootstrap/bootstrap'".
 //
 // This file therefore requires the ALREADY-BUILT output in dist/, where

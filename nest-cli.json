@@ -10,5 +10,6 @@
         "outDir": "dist/src"
       }
     ]
-  }
+  },
+  "entryFile": "server"
 }

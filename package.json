@@ -23,7 +23,7 @@
     "start:dev": "nest start --watch",
     "prestart:debug": "npm run db:ensure",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/src/main",
+    "start:prod": "node dist/src/server",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint --concurrency 2",
