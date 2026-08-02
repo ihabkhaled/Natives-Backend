@@ -31,19 +31,14 @@ const dataSource =
 await dataSource.initialize();
 const applied = await dataSource.runMigrations();
 console.log(`[bootstrap-db] applied ${applied.length} pending migration(s)`);
-
-const rows = await dataSource.query(
-  'SELECT COUNT(*)::int AS count FROM "users"',
-);
-const freshDatabase = Number(rows[0]?.count ?? 0) === 0;
 await dataSource.destroy();
 
-if (!freshDatabase) {
-  console.log('[bootstrap-db] database already seeded — skipping seed.');
-  process.exit(0);
-}
-
-console.log('[bootstrap-db] fresh database detected — seeding administrator…');
+// Always run the seed CLI: it drives the WHOLE once-only registry (admin,
+// team, personas, roster), and each seeder no-ops via its `seed_history` row.
+// The old "skip when users exist" gate is exactly the bug it looks like — a
+// database seeded before a NEW seeder was added never received it, which is
+// how a deploy ends up with an administrator but no roster.
+console.log('[bootstrap-db] running the once-only seed registry…');
 const seed = spawnSync(
   process.execPath,
   ['-r', 'dotenv/config', 'dist/src/database/seeds/seed-admin.cli.js'],
