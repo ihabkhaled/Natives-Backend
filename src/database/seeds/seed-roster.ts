@@ -39,7 +39,7 @@ export function createSeedRosterSeeder(): Seeder {
   };
 }
 
-async function seedRoster(queryRunner: QueryRunner): Promise<void> {
+export async function seedRoster(queryRunner: QueryRunner): Promise<void> {
   const teamId = await resolveTeamId(queryRunner);
   const titleIds = await seedStaffTitles(queryRunner, teamId);
 
@@ -139,7 +139,7 @@ async function seedPlayer(
   return membershipId;
 }
 
-async function seedStaffAssignments(
+export async function seedStaffAssignments(
   queryRunner: QueryRunner,
   teamId: string,
   titleIds: ReadonlyMap<string, string>,
