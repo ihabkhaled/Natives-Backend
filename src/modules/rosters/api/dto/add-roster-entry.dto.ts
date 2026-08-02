@@ -1,19 +1,16 @@
 import { ApiProperty, ApiPropertyOptional } from '@core/openapi';
 import {
   IsEnum,
-  IsInt,
   IsOptional,
   IsString,
   IsUUID,
-  Max,
+  Matches,
   MaxLength,
-  Min,
   MinLength,
 } from '@core/validation';
 
 import {
-  JERSEY_NUMBER_MAX,
-  JERSEY_NUMBER_MIN,
+  JERSEY_NUMBER_PATTERN,
   REASON_MAX_LENGTH,
   REASON_MIN_LENGTH,
 } from '../../model/rosters.constants';
@@ -34,15 +31,15 @@ export class AddRosterEntryDto {
   declare readonly membershipId: string;
 
   @ApiPropertyOptional({
-    minimum: JERSEY_NUMBER_MIN,
-    maximum: JERSEY_NUMBER_MAX,
+    type: String,
+    pattern: JERSEY_NUMBER_PATTERN.source,
     nullable: true,
+    description: 'Shirt number exactly as printed, including any leading zero',
   })
   @IsOptional()
-  @IsInt()
-  @Min(JERSEY_NUMBER_MIN)
-  @Max(JERSEY_NUMBER_MAX)
-  readonly jerseyNumber?: number | null;
+  @IsString()
+  @Matches(JERSEY_NUMBER_PATTERN)
+  readonly jerseyNumber?: string | null;
 
   @ApiPropertyOptional({
     enum: RosterEntryRole,

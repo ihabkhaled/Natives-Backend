@@ -5,13 +5,10 @@ export interface RosterPlayer {
   readonly fullName: string;
   readonly nickname: string;
   /**
-   * The numeric column, which carries the per-team uniqueness index. Null
-   * where the printed form has no unambiguous integer, or where the integer
-   * is already taken by another player.
+   * The shirt number exactly as printed, including any leading zero. Null when
+   * the player has no number of their own yet.
    */
-  readonly jerseyNumber: number | null;
-  /** The shirt number exactly as printed, including any leading zero. */
-  readonly jerseyLabel: string | null;
+  readonly jersey: string | null;
 }
 
 /** One entry in the extensible `staff_title` reference catalog. */

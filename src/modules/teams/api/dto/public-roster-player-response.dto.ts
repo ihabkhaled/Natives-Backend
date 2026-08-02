@@ -10,8 +10,12 @@ export class PublicRosterPlayerResponseDto {
   @ApiProperty({ type: String, nullable: true })
   declare readonly nickname: string | null;
 
-  @ApiProperty({ type: Number, nullable: true })
-  declare readonly jerseyNumber: number | null;
+  @ApiProperty({
+    type: String,
+    nullable: true,
+    description: 'Shirt number exactly as printed, including any leading zero',
+  })
+  declare readonly jerseyNumber: string | null;
 
   @ApiProperty({ type: [String] })
   declare readonly positions: readonly string[];

@@ -15,7 +15,7 @@ import type { JerseyReservation } from '../model/members.types';
  */
 export function findJerseyConflict(
   reservations: readonly JerseyReservation[],
-  jerseyNumber: number,
+  jerseyNumber: string,
   excludeMembershipId: string,
 ): JerseyReservation | null {
   for (const reservation of reservations) {

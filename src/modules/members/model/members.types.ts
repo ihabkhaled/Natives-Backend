@@ -49,7 +49,7 @@ export interface MemberProfile {
   readonly gender: PlayerGender | null;
   readonly division: string | null;
   readonly positions: readonly string[];
-  readonly jerseyNumber: number | null;
+  readonly jerseyNumber: string | null;
   readonly jerseySize: string | null;
   readonly heightCm: number | null;
   readonly weightKg: number | null;
@@ -161,7 +161,7 @@ export interface MemberView {
   readonly displayName: string;
   readonly nickname: string | null;
   readonly positions: readonly string[];
-  readonly jerseyNumber: number | null;
+  readonly jerseyNumber: string | null;
   readonly division: string | null;
   readonly hasAvatar: boolean;
   readonly preferredName: string | null;
@@ -188,7 +188,7 @@ export interface MemberDirectoryItem {
   readonly status: MembershipStatus;
   readonly displayName: string;
   readonly nickname: string | null;
-  readonly jerseyNumber: number | null;
+  readonly jerseyNumber: string | null;
   readonly positions: readonly string[];
   readonly hasAvatar: boolean;
 }
@@ -251,7 +251,7 @@ export interface ProfileInput {
   readonly gender: PlayerGender | null;
   readonly division: string | null;
   readonly positions: readonly string[];
-  readonly jerseyNumber: number | null;
+  readonly jerseyNumber: string | null;
   readonly jerseySize: string | null;
   readonly heightCm: number | null;
   readonly weightKg: number | null;
@@ -423,7 +423,7 @@ export interface NewAuditEvent {
 /** A jersey number already reserved by an active member in a scope. */
 export interface JerseyReservation {
   readonly membershipId: string;
-  readonly jerseyNumber: number;
+  readonly jerseyNumber: string;
 }
 
 /**

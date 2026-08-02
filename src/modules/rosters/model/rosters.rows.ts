@@ -41,7 +41,7 @@ export interface RosterEntryRow {
   readonly roster_id: string;
   readonly team_id: string;
   readonly membership_id: string;
-  readonly jersey_number: number | null;
+  readonly jersey_number: string | null;
   readonly entry_role: string;
   readonly line_assignment: string;
   readonly field_position: string;
@@ -108,7 +108,7 @@ export interface RosterCandidateRow {
   readonly membership_id: string;
   readonly member_status: string;
   readonly gender: string | null;
-  readonly jersey_number: number | null;
+  readonly jersey_number: string | null;
   readonly availability: string | null;
   readonly selected_in_squad: boolean;
 }

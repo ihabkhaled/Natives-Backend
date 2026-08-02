@@ -102,8 +102,8 @@ async function seedPlayer(
 ): Promise<string> {
   const existing = (await queryRunner.query(
     `SELECT "membership_id" AS "id" FROM "member_profiles"
-      WHERE "team_id" = $1 AND "full_name" = $2`,
-    [teamId, player.fullName],
+      WHERE "team_id" = $1 AND "full_name" = $2 AND "nickname" = $3`,
+    [teamId, player.fullName, player.nickname],
   )) as readonly IdRow[];
   const already = existing[0]?.id;
   if (already !== undefined) {
@@ -131,16 +131,9 @@ async function seedPlayer(
 
   await queryRunner.query(
     `INSERT INTO "member_profiles" ("membership_id", "team_id", "full_name",
-            "nickname", "jersey_number", "jersey_display")
-     VALUES ($1, $2, $3, $4, $5, $6)`,
-    [
-      membershipId,
-      teamId,
-      player.fullName,
-      player.nickname,
-      player.jerseyNumber,
-      player.jerseyLabel,
-    ],
+            "nickname", "jersey_number")
+     VALUES ($1, $2, $3, $4, $5)`,
+    [membershipId, teamId, player.fullName, player.nickname, player.jersey],
   );
 
   return membershipId;

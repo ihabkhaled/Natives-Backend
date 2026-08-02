@@ -37,7 +37,7 @@ export interface MemberProfileRow {
   readonly gender: string | null;
   readonly division: string | null;
   readonly positions: readonly string[];
-  readonly jersey_number: number | null;
+  readonly jersey_number: string | null;
   readonly jersey_size: string | null;
   readonly height_cm: string | null;
   readonly weight_kg: string | null;
@@ -91,7 +91,7 @@ export interface MediaAssetRow {
 
 export interface JerseyRow {
   readonly membership_id: string;
-  readonly jersey_number: number;
+  readonly jersey_number: string;
 }
 
 /**
@@ -105,7 +105,7 @@ export interface DirectoryRow {
   readonly status: string;
   readonly display_name: string | null;
   readonly nickname: string | null;
-  readonly jersey_number: number | null;
+  readonly jersey_number: string | null;
   readonly positions: readonly string[] | null;
   readonly has_avatar: boolean;
 }
@@ -142,7 +142,7 @@ export interface ProfileCompletenessRow {
   readonly phone: string | null;
   readonly gender: string | null;
   readonly date_of_birth: string | null;
-  readonly jersey_number: number | null;
+  readonly jersey_number: string | null;
   readonly positions: readonly string[];
   readonly avatar_media_id: string | null;
   readonly updated_at: string | Date;

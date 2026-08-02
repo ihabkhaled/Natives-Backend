@@ -55,8 +55,11 @@ export const JERSEY_SIZE_MAX_LENGTH = 16;
 export const DIVISION_KEY_MAX_LENGTH = 64;
 export const POSITION_KEY_MAX_LENGTH = 64;
 export const POSITIONS_MAX_COUNT = 8;
-export const JERSEY_NUMBER_MIN = 0;
-export const JERSEY_NUMBER_MAX = 999;
+/**
+ * A shirt number is a printed label, not a quantity: one to four digits, and a
+ * leading zero is significant ("011" is not 11). Mirrors ck_profile_jersey_format.
+ */
+export const JERSEY_NUMBER_PATTERN = /^[0-9]{1,4}$/;
 export const HEIGHT_CM_MIN = 50;
 export const HEIGHT_CM_MAX = 260;
 export const WEIGHT_KG_MIN = 20;

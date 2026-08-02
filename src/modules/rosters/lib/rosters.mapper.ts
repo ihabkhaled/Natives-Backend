@@ -33,7 +33,6 @@ import {
   parseEnumValue,
   parseNullableEnumValue,
   readBoolean,
-  readNullableNumber,
   readNullableString,
   readString,
   toDate,
@@ -86,7 +85,7 @@ export function toRosterEntry(row: RosterEntryRow): RosterEntry {
     rosterId: row.roster_id,
     teamId: row.team_id,
     membershipId: row.membership_id,
-    jerseyNumber: toNullableNumber(row.jersey_number),
+    jerseyNumber: row.jersey_number,
     entryRole: parseEnumValue(ROSTER_ENTRY_ROLE_VALUES, row.entry_role, 'role'),
     lineAssignment: parseEnumValue(
       ROSTER_LINE_VALUES,
@@ -186,7 +185,7 @@ export function toSnapshotEntry(value: unknown): RosterSnapshotEntry {
   const fields = asFields(value);
   return {
     membershipId: readString(fields, 'membershipId', 'membership id'),
-    jerseyNumber: readNullableNumber(fields, 'jerseyNumber'),
+    jerseyNumber: readNullableString(fields, 'jerseyNumber'),
     entryRole: parseEnumValue(
       ROSTER_ENTRY_ROLE_VALUES,
       readString(fields, 'entryRole', 'role'),
@@ -226,7 +225,7 @@ export function toRosterCandidate(row: RosterCandidateRow): RosterCandidate {
       'member status',
     ),
     gender: row.gender,
-    jerseyNumber: toNullableNumber(row.jersey_number),
+    jerseyNumber: row.jersey_number,
     availability: parseNullableEnumValue(
       ROSTER_AVAILABILITY_STATUS_VALUES,
       row.availability,

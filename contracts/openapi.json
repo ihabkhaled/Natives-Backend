@@ -530,10 +530,10 @@
             "type": "string"
           },
           "jerseyNumber": {
-            "maximum": 999,
-            "minimum": 0,
+            "description": "Shirt number exactly as printed, including any leading zero",
             "nullable": true,
-            "type": "object"
+            "pattern": "^[0-9]{1,4}$",
+            "type": "string"
           },
           "lineAssignment": {
             "default": "any",
@@ -13382,10 +13382,10 @@
             "type": "string"
           },
           "jerseyNumber": {
-            "maximum": 999,
-            "minimum": 0,
+            "description": "Shirt number exactly as printed, including any leading zero",
             "nullable": true,
-            "type": "object"
+            "pattern": "^[0-9]{1,4}$",
+            "type": "string"
           },
           "lineAssignment": {
             "default": "any",
@@ -14132,9 +14132,9 @@
             "type": "number"
           },
           "jerseyNumber": {
-            "maximum": 999,
-            "minimum": 0,
-            "type": "number"
+            "description": "Shirt number exactly as printed. A string, not an integer: \"011\" is not 11 and the leading zero is part of the number.",
+            "pattern": "^[0-9]{1,4}$",
+            "type": "string"
           },
           "jerseySize": {
             "maxLength": 16,
@@ -15005,8 +15005,9 @@
             "type": "string"
           },
           "jerseyNumber": {
+            "description": "Shirt number exactly as printed, including any leading zero",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "membershipId": {
             "type": "string"

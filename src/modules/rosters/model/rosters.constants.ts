@@ -52,8 +52,8 @@ export const ROSTER_SIZE_MIN = 1;
 export const ROSTER_SIZE_MAX = 60;
 export const DEFAULT_MIN_SIZE = 7;
 export const DEFAULT_MAX_SIZE = 30;
-export const JERSEY_NUMBER_MIN = 0;
-export const JERSEY_NUMBER_MAX = 999;
+/** Mirrors ck_entry_jersey: one to four digits, leading zero significant. */
+export const JERSEY_NUMBER_PATTERN = /^[0-9]{1,4}$/;
 export const MIN_WOMEN_MIN = 0;
 
 /** The named, versioned composition rule set. A displayed result cites this. */

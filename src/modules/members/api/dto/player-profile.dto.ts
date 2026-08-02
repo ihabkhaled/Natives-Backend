@@ -4,7 +4,6 @@ import {
   IsArray,
   IsEmail,
   IsEnum,
-  IsInt,
   IsNumber,
   IsOptional,
   IsString,
@@ -22,8 +21,7 @@ import {
   EMAIL_MAX_LENGTH,
   HEIGHT_CM_MAX,
   HEIGHT_CM_MIN,
-  JERSEY_NUMBER_MAX,
-  JERSEY_NUMBER_MIN,
+  JERSEY_NUMBER_PATTERN,
   JERSEY_SIZE_MAX_LENGTH,
   NAME_MAX_LENGTH,
   NAME_MIN_LENGTH,
@@ -99,15 +97,16 @@ export class PlayerProfileDto {
   declare readonly positions?: string[];
 
   @ApiPropertyOptional({
-    minimum: JERSEY_NUMBER_MIN,
-    maximum: JERSEY_NUMBER_MAX,
+    type: String,
+    pattern: JERSEY_NUMBER_PATTERN.source,
+    description:
+      'Shirt number exactly as printed. A string, not an integer: "011" is ' +
+      'not 11 and the leading zero is part of the number.',
   })
   @IsOptional()
-  @Type(() => Number)
-  @IsInt()
-  @Min(JERSEY_NUMBER_MIN)
-  @Max(JERSEY_NUMBER_MAX)
-  declare readonly jerseyNumber?: number;
+  @IsString()
+  @Matches(JERSEY_NUMBER_PATTERN)
+  declare readonly jerseyNumber?: string;
 
   @ApiPropertyOptional({ maxLength: JERSEY_SIZE_MAX_LENGTH })
   @IsOptional()

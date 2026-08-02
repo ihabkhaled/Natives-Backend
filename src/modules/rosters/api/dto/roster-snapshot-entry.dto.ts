@@ -18,7 +18,7 @@ export class RosterSnapshotEntryDto {
   declare readonly membershipId: string;
 
   @ApiProperty({ type: Number, nullable: true })
-  declare readonly jerseyNumber: number | null;
+  declare readonly jerseyNumber: string | null;
 
   @ApiProperty({ enum: RosterEntryRole })
   declare readonly entryRole: RosterEntryRole;

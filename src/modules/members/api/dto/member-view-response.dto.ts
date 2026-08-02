@@ -35,7 +35,7 @@ export class MemberViewResponseDto {
   declare readonly positions: readonly string[];
 
   @ApiProperty({ type: Number, nullable: true })
-  declare readonly jerseyNumber: number | null;
+  declare readonly jerseyNumber: string | null;
 
   @ApiProperty({ type: String, nullable: true })
   declare readonly division: string | null;

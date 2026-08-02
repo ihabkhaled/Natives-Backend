@@ -97,7 +97,7 @@ export class RosterEntryRepository {
   async findByJersey(
     scope: TransactionScope,
     rosterId: string,
-    jerseyNumber: number,
+    jerseyNumber: string,
   ): Promise<RosterEntry | null> {
     const rows = await scope.run<RosterEntryRow>(
       `SELECT ${ENTRY_COLUMNS} FROM "roster_entries"

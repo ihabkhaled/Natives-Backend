@@ -20,7 +20,7 @@ export class MemberDirectoryItemDto {
   declare readonly nickname: string | null;
 
   @ApiProperty({ type: Number, nullable: true })
-  declare readonly jerseyNumber: number | null;
+  declare readonly jerseyNumber: string | null;
 
   @ApiProperty({ type: [String] })
   declare readonly positions: readonly string[];

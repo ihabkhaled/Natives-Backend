@@ -12,62 +12,60 @@ import type { RosterPlayer, StaffTitleDefinition } from './seed-roster.types';
 export const ROSTER_MEMBERSHIP_STATUS = MembershipStatus.Active;
 
 /**
- * Every player carries the number exactly as printed (`jerseyLabel`). Two of
- * them cannot ALSO carry it in the integer column, which is what the per-team
- * uniqueness index is built on:
+ * Shirt numbers are strings, not integers: they are printed labels that can
+ * carry a leading zero (Mahmoud Nasr wears "011", which is not 11).
  *
- * - Mahmoud Nasr wears "011". As an integer that is 11, which Rawan already
- *   has — and the leading zero, which is part of the printed number, would be
- *   lost either way.
- * - Lina wears "2", already held by Medo Khalil.
- *
- * Both keep their printed number on every public surface; only the numeric
- * column is left null, because that column exists to enforce uniqueness.
+ * Lina is seeded without a number: the sheet gives her 2, which Medo Khalil
+ * already wears, and the per-team uniqueness index allows only one. Left blank
+ * rather than guessed, pending confirmation.
  */
 export const ROSTER_PLAYERS: readonly RosterPlayer[] = [
-  { key: '3alamy', fullName: '3alamy', nickname: '3alamy', jerseyNumber: 33, jerseyLabel: '33' },
-  { key: 'khaled-o', fullName: 'Khaled O', nickname: 'Khaled O.', jerseyNumber: 66, jerseyLabel: '66' },
-  { key: 'rawan-e', fullName: 'Rawan E', nickname: 'Rou', jerseyNumber: 11, jerseyLabel: '11' },
-  { key: 'somaia-e', fullName: 'Somaia E', nickname: 'Sou', jerseyNumber: 28, jerseyLabel: '28' },
+  // Two different people share the name Sherif Ashraf; the nickname is what
+  // distinguishes them, so it is part of this seeder's identity check.
+  { key: '3alamy', fullName: 'Sherif Ashraf', nickname: '3alamy', jersey: '33' },
+  { key: 'khaled-o', fullName: 'Khaled O', nickname: 'Khaled O.', jersey: '66' },
+  { key: 'rawan-e', fullName: 'Rawan E', nickname: 'Rou', jersey: '11' },
+  { key: 'somaia-e', fullName: 'Somaia E', nickname: 'Sou', jersey: '28' },
   {
     key: 'moustafa-abdelmeotaal',
     fullName: 'Moustafa Abdelmeotaal',
     nickname: 'Si3a',
-    jerseyNumber: 8, jerseyLabel: '8',
+    jersey: '8',
   },
-  { key: 'usama-zakaria', fullName: 'Usama Zakaria', nickname: 'Uzo', jerseyNumber: 1, jerseyLabel: '1' },
-  { key: 'israa-hassan', fullName: 'Israa Hassan', nickname: 'Divaa', jerseyNumber: 12, jerseyLabel: '12' },
-  { key: 'adham-hawwas', fullName: 'Adham Hawwas', nickname: 'Domaa', jerseyNumber: 55, jerseyLabel: '55' },
-  { key: 'omar-assem', fullName: 'Omar Assem', nickname: 'Bernie', jerseyNumber: 14, jerseyLabel: '14' },
-  { key: 'zahra-moustafa', fullName: 'Zahra Moustafa', nickname: 'Zahra', jerseyNumber: 22, jerseyLabel: '22' },
+  { key: 'usama-zakaria', fullName: 'Usama Zakaria', nickname: 'Uzo', jersey: '1' },
+  { key: 'israa-hassan', fullName: 'Israa Hassan', nickname: 'Divaa', jersey: '12' },
+  { key: 'adham-hawwas', fullName: 'Adham Hawwas', nickname: 'Domaa', jersey: '55' },
+  { key: 'omar-assem', fullName: 'Omar Assem', nickname: 'Bernie', jersey: '14' },
+  { key: 'zahra-moustafa', fullName: 'Zahra Moustafa', nickname: 'Zahra', jersey: '22' },
   {
     key: 'abdelrahman-eliemy',
     fullName: 'Abdelrahman Eliemy',
     nickname: 'Eleimy',
-    jerseyNumber: 47, jerseyLabel: '47',
+    jersey: '47',
   },
-  { key: 'fawzy', fullName: 'Fawzy', nickname: 'Fawzy', jerseyNumber: 77, jerseyLabel: '77' },
-  { key: 'ahmed-esssam-jr', fullName: 'Ahmed Esssam Jr', nickname: 'Avocado', jerseyNumber: 25, jerseyLabel: '25' },
-  { key: 'mohamed-ezzat', fullName: 'Mohamed Ezzat', nickname: 'Ezzat', jerseyNumber: 20, jerseyLabel: '20' },
-  { key: 'assem-sheweta', fullName: 'Assem Sheweta', nickname: 'Sheweta', jerseyNumber: 18, jerseyLabel: '18' },
-  { key: 'mina-emad', fullName: 'Mina Emad', nickname: 'Mina', jerseyNumber: 0, jerseyLabel: '0' },
-  { key: 'medo-khalil', fullName: 'Medo Khalil', nickname: 'Medo', jerseyNumber: 2, jerseyLabel: '2' },
-  { key: 'mohamed-elsayed', fullName: 'Mohamed Elsayed', nickname: 'El Sayed', jerseyNumber: 30, jerseyLabel: '30' },
-  { key: 'sherif-ashraf', fullName: 'Sherif Ashraf', nickname: 'Nemo', jerseyNumber: 10, jerseyLabel: '10' },
-  { key: 'esraa-elemary', fullName: 'Esraa Elemary', nickname: 'Emari', jerseyNumber: 24, jerseyLabel: '24' },
+  { key: 'fawzy', fullName: 'Fawzy', nickname: 'Fawzy', jersey: '77' },
+  { key: 'ahmed-esssam-jr', fullName: 'Ahmed Esssam Jr', nickname: 'Avocado', jersey: '25' },
+  { key: 'mohamed-ezzat', fullName: 'Mohamed Ezzat', nickname: 'Ezzat', jersey: '20' },
+  { key: 'assem-sheweta', fullName: 'Assem Sheweta', nickname: 'Sheweta', jersey: '18' },
+  { key: 'mina-emad', fullName: 'Mina Emad', nickname: 'Mina', jersey: '0' },
+  { key: 'medo-khalil', fullName: 'Medo Khalil', nickname: 'Medo', jersey: '2' },
+  { key: 'mohamed-elsayed', fullName: 'Mohamed Elsayed', nickname: 'El Sayed', jersey: '30' },
+  { key: 'sherif-ashraf', fullName: 'Sherif Ashraf', nickname: 'Nemo', jersey: '10' },
+  { key: 'esraa-elemary', fullName: 'Esraa Elemary', nickname: 'Emari', jersey: '24' },
   // See the null-jersey note above.
-  { key: 'mahmoud-nasr', fullName: 'Mahmoud Nasr', nickname: 'Hoodz', jerseyNumber: null, jerseyLabel: '011' },
-  { key: 'mohamed-khaled', fullName: 'Mohamed Khaled', nickname: 'Mesho', jerseyNumber: 5, jerseyLabel: '5' },
-  { key: 'mustafa-mekkawy', fullName: 'Mustafa Mekkawy', nickname: 'Mekkawy', jerseyNumber: 94, jerseyLabel: '94' },
-  { key: 'ziyad-elgendy', fullName: 'Ziyad Elgendy', nickname: 'Zizo', jerseyNumber: 9, jerseyLabel: '9' },
-  { key: 'roaa-nasr', fullName: 'Roaa Nasr', nickname: 'Roaa', jerseyNumber: 4, jerseyLabel: '4' },
-  { key: 'nourane-elsayed', fullName: 'Nourane Elsayed', nickname: 'Nouran', jerseyNumber: 23, jerseyLabel: '23' },
-  { key: 'ahmed-essam-sin', fullName: 'Ahmed Essam Sin', nickname: 'Essam', jerseyNumber: 99, jerseyLabel: '99' },
-  { key: 'hala', fullName: 'Hala', nickname: 'Hala', jerseyNumber: 42, jerseyLabel: '42' },
-  { key: 'waad', fullName: 'Waad', nickname: 'Weedy', jerseyNumber: 7, jerseyLabel: '7' },
+  { key: 'mahmoud-nasr', fullName: 'Mahmoud Nasr', nickname: 'Hoodz', jersey: '011' },
+  { key: 'mohamed-khaled', fullName: 'Mohamed Khaled', nickname: 'Mesho', jersey: '5' },
+  { key: 'mustafa-mekkawy', fullName: 'Mustafa Mekkawy', nickname: 'Mekkawy', jersey: '94' },
+  { key: 'ziyad-elgendy', fullName: 'Ziyad Elgendy', nickname: 'Zizo', jersey: '9' },
+  { key: 'roaa-nasr', fullName: 'Roaa Nasr', nickname: 'Roaa', jersey: '4' },
+  { key: 'nourane-elsayed', fullName: 'Nourane Elsayed', nickname: 'Nouran', jersey: '23' },
+  { key: 'ahmed-essam-sin', fullName: 'Ahmed Essam Sin', nickname: 'Essam', jersey: '99' },
+  { key: 'hala', fullName: 'Hala', nickname: 'Hala', jersey: '42' },
+  { key: 'waad', fullName: 'Waad', nickname: 'Weedy', jersey: '7' },
   // See the null-jersey note above.
-  { key: 'lina', fullName: 'Lina', nickname: 'Lilo', jerseyNumber: null, jerseyLabel: '2' },
-  { key: 'manar', fullName: 'Manar', nickname: 'Mani', jerseyNumber: 13, jerseyLabel: '13' },
+  // Medo Khalil already wears 2; Lina's number is left blank pending confirmation.
+  { key: 'lina', fullName: 'Lina', nickname: 'Lilo', jersey: null },
+  { key: 'manar', fullName: 'Manar', nickname: 'Mani', jersey: '13' },
 ];
 
 /**
@@ -102,7 +100,7 @@ export const STAFF_ASSIGNMENTS: readonly {
   readonly titleKeys: readonly string[];
   readonly photoUrl: string | null;
 }[] = [
-  { playerKey: '3alamy', titleKeys: ['coach'], photoUrl: '/staff/3alamy.jpg' },
+  { playerKey: '3alamy', titleKeys: ['coach'], photoUrl: '/staff/sherif-ashraf.jpg' },
   { playerKey: 'khaled-o', titleKeys: ['co-coach'], photoUrl: '/staff/khaled-ossama.jpg' },
   { playerKey: 'rawan-e', titleKeys: ['co-coach'], photoUrl: '/staff/rawan-elessawy.jpg' },
   { playerKey: 'zahra-moustafa', titleKeys: ['spirit-captain'], photoUrl: '/staff/zahra.jpg' },
@@ -116,14 +114,14 @@ export const STAFF_ASSIGNMENTS: readonly {
   { playerKey: 'roaa-nasr', titleKeys: ['social-media'], photoUrl: '/staff/roaa.jpg' },
   {
     playerKey: 'ihab-khaled',
-    titleKeys: ['analysis', 'technical', 'co-coach'],
-    photoUrl: null,
+    titleKeys: ['analysis', 'technical'],
+    photoUrl: '/staff/ihab-khaled.jpg',
   },
 ];
 
 /** Holds staff titles but is not on the shirt-number sheet. */
 export const STAFF_ONLY_MEMBERS: readonly RosterPlayer[] = [
-  { key: 'ihab-khaled', fullName: 'Ihab Khaled', nickname: 'Hobz', jerseyNumber: null, jerseyLabel: null },
+  { key: 'ihab-khaled', fullName: 'Ihab Khaled', nickname: 'Hobz', jersey: null },
 ];
 
 export const TEAM_MISSING_MESSAGE =

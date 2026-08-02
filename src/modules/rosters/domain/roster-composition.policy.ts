@@ -55,7 +55,7 @@ export function bucketGender(raw: string | null): RosterGenderBucket {
 export function deduplicateJerseys(
   candidates: readonly RosterCandidate[],
 ): readonly RosterCandidate[] {
-  const taken = new Set<number>();
+  const taken = new Set<string>();
   return candidates.map(candidate => {
     if (candidate.jerseyNumber === null) {
       return candidate;
@@ -219,7 +219,7 @@ function countRole(
 }
 
 function countDuplicateJerseys(entries: readonly RosterEntry[]): number {
-  const seen = new Set<number>();
+  const seen = new Set<string>();
   let duplicates = 0;
   for (const entry of entries) {
     if (entry.jerseyNumber === null) {

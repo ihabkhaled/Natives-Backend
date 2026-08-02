@@ -145,7 +145,7 @@ export class AddRosterEntryUseCase {
   private async assertJerseyFree(
     tx: TransactionScope,
     roster: Roster,
-    jerseyNumber: number | null,
+    jerseyNumber: string | null,
     membershipId: string,
   ): Promise<void> {
     if (jerseyNumber === null) {

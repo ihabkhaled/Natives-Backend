@@ -5,7 +5,7 @@ export interface PublicRosterPlayer {
   readonly membershipId: string;
   readonly displayName: string;
   readonly nickname: string | null;
-  readonly jerseyNumber: number | null;
+  readonly jerseyNumber: string | null;
   readonly positions: readonly string[];
   /** Direct photo URL, null until an admin attaches one (P0: none yet). */
   readonly photoUrl: string | null;

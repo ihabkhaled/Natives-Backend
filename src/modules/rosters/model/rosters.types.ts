@@ -195,7 +195,7 @@ export interface RosterEntry {
   readonly rosterId: string;
   readonly teamId: string;
   readonly membershipId: string;
-  readonly jerseyNumber: number | null;
+  readonly jerseyNumber: string | null;
   readonly entryRole: RosterEntryRole;
   readonly lineAssignment: RosterLine;
   readonly fieldPosition: RosterPosition;
@@ -221,7 +221,7 @@ export interface RosterEntryWrite {
   readonly rosterId: string;
   readonly teamId: string;
   readonly membershipId: string;
-  readonly jerseyNumber: number | null;
+  readonly jerseyNumber: string | null;
   readonly entryRole: RosterEntryRole;
   readonly lineAssignment: RosterLine;
   readonly fieldPosition: RosterPosition;
@@ -247,7 +247,7 @@ export interface RosterEntryRemoval {
 /** Author-supplied entry content. */
 export interface RosterEntryContent {
   readonly membershipId: string;
-  readonly jerseyNumber: number | null;
+  readonly jerseyNumber: string | null;
   readonly entryRole: RosterEntryRole;
   readonly lineAssignment: RosterLine;
   readonly fieldPosition: RosterPosition;
@@ -317,7 +317,7 @@ export type RosterAvailabilityPage = PagedResult<RosterAvailabilityRecord>;
  */
 export interface RosterSnapshotEntry {
   readonly membershipId: string;
-  readonly jerseyNumber: number | null;
+  readonly jerseyNumber: string | null;
   readonly entryRole: RosterEntryRole;
   readonly lineAssignment: RosterLine;
   readonly fieldPosition: RosterPosition;
@@ -377,7 +377,7 @@ export interface RosterCandidate {
   readonly membershipId: string;
   readonly memberStatus: RosterMemberStatus;
   readonly gender: string | null;
-  readonly jerseyNumber: number | null;
+  readonly jerseyNumber: string | null;
   readonly availability: RosterAvailabilityStatus | null;
   readonly selectedInSquad: boolean;
 }
@@ -461,7 +461,7 @@ export interface MatchRosterContentInput {
 
 export interface RosterEntryContentInput {
   readonly membershipId: string;
-  readonly jerseyNumber?: number | null;
+  readonly jerseyNumber?: string | null;
   readonly entryRole?: RosterEntryRole | null;
   readonly lineAssignment?: RosterLine | null;
   readonly fieldPosition?: RosterPosition | null;
