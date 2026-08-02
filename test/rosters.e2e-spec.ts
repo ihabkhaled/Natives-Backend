@@ -212,7 +212,7 @@ describeIfDb(suiteTitle, () => {
 
   async function seedMembership(
     userId: string | null,
-    jerseyNumber: number | null,
+    jerseyNumber: string | null,
     status = 'active',
   ): Promise<string> {
     const membershipId = randomUUID();
@@ -300,9 +300,9 @@ describeIfDb(suiteTitle, () => {
     await assignRole(fixture.coachId, RbacRole.Coach);
     await assignRole(fixture.teamAdminId, RbacRole.TeamAdmin);
     await assignRole(fixture.memberId, RbacRole.Member);
-    playerMembershipId = await seedMembership(fixture.memberId, 11);
+    playerMembershipId = await seedMembership(fixture.memberId, '11');
     reserveMembershipId = await seedMembership(null, null);
-    suspendedMembershipId = await seedMembership(null, 12, 'suspended');
+    suspendedMembershipId = await seedMembership(null, '12', 'suspended');
   });
 
   afterAll(async () => {
@@ -462,7 +462,7 @@ describeIfDb(suiteTitle, () => {
     const response = await request(app.getHttpServer())
       .post(base(`/${rosterId}/entries`))
       .set('Authorization', `Bearer ${token}`)
-      .send({ membershipId: reserveMembershipId, jerseyNumber: 11 });
+      .send({ membershipId: reserveMembershipId, jerseyNumber: '11' });
     expect(response.status).toBe(409);
     expect(response.body.messageKey).toBe('errors.rosters.jerseyConflict');
   });

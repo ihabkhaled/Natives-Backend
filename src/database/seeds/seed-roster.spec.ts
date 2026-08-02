@@ -1,15 +1,19 @@
 import type { QueryRunner } from 'typeorm';
 import { describe, expect, it, vi } from 'vitest';
 
+import { ROSTER_SEED_DEFINITION, SEED_ROSTER_KEY } from './seed.constants';
+import { computeSeedChecksum } from './seed-checksum';
+import {
+  createSeedRosterSeeder,
+  seedRoster,
+  seedStaffAssignments,
+} from './seed-roster';
 import {
   ROSTER_PLAYERS,
   STAFF_ASSIGNMENTS,
   STAFF_ONLY_MEMBERS,
   STAFF_TITLES,
 } from './seed-roster.constants';
-import { createSeedRosterSeeder, seedRoster, seedStaffAssignments } from './seed-roster';
-import { computeSeedChecksum } from './seed-checksum';
-import { ROSTER_SEED_DEFINITION, SEED_ROSTER_KEY } from './seed.constants';
 
 const TEAM_ID = 'team-1';
 
@@ -23,7 +27,9 @@ function buildQueryRunner(options: HarnessOptions = {}) {
   let membershipCounter = 0;
   const query = vi.fn((sql: string, params: readonly unknown[] = []) => {
     if (sql.includes('FROM "teams"')) {
-      return Promise.resolve(options.teamMissing === true ? [] : [{ id: TEAM_ID }]);
+      return Promise.resolve(
+        options.teamMissing === true ? [] : [{ id: TEAM_ID }],
+      );
     }
     if (sql.includes('SELECT "id" FROM "reference_catalog_entries"')) {
       const key = params[2] as string;
@@ -32,7 +38,10 @@ function buildQueryRunner(options: HarnessOptions = {}) {
     if (sql.includes('INSERT INTO "reference_catalog_entries"')) {
       return Promise.resolve([]);
     }
-    if (sql.includes('FROM "member_profiles"') && sql.includes('membership_id')) {
+    if (
+      sql.includes('FROM "member_profiles"') &&
+      sql.includes('membership_id')
+    ) {
       const [, fullName, nickname] = params as [string, string, string];
       const identity = `${fullName}::${nickname}`;
       return Promise.resolve(
@@ -69,7 +78,9 @@ describe('seedRoster', () => {
   it('throws when the Ultimate Natives team is missing', async () => {
     const queryRunner = buildQueryRunner({ teamMissing: true });
 
-    await expect(seedRoster(queryRunner)).rejects.toThrow(/Team "un" is missing/);
+    await expect(seedRoster(queryRunner)).rejects.toThrow(
+      /Team "un" is missing/,
+    );
   });
 
   it('seeds the staff-title catalog before anyone can be assigned a title', async () => {
@@ -91,14 +102,16 @@ describe('seedRoster', () => {
     await seedRoster(queryRunner);
 
     const membershipInserts = queryRunner.query.mock.calls.filter(([sql]) =>
-      (sql as string).includes('INSERT INTO "memberships"'),
+      sql.includes('INSERT INTO "memberships"'),
     );
     expect(membershipInserts).toHaveLength(TOTAL_PLAYERS);
   });
 
   it('carries the printed shirt number, including a leading zero, onto the profile', async () => {
     const queryRunner = buildQueryRunner();
-    const mahmoud = ROSTER_PLAYERS.find((player) => player.key === 'mahmoud-nasr');
+    const mahmoud = ROSTER_PLAYERS.find(
+      player => player.key === 'mahmoud-nasr',
+    );
     expect(mahmoud?.jersey).toBe('011');
 
     await seedRoster(queryRunner);
@@ -117,7 +130,7 @@ describe('seedRoster', () => {
     await seedRoster(queryRunner);
 
     const membershipInserts = queryRunner.query.mock.calls.filter(([sql]) =>
-      (sql as string).includes('INSERT INTO "memberships"'),
+      sql.includes('INSERT INTO "memberships"'),
     );
     expect(membershipInserts).toHaveLength(TOTAL_PLAYERS - 1);
   });
@@ -128,25 +141,29 @@ describe('seedRoster', () => {
     await seedRoster(queryRunner);
 
     const profileInserts = queryRunner.query.mock.calls
-      .filter(([sql]) => (sql as string).includes('INSERT INTO "member_profiles"'))
-      .map(([, params]) => params as readonly unknown[]);
-    const sherifs = profileInserts.filter((params) => params[2] === 'Sherif Ashraf');
+      .filter(([sql]) => sql.includes('INSERT INTO "member_profiles"'))
+      .map(([, params]) => params ?? []);
+    const sherifs = profileInserts.filter(
+      params => params[2] === 'Sherif Ashraf',
+    );
 
     expect(sherifs).toHaveLength(2);
-    expect(sherifs.map((params) => params[3]).sort()).toEqual(['3alamy', 'Nemo']);
+    expect(sherifs.map(params => params[3]).sort()).toEqual(['3alamy', 'Nemo']);
   });
 
-  it('assigns every Season Board title, including all three of Ihab Khaled\'s', async () => {
+  it("assigns every Season Board title, including all three of Ihab Khaled's", async () => {
     const queryRunner = buildQueryRunner();
 
     await seedRoster(queryRunner);
 
     const assignmentInserts = queryRunner.query.mock.calls.filter(([sql]) =>
-      (sql as string).includes('INSERT INTO "team_staff_assignments"'),
+      sql.includes('INSERT INTO "team_staff_assignments"'),
     );
     expect(assignmentInserts).toHaveLength(TOTAL_ASSIGNMENTS);
 
-    const ihab = STAFF_ASSIGNMENTS.find((assignment) => assignment.playerKey === 'ihab-khaled');
+    const ihab = STAFF_ASSIGNMENTS.find(
+      assignment => assignment.playerKey === 'ihab-khaled',
+    );
     expect(ihab?.titleKeys).toEqual(['analysis', 'technical']);
   });
 });
@@ -155,10 +172,10 @@ describe('seedRoster failure guards', () => {
   it('throws when a catalog entry insert did not produce an id', async () => {
     const queryRunner = buildQueryRunner();
     vi.mocked(queryRunner.query).mockImplementation((sql: string) => {
-      if ((sql as string).includes('SELECT "id" FROM "reference_catalog_entries"')) {
+      if (sql.includes('SELECT "id" FROM "reference_catalog_entries"')) {
         return Promise.resolve([]);
       }
-      if ((sql as string).includes('FROM "teams"')) {
+      if (sql.includes('FROM "teams"')) {
         return Promise.resolve([{ id: TEAM_ID }]);
       }
       return Promise.resolve([]);
@@ -172,13 +189,13 @@ describe('seedRoster failure guards', () => {
   it('throws when a membership insert did not produce an id', async () => {
     const queryRunner = buildQueryRunner();
     vi.mocked(queryRunner.query).mockImplementation((sql: string) => {
-      if ((sql as string).includes('FROM "teams"')) {
+      if (sql.includes('FROM "teams"')) {
         return Promise.resolve([{ id: TEAM_ID }]);
       }
-      if ((sql as string).includes('SELECT "id" FROM "reference_catalog_entries"')) {
+      if (sql.includes('SELECT "id" FROM "reference_catalog_entries"')) {
         return Promise.resolve([{ id: 'title-x' }]);
       }
-      if ((sql as string).includes('INSERT INTO "memberships"')) {
+      if (sql.includes('INSERT INTO "memberships"')) {
         return Promise.resolve([]);
       }
       return Promise.resolve([]);
@@ -188,7 +205,6 @@ describe('seedRoster failure guards', () => {
       /Roster membership insert did not return an id/,
     );
   });
-
 });
 
 describe('seedStaffAssignments guards', () => {
@@ -207,7 +223,7 @@ describe('seedStaffAssignments guards', () => {
     );
 
     const assignmentInserts = queryRunner.query.mock.calls.filter(([sql]) =>
-      (sql as string).includes('INSERT INTO "team_staff_assignments"'),
+      sql.includes('INSERT INTO "team_staff_assignments"'),
     );
     expect(assignmentInserts).toHaveLength(0);
   });
@@ -223,7 +239,7 @@ describe('seedStaffAssignments guards', () => {
     );
 
     const assignmentInserts = queryRunner.query.mock.calls.filter(([sql]) =>
-      (sql as string).includes('INSERT INTO "team_staff_assignments"'),
+      sql.includes('INSERT INTO "team_staff_assignments"'),
     );
     expect(assignmentInserts).toHaveLength(0);
   });
@@ -237,7 +253,7 @@ describe('createSeedRosterSeeder', () => {
     expect(seeder.checksum).toBe(computeSeedChecksum(ROSTER_SEED_DEFINITION));
   });
 
-  it('runs against the scope\'s query runner', async () => {
+  it("runs against the scope's query runner", async () => {
     const queryRunner = buildQueryRunner();
     const seeder = createSeedRosterSeeder();
 

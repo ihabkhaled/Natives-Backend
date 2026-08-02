@@ -1,8 +1,8 @@
 import type { QueryRunner } from 'typeorm';
 
-import { computeSeedChecksum } from './seed-checksum';
 import { ROSTER_SEED_DEFINITION, SEED_ROSTER_KEY } from './seed.constants';
 import type { Seeder, SeedScope } from './seed.types';
+import { computeSeedChecksum } from './seed-checksum';
 import {
   CATALOG_INSERT_FAILED_MESSAGE,
   MEMBERSHIP_INSERT_FAILED_MESSAGE,
@@ -45,7 +45,10 @@ export async function seedRoster(queryRunner: QueryRunner): Promise<void> {
 
   const membershipIds = new Map<string, string>();
   for (const player of [...ROSTER_PLAYERS, ...STAFF_ONLY_MEMBERS]) {
-    membershipIds.set(player.key, await seedPlayer(queryRunner, teamId, player));
+    membershipIds.set(
+      player.key,
+      await seedPlayer(queryRunner, teamId, player),
+    );
   }
 
   await seedStaffAssignments(queryRunner, teamId, titleIds, membershipIds);

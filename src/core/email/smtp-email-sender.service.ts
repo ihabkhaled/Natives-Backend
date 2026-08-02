@@ -4,12 +4,12 @@ import { AppLogger } from '@core/logger';
 import { Injectable } from '@nestjs/common';
 
 import { ConsoleEmailSenderService } from './console-email-sender.service';
-import { EmailThrottledError } from './email-throttled.error';
 import {
   SMTP_EMAIL_LOGGER_CONTEXT,
   SMTP_THROTTLE_EXCEEDED_MESSAGE,
 } from './email.constants';
 import type { EmailMessage, EmailSenderPort } from './email-sender.port';
+import { EmailThrottledError } from './email-throttled.error';
 import type { MailTransportPort } from './mail-transport.port';
 
 /**

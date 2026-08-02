@@ -532,7 +532,7 @@
           "jerseyNumber": {
             "description": "Shirt number exactly as printed, including any leading zero",
             "nullable": true,
-            "pattern": "^[0-9]{1,4}$",
+            "pattern": "^\\d{1,4}$",
             "type": "string"
           },
           "lineAssignment": {
@@ -13384,7 +13384,7 @@
           "jerseyNumber": {
             "description": "Shirt number exactly as printed, including any leading zero",
             "nullable": true,
-            "pattern": "^[0-9]{1,4}$",
+            "pattern": "^\\d{1,4}$",
             "type": "string"
           },
           "lineAssignment": {
@@ -14133,7 +14133,7 @@
           },
           "jerseyNumber": {
             "description": "Shirt number exactly as printed. A string, not an integer: \"011\" is not 11 and the leading zero is part of the number.",
-            "pattern": "^[0-9]{1,4}$",
+            "pattern": "^\\d{1,4}$",
             "type": "string"
           },
           "jerseySize": {

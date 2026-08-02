@@ -19,9 +19,7 @@ import type { MigrationInterface, QueryRunner } from 'typeorm';
  * - Mahmoud Nasr wears "011". It was seeded null because the column could not
  *   hold a leading zero at the time.
  */
-export class RosterJerseyTextAndNameFix1726200000000
-  implements MigrationInterface
-{
+export class RosterJerseyTextAndNameFix1726200000000 implements MigrationInterface {
   name = 'RosterJerseyTextAndNameFix1726200000000';
 
   async up(queryRunner: QueryRunner): Promise<void> {

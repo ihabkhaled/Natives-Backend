@@ -3,9 +3,9 @@ import type { AppLogger } from '@core/logger';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { ConsoleEmailSenderService } from './console-email-sender.service';
-import { EmailThrottledError } from './email-throttled.error';
 import { SMTP_THROTTLE_EXCEEDED_MESSAGE } from './email.constants';
 import type { EmailMessage } from './email-sender.port';
+import { EmailThrottledError } from './email-throttled.error';
 import type { MailTransportPort } from './mail-transport.port';
 import { SmtpEmailSenderService } from './smtp-email-sender.service';
 
@@ -105,10 +105,13 @@ describe('SmtpEmailSenderService', () => {
       });
     });
 
-    it('skips and warns once the window budget is spent', async () => {
+    it('rejects once the window budget is spent, so a caller never reports "sent" for a dropped email', async () => {
       await harness.service.send(MESSAGE);
       await harness.service.send(MESSAGE);
-      await harness.service.send(MESSAGE);
+
+      await expect(harness.service.send(MESSAGE)).rejects.toThrow(
+        EmailThrottledError,
+      );
 
       expect(harness.transport.sendMail).toHaveBeenCalledTimes(2);
       expect(harness.logger.warn).toHaveBeenCalledWith(

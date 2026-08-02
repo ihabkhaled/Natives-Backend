@@ -22,8 +22,18 @@ export const ROSTER_MEMBERSHIP_STATUS = MembershipStatus.Active;
 export const ROSTER_PLAYERS: readonly RosterPlayer[] = [
   // Two different people share the name Sherif Ashraf; the nickname is what
   // distinguishes them, so it is part of this seeder's identity check.
-  { key: '3alamy', fullName: 'Sherif Ashraf', nickname: '3alamy', jersey: '33' },
-  { key: 'khaled-o', fullName: 'Khaled O', nickname: 'Khaled O.', jersey: '66' },
+  {
+    key: '3alamy',
+    fullName: 'Sherif Ashraf',
+    nickname: '3alamy',
+    jersey: '33',
+  },
+  {
+    key: 'khaled-o',
+    fullName: 'Khaled O',
+    nickname: 'Khaled O.',
+    jersey: '66',
+  },
   { key: 'rawan-e', fullName: 'Rawan E', nickname: 'Rou', jersey: '11' },
   { key: 'somaia-e', fullName: 'Somaia E', nickname: 'Sou', jersey: '28' },
   {
@@ -32,11 +42,36 @@ export const ROSTER_PLAYERS: readonly RosterPlayer[] = [
     nickname: 'Si3a',
     jersey: '8',
   },
-  { key: 'usama-zakaria', fullName: 'Usama Zakaria', nickname: 'Uzo', jersey: '1' },
-  { key: 'israa-hassan', fullName: 'Israa Hassan', nickname: 'Divaa', jersey: '12' },
-  { key: 'adham-hawwas', fullName: 'Adham Hawwas', nickname: 'Domaa', jersey: '55' },
-  { key: 'omar-assem', fullName: 'Omar Assem', nickname: 'Bernie', jersey: '14' },
-  { key: 'zahra-moustafa', fullName: 'Zahra Moustafa', nickname: 'Zahra', jersey: '22' },
+  {
+    key: 'usama-zakaria',
+    fullName: 'Usama Zakaria',
+    nickname: 'Uzo',
+    jersey: '1',
+  },
+  {
+    key: 'israa-hassan',
+    fullName: 'Israa Hassan',
+    nickname: 'Divaa',
+    jersey: '12',
+  },
+  {
+    key: 'adham-hawwas',
+    fullName: 'Adham Hawwas',
+    nickname: 'Domaa',
+    jersey: '55',
+  },
+  {
+    key: 'omar-assem',
+    fullName: 'Omar Assem',
+    nickname: 'Bernie',
+    jersey: '14',
+  },
+  {
+    key: 'zahra-moustafa',
+    fullName: 'Zahra Moustafa',
+    nickname: 'Zahra',
+    jersey: '22',
+  },
   {
     key: 'abdelrahman-eliemy',
     fullName: 'Abdelrahman Eliemy',
@@ -44,22 +79,87 @@ export const ROSTER_PLAYERS: readonly RosterPlayer[] = [
     jersey: '47',
   },
   { key: 'fawzy', fullName: 'Fawzy', nickname: 'Fawzy', jersey: '77' },
-  { key: 'ahmed-esssam-jr', fullName: 'Ahmed Esssam Jr', nickname: 'Avocado', jersey: '25' },
-  { key: 'mohamed-ezzat', fullName: 'Mohamed Ezzat', nickname: 'Ezzat', jersey: '20' },
-  { key: 'assem-sheweta', fullName: 'Assem Sheweta', nickname: 'Sheweta', jersey: '18' },
+  {
+    key: 'ahmed-esssam-jr',
+    fullName: 'Ahmed Esssam Jr',
+    nickname: 'Avocado',
+    jersey: '25',
+  },
+  {
+    key: 'mohamed-ezzat',
+    fullName: 'Mohamed Ezzat',
+    nickname: 'Ezzat',
+    jersey: '20',
+  },
+  {
+    key: 'assem-sheweta',
+    fullName: 'Assem Sheweta',
+    nickname: 'Sheweta',
+    jersey: '18',
+  },
   { key: 'mina-emad', fullName: 'Mina Emad', nickname: 'Mina', jersey: '0' },
-  { key: 'medo-khalil', fullName: 'Medo Khalil', nickname: 'Medo', jersey: '2' },
-  { key: 'mohamed-elsayed', fullName: 'Mohamed Elsayed', nickname: 'El Sayed', jersey: '30' },
-  { key: 'sherif-ashraf', fullName: 'Sherif Ashraf', nickname: 'Nemo', jersey: '10' },
-  { key: 'esraa-elemary', fullName: 'Esraa Elemary', nickname: 'Emari', jersey: '24' },
+  {
+    key: 'medo-khalil',
+    fullName: 'Medo Khalil',
+    nickname: 'Medo',
+    jersey: '2',
+  },
+  {
+    key: 'mohamed-elsayed',
+    fullName: 'Mohamed Elsayed',
+    nickname: 'El Sayed',
+    jersey: '30',
+  },
+  {
+    key: 'sherif-ashraf',
+    fullName: 'Sherif Ashraf',
+    nickname: 'Nemo',
+    jersey: '10',
+  },
+  {
+    key: 'esraa-elemary',
+    fullName: 'Esraa Elemary',
+    nickname: 'Emari',
+    jersey: '24',
+  },
   // See the null-jersey note above.
-  { key: 'mahmoud-nasr', fullName: 'Mahmoud Nasr', nickname: 'Hoodz', jersey: '011' },
-  { key: 'mohamed-khaled', fullName: 'Mohamed Khaled', nickname: 'Mesho', jersey: '5' },
-  { key: 'mustafa-mekkawy', fullName: 'Mustafa Mekkawy', nickname: 'Mekkawy', jersey: '94' },
-  { key: 'ziyad-elgendy', fullName: 'Ziyad Elgendy', nickname: 'Zizo', jersey: '9' },
+  {
+    key: 'mahmoud-nasr',
+    fullName: 'Mahmoud Nasr',
+    nickname: 'Hoodz',
+    jersey: '011',
+  },
+  {
+    key: 'mohamed-khaled',
+    fullName: 'Mohamed Khaled',
+    nickname: 'Mesho',
+    jersey: '5',
+  },
+  {
+    key: 'mustafa-mekkawy',
+    fullName: 'Mustafa Mekkawy',
+    nickname: 'Mekkawy',
+    jersey: '94',
+  },
+  {
+    key: 'ziyad-elgendy',
+    fullName: 'Ziyad Elgendy',
+    nickname: 'Zizo',
+    jersey: '9',
+  },
   { key: 'roaa-nasr', fullName: 'Roaa Nasr', nickname: 'Roaa', jersey: '4' },
-  { key: 'nourane-elsayed', fullName: 'Nourane Elsayed', nickname: 'Nouran', jersey: '23' },
-  { key: 'ahmed-essam-sin', fullName: 'Ahmed Essam Sin', nickname: 'Essam', jersey: '99' },
+  {
+    key: 'nourane-elsayed',
+    fullName: 'Nourane Elsayed',
+    nickname: 'Nouran',
+    jersey: '23',
+  },
+  {
+    key: 'ahmed-essam-sin',
+    fullName: 'Ahmed Essam Sin',
+    nickname: 'Essam',
+    jersey: '99',
+  },
   { key: 'hala', fullName: 'Hala', nickname: 'Hala', jersey: '42' },
   { key: 'waad', fullName: 'Waad', nickname: 'Weedy', jersey: '7' },
   // See the null-jersey note above.
@@ -100,18 +200,46 @@ export const STAFF_ASSIGNMENTS: readonly {
   readonly titleKeys: readonly string[];
   readonly photoUrl: string | null;
 }[] = [
-  { playerKey: '3alamy', titleKeys: ['coach'], photoUrl: '/staff/sherif-ashraf.jpg' },
-  { playerKey: 'khaled-o', titleKeys: ['co-coach'], photoUrl: '/staff/khaled-ossama.jpg' },
-  { playerKey: 'rawan-e', titleKeys: ['co-coach'], photoUrl: '/staff/rawan-elessawy.jpg' },
-  { playerKey: 'zahra-moustafa', titleKeys: ['spirit-captain'], photoUrl: '/staff/zahra.jpg' },
+  {
+    playerKey: '3alamy',
+    titleKeys: ['coach'],
+    photoUrl: '/staff/sherif-ashraf.jpg',
+  },
+  {
+    playerKey: 'khaled-o',
+    titleKeys: ['co-coach'],
+    photoUrl: '/staff/khaled-ossama.jpg',
+  },
+  {
+    playerKey: 'rawan-e',
+    titleKeys: ['co-coach'],
+    photoUrl: '/staff/rawan-elessawy.jpg',
+  },
+  {
+    playerKey: 'zahra-moustafa',
+    titleKeys: ['spirit-captain'],
+    photoUrl: '/staff/zahra.jpg',
+  },
   {
     playerKey: 'abdelrahman-eliemy',
     titleKeys: ['finance'],
     photoUrl: '/staff/abdelrahman-elleimy.jpg',
   },
-  { playerKey: 'nourane-elsayed', titleKeys: ['social-media'], photoUrl: '/staff/nourane.jpg' },
-  { playerKey: 'lina', titleKeys: ['social-media'], photoUrl: '/staff/lina.jpg' },
-  { playerKey: 'roaa-nasr', titleKeys: ['social-media'], photoUrl: '/staff/roaa.jpg' },
+  {
+    playerKey: 'nourane-elsayed',
+    titleKeys: ['social-media'],
+    photoUrl: '/staff/nourane.jpg',
+  },
+  {
+    playerKey: 'lina',
+    titleKeys: ['social-media'],
+    photoUrl: '/staff/lina.jpg',
+  },
+  {
+    playerKey: 'roaa-nasr',
+    titleKeys: ['social-media'],
+    photoUrl: '/staff/roaa.jpg',
+  },
   {
     playerKey: 'ihab-khaled',
     titleKeys: ['analysis', 'technical'],
@@ -121,7 +249,12 @@ export const STAFF_ASSIGNMENTS: readonly {
 
 /** Holds staff titles but is not on the shirt-number sheet. */
 export const STAFF_ONLY_MEMBERS: readonly RosterPlayer[] = [
-  { key: 'ihab-khaled', fullName: 'Ihab Khaled', nickname: 'Hobz', jersey: null },
+  {
+    key: 'ihab-khaled',
+    fullName: 'Ihab Khaled',
+    nickname: 'Hobz',
+    jersey: null,
+  },
 ];
 
 export const TEAM_MISSING_MESSAGE =

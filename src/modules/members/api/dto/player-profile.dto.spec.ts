@@ -9,7 +9,10 @@ const VALID = {
 
 function fieldsWithErrors(payload: Record<string, unknown>): string[] {
   const dto = plainToInstance(PlayerProfileDto, payload);
-  const errors = validateSync(dto, { whitelist: true, forbidNonWhitelisted: true });
+  const errors = validateSync(dto, {
+    whitelist: true,
+    forbidNonWhitelisted: true,
+  });
   return errors.map(error => error.property);
 }
 
@@ -19,7 +22,10 @@ describe('PlayerProfileDto jerseyNumber', () => {
   });
 
   it('accepts a number with a leading zero, unchanged', () => {
-    const dto = plainToInstance(PlayerProfileDto, { ...VALID, jerseyNumber: '011' });
+    const dto = plainToInstance(PlayerProfileDto, {
+      ...VALID,
+      jerseyNumber: '011',
+    });
 
     expect(validateSync(dto)).toEqual([]);
     expect(dto.jerseyNumber).toBe('011');
@@ -34,22 +40,32 @@ describe('PlayerProfileDto jerseyNumber', () => {
   });
 
   it('rejects a number sent as a JSON integer, not a string', () => {
-    expect(fieldsWithErrors({ ...VALID, jerseyNumber: 33 })).toContain('jerseyNumber');
+    expect(fieldsWithErrors({ ...VALID, jerseyNumber: 33 })).toContain(
+      'jerseyNumber',
+    );
   });
 
   it('rejects more than four digits', () => {
-    expect(fieldsWithErrors({ ...VALID, jerseyNumber: '12345' })).toContain('jerseyNumber');
+    expect(fieldsWithErrors({ ...VALID, jerseyNumber: '12345' })).toContain(
+      'jerseyNumber',
+    );
   });
 
   it('rejects a negative sign', () => {
-    expect(fieldsWithErrors({ ...VALID, jerseyNumber: '-1' })).toContain('jerseyNumber');
+    expect(fieldsWithErrors({ ...VALID, jerseyNumber: '-1' })).toContain(
+      'jerseyNumber',
+    );
   });
 
   it('rejects non-digit characters', () => {
-    expect(fieldsWithErrors({ ...VALID, jerseyNumber: '1a' })).toContain('jerseyNumber');
+    expect(fieldsWithErrors({ ...VALID, jerseyNumber: '1a' })).toContain(
+      'jerseyNumber',
+    );
   });
 
   it('rejects an empty string rather than treating it as absent', () => {
-    expect(fieldsWithErrors({ ...VALID, jerseyNumber: '' })).toContain('jerseyNumber');
+    expect(fieldsWithErrors({ ...VALID, jerseyNumber: '' })).toContain(
+      'jerseyNumber',
+    );
   });
 });

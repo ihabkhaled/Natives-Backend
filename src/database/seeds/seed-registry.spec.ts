@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 import {
   SEED_ADMIN_KEY,
   SEED_PERSONAS_KEY,
+  SEED_ROSTER_KEY,
   SEED_TEAM_KEY,
 } from './seed.constants';
 import type { SeedContext } from './seed.types';
@@ -21,13 +22,14 @@ function buildContext(): SeedContext {
 }
 
 describe('buildSeeders', () => {
-  it('registers admin, then team, then personas', () => {
+  it('registers admin, then team, then personas, then the real roster', () => {
     const seeders = buildSeeders(buildContext());
 
     expect(seeders.map(seeder => seeder.key)).toEqual([
       SEED_ADMIN_KEY,
       SEED_TEAM_KEY,
       SEED_PERSONAS_KEY,
+      SEED_ROSTER_KEY,
     ]);
   });
 
