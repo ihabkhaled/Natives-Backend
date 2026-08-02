@@ -179,6 +179,32 @@ export const ANONYMIZED_NAME = 'Former member';
 // for a row that has any real name source).
 export const DIRECTORY_FALLBACK_NAME = 'Member';
 
+// The public roster lists people who play. A membership is excluded when the
+// person holds roles on this team (or platform-wide) and none is MEMBER: an admin,
+// analyst, scorekeeper or coach account belongs in the staff directory, not on
+// the public roster. A membership with no linked account is always included —
+// that is how a rostered player who has never signed in is stored, and it is
+// most of the roster.
+export const PUBLIC_ROSTER_PLAYER_ROLE_KEY = 'MEMBER';
+
+export const PUBLIC_ROSTER_PLAYS_PREDICATE = `(
+  "m"."user_id" IS NULL
+  OR NOT EXISTS (
+    SELECT 1 FROM "user_role_assignments" "ra"
+     WHERE "ra"."user_id" = "m"."user_id"
+       AND "ra"."team_id" = "m"."team_id"
+       AND "ra"."revoked_at" IS NULL
+  )
+  OR EXISTS (
+    SELECT 1 FROM "user_role_assignments" "ra"
+      JOIN "roles" "ro" ON "ro"."id" = "ra"."role_id"
+     WHERE "ra"."user_id" = "m"."user_id"
+       AND ("ra"."team_id" = "m"."team_id" OR "ra"."team_id" IS NULL)
+       AND "ra"."revoked_at" IS NULL
+       AND "ro"."key" = '${PUBLIC_ROSTER_PLAYER_ROLE_KEY}'
+  )
+)`;
+
 // --- Error messages & keys ---------------------------------------------------
 export const MEMBERSHIP_NOT_FOUND_MESSAGE =
   'The member was not found in this team';

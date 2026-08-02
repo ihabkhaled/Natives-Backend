@@ -7,6 +7,7 @@ import {
   DIRECTORY_FALLBACK_NAME,
   MEMBERSHIP_COLUMNS,
   MEMBERSHIP_COLUMNS_QUALIFIED,
+  PUBLIC_ROSTER_PLAYS_PREDICATE,
 } from '../model/members.constants';
 import { MembershipStatus } from '../model/members.enums';
 import type {
@@ -234,9 +235,15 @@ export class MembershipRepository {
   }
 
   /**
-   * The public roster: active memberships only, same LEFT JOIN display-name
-   * fallback as `listDirectory` (no private fields either way) so the public
-   * team-directory read model never duplicates this projection.
+   * The public roster: the people who actually play, with the same LEFT JOIN
+   * display-name fallback as `listDirectory` (no private fields either way) so
+   * the public team-directory read model never duplicates this projection.
+   *
+   * An account is not a player. A membership is excluded when the person holds
+   * roles on this team and none of them is MEMBER — an administrator, analyst,
+   * scorekeeper or coach belongs in the staff directory, not on the public
+   * roster. A membership with no account at all (how a rostered player who has
+   * never signed in is stored) is always included, which is most of the roster.
    */
   async listActiveDirectory(
     scope: TransactionScope,
@@ -256,6 +263,7 @@ export class MembershipRepository {
          LEFT JOIN "users" "u" ON "u"."id" = "m"."user_id"
         WHERE "m"."team_id" = $1 AND "m"."status" = 'active'
           AND "m"."deleted_at" IS NULL
+          AND ${PUBLIC_ROSTER_PLAYS_PREDICATE}
         ORDER BY lower(COALESCE("p"."preferred_name", "p"."full_name",
                        "u"."display_name", "u"."email")) ASC NULLS LAST,
                  "m"."id" ASC
@@ -263,8 +271,10 @@ export class MembershipRepository {
       [teamId, page.limit, page.offset],
     );
     const counts = await scope.run<CountRow>(
-      `SELECT COUNT(*)::int AS "count" FROM "memberships"
-        WHERE "team_id" = $1 AND "status" = 'active' AND "deleted_at" IS NULL`,
+      `SELECT COUNT(*)::int AS "count" FROM "memberships" "m"
+        WHERE "m"."team_id" = $1 AND "m"."status" = 'active'
+          AND "m"."deleted_at" IS NULL
+          AND ${PUBLIC_ROSTER_PLAYS_PREDICATE}`,
       [teamId],
     );
     return {
