@@ -12405,7 +12405,7 @@
           },
           "jerseyNumber": {
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "membershipId": {
             "format": "uuid",

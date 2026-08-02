@@ -23,8 +23,8 @@ export class MemberEligibilityDto {
   @ApiProperty()
   declare readonly fullName: string;
 
-  @ApiProperty({ type: Number, nullable: true })
-  declare readonly jerseyNumber: number | null;
+  @ApiProperty({ type: String, nullable: true })
+  declare readonly jerseyNumber: string | null;
 
   @ApiProperty({ type: Number, nullable: true })
   declare readonly attendancePct: number | null;

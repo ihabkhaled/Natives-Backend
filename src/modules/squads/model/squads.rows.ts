@@ -69,7 +69,7 @@ export interface CandidateRow {
   readonly status: string;
   readonly registered_in_season: boolean;
   readonly gender: string | null;
-  readonly jersey_number: number | null;
+  readonly jersey_number: string | null;
   readonly attended_sessions: number;
   readonly eligible_sessions: number;
   readonly injured_sessions: number;

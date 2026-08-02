@@ -112,7 +112,7 @@ export function evaluateInjurySignal(
 
 /** Jersey availability; a missing jersey number is a soft `Warning`. */
 export function evaluateJerseySignal(
-  jerseyNumber: number | null,
+  jerseyNumber: string | null,
 ): EligibilitySignal {
   return signal(
     SignalCode.Jersey,

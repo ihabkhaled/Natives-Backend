@@ -231,7 +231,7 @@ export interface EligibilityInputs {
   readonly status: CandidateStatus;
   readonly registeredInSeason: boolean;
   readonly gender: string | null;
-  readonly jerseyNumber: number | null;
+  readonly jerseyNumber: string | null;
   readonly attendedSessions: number;
   readonly eligibleSessions: number;
   readonly injuredSessions: number;
@@ -250,7 +250,7 @@ export interface EligibilitySignal {
 export interface MemberEligibility {
   readonly membershipId: string;
   readonly fullName: string;
-  readonly jerseyNumber: number | null;
+  readonly jerseyNumber: string | null;
   readonly attendancePct: number | null;
   readonly availability: AvailabilityStatus | null;
   readonly selected: boolean;
