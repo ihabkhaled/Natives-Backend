@@ -3,6 +3,7 @@ import type { AppLogger } from '@core/logger';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { ConsoleEmailSenderService } from './console-email-sender.service';
+import { EmailThrottledError } from './email-throttled.error';
 import { SMTP_THROTTLE_EXCEEDED_MESSAGE } from './email.constants';
 import type { EmailMessage } from './email-sender.port';
 import type { MailTransportPort } from './mail-transport.port';

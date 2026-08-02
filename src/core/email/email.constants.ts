@@ -1,3 +1,5 @@
+import type { ErrorMessageKey } from '@core/errors/error.types';
+
 export const CONSOLE_EMAIL_LOGGER_CONTEXT = 'ConsoleEmailSender';
 
 export const CONSOLE_EMAIL_SENT_MESSAGE = 'Outbound email rendered to the log';
@@ -20,6 +22,16 @@ export const SMTP_EMAIL_LOGGER_CONTEXT = 'SmtpEmailSender';
  */
 export const SMTP_THROTTLE_EXCEEDED_MESSAGE =
   'Outbound email skipped: the send throttle is saturated for this window';
+
+// Raised (not merely logged) when the throttle is saturated, so a caller that
+// depends on delivery actually happening — e.g. the public contact form —
+// gets an honest 429 instead of a false { sent: true }. Fire-and-forget
+// callers (signup/invitation notifications) already wrap `send()` in their
+// own try/catch and stay best-effort.
+export const EMAIL_THROTTLED_MESSAGE =
+  'The outbound-email send throttle is saturated for this window; try again shortly';
+export const EMAIL_THROTTLED_MESSAGE_KEY: ErrorMessageKey =
+  'errors.email.throttled';
 
 // --- email:test CLI ---------------------------------------------------------
 export const EMAIL_TEST_SUBJECT = 'Ultimate Natives email delivery test';

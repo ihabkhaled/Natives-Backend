@@ -1,6 +1,7 @@
 import type { SeedContext, Seeder } from './seed.types';
 import { createSeedAdminSeeder } from './seed-admin';
 import { createSeedPersonasSeeder } from './seed-personas';
+import { createSeedRosterSeeder } from './seed-roster';
 import { createSeedTeamSeeder } from './seed-team';
 
 /**
@@ -21,5 +22,6 @@ export function buildSeeders(context: SeedContext): readonly Seeder[] {
     createSeedAdminSeeder(context.passwordHash, context.loadAdminConfig),
     createSeedTeamSeeder(() => context.loadAdminConfig().email),
     createSeedPersonasSeeder(context.passwordHash, context.loadPersonasConfig),
+    createSeedRosterSeeder(),
   ];
 }

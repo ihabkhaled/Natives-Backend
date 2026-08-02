@@ -17,6 +17,9 @@ export const SEED_TEAM_KEY = 'team-ultimate-natives';
 // Stable identity of the demonstration-persona seeder in seed_history.
 export const SEED_PERSONAS_KEY = 'personas';
 
+// Stable identity of the real-roster seeder (shirt list + Season Board staff).
+export const SEED_ROSTER_KEY = 'roster-ultimate-natives';
+
 // `applied_by` provenance values distinguishing the boot lifecycle from the CLI.
 export const SEED_APPLIED_BY_BOOT = 'boot';
 export const SEED_APPLIED_BY_CLI = 'cli';
@@ -95,3 +98,16 @@ export const PERSONAS_SEED_DEFINITION =
 
 export const SEED_HISTORY_LOOKUP_SQL = `SELECT "checksum" FROM "${SEED_HISTORY_TABLE}" WHERE "seed_key" = $1`;
 export const SEED_HISTORY_INSERT_SQL = `INSERT INTO "${SEED_HISTORY_TABLE}" ("seed_key", "checksum", "applied_by") VALUES ($1, $2, $3)`;
+
+// Content-derived fingerprint source for the real-roster seeder. Names the
+// seeder's ordered effects only — never the roster contents themselves, so
+// correcting a shirt number in a later seeder is not retroactively a definition
+// change on databases that already ran this one. Bump the trailing version when
+// the seeder's BEHAVIOUR changes.
+export const ROSTER_SEED_DEFINITION =
+  'roster-seeder:v1:' +
+  'insert-staff-title-catalog-entries;' +
+  'insert-account-less-roster-memberships;' +
+  'append-membership-status-events;' +
+  'insert-member-profiles-with-jersey-numbers;' +
+  'insert-team-staff-assignments';
