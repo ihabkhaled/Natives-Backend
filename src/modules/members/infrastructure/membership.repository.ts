@@ -233,6 +233,48 @@ export class MembershipRepository {
     };
   }
 
+  /**
+   * The public roster: active memberships only, same LEFT JOIN display-name
+   * fallback as `listDirectory` (no private fields either way) so the public
+   * team-directory read model never duplicates this projection.
+   */
+  async listActiveDirectory(
+    scope: TransactionScope,
+    teamId: string,
+    page: PageRequest,
+  ): Promise<ListMembersResult> {
+    const rows = await scope.run<DirectoryRow>(
+      `SELECT "m"."id" AS "membership_id", "m"."team_id" AS "team_id",
+              "m"."status" AS "status",
+              COALESCE("p"."preferred_name", "p"."full_name",
+                       "u"."display_name", "u"."email") AS "display_name",
+              "p"."nickname" AS "nickname", "p"."jersey_number" AS "jersey_number",
+              "p"."positions" AS "positions",
+              ("p"."avatar_media_id" IS NOT NULL) AS "has_avatar"
+         FROM "memberships" "m"
+         LEFT JOIN "member_profiles" "p" ON "p"."membership_id" = "m"."id"
+         LEFT JOIN "users" "u" ON "u"."id" = "m"."user_id"
+        WHERE "m"."team_id" = $1 AND "m"."status" = 'active'
+          AND "m"."deleted_at" IS NULL
+        ORDER BY lower(COALESCE("p"."preferred_name", "p"."full_name",
+                       "u"."display_name", "u"."email")) ASC NULLS LAST,
+                 "m"."id" ASC
+        LIMIT $2 OFFSET $3`,
+      [teamId, page.limit, page.offset],
+    );
+    const counts = await scope.run<CountRow>(
+      `SELECT COUNT(*)::int AS "count" FROM "memberships"
+        WHERE "team_id" = $1 AND "status" = 'active' AND "deleted_at" IS NULL`,
+      [teamId],
+    );
+    return {
+      items: rows.map(row => this.toDirectoryItem(row)),
+      total: counts[0]?.count ?? 0,
+      limit: page.limit,
+      offset: page.offset,
+    };
+  }
+
   private toDirectoryItem(
     row: DirectoryRow,
   ): ListMembersResult['items'][number] {

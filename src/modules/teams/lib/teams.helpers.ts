@@ -10,6 +10,7 @@ import type {
   ResourceStatus,
   SeasonStatus,
   SettingKey,
+  StaffAssignmentStatus,
   TeamStatus,
 } from '../model/teams.enums';
 import {
@@ -17,6 +18,7 @@ import {
   RESOURCE_STATUS_VALUES,
   SEASON_STATUS_VALUES,
   SETTING_KEY_VALUES,
+  STAFF_ASSIGNMENT_STATUS_VALUES,
   TEAM_STATUS_VALUES,
 } from '../model/teams.enums';
 import type { PageRequest, TransitionCommand } from '../model/teams.types';
@@ -132,4 +134,12 @@ export function parseCatalogName(raw: string): CatalogName {
 
 export function parseSettingKey(raw: string): SettingKey {
   return parseEnum(SETTING_KEY_VALUES, raw, 'setting key');
+}
+
+export function parseStaffAssignmentStatus(raw: string): StaffAssignmentStatus {
+  return parseEnum(
+    STAFF_ASSIGNMENT_STATUS_VALUES,
+    raw,
+    'staff assignment status',
+  );
 }

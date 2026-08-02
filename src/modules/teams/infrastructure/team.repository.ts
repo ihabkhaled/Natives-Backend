@@ -2,11 +2,17 @@ import type { TransactionScope } from '@core/persistence/unit-of-work.port';
 import { Injectable } from '@nestjs/common';
 
 import { parseTeamStatus, toDate, toNullableDate } from '../lib/teams.helpers';
-import type { CountRow, IdRow, TeamRow } from '../model/teams.rows';
+import type {
+  CountRow,
+  IdRow,
+  PublicTeamProfileRow,
+  TeamRow,
+} from '../model/teams.rows';
 import type {
   ListTeamsResult,
   NewTeam,
   PageRequest,
+  PublicTeamProfile,
   Team,
   TeamRemoval,
   TeamStatusChange,
@@ -221,6 +227,35 @@ export class TeamRepository {
       total: counts[0]?.count ?? 0,
       limit: page.limit,
       offset: page.offset,
+    };
+  }
+
+  /** The publishable profile fields for the public team directory, by slug. */
+  async findPublicProfileBySlug(
+    scope: TransactionScope,
+    slug: string,
+  ): Promise<PublicTeamProfile | null> {
+    const rows = await scope.run<PublicTeamProfileRow>(
+      `SELECT "id", "slug", "name", "location",
+              to_char("founded_on", 'YYYY-MM-DD') AS "founded_on",
+              "facebook_url", "instagram_url", "tiktok_url"
+         FROM "teams" WHERE lower("slug") = lower($1) AND "deleted_at" IS NULL`,
+      [slug],
+    );
+    const row = rows[0];
+    return row === undefined ? null : this.toPublicProfile(row);
+  }
+
+  private toPublicProfile(row: PublicTeamProfileRow): PublicTeamProfile {
+    return {
+      id: row.id,
+      slug: row.slug,
+      name: row.name,
+      location: row.location,
+      foundedOn: row.founded_on,
+      facebookUrl: row.facebook_url,
+      instagramUrl: row.instagram_url,
+      tiktokUrl: row.tiktok_url,
     };
   }
 

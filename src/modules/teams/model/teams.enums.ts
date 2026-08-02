@@ -52,10 +52,24 @@ export enum CatalogName {
   Division = 'division',
   GenderFormat = 'gender_format',
   Position = 'position',
+  StaffTitle = 'staff_title',
 }
 
 export const CATALOG_NAME_VALUES: readonly CatalogName[] =
   Object.values(CatalogName);
+
+/**
+ * Lifecycle of a staff-title assignment (a membership holding one catalog
+ * `staff_title` entry). Removed, never deleted, mirroring every other
+ * reference/history table in this schema.
+ */
+export enum StaffAssignmentStatus {
+  Active = 'active',
+  Removed = 'removed',
+}
+
+export const STAFF_ASSIGNMENT_STATUS_VALUES: readonly StaffAssignmentStatus[] =
+  Object.values(StaffAssignmentStatus);
 
 /**
  * Versioned, effective-dated team settings. Each key names an independent

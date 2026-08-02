@@ -220,6 +220,27 @@ describe('MembershipRepository', () => {
     expect(sql).toContain('LEFT JOIN "users"');
   });
 
+  it('lists only active memberships in the public roster, with a total', async () => {
+    scope.run.mockResolvedValueOnce([directoryRow()]);
+    scope.run.mockResolvedValueOnce([{ count: 1 }]);
+    const page = await repo.listActiveDirectory(scope as never, 'team-1', {
+      limit: 20,
+      offset: 0,
+    });
+    expect(page.total).toBe(1);
+    expect(page.items[0]).toMatchObject({ status: MembershipStatus.Active });
+    const sql = String(scope.run.mock.calls[0]?.[0]);
+    expect(sql).toContain(`"m"."status" = 'active'`);
+
+    scope.run.mockResolvedValueOnce([]);
+    scope.run.mockResolvedValueOnce([]);
+    const fallback = await repo.listActiveDirectory(scope as never, 'team-1', {
+      limit: 20,
+      offset: 0,
+    });
+    expect(fallback.total).toBe(0);
+  });
+
   it('lists invited unlinked memberships by profile email with an optional team filter', async () => {
     scope.run.mockResolvedValueOnce([
       membershipRow({ status: 'invited', user_id: null }),

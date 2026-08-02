@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T18:15:13.357Z",
+  "generatedAt": "2026-08-02T07:26:28.194Z",
   "modules": [
     {
       "name": "activities",
@@ -2359,12 +2359,15 @@
       "layers": {
         "controller": [
           "src/modules/teams/api/catalogs.controller.ts",
+          "src/modules/teams/api/public-team-directory.controller.ts",
           "src/modules/teams/api/seasons.controller.ts",
           "src/modules/teams/api/settings.controller.ts",
+          "src/modules/teams/api/staff.controller.ts",
           "src/modules/teams/api/teams.controller.ts",
           "src/modules/teams/api/venues.controller.ts"
         ],
         "api-dto": [
+          "src/modules/teams/api/dto/assign-staff-title.dto.ts",
           "src/modules/teams/api/dto/catalog-entry-response.dto.ts",
           "src/modules/teams/api/dto/catalog-list-query.dto.ts",
           "src/modules/teams/api/dto/create-catalog-entry.dto.ts",
@@ -2378,8 +2381,13 @@
           "src/modules/teams/api/dto/list-query.dto.ts",
           "src/modules/teams/api/dto/list-seasons-response.dto.ts",
           "src/modules/teams/api/dto/list-setting-versions-response.dto.ts",
+          "src/modules/teams/api/dto/list-staff-assignments-response.dto.ts",
           "src/modules/teams/api/dto/list-teams-response.dto.ts",
           "src/modules/teams/api/dto/list-venues-response.dto.ts",
+          "src/modules/teams/api/dto/public-roster-player-response.dto.ts",
+          "src/modules/teams/api/dto/public-staff-member-response.dto.ts",
+          "src/modules/teams/api/dto/public-team-directory-response.dto.ts",
+          "src/modules/teams/api/dto/public-team-profile-response.dto.ts",
           "src/modules/teams/api/dto/season-response.dto.ts",
           "src/modules/teams/api/dto/setting-values/assessment-scale-value.dto.ts",
           "src/modules/teams/api/dto/setting-values/attendance-statuses-value.dto.ts",
@@ -2394,6 +2402,7 @@
           "src/modules/teams/api/dto/setting-versions-query.dto.ts",
           "src/modules/teams/api/dto/settings-snapshot-response.dto.ts",
           "src/modules/teams/api/dto/snapshot-query.dto.ts",
+          "src/modules/teams/api/dto/staff-assignment-response.dto.ts",
           "src/modules/teams/api/dto/team-response.dto.ts",
           "src/modules/teams/api/dto/transition.dto.ts",
           "src/modules/teams/api/dto/update-season.dto.ts",
@@ -2404,12 +2413,14 @@
         "use-case": [
           "src/modules/teams/application/archive-catalog-entry.use-case.ts",
           "src/modules/teams/application/archive-venue.use-case.ts",
+          "src/modules/teams/application/assign-staff-title.use-case.ts",
           "src/modules/teams/application/cancel-setting-version.use-case.ts",
           "src/modules/teams/application/create-catalog-entry.use-case.ts",
           "src/modules/teams/application/create-season.use-case.ts",
           "src/modules/teams/application/create-setting-version.use-case.ts",
           "src/modules/teams/application/create-team.use-case.ts",
           "src/modules/teams/application/create-venue.use-case.ts",
+          "src/modules/teams/application/remove-staff-assignment.use-case.ts",
           "src/modules/teams/application/remove-team.use-case.ts",
           "src/modules/teams/application/transition-season.use-case.ts",
           "src/modules/teams/application/transition-team.use-case.ts",
@@ -2419,8 +2430,10 @@
         ],
         "service": [
           "src/modules/teams/application/catalog-query.service.ts",
+          "src/modules/teams/application/public-team-directory.service.ts",
           "src/modules/teams/application/season-query.service.ts",
           "src/modules/teams/application/settings-query.service.ts",
+          "src/modules/teams/application/staff-assignment-query.service.ts",
           "src/modules/teams/application/team-lookup.service.ts",
           "src/modules/teams/application/team-query.service.ts",
           "src/modules/teams/application/venue-query.service.ts"
@@ -2432,6 +2445,7 @@
           "src/modules/teams/domain/season-schedule.policy.ts",
           "src/modules/teams/domain/setting-cross-references.policy.ts",
           "src/modules/teams/domain/setting-value.policy.ts",
+          "src/modules/teams/domain/staff-assignment.policy.ts",
           "src/modules/teams/domain/team-lifecycle.state-machine.ts"
         ],
         "other": [
@@ -2451,6 +2465,9 @@
           "src/modules/teams/errors/setting-version-not-found.error.ts",
           "src/modules/teams/errors/setting-version-stale.error.ts",
           "src/modules/teams/errors/slug-conflict.error.ts",
+          "src/modules/teams/errors/staff-assignment-not-found.error.ts",
+          "src/modules/teams/errors/staff-membership-not-found.error.ts",
+          "src/modules/teams/errors/staff-title-not-found.error.ts",
           "src/modules/teams/errors/team-invalid-transition.error.ts",
           "src/modules/teams/errors/team-not-found.error.ts",
           "src/modules/teams/errors/venue-not-found.error.ts",
@@ -2461,14 +2478,17 @@
           "src/modules/teams/infrastructure/catalog.repository.ts",
           "src/modules/teams/infrastructure/season.repository.ts",
           "src/modules/teams/infrastructure/setting-version.repository.ts",
+          "src/modules/teams/infrastructure/staff-assignment.repository.ts",
           "src/modules/teams/infrastructure/team-audit.repository.ts",
           "src/modules/teams/infrastructure/team.repository.ts",
           "src/modules/teams/infrastructure/venue.repository.ts"
         ],
         "lib": [
+          "src/modules/teams/lib/public-directory.mapper.ts",
           "src/modules/teams/lib/teams.helpers.ts"
         ],
         "model": [
+          "src/modules/teams/model/public-directory.types.ts",
           "src/modules/teams/model/setting-values.constants.ts",
           "src/modules/teams/model/setting-values.enums.ts",
           "src/modules/teams/model/setting-values.types.ts",
@@ -2478,8 +2498,8 @@
           "src/modules/teams/model/teams.types.ts"
         ]
       },
-      "fileCount": 102,
-      "specCount": 35,
+      "fileCount": 122,
+      "specCount": 42,
       "publicSurface": "src/modules/teams/index.ts",
       "hasEvents": false
     },

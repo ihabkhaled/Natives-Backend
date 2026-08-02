@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-01T18:15:13.357Z",
-  "treeHash": "sha256:b9f44c4a6c7d5b011d3ff1d580ba56a6b4c1d4eb09b86f0fe6403a3a70140968",
+  "generatedAt": "2026-08-02T07:26:28.194Z",
+  "treeHash": "sha256:0a2a75530f39d5c47192ab9290bc7133c71a29d2ec94887c3cc7cc21c620ee69",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -3038,8 +3038,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:498125595cb44915f70bdc91a193e03c0dc1fefef2397e64372ecd91154f7dc9",
-      "sizeBytes": 713
+      "hash": "sha256:dc34a355bf46f77b381686a2017b101bce34e597b72e397f531106e0b1513282",
+      "sizeBytes": 722
     },
     {
       "path": "src/database/advisory-lock.spec.ts",
@@ -4210,6 +4210,40 @@
       "sizeBytes": 1459
     },
     {
+      "path": "src/database/migrations/1725700000000-team-staff-assignments.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamStaffAssignments1725700000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:332c7d6f3d8319dc4dd5b0ca74ce82509ad252db8bb7bcac48f44fd2979bc35b",
+      "sizeBytes": 2931
+    },
+    {
+      "path": "src/database/migrations/1725900000000-team-public-profile.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TeamPublicProfile1725900000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:58a21bc22e9ea6cbc40c02a56d8a91d825d5791a85bcbce4dc06807bc0437137",
+      "sizeBytes": 2589
+    },
+    {
       "path": "src/database/migrations/achievement-rejection-reason-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -4604,6 +4638,30 @@
       "kind": "spec",
       "hash": "sha256:179d00538e7c667292a0163bcfa75a5391fe8e96f9117ca4eddd644c15fede85",
       "sizeBytes": 1628
+    },
+    {
+      "path": "src/database/migrations/team-public-profile-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:8c11e94a2bc4923b633be077067bb5918c36f41d5af5364e4713aa00c4dcb03d",
+      "sizeBytes": 2065
+    },
+    {
+      "path": "src/database/migrations/team-staff-assignments-schema.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d4f19e535a1661d386f71facd1b44ced4903cd8d1aa9bb471aa775fad2e93b31",
+      "sizeBytes": 1948
     },
     {
       "path": "src/database/migrations/tryouts-schema.spec.ts",
@@ -5217,6 +5275,26 @@
         },
         {
           "kind": "const",
+          "name": "TEAM_LOCATION"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_FOUNDED_ON"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_FACEBOOK_URL"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_INSTAGRAM_URL"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_TIKTOK_URL"
+        },
+        {
+          "kind": "const",
           "name": "SEASON_NAME_PREFIX"
         },
         {
@@ -5255,8 +5333,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:853e27c2c36ae45e35991346b54859430d0d231dbde274a7c9db5e3bd0be6b34",
-      "sizeBytes": 2296
+      "hash": "sha256:02d5965eb308091a00e4d7f8cb116dada88e97aa0392b08c74d3f446f2cafd3a",
+      "sizeBytes": 2868
     },
     {
       "path": "src/database/seeds/seed-team.spec.ts",
@@ -5267,8 +5345,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:419b5b1c5d9d294c58ae878d8ace648de34ad1417d0bf2c400237603127902ba",
-      "sizeBytes": 8467
+      "hash": "sha256:85c55f7cc2c310362a169547188aa88e1ead5e7403afddd460071ab53478cd6a",
+      "sizeBytes": 8987
     },
     {
       "path": "src/database/seeds/seed-team.ts",
@@ -5284,8 +5362,8 @@
       "hasSpec": true,
       "specPath": "src/database/seeds/seed-team.spec.ts",
       "kind": "source",
-      "hash": "sha256:04e42b7d90f1cb0c6eca3140023b7eb15dcb0c7caeeba1dc1311f830339afd88",
-      "sizeBytes": 8253
+      "hash": "sha256:d61488dbb4b541c2c5fc9eb733d3e21746601b0cbd11c1a7a2be4d2dffb8dea7",
+      "sizeBytes": 8617
     },
     {
       "path": "src/database/seeds/seed-team.types.ts",
@@ -5390,8 +5468,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a699eacafcd653f79afac2ddd45700a7e3ad9b023166b672e3e881d68a9c0278",
-      "sizeBytes": 4639
+      "hash": "sha256:05272aa5b6bad4fb3d377373b51c9e466e46b06afe3819d7828904628e201c60",
+      "sizeBytes": 5045
     },
     {
       "path": "src/database/seeds/seed.types.ts",
@@ -33284,8 +33362,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:8c7e7244d86bc2281475f80110ce9d672e9094218d8ffb5b0a8c271a9b93f29a",
-      "sizeBytes": 954
+      "hash": "sha256:982e051d33877753fe7677d5bc02db86f954180bb8fbe2538942b1def0d2befc",
+      "sizeBytes": 1599
     },
     {
       "path": "src/modules/members/application/member-directory.service.ts",
@@ -33301,8 +33379,8 @@
       "hasSpec": true,
       "specPath": "src/modules/members/application/member-directory.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:ccf3fe5c97beaf04b5890a60c5b4b68e1f308ba250672bbac61b2b8924a4df63",
-      "sizeBytes": 960
+      "hash": "sha256:4536f4012b12c4593593fc95aa420bacc8dc0b6ef4dc7c07d0dac1f53696a281",
+      "sizeBytes": 1263
     },
     {
       "path": "src/modules/members/application/member-history.service.spec.ts",
@@ -34145,8 +34223,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:5b4ec3ff7abc41e290cecf7cb2ba9aa7b24db94d18d5080dfb1271da056478fe",
-      "sizeBytes": 577
+      "hash": "sha256:b3e09f8daee1e6e28f171dae2bc0bcc7b7267c628388a2a4ebc300182aaaa79a",
+      "sizeBytes": 702
     },
     {
       "path": "src/modules/members/infrastructure/media-asset.repository.spec.ts",
@@ -34331,8 +34409,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:0723e1dcb26c89c0d6166739fb94d0e870ffc5894eabc0e231c5265cf10a2ef1",
-      "sizeBytes": 8367
+      "hash": "sha256:c9d0af799df795cdd2b5dd90833c67645b5b4cfca67ad461f0ad26d58431d126",
+      "sizeBytes": 9146
     },
     {
       "path": "src/modules/members/infrastructure/membership.repository.ts",
@@ -34348,8 +34426,8 @@
       "hasSpec": true,
       "specPath": "src/modules/members/infrastructure/membership.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:d7ea17c468c037e3430a324ccb9ebdb9db713cf9e19fff7425f4bb9a7a142b14",
-      "sizeBytes": 9048
+      "hash": "sha256:409f89b9345c8f5153d183ae6165122c27ec4173eb9cf878fc64f91a47948664",
+      "sizeBytes": 10801
     },
     {
       "path": "src/modules/members/infrastructure/status-event.repository.spec.ts",
@@ -34640,8 +34718,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:a999223e60188c473285d4ef8a9181186b204d41f87a45ba0ba32cd1c50984c3",
-      "sizeBytes": 4994
+      "hash": "sha256:c9b4b48ba27e795d97d8edc9f0ffe63992158e0428539f9efde744809e94feb2",
+      "sizeBytes": 5022
     },
     {
       "path": "src/modules/members/model/members.constants.ts",
@@ -60070,6 +60148,23 @@
       "sizeBytes": 3613
     },
     {
+      "path": "src/modules/teams/api/dto/assign-staff-title.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssignStaffTitleDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:f6953081476721e6bfdfc3d79ca150f3b1cf344d4da8a078dfbc1b34abd779ab",
+      "sizeBytes": 720
+    },
+    {
       "path": "src/modules/teams/api/dto/catalog-entry-response.dto.ts",
       "root": "modules",
       "module": "teams",
@@ -60343,6 +60438,23 @@
       "sizeBytes": 446
     },
     {
+      "path": "src/modules/teams/api/dto/list-staff-assignments-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "ListStaffAssignmentsResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:17439de88dec24a48207a38879563f70e677436ffd30dd8a7cba57d25f057ef1",
+      "sizeBytes": 451
+    },
+    {
       "path": "src/modules/teams/api/dto/list-teams-response.dto.ts",
       "root": "modules",
       "module": "teams",
@@ -60375,6 +60487,74 @@
       "kind": "source",
       "hash": "sha256:edc94834eb071aa5fc5bacc55bbcac8bf529b1c5ac29da50177a457e0e494cb2",
       "sizeBytes": 400
+    },
+    {
+      "path": "src/modules/teams/api/dto/public-roster-player-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublicRosterPlayerResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d98c1f14e5dc7e0d4e2575d4fafd31e4e822f6b18c130dcc3b5c692aff579ae4",
+      "sizeBytes": 662
+    },
+    {
+      "path": "src/modules/teams/api/dto/public-staff-member-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublicStaffMemberResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:df3b72f41904a4229a746ccf85b652192f8ca86fef0f87094d56a882b2c9468f",
+      "sizeBytes": 478
+    },
+    {
+      "path": "src/modules/teams/api/dto/public-team-directory-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublicTeamDirectoryResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:9d87d7d6af178a4bb08195657202210aa46c213ae305a382081796d5572902cd",
+      "sizeBytes": 713
+    },
+    {
+      "path": "src/modules/teams/api/dto/public-team-profile-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublicTeamProfileResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:790b6cc5419462480fccefbda330af7d58666b6d311a485959d49042085a15a2",
+      "sizeBytes": 798
     },
     {
       "path": "src/modules/teams/api/dto/season-response.dto.ts",
@@ -60655,6 +60835,23 @@
       "sizeBytes": 362
     },
     {
+      "path": "src/modules/teams/api/dto/staff-assignment-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StaffAssignmentResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0490254c003753886ea5ddd5ced27b4311652f3270193b498bee35a67649ee3b",
+      "sizeBytes": 1108
+    },
+    {
       "path": "src/modules/teams/api/dto/team-response.dto.ts",
       "root": "modules",
       "module": "teams",
@@ -60757,6 +60954,23 @@
       "sizeBytes": 1139
     },
     {
+      "path": "src/modules/teams/api/public-team-directory.controller.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublicTeamDirectoryController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:81f52e72c61b843f8e610d4fc10e3f65b3150af1919728e2dc7a61c98a29e73d",
+      "sizeBytes": 1373
+    },
+    {
       "path": "src/modules/teams/api/seasons.controller.ts",
       "root": "modules",
       "module": "teams",
@@ -60789,6 +61003,23 @@
       "kind": "source",
       "hash": "sha256:3b819d4bfe77c9cf969fbf97191799314e8a405c8e808b3603a46ed33ff64a78",
       "sizeBytes": 5146
+    },
+    {
+      "path": "src/modules/teams/api/staff.controller.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "controller",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StaffController"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:dd8a5c5720c6406f457f5fc287ab1fdfa20bc4d3857912250f1aecab8ca50a3c",
+      "sizeBytes": 3798
     },
     {
       "path": "src/modules/teams/api/teams.controller.ts",
@@ -60881,6 +61112,35 @@
       "kind": "source",
       "hash": "sha256:4bce7d43e27fcb6f4a94038274642365927b25d0dd4325791f59b378c7418ceb",
       "sizeBytes": 2306
+    },
+    {
+      "path": "src/modules/teams/application/assign-staff-title.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:7b3634b94be0e7964f73c38bb6c045f9fbc4138d4f15cb2787396fe5b1c18e7b",
+      "sizeBytes": 4288
+    },
+    {
+      "path": "src/modules/teams/application/assign-staff-title.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "AssignStaffTitleUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/assign-staff-title.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:49710064bb287bceea1e358a7574c15105cfe62d5d27b1f1ef65950cac380eb3",
+      "sizeBytes": 4644
     },
     {
       "path": "src/modules/teams/application/cancel-setting-version.use-case.spec.ts",
@@ -61086,6 +61346,64 @@
       "sizeBytes": 3028
     },
     {
+      "path": "src/modules/teams/application/public-team-directory.service.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:0526729f44c39c84e383b86a2bbc83f2bc06861ff0b8c9c4c97a90fb7dcaf9c7",
+      "sizeBytes": 2829
+    },
+    {
+      "path": "src/modules/teams/application/public-team-directory.service.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublicTeamDirectoryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/public-team-directory.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:f16037d717a3ead6a594369629d427e8edcc0ad1abe35775cefa7742646a8073",
+      "sizeBytes": 2207
+    },
+    {
+      "path": "src/modules/teams/application/remove-staff-assignment.use-case.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:d608382a3ad3f1ef4dbc03b5d49a86a1d94ebad6106f2e6dd6cdc4e803807802",
+      "sizeBytes": 2133
+    },
+    {
+      "path": "src/modules/teams/application/remove-staff-assignment.use-case.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "use-case",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RemoveStaffAssignmentUseCase"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/remove-staff-assignment.use-case.spec.ts",
+      "kind": "source",
+      "hash": "sha256:91a5f5ccc3958819ffbdad5de45a42e03f5a311fabb5e6b81ae57fc8387124e1",
+      "sizeBytes": 2802
+    },
+    {
       "path": "src/modules/teams/application/remove-team.use-case.spec.ts",
       "root": "modules",
       "module": "teams",
@@ -61171,6 +61489,35 @@
       "kind": "source",
       "hash": "sha256:f581e55d43766eefc25c9eec755d15cf72b84d417d4f7247aab366de365d4177",
       "sizeBytes": 2639
+    },
+    {
+      "path": "src/modules/teams/application/staff-assignment-query.service.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:6ef58873d9cf4858574c00f09ed307161388e891de20a08e22bd8bdb81cd2ceb",
+      "sizeBytes": 1146
+    },
+    {
+      "path": "src/modules/teams/application/staff-assignment-query.service.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "service",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StaffAssignmentQueryService"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/application/staff-assignment-query.service.spec.ts",
+      "kind": "source",
+      "hash": "sha256:5f9caf841f37928571fca3f999e86cc0e5eee747ff5cd74fbab2251fa39e0993",
+      "sizeBytes": 822
     },
     {
       "path": "src/modules/teams/application/team-lookup.service.spec.ts",
@@ -61667,6 +62014,35 @@
       "sizeBytes": 38572
     },
     {
+      "path": "src/modules/teams/domain/staff-assignment.policy.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:a9fd4e8f17e97c7b7452badd7ad14df818e55360e5de7182b062df356b013f90",
+      "sizeBytes": 1247
+    },
+    {
+      "path": "src/modules/teams/domain/staff-assignment.policy.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "domain",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "isAssignableStaffTitle"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/domain/staff-assignment.policy.spec.ts",
+      "kind": "source",
+      "hash": "sha256:1ae906661ea7878e45c6ec3a568406287cf1148d9797fe976cce6bd104a83f04",
+      "sizeBytes": 581
+    },
+    {
       "path": "src/modules/teams/domain/team-lifecycle.state-machine.spec.ts",
       "root": "modules",
       "module": "teams",
@@ -61980,6 +62356,57 @@
       "sizeBytes": 438
     },
     {
+      "path": "src/modules/teams/errors/staff-assignment-not-found.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StaffAssignmentNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:2b836104a6bcb4db5d00473cb28b68d7ddff6b4994f7edd2dc2ee304ba859eba",
+      "sizeBytes": 473
+    },
+    {
+      "path": "src/modules/teams/errors/staff-membership-not-found.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StaffMembershipNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:ecfa629a874b30665baf38d5510ad731611d885408ea90d1e08b034365bf29ae",
+      "sizeBytes": 461
+    },
+    {
+      "path": "src/modules/teams/errors/staff-title-not-found.error.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StaffTitleNotFoundError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:c89aa0fade144d974fde3fe06063487e7f138cd284300322fd37656408939735",
+      "sizeBytes": 498
+    },
+    {
       "path": "src/modules/teams/errors/team-invalid-transition.error.ts",
       "root": "modules",
       "module": "teams",
@@ -62039,8 +62466,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0b5413d1c026eb0247b08a66c193bce0f842ad632f42fc62aa5c294d9f4c7f60",
-      "sizeBytes": 123
+      "hash": "sha256:6bcdab0ef7456149ec367fc6d076d5d89cd47e773325748c788a2737689a1ce6",
+      "sizeBytes": 269
     },
     {
       "path": "src/modules/teams/infrastructure/catalog.repository.spec.ts",
@@ -62130,6 +62557,35 @@
       "sizeBytes": 6134
     },
     {
+      "path": "src/modules/teams/infrastructure/staff-assignment.repository.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:52e8fccd4e8931abfb0a08c9f21c27989e738795b65799ad0ec29ebb8cec9433",
+      "sizeBytes": 5812
+    },
+    {
+      "path": "src/modules/teams/infrastructure/staff-assignment.repository.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "repository",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "StaffAssignmentRepository"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/infrastructure/staff-assignment.repository.spec.ts",
+      "kind": "source",
+      "hash": "sha256:6ec73a989f2629e6196909eba6cc521895743268a229f6f725e4a38970b0ab53",
+      "sizeBytes": 7295
+    },
+    {
       "path": "src/modules/teams/infrastructure/team-audit.repository.spec.ts",
       "root": "modules",
       "module": "teams",
@@ -62167,8 +62623,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:582c367ecfda9d8fb530b1643656fb05182bb8fa173f7c56d4ce755e834b97bf",
-      "sizeBytes": 6517
+      "hash": "sha256:1569d186db9d605d348947317598f1a09b4ac7b4800136096fd00d1a9f7c2951",
+      "sizeBytes": 7665
     },
     {
       "path": "src/modules/teams/infrastructure/team.repository.ts",
@@ -62184,8 +62640,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/infrastructure/team.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:f1414b2c45cc52ee1c399a98b09bbabce8ee56d2d9efb694343344db3c79af2f",
-      "sizeBytes": 8642
+      "hash": "sha256:5c66a8c55fd06120bd95c95a7f2b3b4dc5f192210037caa4e7a79aa30e264719",
+      "sizeBytes": 9656
     },
     {
       "path": "src/modules/teams/infrastructure/venue.repository.spec.ts",
@@ -62215,6 +62671,35 @@
       "kind": "source",
       "hash": "sha256:cf12c397ca18faab6e54bcb5e2179dece902defa42ceed864363b3c4d20f7b53",
       "sizeBytes": 5685
+    },
+    {
+      "path": "src/modules/teams/lib/public-directory.mapper.spec.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "lib",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:aebb98c900a1223c5211d353c6c7405b57c00b08802bdb6d624d6fcd8aa7c7db",
+      "sizeBytes": 784
+    },
+    {
+      "path": "src/modules/teams/lib/public-directory.mapper.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "lib",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "toPublicRosterPlayer"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/modules/teams/lib/public-directory.mapper.spec.ts",
+      "kind": "source",
+      "hash": "sha256:6a01e0f0044d90f404a6626e65a5184ad16a4529b07c9009ad091ae3a8225cd2",
+      "sizeBytes": 731
     },
     {
       "path": "src/modules/teams/lib/teams.helpers.spec.ts",
@@ -62281,13 +62766,42 @@
         {
           "kind": "function",
           "name": "parseSettingKey"
+        },
+        {
+          "kind": "function",
+          "name": "parseStaffAssignmentStatus"
         }
       ],
       "hasSpec": true,
       "specPath": "src/modules/teams/lib/teams.helpers.spec.ts",
       "kind": "source",
-      "hash": "sha256:bb25369e7b217a73660db7a0a2f3f617cb7abdc37e5dad8f0f75d9e976bbbf26",
-      "sizeBytes": 4298
+      "hash": "sha256:64ca2de1e177ce8c5ac9d1e7a38bf604e059c020feaf05c623d359bec14a978b",
+      "sizeBytes": 4542
+    },
+    {
+      "path": "src/modules/teams/model/public-directory.types.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "model",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "PublicRosterPlayer"
+        },
+        {
+          "kind": "interface",
+          "name": "PublicTeamDirectoryView"
+        },
+        {
+          "kind": "interface",
+          "name": "TeamAndStaffDirectory"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:152b6a4f04a1601b77cab59db35f78b82c09d2f061fb9970b7645f062b888e4e",
+      "sizeBytes": 978
     },
     {
       "path": "src/modules/teams/model/setting-values.constants.ts",
@@ -62712,6 +63226,14 @@
         },
         {
           "kind": "const",
+          "name": "STAFF_ASSIGNMENTS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_ASSIGNMENT_BY_ID_ROUTE"
+        },
+        {
+          "kind": "const",
           "name": "TEAM_ID_PARAM"
         },
         {
@@ -62729,6 +63251,10 @@
         {
           "kind": "const",
           "name": "SETTING_VERSION_ID_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_ASSIGNMENT_ID_PARAM"
         },
         {
           "kind": "const",
@@ -62817,6 +63343,70 @@
         {
           "kind": "const",
           "name": "LONGITUDE_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "PHOTO_URL_MAX_LENGTH"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_TITLE_KEY_COACH"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_TITLE_KEY_CO_COACH"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_TITLE_KEY_SPIRIT_CAPTAIN"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_TITLE_KEY_FINANCE"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_TITLE_KEY_SOCIAL_MEDIA_MARKETING"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_TITLE_KEY_ANALYSIS"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_TITLE_KEY_TECHNICAL"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_ASSIGNMENT_COLUMNS"
+        },
+        {
+          "kind": "const",
+          "name": "PUBLIC_TEAMS_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "PUBLIC_TEAM_DIRECTORY_ROUTE"
+        },
+        {
+          "kind": "const",
+          "name": "PUBLIC_TEAM_API_TAG"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_SLUG_PARAM"
+        },
+        {
+          "kind": "const",
+          "name": "PUBLIC_STAFF_DIRECTORY_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "PUBLIC_ROSTER_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_DIRECTORY_FALLBACK_NAME"
         },
         {
           "kind": "const",
@@ -62925,6 +63515,14 @@
         {
           "kind": "const",
           "name": "SETTING_VERSION_CANCELLED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_ASSIGNMENT_CREATED_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_ASSIGNMENT_REMOVED_EVENT"
         },
         {
           "kind": "const",
@@ -63085,13 +63683,37 @@
         {
           "kind": "const",
           "name": "SETTING_VERSION_NOT_CANCELLABLE_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_MEMBERSHIP_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_MEMBERSHIP_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_TITLE_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_TITLE_NOT_FOUND_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_ASSIGNMENT_NOT_FOUND_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_ASSIGNMENT_NOT_FOUND_MESSAGE_KEY"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:e30e692675a6d5ad44b780130db75df27646b08882a3956c235351cb9a52782c",
-      "sizeBytes": 9631
+      "hash": "sha256:fbaa56f50003fef8c3a3b9b4e04879c0434eb67ad1d7229c8b4c3a82b70fca02",
+      "sizeBytes": 12323
     },
     {
       "path": "src/modules/teams/model/teams.enums.ts",
@@ -63133,6 +63755,14 @@
         },
         {
           "kind": "enum",
+          "name": "StaffAssignmentStatus"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_ASSIGNMENT_STATUS_VALUES"
+        },
+        {
+          "kind": "enum",
           "name": "SettingKey"
         },
         {
@@ -63143,8 +63773,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:08c5b0510f7d3552bf25a2de59add0559171c731c1ada11cfc17241c57a41df8",
-      "sizeBytes": 2499
+      "hash": "sha256:5020193f7320ddcee4be1d0fece46efc9d3907cc2a00b7fcd894c5b9bfe75507",
+      "sizeBytes": 2930
     },
     {
       "path": "src/modules/teams/model/teams.rows.ts",
@@ -63178,6 +63808,18 @@
         },
         {
           "kind": "interface",
+          "name": "PublicTeamProfileRow"
+        },
+        {
+          "kind": "interface",
+          "name": "StaffDirectoryRow"
+        },
+        {
+          "kind": "interface",
+          "name": "StaffAssignmentRow"
+        },
+        {
+          "kind": "interface",
           "name": "CountRow"
         },
         {
@@ -63192,8 +63834,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:2a40adc57820134d6b8478f3d67161a06b68c46ff714ae65399606578e6078d2",
-      "sizeBytes": 2771
+      "hash": "sha256:94a99d9dabfbd01907f2f2c4b458748b9eb95a87d3eab5732a63ad4071c372f5",
+      "sizeBytes": 3908
     },
     {
       "path": "src/modules/teams/model/teams.types.ts",
@@ -63239,6 +63881,18 @@
         },
         {
           "kind": "interface",
+          "name": "PublicTeamProfile"
+        },
+        {
+          "kind": "interface",
+          "name": "StaffDirectoryEntry"
+        },
+        {
+          "kind": "interface",
+          "name": "StaffAssignment"
+        },
+        {
+          "kind": "interface",
           "name": "PageRequest"
         },
         {
@@ -63256,6 +63910,10 @@
         {
           "kind": "interface",
           "name": "ListCatalogEntriesResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ListStaffAssignmentsResult"
         },
         {
           "kind": "interface",
@@ -63300,6 +63958,10 @@
         {
           "kind": "interface",
           "name": "CatalogListQuery"
+        },
+        {
+          "kind": "interface",
+          "name": "CreateStaffAssignmentCommand"
         },
         {
           "kind": "interface",
@@ -63360,13 +64022,21 @@
         {
           "kind": "interface",
           "name": "SeasonDateRange"
+        },
+        {
+          "kind": "interface",
+          "name": "NewStaffAssignment"
+        },
+        {
+          "kind": "interface",
+          "name": "StaffAssignmentRemoval"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ba14e3bb22dad0cfe34f066713add5085829c9e20c4466a4c7da237c22f901b8",
-      "sizeBytes": 11439
+      "hash": "sha256:edf6e6de93b7cf0caafc198004039ca9cb95a0e4a2fcde80e9c32145d08cd644",
+      "sizeBytes": 13494
     },
     {
       "path": "src/modules/teams/teams.module.ts",
@@ -63382,8 +64052,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:ee5a31a599f219e1f4ed760eaf46994550508adceec6b4cdecc81a5b91c2c821",
-      "sizeBytes": 3815
+      "hash": "sha256:420592e44266414a064f5941961ea7f1c8586602bda033df7b2af116e41b7f75",
+      "sizeBytes": 4693
     },
     {
       "path": "src/modules/tryouts/api/dto/tryouts.dto.ts",

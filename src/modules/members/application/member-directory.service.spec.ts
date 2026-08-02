@@ -31,4 +31,26 @@ describe('MemberDirectoryService', () => {
       offset: 0,
     });
   });
+
+  it('lists only active members through the unit of work', async () => {
+    const memberships = {
+      listActiveDirectory: vi.fn().mockResolvedValue(RESULT),
+    };
+    const unitOfWork = {
+      runInTransaction: vi.fn((op: (scope: never) => unknown) => op(SCOPE)),
+    };
+    const service = new MemberDirectoryService(
+      unitOfWork as never,
+      memberships as never,
+    );
+
+    await expect(
+      service.listActiveMembers('team-1', { limit: 20, offset: 0 }),
+    ).resolves.toBe(RESULT);
+    expect(memberships.listActiveDirectory).toHaveBeenCalledWith(
+      SCOPE,
+      'team-1',
+      { limit: 20, offset: 0 },
+    );
+  });
 });

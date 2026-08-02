@@ -26,6 +26,8 @@ export const CATALOG_ENTRY_BY_ID_ROUTE = ':teamId/catalog-entries/:entryId';
 export const SETTING_VERSIONS_ROUTE = ':teamId/settings/versions';
 export const SETTING_VERSION_ROUTE = ':teamId/settings/versions/:versionId';
 export const SETTINGS_SNAPSHOT_ROUTE = ':teamId/settings/snapshot';
+export const STAFF_ASSIGNMENTS_ROUTE = ':teamId/staff';
+export const STAFF_ASSIGNMENT_BY_ID_ROUTE = ':teamId/staff/:assignmentId';
 
 // --- Route param names -------------------------------------------------------
 export const TEAM_ID_PARAM = 'teamId';
@@ -33,6 +35,7 @@ export const SEASON_ID_PARAM = 'seasonId';
 export const VENUE_ID_PARAM = 'venueId';
 export const CATALOG_ENTRY_ID_PARAM = 'entryId';
 export const SETTING_VERSION_ID_PARAM = 'versionId';
+export const STAFF_ASSIGNMENT_ID_PARAM = 'assignmentId';
 
 // --- Field bounds ------------------------------------------------------------
 export const SLUG_MIN_LENGTH = 2;
@@ -62,6 +65,36 @@ export const LATITUDE_MIN = -90;
 export const LATITUDE_MAX = 90;
 export const LONGITUDE_MIN = -180;
 export const LONGITUDE_MAX = 180;
+export const PHOTO_URL_MAX_LENGTH = 2048;
+
+// --- Staff-title catalog keys -------------------------------------------------
+// The `staff_title` catalog (CatalogName.StaffTitle) stays admin-managed and
+// free-text like every other catalog (division/gender_format/position): new
+// titles need no code change. These are only the well-known keys other code
+// (the seeder, the RBAC title -> permission wiring) depends on by name.
+export const STAFF_TITLE_KEY_COACH = 'coach';
+export const STAFF_TITLE_KEY_CO_COACH = 'co_coach';
+export const STAFF_TITLE_KEY_SPIRIT_CAPTAIN = 'spirit_captain';
+export const STAFF_TITLE_KEY_FINANCE = 'finance';
+export const STAFF_TITLE_KEY_SOCIAL_MEDIA_MARKETING = 'social_media_marketing';
+export const STAFF_TITLE_KEY_ANALYSIS = 'analysis';
+export const STAFF_TITLE_KEY_TECHNICAL = 'technical';
+
+// --- Staff assignment persistence --------------------------------------------
+export const STAFF_ASSIGNMENT_COLUMNS =
+  '"id", "team_id", "membership_id", "title_entry_id", "photo_url", "status", ' +
+  '"created_by", "removed_by", "created_at", "updated_at", "removed_at", "version"';
+
+// --- Public team directory (@Public GET /public/teams/:slug/directory) ------
+export const PUBLIC_TEAMS_ROUTE = 'public/teams';
+export const PUBLIC_TEAM_DIRECTORY_ROUTE = ':slug/directory';
+export const PUBLIC_TEAM_API_TAG = 'public-team-directory';
+export const TEAM_SLUG_PARAM = 'slug';
+// Bounded scan of one team's active staff/roster — inherently small (a squad's
+// staff and player count), capped rather than trusting table size.
+export const PUBLIC_STAFF_DIRECTORY_MAX = 200;
+export const PUBLIC_ROSTER_MAX = 200;
+export const STAFF_DIRECTORY_FALLBACK_NAME = 'Staff member';
 
 // --- Defaults ----------------------------------------------------------------
 export const DEFAULT_LOCALE = 'en';
@@ -105,6 +138,8 @@ export const CATALOG_ENTRY_CREATED_EVENT = 'team.catalogEntryCreated';
 export const CATALOG_ENTRY_ARCHIVED_EVENT = 'team.catalogEntryArchived';
 export const SETTING_VERSION_CREATED_EVENT = 'team.settingVersionCreated';
 export const SETTING_VERSION_CANCELLED_EVENT = 'team.settingVersionCancelled';
+export const STAFF_ASSIGNMENT_CREATED_EVENT = 'team.staffAssignmentCreated';
+export const STAFF_ASSIGNMENT_REMOVED_EVENT = 'team.staffAssignmentRemoved';
 
 // --- Error messages & keys ---------------------------------------------------
 export const TEAM_NOT_FOUND_MESSAGE = 'The team was not found';
@@ -203,3 +238,18 @@ export const SETTING_VERSION_NOT_CANCELLABLE_MESSAGE =
   'Only a future-effective setting version can be cancelled; past versions are history';
 export const SETTING_VERSION_NOT_CANCELLABLE_MESSAGE_KEY: ErrorMessageKey =
   'errors.teams.settingVersionNotCancellable';
+
+export const STAFF_MEMBERSHIP_NOT_FOUND_MESSAGE =
+  'The membership was not found in this team';
+export const STAFF_MEMBERSHIP_NOT_FOUND_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.staffMembershipNotFound';
+
+export const STAFF_TITLE_NOT_FOUND_MESSAGE =
+  'The staff title catalog entry was not found or is not an active staff title';
+export const STAFF_TITLE_NOT_FOUND_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.staffTitleNotFound';
+
+export const STAFF_ASSIGNMENT_NOT_FOUND_MESSAGE =
+  'The staff assignment was not found';
+export const STAFF_ASSIGNMENT_NOT_FOUND_MESSAGE_KEY: ErrorMessageKey =
+  'errors.teams.staffAssignmentNotFound';

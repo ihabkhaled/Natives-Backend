@@ -1,14 +1,18 @@
 import { ClockModule } from '@core/clock/clock.module';
 import { IdGeneratorModule } from '@core/id-generator/id-generator.module';
+import { MembersModule } from '@modules/members';
 import { Module } from '@nestjs/common';
 
 import { CatalogsController } from './api/catalogs.controller';
+import { PublicTeamDirectoryController } from './api/public-team-directory.controller';
 import { SeasonsController } from './api/seasons.controller';
 import { SettingsController } from './api/settings.controller';
+import { StaffController } from './api/staff.controller';
 import { TeamsController } from './api/teams.controller';
 import { VenuesController } from './api/venues.controller';
 import { ArchiveCatalogEntryUseCase } from './application/archive-catalog-entry.use-case';
 import { ArchiveVenueUseCase } from './application/archive-venue.use-case';
+import { AssignStaffTitleUseCase } from './application/assign-staff-title.use-case';
 import { CancelSettingVersionUseCase } from './application/cancel-setting-version.use-case';
 import { CatalogQueryService } from './application/catalog-query.service';
 import { CreateCatalogEntryUseCase } from './application/create-catalog-entry.use-case';
@@ -16,9 +20,12 @@ import { CreateSeasonUseCase } from './application/create-season.use-case';
 import { CreateSettingVersionUseCase } from './application/create-setting-version.use-case';
 import { CreateTeamUseCase } from './application/create-team.use-case';
 import { CreateVenueUseCase } from './application/create-venue.use-case';
+import { PublicTeamDirectoryService } from './application/public-team-directory.service';
+import { RemoveStaffAssignmentUseCase } from './application/remove-staff-assignment.use-case';
 import { RemoveTeamUseCase } from './application/remove-team.use-case';
 import { SeasonQueryService } from './application/season-query.service';
 import { SettingsQueryService } from './application/settings-query.service';
+import { StaffAssignmentQueryService } from './application/staff-assignment-query.service';
 import { TeamLookupService } from './application/team-lookup.service';
 import { TeamQueryService } from './application/team-query.service';
 import { TransitionSeasonUseCase } from './application/transition-season.use-case';
@@ -30,6 +37,7 @@ import { VenueQueryService } from './application/venue-query.service';
 import { CatalogRepository } from './infrastructure/catalog.repository';
 import { SeasonRepository } from './infrastructure/season.repository';
 import { SettingVersionRepository } from './infrastructure/setting-version.repository';
+import { StaffAssignmentRepository } from './infrastructure/staff-assignment.repository';
 import { TeamRepository } from './infrastructure/team.repository';
 import { TeamAuditRepository } from './infrastructure/team-audit.repository';
 import { VenueRepository } from './infrastructure/venue.repository';
@@ -43,13 +51,15 @@ import { VenueRepository } from './infrastructure/venue.repository';
  * it persists.
  */
 @Module({
-  imports: [ClockModule, IdGeneratorModule],
+  imports: [ClockModule, IdGeneratorModule, MembersModule],
   controllers: [
     TeamsController,
     SeasonsController,
     VenuesController,
     CatalogsController,
     SettingsController,
+    StaffController,
+    PublicTeamDirectoryController,
   ],
   providers: [
     TeamRepository,
@@ -57,6 +67,7 @@ import { VenueRepository } from './infrastructure/venue.repository';
     VenueRepository,
     CatalogRepository,
     SettingVersionRepository,
+    StaffAssignmentRepository,
     TeamAuditRepository,
     TeamLookupService,
     TeamQueryService,
@@ -64,6 +75,7 @@ import { VenueRepository } from './infrastructure/venue.repository';
     VenueQueryService,
     CatalogQueryService,
     SettingsQueryService,
+    StaffAssignmentQueryService,
     CreateTeamUseCase,
     UpdateTeamUseCase,
     TransitionTeamUseCase,
@@ -78,6 +90,9 @@ import { VenueRepository } from './infrastructure/venue.repository';
     ArchiveCatalogEntryUseCase,
     CreateSettingVersionUseCase,
     CancelSettingVersionUseCase,
+    AssignStaffTitleUseCase,
+    RemoveStaffAssignmentUseCase,
+    PublicTeamDirectoryService,
   ],
 })
 export class TeamsModule {}

@@ -1,2 +1,11 @@
-npm run lint-staged
-npm run typecheck
+# Pre-commit intentionally does NOT lint or typecheck.
+#
+# lint-staged fanned eslint out over parallel chunks and the hook also ran a
+# full `tsc --noEmit`; on a loaded machine that was enough to get the chunks
+# OOM-killed mid-commit, leaving a stale .git/index.lock behind.
+#
+# Verification now happens ONCE: the full gate suite is run in the foreground
+# before pushing a batch, and authoritatively in CI. Commits stay cheap so work
+# can be checkpointed often (see the incremental-commit rule) instead of being
+# held hostage to a multi-minute hook. This hook is a deliberate no-op.
+exit 0

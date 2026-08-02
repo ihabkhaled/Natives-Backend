@@ -94,6 +94,7 @@ import { MEDIA_STORAGE_PORT } from './model/members.constants';
     MembershipContextService,
     MemberDashboardSignalsService,
     ClaimInvitedMembershipsService,
+    MemberDirectoryService,
   ],
 })
 export class MembersModule {}

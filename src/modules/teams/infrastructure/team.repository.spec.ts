@@ -219,4 +219,36 @@ describe('TeamRepository', () => {
     });
     expect(fallback.total).toBe(0);
   });
+
+  it('finds the public profile by slug or returns null', async () => {
+    scope.run.mockResolvedValueOnce([
+      {
+        id: 'team-1',
+        slug: 'ultimate-natives',
+        name: 'Ultimate Natives',
+        location: 'El Sheikh Zayed, Giza, Egypt',
+        founded_on: '2021-10-01',
+        facebook_url: 'https://www.facebook.com/ultimatenatives',
+        instagram_url: 'https://www.instagram.com/ultimatenatives',
+        tiktok_url: 'https://www.tiktok.com/@ultimate.natives',
+      },
+    ]);
+    await expect(
+      repository.findPublicProfileBySlug(scope as never, 'ultimate-natives'),
+    ).resolves.toEqual({
+      id: 'team-1',
+      slug: 'ultimate-natives',
+      name: 'Ultimate Natives',
+      location: 'El Sheikh Zayed, Giza, Egypt',
+      foundedOn: '2021-10-01',
+      facebookUrl: 'https://www.facebook.com/ultimatenatives',
+      instagramUrl: 'https://www.instagram.com/ultimatenatives',
+      tiktokUrl: 'https://www.tiktok.com/@ultimate.natives',
+    });
+
+    scope.run.mockResolvedValueOnce([]);
+    await expect(
+      repository.findPublicProfileBySlug(scope as never, 'ghost'),
+    ).resolves.toBeNull();
+  });
 });

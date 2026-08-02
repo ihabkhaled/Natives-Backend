@@ -27,6 +27,7 @@ export {
   IsObject,
   IsOptional,
   IsString,
+  IsUrl,
   IsUUID,
   Matches,
   Max,

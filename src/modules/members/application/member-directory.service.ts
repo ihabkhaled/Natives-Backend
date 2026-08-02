@@ -24,4 +24,14 @@ export class MemberDirectoryService {
       this.memberships.listDirectory(scope, teamId, page),
     );
   }
+
+  /** The public roster: active memberships only, same fields, no auth. */
+  listActiveMembers(
+    teamId: string,
+    page: PageRequest,
+  ): Promise<ListMembersResult> {
+    return this.unitOfWork.runInTransaction(scope =>
+      this.memberships.listActiveDirectory(scope, teamId, page),
+    );
+  }
 }

@@ -5,6 +5,7 @@ import type {
   ResourceStatus,
   SeasonStatus,
   SettingKey,
+  StaffAssignmentStatus,
   TeamStatus,
 } from './teams.enums';
 
@@ -118,6 +119,44 @@ export interface SettingsSnapshot {
   readonly settings: readonly EffectiveSetting[];
 }
 
+/** The publishable subset of a team's columns for the public directory. */
+export interface PublicTeamProfile {
+  readonly id: string;
+  readonly slug: string;
+  readonly name: string;
+  readonly location: string | null;
+  /** Date-only, ISO `YYYY-MM-DD`, or null when unset. */
+  readonly foundedOn: string | null;
+  readonly facebookUrl: string | null;
+  readonly instagramUrl: string | null;
+  readonly tiktokUrl: string | null;
+}
+
+/** One membership's staff titles, aggregated for the public "who's who". */
+export interface StaffDirectoryEntry {
+  readonly membershipId: string;
+  readonly displayName: string;
+  readonly nickname: string | null;
+  readonly titles: readonly string[];
+  readonly photoUrl: string | null;
+}
+
+/** A membership's hold of one staff-title catalog entry within a team. */
+export interface StaffAssignment {
+  readonly id: string;
+  readonly teamId: string;
+  readonly membershipId: string;
+  readonly titleEntryId: string;
+  readonly photoUrl: string | null;
+  readonly status: StaffAssignmentStatus;
+  readonly createdBy: string | null;
+  readonly removedBy: string | null;
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
+  readonly removedAt: Date | null;
+  readonly version: number;
+}
+
 // --- Paginated list results --------------------------------------------------
 
 export interface PageRequest {
@@ -148,6 +187,13 @@ export interface ListVenuesResult {
 
 export interface ListCatalogEntriesResult {
   readonly items: readonly CatalogEntry[];
+  readonly total: number;
+  readonly limit: number;
+  readonly offset: number;
+}
+
+export interface ListStaffAssignmentsResult {
+  readonly items: readonly StaffAssignment[];
   readonly total: number;
   readonly limit: number;
   readonly offset: number;
@@ -248,6 +294,12 @@ export interface CatalogListQuery {
   readonly catalog: CatalogName;
   readonly limit: number;
   readonly offset: number;
+}
+
+export interface CreateStaffAssignmentCommand {
+  readonly membershipId: string;
+  readonly titleEntryId: string;
+  readonly photoUrl: string | null;
 }
 
 export interface SettingVersionsQuery {
@@ -406,4 +458,22 @@ export interface SeasonDateRange {
   readonly id: string;
   readonly startsOn: string;
   readonly endsOn: string;
+}
+
+export interface NewStaffAssignment {
+  readonly id: string;
+  readonly teamId: string;
+  readonly membershipId: string;
+  readonly titleEntryId: string;
+  readonly photoUrl: string | null;
+  readonly createdBy: string | null;
+  readonly now: Date;
+}
+
+/** A soft removal (never a hard delete) of a staff assignment. */
+export interface StaffAssignmentRemoval {
+  readonly id: string;
+  readonly teamId: string;
+  readonly updatedBy: string | null;
+  readonly now: Date;
 }

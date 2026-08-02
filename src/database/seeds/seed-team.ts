@@ -12,10 +12,15 @@ import {
   SEASON_STATUS,
   TEAM_ADMIN_ROLE_KEY,
   TEAM_ADMIN_ROLE_MISSING_MESSAGE,
+  TEAM_FACEBOOK_URL,
+  TEAM_FOUNDED_ON,
   TEAM_INSERT_FAILED_MESSAGE,
+  TEAM_INSTAGRAM_URL,
+  TEAM_LOCATION,
   TEAM_NAME,
   TEAM_PRIMARY_COLOR,
   TEAM_SLUG,
+  TEAM_TIKTOK_URL,
 } from './seed-team.constants';
 import type { IdRow, SeedTeamResult } from './seed-team.types';
 
@@ -110,10 +115,22 @@ async function ensureTeam(
   }
   const rows = await queryRows<IdRow>(
     queryRunner,
-    `INSERT INTO "teams" ("slug", "name", "primary_color", "created_by")
-     VALUES ($1, $2, $3, $4)
+    `INSERT INTO "teams" ("slug", "name", "primary_color", "location",
+            "founded_on", "facebook_url", "instagram_url", "tiktok_url",
+            "created_by")
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
      RETURNING "id"`,
-    [TEAM_SLUG, TEAM_NAME, TEAM_PRIMARY_COLOR, adminUserId],
+    [
+      TEAM_SLUG,
+      TEAM_NAME,
+      TEAM_PRIMARY_COLOR,
+      TEAM_LOCATION,
+      TEAM_FOUNDED_ON,
+      TEAM_FACEBOOK_URL,
+      TEAM_INSTAGRAM_URL,
+      TEAM_TIKTOK_URL,
+      adminUserId,
+    ],
   );
   return requireId(rows, TEAM_INSERT_FAILED_MESSAGE);
 }

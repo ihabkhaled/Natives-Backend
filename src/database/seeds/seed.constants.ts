@@ -42,9 +42,15 @@ export const ADMIN_SEED_DEFINITION =
 // inputs (the administrator email it links, or the year the season is derived
 // from), so the same definition stays stable across databases and calendar
 // years. Bump the trailing version when the seeder's behaviour changes.
+// v2: the team insert also writes the public-profile fields (location, founded
+// date, social URLs) for the landing site / team directory (P0). An
+// already-seeded database's team gets these backfilled by the
+// 1725900000000-team-public-profile migration instead — the framework never
+// re-runs a seeder whose definition changed on a database it already applied.
 export const TEAM_SEED_DEFINITION =
-  'team-seeder:v1:' +
+  'team-seeder:v2:' +
   'insert-ultimate-natives-team;' +
+  'insert-public-profile-fields;' +
   'insert-current-year-season;' +
   'insert-active-admin-membership;' +
   'append-membership-status-event;' +

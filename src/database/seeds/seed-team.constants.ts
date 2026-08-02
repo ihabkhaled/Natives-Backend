@@ -13,6 +13,15 @@ export const TEAM_NAME = 'Ultimate Natives';
 // Black, as the canonical 6-digit hex the teams module's branding field carries.
 export const TEAM_PRIMARY_COLOR = '#000000';
 
+// --- Public profile (landing site / team directory, P0) ----------------------
+// Real, owner-supplied values for the public "who's who" page. Date-only:
+// founded October 2021 (day unspecified, so the 1st is the canonical value).
+export const TEAM_LOCATION = 'El Sheikh Zayed, Giza, Egypt';
+export const TEAM_FOUNDED_ON = '2021-10-01';
+export const TEAM_FACEBOOK_URL = 'https://www.facebook.com/ultimatenatives';
+export const TEAM_INSTAGRAM_URL = 'https://www.instagram.com/ultimatenatives';
+export const TEAM_TIKTOK_URL = 'https://www.tiktok.com/@ultimate.natives';
+
 // --- The default season ------------------------------------------------------
 // Squads and competitions require a season id, so a fresh database needs one for
 // those screens to function. The season covers the calendar year the database is

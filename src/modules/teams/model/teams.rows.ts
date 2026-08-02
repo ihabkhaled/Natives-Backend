@@ -89,6 +89,42 @@ export interface SettingVersionRow {
   readonly created_at: string | Date;
 }
 
+/** The publishable subset of a team's columns for the public directory. */
+export interface PublicTeamProfileRow {
+  readonly id: string;
+  readonly slug: string;
+  readonly name: string;
+  readonly location: string | null;
+  readonly founded_on: string | null;
+  readonly facebook_url: string | null;
+  readonly instagram_url: string | null;
+  readonly tiktok_url: string | null;
+}
+
+/** One membership's staff titles, aggregated for the public "who's who". */
+export interface StaffDirectoryRow {
+  readonly membership_id: string;
+  readonly display_name: string | null;
+  readonly nickname: string | null;
+  readonly titles: readonly string[];
+  readonly photo_url: string | null;
+}
+
+export interface StaffAssignmentRow {
+  readonly id: string;
+  readonly team_id: string;
+  readonly membership_id: string;
+  readonly title_entry_id: string;
+  readonly photo_url: string | null;
+  readonly status: string;
+  readonly created_by: string | null;
+  readonly removed_by: string | null;
+  readonly created_at: string | Date;
+  readonly updated_at: string | Date;
+  readonly removed_at: string | Date | null;
+  readonly version: number;
+}
+
 export interface CountRow {
   readonly count: number;
 }

@@ -88,7 +88,17 @@ describe('seedTeam', () => {
 
     expect(queryRunner.query).toHaveBeenCalledWith(
       expect.stringContaining('INSERT INTO "teams"'),
-      ['un', 'Ultimate Natives', '#000000', ADMIN_ID],
+      [
+        'un',
+        'Ultimate Natives',
+        '#000000',
+        'El Sheikh Zayed, Giza, Egypt',
+        '2021-10-01',
+        'https://www.facebook.com/ultimatenatives',
+        'https://www.instagram.com/ultimatenatives',
+        'https://www.tiktok.com/@ultimate.natives',
+        ADMIN_ID,
+      ],
     );
     expect(queryRunner.query).toHaveBeenCalledWith(
       expect.stringContaining('INSERT INTO "seasons"'),
@@ -245,7 +255,17 @@ describe('createSeedTeamSeeder', () => {
     expect(loadAdminEmail).toHaveBeenCalledOnce();
     expect(queryRunner.query).toHaveBeenCalledWith(
       expect.stringContaining('INSERT INTO "teams"'),
-      ['un', 'Ultimate Natives', '#000000', ADMIN_ID],
+      [
+        'un',
+        'Ultimate Natives',
+        '#000000',
+        'El Sheikh Zayed, Giza, Egypt',
+        '2021-10-01',
+        'https://www.facebook.com/ultimatenatives',
+        'https://www.instagram.com/ultimatenatives',
+        'https://www.tiktok.com/@ultimate.natives',
+        ADMIN_ID,
+      ],
     );
   });
 });
