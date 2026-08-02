@@ -131,9 +131,16 @@ async function seedPlayer(
 
   await queryRunner.query(
     `INSERT INTO "member_profiles" ("membership_id", "team_id", "full_name",
-            "nickname", "jersey_number")
-     VALUES ($1, $2, $3, $4, $5)`,
-    [membershipId, teamId, player.fullName, player.nickname, player.jerseyNumber],
+            "nickname", "jersey_number", "jersey_display")
+     VALUES ($1, $2, $3, $4, $5, $6)`,
+    [
+      membershipId,
+      teamId,
+      player.fullName,
+      player.nickname,
+      player.jerseyNumber,
+      player.jerseyLabel,
+    ],
   );
 
   return membershipId;

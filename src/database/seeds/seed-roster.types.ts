@@ -4,8 +4,14 @@ export interface RosterPlayer {
   readonly key: string;
   readonly fullName: string;
   readonly nickname: string;
-  /** Null where the source sheet is ambiguous or the number collides. */
+  /**
+   * The numeric column, which carries the per-team uniqueness index. Null
+   * where the printed form has no unambiguous integer, or where the integer
+   * is already taken by another player.
+   */
   readonly jerseyNumber: number | null;
+  /** The shirt number exactly as printed, including any leading zero. */
+  readonly jerseyLabel: string | null;
 }
 
 /** One entry in the extensible `staff_title` reference catalog. */
