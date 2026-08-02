@@ -1266,6 +1266,28 @@
         ],
         "type": "object"
       },
+      "AssignStaffTitleDto": {
+        "properties": {
+          "membershipId": {
+            "description": "The membership to grant the staff title to",
+            "type": "string"
+          },
+          "photoUrl": {
+            "maxLength": 2048,
+            "nullable": true,
+            "type": "string"
+          },
+          "titleEntryId": {
+            "description": "A staff_title reference-catalog entry id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "membershipId",
+          "titleEntryId"
+        ],
+        "type": "object"
+      },
       "AttemptInputDto": {
         "properties": {
           "disqualified": {
@@ -2635,7 +2657,8 @@
             "enum": [
               "division",
               "gender_format",
-              "position"
+              "position",
+              "staff_title"
             ],
             "type": "string"
           },
@@ -4068,7 +4091,8 @@
             "enum": [
               "division",
               "gender_format",
-              "position"
+              "position",
+              "staff_title"
             ],
             "type": "string"
           },
@@ -10701,6 +10725,32 @@
         ],
         "type": "object"
       },
+      "ListStaffAssignmentsResponseDto": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/StaffAssignmentResponseDto"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "type": "object"
+      },
       "ListStandingsResponseDto": {
         "properties": {
           "items": {
@@ -14946,6 +14996,147 @@
           "teamRole",
           "teamId",
           "teamName"
+        ],
+        "type": "object"
+      },
+      "PublicRosterPlayerResponseDto": {
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "jerseyNumber": {
+            "nullable": true,
+            "type": "number"
+          },
+          "membershipId": {
+            "type": "string"
+          },
+          "nickname": {
+            "nullable": true,
+            "type": "string"
+          },
+          "photoUrl": {
+            "description": "Direct photo URL, null until an admin attaches one",
+            "nullable": true,
+            "type": "string"
+          },
+          "positions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "membershipId",
+          "displayName",
+          "nickname",
+          "jerseyNumber",
+          "positions",
+          "photoUrl"
+        ],
+        "type": "object"
+      },
+      "PublicStaffMemberResponseDto": {
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "membershipId": {
+            "type": "string"
+          },
+          "nickname": {
+            "nullable": true,
+            "type": "string"
+          },
+          "photoUrl": {
+            "nullable": true,
+            "type": "string"
+          },
+          "titles": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "membershipId",
+          "displayName",
+          "nickname",
+          "titles",
+          "photoUrl"
+        ],
+        "type": "object"
+      },
+      "PublicTeamDirectoryResponseDto": {
+        "properties": {
+          "players": {
+            "items": {
+              "$ref": "#/components/schemas/PublicRosterPlayerResponseDto"
+            },
+            "type": "array"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/PublicTeamProfileResponseDto"
+          },
+          "staff": {
+            "items": {
+              "$ref": "#/components/schemas/PublicStaffMemberResponseDto"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "profile",
+          "staff",
+          "players"
+        ],
+        "type": "object"
+      },
+      "PublicTeamProfileResponseDto": {
+        "properties": {
+          "facebookUrl": {
+            "nullable": true,
+            "type": "string"
+          },
+          "foundedOn": {
+            "description": "Date-only, ISO YYYY-MM-DD",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "instagramUrl": {
+            "nullable": true,
+            "type": "string"
+          },
+          "location": {
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "tiktokUrl": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "name",
+          "location",
+          "foundedOn",
+          "facebookUrl",
+          "instagramUrl",
+          "tiktokUrl"
         ],
         "type": "object"
       },
@@ -19467,6 +19658,72 @@
           "archivedAt",
           "createdAt",
           "updatedAt"
+        ],
+        "type": "object"
+      },
+      "StaffAssignmentResponseDto": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdBy": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "membershipId": {
+            "type": "string"
+          },
+          "photoUrl": {
+            "nullable": true,
+            "type": "string"
+          },
+          "removedAt": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "removedBy": {
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "removed"
+            ],
+            "type": "string"
+          },
+          "teamId": {
+            "type": "string"
+          },
+          "titleEntryId": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "teamId",
+          "membershipId",
+          "titleEntryId",
+          "photoUrl",
+          "status",
+          "createdBy",
+          "removedBy",
+          "createdAt",
+          "updatedAt",
+          "removedAt",
+          "version"
         ],
         "type": "object"
       },
@@ -24407,6 +24664,43 @@
         ]
       }
     },
+    "/public/teams/{slug}/directory": {
+      "get": {
+        "operationId": "PublicTeamDirectory.get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "slug",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicTeamDirectoryResponseDto"
+                }
+              }
+            },
+            "description": "Public team directory"
+          },
+          "404": {
+            "description": "Team not found"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Get a team’s public profile, staff, and roster",
+        "tags": [
+          "public-team-directory"
+        ]
+      }
+    },
     "/rbac/assignments": {
       "post": {
         "operationId": "Rbac.assign",
@@ -27900,7 +28194,8 @@
               "enum": [
                 "division",
                 "gender_format",
-                "position"
+                "position",
+                "staff_title"
               ],
               "type": "string"
             }
@@ -42205,6 +42500,151 @@
         "summary": "Publish, lock, revise, or archive a squad",
         "tags": [
           "squads"
+        ]
+      }
+    },
+    "/teams/{teamId}/staff": {
+      "get": {
+        "operationId": "Staff.list",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListStaffAssignmentsResponseDto"
+                }
+              }
+            },
+            "description": "Staff assignments"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "summary": "List a team’s staff-title assignments",
+        "tags": [
+          "teams"
+        ]
+      },
+      "post": {
+        "operationId": "Staff.create",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignStaffTitleDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StaffAssignmentResponseDto"
+                }
+              }
+            },
+            "description": "Staff assignment created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Assign a staff title to a membership",
+        "tags": [
+          "teams"
+        ]
+      }
+    },
+    "/teams/{teamId}/staff/{assignmentId}": {
+      "delete": {
+        "operationId": "Staff.archive",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "teamId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "assignmentId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StaffAssignmentResponseDto"
+                }
+              }
+            },
+            "description": "Staff assignment removed"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Remove a staff-title assignment",
+        "tags": [
+          "teams"
         ]
       }
     },
