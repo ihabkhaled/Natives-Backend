@@ -12,6 +12,11 @@
   "overrides": {
     "@nestjs/platform-fastify": {
       "fastify": "$fastify"
+    },
+    "@fastify/static": "$@fastify/static",
+    "find-my-way": "^9.7.0",
+    "@nestjs/swagger": {
+      "js-yaml": "^5.2.3"
     }
   },
   "scripts": {
@@ -66,7 +71,7 @@
     "@fastify/cookie": "^11.1.2",
     "@fastify/cors": "^11.3.0",
     "@fastify/helmet": "^13.1.0",
-    "@fastify/static": "^9.3.0",
+    "@fastify/static": "^10.1.2",
     "@nestjs/common": "^11.1.28",
     "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.1.28",

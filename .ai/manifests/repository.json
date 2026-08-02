@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-02T07:26:28.194Z",
-  "treeHash": "sha256:0a2a75530f39d5c47192ab9290bc7133c71a29d2ec94887c3cc7cc21c620ee69",
+  "generatedAt": "2026-08-02T14:12:31.021Z",
+  "treeHash": "sha256:8333c557a4bd335d6938096768b3bb6b36964cf6bd3798946ace4e9665bcc3dc",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -1862,6 +1862,23 @@
       "sizeBytes": 1831
     },
     {
+      "path": "src/core/email/email-throttled.error.ts",
+      "root": "core",
+      "module": "email",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "EmailThrottledError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:50bf74e69b5bd493b5348f12afc7d76a67930bf1fce585bd5be1a01a151956b2",
+      "sizeBytes": 586
+    },
+    {
       "path": "src/core/email/email.constants.ts",
       "root": "core",
       "module": "email",
@@ -1889,6 +1906,14 @@
         },
         {
           "kind": "const",
+          "name": "EMAIL_THROTTLED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "EMAIL_THROTTLED_MESSAGE_KEY"
+        },
+        {
+          "kind": "const",
           "name": "EMAIL_TEST_SUBJECT"
         },
         {
@@ -1911,8 +1936,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:84538617159c24fabca71fe327cbe400151af2ac3ccd56d4e2d1210e792aece6",
-      "sizeBytes": 1559
+      "hash": "sha256:0000cff304f0b4fa24a2df6eff43ef4754a03271574fa63c330ba40c20f4cdfa",
+      "sizeBytes": 2185
     },
     {
       "path": "src/core/email/email.module.spec.ts",
@@ -2022,8 +2047,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:7ec5c8dc29de437fd4349224f0e56cb0c86ad1f356f333c035be0f79a47028b4",
-      "sizeBytes": 3949
+      "hash": "sha256:5cdc61f749d08e7cd93595b5a98376856545b29d39f6cb1d960208951aa75b4a",
+      "sizeBytes": 4121
     },
     {
       "path": "src/core/email/smtp-email-sender.service.ts",
@@ -2039,8 +2064,8 @@
       "hasSpec": true,
       "specPath": "src/core/email/smtp-email-sender.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:d25ed71df365e86db127e9c3c1dd927885ba618731c8b25e8119378d94ecb4df",
-      "sizeBytes": 2393
+      "hash": "sha256:773b8194951c35985be89609acf445fa7b914f709157e26dee699a65808375ae",
+      "sizeBytes": 2844
     },
     {
       "path": "src/core/errors/app-error.ts",
@@ -2266,6 +2291,23 @@
       "kind": "source",
       "hash": "sha256:4b0ffad1003267d4a58e097e2a7b10ebf5eea186bf69be9f16fcd096a1fd0146",
       "sizeBytes": 414
+    },
+    {
+      "path": "src/core/errors/too-many-requests.error.ts",
+      "root": "core",
+      "module": "errors",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "TooManyRequestsError"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:0428afc0f574b579b5c173bc0a1273434394a3fccbd94fd04c6c4187ec2af08c",
+      "sizeBytes": 464
     },
     {
       "path": "src/core/errors/unauthorized.error.ts",
@@ -4244,6 +4286,57 @@
       "sizeBytes": 2589
     },
     {
+      "path": "src/database/migrations/1726000000000-member-jersey-display.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "MemberJerseyDisplay1726000000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:511fdfcf6dca4acd4ddd36ef399701967de031107c8b4d7bff1d5905d7539ddf",
+      "sizeBytes": 1736
+    },
+    {
+      "path": "src/database/migrations/1726100000000-jersey-number-as-text.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "JerseyNumberAsText1726100000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:08c2584401882b04573b2de21cd82cbec7a5c5e4daa0228561014be6cd3c9e8b",
+      "sizeBytes": 4362
+    },
+    {
+      "path": "src/database/migrations/1726200000000-roster-jersey-text-and-name-fix.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "RosterJerseyTextAndNameFix1726200000000"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:81c66478356606d7f89c32421f0bba5009e40a0a28782e1f14038b14aa4546b7",
+      "sizeBytes": 4068
+    },
+    {
       "path": "src/database/migrations/achievement-rejection-reason-schema.spec.ts",
       "root": "app",
       "module": "app",
@@ -5211,8 +5304,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:690cc7a6c2791f2e14db371f8c8df9b3e9875b727bd4892f19ac6cb9ff0fbdfc",
-      "sizeBytes": 1463
+      "hash": "sha256:cc48b351b34ddab7d33083052cb353eafa3351ab1ebdc1eb1c5c78205f24e0b4",
+      "sizeBytes": 1527
     },
     {
       "path": "src/database/seeds/seed-registry.ts",
@@ -5228,8 +5321,107 @@
       "hasSpec": true,
       "specPath": "src/database/seeds/seed-registry.spec.ts",
       "kind": "source",
-      "hash": "sha256:745044c8928e2eb956fe5eff9194f7d1dbb59a5a7b8af85187fb38a0e7f1771a",
-      "sizeBytes": 1317
+      "hash": "sha256:74309cd9d8b37cf514380dac664a318c331bbc0c5d54818b41ba9a6bc1642159",
+      "sizeBytes": 1403
+    },
+    {
+      "path": "src/database/seeds/seed-roster.constants.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "ROSTER_MEMBERSHIP_STATUS"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_PLAYERS"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_TITLE_CATALOG"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_TITLES"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_ASSIGNMENTS"
+        },
+        {
+          "kind": "const",
+          "name": "STAFF_ONLY_MEMBERS"
+        },
+        {
+          "kind": "const",
+          "name": "TEAM_MISSING_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "MEMBERSHIP_INSERT_FAILED_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "CATALOG_INSERT_FAILED_MESSAGE"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6684e6ea1f30d851fb23eed4b83addfcb64a4b180de5159c23168bdf8fdeabbd",
+      "sizeBytes": 7227
+    },
+    {
+      "path": "src/database/seeds/seed-roster.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:19bf4790361fbdccca7bfed921d62d1b4cd096a65da40eb0526479e7449c07a2",
+      "sizeBytes": 8790
+    },
+    {
+      "path": "src/database/seeds/seed-roster.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "createSeedRosterSeeder"
+        }
+      ],
+      "hasSpec": true,
+      "specPath": "src/database/seeds/seed-roster.spec.ts",
+      "kind": "source",
+      "hash": "sha256:84d5df566b00092ee3e4bd68112bc32547d4c17df1942576f9cbff1aed44e1b7",
+      "sizeBytes": 5533
+    },
+    {
+      "path": "src/database/seeds/seed-roster.types.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "RosterPlayer"
+        },
+        {
+          "kind": "interface",
+          "name": "StaffTitleDefinition"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6959e4b774acb99c118db79f7cc91bf81562c14860c60c4680d86bb5c6946423",
+      "sizeBytes": 619
     },
     {
       "path": "src/database/seeds/seed-runner.spec.ts",
@@ -5422,6 +5614,10 @@
         },
         {
           "kind": "const",
+          "name": "SEED_ROSTER_KEY"
+        },
+        {
+          "kind": "const",
           "name": "SEED_APPLIED_BY_BOOT"
         },
         {
@@ -5463,13 +5659,17 @@
         {
           "kind": "const",
           "name": "SEED_HISTORY_INSERT_SQL"
+        },
+        {
+          "kind": "const",
+          "name": "ROSTER_SEED_DEFINITION"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:05272aa5b6bad4fb3d377373b51c9e466e46b06afe3819d7828904628e201c60",
-      "sizeBytes": 5045
+      "hash": "sha256:2b6bee7d930b8c88040e9b668fb64a7f62958ce84976d520ebe77104f64caec3",
+      "sizeBytes": 5810
     },
     {
       "path": "src/database/seeds/seed.types.ts",
@@ -5668,18 +5868,6 @@
       "kind": "source",
       "hash": "sha256:d4768cfc924a718344e7afd6b14c9cb24fc14fefacafda19252fdc7b99643cd7",
       "sizeBytes": 1401
-    },
-    {
-      "path": "src/main.ts",
-      "root": "app",
-      "module": "app",
-      "layer": "other",
-      "symbols": [],
-      "hasSpec": false,
-      "specPath": null,
-      "kind": "source",
-      "hash": "sha256:3487f9c5989f7835e092b8abd6aa93ab89bc19a7fd3474f5ed1d615533e6b595",
-      "sizeBytes": 124
     },
     {
       "path": "src/modules/activities/activities.module.ts",
@@ -32910,7 +33098,7 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:39b6a612a466382e99365cae80f98224e281ab0b344f01e3572bdb2c17b687e9",
+      "hash": "sha256:551c7d347c3543a3d414c021c5e44029634027d199292aa52ba4a587350abb9c",
       "sizeBytes": 1158
     },
     {
@@ -32965,7 +33153,7 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:3c213785fd743271a2e16a4adb984f280cce6aecc647b103da673d382f293db1",
+      "hash": "sha256:586da2b63c9e004d2ffae207f96aa90b88aa1948fe25836ff275c961b606f494",
       "sizeBytes": 2662
     },
     {
@@ -32986,6 +33174,18 @@
       "sizeBytes": 1681
     },
     {
+      "path": "src/modules/members/api/dto/player-profile.dto.spec.ts",
+      "root": "modules",
+      "module": "members",
+      "layer": "api-dto",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:27ea2747e80fe32137722d3e882e3171cab685832f6ab0d44ceaa824c26c975d",
+      "sizeBytes": 1975
+    },
+    {
       "path": "src/modules/members/api/dto/player-profile.dto.ts",
       "root": "modules",
       "module": "members",
@@ -32996,11 +33196,11 @@
           "name": "PlayerProfileDto"
         }
       ],
-      "hasSpec": false,
-      "specPath": null,
+      "hasSpec": true,
+      "specPath": "src/modules/members/api/dto/player-profile.dto.spec.ts",
       "kind": "source",
-      "hash": "sha256:de0fca0152e3e397e7008fdea01d8137be462d5c9c84aa075b329571b0c32f09",
-      "sizeBytes": 3523
+      "hash": "sha256:aa09a85fc46b74ef99d30c4431337220a01e073b4cd43fbf225a7c4b23e91a21",
+      "sizeBytes": 3613
     },
     {
       "path": "src/modules/members/api/dto/record-scan.dto.ts",
@@ -33793,7 +33993,7 @@
       "hasSpec": true,
       "specPath": "src/modules/members/domain/jersey.policy.spec.ts",
       "kind": "source",
-      "hash": "sha256:449961ae793b259e5eea3f3f39cf63b4217c4d48b0df3228bb40ebc47424e549",
+      "hash": "sha256:084b06774df0d0cea9f91e240a26105aa59f03ddbc91e2d9d71a8de7b4e9d169",
       "sizeBytes": 1065
     },
     {
@@ -34881,11 +35081,7 @@
         },
         {
           "kind": "const",
-          "name": "JERSEY_NUMBER_MIN"
-        },
-        {
-          "kind": "const",
-          "name": "JERSEY_NUMBER_MAX"
+          "name": "JERSEY_NUMBER_PATTERN"
         },
         {
           "kind": "const",
@@ -35223,8 +35419,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:23fa5321fe11824aeb85e94c9148a9b87a4d2bdabd5cdbe06e8fa3374ad75cd5",
-      "sizeBytes": 11884
+      "hash": "sha256:6456f0cea72a9c889ec85b3b64695fb06d68714f45751fe0017e55f52a84d916",
+      "sizeBytes": 12032
     },
     {
       "path": "src/modules/members/model/members.enums.ts",
@@ -35349,7 +35545,7 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:2a2ebce6ea485fc140a593603e092d4433ab315df1ff630613eecfdd350fafac",
+      "hash": "sha256:c52e9277f54065c3efc0bf4ec81c44924a6b33f1c2cc8fdae0697259d887906b",
       "sizeBytes": 4933
     },
     {
@@ -35558,7 +35754,7 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:5c66ce76ea91bb541a40be9b3d67f6ddaaf9cd1b064c4c79511e8b9274ede73e",
+      "hash": "sha256:e6dad5bf92666c07289a3f984ae6583a336866160888745a8c669aae95e3fc24",
       "sizeBytes": 15074
     },
     {
@@ -51779,6 +51975,18 @@
       "sizeBytes": 2293
     },
     {
+      "path": "src/modules/rosters/api/dto/add-roster-entry.dto.spec.ts",
+      "root": "modules",
+      "module": "rosters",
+      "layer": "api-dto",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:ac5dca1580374f7381a8d105a9edecf10bc124c4ba889b179f1ac42144d5ed07",
+      "sizeBytes": 1542
+    },
+    {
       "path": "src/modules/rosters/api/dto/add-roster-entry.dto.ts",
       "root": "modules",
       "module": "rosters",
@@ -51789,11 +51997,11 @@
           "name": "AddRosterEntryDto"
         }
       ],
-      "hasSpec": false,
-      "specPath": null,
+      "hasSpec": true,
+      "specPath": "src/modules/rosters/api/dto/add-roster-entry.dto.spec.ts",
       "kind": "source",
-      "hash": "sha256:d40c2e9a60dc7eaf37b154c61fe32b918ba1cb73bdc92b9736cffb49d25baf90",
-      "sizeBytes": 1792
+      "hash": "sha256:26dd50489a04a07525facb075c49fbd9300a97277f60fd6b6ce0b8f8a5bcfe3d",
+      "sizeBytes": 1825
     },
     {
       "path": "src/modules/rosters/api/dto/create-competition-roster.dto.ts",
@@ -52013,7 +52221,7 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:8deff92c16c2a1d29a46484bd689f46b5e356250ae6e12fe2a1f66bab9a14ad2",
+      "hash": "sha256:466fd9af6322c58b9f47dbae84c67c0008d765e1b5bcf115e58b6d44799b9a41",
       "sizeBytes": 2559
     },
     {
@@ -52081,7 +52289,7 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:05714f832c69af711f849c755721d71e58618085d6a8b9a108a306d1b5eda0f6",
+      "hash": "sha256:265f8a7b07990e13994e41a8519edcf5f482d6db83446b9b89e79ccf8136451e",
       "sizeBytes": 1210
     },
     {
@@ -52237,7 +52445,7 @@
       "hasSpec": true,
       "specPath": "src/modules/rosters/application/add-roster-entry.use-case.spec.ts",
       "kind": "source",
-      "hash": "sha256:66983282ec6c9fc163038ed4c663e3cda02cbe1b42f4821062ce013430af1386",
+      "hash": "sha256:a9c6b7c0ebf8a5ba8d79d6011d74c252137cbfce23fe24e171c55108e86ed086",
       "sizeBytes": 5774
     },
     {
@@ -52766,7 +52974,7 @@
       "hasSpec": true,
       "specPath": "src/modules/rosters/domain/roster-composition.policy.spec.ts",
       "kind": "source",
-      "hash": "sha256:e247bec7ce9e3dd998c30e97179d399085822be12a142b6e8fe9af2bc214f293",
+      "hash": "sha256:a13b8e527c2620ff3d0e74f554914c7215806670c1d811d1ddd7ac15f875b483",
       "sizeBytes": 7306
     },
     {
@@ -53294,7 +53502,7 @@
       "hasSpec": true,
       "specPath": "src/modules/rosters/infrastructure/roster-entry.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:16f207c292d0cd76b9f0bddb20df10f8a6b562aeac6f378d058acc94cdfbeb97",
+      "hash": "sha256:f18af4635ffc6abcadc4627fbb769985986521fc1e34759ffe8c2c2de9d42be8",
       "sizeBytes": 6377
     },
     {
@@ -53719,8 +53927,8 @@
       "hasSpec": true,
       "specPath": "src/modules/rosters/lib/rosters.mapper.spec.ts",
       "kind": "source",
-      "hash": "sha256:f633f4ec84bbcac3a6e56c55b684072e27e914b15190636f25ad130a2a6e3b82",
-      "sizeBytes": 7053
+      "hash": "sha256:0a38cbc69fc32ace1135bd17f45b1e2b1c77e12d154248cb6307cd178871490b",
+      "sizeBytes": 6995
     },
     {
       "path": "src/modules/rosters/model/rosters.constants.ts",
@@ -53870,11 +54078,7 @@
         },
         {
           "kind": "const",
-          "name": "JERSEY_NUMBER_MIN"
-        },
-        {
-          "kind": "const",
-          "name": "JERSEY_NUMBER_MAX"
+          "name": "JERSEY_NUMBER_PATTERN"
         },
         {
           "kind": "const",
@@ -54112,8 +54316,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:1ec37956791de3f365adaba20f7957694de224e791e4421cc16bd69175987a79",
-      "sizeBytes": 9431
+      "hash": "sha256:7d1c41f10f548df49f42e5490a3d40edd5fb6c4c7329dfd43a8267bad39aaaa9",
+      "sizeBytes": 9485
     },
     {
       "path": "src/modules/rosters/model/rosters.enums.ts",
@@ -54306,7 +54510,7 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:97f584c604226b6b639c9a130a3d6c5c18f9fcd20817f214097f84ab5eb7ed02",
+      "hash": "sha256:0048122cda644e0befe537ea90c2efc1e4941337c9e7cfa9499feaa41bb0c7de",
       "sizeBytes": 4186
     },
     {
@@ -54487,7 +54691,7 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:0a584157c5e760db66701180dde834ae30bef99d0ce0922334e8a5ae6ae33abe",
+      "hash": "sha256:edad6279330f491ca2c5c04c354f7658209f7036ec30a7b439e9693c71c8db6e",
       "sizeBytes": 14905
     },
     {
@@ -56548,7 +56752,7 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:cea81d003d1b95aee50735efcac1d39430e6be51cfa33473bc538d2ed4f4848c",
+      "hash": "sha256:8530e41efa9c0fb00247e950fe801f7e80916f7a6a5952645d232bea4a7a67ab",
       "sizeBytes": 2563
     },
     {
@@ -57187,7 +57391,7 @@
       "hasSpec": true,
       "specPath": "src/modules/squads/domain/eligibility-signal.policy.spec.ts",
       "kind": "source",
-      "hash": "sha256:595269257bed33c5ca5131eeb3ade00b32caf2d720901a2f2fa22b2257c6c51e",
+      "hash": "sha256:073cde6080e6cdba628c5eaab6242f2312fa7f45c23c87fa3b1f1c210cb3fb4b",
       "sizeBytes": 6489
     },
     {
@@ -58337,7 +58541,7 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9f7a7426200e895dc09f3effdad28d710074a87fe3e60a4bd94b9548e6085da4",
+      "hash": "sha256:d6e9a7951858e427fbd97882f338bcd5c3369737c42526c66f2d3e6d6635921c",
       "sizeBytes": 3054
     },
     {
@@ -58470,7 +58674,7 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:51af5e92e15304be20497189b69154d888d07c7382ab5e1091ba547c0573620a",
+      "hash": "sha256:fd9797772edc694a2b6a5e46099529226735c8d7701fda35818382af12f078f2",
       "sizeBytes": 9209
     },
     {
@@ -60502,8 +60706,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:d98c1f14e5dc7e0d4e2575d4fafd31e4e822f6b18c130dcc3b5c692aff579ae4",
-      "sizeBytes": 662
+      "hash": "sha256:9f7908d1bc8146c6da58e2725c9b1fb3f2872aba69e34868d296bb626ac1d2ff",
+      "sizeBytes": 753
     },
     {
       "path": "src/modules/teams/api/dto/public-staff-member-response.dto.ts",
@@ -62800,7 +63004,7 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:152b6a4f04a1601b77cab59db35f78b82c09d2f061fb9970b7645f062b888e4e",
+      "hash": "sha256:80be99ae80effda6c6fbf8387307c55a5c6ad673c685dcb0e57431786e43fd4e",
       "sizeBytes": 978
     },
     {
@@ -65808,6 +66012,18 @@
       "kind": "source",
       "hash": "sha256:259fdd5b8dc2f65ce6c2dc208c7be21d5e44dc937d0c2d30afc3bc07e08c8369",
       "sizeBytes": 2767
+    },
+    {
+      "path": "src/server.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:3487f9c5989f7835e092b8abd6aa93ab89bc19a7fd3474f5ed1d615533e6b595",
+      "sizeBytes": 124
     },
     {
       "path": "src/shared/constants/http-status.constants.ts",

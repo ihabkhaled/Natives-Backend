@@ -70,29 +70,6 @@ import { RostersSchema1723500000000 } from '../../src/database/migrations/172350
 import { MatchesSchema1723600000000 } from '../../src/database/migrations/1723600000000-matches-schema';
 import { MatchLineupsSchema1723700000000 } from '../../src/database/migrations/1723700000000-match-lineups-schema';
 import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
-import { VideoAnalysisSchema1723900000000 } from '../../src/database/migrations/1723900000000-video-analysis-schema';
-import { StandingsSchema1724000000000 } from '../../src/database/migrations/1724000000000-standings-schema';
-import { TryoutsSchema1724100000000 } from '../../src/database/migrations/1724100000000-tryouts-schema';
-import { GovernanceSchema1724200000000 } from '../../src/database/migrations/1724200000000-governance-schema';
-import { JerseysSchema1724300000000 } from '../../src/database/migrations/1724300000000-jerseys-schema';
-import { AnalyticsSchema1724400000000 } from '../../src/database/migrations/1724400000000-analytics-schema';
-import { ReportsSchema1724500000000 } from '../../src/database/migrations/1724500000000-reports-schema';
-import { MigrationSchema1724600000000 } from '../../src/database/migrations/1724600000000-migration-schema';
-import { DataQualitySchema1724700000000 } from '../../src/database/migrations/1724700000000-data-quality-schema';
-import { InvitationsTeamScope1724800000000 } from '../../src/database/migrations/1724800000000-invitations-team-scope';
-import { TeamAdminMatchScore1724900000000 } from '../../src/database/migrations/1724900000000-team-admin-match-score';
-import { RbacRoleCatalogMetadata1725000000000 } from '../../src/database/migrations/1725000000000-rbac-role-catalog-metadata';
-import { InvitationTeamRole1725100000000 } from '../../src/database/migrations/1725100000000-invitation-team-role';
-import { JobHeartbeats1725200000000 } from '../../src/database/migrations/1725200000000-job-heartbeats';
-import { OutboxDeadLetterTimestamp1725300000000 } from '../../src/database/migrations/1725300000000-outbox-dead-letter-timestamp';
-import { GovernanceJerseyReadGrants1725400000000 } from '../../src/database/migrations/1725400000000-governance-jersey-read-grants';
-import { AchievementRejectionReason1725500000000 } from '../../src/database/migrations/1725500000000-achievement-rejection-reason';
-import { SignupReview1725600000000 } from '../../src/database/migrations/1725600000000-signup-review';
-import { TeamStaffAssignments1725700000000 } from '../../src/database/migrations/1725700000000-team-staff-assignments';
-import { TeamPublicProfile1725900000000 } from '../../src/database/migrations/1725900000000-team-public-profile';
-import { MemberJerseyDisplay1726000000000 } from '../../src/database/migrations/1726000000000-member-jersey-display';
-import { JerseyNumberAsText1726100000000 } from '../../src/database/migrations/1726100000000-jersey-number-as-text';
-import { RosterJerseyTextAndNameFix1726200000000 } from '../../src/database/migrations/1726200000000-roster-jersey-text-and-name-fix';
 
 const TEST_DB_CONFIG = {
   url: process.env['TEST_DATABASE_URL'],
@@ -142,29 +119,6 @@ const MIGRATIONS = [
   MatchesSchema1723600000000,
   MatchLineupsSchema1723700000000,
   PlatformLifecycleSchema1723800000000,
-  VideoAnalysisSchema1723900000000,
-  StandingsSchema1724000000000,
-  TryoutsSchema1724100000000,
-  GovernanceSchema1724200000000,
-  JerseysSchema1724300000000,
-  AnalyticsSchema1724400000000,
-  ReportsSchema1724500000000,
-  MigrationSchema1724600000000,
-  DataQualitySchema1724700000000,
-  InvitationsTeamScope1724800000000,
-  TeamAdminMatchScore1724900000000,
-  RbacRoleCatalogMetadata1725000000000,
-  InvitationTeamRole1725100000000,
-  JobHeartbeats1725200000000,
-  OutboxDeadLetterTimestamp1725300000000,
-  GovernanceJerseyReadGrants1725400000000,
-  AchievementRejectionReason1725500000000,
-  SignupReview1725600000000,
-  TeamStaffAssignments1725700000000,
-  TeamPublicProfile1725900000000,
-  MemberJerseyDisplay1726000000000,
-  JerseyNumberAsText1726100000000,
-  RosterJerseyTextAndNameFix1726200000000,
 ];
 
 function buildDataSource(): DataSource {

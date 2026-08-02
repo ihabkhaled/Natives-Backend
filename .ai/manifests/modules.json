@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T07:26:28.194Z",
+  "generatedAt": "2026-08-02T14:12:31.021Z",
   "modules": [
     {
       "name": "activities",
@@ -1346,7 +1346,7 @@
         ]
       },
       "fileCount": 82,
-      "specCount": 44,
+      "specCount": 45,
       "publicSurface": "src/modules/members/index.ts",
       "hasEvents": false
     },
@@ -2107,7 +2107,7 @@
         ]
       },
       "fileCount": 78,
-      "specCount": 34,
+      "specCount": 35,
       "publicSurface": "src/modules/rosters/index.ts",
       "hasEvents": false
     },

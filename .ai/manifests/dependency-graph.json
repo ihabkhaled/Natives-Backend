@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T07:26:28.194Z",
+  "generatedAt": "2026-08-02T14:12:31.021Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -892,6 +892,21 @@
       "type": "internal"
     },
     {
+      "from": "src/core/email/email-throttled.error.ts",
+      "to": "src/core/email/email.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/email-throttled.error.ts",
+      "to": "src/core/errors/too-many-requests.error.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/core/email/email.constants.ts",
+      "to": "src/core/errors/error.types.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/core/email/email.module.ts",
       "to": "src/config/app-config.service.ts",
       "type": "cross-cutting"
@@ -993,6 +1008,11 @@
     },
     {
       "from": "src/core/email/smtp-email-sender.service.ts",
+      "to": "src/core/email/email-throttled.error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/email/smtp-email-sender.service.ts",
       "to": "src/core/email/email.constants.ts",
       "type": "internal"
     },
@@ -1088,6 +1108,11 @@
     },
     {
       "from": "src/core/errors/service-unavailable.error.ts",
+      "to": "src/core/errors/app-error.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/core/errors/too-many-requests.error.ts",
       "to": "src/core/errors/app-error.ts",
       "type": "internal"
     },
@@ -1848,11 +1873,56 @@
     },
     {
       "from": "src/database/seeds/seed-registry.ts",
+      "to": "src/database/seeds/seed-roster.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-registry.ts",
       "to": "src/database/seeds/seed-team.ts",
       "type": "internal"
     },
     {
       "from": "src/database/seeds/seed-registry.ts",
+      "to": "src/database/seeds/seed.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-roster.constants.ts",
+      "to": "src/database/seeds/seed-roster.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-roster.constants.ts",
+      "to": "src/modules/members/index.ts",
+      "type": "cross-cutting"
+    },
+    {
+      "from": "src/database/seeds/seed-roster.ts",
+      "to": "src/database/seeds/seed-checksum.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-roster.ts",
+      "to": "src/database/seeds/seed-roster.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-roster.ts",
+      "to": "src/database/seeds/seed-roster.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-roster.ts",
+      "to": "src/database/seeds/seed-team.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-roster.ts",
+      "to": "src/database/seeds/seed.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-roster.ts",
       "to": "src/database/seeds/seed.types.ts",
       "type": "internal"
     },
@@ -1985,11 +2055,6 @@
       "from": "src/database/typeorm-unit-of-work.adapter.ts",
       "to": "src/database/typeorm-transaction-scope.ts",
       "type": "internal"
-    },
-    {
-      "from": "src/main.ts",
-      "to": "src/bootstrap/bootstrap.ts",
-      "type": "cross-cutting"
     },
     {
       "from": "src/modules/activities/activities.module.ts",
@@ -46315,6 +46380,11 @@
       "from": "src/modules/tryouts/tryouts.module.ts",
       "to": "src/modules/tryouts/infrastructure/tryout-selection.repository.ts",
       "type": "internal"
+    },
+    {
+      "from": "src/server.ts",
+      "to": "src/bootstrap/bootstrap.ts",
+      "type": "cross-cutting"
     },
     {
       "from": "src/shared/constants/index.ts",
