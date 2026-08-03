@@ -30,6 +30,17 @@ const STAFF: readonly StaffDirectoryEntry[] = [
   },
 ];
 
+const COMPETITIONS = [
+  {
+    competitionId: 'competition-1',
+    name: 'EUNC 2026',
+    seasonName: 'Season 2026',
+    competitionType: 'tournament',
+    startsOn: null,
+    endsOn: null,
+  },
+];
+
 const PLAYERS_RESULT = {
   items: [
     {
@@ -52,7 +63,10 @@ function build() {
   const unitOfWork = {
     runInTransaction: vi.fn((op: (scope: never) => unknown) => op(SCOPE)),
   };
-  const teams = { findPublicProfileBySlug: vi.fn().mockResolvedValue(PROFILE) };
+  const teams = {
+    findPublicProfileBySlug: vi.fn().mockResolvedValue(PROFILE),
+    listPublicCompetitions: vi.fn().mockResolvedValue(COMPETITIONS),
+  };
   const staff = { listPublicDirectory: vi.fn().mockResolvedValue(STAFF) };
   const members = {
     listActiveMembers: vi.fn().mockResolvedValue(PLAYERS_RESULT),
@@ -73,7 +87,7 @@ describe('PublicTeamDirectoryService', () => {
     harness = build();
   });
 
-  it('composes the team profile, staff directory, and active roster', async () => {
+  it('composes the team profile, staff directory, roster, and competitions', async () => {
     const result = await harness.service.getDirectory('ultimate-natives');
 
     expect(result.profile).toBe(PROFILE);
@@ -88,6 +102,7 @@ describe('PublicTeamDirectoryService', () => {
         photoUrl: null,
       },
     ]);
+    expect(result.competitions).toBe(COMPETITIONS);
     expect(harness.members.listActiveMembers).toHaveBeenCalledWith('team-1', {
       limit: 200,
       offset: 0,

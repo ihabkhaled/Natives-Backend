@@ -1,7 +1,7 @@
 import type { SeedContext, Seeder } from './seed.types';
 import { createSeedAdminSeeder } from './seed-admin';
-import { createSeedPersonasSeeder } from './seed-personas';
 import { createSeedCompetitionsSeeder } from './seed-competitions';
+import { createSeedPersonasSeeder } from './seed-personas';
 import { createSeedRosterSeeder } from './seed-roster';
 import { createSeedTeamSeeder } from './seed-team';
 

@@ -134,7 +134,7 @@ const ALL_MIGRATIONS = [
 ];
 const MIGRATION_COUNT = ALL_MIGRATIONS.length;
 // Every registered seeder writes exactly one seed_history row on a fresh boot.
-const SEEDER_COUNT = 4;
+const SEEDER_COUNT = 5;
 // The admin plus the thirteen demonstration personas the persona seeder
 // provisions (twelve team members and the membership-less platform-only one).
 const SEEDED_USER_COUNT = 14;
@@ -282,6 +282,7 @@ describeIfDb(suiteTitle, () => {
     );
     expect(seedRows).toEqual([
       { seed_key: 'admin', applied_by: 'boot' },
+      { seed_key: 'competitions-ultimate-natives', applied_by: 'boot' },
       { seed_key: 'personas', applied_by: 'boot' },
       { seed_key: 'roster-ultimate-natives', applied_by: 'boot' },
       { seed_key: 'team-ultimate-natives', applied_by: 'boot' },

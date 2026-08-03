@@ -7,6 +7,7 @@ import {
   SEED_TEAM_KEY,
 } from './seed.constants';
 import type { SeedContext } from './seed.types';
+import { SEED_COMPETITIONS_KEY } from './seed-competitions.constants';
 import { buildSeeders } from './seed-registry';
 
 function buildContext(): SeedContext {
@@ -22,7 +23,7 @@ function buildContext(): SeedContext {
 }
 
 describe('buildSeeders', () => {
-  it('registers admin, then team, then personas, then the real roster', () => {
+  it('registers admin, team, personas, the real roster, then competitions', () => {
     const seeders = buildSeeders(buildContext());
 
     expect(seeders.map(seeder => seeder.key)).toEqual([
@@ -30,6 +31,7 @@ describe('buildSeeders', () => {
       SEED_TEAM_KEY,
       SEED_PERSONAS_KEY,
       SEED_ROSTER_KEY,
+      SEED_COMPETITIONS_KEY,
     ]);
   });
 
