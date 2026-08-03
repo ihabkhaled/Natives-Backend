@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T14:12:31.021Z",
+  "generatedAt": "2026-08-03T15:24:15.281Z",
   "modules": [
     {
       "name": "activities",
@@ -2384,6 +2384,7 @@
           "src/modules/teams/api/dto/list-staff-assignments-response.dto.ts",
           "src/modules/teams/api/dto/list-teams-response.dto.ts",
           "src/modules/teams/api/dto/list-venues-response.dto.ts",
+          "src/modules/teams/api/dto/public-competition-response.dto.ts",
           "src/modules/teams/api/dto/public-roster-player-response.dto.ts",
           "src/modules/teams/api/dto/public-staff-member-response.dto.ts",
           "src/modules/teams/api/dto/public-team-directory-response.dto.ts",
@@ -2498,7 +2499,7 @@
           "src/modules/teams/model/teams.types.ts"
         ]
       },
-      "fileCount": 122,
+      "fileCount": 123,
       "specCount": 42,
       "publicSurface": "src/modules/teams/index.ts",
       "hasEvents": false

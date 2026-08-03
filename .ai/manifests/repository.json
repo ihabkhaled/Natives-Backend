@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-02T14:12:31.021Z",
-  "treeHash": "sha256:8333c557a4bd335d6938096768b3bb6b36964cf6bd3798946ace4e9665bcc3dc",
+  "generatedAt": "2026-08-03T15:24:15.281Z",
+  "treeHash": "sha256:66ca9b4a1c0ca4eabcb5ebb1010101695555be5fd7e76af6e79676f1d44a4280",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -5044,6 +5044,77 @@
       "sizeBytes": 505
     },
     {
+      "path": "src/database/seeds/seed-competitions.constants.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "SEED_COMPETITIONS_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITIONS_SEED_DEFINITION"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITIONS_TEAM_MISSING_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITIONS_SEASON_MISSING_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "SEED_COMPETITIONS"
+        },
+        {
+          "kind": "const",
+          "name": "COMPETITION_SEED_STATUS"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:737554cdb10c9c22c222377c8d3ef4f4346fe19d485378c9281986c6b9e969d1",
+      "sizeBytes": 1351
+    },
+    {
+      "path": "src/database/seeds/seed-competitions.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "function",
+          "name": "createSeedCompetitionsSeeder"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:1fcab4f0c5fee09012050c87a016dd8502425897c7dcf3138e62c04e2fd9a5bb",
+      "sizeBytes": 3051
+    },
+    {
+      "path": "src/database/seeds/seed-competitions.types.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "interface",
+          "name": "SeedCompetition"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d9674615f14bdce3dd5e113d5608c0aef060717c0e7f851bba6419b70d01bf7b",
+      "sizeBytes": 98
+    },
+    {
       "path": "src/database/seeds/seed-personas.constants.ts",
       "root": "app",
       "module": "app",
@@ -5304,8 +5375,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:cc48b351b34ddab7d33083052cb353eafa3351ab1ebdc1eb1c5c78205f24e0b4",
-      "sizeBytes": 1527
+      "hash": "sha256:f5137d22c79a3e3cded88b98810b3126029a45f642379fa42987d9015744a2b3",
+      "sizeBytes": 1631
     },
     {
       "path": "src/database/seeds/seed-registry.ts",
@@ -5321,8 +5392,8 @@
       "hasSpec": true,
       "specPath": "src/database/seeds/seed-registry.spec.ts",
       "kind": "source",
-      "hash": "sha256:74309cd9d8b37cf514380dac664a318c331bbc0c5d54818b41ba9a6bc1642159",
-      "sizeBytes": 1403
+      "hash": "sha256:45403c943b8c599f59dbba7996e0ae6e7eb48382ae8136d43d3283937c76e95b",
+      "sizeBytes": 1507
     },
     {
       "path": "src/database/seeds/seed-roster.constants.ts",
@@ -34626,8 +34697,8 @@
       "hasSpec": true,
       "specPath": "src/modules/members/infrastructure/membership.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:409f89b9345c8f5153d183ae6165122c27ec4173eb9cf878fc64f91a47948664",
-      "sizeBytes": 10801
+      "hash": "sha256:b613b5f7de6e211f31244d41d6c30065eb49affc8e5c94e7be644117d78177f6",
+      "sizeBytes": 11372
     },
     {
       "path": "src/modules/members/infrastructure/status-event.repository.spec.ts",
@@ -35297,6 +35368,14 @@
         },
         {
           "kind": "const",
+          "name": "PUBLIC_ROSTER_PLAYER_ROLE_KEY"
+        },
+        {
+          "kind": "const",
+          "name": "PUBLIC_ROSTER_PLAYS_PREDICATE"
+        },
+        {
+          "kind": "const",
           "name": "MEMBERSHIP_NOT_FOUND_MESSAGE"
         },
         {
@@ -35419,8 +35498,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:6456f0cea72a9c889ec85b3b64695fb06d68714f45751fe0017e55f52a84d916",
-      "sizeBytes": 12032
+      "hash": "sha256:d65f1f0d064470f6b5491664de6c509dbdae3be08ffee71b388c61291d10c251",
+      "sizeBytes": 13106
     },
     {
       "path": "src/modules/members/model/members.enums.ts",
@@ -60693,6 +60772,23 @@
       "sizeBytes": 400
     },
     {
+      "path": "src/modules/teams/api/dto/public-competition-response.dto.ts",
+      "root": "modules",
+      "module": "teams",
+      "layer": "api-dto",
+      "symbols": [
+        {
+          "kind": "class",
+          "name": "PublicCompetitionResponseDto"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:d96de9adef2e0578bae7f02c8fce87b5f9c3eb764eeb9827b3f99505a92bec04",
+      "sizeBytes": 820
+    },
+    {
       "path": "src/modules/teams/api/dto/public-roster-player-response.dto.ts",
       "root": "modules",
       "module": "teams",
@@ -60740,8 +60836,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:9d87d7d6af178a4bb08195657202210aa46c213ae305a382081796d5572902cd",
-      "sizeBytes": 713
+      "hash": "sha256:c991ae8c9115f7f7e2bc5a710b608cfef438a598785d3d20ded8f1fe04684c60",
+      "sizeBytes": 927
     },
     {
       "path": "src/modules/teams/api/dto/public-team-profile-response.dto.ts",
@@ -61558,8 +61654,8 @@
       "hasSpec": null,
       "specPath": null,
       "kind": "spec",
-      "hash": "sha256:0526729f44c39c84e383b86a2bbc83f2bc06861ff0b8c9c4c97a90fb7dcaf9c7",
-      "sizeBytes": 2829
+      "hash": "sha256:2cc9d21ee49788e3bd2357ccfd80410c5d6decdc01fba32bfacb8c97e60e8b93",
+      "sizeBytes": 3163
     },
     {
       "path": "src/modules/teams/application/public-team-directory.service.ts",
@@ -61575,8 +61671,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/application/public-team-directory.service.spec.ts",
       "kind": "source",
-      "hash": "sha256:f16037d717a3ead6a594369629d427e8edcc0ad1abe35775cefa7742646a8073",
-      "sizeBytes": 2207
+      "hash": "sha256:9cbf1918426fdfb63854b552bbe0dfbcd4030616a05c26e0f57465a75974d37a",
+      "sizeBytes": 2367
     },
     {
       "path": "src/modules/teams/application/remove-staff-assignment.use-case.spec.ts",
@@ -62844,8 +62940,8 @@
       "hasSpec": true,
       "specPath": "src/modules/teams/infrastructure/team.repository.spec.ts",
       "kind": "source",
-      "hash": "sha256:5c66a8c55fd06120bd95c95a7f2b3b4dc5f192210037caa4e7a79aa30e264719",
-      "sizeBytes": 9656
+      "hash": "sha256:c651f52909e164b819680662feb1bceacf2a6306d570f57b8c34716f2fb45152",
+      "sizeBytes": 11094
     },
     {
       "path": "src/modules/teams/infrastructure/venue.repository.spec.ts",
@@ -63004,8 +63100,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:80be99ae80effda6c6fbf8387307c55a5c6ad673c685dcb0e57431786e43fd4e",
-      "sizeBytes": 978
+      "hash": "sha256:7e8a4cc5ae9fb2215e23edd681c3efd3ca342a1ed2dbc2569a72b81a72e82860",
+      "sizeBytes": 1059
     },
     {
       "path": "src/modules/teams/model/setting-values.constants.ts",
@@ -63598,6 +63694,10 @@
         },
         {
           "kind": "const",
+          "name": "PUBLIC_TEAM_COMPETITIONS_ROUTE"
+        },
+        {
+          "kind": "const",
           "name": "TEAM_SLUG_PARAM"
         },
         {
@@ -63607,6 +63707,10 @@
         {
           "kind": "const",
           "name": "PUBLIC_ROSTER_MAX"
+        },
+        {
+          "kind": "const",
+          "name": "PUBLIC_COMPETITIONS_MAX"
         },
         {
           "kind": "const",
@@ -63916,8 +64020,8 @@
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:fbaa56f50003fef8c3a3b9b4e04879c0434eb67ad1d7229c8b4c3a82b70fca02",
-      "sizeBytes": 12323
+      "hash": "sha256:ee93eb47f4ce4f6acfcfa03de461b2ebb7fab6a031734470c4551c0ebfe99adc",
+      "sizeBytes": 12594
     },
     {
       "path": "src/modules/teams/model/teams.enums.ts",
@@ -64033,13 +64137,17 @@
         {
           "kind": "interface",
           "name": "CatalogKeyRow"
+        },
+        {
+          "kind": "interface",
+          "name": "PublicCompetitionRow"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:94a99d9dabfbd01907f2f2c4b458748b9eb95a87d3eab5732a63ad4071c372f5",
-      "sizeBytes": 3908
+      "hash": "sha256:118c1f974e9538a7034dd8e8c285b0c664f8c3a97b67dd209b38dc5d895f9593",
+      "sizeBytes": 4140
     },
     {
       "path": "src/modules/teams/model/teams.types.ts",
@@ -64234,13 +64342,17 @@
         {
           "kind": "interface",
           "name": "StaffAssignmentRemoval"
+        },
+        {
+          "kind": "interface",
+          "name": "PublicCompetition"
         }
       ],
       "hasSpec": false,
       "specPath": null,
       "kind": "source",
-      "hash": "sha256:edf6e6de93b7cf0caafc198004039ca9cb95a0e4a2fcde80e9c32145d08cd644",
-      "sizeBytes": 13494
+      "hash": "sha256:062ba0e42f360f7b81345ce9c409968f91c019168572d156660a6bba4ea429f9",
+      "sizeBytes": 13806
     },
     {
       "path": "src/modules/teams/teams.module.ts",

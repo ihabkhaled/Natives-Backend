@@ -18,9 +18,12 @@ import { IdentitySchema1721300000000 } from '../src/database/migrations/17213000
 import { RbacSchema1721400000000 } from '../src/database/migrations/1721400000000-rbac-schema';
 import { TeamsSchema1721500000000 } from '../src/database/migrations/1721500000000-teams-schema';
 import { MembersSchema1721600000000 } from '../src/database/migrations/1721600000000-members-schema';
+import { CompetitionsSchema1723300000000 } from '../src/database/migrations/1723300000000-competitions-schema';
 import { PlatformLifecycleSchema1723800000000 } from '../src/database/migrations/1723800000000-platform-lifecycle-schema';
 import { TeamStaffAssignments1725700000000 } from '../src/database/migrations/1725700000000-team-staff-assignments';
 import { TeamPublicProfile1725900000000 } from '../src/database/migrations/1725900000000-team-public-profile';
+import { MemberJerseyDisplay1726000000000 } from '../src/database/migrations/1726000000000-member-jersey-display';
+import { JerseyNumberAsText1726100000000 } from '../src/database/migrations/1726100000000-jersey-number-as-text';
 
 const TEST_DB_HOST = process.env['TEST_DB_HOST'] ?? '127.0.0.1';
 const TEST_DB_PORT = process.env['TEST_DB_PORT'] ?? '55432';
@@ -54,9 +57,18 @@ const MIGRATIONS = [
   RbacSchema1721400000000,
   TeamsSchema1721500000000,
   MembersSchema1721600000000,
+  // The public directory now reports the team's competitions, so this suite
+  // needs the table they live in — seasons already arrive with the teams schema.
+  CompetitionsSchema1723300000000,
   PlatformLifecycleSchema1723800000000,
   TeamStaffAssignments1725700000000,
   TeamPublicProfile1725900000000,
+  // Shirt numbers are printed labels, not integers — the public directory
+  // returns them as strings, so this suite needs the pair that converts the
+  // column. Both touch member_profiles only; the second reads the column the
+  // first adds, so neither can be listed alone.
+  MemberJerseyDisplay1726000000000,
+  JerseyNumberAsText1726100000000,
 ];
 
 interface Fixture {
@@ -111,6 +123,7 @@ describeIfDb(suiteTitle, () => {
   let teamId: string;
   let teamSlug: string;
   let coachMembershipId: string;
+  let playerMembershipId: string;
   let titleEntryId: string;
 
   function api() {
@@ -181,6 +194,23 @@ describeIfDb(suiteTitle, () => {
               "nickname", "jersey_number")
        VALUES ($1, $2, $3, $4, $5)`,
       [coachMembershipId, teamId, 'Sherif Ashraf', '3alamy', 33],
+    );
+
+    // A rostered player: a membership with no account and therefore no roles.
+    // The public roster lists people who play, so this is who belongs on it —
+    // the team administrator above holds a non-playing role and does not.
+    const playerRows = await fixture.dataSource.query(
+      `INSERT INTO "memberships" ("team_id", "status", "status_effective_at",
+              "joined_at")
+       VALUES ($1, 'active', now(), now()) RETURNING "id"`,
+      [teamId],
+    );
+    playerMembershipId = playerRows[0].id;
+    await fixture.dataSource.query(
+      `INSERT INTO "member_profiles" ("membership_id", "team_id", "full_name",
+              "nickname", "jersey_number")
+       VALUES ($1, $2, $3, $4, $5)`,
+      [playerMembershipId, teamId, 'Mahmoud Nasr', 'Hoodz', '011'],
     );
 
     const entryRows = await fixture.dataSource.query(
@@ -284,12 +314,14 @@ describeIfDb(suiteTitle, () => {
           photoUrl: null,
         },
       ]);
+      // The team administrator is staff, not a player, so the roster carries
+      // only the rostered membership — a shirt printed "011", not eleven.
       expect(response.body.players).toEqual([
         {
-          membershipId: coachMembershipId,
-          displayName: 'Sherif Ashraf',
-          nickname: '3alamy',
-          jerseyNumber: 33,
+          membershipId: playerMembershipId,
+          displayName: 'Mahmoud Nasr',
+          nickname: 'Hoodz',
+          jerseyNumber: '011',
           positions: [],
           photoUrl: null,
         },

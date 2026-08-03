@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T14:12:31.021Z",
+  "generatedAt": "2026-08-03T15:24:15.281Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -1777,6 +1777,31 @@
       "type": "cross-cutting"
     },
     {
+      "from": "src/database/seeds/seed-competitions.constants.ts",
+      "to": "src/database/seeds/seed-competitions.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-competitions.ts",
+      "to": "src/database/seeds/seed-checksum.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-competitions.ts",
+      "to": "src/database/seeds/seed-competitions.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-competitions.ts",
+      "to": "src/database/seeds/seed-team.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-competitions.ts",
+      "to": "src/database/seeds/seed.types.ts",
+      "type": "internal"
+    },
+    {
       "from": "src/database/seeds/seed-personas.constants.ts",
       "to": "src/database/seeds/seed-personas.types.ts",
       "type": "internal"
@@ -1864,6 +1889,11 @@
     {
       "from": "src/database/seeds/seed-registry.ts",
       "to": "src/database/seeds/seed-admin.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/seed-registry.ts",
+      "to": "src/database/seeds/seed-competitions.ts",
       "type": "internal"
     },
     {
@@ -42402,6 +42432,11 @@
       "type": "internal"
     },
     {
+      "from": "src/modules/teams/api/dto/public-competition-response.dto.ts",
+      "to": "src/core/openapi/index.ts",
+      "type": "cross-cutting"
+    },
+    {
       "from": "src/modules/teams/api/dto/public-roster-player-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
@@ -42415,6 +42450,11 @@
       "from": "src/modules/teams/api/dto/public-team-directory-response.dto.ts",
       "to": "src/core/openapi/index.ts",
       "type": "cross-cutting"
+    },
+    {
+      "from": "src/modules/teams/api/dto/public-team-directory-response.dto.ts",
+      "to": "src/modules/teams/api/dto/public-competition-response.dto.ts",
+      "type": "internal"
     },
     {
       "from": "src/modules/teams/api/dto/public-team-directory-response.dto.ts",
@@ -44864,6 +44904,11 @@
     {
       "from": "src/modules/teams/infrastructure/team.repository.ts",
       "to": "src/modules/teams/lib/teams.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/modules/teams/infrastructure/team.repository.ts",
+      "to": "src/modules/teams/model/teams.constants.ts",
       "type": "internal"
     },
     {

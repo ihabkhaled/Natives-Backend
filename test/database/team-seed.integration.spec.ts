@@ -37,6 +37,7 @@ import { MatchLineupsSchema1723700000000 } from '../../src/database/migrations/1
 import { PlatformLifecycleSchema1723800000000 } from '../../src/database/migrations/1723800000000-platform-lifecycle-schema';
 import { TeamStaffAssignments1725700000000 } from '../../src/database/migrations/1725700000000-team-staff-assignments';
 import { TeamPublicProfile1725900000000 } from '../../src/database/migrations/1725900000000-team-public-profile';
+import { SEED_COMPETITIONS_KEY } from '../../src/database/seeds/seed-competitions.constants';
 
 // The seeders touch identity, RBAC, teams, members, the practice program, the
 // demonstration match queue (competitions → squads → rosters → matches, in FK
@@ -495,6 +496,7 @@ describeIfDb(suiteTitle, () => {
     // Ordered by seed_key, not registry order.
     expect(history.map((row: { seed_key: string }) => row.seed_key)).toEqual([
       SEED_ADMIN_KEY,
+      SEED_COMPETITIONS_KEY,
       SEED_PERSONAS_KEY,
       SEED_ROSTER_KEY,
       SEED_TEAM_KEY,
@@ -523,6 +525,7 @@ describeIfDb(suiteTitle, () => {
       { key: SEED_TEAM_KEY, application: 'skipped' },
       { key: SEED_PERSONAS_KEY, application: 'skipped' },
       { key: SEED_ROSTER_KEY, application: 'skipped' },
+      { key: SEED_COMPETITIONS_KEY, application: 'skipped' },
     ]);
     expect(await countRows()).toEqual(before);
     const appliedAtAfter = await dataSource.query(
