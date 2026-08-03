@@ -40,10 +40,14 @@ export class PublicTeamDirectoryService {
       limit: PUBLIC_ROSTER_MAX,
       offset: 0,
     });
+    const competitions = await this.unitOfWork.runInTransaction(scope =>
+      this.teams.listPublicCompetitions(scope, profile.id),
+    );
     return {
       profile,
       staff,
       players: players.items.map(item => toPublicRosterPlayer(item)),
+      competitions,
     };
   }
 

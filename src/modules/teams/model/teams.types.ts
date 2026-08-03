@@ -477,3 +477,13 @@ export interface StaffAssignmentRemoval {
   readonly updatedBy: string | null;
   readonly now: Date;
 }
+
+/** One competition as the public site sees it: publishable fields only. */
+export interface PublicCompetition {
+  readonly competitionId: string;
+  readonly name: string;
+  readonly seasonName: string;
+  readonly competitionType: string;
+  readonly startsOn: string | null;
+  readonly endsOn: string | null;
+}

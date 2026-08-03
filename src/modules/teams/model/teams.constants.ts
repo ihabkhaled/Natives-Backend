@@ -89,11 +89,16 @@ export const STAFF_ASSIGNMENT_COLUMNS =
 export const PUBLIC_TEAMS_ROUTE = 'public/teams';
 export const PUBLIC_TEAM_DIRECTORY_ROUTE = ':slug/directory';
 export const PUBLIC_TEAM_API_TAG = 'public-team-directory';
+export const PUBLIC_TEAM_COMPETITIONS_ROUTE = ':slug/competitions';
 export const TEAM_SLUG_PARAM = 'slug';
 // Bounded scan of one team's active staff/roster — inherently small (a squad's
 // staff and player count), capped rather than trusting table size.
 export const PUBLIC_STAFF_DIRECTORY_MAX = 200;
 export const PUBLIC_ROSTER_MAX = 200;
+
+// Bound on the public competitions read. A landing page shows a handful; this
+// is a ceiling that keeps an unauthenticated read from paging a whole history.
+export const PUBLIC_COMPETITIONS_MAX = 50;
 export const STAFF_DIRECTORY_FALLBACK_NAME = 'Staff member';
 
 // --- Defaults ----------------------------------------------------------------

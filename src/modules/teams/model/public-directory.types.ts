@@ -1,4 +1,8 @@
-import type { PublicTeamProfile, StaffDirectoryEntry } from './teams.types';
+import type {
+  PublicCompetition,
+  PublicTeamProfile,
+  StaffDirectoryEntry,
+} from './teams.types';
 
 /** One active player's publishable roster fields — no PII, no status/team id. */
 export interface PublicRosterPlayer {
@@ -16,6 +20,7 @@ export interface PublicTeamDirectoryView {
   readonly profile: PublicTeamProfile;
   readonly staff: readonly StaffDirectoryEntry[];
   readonly players: readonly PublicRosterPlayer[];
+  readonly competitions: readonly PublicCompetition[];
 }
 
 /** The team-owned half of the directory read, before the roster is joined in. */

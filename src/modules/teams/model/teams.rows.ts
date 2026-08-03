@@ -136,3 +136,12 @@ export interface IdRow {
 export interface CatalogKeyRow {
   readonly key: string;
 }
+
+export interface PublicCompetitionRow {
+  readonly id: string;
+  readonly name: string;
+  readonly competition_type: string;
+  readonly season_name: string;
+  readonly starts_on: string | null;
+  readonly ends_on: string | null;
+}

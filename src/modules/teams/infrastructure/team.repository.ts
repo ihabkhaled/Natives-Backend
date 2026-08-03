@@ -2,9 +2,11 @@ import type { TransactionScope } from '@core/persistence/unit-of-work.port';
 import { Injectable } from '@nestjs/common';
 
 import { parseTeamStatus, toDate, toNullableDate } from '../lib/teams.helpers';
+import { PUBLIC_COMPETITIONS_MAX } from '../model/teams.constants';
 import type {
   CountRow,
   IdRow,
+  PublicCompetitionRow,
   PublicTeamProfileRow,
   TeamRow,
 } from '../model/teams.rows';
@@ -12,6 +14,7 @@ import type {
   ListTeamsResult,
   NewTeam,
   PageRequest,
+  PublicCompetition,
   PublicTeamProfile,
   Team,
   TeamRemoval,
@@ -244,6 +247,39 @@ export class TeamRepository {
     );
     const row = rows[0];
     return row === undefined ? null : this.toPublicProfile(row);
+  }
+
+  /**
+   * The competitions a visitor may see: published, activated or completed only.
+   * A draft or cancelled competition is internal — the public page must not
+   * announce a tournament the team has not committed to or has called off.
+   * Newest first, so the current season leads.
+   */
+  async listPublicCompetitions(
+    scope: TransactionScope,
+    teamId: string,
+  ): Promise<readonly PublicCompetition[]> {
+    const rows = await scope.run<PublicCompetitionRow>(
+      `SELECT "c"."id", "c"."name", "c"."competition_type",
+              COALESCE("s"."name", '') AS "season_name",
+              to_char("c"."starts_on", 'YYYY-MM-DD') AS "starts_on",
+              to_char("c"."ends_on", 'YYYY-MM-DD') AS "ends_on"
+         FROM "competitions" "c"
+         LEFT JOIN "seasons" "s" ON "s"."id" = "c"."season_id"
+        WHERE "c"."team_id" = $1 AND "c"."deleted_at" IS NULL
+          AND "c"."status" IN ('published', 'active', 'completed')
+        ORDER BY "c"."starts_on" DESC NULLS LAST, "c"."created_at" DESC
+        LIMIT $2`,
+      [teamId, PUBLIC_COMPETITIONS_MAX],
+    );
+    return rows.map(row => ({
+      competitionId: row.id,
+      name: row.name,
+      seasonName: row.season_name,
+      competitionType: row.competition_type,
+      startsOn: row.starts_on,
+      endsOn: row.ends_on,
+    }));
   }
 
   private toPublicProfile(row: PublicTeamProfileRow): PublicTeamProfile {

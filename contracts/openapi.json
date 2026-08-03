@@ -14954,6 +14954,41 @@
         ],
         "type": "object"
       },
+      "PublicCompetitionResponseDto": {
+        "properties": {
+          "competitionId": {
+            "type": "string"
+          },
+          "competitionType": {
+            "description": "friendly | league | tournament …",
+            "type": "string"
+          },
+          "endsOn": {
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "seasonName": {
+            "description": "Season label, e.g. \"Season 2026\".",
+            "type": "string"
+          },
+          "startsOn": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "competitionId",
+          "name",
+          "seasonName",
+          "competitionType",
+          "startsOn",
+          "endsOn"
+        ],
+        "type": "object"
+      },
       "PublicInvitationResponseDto": {
         "properties": {
           "email": {
@@ -15072,6 +15107,12 @@
       },
       "PublicTeamDirectoryResponseDto": {
         "properties": {
+          "competitions": {
+            "items": {
+              "$ref": "#/components/schemas/PublicCompetitionResponseDto"
+            },
+            "type": "array"
+          },
           "players": {
             "items": {
               "$ref": "#/components/schemas/PublicRosterPlayerResponseDto"
@@ -15091,7 +15132,8 @@
         "required": [
           "profile",
           "staff",
-          "players"
+          "players",
+          "competitions"
         ],
         "type": "object"
       },
