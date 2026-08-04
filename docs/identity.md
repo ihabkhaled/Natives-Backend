@@ -137,6 +137,46 @@ Base path `/api/v1`.
   swept to `expired` by `ExpireInvitationsUseCase`.
 - **Forgotten password** — `POST /auth/forgot-password` then `reset-password`
   with the emailed one-time token.
+- **Accepted the invitation but has no team** — the roster membership was
+  written without an email, so acceptance had nothing to claim. See below.
+
+## Reconciling invitations whose membership carries no email
+
+Acceptance claims an invited membership by matching the invitation's address
+against `member_profiles.email`, and grants the invited team role only for the
+memberships it claims (`ClaimInvitedMembershipsService`). A membership created
+without that address can never be claimed: the invitee ends up with an active
+account, an orphaned `invited` membership, no team context and no role — the
+navigation collapses to the destinations that need no permission.
+
+```bash
+npm run reconcile:invited-memberships           # dry run: prints the plan
+npm run reconcile:invited-memberships -- --apply # performs the listed repairs
+```
+
+Dry run is the default and mutates nothing. `--apply` runs every repair in one
+transaction, each with a `security_events` row carrying `reconciliation: true`.
+
+| Invitation | Repair                                                                                                                                                                                                |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pending`  | Restores the profile email only. The ordinary accept path then links and grants as designed — nothing privileged happens here.                                                                        |
+| `accepted` | The token is spent and cannot be replayed, so the membership is linked and activated and the role the invitation already promised (`team_role_key`, ceiling-validated when it was issued) is granted. |
+
+The one thing inferred is **which** membership belongs to an invitation, and it
+is inferred only when the pairing is forced: exactly one invited, unlinked,
+email-less membership in the team, **and** exactly one orphaned invitation
+competing for it. Anything else is reported as `ambiguous` and left untouched —
+guessing there attaches a person to a stranger's roster record. Resolve those by
+hand, then re-run.
+
+The role grant is conditional on the link actually happening, not merely
+sequenced after it: if the membership was taken between the scan and the write,
+the guarded `UPDATE` returns no row and no role is assigned. A role assignment
+for somebody holding no membership in the team is a permission with nothing
+behind it.
+
+Related: `npm run backfill:member-roles` covers the different case of a
+membership that IS linked but whose account holds no role in that team.
 
 ## Synthetic seed credentials (tests & local only)
 
