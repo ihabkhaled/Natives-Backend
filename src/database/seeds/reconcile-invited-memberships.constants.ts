@@ -9,6 +9,6 @@ export const RECONCILE_APPLY_HEADER = 'Repairing orphaned invitations:';
 export const RECONCILE_NOTHING_TO_DO_MESSAGE =
   'Nothing to reconcile: every team invitation has a membership carrying its email.';
 export const RECONCILE_AMBIGUOUS_NOTE =
-  'Left alone — more than one invited membership in this team has no email; link it by hand.';
+  'Left alone — this team has more than one email-less membership, or more than one invitation competing for it. Link it by hand.';
 export const RECONCILE_FAILED_PREFIX =
   'Invited-membership reconciliation failed';

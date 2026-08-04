@@ -12,6 +12,7 @@ const PENDING_ROW = {
   status: 'pending',
   membership_id: 'mem-1',
   candidate_count: 1,
+  invitation_count: 1,
   user_id: null,
 };
 
@@ -23,6 +24,7 @@ const ACCEPTED_ROW = {
   status: 'accepted',
   membership_id: 'mem-2',
   candidate_count: 1,
+  invitation_count: 1,
   user_id: 'user-2',
 };
 
@@ -34,6 +36,7 @@ const AMBIGUOUS_ROW = {
   status: 'accepted',
   membership_id: 'mem-3',
   candidate_count: 4,
+  invitation_count: 1,
   user_id: 'user-3',
 };
 
@@ -57,6 +60,10 @@ function answering(
     }
     if (sql.includes('FROM "roles"')) {
       return Promise.resolve(roles);
+    }
+    // The guarded link UPDATE returns the row it took; the grant depends on it.
+    if (sql.includes('UPDATE "memberships"')) {
+      return Promise.resolve([{ id: 'mem-linked' }]);
     }
     return Promise.resolve([]);
   });
@@ -170,6 +177,75 @@ describe('runInvitedMembershipReconciliation', () => {
     expect(result.repaired).toEqual([]);
     expect(result.applied).toBe(false);
     expect(queryRunner.query).toHaveBeenCalledTimes(1);
+  });
+
+  /**
+   * Two orphaned invitations over one candidate membership is the shape that
+   * could grant a role to somebody holding no membership: both name the same
+   * row, the first repair takes it, and the second is left with an invitation
+   * and nothing to link. Neither is repaired.
+   */
+  it('refuses a team where two invitations compete for one membership', async () => {
+    answering(
+      queryRunner,
+      [
+        { ...ACCEPTED_ROW, invitation_count: 2 },
+        {
+          ...ACCEPTED_ROW,
+          invitation_id: 'inv-accepted-2',
+          invitation_count: 2,
+        },
+      ],
+      [{ id: 'role-coach' }],
+    );
+
+    const result = await runInvitedMembershipReconciliation(
+      queryRunner as never as QueryRunner,
+      true,
+    );
+
+    expect(result.orphans.every(orphan => orphan.verdict === 'ambiguous')).toBe(
+      true,
+    );
+    expect(result.repaired).toEqual([]);
+    expect(
+      statements(queryRunner).some(text =>
+        text.includes('INSERT INTO "user_role_assignments"'),
+      ),
+    ).toBe(false);
+  });
+
+  /**
+   * The last line of defence. If the membership was taken between the scan and
+   * the write, the UPDATE matches nothing — and the role grant must not happen
+   * anyway, because a role assignment for somebody with no membership in the
+   * team is a permission with nothing behind it.
+   */
+  it('does not grant a role when the membership was already claimed', async () => {
+    queryRunner.query.mockImplementation((sql: string) => {
+      if (sql.includes('WITH "candidates"')) {
+        return Promise.resolve([ACCEPTED_ROW]);
+      }
+      if (sql.includes('FROM "roles"')) {
+        return Promise.resolve([{ id: 'role-coach' }]);
+      }
+      // The guarded UPDATE returns no row: somebody else took the membership.
+      return Promise.resolve([]);
+    });
+
+    await runInvitedMembershipReconciliation(
+      queryRunner as never as QueryRunner,
+      true,
+    );
+
+    const sql = statements(queryRunner);
+    expect(sql.some(text => text.includes('UPDATE "memberships"'))).toBe(true);
+    expect(
+      sql.some(text => text.includes('INSERT INTO "user_role_assignments"')),
+    ).toBe(false);
+    expect(
+      sql.some(text => text.includes('INSERT INTO "membership_status_events"')),
+    ).toBe(false);
   });
 
   it('refuses to invent a role that the catalog no longer holds', async () => {

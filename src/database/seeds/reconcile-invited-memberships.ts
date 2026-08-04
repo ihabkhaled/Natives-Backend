@@ -37,9 +37,10 @@ import type {
  *   promise, it does not infer a new one.
  *
  * The only inference is WHICH membership belongs to an invitation, and it is
- * made only when the team holds exactly one invited, unlinked, email-less
- * candidate. Anything else is reported as ambiguous and left untouched for a
- * human, because guessing here would attach a person to a stranger's record.
+ * made only when the pairing is forced: exactly one invited, unlinked,
+ * email-less membership in the team, and exactly one orphaned invitation
+ * competing for it. Anything else is reported as ambiguous and left untouched
+ * for a human, because guessing attaches a person to a stranger's record.
  *
  * Operator-reviewed two-step, never wired to startup: the dry run prints the
  * plan and mutates nothing; `--apply` performs exactly the listed repairs in
@@ -79,42 +80,61 @@ async function listOrphans(
           JOIN "member_profiles" p ON p."membership_id" = m."id"
          WHERE m."status" = 'invited' AND m."user_id" IS NULL
            AND m."deleted_at" IS NULL AND p."email" IS NULL
+     ), "orphans" AS (
+        SELECT i."id", i."email", i."team_id", i."team_role_key", i."status",
+               i."created_at"
+          FROM "invitations" i
+         WHERE i."team_id" IS NOT NULL
+           AND i."status" IN ('pending', 'accepted')
+           AND NOT EXISTS (
+             SELECT 1 FROM "memberships" m
+               JOIN "member_profiles" p ON p."membership_id" = m."id"
+              WHERE m."team_id" = i."team_id" AND m."deleted_at" IS NULL
+                AND lower(p."email") = lower(i."email")
+           )
      )
-     SELECT i."id" AS "invitation_id", i."email", i."team_id",
-            i."team_role_key", i."status",
+     SELECT o."id" AS "invitation_id", o."email", o."team_id",
+            o."team_role_key", o."status",
             u."id" AS "user_id",
-            (SELECT count(*) FROM "candidates" c WHERE c."team_id" = i."team_id")
+            (SELECT count(*) FROM "candidates" c WHERE c."team_id" = o."team_id")
               AS "candidate_count",
-            (SELECT c."id" FROM "candidates" c WHERE c."team_id" = i."team_id"
+            (SELECT count(*) FROM "orphans" p WHERE p."team_id" = o."team_id")
+              AS "invitation_count",
+            (SELECT c."id" FROM "candidates" c WHERE c."team_id" = o."team_id"
               LIMIT 1) AS "membership_id"
-       FROM "invitations" i
-       LEFT JOIN "users" u ON lower(u."email") = lower(i."email")
-      WHERE i."team_id" IS NOT NULL
-        AND i."status" IN ('pending', 'accepted')
-        AND NOT EXISTS (
-          SELECT 1 FROM "memberships" m
-            JOIN "member_profiles" p ON p."membership_id" = m."id"
-           WHERE m."team_id" = i."team_id" AND m."deleted_at" IS NULL
-             AND lower(p."email") = lower(i."email")
-        )
-      ORDER BY i."created_at" ASC, i."id" ASC`,
+       FROM "orphans" o
+       LEFT JOIN "users" u ON lower(u."email") = lower(o."email")
+      ORDER BY o."created_at" ASC, o."id" ASC`,
   )) as readonly OrphanedInvitationRow[];
   return rows.map(row => toOrphan(row));
 }
 
+/**
+ * Repairable means the pairing is forced, not merely plausible: exactly one
+ * email-less membership in the team AND exactly one orphaned invitation for it.
+ *
+ * Two orphaned invitations over one candidate membership is the dangerous
+ * shape. Both would name the same row, the first repair would take it, and the
+ * second would be left holding an invitation with nothing to link — so it is
+ * reported instead. Whichever of those two people the roster row belongs to is
+ * a question only a human can answer.
+ */
 function toOrphan(row: OrphanedInvitationRow): OrphanedInvitation {
   const candidateCount = Number(row.candidate_count);
-  const repairable = candidateCount === 1 && row.membership_id !== null;
+  const invitationCount = Number(row.invitation_count);
+  const forced =
+    candidateCount === 1 && invitationCount === 1 && row.membership_id !== null;
   return {
     invitationId: row.invitation_id,
     email: row.email,
     teamId: row.team_id,
     teamRoleKey: row.team_role_key,
     status: row.status === 'accepted' ? 'accepted' : 'pending',
-    membershipId: repairable ? row.membership_id : null,
+    membershipId: forced ? row.membership_id : null,
     candidateCount,
+    invitationCount,
     userId: row.user_id,
-    verdict: repairable ? 'repairable' : 'ambiguous',
+    verdict: forced ? 'repairable' : 'ambiguous',
   };
 }
 
@@ -128,8 +148,15 @@ async function repair(
   orphan: OrphanedInvitation,
 ): Promise<void> {
   await restoreProfileEmail(queryRunner, orphan);
-  if (orphan.status === 'accepted' && orphan.userId !== null) {
-    await linkAndActivate(queryRunner, orphan, orphan.userId);
+  if (orphan.status !== 'accepted' || orphan.userId === null) {
+    return;
+  }
+  // The grant is conditional on the link, not merely sequenced after it. A role
+  // assignment for somebody who holds no membership in the team is a permission
+  // with nothing behind it, and the UPDATE is the only thing that can say
+  // whether the row was still there to take.
+  const linked = await linkAndActivate(queryRunner, orphan, orphan.userId);
+  if (linked) {
     await grantInvitedRole(queryRunner, orphan, orphan.userId);
   }
 }
@@ -146,20 +173,29 @@ async function restoreProfileEmail(
   await recordAudit(queryRunner, RECONCILE_EMAIL_BACKFILL_EVENT, orphan, {});
 }
 
+/**
+ * Take the membership, or report that it was already gone. The guard reproduces
+ * the state machine's own preconditions, and RETURNING is what makes the result
+ * observable: a repair earlier in this same run may have claimed the row.
+ */
 async function linkAndActivate(
   queryRunner: QueryRunner,
   orphan: OrphanedInvitation,
   userId: string,
-): Promise<void> {
-  await queryRunner.query(
+): Promise<boolean> {
+  const linked = (await queryRunner.query(
     `UPDATE "memberships"
         SET "user_id" = $2, "status" = 'active', "status_effective_at" = now(),
             "joined_at" = COALESCE("joined_at", now()), "updated_at" = now(),
             "version" = "version" + 1
       WHERE "id" = $1 AND "user_id" IS NULL AND "status" = 'invited'
-        AND "deleted_at" IS NULL`,
+        AND "deleted_at" IS NULL
+    RETURNING "id"`,
     [orphan.membershipId, userId],
-  );
+  )) as readonly ReconcileIdRow[];
+  if (linked.length === 0) {
+    return false;
+  }
   await queryRunner.query(
     `INSERT INTO "membership_status_events" ("id", "membership_id",
             "from_status", "to_status", "reason", "actor_user_id",
@@ -170,6 +206,7 @@ async function linkAndActivate(
   await recordAudit(queryRunner, RECONCILE_LINK_EVENT, orphan, {
     targetUserId: userId,
   });
+  return true;
 }
 
 async function grantInvitedRole(

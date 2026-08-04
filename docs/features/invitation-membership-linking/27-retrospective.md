@@ -25,6 +25,18 @@
   report "has to name them". The code was right and the comment was wrong, but
   the comment is what a future reader would have believed.
 
+- **The threat model asserted an invariant the code did not hold.** It said
+  reconciliation could not grant a role to somebody it had not linked. With two
+  orphaned invitations over one candidate membership, it could — see item 8 in
+  `16-dev-bug-log.md`. Everything was green over that defect: both specs, lint,
+  typecheck, and 5436 backend tests. It was found by re-reading the SQL, which
+  is the least reliable detection method available.
+
+  This is the same failure as the original defect, one level up. The original
+  bug survived because 6000 tests asserted the wrong thing. This one survived
+  because the document that names the danger was not connected to anything that
+  could fail.
+
 ## Improvements
 
 1. When two requests must agree on a value, construct both from one variable in
@@ -35,6 +47,13 @@
 3. Documenting an invariant is not the same as enforcing it. The invite service
    now derives the second address from the first; that, not the comment above
    it, is what holds.
+4. Every line in a threat model that says "cannot happen" is a test that has not
+   been written yet. Both mitigations for T1b were verified by removing them and
+   watching a test go red — the claim is now falsifiable, which is the only
+   thing that makes it worth writing down.
+5. Prefer guards that do not depend on each other being right. The invitation
+   count and the conditional grant close the same hole independently; if a
+   future change gets the scan wrong, the write still refuses.
 
 ## Standing rules to add
 

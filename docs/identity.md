@@ -163,10 +163,17 @@ transaction, each with a `security_events` row carrying `reconciliation: true`.
 | `accepted` | The token is spent and cannot be replayed, so the membership is linked and activated and the role the invitation already promised (`team_role_key`, ceiling-validated when it was issued) is granted. |
 
 The one thing inferred is **which** membership belongs to an invitation, and it
-is inferred only when the team holds exactly one invited, unlinked, email-less
-candidate. Anything else is reported as `ambiguous` and left untouched —
-guessing there would attach a person to a stranger's roster record. Resolve
-those by hand, then re-run.
+is inferred only when the pairing is forced: exactly one invited, unlinked,
+email-less membership in the team, **and** exactly one orphaned invitation
+competing for it. Anything else is reported as `ambiguous` and left untouched —
+guessing there attaches a person to a stranger's roster record. Resolve those by
+hand, then re-run.
+
+The role grant is conditional on the link actually happening, not merely
+sequenced after it: if the membership was taken between the scan and the write,
+the guarded `UPDATE` returns no row and no role is assigned. A role assignment
+for somebody holding no membership in the team is a permission with nothing
+behind it.
 
 Related: `npm run backfill:member-roles` covers the different case of a
 membership that IS linked but whose account holds no role in that team.

@@ -19,6 +19,8 @@ export interface OrphanedInvitation {
   readonly membershipId: string | null;
   /** How many invited, unlinked, email-less memberships the team holds. */
   readonly candidateCount: number;
+  /** How many orphaned invitations compete for them in the same team. */
+  readonly invitationCount: number;
   /** The account created by an accepted invitation; null while pending. */
   readonly userId: string | null;
   readonly verdict: ReconcileVerdict;
@@ -33,6 +35,7 @@ export interface OrphanedInvitationRow {
   readonly status: string;
   readonly membership_id: string | null;
   readonly candidate_count: string | number;
+  readonly invitation_count: string | number;
   readonly user_id: string | null;
 }
 

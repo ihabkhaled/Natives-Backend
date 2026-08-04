@@ -257,6 +257,51 @@ describeIfDb(suiteTitle, () => {
   });
 
   /**
+   * The inverse ambiguity, and the dangerous one: one candidate membership,
+   * two invitations wanting it. Both name the same row. Repairing either would
+   * leave the other holding an invitation with nothing to link — and, before
+   * the count guard existed, would still have granted that person a team role.
+   */
+  it('declines a team where two invitations compete for one membership', async () => {
+    await seedMemberRole();
+    const teamId = await seedTeam();
+    await seedEmaillessMembership(teamId);
+    const firstUser = await seedUser('rival.one@example.test');
+    await seedUser('rival.two@example.test');
+    await seedInvitation(
+      teamId,
+      'rival.one@example.test',
+      'accepted',
+      'MEMBER',
+    );
+    await seedInvitation(
+      teamId,
+      'rival.two@example.test',
+      'accepted',
+      'MEMBER',
+    );
+
+    const result = await withRunner(queryRunner =>
+      runInvitedMembershipReconciliation(queryRunner, true),
+    );
+
+    const rivals = result.orphans.filter(orphan =>
+      orphan.email.startsWith('rival.'),
+    );
+    const assignments = await selectRows<{ count: number }>(
+      `SELECT count(*)::int AS "count" FROM "user_role_assignments"
+        WHERE "user_id" = $1 AND "team_id" = $2 AND "revoked_at" IS NULL`,
+      [firstUser, teamId],
+    );
+
+    expect(rivals).toHaveLength(2);
+    expect(rivals.every(orphan => orphan.verdict === 'ambiguous')).toBe(true);
+    expect(result.repaired).toEqual([]);
+    // The critical assertion: no role was granted to anybody.
+    expect(assignments[0]?.count).toBe(0);
+  });
+
+  /**
    * Which membership belongs to an invitation is the one thing inferred. With
    * two email-less candidates in the team, guessing would attach a person to a
    * stranger's roster record, so the repair must decline.
