@@ -318,6 +318,12 @@ See [04-repositories-and-persistence.md](../rules/04-repositories-and-persistenc
 - **Cause:** examples, config namespaces, validation schema, and docs evolved separately.
 - **Fix:** every consumed key is validated and every documented key is consumed; remove stale keys as a complete surface (rules 29, 49).
 
+### J11. A default test timeout calibrated for unit tests, applied to e2e
+
+- **Symptom:** `test/signup.e2e-spec.ts` fails under the full suite and passes when re-run alone. Reads as flakiness or as database poisoning; is neither.
+- **Cause:** Vitest's 5s default applied to tests that boot a Nest app, hit real PostgreSQL, and perform several bcrypt cost-12 hashes. Measured ~2.9s idle — a 1.7x margin that a loaded 843-file run consumes.
+- **Fix:** `testTimeout: 30_000` / `hookTimeout: 60_000` in `vitest.config.mts`, documented with the measurement. Never diagnose an e2e timeout as flake without timing the test in isolation first; and never lower bcrypt cost to make a clock fit.
+
 ---
 
 ## Checklist before writing code

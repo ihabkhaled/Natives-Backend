@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T08:56:22.967Z",
+  "generatedAt": "2026-08-04T16:00:26.458Z",
   "documents": [
     {
       "path": "agents/backend-architect.md",
@@ -1461,7 +1461,7 @@
         "./testing-strategy.md",
         "./ai-context-map.md"
       ],
-      "hash": "sha256:0b22a59f666bd47fd4ed93cbb22545ba6aa4e221ae680f774096d0770ba1f114"
+      "hash": "sha256:83a4620379f3b6d87cb9a320f221f37a883524ebe912847083025b3465c0f3d3"
     },
     {
       "path": "memory/library-boundaries.md",

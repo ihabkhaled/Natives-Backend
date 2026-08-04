@@ -28,6 +28,22 @@ export default defineConfig({
     setupFiles: ['./test/vitest.setup.ts'],
     mockReset: true,
     restoreMocks: true,
+    // Vitest defaults to 5s per test and 10s per hook. That is right for a pure
+    // unit test and wrong for this repository's e2e layer, where a single test
+    // boots a Nest application, talks to real PostgreSQL, and — in the identity
+    // and signup suites — performs several bcrypt cost-12 hashes.
+    //
+    // Measured on an idle machine, the signup approve/reject tests take ~2.9s
+    // against that 5s default. A 1.7x margin is not a margin: under the full
+    // 843-file suite the same tests cross 5s and fail, then pass when re-run
+    // alone, which reads as flakiness and trains people to re-run rather than
+    // look. The assertions were never the problem, so nothing about them
+    // changes here; only the patience for work that is genuinely slow.
+    //
+    // Deliberately not raised further: a hung test should still fail the run in
+    // a reasonable time rather than stall CI.
+    testTimeout: 30_000,
+    hookTimeout: 60_000,
     coverage: {
       all: true,
       provider: 'v8',
