@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T15:24:15.281Z",
+  "generatedAt": "2026-08-04T01:08:54.213Z",
   "edges": [
     {
       "from": "src/app.module.ts",
@@ -1669,6 +1669,46 @@
     {
       "from": "src/database/seeds/backfill-member-roles.ts",
       "to": "src/database/seeds/backfill-member-roles.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/reconcile-invited-memberships.cli.ts",
+      "to": "src/app.module.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/reconcile-invited-memberships.cli.ts",
+      "to": "src/database/database-cli.helpers.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/reconcile-invited-memberships.cli.ts",
+      "to": "src/database/database.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/reconcile-invited-memberships.cli.ts",
+      "to": "src/database/seeds/reconcile-invited-memberships.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/reconcile-invited-memberships.cli.ts",
+      "to": "src/database/seeds/reconcile-invited-memberships.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/reconcile-invited-memberships.cli.ts",
+      "to": "src/database/seeds/reconcile-invited-memberships.types.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/reconcile-invited-memberships.ts",
+      "to": "src/database/seeds/reconcile-invited-memberships.constants.ts",
+      "type": "internal"
+    },
+    {
+      "from": "src/database/seeds/reconcile-invited-memberships.ts",
+      "to": "src/database/seeds/reconcile-invited-memberships.types.ts",
       "type": "internal"
     },
     {

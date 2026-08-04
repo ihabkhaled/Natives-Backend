@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-03T15:24:15.281Z",
-  "treeHash": "sha256:66ca9b4a1c0ca4eabcb5ebb1010101695555be5fd7e76af6e79676f1d44a4280",
+  "generatedAt": "2026-08-04T01:08:54.213Z",
+  "treeHash": "sha256:8c82d052b9271cec9086a4d35e7eee98469e6708cac47f4fce8a71a2f3d121f6",
   "files": [
     {
       "path": "src/app.module.ts",
@@ -4918,6 +4918,128 @@
       "kind": "source",
       "hash": "sha256:b507bdec436a13089e579d694d58fa61d27072d0ef6e114b9498671ad3a0eedd",
       "sizeBytes": 682
+    },
+    {
+      "path": "src/database/seeds/reconcile-invited-memberships.cli.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:6cb38d6dd8697c821e4af0a52f834330d5e52367d9c4f8da0f758087c1232a8f",
+      "sizeBytes": 3057
+    },
+    {
+      "path": "src/database/seeds/reconcile-invited-memberships.constants.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "const",
+          "name": "RECONCILE_APPLY_FLAG"
+        },
+        {
+          "kind": "const",
+          "name": "RECONCILE_ROLE_MISSING_PREFIX"
+        },
+        {
+          "kind": "const",
+          "name": "RECONCILE_EMAIL_BACKFILL_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RECONCILE_LINK_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RECONCILE_ROLE_EVENT"
+        },
+        {
+          "kind": "const",
+          "name": "RECONCILE_DRY_RUN_HEADER"
+        },
+        {
+          "kind": "const",
+          "name": "RECONCILE_APPLY_HEADER"
+        },
+        {
+          "kind": "const",
+          "name": "RECONCILE_NOTHING_TO_DO_MESSAGE"
+        },
+        {
+          "kind": "const",
+          "name": "RECONCILE_AMBIGUOUS_NOTE"
+        },
+        {
+          "kind": "const",
+          "name": "RECONCILE_FAILED_PREFIX"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:e219193db7aabb641a4e7b2d8e895e794502cb0d981d32a43fcc29d765dda8c0",
+      "sizeBytes": 881
+    },
+    {
+      "path": "src/database/seeds/reconcile-invited-memberships.spec.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": null,
+      "specPath": null,
+      "kind": "spec",
+      "hash": "sha256:5e5dae1d449e075cf9c114497b8331da3fa80571592530849efa7e52702aeb2f",
+      "sizeBytes": 5907
+    },
+    {
+      "path": "src/database/seeds/reconcile-invited-memberships.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [],
+      "hasSpec": true,
+      "specPath": "src/database/seeds/reconcile-invited-memberships.spec.ts",
+      "kind": "source",
+      "hash": "sha256:d62cefd38fb503a087a7df82db29b6a35fa04679ef52c5527dae280efde01e15",
+      "sizeBytes": 8898
+    },
+    {
+      "path": "src/database/seeds/reconcile-invited-memberships.types.ts",
+      "root": "app",
+      "module": "app",
+      "layer": "other",
+      "symbols": [
+        {
+          "kind": "type",
+          "name": "ReconcileVerdict"
+        },
+        {
+          "kind": "interface",
+          "name": "OrphanedInvitation"
+        },
+        {
+          "kind": "interface",
+          "name": "OrphanedInvitationRow"
+        },
+        {
+          "kind": "interface",
+          "name": "ReconcileResult"
+        },
+        {
+          "kind": "interface",
+          "name": "ReconcileIdRow"
+        }
+      ],
+      "hasSpec": false,
+      "specPath": null,
+      "kind": "source",
+      "hash": "sha256:7cf619fa816da07bea9a3537b6de15fdf5a2dd937330ccdaec49b52dfcfb20da",
+      "sizeBytes": 1773
     },
     {
       "path": "src/database/seeds/seed-admin.cli.ts",
